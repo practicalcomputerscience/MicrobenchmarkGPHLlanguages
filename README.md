@@ -143,13 +143,13 @@ It checks for a minimum number of 8 password characters, but usually not for an 
 
 After improving my Python program here and there, I thought that this a good computer program for me to test new languages.
 
-Though only in middle of June 2025 I made further improvements to my original Python program because I learned that also Python has a concept for fast string concatenation: *StringIO*: https://docs.python.org/3/library/io.html#io.StringIO
+Though only in the middle of June 2025 I made further improvements to my original Python program because I learned that also Python has a concept for fast string concatenation: *StringIO*: https://docs.python.org/3/library/io.html#io.StringIO
 
 This helped to make the Python program running faster. In other words: I still revisit old programs to improve them, not only in terms of execution speed but also in terms of number of lines of source code ("verbosity", "LOC") or memory leaks after program exit, if feasible.
 
 Though this is not meant to be project for benchmarking execution speeds, nor has it started as such, but I always take a deeper look into a program when I have the feeling that it's maybe unfairly on the slow side because of my deficits with using a new programming language.
 
-However, benchmarking execution speeds is the easiest of all benchmarking:
+However, measuring execution speeds is the easiest of all benchmarking:
 
 _**Even though most benchmarks aren’t worth the pixels they’re printed on, people seem to like them...**_ from: https://wren.io/performance.html
 
@@ -173,25 +173,26 @@ I'm aware of other (micro-)benchmarks like these for example:
 
 - and also the **TIOBE Index** of popularity: https://www.tiobe.com/tiobe-index/
 
-To some extent these sites also have been a source of inspiration to test new languages, but not the only ones.
+To some extent these sites have been a source of inspiration to test new languages, but not the only ones. Often I become curious about another language by reading about the background of the programming language I'm currently working with.
+
 
 <br/>
 
 #### Parameters for the LCG (linear congruential generator)
 
-Originally I tumbled into this web page: https://statmath.wu.ac.at/software/src/prng-3.0.2/doc/prng.html/Table_LCG.html from where I've chosen modul p = 2^16 - 15 = 	65521 and which I usually name **m** or **M** in my programs. Together with multiplicator a = 17364, usually named **a** or **A** in my programs.
+Originally I tumbled into this web page: https://statmath.wu.ac.at/software/src/prng-3.0.2/doc/prng.html/Table_LCG.html from where I've chosen _modul p_ = 2^16 - 15 = 	65521 and which I usually name **m** or **M** in my programs. Together with multiplicator _a_ = 17364, usually named **a** or **A** in my programs.
 
 Parameter _c_ is 0 with this algorithm, which is named _b_ in the web page linked above. I've already forgotten why I changed the name from _b_ to _c_.
 
-Here's the original source of this LCG: https://www.jstor.org/stable/2585108
-
-**Tables of Linear Congruential Generators of Different Sizes and Good Lattice Structure**, Pierre L'Ecuyer, Mathematics of Computation, Vol. 68, No. 225 (Jan., 1999), pp. 249-260 (12 pages), Published By: American Mathematical Society -- DOI: 10.1090/S0025-5718-99-00996-5
+Here's the original source of this LCG: https://www.jstor.org/stable/2585108 : _Tables of Linear Congruential Generators of Different Sizes and Good Lattice Structure_, Pierre L'Ecuyer, Mathematics of Computation, Vol. 68, No. 225 (Jan., 1999), pp. 249-260 (12 pages), Published By: American Mathematical Society -- DOI: 10.1090/S0025-5718-99-00996-5
 
 <br/>
 
-The choice of 2^16 - 15 = 65521 was easy for me because it's the highest 16-bit modulus where the whole, recursive calculation can fit into 32 bits. This makes this pseudo-random number generator easy to port from one platform to another.
+The choice of 2^16 - 15 = 65521 was easy for me because it's the highest 16-bit modulus where the whole, recursive calculation can fit into 32 bits. This makes this pseudo-random number generator easy to port from one platform to the other.
 
 <br/>
+
+#### Other apects of a computer programming language
 
 The program is too short to explicitly test important aspects of general purpose, high-level programming languages, like:
 
@@ -199,9 +200,9 @@ The program is too short to explicitly test important aspects of general purpose
 
 - concurreny.
 
-Though, in one instance I made a derivative program of the "speed part" in Go to see how concurrency works there. This was rather easy as advertised and it works. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
+Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
 
-Though many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
+Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely - and without an extra framework - facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
 
 
 #### On including lots of comments in my source code
@@ -215,7 +216,9 @@ This project was the first time I deliberately came into contact with **function
 
 - imperative programming languages (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature")
 
-- functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like they call, here Roc: https://www.roc-lang.org/
+- functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like it's officially called, here with Roc: https://www.roc-lang.org/
+
+<br/>
 
 #### On vibe coding
 
