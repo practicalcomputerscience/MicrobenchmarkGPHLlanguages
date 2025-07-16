@@ -202,7 +202,9 @@ The program is too short to explicitly test important aspects of general purpose
 
 Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
 
-Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely - and without an extra framework - facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
+Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely and natively, that is without an extra framework, facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
+
+Once I collected 
 
 
 #### On including lots of comments in my source code
@@ -210,13 +212,19 @@ Many general purpose, high-level programming languages have been designed in the
 (TBD)
 
 
-#### On functional programming
+### On functional programming
 
 This project was the first time I deliberately came into contact with **functional programming languages**. At one point it made me to divide the programs into two sections:
 
 - imperative programming languages (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature")
 
 - functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like it's officially called, here with Roc: https://www.roc-lang.org/
+
+The fate of functional programming and concurrency is linked because:
+
+> As I explained previously pure functions and immutable data make a program thread-safe. Hence your software becomes scalable.
+
+From: https://medium.com/twodigits/advantages-and-disadvantages-of-functional-programming-52a81c8bf446
 
 <br/>
 
@@ -228,12 +236,11 @@ This project was the first time I deliberately came into contact with **function
 
 (TBD)
 
-#### The 1 second execution time limit
+#### Error handling, exception handling
 
 (TBD)
 
-
-#### Error handling, exception handling
+#### The 1 second execution time limit
 
 (TBD)
 
