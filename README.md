@@ -285,9 +285,11 @@ The program is too short to explicitly test important aspects of general purpose
 
 - concurreny for example.
 
-Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
+Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html
 
-Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to natively, that is without an extra framework, facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
+<br/>
+
+Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to natively, that is without an extra framework, facilitate programming **concurrency** safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
 
 Once I collected these frameworks, which in one way or the other promote concurrent program execution:
 
@@ -363,11 +365,15 @@ Also mastering compiler switches, like in C for example, and mastering build too
 
 <br/>
 
-#### On vibe coding
+#### Prompt engineering
 
-It was already with the Go program where I used MS Bing AI as my "vibe coding" tool (https://en.wikipedia.org/wiki/Vibe_coding) for little functions. Later with the functional programming languages, like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files. 
+It was already with the Go program where I used MS Bing AI for writing me little functions. Later with the functional programming languages, like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
 
-Then come the turn to **Standard ML** (https://smlfamily.github.io/), where after a while I discovered the fine **LunarML** transpiler (https://github.com/minoki/LunarML), which by default transpiles Standard ML code into **Lua** code, but also, if desired, into **JavaScript** code. However, I noticed that the "Hello world!" example of LunarML in Standard ML with two lines of source code:
+I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files, also for my prompt engineering.
+
+<br/>
+
+Then come the turn to **Standard ML** (https://smlfamily.github.io/), where, after a while, I discovered the **LunarML** transpiler (https://github.com/minoki/LunarML), which by default transpiles Standard ML code into **Lua** code, but also, if desired, into **JavaScript** code. However, I noticed that the "Hello world!" example of LunarML in Standard ML with two lines of source code:
 
 ```
 $ cat ./LunarML-0.2.1/example/hello.sml
@@ -376,7 +382,7 @@ print "Hello world!\n";
 $
 ```
 
-..translates into 95 lines of Lua source code, Lua of all languages! (Lua is a language designed for simplicity: https://www.lua.org/about.html). The JavaScript translation of the "Hello world!" example translates into only 5 lines of source code:
+..translates into 95 lines of Lua source code, Lua of all languages! (Lua is a language designed for simplicity: https://www.lua.org/about.html). The JavaScript translation of the "Hello world!" example has only 5 lines of source code:
 
 ```
 $ lunarml compile --nodejs ./LunarML-0.2.1/example/hello.sml
@@ -389,15 +395,17 @@ break cont;
 $
 ```
 
-My program with around 120 lines of Standard ML source code (in one _~.sml_ file and one _~.mlb_ file) transpiled into 4,490 lines of Lua source code and 3,264 lines of JavaScript source code respectively! Apparently these transpiled source code files are not meant for the human reader, though both programs work correctly.
+My Standard ML program with around 120 lines of source code (in one _~.sml_ file and one _~.mlb_ file) transpiled into 4,490 lines of Lua source code and 3,264 lines of JavaScript source code respectively! Apparently these source code files are not meant for the human reader, though both programs work correctly.
 
 #### AI experiments
 
 (TBD: recheck the correctness of these statements)
 
-This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua programs were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
+This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua source code files were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
 
-Bottom line for me: for convincingly translating whole programs from one arbitrary Top 50 language into another, this technology - even with all its massive success in a few years - still has to go some way. But for helping with writing a procedure here and there, based on "good" prompts, AI based coding is there to stay.
+However, this episode showed me how challenging such a translation task really can become. This task is not only about the cores of two programming languages but in many practical cases also about standard and third party **libraries**! The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the _Strings Edit_ library: https://www.dmitry-kazakov.de/ada/strings_edit.htm, but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the most lines of source code with 231, the highest so far.
+
+Bottom line for me: for convincingly translating whole programs from one arbitrary Top 50 language into another, this technology - even with all its massive success in a few years - still has to go some way. But for helping with writing a procedure here and there, based on "good" prompts, AI based coding is here to stay.
 
 <br/>
 
