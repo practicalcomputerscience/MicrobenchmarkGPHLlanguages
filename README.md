@@ -198,7 +198,7 @@ The program is too short to explicitly test important aspects of general purpose
 
 - object orientation and
 
-- concurreny.
+- concurreny for example.
 
 Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
 
@@ -210,7 +210,7 @@ Once I collected these frameworks, which in one way or the other promote concurr
 - C++ Accelerated Massive Parallelism (C++ AMP): https://learn.microsoft.com/en-us/cpp/parallel/amp/cpp-amp-cpp-accelerated-massive-parallelism
 - CUDA (Compute Unified Device Architecture by NVIDIA): https://developer.nvidia.com/cuda-zone
 - Kokkos: https://performanceportability.org/perfport/frameworks/kokkos/
-- Message Passing Interface (MPI)
+- Message Passing Interface (MPI): https://www.mpi-forum.org/
 - oneAPI DPC++ (DPC++ = Data Parallel C++): https://intel.github.io/llvm/GetStartedGuide.html
 - OpenACC: https://www.openacc.org/
 - OpenCL: https://www.khronos.org/opencl/
@@ -234,7 +234,7 @@ This project was the first time I deliberately came into contact with **function
 
 - functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like it's officially called, here with Roc: https://www.roc-lang.org/
 
-The fate of functional programming and concurrency is linked because:
+The concepts of functional programming and concurrency is linked because:
 
 > As I explained previously pure functions and immutable data make a program thread-safe. Hence your software becomes scalable.
 
