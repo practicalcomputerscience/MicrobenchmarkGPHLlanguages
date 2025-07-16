@@ -1,6 +1,6 @@
 2025-07-16: starting this heavy work in progress
 
-(this page may go to a GitHub Page of this account)
+(this page may go to the GitHub Page of this account)
 
 To-do:
 - Wiki page
@@ -62,7 +62,8 @@ try:
 except Exception as e:
   print(f"could not write to file: {file_bits_hex} ! -- {e}")
 else:
-  print(f"Byte stream has been written to disk under name: {file_bits_hex}")```
+  print(f"Byte stream has been written to disk under name: {file_bits_hex}")
+```
 
 <br/>
 
