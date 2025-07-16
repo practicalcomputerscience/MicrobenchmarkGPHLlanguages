@@ -173,7 +173,7 @@ I'm aware of other (micro-)benchmarks like these for example:
 
 - and also the **TIOBE Index** of popularity: https://www.tiobe.com/tiobe-index/
 
-To some extent these sites have been a source of inspiration to test new languages, but not the only ones. Often I become curious about another language by reading about the background of the programming language I'm currently working with.
+To some extent these sites have been a source of inspiration to test new languages, but not the only ones. Often I become curious about a new language for me by reading about the background of the programming language I'm currently working with.
 
 
 <br/>
