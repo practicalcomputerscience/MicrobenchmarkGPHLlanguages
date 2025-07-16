@@ -3,6 +3,7 @@
 (this page may go to the GitHub Page of this account)
 
 To-do:
+- (TBD) = to be defined
 - Wiki page
 - concurreny in Chapel
 - test: exhausting the generated random bitstream when user asks for a super-long password
@@ -11,15 +12,15 @@ To-do:
 
 # Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages
 
-Starting in March 2025, this is a project which has its origin in just implementing a simple pseudo-random number generator, here a Linear Congruential Generator (LCG), in my usual programming language Python.
+Starting in March 2025, this is an opionated project which has its origin in just implementing a simple pseudo-random number generator, here a Linear Congruential Generator (LCG), in my usual programming language Python.
 
-It's core algorithm, which I call the "masterloop", is this in Python:
+It's core algorithm is this in Python:
 
 ```
 x[i] = (a*x[i-1] + c) % m
 ```
 
-Here's the complete "masterloop" in Python which is at the same time the first part of the program. I call it the "speed part" because here I measure the execution speed of a program, be it compiled or interpreted like in this case:
+This recursion is part of the so called "masterloop", which at the same time makes the core of the first part of the program. I call it the "speed part" because here I measure the execution speed of a program, be it compiled or interpreted like in this case:
 
 ```import numpy as np
 from io import StringIO
@@ -40,7 +41,7 @@ bits_x = StringIO()
 bits_hex = StringIO()
 
 print("\ngenerating a random bit stream...")
-for i in range(1,END):
+for i in range(1,END):  # masterloop
     x[i] = (a*x[i-1] + c) % m
     bits_x_str = format(x[i], '016b')
     bits_x.write(bits_x_str)
@@ -80,7 +81,7 @@ In Linux, but probably also increasingly in other environments like Windows too,
 7. deactivate this environment after work: ```(prng_test) $ deactivate```
 8. remove or delete an enviroment if desired: ```$ rm -rf ./prng_test```
 
-Console output:
+Console input and output:
 ```
 (prng_test) $ time python3 ./random_streams_for_perf_stats.py
 
@@ -116,7 +117,9 @@ A second string with 250,000 random hexadecimal digits (with ASCII characters fr
 
 <br/>
 
-Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length.
+Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length:
+
+(TBD: refer to rest of the Python program below with a page internal link? )
 
 #### Reading user input from the keyboard into a string
 
@@ -137,7 +140,9 @@ Often a string builder dramatically improves execution speed but not always! I t
 
 #### This program is not bullet proof
 
-It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far.
+It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far:
+
+(TBD: rest of the Python program)
 
 ## Motivation and orientation
 
@@ -173,7 +178,7 @@ I'm aware of other (micro-)benchmarks like these for example:
 
 - and also the **TIOBE Index** of popularity: https://www.tiobe.com/tiobe-index/
 
-To some extent these sites have been a source of inspiration to test new languages, but not the only ones. Often I become curious about a new language for me by reading about the background of the programming language I'm currently working with.
+To some extent these sites have been a source of inspiration to test new languages. Often I become curious about a new language for me by reading about the background of the programming language I'm currently working with.
 
 
 <br/>
@@ -202,7 +207,7 @@ The program is too short to explicitly test important aspects of general purpose
 
 Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html !
 
-Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely and natively, that is without an extra framework, facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
+Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to natively, that is without an extra framework, facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
 
 Once I collected these frameworks, which in one way or the other promote concurrent program execution:
 
@@ -230,11 +235,11 @@ These HPC (High Performance Computing) frameworks seem to share one feature of g
 
 This project was the first time I deliberately came into contact with **functional programming languages**. At one point it made me to divide the programs into two sections:
 
-- imperative programming languages (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature")
+- imperative programming languages (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature") and
 
 - functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like it's officially called, here with Roc: https://www.roc-lang.org/
 
-The concepts of functional programming and concurrency is linked because:
+The concepts of functional programming and concurrency are linked because:
 
 > As I explained previously pure functions and immutable data make a program thread-safe. Hence your software becomes scalable.
 
