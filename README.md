@@ -70,7 +70,7 @@ else:
 
 #### Python environments 
 
-In Linux, but probably also increasingly in other environments like Windows too, it has become very important to work with **Python environments** to not mess up your default Python installation which automatically comes with your Linux distribution. I think that this has become specifically important for Ubuntu (https://ubuntu.com/download), which I'm using here (as Ubuntu 24 LTS). ```$``` indicates the Bash shell in Linux (I've just chosen _prng_test_ as my environment name):
+In Linux, but probably also increasingly in other environments like Windows too, it has become very important to work with **Python environments** to not mess up your default Python installation which automatically comes with your Linux distribution. I think this has become specifically important for Ubuntu (https://ubuntu.com/download), which I'm using here (as Ubuntu 24 LTS). ```$``` indicates the Bash shell in Linux (I've just chosen _prng_test_ as my environment name):
 
 1. create environment: ```$ python3 -m venv ./prng_test```
 2. activate environment: ```$ source ./prng_test/bin/activate```
@@ -98,8 +98,8 @@ sys	0m0,017s
 Check both files with generated strings:
 ```
 (prng_test) $ ls -l *bitstring*
--rw-rw-r-- 1 booser booser 1000000 Jul 16 15:20 random_bitstring.bin
--rw-rw-r-- 1 booser booser  250000 Jul 16 15:20 random_bitstring.byte
+-rw-rw-r-- 1 ... ... 1000000 Jul 16 15:20 random_bitstring.bin
+-rw-rw-r-- 1 ... ...  250000 Jul 16 15:20 random_bitstring.byte
 (prng_test) $
 ```
 
