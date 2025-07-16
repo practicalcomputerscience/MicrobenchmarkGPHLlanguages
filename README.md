@@ -192,7 +192,7 @@ The choice of 2^16 - 15 = 65521 was easy for me because it's the highest 16-bit 
 
 <br/>
 
-#### Other apects of a computer programming language
+#### Other aspects of a computer programming language
 
 The program is too short to explicitly test important aspects of general purpose, high-level programming languages, like:
 
@@ -204,8 +204,22 @@ Though, in one instance I've made a derivative program of the "speed part" to se
 
 Many general purpose, high-level programming languages have been designed in the last 20 years or so from scratch to explicitely and natively, that is without an extra framework, facilitate programming concurrency safely and conveniently, like for example Clojure, Go, Julia, Mojo, Rust, Scala, Swift, V and so on.
 
-Once I collected 
+Once I collected these frameworks, which in one way or the other promote concurrent program execution:
 
+- AMD ROCm / HIP: https://github.com/ROCm/HIP
+- C++ Accelerated Massive Parallelism (C++ AMP): https://learn.microsoft.com/en-us/cpp/parallel/amp/cpp-amp-cpp-accelerated-massive-parallelism
+- CUDA (Compute Unified Device Architecture by NVIDIA): https://developer.nvidia.com/cuda-zone
+- Kokkos: https://performanceportability.org/perfport/frameworks/kokkos/
+- Message Passing Interface (MPI)
+- oneAPI DPC++ (DPC++ = Data Parallel C++): https://intel.github.io/llvm/GetStartedGuide.html
+- OpenACC: https://www.openacc.org/
+- OpenCL: https://www.khronos.org/opencl/
+- OpenMP: https://www.openmp.org/
+- Open SYCL, now called AdaptiveCpp: https://github.com/AdaptiveCpp/AdaptiveCpp
+
+These HPC (High Performance Computing) frameworks seem to share one feature of general purpose, high-level programming language: there's no guarantee that the framework of your choice will survive the next 20 years in a well maintained shape.
+
+<br/>
 
 #### On including lots of comments in my source code
 
