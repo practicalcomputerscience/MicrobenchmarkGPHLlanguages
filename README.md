@@ -19,7 +19,7 @@ It's core algorithm, which I call the "masterloop", is this in Python:
 x[i] = (a*x[i-1] + c) % m
 ```
 
-Here's the complete "masterloop" in Python which is at the same time the first part of the program. I call it the "speed part" because only here I measure the execution speed of a program, be it compiled or interpreted like in this case:
+Here's the complete "masterloop" in Python which is at the same time the first part of the program. I call it the "speed part" because here I measure the execution speed of a program, be it compiled or interpreted like in this case:
 
 ```import numpy as np
 from io import StringIO
@@ -81,7 +81,8 @@ In Linux, but probably also increasingly in other environments like Windows too,
 8. remove or delete an enviroment if desired: ```$ rm -rf ./prng_test```
 
 Console output:
-```(prng_test) $ time python3 ./random_streams_for_perf_stats.py```
+```
+(prng_test) $ time python3 ./random_streams_for_perf_stats.py
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -90,17 +91,20 @@ Byte stream has been written to disk under name: random_bitstring.byte
 real	0m0,148s  # this is the so called "wall clock" time. I focus on this time measurement.
 user	0m1,201s
 sys	0m0,017s
-(prng_test) $```
+(prng_test) $
+```
 
 Check both files with generated strings:
-```(prng_test) $ ls -l *bitstring*```
+```
+(prng_test) $ ls -l *bitstring*
 -rw-rw-r-- 1 booser booser 1000000 Jul 16 15:20 random_bitstring.bin
 -rw-rw-r-- 1 booser booser  250000 Jul 16 15:20 random_bitstring.byte
-(prng_test) $```
+(prng_test) $
+```
 
 <br/>
 
-Then I check the quality of randomness from the random "bit stream" string at: https://mzsoltmolnar.github.io/random-bitstream-tester/
+Then I check the quality of randomness of the random "bit stream" string at: https://mzsoltmolnar.github.io/random-bitstream-tester/
 
 ..where I manually copy and paste exactly 1,000,000 binary digits (with ASCII characters '0' and '1') into the "Manual bitstream input" with the target to pass all tests with no "Error" indication. Usually this is the case.
 
