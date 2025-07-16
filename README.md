@@ -119,7 +119,87 @@ A second string with 250,000 random hexadecimal digits (with ASCII characters fr
 
 Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length:
 
-(TBD: refer to rest of the Python program below with a page internal link? )
+```
+import re
+...  # see from above
+N_CHAR = 12
+answer = False
+while answer is False:
+    reply = input(f'\nPassword of {N_CHAR} printable chars OK? \
+"y" or another integer number >= 8: ')
+    if reply == 'y':
+        answer = True
+    else:
+        try:
+            N_CHAR = int(reply)
+            if N_CHAR >= 8:
+                answer = True
+            else:
+                N_CHAR = 12
+                print('enter an integer number >= 8 or "y"')
+        except ValueError:
+            N_CHAR = 12
+            print('enter an integer number >= 8 or "y"')
+
+def binary_to_string(bits):
+    return ''.join([chr(int(i, 2)) for i in bits])
+
+WITH_SPECIAL_CHARS = True
+answer = False
+while answer is False:
+    reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+    if reply == 'y':
+        answer = True
+    else:
+        WITH_SPECIAL_CHARS = False
+        answer = True
+
+if WITH_SPECIAL_CHARS is True:
+    pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")
+else:
+    pattern = re.compile(r"[A-Za-z0-9]+")
+
+i = 0  # char counter in password
+j = 0  # char counter in bits_char
+pw_chars = []
+
+while i < N_CHAR:
+    bin0 = f'{x[j]:016b}'
+    bin0_0 = bin0[0:8]   # position 8 is exclusive in Python
+    bin0_1 = bin0[8:16]
+
+    char0 = binary_to_string([bin0_0])
+    char1 = binary_to_string([bin0_1])
+
+    if pattern.fullmatch(char0) is not None:
+        pw_chars.append(char0)
+        i += 1
+        if i == N_CHAR:
+            break
+    if pattern.fullmatch(char1) is not None:
+        pw_chars.append(char1)
+        i += 1
+    j += 1
+
+pw_string = ''.join(pw_chars)
+print(f'\nmy password of {N_CHAR} characters is:', pw_string)
+```
+
+Run the complete program like this:
+```
+(prng_test) $ python3 ./random_bitstring_and_flexible_password_generator.py
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+Password of 12 printable chars OK? "y" or another integer number >= 8: y
+
+Do you want me to use special characters like .;,+*... ? "y" or "n": y
+
+my password of 12 characters is: {5mkkR""dmtC
+(prng_test) $ 
+```
 
 #### Reading user input from the keyboard into a string
 
@@ -136,7 +216,7 @@ Now when I test a new programming language, I usually still implement the naive 
 
 Often a string builder dramatically improves execution speed but not always! I try to remember the language where naive string concatenation was not the major speed bottleneck, but how to store the generated random integer numbers ```x[i]``` effectively!
 
-(TBD)
+This is why the much praised best practices should be documented immediately and sufficiently.
 
 #### This program is not bullet proof
 
