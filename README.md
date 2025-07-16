@@ -409,7 +409,6 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 <br/>
 
-
 #### The 1 second execution time limit
 
 After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second:
@@ -419,5 +418,9 @@ After some languages I noticed that all of them - often after some iterations of
 There's something to explain about this and other diagrams, but I'll do it later in extra pages. (TBD)
 
 I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately. This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
+
+#### Measuring program execution times
+
+(TBD)
 
 ##_end
