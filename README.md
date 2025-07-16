@@ -116,9 +116,13 @@ A second string with 250,000 random hexadecimal digits (with ASCII characters fr
 
 <br/>
 
-Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length. It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is with user input from the keyboard in the year 2025!
+Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length.
 
-So far with one programming language (https://www.ponylang.io/) I had to give up further development because I was not able to implement this dialog.
+#### Reading user input from the keyboard into a string
+
+It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025!
+
+So far with one programming language (https://www.ponylang.io/) I had to give up further development because I was not able to implement this dialog. With one famous language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
 
 
 ### In terms of execution speed this is a string concatenation benchmark
@@ -127,23 +131,25 @@ Though, it took me some programming languages to figure this out nonchalantly.
 
 Now when I test a new programming language, I usually still implement the naive solution first and if it feels not very speedy, I start to look for a string builder or similar concept.
 
-Often a string builder dramatically improves execution speed but not always! I try to remember the language where naive string concatenation was not the major speed bottleneck, but how to store the generated random integer numbers ```x[i]```!
+Often a string builder dramatically improves execution speed but not always! I try to remember the language where naive string concatenation was not the major speed bottleneck, but how to store the generated random integer numbers ```x[i]``` effectively!
 
 (TBD)
 
 #### This program is not bullet proof
 
-It checks for a minimum number of 8 password characters, but usually not for an upper limit unless in its **Ada** variant (Ada is a language which is incentivizing to do things like this). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far.
+It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far.
 
-#### Motivation and orientation
+## Motivation and orientation
 
 After improving my Python program here and there, I thought that this a good computer program for me to test new languages.
 
-Though only in mid of June 2025 I made further improvements to my original Python program because I learned that also Python has a concept for fast string concatenation: *StringIO* https://docs.python.org/3/library/io.html#io.StringIO
+Though only in middle of June 2025 I made further improvements to my original Python program because I learned that also Python has a concept for fast string concatenation: *StringIO*: https://docs.python.org/3/library/io.html#io.StringIO
 
 This helped to make the Python program running faster. In other words: I still revisit old programs to improve them, not only in terms of execution speed but also in terms of number of lines of source code ("verbosity", "LOC") or memory leaks after program exit, if feasible.
 
-Though this is not meant to be project for benchmarking execution speeds, nor has it started as such, but I always take a deeper look into a program when I have the feeling that it's maybe unfairly on the slow side. Benchmarking execution speeds is the easiest of all benchmarking:
+Though this is not meant to be project for benchmarking execution speeds, nor has it started as such, but I always take a deeper look into a program when I have the feeling that it's maybe unfairly on the slow side because of my deficits with using a new programming language.
+
+However, benchmarking execution speeds is the easiest of all benchmarking:
 
 _**Even though most benchmarks aren’t worth the pixels they’re printed on, people seem to like them...**_ from: https://wren.io/performance.html
 
@@ -151,9 +157,7 @@ True, but nevertheless they are fun and provide - across several microbenchmarks
 
 <br/>
 
-## A computer program for me to test new languages
-
-Like **Go** for example (https://go.dev/), which was the next general purpose, high-level programming language after Python. And then one (general purpose, high-level) programming language followed the other, sometimes chaotically, sometimes more systematically.
+**Go** (https://go.dev/) was the next general purpose, high-level programming language after Python. And then one (general purpose, high-level) programming language followed the other, sometimes chaotically, sometimes more systematically.
 
 I'm aware of other (micro-)benchmarks like these for example:
 
@@ -167,9 +171,9 @@ I'm aware of other (micro-)benchmarks like these for example:
 
 - https://eklausmeier.goip.de/blog/2023/03-25-performance-comparison-c-vs-java-vs-javascript-vs-php-vs-python-vs-cobol-dart/
 
-- and also the **TIOBE Index** for popularity: https://www.tiobe.com/tiobe-index/
+- and also the **TIOBE Index** of popularity: https://www.tiobe.com/tiobe-index/
 
-To some extent they also have been a source of inspiration to test new languages, but not the only ones.
+To some extent these sites also have been a source of inspiration to test new languages, but not the only ones.
 
 <br/>
 
