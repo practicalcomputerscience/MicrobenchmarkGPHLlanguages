@@ -117,6 +117,8 @@ A second string with 250,000 random hexadecimal digits (with ASCII characters fr
 
 <br/>
 
+#### User dialog
+
 Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length:
 
 ```
@@ -220,9 +222,7 @@ This is why the much praised best practices should be documented immediately and
 
 #### This program is not bullet proof
 
-It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far:
-
-(TBD: rest of the Python program)
+It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
 
 ## Motivation and orientation
 
