@@ -20,7 +20,7 @@ It's core algorithm is this in Python:
 x[i] = (a*x[i-1] + c) % m
 ```
 
-This recursion is part of the so called "masterloop", which at the same time makes the core of the first part of the program. I call it the "speed part" because here I measure the execution speed of a program, be it compiled or interpreted like in this case:
+This recursion is part of the so called "masterloop", which at the same time makes the core of the first part of the program. I call it the "speed part" because here I measure the execution time of a program, be it compiled or interpreted like in this case:
 
 ```import numpy as np
 from io import StringIO
@@ -210,7 +210,7 @@ It's amazing what you can learn about a new programming language when implementi
 So far with one programming language (https://www.ponylang.io/) I had to give up further development because I was not able to implement this dialog. With one famous language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
 
 
-### In terms of execution speed this is a string concatenation benchmark
+### In terms of execution times this is a string concatenation benchmark
 
 Though, it took me some programming languages to figure this out nonchalantly. 
 
@@ -302,14 +302,21 @@ Once I collected these frameworks, which in one way or the other promote concurr
 - OpenMP: https://www.openmp.org/
 - Open SYCL, now called AdaptiveCpp: https://github.com/AdaptiveCpp/AdaptiveCpp
 
-These HPC (High Performance Computing) frameworks seem to share one feature of general purpose, high-level programming language: there's no guarantee that the framework of your choice will survive the next 20 years in a well maintained shape.
+These HPC (High Performance Computing) frameworks seem to share one feature of general purpose, high-level programming language: there's no guarantee that the framework of your choice will survive the next 20 years in well maintained shape!
 
 <br/>
 
-#### On including lots of comments in my source code
+#### On including lots of comments in my source code files
 
-(TBD)
+Usually lots of comments in source code files, potentially not following any strategy, is seen as bad: https://expertbeacon.com/putting-comments-in-code-the-good-the-bad-and-the-ugly/
 
+However, I'm just doing this since ages. So, my comments may not even be helpful for myself after some time (see above at "I try to remember the language..." for example). Thus I'm also usually not putting any directives for later documentation into my source code files. I also don't use any documentation or versioning tools. My version control is the last date in the header comment block, manually set.
+
+I just work with Notepad++ (https://notepad-plus-plus.org/) at a Windows 11 PC as my source code editor (but Ubuntu Linux is my testing environment). I also tested other editors only to drop them. I also use Notepad++ for configuration files of build tools for example. Thus, I'm also not using any IDE (Integrated development environment), though for Scala I installed IntelliJ IDEA (Community Edition for Windows: https://www.jetbrains.com/idea/download/?section=windows) to play around a bit with its numerous possibilities.
+
+But I'm not here for an exercise in enterprise level software engineering.
+
+<br/>
 
 ### On functional programming
 
@@ -327,22 +334,82 @@ From: https://medium.com/twodigits/advantages-and-disadvantages-of-functional-pr
 
 <br/>
 
-#### On vibe coding
-
-(TBD)
-
 #### On configuring building and execution environments
 
-(TBD)
+My testing environment is this:
+
+- Operating system (OS): Ubuntu 24 LTS or in long, currently (_$ uname -a_): _Linux ... 6.8.0-63-generic #66-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 13 20:25:30 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux_
+
+My (older) hardware from 2022 is always this:
+
+- CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz
+- mainboard: Gigabyte Technology, Z590 GAMING X
+- RAM: 32GB of DDR4-3200
+- SSD: 512GB Crucial MX500 SSD, CT500MX500SSD1Z
+
+For the versions of the programming languages I'll provide an extra page: (TBD)
+
+Some versions were already a little bit outdated when I started this project. For example Perl in version 5.38.2, which just came with this Ubuntu version. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and build tools when I started a new language. 
+
+With some languages I use a related build tool, for example _sbt_ for Scala (https://www.scala-sbt.org/), Dune for OCaml (https://dune.readthedocs.io/en/stable/quick-start.html) or Alire for Ada (https://alire.ada.dev/).
+
+Also mastering compiler switches, like in C for example, and mastering build tools has become an art in itself!
+
+<br/>
 
 #### Error handling, exception handling
 
 (TBD)
 
+<br/>
+
+#### On vibe coding
+
+It was already with the Go program where I used MS Bing AI as my "vibe coding" tool (https://en.wikipedia.org/wiki/Vibe_coding) for little functions. Later with the functional programming languages, like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files. 
+
+Then come the turn to **Standard ML** (https://smlfamily.github.io/), where after a while I discovered the fine **LunarML** transpiler (https://github.com/minoki/LunarML), which by default transpiles Standard ML code into **Lua** code, but also, if desired, into **JavaScript** code. However, I noticed that the "Hello world!" example of LunarML in Standard ML with two lines of source code:
+
+```
+$ cat ./LunarML-0.2.1/example/hello.sml
+val it = 1 + 2;
+print "Hello world!\n";
+$
+```
+
+..translates into 95 lines of Lua source code, Lua of all languages! (Lua is a language designed for simplicity: https://www.lua.org/about.html). The JavaScript translation of the "Hello world!" example translates into only 5 lines of source code:
+
+```
+$ lunarml compile --nodejs ./LunarML-0.2.1/example/hello.sml
+$ cat ./LunarML-0.2.1/example/hello.mjs
+import {stdout} from "node:process";
+cont: {
+stdout.write(Uint8Array.of(72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33, 10));
+break cont;
+}
+$
+```
+
+My program with around 120 lines of Standard ML source code (in one _~.sml_ file and one _~.mlb_ file) transpiled into 4,490 lines of Lua source code and 3,264 lines of JavaScript source code respectively! Apparently these transpiled source code files are not meant for the human reader, though both programs work correctly.
+
+#### AI experiments
+
+(TBD: recheck the correctness of these statements)
+
+This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua programs were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
+
+Bottom line for me: for convincingly translating whole programs from one arbitrary Top 50 language into another, this technology - even with all its massive success in a few years - still has to go some way. But for helping with writing a procedure here and there, based on "good" prompts, AI based coding is there to stay.
+
+<br/>
+
+
 #### The 1 second execution time limit
 
-(TBD)
+After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second:
 
+![plot](./diagrams/execution_times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
+There's something to explain about this and other diagrams, but I'll do it later in extra pages. (TBD)
+
+I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately. This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
 ##_end
