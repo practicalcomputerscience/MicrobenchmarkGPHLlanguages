@@ -434,6 +434,52 @@ I've also language implementations where - for various reasons - I'm not able to
 
 #### Measuring program execution times
 
-(TBD)
+With the first languages I put a stopwatch into the source code. But after doing so in the Mojo program, here like this:
+
+```
+from time import monotonic
+...
+    # stopwatch:
+    var t0: UInt64
+    t0 = monotonic()  # the current monotonic time in nanoseconds
+    var t1:       UInt64
+    var duration: UInt64
+...
+    t1 = monotonic()
+    duration = (t1 - t0) / 1_000_000
+    print("this took", duration, "ms to run")
+...
+```
+
+..I got doubts about an acceptable level of correctness. So, I deleted source code like this and started to measure the execution time of a program only _externally_. With the faster program with the _perf-stat program_ (https://linux.die.net/man/1/perf-stat) like this:
+
+```
+$ sudo perf stat -r 20 ./random_streams_for_perf_stats
+```
+
+Initially and for the slower programs, maybe 100 milliseconds and up, like here for example with the PowerShell script, I used a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ (Link, TBD) or a variant named _..._cwd2a_ to measure the execution of "uberJAR" files on the Java Virtual Machine (JVM, Link, TBD):
+
+```
+$ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
+```
+
+Though, implementing a stopwatch in a new programming language is usually a learning experience and sometimes, in one or the other functional programming language, even a challenge like here in OCaml:
+
+```
+...
+  let t10a = Mtime_clock.now_ns () in
+  let t10b: int64 = Int64.div t10a 1_000_000L in
+  let t10c: int = Int64.to_int t10b in
+...
+  let t11a = Mtime_clock.now_ns () in
+  let t11b: int64 = Int64.div t11a 1_000_000L in
+  let t11c: int = Int64.to_int t11b in
+  let duration = t11c - t10c in
+  Printf.printf "\nthis took %dms to run\n" duration;
+  (* https://github.com/janestreet/core/blob/4e9e8cfb8d2e2016aef5f631a57ae9a936ba7b60/core/src/timezone.ml#L37 *)
+...
+```
+
+So, I kept the old program versions to see how to read the operating system's monotonic clock in one or the other programming language. 
 
 ##_end
