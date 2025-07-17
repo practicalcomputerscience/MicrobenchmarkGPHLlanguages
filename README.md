@@ -425,7 +425,7 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second:
 
-![plot](./diagrams/execution_times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
+![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
 There's something to explain about this and other diagrams, but I'll do it later in extra pages. (TBD)
 
