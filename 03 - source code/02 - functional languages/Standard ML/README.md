@@ -6,7 +6,7 @@ from: https://direct.mit.edu/books/monograph/2094/The-Definition-of-Standard-ML,
 
 <br/>
 
-SMNJ = Standard ML of New Jersey: https://www.smlnj.org/
+SMLNJ = Standard ML of New Jersey: https://www.smlnj.org/
 
 <br/>
 
