@@ -479,7 +479,7 @@ Though, implementing a stopwatch in a new programming language is usually a lear
 ...
 ```
 
-So, I kept the old program versions to see how to read the operating system's monotonic clock in one or the other programming language. 
+So, I kept the old program versions to see how to read the operating system's monotonic clock.
 
 (TBD: extra page to mark potential differences when using _perf_ command and quick to use _time_ command; sometimes small deviations, sometimes bigger ones)
 
