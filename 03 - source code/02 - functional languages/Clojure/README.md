@@ -1,3 +1,3 @@
-https://www.modular.com/mojo
+https://clojure.org/
 
 ##_end
