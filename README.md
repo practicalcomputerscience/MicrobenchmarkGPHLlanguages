@@ -1,9 +1,10 @@
 2025-07-16: starting this heavy work in progress
 
 To-do:
-- (TBD) = to be defined
+- (TBD) = to be defined: most urgent: chapter "Error handling, exception handling"
 - Wiki page
-- concurreny in Chapel
+- implement a concurreny solution in Chapel, compare to the Go solution
+- TOC here at top?
 - test: exhausting the generated random bitstream when user asks for a super-long password
 
 <br/>
@@ -364,7 +365,7 @@ My (older) hardware from 2022 is always this:
 
 For the versions of the programming languages I'll provide an extra page: (TBD)
 
-Some versions were already a little bit outdated when I started this project. For example Perl in version 5.38.2, which just came with this Ubuntu version. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and build tools when I started a new language. 
+Some versions were already a bit outdated when I started this project. For example Perl in version 5.38.2, which just came with this Ubuntu version. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and build tools when I started a new language. 
 
 With some languages I use a related build tool, for example _sbt_ for Scala (https://www.scala-sbt.org/), Dune for OCaml (https://dune.readthedocs.io/en/stable/quick-start.html) or Alire for Ada (https://alire.ada.dev/).
 
@@ -380,13 +381,13 @@ Also mastering compiler switches, like in C for example, and mastering build too
 
 #### Prompt engineering
 
-It was already with the Go program where I used MS Bing AI for writing me little functions. Later with the functional programming languages, like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
+It was already with the Go program where I started to use MS Bing AI for writing me little functions. Later, with the functional programming languages like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write for me, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
 
-I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files, also for my prompt engineering.
+I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files, also about my prompt engineering.
 
 <br/>
 
-Then come the turn to **Standard ML** (https://smlfamily.github.io/), where, after a while, I discovered the **LunarML** transpiler (https://github.com/minoki/LunarML), which by default transpiles Standard ML code into **Lua** code, but also, if desired, into **JavaScript** code. However, I noticed that the "Hello world!" example of LunarML in Standard ML with two lines of source code:
+Then come the turn to **Standard ML** (https://smlfamily.github.io/), where I discovered the **LunarML** transpiler (https://github.com/minoki/LunarML), which by default transpiles Standard ML code into **Lua** code, but also, if desired, into **JavaScript** code. However, I noticed that the "Hello world!" example of LunarML in Standard ML with two lines of source code:
 
 ```
 $ cat ./LunarML-0.2.1/example/hello.sml
@@ -395,7 +396,7 @@ print "Hello world!\n";
 $
 ```
 
-..translates into 95 lines of Lua source code, Lua of all languages! (Lua is a language designed for simplicity: https://www.lua.org/about.html). The JavaScript translation of the "Hello world!" example has only 5 lines of source code:
+..translates into 95 lines of Lua source code, Lua of all languages! (Lua is a language designed for simplicity: https://www.lua.org/about.html). The JavaScript translation of this "Hello world!" example has only 5 lines of source code:
 
 ```
 $ lunarml compile --nodejs ./LunarML-0.2.1/example/hello.sml
@@ -412,11 +413,9 @@ My Standard ML program with around 120 lines of source code (in one _~.sml_ file
 
 #### AI experiments
 
-(TBD: recheck the correctness of these statements)
-
 This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua source code files were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
 
-However, this episode showed me how challenging such a translation task really can become. This task is not only about the cores of two programming languages but in many practical cases also about standard and third party **libraries**! The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the _Strings Edit_ library: https://www.dmitry-kazakov.de/ada/strings_edit.htm, but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the most lines of source code with 231, the highest so far.
+However, this episode showed me how challenging such a translation task really can become. This task is not only about the cores of two programming languages, but in many practical cases also about standard and third party **libraries**! The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the _Strings Edit_ library: https://www.dmitry-kazakov.de/ada/strings_edit.htm, but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the most lines of source code with 231, the highest so far.
 
 Bottom line for me: for convincingly translating whole programs from one arbitrary Top 50 language into another, this technology - even with all its massive success in a few years - still has to go some way. But for helping with writing a procedure here and there, based on "good" prompts, AI based coding is here to stay.
 
@@ -481,5 +480,7 @@ Though, implementing a stopwatch in a new programming language is usually a lear
 ```
 
 So, I kept the old program versions to see how to read the operating system's monotonic clock in one or the other programming language. 
+
+(TBD: extra page to mark potential differences when using _perf_ command and quick to use _time_ command; sometimes small deviations, sometimes bigger ones)
 
 ##_end
