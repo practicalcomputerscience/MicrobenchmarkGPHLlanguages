@@ -1,7 +1,5 @@
 2025-07-16: starting this heavy work in progress
 
-(this page may go to the GitHub Page of this account)
-
 To-do:
 - (TBD) = to be defined
 - Wiki page
@@ -317,6 +315,21 @@ However, I'm just doing this since ages. So, my comments may not even be helpful
 I just work with Notepad++ (https://notepad-plus-plus.org/) at a Windows 11 PC as my source code editor (but Ubuntu Linux is my testing environment). I also tested other editors only to drop them. I also use Notepad++ for configuration files of build tools for example. Thus, I'm also not using any IDE (Integrated development environment), though for Scala I installed IntelliJ IDEA (Community Edition for Windows: https://www.jetbrains.com/idea/download/?section=windows) to play around a bit with its numerous possibilities.
 
 But I'm not here for an exercise in enterprise level software engineering.
+
+#### On debugging
+
+In no case so far I used an explicit debugging tool. My "debugger" are still print expressions in all languages, the "Poor man's debugger", which I finally comment. So, my source code is full of expressions like these, here from the Ada program:
+
+```
+   --  for testing:
+   --  Put ("x (1) = "); Ada.Integer_Text_IO.Put (x (1)); New_Line;
+```
+
+The Crystal programming language (https://crystal-lang.org/) even features the _p!_ macro (https://crystal-lang.org/api/1.17.0/toplevel.html#p!(*exps)-macro) to be "Useful for print style debugging", for example like this:
+
+```
+# p! bits_x  # for testing
+```
 
 <br/>
 
