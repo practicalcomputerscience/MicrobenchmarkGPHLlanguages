@@ -1,0 +1,191 @@
+# random_streams_for_perf_stats.inko
+#
+# 2025-07-19/20
+#
+# make on Ubuntu 24 LTS: $ inko build random_streams_for_perf_stats.inko
+#
+# run on Ubuntu 24 LTS:  $ ./build/random_streams_for_perf_stats
+#                        $ time ./build/random_streams_for_perf_stats
+#
+#                        $ inko build random_streams_for_perf_stats.inko --opt aggressive
+#                        $ time ./build/aggressive/random_streams_for_perf_stats
+#                        $ sudo perf stat -r 20 ./build/aggressive/random_streams_for_perf_stats
+#
+#
+# correctly install LLVM 17, including the essential Polly LLVM framework (libpolly-17-dev):
+#   $ sudo apt-get install --yes rustc cargo git build-essential llvm-17 llvm-17-dev libstdc++-11-dev libclang-common-17-dev zlib1g-dev libpolly-17-dev libzstd-dev
+#   $ cargo install ivm --force  # installing the installation manager ivm first: https://docs.inko-lang.org/manual/latest/setup/ivm/
+#   $ ivm install latest  # now installing the Inko compiler
+#   $ inko --version
+#   inko 0.18.1
+#   $
+
+
+import std.stdio (Stdout)
+import std.string (StringBuffer)
+import std.rand (Random)
+import std.fs.file (ReadWriteFile)
+
+
+let STR_LENGTH_BIN = 16
+let STR_LENGTH_HEX = 4
+
+
+#######################################################
+#
+# user defined functions,
+# or module methods like they are called in Inko in this context;
+# here defined at the top-level scope:
+
+fn Integer_to_bin_string (n: Int) -> String {  # N not possible here --> choose n
+  let mut bin_str_arr = Array.filled(with: '0', times: STR_LENGTH_BIN)
+  let mut bin_str_ret = StringBuffer.new
+
+  let mut j: Int = STR_LENGTH_BIN - 1
+  let mut k: Int = n
+
+  while k > 0 and j >= 0 {
+    if k % 2 == 0 {
+      bin_str_arr.set(j, '0')
+    } else {
+      bin_str_arr.set(j, '1')
+    }
+    k /= 2  # no remainder here
+    j -= 1
+  }
+
+  j = STR_LENGTH_BIN - 1  # reverse char order and write to StringBuffer
+  while j >= 0 {
+    k = STR_LENGTH_BIN - j - 1
+    bin_str_ret.push(bin_str_arr.get(k))
+    j -= 1
+  }
+
+  return bin_str_ret.to_string
+}
+
+
+fn Integer_to_hex_string (n: Int) -> String {
+  let mut hex_str_arr = Array.filled(with: '0', times: STR_LENGTH_HEX)
+  let mut hex_str_ret = StringBuffer.new
+
+  let mut j: Int = STR_LENGTH_HEX - 1
+  let mut k: Int = n
+
+  let mut remainder = 0
+
+  while k > 0 and j >= 0 {
+    remainder = k % 16
+    match remainder {
+      case 0  -> hex_str_arr.set(j, '0')
+      case 1  -> hex_str_arr.set(j, '1')
+      case 2  -> hex_str_arr.set(j, '2')
+      case 3  -> hex_str_arr.set(j, '3')
+      case 4  -> hex_str_arr.set(j, '4')
+      case 5  -> hex_str_arr.set(j, '5')
+      case 6  -> hex_str_arr.set(j, '6')
+      case 7  -> hex_str_arr.set(j, '7')
+      case 8  -> hex_str_arr.set(j, '8')
+      case 9  -> hex_str_arr.set(j, '9')
+      case 10 -> hex_str_arr.set(j, 'a')
+      case 11 -> hex_str_arr.set(j, 'b')
+      case 12 -> hex_str_arr.set(j, 'c')
+      case 13 -> hex_str_arr.set(j, 'd')
+      case 14 -> hex_str_arr.set(j, 'e')
+      case 15 -> hex_str_arr.set(j, 'f')
+      case _ -> nil
+    }
+    k /= 16  # no remainder here
+    j -= 1
+  }
+
+  j = STR_LENGTH_HEX - 1  # reverse char order and write to StringBuffer
+  while j >= 0 {
+    k = STR_LENGTH_HEX - j - 1
+    hex_str_ret.push(hex_str_arr.get(k))
+    j -= 1
+  }
+
+  return hex_str_ret.to_string
+}
+
+
+# end of user defined functions
+#
+#######################################################
+
+
+
+type async Main {  # a lightweight process
+  fn async main {  # an "async" instance method
+    let upper_limit: Int = 62501   # 62501 for exactly 1M binary digits
+    # let upper_limit: Int = 100  # for testing
+
+    # let M1: Int = 1_000_000
+    # let K250: Int = 250_000
+
+    let m: Int = 65521  # = 2^16 - 15
+    let a: Int = 17364
+    let c: Int = 0
+
+    let file_bits_x   = "random_bitstring.bin"
+    let file_bits_hex = "random_bitstring.byte"
+
+    let x = []
+    let bits_x = StringBuffer.new
+    # let mut bits_x_str = StringBuffer.new
+    let bits_hex = StringBuffer.new  # needed for program ENT - A Pseudorandom Number Sequence Test Program
+
+    # https://github.com/inko-lang/inko/blob/main/std/src/std/array.inko
+    let rng = Random.new
+    x.push(rng.int_between(min: 0, max: m - 1))
+
+    let mut i: Int = 1
+    let out = Stdout.new
+    # let mut buf = StringBuffer.new
+
+    out.print("\ngenerating a random bit stream...")
+    while i < upper_limit {
+      x.push((a*x.get(i - 1) + c) % m)  # no i-1 here!
+      # out.print("")  # for testing -- this is a newline substitute
+      # out.print(x.get(i).to_string)  # for testing
+
+      # doing here like in Ada to convert a natural integer number into
+      # a binary string of "0"'s and "1"'s of fixed length ("16 bits"):
+      # out.print(Integer_to_bin_string(x.get(i)))  # for testing
+      bits_x.push(Integer_to_bin_string(x.get(i)))
+
+      # out.print(Integer_to_hex_string(x.get(i)))  # for testing
+
+      bits_hex.push(Integer_to_hex_string(x.get(i)))
+
+      i += 1
+    }
+
+    # write bit stream to disk:
+    match ReadWriteFile.new(file_bits_x.to_path) {
+      case Ok(_) -> {
+        let mut file1 = ReadWriteFile.new(file_bits_x.to_path).get
+        match file1.write_string(bits_x.to_string) {
+          case Ok(_) -> out.print("Bit stream has been written to disk under name:  ${file_bits_x}")
+          case Error(e) -> out.print("could not write to file: ${file_bits_x} -- ${e}")
+        }
+      }
+      case Error(e) -> out.print("could not write to file: ${file_bits_x} -- ${e}")
+    }
+
+    # write byte stream to disk:
+    match ReadWriteFile.new(file_bits_hex.to_path) {
+      case Ok(_) -> {
+        let mut file2 = ReadWriteFile.new(file_bits_hex.to_path).get
+        match file2.write_string(bits_hex.to_string) {
+          case Ok(_) -> out.print("Byte stream has been written to disk under name: ${file_bits_hex}")
+          case Error(e) -> out.print("could not write to file: ${file_bits_hex} -- ${e}")
+        }
+      }
+      case Error(e) -> out.print("could not write to file: ${file_bits_hex} -- ${e}")
+    }
+  }
+}
+
+# end of random_streams_for_perf_stats.inko
