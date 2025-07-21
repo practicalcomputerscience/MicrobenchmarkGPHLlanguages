@@ -25,9 +25,9 @@ Scheme, CHICKEN |  |
 Scheme, Gambit |  | 
 Scheme, Racket |  | 
 Standard ML |  | 
-Swift |  | 
-V |  | 
-Zig |  | 
+Swift | Swift version 6.1 (swift-6.1-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
+V | V 0.4.10 ddfedc7 | $ v version
+Zig | 0.14.1 | $ zig version
 
 <br/>
 
