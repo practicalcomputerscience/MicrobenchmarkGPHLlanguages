@@ -31,4 +31,10 @@ Zig | 0.14.1 | $ zig version
 
 <br/>
 
+environments | version | how to retrieve version(s)
+--- | --- | ---
+Java | openjdk 21.0.7 2025-04-15; OpenJDK Runtime Environment (build 21.0.7+6-Ubuntu-0ubuntu124.04); OpenJDK 64-Bit Server VM (build 21.0.7+6-Ubuntu-0ubuntu124.04, mixed mode, sharing) | $ java --version
+
+<br/>
+
 ##_end
