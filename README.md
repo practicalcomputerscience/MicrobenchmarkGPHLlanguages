@@ -1,8 +1,7 @@
 2025-07-16: starting this heavy work in progress
 
 To-do:
-- (TBD) = to be defined: most urgent: chapter "Error handling, exception handling"
-- Wiki page
+- own Wiki page
 - implement a concurreny solution in Chapel, compare to the Go solution
 - TOC here at top?
 - test: exhausting the generated random bitstream when user asks for a super-long password
@@ -373,9 +372,35 @@ Also mastering compiler switches, like in C for example, and mastering build too
 
 <br/>
 
-#### Error handling, exception handling
+#### Error handling, exception handling and "Quality control"
 
-(TBD)
+I use the terms "error handling" and "exception handling" interchangeable, but in case of doubts I mean _exception handling_.
+
+Functional programming has become significantly more relevant for the mainstream of computer programming in the last 20 years or so. Rust and Co. are heavily influenced by it. This is the real change in computer programming with general purpose, high-level programming languages for me in the last two decades.
+
+And Error handling played a driving force here from my point of view, because the functional approach to error handling has slipped into languages that are imperative by nature and not functional. Traditionally, the imperative approach to error handling is the _try-catch_ block as shown above in the second source code box with Python code.
+
+A _pure_ functional programming language like Haskell, or here Roc, is _forcing_ you to care about error handling. Well, hopefully.
+
+I call this error handling "Quality control", the quality control of data and information returned from function calls. Even though in numerous cases, I just don't care about it - like in the "old days" - and suppress error handling, like here in Go with these (mandatory) _ = <_error value_> expressions:
+
+```
+...
+  if WITH_SPECIAL_CHARS {
+    pattern, reg_err = regexp.Compile("[[:graph:]]+")  // true case
+    _ = reg_err  // get rid of the "declared and not used" error message
+  } else {
+    pattern, reg_err = regexp.Compile("[[:alnum:]]+")
+    _ = reg_err
+  }
+...
+```
+
+from here: ![random_bitstring_and_flexible_password_generator.go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go/random_bitstring_and_flexible_password_generator.go)
+
+<br/>
+
+So, it's advisable to learn a little bit of functional programming nowadays.
 
 <br/>
 
