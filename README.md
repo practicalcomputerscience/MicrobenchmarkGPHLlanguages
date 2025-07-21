@@ -1,6 +1,7 @@
 2025-07-16: starting this heavy work in progress
 
 To-do:
+- fix TBD's
 - own Wiki page
 - implement a concurreny solution in Chapel, compare to the Go solution
 - TOC here at top?
