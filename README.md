@@ -456,7 +456,7 @@ from time import monotonic
 $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 ```
 
-Initially and for the slower programs, maybe 100 milliseconds and up, like here for example with the PowerShell script, I used a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ (Link, TBD) or a variant named _..._cwd2a_ to measure the execution of "uberJAR" files on the Java Virtual Machine (JVM, Link, TBD):
+Initially and for the slower programs, maybe 100 milliseconds and up, like here for example with the PowerShell script, I use a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ or a variant named _...cwd2a_ to measure the execution of "uberJAR" files on the Java Virtual Machine (JVM): ![Bash shell scripts to measure slower execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/README.md#bash-shell-scripts-to-measure-slower-execution-times)
 
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
