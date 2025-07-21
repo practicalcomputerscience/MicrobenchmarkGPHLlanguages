@@ -17,7 +17,7 @@ OCaml |  |
 Perl 5 |  | 
 PowerShell |  | 
 Python |  | 
-Roc |  | 
+Roc | roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC | $ roc --version
 Rust |  | 
 Scala |  | 
 Scheme, Bigloo |  | 
