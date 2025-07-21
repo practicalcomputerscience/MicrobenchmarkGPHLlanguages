@@ -362,7 +362,7 @@ My (older) hardware from 2022 is always this:
 - RAM: 32GB of DDR4-3200
 - SSD: 512GB Crucial MX500 SSD, CT500MX500SSD1Z
 
-For the versions of the programming languages I'll provide an extra page: (TBD)
+For the language versions see here: ![Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions)
 
 Some versions were already a bit outdated when I started this project. For example Perl in version 5.38.2, which just came with this Ubuntu version. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and build tools when I started a new language. 
 
