@@ -223,6 +223,21 @@ This is why the much praised best practices should be documented immediately and
 
 It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
 
+The Zig program (![Zig source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig)) is an example of a non-bullet proof program: at both questions, the user, who is not aware of this, can only safely enter up to 99 characters as his answer (stored into an array of type u8):
+
+```
+var buf99: [99]u8 = undefined;
+```
+
+If he enters 100 characters or more, the program will go into exception and terminates. I have not tested the latest program version yet, but with the much smaller buffer of only 16 characters, which I initially also used for the user inputs:
+
+```
+.../random_bitstring_and_flexible_password_generator.zig:172:13: 0x10e19b8 in main (random_bitstring_and_flexible_password_generator)
+        if (try stdin.readUntilDelimiterOrEof(buf16[0..], '\n')) |answer_str| {  
+```
+
+<br/>
+
 ## Motivation and orientation
 
 After improving my Python program here and there, I thought that this a good computer program for me to test new languages.
