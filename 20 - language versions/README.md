@@ -1,3 +1,7 @@
+A work in progress, but not in this sense: when I've tested the last language, the version of the first language probably has already become outdated.
+
+<br/>
+
 programming language | version | how to retrieve version(s)
 --- | --- | ---
 Ada | alr 2.1.0 | $ alr --version
@@ -24,7 +28,7 @@ Scheme, Bigloo | Bigloo (4.6a) | $ bigloo -version
 Scheme, CHICKEN | CHICKEN; (c) 2008-2022, The CHICKEN Team; (c) 2000-2007, Felix L. Winkelmann; Version 5.4.0 (rev 1a1d1495); linux-unix-gnu-x86-64 [ 64bit dload ptables ] | $ csc -version
 Scheme, Gambit | v4.9.6 20250310181758 x86_64-pc-linux-gnu "./configure '--enable-single-host'" | $ gsc -v
 Scheme, Racket | Welcome to Racket v8.17 [cs]. | $ racket --version
-Standard ML |  | 
+Standard ML | MLton 20241230 | $ mlton
 Swift | Swift version 6.1 (swift-6.1-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
 V | V 0.4.10 ddfedc7 | $ v version
 Zig | 0.14.1 | $ zig version
@@ -33,6 +37,7 @@ Zig | 0.14.1 | $ zig version
 
 other environments | version | how to retrieve version(s)
 --- | --- | ---
+GraalVM |  | 
 Java | openjdk 21.0.7 2025-04-15; OpenJDK Runtime Environment (build 21.0.7+6-Ubuntu-0ubuntu124.04); OpenJDK 64-Bit Server VM (build 21.0.7+6-Ubuntu-0ubuntu124.04, mixed mode, sharing) | $ java --version
 
 <br/>
