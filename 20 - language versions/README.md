@@ -7,11 +7,11 @@ Chapel | chpl version 2.4.0; built with LLVM version 18.1.8; ... ; Copyright 202
 Clojure |  | 
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
 Crystal |  | 
-FreeBASIC |  | 
+FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Go |  | 
-Inko |  | 
+Inko | inko 0.18.1 | $ inko --version
 Kotlin |  | 
-Lua |  | 
+Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 Mojo |  | 
 OCaml |  | 
 Perl 5 |  | 
