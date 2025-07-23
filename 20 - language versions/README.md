@@ -2,7 +2,7 @@ A work in progress, but not in this sense: when I've tested the last language, t
 
 <br/>
 
-programming language | version | how to retrieve version(s)
+programming language | versions | Bash command to retrieve versions
 --- | --- | ---
 Ada | alr 2.1.0 | $ alr --version
 C# | Microsoft.AspNetCore.App 8.0.18 ... ; Microsoft.NETCore.App 8.0.18 ...; 8.0.104 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
@@ -12,9 +12,9 @@ Clojure |  |
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
 Crystal |  | 
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
-Go |  | 
+Go | go version go1.24.1 linux/amd64 | $ go version
 Inko | inko 0.18.1 | $ inko --version
-Kotlin |  | 
+Kotlin | info: kotlinc-jvm 2.1.21 (JRE 11.0.26+4) | $ $HOME/.sdkman/candidates/kotlin/current/bin/kotlinc -version
 Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 Mojo | mojo 25.4.0.dev2025050405 (0e8f7772) | $ mojo --version
 OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
