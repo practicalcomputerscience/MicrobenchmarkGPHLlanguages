@@ -21,7 +21,7 @@ Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 Mojo | mojo 25.4.0.dev2025050405 (0e8f7772) | $ mojo --version
 OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
-PowerShell |  | 
+PowerShell | PowerShell 7.4.5 | $ pwsh -v
 Python |  | 
 Roc | roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC | $ roc --version
 Rust | rustc 1.88.0 (6b00bc388 2025-06-23); binary: rustc; commit-hash: 6b00bc3880198600130e1cf62b8f8a93494488cc; commit-date: 2025-06-23; host: x86_64-unknown-linux-gnu; release: 1.88.0; LLVM version: 20.1.5 | $ rustc -V -v
