@@ -1,4 +1,6 @@
-A work in progress, but not in this sense: when I've tested the last language, the version of the first language probably has already become outdated.
+A work in progress, but not in this sense: when I've tested the last language, the version of the first language probably has already become outdated and I have to fix this.
+
+Usually, I've no intention to re-test a language when an update has been published. But I may do so, when I feel the need for further tests or potential improvements. This has already happened once at least.
 
 <br/>
 
@@ -42,6 +44,8 @@ Java | openjdk 21.0.7 2025-04-15; OpenJDK Runtime Environment (build 21.0.7+6-Ub
 SDKMAN | SDKMAN!; script: 5.19.0; native: 0.7.4 (linux x86_64) | $ sdk version
 
 <br/>
+
+#### On SDKMAN and Kotlin
 
 _$HOME/.sdkman_ refers to a directory created when installing _The Software Development Kit Manager_, in short _SDKMAN_: https://sdkman.io/
 
