@@ -35,10 +35,32 @@ Zig | 0.14.1 | $ zig version
 
 <br/>
 
-other environments | version | how to retrieve version(s)
+other environments | versions | how to retrieve versions
 --- | --- | ---
-GraalVM |  | 
+GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01); Substrate VM Oracle GraalVM 24+36.1 (build 24+36, serial gc, compressed references) | $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image --version
 Java | openjdk 21.0.7 2025-04-15; OpenJDK Runtime Environment (build 21.0.7+6-Ubuntu-0ubuntu124.04); OpenJDK 64-Bit Server VM (build 21.0.7+6-Ubuntu-0ubuntu124.04, mixed mode, sharing) | $ java --version
+SDKMAN | SDKMAN!; script: 5.19.0; native: 0.7.4 (linux x86_64) | $ sdk version
+
+<br/>
+
+_$HOME/.sdkman_ refers to a directory created when installing _The Software Development Kit Manager_, in short _SDKMAN_: https://sdkman.io/
+
+Usually, my SDKMAN configuration in my _.bashrc_ file is commented out to not interfere with my usual Java environment (that is the OpenJDK):
+
+```
+...
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+Actually, I need this environment only when working with Kotlin.
+
+When working with the GraalVM (Link: TBD), that is building a standalone, binary executable with it, I call the related command directly like this:
+
+```
+$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar <name of your uberJAR file>.jar
+```
 
 <br/>
 
