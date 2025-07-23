@@ -380,9 +380,9 @@ My (older) hardware from 2022 is always this:
 
 For the language versions see here: ![Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions)
 
-Some versions were already a bit outdated when I started this project. For example Perl in version 5.38.2, which just came with this Ubuntu version. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and build tools when I started a new language. 
+Some versions were already a bit outdated when I started this project; for example with Perl in version 5.38.2, which just came with Ubuntu 24 LTS. This is an example where I don't want to break things potentially. However, if possible and deemed safe, I built or installed the latest stable language versions and latest build tools when I started a new language. 
 
-With some languages I use a related build tool, for example _sbt_ for Scala (https://www.scala-sbt.org/), Dune for OCaml (https://dune.readthedocs.io/en/stable/quick-start.html) or Alire for Ada (https://alire.ada.dev/).
+With some languages I use a related build tool, for example _sbt_ for Scala (https://www.scala-sbt.org/), _Dune_ for OCaml (https://dune.readthedocs.io/en/stable/quick-start.html), _Alire_ for Ada (https://alire.ada.dev/), or _Leiningen_ for Clojure (https://leiningen.org/).
 
 Also mastering compiler switches, like in C for example, and mastering build tools has become an art in itself!
 
