@@ -1,11 +1,11 @@
 programming language | version | how to retrieve version(s)
 --- | --- | ---
-Ada |  | 
-C# |  | 
-C3 |  | 
-Chapel |  | 
+Ada | alr 2.1.0 | $ alr --version
+C# | Microsoft.AspNetCore.App 8.0.18 ... ; Microsoft.NETCore.App 8.0.18 ...; 8.0.104 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
+C3 | C3 Compiler Version:       0.7.1; ... ; Backends: LLVM; LLVM version: 17.0.6; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
+Chapel | chpl version 2.4.0; built with LLVM version 18.1.8; ... ; Copyright 2020-2025 Hewlett Packard Enterprise Development LP; Copyright 2004-2019 Cray Inc. (See LICENSE file for more details) | $ chpl --version
 Clojure |  | 
-Common Lisp |  | 
+Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
 Crystal |  | 
 FreeBASIC |  | 
 Go |  | 
@@ -31,7 +31,7 @@ Zig | 0.14.1 | $ zig version
 
 <br/>
 
-environments | version | how to retrieve version(s)
+other environments | version | how to retrieve version(s)
 --- | --- | ---
 Java | openjdk 21.0.7 2025-04-15; OpenJDK Runtime Environment (build 21.0.7+6-Ubuntu-0ubuntu124.04); OpenJDK 64-Bit Server VM (build 21.0.7+6-Ubuntu-0ubuntu124.04, mixed mode, sharing) | $ java --version
 
