@@ -10,9 +10,9 @@ Ada | alr 2.1.0 | $ alr --version
 C# | Microsoft.AspNetCore.App 8.0.18 ... ; Microsoft.NETCore.App 8.0.18 ...; 8.0.104 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
 C3 | C3 Compiler Version:       0.7.1; ... ; Backends: LLVM; LLVM version: 17.0.6; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
 Chapel | chpl version 2.4.0; built with LLVM version 18.1.8; ... ; Copyright 2020-2025 Hewlett Packard Enterprise Development LP; Copyright 2004-2019 Cray Inc. (See LICENSE file for more details) | $ chpl --version
-Clojure |  | 
+Clojure | Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM | $ lein version
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
-Crystal |  | 
+Crystal | Crystal 1.16.3 [3f369d2c7] (2025-05-12); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Go | go version go1.24.1 linux/amd64 | $ go version
 Inko | inko 0.18.1 | $ inko --version
