@@ -1,4 +1,4 @@
-The **Inko** variant (https://inko-lang.org/) is the first I upload after the original Python one as shown at the top README: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages
+The implementation in **Inko** (https://inko-lang.org/) is the first I upload after the original Python one as shown at the top README: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages
 
 I deem this version now my final one for Inko after I struggled to correctly build and install the Inko compiler (before I had to use compiler switch _--opt=none_, which indeed makes a slower program), which is, like some other programming languages, based on the ubiquitous **LLVM** compiler infrastructure: https://llvm.org/
 
