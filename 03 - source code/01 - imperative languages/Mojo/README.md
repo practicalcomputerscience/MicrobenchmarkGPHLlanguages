@@ -2,6 +2,8 @@ https://www.modular.com/mojo
 
 ---
 
+#### Error handling in Mojo
+
 The _write_ function of Mojo, when writing to files, works differently as far as I can tell from testing other programming languages so far:
 
 ```
