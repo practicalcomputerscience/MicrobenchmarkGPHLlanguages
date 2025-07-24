@@ -19,4 +19,10 @@ Even when the access permissions of target file named _file_bits_x_ have been se
 
 Instead, set the access permissions of the whole directory to "Access Files". Normally, they are set to "Create and Delete Files". Now, testing Mojo's error handling should work as to be expected.
 
+#### Mojo string builder
+
+The unofficial _mojo-stringbuilder_ solution (https://github.com/maniartech/mojo-stringbuilder) doesn't work anymore in this fast changing language, which is a pitty because such a concept may push the program execution time down towards the execution time of the Rust program for example.
+
+So, this Mojo program is just using plain string concatenation, which isn't so slow in this languages anyway.
+
 ##_end
