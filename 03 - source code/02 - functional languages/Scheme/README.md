@@ -30,21 +30,34 @@ Maintaining a computer programming language is important from my point of view (
 
 This can be true or not, I've made both experiences:
 - OCaml for the Java Virtual Machine (JVM) from 2015 for example still runs fine: (TBD)
-- the last update of Kawa Scheme (for the JVM) is much younger and still I wasn't able to run the _make_ process without errors, see below (TBD), which has then has become my showstopper with Kawa
+- the last update of Kawa Scheme (for the JVM) is much younger and still I wasn't able to run the _make_ process without errors, see below at [Kawa], which has then become my showstopper with Kawa
 
-## My best practices with Scheme dialects
+<br/>
 
-(TBD)
+## My 5 best practices with Scheme dialects
 
-These best pratices are based on my experience with ![Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket)
+1. before coding in a Scheme dialect make sure that you have understood its limitations, but also look at the **SRFI**'s (Scheme Requests for Implementation: https://srfi.schemers.org/), and how these SRFI's are available, to help you overcome these limitations potentionally!
+2. for **good execution speeds** with longer "sequences of data items" avoid lists as much as possible and use **vectors** instead; I'm sure that this applies to all Scheme dialects
+3. in a targeted Scheme dialect get familiar with how to install **libraries**, mostly the Scheme SRFI's. There's a great chance that a library procedure, which is not included in an already installed (standard) library, can provide a (partly) solution to your problem. I learned that specifically documentation for installing libraries often sucks greatly in the Land of Scheme's!
+4. **Racket** Scheme (https://racket-lang.org/) has the most "batteries already included" and is in average not the slowest Scheme dialect (though in average it's not the speediest dialect). This makes Racket the best Scheme dialect to check out first in my opinion. I think that for most hobby users Racket is just good enough, but may also need elaborate experimentation for satisfactory results
+5. be carefull, with the exception of Racket Scheme, to use the usual Linux distribution installations (_$ sudo apt install ..._). Better download directly from GitHub ("<> Code" ---> "Download ZIP") and compile and install according to the given instructions. Otherwise you may end up with an installation with "no
+batteries included". This happend to me with Gambit Scheme! And often the Github versions are newer.
+
+These best pratices are mostly based on my experience with ![Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket).
+
+<br/>
 
 ## Features of the Scheme programming language
 
 (TBD)
 
+<br/>
+
 ## The Larceny Benchmarks
 
 (TBD)
+
+<br/>
 
 ## Kawa Scheme
 
