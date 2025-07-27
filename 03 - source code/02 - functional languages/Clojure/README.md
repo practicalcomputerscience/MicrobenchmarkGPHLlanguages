@@ -76,9 +76,27 @@ Later I tapped deeper into Clojure's ecosystem, which extends into the Java ecos
 
 > Clojure provides easy access to the Java frameworks, ...
 
-.. and discovered Java's _StringBuilder_ class: https://cr.openjdk.org/~pminborg/panama/21/v1/javadoc/java.base/java/lang/StringBuilder.html
+.. and discovered Java's _StringBuilder_ class: https://cr.openjdk.org/~pminborg/panama/21/v1/javadoc/java.base/java/lang/StringBuilder.html:
 
-This alone, and no other experiments, including using _Transient Data Structures_ (https://clojure.org/reference/transients), led to an execution speed reduction from around 7400 milliseconds to around 590 milliseconds, which is a little bit slower than my PowerShell program version.
+```
+  (defn masterloop [n seed]  ; the pseudo random number generator (PRNG)
+    (loop ...
+           bits_x_ (StringBuilder.)  ; using Java StringBuilder Class
+           bits_hex_ (StringBuilder.)]
+      ...
+      (if (zero? count)                ; Continuation-Passing Style (CPS): Accept part
+        [acc_nbr_v (.toString bits_x_) (.toString bits_hex_)]  ; CPS: Return part, here in form of a vector
+        (let ...  ; CPS: Continuation part to provide the next step in the computation
+          (...
+                        ; string concatenations:
+                        (.append bits_x_   bits_x_str)  ; using Java StringBuilder Class method .append
+                        (.append bits_hex_ bits_hex_str)
+          )))
+    )
+  )
+```
+
+This alone, and no other experiments, including experimenting with _Transient Data Structures_ (https://clojure.org/reference/transients), led to an execution speed reduction from around 7400 milliseconds to around 590 milliseconds, which is a little bit slower than my PowerShell program version.
 
 <br/>
 
@@ -111,15 +129,29 @@ Here I refer to the full program with this source code: ![random_bitstring_and_f
     )))
 ```
 
-..because from my point of view Clojure is not the easiest function programming language to learn. Even experienced Clojure coders can struggle with it, see from below at [Clojure is a demanding functional programming language](clojure-is-a-demanding-functional-programming-language). So, some explanations might be helpful.
+..because from my point of view Clojure is not the easiest functional programming language to learn.
 
-I don't do certain things at the _input_a_valid_number_ function, like for example:
+Even experienced Clojure coders can struggle with it, see for example from below at [Clojure is a demanding functional programming language](clojure-is-a-demanding-functional-programming-language). So, some explanations might be helpful.
 
-(TBD)
+I **do not** do certain things at the _input_a_valid_number_ function, like for example:
+
+- using special forms _loop_ and _recur_ as a solution for recursion: https://clojuredocs.org/clojure.core/loop - because this can bring the layman easily into a severe conflict with the **error handling** because correctly placing _recur_ may quickly cause headaches for him
+- this means that conventional error handling with a _try-catch_ block is used, a construct which is as imperative programming style as it can get: https://zio.dev/reference/error-management/imperative-vs-declarative/
+- using _clojure.edn_ (https://clojuredocs.org/clojure.edn) for potentially "unsafe" user input. As long as it's good enough I just tap into the Java ecosystem and use for example Java method _Integer/parseInt_. A solution for corner cases can be implemented later anyway, but first start simple
+- using the "metaprogramming feature" macro: specifically this proposal can be often seen for Clojure, probably for its LISP heritage, as a way out of a _loop-try-catch_ conflict
+- using special form _let_: https://clojuredocs.org/clojure.core/let -- when I see _let_ in a Clojure program ("Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein."), it's an indicator to me that things start to become more complicated. Yes, _let_ may be unavoidable and the best solution in cases when
+locally introducing new variables is the best way out of an algorithmic challenge
+
+I'm not so surprised to see the _loop-recur_ pair as a common proposal for all kinds of recursive or iteration problems, when students see it at first when (shortly) taught about control flow in Clojure, like here for example: https://soft.vub.ac.be/~tvcutsem/talks/presentations/Clojure-intro.pdf
+
+<br/>
 
 Instead I do this:
 
-(TBD)
+- using special form _do_: https://clojuredocs.org/clojure.core/do -- this simple form has become my "Swiss army knife" in Clojure: it's good for my imperative coding style impetus: I just concatenate some expressions to do stuff in a sequential order and the (return value of the) last expression wins
+- doing recursion the simple way, with first thinking of how _if-then-else_ works in a specific functional programming language: above I recursively call user defined function _input_a_valid_number_ inside two _do_ forms as part of the _then_-part. And this in the same way I call _input_a_valid_number_ from the _main_ function: no _recur_ (in Clojure), or _let rec_ like in the ![OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) version, to be seen!
+
+<br/>
 
 #### Recursive loops with loop-recur
 
@@ -132,13 +164,11 @@ Instead I do this:
 
 ### Clojure is a demanding functional programming language
 
-During my research on Clojure I tumbled into these two pages which show that I'm not the only (lay)man who struggled with execution speed problems with Clojure:
+During my research on Clojure I tumbled into this comment on Clojure in Hacker News (HN) on Oct 1, 2021: https://news.ycombinator.com/item?id=28723447 with this nice slogan: _I write Clojure for food, and Common Lisp for fun._ It shows that obviously I'm not the only (lay)man who struggled with execution speed problems with Clojure.
+
+Here are two replies to this comment with stepwise improvements in execution speed of the original Clojure program:
 
 - 2021: _Fast and Elegant Clojure_: https://bsless.github.io/fast-and-elegant-clojure/
 - 2021: _From Elegance to Speed, with Clojure_: https://noahbogart.com/posts/2021-10-02-from-elegance-to-speed-with-clojure/
-
-Both pages refer to this comment on Clojure in Hacker News (HN) on Oct 1, 2021: https://news.ycombinator.com/item?id=28723447 with this nice slogan: _I write Clojure for food, and Common Lisp for fun._ and this related page: http://johnj.com/from-elegance-to-speed.html
-
-(TBD)
 
 ##_end
