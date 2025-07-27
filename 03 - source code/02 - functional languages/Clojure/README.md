@@ -102,7 +102,7 @@ This alone, and no other experiments, including experimenting with _Transient Da
 
 ### On complexity in Clojure
 
-Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) ..and specifically to this user defined function:
+Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) and specifically to this user defined function:
 
 ```
 (defn input_a_valid_number [n_char]
