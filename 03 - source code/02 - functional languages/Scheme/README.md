@@ -18,7 +18,7 @@ After I implemented the "speed part" program in 4 different Scheme dialects, I m
 
 ..which is based on this listing as found under _Scheme Containers - Available implementations - Big, actively maintained_ at: https://containers.scheme.org/ (*)
 
-However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see the related chapter below: [Kawa](#kawa-scheme)
+However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM))
 
 My defintion of "maintained" was straightforward: has there been some update in the last 12 months?
 
@@ -30,7 +30,7 @@ Maintaining a computer programming language is important from my point of view (
 
 This can be true or not, I've made both experiences:
 - OCaml for the Java Virtual Machine (JVM) from 2015 for example still runs fine: (TBD)
-- the last update of Kawa Scheme (for the JVM) is much younger and still I wasn't able to run the _make_ process without errors, see below at [Kawa], which has then become my showstopper with Kawa
+- the last update of Kawa Scheme (for the JVM) is much younger and still I wasn't able to run the _make_ process without errors, see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)), which has then become my showstopper with Kawa
 
 <br/>
 
@@ -49,23 +49,52 @@ These best pratices are mostly based on my experience with ![Racket](https://git
 
 ## Features of the Scheme programming language
 
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Features%20of%20the%20Scheme%20programming%20language.png)
+
+Here are these sources in text form:
+
+- _An Introduction to Scheme and its Implementation_, Paul R. Wilson, 1996: https://doc.lagout.org/programmation/Lisp/Scheme/An%20Introduction%20to%20Scheme%20and%20its%20Implementation.pdf
+- _Revised7 Report on the Algorithmic Language Scheme_, 2013: https://small.r7rs.org/attachment/r7rs.pdf
+- _Common Lisp & Scheme, a comparison_, Pascal Costanza, 2006: https://www.p-cos.net/lisp/guide.html
+- _AN INTRODUCTION TO FUNCTIONAL PROGRAMMING THROUGH LAMBDA CALCULUS_, Greg Michaelson, YYYY?: https://www.cs.rochester.edu/~brown/173/readings/LCBook.pdf
+
 (TBD)
 
 <br/>
 
 ## The Larceny Benchmarks
 
+#### 2024 benchmarks
+
+(TBD)
+
+#### The original Larceny Benchmarks
+
 (TBD)
 
 <br/>
 
-## Kawa Scheme
-
-https://www.gnu.org/software/kawa/index.html
+## Procedures or functions? (Procedures!)
 
 (TBD)
 
-## Scheme dialects on the Java Virtual Machine: JScheme and the JSchemePlus hack
+## What they don't tell you in the Land of Scheme's at first
+
+(TBD)
+
+#### Scheme Surveys
+
+(TBD)
+
+## System limitations
+
+(TBD)
+
+### Brackets in Scheme dialects
+
+(TBD)
+
+### Two more Scheme dialects
 
 (TBD)
 
