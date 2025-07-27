@@ -66,7 +66,7 @@ Both methods seem to come to the same results statistically.
 
 ### Initial struggles with execution speed
 
-As usual, I refer to the "speed part" of this program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
+As usual, I refer to the "speed part" of the program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
 
 My first program version with building a vector of integer values (with no pre-allocations of memory) and naive string concatenations on initially two empty strings was a speed desaster. This first version was about 50 times slower than my Python script or Scala program!
 
