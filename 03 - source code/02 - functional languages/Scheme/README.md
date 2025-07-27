@@ -1,3 +1,7 @@
+2025-07-27: heavy work in progress
+
+---
+
 https://www.scheme.org/schemers/
 
 ---
@@ -58,7 +62,28 @@ Here are these sources in text form:
 - _Common Lisp & Scheme, a comparison_, Pascal Costanza, 2006: https://www.p-cos.net/lisp/guide.html
 - _AN INTRODUCTION TO FUNCTIONAL PROGRAMMING THROUGH LAMBDA CALCULUS_, Greg Michaelson, YYYY?: https://www.cs.rochester.edu/~brown/173/readings/LCBook.pdf
 
+<br/>
+
+## What they don't tell you in the Land of Scheme's at first
+
 (TBD)
+
+#### Scheme Surveys
+
+(TBD)
+
+## System limitations
+
+(TBD)
+
+<br/>
+
+## Procedures or functions? (Procedures!)
+
+(TBD)
+
+TBD: Scheme history from 2007: 
+
 
 <br/>
 
@@ -73,22 +98,6 @@ Here are these sources in text form:
 (TBD)
 
 <br/>
-
-## Procedures or functions? (Procedures!)
-
-(TBD)
-
-## What they don't tell you in the Land of Scheme's at first
-
-(TBD)
-
-#### Scheme Surveys
-
-(TBD)
-
-## System limitations
-
-(TBD)
 
 ### Brackets in Scheme dialects
 
