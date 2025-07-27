@@ -64,13 +64,21 @@ sudo perf stat -r 20 java -jar ./target/uberjar/random_streams_for_perf_stats-0.
 
 Both methods seem to come to the same results statistically.
 
-#### Initial struggles with execution speed
+### Initial struggles with execution speed
 
 As usual, I refer to the "speed part" of this program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
 
-(TBD)
+My first program version with building a vector of integer values (with no pre-allocations of memory) and naive string concatenations on initially two empty strings was a speed desaster. This first version was about 50 times slower than my Python script or Scala program!
 
+<br/>
 
+Later I tapped deeper into Clojure's ecosystem, which extends into the Java ecosystem (https://clojure.org/): 
+
+> Clojure provides easy access to the Java frameworks, ...
+
+.. and discovered Java's _StringBuilder_ class: https://cr.openjdk.org/~pminborg/panama/21/v1/javadoc/java.base/java/lang/StringBuilder.html
+
+This alone, and no other experiments, including using _Transient Data Structures_ (https://clojure.org/reference/transients), led to an execution speed reduction from around 7400 milliseconds to around 590 milliseconds, which is a little bit slower than my PowerShell program version.
 
 <br/>
 
