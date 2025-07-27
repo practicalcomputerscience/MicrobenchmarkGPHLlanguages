@@ -18,7 +18,7 @@ After I implemented the "speed part" program in 4 different Scheme dialects, I m
 
 ..which is based on this listing as found under _Scheme Containers - Available implementations - Big, actively maintained_ at: https://containers.scheme.org/ (*)
 
-However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM))
+However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)).
 
 My defintion of "maintained" was straightforward: has there been some update in the last 12 months?
 
