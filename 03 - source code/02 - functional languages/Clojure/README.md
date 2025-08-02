@@ -142,7 +142,7 @@ I **do not** do certain things at the _input_a_valid_number_ function, like for 
 - using special form _let_: https://clojuredocs.org/clojure.core/let -- when I see _let_ in a Clojure program ("Evaluates the exprs in a lexical context in which the symbols in the binding-forms are bound to their respective init-exprs or parts therein."), it's an indicator to me that things start to become more complicated. Yes, _let_ may be unavoidable and the best solution in cases when
 locally introducing new variables is the best way out of an algorithmic challenge
 
-I'm not so surprised to see the _loop-recur_ pair as a common proposal for all kinds of recursive or iteration problems, when students see it at first when (shortly) taught about control flow in Clojure, like here for example: https://soft.vub.ac.be/~tvcutsem/talks/presentations/Clojure-intro.pdf
+I'm not so surprised to see the _loop-recur_ pair as a common proposal for all kinds of recursive or iteration problems, when students see it at first when (shortly) taught about control flow in Clojure, like here for example: https://soft.vub.ac.be/~tvcutsem/talks/presentations/Clojure-intro.pdf (*)
 
 <br/>
 
@@ -153,10 +153,21 @@ Instead I do this:
 
 <br/>
 
-#### Recursive loops with loop-recur
+#### Recursive loops with loop-recur: simple at the bottom, simple at the top!
 
-(TBD)
+Some other tips for the ubiquitous recursive loops in Clojure, so for the _**loop-recur**_-constructs: keep it simple with:
 
+- try to avoid fancy _atom, (let […] (…)_) or other constructs
+- instead, make inside the loop some (immutable) variable definitions with _(def varN (<more or less complex, potentially conditionally based (if-then-else), calc’s for varN>))_ because they can potentially all be used at the final loop expression at _(recur …)_
+- some of these calculations can be done in user defined functions outside of this (bigger) loop to maintain good oversight
+- with that, you are going to have a rather simple tail recursion at _(recur …)_, which in return is also simplifying the _(loop […] …)_ part: simple at the bottom, simple at the top!
+- and: you probably can use some of these intermediate “inside-the-loop-variables” at the _Accept_ and _Return_ parts of the CPS (**Continuation-Passing Style**), that is the last if (Accept)-then (Return)-else (Continuation) construct, with _Continuation_ being the tail recursion
+
+=> with these simple (albeit partly imperative) ideas, you can handle (desired) “inside-the-loop-variables” well in my short experience:
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/Clojure_control_flow_a.png)
+
+from slide #19/50 at (*) above, my annotations in blue color
 
 ### The usual way for error handling in Clojure is imperative
 
