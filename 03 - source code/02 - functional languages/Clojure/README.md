@@ -153,7 +153,7 @@ Instead I do this:
 
 <br/>
 
-#### Recursive loops with loop-recur: simple at the bottom, simple at the top!
+### Recursive loops with loop-recur: simple at the bottom, simple at the top!
 
 Some other tips for the ubiquitous recursive loops in Clojure, so for the _**loop-recur**_-constructs: keep it simple with:
 
@@ -169,9 +169,39 @@ Some other tips for the ubiquitous recursive loops in Clojure, so for the _**loo
 
 from slide #19/50 at (*) above, my annotations in blue color
 
-### The usual way for error handling in Clojure is imperative
+<br/>
 
-(TBD)
+### The usual way of error handling in Clojure is imperative
+
+The official Clojure guide at https://www.clojure.org/guides/learn/flow#_exception_handling shows the imperative _try/catch/finally_ construct ("as in Java") for exception handling.
+
+Website _Clojure Patterns_ also says:
+
+> In Clojure, exception handling is managed using try-catch blocks.
+
+..at: https://clojurepatterns.com/15/2/3/#clojure-implementation
+
+<br/>
+
+But of course, a functional programming language must support the functional approach to error handling too (or **Monadic error handling** or **Declarative error handling**, which are using **Algebraic Data Types** (ADT’s), that is composite data types formed by combining other types), mustn't it?
+
+_Clojure Patterns_ helps out at: _Functional Error Handling with Monads in Clojure_: https://softwarepatternslexicon.com/patterns-clojure/3/6/
+
+It refers to the _Cats Library_ (like in Scala with "Cats" referring to “Category Theory”): https://github.com/funcool/cats
+
+Other solutions for error handling refer to a macro library for Clojure: https://github.com/clojure/algo.monads
+
+Here’s a solution with routines that validate forms: https://adambard.com/blog/acceptable-error-handling-in-clojure/
+
+<br/>
+
+In other words, the typical error handling in Clojure is to be done imperatively and not functionally. There’s probably a reason for this with Clojure as a dynamically typed language sitting on top of Java, since:
+
+> In functional programming, error handling can be challenging because functions are typically pure, meaning they do not have side effects like throwing exceptions.
+
+from: https://dev.to/almaclaine/either-algebraic-data-type-3onk
+
+<br/>
 
 ### Clojure is a demanding functional programming language
 
