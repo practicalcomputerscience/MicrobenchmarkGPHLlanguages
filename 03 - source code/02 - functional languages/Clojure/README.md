@@ -1,7 +1,3 @@
-2025-07-27: heavy work in progress
-
----
-
 https://clojure.org/
 
 https://leiningen.org/
