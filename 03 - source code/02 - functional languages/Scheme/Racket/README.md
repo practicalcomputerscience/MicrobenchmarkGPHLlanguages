@@ -91,7 +91,7 @@ However, one could argue that I'm doing such a thing in my Clojure program ![Clo
 
 ### Chez Scheme (CS)
 
-Racket is a **bytecode** language, nowadays based on Chez Scheme (CS): https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines
+Racket is a **bytecode** language, nowadays based on Chez Scheme (CS): [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines))
 
 (TBD)
 
