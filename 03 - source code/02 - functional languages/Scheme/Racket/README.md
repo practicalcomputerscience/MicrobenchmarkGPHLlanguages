@@ -12,9 +12,9 @@ $ raco exe random_bitstring_and_flexible_password_generator.rkt
 
 ### Execution speed
 
-Though it's syntax and grammar would definitely make a modern Lisp dialect, it also easy to write slow programs if you are not careful enough or just an inexperienced beginner.
+Though it's syntax and grammar would definitely make a modern Lisp-like language, it's also easy to write slow programs if you are not careful enough or just an inexperienced beginner.
 
-Racket doesn't have a **string builder** or similar concept. Appending many little strings to one big string, with the usual function _string-append_ (https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-append%29%29), which is part of the _racket/base_ library, can become prohibitively slow in this programming language!
+For example, Racket doesn't have a **string builder** or similar concept. Appending many little strings to one big string, with the usual function _string-append_ (https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-append%29%29), which is part of the _racket/base_ library, can become prohibitively slow in this programming language!
 
 At first, I set a new "record" in slowliness with this solution, resulting at 53 seconds for one program run! After numerous experiments I found this concept to be much faster with 9.9 seconds:
 
@@ -91,9 +91,28 @@ However, one could argue that I'm doing such a thing in my Clojure program ![Clo
 
 ### Chez Scheme (CS)
 
-Racket is a **bytecode** language, nowadays based on Chez Scheme (CS): [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines))
+Racket is a **bytecode** language, nowadays based on Chez Scheme (CS): [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines)).
+
+Chez Scheme is more "complete" and also speedier than other Scheme dialects in average: ![The Larceny Benchmarks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#the-larceny-benchmarks). For example, the execution time of the Chez version of this microbenchmark program dropped by more than 50% compared to my (hand optimized) Racket program - though the source code files are not identical, see from here: ![What they don't tell you in the Land of Scheme's at first](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#what-they-dont-tell-you-in-the-land-of-schemes-at-first)
+
+However, Chez Scheme programs, or scripts, are by default not meant to be compiled into standalone, binary executables: _$ petite --script random_streams_for_perf_stats.ss_
+
+I didn't succeed with this program to make standalone executables: https://github.com/Blugatroff/selfcontained-chez
+
+This is the reason why I don't further consider my Chez Scheme version, though here's the last program version: ![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss)
 
 (TBD)
+
+<br/>
+
+### Stack and heap usage
+
+Here's another observation:
+• stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an
+experiment I declared the final string as a local loop variable, a loop which
+builds a version of the final string. However, this was a bad idea since the
+Ubuntu operating system killed this program after a while, presumably to
+prevent running out of stack memory
 
 
 ##_end
