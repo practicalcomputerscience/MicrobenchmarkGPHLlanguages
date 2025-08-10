@@ -107,12 +107,33 @@ This is the reason why I don't further consider my Chez Scheme version, though h
 
 ### Stack and heap usage
 
-Here's another observation:
-• stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an
-experiment I declared the final string as a local loop variable, a loop which
-builds a version of the final string. However, this was a bad idea since the
-Ubuntu operating system killed this program after a while, presumably to
-prevent running out of stack memory
+Here's another observation of Racket Scheme, here relating to its stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an experiment I declared the final strings as local variables _bits_x__ and _bits_hex__. However, this was a bad idea since the Ubuntu operating system killed this program after a while, presumably to prevent running out of stack memory:
 
+```
+...
+  ;----------------------  recursive master loop  -----------------------------
+  (let masterloop ([i 1]
+                   [bits_x_ ""]
+                   [bits_hex_ ""])
+    (when (< i END)        
+      (set! new-seed (modulo (+ (* a old-seed) c) m))
+      (set! old-seed new-seed)
+      
+      (set! x (append x (list new-seed)))  ; append to global list x
+      
+      (let ([bits_x_str   (Integer_to_bin_string new-seed)]   ; string conversion to binary string with padding
+            [bits_hex_str (Integer_to_hex_string new-seed)])  ; string conversion to hex string with padding
+            
+      (masterloop (+ i 1)
+                  (string-append bits_x_ bits_x_str)
+                  (string-append bits_hex_ bits_hex_str))))
+
+    (when (= i END)
+      (set! bits_x bits_x_)
+      (set! bits_hex bits_hex_)))
+...
+```
+
+(TBD)
 
 ##_end
