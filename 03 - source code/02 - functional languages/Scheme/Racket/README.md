@@ -91,17 +91,18 @@ However, one could argue that I'm doing such a thing in my Clojure program ![Clo
 
 ### Chez Scheme (CS)
 
-Racket is a **bytecode** language, nowadays based on Chez Scheme (CS): [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines)).
+Racket is a **bytecode** language, nowadays based on Chez Scheme (CS):
+
+- [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines))
+- https://blog.lambdaclass.com/rebuilding-the-racket-compiler-with-chez-scheme/
 
 Chez Scheme is more "complete" and also speedier than other Scheme dialects in average: ![The Larceny Benchmarks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#the-larceny-benchmarks). For example, the execution time of the Chez version of this microbenchmark program dropped by more than 50% compared to my (hand optimized) Racket program - though the source code files are not identical, see from here: ![What they don't tell you in the Land of Scheme's at first](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#what-they-dont-tell-you-in-the-land-of-schemes-at-first)
 
-However, Chez Scheme programs, or scripts, are by default not meant to be compiled into standalone, binary executables: _$ petite --script random_streams_for_perf_stats.ss_
+However, Chez Scheme programs, or scripts, are by default not meant to be compiled into standalone, binary executables, but to be run like scripts, like this for example: _$ petite --script random_streams_for_perf_stats.ss_ (![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss))
 
-I didn't succeed with this program to make standalone executables: https://github.com/Blugatroff/selfcontained-chez
+I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez This is the reason why I don't further consider my Chez Scheme version.
 
-This is the reason why I don't further consider my Chez Scheme version, though here's the last program version: ![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss)
-
-(TBD)
+The (informal) Chez Scheme-Racket alliance is a very clever move from my point of view to increase the chances of survival of both dialects for years to come in a fragmented Scheme ecosystem.
 
 <br/>
 
