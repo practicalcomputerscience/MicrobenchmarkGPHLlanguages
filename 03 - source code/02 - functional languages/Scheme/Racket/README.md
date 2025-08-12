@@ -77,7 +77,7 @@ Here's a comment for current Racket version 8.17 on an improvement of the _strin
 
 > The string-append function has improved performance and reduced memory use for long lists of strings in the Racket CS implementation. Differences are clearly noticeable for lists of length 1 million.
 
-Apparently, the Racket developers seem to be aware of the speed issue of the _string-append_ function (CS = Chez Scheme, see below at ![Chez Scheme](chez-scheme-(cs))).
+Apparently, the Racket developers seem to be aware of the speed issue of the _string-append_ function (CS = Chez Scheme, see below at ![Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs)).
 
 #### FFI's (Foreign Function Interfaces)
 
