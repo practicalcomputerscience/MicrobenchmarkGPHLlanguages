@@ -47,15 +47,13 @@ This can be true or not, I've made both experiences:
 5. be carefull, with the exception of Racket Scheme, to use the usual Linux distribution installations (_$ sudo apt install ..._). Better download directly from GitHub ("<> Code" ---> "Download ZIP") and compile and install according to the given instructions. Otherwise you may end up with an installation with "no
 batteries included". This happend to me with Gambit Scheme! And often the Github versions are newer.
 
-These best pratices are mostly based on my experience with ![Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket).
-
 <br/>
 
 ## Features of the Scheme programming language
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Features%20of%20the%20Scheme%20programming%20language.png)
 
-Here are these sources in text form:
+The sources at the bottom of this presentation slide are linked here:
 
 - _An Introduction to Scheme and its Implementation_, Paul R. Wilson, 1996: https://doc.lagout.org/programmation/Lisp/Scheme/An%20Introduction%20to%20Scheme%20and%20its%20Implementation.pdf
 - _Revised7 Report on the Algorithmic Language Scheme_, 2013: https://small.r7rs.org/attachment/r7rs.pdf
@@ -65,6 +63,30 @@ Here are these sources in text form:
 <br/>
 
 ## What they don't tell you in the Land of Scheme's at first
+
+After coding in a few Scheme dialects, I made these experiences:
+
+- even with displaying "Hello, World!" on the console, there's a certain chance that you have to change the source code file when moving from one Scheme dialect to another!
+- with the "Hello, World!" program for example due to needed but different imports and potentially (global) declarations
+- having source code for a compiler or having commands ("expressions") for the interpreter may be a different thing in the lands of Lisp's and Scheme's. This may give you a false sense of security
+- sometimes the differences may only emerge later during production, because a Scheme compiler (and build script) of one dialect may also produce a standalone, binary executable without any complaints from source(s) that have been "battle tested" in another Scheme dialect, only to cause a runtime crash during production! So, having sufficient tests is essential when moving from one Scheme dialect to another for a production ready program, specifically for rarely used, user defined functions - or
+procedures
+- [Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket) is no exception here according to my experience: it may be very easy to take source code meant for [Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs) for example without any changes and compile it (with: _$ raco exe <program name>.ss_ -- ss for a Chez source code file) successfully into a Racket based standalone program - only to find out later that it runs differently - but without any crashes or error messages for example! This is potentially a worse scenario than a visible crash during runtime
+
+This is not only my experience:
+
+> A program written for one implementation is likely not to work with another one.
+
+from 2018: http://fmnt.info/blog/20181029_scheme.html, and further:
+
+> So don't fear implementation lock-in...
+
+But this is exactly the situation with the fragmented Scheme ecosystem from my point of view, with maybe only these two exceptions:
+
+- the new alliance of Chez Scheme and Racket: https://blog.lambdaclass.com/rebuilding-the-racket-compiler-with-chez-scheme/, and
+- Bigloo, because this dialect has the support of the Inria (Institut national de recherche en sciences et technologies du numérique: https://www.inria.fr/fr)
+
+This (informal) Chez Scheme-Racket alliance is a very clever move from my point of view, because it increases the chances of survival for both dialects for years to come in a fragmented Scheme ecosystem.
 
 (TBD)
 
@@ -105,6 +127,17 @@ TBD: Scheme history from 2007:
 
 ### Two more Scheme dialects
 
-(TBD)
+Here I bring the attention to two more Scheme dialects, which I didn't test though, which may provide interesting features:
+
+- [IronScheme](https://github.com/IronScheme/IronScheme) which "aims to be a R6RS conforming Scheme-like implementation for all .NET implementations and platforms", and
+- [LIPS Scheme](https://lips.js.org/), which allows to "mix Scheme and JavaScript. You can access all JavaScript objects. You can also call any functions from Scheme."
+
+<br/>
+
+### Common Lisp & Scheme, a comparison
+
+Here's an older but concise presentation of it: https://soft.vub.ac.be/~pcostanz/documents/scheme%20vs%20common%20lisp.pdf
+
+CL = Common Lisp
 
 ##_end
