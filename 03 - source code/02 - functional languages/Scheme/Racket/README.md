@@ -102,8 +102,6 @@ However, Chez Scheme programs are by default not meant to be compiled into stand
 
 I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez This is the reason why I don't further consider my Chez Scheme version.
 
-The (informal) Chez Scheme-Racket alliance is a very clever move from my point of view, because it increases the chances of survival for both dialects for years to come in a fragmented Scheme ecosystem.
-
 <br/>
 
 ### Stack and heap usage
