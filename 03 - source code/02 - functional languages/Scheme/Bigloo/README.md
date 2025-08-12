@@ -16,6 +16,8 @@ $ bigloo -call/cc -O6 random_streams_for_perf_stats.scm -o random_streams_for_pe
 
 ..and switch _-O6_ used for best opimization: [The Bigloo command line](https://www-sop.inria.fr/indes/fp/Bigloo/manual-chapter32.html#G49542)
 
-(TBD)
+<br/>
+
+You enter the REPL loop like this: _$ rlwrap bigloo_ and give command _(exit)_ to exit it.
 
 ##_end
