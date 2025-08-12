@@ -20,7 +20,7 @@ After I implemented the "speed part" program in 4 different Scheme dialects, I m
 
 ![plot](./Scheme%20dialects%20-%20big%2C%20actively%20maintained.png)
 
-..which is based on this listing as found under _Scheme Containers - Available implementations - Big, actively maintained_ at: https://containers.scheme.org/ (*)
+..which is based on the listing as found under _Scheme Containers - Available implementations - Big, actively maintained_ at: https://containers.scheme.org/ (*)
 
 However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)).
 
@@ -68,16 +68,17 @@ After coding in a few Scheme dialects, I made these experiences:
 
 - even with displaying "Hello, World!" on the console, there's a certain chance that you have to change the source code file when moving from one Scheme dialect to another!
 - with the "Hello, World!" program for example due to needed but different imports and potentially (global) declarations
-- having source code for a compiler or having commands ("expressions") for the interpreter may be a different thing in the lands of Lisp's and Scheme's. This may give you a false sense of security
-- sometimes the differences may only emerge later during production, because a Scheme compiler (and build script) of one dialect may also produce a standalone, binary executable without any complaints from source(s) that have been "battle tested" in another Scheme dialect, only to cause a runtime crash during production! So, having sufficient tests is essential when moving from one Scheme dialect to another for a production ready program, specifically for rarely used, user defined functions - or
-procedures
-- [Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket) is no exception here according to my experience: it may be very easy to take source code meant for [Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs) for example without any changes and compile it (with: _$ raco exe <program name>.ss_ -- ss for a Chez source code file) successfully into a Racket based standalone program - only to find out later that it runs differently - but without any crashes or error messages for example! This is potentially a worse scenario than a visible crash during runtime
+- having source code for the compiler or having commands ("expressions") for the interpreter (REPL) of a Scheme dialect may be a different thing in the lands of Lisp's and Scheme's. This may give you a false sense of security
+- sometimes the differences may only emerge later during production, because a Scheme compiler (and build script) of one dialect may also produce a standalone, binary executable without any complaints from source(s) that have been "battle tested" in another Scheme dialect, only to cause a runtime crash during production! So, having sufficient tests is essential when moving from one Scheme dialect to another for a production ready program, specifically for rarely used, user defined functions
+- [Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket) is no exception here according to my experience: it may be very easy to take source code meant for [Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs) for example without any changes and compile it (with: _$ raco exe < program name >.ss_ with file name extension _.ss_ for a Chez source code file) successfully into a Racket based standalone program - only to find out later that it runs differently - but without any crashes or error messages for example! This is potentially a worse scenario than a visible crash during runtime
 
 This is not only my experience:
 
 > A program written for one implementation is likely not to work with another one.
 
-from 2018: http://fmnt.info/blog/20181029_scheme.html, and further:
+from 2018: http://fmnt.info/blog/20181029_scheme.html.
+
+From https://wingolog.org/archives/2013/01/07/an-opinionated-guide-to-scheme-implementations:
 
 > So don't fear implementation lock-in...
 
@@ -87,8 +88,6 @@ But this is exactly the situation with the fragmented Scheme ecosystem from my p
 - Bigloo, because this dialect has the support of the Inria (Institut national de recherche en sciences et technologies du numérique: https://www.inria.fr/fr)
 
 This (informal) Chez Scheme-Racket alliance is a very clever move from my point of view, because it increases the chances of survival for both dialects for years to come in a fragmented Scheme ecosystem.
-
-(TBD)
 
 #### Scheme Surveys
 
