@@ -102,7 +102,7 @@ However, Chez Scheme programs, or scripts, are by default not meant to be compil
 
 I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez This is the reason why I don't further consider my Chez Scheme version.
 
-The (informal) Chez Scheme-Racket alliance is a very clever move from my point of view to increase the chances of survival of both dialects for years to come in a fragmented Scheme ecosystem.
+The (informal) Chez Scheme-Racket alliance is a very clever move from my point of view, because it increases the chances of survival for both dialects for years to come in a fragmented Scheme ecosystem.
 
 <br/>
 
