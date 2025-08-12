@@ -108,7 +108,7 @@ The (informal) Chez Scheme-Racket alliance is a very clever move from my point o
 
 ### Stack and heap usage
 
-Here's another observation of Racket Scheme, here relating to its stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an experiment I declared the final strings as local variables _bits_x__ and _bits_hex__. However, this was a bad idea since the Ubuntu operating system killed this program after a while, presumably to prevent running out of stack memory:
+Here's another observation with Racket Scheme, here relating to its stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an experiment I declared the final strings as local variables _bits_x__ and _bits_hex__. However, this was a bad idea since the Ubuntu operating system killed this program after a while, presumably to prevent running out of stack memory:
 
 ```
 ...
@@ -134,7 +134,5 @@ Here's another observation of Racket Scheme, here relating to its stack and heap
       (set! bits_hex bits_hex_)))
 ...
 ```
-
-(TBD)
 
 ##_end
