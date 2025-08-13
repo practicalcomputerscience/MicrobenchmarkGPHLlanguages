@@ -89,15 +89,29 @@ But this is exactly the situation with the fragmented Scheme ecosystem from my p
 
 This (informal) Chez Scheme-Racket alliance is a very clever move from my point of view, because it increases the chances of survival for both dialects for years to come in a fragmented Scheme ecosystem.
 
+<br/>
+
 #### Scheme Surveys
 
+These pages detail various differences between Scheme implementations: https://docs.scheme.org/surveys/
 
+Also see _How do you import SRFI-1 (the list library) in scheme?_ at: https://rain-1.github.io/scheme-srfi-1.html
 
-(TBD)
+<br/>
 
 ## System limitations
 
-(TBD)
+<br/>
+
+### Vectors in Scheme
+
+This refers to item #2 of [My 5 best practices with Scheme dialects](#my-5-best-practices-with-scheme-dialects) from above:
+
+> ... Also like most Lisp dialects, Scheme has a built-in _vector_ datatype. Whereas a list is built out of out of interlinked but still separate objects, a vector is a single object. ... The reason for a separate vector datatype is efficiency. ... Hence vector lookup is a constant-time operation, whereas list lookup is O(n). ...
+
+from: https://docs.scheme.org/guide/arrays/
+
+So, I ended up with a lot of global (and dynamic) vectors - a very imperative programming style - in the first version (but not final version) of my Gambit Scheme program: [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm)
 
 <br/>
 
