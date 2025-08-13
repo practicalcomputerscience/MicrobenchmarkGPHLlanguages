@@ -91,6 +91,8 @@ This (informal) Chez Scheme-Racket alliance is a very clever move from my point 
 
 #### Scheme Surveys
 
+
+
 (TBD)
 
 ## System limitations
@@ -120,9 +122,35 @@ TBD: Scheme history from 2007:
 
 <br/>
 
+### Scheme for the Java Virtual Machine (JVM)? (it's not looking good)
+
+See from here: [Scheme dialects on the Java Virtual Machine (JVM)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM))
+
+<br/>
+
 ### Brackets in Scheme dialects
 
-(TBD)
+While porting my Scheme program to [Gambit Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit), I noticed that an expression like this:
+
+```
+(let ([...]
+      [...])
+     ...)
+```
+
+...to define local variables ("binding constructs") can only use round brackets ("parentheses") in Gambit:
+
+```
+(let ((...)
+      (...))
+     ...)
+```
+
+However, in the "Revised6 Report on the Algorithmic Language Scheme" from 2007 (http://r6rs.org/final/r6rs.pdf) under chapter _4.3.2. Pairs and lists_ square brackets have been officially introduced:
+
+> List and pair data, representing pairs and lists of values (see section 11.9) are represented using parentheses or brackets. Matching pairs of brackets that occur in the rules of 〈list〉are equivalent to matching pairs of parentheses.
+
+Even with latest version 4.9.6 Gambit won't let you compile _([...])_ due to "Ill-formed binding".
 
 <br/>
 
