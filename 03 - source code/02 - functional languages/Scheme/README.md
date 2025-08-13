@@ -101,6 +101,8 @@ Also see _How do you import SRFI-1 (the list library) in scheme?_ at: https://ra
 
 ## System limitations
 
+(TBD)
+
 <br/>
 
 ### Vectors in Scheme
@@ -117,10 +119,31 @@ So, I ended up with a lot of global (and dynamic) vectors - a very imperative pr
 
 ## Procedures or functions? (Procedures!)
 
+After some literature studies I noticed a pattern in the Land of Scheme's:
+
+- the constant talk about _procedures_
+
+So, why not _functions_ like in many other places of _functional_ programming?
+
+I think this has just to do with early, official definitions of Scheme. I take the "The REVISED REPORT ON SCHEME..." from 1978 (https://standards.scheme.org/early), on Page 3:
+
+> Lambda-expressions evaluate to procedures. Unlike most LISP systems, SCHEME does not consider lambda-expressions ... to be a procedure. A lambda-expression only evaluates to a procedure. ... A lambda-expression must be "closed" (associated with an environment) to produce a procedure object. Evaluation of a lambda-expression performs such a closure operation.
+
+**Closures** in my simple definition are function objects: https://en.wikipedia.org/wiki/Closure_(computer_programming) and above definition supports this idea in my opinion.
+
+Specifically the Scheme report from 1978 contains a couple of references to **ALGOL**. For example in this ALGOL paper from 1971 (http://algol60.org/docs/Introduction%20to%20ALGOL%2060%20for%20those%20who%20have%20used%20other%20language.pdf) on page 5 under "1.5 Procedure" a procedure is just defined as:
+
+> A procedure is a piece of program represented by a name. Execution of a procedure may require some parameters.
+
+So, also there not a word on potential return value(s) like there are usually with functions.
+
+<br/>
+
+#### Presentation of the history of Scheme from 2007 
+
+Ironically, ...
+
 (TBD)
-
-TBD: Scheme history from 2007: 
-
 
 <br/>
 
