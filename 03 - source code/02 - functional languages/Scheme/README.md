@@ -2,7 +2,7 @@
 
 ---
 
-https://www.scheme.org/schemers/
+A home page for Scheme: https://www.scheme.org/schemers/
 
 ---
 
@@ -135,15 +135,17 @@ Specifically the Scheme report from 1978 contains a couple of references to **AL
 
 > A procedure is a piece of program represented by a name. Execution of a procedure may require some parameters.
 
-So, also there not a word on potential return value(s) like there are usually with functions.
+So, also there not a word on potential return value(s) from function calls.
 
-<br/>
+#### Presentation of the history of Scheme from 2006
 
-#### Presentation of the history of Scheme from 2007 
+Ironically, this presentation by **Guy Steele**, one of the Scheme designers (https://en.wikipedia.org/wiki/Guy_L._Steele_Jr.):
 
-Ironically, ...
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/The%20History%20of%20Scheme%2C%20Guy%20Steele%2C%20Sun%20Microsystems%20Laboratories%2C%202006.jpg)
 
-(TBD)
+from: http://jean.paul.roy.free.fr/JAOO-SchemeHistory-2006public.pdf
+
+..does not mention term "procedure" once (or "procedural"), but eight time the term "function" and also eight time "functions".
 
 <br/>
 
