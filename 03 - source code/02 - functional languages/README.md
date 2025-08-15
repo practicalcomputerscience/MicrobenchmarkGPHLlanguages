@@ -31,7 +31,7 @@ Another root of ML was ISWIM, which has never been implemented directly ("part p
 - https://www.softwarepreservation.org/projects/PAL/Pal-ref-man.pdf/view (2)
 - "The mechanical evaluation of expressions" - 1964 by Peter J. Landin; Thierry Vilmart, Emil Karlén, 2008: https://pdfs.semanticscholar.org/4969/5d3cbf0d03e8ab28a738108271993b5ac05e.pdf
 
-ISWIM was conceived by **Peter Landin**, UK (1) and presented in August 1965, He was one of the first to state that "some forms of expression used in current programming languages can be modelled in Church's lambda-notation" as published in 1964: https://academic.oup.com/comjnl/article-abstract/6/4/308/375725 (4)
+ISWIM was conceived by **Peter Landin**, UK (1) and presented in August 1965. He was one of the first to state that "some forms of expression used in current programming languages can be modelled in Church's lambda-notation" as published in 1964: https://academic.oup.com/comjnl/article-abstract/6/4/308/375725 (4)
 
 ISWIM was a language that broke with some traditions of the ALGOL family of programming languages:
 
