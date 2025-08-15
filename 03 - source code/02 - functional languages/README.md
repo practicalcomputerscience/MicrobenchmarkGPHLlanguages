@@ -4,7 +4,7 @@
 
 # Two branches of Functional Programming (FP): pure and impure
 
-I came to the conclusion that there must be two major branches of Functional Programming languages. The older one, going back to **Lisp** and including **Scheme** and all related (modern) dialects. And then there must be a different one that led to languages like **OCaml** and **Haskell** for example.
+I came to the conclusion that there must be two major branches of Functional Programming languages. The older one, going back to **Lisp** and including **Scheme** and its related dialects. And then there must be a different one that led to languages like **OCaml** and **Haskell** for example.
 
 OCaml (since 1996) goes back to Caml (Categorical Abstract Machine Language), which has been implemented in 1984 (https://caml.inria.fr/resources/doc/faq/general.en.html), which means that Caml is about 6
 years older than Haskell, which has been first published in 1990: https://dl.acm.org/doi/10.1145/1238844.1238856
@@ -37,9 +37,9 @@ ISWIM was a language that broke with some traditions of the ALGOL family of prog
 
 ![Some History of Functional Programming Languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Some%20History%20of%20Functional%20Programming.png)
 
-From: "Some History of Functional Programming Languages", David Turner, 2012 (https://en.wikipedia.org/wiki/David_Turner_(computer_scientist)): https://www.cs.kent.ac.uk/people/staff/dat/tfp12/tfp12.pdf (5)
+From: "Some History of Functional Programming Languages", **David Turner**, 2012 (https://en.wikipedia.org/wiki/David_Turner_(computer_scientist)): https://www.cs.kent.ac.uk/people/staff/dat/tfp12/tfp12.pdf (5)
 
-And not only ALGOL, but also Lisp: "...Lisp has some dark corners, especially outside "pure LISP,"..." (1). But ISWIM was not the programming language which introduced the concept of "immutuable variables" (and also not PAL).
+And not only ALGOL, but also Lisp: _...Lisp has some dark corners, especially outside "pure LISP,"..._ (1). But ISWIM was not the programming language which introduced the concept of "immutuable variables" (and also not PAL).
 
 This leaves this question to me: 
 
@@ -53,7 +53,7 @@ I'm also thinking now that SASL was the first **pure** functional programming la
 
 SASL only had a _let_ definition, but not _letref_ like in LCF/ML (3).
 
-I shortly checked on other emerging programming languages in the UK in the 60ies and early 70ies which have been influenced by ISWIM, like **POP-2** (https://en.wikipedia.org/wiki/POP-2) and precursors. But it seems to me that these are not functional programming languages (at least POP-2 is not), though it should be mentioned that POP-2 played a role in the creation of logic programming: https://en.wikipedia.org/wiki/Planner_(programming_language)
+I shortly checked on other emerging programming languages in the UK in the 60ies and early 70ies which have been influenced by ISWIM, like **POP-2** (https://en.wikipedia.org/wiki/POP-2) and precursors. But it seems to me that these are not functional programming languages (at least POP-2 is not), though it should be mentioned that POP-2 played a role in the creation of **logic programming**: https://en.wikipedia.org/wiki/Planner_(programming_language)
 
 I just remembered a reference expression somewhere in my program versions so far and found it in the OCaml program, which defines two variables, an integer counter and a growing string, with _let ... ref ... in_ expressions. This brings me to this idea: the younger branch of functional programming languages seems to have developed into two branches:
 
