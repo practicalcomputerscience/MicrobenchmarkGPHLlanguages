@@ -219,7 +219,7 @@ Even with latest version 4.9.6 Gambit won't let you compile _([...])_ due to "Il
 
 ### Two more Scheme dialects
 
-Here I bring the attention to two more Scheme dialects, which I didn't test though, which may provide interesting features:
+Here I bring the attention to two more Scheme dialects, which I didn't test though, but may provide interesting features:
 
 - [IronScheme](https://github.com/IronScheme/IronScheme) which "aims to be a R6RS conforming Scheme-like implementation for all .NET implementations and platforms", and
 - [LIPS Scheme](https://lips.js.org/), which allows to "mix Scheme and JavaScript. You can access all JavaScript objects. You can also call any functions from Scheme."
