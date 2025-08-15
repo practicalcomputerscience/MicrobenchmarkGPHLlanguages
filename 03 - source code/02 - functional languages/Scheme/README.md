@@ -101,9 +101,28 @@ Also see _How do you import SRFI-1 (the list library) in scheme?_ at: https://ra
 
 ## System limitations
 
-(TBD)
+Regardless of the Scheme dialect you choose, make sure you have noticed its limitations before using it; for example here with **Gambit** Scheme:
 
-<br/>
+> The maximum number of arguments that can be passed to a procedure by the apply procedure is **8192**.
+
+my bold emphasis; from: https://gambitscheme.org/latest/manual/#System-limitations (the link to this manual is broken as of 2025-08-15; however, this limitation can be also seen from the source code: [https://github.com/gambit/gambit/blob/6b898fc90c0a2842093d9c92cd6c30be329c4cea/lib/mem.h](https://github.com/gambit/gambit/blob/6b898fc90c0a2842093d9c92cd6c30be329c4cea/lib/mem.h#L64): #define ___MAX_NB_ARGS          8192)
+
+Of course, finding the system limitations may easily become a cumbersome task in a specific Scheme dialect. Above limit was my showstopper in this dialect, because I need exactly - like in the working Chuz and Racket versions - 62500 arguments and not only 8192.
+
+At first, because then I made a curious discovery.
+
+With only 8192 arguments the (real) time ("wall clock") of the program to run was only **0.112 seconds**!?! So, theoretically having a program with (62500 arguments) / (8192 arguments) in 8 batches would then only take about 0.9 seconds?
+
+Did you notice that 62500 multiplied with 16 is 1,000,000? I want exactly 1,000,000 (simple) characters in my string and write this string into one file in one take without further changes to this file.
+
+Next I changed my Racket program and artificially limited the number of _apply_ arguments also to 8192. This program then took only **0.200** seconds to run! Slower than the Gambit version, but a tremendous jump into the right direction. So, there can be acceptable execution speed in Scheme land!
+
+And: Racket allows you to have _define_'s inside another function, here _main()_, which makes refactoring (https://en.wikipedia.org/wiki/Code_refactoring) easier for me than doing it directly in Gambit Scheme. (Though after testing I changed this to local _let*_ expressions to be more functional and support translations
+between Scheme dialects.)
+
+I found another source of speed improvement: change everything possible to mutable vectors with _**make-vector**_: https://docs.racket-lang.org/reference/vectors.html#%28def._%28%28quote._~23~25kernel%29._make-vector%29%29: _This function takes time proportional to size._
+
+This measure also helped a lot to improve execution speed. So, it hasn't been my string handling alone that prevented good execution speeds.
 
 ### Vectors in Scheme
 
