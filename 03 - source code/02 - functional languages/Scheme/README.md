@@ -132,7 +132,12 @@ This refers to item #2 of [My 5 best practices with Scheme dialects](#my-5-best-
 
 from: https://docs.scheme.org/guide/arrays/
 
-So, I ended up with a lot of global (and dynamic) vectors - a very imperative programming style - in the first version (but not final version) of my Gambit Scheme program: [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm)
+So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192 arguments) in 8 batches - a very imperative programming style - in one of the first versions of my Gambit Scheme program: [source code old](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm), but not in my final version: [source code new](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm)
+
+### Scheme's on Speed
+
+(TBD)
+
 
 <br/>
 
