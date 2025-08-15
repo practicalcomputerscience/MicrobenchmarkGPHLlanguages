@@ -9,7 +9,7 @@ I came to the conclusion that there must be two major branches of Functional Pro
 OCaml (since 1996) goes back to Caml (Categorical Abstract Machine Language), which has been implemented in 1984 (https://caml.inria.fr/resources/doc/faq/general.en.html), which means that Caml is about 6
 years older than Haskell, which has been first published in 1990: https://dl.acm.org/doi/10.1145/1238844.1238856
 
-And Caml goes back to ML (Meta Language), which was developed from 1973 to 1978: https://smlfamily.github.io/history/SML-history.pdf (https://smlfamily.github.io/history/)
+And Caml goes back to ML (**Meta Language**), which was developed from 1973 to 1978: https://smlfamily.github.io/history/SML-history.pdf (https://smlfamily.github.io/history/)
 
 <br/>
 
@@ -24,7 +24,7 @@ Meta Language itself has its roots in (Stanford) LCF, a proof-checking program d
 
 ## If You See What I Mean (ISWIM) and Pedagogic Algorithmic Language (PAL)
 
-Another root of ML was ISWIM, which has never been implemented directly ("part programming language and part program for research" from "The next 700 programming languages": https://dl.acm.org/doi/10.1145/365230.365257 (1)), but later as PAL at the MIT in 1967 and was first implemented in Lisp (2) and then later in BCPL ("Basic Combined Programming Language") (2), a precursor of B, which then became C (https://en.wikipedia.org/wiki/BCPL):
+Another root of ML was ISWIM, which has never been implemented directly ("part programming language and part program for research" from "The next 700 programming languages": https://dl.acm.org/doi/10.1145/365230.365257 (1)), but later as PAL at the MIT in 1967 and was first implemented in Lisp (2) and then later in BCPL ("Basic Combined Programming Language") (2), a precursor of B, which then became **C** (https://en.wikipedia.org/wiki/BCPL):
 
 - "THE HISTORY OF STANDARD ML -- IDEAS, PRINCIPLES, CULTURE": https://smlfamily.github.io/history/ML2015-talk.pdf (3)
 - https://en.wikipedia.org/wiki/PAL_(programming_language)
@@ -45,7 +45,7 @@ This leaves this question to me:
 
 ## What functional programming language introduced the idea of "immutuable variables"?
 
-I think it was SASL (St Andrews Static Language) from 1972/1973 (5) by David Turner:
+I think it was **SASL** (St Andrews Static Language) from 1972/1973 (5) by David Turner:
 
 > So over the Easter vacation in 1973 I wrote a compiler from SASL to SECD machine code and an interpreter for the latter, all in BCPL. The code of the first version was just over 300 lines — SASL was not a large language.
 
