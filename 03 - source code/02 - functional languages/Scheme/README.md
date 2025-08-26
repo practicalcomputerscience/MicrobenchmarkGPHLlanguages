@@ -136,7 +136,16 @@ So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192
 
 ### Scheme's on Speed
 
-(TBD)
+When doing it right Scheme programs can be competitively fast. Here's a list of program execution times:
+
+- **Bigloo** Scheme in 1 batch: 0.029 seconds for the whole program with version bigloo v.4.6a and compiling with activated switches _-call/cc_ for procedure _call-with-current-continuation_ and _-O6_ for best opimization
+- **Gambit** Scheme in 1 batch: 0.034 seconds with version gsc v.4.9.6
+- **Gambit** Scheme in 8 batches: 0.040 seconds with version gsc v.4.9.6
+- **CHICKEN** Scheme (https://www.call-cc.org/) in 1 batch: 0.058 seconds with version csc v.5.4.0 and compiling with optimization level switch _-O5_
+- **Racket** Scheme in 1 batch: 0.103 seconds with version Racket v8.17
+
+All times have been measured with command: _$ sudo perf stat -r 20 <program name>_ and thus represent the averages of 20 runs of each program.
+
 
 
 <br/>
