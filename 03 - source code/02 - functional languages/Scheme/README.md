@@ -1,5 +1,7 @@
 2025-07-27: heavy work in progress
 
+2025-08-26: make a table of content (TOC) for this big page
+
 ---
 
 A home page for Scheme: https://www.scheme.org/schemers/
@@ -146,15 +148,11 @@ When doing it right Scheme programs can be competitively fast. Here's a list of 
 
 All times have been measured with command: _$ sudo perf stat -r 20 < program name >_ and thus represent the averages of 20 runs for each program.
 
-<br/>
-
 The **Gambit** program in its first version with the 8-batch algorithm is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
 
 ```
 ... (apply string-append (vector->list <my_vector>)) ...
 ```
-
-<br/>
 
 The **Racket** solution is using one expression for one batch:
 
@@ -163,8 +161,6 @@ The **Racket** solution is using one expression for one batch:
 ```
 
 ...but all (other) lists have been refactored to vectors when feasible (actually, there was only one left at last).
-
-<br/>
 
 In its first version, the Gambit source code file (for an older Gambit version) could be taken by the **CHICKEN** compiler almost unchanged; I only had to add two standard library imports (the Gambit program is OK with its default environment without any extra imports) and change the creation of a first random integer number,
 including some random seeding.
@@ -185,7 +181,6 @@ And I found it with _string-concatenate_ from **SRFI 152**: http://api.call-cc.o
 (srfi-152)) ; for string-concatenate
 ... (string-concatenate (vector->list <my_vector>)) ...
 ```
-
 
 The harder part was to install SRFI 152 into my (standard) CHICKEN build:
 
@@ -208,6 +203,64 @@ I noticed that the _string-concatenate_ procedure wasn't working in the Gambit R
 However, this is an official example from [string-concatenate](https://gambitscheme.org/latest/manual/#index-string_002dconcatenate) and should evaluate to "abcabcabc" without any special imports!
 
 Only then I slowly got the idea that my Gambit installation is missing libraries that should be automatically included with a proper Gambit installation: https://practical-scheme.net/wiliki/schemexref.cgi?Gambit
+
+### Re-installation of Gambit Scheme
+
+So, I deinstalled my old Gambit installation (that is reverting an installation with _$ sudo apt install gambc_ with command _$ sudo apt-get remove gambc_), zipped the official repository: https://github.com/gambit/gambit, unzipped it on my Ubuntu machine and installed it like this:
+
+```
+$ ./configure --enable-single-host  # only this option worked OK with my system
+$ make
+$ make check
+$ make modules  # optional, but I did this too
+$ sudo make install
+```
+
+The installation documents emphasize the importance of the _--enable-single-host_ switch for speedy Gambit programs. However, at least one of the other switches caused problems with my installation and so I started successfully over with above sequence of commands.
+
+Finally, in my _.bashrc_ file I added the two paths to both Gambit programs, gsi (REPL) and gsc (compiler), for convenience. And suddenly, also expressions _(define s "abc"); (string-concatenate (list s s s))_ worked as they should in the Gambit REPL!
+
+By the way: this is also an installation procedure similar to my:
+
+- CHICKEN installation: https://code.call-cc.org/ + https://code.call-cc.org/githtml/chicken-core/chicken-5/files/README.html and my
+- Bigloo installation: https://www-sop.inria.fr/mimosa/fp/Bigloo/download.html
+
+<br/>
+
+> **Lesson learned**:
+it can matter a lot what Scheme version has been built exactly how and how it has been installed specifically, and to some extent how source code files are compiled
+
+<br/>
+
+Now with the usual Gambit "batteries" included I tried my luck with the _string-concatenate_ procedure:
+
+```
+... (string-concatenate (vector->list <my_vector>)) ...
+```
+
+Bingo! This program version is now my second fastest in the Land of Scheme's! But why only second fastest? Well, because of:
+
+### Bigloo Scheme
+
+(TBD)
+
+<br/>
+
+#### Why do I not publish my Chez Scheme results? (no easy standalone excutable program!)
+
+(TBD)
+
+<br/>
+
+## Functional error handling
+
+(TBD)
+
+<br/>
+
+## Imports and libraries
+
+(TBD)
 
 <br/>
 
@@ -301,5 +354,7 @@ Here I bring the attention to two more Scheme dialects, which I didn't test thou
 Here's an older but concise presentation of it: https://soft.vub.ac.be/~pcostanz/documents/scheme%20vs%20common%20lisp.pdf
 
 CL = Common Lisp
+
+<br/>
 
 ##_end
