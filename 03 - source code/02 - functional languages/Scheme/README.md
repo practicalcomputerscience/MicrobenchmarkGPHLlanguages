@@ -148,7 +148,7 @@ All times have been measured with command: _$ sudo perf stat -r 20 < program nam
 
 <br/>
 
-The **Gambit** program in its first version with the 8-batch-algorithm is applying a _string-append_ for each batch with the maximum number of 8192 _apply_ arguments:
+The **Gambit** program in its first version with the 8-batch algorithm is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
 
 ```
 ... (apply string-append (vector->list <my_vector>)) ...
@@ -156,7 +156,7 @@ The **Gambit** program in its first version with the 8-batch-algorithm is applyi
 
 <br/>
 
-The **Racket** solution is still using one expression for one batch:
+The **Racket** solution is using one expression for one batch:
 
 ```
 ... (string-join (vector->list <my_vector>) "") ...
@@ -169,7 +169,7 @@ The **Racket** solution is still using one expression for one batch:
 In its first version, the Gambit source code file (for an older Gambit version) could be taken by the **CHICKEN** compiler almost unchanged; I only had to add two standard library imports (the Gambit program is OK with its default environment without any extra imports) and change the creation of a first random integer number,
 including some random seeding.
 
-However, I think that this 8-batch-solution, though helping me to see that there can be real speed in the Land of Scheme's, is not a good one, because it breaks with the usual algorithm as implemented in all other programming languages so far and also now with my list-free Racket solution.
+However, I think that this 8-batch solution, though helping me to see that there can be real speed in the Land of Scheme's, is not a good one, because it breaks with the usual algorithm as implemented in all other programming languages and dialects so far and also now with my list-free Racket solution.
 
 So I explored the possibilities of **CHICKEN** Scheme to tap into non-standard library procedures to replace this notorious expression:
 
@@ -191,23 +191,23 @@ The harder part was to install SRFI 152 into my (standard) CHICKEN build:
 
 ```
 $ cd ./CHICKEN_Scheme/chicken-5.4.0 # my local installation dir
-$ sudo ./chicken-install srfi-152 # wait! may take some time
+$ sudo ./chicken-install srfi-152 # wait! this command may take some time
 ```
 
 This 1-batch-CHICKEN solution is only a bit slower (0.069 seconds for a 20 run average) than its 8-batch variant (0.055 seconds), but can't beat Gambit with 0.040 seconds in its old 8-batch variant.
 
 This begged the question: what about a speedy 1-batch solution with Gambit Scheme?
 
-I noticed that the _string-concatenate_ procedure wasn't working in the Gambit REPL (start this REPL with _$ gsi_):
+I noticed that the _string-concatenate_ procedure wasn't working in the Gambit REPL (start this REPL with: _$ gsi_):
 
 ```
 (define s "abc")
 (string-concatenate (list s s s))
 ```
 
-However, this is an official example from: https://gambitscheme.org/latest/manual/#General-index-1_cp_letter-S and should evaluate to: "abcabcabc" without any special imports!
+However, this is an official example from [string-concatenate](https://gambitscheme.org/latest/manual/#index-string_002dconcatenate) and should evaluate to "abcabcabc" without any special imports!
 
-Only then I slowly got the idea that my Gambit installation is missing libraries that should be automatically included with a porper Gambit installation: https://practical-scheme.net/wiliki/schemexref.cgi?Gambit
+Only then I slowly got the idea that my Gambit installation is missing libraries that should be automatically included with a proper Gambit installation: https://practical-scheme.net/wiliki/schemexref.cgi?Gambit
 
 <br/>
 
