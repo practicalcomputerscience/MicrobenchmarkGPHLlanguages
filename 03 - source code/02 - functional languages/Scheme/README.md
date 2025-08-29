@@ -107,7 +107,11 @@ Regardless of the Scheme dialect you choose, make sure you have noticed its limi
 
 > The maximum number of arguments that can be passed to a procedure by the apply procedure is **8192**.
 
-my bold emphasis; from: https://gambitscheme.org/latest/manual/#System-limitations (the link to this manual is broken as of 2025-08-15; however, this limitation can be also seen from the source code: [https://github.com/gambit/gambit/blob/6b898fc90c0a2842093d9c92cd6c30be329c4cea/lib/mem.h](https://github.com/gambit/gambit/blob/6b898fc90c0a2842093d9c92cd6c30be329c4cea/lib/mem.h#L64): #define ___MAX_NB_ARGS          8192)
+my bold emphasis; from: https://gambitscheme.org/latest/manual/#System-limitations This limitation can be also seen from the [source code](https://github.com/gambit/gambit/blob/6b898fc90c0a2842093d9c92cd6c30be329c4cea/lib/mem.h#L64):
+
+``` 
+#define ___MAX_NB_ARGS          8192
+```
 
 Of course, finding the system limitations may easily become a cumbersome task in a specific Scheme dialect. Above limit was my showstopper in this dialect, because I need exactly - like in the working Chuz and Racket versions - 62500 arguments and not only 8192.
 
@@ -274,7 +278,7 @@ Bigloo Scheme | 24,120
 
 ## Functional error handling
 
-The Racket program [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket/random_streams_for_perf_stats.rkt#L75) has a nice procedure to write a final string into a file, including a functional approach to
+The Racket program ([source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket/random_streams_for_perf_stats.rkt#L75)) has a nice procedure to write a final string into a file, including a functional approach to
 error handling:
 
 ```
@@ -302,12 +306,12 @@ By the way: these are little programming tasks where "prompt engineering" can he
   (file-exists? filename))
 ```
 
-With _file-exists?_ I have at least some primitive return value for the calling function for "quality checking". At least I was happy to have a little bit more than nothing for the error handling after switching from Racket. This can happen, at least at the beginning, when a dialect or language comes "without many batteries included". However, I thought it would be a good thing to have something similar to the Racket solution for Gambit and CHICKEN too:
+With _file-exists?_ I have at least some primitive return value for the calling function for "quality checking". At least I was happy to have a little bit more than nothing for the error handling after switching from Racket. This can happen, at least at the beginning, when a dialect or language comes "without many batteries included". However, I thought it would be a good thing to have something similar to the Racket solution for the Gambit and CHICKEN versions too:
 
 - when there's a problem to write _content_ to _filename_, procedure _write_to_file_ should return _#f_ (the false value), and
 - when there was success with writing _content_ to _filename_, procedure _write_to_file_ should return _#t_ (the true value)
 
-My more functional Gambit solution now looks like this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm#L79):
+My more functional Gambit solution now looks like this ([source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm#L79)):
 
 ```
 (define (write_to_file filename content)
@@ -325,14 +329,14 @@ My more functional Gambit solution now looks like this [source code](https://git
 
 Be a little bit careful with procedure _call-with-current-continuation_. If not done correctly, your computer may end up in an endless loop where only pressing the reset button may stop it! (This happened to me.)
 
-**Exception handling** is probably one of those fields where Scheme dialects tend to have their own, **non-portable solutions** and consequently above solution is not working with CHICKEN Scheme (and vice versa), however this solution, which doesn't need any extra imports (~), works with CHICKEN Scheme [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/CHICKEN/random_streams_for_perf_stats.scm#L80C1-L92C15):
+**Exception handling** is probably one of those fields where Scheme dialects tend to have their own, **non-portable solutions** and consequently above solution is not working with CHICKEN Scheme (and vice versa), however this solution, which doesn't need any extra imports (~), works with CHICKEN Scheme ([source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/CHICKEN/random_streams_for_perf_stats.scm#L80C1-L92C15)):
 
 ```
 (define (write_to_file filename content)
   (call-with-current-continuation  ; equal to call/cc
     (lambda (return)
       (handle-exceptions
-        ; ...https://api.call-cc.org/5/doc/chicken/exceptions
+        ; ...
         _
         (return #f)
         (call-with-output-file filename
@@ -346,7 +350,7 @@ Here are two older documents for CHICKEN's exception handling, sources with some
 - https://api.call-cc.org/5/doc/srfi-34: _Chicken implements SFRI-12, a withdrawn SRFI that is nonetheless a more featureful exception system than the one implemented in SRFI-34. If you don't need SFRI-34 for portablility to some other scheme, there is no reason to use this egg over the SFRI-12 functionality chicken provides out of the box._ (_SFRI-12_ should be named SRFI-12 apparently...)
 - https://api.call-cc.org/5/doc/chicken/exceptions#def:handle-exceptions:
 
-For **Bigloo** Scheme I could take procedure _write_to_file_ in the Gambit version 1:1, but you have to consider the _-call/cc_ compilation switch; see here from the PDF manual (search for it): https://www-sop.inria.fr/mimosa/fp/Bigloo/doc/bigloo.pdf
+For **Bigloo** Scheme I could copy procedure _write_to_file_ in the Gambit version without any changes, but you have to consider the _-call/cc_ compilation switch; see here from the PDF manual (search in this manual): https://www-sop.inria.fr/mimosa/fp/Bigloo/doc/bigloo.pdf
 
 <br/>
 
