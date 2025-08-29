@@ -242,13 +242,33 @@ Bingo! This program version is now my second fastest in the Land of Scheme's! Bu
 
 ### Bigloo Scheme
 
-(TBD)
+At last I ported my program to Bigloo Scheme (https://www-sop.inria.fr/indes/fp/Bigloo/). And there, notorious expression:
+
+```
+(apply string-append (vector->list <my_vector>))
+```
+
+..works like a charm!
 
 <br/>
 
 #### Why do I not publish my Chez Scheme results? (no easy standalone excutable program!)
 
-(TBD)
+Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
+
+- they are more or less easy to install (specifically Racket) or easy to build with the common triple jump of: _$ ./configure; make; sudo make install_
+- but what counts more: these dialects, though they are not the only ones, actively support compiling to a standalone executable program, a thing Chez Scheme obviously tries to avoid (I tried two 3rd party script solutions from GitHub to no avail). It's not an essential feature, but all other programs have it, including the Common Lisp program
+
+#### Size of executables
+
+CHICKEN and Bigloo Scheme's compile to very small binary executables:
+
+Scheme dialect | size of executable program in bytes
+--- | ---
+Gambit | 10,410,664
+Racket | 2,140,291 
+CHICKEN | 39,984
+Bigloo Scheme | 24,120
 
 <br/>
 
