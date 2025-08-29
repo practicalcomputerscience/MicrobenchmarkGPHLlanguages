@@ -274,13 +274,85 @@ Bigloo Scheme | 24,120
 
 ## Functional error handling
 
-(TBD)
+The Racket program [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket/random_streams_for_perf_stats.rkt#L75) has a nice procedure to write a final string into a file, including a functional approach to
+error handling:
+
+```
+(define (write_to_file filename content)
+  (with-handlers ([exn:fail? (lambda _ #f)]) ; Return #f to indicate failure
+    (call-with-output-file filename
+      (lambda (out)
+        (display content out)) ; Write the string to the file
+      #:exists 'can-update) ; Replace the file if it already exists, but not when permission is "Read-Only"
+    #t))  ; Return #t to indicate success
+```
+
+By the way: these are little programming tasks where "prompt engineering" can help, that is in my case just MS Bing because there's enough Racket source code out there. However, my first solutions for the Gambit and CHICKEN dialects looked like the code below, because above Racket solution doesn't work with these dialects:
+
+```
+(define (write_to_file filename content)
+  ; does file exist? --> if yes, delete it first, otherwise call-with-output-file will throw an exception!
+  (if (file-exists? filename)
+    (begin
+      (delete-file filename)))
+  (call-with-output-file filename
+    (lambda (out)
+      (display content out)))
+  ; final test and return value true or false as a very simple test
+  (file-exists? filename))
+```
+
+With _file-exists?_ I have at least some primitive return value for the calling function for "quality checking". At least I was happy to have a little bit more than nothing for the error handling after switching from Racket. This can happen, at least at the beginning, when a dialect or language comes "without many batteries included". However, I thought it would be a good thing to have something similar to the Racket solution for Gambit and CHICKEN too:
+
+- when there's a problem to write _content_ to _filename_, procedure _write_to_file_ should return _#f_ (the false value), and
+- when there was success with writing _content_ to _filename_, procedure _write_to_file_ should return _#t_ (the true value)
+
+My more functional Gambit solution now looks like this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm#L79):
+
+```
+(define (write_to_file filename content)
+  (call-with-current-continuation
+    (lambda (exit)
+      (with-exception-handler
+        (lambda _ (exit #f))
+        (lambda ()
+          (begin
+            (call-with-output-file filename
+              (lambda (out)
+                (display content out)))
+           #t))))))
+```
+
+Be a little bit careful with procedure _call-with-current-continuation_. If not done correctly, your computer may end up in an endless loop where only pressing the reset button may stop it! (This happened to me.)
+
+**Exception handling** is probably one of those fields where Scheme dialects tend to have their own, **non-portable solutions** and consequently above solution is not working with CHICKEN Scheme (and vice versa), however this solution, which doesn't need any extra imports (~), works with CHICKEN Scheme [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb7b71b5bc9a718db959ed74ab29dacb6f191ee7/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/CHICKEN/random_streams_for_perf_stats.scm#L80C1-L92C15):
+
+```
+(define (write_to_file filename content)
+  (call-with-current-continuation  ; equal to call/cc
+    (lambda (return)
+      (handle-exceptions
+        ; ...https://api.call-cc.org/5/doc/chicken/exceptions
+        _
+        (return #f)
+        (call-with-output-file filename
+          (lambda (out)
+            (display content out)))
+        #t))))
+```
+
+Here are two older documents for CHICKEN's exception handling, sources with some examples on which my solution above is also based on:
+
+- https://api.call-cc.org/5/doc/srfi-34: _Chicken implements SFRI-12, a withdrawn SRFI that is nonetheless a more featureful exception system than the one implemented in SRFI-34. If you don't need SFRI-34 for portablility to some other scheme, there is no reason to use this egg over the SFRI-12 functionality chicken provides out of the box._ (_SFRI-12_ should be named SRFI-12 apparently...)
+- https://api.call-cc.org/5/doc/chicken/exceptions#def:handle-exceptions:
+
+For **Bigloo** Scheme I could take procedure _write_to_file_ in the Gambit version 1:1, but you have to consider the _-call/cc_ compilation switch; see here from the PDF manual (search for it): https://www-sop.inria.fr/mimosa/fp/Bigloo/doc/bigloo.pdf
 
 <br/>
 
 ## Imports and libraries
 
-(TBD)
+(~) re "extra imports": (TBD)
 
 <br/>
 
