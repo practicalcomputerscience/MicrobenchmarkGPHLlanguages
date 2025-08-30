@@ -166,8 +166,10 @@ The **Racket** solution is using one expression for one batch:
 
 ...but all (other) lists have been refactored to vectors when feasible (actually, there was only one left at last).
 
-In its first version, the Gambit source code file (for an older Gambit version) could be taken by the **CHICKEN** compiler almost unchanged; I only had to add two standard library imports (the Gambit program is OK with its default environment without any extra imports) and change the creation of a first random integer number,
+In its first version, the **Gambit** source code file (for an older Gambit version) could be taken by the **CHICKEN** compiler almost unchanged; I only had to add two standard library imports (the Gambit program is OK with its default environment without any extra imports) and change the creation of a first random integer number,
 including some random seeding.
+
+The Gambit dialect is a bit curious since it's the only one of the four dialects which doesn't need any _import_ or other (global) declarations. However, its binary, standalone executable is a fat one as shown below at [Size of executables](#size-of-executables)
 
 However, I think that this 8-batch solution, though helping me to see that there can be real speed in the Land of Scheme's, is not a good one, because it breaks with the usual algorithm as implemented in all other programming languages and dialects so far and also now with my list-free Racket solution.
 
@@ -267,12 +269,12 @@ Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
 
 CHICKEN and Bigloo Scheme's compile to very small binary executables:
 
-Scheme dialect | size of executable program in bytes
---- | ---
-Gambit | 10,410,664
-Racket | 2,140,291 
-CHICKEN | 39,984
-Bigloo Scheme | 24,120
+Scheme dialect | size of executable program in bytes | compilation command
+--- | --- | ---
+Gambit | 10,410,664 | _$ gsc -exe ./< program name >.scm_
+Racket | 2,140,291 | _$ raco exe ./< program name >.rkt_
+CHICKEN | 39,984 | _$ csc -O5 ./< program name >.scm_
+Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
 
 <br/>
 
@@ -351,12 +353,6 @@ Here are two older documents for CHICKEN's exception handling, sources with some
 - https://api.call-cc.org/5/doc/chicken/exceptions#def:handle-exceptions:
 
 For **Bigloo** Scheme I could copy procedure _write_to_file_ in the Gambit version without any changes, but you have to consider the _-call/cc_ compilation switch; see here from the PDF manual (search in this manual): https://www-sop.inria.fr/mimosa/fp/Bigloo/doc/bigloo.pdf
-
-<br/>
-
-## Imports and libraries
-
-(~) re "extra imports": (TBD)
 
 <br/>
 
