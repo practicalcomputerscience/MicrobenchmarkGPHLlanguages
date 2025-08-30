@@ -93,7 +93,7 @@ This (informal) Chez Scheme-Racket alliance is a very clever move from my point 
 
 <br/>
 
-#### Scheme Surveys
+### Scheme Surveys
 
 These pages detail various differences between Scheme implementations: https://docs.scheme.org/surveys/
 
@@ -258,7 +258,7 @@ At last I ported my program to Bigloo Scheme (https://www-sop.inria.fr/indes/fp/
 
 <br/>
 
-#### Why do I not publish my Chez Scheme results? (no easy standalone excutable program!)
+### Why do I not publish my Chez Scheme results? (no easy standalone excutable program!)
 
 Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
 
@@ -267,7 +267,7 @@ Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
 
 <br/>
 
-#### Size of executables
+### Size of executables
 
 CHICKEN and Bigloo Scheme's compile to very small binary executables:
 
