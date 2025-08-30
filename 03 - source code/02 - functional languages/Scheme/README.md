@@ -392,9 +392,123 @@ from: http://jean.paul.roy.free.fr/JAOO-SchemeHistory-2006public.pdf
 
 ## The Larceny Benchmarks
 
+The Larceny Benchmarks in their latest and original versions from 2017 for portable R6RS and R7RS top-level programs:
+
+- latest R7RS version: https://www.larcenists.org/benchmarksAboutR7.html + https://github.com/larcenists/larceny/tree/master/test/Benchmarking/R7RS
+- (older) R6RS version: https://www.larcenists.org/benchmarksAboutR6.html + https://github.com/larcenists/larceny/tree/master/test/Benchmarking/R6RS
+
+From here: https://larcenists.org/download.html you can download for example file _larceny-1.3-src.tar.gz_ which includes the basic, original benchmark source code files for the R6RS benchmarks inside directory: _**.../larceny-1.3-src/test/Benchmarking/R6RS/src/**_
+
+**Larceny** itself is (or was?) a Scheme dialect since the 90ies: https://larcenists.org/
+
+I think that these benchmark source code files - even when most probably not running 1:1 for a specific Scheme dialect in a modern version - could provide great inspiration for your own Scheme coding efforts. And if it's only for looking up key words inside them. I even found an example for procedure _call-with-current-continuation_ (alternatively named _call/cc_) in file _fibc.scm (...FIB using first-class continuations...)_.
+
 #### 2024 benchmarks
 
+Here are the latest, official benchmark results from 2024, which provided some orientation for my own Scheme dialect selections:
+
+- https://ecraven.github.io/r7rs-benchmarks/
+- https://github.com/ecraven/r7rs-benchmarks
+
+A cut from there (see the linked web page for the complete benchmark table):
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/The_Larceny_Benchmarks_2024.png)
+
+Notice the cells in magenta color. These are benchmarks that didn't succeed for various reasons, a phenomenon already observed by the original benchmark creators: https://www.larcenists.org/benchmarksAboutR7.html
+
+> The R7RS (small) standard does not require implementations to provide all of the R7RS standard libraries, and some implementations are unable to run some of the benchmarks for
+other reasons as well; furthermore, our benchmarking script gives up on any benchmark that takes more than an hour to run.
+
+Or as stated in 2024: https://ecraven.github.io/r7rs-benchmarks/
+
+> Many of these implementations do not fully implement R7RS, but instead there is a bit of "shim" code. You can find this by looking at _src/< Name >-prelude.scm_ and _src/< Name >-postlude.scm_, to see which changes are necessary. Some changes are also made by the _bench_ script, especially relating to _imports_.
+
+Beware that in order to be able to run these tests, at least for CHICKEN and Racket dialects, extra libraries or packages have to be installed: https://github.com/ecraven/r7rs-benchmarks/tree/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce#notes-for-specific-implementations
+
+For **CHICKEN** you may also need to install with administrator rights: _$ sudo ./chicken-install vector-lib r7rs_
+
+For **Racket** I had to change into the right Racket directory before installing with administrator rights: _$ sudo ./Racket/racket/bin/raco pkg install --scope installation r7rs_
+
+Download the whole GitHub repository ("<> Code" ---> "Download ZIP") to your Linux machine and unzip it in a test directory. Make sure that the related Scheme compiler can be found at your (Bash) shell - or provide the paths to the Scheme compilers like described here (if you didn't use _$ make install_ for example): https://github.com/ecraven/r7rs-benchmarks/tree/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce#path-to-executables
+
+Running benchmark program _fib.scm_ for **Racket** Scheme looks like this on my system:
+
+```
+$ ./bench "racket" "fib"
+
+Testing fib under Racket
+Including prelude ... /Scheme_2024_benchmarks/r7rs-benchmarks_2024/src/Racket-prelude.scm
+Compiling...
+racket_comp /tmp/r7rs-benchmarks/Racket/fib.scm /tmp/r7rs-benchmarks/Racket/fib.scm
+raco make /tmp/r7rs-benchmarks/Racket/fib.scm
+Running...
+time racket /tmp/r7rs-benchmarks/Racket/fib.scm
+Running fib:40:5
+Elapsed time: 2.276 seconds (2.276) for fib:40:5
++!CSVLINE!+racket-8.17/r7rs+chez,fib:40:5,2.276
+
+real 0m2,498s
+user 0m2,455s
+sys 0m0,042s
+$
+```
+
+For **CHICKEN** Scheme I had to modify the _bench_ script to (don't forget to do: _$ chmod 755 bench_new_ for example):
+
+```
+CHICKEN_CSC=${CHICKEN_CSC:-"csc"}
+CHICKEN_CSI=${CHICKEN_CSI:-"csi"}
+```
+
+...to run it like this:
+
+```
+$ ./bench_new "chicken" "fib"
+...
+real 0m19,943s
+...
+```
+
+For **Bigloo** there were two warnings, though an error has not been indicated with _(display "ERROR: returned incorrect result: ")_ as seen in: _/tmp/r7rs-benchmarks/Bigloo/fib.scm_:
+
+```
+$ ./bench_new "bigloo" "fib"
+...
+*** WARNING: define
+...
+*** WARNING: top-level
+...
+real 0m1,773s
+...
+```
+
+For **GambitC** I had to tinker again with my bench_new script:
+
+```
+GAMBITC=${GAMBITC:-"gsc"}
+```
+
+...to run it like this:
+
+```
+$ ./bench_new "gambitc" "fib"
+...
+real 0m1,899s
+...
+```
+
+I start to notice a pattern here: the Bigloo version is the fastest again.
+
+But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because with my string-heavy benchmark program in hand-optimized versions, the CHICKEN version only needs 56% of the Racket version's execution time.
+
+<br/>
+
+### FIB -- A classic benchmark, computes fib(n) inefficiently
+
+
+
 (TBD)
+
 
 #### The original Larceny Benchmarks
 
