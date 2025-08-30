@@ -265,6 +265,8 @@ Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
 - they are more or less easy to install (specifically Racket) or easy to build with the common triple jump of: _$ ./configure; make; sudo make install_
 - but what counts more: these dialects, though they are not the only ones, actively support compiling to a standalone executable program, a thing Chez Scheme obviously tries to avoid (I tried two 3rd party script solutions from GitHub to no avail). It's not an essential feature, but all other programs have it, including the Common Lisp program
 
+<br/>
+
 #### Size of executables
 
 CHICKEN and Bigloo Scheme's compile to very small binary executables:
