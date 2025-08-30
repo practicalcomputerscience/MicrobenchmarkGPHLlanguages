@@ -386,7 +386,7 @@ Ironically, this presentation by **Guy Steele**, one of the Scheme designers (ht
 
 from: http://jean.paul.roy.free.fr/JAOO-SchemeHistory-2006public.pdf
 
-..does not mention term "procedure" once (or "procedural"), but eight time the term "function" and also eight time "functions".
+..does not mention term "procedure" once (or "procedural"), but eight times the term "function" and also eight times term "functions".
 
 <br/>
 
