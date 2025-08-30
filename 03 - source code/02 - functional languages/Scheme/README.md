@@ -503,14 +503,14 @@ But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because w
 
 ### FIB -- A classic benchmark, computes fib(n) inefficiently
 
-As a comparison to my microbenchmark, here the official 2024 benchmark results for the _fib_ program: "01" is the fastest rank
+As a comparison to my microbenchmark, here the official 2024 benchmark ranking for the _fib_ program with "01" being the the fastest rank:
 
 - 01 -- Bigloo (in version 4.5b)
 - 02 -- GambitC (4.9.5)
 - 05 -- Racket (8.13)
 - 15 -- CHICKEN (5.3.0)
 
-My benchmarks confirm this ranking:
+My own benchmarks confirm this ranking:
 
 - 01 -- Bigloo (4.6a)
 - 02 -- Gambit (4.9.6)
@@ -520,10 +520,6 @@ My benchmarks confirm this ranking:
 In 2015 the original creators published a little rant about benchmarks in general: https://www.larcenists.org/bmcrock.temp.html
 
 > ...Many of our benchmarks test only a few aspects of performance. ... Such benchmarks are not so good if your goal is to predict how well an implementation will perform on "typical" Scheme programs. ... The performance of a benchmark, even if it is derived from a real program, may not help to predict the performance of similar programs that have different hot spots. ...
-
-#### The original Larceny Benchmarks
-
-(TBD)
 
 <br/>
 
