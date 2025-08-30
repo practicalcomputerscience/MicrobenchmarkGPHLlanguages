@@ -403,7 +403,7 @@ From here: https://larcenists.org/download.html you can download for example fil
 
 I think that these benchmark source code files - even when most probably not running 1:1 for a specific Scheme dialect in a modern version - could provide great inspiration for your own Scheme coding efforts. And if it's only for looking up key words inside them. I even found an example for procedure _call-with-current-continuation_ (alternatively named _call/cc_) in file _fibc.scm (...FIB using first-class continuations...)_.
 
-#### 2024 benchmarks
+### 2024 benchmarks
 
 Here are the latest, official benchmark results from 2024, which provided some orientation for my own Scheme dialect selections:
 
@@ -431,7 +431,7 @@ For **Racket** I had to change into the right Racket directory before installing
 
 Download the whole GitHub repository ("<> Code" ---> "Download ZIP") to your Linux machine and unzip it in a test directory. Make sure that the related Scheme compiler can be found at your (Bash) shell - or provide the paths to the Scheme compilers like described here (if you didn't use _$ make install_ for example): https://github.com/ecraven/r7rs-benchmarks/tree/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce#path-to-executables
 
-Running benchmark program _fib.scm_ for **Racket** Scheme looks like this on my system:
+Running benchmark program _fib.scm_ for **Racket** Scheme looks like this in my system:
 
 ```
 $ ./bench "racket" "fib"
@@ -482,7 +482,7 @@ real 0m1,773s
 ...
 ```
 
-For **GambitC** I had to tinker again with my bench_new script:
+For **GambitC** I had to tinker again with my _bench_new_ script:
 
 ```
 GAMBITC=${GAMBITC:-"gsc"}
@@ -499,16 +499,27 @@ real 0m1,899s
 
 I start to notice a pattern here: the Bigloo version is the fastest again.
 
-But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because with my string-heavy benchmark program in hand-optimized versions, the CHICKEN version only needs 56% of the Racket version's execution time.
-
-<br/>
+But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because with my string-heavy microbenchmark program in hand-optimized versions, the CHICKEN version only needs 56% of the Racket version's execution time.
 
 ### FIB -- A classic benchmark, computes fib(n) inefficiently
 
+As a comparison to my microbenchmark, here the official 2024 benchmark results for the _fib_ program: "01" is the fastest rank
 
+- 01 -- Bigloo (in version 4.5b)
+- 02 -- GambitC (4.9.5)
+- 05 -- Racket (8.13)
+- 15 -- CHICKEN (5.3.0)
 
-(TBD)
+My benchmarks confirm this ranking:
 
+- 01 -- Bigloo (4.6a)
+- 02 -- Gambit (4.9.6)
+- 03 -- Racket (8.17)
+- 04 -- CHICKEN (5.4.0)
+
+In 2015 the original creators published a little rant about benchmarks in general: https://www.larcenists.org/bmcrock.temp.html
+
+> ...Many of our benchmarks test only a few aspects of performance. ... Such benchmarks are not so good if your goal is to predict how well an implementation will perform on "typical" Scheme programs. ... The performance of a benchmark, even if it is derived from a real program, may not help to predict the performance of similar programs that have different hot spots. ...
 
 #### The original Larceny Benchmarks
 
