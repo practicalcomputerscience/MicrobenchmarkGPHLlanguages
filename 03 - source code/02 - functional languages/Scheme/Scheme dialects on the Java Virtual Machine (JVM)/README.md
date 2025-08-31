@@ -30,17 +30,38 @@ See also from this thesis from around 2015: https://andrebask.github.io/thesis/
  
 (my emphasis in bold)
 
-I have no idea if those first-class continuations have been implemented in Kawa.
+I have no idea if those first-class continuations have ever been implemented in Kawa.
 
 <br/>
 
 Kawa is not the only Scheme dialect to target the JVM. Heap-based **SISC** (_Second Interpreter of Scheme Code_) after stack-based **LISC** (_Lightweight Interpreter of Scheme_): https://sisc-scheme.org/manual/html/index.html + http://sisc-scheme.org/sisc.pdf, was another one.
 
-Then there was **JScheme**: https://norvig.com/jscheme.html. However, this command: _$ java jscheme.Scheme r4rstest.scm_ (from https://norvig.com/jscheme/) doesn't work with me.
+Then there was **JScheme**: https://norvig.com/jscheme.html. However, command: _$ java jscheme.Scheme r4rstest.scm_ from https://norvig.com/jscheme/ doesn't work with me.
 
 But after some searching for the fate of **JScheme** I made an interesting discovery, though it's not a breakthrough solution for ambitious programs.
 
 ## JScheme
+
+My efforts to get **JScheme** version 1.4 from April 16, 1998 at https://norvig.com/jscheme.html (1) running only succeeded in so far that I could start the JScheme REPL (Read-Eval-Print Loop). But I was not able to run something like this for example:
+
+```
+$ java jscheme.Scheme r4rstest.scm
+```
+
+So, I followed the link as indicated above (1):
+
+> Since April 1998, development has been picked up by others, notably Tim Hickey at Brandeis...
+
+..to a **JScheme** version 7.2 from 3/1/2005: https://sourceforge.net/projects/jscheme/files/
+It even has a _make_ installation procedure (with _$ sh bin/make_), but again, the only thing that worked for me was a JScheme REPL.
+
+After more searching I found this on SourceForge: https://sourceforge.net/projects/jschemeplus/files/
+
+I downloaded file _**SchemePlus-1.4PF2.zip**_ and unpacked it in some working directory (Linux).
+
+Here I provide a more elaborate workflow to get "Hello, World!" as a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
+
+
 
 (TBD)
 
