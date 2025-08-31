@@ -59,9 +59,95 @@ After more searching I found this on SourceForge: https://sourceforge.net/projec
 
 I downloaded file _**SchemePlus-1.4PF2.zip**_ and unpacked it in some working directory (Linux).
 
-Here I provide a more elaborate workflow to get "Hello, World!" as a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
+<br/>
 
+### "Hello, World!" in JSchemePlus
 
+Here I provide a "Hello, World!" example from a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
+
+```
+$ cat hello_world.scm
+(display "Hello World from JSchemePlus version 1.4PF2!")
+(newline)
+(display (random))
+(newline)
+(exit)
+```
+
+Scheme comments with semicolons (';' or ';;') work, but not these: #| ... |#
+
+You can run this Scheme program like this on the JVM:
+
+```
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./hello_world.scm
+Hello World from JSchemePlus version 1.4PF2!
+0.9192306489663782
+$
+```
+
+With expression _(display (random))_ I'm using one of the enhancement procedures provided by the author; see from here again: https://sourceforge.net/projects/jschemeplus/files/ or from file HELP.
+
+Source code file _hello_world.scm_ can be wrapped inside a **Java Archive file** (~.jar) like this:
+
+1. rename file _hello_world.scm_ into _main.scm_
+2. make a copy of file _runtime.jar_ (don't mess up this file!) and place it in your local working directory, then rename it into _hello_world.jar_
+3. add _main.scm_ into the _hello_world.jar_ file: _$ jar -uf hello_world.jar main.scm_
+4. and finally execute this "uberjar" file on the JVM:
+
+```
+$ java -jar hello_world.jar
+Hello World from JSchemePlus version 1.4PF2!
+0.21798621286542608
+$
+```
+
+<br/>
+
+### r4rstest.scm compliance test
+
+Now I can also run Peter Norvig's original _r4rstest.scm_ compliance test successfully; see its source from here: https://norvig.com/jscheme/
+
+However, I made one change to it and added expression _(exit)_ at the bottom to leave the JScheme REPL at the end of this test program. Run this test like this:
+
+```
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./r4rstest.scm
+```
+
+The tail of the console output of this program looks like this:
+
+```
+...
+SECTION(6 5 6)
+({string->number} "281474976710655") ==> 281474976710655
+({number->string} 281474976710655) ==> "281474976710655"
+({fact} 20) ==> 2432902008176640000
+({fact} 40) ==> 8.159152832478977E47
+Passed all tests
+To fully test continuations, do (test-cont)
+$
+```
+
+Beware that file name _r4rstest.scm_ is hard coded in this source code file (though it could be changed throughout I guess).
+
+You can directly enter the JScheme REPL like this:
+
+```
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar
+```
+
+You will have more editing comfort in this REPL when you call rlwrap (a readline wrapper: https://linux.die.net/man/1/rlwrap) before:
+
+```
+$ rlwrap java -jar ./JSchemePlus-1.4PF2/runtime.jar
+```
+
+<br/>
+
+By the way: I found out that not only in the Land of Scheme's, but generally with functional programming languages, there's no rule when _rlwrap_ helps and when not. Some REPL systems already provide editing comfort and others don't work with this Linux default readline wrapper.
+
+<br/>
+
+### Testing call-with-current-continuation (call/cc)
 
 (TBD)
 
