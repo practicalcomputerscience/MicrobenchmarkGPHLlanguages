@@ -1,4 +1,8 @@
-2025-08-31: heavy work in progress
+Table of content:
+
+- [Kawa Scheme](kawa-scheme)
+
+<br/>
 
 With [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure) arguably being the premier Lisp- or Scheme-like language on the JVM, this question came to my mind:
 
