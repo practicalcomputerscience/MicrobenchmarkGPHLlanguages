@@ -17,7 +17,7 @@ Table of contents:
 - [The Larceny Benchmarks](#the-larceny-benchmarks)
 - [2024 benchmarks](#2024-benchmarks)
 - [FIB -- A classic benchmark, computes fib(n) inefficiently](#fib----a-classic-benchmark-computes fibn-inefficiently)
-- [Scheme for the Java Virtual Machine (JVM)?](#scheme-for-the-java-virtual-machine-jvm)
+- [Scheme for the Java Virtual Machine (JVM)?](#scheme-for-the-java-virtual-machine-jvm-its-not-looking-good)
 - [Brackets in Scheme dialects](#brackets-in-scheme-dialects)
 - [Two more Scheme dialects](#two-more-scheme-dialects)
 - [Common Lisp & Scheme, a comparison](#common-lisp--scheme-a-comparison)
