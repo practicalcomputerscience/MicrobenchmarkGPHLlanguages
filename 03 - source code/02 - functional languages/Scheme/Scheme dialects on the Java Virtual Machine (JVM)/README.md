@@ -1,6 +1,6 @@
 Table of content:
 
-- [Kawa Scheme](kawa-scheme)
+- [Kawa Scheme](#kawa-scheme)
 
 <br/>
 
