@@ -32,17 +32,15 @@ See also from this thesis from around 2015: https://andrebask.github.io/thesis/
 
 I have no idea if those first-class continuations have ever been implemented in Kawa.
 
-<br/>
-
 Kawa is not the only Scheme dialect to target the JVM. Heap-based **SISC** (_Second Interpreter of Scheme Code_) after stack-based **LISC** (_Lightweight Interpreter of Scheme_): https://sisc-scheme.org/manual/html/index.html + http://sisc-scheme.org/sisc.pdf, was another one.
-
-Then there was **JScheme**: https://norvig.com/jscheme.html. However, command: _$ java jscheme.Scheme r4rstest.scm_ from https://norvig.com/jscheme/ doesn't work with me.
-
-But after some searching for the fate of **JScheme** I made an interesting discovery, though it's not a breakthrough solution for ambitious programs.
 
 ## JScheme
 
-My efforts to get **JScheme** version 1.4 from April 16, 1998 at https://norvig.com/jscheme.html (1) running only succeeded in so far that I could start the JScheme REPL (Read-Eval-Print Loop). But I was not able to run something like this for example:
+Then there was JScheme: https://norvig.com/jscheme.html
+
+However, command: _$ java jscheme.Scheme r4rstest.scm_ from https://norvig.com/jscheme/ doesn't work with me.
+
+My efforts to get JScheme version 1.4 from April 16, 1998 at https://norvig.com/jscheme.html (1) running only succeeded in so far that I could start the JScheme REPL (Read-Eval-Print Loop). But I was not able to run something like this for example:
 
 ```
 $ java jscheme.Scheme r4rstest.scm
@@ -55,16 +53,15 @@ So, I followed the link as indicated above (1):
 ..to a **JScheme** version 7.2 from 3/1/2005: https://sourceforge.net/projects/jscheme/files/
 It even has a _make_ installation procedure (with _$ sh bin/make_), but again, the only thing that worked for me was a JScheme REPL.
 
-After more searching I found this on SourceForge: https://sourceforge.net/projects/jschemeplus/files/
+## JSchemePlus
+
+After some searching for the fate of **JScheme** I made an interesting discovery: https://sourceforge.net/projects/jschemeplus/files/
 
 I downloaded file _**SchemePlus-1.4PF2.zip**_ and unpacked it in some working directory (Linux).
 
-## JSchemePlus
+This recent (January 2025) JSchemePlus hack by Pasquale Frega (https://pasqualefrega.antiblog.com/) allows you to execute "simple" Scheme source code files on the JVM, though it's not (intended to be) a breakthrough solution for ambitious programs written in Scheme.
 
-The recent (January 2025) JSchemePlus hack by Pasquale Frega (https://pasqualefrega.antiblog.com/) allows you to execute "simple" Scheme source code files
-on the JVM, though it's not (intended to be) a breakthrough solution for ambitious programs written in Scheme.
-
-Here I provide a "Hello, World!" example from a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
+Here I provide a "Hello, World!" example with a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
 
 ```
 $ cat hello_world.scm
@@ -108,7 +105,7 @@ $
 
 Now I can also run Peter Norvig's original _r4rstest.scm_ compliance test successfully; see its source from here: https://norvig.com/jscheme/
 
-However, I made one change to it and added expression _(exit)_ at the bottom of this source code file to leave the JScheme REPL at the end of this test program. Run this test like this:
+However, I made one change to it and added expression _(exit)_ at the bottom of this source code file to leave the JSchemePlus REPL at the end of this test program. Run this test like this:
 
 ```
 $ java -jar ./-1.4PF2/runtime.jar ./r4rstest.scm
@@ -130,7 +127,7 @@ $
 
 Beware that file name _r4rstest.scm_ is hard coded in this source code file (though it could be changed throughout I guess).
 
-You can directly enter the JScheme REPL like this:
+You can directly enter the JSchemePlus REPL like this:
 
 ```
 $ java -jar ./-1.4PF2/runtime.jar
@@ -151,7 +148,7 @@ By the way: I found out that not only in the Land of Scheme's, but generally wit
 ### Testing call-with-current-continuation (call/cc)
 
 _r4rstest.scm_ also includes three optional tests, two of them are already included in its original version: _(test-sc4)_ and _(test-delay)_.
-When you run _r4rstest.scm_ in its original version and thus finally stay in the JScheme REPL, the third test can be manually started by entering expression:
+When you run _r4rstest.scm_ in its original version and thus finally stay in the JSchemePlus REPL, the third test can be manually started by entering expression:
 
 ```
 JS+> (test-cont)
@@ -197,7 +194,7 @@ _()_ is not the supposed result, 120 is. I tested this procedure in the Bigloo a
 
 ### What about my Scheme program?
 
-There are couple of restrictions for my program:
+There are couple of restrictions for my [program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)/random_streams_for_perf_stats.scm):
 
 a/ JScheme - with some limitations - only supports Scheme in version R4RS: https://norvig.com/jscheme.html#limitations
 
@@ -217,12 +214,10 @@ I used one of the JSchemePlus enhancements, that is procedure _read_back_, to co
     (lambda (out)
       (display content out)))
   (let ((read_back (read-all-from-file filename)))
-    (if (string=? read_back content) ; are both strings equal?
+    (if (string=? read_back content)  ; are both strings equal?
       #t
       #f)))
 ```
-
-From [source code file]()
 
 However, same like my original _file-exists?_-based solution, this is not exception handling and when there's a problem with writing to a new file, this program completely stops due to a Java runtime exception. So practically, this is just a more elaborate way to return a true value (_#t_) to the calling function inside the _main_ function.
 
@@ -230,10 +225,10 @@ However, same like my original _file-exists?_-based solution, this is not except
 
 ## Program performance
 
-I tested my program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed?).
+I tested my program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed some day?).
 
 With the 1,000,000 character string I manually stopped this program after running for a minute or more and then reduced the number of arguments in the notorious
-_(apply string-append (vector->list <my_vector>))_ expression to 8192, same like my old solution at [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/14c4a3b68c5b62e412de9bd036364c359c3d54be/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations) (which I later could change back to the full 62500 arguments, I thing I cannot do here because the string concatenation possibilities of modern Scheme dialects are just not available in JScheme and calling Java's _StringBuilder_ like in my Clojure program is not working here).
+_(apply string-append (vector->list <my_vector>))_ expression to 8192, same like my old solution at [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/14c4a3b68c5b62e412de9bd036364c359c3d54be/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations) (which I later could change back to the full 62,500 arguments, I thing I cannot do here because the string concatenation possibilities of modern Scheme dialects are just not available in JScheme and calling Java's _StringBuilder_ like in my Clojure program is not working here).
 
 With 8192 arguments, this programs takes 2 1/2 minutes time to run - but these limited results are correct as far as I can see.
 
