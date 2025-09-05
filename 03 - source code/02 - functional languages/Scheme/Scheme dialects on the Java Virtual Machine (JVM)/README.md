@@ -103,7 +103,7 @@ $
 
 <br/>
 
-### r4rstest.scm compliance test
+### Compliance test r4rstest.scm
 
 Now I can also run Peter Norvig's original _r4rstest.scm_ compliance test successfully; see its source from here: https://norvig.com/jscheme/
 
@@ -191,6 +191,23 @@ JS+>
 
 _()_ is not the supposed result, 120 is. I tested this procedure in the Bigloo and CHICKEN REPL's and (naturally) both dialects evaluated to the correct result 120
 (remember: you cannot do this in Gambit without first changing _[...]_ into _(...)_).
+
+<br/>
+
+### What about my Scheme program?
+
+There are couple of restrictions in this environment for my program:
+
+a/ JScheme - with some limitations - only supports Scheme in version R4RS: https://norvig.com/jscheme.html#limitations
+
+b/ Pasquale Frega's enhancements don't introduce exception handlers (to be not misunderstood: I think it's great that somebody picked up the pieces from so long
+ago!) which I'm using when writing strings to files:
+
+- Racket: _with-handlers_
+- Gambit and Bigloo: _with-exception-handler_
+- CHICKEN: _handle-exceptions_
+
+c/ original construct _(if (file-exists? filename) ..._ as a simple check is also not working because predicate _file-exists?_ was only introduced later in R6RS
 
 <br/>
 
