@@ -1,6 +1,26 @@
-2025-07-27: heavy work in progress
+Table of contents:
 
-2025-08-26: make a table of content (TOC) for this big page
+- [What Scheme dialects are still maintained?](#what-scheme-dialects-are-still-maintained)
+- [My 5 best practices with Scheme dialects](#my-5-best-practices-with-scheme-dialects)
+- [Features of the Scheme programming language](#features-of-the-scheme-programming-language)
+- [What they don't tell you in the Land of Scheme's at first](#what-they-don't-tell-you-in-the-land-of-schemes-at-first)
+- [Scheme Surveys](#scheme-surveys)
+- [System limitations](#system-limitations)
+- [Vectors in Scheme](#vectors-in-scheme)
+- [Scheme's on Speed](#schemes-on-speed)
+- [Re-installation of Gambit Scheme](#reinstallation-of-gambit-scheme)
+- [Bigloo Scheme](#bigloo-scheme)
+- [Why do I not publish my Chez Scheme results?](#why-do-i-not-publish-my-chez-scheme-results-no-easy-standalone-excutable-program)
+- [Size of executables](#size-of-executables)
+- [Functional error handling](#functional-error-handling)
+- [Procedures or functions? ](#procedures-or-functions)
+- [The Larceny Benchmarks](#the-larceny-benchmarks)
+- [2024 benchmarks](#2024-benchmarks)
+- [FIB -- A classic benchmark, computes fib(n) inefficiently](#fib-a-classic-benchmark-computes-fib(n)-inefficiently)
+- [Scheme for the Java Virtual Machine (JVM)?](#scheme-for-the-java-virtual-machine-jvm)
+- [Brackets in Scheme dialects](#brackets-in-scheme-dialects)
+- [Two more Scheme dialects](#two-more-scheme-dialects)
+- [Common Lisp & Scheme, a comparison](#common-lisp-scheme-a-comparison)
 
 ---
 
