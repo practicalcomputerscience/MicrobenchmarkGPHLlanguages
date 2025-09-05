@@ -59,9 +59,10 @@ After more searching I found this on SourceForge: https://sourceforge.net/projec
 
 I downloaded file _**SchemePlus-1.4PF2.zip**_ and unpacked it in some working directory (Linux).
 
-<br/>
+## JSchemePlus
 
-### "Hello, World!" in JSchemePlus
+The recent (January 2025) JSchemePlus hack by Pasquale Frega (https://pasqualefrega.antiblog.com/) allows you to execute "simple" Scheme source code files
+on the JVM, though it's not (intended to be) a breakthrough solution for ambitious programs written in Scheme.
 
 Here I provide a "Hello, World!" example from a Scheme source code file running on the JVM (with me it's OpenJDK version 21.0.7). As usual, everything is being executed in the Bash shell:
 
@@ -79,13 +80,13 @@ Scheme comments with semicolons (';' or ';;') work, but not these: #| ... |#
 You can run this Scheme program like this on the JVM:
 
 ```
-$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./hello_world.scm
-Hello World from JSchemePlus version 1.4PF2!
+$ java -jar ./-1.4PF2/runtime.jar ./hello_world.scm
+Hello World from  version 1.4PF2!
 0.9192306489663782
 $
 ```
 
-With expression _(display (random))_ I'm using one of the enhancement procedures provided by the author; see from here again: https://sourceforge.net/projects/jschemeplus/files/ or from file HELP.
+With expression _(display (random))_ I'm using one of the enhancement procedures provided by the author; see from here again: https://sourceforge.net/projects//files/ or from file HELP.
 
 Source code file _hello_world.scm_ can be wrapped inside a **Java Archive file** (~.jar) like this:
 
@@ -96,7 +97,7 @@ Source code file _hello_world.scm_ can be wrapped inside a **Java Archive file**
 
 ```
 $ java -jar hello_world.jar
-Hello World from JSchemePlus version 1.4PF2!
+Hello World from  version 1.4PF2!
 0.21798621286542608
 $
 ```
@@ -107,10 +108,10 @@ $
 
 Now I can also run Peter Norvig's original _r4rstest.scm_ compliance test successfully; see its source from here: https://norvig.com/jscheme/
 
-However, I made one change to it and added expression _(exit)_ at the bottom to leave the JScheme REPL at the end of this test program. Run this test like this:
+However, I made one change to it and added expression _(exit)_ at the bottom of this source code file to leave the JScheme REPL at the end of this test program. Run this test like this:
 
 ```
-$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./r4rstest.scm
+$ java -jar ./-1.4PF2/runtime.jar ./r4rstest.scm
 ```
 
 The tail of the console output of this program looks like this:
@@ -132,10 +133,10 @@ Beware that file name _r4rstest.scm_ is hard coded in this source code file (tho
 You can directly enter the JScheme REPL like this:
 
 ```
-$ java -jar ./JSchemePlus-1.4PF2/runtime.jar
+$ java -jar ./-1.4PF2/runtime.jar
 ```
 
-You will have more editing comfort in this REPL when you call rlwrap (a readline wrapper: https://linux.die.net/man/1/rlwrap) before:
+You will have more editing comfort in this REPL when you call _rlwrap_ (a readline wrapper: https://linux.die.net/man/1/rlwrap) before:
 
 ```
 $ rlwrap java -jar ./JSchemePlus-1.4PF2/runtime.jar
@@ -196,24 +197,45 @@ _()_ is not the supposed result, 120 is. I tested this procedure in the Bigloo a
 
 ### What about my Scheme program?
 
-There are couple of restrictions in this environment for my program:
+There are couple of restrictions for my program:
 
 a/ JScheme - with some limitations - only supports Scheme in version R4RS: https://norvig.com/jscheme.html#limitations
 
-b/ Pasquale Frega's enhancements don't introduce exception handlers (to be not misunderstood: I think it's great that somebody picked up the pieces from so long
-ago!) which I'm using when writing strings to files:
+b/ Pasquale Frega's JSchemePlus enhancements (https://pasqualefrega.antiblog.com/) don't feature exception handlers (to not be misunderstood: I think it's great that somebody picked up the pieces from so long ago!) which I'm using when writing strings to files:
 
 - Racket: _with-handlers_
 - Gambit and Bigloo: _with-exception-handler_
 - CHICKEN: _handle-exceptions_
 
-c/ original construct _(if (file-exists? filename) ..._ as a simple check is also not working because predicate _file-exists?_ was only introduced later in R6RS
+c/ my [original construct](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/14c4a3b68c5b62e412de9bd036364c359c3d54be/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L80) _(if (file-exists? filename) ..._ as a simple check is also not working because predicate _file-exists?_ was only introduced later in R6RS
+
+I used one of the JSchemePlus enhancements, that is procedure _read_back_, to compare the newly generated string (which is always different with each program run in practical terms) with the string that has just been written to the file. Both strings must be identical:
+
+```
+(define (write_to_file filename content)
+  (call-with-output-file filename
+    (lambda (out)
+      (display content out)))
+  (let ((read_back (read-all-from-file filename)))
+    (if (string=? read_back content) ; are both strings equal?
+      #t
+      #f)))
+```
+
+From [source code file]()
+
+However, same like my original _file-exists?_-based solution, this is not exception handling and when there's a problem with writing to a new file, this program completely stops due to a Java runtime exception. So practically, this is just a more elaborate way to return a true value (_#t_) to the calling function inside the _main_ function.
 
 <br/>
 
-## The JSchemePlus hack
+## Program performance
 
-(TBD)
+I tested my program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed?).
+
+With the 1,000,000 character string I manually stopped this program after running for a minute or more and then reduced the number of arguments in the notorious
+_(apply string-append (vector->list <my_vector>))_ expression to 8192, same like my old solution at [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/14c4a3b68c5b62e412de9bd036364c359c3d54be/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations) (which I later could change back to the full 62500 arguments, I thing I cannot do here because the string concatenation possibilities of modern Scheme dialects are just not available in JScheme and calling Java's _StringBuilder_ like in my Clojure program is not working here).
+
+With 8192 arguments, this programs takes 2 1/2 minutes time to run - but these limited results are correct as far as I can see.
 
 <br/>
 
