@@ -1,4 +1,4 @@
-Table of content:
+Table of contents:
 
 - [Kawa Scheme](#kawa-scheme)
 - [Other efforts](#other-efforts)
