@@ -4,7 +4,14 @@ https://dune.build/
 
 ---
 
-#### Installation tips
+Table of contents:
+
+- [Installation tips](installation-tips)
+- [OCaml on the Java Virtual Machine (JVM)](ocaml-on-the-java-virtual-machine-jvm)
+
+---
+
+### Installation tips
 
 Rename:
 
@@ -71,6 +78,58 @@ let main () =
 
 main ();;
 ```
+
+<br/>
+
+### OCaml on the Java Virtual Machine (JVM)
+
+When I had a look at what functional programming languages are available on the JVM: https://en.wikipedia.org/wiki/List_of_JVM_languages, I found OCaml: http://www.ocamljava.org/index.html
+
+This version is pretty old from 2015 and abandoned, but I gave it a try.
+
+I downloaded the last binary build to avoid compiling it by my own: http://www.ocamljava.org/downloads/ and set the path to the compiler binaries in my
+_.bashrc_ config file (temporarily):
+
+```
+export PATH="$PATH:$HOME/scripts/OCaml-Java/ocamljava-2.0-alpha3-bin/bin/"
+```
+
+I checked my installation with:
+
+```
+$ ocamljava -v
+... The OCaml Java-bytecode compiler, version 4.01.0 ... OCaml-Java version: 2.0-alpha3 ... Standard library directory: /ocamljava-2.0-alpha3/lib/ocaml
+```
+
+Then I compiled my original and working [OCaml source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_perf_stats_main.ml), which is normally meant to be compiled into a binary executable:
+
+```
+$ ocamljava -c password_encryption_perf_stats_main.ml
+```
+
+..and linked it into an "uberJAR" file (same like with Scala and Kotlin for example):
+
+```
+$ ocamljava -o password_encryption_perf_stats_main.jar password_encryption_perf_stats_main.cmj
+```
+
+...and ran it on the JVM:
+
+```
+$ time java -jar password_encryption_perf_stats_main.jar
+```
+
+with version:
+
+```
+$ java -version
+... OpenJDK Runtime Environment (build 21.0.7...) ...
+$
+```
+
+Result: 724 [milliseconds] 
+
+Not bad.
 
 <br/>
 
