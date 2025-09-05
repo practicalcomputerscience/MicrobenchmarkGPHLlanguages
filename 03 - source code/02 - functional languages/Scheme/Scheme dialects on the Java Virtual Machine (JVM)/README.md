@@ -47,8 +47,6 @@ I have no idea if those first-class continuations have ever been implemented in 
 
 Kawa is not the only Scheme dialect to target the JVM. Heap-based **SISC** (_Second Interpreter of Scheme Code_) after stack-based **LISC** (_Lightweight Interpreter of Scheme_): https://sisc-scheme.org/manual/html/index.html + http://sisc-scheme.org/sisc.pdf, was another one.
 
-Also see from Wikipedia: [List of JVM languages](https://en.wikipedia.org/wiki/List_of_JVM_languages)
-
 ## JScheme
 
 Then there was JScheme: https://norvig.com/jscheme.html
