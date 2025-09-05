@@ -149,7 +149,48 @@ By the way: I found out that not only in the Land of Scheme's, but generally wit
 
 ### Testing call-with-current-continuation (call/cc)
 
-(TBD)
+_r4rstest.scm_ also includes three optional tests, two of them are already included in its original version: _(test-sc4)_ and _(test-delay)_.
+When you run _r4rstest.scm_ in its original version and thus finally stay in the JScheme REPL, the third test can be manually started by entering expression:
+
+```
+JS+> (test-cont)
+;testing continuations;
+SECTION(6 9)
+({leaf-eq?} (a (b (c))) ((a) b c)) ==> JS+>
+```
+
+I'm not sure what to expect here. So, I tested some simple examples and one moderate one for _call/cc_ from "The Scheme Programming Language", 4th ed., 2009: https://www.scheme.com/tspl4/further.html#./further:h3
+
+The first example works:
+
+```
+JS+> (call/cc
+  (lambda (k)
+    (* 5 4)))
+20
+JS+>
+```
+
+... and the next two, also simple ones, too. But not this one:
+
+```
+JS+> (define product
+ (lambda (ls)
+   (call/cc
+     (lambda (break)
+       (let f ([ls ls])
+       (cond
+         [(null? ls) 1]
+         [(= (car ls) 0) (break 0)]
+         [else (* (car ls) (f (cdr ls)))]))))))
+product
+JS+> (product '(1 2 3 4 5))
+()
+JS+>
+```
+
+_()_ is not the supposed result, 120 is. I tested this procedure in the Bigloo and CHICKEN REPL's and (naturally) both dialects evaluated to the correct result 120
+(remember: you cannot do this in Gambit without first changing _[...]_ into _(...)_).
 
 <br/>
 
