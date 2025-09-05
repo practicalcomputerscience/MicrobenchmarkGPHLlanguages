@@ -6,6 +6,20 @@ The official **Clojure Cheat Sheet**, which is practical for orientation in this
 
 ---
 
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [On execution speed in Clojure](#on-execution-speed-in-clojure)
+- [Initial struggles with execution speed](#initial-struggles-with-execution-speed)
+- [On complexity in Clojure](#on-complexity-in-clojure)
+- [Recursive loops with loop-recur: simple at the bottom, simple at the top!](#recursive-loops-with-loop-recur-simple-at-the-bottom-simple-at-the-top)
+- [The usual way of error handling in Clojure is imperative](#the-usual-way-of-error-handling-in-clojure-is-imperative)
+- [Clojure is a demanding functional programming language](#clojure-is-a-demanding-functional-programming-language)
+
+<br/>
+
+---
+
 ### Installation tips
 
 Rename:
