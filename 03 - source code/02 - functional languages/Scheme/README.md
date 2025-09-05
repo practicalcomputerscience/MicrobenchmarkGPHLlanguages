@@ -16,7 +16,7 @@ Table of contents:
 - [Procedures or functions?](#procedures-or-functions-procedures)
 - [The Larceny Benchmarks](#the-larceny-benchmarks)
 - [2024 benchmarks](#2024-benchmarks)
-- [FIB -- A classic benchmark, computes fib(n) inefficiently](#fiba-classic-benchmark-computes-fibn-inefficiently)
+- [FIB: a classic benchmark, computes fib(n) inefficiently](#fib-a-classic-benchmark-computes-fibn-inefficiently)
 - [Scheme for the Java Virtual Machine (JVM)?](#scheme-for-the-java-virtual-machine-jvm-its-not-looking-good)
 - [Brackets in Scheme dialects](#brackets-in-scheme-dialects)
 - [Two more Scheme dialects](#two-more-scheme-dialects)
@@ -521,7 +521,7 @@ I start to notice a pattern here: the Bigloo version is the fastest again.
 
 But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because with my string-heavy microbenchmark program in hand-optimized versions, the CHICKEN version only needs 56% of the Racket version's execution time.
 
-### FIB -- A classic benchmark, computes fib(n) inefficiently
+### FIB: a classic benchmark, computes fib(n) inefficiently
 
 As a comparison to my microbenchmark, here the official 2024 benchmark ranking for the _fib_ program with "01" being the the fastest rank:
 
