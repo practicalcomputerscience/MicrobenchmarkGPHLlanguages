@@ -6,8 +6,8 @@ https://dune.build/
 
 Table of contents:
 
-- [Installation tips](installation-tips)
-- [OCaml on the Java Virtual Machine (JVM)](ocaml-on-the-java-virtual-machine-jvm)
+- [Installation tips](#installation-tips)
+- [OCaml on the Java Virtual Machine (JVM)](#ocaml-on-the-java-virtual-machine-jvm)
 
 ---
 
