@@ -1,6 +1,13 @@
 Table of content:
 
 - [Kawa Scheme](#kawa-scheme)
+- [Other efforts](#other-efforts)
+- [JScheme](#jscheme)
+- [JSchemePlus](#jschemeplus)
+- [Compliance test r4rstest.scm](#compliance-test-r4rstestscm)
+- [Testing call-with-current-continuation (call/cc)](#testing-call-with-current-continuation-callcc)
+- [What about my Scheme program?](#what-about-my-scheme-program)
+- [Program performance](#program-performance)
 
 <br/>
 
