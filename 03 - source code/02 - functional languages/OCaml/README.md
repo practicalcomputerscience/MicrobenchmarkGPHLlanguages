@@ -22,8 +22,7 @@ Rename:
 
 ```
 $ dune init proj password_encryption
-$ cd password_encryption
-< check _main.ml_ file in project sub directory ./bin >
+$ cd password_encryption  # check main.ml file in project sub directory ./bin
 $ dune build
 $ ./_build/default/bin/main.exe  # run program in Ubuntu 24 LTS
 ```
@@ -113,18 +112,18 @@ $ ocamljava -c password_encryption_perf_stats_main.ml
 $ ocamljava -o password_encryption_perf_stats_main.jar password_encryption_perf_stats_main.cmj
 ```
 
-...and ran it on the JVM:
-
-```
-$ time java -jar password_encryption_perf_stats_main.jar
-```
-
-with version:
+..with Java version:
 
 ```
 $ java -version
 ... OpenJDK Runtime Environment (build 21.0.7...) ...
 $
+```
+
+..and ran it on the JVM:
+
+```
+$ time java -jar password_encryption_perf_stats_main.jar
 ```
 
 Result: 724 [milliseconds] 
