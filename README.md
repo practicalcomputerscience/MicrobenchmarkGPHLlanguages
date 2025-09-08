@@ -464,11 +464,11 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 #### The 1 second execution time limit
 
-After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second:
+After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second (with the PowerShell script being the edge case):
 
 ![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately. This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
+I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately (TBD). This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
 #### Measuring program execution times
 
@@ -491,16 +491,16 @@ from time import monotonic
 
 ..I got doubts about an acceptable level of correctness. So, I deleted source code like this and started to measure the execution time of a program only _externally_.
 
-For slower programs, maybe with an execution time of 100 milliseconds and up, I used a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ or a variant named _...cwd2a_: ![Bash shell scripts to measure slower execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/README.md#bash-shell-scripts-to-measure-slower-execution-times), like this for example for the PowerShell script:
+For slower programs, maybe with an execution time of 100 milliseconds and up, I first used a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ or a variant named _...cwd2a_: ![Bash shell scripts to measure slower execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/README.md#bash-shell-scripts-to-measure-slower-execution-times), like this for example for the PowerShell script:
 
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
 ```
 
-However, I got doubts again, although in many but not all cases the results are quite the same:
+However, I got doubts again, although in all cases where I compared both methods to measure execution times specifically the results are quite the same:
 
 ```
-$ sudo perf stat -r 20 ./random_streams_for_perf_stats
+$ sudo perf stat -r 20 pwsh random_streams_for_perf_stats.ps
 ```
 
 So, in the end I only use the _perf-stat_ program because this is the method which can also precisely measure the execution times of the faster programs.
