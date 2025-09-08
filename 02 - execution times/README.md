@@ -2,7 +2,11 @@
 
 <br/>
 
+### Comparison of Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM (ahead-of-time native image compilation)
+
 ![plot](./mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
+
+https://www.graalvm.org/
 
 <br/>
 
