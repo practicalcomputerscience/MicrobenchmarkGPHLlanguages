@@ -6,31 +6,47 @@
 
 <br/>
 
-### Bash shell scripts to measure slower execution times
+2025-09-08: this is a very bad idea!
 
-"Slower" means 100 milliseconds or more for example.
+> #### Bash shell scripts to measure slower execution times
 
-Difference between scripts:
+=> all programs, be it standalone executables or scripts, are only to be execution time measured with one method to compare apples with apples!
 
-- _exe_times_statistics_for_one_test_case_in_cwd2_ and
-- _exe_times_statistics_for_one_test_case_in_cwd2a_
+Here, this is Linux program _**perf-stat**_:
 
-..is the number of arguments. With two arguments (that is _scala_ and _random_streams_for_perf_stats.scala_) use for example:
+- https://linux.die.net/man/1/perf-stat
+- https://commandmasters.com/commands/perf-linux/
 
-```
-$ ./exe_times_statistics_for_one_test_case_in_cwd2 scala random_streams_for_perf_stats.scala
-```
+<br/>
 
-With three arguments use for example:
+For example, the execution time of uberJAR file _password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar_, being executed on the Java Virtual Machine, is measured with this command, which is calculating the mean and other summary statistics: 
 
 ```
-$ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar random_streams_for_perf_stats.jar
-```
+$ sudo perf stat -r 20 java -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
 
-Make sure that the access permissions of these scripts are sufficient. I do this for example:
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+...
 
-```
-$ chmod 755 ./exe_times_statistics_for_one_test_case_in_cwd2
+Performance counter stats for 'java -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar' (20 runs):
+
+            669,40 msec task-clock                       #    2,551 CPUs utilized               ( +-  7,20% )
+             1.965      context-switches                 #    2,935 K/sec                       ( +-  2,41% )
+                96      cpu-migrations                   #  143,411 /sec                        ( +-  6,02% )
+            23.909      page-faults                      #   35,717 K/sec                       ( +-  0,71% )
+     2.094.798.865      cycles                           #    3,129 GHz                         ( +-  1,87% )
+     2.356.202.295      instructions                     #    1,12  insn per cycle              ( +-  0,43% )
+       467.089.273      branches                         #  697,770 M/sec                       ( +-  0,42% )
+        14.852.740      branch-misses                    #    3,18% of all branches             ( +-  0,35% )
+                        TopdownL1                 #     20,1 %  tma_backend_bound      
+                                                  #     31,8 %  tma_bad_speculation    
+                                                  #     29,4 %  tma_frontend_bound     
+                                                  #     18,8 %  tma_retiring             ( +-  1,77% )
+
+            0,2624 +- 0,0184 seconds time elapsed  ( +-  7,02% )
+
+$
 ```
 
 ##_end
