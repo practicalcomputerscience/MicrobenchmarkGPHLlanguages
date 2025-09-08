@@ -72,7 +72,7 @@ Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01,
 $
 ```
 
-When you want the "normal" **OpenJDK** installation being your default Java environment again, then edit your _**.bashrc**_ file to get it back in front and edit its last two lines like this:
+When you want the "normal" **OpenJDK** installation being your default Java environment again, then edit and re-activate your _**.bashrc**_ file to get it back in front. Comment its last two lines like this:
 
 ```
 # export SDKMAN_DIR="$HOME/.sdkman"
@@ -81,21 +81,16 @@ When you want the "normal" **OpenJDK** installation being your default Java envi
 
 Only when working with the GraalVM I use the Java version installed with SDKMAN!, otherwise not.
 
+#### Kotlin
+
+I start with the Kotlin version because this is the easiest of all.
 
 
-
-
-
-(TBD)
 
 #### Scala
 
-See notes in the header comment block from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala
-..and also here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala
-
-(TBD)
-
-#### Kotlin
+See notes in the header comment block from this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala)
+..and also from this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala)
 
 (TBD)
 
@@ -108,11 +103,25 @@ See notes in the header comment block from here: https://github.com/practicalcom
 
 ### GraalVM and Python
 
+#### a/ Presumably the right way (it's not!)
+
+(TBD)
+
 I wasn't successful in building a standalone executable from my Python program. The GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which also prevents the execution of a resulting uberJAR file based on Python source code on the JVM (with the _$ java -jar_ command). That's the end of this development path since Python is different:
 
 > Python is a large language. “Batteries included” has long been a core tenet of CPython.
 
 From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the normal version of Python.)
+
+#### b/ xxx
+
+(TBD)
+
+#### c/ xxx
+
+(TBD)
+
+<br/>
 
 ### Peak performance with the JVM, time to start performance with the GraalVM
 
