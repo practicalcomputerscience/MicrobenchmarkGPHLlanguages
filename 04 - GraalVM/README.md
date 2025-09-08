@@ -16,18 +16,9 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 - very fast, standalone, native binary executables for Linux can be built by it according to my experience:
 
-![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/mean_stddev_err_whiskers%20--%20only%20GraalVM%20a.png)
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-For example, with the Scala and Kotlin versions, these programs run faster than my OCaml, V, Ada or Mojo natively compiled versions!
-
-Curious fact about Scala and Kotlin:
-
-- the slower of both languages on the JVM, that is Scala, now runs faster with the help of the GraalVM:
-
-![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/mean_stddev_err_whiskers%20--%20only%20GraalVM%20b.png)
-
-- Scala with GraalVM: 14.5 milliseconds (mean of 20 runs), down from 143 milliseconds on the JVM
-- Kotlin with GraalVM: 16.3 milliseconds (mean of 20 runs), down from 108 milliseconds on the JVM
+For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program is now faster than the Python version.
 
 <br/>
 
