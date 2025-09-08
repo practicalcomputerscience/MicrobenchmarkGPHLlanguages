@@ -2,15 +2,15 @@
 
 to-do: practical tips: how to make a uberJAR file and compile it with the GraalVM: see _(TBD)_ below
 
-- Scala
+- Scala: TBD
 
-- Kotlin
+- Kotlin: done!
 
-- Clojure
+- Clojure: TBD
 
 <br/>
 
-### GraalVM
+## GraalVM
 
 Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin** and **Clojure** program is a real hit:
 
@@ -31,18 +31,18 @@ Curious fact about Scala and Kotlin:
 
 <br/>
 
-### How to make a standalone executable for Linux with the GraalVM
+## How to make a standalone executable for Linux with the GraalVM
 
 Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux.
 
-#### SDKMAN! and Java versions
+### SDKMAN! and Java versions
 
 To install the GraalVM in your Linux system (https://www.graalvm.org/latest/getting-started/linux/) I recommend to do it with installing _The Software Development Kit Manager_ (_SDKMAN!_) first: https://sdkman.io/install/
 
 ```
 $ curl -s "https://get.sdkman.io" | bash
 ...
-$ source "$HOME/.sdkman/bin/sdkman-init.sh"  # this command should add two lines at the end of the .bashrc file. See below.
+$ source "$HOME/.sdkman/bin/sdkman-init.sh"  # this command adds two (active) lines at the end of the .bashrc file. See below.
 ...
 $ sdk version  # check out installation success
 
@@ -53,7 +53,7 @@ native: 0.7.4 (linux x86_64)
 $
 ```
 
-Then the GraalVM (for Java version 24) can be installed with this command:
+Then the GraalVM (for Java version 24) can be installed with like this:
 
 ```
 $ sdk install java 24-graal
@@ -62,7 +62,7 @@ $ sdk install java 24-graal
 This command will install its own Java version at: _$HOME/.sdkman/candidates/java/current/bin_
 
 
-Check it out like this:
+Check this out like this:
 
 ```
 $ java -version
@@ -72,7 +72,7 @@ Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01,
 $
 ```
 
-When you want the "normal" **OpenJDK** installation being your default Java environment again, then edit and re-activate your _**.bashrc**_ file to get it back in front. Comment its last two lines like this:
+When you want the "normal" **OpenJDK** (Java Development Kit: https://openjdk.org/index.html) installation being your default Java environment again, then edit and re-activate your _**.bashrc**_ file. Comment its last two lines like this:
 
 ```
 # export SDKMAN_DIR="$HOME/.sdkman"
@@ -81,19 +81,169 @@ When you want the "normal" **OpenJDK** installation being your default Java envi
 
 Only when working with the GraalVM I use the Java version installed with SDKMAN!, otherwise not.
 
-#### Kotlin
+### Kotlin
 
-I start with the Kotlin version because this is the easiest of all.
+I start with the Kotlin version because this is the easiest to do of all.
+
+First I compile the uberJAR file from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin/random_streams_for_perf_stats.kt) like this:
+
+```
+$ kotlinc random_streams_for_perf_stats.kt -include-runtime -d random_streams_for_perf_stats.jar -opt-in=kotlin.ExperimentalStdlibApi
+```
+
+Then I test the resulting uberJAR file with the Java version of the Oracle GraalVM (see above):
+
+```
+$ java -jar random_streams_for_perf_stats.jar
+...
+$
+```
+
+Now I build the standalone binary executable with GraalVM's _native-image_ command:
+
+```
+$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar random_streams_for_perf_stats.jar
+...
+$
+```
+
+> **Warning**
+This build command may take its time!
 
 
+Finally, I should be able to run the standalone executable:
 
-#### Scala
+```
+$ ./random_streams_for_perf_stats
+...
+```
 
-See notes in the header comment block from this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala)
-..and also from this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala)
+### Scala
 
-(TBD)
+Also see the notes in the header comment block from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala) and also from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala)
 
+#### A first way
+
+A first, intuitive way is to use Scala's _simple build tool_ (_**sbt**: https://www.scala-sbt.org/) because it allows you to make a standalone executable within one tool. See also from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#on-scala-installations (TBD)
+
+This procedure requires to fix and check a few configuration files first:
+
+_**./build.sbt**_
+
+I post this file, which is located in the sbt project's root directory, in full to avoid any ambiguity:
+
+```
+val scala3Version = "3.6.4"
+
+lazy val root = project
+  .in(file("."))
+  .settings(
+    name := "password_encryption_perf_stats_GraalVM",
+    version := "0.1.0-SNAPSHOT",
+
+    scalaVersion := scala3Version,
+
+    libraryDependencies += "org.scalameta" %% "munit" % "1.0.0" % Test
+  )
+
+  enablePlugins(ScalaNativePlugin)
+```
+
+The only salient line here is the last one with directive _enablePlugins(ScalaNativePlugin)_.
+
+<br/>
+
+_**./project/plugin.sbt**_
+
+This file needs to be created in the project's subdirectory _project_ and has only one directive line:
+
+```
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.7")
+```
+
+You don't need to install the **Maven** tool (a build tool for Java projects: https://mvnrepository.com/artifact/org.scala-native/sbt-scala-native_2.12_1.0; like this for example: _$ sdk install maven_ to use the SDKMAN! another time) at this point, because the sbt takes care about the given versions in the project's configuration files. That means for example that you could conveniently upgrade from older version 0.5.7 to latest version 0.5.8 (as of 2025-09-08) of Scala Native by only updating the _plugin.sbt_ file and running the sbt again!
+
+However, also check your _.bashrc_ file to see that your active Java environment is indeed the Oracle GraalVM one (see from above).
+
+Now start the sbt project, here named _password_encryption_perf_stats_GraalVM_, with Scala [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala) located in the _./src/main/scala_ subdirectory.
+
+Then you start the sbt and enter sbt commands _compile_, _run_ (as a test) and _exit_:
+
+```
+$ sbt
+copying runtime jar...
+[info] welcome to sbt 1.10.11 (Ubuntu Java 21.0.8)
+...
+sbt:password_encryption_perf_stats_GraalVM> compile
+...
+sbt:password_encryption_perf_stats_GraalVM> run
+...
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+[success] Total time: 5 s, completed Sep 8, 2025, 11:54:06 AM
+sbt:password_encryption_perf_stats_GraalVM> exit
+[info] shutting down sbt server
+$
+```
+
+Yes, the sbt is not for the faint of heart.
+
+If all went well, you can run the resulting standalone executable like this:
+
+```
+$ ./target/scala-3.6.4/password_encryption_perf_stats_graalvm
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+#### A siginificantly faster Scala based program
+
+However, using the Java(TM) SE Runtime Environment of the Oracle GraalVM isn't the best way to make a fast Scala based standalone executable in Linux as I found out. Using the "conventional" OpenJDK can create a faster one, at least in my case:
+
+```
+$ java -version
+openjdk version "21.0.8" 2025-07-15
+OpenJDK Runtime Environment (build 21.0.8+9-Ubuntu-0ubuntu124.04.1)
+OpenJDK 64-Bit Server VM (build 21.0.8+9-Ubuntu-0ubuntu124.04.1, mixed mode, sharing)
+$
+```
+
+> **Warning**
+Now be careful: you need another sbt project to continue, here just named _password_encryption_perf_stats_. You cannot use the same sbt project as with the GraalVM!
+
+So, after changing back to the OpenJDK Runtime Environment (see _.rcbash_ file from above) I run the _assembly_ command of the sbt in the _password_encryption_perf_stats_ project:
+
+```
+.../password_encryption_perf_stats$ sbt assembly
+```
+
+..which creates this uberJAR file: _./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar_
+
+The next and final step is (almost) the same as shown above: compile the standalone executable with GraalVM's _native-image_ command:
+
+```
+$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+```
+
+..which is then located in the project's root directory as file: _./password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT_
+
+Execution times (mean of 20 runs with: _$ sudo perf stat -r 20 < program name >_):
+
+- GraalVM based: 152.6 milliseconds
+- OpenJDK based: 46.3 milliseconds
+
+Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
+
+File sizes of standalone executables:
+
+- GraalVM based: 3,244,144 bytes
+- OpenJDK based: 15,665,416 bytes
+
+<br/>
 
 #### Clojure
 
@@ -103,7 +253,11 @@ See notes in the header comment block from this [source code](https://github.com
 
 ### GraalVM and Python
 
+TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experiences. I couldn't make anything faster, though I found a way to make a working but super-slow program.
+
 #### a/ Presumably the right way (it's not!)
+
+Intuitively...
 
 (TBD)
 
@@ -125,6 +279,6 @@ From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the 
 
 ### Peak performance with the JVM, time to start performance with the GraalVM
 
-However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is faster with the GraalVM; see from: https://www.graalvm.org/python/docs/#comparison
+However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is faster with the GraalVM; see from here: https://www.graalvm.org/python/docs/#comparison
 
 ##_end
