@@ -19,7 +19,7 @@ $ sudo perf stat -r 20 ./password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT
 
 ----
 2025-06-09
-  with GraalVM installed: $ java -- version
+  with GraalVM installed: $ java --version
   java 24 2025-03-18
   Java(TM) SE Runtime Environment Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01)
   Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01, mixed mode, sharing)
@@ -141,3 +141,4 @@ object random_streams_for_perf_stats {
 }
 
 // end of password_encryption_perf_stats.scala
+
