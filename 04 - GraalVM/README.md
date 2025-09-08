@@ -36,7 +36,19 @@ Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and 
 
 #### 
 
-sdkman
+To install the GraalVM in your Linux system (https://www.graalvm.org/latest/getting-started/linux/) I recommend to do it with installing the _The Software Development Kit Manager_ (_SDKMAN!_) first: https://sdkman.io/install/
+
+```
+$ curl -s "https://get.sdkman.io" | bash
+```
+
+Then ...
+
+
+
+
+
+(TBD)
 
 #### Scala
 
