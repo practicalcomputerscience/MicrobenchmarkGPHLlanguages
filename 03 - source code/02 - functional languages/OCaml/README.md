@@ -15,14 +15,14 @@ Table of contents:
 
 Rename:
 
-- _password_encryption_main.ml_ into _main.ml_ located in the _./bin_ project sub directory
-- _password_encryption_perf_stats_main.ml_ into _main.ml_ located in the _./bin_ project sub directory
+- _password_encryption_main.ml_ into _main.ml_ located in the _./bin_ project subdirectory
+- _password_encryption_perf_stats_main.ml_ into _main.ml_ located in the _./bin_ project subdirectory
 
 ..here with project directories _password_encryption_ and _password_encryption_perf_stats_ respectively, each built with the Dune build tool like this for example:
 
 ```
 $ dune init proj password_encryption
-$ cd password_encryption  # check main.ml file in project sub directory ./bin
+$ cd password_encryption  # check main.ml file in project subdirectory ./bin
 $ dune build
 $ ./_build/default/bin/main.exe  # run program in Ubuntu 24 LTS
 ```
@@ -36,7 +36,7 @@ Including external libraries, for example for this import in the _main.ml_ file 
 open Unix;;
 ```
 
-..is done in the _dune_ configuration file which is located in the _./bin_ project sub directory:
+..is done in the _dune_ configuration file which is located in the _./bin_ project subdirectory:
 
 ```
 (executable
