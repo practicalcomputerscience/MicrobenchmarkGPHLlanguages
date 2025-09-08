@@ -1,8 +1,9 @@
 2025-09-08: work in progress
 
-to-do: practical tips: how to make a uberJAR file and compile it with the GraalVM: see _(TBD)_ below
+to-do: practical tips: how to make a uberJAR file and compile it with the GraalVM:
 
 - Clojure: TBD
+- Python: TBD
 
 <br/>
 
@@ -14,7 +15,7 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program is now faster than the Python version.
+For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program is now faster than the (normal) Python version.
 
 <br/>
 
@@ -246,7 +247,7 @@ Though, the file size of the standalone executable based on the OpenJDK is signi
 
 ### GraalVM and Python
 
-TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experience. I couldn't make anything faster, though I found a way to make a working but super-slow program.
+TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experience. I couldn't produce anything faster, though I found a way to make a working but super-slow program.
 
 #### a/ Presumably the right way (it's not!)
 
