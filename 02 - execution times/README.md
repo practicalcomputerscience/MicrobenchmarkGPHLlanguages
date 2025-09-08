@@ -6,7 +6,7 @@
 
 <br/>
 
-2025-09-08: this is not the best idea:
+2025-09-08: this may be not the best idea:
 
 > #### Bash shell scripts to measure slower execution times
 
@@ -19,34 +19,44 @@ Here, this is Linux program _**perf-stat**_:
 
 <br/>
 
-For example, the execution time of uberJAR file _password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar_, being executed on the Java Virtual Machine, is measured with this command, which is calculating the mean and other summary statistics: 
+#### The Clojure example
+
+For example, the execution time of uberJAR file _random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar_, being executed on the Java Virtual Machine, can be measured with this script command: 
 
 ```
-$ sudo perf stat -r 20 java -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
-
-generating a random bit stream...
-Bit stream has been written to disk under name:  random_bitstring.bin
-Byte stream has been written to disk under name: random_bitstring.byte
+$ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
 ...
+mean = 787 [milliseconds]
+$
+```
 
-Performance counter stats for 'java -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar' (20 runs):
+With the _perf-stat_ program, mean and other summary statistics may look like this:
 
-            669,40 msec task-clock                       #    2,551 CPUs utilized               ( +-  7,20% )
-             1.965      context-switches                 #    2,935 K/sec                       ( +-  2,41% )
-                96      cpu-migrations                   #  143,411 /sec                        ( +-  6,02% )
-            23.909      page-faults                      #   35,717 K/sec                       ( +-  0,71% )
-     2.094.798.865      cycles                           #    3,129 GHz                         ( +-  1,87% )
-     2.356.202.295      instructions                     #    1,12  insn per cycle              ( +-  0,43% )
-       467.089.273      branches                         #  697,770 M/sec                       ( +-  0,42% )
-        14.852.740      branch-misses                    #    3,18% of all branches             ( +-  0,35% )
-                        TopdownL1                 #     20,1 %  tma_backend_bound      
-                                                  #     31,8 %  tma_bad_speculation    
-                                                  #     29,4 %  tma_frontend_bound     
-                                                  #     18,8 %  tma_retiring             ( +-  1,77% )
+```
+$ sudo perf stat -r 20 java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
+...
+ Performance counter stats for 'java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar' (20 runs):
 
-            0,2624 +- 0,0184 seconds time elapsed  ( +-  7,02% )
+          3.070,27 msec task-clock                       #    3,939 CPUs utilized               ( +-  3,23% )
+             6.112      context-switches                 #    1,991 K/sec                       ( +-  0,68% )
+               242      cpu-migrations                   #   78,820 /sec                        ( +-  3,64% )
+            76.138      page-faults                      #   24,798 K/sec                       ( +-  0,88% )
+    11.931.501.930      cycles                           #    3,886 GHz                         ( +-  1,02% )
+    15.158.326.578      instructions                     #    1,27  insn per cycle              ( +-  0,69% )
+     2.954.916.075      branches                         #  962,428 M/sec                       ( +-  0,71% )
+        72.941.379      branch-misses                    #    2,47% of all branches             ( +-  0,50% )
+                        TopdownL1                 #     24,2 %  tma_backend_bound      
+                                                  #     34,0 %  tma_bad_speculation    
+                                                  #     21,0 %  tma_frontend_bound     
+                                                  #     20,8 %  tma_retiring             ( +-  0,87% )
+
+            0,7794 +- 0,0306 seconds time elapsed  ( +-  3,92% )
 
 $
 ```
+
+Both results are close and within a standard deviation of +-3,92%.
+
+<br/>
 
 ##_end
