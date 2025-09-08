@@ -4,7 +4,7 @@ To-do:
 - fix TBD's
 - own Wiki page
 - implement a concurreny solution in Chapel, compare to the Go solution
-- TOC here at top?
+- TOC here at top
 - test: exhausting the generated random bitstream when user asks for a super-long password
 
 <br/>
