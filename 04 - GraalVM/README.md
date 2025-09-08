@@ -14,9 +14,9 @@ to-do: practical tips: how to make a uberJAR file and compile it with the GraalV
 
 Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin** and **Clojure** program is a real hit:
 
-- very fast, standalone, native binary executables for Linux can be built by it according to my experience:
+- very fast, standalone, native binary executables for Linux can be built with it according to my experience:
 
-![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
 For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program is now faster than the Python version.
 
@@ -74,7 +74,7 @@ Only when working with the GraalVM I use the Java version installed with SDKMAN!
 
 ### Kotlin
 
-I start with the Kotlin version because this is the easiest to do of all.
+I start with the Kotlin version because it's the easiest to do of all languages I tested.
 
 First I compile the uberJAR file from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin/random_streams_for_perf_stats.kt) like this:
 
@@ -115,9 +115,9 @@ Also see the notes in the header comment block from this [source code file](http
 
 #### A first way
 
-A first, intuitive way is to use Scala's _simple build tool_ (_**sbt**: https://www.scala-sbt.org/) because it allows you to make a standalone executable within one tool. See also from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#on-scala-installations (TBD)
+A first, intuitive way is to use Scala's _simple build tool_ (_**sbt**_: https://www.scala-sbt.org/) because it allows you to make a standalone executable within one tool. See also from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#on-scala-installations (TBD)
 
-This procedure requires to fix and check a few configuration files first:
+This procedure requires to fix or check a few configuration files first:
 
 _**./build.sbt**_
 
@@ -146,13 +146,17 @@ The only salient line here is the last one with directive _enablePlugins(ScalaNa
 
 _**./project/plugin.sbt**_
 
-This file needs to be created in the project's subdirectory _project_ and has only one directive line:
+This file needs to be created in the project's subdirectory _project_ and has only one directive:
 
 ```
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.7")
 ```
 
-You don't need to install the **Maven** tool (a build tool for Java projects: https://mvnrepository.com/artifact/org.scala-native/sbt-scala-native_2.12_1.0; like this for example: _$ sdk install maven_ to use the SDKMAN! another time) at this point, because the sbt takes care about the given versions in the project's configuration files. That means for example that you could conveniently upgrade from older version 0.5.7 to latest version 0.5.8 (as of 2025-09-08) of Scala Native by only updating the _plugin.sbt_ file and running the sbt again!
+You don't need to install the **Maven** tool at this point.
+
+This is a build tool for Java projects: https://mvnrepository.com/artifact/org.scala-native/sbt-scala-native_2.12_1.0 and can be installed like this for example: _$ sdk install maven_ to use the SDKMAN! another time) 
+
+The sbt takes care about the given versions in the project's configuration files. This means for example that you could conveniently upgrade from older version 0.5.7 to latest version 0.5.8 (as of 2025-09-08) of Scala Native by only updating the _plugin.sbt_ file and running the sbt again.
 
 However, also check your _.bashrc_ file to see that your active Java environment is indeed the Oracle GraalVM one (see from above).
 
@@ -206,7 +210,7 @@ $
 > **Warning**
 Now be careful: you need another sbt project to continue, here just named _password_encryption_perf_stats_. You cannot use the same sbt project as with the GraalVM!
 
-So, after changing back to the OpenJDK Runtime Environment (see _.rcbash_ file from above) I run the _assembly_ command of the sbt in the _password_encryption_perf_stats_ project:
+So, after changing back to the OpenJDK Runtime Environment (see _.bashrc_ file from above) I run the _assembly_ command of the sbt in the _password_encryption_perf_stats_ project:
 
 ```
 .../password_encryption_perf_stats$ sbt assembly
@@ -224,14 +228,12 @@ $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/
 
 Execution times (mean of 20 runs with: _$ sudo perf stat -r 20 < program name >_):
 
-- GraalVM based: 152.6 milliseconds
-- OpenJDK based: 46.3 milliseconds
+- Java(TM) SE Runtime Environment of Oracle GraalVM based: 124.8 milliseconds +-9,13% standard deviation
+- OpenJDK based: 46.3 milliseconds +-1,16% standard deviation
 
-Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
+Though, the file size of the standalone executable based on the OpenJDK is significantly bigger. File sizes of standalone executables:
 
-File sizes of standalone executables:
-
-- GraalVM based: 3,244,144 bytes
+- Java(TM) SE Runtime Environment of Oracle GraalVM based: 3,244,144 bytes
 - OpenJDK based: 15,665,416 bytes
 
 <br/>
