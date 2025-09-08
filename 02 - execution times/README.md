@@ -6,7 +6,7 @@
 
 <br/>
 
-2025-09-08: this is a very bad idea!
+2025-09-08: this is a bad idea:
 
 > #### Bash shell scripts to measure slower execution times
 
