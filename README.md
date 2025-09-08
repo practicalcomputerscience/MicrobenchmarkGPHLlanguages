@@ -468,8 +468,6 @@ After some languages I noticed that all of them - often after some iterations of
 
 ![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-There's something to explain about this and other diagrams, but I'll do it later in extra pages. (TBD)
-
 I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately. This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
 #### Measuring program execution times
@@ -491,19 +489,25 @@ from time import monotonic
 ...
 ```
 
-..I got doubts about an acceptable level of correctness. So, I deleted source code like this and started to measure the execution time of a program only _externally_. With the faster program with the _perf-stat program_ (https://linux.die.net/man/1/perf-stat) like this:
+..I got doubts about an acceptable level of correctness. So, I deleted source code like this and started to measure the execution time of a program only _externally_.
 
-```
-$ sudo perf stat -r 20 ./random_streams_for_perf_stats
-```
-
-Initially and for the slower programs, maybe 100 milliseconds and up, like here for example with the PowerShell script, I use a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ or a variant named _...cwd2a_ to measure the execution of "uberJAR" files on the Java Virtual Machine (JVM): ![Bash shell scripts to measure slower execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/README.md#bash-shell-scripts-to-measure-slower-execution-times)
+For slower programs, maybe with an execution time of 100 milliseconds and up, I used a Bash shell script named _exe_times_statistics_for_one_test_case_in_cwd2_ or a variant named _...cwd2a_: ![Bash shell scripts to measure slower execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/README.md#bash-shell-scripts-to-measure-slower-execution-times), like this for example for the PowerShell script:
 
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
 ```
 
-Though, implementing a stopwatch in a new programming language is usually a learning experience and sometimes, in one or the other functional programming language, even a challenge like here in OCaml:
+However, I got doubts again, although in most cases the results are quite the same:
+
+```
+$ sudo perf stat -r 20 ./random_streams_for_perf_stats
+```
+
+So, in the end I only use the _perf-stat_ program because this is the method which can also precisely measure the execution times of the faster programs.
+
+<br/>
+
+Implementing a stopwatch in a new programming language is usually a learning experience and sometimes, in one or the other functional programming language, even a challenge like this in OCaml:
 
 ```
 ...
@@ -521,7 +525,5 @@ Though, implementing a stopwatch in a new programming language is usually a lear
 ```
 
 So, I kept the old program versions to see how to read the operating system's monotonic clock.
-
-(TBD: extra page to mark potential differences when using _perf_ command and quick to use _time_ command; sometimes small deviations, sometimes bigger ones)
 
 ##_end
