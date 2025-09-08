@@ -2,10 +2,6 @@
 
 to-do: practical tips: how to make a uberJAR file and compile it with the GraalVM: see _(TBD)_ below
 
-- Scala: TBD
-
-- Kotlin: done!
-
 - Clojure: TBD
 
 <br/>
@@ -72,6 +68,8 @@ When you want the "normal" **OpenJDK** (Java Development Kit: https://openjdk.or
 
 Only when working with the GraalVM I use the Java version installed with SDKMAN!, otherwise not.
 
+<br/>
+
 ### Kotlin
 
 I start with the Kotlin version because it's the easiest to do of all languages I tested.
@@ -108,6 +106,8 @@ Finally, I should be able to run the standalone executable:
 $ ./random_streams_for_perf_stats
 ...
 ```
+
+<br/>
 
 ### Scala
 
@@ -231,7 +231,7 @@ Execution times (mean of 20 runs with: _$ sudo perf stat -r 20 < program name >_
 - Java(TM) SE Runtime Environment of Oracle GraalVM based: 124.8 milliseconds +-9,13% standard deviation
 - OpenJDK based: 46.3 milliseconds +-1,16% standard deviation
 
-Though, the file size of the standalone executable based on the OpenJDK is significantly bigger. File sizes of standalone executables:
+Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
 
 - Java(TM) SE Runtime Environment of Oracle GraalVM based: 3,244,144 bytes
 - OpenJDK based: 15,665,416 bytes
@@ -246,7 +246,7 @@ Though, the file size of the standalone executable based on the OpenJDK is signi
 
 ### GraalVM and Python
 
-TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experiences. I couldn't make anything faster, though I found a way to make a working but super-slow program.
+TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experience. I couldn't make anything faster, though I found a way to make a working but super-slow program.
 
 #### a/ Presumably the right way (it's not!)
 
