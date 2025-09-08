@@ -12,13 +12,13 @@ to-do: practical tips: how to make a uberJAR file and compile it with the GraalV
 
 ### GraalVM
 
-Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for **Scala**, **Kotlin** and **Clojure** is a real hit:
+Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin** and **Clojure** program is a real hit:
 
 - very fast, standalone, native binary executables for Linux can be built by it according to my experience:
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/mean_stddev_err_whiskers%20--%20only%20GraalVM%20a.png)
 
-With the Scala and Kotlin versions, these programs run faster than my OCaml, V, Ada or Mojo natively compiled versions for example!
+For example, with the Scala and Kotlin versions, these programs run faster than my OCaml, V, Ada or Mojo natively compiled versions!
 
 Curious fact about Scala and Kotlin:
 
@@ -32,13 +32,16 @@ Curious fact about Scala and Kotlin:
 
 ### How to make a standalone executable for Linux with the GraalVM
 
-Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux.
-
-(TBD)
+Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux:
 
 #### Scala
 
 (TBD)
+
+#### Kotlin
+
+(TBD)
+
 
 #### Clojure
 
@@ -52,8 +55,8 @@ I wasn't successful in building a standalone executable from my Python program. 
 
 From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the normal version of Python.)
 
-### Peak performance of the JVM
+### Peak performance with the JVM, time to start performance with the GraalVM
 
-However, be aware that peak performance (also considering GC = Garbage Collection) is **probably better on the JVM**, but time to start is faster with the GraalVM; see from: https://www.graalvm.org/python/docs/#comparison
+However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is faster with the GraalVM; see from: https://www.graalvm.org/python/docs/#comparison
 
 ##_end
