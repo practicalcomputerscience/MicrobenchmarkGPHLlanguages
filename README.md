@@ -497,7 +497,7 @@ For slower programs, maybe with an execution time of 100 milliseconds and up, I 
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
 ```
 
-However, I got doubts again, although in most cases the results are quite the same:
+However, I got doubts again, although in many but not all cases the results are quite the same:
 
 ```
 $ sudo perf stat -r 20 ./random_streams_for_perf_stats
