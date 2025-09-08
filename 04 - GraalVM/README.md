@@ -32,9 +32,16 @@ Curious fact about Scala and Kotlin:
 
 ### How to make a standalone executable for Linux with the GraalVM
 
-Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux:
+Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux.
+
+#### 
+
+sdkman
 
 #### Scala
+
+See notes in the header comment block from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala
+..and also here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala
 
 (TBD)
 
