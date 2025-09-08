@@ -6,11 +6,11 @@
 
 <br/>
 
-2025-09-08: this is a bad idea:
+2025-09-08: this is not the best idea:
 
 > #### Bash shell scripts to measure slower execution times
 
-=> all programs, be it standalone executables or scripts, are only to be execution time measured with one method to compare apples with apples!
+=> all programs, be it standalone executables or scripts, are only to be execution time measured with one method to compare apples with apples.
 
 Here, this is Linux program _**perf-stat**_:
 
