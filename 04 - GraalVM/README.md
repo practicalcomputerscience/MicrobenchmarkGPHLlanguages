@@ -1,13 +1,20 @@
 2025-09-08: work in progress
 
-to-do: practical tips: how to make a uberJAR file and compile it with the GraalVM:
+to-do: GraalVM and Python
 
-- Clojure: TBD
-- Python: TBD
+Table of contents:
 
-Make a TOC: TBD
+- [GraalVM](#graalvm)
+- [How to make a standalone executable for Linux with the GraalVM](how-to-make-a-standalone-executable-for-linux-with-the-graalvm)
+- [SDKMAN! and Java versions](sdkman-and-java-versions)
+- [Kotlin](kotlin)
+- [Scala](scala)
+- [Clojure](clojure)
+- [GraalVM and Python](graalvm-and-python)
 
 <br/>
+
+---
 
 ## GraalVM
 
