@@ -5,6 +5,8 @@ to-do: practical tips: how to make a uberJAR file and compile it with the GraalV
 - Clojure: TBD
 - Python: TBD
 
+Make a TOC: TBD
+
 <br/>
 
 ## GraalVM
@@ -66,8 +68,6 @@ When you want the "normal" **OpenJDK** (Java Development Kit: https://openjdk.or
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
-
-Only when working with the GraalVM I use the Java version installed with SDKMAN!, otherwise not.
 
 <br/>
 
@@ -239,7 +239,7 @@ Though, the file size of the standalone executable based on the OpenJDK is signi
 
 <br/>
 
-#### Clojure
+### Clojure
 
 First, have the build environment Leiningen (https://leiningen.org/) installed if not done yet: 
 
@@ -272,35 +272,50 @@ Bye for now!
 $
 ```
 
-Now create an uberJAR file for the JVM from it:
-
-- specify a namespace as your _:main_ in file _project.clj_ in the project's root directory and ensure it’s also AOT (Ahead Of Time) compiled:
+Specify a namespace as your _:main_ in project configuration file _project.clj_ in the project's root directory and ensure it’s also AOT (Ahead Of Time) compiled:
 
 ```
-…
+(defproject my_project "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
+            :url "https://www.eclipse.org/legal/epl-2.0/"}
+  :dependencies [[org.clojure/clojure "1.11.1"]]
   :main my-project.core
-…
+  :target-path "target/%s"
+  :profiles {:uberjar {:aot :all
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
 ```
 
-Now create the uberJAR file like this:
+Now create the uberJAR file and run it on the JVM like this:
 
 ```
 $ lein uberjar
 Compiling my-project.core
 Created .../my_project/target/uberjar/my_project-0.1.0-SNAPSHOT.jar
 Created .../my_project/target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar
-$
-```
-
-Run it on the JVM like this:
-
-```
 $ java -jar ./target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar
 Hello, World!
 $
 ```
 
-(TBD)
+Build the standalone binary executable with GraalVM's _native-image_ command in this expanded version and test it:
+
+```
+$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image \
+--initialize-at-build-time \
+-jar ./target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar \
+-H:+UnlockExperimentalVMOptions \
+-H:Name=my_project
+...
+$ ./my_project  # run the generated standalone executable
+Hello, World!
+$ 
+```
+
+..as seen from here: [Building A Fast Command Line App With Clojure](https://dev.to/kiraemclean/building-a-fast-command-line-app-with-clojure-1kc8)
+
+By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, the OpenJDK Java and the GraalVM's Java, at least with my Clojure programs. With both Java versions the same standalone executable file was created.
 
 <br/>
 
