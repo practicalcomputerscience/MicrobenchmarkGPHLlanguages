@@ -356,4 +356,6 @@ From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the 
 
 However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is faster with the GraalVM; see from here: https://www.graalvm.org/python/docs/#comparison
 
+<br/>
+
 ##_end
