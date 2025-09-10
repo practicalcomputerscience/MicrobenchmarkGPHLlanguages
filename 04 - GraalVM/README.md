@@ -322,7 +322,7 @@ $
 
 ..as seen from here: [Building A Fast Command Line App With Clojure](https://dev.to/kiraemclean/building-a-fast-command-line-app-with-clojure-1kc8)
 
-By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, the OpenJDK Java and the GraalVM's Java, at least with my Clojure programs. With both Java versions the same standalone executable file was created.
+By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, OpenJDK Java and GraalVM's Java, at least with my Clojure programs. With both Java versions the same standalone executable file was created.
 
 <br/>
 
