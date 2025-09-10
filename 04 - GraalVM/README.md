@@ -241,6 +241,65 @@ Though, the file size of the standalone executable based on the OpenJDK is signi
 
 #### Clojure
 
+First, have the build environment Leiningen (https://leiningen.org/) installed if not done yet: 
+
+```
+$ sudo apt install leiningen
+```
+
+You may also have a look at this page: [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/ec2f7950c255d171d3a2698952785feeb55926aa/03%20-%20source%20code/02%20-%20functional%20languages/Clojure)
+
+Creating a project, here a "Hello, World!" example app, works like this:
+
+```
+$ lein new app my_project
+$ cd my_project
+$ lein repl  # start the REPL (Read-Eval-Print Loop) for a little test
+...
+my-project.core=> (require 'my-project.core)  # the underline character becomes the dash character! Load lib "my-project.core": https://clojuredocs.org/clojure.core/require
+nil  # return value
+my-project.core=> (my-project.core/-main)  # run the example app
+Hello, World!
+nil
+my-project.core=> (source -main)  # show source code of example app
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (println "Hello, World!"))
+nil
+my-project.core=> exit  # leave the REPL
+Bye for now!
+$
+```
+
+Now create an uberJAR file for the JVM from it:
+
+- specify a namespace as your _:main_ in file _project.clj_ in the project's root directory and ensure it’s also AOT (Ahead Of Time) compiled:
+
+```
+…
+  :main my-project.core
+…
+```
+
+Now create the uberJAR file like this:
+
+```
+$ lein uberjar
+Compiling my-project.core
+Created .../my_project/target/uberjar/my_project-0.1.0-SNAPSHOT.jar
+Created .../my_project/target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar
+$
+```
+
+Run it on the JVM like this:
+
+```
+$ java -jar ./target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar
+Hello, World!
+$
+```
+
 (TBD)
 
 <br/>
