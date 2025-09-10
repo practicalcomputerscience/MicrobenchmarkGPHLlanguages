@@ -324,7 +324,11 @@ By the way: creating the uberJAR file and building the standalone binary executa
 
 ### GraalVM and Python
 
-I wasn't successful in building a standalone executable from my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) in the way like I described above for Scala etc. The GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which also prevents the execution of a resulting uberJAR file based on Python source code on the JVM (with the _$ java -jar_ command). That's the end of this development path since Python is different than Java native languages Scala, Kotlin or Clojure:
+I was not successful in building a standalone executable from my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) in the way I described above for Scala etc.
+
+Because the GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which prevents the execution of a resulting uberJAR file on the JVM (with the _$ java -jar_ command).
+
+That's the end of this development path since Python is different than Java native languages like Scala, Kotlin or Clojure:
 
 > Python is a large language. “Batteries included” has long been a core tenet of CPython.
 
@@ -332,15 +336,18 @@ From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the 
 
 #### GraalPy
 
-However, I managed to convert my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) into a standalone native application with the help of [GraalPy](https://www.graalvm.org/python/docs/#python-standalone-applications)
-See also: https://www.graalvm.org/python/docs/#linux
+However, I managed to convert my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) into a standalone native application with the help of [GraalPy](https://www.graalvm.org/python/docs/#python-standalone-applications).
 
-Spoiler alert: this standalone program runs slow: _1,1359 +- 0,0475 seconds time elapsed  ( +-  4,18% )_
+Also see: https://www.graalvm.org/python/docs/#linux
+
+Spoiler alert: this standalone program runs slow with my little benchmark program: _1,1359 +- 0,0475 seconds time elapsed  ( +-  4,18% )_
+
+<br/>
 
 Nevertheless, here's my rough description how to make it:
 
-- download a suitable gz file for your system und uncompress it in some project directory: https://github.com/oracle/graalpython/releases
-- add this to environment variable _PATH_ in the _.bashrc_ configuration file:
+- download a suitable _... .gz_ file for your system und uncompress it in some project directory: https://github.com/oracle/graalpython/releases
+- add this, depending on your system, to environment variable _PATH_ in the _.bashrc_ configuration file:
 
 ```
 export PATH="$PATH:$HOME/.../GraalVM/graalpy-24.2.1-linux-amd64/bin/"
@@ -387,6 +394,8 @@ $ graalpy -m standalone native --module <my_script.py> --output <my_binary> --ve
 $ ./<my_binary>
 ...
 Exception in thread "main" ModuleNotFoundError: No module named 'numpy'
+...
+$
 ```
 
 So, this was a failure. However, in case of my little benchmark program I fixed this program with not using _NumPy_, which is anyway only used here:
@@ -405,6 +414,7 @@ from [Python benchmark program](https://github.com/practicalcomputerscience/Micr
 # import numpy as np
 import random
 ...
+# x[0] = np.random.randint(0, m, size=1, dtype=int)[0]
 x[0] = random.randint(1,m)
 ```
 
