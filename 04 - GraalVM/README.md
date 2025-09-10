@@ -1,16 +1,12 @@
-2025-09-08: work in progress
-
-to-do: GraalVM and Python
-
 Table of contents:
 
 - [GraalVM](#graalvm)
-- [How to make a standalone executable for Linux with the GraalVM](how-to-make-a-standalone-executable-for-linux-with-the-graalvm)
-- [SDKMAN! and Java versions](sdkman-and-java-versions)
-- [Kotlin](kotlin)
-- [Scala](scala)
-- [Clojure](clojure)
-- [GraalVM and Python](graalvm-and-python)
+- [How to make a standalone executable for Linux with the GraalVM](#how-to-make-a-standalone-executable-for-linux-with-the-graalvm)
+- [SDKMAN! and Java versions](#sdkman-and-java-versions)
+- [Kotlin](#kotlin)
+- [Scala](#scala)
+- [Clojure](#clojure)
+- [GraalVM and Python](#graalvm-and-python)
 
 <br/>
 
