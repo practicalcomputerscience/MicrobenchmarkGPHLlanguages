@@ -39,6 +39,8 @@ $ lein uberjar
 $ java -jar ./target/uberjar/random_bitstring_and_flexible_password_generator-0.1.0-SNAPSHOT-standalone.jar
 ```
 
+You may also have a look at this page: [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/README.md#clojure)
+
 <br/>
 
 ### On execution speed in Clojure
