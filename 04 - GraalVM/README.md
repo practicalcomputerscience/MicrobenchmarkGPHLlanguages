@@ -328,27 +328,93 @@ By the way: creating the uberJAR file and building the standalone binary executa
 
 ### GraalVM and Python
 
-TL;DR: to make a faster Python program with the help of the GraalVM isn't worth the effort according to my experience. I couldn't produce anything faster, though I found a way to make a working but super-slow program.
-
-#### a/ Presumably the right way (it's not!)
-
-Intuitively...
-
-(TBD)
-
-I wasn't successful in building a standalone executable from my Python program. The GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which also prevents the execution of a resulting uberJAR file based on Python source code on the JVM (with the _$ java -jar_ command). That's the end of this development path since Python is different:
+I wasn't successful in building a standalone executable from my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) in the way like I described above for Scala etc. The GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which also prevents the execution of a resulting uberJAR file based on Python source code on the JVM (with the _$ java -jar_ command). That's the end of this development path since Python is different than Java native languages Scala, Kotlin or Clojure:
 
 > Python is a large language. “Batteries included” has long been a core tenet of CPython.
 
 From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the normal version of Python.)
 
-#### b/ xxx
+#### GraalPy
 
-(TBD)
+However, I managed to convert my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) into a standalone native application with the help of [GraalPy](https://www.graalvm.org/python/docs/#python-standalone-applications)
+See also: https://www.graalvm.org/python/docs/#linux
 
-#### c/ xxx
+Spoiler alert: this standalone program runs slow: _1,1359 +- 0,0475 seconds time elapsed  ( +-  4,18% )_
 
-(TBD)
+Nevertheless, here's my rough description how to make it:
+
+- download a suitable gz file for your system und uncompress it in some project directory: https://github.com/oracle/graalpython/releases
+- add this to environment variable _PATH_ in the _.bashrc_ configuration file:
+
+```
+export PATH="$PATH:$HOME/.../GraalVM/graalpy-24.2.1-linux-amd64/bin/"
+export PATH="$HOME/.sdkman/candidates/java/24-graal/bin/:$PATH"
+export JAVA_HOME="$HOME/.sdkman/candidates/java/24-graal/"
+```
+
+- do not forget to re-activate this modified _.bashrc_ file: _$ source ~/.bashrc_
+- it's important that the _JAVA_HOME_ environment variable points to a GraalVM installation and not something else: _$ $JAVA_HOME_
+- additionally, you can also test the GraalPy version: _$ graalpy -V_
+
+<br/>
+
+At this point you can create the usual virtual Python environment, a step which takes a while: _$ graalpy -m venv < my_env >_
+
+Now you can install _NumPy_ and other Python packages in this virtual environment:
+
+- first, activate the new virtual environment: _$ source < my_env >/bin/activate_
+- then, install _NumPy_ which may also take its time: _< my_env >$ pip install numpy_
+- now, you can run the Python script in two ways:
+- _< venv-dir >$ python3 < python program ~.py >_
+
+or like this:
+
+-	_< venv-dir >$ graalpy <python program ~.py >_
+
+Both ways don't provide fast program execution according to my tests.
+
+<br/>
+
+So far, no standalone native application has been produced from the Python script. This can also be done with GraalPy.
+
+First, leave the virtual Python environment if not done: _< my_env >$ deactivate_
+
+Then, build a standalone native application from your Python script with this command, a process which also takes its time:
+
+```
+$ graalpy -m standalone native --module <my_script.py> --output <my_binary> --venv <my_env> 
+```
+
+..and run it: 
+
+```
+$ ./<my_binary>
+...
+Exception in thread "main" ModuleNotFoundError: No module named 'numpy'
+```
+
+So, this was a failure. However, in case of my little benchmark program I fixed this program with not using _NumPy_, which is anyway only used here:
+
+```
+import numpy as np
+...
+x[0] = np.random.randint(0, m, size=1, dtype=int)[0]
+```
+
+from [Python benchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py)
+
+..and can be replaced with expressions:
+
+```
+# import numpy as np
+import random
+...
+x[0] = random.randint(1,m)
+```
+
+Now, running the standalone native application worked with me, but, as shown above, not in a fast fashion.
+
+By the way: this app is a monster with a file size of 352 megabytes!
 
 <br/>
 
