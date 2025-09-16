@@ -416,7 +416,7 @@ from here: ![random_bitstring_and_flexible_password_generator.go](https://github
 
 <br/>
 
-So, it's advisable to learn a little bit of functional programming nowadays.
+So, it's advisable to learn a little bit of functional programming nowadays, even though _Functional Programming is (obviously) not taking over the world_ as demonstrated here: [A little exercise in Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#a-little-exercise-in-common-lisp)
 
 <br/>
 
