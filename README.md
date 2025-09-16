@@ -17,7 +17,7 @@ Table of contents:
 - [Reading user input from the keyboard into a string](#reading-user-input-from-the-keyboard-into-a-string)
 - [In terms of execution times this is a string concatenation benchmark](#in-terms-of-execution-times-this-is-a-string-concatenation-benchmark)
 - [This program is not bullet proof](#this-program-is-not-bullet-proof)
-- [Motivation-and-orientation](#motivation-and-orientation)
+- [Motivation and orientation](#motivation-and-orientation)
 - [Parameters for the LCG (linear congruential generator)](#parameters-for-the-lcg-(linear-congruential-generator))
 - [Other aspects of a computer programming language](#other-aspects-of-a-computer-programming-language)
 - [On including lots of comments in my source code files](#on-including-lots-of-comments-in-my-source-code-files)
