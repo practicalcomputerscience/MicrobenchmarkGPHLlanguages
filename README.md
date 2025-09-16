@@ -549,4 +549,6 @@ Implementing a stopwatch in a new programming language is usually a learning exp
 
 So, I kept the old program versions to see how to read the operating system's monotonic clock.
 
+<br/>
+
 ##_end
