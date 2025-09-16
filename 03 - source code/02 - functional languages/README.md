@@ -2,6 +2,16 @@
 
 <br/>
 
+Table of contents:
+
+- [Two branches of Functional Programming (FP): pure and impure](#two-branches-of-functional-programming-fp-pure-and-impure)
+- [Logic for Computable Functions (LCF)](#logic-for-computable-functions-lcf)
+- [If You See What I Mean (ISWIM) and Pedagogic Algorithmic Language (PAL)](#if-you-see-what-i-mean-iswim-and-pedagogic-algorithmic-language-pal)
+- [What functional programming language introduced the idea of "immutuable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutuable-variables)
+- [Functional languages on the on the Java Virtual Machine (JVM)](#functional-languages-on-the-on-the-java-virtual-machine-jvm)
+
+---
+
 # Two branches of Functional Programming (FP): pure and impure
 
 I came to the conclusion that there must be two major branches of Functional Programming languages. The older one, going back to **Lisp** and including **Scheme** and its related dialects. And then there must be a different one that led to languages like **OCaml** and **Haskell** for example.
@@ -59,5 +69,13 @@ I just remembered a reference expression somewhere in my program versions so far
 
 - a pure one, like Haskell, and
 - a non-pure (impure) one, like OCaml for example
+
+<br/>
+
+## Functional languages on the on the Java Virtual Machine (JVM)
+
+(TBD)
+
+<br/>
 
 ##_end
