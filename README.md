@@ -9,6 +9,29 @@ To-do:
 
 <br/>
 
+Table of contents:
+
+- [Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages](#microbenchmark-a-simple-pseudo-random-number-generator-with-a-user-dialog-for-password-generation-in-25-general-purpose-high-level-programming-languages)
+- [Python environments](#python-environments)
+- [User dialog](#user-dialog)
+- [Reading user input from the keyboard into a string](#reading-user-input-from-the-keyboard-into-a-string)
+- [In terms of execution times this is a string concatenation benchmark](#in-terms-of-execution-times-this-is-a-string-concatenation-benchmark)
+- [This program is not bullet proof](#this-program-is-not-bullet-proof)
+- [Motivation-and-orientation](#motivation-and-orientation)
+- [Parameters for the LCG (linear congruential generator)](#parameters-for-the-lcg-(linear-congruential-generator))
+- [Other aspects of a computer programming language](#other-aspects-of-a-computer-programming-language)
+- [On including lots of comments in my source code files](#on-including-lots-of-comments-in-my-source-code-files)
+- [On debugging](#on-debugging)
+- [On functional programming](#on-functional-programming)
+- [On configuring building and execution environments](#on-configuring-building-and-execution-environments)
+- [Error handling, exception handling and "Quality control"](#error-handling-exception-handling-and-quality-control)
+- [Prompt engineering](#prompt-engineering)
+- [AI experiments](#ai-experiments)
+- [The 1 second execution time limit](#the-1-second-execution-time-limit)
+- [Measuring program execution times](#measuring-program-execution-times)
+
+---
+
 # Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages
 
 Starting in March 2025, this is an opionated project which has its origin in just implementing a simple pseudo-random number generator, here a Linear Congruential Generator (LCG), in my usual programming language Python.
