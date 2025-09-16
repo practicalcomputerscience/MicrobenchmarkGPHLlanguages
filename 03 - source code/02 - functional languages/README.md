@@ -8,7 +8,7 @@ Table of contents:
 - [Logic for Computable Functions (LCF)](#logic-for-computable-functions-lcf)
 - [If You See What I Mean (ISWIM) and Pedagogic Algorithmic Language (PAL)](#if-you-see-what-i-mean-iswim-and-pedagogic-algorithmic-language-pal)
 - [What functional programming language introduced the idea of "immutuable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutuable-variables)
-- [Functional languages on the on the Java Virtual Machine (JVM)](#functional-languages-on-the-on-the-java-virtual-machine-jvm)
+- [Functional languages on the Java Virtual Machine (JVM)](#functional-languages-on-the-java-virtual-machine-jvm)
 
 ---
 
@@ -72,9 +72,11 @@ I just remembered a reference expression somewhere in my program versions so far
 
 <br/>
 
-## Functional languages on the on the Java Virtual Machine (JVM)
+## Functional languages on the Java Virtual Machine (JVM)
 
-(TBD)
+- ![Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure)
+- ![Scheme dialects on the JVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM))
+- [Common Lisp on the JVM with Armed Bear Common Lisp (ABCL)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#common-lisp-on-the-java-virtual-machine-jvm-with-armed-bear-common-lisp-abcl)
 
 <br/>
 
