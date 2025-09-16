@@ -1,4 +1,4 @@
-2025-07-16: starting this heavy work in progress
+2025-07-16: starting this work in progress
 
 To-do:
 - fix TBD's
