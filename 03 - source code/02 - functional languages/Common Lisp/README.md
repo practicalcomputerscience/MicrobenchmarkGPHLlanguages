@@ -2,7 +2,10 @@
 
 2025-09-16: work in progress
 
-TBD: add a link from "02 - functional languages" to chapter "A little exercise in Common Lisp"
+TBD's:
+
+- finish chapter: _Execution speed of a Lisp program as a standalone executable in Linux: Steel Bank Common Lisp_
+- add a link from "02 - functional languages" to chapter "A little exercise in Common Lisp"
 
 https://lisp-lang.org/
 
