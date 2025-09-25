@@ -1,6 +1,8 @@
+# Graal Virtual Machine (GraalVM)
+
 Table of contents:
 
-- [GraalVM](#graalvm)
+- [Ahead Of Time (AOT) program compilation with the GraalVM](#ahead-of-time-aot-program-compilation-with-the-graalvm)
 - [How to make a standalone executable for Linux with the GraalVM](#how-to-make-a-standalone-executable-for-linux-with-the-graalvm)
 - [SDKMAN! and Java versions](#sdkman-and-java-versions)
 - [Kotlin](#kotlin)
@@ -12,15 +14,15 @@ Table of contents:
 
 ---
 
-## GraalVM
+## Ahead Of Time (AOT) program compilation with the GraalVM
 
 Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin** and **Clojure** program is a real hit:
 
-- very fast, standalone, native binary executables for Linux can be built with it according to my experience:
+- fast, standalone, native binary executables for Linux can be built with it according to my experience:
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program is now faster than the (normal) Python version.
+For example, with the Scala and Kotlin versions, these programs run faster than the compiled Common Lisp or interpreted C# versions. And the Clojure program runs now faster than the (normal) Python program.
 
 <br/>
 
