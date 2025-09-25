@@ -110,11 +110,11 @@ But a look into its official User Manual (https://abcl.org/releases/1.9.2/abcl-1
 - it's apparently not so easy to make a portable "fat JAR" or "uberJAR" (JAR = Java Archive) file for the JVM from Common Lisp source code files.
 
 However, I've found these two sources:
-- https://stackoverflow.com/questions/61381499/how-do-i-create-a-jar-using-armed-bear-common-lisp (*)
-- https://kodejava.org/how-do-i-evaluate-or-execute-a-script-file/ (**)
-- and I can also reuse my little knowledge with the Maven build tool (https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) when I was playing with the GraalVM to make fast standalone apps based on uberJAR files: [Graal Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm) (***)
+- https://stackoverflow.com/questions/61381499/how-do-i-create-a-jar-using-armed-bear-common-lisp (1)
+- https://kodejava.org/how-do-i-evaluate-or-execute-a-script-file/ (2)
+- and I can also reuse my little knowledge with the Maven build tool (https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) when I was playing with the GraalVM to make fast standalone apps based on uberJAR files: [Graal Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm) (3)
 
-### "Hello, World!" in Common Lisp on the JVM
+#### "Hello, World!" in Common Lisp on the JVM
 
 I take the ECL approach from above the chapter above (TBD) to have a _main_ function too (for better future expansions potentially), though it wouldn't be needed here, but I leave
 away the final _exit_ command because it's not needed here:
@@ -132,13 +132,13 @@ Then I create some directories in Linux: _$ mkdir -p ./hello_world/src/main/java
 
 Now I copy source code file _hello_world_abcl.lisp_ into the project working directory _./hello_world/hello_world_abcl.lisp_
 
-### The pom.xml file
+#### The pom.xml file
 
 This by far the hardest part, but doable after some tinkering!
 
 A Project Object Model or POM file is an XML file that contains information about the project and configuration details used by Maven to build the project. 
 
-I mixed both approaches, (*) and (***), into a _pom.xml_ file (which cannot be renamed!):
+I mixed both approaches, (1) and (3), into a _pom.xml_ file (which cannot be renamed!):
 
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -201,6 +201,43 @@ I mixed both approaches, (*) and (***), into a _pom.xml_ file (which cannot be r
 </project>  
 ```
 
+Then I copy _pom.xml_ also into the project working directory: _./hello_world/pom.xml_
+
+If not done yet, build or install ABCL (I built without problems after installing Ant: _$ sudo apt-get install ant_) according to the given instructions, and also install Maven if not done yet: _$ sudo apt-get install maven_
+
+#### The Java hosting file
+
+Now (1) comes into play, here with a Java source code file named _Main.java_
+
+```
+package hello_world_abcl;
+
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import java.io.File;
+import java.io.Reader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+
+import org.armedbear.lisp.scripting.AbclScriptEngine;
+import org.armedbear.lisp.scripting.AbclScriptEngineFactory;
+
+public class Main {
+    public static void main(String[] args) {
+        AbclScriptEngine scriptEngine = (AbclScriptEngine) new AbclScriptEngineFactory()
+                    .getScriptEngine();       
+        try {
+            // https://kodejava.org/how-do-i-evaluate-or-execute-a-script-file/
+            File script = new File("hello_world_abcl.lisp");
+            Reader reader = new FileReader(script);
+            scriptEngine.eval(reader);
+        } catch (FileNotFoundException | ScriptException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 <br/>
 
