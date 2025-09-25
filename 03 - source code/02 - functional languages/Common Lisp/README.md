@@ -103,16 +103,18 @@ What I want demonstrate with these examples is this:
 
 ## Common Lisp on the Java Virtual Machine (JVM) with Armed Bear Common Lisp (ABCL)
 
-With the background of my showstopper at [Kawa Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)#kawa-scheme) on the JVM, I thought to give ABCL a try.
+After the showstopper at [Kawa Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)#kawa-scheme) on the JVM, I thought to give ABCL a try.
 
 But a look into its official User Manual (https://abcl.org/releases/1.9.2/abcl-1.9.2.pdf) shows a common pattern:
 
 - it's apparently not so easy to make a portable "fat JAR" or "uberJAR" (JAR = Java Archive) file for the JVM from Common Lisp source code files.
 
 However, I've found these two sources:
+
 - https://stackoverflow.com/questions/61381499/how-do-i-create-a-jar-using-armed-bear-common-lisp (1)
 - https://kodejava.org/how-do-i-evaluate-or-execute-a-script-file/ (2)
-- and I can also reuse my little knowledge with the Maven build tool (https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) when I was playing with the GraalVM to make fast standalone apps based on uberJAR files: [Graal Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm) (3)
+
+..and I can also reuse my little knowledge with the Maven build tool (https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) when I was playing with the GraalVM to make fast standalone apps based on uberJAR files: [Graal Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm) (3)
 
 <br/>
 
@@ -213,7 +215,7 @@ If not done yet, build or install ABCL (I built without problems after installin
 
 #### The Java hosting file
 
-Now (1) comes into play, here with a Java source code file named [Main.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/Main_hello_world_abcl.java)
+Now (2) comes into play, here with a Java source code file named [Main.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/Main_hello_world_abcl.java)
 
 ```
 package hello_world_abcl;
@@ -245,6 +247,52 @@ public class Main {
 }
 ```
 <br/>
+
+..which is then copied into the Java source code directory: _./hello_world/src/main/java/hello_world_abcl/Main.java_
+
+Now I change into the project working directory: _$ cd hello_world_
+
+..and build the whole thing, which may take some time at the first time with a couple of downloads before building the uberJAR file: _$ mvn package_
+
+```
+...
+[INFO] --- maven-assembly-plugin:3.7.1:single (make-assembly) @ hello_world_abcl ---
+[INFO] Building jar: .../Armed_Bear_Common_Lisp/hello_world/target/hello_world_abcl-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.048 s
+[INFO] Finished at: 2025-07-03T11:47:28+02:00
+[INFO] ------------------------------------------------------------------------
+$
+```
+
+With this building success comes the big moment: running the "Hello, World!"-uberJAR on the JVM:
+
+```
+$ java -jar ./target/hello_world_abcl-jar-with-dependencies.jar
+Failed to introspect virtual threading methods: ...
+Hello, world from Armed Bear Common Lisp (ABCL)!
+$
+```
+
+Well, it got me an error, but it worked!
+
+(this error may come from the differen JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java default environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
+
+However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and run it like:
+
+```
+> java -jar ./hello_world_abcl-jar-with-dependencies.jar
+Hello, world from Armed Bear Common Lisp (ABCL)!
+>
+```
+
+<br/>
+
+#### What about my microbenchmark program in Common Lisp?
+
+(TBD)
 
 <br/>
 
