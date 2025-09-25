@@ -114,6 +114,94 @@ However, I've found these two sources:
 - https://kodejava.org/how-do-i-evaluate-or-execute-a-script-file/ (**)
 - and I can also reuse my little knowledge with the Maven build tool (https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) when I was playing with the GraalVM to make fast standalone apps based on uberJAR files: [Graal Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm) (***)
 
+### "Hello, World!" in Common Lisp on the JVM
+
+I take the ECL approach from above the chapter above (TBD) to have a _main_ function too (for better future expansions potentially), though it wouldn't be needed here, but I leave
+away the final _exit_ command because it's not needed here:
+
+```
+$ cat hello_world_abcl.lisp
+(defun main ()
+(princ "Hello, world from Armed Bear Common Lisp (ABCL)!")
+(terpri))
+(main)
+$
+```
+
+Then I create some directories in Linux: _$ mkdir -p ./hello_world/src/main/java/hello_world_abcl_
+
+Now I copy source code file _hello_world_abcl.lisp_ into the project working directory _./hello_world/hello_world_abcl.lisp_
+
+### The pom.xml file
+
+This by far the hardest part, but doable after some tinkering!
+
+A Project Object Model or POM file is an XML file that contains information about the project and configuration details used by Maven to build the project. 
+
+I mixed both approaches, (*) and (***), into a _pom.xml_ file (which cannot be renamed!):
+
+```
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hello_world_abcl</groupId>
+    <artifactId>hello_world_abcl</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>hello_world_abcl</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>org.abcl</groupId>
+            <artifactId>abcl</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>hello_world_abcl</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>hello_world_abcl.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>  
+```
+
+
 <br/>
 
 ##_end
