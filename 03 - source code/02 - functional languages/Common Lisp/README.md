@@ -279,9 +279,9 @@ $
 
 Well, it got me an error, but it worked!
 
-(this error may come from the differen JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java default environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
+(this error may come from the different JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java default environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
 
-However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and run it like:
+However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and ran it like:
 
 ```
 > java -jar ./hello_world_abcl-jar-with-dependencies.jar
@@ -309,7 +309,7 @@ Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-l
       (format t "could not write to file: ~a -- ~a~%" *file_bits_x* e)))
 ```
 
-For a test case, I just manually change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this:
+For a test case, I just temporarily change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this at _could not write to file:_:
 
 ```
 $ java -jar ./target/random_streams_for_perf_stats-jar-with-dependencies.jar
@@ -357,7 +357,7 @@ $
 
 Well, I guess that nobody claimed so far that uberJAR files based on Armed Bear Common Lisp can be used for the GraalVM.
 
-The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with these languages I could just use my default OpenJDK environment to build an uberJAR file which is then being AOT compiled.
+The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with those languages I could just use my default OpenJDK environment to build an uberJAR file which is then being AOT compiled.
 
 <br/>
 
