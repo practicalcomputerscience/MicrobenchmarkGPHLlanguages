@@ -1,3 +1,5 @@
+# Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages
+
 2025-07-16: starting this work in progress
 
 To-do:
@@ -10,7 +12,7 @@ To-do:
 
 Table of contents:
 
-- [Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages](#microbenchmark-a-simple-pseudo-random-number-generator-with-a-user-dialog-for-password-generation-in-25-general-purpose-high-level-programming-languages)
+- [What this repository is about](#what-this-repository-is-about)
 - [Python environments](#python-environments)
 - [User dialog](#user-dialog)
 - [Reading user input from the keyboard into a string](#reading-user-input-from-the-keyboard-into-a-string)
@@ -31,7 +33,7 @@ Table of contents:
 
 ---
 
-# Microbenchmark: a simple pseudo-random number generator with a user dialog for password generation in 25+ general purpose, high-level programming languages
+## What this repository is about
 
 Starting in March 2025, this is an opionated project which has its origin in just implementing a simple pseudo-random number generator, here a Linear Congruential Generator (LCG), in my usual programming language Python.
 
