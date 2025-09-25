@@ -272,7 +272,8 @@ With this building success comes the big moment: running the "Hello, World!"-ube
 
 ```
 $ java -jar ./target/hello_world_abcl-jar-with-dependencies.jar
-Failed to introspect virtual threading methods: ...
+Failed to introspect virtual threading methods:
+...
 Hello, world from Armed Bear Common Lisp (ABCL)!
 $
 ```
@@ -297,7 +298,7 @@ It works too, and also with the "ECL approach" for _main ()_ in the Common Lisp 
 
 This means that both string builder functions, that is _make-string-output-stream_ and _get-output-stream-string_, see from [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp), must have been implemented correctly in Java.
 
-Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-language-reference/chap-9/j-c-dictionary/handler-case_macro) for exception handling when writing to a file is apparently also working correctly (~):
+Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-language-reference/chap-9/j-c-dictionary/handler-case_macro) for exception handling when writing to a file is apparently also working correctly:
 
 ```
 ; write bit stream to disk:
@@ -309,7 +310,7 @@ Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-l
       (format t "could not write to file: ~a -- ~a~%" *file_bits_x* e)))
 ```
 
-For a test case, I just manually change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the defined error message will be shown as it should be:
+For a test case, I just manually change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this:
 
 ```
 ...
