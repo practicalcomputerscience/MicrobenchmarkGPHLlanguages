@@ -309,7 +309,7 @@ Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-l
       (format t "could not write to file: ~a -- ~a~%" *file_bits_x* e)))
 ```
 
-For a test case, I just temporarily change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this at _could not write to file:_:
+For a test case, I just temporarily change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this: _could not write to file: ..._, executed in Linux again:
 
 ```
 $ java -jar ./target/random_streams_for_perf_stats-jar-with-dependencies.jar
