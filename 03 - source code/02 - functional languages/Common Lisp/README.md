@@ -6,9 +6,10 @@ TBD: add a link from "02 - functional languages" to chapter "A little exercise i
 
 https://lisp-lang.org/
 
-https://www.sbcl.org/
+SBCL = **Steel Bank Common Lisp**:
 
-SBCL = Steel Bank Common Lisp: https://www.sbcl.org/history.html
+- https://www.sbcl.org/
+- https://www.sbcl.org/history.html
 
 Lisp implementations: https://lisp-lang.org/wiki/article/implementations
 
@@ -350,7 +351,7 @@ $
 
 Well, I guess that nobody claimed so far that uberJAR files based on Armed Bear Common Lisp can be used for the GraalVM.
 
-The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with these languages I could just use my default OpenJDK environment to build an uberJAR file first.
+The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with these languages I could just use my default OpenJDK environment to build an uberJAR file which is then being AOT compiled.
 
 <br/>
 
