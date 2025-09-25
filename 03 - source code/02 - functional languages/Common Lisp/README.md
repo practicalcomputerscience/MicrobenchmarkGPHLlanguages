@@ -138,7 +138,7 @@ This by far the hardest part, but doable after some tinkering!
 
 A Project Object Model or POM file is an XML file that contains information about the project and configuration details used by Maven to build the project. 
 
-I mixed both approaches, (1) and (3), into a _pom.xml_ file (which cannot be renamed!):
+I mixed both approaches, (1) and (3), into a [pom.xml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/pom_hello_world_abcl.xml) file (which cannot be renamed!):
 
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -207,7 +207,7 @@ If not done yet, build or install ABCL (I built without problems after installin
 
 #### The Java hosting file
 
-Now (1) comes into play, here with a Java source code file named _Main.java_
+Now (1) comes into play, here with a Java source code file named [Main.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/Main_hello_world_abcl.java)
 
 ```
 package hello_world_abcl;
