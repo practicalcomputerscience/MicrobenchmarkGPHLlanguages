@@ -121,8 +121,7 @@ However, I've found these two sources:
 
 ### "Hello, World!" in Common Lisp on the JVM
 
-I take the ECL approach from above the chapter above (TBD) to have a _main_ function too (for better future expansions potentially), though it wouldn't be needed here. However, I leave
-away the final _exit_ command because it's not needed here:
+I take the ECL approach from the chapter [Execution speed of a Lisp program as a standalone executable in Linux...](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#execution-speed-of-a-lisp-program-as-a-standalone-executable-in-linux-steel-bank-common-lisp) above to have a _main_ function too (potentially for better future expansions), though it wouldn't be needed here. However, I leave away the final _exit_ command because it's not needed here:
 
 ```
 $ cat hello_world_abcl.lisp
@@ -272,7 +271,7 @@ With this building success comes the big moment: running the "Hello, World!"-ube
 
 ```
 $ java -jar ./target/hello_world_abcl-jar-with-dependencies.jar
-Failed to introspect virtual threading methods:
+Failed to introspect virtual threading methods: ...
 ...
 Hello, world from Armed Bear Common Lisp (ABCL)!
 $
@@ -313,9 +312,14 @@ Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-l
 For a test case, I just manually change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the program defined error message should be shown like this:
 
 ```
+$ java -jar ./target/random_streams_for_perf_stats-jar-with-dependencies.jar
+Failed to introspect virtual threading methods: ...
 ...
-could not write to file: random_bitstring.bin -- Unable to open #P"... /Armed_Bear_Common_Lisp/random_bitstring.bin".
-...
+
+generating a random bit stream...
+could not write to file: random_bitstring.bin -- Unable to open #P".../Armed_Bear_Common_Lisp/random_bitstring.bin".
+Byte stream has been written to disk under name: random_bitstring.byte
+$ 
 ```
 
 ... but the program keeps running and is doing its remaining tasks.
@@ -324,7 +328,7 @@ could not write to file: random_bitstring.bin -- Unable to open #P"... /Armed_Be
 
 My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 780 milliseconds ([The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit)), but better than my first version in Clojure without Java's _StringBuilder_ class with more than 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
 
-But, again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
+But again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
 
 #### What about the GraalVM? (doesn't work)
 
@@ -336,6 +340,7 @@ Emboldened by so much success, I tried my luck with the GraalVM again and compil
 
 ```
 $ ... /.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar hello_world_abcl-jar-with-dependencies.jar
+...
 ```
 
 This command has indeed built something, but the generated program is not working:
