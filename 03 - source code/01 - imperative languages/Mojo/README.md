@@ -1,8 +1,10 @@
+# Mojo
+
 https://www.modular.com/mojo
 
 ---
 
-#### Error handling when writing to files
+### Error handling when writing to files
 
 The _write_ function of Mojo, when writing to files, works differently as far as I can tell from testing other programming languages so far:
 
@@ -19,7 +21,7 @@ Even when the access permissions of target file named _file_bits_x_ have been se
 
 Instead, set the access permissions of the whole directory to "Access Files". Normally, they are set to "Create and Delete Files". Now, testing Mojo's error handling should work as to be expected.
 
-#### Mojo string builder
+### Mojo string builder
 
 The unofficial _mojo-stringbuilder_ solution (https://github.com/maniartech/mojo-stringbuilder) doesn't work anymore in this fast changing language, which is a pitty because such a concept may push the program execution time down towards the execution time of the Rust program for example.
 
