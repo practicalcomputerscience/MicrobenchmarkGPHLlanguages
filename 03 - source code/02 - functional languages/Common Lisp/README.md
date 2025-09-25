@@ -118,9 +118,9 @@ However, I've found these two sources:
 
 <br/>
 
-#### "Hello, World!" in Common Lisp on the JVM
+### "Hello, World!" in Common Lisp on the JVM
 
-I take the ECL approach from above the chapter above (TBD) to have a _main_ function too (for better future expansions potentially), though it wouldn't be needed here, but I leave
+I take the ECL approach from above the chapter above (TBD) to have a _main_ function too (for better future expansions potentially), though it wouldn't be needed here. However, I leave
 away the final _exit_ command because it's not needed here:
 
 ```
@@ -292,7 +292,65 @@ Hello, world from Armed Bear Common Lisp (ABCL)!
 
 #### What about my microbenchmark program in Common Lisp?
 
-(TBD)
+It works too, and also with the "ECL approach" for _main ()_ in the Common Lisp source code file.
+
+This means that both string builder functions, that is _make-string-output-stream_ and _get-output-stream-string_, see from [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp), must have been implemented correctly in Java.
+
+Furthermore, Common Lisp's [handler-case macro](https://lisp-docs.github.io/cl-language-reference/chap-9/j-c-dictionary/handler-case_macro) for exception handling when writing to a file is apparently also working correctly (~):
+
+```
+; write bit stream to disk:
+  (handler-case
+    (with-open-file (stream *file_bits_x* :direction :output :if-exists :supersede :if-does-not-exist :create)
+      (format stream *bits_x*)
+      (format t "Bit stream has been written to disk under name:  ~a~%" *file_bits_x*))
+    (file-error (e)
+      (format t "could not write to file: ~a -- ~a~%" *file_bits_x* e)))
+```
+
+For a test case, I just manually change the permissions of file *random_bitstring.bin* from "Read and Write" to "Read-Only" and then run my program again. Now the defined error message will be shown as it should be:
+
+```
+...
+could not write to file: random_bitstring.bin -- Unable to open #P"... /Armed_Bear_Common_Lisp/random_bitstring.bin".
+...
+```
+
+... but the program keeps running and is doing its remaining tasks.
+
+#### Execution speed
+
+My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 780 milliseconds ([The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit)), but better than my first version in Clojure without Java's _StringBuilder_ class with more than 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
+
+But, again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
+
+#### What about the GraalVM? (doesn't work)
+
+> Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a Scala, Kotlin and Clojure program is a real hit:...
+
+from: [Ahead Of Time (AOT) program compilation with the GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#ahead-of-time-aot-program-compilation-with-the-graalvm)
+
+Emboldened by so much success, I tried my luck with the GraalVM again and compiled the uberJAR file into a binary, standalone executable:
+
+```
+$ ... /.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar hello_world_abcl-jar-with-dependencies.jar
+```
+
+This command has indeed built something, but the generated program is not working:
+
+```
+$ ./hello_world_abcl-jar-with-dependencies
+Failed to introspect virtual threading methods: java.lang.NoSuchMethodException: java.lang.ThreadBuilders$VirtualThreadFactory.newThread(java.lang.Runnable)
+java.lang.ClassNotFoundException: org.armedbear.lisp.Primitives
+at org.graalvm.nativeimage.builder/com.oracle.svm.core.hub.ClassForNameSupport.forName(ClassForNameSupport.java:215)
+at org.graalvm.nativeimage.builder/com.oracle.svm.core.hub.ClassForNameSupport.forName(ClassForNameSupport.java:183)
+...
+$
+```
+
+Well, I guess that nobody claimed so far that uberJAR files based on Armed Bear Common Lisp can be used for the GraalVM.
+
+The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with these languages I could just use my default OpenJDK environment to build an uberJAR file first.
 
 <br/>
 
