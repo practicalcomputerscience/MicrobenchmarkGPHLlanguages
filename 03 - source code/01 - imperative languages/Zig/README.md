@@ -1,8 +1,10 @@
+# Zig
+
 https://ziglang.org/
 
 ---
 
-#### Compilation tips
+### Compilation tips
 
 On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)) I'm compiling like this:
 
@@ -18,7 +20,7 @@ My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extens
 
 To not be misunderstood: compiling without this switch, just like _$ zig build-exe random_streams_for_perf_stats.zig_, also compiles to a correctly working program, also on my system, but not for _Valgrind_.
 
-#### On error handling 
+### On error handling 
 
 Initially I had source code like this when writing the strings to their files:
 
