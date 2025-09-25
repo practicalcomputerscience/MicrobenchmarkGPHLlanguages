@@ -103,7 +103,7 @@ What I want demonstrate with these examples is this:
 
 ## Common Lisp on the Java Virtual Machine (JVM) with Armed Bear Common Lisp (ABCL)
 
-(TBD)
+With the background of my showstopper at [Kawa Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)#kawa-scheme) on the JVM, I thought to give ABCL a try.
 
 <br/>
 
