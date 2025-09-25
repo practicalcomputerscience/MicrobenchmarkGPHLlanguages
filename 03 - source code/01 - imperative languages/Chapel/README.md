@@ -1,8 +1,10 @@
+# Chapel
+
 https://chapel-lang.org/
 
 ---
 
-#### Installation tips
+### Installation tips
 
 Chapel version 2.4.0 is built on LLVM version 18.1.8 (at least in my case).
 
