@@ -1,3 +1,5 @@
+# Lua
+
 https://www.lua.org/
 
 ---
@@ -55,7 +57,7 @@ Roberto Ierusalimschya, Luiz Henrique de Figueiredob, Waldemar Celesa, Departmen
 
 <br/>
 
-#### Lua coding tips
+### Lua coding tips
 
 I declared variables, functions, libraries etc. as _**local**_, that is for stack usage (https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), throughout the scripts. It helps running a Lua script faster, and according to my experience by at least 15%:
 
