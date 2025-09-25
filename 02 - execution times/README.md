@@ -1,3 +1,7 @@
+# Program execution times
+
+<br/>
+
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
 <br/>
