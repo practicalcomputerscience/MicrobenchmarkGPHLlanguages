@@ -186,7 +186,7 @@ Since these are three different Common Lisp environments, there are differences 
 (ext:quit 0)
 ```
 
-With my microbenchmark program I got these execution times, again time stopped  with _$ sudo perf stat -r 20 ./<program name>_:
+With my microbenchmark program I got these execution times, again time stopped  with _$ sudo perf stat -r 20 ./< program name >_:
 
 - SBCL: 0.053 seconds
 - CCL: 0.215 seconds
