@@ -387,6 +387,8 @@ The concepts of functional programming and concurrency are linked because:
 
 From: https://medium.com/twodigits/advantages-and-disadvantages-of-functional-programming-52a81c8bf446
 
+You may have to look at [A little exercise in Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#a-little-exercise-in-common-lisp) to understand why functional programming has (still) not taken over the world.
+
 <br/>
 
 #### On configuring building and execution environments
