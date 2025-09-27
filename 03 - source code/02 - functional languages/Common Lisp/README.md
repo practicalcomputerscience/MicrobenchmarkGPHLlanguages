@@ -155,11 +155,48 @@ $ ./<program name> # run your program
 ...
 ```
 
-### Source code files
+### Environment specific source code for Hello, World!
 
+Since these are three different Common Lisp environments, there are differences in the related source code files -- which doesn't mean that things couldn't be done differently than shown here:
 
+#### SBCL
 
-(TBD)
+```
+(defun main ()
+  (princ "Hello, world from SBCL!")
+  (terpri))
+```
+
+#### CCL
+
+```
+(defun main (argv)
+  (declare (ignore argv))
+  (princ "Hello, world from CCL!")
+  (terpri))
+```
+
+#### ECL
+
+```
+(defun main ()
+  (princ "Hello, world from ECL!")
+  (terpri))
+(main)
+(ext:quit 0)
+```
+
+With my microbenchmark program I got these execution times, again time stopped  with _$ sudo perf stat -r 20 ./<program name>_:
+
+- SBCL: 0.053 seconds
+- CCL: 0.215 seconds
+- ECL: 0.574 seconds
+
+Sizes of the related executables (if not applying tricks with SBCL and CCL) also differ greatly:
+
+- SBCL: 46.1 MB -- there's a reason why a Lisp implementation is running a [World](#the-lisp-machine-as-a-world)
+- CCL: 27.2 MB
+- ECL: 79.1 kB -- this little size helps to explain "Embeddable..."
 
 <br/>
 
@@ -419,6 +456,14 @@ $
 Well, I guess that nobody claimed so far that uberJAR files based on Armed Bear Common Lisp can be used for the GraalVM.
 
 The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact that with those languages I could just use my default OpenJDK environment to build an uberJAR file which is then being AOT compiled.
+
+<br/>
+
+#### The Lisp Machine as a "World"
+
+> ..a user could run for several days or even a few weeks before having to save out the running “world” to disk and restart it.
+
+from: _The Evolution of Lisp_, Guy L. Steele Jr., Richard P. Gabriel, 1992: https://doc.lagout.org/programmation/Lisp/Lisp%20Mess/Gabriel%20%26%20Steele%20-%20The%20Evolution%20of%20Lisp.pdf
 
 <br/>
 
