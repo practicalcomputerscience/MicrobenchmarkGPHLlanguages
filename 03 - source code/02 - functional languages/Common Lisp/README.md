@@ -157,7 +157,7 @@ $ ./<program name> # run your program
 
 ### Environment specific source code for Hello, World!
 
-Since these are three different Common Lisp environments, there are differences in the related source code files -- which doesn't mean that things couldn't be done differently than shown here:
+Since these are three different Common Lisp environments, there are differences in the related source code -- which doesn't mean that things couldn't be done differently than shown here:
 
 #### SBCL
 
