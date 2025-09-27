@@ -25,7 +25,7 @@ Table of contents:
 
 ## A little exercise in Common Lisp
 
-I found this little exercise in Common Lisp (on the _sbcl_ REPL (Read-Eval-Print Loop); start in your Linux shell with _$ rlwrap sbcl_ to get some expression history with keyboard controls):
+I found this little exercise in Common Lisp on the _sbcl_ REPL (Read-Eval-Print Loop). Start in your Linux shell with _$ rlwrap sbcl_ to get some comfortable expression history with keyboard controls:
 
 ```
 (let ((x 3))
