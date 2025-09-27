@@ -1,9 +1,5 @@
 # Common Lisp
 
-TBD's:
-
-- add a link from "02 - functional languages" to chapter "A little exercise in Common Lisp"
-
 https://lisp-lang.org/
 
 SBCL = **Steel Bank Common Lisp**:
