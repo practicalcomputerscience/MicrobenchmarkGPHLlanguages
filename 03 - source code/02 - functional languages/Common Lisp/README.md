@@ -1,10 +1,7 @@
 # Common Lisp
 
-2025-09-16: work in progress
-
 TBD's:
 
-- finish chapter: _Execution speed of a Lisp program as a standalone executable in Linux: Steel Bank Common Lisp_
 - add a link from "02 - functional languages" to chapter "A little exercise in Common Lisp"
 
 https://lisp-lang.org/
@@ -14,7 +11,7 @@ SBCL = **Steel Bank Common Lisp**:
 - https://www.sbcl.org/
 - https://www.sbcl.org/history.html
 
-Lisp implementations: https://lisp-lang.org/wiki/article/implementations
+Overview of modern Lisp implementations: https://lisp-lang.org/wiki/article/implementations
 
 <br/>
 
@@ -194,9 +191,15 @@ With my microbenchmark program I got these execution times, again time stopped  
 
 Sizes of the related executables (if not applying tricks with SBCL and CCL) also differ greatly:
 
-- SBCL: 46.1 MB -- there's a reason why a Lisp implementation is running a [World](#the-lisp-machine-as-a-world)
+- SBCL: 46.1 MB -- there's a reason why a Lisp implementation is hosting a [World](#the-lisp-machine-as-a-world)
 - CCL: 27.2 MB
 - ECL: 79.1 kB -- this little size helps to explain "Embeddable..."
+
+Here's an article from 2020 with much more information on how to build a project in Lisp: _**Common Lisp in Practice**_: https://atomized.org/blog/2020/07/06/common-lisp-in-practice/
+
+This leaves one question open: where does the name _**Steel Bank**_ come from?
+
+This name has its root in its precursor _**Carnegie Mellon** University Common Lisp_ (CMUCL): https://sbcl.org/history.html with Carnegie Mellon University's big original sponsors Andrew Carnegie with steel and the Mellon family with banking.
 
 <br/>
 
@@ -463,7 +466,7 @@ The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact tha
 
 > ..a user could run for several days or even a few weeks before having to save out the running “world” to disk and restart it.
 
-from: _The Evolution of Lisp_, Guy L. Steele Jr., Richard P. Gabriel, 1992: https://doc.lagout.org/programmation/Lisp/Lisp%20Mess/Gabriel%20%26%20Steele%20-%20The%20Evolution%20of%20Lisp.pdf
+from: _**The Evolution of Lisp**_ by Guy L. Steele Jr. and Richard P. Gabriel, 1992: https://doc.lagout.org/programmation/Lisp/Lisp%20Mess/Gabriel%20%26%20Steele%20-%20The%20Evolution%20of%20Lisp.pdf
 
 <br/>
 
