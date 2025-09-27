@@ -101,6 +101,64 @@ What I want demonstrate with these examples is this:
 
 ## Execution speed of a Lisp program as a standalone executable in Linux: Steel Bank Common Lisp
 
+After my [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme) experiments, I revisited my Common Lisp and Clojure programs to see if I can make them faster from what I've learned from four Scheme dialects.
+
+I came to the conclusion that I haven't learned anything for Lisp or Clojure in this regard (these languages are all too different in the end), but it motivates me to say a little bit more about Common Lisp.
+
+I tried these Common Lisp environments:
+
+- **Clozure Common Lisp** (Clozure CL or CCL): https://ccl.clozure.com/
+- **SBCL**: https://www.sbcl.org/
+- **Embeddable Common Lisp (ECL)**: https://ecl.common-lisp.dev/static/manual/What-is-ECL.html
+
+I will shortly explain how to make standalone, executable Lisp based programs in Linux (on the Bash shell), because for historical reasons this isn't so easy as with other programming languages.
+
+### Making standalone executables
+
+#### SBCL
+
+```
+$ sbcl --load <program name>.lisp --eval "(sb-ext:save-lisp-and-die \"<program name>\" :executable t :toplevel #'main)"
+```
+
+I can't say how to apply potential compiler swiches for (speed) optimization. However, SBCL builds the fastest executables of this group according to my experience - by far!
+
+(Globally) putting expressions like this for example:
+
+```
+(declaim (optimize (debug 0)
+  (safety 0) (speed 3) (space 0)))
+```
+
+..into the source code file, parameter value 3 at speed for the highest priority, doesn't change the execution speed of my little benchmark program. This observation is true for all three environments, including ECL, where such an expression can be applied in the ECL REPL ((Read-Eval-Print Loop) before compiling source code file(s); see below at [ECL](TBD).
+
+#### CCL
+
+Here I took this app builder: https://www.xach.com/lisp/buildapp/ and ran:
+
+```
+$ buildapp --load <program name>.lisp --entry main --output <program name>
+```
+
+#### ECL
+
+I learned building executables from this script: https://github.com/csvitlik/build-with-ecl
+
+```
+$ rlwrap ecl
+ECL (Embeddable Common-Lisp) 24.5.10 (git:UNKNOWN)
+...
+> (compile-file "<program name>.lisp" :system-p t)
+> (c:build-program "<program name>" :lisp-files '("<program name>.o"))
+> (quit)
+$ ./<program name> # run your program
+...
+```
+
+### Source code files
+
+
+
 (TBD)
 
 <br/>
