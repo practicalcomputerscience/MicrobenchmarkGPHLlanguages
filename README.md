@@ -565,7 +565,7 @@ However, this wide variance of execution times cannot be obeserved with all prog
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/three%20resulting%20probability%20density%20functions%20from%20means%20and%20stddevs_C.png)
 
-So, I just took the "best" run, with C# it's _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_ as my final execution time measurement for example. You could call it a sloppy best out of 3 approach.
+So, I just took the best out of three _perf-stat_ command runs in terms of the mean, with C# it's _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_ for example. You could call it a sloppy best out of 3 approach.
 
 I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now all execution time measurement values have only indicative character.
 
