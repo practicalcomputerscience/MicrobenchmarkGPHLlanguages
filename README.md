@@ -30,6 +30,7 @@ Table of contents:
 - [AI experiments](#ai-experiments)
 - [The 1 second execution time limit](#the-1-second-execution-time-limit)
 - [Measuring program execution times](#measuring-program-execution-times)
+- [Stopwatch in a programming language](#stopwatch-in-a-programming-language)
 
 ---
 
@@ -91,7 +92,7 @@ else:
 
 <br/>
 
-#### Python environments 
+### Python environments 
 
 In Linux, but probably also increasingly in other environments like Windows too, it has become very important to work with **Python environments** to not mess up your default Python installation which automatically comes with your Linux distribution. I think this has become specifically important for Ubuntu (https://ubuntu.com/download), which I'm using here (as Ubuntu 24 LTS). ```$``` indicates the Bash shell in Linux (I've just chosen _prng_test_ as my environment name):
 
@@ -140,7 +141,7 @@ A second string with 250,000 random hexadecimal digits (with ASCII characters fr
 
 <br/>
 
-#### User dialog
+### User dialog
 
 Out of the first random binary digits, this program - after some dialog with the user on the console - is creating a password of printable, random characters of the desired length:
 
@@ -226,7 +227,7 @@ my password of 12 characters is: {5mkkR""dmtC
 (prng_test) $ 
 ```
 
-#### Reading user input from the keyboard into a string
+### Reading user input from the keyboard into a string
 
 It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025!
 
@@ -243,7 +244,7 @@ Often a string builder dramatically improves execution speed but not always! I t
 
 This is why the much praised best practices should be documented immediately and sufficiently.
 
-#### This program is not bullet proof
+### This program is not bullet proof
 
 It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
 
@@ -301,7 +302,7 @@ To some extent these sites have been a source of inspiration to test new languag
 
 <br/>
 
-#### Parameters for the LCG (linear congruential generator)
+### Parameters for the LCG (linear congruential generator)
 
 Originally I tumbled into this web page: https://statmath.wu.ac.at/software/src/prng-3.0.2/doc/prng.html/Table_LCG.html from where I've chosen _modul p_ = 2^16 - 15 = 	65521 and which I usually name **m** or **M** in my programs. Together with multiplicator _a_ = 17364, usually named **a** or **A** in my programs.
 
@@ -346,7 +347,7 @@ These HPC (High Performance Computing) frameworks seem to share one feature of g
 
 <br/>
 
-#### On including lots of comments in my source code files
+### On including lots of comments in my source code files
 
 Usually lots of comments in source code files, potentially not following any strategy, is seen as bad: https://expertbeacon.com/putting-comments-in-code-the-good-the-bad-and-the-ugly/
 
@@ -356,7 +357,7 @@ I just work with Notepad++ (https://notepad-plus-plus.org/) at a Windows 11 PC a
 
 But I'm not here for an exercise in enterprise level software engineering.
 
-#### On debugging
+### On debugging
 
 In no case so far I used an explicit debugging tool. My "debugger" are still print expressions in all languages, the "Poor man's debugger", which I finally comment. So, my source code is full of expressions like these, here from the Ada program:
 
@@ -391,7 +392,7 @@ You may have to look at [A little exercise in Common Lisp](https://github.com/pr
 
 <br/>
 
-#### On configuring building and execution environments
+### On configuring building and execution environments
 
 My testing environment is this:
 
@@ -414,7 +415,7 @@ Also mastering compiler switches, like in C for example, and mastering build too
 
 <br/>
 
-#### Error handling, exception handling and "Quality control"
+### Error handling, exception handling and "Quality control"
 
 I use the terms "error handling" and "exception handling" interchangeable, but in case of doubts I mean _exception handling_.
 
@@ -446,7 +447,7 @@ So, it's advisable to learn a little bit of functional programming nowadays, eve
 
 <br/>
 
-#### Prompt engineering
+### Prompt engineering
 
 It was already with the Go program where I started to use MS Bing AI for writing me little functions. Later, with the functional programming languages like OCaml for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write for me, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
 
@@ -478,7 +479,7 @@ $
 
 My Standard ML program with around 120 lines of source code (in one _~.sml_ file and one _~.mlb_ file) transpiled into 4,490 lines of Lua source code and 3,264 lines of JavaScript source code respectively! Apparently these source code files are not meant for the human reader, though both programs work correctly.
 
-#### AI experiments
+### AI experiments
 
 This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua source code files were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
 
@@ -488,7 +489,7 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 <br/>
 
-#### The 1 second execution time limit
+### The 1 second execution time limit
 
 After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second (with the PowerShell script being the edge case):
 
@@ -496,7 +497,7 @@ After some languages I noticed that all of them - often after some iterations of
 
 I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately (TBD). This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
-#### Measuring program execution times
+### Measuring program execution times
 
 With the first languages I put a stopwatch into the source code. But after doing so in the Mojo program, here like this:
 
@@ -523,15 +524,47 @@ For slower programs, maybe with an execution time of 100 milliseconds and up, I 
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
 ```
 
-However, I got doubts again, although in all cases where I compared both methods to measure execution times specifically the results are quite the same:
+However, I got doubts again, although in all cases where I compared both methods to measure execution times specifically the results are "similar":
 
 ```
 $ sudo perf stat -r 20 pwsh random_streams_for_perf_stats.ps
 ```
 
-So, in the end I only use the _perf-stat_ program because this is the method which can also precisely measure the execution times of the faster programs.
+So, in the end I only use the _perf-stat_ program because this is the method which should also precisely measure the execution times of the faster programs.
+
+However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs:
+
+```
+$ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
+...
+            0,1382 +- 0,0120 seconds time elapsed  ( +-  8,72% )
+
+$ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
+...
+           0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )
+
+$ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
+...
+            0,1565 +- 0,0116 seconds time elapsed  ( +-  7,38% )
+
+$
+```
+
+..where the average run and +- standard deviation is printed at the last results.
+
+The three resulting probability density functions look like this (if normal distributions are assumed):
+
+(TBD)
+
+In a case like this I just took the "best" run, here _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_, as my final execution time measurement.
+
+I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program.
+
+So, for now all execution time measurement values have only "indicative" character.
 
 <br/>
+
+#### Stopwatch in a programming language
 
 Implementing a stopwatch in a new programming language is usually a learning experience and sometimes, in one or the other functional programming language, even a challenge like this in OCaml:
 
