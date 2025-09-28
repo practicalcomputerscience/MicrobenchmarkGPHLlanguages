@@ -1,4 +1,4 @@
-2025-08-12: work in progress
+# Bigloo Scheme
 
 https://www-sop.inria.fr/indes/fp/Bigloo/
 
@@ -18,6 +18,6 @@ $ bigloo -call/cc -O6 random_streams_for_perf_stats.scm -o random_streams_for_pe
 
 <br/>
 
-You enter the REPL (Read-Eval-Print Loop) like this: _$ rlwrap bigloo_ and give command _(exit)_ to exit it.
+Enter the REPL (Read-Eval-Print Loop) like this: _$ rlwrap bigloo_ and give command _(exit)_ to exit it.
 
 ##_end
