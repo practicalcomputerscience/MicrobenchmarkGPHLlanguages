@@ -1,3 +1,7 @@
+TBD:
+
+- 2025-09-28: new chart: only Scheme dialects: execution speeds
+
 # Scheme
 
 Table of contents:
