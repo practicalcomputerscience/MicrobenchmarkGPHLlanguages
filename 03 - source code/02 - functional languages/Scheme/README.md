@@ -1,6 +1,6 @@
 TBD:
 
-- 2025-09-28: new chart: only Scheme dialects: execution speeds
+- 2025-09-28: new chart: only Scheme dialects: execution speeds right at top of chapter "Scheme's on Speed"
 
 # Scheme
 
