@@ -1,3 +1,7 @@
+2025-09-28: TBD: update diagrams
+
+<br/>
+
 # Program execution times
 
 <br/>
@@ -14,22 +18,9 @@ https://www.graalvm.org/
 
 <br/>
 
-2025-09-08: this may be not the best idea:
+### The Clojure example
 
-> #### Bash shell scripts to measure slower execution times
-
-=> all programs, be it standalone executables or scripts, are only to be execution time measured with one method to compare apples with apples.
-
-Here, this is Linux program _**perf-stat**_:
-
-- https://linux.die.net/man/1/perf-stat
-- https://commandmasters.com/commands/perf-linux/
-
-<br/>
-
-#### The Clojure example
-
-For example, the execution time of uberJAR file _random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar_, being executed on the Java Virtual Machine, can be measured with this script command: 
+The execution time of uberJAR file _random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar_, being executed on the Java Virtual Machine, can be measured with this script command: 
 
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
