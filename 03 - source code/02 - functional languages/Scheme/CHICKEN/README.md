@@ -1,4 +1,4 @@
-2025-08-12: work in progress
+# CHICKEN Scheme
 
 https://www.call-cc.org/
 
@@ -14,7 +14,7 @@ $ csc -O5 ./random_streams_for_perf_stats.scm
 
 <br/>
 
-You enter the REPL (Read-Eval-Print Loop) like this: _$ csi_ and give command _(exit)_ to exit it.
+Enter the REPL (Read-Eval-Print Loop) like this: _$ csi_ and give command _(exit)_ to exit it.
 
 <br/>
 
