@@ -550,17 +550,21 @@ $ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_st
 $
 ```
 
-..where the average run and +- standard deviation is printed at the last results.
+..where the average and +- standard deviation values are printed at the last results.
 
-The three resulting probability density functions look like this (if normal distributions are assumed):
+These three resulting probability density functions look like this (if normal distributions are assumed):
 
-(TBD)
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/three%20resulting%20probability%20density%20functions%20from%20means%20and%20stddevs%20a.png)
 
-In a case like this I just took the "best" run, here _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_, as my final execution time measurement.
+All three command runs can only agree on execution times marked with red color above a execution time of 125 milliseconds: this is a very small area!
 
-I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program.
+However, this wide variance of execution times cannot be obeserved with all programming languages. With C for example, the mean execution times and their related standard deviations are located fairly narrowly around 10 milliseconds:
 
-So, for now all execution time measurement values have only "indicative" character.
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/three%20resulting%20probability%20density%20functions%20from%20means%20and%20stddevs_C.png)
+
+So, I just took the "best" run, with C# it's _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_ as my final execution time measurement. You could call it a sloppy 1 best out of 3 approach.
+
+I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now all execution time measurement values have only indicative character.
 
 <br/>
 
