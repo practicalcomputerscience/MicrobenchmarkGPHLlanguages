@@ -1,4 +1,4 @@
-SML = Standard ML
+# Standard ML (SML)
 
 > ‘ML’ stands for meta language; this is the term logicians use for a language in which other (formal or informal) languages are discussed and analysed.
 
