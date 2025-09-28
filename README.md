@@ -530,7 +530,7 @@ However, I got doubts again, although in all cases where I compared both methods
 $ sudo perf stat -r 20 pwsh random_streams_for_perf_stats.ps
 ```
 
-You may see [The Clojure exampl](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#the-clojure-example) for a direct comparison of both measurement methods. 
+You may see [The Clojure example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#the-clojure-example) for a direct comparison of both measurement methods. 
 
 So, in the end I mostly used the _perf-stat_ program for Linux:
 
