@@ -524,13 +524,20 @@ For slower programs, maybe with an execution time of 100 milliseconds and up, I 
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
 ```
 
-However, I got doubts again, although in all cases where I compared both methods to measure execution times specifically the results are "similar":
+However, I got doubts again, although in all cases where I compared both methods to measure execution times the results are fairly similar:
 
 ```
 $ sudo perf stat -r 20 pwsh random_streams_for_perf_stats.ps
 ```
 
-So, in the end I mostly used the _perf-stat_ program because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ isn't working with all languages. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
+You may see [The Clojure exampl](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#the-clojure-example) for a direct comparison of both measurement methods. 
+
+So, in the end I mostly used the _perf-stat_ program for Linux:
+
+- https://linux.die.net/man/1/perf-stat
+- https://commandmasters.com/commands/perf-linux/
+
+..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
 
 - Python
 - TBD
