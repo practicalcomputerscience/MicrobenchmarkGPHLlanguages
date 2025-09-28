@@ -530,7 +530,10 @@ However, I got doubts again, although in all cases where I compared both methods
 $ sudo perf stat -r 20 pwsh random_streams_for_perf_stats.ps
 ```
 
-So, in the end I only use the _perf-stat_ program because this is the method which should also precisely measure the execution times of the faster programs.
+So, in the end I mostly used the _perf-stat_ program because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ isn't working with all languages. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
+
+- Python
+- TBD
 
 However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs:
 
