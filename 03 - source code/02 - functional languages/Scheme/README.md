@@ -1,7 +1,3 @@
-TBD:
-
-- 2025-09-28: new chart: only Scheme dialects: execution speeds right at top of chapter "Scheme's on Speed"
-
 # Scheme
 
 Table of contents:
@@ -168,15 +164,10 @@ So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192
 
 ### Scheme's on Speed
 
-When doing it right Scheme programs can be competitively fast. Here's a list of program execution times:
+When doing it right, Scheme programs can be running competitively fast. Here's a diagram of program execution times with all four tested dialects:
 
-- **Bigloo** Scheme in 1 batch: 0.029 seconds for the whole program with version bigloo v.4.6a and compiling with activated switches _-call/cc_ for procedure _call-with-current-continuation_ and _-O6_ for best opimization
-- **Gambit** Scheme in 1 batch: 0.034 seconds with version gsc v.4.9.6
-- **Gambit** Scheme in 8 batches: 0.040 seconds with version gsc v.4.9.6
-- **CHICKEN** Scheme (https://www.call-cc.org/) in 1 batch: 0.058 seconds with version csc v.5.4.0 and compiling with optimization level switch _-O5_
-- **Racket** Scheme in 1 batch: 0.103 seconds with version Racket v8.17
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
-All times have been measured with command: _$ sudo perf stat -r 20 < program name >_ and thus represent the averages of 20 runs for each program.
 
 The **Gambit** program in its first version with the 8-batch algorithm is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
 
@@ -221,7 +212,7 @@ $ cd ./CHICKEN_Scheme/chicken-5.4.0 # my local installation dir
 $ sudo ./chicken-install srfi-152 # wait! this command may take some time
 ```
 
-This 1-batch-CHICKEN solution is only a bit slower (0.069 seconds for a 20 run average) than its 8-batch variant (0.055 seconds), but can't beat Gambit with 0.040 seconds in its old 8-batch variant.
+This 1-batch-CHICKEN solution is only a bit slower than its 8-batch variant, but can't beat Gambit in its old 8-batch variant.
 
 This begged the question: what about a speedy 1-batch solution with Gambit Scheme?
 
