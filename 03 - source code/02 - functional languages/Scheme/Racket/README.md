@@ -2,6 +2,15 @@
 
 https://racket-lang.org/
 
+<br/>
+
+Table of contents:
+
+- [Execution speed](#execution-speed)
+- [FFI's (Foreign Function Interfaces)](#ffis-foreign-function-interfaces)
+- [Chez Scheme (CS)](#chez-scheme-cs)
+- [Stack and heap usage](#stack-and-heap-usage)
+
 ---
 
 Racket has an easy build system: 
