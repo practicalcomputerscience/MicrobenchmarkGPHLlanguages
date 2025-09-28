@@ -168,8 +168,15 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
+The best out of three _perf-stat_ runs of the Gambit program in its [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm) runs slightly faster than the final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) as shwon in the diagram above:
 
-The **Gambit** program in its first version with the 8-batch algorithm is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
+```
+           0,09287 +- 0,00726 seconds time elapsed  ( +-  7,82% )
+```
+
+<br/>
+
+The **Gambit** program in its 8-batch version is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
 
 ```
 ... (apply string-append (vector->list <my_vector>)) ...
@@ -212,7 +219,7 @@ $ cd ./CHICKEN_Scheme/chicken-5.4.0 # my local installation dir
 $ sudo ./chicken-install srfi-152 # wait! this command may take some time
 ```
 
-This 1-batch-CHICKEN solution is only a bit slower than its 8-batch variant, but can't beat Gambit in its old 8-batch variant.
+This 1-batch-CHICKEN solution is only a bit slower than its 8-batch variant, but can't beat Gambit in its 8-batch variant.
 
 This begged the question: what about a speedy 1-batch solution with Gambit Scheme?
 
