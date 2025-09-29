@@ -9,7 +9,7 @@ Table of contents:
 - [Compliance test r4rstest.scm](#compliance-test-r4rstestscm)
 - [Testing call-with-current-continuation (call/cc)](#testing-call-with-current-continuation-callcc)
 - [What about my Scheme program?](#what-about-my-scheme-program)
-- [Program performance](#program-performance)
+- [Program performance with JSchemePlus](#program-performance-with-jschemeplus)
 
 ---
 
@@ -238,7 +238,7 @@ However, same like my original _file-exists?_-based solution, this is not except
 
 <br/>
 
-## Program performance
+## Program performance with JSchemePlus
 
 I tested my program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed some day?).
 
