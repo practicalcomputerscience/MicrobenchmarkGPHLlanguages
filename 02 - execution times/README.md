@@ -1,22 +1,38 @@
 2025-09-28: TBD: update diagrams
 
+# Program execution times
+
+Table of contents:
+
+- [Master diagram with most program environments](#master-diagram-with-most-program-environments)
+- [Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM](#java-native-languages-scala-kotlin-and-clojure-and-their-speedup-with-the-graalvm)
+- [Tested Scheme dialects](#tested-scheme-dialects)
+
 <br/>
 
-# Program execution times
+### Master diagram with most program environments
 
 <br/>
 
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-<br/>
+---
 
-### Comparison of Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM (ahead-of-time native image compilation)
+### Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
+
+GraalVM for the compilation of an ahead-of-time (AOT) native image, that is an standalone, binary executable for Linux :
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
 https://www.graalvm.org/
 
-<br/>
+---
+
+### Tested Scheme dialects
+
+![plot](./mean_stddev_err_whiskers%20--%20only%20Scheme.png)
+
+---
 
 ### The Clojure example
 
