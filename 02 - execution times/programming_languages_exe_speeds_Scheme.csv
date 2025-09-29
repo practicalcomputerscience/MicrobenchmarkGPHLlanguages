@@ -1,0 +1,5 @@
+language;mean;std_dev
+Bigloo Scheme;0,048950;0,005590
+Racket Scheme;0,186300;0,013000
+Gambit Scheme;0,10008;0,00672
+CHICKEN Scheme;0,1243;0,0112
