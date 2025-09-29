@@ -491,7 +491,7 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 ### The 1 second execution time limit
 
-After some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in under 1 second (with the PowerShell script being the edge case):
+After implementing the microbenchmark program in some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in about under 1 second - with the PowerShell script being the edge case:
 
 ![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
