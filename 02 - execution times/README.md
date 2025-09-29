@@ -26,11 +26,15 @@ GraalVM for the compilation of an ahead-of-time (AOT) native image, that is an s
 
 https://www.graalvm.org/
 
+See more details at page [Graal Virtual Machine (GraalVM)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm)
+
 ---
 
 ### Tested Scheme dialects
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20Scheme.png)
+
+See more details at page [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme)
 
 ---
 
