@@ -232,14 +232,14 @@ $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/
 
 ..which is then located in the project's root directory as file: _./password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT_
 
-Get the mean execution times of 20 runs with shell command: _$ sudo perf stat -r 20 < program name >_:
+Get the mean execution time of 20 runs with shell command: _$ sudo perf stat -r 20 < program name >_:
 
-- Java(TM) SE Runtime Environment of Oracle GraalVM based: 116.4 milliseconds +-7.05% standard deviation
+- Java(TM) SE Runtime Environment of the Oracle GraalVM: 116.4 milliseconds +-7.05% standard deviation
 - **OpenJDK based: 30.6 milliseconds +-7.18% standard deviation**
 
 Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
 
-- Java(TM) SE Runtime Environment of Oracle GraalVM based: 3,244,144 bytes
+- Java(TM) SE Runtime Environment of the Oracle GraalVM: 3,244,144 bytes
 - OpenJDK based: 15,665,416 bytes
 
 <br/>
