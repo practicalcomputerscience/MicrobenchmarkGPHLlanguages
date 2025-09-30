@@ -4,7 +4,7 @@
 
 Subpages:
 
-- [(0) Glossary, symbols and names]()
+- [(0) Glossary, symbols and names](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(0)%20Glossary,%20symbols%20and%20names#glossary-symbols-and-names)
 - [(A) Hello world with the Scala code runner in Windows 11]()
 - [(B) Compile Scala source code "directly" to run on the Java Virtual Machine (JVM)]()
 - [(C) Working with simple build tool to run an app on the JVM in Windows with (3rd party) imports]()
