@@ -18,6 +18,8 @@ _$ coursier_ = "cs" = application and artifact manager to install Scala applicat
 
 DOM (Document Object Model) API for interaction with a web page. The DOM representation as an object-oriented representation of a web page allows it to be modified with a scripting language such as JavaScript: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
 
+IDE = Integrated Development Environment
+
 ~.jar = Java Archive file
 
 JDK = Java Development Kit
