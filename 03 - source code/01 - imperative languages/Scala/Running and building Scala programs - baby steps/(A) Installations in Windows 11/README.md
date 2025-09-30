@@ -1,6 +1,8 @@
 # Installations in Windows 11
 
-First some notes on Scala installations for Windows 11. Install these components if not done yet:
+First some notes on Scala installations for Windows 11.
+
+Install these components if not done yet:
 
 ## Scala 3
 
@@ -102,7 +104,7 @@ _C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.348
 
 <br/>
 
-## Another best practice: own project (root) directory
+## Another best practice: dedicated project (root) directory
 
 Be it in Windows or Linux, best practice is to have a **dedicated directory for every project and for every tool/IDE** you use to make Scala based programs.
 
