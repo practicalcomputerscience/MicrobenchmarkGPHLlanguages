@@ -16,7 +16,7 @@ Subpages:
 
 <br/>
 
-# Intro
+# Introduction
 
 I discovered that making my very first "shippable" Scala applications, with latest Scala version 3, with the official tool called **sbt** (**"simple build tool"**: [www.scala-sbt.org](https://www.scala-sbt.org/)) was not easy. It took me numerous trials and errors.
 
