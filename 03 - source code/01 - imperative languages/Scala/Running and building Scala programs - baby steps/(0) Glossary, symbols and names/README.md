@@ -12,6 +12,8 @@ bloop = artefact from the Bloop build server tool: https://scalacenter.github.io
 
 bsp = Build Server Protocol: a bsp configuration file (_scala.json_) makes a compiled Scala project also available to other IDEs (Integrated development environments) and build tools, where this file is then to be imported
 
+CLI = Command Line Interface: accepts text input to interact with the with the Scala language for example: https://scala-cli.virtuslab.org/
+
 _$ coursier_ = "cs" = application and artifact manager to install Scala applications and setup your Scala development environment: https://get-coursier.io/, https://get-coursier.io/docs/cli-overview
 
 DOM (Document Object Model) API for interaction with a web page. The DOM representation as an object-oriented representation of a web page allows it to be modified with a scripting language such as JavaScript: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
