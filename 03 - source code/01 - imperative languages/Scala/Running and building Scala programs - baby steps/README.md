@@ -5,14 +5,15 @@
 Subpages:
 
 - [(0) Glossary, symbols and names](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(0)%20Glossary,%20symbols%20and%20names#glossary-symbols-and-names)
-- [(A) Hello world with the Scala code runner in Windows 11]()
-- [(B) Compile Scala source code "directly" to run on the Java Virtual Machine (JVM)]()
-- [(C) Working with simple build tool to run an app on the JVM in Windows with (3rd party) imports]()
-- [(D) Working with simple build tool to create a standalone program ("Scala native") in Linux]()
-- [(E) From a Scala program to JavaScript for the web browser]()
-- [(F) From a Scala program to JavaScript for node.js]()
-- [(G) My problems with Scala]()
-- [(H) Tips for working with the sbt (simple build tool)]()
+- [(A) Installations in Windows 11](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(A)%20Installations%20in%20Windows%2011#installations-in-windows-11)
+- [(B) Hello world with the Scala code runner in Windows 11 and Ubuntu 24 LTS]()
+- [() Compile Scala source code "directly" to run on the Java Virtual Machine (JVM)]()
+- [() Working with simple build tool to run an app on the JVM in Windows with (3rd party) imports]()
+- [() Working with simple build tool to create a standalone program ("Scala native") in Linux]()
+- [() From a Scala program to JavaScript for the web browser]()
+- [() From a Scala program to JavaScript for node.js]()
+- [() My problems with Scala]()
+- [() Tips for working with the sbt (simple build tool)]()
 
 <br/>
 
