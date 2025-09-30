@@ -22,13 +22,15 @@ I discovered that making my very first "shippable" Scala applications, with late
 
 Understanding the sbt - at least to some extent - was my **key to understand practical coding with Scala** for more than just printing "Hello World!" to the console.
 
-And it's super-easy to trap into the Scala, sbt, Java version hell and to become lost in an increasingly cluttered project files directory.
+> And it's super-easy to trap into the Scala, sbt, Java version hell and to become lost in an increasingly cluttered directory of project files.
 
 <br/>
 
-In case you don't know: Scala heavily relies on the **Java ecosystem**. However, whenever I was in doubt with one of the numerous third party libraries, I turned to an official and hopefully latest version of a Java or close to Java library. This was one of the better experiences, though the state of the Java ecosystem after all those year since 1996(!) appears strange to me: [The Complete History of Java Programming Language](https://www.geeksforgeeks.org/the-complete-history-of-java-programming-language/)
+In case you don't know: Scala heavily relies on the **Java ecosystem**.
 
-I fought a lot with successfully **importing and using libraries** into my first, little scala source code files (~.scala). But I think I'm on a way to somehow master this challenge.
+However, whenever I was in doubt with one of the numerous third party libraries, I turned to an official and hopefully latest version of a Java or close to Java library. This was one of the better experiences, though the state of the Java ecosystem after all those year since 1996(!) appears strange to me: [The Complete History of Java Programming Language](https://www.geeksforgeeks.org/the-complete-history-of-java-programming-language/)
+
+I fought a lot with successfully **importing and using libraries** into my first, little scala source code files (~.scala).
 
 Just the week before, I've built successfully my first little Go (from Google) program: [Build simple, secure, scalable systems with Go](https://go.dev/) -- even with a version where I tested - also successfully - the famous and so called "goroutines".
 
@@ -40,7 +42,13 @@ Well, this is apparently the difference between a programming language from a mu
 
 I knew for years that Scala has - by design and constraints - only a slim core ecosystem. However, I was surprised of the length of my struggles to get little things finally running.
 
-However, after elaborate experimentations I "cracked the code"!! After this, I could also build **default JVM**, **"native" Scala** and even **JavaScript** based executables in Linux (here Ubuntu LTS 24) without overwhelming efforts. The only flavor missing at the moment is something that can run on node.js, so something else than a web browser.
+However, after elaborate experimentations I "cracked the code"!! After this, I could also build:
+
+- **default JVM** (Java Virtual Machine) based executables
+- **"native" Scala** executables and even
+- **JavaScript** based executables
+
+..in Linux (here Ubuntu LTS 24). The only flavor missing at the moment is something that can run on node.js (https://nodejs.org/en), so something else than a web browser.
 
 <br/>
 
@@ -73,13 +81,13 @@ Here I will tell you already a "big secret": declaring the imports in a Scala so
 libraryDependencies += "org.apache.commons" % "commons-math3" % "3.6.1"
 ```
 
-(memo to myself: I hope that I remember to add now and then some examples for this and another configuration file for the sbt tool for an example project. You necessarily don't need a build tool for very simple things, but for anything more demanding and stepping outside of the Scala core, this tool - or another build tool - is **essential** from my point of view.)
+You necessarily don't need a build tool for very simple things, but for anything more demanding and stepping outside of the Scala core, using this tool - or another build tool - is **essential** from my point of view.
 
 <br/>
 
 Of course, it's never a good sign when a language specific library, which was under development and in use for more than a decade, becomes retired.
 
-From my point of view it would be a real pittly if the Scala programming language, just after the boost of the major step forward with the version 3, starting around 2019/2020, becomes less and less used in the "real world":
+From my point of view it would be a real pitty if the Scala programming language, just after the boost of the major step forward with the version 3, starting around 2019/2020, becomes less and less used in the "real world":
 
 [New in Scala 3](https://docs.scala-lang.org/scala3/new-in-scala3.html)
 
@@ -87,7 +95,7 @@ From my point of view it would be a real pittly if the Scala programming languag
 
 <br/>
 
-And last but not least: the probability that someone will write and publish a book like "100 Scala Mistakes and How to Avoid Them" (see https://www.thecoder.cafe/p/100-go-mistakes) is rather low.
+And last but not least: the probability that someone will write and publish a book like "100 Scala Mistakes and How to Avoid Them" (see https://www.thecoder.cafe/p/100-go-mistakes) is rather low in my opinion.
 
 <br/>
 
