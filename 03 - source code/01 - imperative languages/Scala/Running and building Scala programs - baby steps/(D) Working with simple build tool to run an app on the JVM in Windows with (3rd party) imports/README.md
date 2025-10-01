@@ -30,7 +30,7 @@ _Template applied in .\<project name>_
 
 <br/>
 
-Optionally, edit the _**build.sbt**_ file in _.\<project root dir>\build.sbt_: often one or more library dependencies have to be added there, here for example:
+Optionally, edit the _**build.sbt**_ file in _.\\<project root dir\>\build.sbt_: often one or more library dependencies have to be added there, here for example:
 
 _libraryDependencies += "org.typelevel" %% "cats-core" % "2.13.0"_
 
