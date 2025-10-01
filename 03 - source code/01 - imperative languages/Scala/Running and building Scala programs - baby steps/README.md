@@ -8,9 +8,9 @@ Subpages:
 - [(A) Installations in Windows 11](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(A)%20Installations%20in%20Windows%2011#installations-in-windows-11)
 - [(B) Hello, world! with the Scala code runner in Windows 11 and Ubuntu 24 LTS](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(B)%20Hello,%20world!%20with%20the%20Scala%20code%20runner%20in%20Windows%2011%20and%20Ubuntu%2024%20LTS#hello-world-with-the-scala-code-runner-in-windows-11-and-ubuntu-24-lts)
 - [(C) Compile Scala source code "directly" to run on the JVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(C)%20Compile%20Scala%20source%20code%20%22directly%22%20to%20run%20on%20the%20JVM#compile-scala-source-code-directly-to-run-on-the-jvm)
+- [(D) Working with simple build tool to run an app on the JVM in Windows with (3rd party) imports](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(D)%20Working%20with%20simple%20build%20tool%20to%20run%20an%20app%20on%20the%20JVM%20in%20Windows%20with%20(3rd%20party)%20imports#working-with-simple-build-tool-to-run-an-app-on-the-jvm-in-windows-with-3rd-party-imports)
 
 TBD:
-- [() Working with simple build tool to run an app on the JVM in Windows with (3rd party) imports]()
 - [() Working with simple build tool to create a standalone program ("Scala native") in Linux]()
 - [() From a Scala program to JavaScript for the web browser]()
 - [() From a Scala program to JavaScript for node.js]()
