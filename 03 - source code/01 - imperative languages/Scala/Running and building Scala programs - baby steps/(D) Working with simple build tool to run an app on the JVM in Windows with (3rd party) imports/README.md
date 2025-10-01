@@ -10,7 +10,7 @@ Now create a new Scala project; this command also creates the project root direc
 
 _\> sbt new_
 
-_Welcome to sbt new!_
+_Welcome to  new!_
 
 _Here are some templates to get started:_
 
@@ -24,7 +24,7 @@ _name [Scala 3 Project Template]:_ _test_sbt_Windows_  # this is only an example
 
 _Template applied in .\<project name>_
 	
-![plot](https://github.com/PLC-Programmer/PLC-Programmer.github.io/blob/main/sbt_new_Windows.png)
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/sbt_new_Windows.png)
 
 <br/>
 
@@ -40,7 +40,7 @@ Now change into the project root directory:
 
 _\> cd \<project root dir\>_
 
-..and start the sbt again:
+..and start the sbt (simple build tool) again:
 
 _\> sbt_
 
@@ -56,7 +56,9 @@ _[info] sbt server started at local:sbt-server-84a7d2d60ce9c59ce491_
 
 _[info] started sbt server_
 
-Now the **sbt prompt** should show up:
+<br/>
+
+Now the sbt prompt should show up:
 
 _sbt:\<project name\>>_
 
@@ -83,7 +85,9 @@ _sbt:\<project name\>>_
  
 Now you can edit the Scala source code file with the main function (_@main def hello(): Unit =_ or something like this) at this relative path:
 
-_**.\\<project name>\src\main\scala\Main.scala**_
+```
+.\<project name>\src\main\scala\Main.scala
+```
 
 In the meantime you can put the sbt into listening mode with the "~" character before a command to start building and running again when the _Main.scala_ file has been changed by you:
 
@@ -111,11 +115,11 @@ _[info]    Press <enter> to interrupt or '?' for more options._
 
 <br/>
 
-We end this monitoring session now, so press key [ENTER]
+We end this monitoring session now, so press key [ENTER]:
 
 _[info] Received input event: CancelWatch._
 
-...and finally leave this sbt session with this command:
+...and finally leave this sbt session with the _exit_ command:
 
 _sbt:\<project name\>> exit_
 
@@ -127,7 +131,7 @@ Now we are back at the Windows Terminal:
 
 <br/>
 
-When you want to continues with this project, do this: **in the project root directory** enter (in the Windows Terminal): _\> sbt_
+When you want to continues with this project, do this: go to the project root directory and just enter (in the Windows Terminal): _\> sbt_
 
 _[info] welcome to sbt 1.10.11 (Oracle Corporation Java 23.0.2)_
 
@@ -138,11 +142,11 @@ _[info] welcome to sbt 1.10.11 (Oracle Corporation Java 23.0.2)_
 This workflow (D), be it in Windows or Linux, is a basic workflow for my (little) Scala programming. It involves 4 key concepts:
 
 * the starting point is opening an OS shell and changing to a directory which will be the parent directory of the later project root directory
-* remember that with the _> sbt new_ command from the OS shell and setting a project name at: _name [Scala 3 Project Template]:_ inside the simple build tool, you will automatically create the OS project root directory!
-* working on the _build.sbt_ configuration file located in the project root directory
-* the operation of the sbt, often having a leading "~" character at a sbt command to work in the foreground on source code files and project configuration files
+* remember that with the _> sbt new_ command from the OS shell and setting a project name at: _name [Scala 3 Project Template]:_ inside the simple build tool you will automatically create the OS project root directory!
+* do not forget to work on the _build.sbt_ configuration file located in the project root directory
+* get familiar with operating the sbt, often having a leading "~" character at a sbt prompt in the background, while working in the foreground on Scala source code files and project configuration files
 
-It look me a while to become familiar with this workflow.
+It took me a while to become familiar with this workflow.
 
 <br/>
 
