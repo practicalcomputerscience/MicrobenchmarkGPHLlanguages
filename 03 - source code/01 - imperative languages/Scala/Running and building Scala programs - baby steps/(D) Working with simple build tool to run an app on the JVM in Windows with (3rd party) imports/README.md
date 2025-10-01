@@ -24,7 +24,7 @@ Now enter your project name which is also the name of the project root directory
 
 _name [Scala 3 Project Template]:_ _test_sbt_Windows_  # this is only an example project name
 
-_Template applied in .\\<project name\_
+_Template applied in .\\<project name\>_
 	
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/sbt_new_Windows.png)
 
