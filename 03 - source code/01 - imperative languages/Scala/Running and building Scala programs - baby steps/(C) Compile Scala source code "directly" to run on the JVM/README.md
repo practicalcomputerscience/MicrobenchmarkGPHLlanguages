@@ -34,7 +34,7 @@ _> java -cp .\scala-library.jar;.\scala-reflect.jar;.\ hello_world_for_java_
 
 **_Hello, world for Java!_**
 
-The _-cp_ option is for the "class search path of directories and zip/jar files" and zip/jar files; see from output of command: _> java_
+The _-cp_ option is for the "class search path of directories and zip/jar files"; see from output of command: _> java_
 
 The real "trick" here is to also consider the relative path .\ at the class search path of directories!
 
