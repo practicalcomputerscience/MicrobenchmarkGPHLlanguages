@@ -14,7 +14,7 @@ _Welcome to  new!_
 
 _Here are some templates to get started:_
 
-<br/>
+_..._
 
 ### Select option d)
 
