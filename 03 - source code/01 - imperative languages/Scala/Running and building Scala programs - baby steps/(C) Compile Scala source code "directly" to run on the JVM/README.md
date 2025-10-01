@@ -8,7 +8,7 @@ object hello_world_for_java:
     println("Hello, world for Java!")
 ```
 
-Compile it on Windows 11 and run it on the JVM (Java Virtual Machine) like this:
+Compile it on Windows 11 like this:
 
 _> scalac hello_world_for_java.scala_
 
@@ -28,7 +28,7 @@ _scala-library.jar_
 
 _scala-reflect.jar_
 
-I copied these Java Archive files from my Windows installation of Scala: _<my Windows Home dir>\.sbt\boot\scala-2.12.20\lib_ to the project root directory, that is here the same directory as the Scala source code file and run:
+I copied these Java Archive files from my Windows installation of Scala: _<my Windows Home dir>\.sbt\boot\scala-2.12.20\lib_ to the project root directory, that is here the same directory as the Scala source code file and run the compiled source code file on the JVM (Java Virtual Machine) like this:
 
 _> java -cp .\scala-library.jar;.\scala-reflect.jar;.\ hello_world_for_java_
 
@@ -36,7 +36,7 @@ _> java -cp .\scala-library.jar;.\scala-reflect.jar;.\ hello_world_for_java_
 
 The _-cp_ option is for the "class search path of directories and zip/jar files" and zip/jar files; see from output of command: _> java_
 
-The real "trick" here is to also consider the relative path _.\_ at the class search path of directories!
+The real "trick" here is to also consider the relative path .\ at the class search path of directories!
 
 <br/>
 
