@@ -50,7 +50,7 @@ _Scala version (default): 3.6.4_
 
 ## Start a Scala project
 
-Now open the Bash shell (Terminal) and set your working directory so that it will be **the parent directory of the later project root directory**:
+Now open the Bash shell (terminal) and set your working directory so that it will be **the parent directory of the later project root directory**:
 
 _$ sbt new_  # create a new Scala project; this command also creates the project root directory
 
@@ -153,7 +153,7 @@ _sbt:\<project name\>>_
 
 Apparently, the _build.sbt_ file must be fixed first.
 
-**Without leaving the sbt**, open a second Terminal (and keep it running!) and **append** line _enablePlugins(ScalaNativePlugin)_ like this for example (you could also use a text editor for doing this parallel job):
+**Without leaving the sbt**, open a second terminal (and keep it running!) and **append** line _enablePlugins(ScalaNativePlugin)_ like this for example (you could also use a text editor for doing this parallel job):
 
 _\<project root dir\>/project$ echo "enablePlugins(ScalaNativePlugin)" > build.sbt_
 
@@ -210,7 +210,7 @@ def msg = "I was compiled by Scala 3. :)"
 
 <br/>
 
-Now return to the Terminal with the sbt running and apply these commands:
+Now return to the terminal with the sbt running and apply these commands:
 
 _sbt:\<project name\>> reload_  # reload the changed project configuration
 
@@ -225,6 +225,8 @@ _sbt:\<project name\>> nativeLink_
 _[success] Total time: 5 s, completed Apr 12, 2025, 11:27:35 AM_
 
 _sbt:\<project name\>>_
+
+<br/>
 
 Make a run from the sbt as a test:
 
@@ -244,7 +246,7 @@ _sbt:\<project name\>>_
 
 **The executable** can now be found in sub directory _\<project root dir\>/target/scala-3.6.4/_ with file name **\<project name\>**
 
-Run it in the second Terminal (so still keep the sbt running in the first Terminal):
+Run it in the second terminal (so still keep the sbt running in the first terminal):
 
 _\<project root dir\>/target/scala-3.6.4$_ ./\<project name\>
 
@@ -272,7 +274,7 @@ Double Bingo!
 
 <br/>
 
-Finally do this:
+Finally leave this sbt session with the exit command and return to the Bash shell prompt:
 
 _sbt:\<project name\>> exit_
 
