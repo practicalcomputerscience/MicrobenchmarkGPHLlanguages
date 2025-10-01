@@ -16,7 +16,9 @@ _Here are some templates to get started:_
 
 <br/>
 
-**Select option d)** with only pressing key [d] (and not pressing a following [ENTER] key): _d) scala/scala3.g8 - Scala 3 seed template_
+### Select option d)
+
+..with only pressing key [d] (and not pressing a following [ENTER] key): _d) scala/scala3.g8 - Scala 3 seed template_
 
 Now enter your project name which is also the name of the project root directory in the filesystem of the OS:
 
