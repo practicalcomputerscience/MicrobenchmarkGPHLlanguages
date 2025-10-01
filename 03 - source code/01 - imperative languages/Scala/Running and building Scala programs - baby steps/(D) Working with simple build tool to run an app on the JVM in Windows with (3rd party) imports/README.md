@@ -28,7 +28,7 @@ _Template applied in .\<project name>_
 
 <br/>
 
-Optionally edit the _**build.sbt**_ file in _.\<project root dir>\build.sbt_: often one or more library dependencies have to be added there, here for example:
+Optionally, edit the _**build.sbt**_ file in _.\<project root dir>\build.sbt_: often one or more library dependencies have to be added there, here for example:
 
 _libraryDependencies += "org.typelevel" %% "cats-core" % "2.13.0"_
 
@@ -134,17 +134,18 @@ Now we are back at the Windows Terminal:
 When you want to continues with this project, do this: go to the project root directory and just enter (in the Windows Terminal): _\> sbt_
 
 _[info] welcome to sbt 1.10.11 (Oracle Corporation Java 23.0.2)_
+_..._
 
 <br/>
 
 ## (D) as a basic workflow for my Scala programming
 
-This workflow (D), be it in Windows or Linux, is a basic workflow for my (little) Scala programming. It involves 4 key concepts:
+This workflow (D), be it in Windows or Linux, is a basic workflow for my (little) Scala programming. It involves four key concepts:
 
-* the starting point is opening an OS shell and changing to a directory which will be the parent directory of the later project root directory
-* remember that with the _> sbt new_ command from the OS shell and setting a project name at: _name [Scala 3 Project Template]:_ inside the simple build tool you will automatically create the OS project root directory!
-* do not forget to work on the _build.sbt_ configuration file located in the project root directory
-* get familiar with operating the sbt, often having a leading "~" character at a sbt prompt in the background, while working in the foreground on Scala source code files and project configuration files
+1. the starting point is opening an OS shell and changing to a directory which will be the parent directory of the later project root directory
+2. remember that with the _> sbt new_ command from the OS shell and setting a project name at: _name [Scala 3 Project Template]:_ inside the simple build tool you will automatically create the OS project root directory!
+3. do not forget to work on the _build.sbt_ configuration file located in the project root directory
+4. get familiar with operating the sbt, often having a leading "~" character at a sbt prompt in the background, while working in the foreground on Scala source code files and project configuration files
 
 It took me a while to become familiar with this workflow.
 
