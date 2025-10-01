@@ -30,7 +30,7 @@ Checking if a JVM is installed
 No JVM found, should we try to install one? [Y/n]
 ```
 
-Here press [Y]!
+Here press the [Y] key!
 
 In case of a problem, here's the official installation guide for **Coursier**: https://get-coursier.io/docs/cli-installation
 
@@ -65,7 +65,7 @@ Now enter your project name which is also the name of the project root directory
 
 _name [Scala 3 Project Template]: test_sbt_Linux_  # this is only an example project name
 
-_Template applied in .\<project name>_
+_Template applied in ./\<project name\>_
 
 See also from this use case: [Select option d)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(D)%20Working%20with%20simple%20build%20tool%20to%20run%20an%20app%20on%20the%20JVM%20in%20Windows%20with%20(3rd%20party)%20imports/README.md#select-option-d)
 
@@ -105,8 +105,6 @@ Now the sbt prompt should show up:
 
 _sbt:\<project name\>>_
 
-<br/>
-
 Now build and run this demo project like this:
 
 _sbt:\<project name\>> run_
@@ -125,14 +123,13 @@ _[success] Total time: 3 s, completed Apr 12, 2025, 10:41:22 AM_
 
 <br/>
 
-But how to make this application "Scala native"?
+## How to make this application "Scala native"?
 
 I followed this advice at chapter "Compiling and running your Scala Native application" from:
 
 _Getting Started with Scala Native: A Comprehensive Guide for Beginners_
 
-https://medium.com/@diehardankush/getting-started-with-scala-native-a-comprehensive-guide-for-beginners-dedafeed7f25
-Ankush Singh, Apr 23, 2023
+https://medium.com/@diehardankush/getting-started-with-scala-native-a-comprehensive-guide-for-beginners-dedafeed7f25 by Ankush Singh, Apr 23, 2023
 
 …and found this command:
 
@@ -187,16 +184,16 @@ Then the _plugin.sbt_ file must be added in the already existing _./project_ sub
 
 _\<project root dir\>$ cd project_
 
-_\<project root dir\>/project$ echo "addSbtPlugin(\"org.scala-native\" % \"sbt-scala-native\" % \"0.5.7\")" > plugin.sbt_
+_\<project root dir\>/project$ echo "addSbtPlugin(\"org.scala-native\" % \"sbt-scala-native\" % \"0.5.8\")" > plugin.sbt_
 
-I got this latest Scala native version number from here: https://www.scala-native.org/en/stable/
+I got this latest Scala native version (as of September 2025) number from here: https://www.scala-native.org/en/stable/
 
 Again, you can check success like this:
 
 _\<project root dir\>/project$ cat plugin.sbt_
 
 ```
-addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.7")
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.8")
 ```
 
 <br/>
@@ -205,7 +202,7 @@ You may edit the _Main.scala_ source code file in the _\<project root dir\>/src/
 
 ```
 @main def hello(): Unit =
-  println("Hello world from Scala Native with version 0.5.7!")
+  println("Hello world from Scala Native with version 0.5.8!")
   println(msg)
 
 def msg = "I was compiled by Scala 3. :)"
@@ -235,7 +232,7 @@ _sbt:\<project name\>> run_
 
 _[info] Build skipped: No changes detected in build configuration and class path contents since last build._
 
-**_Hello world from Scala Native with version 0.5.7!_**
+**_Hello world from Scala Native with version 0.5.8!_**
 
 _I was compiled by Scala 3. :)_
 
@@ -251,7 +248,7 @@ Run it in the second Terminal (so still keep the sbt running in the first Termin
 
 _\<project root dir\>/target/scala-3.6.4$_ ./\<project name\>
 
-_Hello world from Scala Native with version 0.5.7!_
+_Hello world from Scala Native with version 0.5.8!_
 
 _I was compiled by Scala 3. :)_
 
@@ -267,7 +264,7 @@ Don't forget to do first: _$ chmod 774 ./_\<project name\>
 
 _$_ ./\<project name\>
 
-_Hello world from Scala Native with version 0.5.7!_
+_Hello world from Scala Native with version 0.5.8!_
 
 _I was compiled by Scala 3. :)_
 
