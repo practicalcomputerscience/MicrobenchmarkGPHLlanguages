@@ -24,7 +24,7 @@ Now enter your project name which is also the name of the project root directory
 
 _name [Scala 3 Project Template]:_ _test_sbt_Windows_  # this is only an example project name
 
-_Template applied in .\<project name>_
+_Template applied in .\\<project name\_
 	
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/sbt_new_Windows.png)
 
@@ -48,11 +48,11 @@ _\> sbt_
 
 _[info] welcome to sbt 1.10.11 (Oracle Corporation Java 1.8.0_441)_
 
-_[info] loading project definition from ... .\<project name>\project_
+_[info] loading project definition from ... .\\<project name\>\project_
 
 _[info] loading settings for project root from build.sbt..._
 
-_[info] set current project to <project name> (in build file: ... ./\<project name\>/)_
+_[info] set current project to \<project name\> (in build file: ... ./\<project name\>/)_
 
 _[info] sbt server started at local:sbt-server-84a7d2d60ce9c59ce491_
 
@@ -71,7 +71,7 @@ _sbt:\<project name\>> run_
 
 There should be success now:
 
- _[info] compiling 1 Scala source to … .\<project name>\target\scala-3.6.4\classes ..._
+ _[info] compiling 1 Scala source to … .\<project name\>\target\scala-3.6.4\classes ..._
 
 _[info] running hello_
 
@@ -99,9 +99,9 @@ _[info] 1. Monitoring source files for root/run..._
 
 _[info]    Press <enter> to interrupt or '?' for more options._
 
-_[info] Build triggered by … .\<project name>\src\main\scala\Main.scala. Running 'run'._
+_[info] Build triggered by … .\\<project name\>\src\main\scala\Main.scala. Running 'run'._
 	
-_[info] compiling 1 Scala source to … .\<project name>\target\scala-3.6.4\classes ..._
+_[info] compiling 1 Scala source to … .\\<project name\>\target\scala-3.6.4\classes ..._
 
 _[info] running hello_
 
