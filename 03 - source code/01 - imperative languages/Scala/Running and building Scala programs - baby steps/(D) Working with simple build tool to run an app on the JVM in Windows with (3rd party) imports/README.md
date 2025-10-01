@@ -71,7 +71,7 @@ _sbt:\<project name\>> run_
 
 There should be success now:
 
- _[info] compiling 1 Scala source to … .\<project name\>\target\scala-3.6.4\classes ..._
+ _[info] compiling 1 Scala source to … .\\<project name\>\target\scala-3.6.4\classes ..._
 
 _[info] running hello_
 
