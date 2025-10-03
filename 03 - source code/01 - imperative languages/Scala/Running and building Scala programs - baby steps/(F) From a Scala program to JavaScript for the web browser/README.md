@@ -6,7 +6,7 @@ I did this:
 
 ## Install Vite and Yarn
 
-At first I installed Vite (a frontend build tool) and Yarn (a JavaScript package manager).
+At first, I installed Vite (a frontend build tool) and Yarn (a JavaScript package manager).
 
 From this source: https://tecadmin.net/install-yarn-on-ubuntu-22-04/ I took method 1:
 
@@ -20,8 +20,6 @@ $ nodejs --version
 v18.19.1
 $
 ```
-
-<br/>
 
 ## Build the default demo project with the sbt
 
@@ -95,9 +93,7 @@ VITE v4.5.11  ready in 3764 ms
 
 <br/>
 
-Now open a local web browser to the given address http://localhost:5173/ -- but be careful not to stop the web server with wrong mouse clicks or so in this reactive Terminal (otherwise restart it with running _npm run dev_ again).
-
-Here we are:
+Now open a local web browser to the given address http://localhost:5173/ -- but be careful not to stop the web server with wrong mouse clicks or so in this reactive Terminal (otherwise restart it with running _npm run dev_ again):
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/hello_world_from_vite.png)
 
@@ -147,7 +143,7 @@ In the project configuration file _.\hello_world2_with_sbt\build.sbt_ change the
 
 _name := "**hello_world2_with_sbt**",_
 
-Change this line to: _.withModuleSplitStyle(ModuleSplitStyle.SmallModulesFor(List("**main**")))_
+Change this line with the change in bold format: _.withModuleSplitStyle(ModuleSplitStyle.SmallModulesFor(List("**main**")))_
 
 Principially, keep the sbt directory structure _...\<project root dir\>/src/main/scala/main_, even with a duplicate _main_ name.
 
@@ -165,11 +161,9 @@ Open the web browser again at: http://localhost:5173/ =>
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/hello_world2_with_sbt_from_vite.png)
 
-<br/>
+## Sources for more elaborate examples
 
-### Sources for more elaborate examples
-
-See from here for example: https://www.scala-js.org/doc/tutorial/basic/
+See from here: https://www.scala-js.org/doc/tutorial/basic/
 
 See other advanced examples from here: https://scribble.ninja/
 
