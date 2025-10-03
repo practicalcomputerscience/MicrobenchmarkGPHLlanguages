@@ -1,4 +1,4 @@
-**Spoler alert**: this use case has practically no value for me because so far I couldn't find a solution for the open point described below at: [How to read from the console when executing JavaScript on node.js?](#how-to-read-from-the-console-when-executing-javascript-on-nodejs)
+> **Spoler alert**: this use case has practically no value for me because so far I couldn't find a solution for the open point described below at: [How to read from the console when executing JavaScript on node.js?](#how-to-read-from-the-console-when-executing-javascript-on-nodejs)
 
 <br/>
 
