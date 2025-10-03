@@ -46,7 +46,7 @@ _$ cd ./scalajs-vite-example_
 Now do the background build of this demo project after every source code change ("~"):
 
 ```
-_$ sbt ~fastLinkJS_
+$ sbt ~fastLinkJS
 ...
 [success] Total time: 15 s, completed Apr 2, 2025, 9:12:40 PM
 [info] 1. Monitoring source files for root/fastLinkJS...
