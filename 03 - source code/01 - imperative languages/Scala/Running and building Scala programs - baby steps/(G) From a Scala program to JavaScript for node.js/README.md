@@ -219,7 +219,7 @@ object cats_effect3_io_example extends IOApp.Simple:
   } yield ExitCode.Success
 ```
 
-This program runs like this:
+This program runs like this for example:
 
 ```
 ./cats_effect3_io_example/target/scala-3.6.4/cats_effect3_io_example-fastopt$ node main
@@ -229,7 +229,7 @@ your input was: 56
 ./cats_effect3_io_example/target/scala-3.6.4/cats_effect3_io_example-fastopt$
 ```
 
-What I'm specifically **missing is a working example (in Scala 3)** which is handling more than one "IO stream" since what I want to accomplish finally is a dialog between the computer and its user.
+What I'm specifically **missing is a working example in Scala 3** which is handling more than one "IO stream" since what I want to accomplish finally is a dialog between the computer and its user.
 
 It looks like that there's not much support in the Scala ecosystem for this.
 
@@ -238,8 +238,6 @@ For example look at this: [Cats Effect 3.x -- Console](https://typelevel.org/cat
 _Console provides common methods to write to and read from the standard console. Suited only for extremely simple console input and output, ..._
 
 At the end of this page the authors write:
-
-**Scala.JS**
 
 _readLine is not implemented for Scala.js. On Node.js consider using **fs2.io.stdin**._
 
