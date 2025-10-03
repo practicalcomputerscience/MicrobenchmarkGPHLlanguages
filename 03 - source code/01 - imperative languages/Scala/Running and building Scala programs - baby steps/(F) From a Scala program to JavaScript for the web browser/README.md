@@ -73,7 +73,7 @@ $
 
 <br/>
 
-Now start the web server:
+Then start the web server:
 
 ```
 $ npm run dev
@@ -157,7 +157,7 @@ _$ yarn_
 
 _$ npm run dev  # start the web server_
 
-Open the web browser again at: http://localhost:5173/ =>
+Then open the web browser again at: http://localhost:5173/ =>
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/hello_world2_with_sbt_from_vite.png)
 
