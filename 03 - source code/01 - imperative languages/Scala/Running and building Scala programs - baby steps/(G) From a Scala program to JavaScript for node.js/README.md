@@ -61,9 +61,10 @@ sbt:scala_to_js_on_nodejs>
 sbt:scala_to_js_on_nodejs> compile
 …
 [success] …
-sbt:scala_to_js_on_nodejs> **fastLinkJS**
+sbt:scala_to_js_on_nodejs> fastLinkJS
 …
 [success] …
+sbt:scala_to_js_on_nodejs>
 ```
 
 See also from here: https://www.scala-js.org/doc/project/building.html
@@ -84,19 +85,24 @@ You can find the transpiled JavaScript file in this directory:
 
 _./scala_to_js_on_nodejs/target/scala-3.6.4/scala_to_js_on_nodejs-fastopt/main.js_
 
-Execute this JavaScript code on node.js like this: _$ node main.js_
+Execute this JavaScript code on node.js like this:
 
-_Hello world!_
+```
+$ node main.js
+Hello world!
+$
+```
 
 <br/>
 
 Of course this can be done also in other directories, when _main.js_ has been copied there and maybe, as in this case, being renamed to a more descriptive name like _scala_to_js_on_nodejs.js_ for example:
 
-_$ mv main.js scala_to_js_on_nodejs.js_
-
-_$ node scala_to_js_on_nodejs.js_
-
-_Hello world!_
+```
+$ mv main.js scala_to_js_on_nodejs.js
+$ node scala_to_js_on_nodejs.js
+Hello world!
+$
+```
 
 See also more official advice from here: https://scala-cli.virtuslab.org/docs/guides/advanced/scala-js/
 
@@ -154,9 +160,9 @@ The _scala.scalajs.js_ package is for "Types, methods and values for interoperab
 
 ## How to read from the console when executing JavaScript on node.js?
 
-Often I like some **user interaction** with a computer program on the console and so I tried hard - but in vain so far - to write an interactive Scala to JavaScript-program, which is then being executed by node.js.
+Often I like some **user interaction** with a computer program on the console and so I tried hard - but in vain so far - to write an interactive Scala-to-JavaScript program, which is then being executed by node.js.
 
-I did't have these kind of problems when doing this in Scala programs for the JVM (Java Virtual Machine) or in "Scala native" apps.
+I did't encounter these kind of problems when programming this in Scala programs for the JVM (Java Virtual Machine) or for Scala native apps.
 
 Like this for example:
 
@@ -185,7 +191,7 @@ Like this for example:
     }
 ```
 
-This part of a program runs without any problems in a Windows or Linux terminal.
+This part of a Scala program runs without any problems in a Windows or Linux terminal.
 
 The very best I got so far is this:
 
@@ -248,5 +254,7 @@ Anyhow, here's a list of links with more background information:
 - https://gist.github.com/BalmungSan/d4a5d524cab529e18fbf05f100ec3296
 - https://fs2.io/#/getstarted/example
 - https://medium.com/@geethana.kattar/building-reactive-applications-with-cats-effect-and-fs2-in-scala-e427703887ab
+
+<br/>
 
 ##_end
