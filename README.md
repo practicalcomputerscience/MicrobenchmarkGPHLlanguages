@@ -382,9 +382,9 @@ The Crystal programming language (https://crystal-lang.org/) even features the _
 
 This project was the first time I deliberately came into contact with **functional programming languages**. At one point it made me to divide the programs into two sections:
 
-- imperative programming languages (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature") and
+- [imperative programming languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages)  (I've not seen yet an Object-Oriented Programming (OOP) language which is not imperative "by nature") and
 
-- functional programming languages, from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh" or "pure" like it's officially called, here with Roc: https://www.roc-lang.org/
+- [functional programming languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages), from "soft" like Common Lisp (https://lisp-lang.org/) to "harsh", or "pure" like it's officially called, with this microbenchmark program implemented in Roc: https://www.roc-lang.org/
 
 The concepts of functional programming and concurrency are linked because:
 
