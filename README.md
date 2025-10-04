@@ -28,7 +28,7 @@ Table of contents:
 - [On including lots of comments in my source code files](#on-including-lots-of-comments-in-my-source-code-files)
 - [On debugging](#on-debugging)
 - [On functional programming](#on-functional-programming)
-- [Why the develoment of a new general purpose, high-level programming language is a risky business](why-the-develoment-of-a-new-general-purpose-high-level-programming-language-is-a-risky-business)
+- [Why the develoment of a new general purpose, high-level programming language is a risky business](why-the-develoment-of-a-new-general-purpose-highlevel-programming-language-is-a-risky-business)
 - [On configuring building and execution environments](#on-configuring-building-and-execution-environments)
 - [Error handling, exception handling and "Quality control"](#error-handling-exception-handling-and-quality-control)
 - [Prompt engineering](#prompt-engineering)
