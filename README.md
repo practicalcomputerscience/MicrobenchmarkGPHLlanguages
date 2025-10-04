@@ -23,11 +23,12 @@ Table of contents:
 - [In terms of execution times this is a string concatenation benchmark](#in-terms-of-execution-times-this-is-a-string-concatenation-benchmark)
 - [This program is not bullet proof](#this-program-is-not-bullet-proof)
 - [Motivation and orientation](#motivation-and-orientation)
-- [Parameters for the LCG (linear congruential generator)](#parameters-for-the-lcg-(linear-congruential-generator))
+- [Parameters for the LCG (linear congruential generator)](#parameters-for-the-lcg-linear-congruential-generator)
 - [Other aspects of a computer programming language](#other-aspects-of-a-computer-programming-language)
 - [On including lots of comments in my source code files](#on-including-lots-of-comments-in-my-source-code-files)
 - [On debugging](#on-debugging)
 - [On functional programming](#on-functional-programming)
+- [Why the develoment of a new general purpose, high-level programming language is a risky business](why-the-develoment-of-a-new-general-purpose-high-level-programming-language-is-a-risky-business)
 - [On configuring building and execution environments](#on-configuring-building-and-execution-environments)
 - [Error handling, exception handling and "Quality control"](#error-handling-exception-handling-and-quality-control)
 - [Prompt engineering](#prompt-engineering)
@@ -392,6 +393,12 @@ The concepts of functional programming and concurrency are linked because:
 From: https://medium.com/twodigits/advantages-and-disadvantages-of-functional-programming-52a81c8bf446
 
 You may have to look at [A little exercise in Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#a-little-exercise-in-common-lisp) to understand why functional programming has (still) not taken over the world and also a look at: [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/edit/main/03%20-%20source%20code/02%20-%20functional%20languages/README.md#so-who-is-mostly-using-functional-programming)
+
+<br/>
+
+### Why the develoment of a new general purpose, high-level programming language is a risky business
+
+See from here at: [Old computer programming languages learning new tricks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#old-computer-programming-languages-learning-new-tricks)
 
 <br/>
 
