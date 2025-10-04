@@ -24,6 +24,7 @@ I discovered that making my very first "shippable" Scala applications, with late
 
 Understanding the sbt - at least to some extent - was my **key to understand practical coding with Scala** for more than just printing "Hello World!" to the console.
 
+> [!WARNING]
 > And it's super-easy to trap into the Scala, sbt, Java version hell and to become lost in an increasingly cluttered directory of project files.
 
 <br/>
