@@ -6,7 +6,8 @@ GPHL = general purpose, high-level (programming language)
 2025-07-16: starting this work in progress
 
 To-do:
-- fix TBD's
+- fix TBD's:
+- 1 TBD on this page: _language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second_
 - own Wiki page
 - implement a concurreny solution in Chapel, compare to the Go solution
 - test: exhausting the generated random bitstream when user asks for a super-long password
@@ -543,7 +544,6 @@ So, in the end I mostly used the _perf-stat_ program for Linux:
 ..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
 
 - Python
-- TBD
 
 However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs:
 
