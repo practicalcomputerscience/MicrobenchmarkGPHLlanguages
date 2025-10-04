@@ -501,11 +501,13 @@ Bottom line for me: for convincingly translating whole programs from one arbitra
 
 ### The 1 second execution time limit
 
-After implementing the microbenchmark program in some languages I noticed that all of them - often after some iterations of improvements - can run the "speed part" in about under 1 second - with the PowerShell script being the edge case:
+After implementing the microbenchmark program in some languages I noticed that **almost** all of them - often after some iterations of improvements - can run the "speed part" in about under 1 second - with the PowerShell script being the edge case:
 
 ![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-I've also language implementations where - for various reasons - I'm not able to bring down the execution time under 1 second. I may list these solutions later and separately (TBD). This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
+As of September 2025 I've also got one language implementation where I was able to bring down the execution time under 1 second: (TBD)
+
+This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
 ### Measuring program execution times
 
