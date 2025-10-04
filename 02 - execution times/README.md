@@ -1,5 +1,3 @@
-2025-09-28: TBD: update diagrams
-
 # Program execution times
 
 Table of contents:
