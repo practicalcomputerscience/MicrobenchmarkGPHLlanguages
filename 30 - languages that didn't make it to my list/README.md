@@ -4,7 +4,7 @@
 
 <br/>
 
-## Hack
+### Hack
 
 https://hacklang.org/
 
@@ -21,15 +21,9 @@ async function main(): Awaitable<void> {
 
 ..I learned that also this language didn't survive because PHP had its comeback: https://medium.com/@thoughtsfromryan/the-rapid-rise-and-fall-of-facebooks-hack-and-hhvm-7eeea401b04
 
-In other words: also big corporations with a decent ecosystems can fail with a new general purpose, high-level programming language!
-
-Or think of the fate of the **Modula-3** language of the once mighty and profitable Digital Equipment Corporation, together with Olivetti: https://www.modula3.org/quotes/: this language is more dead now than **Self**, which just got an update last year: https://selflanguage.org/
-
-Why did Self became somehow famous? It allegedly was the first (major) language to introduce _Traits_ into the world of object-oriented programming, and now (almost) everybody has them, even OCaml: https://en.wikipedia.org/wiki/Trait_(computer_programming)
-
 ---
 
-## Pony
+### Pony
 
 With Pony (https://www.ponylang.io/) I had to give up further development because as of May 2025 I was not able to implement the user dialog as mentioned here at: [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#reading-user-input-from-the-keyboard-into-a-string).
 
@@ -37,7 +31,7 @@ I was not able to properly read a user input as a string (in the end) from the k
 
 ---
 
-## Toit
+### Toit
 
 https://toitlang.org/
 
@@ -46,6 +40,26 @@ GitHub: https://github.com/toitlang/toit
 
 This is a real pity from my point of view since the syntax of Toit would make a modern, up-to-date syntax for ubiquitous Python! However, with Toit as of May 2025 it's not
 possible to the access the (Linux) file system, which - unintentionally again - is just an essential part of my microbenchmark program.
+
+<br/>
+
+## Old computer programming languages learning new tricks
+
+The Hack example shows that also big corporations with decent ecosystems can fail with a new general purpose, high-level programming language.
+
+Think of the fate of the **Modula-3** language of the once mighty and profitable Digital Equipment Corporation, together with Olivetti, for example: https://www.modula3.org/quotes/: this language is more dead now than **Self**, which just got an update last year: https://selflanguage.org/
+
+> I wish the whole world were programming in Modula-3.
+
+Joseph M. Newcomer, 1997
+
+Why did Self became somehow famous? It allegedly was the first (major) language to introduce _Traits_ into the world of object-oriented programming, and now (almost) everybody has them, even OCaml: https://en.wikipedia.org/wiki/Trait_(computer_programming)
+
+Apparently, almost nothing can be as dangerous to the popularity of a new programming language than old languages learning new tricks, see also the example of Java versus Scala: 
+
+04 Mar 2025: **The Scala effect: Java’s Evolution Inspired by Scala**: https://blog.lunatech.com/posts/2025-02-28-the-scala-effect
+
+> One of its biggest influences has been Scala — a language that brought functional programming, immutability, and expressive syntax to the JVM. Over the years, Java has steadily incorporated many features that were first introduced in Scala, from lambda expressions and pattern matching to records and data-oriented programming. 
 
 <br/>
 
