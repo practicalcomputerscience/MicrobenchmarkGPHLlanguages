@@ -322,11 +322,11 @@ The choice of 2^16 - 15 = 65521 was easy for me because it's the highest 16-bit 
 
 #### Other aspects of a computer programming language
 
-The program is too short to explicitly test important aspects of general purpose, high-level programming languages, like:
+The program is too short to explicitly test important aspects of general purpose, high-level programming languages, like for example:
 
 - object orientation and
 
-- concurreny for example.
+- concurreny
 
 Though, in one instance I've made a derivative program of the "speed part" to see how concurrency works in Go. This was rather easy and as easy as advertised. However, I've no intention to do this with other programming languages with the exception of Chapel (https://chapel-lang.org/) maybe, where I _accidentally_ tumbled into its _foreach_ loop: https://chapel-lang.org/docs/technotes/foreach.html
 
