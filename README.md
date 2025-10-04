@@ -396,7 +396,7 @@ You may have to look at [A little exercise in Common Lisp](https://github.com/pr
 
 <br/>
 
-### Why the develoment of a new general purpose, high-level programming language is a risky business
+### Why the develoment of a new general purpose, highlevel programming language is a risky business
 
 See from here at: [Old computer programming languages learning new tricks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#old-computer-programming-languages-learning-new-tricks)
 
