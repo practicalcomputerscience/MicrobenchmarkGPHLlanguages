@@ -14,7 +14,7 @@ Seen from here: https://alvinalexander.com/scala/scala-sbt-re-run-with-deprecati
 
 ## Just keep it standard and compile to bytecode for the JVM:
 
-See from here: [Is "Scala native" worth the effort?](TBD) <============== 2025-10-04
+See from here: [Is "Scala native" worth the effort?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(F)%20Working%20with%20scala-cli%20to%20create%20a%20standalone%20program%20in%20Windows%2011#is-scala-native-worth-the-effort)
 
 <br/>
 
