@@ -28,7 +28,7 @@ Table of contents:
 - [On including lots of comments in my source code files](#on-including-lots-of-comments-in-my-source-code-files)
 - [On debugging](#on-debugging)
 - [On functional programming](#on-functional-programming)
-- [Why the develoment of a new general purpose, high-level programming language is a risky business](why-the-develoment-of-a-new-general-purpose-highlevel-programming-language-is-a-risky-business)
+- [Why the develoment of a new general purpose, high-level programming language is a risky business](#why-the-develoment-of-a-new-general-purpose-high-level-programming-language-is-a-risky-business)
 - [On configuring building and execution environments](#on-configuring-building-and-execution-environments)
 - [Error handling, exception handling and "Quality control"](#error-handling-exception-handling-and-quality-control)
 - [Prompt engineering](#prompt-engineering)
@@ -396,7 +396,7 @@ You may have to look at [A little exercise in Common Lisp](https://github.com/pr
 
 <br/>
 
-### Why the develoment of a new general purpose, highlevel programming language is a risky business
+### Why the develoment of a new general purpose, high-level programming language is a risky business
 
 See from here at: [Old computer programming languages learning new tricks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#old-computer-programming-languages-learning-new-tricks)
 
