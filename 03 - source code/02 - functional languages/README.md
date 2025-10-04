@@ -84,4 +84,42 @@ I just remembered a reference expression somewhere in my program versions so far
 
 <br/>
 
+## So, who is mostly using functional programming?
+
+Logically, an industry where a lot of functions can be deployed. Functions which often can stay "pure", that is without "annoying" **side effects** (https://en.wikipedia.org/wiki/Side_effect_(computer_science)) like throwing exceptions or input/output operations (I/O's). Or in other words:
+
+> [!NOTE]
+> A mathemtical function has no side effects.
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/The%20functional%20programming%20pattern.png)
+
+from: https://www.toptal.com/android/functional-reactive-programming-part-1
+
+Using pure functions has benefits like:
+
+- _Pure functions are easy to reason about_
+- _Pure functions are easy to refactor_
+- _Laziness: only evaluate when I need the output_
+- _Cacheable results: same answer every time; "memoization"_ (to speed up computer programs)
+- _No order dependencies: I can evaluate them in any order I like_
+- _Parallelizable: "embarrassingly parallel"_
+
+from: Functional Design Patterns, Scott Wlaschin, 2014: https://docs.huihoo.com/programming-language/functional-design-patterns.pdf -- 249 slides!
+
+The historical background of Clojure gives a hint, that is when Nubank from Brazil acquired **Clojure** inventor Rich Hickey's software company Cognitect in 2020: https://building.nubank.com/clojures-journey-at-nubank-a-look-into-the-future/
+
+Apparently, it's the financial industry which can profit the most from functional programming because of a relativ absence of side effects:
+
+2019
+_**Functional programming reaches for stardom in finance**_
+https://www.risk.net/risk-management/6395366/functional-programming-reaches-for-stardom-in-finance
+
+In the technical space I still have to see the industrial pocket which is prominently using functional programming.
+
+I would ascribe some so called _array-oriented_ programming languages to a nearness to functional programming; however there are array languages which explicitly support the _combination of both functional and imperative styles in an array language_: https://www.nial-array-language.org/
+
+Array languages, like the mother and father of all array languages **APL** (https://aplwiki.com/), are used to simulate technical systems, here a master piece example from Finland: https://www.dyalog.com/case-studies/simulation.htm, which can read real time input data from external sources (side effects!), here weather data from the Finnish Meteorological Institute.
+
+<br/>
+
 ##_end
