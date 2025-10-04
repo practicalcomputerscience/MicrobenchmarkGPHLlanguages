@@ -235,8 +235,7 @@ my password of 12 characters is: {5mkkR""dmtC
 
 It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025!
 
-So far with one programming language (https://www.ponylang.io/) I had to give up further development because I was not able to implement this dialog. With one famous language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
-
+With one prominent language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
 
 ### In terms of execution times this is a string concatenation benchmark
 
