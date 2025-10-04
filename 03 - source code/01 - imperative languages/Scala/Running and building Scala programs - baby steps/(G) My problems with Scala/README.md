@@ -34,7 +34,7 @@ When you come from the Python world etc, you are used to having the loop only ru
 
 ---
 
-5/ [How to read from the console when executing JavaScript on node.js?](https://github.com/PLC-Programmer/PLC-Programmer.github.io/blob/main/(F)%20From%20a%20Scala%20program%20to%20JavaScript%20for%20node.js.md#how-to-read-from-the-console-when-executing-javascript-on-nodejs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(G)%20From%20a%20Scala%20program%20to%20JavaScript%20for%20node.js#how-to-read-from-the-console-when-executing-javascript-on-nodejs)
+5/ [How to read from the console when executing JavaScript on node.js?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(G)%20From%20a%20Scala%20program%20to%20JavaScript%20for%20node.js#how-to-read-from-the-console-when-executing-javascript-on-nodejs)
 
 <br/>
 
