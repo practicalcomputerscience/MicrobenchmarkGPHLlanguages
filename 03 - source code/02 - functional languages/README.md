@@ -13,6 +13,7 @@ Table of contents:
 - [If You See What I Mean (ISWIM) and Pedagogic Algorithmic Language (PAL)](#if-you-see-what-i-mean-iswim-and-pedagogic-algorithmic-language-pal)
 - [What functional programming language introduced the idea of "immutuable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutuable-variables)
 - [Functional languages on the Java Virtual Machine (JVM)](#functional-languages-on-the-java-virtual-machine-jvm)
+- [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#so-who-is-mostly-using-functional-programming)
 
 ---
 
@@ -95,6 +96,8 @@ Logically, an industry where a lot of functions can be deployed. Functions which
 
 from: https://www.toptal.com/android/functional-reactive-programming-part-1
 
+<br/>
+
 Using pure functions has benefits like:
 
 - _Pure functions are easy to reason about_
@@ -110,13 +113,15 @@ The historical background of Clojure gives a hint, that is when Nubank from Braz
 
 Apparently, it's the financial industry which can profit the most from functional programming because of a relativ absence of side effects:
 
-2019
-_**Functional programming reaches for stardom in finance**_
+2019, _**Functional programming reaches for stardom in finance**_
+
 https://www.risk.net/risk-management/6395366/functional-programming-reaches-for-stardom-in-finance
+
+<br/>
 
 In the technical space I still have to see the industrial pocket which is prominently using functional programming.
 
-I would ascribe some so called _array-oriented_ programming languages to a nearness to functional programming; however there are array languages which explicitly support the _combination of both functional and imperative styles in an array language_: https://www.nial-array-language.org/
+I would ascribe some so called _array-oriented_ programming languages to a nearness to functional programming; however there are array languages which explicitly support the _combination of both functional and imperative styles_: https://www.nial-array-language.org/
 
 Array languages, like the mother and father of all array languages **APL** (https://aplwiki.com/), are used to simulate technical systems, here a master piece example from Finland: https://www.dyalog.com/case-studies/simulation.htm, which can read real time input data from external sources (side effects!), here weather data from the Finnish Meteorological Institute.
 
