@@ -1,5 +1,7 @@
 # My problems with Scala
 
+<br/>
+
 1/ Scala source code:
 
 • does a character or string have symbolic or literal meaning?
