@@ -102,8 +102,8 @@ $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar random_st
 $
 ```
 
-> **Warning**
-This build command may take its time!
+> [!WARNING]
+> This build command may take its time!
 
 
 Finally, I should be able to run the standalone executable:
