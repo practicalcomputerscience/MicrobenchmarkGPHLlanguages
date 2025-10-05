@@ -359,13 +359,13 @@ Another potentially important aspect of a computer programming language is its:
 
 ..which I will only shortly mention here based on content from here: https://koka-lang.github.io/koka/doc/book.html#why-perceus
 
-Examples for **manual memory management** for best performance but at a significant programming burden at:
+Examples for **manual memory management** for _best performance but at a significant programming burden_ at:
 
 - Rust
 - C
 - C++
 
-Examples for **automatic garbage collection**, which needs a runtime system and pay a price in performance, memory usage, and unpredictable latencies:
+Examples for **automatic garbage collection**, which needs _a runtime system and pay a price in performance, memory usage, and unpredictable latencies_:
 
 - C#
 - Go (tricolor mark and sweep algorithm): can be tuned or switched off
