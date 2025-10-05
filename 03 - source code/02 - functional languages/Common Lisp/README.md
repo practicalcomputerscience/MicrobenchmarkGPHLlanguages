@@ -86,9 +86,10 @@ with output:
 
 What I want demonstrate with these examples is this:
 
+> [!NOTE]
 > Functional Programming is (obviously) not taking over the world.
 
-(which refers to: _If Haskell is so great, why hasn't it taken over the world? ..._ from 2017: https://pchiusano.github.io/2017-01-20/why-not-haskell.html)
+which refers to: _If Haskell is so great, why hasn't it taken over the world? ..._ from 2017: https://pchiusano.github.io/2017-01-20/why-not-haskell.html
 
 <br/>
 
@@ -462,7 +463,7 @@ The major difference to Scala, Kotlin and Clojure on the GraalVM is the fact tha
 
 > ..a user could run for several days or even a few weeks before having to save out the running “world” to disk and restart it.
 
-from: _**The Evolution of Lisp**_ by Guy L. Steele Jr. and Richard P. Gabriel, 1992: https://doc.lagout.org/programmation/Lisp/Lisp%20Mess/Gabriel%20%26%20Steele%20-%20The%20Evolution%20of%20Lisp.pdf
+from: "The Evolution of Lisp" by Guy L. Steele Jr. and Richard P. Gabriel, 1992: https://doc.lagout.org/programmation/Lisp/Lisp%20Mess/Gabriel%20%26%20Steele%20-%20The%20Evolution%20of%20Lisp.pdf
 
 <br/>
 
