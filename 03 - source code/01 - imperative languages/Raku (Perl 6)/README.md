@@ -1,14 +1,15 @@
 # Raku
 
-https://raku.org/
+The compiler named _Rakudo_ implements the Raku programming language (https://raku.org/):
 
-The Raku compiler named _Rakudo_:
 - https://www.rakudo.org/
 - https://github.com/rakudo/rakudo
 
-Moar Virtual Machine (**MoarVM**) for NQP (a lightweight Raku-like environment for virtual machines) and Rakudo: https://www.moarvm.org/
+.., here on the Moar ("Metamodel On A Runtime") Virtual Machine (**MoarVM**): https://www.moarvm.org/
 
-See also from here: [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#raku)
+<br/>
+
+Although Raku is (still) a very slow programming language ([Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#languages-that-were-too-slow)), its modern and more "computer science oriented" syntax is definitely an improvement over Perl 5 from my point of view.
 
 ---
 
@@ -89,7 +90,7 @@ $
 
 <br/>
 
-It looks to me that the latest Rakudo on MoarVM version, here 2025.08, can run my [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) a little bit faster, albeit with still over 5 seconds execution time, than my prior installation with version 2022, which I installed with means of Ubuntu 24 LTS: _$ sudo apt install rakudo_
+It looks to me that the latest Rakudo on MoarVM version, here 2025.08, can run my [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) a little bit faster, albeit with still over 5 seconds execution time, than my prior installation with version 2022, which I installed with means of Ubuntu 24 LTS before: _$ sudo apt install rakudo_
 
 <br/>
 
