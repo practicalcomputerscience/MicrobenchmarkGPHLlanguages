@@ -1,8 +1,8 @@
 # random_bitstring_and_flexible_password_generator.raku
 #
-# 2025-05-04, 2025-06-15/18
+# 2025-05-04, 2025-06-15/18, 2025-10-05
 #
-# test in Ubuntu 24 LTS: 
+# test in Ubuntu 24 LTS:
 #
 # run in Ubuntu 24 LTS: $ raku random_bitstring_and_flexible_password_generator.raku
 #
@@ -12,12 +12,12 @@
 # to-do:
 #   - speed?
 #   - writing to files: QC??
-#   - memory allocation of string arrays @bits_x_str + @bytes_x_str ???
+#   - memory allocation of string arrays @bits_x_str + @bits_hex_str??
 
 
 
 my constant $END = 62501;  # 62501 for exactly 1M binary digits
-# my constant $END = 10;  # for testing
+# my constant $END = 50;  # for testing
 
 # my constant $M1   = 1_000_000;
 # my constant $K250 =   250_000;
@@ -30,15 +30,12 @@ my constant $file_bits_x   = 'random_bitstring.bin';
 my constant $file_bits_hex = 'random_bitstring.byte';
 
 
-
 # 2025-06-18: this setup: real	0m5,854s
 my $random_start = $m.rand.Int;  # exclusive of m
 my @x[$END];
 @x[0] = ($random_start);  # also needed for the password later
-# my @bits_x_str of str;    # array of strings for the bit stream:  "0"'s + "1"'s
-# my @bytes_x_str of str;   # array of strings for the byte stream: [0..9][a..f]'s
-# --> this takes over 6 sec for 3x push!
-my $bits_x_str = "";   
+
+my $bits_x_str = "";
 my $bits_hex_str = "";
 
 
@@ -50,34 +47,22 @@ for 1 .. $END-1 -> $i {
 
   my $bits_x = $y.fmt('%016b');  # Bin: 0001011111001100
   $bits_x_str ~= $bits_x;
-  
 
   my $bits_hex = $y.fmt('%04x');  # Hex
   $bits_hex_str ~= $bits_hex;
 }
 
+# say $bits_x_str;  # for testing
+# say $bits_hex_str;  # for testing
 
-# say $bits_x_str.decode;  # for testing
-# say $bits_hex_str.decode;  # for testing
-
-# my $bits_x_str_total   = $bits_x_str.decode;
-# my $bits_hex_str_total = $bits_hex_str.decode;
-
-# print "\nbits_x_str   = " ~ $bits_x_str;
-# print "\nbits_hex_str = " ~ $bits_hex_str;
-
-
+# writing streams to files:
+#   https://rakudocs.gitlab.io/language/io-guide
+$file_bits_x.IO.spurt: $bits_x_str;
+$file_bits_hex.IO.spurt: $bits_hex_str;
 
 
 
 =begin comment
-
-# writing streams to files:
-#   https://rakudocs.gitlab.io/language/io-guide
-$file_bits_x.IO.spurt: $bits_x_str_total;
-$file_bits_hex.IO.spurt: $bytes_x_str_total;
-
-
 
 # make a password of N_CHAR printable chars: user input requested here
 my $N_CHAR = 12;
@@ -107,7 +92,6 @@ while !$answer {
       }
     }
   }
-
 }
 
 my $WITH_SPECIAL_CHARS = True;
@@ -138,28 +122,27 @@ my $i = 0;  # char counter for the password
 my $j = 0;  # char counter for x
 my $pw_chars = "";
 
-# while $i < $N_CHAR {
 while $i < $N_CHAR {
   # convert an integer number into a string of '0' and '1' characters:
   my $bin0 = @x[$j].fmt('%016b');  # Bin: 0001011111001100
 
   my $bin0_0 = $bin0.substr(0, 8);   # end index is exclusive
   my $bin0_1 = $bin0.substr(8, 16);
-  
+
   # convert a string of '0' and '1' characters into a character:
   my $char0 = "0b$bin0_0".Int.chr;
   my $char1 = "0b$bin0_1".Int.chr;
-  
+
   if so $char0 ~~ /<$char_set_rx>/ {
     $pw_chars ~= $char0;
     $i++;
   }
-  
+
   if so $char1 ~~ /<$char_set_rx>/ && $i < $N_CHAR {
     $pw_chars ~= $char1;
     $i++;
   }
-  
+
   $j++;
 }
 
