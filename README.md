@@ -243,7 +243,7 @@ Though, it took me some programming languages to figure this out nonchalantly.
 
 Now when I test a new programming language, I usually still implement the naive solution first and if it feels not very speedy, I start to look for a string builder or similar concept: [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building)
 
-Often a string builder dramatically improves execution speed but not always, see here at the Scheme dialects:
+Often a string builder dramatically improves execution speed but not always, see here at the Scheme dialects for example:
 
 > This measure also helped a lot to improve execution speed. So, it hasn't been my string handling alone that prevented good execution speeds.
 
