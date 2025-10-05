@@ -394,7 +394,7 @@ From: https://medium.com/twodigits/advantages-and-disadvantages-of-functional-pr
 
 You may have to look at [A little exercise in Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#a-little-exercise-in-common-lisp) to understand why functional programming has (still) not taken over the world and also a look at:
 
-- [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/edit/main/03%20-%20source%20code/02%20-%20functional%20languages/README.md#so-who-is-mostly-using-functional-programming)
+- [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#so-who-is-mostly-using-functional-programming)
 - [What could have been the driver of the relative revival of Functional Programming (FP) in the last 20 years?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/05%20-%20the%20world%20as%20processes%20and%20events#what-could-have-been-the-driver-of-the-relative-revival-of-functional-programming-fp-in-the-last-20-years)
 
 <br/>
