@@ -2,6 +2,15 @@
 
 ..and which I started to test with my microbenchmark program.
 
+Table of contents:
+
+- [Hack](#hack)
+- [Pony](#pony)
+- [Toit](#toit)
+- [Old computer programming languages learning new tricks](#old-computer-programming-languages-learning-new-tricks)
+- [Languages that were too slow](#languages-that-were-too-slow)
+- [Raku](#raku)
+
 <br/>
 
 ### Hack
@@ -62,5 +71,13 @@ Apparently, almost nothing can be as dangerous to the popularity of a new progra
 > One of its biggest influences has been Scala — a language that brought functional programming, immutability, and expressive syntax to the JVM. Over the years, Java has steadily incorporated many features that were first introduced in Scala, from lambda expressions and pattern matching to records and data-oriented programming. 
 
 <br/>
+
+## Languages that were too slow
+
+These languages have (substantially) exceeded the 1 second time limit: [The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit)
+
+### Raku
+
+(TBD)
 
 ##_end
