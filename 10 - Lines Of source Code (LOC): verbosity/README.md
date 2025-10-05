@@ -47,7 +47,7 @@ Python            |  87 | interpreted, very mature language
 
 ## Number of user defined functions
 
-..because I didn't find something useful or reliably working in the (official) libraries:
+..because I didn't find anything useful or reliably working in the (official) libraries:
 
 programming language | number of user defined functions
 --- | ---
