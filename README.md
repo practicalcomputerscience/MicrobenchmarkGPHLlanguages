@@ -243,9 +243,11 @@ Though, it took me some programming languages to figure this out nonchalantly.
 
 Now when I test a new programming language, I usually still implement the naive solution first and if it feels not very speedy, I start to look for a string builder or similar concept: [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building)
 
-Often a string builder dramatically improves execution speed but not always! I try to remember the language where naive string concatenation was not the major speed bottleneck, but how to store the generated random integer numbers ```x[i]``` effectively!
+Often a string builder dramatically improves execution speed but not always, see here at the Scheme dialects:
 
-This is why the much praised best practices should be documented immediately and sufficiently.
+> This measure also helped a lot to improve execution speed. So, it hasn't been my string handling alone that prevented good execution speeds.
+
+from: [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations)
 
 ### This program is not bullet proof
 
