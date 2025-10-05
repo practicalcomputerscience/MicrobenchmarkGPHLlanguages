@@ -249,6 +249,12 @@ Often a string builder dramatically improves execution speed but not always, see
 
 from: [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations)
 
+Though, there are some languages from my list which provide fast [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building) capabilities with just naive string concatenation:
+
+- FreeBASIC
+- Mojo
+- Rust
+
 ### This program is not bullet proof
 
 It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** variant (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/). Theoretically, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
