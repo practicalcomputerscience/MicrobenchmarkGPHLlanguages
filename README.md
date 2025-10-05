@@ -280,7 +280,10 @@ Though this is not meant to be project for benchmarking execution speeds, nor ha
 
 However, measuring execution speeds is the easiest of all benchmarking:
 
-_**Even though most benchmarks aren’t worth the pixels they’re printed on, people seem to like them...**_ from: https://wren.io/performance.html
+> [!CAUTION]
+> Even though most benchmarks aren’t worth the pixels they’re printed on, people seem to like them... 
+
+from: https://wren.io/performance.html
 
 True, but nevertheless they are fun and provide - across several microbenchmarks - orientation.
 
@@ -457,7 +460,7 @@ from here: ![random_bitstring_and_flexible_password_generator.go](https://github
 
 <br/>
 
-So, it's advisable to learn a little bit of functional programming nowadays, even though _Functional Programming is (obviously) not taking over the world_ as demonstrated here: [A little exercise in Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/README.md#a-little-exercise-in-common-lisp)
+So, it's advisable to learn a little bit of functional programming nowadays.
 
 <br/>
 
