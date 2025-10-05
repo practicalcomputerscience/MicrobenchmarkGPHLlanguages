@@ -231,11 +231,15 @@ my password of 12 characters is: {5mkkR""dmtC
 (prng_test) $ 
 ```
 
+<br/>
+
 ### Reading user input from the keyboard into a string
 
 It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025: [Reading user input from the keyboard into a string on the console](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console/README.md#reading-user-input-from-the-keyboard-into-a-string-on-the-console)
 
 With one prominent language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
+
+<br/>
 
 ### In terms of execution times this is a string concatenation benchmark
 
@@ -249,11 +253,20 @@ Often a string builder dramatically improves execution speed but not always, see
 
 from: [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations)
 
+Another example is Standard ML, where the speed bottleneck of my initial and slow program was not my string handling: [String building with Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#string-building-with-standard-ml)
+
 Though, there are some languages from my list which provide fast [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building) capabilities with just naive string concatenation:
 
-- FreeBASIC
-- Mojo
-- Rust
+- [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC/random_streams_for_perf_stats.bas)
+- [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_streams_for_perf_stats.mojo)
+- [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_streams_for_perf_stats.rs)
+
+With these programming languages, mundane string concatenation has a good chance to represent the fastest solution according to my experience:
+
+- [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/random_streams_for_perf_stats.chpl)
+- [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku)
+
+<br/>
 
 ### This program is not bullet proof
 
@@ -392,6 +405,8 @@ However, I'm just doing this since ages. So, my comments may not even be helpful
 I just work with Notepad++ (https://notepad-plus-plus.org/) at a Windows 11 PC as my source code editor (but Ubuntu Linux is my testing environment). I also tested other editors only to drop them. I also use Notepad++ for configuration files of build tools for example. Thus, I'm also not using any IDE (Integrated development environment), though for Scala I installed IntelliJ IDEA (Community Edition for Windows: https://www.jetbrains.com/idea/download/?section=windows) to play around a bit with its numerous possibilities.
 
 But I'm not here for an exercise in enterprise level software engineering.
+
+<br/>
 
 ### On debugging
 
