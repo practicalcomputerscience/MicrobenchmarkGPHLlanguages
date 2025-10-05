@@ -10,8 +10,8 @@ SMLNJ = Standard ML of New Jersey: https://www.smlnj.org/
 
 <br/>
 
-"MLton is a whole-program optimizing compiler for the Standard ML programming language."
-- http://mlton.org/
+> MLton is a whole-program optimizing compiler for the Standard ML programming language.
+- from: http://mlton.org/
 - https://github.com/MLton/mlton
 
 ---
