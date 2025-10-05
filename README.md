@@ -353,6 +353,8 @@ Once I collected these frameworks, which in one way or the other promote concurr
 
 These HPC (High Performance Computing) frameworks seem to share one feature of general purpose, high-level programming language: there's no guarantee that the framework of your choice will survive the next 20 years in well maintained shape!
 
+<br/>
+
 Another potentially important aspect of a computer programming language is its:
 
 #### Garbage collection and memory management
