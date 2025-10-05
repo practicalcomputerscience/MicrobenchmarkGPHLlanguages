@@ -324,7 +324,7 @@ The choice of 2^16 - 15 = 65521 was easy for me because it's the highest 16-bit 
 
 <br/>
 
-#### Other aspects of a computer programming language
+### Other aspects of a computer programming language
 
 The program is too short to explicitly test important aspects of general purpose, high-level programming languages, like for example:
 
@@ -352,6 +352,26 @@ Once I collected these frameworks, which in one way or the other promote concurr
 - Open SYCL, now called AdaptiveCpp: https://github.com/AdaptiveCpp/AdaptiveCpp
 
 These HPC (High Performance Computing) frameworks seem to share one feature of general purpose, high-level programming language: there's no guarantee that the framework of your choice will survive the next 20 years in well maintained shape!
+
+Another potentially important aspect of a computer programming language is its:
+
+#### Garbage collection and memory management
+
+..which I will only shortly mention here based on content from here: https://koka-lang.github.io/koka/doc/book.html#why-perceus
+
+Examples for **manual memory management** for best performance but at a significant programming burden at:
+
+- Rust
+- C
+- C++
+
+Examples for **automatic garbage collection**, which needs a runtime system and pay a price in performance, memory usage, and unpredictable latencies:
+
+- C#
+- Go (tricolor mark and sweep algorithm): can be tuned or switched off
+- OCaml
+- Python
+- Scala + Kotlin + Clojure (at the JVM)
 
 <br/>
 
