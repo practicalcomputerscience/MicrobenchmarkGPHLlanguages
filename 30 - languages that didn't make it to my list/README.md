@@ -78,6 +78,8 @@ These languages have (substantially) exceeded the 1 second time limit: [The 1 se
 
 ### Raku
 
-(TBD)
+Though my [Raku program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) works correctly, it's just super-slow with an execution time of over 5 seconds!
+
+<br/>
 
 ##_end
