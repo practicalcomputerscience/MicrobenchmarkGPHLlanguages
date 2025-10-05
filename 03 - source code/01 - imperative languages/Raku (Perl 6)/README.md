@@ -10,28 +10,26 @@ Moar Virtual Machine (**MoarVM**) for NQP (a lightweight Raku-like environment f
 
 See also from here: [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#raku)
 
-<br/>
+---
 
 ### Installation tips
 
-I built and installed my Rakudo environment from this source: https://github.com/rakudo/rakudo/releases/tag/2025.08
+See from: https://raku.org/nav/1/install
 
-Unzip archive file _rakudo-2025.08.tar.gz_ and then run in the Bash shell:
+Start installation with running:
 
 ```
-$ cd rakudo-2025.08
-$ perl Configure.pl --gen-moar --gen-nqp --backends=moar
+$ curl https://rakubrew.org/install-on-perl.sh | sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1383  100  1383    0     0   6417      0 --:--:-- --:--:-- --:--:--  6432
+Downloading rakubrew...
+Installing rakubrew to $HOME/.rakubrew ...
 ...
-$ make
-...
-$ make test
-...
-$ make install
-...
-$ 
+$
 ```
 
-I also added these paths to my _.bashrc_ file (run _$ source ~/.bashrc_ to activate any changes):
+Then I added these paths to my _.bashrc_ file (run _$ source ~/.bashrc_ to activate any changes):
 
 ```
 export PATH="$PATH:$HOME/.rakubrew/bin"
@@ -45,7 +43,7 @@ Make sure that the _git_ program is installed in your Linux environment:
 
 ```
 $ git --version
-git version 2.47.3
+git version 2.48.1
 ```
 
 Then I ran this command as a test:
@@ -69,7 +67,7 @@ Available backends:
 $
 ```
 
-Then I downloaded the latest Rakudo on MoarVM version:
+Then I downloaded the latest Rakudo on MoarVM version. Actually, this is the central command to install Raku in a Linux system:
 
 ```
 $ rakubrew download
@@ -81,7 +79,7 @@ Done, moar-2025.08 installed
 $
 ```
 
-..and tested it:
+At last, I did a small test:
 
 ```
 $ raku -e 'say "Now running {$*RAKU.compiler.version}!"'
