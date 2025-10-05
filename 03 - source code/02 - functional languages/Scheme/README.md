@@ -197,7 +197,7 @@ The Gambit dialect is a bit curious since it's the only one of the four dialects
 
 However, I think that this 8-batch solution, though helping me to see that there can be real speed in the Land of Scheme's, is not a good one, because it breaks with the usual algorithm as implemented in all other programming languages and dialects so far and also now with my list-free Racket solution.
 
-So I explored the possibilities of **CHICKEN** Scheme to tap into non-standard library procedures to replace this notorious expression:
+So, I explored the possibilities of **CHICKEN** Scheme to tap into non-standard library procedures to replace this notorious expression:
 
 ```
 ... (apply string-append (vector->list <my_vector>)) ...
