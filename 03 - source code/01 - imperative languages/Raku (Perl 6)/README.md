@@ -41,7 +41,14 @@ eval "$($HOME/.rakubrew/bin/rakubrew init Bash)"
 
 The last command line (_eval_) makes sure that my Bash shell is always running the latest Rakudo version that I downloaded and installed.
 
-I ran this command as a test:
+Make sure that the _git_ program is installed in your Linux environment:
+
+```
+$ git --version
+git version 2.47.3
+```
+
+Then I ran this command as a test:
 
 ```
 $ rakubrew available
@@ -84,7 +91,7 @@ $
 
 <br/>
 
-It looks to me that the latest Rakudo on MoarVM version, here 2025.08, can run my [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) a little bit faster, albeit still over 5 seconds execution time, than my prior installation with version 2022 that I (probably) installed with Ubuntu 24 LTS. 
+It looks to me that the latest Rakudo on MoarVM version, here 2025.08, can run my [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) a little bit faster, albeit with still over 5 seconds execution time, than my prior installation with version 2022 that I (probably) installed with means of Ubuntu 24 LTS. 
 
 <br/>
 
