@@ -145,8 +145,7 @@ Did you notice that 62500 multiplied with 16 is 1,000,000? I want exactly 1,000,
 
 Next I changed my Racket program and artificially limited the number of _apply_ arguments also to 8192. This program then took only **0.200** seconds to run! Slower than the Gambit version, but a tremendous jump into the right direction. So, there can be acceptable execution speed in Scheme land!
 
-And: Racket allows you to have _define_'s inside another function, here _main()_, which makes refactoring (https://en.wikipedia.org/wiki/Code_refactoring) easier for me than doing it directly in Gambit Scheme. (Though after testing I changed this to local _let*_ expressions to be more functional and support translations
-between Scheme dialects.)
+And: Racket allows you to have _define_'s inside another function, here _main()_, which makes refactoring (https://en.wikipedia.org/wiki/Code_refactoring) easier for me than doing it directly in Gambit Scheme. (Though after testing, I changed this to local _let*_ expressions to be more functional and support translations between Scheme dialects.)
 
 I found another source of speed improvement: change everything possible to mutable vectors with _**make-vector**_: https://docs.racket-lang.org/reference/vectors.html#%28def._%28%28quote._~23~25kernel%29._make-vector%29%29: _This function takes time proportional to size._
 
