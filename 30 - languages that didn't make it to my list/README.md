@@ -74,7 +74,7 @@ Apparently, almost nothing can be as dangerous to the popularity of a new progra
 
 ## Languages that were too slow
 
-These languages have (substantially) exceeded the 1 second time limit: [The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit)
+These languages have (substantially) exceeded [The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit).
 
 ### Raku
 
