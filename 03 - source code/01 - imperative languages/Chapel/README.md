@@ -21,7 +21,7 @@ $ sudo mv /etc/apt/trusted.gpg.d/apt.llvm.org.asc /etc/apt/keyrings/
 $ sudo nano /etc/apt/sources.list.d/archive_uri-http_apt_llvm_org_noble_*.list
 ```
 
-with the last command I edited this line:
+With the last command I edited this line:
 
 _deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
 
@@ -29,11 +29,15 @@ into:
 
 _deb [arch=amd64 signed-by=/etc/apt/keyrings/apt.llvm.org.asc] http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
 
-Press Ctrl+S to save the changed file, and Ctrl+X to exit the nano editor. At last do:
+Press keys Ctrl+S to save the changed file, and keys Ctrl+X to exit the nano editor. At last do:
 
 ```
 $ sudo apt update
 $ clang-18 --version  # check installation
 ```
+
+### String building with Chapel
+
+(TBD)
 
 ##_end
