@@ -502,9 +502,9 @@ The rise of AI-supported and AI-based computer programming is naturally helping 
 
 > Make a pseudo random number generator with an accumulator for n random numbers in Clojure
 
-I copied the AI answer and enhanced it to work within the bigger program (correctly placing these enhancements was then the challenge for me):
+I copied the AI answer and enhanced it to work within the bigger program (correctly placing these enhancements was then the challenge for me): https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/74f7c17212c22e6965a180a185f37dfa36e384c2/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj#L70
 
-https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/74f7c17212c22e6965a180a185f37dfa36e384c2/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj#L70
+<br/>
 
 Bottom line for me: for convincingly translating whole programs from one arbitrary Top 50 language into another, this technology - even with all its massive success in a few years - still has to go some way. But for helping with writing a procedure here and there, based on "good" prompts, AI based coding is here to stay.
 
