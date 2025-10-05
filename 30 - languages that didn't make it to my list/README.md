@@ -1,6 +1,6 @@
 # Languages that didn't make it to my list
 
-..and which I started to test with my microbenchmark program.
+..and which I started at least to test with my microbenchmark program.
 
 Table of contents:
 
