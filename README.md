@@ -233,7 +233,7 @@ my password of 12 characters is: {5mkkR""dmtC
 
 ### Reading user input from the keyboard into a string
 
-It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025!
+It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025: [Reading user input from the keyboard into a string on the console](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console/README.md#reading-user-input-from-the-keyboard-into-a-string-on-the-console)
 
 With one prominent language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
 
@@ -241,7 +241,7 @@ With one prominent language, that is Go, I'm still not sure if this allegedly li
 
 Though, it took me some programming languages to figure this out nonchalantly. 
 
-Now when I test a new programming language, I usually still implement the naive solution first and if it feels not very speedy, I start to look for a string builder or similar concept.
+Now when I test a new programming language, I usually still implement the naive solution first and if it feels not very speedy, I start to look for a string builder or similar concept: [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building)
 
 Often a string builder dramatically improves execution speed but not always! I try to remember the language where naive string concatenation was not the major speed bottleneck, but how to store the generated random integer numbers ```x[i]``` effectively!
 
