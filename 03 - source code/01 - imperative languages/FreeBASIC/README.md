@@ -12,9 +12,15 @@ BASIC (for _Beginner's All-purpose Symbolic Instruction Code_) was historically 
 
 from: https://time.com/69316/basic/
 
-After a little survey beyond Microsoft's almighty **Visual Basic (.NET)** I discovered **FreeBASIC**: https://www.freebasic.net/, which by default, and without an IDE (Integrated development environment), compiles source code directly into standalone executables (in Linux): _$ fbc <my_program.bas>_
+After a little survey beyond Microsoft's almighty **Visual Basic (.NET)** I discovered FreeBASIC, which by default and without an IDE (Integrated Development Environment), compiles source code directly into standalone executables (in Linux):
 
-Into very fast executables, at least with this little accidental microbenchmark program, which puts FreeBASIC into the same speed league like Mojo for example. And this, same like Mojo, with simple string concatenation (even the _+_ operator is the same like in Mojo):
+```
+$ fbc <my_program.bas>
+```
+
+Into very fast executables! At least with this microbenchmark program: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+
+And doing so with [simple string concatenation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC/random_streams_for_perf_stats.bas):
 
 ```
 ...
@@ -28,11 +34,11 @@ next
 ...
 ```
 
-I'm happy with the fast execution speed of this program and thus didn't start to experiment with potentially other possibilities of big string concatenation; like not testing the ZSTRING type and leave it with the STRING type.
+I'm happy with the fast execution speed of this program and thus didn't start to experiment with potentially other possibilities of a big string concatenation, like not testing the ZSTRING type and thus leaving it with the STRING type.
 
 ### Installation tips
 
-At least in Ubuntu make sure that also _**libtinfo5**_ is installed in your system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
+At least in Ubuntu, make sure that also _**libtinfo5**_ is installed in your system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
 
 ### Other functionalities of FreeBASIC
 
@@ -42,13 +48,13 @@ You may have a look into the _./FreeBASIC-1.10.1-linux-x86_64/examples_ director
 
 ### Other BASIC dialects
 
-Then I also tapped into other implementations of BASIC, like:
+I also tapped into other implementations of BASIC, like:
 
 - **CrossBasic** (**Xojo** clone, Ex-REALbasic): https://github.com/simulanics/CrossBasic
 - **GNU Gambas 3**: https://gambaswiki.org/website/en/main.html#
 - **QB64** (**OuickBASIC** derivative): https://github.com/DualBrain/QB64
 
-However, after installations and a little playing I can say: there's an almost 100% chance that these implementations cannot take even a simple program written for FreeBASIC unchanged. Therefore I skip all other dialects of BASIC.
+However, after installations and a little playing I can claim: there's an almost 100% chance that these implementations cannot take even a little source code for FreeBASIC unchanged. Therefore I skipped all other BASIC dialects.
 
 <br/>
 
