@@ -261,7 +261,7 @@ Though, there are some languages from my list which provide fast [String buildin
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_streams_for_perf_stats.mojo)
 - [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_streams_for_perf_stats.rs)
 
-With these programming languages, mundane string concatenation has a good chance to represent the fastest solution according to my experience:
+With these programming languages, naive string concatenation has a good chance to represent the fastest from more than one alternative solutions according to my experience:
 
 - [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/random_streams_for_perf_stats.chpl)
 - [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku)
