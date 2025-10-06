@@ -2,6 +2,13 @@
 
 https://www.modular.com/mojo
 
+<br/>
+
+> [!WARNING]
+> Beware that Mojo is a language still under heavy development!
+
+I had a little and working Mojo program from October 2024 (which tapped in package _buffer_: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an updated Mojo version of March 2025!
+
 ---
 
 ### Error handling when writing to files
@@ -26,5 +33,7 @@ Instead, set the access permissions of the whole directory to "Access Files". No
 The unofficial _mojo-stringbuilder_ solution (https://github.com/maniartech/mojo-stringbuilder) doesn't work anymore in this fast changing language, which is a pitty because such a concept may push the program execution time down towards the execution time of the Rust program for example.
 
 So, this Mojo program is just using plain string concatenation, which isn't so slow in this languages anyway.
+
+<br/>
 
 ##_end
