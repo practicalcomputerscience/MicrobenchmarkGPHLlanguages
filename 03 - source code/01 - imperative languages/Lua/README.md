@@ -2,9 +2,9 @@
 
 https://www.lua.org/
 
----
+<br/>
 
-Lua script _random_bitstring_and_flexible_password_generator.lua_ may have a weakness at these string pattern matchings:
+Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
 
 ```
 ...
@@ -15,6 +15,8 @@ if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char th
 ```
 
 ..though I tested it now _statistically_ extensively without any problems.
+
+---
 
 ### LuaJIT
 
