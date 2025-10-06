@@ -6,8 +6,7 @@ GPHL = general purpose, high-level (programming language)
 2025-07-16: starting this work in progress
 
 To-do:
-- fix TBD's
-- own Wiki page
+- fix TBD's (this is a continous task)
 - implement a concurreny solution in Chapel, compare to the Go solution
 - test: exhausting the generated random bitstream when user asks for a super-long password
 
