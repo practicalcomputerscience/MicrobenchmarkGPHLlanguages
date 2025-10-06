@@ -12,7 +12,7 @@ When I started to code my microbenchmark program in V, I was already aware of th
 
 ---
 
-Individually filling an array needs the << operator since x[i] is not working here:
+Individually filling an array needs the << operator since something like _x[i]_ is not working here:
 
 ```
 ...
