@@ -2,11 +2,13 @@
 
 https://chapel-lang.org/
 
+<br/>
+
 Although Chapel still has it's rough edges, is still not big and still under development (lot's of "... is unstable and subject to change" or similar remarks in the manuals), this language seems to be a good candidate for **parallel computing** for me, next to [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go).
 
 There have been many serious attempts for integrated languages for parallel computing before: https://chapel-lang.org/blog/posts/10myths-part2/
 
-Let's see if this one will survive. [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#mojo) in the end also falls into this category from my point of view, but the later is still riding its wave of enthusiasm.
+Let's see if this one will survive. [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#mojo) in the end also falls into this category from my point of view, but the later is still riding its wave of (AI) enthusiasm.
 
 ---
 
@@ -14,9 +16,9 @@ Let's see if this one will survive. [Mojo](https://github.com/practicalcomputers
 
 Chapel version 2.4.0 is built on LLVM version 18.1.8 (at least in my case).
 
-In case that a LLVM installation with version 18 has become missing, it can be (re-)installed like this: https://ubuntuhandbook.org/index.php/2023/09/how-to-install-clang-17-or-16-in-ubuntu-22-04-20-04/
+If a LLVM installation with version 18 has become missing, it can be (re-)installed like this: https://ubuntuhandbook.org/index.php/2023/09/how-to-install-clang-17-or-16-in-ubuntu-22-04-20-04/
 
-Apparently, this procedure also applies to other LLVM versions, like 17, 19, 20 and so on.
+Apparently, this procedure also applies to other LLVM versions, like 17, 19, 20 and so on:
 
 ```
 $ wget https://apt.llvm.org/llvm.sh
@@ -27,7 +29,7 @@ $ sudo mv /etc/apt/trusted.gpg.d/apt.llvm.org.asc /etc/apt/keyrings/
 $ sudo nano /etc/apt/sources.list.d/archive_uri-http_apt_llvm_org_noble_*.list
 ```
 
-With the last command I edited this line:
+With the last command I edited original line:
 
 _deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
 
@@ -35,7 +37,9 @@ into:
 
 _deb [arch=amd64 signed-by=/etc/apt/keyrings/apt.llvm.org.asc] http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
 
-Press keys Ctrl+S to save the changed file, and keys Ctrl+X to exit the nano editor. At last do:
+Press keys Ctrl+S to save the changed file, and keys Ctrl+X to exit the nano editor.
+
+At last do:
 
 ```
 $ sudo apt update
@@ -66,7 +70,7 @@ while i < END {
 
 No memory preallocation for _bits_x_ or anything similar is going on here.
 
-However and somehow to be expected, this usually cannot be a solution for a fast computer program and so, like with other [C-like](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) languages, I experimented with memory preallocations, and finally got a working solution where the public Internet is not helpful to find a solution (which is one reason why I show this solution here):
+However and somehow to be expected, this usually cannot be a solution for a fast computer program and so, like with other [C-like](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) languages, I experimented with memory preallocations, and finally got a working solution where the public Internet is not helpful to find a solution:
 
 ```
 ... // #2
@@ -114,8 +118,8 @@ By the way: when experimenting with my Python program I came to the conclusion t
 
 However and to my surprise, tactic #2 did not make a faster program in Chapel, maybe the only C-like language without a string builder concept where this tactic leads to an even slower solution:
 
-• mundane string concatenation (#1): ~244 milliseconds execution time
-• with memory preallocation (#2): ~250 milliseconds execution time
+- naive string concatenation (#1): ~244 milliseconds execution time
+- with memory preallocation (#2): ~250 milliseconds execution time
 
 The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest with around 258 milliseconds.
 
