@@ -16,6 +16,8 @@ if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char th
 
 ..though I tested it now _statistically_ extensively without any problems.
 
+### LuaJIT
+
 An indicator for my suspicion is this: when I run this script with _LuaJIT_, a Just-In-Time compiler (https://luajit.org/):
 
 ```
