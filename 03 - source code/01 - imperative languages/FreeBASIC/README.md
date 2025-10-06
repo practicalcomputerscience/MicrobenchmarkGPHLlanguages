@@ -30,11 +30,11 @@ next
 
 I'm happy with the fast execution speed of this program and thus didn't start to experiment with potentially other possibilities of big string concatenation; like not testing the ZSTRING type and leave it with the STRING type.
 
-#### Installation tips
+### Installation tips
 
 At least in Ubuntu make sure that also _**libtinfo5**_ is installed in your system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
 
-#### Other functionalities of FreeBASIC
+### Other functionalities of FreeBASIC
 
 You may have a look into the _./FreeBASIC-1.10.1-linux-x86_64/examples_ directory after installation to see FreeBASIC's scope of functionalities, but also its capabilities to interact with other programming languages and potentially its GUI capabilities. A look into directory _./FreeBASIC-1.10.1-linux-x86_64/./include/freebasic_ shows bindings for many different libraries.
 
