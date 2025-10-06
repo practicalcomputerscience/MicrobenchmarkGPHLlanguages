@@ -2,6 +2,15 @@
 
 https://c3-lang.org/
 
+<br/>
+
+**Will C3 finally become a viable "C for the 21st century" with it's soft migration approach from C?**
+
+C3 looks to me like "Made in Europe", which is always a risk in the programming language world.
+
+C3 would fill a real need for the modernization of C from my point of view. I may start trying it when there's another need to access fast C code from a Python program for
+example.
+
 ---
 
 #### Compilation tips
