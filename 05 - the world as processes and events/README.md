@@ -12,8 +12,6 @@ Clojure, F# (Microsoft) and OCaml are only listed alphabetically at positions #5
 
 And multi-paradigm language **Scala** (with FP on top of OOP, Object-Oriented Programming), apparently too often misused with its bells and whistles of FP, is now sitting only at #31.
 
-Here are some other popularity charts: https://trends.stackoverflow.co/?tags=clojure%2Cocaml%2Cf%23
-
 <br/>
 
 Coming back to the question above, I think the answer lies in the desire, and then the requirement, to have a reliable and not too complicated implementation of **concurrency** within one
