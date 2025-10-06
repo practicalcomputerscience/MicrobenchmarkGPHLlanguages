@@ -1,6 +1,6 @@
 # Raku
 
-The compiler named _Rakudo_ implements the Raku programming language (https://raku.org/):
+A compiler named _Rakudo_ implements the Raku programming language (https://raku.org/):
 
 - https://www.rakudo.org/
 - https://github.com/rakudo/rakudo
@@ -9,7 +9,7 @@ The compiler named _Rakudo_ implements the Raku programming language (https://ra
 
 <br/>
 
-Although Raku is (still) a very slow programming language ([Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#languages-that-were-too-slow)), its modern and more "computer science oriented" syntax is definitely an improvement over Perl 5 from my point of view.
+Although Raku is (still) a very slow programming language ([Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#languages-that-were-too-slow)), its modern and more "computer science oriented" syntax is definitely an improvement over the syntax of Perl 5 from my point of view.
 
 ---
 
