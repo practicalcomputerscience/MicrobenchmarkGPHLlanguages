@@ -22,7 +22,7 @@ SMLNJ = Standard ML of New Jersey: https://www.smlnj.org/
 
 ### String building with Standard ML
 
-The speed bottleneck of my initial and slow SML program was not my string handling, but having **a local list of integers** in my masterloop **to which I append one integer number in each iteration**!
+The speed bottleneck of my initial and slow SML program was not my string handling, but having **a local list of integers** in the masterloop **to which I append one integer number in each iteration**!
 
 I changed this to an (imperative) global array of integers, initially declared in its final size, and the execution time dropped from 12 seconds to 1.6 seconds! Obviously there is generally a speed issue with (very "functional") _lists_ in functional programming languages, see also best practice #2 from here: [My 5 best practices with Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#my-5-best-practices-with-scheme-dialects)
 
