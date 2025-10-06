@@ -1,0 +1,7 @@
+all: random_bitstring_and_flexible_password_generator
+
+random_bitstring_and_flexible_password_generator: random_bitstring_and_flexible_password_generator.o
+	gcc -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
+
+random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexible_password_generator.c
+	gcc -Wall -Ofast -faggressive-loop-optimizations -c random_bitstring_and_flexible_password_generator.c
