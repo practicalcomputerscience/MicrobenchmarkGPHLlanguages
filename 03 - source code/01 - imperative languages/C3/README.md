@@ -15,7 +15,7 @@ example.
 
 #### Compilation tips
 
-I played with compiler switches for optimizations of the compiler of the C replacement language C3. These switches can be shown with the _$ c3c --help_ command:
+I played with compiler switches for optimizations of the compiler. These switches can be shown with the _$ c3c --help_ command:
 
 ```
 -O0  - Safe, no optimizations, emit debug info.
@@ -28,7 +28,7 @@ I played with compiler switches for optimizations of the compiler of the C repla
 -Oz  - Unsafe, high optimization, tiny code, single module, no debug info, no panic messages, no backtrace.
 ```
 
-I decided for switch _-O3_ for generating a program that combines more stable execution times with still lower execution times ("wall clock") than other optimization switches.
+I decided for switch _-O3_ for compiling a program that combines more stable execution times with still lower execution times ("wall clock") than other optimization switches according to my experiments.
 
 What does "Safe" or "Unsafe" mean in this context?
 
@@ -40,7 +40,7 @@ I guess this from: https://c3-lang.org/faq/allfeatures/#safe--fast
 > 
 > If debug symbols are available, C3 will produce a stack trace in safe mode where an error occurs.
 
-I assume that my programs, also in their C3 implementation, have sufficient checks to make them feasible for "unsafe" compilation.
+I assume that my microbenchmark programs, also in its C3 implementation, have sufficient checks in their source codes to make them feasible for "unsafe" compilation.
 
 <br/>
 
