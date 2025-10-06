@@ -9,6 +9,7 @@ Table of contents:
 - [Toit](#toit)
 - [Old computer programming languages learning new tricks](#old-computer-programming-languages-learning-new-tricks)
 - [Languages that were too slow](#languages-that-were-too-slow)
+- [Koka](#koka)
 - [Raku](#raku)
 
 <br/>
@@ -75,6 +76,10 @@ Apparently, almost nothing can be as dangerous to the popularity of a new progra
 ## Languages that were too slow
 
 These languages have (substantially) exceeded [The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit):
+
+### Koka
+
+Although my [Koka program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka/random_streams_for_perf_stats.kk) works correctly, though I didn't polish it, it's just super-slow with an execution time of over 3 seconds!
 
 ### Raku
 
