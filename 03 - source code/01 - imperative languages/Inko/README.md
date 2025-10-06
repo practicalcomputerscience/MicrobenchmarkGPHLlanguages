@@ -1,20 +1,22 @@
 # Inko
 
-The implementation in **Inko** (https://inko-lang.org/) is the first I upload after the original Python one as shown at the top README: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages
+https://inko-lang.org/
 
-I deem this version now my final one for Inko after I struggled to correctly build and install the Inko compiler (before I had to use compiler switch _--opt=none_, which indeed makes a slower program), which is, like some other programming languages, based on the ubiquitous **LLVM** compiler infrastructure: https://llvm.org/
+---
 
-Now I can compile without any problems like this for example:
+I think that this [program version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/random_streams_for_perf_stats.inko) is my final one after I struggled to correctly build and install the Inko compiler.
+
+Before I had to use compiler switch _--opt=none_, which indeed makes a slower program. Inko, like some other programming languages, is based on the ubiquitous **LLVM** compiler infrastructure: https://llvm.org/. But now I can compile the source code without any problems; like this for example:
 
 ```
 $ inko build random_streams_for_perf_stats.inko --opt aggressive
 ```
 
-I cannot say if other LLVM versions than 17 are working for Inko version 0.18.1 too (see from: _$ inko --version_), however I guess so (LLVM version 18, 19, 20, ...).
+I cannot say if other LLVM versions than 17 are working for Inko version 0.18.1 too (see from: _$ inko --version_); however I guess so, that is with LLVM versions 18, 19, 20, ...
 
 <br/>
 
-The most important issue here from my point of view is that the _**Polly - Polyhedral optimizations for LLVM**_ (https://polly.llvm.org/index.html) are correctly installed too for the LLVM version in use for Inko. And the easiest way to assure this from my point of view is to install them in your Ubuntu Linux like this (see _libpolly-17-dev_):
+The most important issue here from my point of view is that the _**Polly - Polyhedral optimizations for LLVM**_ (https://polly.llvm.org/index.html) are correctly installed too for the LLVM version in use for Inko. And the easiest way to assure this from my point of view is to install them in your Ubuntu system like this (see _libpolly-17-dev_ in the command below):
 
 ```
 $ sudo apt-get install --yes rustc cargo git build-essential llvm-17 llvm-17-dev libstdc++-11-dev libclang-common-17-dev zlib1g-dev libpolly-17-dev libzstd-dev
@@ -48,14 +50,13 @@ Also have a view at your _.bashrc_ file for a path to this program:
 export PATH="$HOME/.cargo/bin/ivm:$PATH"
 ```
 
-
 <br/>
 
 ### Installation tips
 
-for Inko on Ubuntu 24 LTS. See also from here: https://github.com/orgs/inko-lang/discussions/819#discussioncomment-13823413
+..for Inko on Ubuntu 24 LTS. See also from here: https://github.com/orgs/inko-lang/discussions/819#discussioncomment-13823413
 
-This is just a copy here:
+This is a copy of that issue:
 
 #### Re Ubuntu 24
 
@@ -82,7 +83,7 @@ Because without Polly you cannot install the Inko compiler with installation man
 `$ ivm install latest
 `
 
-In Ubuntu you may or should also add some configurations in your _**.bashrc**_ file, for example like this (even when it may look a little bit redundant, but maybe also helpful as an idea when the LLVM framework has been built and/or installed differently):
+In Ubuntu you may or even should also add some configurations in your _**.bashrc**_ file, for example like this (even when it may look a little bit redundant, but maybe also helpful as an idea when the LLVM framework has been built and/or installed differently):
 
 ```
 export LLVM_HOME="/usr/lib/llvm-17"
@@ -94,9 +95,11 @@ export LD_LIBRARY_PATH=$LLVM_HOME/lib:$LD_LIBRARY_PATH
 export PATH="$PATH:$HOME/.local/share/ivm/installed/0.18.1/bin"
 ```
 
-After changes, don't forget to re-active this file by applying command: 
+After changes, don't forget to re-active this configuration file by applying command: 
 
 `$ source ~/.bashrc
 `
+
+<br/>
 
 ##_end
