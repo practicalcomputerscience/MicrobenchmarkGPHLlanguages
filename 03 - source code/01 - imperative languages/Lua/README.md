@@ -35,7 +35,7 @@ $
 
 ### LuaJIT
 
-An indicator for my suspicion is this: when I run this script with _LuaJIT_, a Just-In-Time compiler (https://luajit.org/):
+An indicator for my suspicion as stated at the top ("weakness") is this: when I run this script with _LuaJIT_, a Just-In-Time compiler (https://luajit.org/):
 
 ```
 $ luajit random_bitstring_and_flexible_password_generator.lua
