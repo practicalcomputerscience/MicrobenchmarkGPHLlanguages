@@ -388,4 +388,8 @@ TBD
 
 <br/>
 
+See also: [The future of transpiling](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#the-future-of-transpiling)
+
+<br/>
+
 ##_end
