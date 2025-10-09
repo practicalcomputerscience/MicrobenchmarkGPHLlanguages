@@ -224,6 +224,7 @@ $ mlton ./my_program.mlb
 $ ./my_program
 unhandled exception: Overflow
 $
+```
 
 ### yyyyyyyyyyyyyyyyyyyyyyy
 
