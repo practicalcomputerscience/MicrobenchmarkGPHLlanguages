@@ -168,7 +168,65 @@ Therefore this question naturally comes up:
 
 Spoiler alert: yes, we can!
 
-TBD
+### Some random number generation in Standard ML of New Jersey
+
+But first let's have a little exercise in the SML/NJ REPL with: _$ rlwrap sml_
+
+We can follow another utility to see how to start a random number generator in SML/NJ: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/UUID/gen-uuid.sml and enter these expressions - each terminated with a semicolon - in the REPL:
+
+```
+val m = 65521;
+fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000);
+val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1;
+val (secs, usecs) = getTime ();
+val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs);
+val seed1 = (Random.randInt r);
+val start_seed = seed1 mod m;
+val _ = print("start_seed = " ^ Int.toString start_seed);
+val _ = print("\n");
+```
+By the way: _seed1_ can take really big integer numbers, positive or negative, but the modulus operator mod will not only make them much smaller (absolutely), but also only positive, which is practical.
+
+Since everything works, we now put above expressions - **without the semicolons** - into a source code file named _my_program.sml_.
+
+#### Tapping into libraries of Standard ML of New Jersey with ML Basis
+
+Now we only have to find a way how to use a function inside a library of SML/NJ which isn't automatically available in MLton. By the way: these SML/NJ libraries are
+automatically installed, or unzipped respectively, along a MLton installation.
+
+MLton has a _**ML Basis**_ system which "extends Standard ML to support programming-in-the-very-large, namespace management at the module level, separate delivery of library sources, and more": http://mlton.org/MLBasis
+
+Which means that we also have to make a little _~.mlb_ file like this: http://mlton.org/MLBasisExamples, here just named _my_program.mlb_:
+
+```
+(* import libraries *)
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+$(SML_LIB)/basis/basis.mlb
+(* program files *)
+./my_program.sml
+```
+
+If something went wrong with variable _$(SML_LIB)_ for example, alternatively absolute path names can be given like this for example (or wheresoever directory MLton has been unzipped):
+
+_.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/lib/mlton/sml/smlnj-lib/Util/smlnj-lib.mlb_
+
+It's important to also consider library _basis.mlb_ which includes all basic Standard ML types. If not, MLton doesn't even know what an _int_ type is for example.
+
+Now we can build standalone executable my_program like this:
+
+```
+$ mlton ./my_program.mlb
+```
+..and run it like this:
+
+```
+$ ./my_program
+unhandled exception: Overflow
+$
+
+
+
+
 
 <br/>
 
