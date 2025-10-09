@@ -13,6 +13,7 @@ SMLNJ, SML/NJ = Standard ML of New Jersey: https://www.smlnj.org/, which may sti
 Table of contents:
 
 TBD
+- [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 
 ---
@@ -37,7 +38,9 @@ However, MLton doesn't have a REPL, so I still have a SML/NJ installation for qu
 
 ### MLton installation tips
 
-I didn't manage to build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ (for Ubuntu 24 LTS) from here: https://github.com/MLton/mlton/releases/tag/on-20241230-release, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
+I build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
+
+See also here for specific Linux distributions: https://github.com/MLton/mlton/releases/tag/on-20241230-release
 
 Some years ago, MLton published this benchmark page with five Standard ML dialects: http://www.mlton.org/Performance
 
@@ -173,7 +176,7 @@ Spoiler alert: yes, we can!
 
 But first let's have a little exercise in the SML/NJ REPL with: _$ rlwrap sml_
 
-We can follow another utility to see how to start a random number generator in SML/NJ: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/UUID/gen-uuid.sml and enter these expressions - each terminated with a semicolon - in the REPL:
+We can follow another [utility](https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/UUID/gen-uuid.sml) to see how to start a random number generator in SML/NJ and enter these expressions - each terminated with a semicolon - in the REPL:
 
 ```
 val m = 65521;
@@ -190,7 +193,7 @@ By the way: _seed1_ can take really big integer numbers, positive or negative, b
 
 Since everything works, we now put above expressions - **without the semicolons** - into a source code file named _my_program.sml_.
 
-#### Tapping into libraries of Standard ML of New Jersey with ML Basis
+### Tapping into libraries of Standard ML of New Jersey with ML Basis
 
 Now we only have to find a way how to use a function inside a library of SML/NJ which isn't automatically available in MLton. By the way: these SML/NJ libraries are
 automatically installed, or unzipped respectively, along a MLton installation.
@@ -226,7 +229,7 @@ unhandled exception: Overflow
 $
 ```
 
-### yyyyyyyyyyyyyyyyyyyyyyy
+### The legacy Github repository of SML/NJ
 
 So, _my_program_ is working fine in the SML/NJ REPL, but not when being compiled with MLton!?!
 
@@ -244,7 +247,7 @@ val seed1 = (Random.randInt r)
 
 ..which apparently cannot be fixed within a MLton program.
 
-So, I went searching in the (legacy) Github repository of SML/NJ to see what else could be used instead. Here: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml I found function _Random.randRange_!
+So, I went searching in the legacy Github repository of SML/NJ to see what else could be used instead. Here: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml I found function _Random.randRange_!
 
 Actually, I only exchange the expression in question and leave the others untouched, except _val start_seed = seed1 mod m_, which isn't needed anymore:
 
@@ -291,7 +294,45 @@ For its full scope make sure that modern versions of [Lua](https://github.com/pr
 
 I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
 
-However, I noticed that my original Standard ML program for compilation with ............
+> [!IMPORTANT]
+> Have [MLton](#mlton-installation-tips) installed before continuing!
+
+```
+$ make LunarML
+$ cd LunarML
+$ wget https://github.com/minoki/LunarML/releases/download/v0.2.1/lunarml-0.2.1.tar.gz
+$ tar xzf lunarml-0.2.1.tar.gz
+$ pushd lunarml-0.2.1
+$ 
+
+
+```
+
+
+
+Both source files ([random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml), [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb)) can be transpiled with LunarML:
+
+```
+$ lunarml compile random_streams_for_perf_stats3.mlb
+```
+
+The resulting Lua script can now just be run like this:
+
+```
+$ lua ./random_streams_for_perf_stats3.lua
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+Transpiling my microbenchmark program, with using functions from the Standard ML of New Jersey, to JavaScript also works:
+
+```
+$ lunarml compile --lua-
+continuations ./my_program.mlb , however only with transpiler switch activated --
+lua-continuations: $ node ./my_program.mjs
 
 
 <br/>
