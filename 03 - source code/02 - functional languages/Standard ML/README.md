@@ -41,7 +41,7 @@ I didn't manage to build my MLton implementation from sources, but downloaded fi
 
 Some years ago, MLton published this benchmark page with five Standard ML dialects: http://www.mlton.org/Performance
 
-I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here: https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml, which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for example:
+I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for example:
 
 ```
 val m = 65521 (* = 2^16 - 15 *)
