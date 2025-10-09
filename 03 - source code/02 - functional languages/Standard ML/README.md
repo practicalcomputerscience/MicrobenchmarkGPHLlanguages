@@ -143,6 +143,31 @@ from: https://kar.kent.ac.uk/24064/1/FuncOlaf.pdf ("Functional Programming", Ola
 
 <br/>
 
+### Using Standard ML of New Jersey (SML/NJ) libraries from MLton
+
+This should apply nowadays:
+
+> MLton includes a port of the SML/NJ Library synchronized with SML/NJ version...
+
+from: http://mlton.org/SMLNJLibrary
+
+..and this: 
+
+> The SML/NJ Library is distributed as part of both the SML/NJ and MLton SML Compiler systems.
+
+from: http://www.smlnj.org/doc/smlnj-lib/index.html
+
+However, not everything what is available in SML/NJ is also readily available in MLton:
+
+- for example the "utility library of the SML/NJ Library": https://github.com/smlnj/legacy/tree/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util
+- ..and thus for example also not this "interface to stateful pseudo-random number generators": https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/random-sig.sml
+
+Therefore this question naturally comes up:
+
+- can we use functions from the utility library of the SML/NJ Library to replace the MLton specific source code as shown above at [MLton installation tips](#mlton-installation-tips)?
+
+Spoiler alert: yes, we can!
+
 TBD
 
 <br/>
