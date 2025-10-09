@@ -18,7 +18,8 @@ Table of contents:
 - [Semicolons in Standard ML and OCaml](#semicolons-in-standard-ml-and-ocaml)
 - [Semicolon example: bad style versus good style](#semicolon-example-bad-style-versus-good-style)
 - [Using Standard ML of New Jersey (SML/NJ) libraries from MLton](#using-standard-ml-of-new-jersey-smlnj-libraries-from-mlton)
-- [](#)
+- [Some random number generation in Standard ML of New Jersey](#some-random-number-generation-in-standard-ml-of-new-jersey)
+- [Tapping into libraries of Standard ML of New Jersey with ML Basis](#tapping-into-libraries-of-standard-ml-of-new-jersey-with-ml-basis)
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [tring building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
@@ -310,7 +311,10 @@ For its full scope make sure that modern versions of [Lua](https://github.com/pr
 I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
 
 > [!IMPORTANT]
-> Have [MLton](#mlton-installation-tips) + [Lua (+ LuaJIT)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua) installed before continuing!
+> Have [MLton](#mlton-installation-tips)
+> + [Lua + LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua)
+> + [Node.js](https://nodejs.org/en/)
+> ..installed before continuing!
 
 ```
 $ make LunarML
@@ -329,23 +333,16 @@ $ make test-luajit
 ...
 $ make test-nodejs
 ...
-TBD
 $ make test-nodejs-cps
 ...
-TBD
 $ bin/lunarml compile example/hello.sml  # here it's getting interesting
-...
-TBD
 $ lua example/hello.lua
-TBD
+Hello world!
 $ sudo make install
 ...
-TBD
 $ lunarml compile example/hello.sml
-...
-TBD
 $ lua example/hello.lua
-TBD
+Hello world!
 $
 ```
 
@@ -366,12 +363,16 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Transpiling my microbenchmark program to JavaScript also works, but only with transpiler switch _--lua-continuations_ activated:
+Transpiling my microbenchmark program to JavaScript also works, but only with transpiler switch _--nodejs-cps_ activated:
 
 ```
-$ lunarml compile --lua-continuations ./random_streams_for_perf_stats3.mlb
-$ node ./my_program.mjs
-TBD
+$ lunarml compile --nodejs-cps ./random_streams_for_perf_stats3.mlb
+$ node random_streams_for_perf_stats3.mjs
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
 ```
 
 TBD
