@@ -23,7 +23,7 @@ Table of contents:
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [String building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
-- [Motivation for LunarML of its creator](#motivation-for-lunarml-of-its-creator)
+- [Motivation of its creator for LunarML](#motivation-of-its-creator-for-lunarml)
 
 ---
 
@@ -51,7 +51,7 @@ I didn't manage to build my MLton implementation from sources, but downloaded fi
 
 See also here for specific Linux distributions: https://github.com/MLton/mlton/releases/tag/on-20241230-release
 
-MLton needs a _gmp.h_ file for compilation. In case that your system doesn't already have, you can install like this:
+MLton needs the _gmp.h_ file for compilation. In case that your system doesn't already have, you can install like this:
 
 ```
 sudo apt-get install libgmp3-dev
@@ -377,7 +377,7 @@ However, my program with around 220 lines of Standard ML source code in one _~.s
 
 <br/>
 
-### Motivation for LunarML of its creator
+### Motivation of its creator for LunarML
 
 TBD
 
