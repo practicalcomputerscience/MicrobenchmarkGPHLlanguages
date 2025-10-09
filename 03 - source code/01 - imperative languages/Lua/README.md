@@ -18,6 +18,21 @@ if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char th
 
 ---
 
+### Installation tips
+
+```
+$ curl -L -R -O https://www.lua.org/ftp/lua-5.4.8.tar.gz
+$ tar zxf lua-5.4.8.tar.gz
+$ cd lua-5.4.8
+$ make all test
+$ sudo make install
+$ lua -v
+Lua 5.4.8 Copyright (C) 1994-2025 Lua.org, PUC-Rio
+$
+```
+
+<br/>
+
 ### LuaJIT
 
 An indicator for my suspicion is this: when I run this script with _LuaJIT_, a Just-In-Time compiler (https://luajit.org/):
