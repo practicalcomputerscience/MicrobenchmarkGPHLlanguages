@@ -23,7 +23,7 @@ Table of contents:
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [tring building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
-- [Motivation for LunarML](#motivation-for-lunarml)
+- [Motivation for LunarML of its creator](#motivation-for-lunarml-of-its-creator)
 
 ---
 
@@ -382,7 +382,7 @@ However, my program with around 220 lines of Standard ML source code in one _~.s
 
 <br/>
 
-### Motivation for LunarML
+### Motivation for LunarML of its creator
 
 TBD
 
