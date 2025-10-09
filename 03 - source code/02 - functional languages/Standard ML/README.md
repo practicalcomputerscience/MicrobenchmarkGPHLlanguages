@@ -12,7 +12,8 @@ SMLNJ, SML/NJ = Standard ML of New Jersey: https://www.smlnj.org/, which may sti
 
 Table of contents:
 
-(TBD)
+TBD
+- [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 
 ---
 
@@ -212,7 +213,7 @@ _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64
 
 It's important to also consider library _basis.mlb_ which includes all basic Standard ML types. If not, MLton doesn't even know what an _int_ type is for example.
 
-Now we can build standalone executable my_program like this:
+Now we can build standalone executable _my_program_ like this:
 
 ```
 $ mlton ./my_program.mlb
@@ -224,9 +225,50 @@ $ ./my_program
 unhandled exception: Overflow
 $
 
+### yyyyyyyyyyyyyyyyyyyyyyy
 
+So, _my_program_ is working fine in the SML/NJ REPL, but not when being compiled with MLton!?!
 
+Slowly, we could get an idea why MLton has its own implementation of seeding a random number generator with:
 
+```
+val seed_ = MLton.Random.seed ()
+```
+
+Now I do what I mostly do in cases like these before searching for the debugger manual: I paste some print expressions around the lines of source code in question and see after what expression the program goes into exception. It's this expression:
+
+```
+val seed1 = (Random.randInt r)
+```
+
+..which apparently cannot be fixed within a MLton program.
+
+So, I went searching in the (legacy) Github repository of SML/NJ to see what else could be used instead. Here: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml I found function _Random.randRange_!
+
+Actually, I only exchange the expression in question and leave the others untouched, except _val start_seed = seed1 mod m_, which isn't needed anymore:
+
+```
+val m = 65521
+fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
+val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
+val (secs, usecs) = getTime ()
+val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)
+
+val start_seed = Random.randRange (1, m) r (* the new expression *)
+
+val _ = print("start_seed = " ^ Int.toString start_seed)
+val _ = print("\n")
+```
+
+```
+$ ./my_program
+start_seed = 16370
+$ 
+```
+
+<br/>
+
+Now my compiled microbenchmark program in Standard ML works fine and also shines in another category, see below at [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml).
 
 <br/>
 
@@ -237,6 +279,19 @@ The speed bottleneck of my initial and slow SML program was not my string handli
 I changed this to an (imperative) global array of integers, initially declared in its final size, and the execution time dropped from 12 seconds to 1.6 seconds! Obviously there is generally a speed issue with (very "functional") _lists_ in functional programming languages, see also best practice #2 from here: [My 5 best practices with Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#my-5-best-practices-with-scheme-dialects)
 
 However, in a new functional programming I would always start with ("easy") _lists_ to get the functional aspects like recursions right first and only then try using other (imperative) data types like arrays or vectors, if available, to make a competitively performing program.
+
+<br/>
+
+### Transpiling from Standard ML to Lua and JavaScript with LunarML
+
+While having a look at [Standard ML dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#other-standard-ml--dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
+
+For its full scope make sure that modern versions of [Lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua), LuaJIT (https://luajit.org/) and node.js (https://nodejs.org/en/) are also installed.
+
+I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
+
+However, I noticed that my original Standard ML program for compilation with ............
+
 
 <br/>
 
