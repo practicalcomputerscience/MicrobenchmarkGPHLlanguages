@@ -21,7 +21,7 @@ Table of contents:
 - [Some random number generation in Standard ML of New Jersey](#some-random-number-generation-in-standard-ml-of-new-jersey)
 - [Tapping into libraries of Standard ML of New Jersey with ML Basis](#tapping-into-libraries-of-standard-ml-of-new-jersey-with-ml-basis)
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
-- [tring building with Standard ML](#string-building-with-standard-ml)
+- [String building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 - [Motivation for LunarML of its creator](#motivation-for-lunarml-of-its-creator)
 
