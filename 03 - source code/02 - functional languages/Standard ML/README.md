@@ -38,7 +38,7 @@ However, MLton doesn't have a REPL, so I still have a SML/NJ installation for qu
 
 ### MLton installation tips
 
-I build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
+I didn't manage to build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
 
 See also here for specific Linux distributions: https://github.com/MLton/mlton/releases/tag/on-20241230-release
 
