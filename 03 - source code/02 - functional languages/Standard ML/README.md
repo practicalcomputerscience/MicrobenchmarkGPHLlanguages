@@ -42,6 +42,14 @@ I didn't manage to build my MLton implementation from sources, but downloaded fi
 
 See also here for specific Linux distributions: https://github.com/MLton/mlton/releases/tag/on-20241230-release
 
+MLton needs a _gmp.h_ file for compilation. In case that your system doesn't already have, you can install like this:
+
+```
+sudo apt-get install libgmp3-dev
+```
+
+<br/>
+
 Some years ago, MLton published this benchmark page with five Standard ML dialects: http://www.mlton.org/Performance
 
 I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for example:
@@ -295,7 +303,7 @@ For its full scope make sure that modern versions of [Lua](https://github.com/pr
 I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
 
 > [!IMPORTANT]
-> Have [MLton](#mlton-installation-tips) installed before continuing!
+> Have [MLton](#mlton-installation-tips) + [Lua (+ LuaJIT)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua) installed before continuing!
 
 ```
 $ make LunarML
@@ -303,20 +311,24 @@ $ cd LunarML
 $ wget https://github.com/minoki/LunarML/releases/download/v0.2.1/lunarml-0.2.1.tar.gz
 $ tar xzf lunarml-0.2.1.tar.gz
 $ pushd lunarml-0.2.1
-$ 
+$ make
+mlyacc src/syntax.grm
+mlton -output bin/lunarml src/lunarml-main.mlb
+$ make test-lua
+TBD
+
+
 
 
 ```
 
-
-
-Both source files ([random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml), [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb)) can be transpiled with LunarML:
+Both source files ([random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml), [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb)) should now be transpiled successfully with LunarML:
 
 ```
 $ lunarml compile random_streams_for_perf_stats3.mlb
 ```
 
-The resulting Lua script can now just be run like this:
+The resulting Lua script can be run like this:
 
 ```
 $ lua ./random_streams_for_perf_stats3.lua
@@ -327,12 +339,15 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Transpiling my microbenchmark program, with using functions from the Standard ML of New Jersey, to JavaScript also works:
+Transpiling my microbenchmark program to JavaScript also works, but only with transpiler switch _--lua-continuations_ activated:
 
 ```
-$ lunarml compile --lua-
-continuations ./my_program.mlb , however only with transpiler switch activated --
-lua-continuations: $ node ./my_program.mjs
+$ lunarml compile --lua-continuations ./random_streams_for_perf_stats3.mlb
+$ node ./my_program.mjs
+TBD
+```
+
+TBD
 
 
 <br/>
