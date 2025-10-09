@@ -23,6 +23,7 @@ Table of contents:
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [tring building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
+- [Motivation for LunarML](#motivation-for-lunarml)
 
 ---
 
@@ -377,6 +378,13 @@ $
 
 TBD
 
+However, my program with around 220 lines of Standard ML source code in one _~.sml_ file and one _~.mlb_ file transpiled into 4490 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
+
+<br/>
+
+### Motivation for LunarML
+
+TBD
 
 <br/>
 
