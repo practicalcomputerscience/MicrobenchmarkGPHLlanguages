@@ -2,7 +2,7 @@
 
 2025-07-07/08
 
-build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/MLton/mlton/releases/tag/on-20241230-release
+build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
                         $ mlton -verbose 1 random_bitstring_and_flexible_password_generator.sml
 
@@ -337,3 +337,4 @@ structure Main =
   end
 
 (* end of random_bitstring_and_flexible_password_generator.sml *)
+
