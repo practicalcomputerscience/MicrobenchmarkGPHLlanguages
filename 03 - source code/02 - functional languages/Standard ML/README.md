@@ -12,8 +12,12 @@ SMLNJ, SML/NJ = Standard ML of New Jersey: https://www.smlnj.org/, which may sti
 
 Table of contents:
 
-TBD
+- [MLton compiler](#mlton-compiler)
+- [MLton installation tips](#mlton-installation-tips)
+- [Other Standard ML dialects](#other-standard-ml-dialects)
+- [Semicolons in Standard ML and OCaml](#semicolons-in-standard-ml-and-ocaml)
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
+- [tring building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 
 ---
@@ -314,12 +318,32 @@ $ pushd lunarml-0.2.1
 $ make
 mlyacc src/syntax.grm
 mlton -output bin/lunarml src/lunarml-main.mlb
-$ make test-lua
+$ make test-lua  # these tests take a long time!!
+...
+$ make test-lua-continuations
+...
+$ make test-luajit
+...
+$ make test-nodejs
+...
 TBD
-
-
-
-
+$ make test-nodejs-cps
+...
+TBD
+$ bin/lunarml compile example/hello.sml  # here it's getting interesting
+...
+TBD
+$ lua example/hello.lua
+TBD
+$ sudo make install
+...
+TBD
+$ lunarml compile example/hello.sml
+...
+TBD
+$ lua example/hello.lua
+TBD
+$
 ```
 
 Both source files ([random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml), [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb)) should now be transpiled successfully with LunarML:
