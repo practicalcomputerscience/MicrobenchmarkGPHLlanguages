@@ -289,7 +289,7 @@ $
 
 <br/>
 
-Now my compiled microbenchmark program in [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) works fine and also shines in another category, see below at [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml).
+Now my compiled microbenchmark program in [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) works fine too and also shines in another category, see below at [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml).
 
 <br/>
 
@@ -307,15 +307,10 @@ However, in a new functional programming I would always start with ("easy") _lis
 
 While having a look at [Standard ML dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#other-standard-ml--dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
 
-For its full scope make sure that modern versions of [Lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua), LuaJIT (https://luajit.org/) and node.js (https://nodejs.org/en/) are also installed.
+> [!IMPORTANT]
+> Have [MLton](#mlton-installation-tips) and [Lua + LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua) and [node.js](https://nodejs.org/en/) installed before continuing!
 
 I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
-
-> [!IMPORTANT]
-> Have [MLton](#mlton-installation-tips)
-> + [Lua + LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua)
-> + [Node.js](https://nodejs.org/en/)
-> ..installed before continuing!
 
 ```
 $ make LunarML
