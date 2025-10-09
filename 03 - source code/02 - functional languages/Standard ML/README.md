@@ -16,6 +16,9 @@ Table of contents:
 - [MLton installation tips](#mlton-installation-tips)
 - [Other Standard ML dialects](#other-standard-ml-dialects)
 - [Semicolons in Standard ML and OCaml](#semicolons-in-standard-ml-and-ocaml)
+- [Semicolon example: bad style versus good style](#semicolon-example-bad-style-versus-good-style)
+- [Using Standard ML of New Jersey (SML/NJ) libraries from MLton](#using-standard-ml-of-new-jersey-smlnj-libraries-from-mlton)
+- [](#)
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [tring building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
@@ -73,7 +76,7 @@ Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomp
 
 <br/>
 
-### Other Standard ML  dialects
+### Other Standard ML dialects
 
 The old **Moscow ML** precompiled binaries (https://mosml.org/) from 2014 don't work in my machine.
 
