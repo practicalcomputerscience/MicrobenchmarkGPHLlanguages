@@ -79,11 +79,11 @@ These languages have (substantially) exceeded [The 1 second execution time limit
 
 ### Koka
 
-Although my [Koka program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka/random_streams_for_perf_stats.kk) works correctly, though I didn't polish it, it's just super-slow with an execution time of over 3 seconds!
+Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 3 seconds!
 
 ### Raku
 
-Although my [Raku program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku) works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds!
+Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds!
 
 <br/>
 
