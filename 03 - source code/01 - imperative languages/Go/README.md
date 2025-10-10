@@ -48,7 +48,9 @@ TBD
 
 <br/>
 
-Now I ask myself: are there other corners in Go where it's advisable to be on higher alert for unconventional behavior and effects? Because my microbenchmark program can only scratch the surface of a general purpose, high-level programming language - naturally with only 87 lines of source code in Python: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
+Now I ask myself: are there other corners in Go where it's advisable to be on higher alert for unconventional behavior and effects?
+
+Because my microbenchmark program can only scratch the surface of a general purpose, high-level programming language - naturally with only 87 lines of source code in Python: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
 For a reason there's a book (from 2022) with troubles in Go you can run into: https://www.thecoder.cafe/p/100-go-mistakes
 
