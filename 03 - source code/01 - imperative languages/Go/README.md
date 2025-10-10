@@ -33,15 +33,20 @@ unintentional benchmark program from the original [Python version](https://githu
 
 I also thought that the official [language documentation of Go](https://go.dev/doc/) was by far the best I've seen in years, and I've seen a lot of official language documentation in the last couple of months. For my taste, the role of good documentation is still not taken serious enough in too many cases. Documentation, with non-trivial examples, creates trust in the long run and not shiny presentations.
 
-Though in the meantime I had to walk back a little bit from this impression, though I still think that it's pretty good.
+Though in the meantime I had to walk back a little bit from this impression, though I still think that Go's documentation is pretty good.
 
-However, when I jumped from language to language, I re-checked if I've really implemented the same behavior in my Go program (and other language versions), only to notice that this was not
-the case. After initial tests the Go program worked Okish too, but not with the exact same behavior like my original Python program. And it was not a minor, cosmetic issue, but a potentially
+> [!WARNING]
+> However, when I jumped from language to language, I re-checked if I've really implemented the same behavior in my Go program (and other language versions), only to notice that this was not
+the case!
+
+After initial tests the Go program worked Okish too, but not with the exact same behavior like my original Python program. And it was not a minor, cosmetic issue, but a potentially
 dangerous behavior for a computer program.
 
 Weeks later I tested my Go program with another corner case, only to discover that there's another problem. Only many weeks later I think I understood that with Go at least one group of functions behave substantially different from similar functions in all the other programming languages I tested so far: 
 
 TBD
+
+<br/>
 
 Now I ask myself: are there other corners in Go where it's advisable to be on higher alert for unconventional behavior and effects? Because my microbenchmark program can only scratch the surface of a general purpose, high-level programming language - naturally with only 87 lines of source code in Python: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
