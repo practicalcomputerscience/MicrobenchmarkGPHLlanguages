@@ -109,7 +109,7 @@ Password of 12 printable chars OK? "y" or another integer number >= 8:
 
 <br/>
 
-So, after a longer while I came to the conclusion that using Go's _fmt_ functions would not lead to an acceptably well behaving program.
+Only after a longer while I came to the conclusion that using Go's _fmt_ functions would not lead to an acceptably well behaving program.
 
 So, for my [final version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go/random_bitstring_and_flexible_password_generator.go) so far I switched to function _bufio.NewReader(os.Stdin)_ from the _**bufio**_ package: https://pkg.go.dev/bufio
 
