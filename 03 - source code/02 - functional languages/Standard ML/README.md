@@ -418,7 +418,12 @@ cont: {
 $
 ```
 
-However, my benchmark program with 133 lines of Standard ML source code in files _random_streams_for_perf_stats3.sml_ and _random_streams_for_perf_stats3.mlb_ (129 + 4) transpiled into 4627 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
+However, my benchmark program with 133 lines of Standard ML source code in files [random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) and [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb) (129 + 4) transpiled into:
+
+- 4627 lines of Lua source code and
+- 3264 lines of JavaScript source code!
+
+Apparently these transpiled source code files are not meant for the human reader.
 
 <br/>
 
