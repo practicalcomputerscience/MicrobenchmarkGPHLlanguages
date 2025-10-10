@@ -418,7 +418,7 @@ cont: {
 $
 ```
 
-However, my program with around 220 lines of Standard ML source code in one _~.sml_ file and one _~.mlb_ file transpiled into 4627 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
+However, my benchmark program with 133 lines of Standard ML source code in files _random_streams_for_perf_stats3.sml_ and _random_streams_for_perf_stats3.mlb_ (129 + 4) transpiled into 4627 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
 
 <br/>
 
