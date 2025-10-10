@@ -4,7 +4,7 @@ There's a deeper sense why I wrote a little bit more about this exotic corner of
 
 ## Microsoft's efforts with transpilation
 
-In March of this year Microsoft announced: [A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/), where Microsoft takes Google's **Go** programming language (https://github.com/microsoft/typescript-go) to transpile TypeScript source code into JavaScript source code.
+In March 2025, Microsoft announced: [A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/), where Microsoft takes Google's **Go** programming language (https://github.com/microsoft/typescript-go) to transpile TypeScript source code into JavaScript source code.
 
 So far, this has been done with "self-hosting", that is that the TypeScript compiler is implemented in TypeScript, which also is JIT (Just-In-Time) compiled into JavaScript while doing its compilation work.
 
