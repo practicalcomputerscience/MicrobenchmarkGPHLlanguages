@@ -23,6 +23,7 @@ Table of contents:
 - [The legacy Github repository of SML/NJ](#the-legacy-github-repository-of-smlnj)
 - [String building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
+- [Hello world! example for Lua and JavaScript](#hello-world-example-for-lua-and-javascript)
 - [Motivation of its creator for LunarML](#motivation-of-its-creator-for-lunarml)
 
 ---
@@ -371,15 +372,66 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-TBD
+### Hello world! example for Lua and JavaScript
 
-However, my program with around 220 lines of Standard ML source code in one _~.sml_ file and one _~.mlb_ file transpiled into 4490 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
+LunarML features the _Hello world!_ example:
+
+```
+$ cat ./LunarML-0.2.1/example/hello.sml
+val it = 1 + 2;
+print "Hello world!\n";
+$
+```
+
+After its transpilation with lunaarml the first 10 lines of the resulting Lua script look
+like this:
+
+```
+$ lunarml compile ./LunarML-0.2.1/example/hello.sml
+$ cat ./LunarML-0.2.1/example/hello.lua
+local error = error
+local setmetatable = setmetatable
+local math = math
+local math_maxinteger = math.maxinteger
+local string = string
+local string_format = string.format
+local function _id(x)
+  return x
+end
+local _exn_meta = {}
+...
+$
+```
+
+In total this script has (_$ wc -l ./LunarML-0.2.1/example/hello.lua_) 95 lines of Lua source code!
+
+The JavaScript version has only 5 lines of source code:
+
+```
+$ lunarml compile --nodejs ./LunarML-0.2.1/example/hello.sml
+$ cat ./LunarML-0.2.1/example/hello.mjs
+import {stdout} from "node:process";
+cont: {
+ stdout.write(Uint8Array.of(72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33, 10));
+ break cont;
+}
+$
+
+However, my program with around 220 lines of Standard ML source code in one _~.sml_ file and one _~.mlb_ file transpiled into 4627 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
 
 <br/>
 
 ### Motivation of its creator for LunarML
 
-TBD
+LunarML's creator (from Japan) gave some insight into his motivations in 2023:
+
+> It is hard to create large software in an untyped language. However, there are situations where the use of untyped languages is unavoidable due to the constraints of the runtime environment. This situation can be remedied by a compiler, which converts programs written in statically-typed languages to code in untyped languages. Such compilers are also called transpilers.
+
+from: https://minoki.github.io/posts/2023-12-17-lunarml-release.html
+
+Furthermore, he said this why choosing Standard ML:
+
+> As for the input language, I decided to use an existing language instead of creating a new one. I like ML languages, so after considering several languages in the ML family, I chose Standard ML, ...
 
 <br/>
 
