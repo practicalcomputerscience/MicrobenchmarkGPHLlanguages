@@ -24,7 +24,7 @@ Table of contents:
 - [String building with Standard ML](#string-building-with-standard-ml)
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 - [Hello world! example for Lua and JavaScript](#hello-world-example-for-lua-and-javascript)
-- [Motivation of its creator for LunarML](#motivation-of-its-creator-for-lunarml)
+- [Motivation of the creator of LunarML](#motivation-of-the-creator-of-lunarml)
 
 ---
 
@@ -416,18 +416,17 @@ cont: {
  break cont;
 }
 $
+```
 
 However, my program with around 220 lines of Standard ML source code in one _~.sml_ file and one _~.mlb_ file transpiled into 4627 lines of Lua source code and 3264 lines of JavaScript source code! Apparently these transpiled source code files are not meant for the human reader.
 
 <br/>
 
-### Motivation of its creator for LunarML
+### Motivation of the creator of LunarML
 
-LunarML's creator (from Japan) gave some insight into his motivations in 2023:
+In 2023 LunarML's creator (from Japan) gave some insight into his motivations: https://minoki.github.io/posts/2023-12-17-lunarml-release.html
 
 > It is hard to create large software in an untyped language. However, there are situations where the use of untyped languages is unavoidable due to the constraints of the runtime environment. This situation can be remedied by a compiler, which converts programs written in statically-typed languages to code in untyped languages. Such compilers are also called transpilers.
-
-from: https://minoki.github.io/posts/2023-12-17-lunarml-release.html
 
 Furthermore, he said this why choosing Standard ML:
 
