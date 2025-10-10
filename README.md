@@ -236,7 +236,7 @@ my password of 12 characters is: {5mkkR""dmtC
 
 It's amazing what you can learn about a new programming language when implementing - or trying to implement - a little dialog with the user on the console, that is reading user input from the keyboard into a string in the year 2025: [Reading user input from the keyboard into a string on the console](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console/README.md#reading-user-input-from-the-keyboard-into-a-string-on-the-console)
 
-With one prominent language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages!
+With one prominent language, that is Go, I'm still not sure if this allegedly little task is finally working like it should and actually does in almost all other programming languages: [A sobering experience](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go/README.md#a-sobering-experience)
 
 <br/>
 
