@@ -34,7 +34,7 @@ $
 ..and I use this program like this, here for the binary executable program named _random_bitstring_and_flexible_password_generator_, which has been built from the [Crystal source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal/random_bitstring_and_flexible_password_generator.cr) for example:
 
 ```
-valgrind ./random_bitstring_and_flexible_password_generator
+$ valgrind ./random_bitstring_and_flexible_password_generator
 ==5443== Memcheck, a memory error detector
 ==5443== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
 ==5443== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
