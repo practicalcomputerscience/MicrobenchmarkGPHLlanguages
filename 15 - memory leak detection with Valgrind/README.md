@@ -41,7 +41,7 @@ valgrind ./random_bitstring_and_flexible_password_generator
 ==5443== Command: ./random_bitstring_and_flexible_password_generator
 ==5443== 
 ...
-it stream has been written to disk under name:  random_bitstring.bin
+Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
 
 Password of 12 printable chars OK? 'y' or another integer number >= 8: ==5443== Warning: client switching stacks?  SP change: 0x1ffeffe2d0 --> 0x594efb8
@@ -151,7 +151,7 @@ Here's the background of this phenomenon: https://www.reddit.com/r/rust/comments
 
 So, one may have to wait for a Valgrind fix here.
 
-It also shows that above test results and my conclusions from them have to be taken with a grain of salt.
+It also shows that above test results and my conclusions have to be taken with a grain of salt.
 
 <br/>
 
@@ -183,7 +183,7 @@ The **Koka** program falls into the same category, though with a different conso
 
 <br/>
 
-The **Racket Scheme** program shows another phenomema:
+The **Racket Scheme** program shows another phenomemon:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -238,7 +238,7 @@ $
 
 <br/>
 
-Another, maybe overlooked fact: I can repeat these test results as far as I have done repeated tests.
+Another, maybe overlooked fact: I can repeat all test results as far as I have done repeated tests.
 
 <br/>
 
