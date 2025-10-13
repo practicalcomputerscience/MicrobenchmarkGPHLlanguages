@@ -1,7 +1,208 @@
 # Memory leak detection with Valgrind
 
-https://valgrind.org/
+[Memory safety](https://en.wikipedia.org/wiki/Memory_safety) of programming languages has been a big talking point in recent years: https://www.open-std.org/JTC1/SC22/WG21/docs/papers/2023/p2771r0.html
 
-(TBD)
+While reading about this topic, I tumbled over the program **Valgrind**: https://valgrind.org/
+
+> There are Valgrind tools that can automatically detect many memory management and threading bugs, and profile your programs in detail.
+
+<br/>
+
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [Summaries table](#summaries-table)
+- [Rust](#rust)
+- [On other languages](#on-other-languages)
+
+---
+
+## Installation tips
+
+For Ubuntu 24 LTS, I followed these tips to build the Valgrind program from sources: https://idroot.us/install-valgrind-ubuntu-24-04/
+
+My installed version is:
+
+```
+$ valgrind --version
+valgrind-3.25.1
+$
+```
+
+..and I use this program like this, here for the binary executable program named _random_bitstring_and_flexible_password_generator_, which has been built from the [Crystal source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal/random_bitstring_and_flexible_password_generator.cr) for example:
+
+```
+valgrind ./random_bitstring_and_flexible_password_generator
+==5443== Memcheck, a memory error detector
+==5443== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==5443== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==5443== Command: ./random_bitstring_and_flexible_password_generator
+==5443== 
+...
+it stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+Password of 12 printable chars OK? 'y' or another integer number >= 8: ==5443== Warning: client switching stacks?  SP change: 0x1ffeffe2d0 --> 0x594efb8
+==5443==          to suppress, use: --max-stackframe=137328522008 or greater
+==5443== Warning: client switching stacks?  SP change: 0x594e3f0 --> 0x614efb8
+==5443==          to suppress, use: --max-stackframe=8391624 or greater
+==5443== Warning: client switching stacks?  SP change: 0x614e210 --> 0x594e3f0
+==5443==          to suppress, use: --max-stackframe=8388128 or greater
+==5443==          further instances of this message will not be shown.
+y
+
+Do you want me to use special characters like .;,+*... ? 'y' or 'n': y
+
+Your password of 12 characters is: JEKg&T7qK5v.
+==5443== 
+==5443== HEAP SUMMARY:
+==5443==     in use at exit: 8,192 bytes in 1 blocks
+==5443==   total heap usage: 15 allocs, 14 frees, 12,336 bytes allocated
+==5443== 
+==5443== LEAK SUMMARY:
+==5443==    definitely lost: 8,192 bytes in 1 blocks
+==5443==    indirectly lost: 0 bytes in 0 blocks
+==5443==      possibly lost: 0 bytes in 0 blocks
+==5443==    still reachable: 0 bytes in 0 blocks
+==5443==         suppressed: 0 bytes in 0 blocks
+==5443== Rerun with --leak-check=full to see details of leaked memory
+==5443== 
+==5443== Use --track-origins=yes to see where uninitialised values come from
+==5443== For lists of detected and suppressed errors, rerun with: -s
+==5443== ERROR SUMMARY: 674 errors from 36 contexts (suppressed: 0 from 0)
+$ 
+```
+
+I ran Valgrind only on programs from compiled languages, not scripting languages like Python for example.
+
+<br/>
+
+## Summaries table
+
+programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ?
+--- | --- | --- | ---
+Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no
+C | 0 bytes in 0 blocks | -- | yes <<<<<<
+C3 | 0 bytes in 0 blocks | -- | yes <<<<<<
+Chapel | program doesn't finish | -- | no
+Common Lisp | 1,538,080 bytes in 17 blocks | 1,275,640 bytes in 15 blocks | no
+Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no
+FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no
+Go | 0 bytes in 0 blocks | -- | yes <<<<<<
+Inko | Segmentation fault (core dumped) | -- | no
+Koka | program doesn't finish | -- | no
+Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no
+OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
+Racket Scheme | Valgrind is doing nothing here | -- | no
+Roc | 0 bytes in 0 blocks | -- | yes <<<<<<
+Rust | 8,192 bytes in 1 blocks | 8,192 bytes in 1 blockss | no
+Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<<
+Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no
+V | 0 bytes in 0 blocks | -- | yes <<<<<<
+Zig | 0 bytes in 0 blocks | -- | yes <<<<<<
+
+So, my main focus was on the possibly best test outcome, that is: "All heap blocks were freed -- no leaks are possible".
+
+Only looking by above table, I would implement a security related program only with these programming languages:
+
+- C
+- C3
+- Go
+- Roc
+- Standard ML (MLton)
+- V
+- Zig
+
+<br/>
+
+
+#### Rust
+
+As you can see, from point of view of Valgrind even [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) (in the used version and enviroment) is not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
+
+Here's the background of these 8,192 bytes in 1 block:
+
+
+### On other languages
+
+Not all binary executable programs are finishing and have to be interupted with pressing CTRL+C keys. The Chapel version is one example:
+
+```
+$ valgrind ./random_bitstring_and_flexible_password_generator
+==6129== Memcheck, a memory error detector
+==6129== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==6129== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==6129== Command: ./random_bitstring_and_flexible_password_generator
+==6129== 
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+...
+^C
+==6129==
+==6129== Process terminating with default action of signal 2 (SIGINT)
+...
+$
+
+The Koka program falls into the same category, though with a different console output.
+
+<br/>
+
+The Racket Scheme program shows another phenomema:
+
+```
+$ valgrind ./random_bitstring_and_flexible_password_generator
+==6154== Memcheck, a memory error detector
+==6154== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==6154== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==6154== Command: ./random_bitstring_and_flexible_password_generator
+==6154== 
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+Password of 12 printable chars OK? 'y' or another integer number >= 8: y
+
+Do you want me to use special characters like .;,+*... ? 'y' or 'n': y
+
+Your password of 12 characters is: Afv{EApa#?1q
+$
+```
+
+This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above..
+
+With the other tested Scheme dialects (Bigloo, CHICKEN, Gambit), I only implemented the "random_streams_for_perf_stats" programs. All of them had still reachable leaks:
+
+- Bigloo: _still reachable: 2,512 bytes in 2 blocks_
+- CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
+- Gambit: _still reachable: 2,048 bytes in 2 blocks_
+
+<br/>
+
+TBD:
+- change of source code to get a better results in terms of ...
+- xxx
+- xxx
+
+I didn't try to re-write the [Inko program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/random_bitstring_and_flexible_password_generator.inko) to see if I can make the _Segmentation fault (core dumped)_ go away:
+
+```
+$ valgrind ./random_bitstring_and_flexible_password_generator
+==5800== Memcheck, a memory error detector
+==5800== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==5800== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==5800== Command: ./random_bitstring_and_flexible_password_generator
+==5800== 
+...
+Segmentation fault (core dumped)
+$
+```
+
+<br/>
+
+Another, maybe overlooked, fact: I can repeat these test results as far as I have done repeated tests.
+
+<br/>
 
 ##_end
