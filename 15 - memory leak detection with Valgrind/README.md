@@ -137,15 +137,15 @@ Only looking by above table, I would implement a security related program only w
 
 #### Rust
 
-From point of view of Valgrind even [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) (in the used version and enviroment) is not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
+From point of view of Valgrind even Rust is potentially not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
 
-In my [Rust program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) it's this line of source code which causes the memory leak:
+In my [Rust program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs), it's this line of source code which causes the memory leak:
 
 ```
 _ = io::stdin().read_line(&mut answer_str);  // reading user input: no "?" here when main function has no result handling
 ```
 
-Here's the background of these 8,192 bytes in 1 block: https://www.reddit.com/r/rust/comments/u9gx5t/comment/i5rf956/
+Here's the background of this phenomenon: https://www.reddit.com/r/rust/comments/u9gx5t/comment/i5rf956/
 
 So, one may have to wait for a Valgrind fix here.
 
