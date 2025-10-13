@@ -123,7 +123,7 @@ Your password of 12 characters is: SMm`=URaYA~]
 $
 ```
 
-Only looking by above table, I would implement a security related program only with these programming languages:
+Only looking by above table, I would implement a security related program only with these programming languages (at the moment):
 
 - C
 - C3
@@ -137,7 +137,7 @@ Only looking by above table, I would implement a security related program only w
 
 #### Rust
 
-From point of view of Valgrind even Rust is potentially not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
+From point of view of Valgrind, even Rust is potentially not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
 
 In my [Rust program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs), it's this line of source code which causes the memory leak:
 
@@ -149,11 +149,13 @@ Here's the background of this phenomenon: https://www.reddit.com/r/rust/comments
 
 So, one may have to wait for a Valgrind fix here.
 
+It also shows that above test results and my conclusions from them have to be taken with a grain of salt.
+
 <br/>
 
 ### On other languages
 
-Not all binary executable programs are finishing and have to be interupted with pressing CTRL+C keys. The Chapel version is one example:
+Not all binary executable programs are finishing and have to be interupted with pressing CTRL+C keys. The **Chapel** version is one example:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -171,12 +173,15 @@ and reloading them under Valgrind with HWLOC_CPUID_PATH.
 ==6129== Process terminating with default action of signal 2 (SIGINT)
 ...
 $
-
-The Koka program falls into the same category, though with a different console output.
+```
 
 <br/>
 
-The Racket Scheme program shows another phenomema:
+The **Koka** program falls into the same category, though with a different console output.
+
+<br/>
+
+The **Racket Scheme** program shows another phenomema:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -200,7 +205,7 @@ $
 
 This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above..
 
-With the other tested Scheme dialects (Bigloo, CHICKEN, Gambit), I only implemented the "random_streams_for_perf_stats" programs. All of them had still reachable leaks:
+With the other tested Scheme dialects, I only implemented the "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks:
 
 - Bigloo: _still reachable: 2,512 bytes in 2 blocks_
 - CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
@@ -212,6 +217,8 @@ TBD:
 - change of source code to get a better results in terms of ...
 - xxx
 - xxx
+
+<br/>
 
 I didn't try to re-write the [Inko program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/random_bitstring_and_flexible_password_generator.inko) to see if I can make the _Segmentation fault (core dumped)_ go away:
 
@@ -229,7 +236,7 @@ $
 
 <br/>
 
-Another, maybe overlooked, fact: I can repeat these test results as far as I have done repeated tests.
+Another, maybe overlooked fact: I can repeat these test results as far as I have done repeated tests.
 
 <br/>
 
