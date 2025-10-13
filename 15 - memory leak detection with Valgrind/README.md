@@ -1,3 +1,5 @@
+2025-10-13: work in progress
+
 # Memory leak detection with Valgrind
 
 [Memory safety](https://en.wikipedia.org/wiki/Memory_safety) of programming languages has been a big talking point in recent years: https://www.open-std.org/JTC1/SC22/WG21/docs/papers/2023/p2771r0.html
