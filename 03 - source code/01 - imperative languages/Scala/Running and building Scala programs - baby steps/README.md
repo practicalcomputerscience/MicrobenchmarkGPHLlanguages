@@ -1,5 +1,3 @@
-2025-09-30: work in progress
-
 # Running and building Scala programs: baby steps
 
 Subpages:
