@@ -205,7 +205,7 @@ Your password of 12 characters is: Afv{EApa#?1q
 $
 ```
 
-This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above..
+This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above.
 
 With the other tested Scheme dialects, I only implemented the "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks:
 
