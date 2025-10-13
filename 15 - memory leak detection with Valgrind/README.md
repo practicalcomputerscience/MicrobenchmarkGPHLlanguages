@@ -93,7 +93,7 @@ Inko | Segmentation fault (core dumped) | -- | no
 Koka | program doesn't finish | -- | no
 Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no
 OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
-Racket Scheme | Valgrind is doing nothing here | -- | no
+Racket Scheme | Valgrind is doing nothing | -- | no
 Roc | 0 bytes in 0 blocks | -- | yes <<<<<<
 Rust | 8,192 bytes in 1 blocks | 8,192 bytes in 1 blockss | no
 Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<<
@@ -101,7 +101,27 @@ Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no
 V | 0 bytes in 0 blocks | -- | yes <<<<<<
 Zig | 0 bytes in 0 blocks | -- | yes <<<<<<
 
-So, my main focus was on the possibly best test outcome, that is: "All heap blocks were freed -- no leaks are possible".
+<br/>
+
+So, my main focus was on the possibly best test outcome, that is: _All heap blocks were freed -- no leaks are possible_, like with C for example:
+
+```
+$ valgrind ./random_bitstring_and_flexible_password_generator
+...
+
+Your password of 12 characters is: SMm`=URaYA~]
+==6207== 
+==6207== HEAP SUMMARY:
+==6207==     in use at exit: 0 bytes in 0 blocks
+==6207==   total heap usage: 6 allocs, 6 frees, 11,184 bytes allocated
+==6207== 
+==6207== All heap blocks were freed -- no leaks are possible
+==6207== 
+==6207== Use --track-origins=yes to see where uninitialised values come from
+==6207== For lists of detected and suppressed errors, rerun with: -s
+==6207== ERROR SUMMARY: 36 errors from 4 contexts (suppressed: 0 from 0)
+$
+```
 
 Only looking by above table, I would implement a security related program only with these programming languages:
 
@@ -115,13 +135,21 @@ Only looking by above table, I would implement a security related program only w
 
 <br/>
 
-
 #### Rust
 
-As you can see, from point of view of Valgrind even [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) (in the used version and enviroment) is not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
+From point of view of Valgrind even [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) (in the used version and enviroment) is not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
 
-Here's the background of these 8,192 bytes in 1 block:
+In my [Rust program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs) it's this line of source code which causes the memory leak:
 
+```
+_ = io::stdin().read_line(&mut answer_str);  // reading user input: no "?" here when main function has no result handling
+```
+
+Here's the background of these 8,192 bytes in 1 block: https://www.reddit.com/r/rust/comments/u9gx5t/comment/i5rf956/
+
+So, one may have to wait for a Valgrind fix here.
+
+<br/>
 
 ### On other languages
 
