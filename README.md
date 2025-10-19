@@ -455,7 +455,7 @@ See from here at: [Old computer programming languages learning new tricks](https
 
 My testing environment is this:
 
-- Operating system (OS): Ubuntu 24 LTS or in long, currently (_$ uname -a_): _Linux ... 6.8.0-63-generic #66-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 13 20:25:30 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux_
+- Operating system (OS): Ubuntu 24 LTS or in long, currently (_$ uname -a_): _Linux ... 6.8.0-85-generic #85-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 18 15:26:59 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux_
 
 My (older) hardware from 2022 is always this:
 
