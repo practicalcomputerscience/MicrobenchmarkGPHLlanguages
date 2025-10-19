@@ -301,6 +301,8 @@ Racket | 2,140,547 | _$ raco exe ./< program name >.rkt_
 CHICKEN | 49,552 | _$ csc -O5 ./< program name >.scm_
 Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
 
+<br/>
+
 Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux system, like _libchicken_, _srfi-152_, or _libbigloo_.
 
 The Racket Scheme program needs a Racket Scheme installation to be executable.
