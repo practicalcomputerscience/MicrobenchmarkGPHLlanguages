@@ -34,6 +34,8 @@ The unofficial _mojo-stringbuilder_ solution (https://github.com/maniartech/mojo
 
 So, this Mojo program is just using plain string concatenation, which isn't so slow in this languages anyway.
 
-<br/>
+#### Installation tips
+
+Same like [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), the compiled program depends on one shared library (_libKGENCompilerRTShared_) at least, which is provided if Mojo is installed on the target machine. 
 
 ##_end
