@@ -296,10 +296,16 @@ CHICKEN and Bigloo Scheme's compile to very small binary executables:
 
 Scheme dialect | size of executable program in bytes | compilation command
 --- | --- | ---
-Gambit | 10,410,664 | _$ gsc -exe ./< program name >.scm_
-Racket | 2,140,291 | _$ raco exe ./< program name >.rkt_
-CHICKEN | 39,984 | _$ csc -O5 ./< program name >.scm_
+Gambit | 10,416,008 | _$ gsc -exe ./< program name >.scm_
+Racket | 2,140,547 | _$ raco exe ./< program name >.rkt_
+CHICKEN | 49,552 | _$ csc -O5 ./< program name >.scm_
 Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
+
+Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux system, like _libchicken_, _srfi-152_, or _libbigloo_.
+
+The Racket Scheme program needs a Racket Scheme installation to be executable.
+
+So, out of these 4 tested Scheme dialects, only the Gambit version is a truly portable and standalone executable for Linux and the big size of its program indicates this.
 
 <br/>
 
