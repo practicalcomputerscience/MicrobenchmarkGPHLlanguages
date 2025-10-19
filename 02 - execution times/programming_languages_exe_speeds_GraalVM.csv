@@ -1,7 +1,7 @@
 language;mean;std_dev
-Scala GraalVM exec.(OpenJDK);0,03062;0,00220
-Kotlin GraalVM executable;0,03469;0,00242
-Clojure GraalVM executable;0,13633;0,00802
-Scala JVM uberjar;0,2547;0,0130
-Kotlin JVM uberjar;0,1828;0,0100
-Clojure JVM uberjar;0,7818;0,0327
+Scala GraalVM exec.(OpenJDK);0,07612;0,00166
+Kotlin GraalVM executable;0,024175;0,000764
+Clojure GraalVM executable;0,085858;0,000729
+Scala JVM uberjar;0,19436;0,00261
+Kotlin JVM uberjar;0,106915;0,000808
+Clojure JVM uberjar;0,61368;0,00406
