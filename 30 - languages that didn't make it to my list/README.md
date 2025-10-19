@@ -79,7 +79,7 @@ These languages have (substantially) exceeded [The 1 second execution time limit
 
 ### Koka
 
-Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 3 seconds!
+Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds!
 
 ### Raku
 
