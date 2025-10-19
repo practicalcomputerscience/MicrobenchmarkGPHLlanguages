@@ -303,7 +303,7 @@ Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < progra
 
 <br/>
 
-Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux system, like _libchicken_, _srfi-152_, or _libbigloo_.
+Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux system, like _libchicken_, _srfi-152_, or _libbigloo_, respectively.
 
 The Racket Scheme program needs a Racket Scheme installation to be executable.
 
