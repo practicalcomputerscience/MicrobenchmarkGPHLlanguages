@@ -38,7 +38,10 @@ I'm happy with the fast execution speed of this program and thus didn't start to
 
 ### Installation tips
 
-At least in Ubuntu, make sure that also _**libtinfo5**_ is installed in your system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
+Make sure that also _**libtinfo5**_ is installed in your Linux system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
+
+This means, same like Swift or Mojo, the compiled program depends on this **shared library** at least, being installed on the target machine.
+
 
 ### Other functionalities of FreeBASIC
 
