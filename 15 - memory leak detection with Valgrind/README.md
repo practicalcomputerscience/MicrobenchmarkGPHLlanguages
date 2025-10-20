@@ -127,7 +127,7 @@ Your password of 12 characters is: SMm`=URaYA~]
 $
 ```
 
-Only looking by above table, I would implement a security related program only with these programming languages (at the moment):
+Only looking by the table above, I would implement a security related program only with these programming languages (at the moment):
 
 - C
 - C3
@@ -215,6 +215,8 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 - CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
 - Gambit: _still reachable: 2,048 bytes in 2 blocks_
 
+<br/>
+
 ### Changing source code to get the program through Valgrind
 
 At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the program through Valgrind without crashing it:
@@ -255,7 +257,7 @@ $
 
 ### Compiling the source code in a special way to get the program through Valgrind
 
-The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind to a program version.
+The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version.
 
 Since the CPU of my [test system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments), that is an Intel(R) Core(TM) i7-11700K CPU, (still) features the [AVX-512 extension](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), I had to use Zig compiler switch _-mcpu=native-avx512f_ to compile an executable, which is not crashing when running it with Valgrind:
 
@@ -263,7 +265,7 @@ Since the CPU of my [test system](https://github.com/practicalcomputerscience/Mi
 $ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f
 ```
 
-This compiler switch is not needed when running the Zig executable without Valgrind.
+This compiler switch is not needed when running the Zig executable without Valgrind to make a crash-free program.
 
 <br/>
 
