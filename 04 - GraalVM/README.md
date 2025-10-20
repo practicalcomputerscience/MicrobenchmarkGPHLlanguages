@@ -339,7 +339,7 @@ That's the end of this development path since Python is different than Java nati
 
 From: https://www.graalvm.org/python/docs/#reducing-binary-size (CPython is the normal version of Python.)
 
-#### GraalPy
+### GraalPy
 
 However, I managed to convert my [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) into a standalone native application with the help of [GraalPy](https://www.graalvm.org/python/docs/#python-standalone-applications).
 
