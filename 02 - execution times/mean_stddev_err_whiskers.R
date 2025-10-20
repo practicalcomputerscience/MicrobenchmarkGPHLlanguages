@@ -1,6 +1,6 @@
 # mean_stddev_err_whiskers.R
 #
-# 2025-05-31, 2025-06-10/15, 2025-09-28/29
+# 2025-05-31, 2025-06-10/15, 2025-09-28/29, 2025-10-20
 #
 # env: R version 4.5.0 (2025-04-11 ucrt) -- "How About a Twenty-Six"
 #      Platform: x86_64-w64-mingw32/x64
@@ -100,4 +100,5 @@ print(bar_plot1)
 
 
 # end of mean_stddev_err_whiskers.R
+
 
