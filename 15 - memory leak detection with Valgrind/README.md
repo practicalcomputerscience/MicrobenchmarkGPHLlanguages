@@ -13,9 +13,10 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Summaries table](#summaries-table)
 - [Rust](#rust)
+- [Swift](#swift)
 - [On other languages](#on-other-languages)
-- [Changing source code to get the program through Valgrind](#changing-source-code-to-get-the-program-through-valgrind)
-- [Compiling the source code in a special way to get the program through Valgrind](#compiling-the-source-code-in-a-special-way-to-get-the-program-through-valgrind)
+- [Changing source code to get the executable through Valgrind](#changing-source-code-to-get-the-executable-through-valgrind)
+- [Compiling the source code in a special way to get the executable through Valgrind](#compiling-the-source-code-in-a-special-way-to-get-the-executable-through-valgrind)
 
 ---
 
@@ -155,11 +156,31 @@ So, one may have to wait for a Valgrind fix here.
 
 It also shows that above test results and my conclusions have to be taken with a grain of salt.
 
+#### Swift
+
+Swift is a "super memory leaker" according to my tests. Even this little program, which only features some immutable variable declarations:
+
+```
+let END  = 100  // for testing
+let m    = 65521  // = 2^16 - 15
+let a    = 17364
+let c    = 0
+```
+
+..is causing memory leaks at program exit, here:
+
+```
+...
+    ==20779== HEAP SUMMARY:
+    ==20779==     in use at exit: 1,162 bytes in 7 blocks
+...
+```
+
 <br/>
 
 ### On other languages
 
-Not all binary executable programs are finishing and have to be manually interupted by pressing CTRL+C keys. The **Chapel** version is one example:
+Not all executable programs are finishing and have to be manually interupted by pressing CTRL+C keys. The **Chapel** version is one example:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -217,7 +238,7 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 
 <br/>
 
-### Changing source code to get the program through Valgrind
+### Changing source code to get the executable through Valgrind
 
 At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the program through Valgrind without crashing it:
 
@@ -255,17 +276,17 @@ $
 
 <br/>
 
-### Compiling the source code in a special way to get the program through Valgrind
+### Compiling the source code in a special way to get the executable through Valgrind
 
 The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version.
 
-Since the CPU of my [test system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments), that is an Intel(R) Core(TM) i7-11700K CPU, (still) features the [AVX-512 extension](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), I had to use Zig compiler switch _-mcpu=native-avx512f_ to compile an executable, which is not crashing when running it with Valgrind:
+Since the CPU of my [test system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments), that is an Intel(R) Core(TM) i7-11700K CPU, (still) features the [AVX-512 extension](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), I had to use Zig compiler switch _-mcpu=native-avx512f_ to compile an executable which is not crashing when running it with Valgrind:
 
 ```
 $ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f
 ```
 
-This compiler switch is not needed when running the Zig executable without Valgrind to make a crash-free program.
+This compiler switch is not needed when running the Zig executable without Valgrind.
 
 <br/>
 
