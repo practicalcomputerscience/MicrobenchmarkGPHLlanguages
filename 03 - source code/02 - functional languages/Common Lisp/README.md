@@ -126,7 +126,7 @@ I can't say how to apply potential compiler swiches for (speed) optimization. Ho
   (safety 0) (speed 3) (space 0)))
 ```
 
-..into the source code file, parameter value 3 at speed for the highest priority, doesn't change the execution speed of my little benchmark program. This observation is true for all three environments, including ECL, where such an expression can be applied in the ECL REPL ((Read-Eval-Print Loop) before compiling source code file(s); see below at [ECL](TBD).
+..into the source code file, parameter value 3 at speed for the highest priority, doesn't change the execution speed of my little benchmark program. This observation is true for all three environments, including ECL, where such an expression can be applied in the ECL REPL ((Read-Eval-Print Loop) before compiling source code file(s); see below at [ECL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ecl).
 
 #### CCL
 
