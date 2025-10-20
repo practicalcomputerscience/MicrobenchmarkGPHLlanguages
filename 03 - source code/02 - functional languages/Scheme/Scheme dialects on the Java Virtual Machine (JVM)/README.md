@@ -240,7 +240,7 @@ However, same like my original _file-exists?_-based solution, this is not except
 
 ## Program performance with JSchemePlus
 
-I tested my program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed some day?).
+I tested my microbenchmark program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed some day?).
 
 With the 1,000,000 character string I manually stopped this program after running for a minute or more and then reduced the number of arguments in the notorious
 _(apply string-append (vector->list <my_vector>))_ expression to 8192, same like my old solution at [System limitations](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/14c4a3b68c5b62e412de9bd036364c359c3d54be/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#system-limitations) (which I later could change back to the full 62,500 arguments, I thing I cannot do here because the string concatenation possibilities of modern Scheme dialects are just not available in JScheme and calling Java's _StringBuilder_ like in my Clojure program is not working here).
