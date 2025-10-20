@@ -110,7 +110,7 @@ Later I tapped deeper into Clojure's ecosystem, which extends into the Java ecos
   )
 ```
 
-This alone, and no other experiments, including experimenting with _Transient Data Structures_ (https://clojure.org/reference/transients), led to an execution speed reduction from around 7400 milliseconds to around 590 milliseconds, which is a little bit slower than my PowerShell program version.
+This alone, and no other experiments, including experimenting with _Transient Data Structures_ (https://clojure.org/reference/transients), led to an execution speed reduction from around 7400 milliseconds to roughly 600 milliseconds.
 
 <br/>
 
