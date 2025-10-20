@@ -67,7 +67,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 Actually, I need this environment only when working with Kotlin.
 
-When working with the GraalVM (Link: TBD), that is building a standalone, binary executable from a so called uberJAR file with it, I call the related command directly like this:
+When working with the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), that is building a standalone, binary executable from a so called uberJAR file, I call the related command directly like this:
 
 ```
 $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar <name of your uberJAR file>.jar
