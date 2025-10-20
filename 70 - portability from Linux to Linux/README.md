@@ -5,7 +5,7 @@ Here's a list of programming languages where standalone executables can be compi
 - Ada
 - C
 - C3
-- Common Lisp
+- Common Lisp (SBCL)
 - Crystal
 - Gambit Scheme
 - Go
@@ -18,8 +18,8 @@ Here's a list of programming languages where standalone executables can be compi
 - Zig
 
 [GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
-- Clojure (TBD) <<<<<<<<<<<<<<<<<<<
-- Kotlin (TBD) <<<<<<<<<<<<<<<<<<<
+- Clojure
+- Kotlin
 - Scala ([OpenJDK based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#a-siginificantly-faster-scala-based-program))
 
 <br/>
@@ -33,11 +33,12 @@ This list does not contain:
 
 Other omissions from above list:
 
-- my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) program may crash in another Linux system: "Illegal instruction (core dumped)"
+- my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) executable may crash in another Linux system: "Illegal instruction (core dumped)"
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs a shared library being installed for perfect execution (though the program probably will work)
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#installation-tips), which needs a shared library being installed
-- [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/README.md#size-of-executables): the Bigloo and CHICKEN programs need shared libraries being installed; the Racket program needs Racket being installed
+- [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/README.md#size-of-executables): the Bigloo and CHICKEN executables need shared libraries being installed; the Racket executable needs Racket being installed
 - [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), which needs a shared library being installed
+- while a Clozure Common Lisp ([CCL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ccl)) executable is also portable (together with a [SBCL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#sbcl) executable), an Embeddable Common Lisp [ECL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ecl) executable is not, because it needs a shared library
 
 <br/>
 
