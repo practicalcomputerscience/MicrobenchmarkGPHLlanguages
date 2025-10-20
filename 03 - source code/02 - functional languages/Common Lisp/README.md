@@ -2,10 +2,12 @@
 
 https://lisp-lang.org/
 
-SBCL = **Steel Bank Common Lisp**:
+- **SBCL = Steel Bank Common Lisp** (https://www.sbcl.org/)
+- CCL = Clozure Common Lisp (Clozure CL: https://ccl.clozure.com/)
+- ECL = Embeddable Common Lisp (https://ecl.common-lisp.dev/)
+- ABCL = Armed Bear Common Lisp (https://abcl.org/)
 
-- https://www.sbcl.org/
-- https://www.sbcl.org/history.html
+<br/>
 
 Overview of modern Lisp implementations: https://lisp-lang.org/wiki/article/implementations
 
@@ -424,7 +426,7 @@ $
 
 #### Execution speed
 
-My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 780 milliseconds ([The 1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit)), but better than my first version in Clojure without Java's _StringBuilder_ class with more than 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
+My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 600 milliseconds ([Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)), but better than my first version in Clojure without Java's _StringBuilder_ class with more than 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
 
 But again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
 
