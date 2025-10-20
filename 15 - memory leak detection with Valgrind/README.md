@@ -240,7 +240,7 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 
 ### Changing source code to get the executable through Valgrind
 
-At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the program through Valgrind without crashing it:
+At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the executable through Valgrind without crashing it:
 
 ```
 ...
