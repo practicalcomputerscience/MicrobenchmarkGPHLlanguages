@@ -23,7 +23,7 @@ library(ggplot2)
 ##########################
 #
 # user switch:
-plot_type <-- 0
+plot_type <- 0
             # 0 = Master diagram   
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
@@ -100,3 +100,4 @@ print(bar_plot1)
 
 
 # end of mean_stddev_err_whiskers.R
+
