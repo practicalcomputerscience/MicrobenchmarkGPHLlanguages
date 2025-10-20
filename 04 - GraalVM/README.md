@@ -10,6 +10,7 @@ Table of contents:
 - [A significantly faster Scala based program](#a-significantly-faster-scala-based-program)
 - [Clojure](#clojure)
 - [GraalVM and Python](#graalvm-and-python)
+- [GraalPy](#graalpy)
 - [Peak performance with the JVM, time to start performance with the GraalVM](#peak-performance-with-the-jvm-time-to-start-performance-with-the-graalvm)
 
 <br/>
