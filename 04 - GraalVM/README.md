@@ -119,7 +119,9 @@ Also see the notes in the header comment block from this [source code file](http
 
 #### A first way
 
-A first, intuitive way is to use Scala's _simple build tool_ (_**sbt**_: https://www.scala-sbt.org/) because it allows you to make a standalone executable within one tool. See also from here: https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#on-scala-installations (TBD)
+A first, intuitive way is to use Scala's _simple build tool_ (_**sbt**_: https://www.scala-sbt.org/) because it allows you to make a standalone executable within one tool. See also from here:
+
+- [Working with simple build tool to create a standalone program ("Scala native") in Linux](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/Running%20and%20building%20Scala%20programs%20-%20baby%20steps/(E)%20Working%20with%20simple%20build%20tool%20to%20create%20a%20standalone%20program%20(Scala%20native)%20in%20Linux#working-with-simple-build-tool-to-create-a-standalone-program-scala-native-in-linux)
 
 This procedure requires to fix or check a few configuration files first:
 
