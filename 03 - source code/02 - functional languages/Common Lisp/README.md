@@ -126,7 +126,7 @@ I can't say how to apply potential compiler swiches for (speed) optimization. Ho
   (safety 0) (speed 3) (space 0)))
 ```
 
-..into the source code file, parameter value 3 at speed for the highest priority, doesn't change the execution speed of my little benchmark program. This observation is true for all three environments, including ECL, where such an expression can be applied in the ECL REPL ((Read-Eval-Print Loop) before compiling source code file(s); see below at [ECL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ecl).
+..into the source code file, speed parameter value 3 for the highest priority, doesn't change the execution speed of my little benchmark program. This observation is true for all three environments, including ECL, where such an expression can be applied in the ECL REPL ((Read-Eval-Print Loop) before compiling source code file(s); see below at [ECL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ecl).
 
 #### CCL
 
@@ -182,11 +182,13 @@ Since these are three different Common Lisp environments, there are differences 
 (ext:quit 0)
 ```
 
-With my microbenchmark program I got these execution times, again time stopped  with _$ sudo perf stat -r 20 ./< program name >_:
+### Microbenchmark program
 
-- SBCL: (TBD) seconds
-- CCL: (TBD) seconds
-- ECL: (TBD) seconds
+With my microbenchmark program I got these mean execution times, again time stopped  with _$ sudo perf stat -r 20 ./< program name >_:
+
+- SBCL: 64 milliseconds
+- CCL: 222 milliseconds
+- ECL: 590 milliseconds
 
 Sizes of the related executables (if not applying tricks with SBCL and CCL) also differ greatly:
 
@@ -221,7 +223,7 @@ However, I've found these two sources:
 
 ### "Hello, World!" in Common Lisp on the JVM
 
-I take the ECL approach from the chapter [Execution speed of a Lisp program as a standalone executable in Linux...](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#execution-speed-of-a-lisp-program-as-a-standalone-executable-in-linux-steel-bank-common-lisp) above to have a _main_ function too (potentially for better future expansions), though it wouldn't be needed here. However, I leave away the final _exit_ command because it's not needed here:
+I take the ECL approach from above chapter [Execution speed of a Lisp program as a standalone executable in Linux...](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#execution-speed-of-a-lisp-program-as-a-standalone-executable-in-linux-steel-bank-common-lisp) to have a _main_ function too (potentially for better future expansions), though it wouldn't be needed here. However, I leave away the final _exit_ command because it's not needed here:
 
 ```
 $ cat hello_world_abcl.lisp
@@ -391,7 +393,7 @@ Hello, world from Armed Bear Common Lisp (ABCL)!
 
 <br/>
 
-#### What about my microbenchmark program in Common Lisp?
+#### What about my microbenchmark program in Common Lisp on the JVM?
 
 It works too, and also with the "ECL approach" for _main ()_ in the Common Lisp source code file.
 
@@ -426,7 +428,7 @@ $
 
 #### Execution speed
 
-My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 600 milliseconds ([Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)), but better than my first version in Clojure without Java's _StringBuilder_ class with more than 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
+My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 600 milliseconds ([Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)), but better than my first version in Clojure without Java's _StringBuilder_ class with over 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
 
 But again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
 
