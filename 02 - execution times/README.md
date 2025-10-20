@@ -84,6 +84,8 @@ $
 
 Both results are close and within a standard deviation of +-3,92%.
 
+(results are from September 2025; in October 2025, same like during development time, this JAR file runs faster, like many programs but not all, on the same machine! This is somehow a never ending story :confused:)
+
 <br/>
 
 ##_end
