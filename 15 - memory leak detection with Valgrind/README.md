@@ -278,15 +278,7 @@ $
 
 ### Compiling the source code in a special way to get the executable through Valgrind
 
-The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version.
-
-Since the CPU of my [test system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments), that is an Intel(R) Core(TM) i7-11700K CPU, (still) features the [AVX-512 extension](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), I had to use Zig compiler switch _-mcpu=native-avx512f_ to compile an executable which is not crashing when running it with Valgrind:
-
-```
-$ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f
-```
-
-This compiler switch is not needed when running the Zig executable without Valgrind.
+The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version; see from here: [Compilation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#compilation-tips)
 
 <br/>
 
