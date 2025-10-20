@@ -31,7 +31,7 @@ This list does not contain:
 - program versions which depend on the .NET ecosystem, like [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#installation-tips), where portability between operating systems, including Windows, is anyway strived for
 - intepreted languages ("scripting languages") like Lua, Perl 5, PowerShell or Python, which usually depend on some prior, language related installation
 
-Some other omissions from above list:
+Other omissions from above list:
 
 - my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) program may crash in another Linux system: "Illegal instruction (core dumped)"
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs a shared library being installed for perfect execution (though the program probably will work)
