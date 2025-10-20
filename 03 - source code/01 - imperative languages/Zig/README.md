@@ -14,7 +14,7 @@ $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f
 
 ..that is with compiler switch _-mcpu=native-avx512f_ activated.
 
-Background is this: I test the compiled programs with the memory tester program _Valgrind_ (https://valgrind.org/) and if the Zig program would have been compiled without this switch, it would crash immediately.
+Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind) and if the Zig program would have been compiled without this switch, it would crash immediately.
 
 My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
