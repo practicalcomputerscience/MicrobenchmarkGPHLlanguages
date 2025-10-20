@@ -7,7 +7,7 @@ https://www.modular.com/mojo
 > [!WARNING]
 > Beware that Mojo is a language still under heavy development!
 
-I had a little and working Mojo program from October 2024 (which tapped in package _buffer_: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an updated Mojo version of March 2025!
+I had a little and working Mojo program from October 2024 (which tapped into the _buffer_ package: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an updated Mojo version of March 2025!
 
 ---
 
@@ -34,7 +34,7 @@ The unofficial _mojo-stringbuilder_ solution (https://github.com/maniartech/mojo
 
 So, this Mojo program is just using plain string concatenation, which isn't so slow in this languages anyway.
 
-#### Installation tips
+### Installation tips
 
 Same like [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), the compiled program depends on one shared library (_libKGENCompilerRTShared_) at least, which is provided if Mojo is installed on the target machine. 
 
