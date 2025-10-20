@@ -16,6 +16,7 @@ Table of contents:
 - [Summaries table](#summaries-table)
 - [Rust](#rust)
 - [On other languages](#on-other-languages)
+- [Changing source code to get the program through Valgrind](#changing-source-code-to-get-the-program-through-valgrind)
 
 ---
 
