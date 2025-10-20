@@ -17,18 +17,23 @@ Here's a list of programming languages where standalone executables can be compi
 - V
 - Zig
 
+[GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
+- Clojure (TBD) <<<<<<<<<<<<<<<<<<<
+- Kotlin (TBD) <<<<<<<<<<<<<<<<<<<
+- Scala ([OpenJDK based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#a-siginificantly-faster-scala-based-program))
+
 <br/>
 
 This list does not contain:
 
 - program versions which are exceeding the [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
-- program versions which depend on the Java Virtual Machine ([JVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#ahead-of-time-aot-program-compilation-with-the-graalvm)), like Clojure, Scala and Kotlin, where portability between operating systems, including Windows, is anyway strived for
+- program versions which depend on the Java Virtual Machine (JVM), like Clojure, Scala and Kotlin, where portability between operating systems, including Windows, is anyway strived for
 - program versions which depend on the .NET ecosystem, like [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#installation-tips), where portability between operating systems, including Windows, is anyway strived for
-- any intepreted language ("scripting language"), like Lua, Perl 5, PowerShell or Python, which usually depend on some prior, language related installation
+- intepreted languages ("scripting languages") like Lua, Perl 5, PowerShell or Python, which usually depend on some prior, language related installation
 
-Some other notable misses:
+Some other omissions from above list:
 
-- my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) program may crash in another Linux system
+- my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) program may crash in another Linux system: "Illegal instruction (core dumped)"
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs a shared library being installed for perfect execution (though the program probably will work)
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#installation-tips), which needs a shared library being installed
 - [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/README.md#size-of-executables): the Bigloo and CHICKEN programs need shared libraries being installed; the Racket program needs Racket being installed
