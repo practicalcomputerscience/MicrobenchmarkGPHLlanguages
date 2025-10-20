@@ -157,7 +157,7 @@ It also shows that above test results and my conclusions have to be taken with a
 
 ### On other languages
 
-Not all binary executable programs are finishing and have to be interupted with pressing CTRL+C keys. The **Chapel** version is one example:
+Not all binary executable programs are finishing and have to be manually interupted by pressing CTRL+C keys. The **Chapel** version is one example:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -213,12 +213,25 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 - CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
 - Gambit: _still reachable: 2,048 bytes in 2 blocks_
 
-<br/>
+### Changing source code to get the program through Valgrind
 
-TBD:
-- change of source code to get a better results in terms of ...
-- xxx
-- xxx
+At least in one instance, here with [Mojo](TBD), I modified the source code to get the program through Valgrind:
+
+```
+...
+    # this makes problems with valgrind --> Illegal instruction (core dumped)
+    # when creating the password below
+    # var char_set: String = ""
+    # if WITH_SPECIAL_CHARS == True:
+    #     # add chars dec 33 .. dec 126:
+    #     for i in range(33,127):
+    #       char_set += chr(i)
+    # else:
+    #     char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+...
+```
+
+So, variable _char_set_ is not in use in the Mojo program anymore.
 
 <br/>
 
@@ -238,7 +251,7 @@ $
 
 <br/>
 
-Another, maybe overlooked fact: I can repeat all test results as far as I have done repeated tests.
+Another, maybe overlooked fact: I could repeat all test results as far as I have done repeated tests.
 
 <br/>
 
