@@ -4,7 +4,7 @@ https://www.lua.org/
 
 <br/>
 
-Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
+The Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
 
 ```
 ...
