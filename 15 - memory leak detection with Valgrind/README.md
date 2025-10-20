@@ -1,5 +1,3 @@
-2025-10-13: work in progress
-
 # Memory leak detection with Valgrind
 
 [Memory safety](https://en.wikipedia.org/wiki/Memory_safety) of programming languages has been a big talking point in recent years: https://www.open-std.org/JTC1/SC22/WG21/docs/papers/2023/p2771r0.html
@@ -17,6 +15,7 @@ Table of contents:
 - [Rust](#rust)
 - [On other languages](#on-other-languages)
 - [Changing source code to get the program through Valgrind](#changing-source-code-to-get-the-program-through-valgrind)
+- [Compiling the source code in a special way to get the program through Valgrind](#compiling-the-source-code-in-a-special-way-to-get-the-program-through-valgrind)
 
 ---
 
@@ -77,6 +76,8 @@ $
 ```
 
 I ran Valgrind only on programs from compiled languages, not scripting languages like Python for example.
+
+Another, maybe overlooked fact: I could repeat all test results as far as I have done repeated tests.
 
 <br/>
 
@@ -216,7 +217,7 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 
 ### Changing source code to get the program through Valgrind
 
-At least in one instance, here with [Mojo](TBD), I modified the source code to get the program through Valgrind:
+At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the program through Valgrind without crashing it:
 
 ```
 ...
@@ -252,7 +253,17 @@ $
 
 <br/>
 
-Another, maybe overlooked fact: I could repeat all test results as far as I have done repeated tests.
+### Compiling the source code in a special way to get the program through Valgrind
+
+The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind to a program version.
+
+Since the CPU of my [test system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments), that is an Intel(R) Core(TM) i7-11700K CPU, (still) features the [AVX-512 extension](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html), I had to use Zig compiler switch _-mcpu=native-avx512f_ to compile an executable, which is not crashing when running it with Valgrind:
+
+```
+$ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f
+```
+
+This compiler switch is not needed when running the Zig executable without Valgrind.
 
 <br/>
 
