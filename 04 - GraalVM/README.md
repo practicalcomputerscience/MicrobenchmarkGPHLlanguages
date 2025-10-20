@@ -7,8 +7,10 @@ Table of contents:
 - [SDKMAN! and Java versions](#sdkman-and-java-versions)
 - [Kotlin](#kotlin)
 - [Scala](#scala)
+- [A significantly faster Scala based program](#a-significantly-faster-scala-based-program)
 - [Clojure](#clojure)
 - [GraalVM and Python](#graalvm-and-python)
+- [Peak performance with the JVM, time to start performance with the GraalVM](#peak-performance-with-the-jvm-time-to-start-performance-with-the-graalvm)
 
 <br/>
 
@@ -201,7 +203,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-#### A siginificantly faster Scala based program
+### A significantly faster Scala based program
 
 However, using the Java(TM) SE Runtime Environment of the Oracle GraalVM isn't the best way to make a fast Scala based standalone executable in Linux as I found out. Using the "conventional" OpenJDK can create a faster one, at least in my case:
 
