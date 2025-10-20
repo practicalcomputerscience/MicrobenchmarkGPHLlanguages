@@ -234,8 +234,8 @@ $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/
 
 Get the mean execution time of 20 runs with shell command: _$ sudo perf stat -r 20 < program name >_:
 
-- Java(TM) SE Runtime Environment of the Oracle GraalVM: 116.4 milliseconds +-7.05% standard deviation
-- **OpenJDK based: 30.6 milliseconds +-7.18% standard deviation**
+- Java(TM) SE Runtime Environment of the Oracle GraalVM: 74.2 milliseconds +- 2,79% standard deviation (2025-10-20)
+- **OpenJDK based: 23.6 milliseconds +- 3,21% standard deviation** (2025-10-20)
 
 Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
 
