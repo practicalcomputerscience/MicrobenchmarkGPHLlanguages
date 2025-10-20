@@ -11,6 +11,8 @@ If Scala from Switzerland (https://scala.epfl.ch/) doesn't ramp up its efforts, 
 - https://github.com/googlemaps-samples/codelab-maps-platform-101-android-kotlin/tree/main
 - https://medium.com/@sergei.rybalkin/upload-file-to-google-drive-with-kotlin-931cec5252c1
 
+<br/>
+
 Kotlin also shines with a high quality language documentation in my opinion: https://kotlinlang.org/docs/home.html
 
 <br/>
