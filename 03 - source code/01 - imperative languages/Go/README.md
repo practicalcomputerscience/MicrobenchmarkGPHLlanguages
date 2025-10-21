@@ -1,5 +1,3 @@
-TBD: Academic criticism of Go
-
 # Go
 
 https://go.dev/
@@ -221,12 +219,6 @@ https://aitechtrend.com/the-quiet-shift-why-developers-are-moving-away-from-gola
 > When developer Yash Batra chose Golang for an early-stage fintech startup, it seemed like a strategic choice. Golang, or Go, was perceived as fast, modern, and had proven its mettle at tech giants like Google, Kubernetes, and Docker. Yet, just six months in, Batra found himself rewriting the backend in **Kotlin**.
 
 My emphasis.
-
-<br/>
-
-#### Academic criticism of Go
-
-(TBD)
 
 <br/>
 
