@@ -208,7 +208,7 @@ See also: **Goat**: "Extended flavor of the Go programming language, aiming for 
 
 <br/>
 
-So, at least at one point the criticism got so string that Go - with its aim of "simplicity" - added a common feature, and that is **Generics** in 2022: https://go.dev/doc/go1.18#generics
+So, at least at one point the criticism got so strong that Go added a common programming concept, and that is **Generics** in 2022: https://go.dev/doc/go1.18#generics
 
 <br/>
 
