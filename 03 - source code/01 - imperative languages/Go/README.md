@@ -1,3 +1,5 @@
+TBD: Academic criticism of Go
+
 # Go
 
 https://go.dev/
