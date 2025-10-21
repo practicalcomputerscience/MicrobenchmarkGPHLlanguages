@@ -4,6 +4,16 @@ https://go.dev/
 
 ---
 
+Table of contents:
+
+- [On concurrency in Go](#on-concurrency-in-go)
+- [A sobering experience: formatted I/O](#a-sobering-experience-formatted-io)
+- [Criticism of Go](#criticism-of-go)
+
+<br/>
+
+---
+
 ### On concurrency in Go
 
 On the [main page](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages#other-aspects-of-a-computer-programming-language) I said this:
@@ -159,6 +169,62 @@ Because my microbenchmark program can only scratch the surface of a general purp
 
 > [!TIP]
 > For a reason there's a book (from 2022) with troubles in Go you can run into: https://www.thecoder.cafe/p/100-go-mistakes
+
+<br/>
+
+## Criticism of Go
+
+While still rising in popularity, with Go being #8 in the TIOBE index in October 2025: https://www.tiobe.com/tiobe-index/, it still causes criticism as a general purpose, high-level programming language which aims to be modern.
+
+Here are some related links:
+
+#### 2025: "Go is still not good"
+
+https://blog.habets.se/2025/07/Go-is-still-not-good.html
+ 
+A summary from here: https://biggo.com/news/202508221914_Go_Language_Design_Flaws
+
+> Key Go Language Criticisms:
+> - Error Handling: Forced variable scope issues with error handling patterns
+> - Nil Types: Two different types of nil (typed vs untyped) causing comparison inconsistencies
+> - Memory Management: Garbage collector unpredictability and memory fragmentation issues
+> - Portability: Build tag system using file comments creates maintenance problems
+> - Defer Mechanism: Function-scoped rather than lexical-scoped resource cleanup
+> - String Handling: Inconsistent UTF-8 validation leading to potential data loss
+
+<br/>
+
+#### 2023: "Ten Years of “Go: The Good, the Bad, and the Meh”"
+
+https://blog.carlana.net/post/2023/ten-years-of-go-good-bad-meh/
+
+<br/>
+
+#### 2022: We Need To Talk About The Bad Sides of Go
+
+https://avivcarmi.com/we-need-to-talk-about-the-bad-sides-of-go/
+
+See also: **Goat**: "Extended flavor of the Go programming language, aiming for increased value safety and maintainability": https://github.com/goatlang/goat
+
+<br/>
+
+So, at least at one point the criticism got so string that Go - with its aim of "simplicity" - added a common feature, and that is **Generics** in 2022: https://go.dev/doc/go1.18#generics
+
+<br/>
+
+#### 2025: The Quiet Shift: Why Developers Are Moving Away from Golang
+
+https://aitechtrend.com/the-quiet-shift-why-developers-are-moving-away-from-golang/
+
+> When developer Yash Batra chose Golang for an early-stage fintech startup, it seemed like a strategic choice. Golang, or Go, was perceived as fast, modern, and had proven its mettle at tech giants like Google, Kubernetes, and Docker. Yet, just six months in, Batra found himself rewriting the backend in **Kotlin**.
+
+My emphasis.
+
+<br/>
+
+#### Academic criticism of Go
+
+(TBD)
 
 <br/>
 
