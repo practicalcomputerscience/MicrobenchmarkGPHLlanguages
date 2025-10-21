@@ -4,6 +4,17 @@ https://www.freebasic.net/
 
 ---
 
+Table of contents:
+
+- [On BASIC](#on-basic)
+- [Installation tips](#installation-tips)
+- [Other functionalities of FreeBASIC](#other-functionalities-of-freebasic)
+- [Other BASIC dialects](other-basic-dialects)
+
+<br/>
+
+---
+
 ### On BASIC
 
 BASIC (for _Beginner's All-purpose Symbolic Instruction Code_) was historically a direct response to the state of FORTRAN in the 60ies:
