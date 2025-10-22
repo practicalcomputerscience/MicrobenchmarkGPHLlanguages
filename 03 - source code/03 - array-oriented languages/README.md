@@ -5,8 +5,7 @@ Table of contents:
 - [APL's nearness to functional programming](#apls-nearness-to-functional-programming)
 - [What came after APL](#what-came-after-apl)
 - [Speakeasy](#speakeasy)
-
-<br/>
+- [Futhark](#futhark)
 
 ---
 
@@ -61,7 +60,17 @@ However, I think that Speakeasy's influence on MATLAB was greater than APL's, an
 
 It looks like that this language, just like many others, just fizzled out: https://retrocomputing.stackexchange.com/questions/20444/what-happened-to-the-speakeasy-computational-environment
 
+<br/>
+
+## Futhark
+
+Futhark, a "purely functional array language in the ML family": https://futhark-lang.org/, is an example where an array-oriented language "is not intended to replace existing general-purpose languages", but intends to be "only used for relatively small but compute-intensive parts of an application":
+
+> The Futhark compiler generates code that can be easily integrated with non-Futhark code. For example, you can compile a Futhark program to a Python module that internally uses PyOpenCL to execute code on the GPU, yet looks like any other Python module from the outside..
+
 ---
+
+<br/>
 
 (*) the landscape of the descendants of J, starting with K, looks confusing to me. Apparently, Q was the first descendant of K, and now Q has become q: https://code.kx.com/q4m3/ It seems that terminology work at kx.com is an ongoing thing: _Monadic and dyadic are now respectively unary and binary; verbs are now operators and keywords; and adverbs are iterators._ from the Preface as of 2025-10-22)
 
