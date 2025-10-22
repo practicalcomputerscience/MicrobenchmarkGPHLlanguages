@@ -121,6 +121,8 @@ https://www.risk.net/risk-management/6395366/functional-programming-reaches-for-
 
 In the technical space I still have to see the industrial corner which is prominently using functional programming.
 
+You may also have a look at [Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages).
+
 <br/>
 
 ##_end
