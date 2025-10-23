@@ -80,15 +80,15 @@ These languages have (substantially) exceeded [The 1 second execution time limit
 
 ### Koka
 
-Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds!
+Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds.
 
 ### Raku
 
-Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds!
+Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds.
 
 ### wren
 
-Although my [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) program works correctly, it's just super-slow with an execution time of over 30 seconds without a string builder or similar concept!
+Although my [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) program works correctly, it's just super-slow with an execution time of over 30 seconds without a string builder or similar concept.
 
 <br/>
 
