@@ -1,6 +1,10 @@
 # Wiki page for further advances
 
-2025-10-20: all major advances starting with language **wren** (https://wren.io/) and all major changes of existing documentation will be noted here.
+2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
+
+---
+
+2025-10-24: done: [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren)
 
 ---
 
@@ -12,6 +16,7 @@
 - Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another programming language for "scientific computing"
 - Haskell (I'm not sure if I'll do it)
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
+- &nbsp;&nbsp;**Futhark**: https://futhark-lang.org/ (2025-10-24)
 - &nbsp;&nbsp;**GNU Octave** (https://octave.org/) as a shell script for an imperative array language
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
@@ -25,8 +30,6 @@
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - **Logic programming**: Prolog: https://www.iso.org/standard/21413.html
-
-
 
 ---
 
