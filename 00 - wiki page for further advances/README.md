@@ -17,7 +17,7 @@
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
 - **Fortran** as the mother and father of all high-level programming languages: https://fortran-lang.org/
 - Odin: https://odin-lang.org/
-- Dylan: https://opendylan.org/download/
+- Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Pure Programming Language: https://github.com/agraef/pure-lang/wiki
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
 - &nbsp;&nbsp;2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
