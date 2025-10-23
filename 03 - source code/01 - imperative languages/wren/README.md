@@ -8,7 +8,7 @@ https://wren.io/
 
 However, MS Copilot Search just told me that wren has a _StringBuilder_ (_import "string" for StringBuilder; var sb = StringBuilder.new()_) for my prompt: "fast string concatenation in wren".
 
-[wren](https://github.com/wren-lang/wren) does not have a string builder. This means that plain string concatenation is used here, which is very slow with one program run taking over 30 seconds:
+[wren](https://github.com/wren-lang/wren) does not have a string builder as of October 2025 with version 0.4.0. This means that plain string concatenation is used here, which is very slow with one program run taking over 30 seconds:
 
 ```
 ...
@@ -33,5 +33,7 @@ This means two things:
 Though, technically this script works OK.
 
 A _switch_ statement in this language would also be very nice, then the big _if-(then)-else_ cascade in user defined function [Integer_to_hex_string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren/random_streams_for_perf_stats.wren) would look much better.
+
+<br/>
 
 ##_end
