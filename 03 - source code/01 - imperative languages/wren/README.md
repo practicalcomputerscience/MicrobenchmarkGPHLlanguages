@@ -28,7 +28,7 @@ for (i in 1..END) {  // with .. END is exclusive
 This means two things:
 
 - putting wren on this [list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-didnt-make-it-to-my-list)
-- the world will continue to use [Lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua)
+- the [gaming world](https://generalistprogrammer.com/tutorials/lua-game-development-scripting-complete-guide-2025) will continue to use [Lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua)
 
 Though, technically this script works OK.
 
