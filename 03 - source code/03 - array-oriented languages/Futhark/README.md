@@ -37,7 +37,16 @@ from: https://futhark.readthedocs.io/en/latest/versus-other-languages.html#evalu
 
 ## Installation tips
 
-(TBD)
+For installation I followed this advice: [1.3. Installing from a precompiled snapshot](https://futhark.readthedocs.io/en/stable/installation.html#installing-from-a-precompiled-snapshot), extracted binary snapshots _futhark-nightly-linux-x86_64.tar.xz_ and run: _$ make install_ in the extracted directory.
+
+The installation can be tested with:
+
+```
+$ futhark -V
+Futhark 0.26.0 (prerelease - include info below when reporting bugs).
+...
+$ 
+```
 
 ## Entry point 'main'
 
