@@ -12,6 +12,7 @@ Table of contents:
 - [Koka](#koka)
 - [Raku](#raku)
 - [wren](#wren)
+- [Futhark](#futhark)
 
 <br/>
 
@@ -89,6 +90,10 @@ Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPH
 ### wren
 
 Although my [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) program works correctly, it's just super-slow with an execution time of over 30 seconds without a string builder or similar concept.
+
+### Futhark
+
+[Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark) is "a data-parallel functional programming language", but not a general purpose one.
 
 <br/>
 
