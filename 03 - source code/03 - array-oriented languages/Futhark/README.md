@@ -2,6 +2,20 @@
 
 https://futhark-lang.org/ (*)
 
+Table of contents:
+
+- [Futhark as an array-oriented, pure functional programming language](#futhark-as-an-array-oriented-pure-functional-programming-language)
+- [Installation tips](#installation-tips)
+- [Entry point 'main'](#entry-point-main)
+- [OpenCL](#opencl)
+- [](#)
+
+<br/>
+
+---
+
+## Futhark as an array-oriented, pure functional programming language
+
 With Futhark I found an array-oriented language which compiles to standalone, native binary executables for Linux, even by default via compiling first to C source code.
 
 > [!NOTE]
@@ -20,8 +34,6 @@ from (*) above.
 from: https://futhark.readthedocs.io/en/latest/versus-other-languages.html#evaluation
 
 (my emphasis in bold)
-
----
 
 ## Installation tips
 
@@ -79,7 +91,7 @@ $
 
 ICD = Installable Client Driver
 
-If missing, _clinfo_ can be installed in Ubuntu like this: _sudo apt install clinfo_
+If missing, _clinfo_ can be installed in Ubuntu like this: _$ sudo apt install clinfo_
 
 Here may be help, if OpenCL is missing from the system (I didn't test it): [Getting started with OpenCL on Ubuntu Linux](https://github.com/KhronosGroup/OpenCL-Guide/blob/main/chapters/getting_started_linux.md#getting-started-with-opencl-on-ubuntu-linux)
 
