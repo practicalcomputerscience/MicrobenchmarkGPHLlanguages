@@ -16,7 +16,6 @@
 - Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another programming language for "scientific computing"
 - Haskell (I'm not sure if I'll do it)
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
-- &nbsp;&nbsp;**Futhark**: https://futhark-lang.org/ (2025-10-24)
 - &nbsp;&nbsp;**GNU Octave** (https://octave.org/) as a shell script for an imperative array language
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
