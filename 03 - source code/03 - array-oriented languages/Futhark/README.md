@@ -55,16 +55,18 @@ Be aware that type _f32_ is also provided at the result.
 
 ## OpenCL
 
-But its getting even better. When OpenCL is installed on your Linux system, you can compile and run the program like this:
+But its even getting better. When OpenCL is installed on your Linux system, you can compile and run the program like this:
 
 ```
 $ futhark opencl vector_length.fut -o vector_length_opencl
 $ echo [1, 2, 3] | ./vector_length_opencl
 3.741657f32
 $
+```
 
 The installation of OpenCL can be checked with _clinfo_:
 
+```
 $ clinfo
 ...
 ICD loader properties
@@ -73,6 +75,7 @@ ICD loader properties
   ICD loader Version                              2.3.2
   ICD loader Profile                              OpenCL 3.0
 $
+```
 
 ICD = Installable Client Driver
 
