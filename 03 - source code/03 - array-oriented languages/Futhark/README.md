@@ -7,7 +7,7 @@ With Futhark I found an array-oriented language which compiles to standalone, na
 > [!NOTE]
 > However, Futhark is not a general purpose programming language!
 
-And this is the reason why I sadly have to put it onto this [list](TBD), because I cannot implement my microbenchmark program solely in this language, or only some parts of it. Something which is one key idea of this language:
+And this is the reason why I sadly have to put it onto this [list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#futhark), because I cannot implement my microbenchmark program solely in this language, or only some parts of it. Something which is one key idea of this language:
 
 > Futhark is not intended to replace existing general-purpose languages. The intended use case is that Futhark is only used for relatively small but compute-intensive parts of an application. The Futhark compiler generates code that can be easily integrated with non-Futhark code. For example, you can compile a Futhark program to a Python module that internally uses PyOpenCL to execute code on the GPU, yet looks like any other Python module from the outside...
 
