@@ -7,12 +7,12 @@ Table of contents:
 - [Hack](#hack)
 - [Pony](#pony)
 - [Toit](#toit)
+- [Futhark](#futhark)
 - [Old computer programming languages learning new tricks](#old-computer-programming-languages-learning-new-tricks)
 - [Languages that were too slow](#languages-that-were-too-slow)
 - [Koka](#koka)
 - [Raku](#raku)
 - [wren](#wren)
-- [Futhark](#futhark)
 
 <br/>
 
@@ -33,15 +33,11 @@ async function main(): Awaitable<void> {
 
 ..I learned that also this language didn't survive because PHP had its comeback: https://medium.com/@thoughtsfromryan/the-rapid-rise-and-fall-of-facebooks-hack-and-hhvm-7eeea401b04
 
----
-
 ### Pony
 
 With Pony (https://www.ponylang.io/) I had to give up further development because as of May 2025 I was not able to implement the user dialog as mentioned here at: [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#reading-user-input-from-the-keyboard-into-a-string).
 
 I was not able to properly read a user input as a string (in the end) from the keyboard, even with investing a decent amount of time with searching it's open source code and it's examples. It's the only language so far I had to give up for maybe my own deficits. Though, this non-glamorous task turned out - unintentionally at first - to become an excellent opportunity to learn the real nature of a (new) programming language - even in the year 2025!
-
----
 
 ### Toit
 
@@ -52,6 +48,10 @@ GitHub: https://github.com/toitlang/toit
 
 This is a real pity from my point of view since the syntax of Toit would make a modern, up-to-date syntax for ubiquitous Python! However, with Toit as of May 2025 it's not
 possible to the access the (Linux) file system, which - unintentionally again - is just an essential part of my microbenchmark program.
+
+### Futhark
+
+[Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark) is "a data-parallel functional programming language", but not a general purpose one.
 
 <br/>
 
@@ -90,10 +90,6 @@ Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPH
 ### wren
 
 Although my [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) program works correctly, it's just super-slow with an execution time of over 30 seconds without a string builder or similar concept.
-
-### Futhark
-
-[Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark) is "a data-parallel functional programming language", but not a general purpose one.
 
 <br/>
 
