@@ -4,11 +4,13 @@
 
 ---
 
+2025-10-25: done: [Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark)
+
 2025-10-24: done: [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren)
 
 ---
 
-2025-10-22: so far, I haven't touched yet these corners of programming languages:
+2025-10-25: so far, I haven't touched yet these corners of programming languages:
 
 - **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
@@ -29,8 +31,6 @@
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - **Logic programming**: Prolog: https://www.iso.org/standard/21413.html
-
----
 
 <br/>
 
