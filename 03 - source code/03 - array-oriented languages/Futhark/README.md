@@ -37,7 +37,7 @@ from: https://futhark.readthedocs.io/en/latest/versus-other-languages.html#evalu
 
 ## Installation tips
 
-For installation I followed this advice: [1.3. Installing from a precompiled snapshot](https://futhark.readthedocs.io/en/stable/installation.html#installing-from-a-precompiled-snapshot), extracted binary snapshots _futhark-nightly-linux-x86_64.tar.xz_ and run: _$ make install_ in the extracted directory.
+For installation I followed this advice: [1.3. Installing from a precompiled snapshot](https://futhark.readthedocs.io/en/stable/installation.html#installing-from-a-precompiled-snapshot), extracted binary snapshots _futhark-nightly-linux-x86_64.tar.xz_ and ran: _$ sudo make install_ in the extracted directory.
 
 The installation can be tested with:
 
@@ -104,9 +104,33 @@ If missing, _clinfo_ can be installed in Ubuntu like this: _$ sudo apt install c
 
 Here may be help, if OpenCL is missing from the system (I didn't test it): [Getting started with OpenCL on Ubuntu Linux](https://github.com/KhronosGroup/OpenCL-Guide/blob/main/chapters/getting_started_linux.md#getting-started-with-opencl-on-ubuntu-linux)
 
-## Interaction with Gnuplot
+## Interaction with gnuplot
 
-(TBD)
+I wanted to run this example for the interaction of Futhark with [gnuplot](http://www.gnuplot.info/): [Plotting a histogram](https://futhark-lang.org/examples/plot-histogram.html), but it took me some time to make it working.
+
+This program(!) is using a _directive_, which "will be executed and replaced with its output" as "a way to show the result of running a function". Optional parameters of directives are lines of the form _key: value_.
+
+Here the _> :gnuplot_ directive is used (two times):
+
+```
+-- # Plotting a histogram
+def plot k n : ([]i64,[]i32) =
+  let vs = iota n |> map (f64.i64 >-> f64.cos >-> (+1) >-> (*(f64.i64 k/2)) >-> i64.f64)
+  in (iota k,
+      hist (+) 0 k vs (replicate n 1))
+
+-- > :gnuplot {data=plot 10 10000};
+-- set style fill solid 1.0
+-- plot data with boxes
+-- > :gnuplot {data=plot 100 10000};
+-- set style fill solid 1.0
+-- plot data with boxes
+```
+
+from source https://futhark-lang.org/examples/plot-histogram.fut, which I shortened here a bit.
+
+
+
 
 <br/>
 
