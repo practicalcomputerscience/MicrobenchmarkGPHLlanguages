@@ -23,7 +23,9 @@
 - **Fortran** as the mother and father of all high-level programming languages: https://fortran-lang.org/
 - Odin: https://odin-lang.org/
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
-- Pure Programming Language: https://github.com/agraef/pure-lang/wiki
+- Pure Programming Language is a functional programming language:
+- &nbsp;&nbsp;https://github.com/agraef/pure-lang/wiki
+- &nbsp;&nbsp;https://agraef.github.io/pure-lang/
 - D?? --> https://github.com/jinyus/related_post_gen => D faster than Mojo?
 - Nim?? --> https://github.com/phillvancejr/Cpp-Go-Zig-Odin
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
