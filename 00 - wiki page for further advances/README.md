@@ -16,7 +16,6 @@
 - &nbsp;&nbsp;Gleam as a statically typed, functional language: https://gleam.run/
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
 - Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
-- Haskell (I'm not sure if I'll do it)
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
 - &nbsp;&nbsp;**GNU Octave** (https://octave.org/) as a shell script for an imperative array language
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
@@ -31,6 +30,7 @@
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - **Logic programming**: Prolog: https://www.iso.org/standard/21413.html
+- Haskell (I'm not sure if I'll do it)
 
 <br/>
 
