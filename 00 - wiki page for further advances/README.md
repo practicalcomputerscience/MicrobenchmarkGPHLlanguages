@@ -13,9 +13,9 @@
 2025-10-25: so far, I haven't touched yet these corners of programming languages:
 
 - **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
+- &nbsp;&nbsp;Gleam as a statically typed, functional language: https://gleam.run/
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
-- &nbsp;&nbsp;Gleam as a statically typed language
-- Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another programming language for "scientific computing"
+- Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - Haskell (I'm not sure if I'll do it)
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
 - &nbsp;&nbsp;**GNU Octave** (https://octave.org/) as a shell script for an imperative array language
