@@ -12,6 +12,10 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 Table of contents:
 
 - [Installation tips](#installation-tips)
+- [](#)
+- [](#)
+- [](#)
+- [](#)
 
 <br/>
 
@@ -94,7 +98,17 @@ $
 
 <br/>
 
+### Type checking
 
+> Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
+
+from: https://tour.gleam.run/everything/#basics-type-checking
+
+(my emphasis in bold)
+
+<br/>
+
+### xxxxx
 
 (TBD)
 
