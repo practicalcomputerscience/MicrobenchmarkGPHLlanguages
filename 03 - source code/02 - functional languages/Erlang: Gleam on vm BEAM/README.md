@@ -12,8 +12,8 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [](#)
-- [](#)
+- [Type checking](#type-checking)
+- [Lists](#lists)
 - [](#)
 - [](#)
 
@@ -96,8 +96,6 @@ Hello, world from Gleam on the Erlang virtual machine!
 $
 ```
 
-<br/>
-
 ### Type checking
 
 > Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
@@ -106,9 +104,29 @@ from: https://tour.gleam.run/everything/#basics-type-checking
 
 (my emphasis in bold)
 
-<br/>
+### Lists
 
-### xxxxx
+So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](TBD) or [MLton Standard ML](TBD).
+
+This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: (TBD)
+
+However, Gleam claims (*) that:
+
+> Lists are immutable single-linked lists, meaning they are very efficient to add and remove elements from the front of the list.
+
+However, since the returned lists are in reverse order due to prepending  them in the master loop, I reverse them back to correct order, the order like in the other microbenchmark programs.
+
+Prepending was adviced to me by the code checker (with command _$ gleam test_) for my first version like this: _[..x, new_seed]_, a version which caused a _Syntax error_ even:
+
+> Lists are immutable and singly-linked, so to append items to them
+> all the elements of a list would need to be copied into a new list.
+> This would be slow, so there is no built-in syntax for it.
+> 
+> Hint: Prepend items to the list and then reverse it once you are done.
+
+So, I changed it to: _[new_seed, ..x]_
+
+
 
 (TBD)
 
