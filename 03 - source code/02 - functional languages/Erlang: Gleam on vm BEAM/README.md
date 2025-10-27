@@ -138,18 +138,11 @@ With the "speed part" of the [program](TBD), coding in Gleam was a rather pleasa
 
 Look at this example from 2024 only: the _erlang_ package is no longer existing and with it the _erlang.get_line_ function is gone: https://github.com/gleam-lang/gleam/discussions/2748
 
-So, a _get_line_ functionality must now, in 2025, be used from Erlang directly. A search for Erlang's _get_line_ function brought me first to this solution:
+So, a _get_line_ functionality must now, in 2025, be used from Erlang directly.
 
-- https://github.com/Olian04/gleam_stdin/blob/main/src/stdin.gleam
-- https://github.com/Olian04/gleam_stdin/blob/main/src/js_ffi.mjs
+A search brought me to Erlang's standard library's (first) _get_line_ function: https://www.erlang.org/doc/apps/stdlib/io.html#get_line/1
 
-Apparently, this package is using JavaScript. However, this Erlang related expression is absolutely needed: _@external(erlang, "io", "get_line")_
-
-When installing this package (_$ gleam add stdin_), JavaScript module _js_ffi.mjs_ with function _read_line_ becomes available. Though I don't understand the connection between this JavaScript code and any Erlang code, I thought the functionality of reading a line should work more directly.
-
-Here, I found Erlang's standard library's (first) _get_line_ function: https://www.erlang.org/doc/apps/stdlib/io.html#get_line/1
-
-Then I asked MS Bing AI (again), and got this (almost) working and direct solution with prompt "Gleam Erlang io get_line": 
+Then I asked MS Bing AI (again), and got this answer to prompt "Gleam Erlang io get_line": 
 
 ```
 import gleam/io
