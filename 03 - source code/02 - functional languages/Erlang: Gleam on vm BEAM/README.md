@@ -1,4 +1,4 @@
-2025-10-25: work in progress
+2025-10-25: work in progress: check TBD's
 
 # Gleam
 
@@ -12,10 +12,8 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Type checking](#type-checking)
-- [Lists](#lists)
-- [](#)
-- [](#)
+- [Type checking in Gleam](#type-checking-in-gleam)
+- [Lists in Gleam](#lists-in-gleam)
 
 <br/>
 
@@ -98,7 +96,7 @@ $
 
 Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
 
-### Type checking
+### Type checking in Gleam
 
 > Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
 
@@ -106,7 +104,7 @@ from: https://tour.gleam.run/everything/#basics-type-checking
 
 (my emphasis in bold)
 
-### Lists
+### Lists in Gleam
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](TBD) or [MLton Standard ML](TBD).
 
@@ -127,10 +125,6 @@ Prepending was adviced to me by the code checker (with command _$ gleam test_) f
 > Hint: Prepend items to the list and then reverse it once you are done.
 
 So, I changed it to: _[new_seed, ..x]_
-
-
-
-(TBD)
 
 <br/>
 
