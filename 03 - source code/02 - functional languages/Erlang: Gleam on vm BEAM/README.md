@@ -9,6 +9,8 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 
 Expect to use **Erlang** resources for certain functionalities. Also be aware that this is a young programming language, where changes are still common.
 
+Gleam code can also be transpiled into **JavaScript** code.
+
 (TBD)
 
 ---
@@ -16,7 +18,6 @@ Expect to use **Erlang** resources for certain functionalities. Also be aware th
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Type checking](#type-checking)
 - [Lists](#lists)
 - [Using Erlang from Gleam](#using-erlang-from-gleam)
 
@@ -99,14 +100,6 @@ $
 
 Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
 
-### Type checking
-
-> Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
-
-from: https://tour.gleam.run/everything/#basics-type-checking
-
-(my emphasis in bold)
-
 ### Lists
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](TBD) or [MLton Standard ML](TBD).
@@ -140,7 +133,7 @@ Look at this example from 2024 only: the _erlang_ package is no longer existing 
 
 So, a _get_line_ functionality must now, in 2025, be used from Erlang directly.
 
-A search brought me to Erlang's standard library's (first) _get_line_ function: https://www.erlang.org/doc/apps/stdlib/io.html#get_line/1
+A search brought me to the _io_ module of Erlang's standard library: https://www.erlang.org/doc/apps/stdlib/io.html#get_line/1
 
 Then I asked MS Bing AI (again), and got this answer to prompt "Gleam Erlang io get_line": 
 
