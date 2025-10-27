@@ -13,7 +13,7 @@ For scripting tasks I don't mind if a language is a bit slower than others. I wo
 
 <br/>
 
-For the question: "Is a Powershell script being executed on a virtual machine?", I would refer to this mini-chapter in [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#virtual-machine) and say "yes" again.
+For the question: "Is a Powershell script being executed on a **virtual machine**?", I would refer to this mini-chapter in [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#virtual-machine) and say "yes" again.
 
 Microsoft says [here](https://learn.microsoft.com/en-us/powershell/scripting/lang-spec/chapter-01?view=powershell-7.5):
 
