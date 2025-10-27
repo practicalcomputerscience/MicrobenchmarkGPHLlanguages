@@ -5,6 +5,7 @@ Table of contents:
 - [Master diagram with most program environments](#master-diagram-with-most-program-environments)
 - [Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM](#java-native-languages-scala-kotlin-and-clojure-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
+- [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
 
 <br/>
 
@@ -43,6 +44,12 @@ See more details at page [Graal Virtual Machine (GraalVM)](https://github.com/pr
 ![plot](./mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
 See more details at page [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme)
+
+---
+
+### Programming languages for virtual machines
+
+![plot](./mean_stddev_err_whiskers%20--%20only%20VM.png)
 
 ---
 
