@@ -7,7 +7,7 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 - https://gleam.run/
 - https://github.com/gleam-lang/gleam
 
-Expect to use **Erlang** resources for certain functionalities. Also be aware that this is a rather young programming language, where changes are still common.
+Expect to use **Erlang** resources for certain functionalities. Also be aware that this is a young programming language, where changes are still common.
 
 (TBD)
 
