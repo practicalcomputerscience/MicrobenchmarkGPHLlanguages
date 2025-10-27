@@ -609,7 +609,8 @@ So, in the end I mostly used the _perf-stat_ program for Linux:
 
 ..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
 
-- Python
+- Gleam: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"_
+- Python: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 python3 ./random_streams_for_perf_stats.py_
 
 However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs:
 
