@@ -7,6 +7,10 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 - https://gleam.run/
 - https://github.com/gleam-lang/gleam
 
+Expect to use **Erlang** resources for certain functionalities. Also be aware that this is a rather young programming language, where changes are still common.
+
+(TBD)
+
 ---
 
 Table of contents:
@@ -127,18 +131,57 @@ So, I changed it to: _[new_seed, ..x]_
 
 ### Using Erlang from Gleam
 
-With the "speed part" of the [program](TBD), coding in Gleam was a rather pleasant experience.
-
-But with the development of the [full program](TBD) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
+With the "speed part" of the [program](TBD), coding in Gleam was a rather pleasant experience. But with the development of the [full program](TBD) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
 
 > [!IMPORTANT]
 > Apparently and only recently certain functionalities have been pushed out of Gleam! This means that Erlang resources have to be used directly, something which isn't so easy (in my opinion).
 
 Look at this example from 2024 only: the _erlang_ package is no longer existing and with it the _erlang.get_line_ function is gone: https://github.com/gleam-lang/gleam/discussions/2748
 
-So, a _get_line_ functionality must now, in 2025, be used from Erlang directly:
+So, a _get_line_ functionality must now, in 2025, be used from Erlang directly. A search for Erlang's _get_line_ function brought me first to this solution:
 
-(TBD)
+- https://github.com/Olian04/gleam_stdin/blob/main/src/stdin.gleam
+- https://github.com/Olian04/gleam_stdin/blob/main/src/js_ffi.mjs
+
+Apparently, this package is using JavaScript. However, this Erlang related expression is absolutely needed: _@external(erlang, "io", "get_line")_
+
+When installing this package (_$ gleam add stdin_), JavaScript module _js_ffi.mjs_ with function _read_line_ becomes available. Though I don't understand the connection between this JavaScript code and any Erlang code, I thought the functionality of reading a line should work more directly.
+
+Here, I found Erlang's standard library's (first) _get_line_ function: https://www.erlang.org/doc/apps/stdlib/io.html#get_line/1
+
+Then I asked MS Bing AI (again), and got this (almost) working and direct solution with prompt "Gleam Erlang io get_line": 
+
+```
+import gleam/io
+import gleam/string
+// import gleam/erlang  // this is not needed anymore
+
+// Declare an external function binding to Erlang's io:get_line/1
+@external(erlang, "io", "get_line")
+fn get_line(prompt: String) -> String
+
+pub fn main() {
+  // Prompt the user
+  let line = get_line("Enter something: ")
+
+  // Remove trailing newline characters
+  let clean_line = string.trim(line)
+
+  // Output the result
+  io.println("You entered: " <> clean_line)
+}
+```
+
+Run this program like this for example:
+
+```
+$ gleam run --no-print-progress
+Enter something: 45 6.66
+You entered: 45 6.66
+$ 
+```
+
+This is exactly what I've been looking for!
 
 <br/>
 
