@@ -96,6 +96,8 @@ Hello, world from Gleam on the Erlang virtual machine!
 $
 ```
 
+Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
+
 ### Type checking
 
 > Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
