@@ -15,8 +15,6 @@ Table of contents:
 - [Type checking in Gleam](#type-checking-in-gleam)
 - [Lists in Gleam](#lists-in-gleam)
 
-<br/>
-
 ---
 
 ### Installation tips
