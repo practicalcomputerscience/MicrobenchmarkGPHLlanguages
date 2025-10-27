@@ -12,8 +12,9 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Type checking in Gleam](#type-checking-in-gleam)
-- [Lists in Gleam](#lists-in-gleam)
+- [Type checking](#type-checking)
+- [Lists](#lists)
+- [Using Erlang from Gleam](#using-erlang-from-gleam)
 
 ---
 
@@ -94,7 +95,7 @@ $
 
 Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
 
-### Type checking in Gleam
+### Type checking
 
 > Gleam has no null, no implicit conversions, **no exceptions**, and always performs full type checking. If the code compiles you can be reasonably confident it does not have any inconsistencies that may cause bugs or crashes.
 
@@ -102,7 +103,7 @@ from: https://tour.gleam.run/everything/#basics-type-checking
 
 (my emphasis in bold)
 
-### Lists in Gleam
+### Lists
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](TBD) or [MLton Standard ML](TBD).
 
@@ -123,6 +124,21 @@ Prepending was adviced to me by the code checker (with command _$ gleam test_) f
 > Hint: Prepend items to the list and then reverse it once you are done.
 
 So, I changed it to: _[new_seed, ..x]_
+
+### Using Erlang from Gleam
+
+With the "speed part" of the [program](TBD), coding in Gleam was a rather pleasant experience.
+
+But with the development of the [full program](TBD) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
+
+> [!IMPORTANT]
+> Apparently and only recently certain functionalities have been pushed out of Gleam! This means that Erlang resources have to be used directly, something which isn't so easy (in my opinion).
+
+Look at this example from 2024 only: the _erlang_ package is no longer existing and with it the _erlang.get_line_ function is gone: https://github.com/gleam-lang/gleam/discussions/2748
+
+So, a _get_line_ functionality must now, in 2025, be used from Erlang directly:
+
+(TBD)
 
 <br/>
 
