@@ -10,10 +10,10 @@
 
 ---
 
-2025-10-25: so far, I haven't touched yet these corners of programming languages:
+2025-10-27: so far, I haven't touched yet these corners of programming languages:
 
 - **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
-- &nbsp;&nbsp;Gleam as a statically typed, functional language: https://gleam.run/
+- &nbsp;&nbsp;Gleam as a statically typed, functional language: work in progress
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
 - Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
