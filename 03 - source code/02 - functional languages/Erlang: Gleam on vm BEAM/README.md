@@ -16,7 +16,7 @@ Re "minimalistic functional language", here an example:
 > [!NOTE]
 > You cannot print the type of a variable during runtime!
 
-(Theoretically) you could do this indirectly by delibertalely making errors in your code and then looking at the tip of the _$ gleam test_ command.
+(Theoretically) you could do this indirectly by delibertalely making errors in your code and then looking at the tips given by the _$ gleam test_ command.
 
 (TBD)
 
