@@ -2,7 +2,7 @@
 
 # Gleam
 
-Gleam is a statically typed, functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/): 
+Gleam is a statically typed and minimalistic functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/): 
 
 - https://gleam.run/
 - https://github.com/gleam-lang/gleam
@@ -10,6 +10,13 @@ Gleam is a statically typed, functional language on Erlang's virtual machine (vm
 Expect to use **Erlang** resources for certain functionalities. Also be aware that this is a young programming language, where changes are still common.
 
 Gleam code can also be transpiled into **JavaScript** code.
+
+Re "minimalistic functional language", here an example:
+
+> [!NOTE]
+> You cannot print the type of a variable during runtime!
+
+(Theoretically) you could do this indirectly by delibertalely making errors in your code and then looking at the tip of the _$ gleam test_ command.
 
 (TBD)
 
@@ -20,6 +27,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Lists](#lists)
 - [Using Erlang from Gleam](#using-erlang-from-gleam)
+- [From a list of integer numbers for Unicode codepoints to a string](#from-a-list-of-integer-numbers-for-unicode-codepoints-to-a-string)
 
 ---
 
@@ -170,5 +178,39 @@ $
 This is exactly what I've been looking for!
 
 <br/>
+
+### From a list of integer numbers to a string
+
+Putting together a string like this for example: "ABC", starting from a list of integer numbers, is not the easiest task in Gleam. You have to go via (Unicode) codepoints, a subtask which involves obtaining results of the [Result](https://github.com/gleam-lang/stdlib/blob/main/src/gleam/result.gleam) type ("Option" type in functional programming) - at least implicitly.
+
+The "trick" here is avoid touching the _Result_ type with your code, like this for example:
+
+```
+import gleam/list
+import gleam/string
+
+pub fn main() {
+  let int_numbers = [65, 66, 67]  // 'A', 'B', 'C': example list of integer numbers for Unicode codepoints
+
+  // convert a list of integer numbers into a list of codepoints:
+  let codepoints = list.filter_map(int_numbers, fn(n) { string.utf_codepoint(n) })
+  // the danger lies here at function: utf_codepoint(value: Int) with return type: Result(UtfCodepoint, Nil)
+  // codepoints looks like this: [Ok(65), Ok(66), Ok(67)]
+
+  // convert a list of codepoints into a string:
+  let strings = string.from_utf_codepoints(codepoints)  // luckily, function from_utf_codepoints accepts an argument like [Ok(65), Ok(66), Ok(67)]
+  echo strings  // "ABC"
+}
+```
+
+See sources from here:
+- _utf_codepoint()_ function: https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64
+- _from_utf_codepoints_ function: https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L734C8-L734C27, which is using from Erlang or JavaScript
+
+
+TBD
+
+
+
 
 ##_end
