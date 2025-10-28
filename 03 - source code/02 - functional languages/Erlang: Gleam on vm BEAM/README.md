@@ -190,7 +190,7 @@ import gleam/list
 import gleam/string
 
 pub fn main() {
-  let int_numbers = [65, 66, 67]  // 'A', 'B', 'C': example list of integer numbers for Unicode codepoints
+  let int_numbers = [65, 66, 67]  // 'A', 'B', 'C': example list of integer numbers to represent Unicode codepoints
 
   // convert a list of integer numbers into a list of codepoints:
   let codepoints = list.filter_map(int_numbers, fn(n) { string.utf_codepoint(n) })
