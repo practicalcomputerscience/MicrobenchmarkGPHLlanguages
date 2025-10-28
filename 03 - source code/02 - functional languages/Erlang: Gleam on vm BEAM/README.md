@@ -198,7 +198,9 @@ pub fn main() {
   // codepoints looks like this: [Ok(65), Ok(66), Ok(67)]
 
   // convert a list of codepoints into a string:
-  let strings = string.from_utf_codepoints(codepoints)  // luckily, function from_utf_codepoints accepts an argument like [Ok(65), Ok(66), Ok(67)]
+  let strings = string.from_utf_codepoints(codepoints)
+  // luckily, function from_utf_codepoints accepts an argument like [Ok(65), Ok(66), Ok(67)]
+
   echo strings  // "ABC"
 }
 ```
