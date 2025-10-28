@@ -209,6 +209,13 @@ See sources from here:
 - function [utf_codepoint](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64)_
 - function [from_utf_codepoints](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L734C8-L734C27), which is using resources from Erlang or JavaScript
 
+Above working program means that also a single string character has to be treated in list form:
+
+```
+let my_single_codepoint_as_int = [65] 
+```
+
+So far, I haven't found a more direct way to convert single integer number 65 into a string of one character, that is "A".
 
 TBD
 
