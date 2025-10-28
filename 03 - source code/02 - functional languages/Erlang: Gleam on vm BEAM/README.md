@@ -199,7 +199,7 @@ pub fn main() {
 
   // convert a list of codepoints into a string:
   let strings = string.from_utf_codepoints(codepoints)
-  // luckily, function from_utf_codepoints accepts an argument like [Ok(65), Ok(66), Ok(67)]
+  // luckily, function from_utf_codepoints accepts an argument like: [Ok(65), Ok(66), Ok(67)]
 
   echo strings  // "ABC"
 }
