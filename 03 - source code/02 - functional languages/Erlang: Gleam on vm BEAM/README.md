@@ -204,13 +204,12 @@ pub fn main() {
 ```
 
 See sources from here:
-- _utf_codepoint()_ function: https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64
-- _from_utf_codepoints_ function: https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L734C8-L734C27, which is using from Erlang or JavaScript
+- function [utf_codepoint](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64)_
+- function [from_utf_codepoints](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L734C8-L734C27), which is using from Erlang or JavaScript
 
 
 TBD
 
-
-
+<br/>
 
 ##_end
