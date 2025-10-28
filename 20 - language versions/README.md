@@ -17,6 +17,7 @@ Clojure | Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM | $ lein vers
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
 Crystal | Crystal 1.16.3 [3f369d2c7] (2025-05-12); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
+Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.24.1 linux/amd64 | $ go version
 Inko | inko 0.18.1 | $ inko --version
 Koka | Koka 3.1.2, 17:56:43 May 30 2024 (ghc release version) | $ koka --version
