@@ -27,7 +27,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Lists](#lists)
 - [Using Erlang from Gleam](#using-erlang-from-gleam)
-- [From a list of integer numbers for Unicode codepoints to a string](#from-a-list-of-integer-numbers-for-unicode-codepoints-to-a-string)
+- [From a list of integer numbers to a string](#from-a-list-of-integer-numbers-to-a-string)
 
 ---
 
