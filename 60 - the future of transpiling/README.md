@@ -16,4 +16,14 @@ Anyhow, the TypeScript-Go liaison shows how important transpiling from one langu
 
 <br/>
 
+### August 2025: TypeScript is #1 language on GitHub
+
+2025-10-28: https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
+
+> In August 2025, TypeScript overtook both Python and JavaScript. Its rise illustrates how developers are shifting toward **typed languages** that make agent-assisted coding more reliable in production. 
+
+(my emphasis in bold)
+
+<br/>
+
 ##_end
