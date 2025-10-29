@@ -14,6 +14,10 @@
 
 ![plot](./Computer%20Programming%20Languages%2C%20Part%203.png)
 
+## Part 4
+
+![plot](./Computer%20Programming%20Languages%2C%20Part%204.png)
+
 <br/>
 
 ##_end
