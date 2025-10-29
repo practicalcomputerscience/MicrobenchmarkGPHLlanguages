@@ -1,6 +1,6 @@
 # Gleam
 
-Gleam is a statically typed and minimalistic functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/): 
+Gleam is a statically typed and minimalistic **functional** language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/): 
 
 - https://gleam.run/
 - https://github.com/gleam-lang/gleam
