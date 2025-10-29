@@ -1,6 +1,6 @@
 # lines_of_source_code_count.pl
 #
-# 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27, 2025-07-08/12/14
+# 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27, 2025-07-08/12/14, 2025-10-29
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -44,7 +44,7 @@ my $doublesquarebracket_detected = 0;        # 0 is false
 
 my $language_ext = $file;
 
-my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr");
+my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam");
 
 my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl");
 my @lang_grp3 = ("py");
@@ -80,7 +80,7 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
       $line_empty += 1;
     } else {
 
-      # case: // with optional, leading white spaces: Rust, Zig
+      # case: // with optional, leading white spaces: Rust, Zig, Gleam
       if ($_ =~ /^\s*\/\//) {
         $line_cmt_fwdslash_dbl += 1;
       } else {
