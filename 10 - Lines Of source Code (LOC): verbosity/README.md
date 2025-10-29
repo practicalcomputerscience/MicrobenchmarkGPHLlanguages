@@ -20,10 +20,11 @@ programming language | LOC | comments
 --- | --- | ---
 Ada               | 231 | compiled, very mature language: lots of declarations and type definitions
 Inko              | 224 | compiled, very young language: lots of user-defined functions
-MLton Standard ML | 216 | compiled, very mature language: lots of user-defined functions
+Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
 V                 | 179 | compiled, very young programming language: needs some user-defined functions
 C3                | 163 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
+Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 148 | compiled, very mature language
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
@@ -64,6 +65,7 @@ Clojure            | 3
 Common Lisp        | 2
 Crystal            | 0
 FreeBASIC          | 1
+Gleam | 8
 Go                 | 0
 Inko               | 4
 Kotlin             | 1
@@ -77,7 +79,7 @@ Roc                | 9
 Rust               | 0
 Scala              | 0
 Scheme, Racket     | 5
-MLton Standard ML  | 8
+Standard ML (MLton) | 8
 Swift              | 1
 V                  | 3
 Zig                | 0
