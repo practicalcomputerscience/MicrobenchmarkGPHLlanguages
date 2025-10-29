@@ -1,5 +1,3 @@
-2025-10-25: work in progress: check TBD's
-
 # Gleam
 
 Gleam is a statically typed and minimalistic functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/): 
@@ -18,8 +16,6 @@ Re "minimalistic functional language", here an example:
 
 (Theoretically) you could do this indirectly by delibertalely making errors in your code and then looking at the tips given by the _$ gleam test_ command.
 
-(TBD)
-
 ---
 
 Table of contents:
@@ -28,6 +24,8 @@ Table of contents:
 - [Lists](#lists)
 - [Using Erlang from Gleam](#using-erlang-from-gleam)
 - [From a list of integer numbers to a string](#from-a-list-of-integer-numbers-to-a-string)
+- [Recursive functions in Gleam](#recursive-functions-in-gleam)
+- [Conclusion](#conclusion)
 
 ---
 
@@ -110,9 +108,9 @@ Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
 
 ### Lists
 
-So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](TBD) or [MLton Standard ML](TBD).
+So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml).
 
-This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: (TBD)
+This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: [recursive master loop]https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/aba4c605c0c1a089f51374d935545eb780135d61/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104)
 
 However, Gleam claims (*) that:
 
@@ -132,7 +130,7 @@ So, I changed it to: _[new_seed, ..x]_
 
 ### Using Erlang from Gleam
 
-With the "speed part" of the [program](TBD), coding in Gleam was a rather pleasant experience. But with the development of the [full program](TBD) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
+With the "speed part" of the [program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104), coding in Gleam was a rather pleasant experience. But with the development of the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
 
 > [!IMPORTANT]
 > Apparently and only recently certain functionalities have been pushed out of Gleam! This means that Erlang resources have to be used directly, something which isn't so easy (in my opinion).
@@ -217,7 +215,47 @@ let my_single_codepoint_as_int = [65]
 
 So far, I haven't found a more direct way to convert single integer number 65 into a string of one character, that is "A".
 
-TBD
+## Recursive functions in Gleam
+
+The implementation of the two recursive functions in the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) may not to the best approach, but they work:
+
+```
+// recursive password loop
+...
+fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String) -> String {
+  ...
+}
+
+// recursive master loop
+fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: List(String)) {
+  ...
+}
+```
+
+Compared to other functional programming languages, these recursions look clumsy in at least two aspects in my opinion.
+
+One aspect is that functions _masterloop_ and _pw_generator_ may be part of the _main_ function in those other functional languages and may not be just some other user defined functions.
+
+The second is that in other functional languages, I could locate the recursive "accumulator loop" inside the bigger function, but it seems that such a construct is not supported in Gleam. The official documention places the "accumulator loop" in its own private function, here called _factorial_loop_: https://tour.gleam.run/flow-control/tail-calls/ (**)
+
+One reason for these clumsy recursions may be the fact that Gleam **doesn't have mutable global variables**, something I use in other functional languages if possible.
+
+However, Gleam claims that **tail call optimisation** is applied (**):
+
+> When a function is called a new stack frame is created in memory to store the arguments and local variables of the function. If lots of these frames are created during recursion then the program would use a large amount of memory, or even crash the program if some limit is hit. To avoid this problem Gleam supports tail call optimisation, which allows the stack frame for the current function to be reused if a function call is the last thing the function does, removing the memory cost. 
+
+<br/>
+
+## Conclusion
+
+All in all, I think that Gleam is an interesting alternative on Erlang's virtual machine BEAM. With having or not having:
+
+- immutable single-linked lists
+- no arrays and no vectors
+- no mutable global variables
+- tail call optimisation
+
+..Gleam may give the impression that it could be a "pure functional programming language". But it's not. You don't have to worry too much about side-effects, like input/output operations, here.
 
 <br/>
 
