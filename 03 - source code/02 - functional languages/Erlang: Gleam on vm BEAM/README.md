@@ -118,7 +118,7 @@ However, Gleam claims (*) that:
 
 However, since the returned lists are in reverse order due to prepending  them in the master loop, I reverse them back to correct order, the order like in the other microbenchmark programs.
 
-Prepending was adviced to me by the code checker (with command _$ gleam test_) for my first version like this: _[..x, new_seed]_, a version which caused a _Syntax error_ even:
+Prepending was adviced to me by the code checker (with command _$ gleam test_) for my first version: _[..x, new_seed]_, a version which caused a _Syntax error_ even:
 
 > Lists are immutable and singly-linked, so to append items to them
 > all the elements of a list would need to be copied into a new list.
@@ -248,14 +248,16 @@ However, Gleam claims that **tail call optimisation** is applied (**):
 
 ## Conclusion
 
-All in all, I think that Gleam is an interesting alternative on Erlang's virtual machine BEAM. With having or not having:
+All in all, I think that Gleam is an interesting alternative on Erlang's virtual machine BEAM.
+
+With having or not having:
 
 - immutable single-linked lists
 - no arrays and no vectors
 - no mutable global variables
 - tail call optimisation
 
-..Gleam may give the impression that it could be a "pure functional programming language". But it's not. You don't have to worry too much about side-effects, like input/output operations, here.
+..Gleam may give the impression that it may be a "pure functional programming language". But it's not. You don't have to worry too much about side effects, like input/output operations, here.
 
 <br/>
 
