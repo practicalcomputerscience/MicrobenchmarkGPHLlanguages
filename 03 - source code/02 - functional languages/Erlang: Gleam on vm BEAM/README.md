@@ -234,9 +234,9 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
 
 Compared to other functional programming languages, these recursions look clumsy in at least two aspects in my opinion.
 
-One aspect is that functions _masterloop_ and _pw_generator_ may be part of the _main_ function in those other functional languages and may not be just some other user defined functions.
+One aspect is that functions _masterloop_ and _pw_generator_ may be part of the _main_ function in those other functional languages and may not be just some other user defined functions like in my Gleam code.
 
-The second is that in other functional languages, I could locate the recursive "accumulator loop" inside the bigger function, but it seems that such a construct is not supported in Gleam. The official documention places the "accumulator loop" in its own private function, here called _factorial_loop_: https://tour.gleam.run/flow-control/tail-calls/ (**)
+The second aspect is that in other functional languages, I could locate the recursive "accumulator loop" inside the bigger function, but it seems that such a construct is not supported in Gleam. The official documention places the "accumulator loop" in its own private function, in this example called _factorial_loop_: https://tour.gleam.run/flow-control/tail-calls/ (**)
 
 One reason for these clumsy recursions may be the fact that Gleam **doesn't have mutable global variables**, something I use in other functional languages if possible.
 
