@@ -7,7 +7,7 @@ GPHL = general purpose, high-level (programming language)
 
 To-do:
 - fix TBD's (this is a continous task)
-- implement a concurreny solution in Chapel, compare to the Go solution
+- parallel computing: implement a concurreny solution in Chapel and Gleam, compare to the Go solution (not published here)
 - test: exhausting the generated random bitstream when user asks for a super-long password
 
 <br/>
