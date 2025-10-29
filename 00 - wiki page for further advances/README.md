@@ -3,6 +3,7 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-10-29: fone: [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam)
 
 2025-10-25: done: [Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark)
 
@@ -10,10 +11,9 @@
 
 ---
 
-2025-10-27: so far, I haven't touched yet these corners of programming languages:
+2025-10-29: so far, I haven't touched yet these corners of programming languages:
 
 - **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
-- &nbsp;&nbsp;Gleam as a statically typed, functional language: work in progress
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
 - Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
