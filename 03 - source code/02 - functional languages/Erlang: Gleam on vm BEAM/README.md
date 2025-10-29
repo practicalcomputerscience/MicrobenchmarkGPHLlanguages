@@ -110,7 +110,7 @@ Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml).
 
-This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: [recursive master loop]https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/aba4c605c0c1a089f51374d935545eb780135d61/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104)
+This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: [recursive master loop](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/aba4c605c0c1a089f51374d935545eb780135d61/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104)
 
 However, Gleam claims (*) that:
 
@@ -204,7 +204,7 @@ pub fn main() {
 ```
 
 See sources from here:
-- function [utf_codepoint](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64)_
+- function [utf_codepoint](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L740C8-L740C64)
 - function [from_utf_codepoints](https://github.com/gleam-lang/stdlib/blob/126db53b626e38cd5aea98a2937a16a51662a6b6/src/gleam/string.gleam#L734C8-L734C27), which is using resources from Erlang or JavaScript
 
 Above working program means that also a single string character has to be treated in list form:
