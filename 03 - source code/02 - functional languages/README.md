@@ -87,7 +87,7 @@ I just remembered a reference expression somewhere in my program versions so far
 
 ## So, who is mostly using functional programming?
 
-Logically, an industry where a lot of functions can be deployed. Functions which often can stay "pure", that is without "annoying" **side effects** (https://en.wikipedia.org/wiki/Side_effect_(computer_science)) like throwing exceptions or input/output operations (I/O's). Or in other words:
+Logically, an industry where a lot of functions can be deployed. Functions which often can stay "pure", that is without "annoying" **side effects** (https://en.wikipedia.org/wiki/Side_effect_(computer_science)), like throwing exceptions or input/output operations (I/O's). Or in other words:
 
 > [!NOTE]
 > A mathemtical function has no side effects.
