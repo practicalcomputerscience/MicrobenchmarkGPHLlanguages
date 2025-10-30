@@ -50,6 +50,8 @@ The original version with string concatenation was about five times slower.
 
 (TBD)
 
+TBD: Error Handling
+
 <br/>
 
 ##_end
