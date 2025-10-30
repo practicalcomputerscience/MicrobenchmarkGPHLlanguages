@@ -89,7 +89,7 @@ Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPH
 
 ### Wolfram Language
 
-Although my [WolframScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_streams_for_perf_stats.wls) proram works correctly, it takes about 1.5 seconds to run (without a string builder) and is thus not falling under my 1 second execution time limit. The idea here was that the Wolfram Language could also be seen as an array-oriented language. Anyway, it's for sure general purpose, high-level programming language.
+Although my [WolframScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_streams_for_perf_stats.wls) proram works correctly, it takes about 1.5 seconds to run (without a string builder) and is thus not falling under my 1 second execution time limit. The idea here was that the Wolfram Language could also be seen as an array-oriented language. Anyway, it's a general purpose, high-level programming language. Here's a [Summary of New Features in 14](https://reference.wolfram.com/language/guide/SummaryOfNewFeaturesIn14.html), which may give an impression of the many features this language has already accumulated.
 
 ### wren
 
