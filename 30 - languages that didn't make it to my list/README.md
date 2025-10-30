@@ -87,6 +87,10 @@ Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPH
 
 Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, though I didn't polish it, it's just super-slow with an execution time of over 5 seconds.
 
+### Wolfram Language
+
+Although my [WolframScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_streams_for_perf_stats.wls) proram works correctly, it takes about 1.5 seconds to run (without a string builder) and is thus not falling under my [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#the-1-second-execution-time-limit). The idea here is that the Wolfram Language could also be seen as an array-oriented language. Anyway, it's a for sure general purpose, high-level programming language.
+
 ### wren
 
 Although my [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) program works correctly, it's just super-slow with an execution time of over 30 seconds without a string builder or similar concept.
