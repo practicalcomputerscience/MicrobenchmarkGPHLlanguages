@@ -37,6 +37,17 @@ In[1]:= Exit[]
 $
 ```
 
+### Execution speed
+
+Since I haven't found any string builder in this language (https://reference.wolfram.com/language/guide/StringOperations.html), this script is a bit on the slow side with a mean of **1546 milliseconds** execution time over 20 runs.
+
+This is already my optimized version, where I don't do plain string concatenation (_bitsx = bitsx <> StringPadLeft[IntegerString[x[[i]], 2], 16, "0"];_), but filling an initialized array of fixed size with the little strings, which finally will be joined together into one big string: _bitsxtotal   = StringJoin[bitsx]_
+
+> NOTE!
+> Be aware that the '_' character has special meaning in Wolfram Language and so I dropped it from my variable names.
+
+The original version with string concatenation was about five times slower.
+
 (TBD)
 
 <br/>
