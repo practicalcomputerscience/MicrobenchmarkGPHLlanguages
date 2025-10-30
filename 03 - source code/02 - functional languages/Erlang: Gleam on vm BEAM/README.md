@@ -16,6 +16,11 @@ Re "minimalistic functional language", here an example:
 
 (Theoretically) you could do this indirectly by delibertalely making errors in your code and then looking at the tips given by the _$ gleam test_ command.
 
+Also noteworthy: Gleam does not know **exceptions**:
+
+- https://tour.gleam.run/advanced-features/use/
+- https://gleam.run/frequently-asked-questions/#why-does-division-by-zero-return-zero
+
 ---
 
 Table of contents:
