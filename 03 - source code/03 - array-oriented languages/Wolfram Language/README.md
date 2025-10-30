@@ -10,7 +10,7 @@ https://www.wolfram.com/language/
 
 The free for private use and locale Wolfram Engine is also used for executing **WolframScripts** (_~.wls_): https://www.wolfram.com/wolframscript/
 
-> WARNING!
+> [!WARNING]
 > The Wolfram Engine, packed into a Bash installation script (_~.sh_), cannot be installed in latest **Ubuntu** version 25.10 as of 2025-10-30!
 
 This is also true for older versions of the Wolfram Engine than latest version 14.3 (as of 2025-10-30): https://www.wolfram.com/engine/
@@ -43,8 +43,8 @@ Since I haven't found any string builder in this language (https://reference.wol
 
 This is already my [optimized version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_streams_for_perf_stats.wls), where I don't do plain string concatenation (_bitsx = bitsx <> StringPadLeft[IntegerString[x[[i]], 2], 16, "0"];_), but filling an initialized array of fixed size with the little strings in the master loop, which finally will be joined together into one big string: _bitsxtotal   = StringJoin[bitsx]_
 
-> NOTE!
-> Be aware that the '_' character has special meaning in Wolfram Language and so I dropped it from my variable names: https://reference.wolfram.com/language/tutorial/Patterns.html#139
+> [!NOTE]
+> Be aware that the '_' character has special meaning in Wolfram Language ("blank" for any single character) and so I dropped it from my variable names: https://reference.wolfram.com/language/tutorial/Patterns.html#139
 
 The original version with string concatenation was about five times slower.
 
