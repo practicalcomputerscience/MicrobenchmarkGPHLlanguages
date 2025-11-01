@@ -4,7 +4,17 @@
 
 https://www.wolfram.com/language/
 
+---
+
+Table of contents:
+
+- [Installation tips for the Wolfram Engine](#installation-tips-for-the-wolfram-engine)
+- [Execution speed](#execution-speed)
+- [Pause[] function to prevent output races](#pause-function-to-prevent-output-races)
+- [Error Handling](#error-handling)
 <br/>
+
+---
 
 ### Installation tips for the Wolfram Engine
 
@@ -48,9 +58,52 @@ This is already my [optimized version](https://github.com/practicalcomputerscien
 
 The original version with string concatenation was about five times slower.
 
-(TBD)
+### Pause[] function to prevent output races
 
-TBD: Error Handling
+The _Pause[]_ function of the Wolfram Language is a real hit: https://reference.wolfram.com/language/ref/Pause.html
+
+After elaborate experimentation, I found out that this function is preventing an adverse output race between print commands _InputString["\nPassword ..."];_ and _Print["enter ..."]_:
+
+```
+While[answer === False,
+  Pause[0.65];  (*0.65 seconds*)
+  (* this pause, and nothing else, is the solution to prevent output races between the prompt and the error message! *)
+  
+  reply = InputString["\nPassword of " <> IntegerString[nchar] <> " printable chars OK? 'y' or another integer number >= 8: "];
+  (* InputString[] is needed for "y" *)
+  
+  If[reply === "y",
+    answer = True,
+    {
+      (* Try to convert to integer number *)
+      Quiet[
+        Check[
+          result = Interpreter["Integer"][reply],  (* MS Bing AI; "9.0 is a valid answer here: OK with me *)
+          (* Error handling code *)
+          Print["enter an integer number >= 8 or 'y'"]  (* this line is essential *)
+        ]
+      ]
+      
+      (* Return new nchar if successful *)
+      If[FailureQ[result],
+        Print["enter an integer number >= 8 or 'y'"],
+        If[result < 8,
+          Print["enter an integer number >= 8 or 'y'"],
+          nchar = result;
+          answer = True;
+        ]
+      ]
+    }
+  ]
+]
+
+```
+
+Without _Pause[0.65];_, the next prompt for user input after some invalid user input would be constantly displayed **before** error message _enter an integer number >= 8 or 'y'_!
+
+### Error Handling
+
+(TBD)
 
 <br/>
 
