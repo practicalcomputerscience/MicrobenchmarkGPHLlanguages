@@ -3,7 +3,9 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
-2025-10-29: fone: [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam)
+2025-11-01: done: [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language)
+
+2025-10-29: done: [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam)
 
 2025-10-25: done: [Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark)
 
@@ -15,11 +17,12 @@
 
 - **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
-- Julia as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
+- **Julia** as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
-- &nbsp;&nbsp;**GNU Octave** (https://octave.org/) as a shell script for an imperative array language
+- &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put it onto my list for too slow languages, to my regret.)
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
+
 - **Fortran** as the mother and father of all high-level programming languages: https://fortran-lang.org/
 - Odin: https://odin-lang.org/
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
