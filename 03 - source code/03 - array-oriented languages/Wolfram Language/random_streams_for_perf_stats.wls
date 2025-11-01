@@ -2,7 +2,7 @@
 
 A Wolfram Language script for interpretation on the Wolfram Engine.
 
-2025-10-30
+2025-10-30, 2025-11-01
 
 run on Ubuntu 24 LTS: > wolframscript -f ./random_streams_for_perf_stats.wls
                       > ./exe_times_statistics_for_one_test_case_in_cwd2 "wolframscript -f" ./random_streams_for_perf_stats.wls
@@ -66,7 +66,7 @@ filebitshex = "random_bitstring.byte";
 x = ConstantArray[0, end];
 (* Print["x = ", x];  (* for testing: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} *) *)
 
-x[[1]] = RandomInteger[{1, end}];  (* end is inclusive*)
+x[[1]] = RandomInteger[{1, m}];  (* m is inclusive*)
 (* Print["x = ", x]; (* for testing: {3, 0, 0, 0, 0, 0, 0, 0, 0, 0} *) *)
 (* Print["x[[1]] = ", x[[1]]];  (* for testing array reading access: 3*) *)
 
@@ -108,3 +108,4 @@ exportData[bitsxtotal, filebitsx, "Bit"];
 exportData[bitshextotal, filebitshex, "Byte"];
 
 (* end of random_streams_for_perf_stats.wls *)
+
