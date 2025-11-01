@@ -1,5 +1,3 @@
-2025-10-30: work in progress
-
 # Wolfram Language
 
 https://www.wolfram.com/language/
@@ -103,7 +101,32 @@ Without _Pause[0.65];_, the next prompt for user input after some invalid user i
 
 ### Error Handling
 
-(TBD)
+Error handling in the Wolfram language is done with the [Check](https://reference.wolfram.com/language/ref/Check.html) function, and can be fine-tuned, like in user defined function [exportData](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_bitstring_and_flexible_password_generator.wls), which is here just named after its main function, the _Export[]_ function, for writing the final strings to files: 
+
+```
+exportData[data_, filePath_, type_] := Module[
+  {result},
+  (* Try to export the data *)
+  Quiet[
+    (* Handling errors using Check *)
+    Check[
+      result = Export[filePath, data, "Text"],
+      (* Error handling code *)
+      Print["could not write to file: ", filePath, " ! -- ",
+            ToString@First@$MessageList];
+      Return[False]; (* Return False if error occurs *)
+    ]
+  ];
+
+  (* Return True if successful *)
+  If[result === $Failed,
+    _;
+    False,
+    Print[type <> " stream has been written to disk under name: ", filePath];
+    True
+  ]
+];
+```
 
 <br/>
 
