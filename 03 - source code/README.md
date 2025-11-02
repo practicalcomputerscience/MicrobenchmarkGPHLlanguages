@@ -1,3 +1,3 @@
-When you have seen, as a newbie, four different imperative languages, imperative language #5 may be not a surprise.
+When you have seen four **imperative languages**, imperative language #5 may even look a little bit familiar.
 
-When you have seen four different functional languages, functional language #5 may be a real surprise.
+But when you have seen four **functional languages**, functional language #5 may turn out to be a surprise!
