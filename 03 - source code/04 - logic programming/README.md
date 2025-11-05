@@ -19,8 +19,8 @@ from:
 Table of contents:
 - [Concepts of Mercury](#concepts-of-mercury)
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
-- [How I found Mercury](#how-i-found-mercury)
 - [Installation tips](#installation-tips)
+- [How I found Mercury](#how-i-found-mercury)
 - [Selected features of Mercury](#selected-features-of-mercury)
 
 <br/>
@@ -63,7 +63,52 @@ MS Bing Copilot gave me this answer, as part of a bigger answer (on 2025-11-03):
 
 ## Installation tips
 
-(TBD)
+When installing Mercury for the first time (bootstrapping) and these programs are not installed yet, install them now before installing Mercury:
+
+- gcc
+- flex
+- make
+- bison
+
+Also read at least this document to gain more background knowledge for installing Mercury: [README.bootstrap](https://github.com/Mercury-Language/mercury/blob/499d1935801e855cc0c824c2cb5635802542d729/README.bootstrap#L4)
+
+I started with file _mercury-srcdist-rotd-2025-11-01.tar.gz_ from here: https://dl.mercurylang.org/index.html
+
+..which I extracted to installation directory: _./mercury-srcdist-rotd-2025-11-01/_
+
+..where I did these things:
+
+```
+$ ./configure --enable-minimal-install
+$ make      # this will take some time
+```
+
+Alternatively, for speeding up compilation with 4 concurrent jobs:
+```
+$ make -j4
+```
+
+```
+$ sudo make install               # this will also take some time
+```
+
+Alternatively, for speeding up compilation with 4 concurrent jobs:
+```
+$ sudo make PARALLEL=-j4 install
+```
+
+Add to your _PATH_ in the _.bashrc_ file: _PATH=$PATH:/usr/local/mercury-rotd-2025-11-01/bin_
+
+..and activate it:
+
+```
+$ source ~/.bashrc
+$ mmc --version  # compiler test
+Mercury Compiler, version rotd-2025-11-01
+Copyright (C) 1993-2012 The University of Melbourne
+Copyright (C) 2013-2025 The Mercury team
+$
+```
 
 <br/>
 
@@ -79,7 +124,7 @@ Here's how I tumbled over the Mercury programming language accidentally:
 
 Mercury has a dedicated **string builder**: https://github.com/Mercury-Language/mercury/blob/fca4505501852e5feda0734ff6c5ec6ac02bc638/library/string.builder.m
 
-..which makes the [speed part](TBD) of this program competitively fast with about 77 milliseconds execution time!
+..which makes the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/random_streams_for_perf_stats.m) of this program competitively fast with about 77 milliseconds execution time!
 
 See also these official "Raw benchmark times" in milliseconds:
 
