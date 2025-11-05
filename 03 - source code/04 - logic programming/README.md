@@ -4,7 +4,9 @@
 
 https://mercurylang.org/index.html
 
-Mercury is a real hit in my opinion and should be way more popular!
+Mercury is a real hit in my opinion and should be way more popular! Like "Prolog on speed". (*)
+
+TBD: check this with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
 
 > Mercury is based on the paradigm of **purely declarative programming**...
 > After stripping away the declarations of a Mercury program, the syntax of the remaining part of the program is mostly compatible with **Prolog** syntax.
@@ -21,7 +23,7 @@ Table of contents:
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
 - [Installation tips](#installation-tips)
 - [How I found Mercury](#how-i-found-mercury)
-- [Selected features of Mercury](#selected-features-of-mercury)
+- [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
 
 <br/>
 
@@ -33,7 +35,7 @@ Even though not broadly known, I have the positive impression that the Mercury p
 started in [1995](https://mercurylang.org/information/doc-latest/mercury_reference_manual/index.html#SEC_Contents),
 is in a very mature state now. Although, it's development is still ongoing as its GitHub repository show: https://github.com/Mercury-Language/mercury
 
-This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/pub/pbone-2015-mercury/) from 2015 says this:
+This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/pub/pbone-2015-mercury/) from 2015 says:
 
 > Mercury is a purely declarative logic/functional programming language.
 > 
@@ -45,8 +47,7 @@ This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/p
 
 The **OCaml** reference is true in my opinion. Knowing some [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) helps with understanding and developing Mercury programs.
 
-Also helpful was my [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) program,
-specifically with the "pure" style, since Clojure, in contrast to Ocaml, also adheres to **strictly immutable data structures**.
+Also helpful was my [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) program, specifically with its "pure" style, since Clojure, in contrast to Ocaml, also adheres to **strictly immutable data structures**.
 
 <br/>
 
@@ -92,7 +93,7 @@ $ make -j4
 $ sudo make install               # this will also take some time
 ```
 
-Alternatively, for speeding up compilation with 4 concurrent jobs:
+Alternatively, for speeding up installation with 4 concurrent jobs:
 ```
 $ sudo make PARALLEL=-j4 install
 ```
@@ -120,16 +121,18 @@ Here's how I tumbled over the Mercury programming language accidentally:
 
 <br/>
 
-## Selected features of Mercury
+## Selected features of and tips for Mercury
 
 Mercury has a dedicated **string builder**: https://github.com/Mercury-Language/mercury/blob/fca4505501852e5feda0734ff6c5ec6ac02bc638/library/string.builder.m
 
 ..which makes the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/random_streams_for_perf_stats.m) of this program competitively fast with about 77 milliseconds execution time!
 
-See also these official "Raw benchmark times" in milliseconds:
+See also these official "Raw benchmark times" in milliseconds (*):
 
 - https://www.mercurylang.org/about/bench/times.html
 - https://mercurylang.org/about/benchmarks.html
+
+Apparently, the execution speed of a (compiled, binary) Mercury program can be an order of magnitude higher than the execution speed of a [SWI Prolog](https://www.swi-prolog.org/) program.
 
 <br/>
 
@@ -153,7 +156,16 @@ A note on some older Mercury code or documentation:
 - Ge = Goal error (?)
 
 from: [Tutorial on programming in Mercury](https://mercurylang.org/documentation/learning.html) from 2020. Albeit not ready, this document was a main help for me to develop the microbenchmark program in Mercury.
-    
+
+<br/>
+
+Last but not least, I quote my old Prolog tip from 2017, something which is also true for planning Mercury programs:
+
+> [!IMPORTANT]
+> DO NOT HAVE source code files with INITIAL Capital letter ("Hello_World.pl") => INITIAL Capital letters are ONLY FOR VARIABLES!
+
+So, name your variables maybe in _CamelCase_, but your functions, predicates ("statements"), program names etc in small letters only (like _hello_world.pl_ in Prolog).
+
 <br/>
 
 ##_end
