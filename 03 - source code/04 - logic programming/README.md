@@ -22,7 +22,7 @@ Table of contents:
 - [Concepts of Mercury](#concepts-of-mercury)
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
 - [Installation tips](#installation-tips)
-- [How I found Mercury](#how-i-found-mercury)
+- [How I discovered Mercury](#how-i-discovered-mercury)
 - [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
 
 <br/>
@@ -113,11 +113,37 @@ $
 
 <br/>
 
-## How I found Mercury
+## How I discovered Mercury
 
 Here's how I tumbled over the Mercury programming language accidentally:
 
-(TBD)
+While working on my [Functional languages overview](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages), I read about the **Actor model** for concurrent computing: PDF from 2023: [A Formal specification For Half a Century of Actor Systems](https://soft.vub.ac.be/Publications/2024/vub-tr-soft-24-01.pdf).
+
+> The first implementation of the actor model was in a Planner-like programming language that was modeled on actors [15], originally called Planner-73, but later renamed to PLASMA.
+
+I wondered what has happened to the PLASMA (with capital letters) programming language: _A recursive implementation of factorial written in PLASMA is given in Listing 1._
+
+```
+(factorial ≡
+  (≡> [=n]
+    (rules n
+      (≡> 1
+           1)
+      (≡> (> 1)
+           (n * (factorial <= (n - 1)))))))
+```
+
+I found this webpage: https://plasmalang.org/roadmap.html
+
+However, that functional language, named _Plasma_, apparently has nothing do (directly) with the old PLASMA system.
+
+So, I put that language, obviously under heavy construction, aside for while, only to read now more about it. There I read that the compiler for that language has been written in a language called Mercury:
+
+> Plasma is written in Mercury (at least until we get to a self hosting stage) which means if you want to compile Plasma (to contribute to it) you may need to build Mercury from source...
+
+from: https://plasmalang.org/docs/dev_mercury_grades.html, Updated: March 2020
+
+And then I got interest in Mercury, specifically for its background as a "Prolog on speed" programming language.
 
 <br/>
 
@@ -159,7 +185,7 @@ from: [Tutorial on programming in Mercury](https://mercurylang.org/documentation
 
 <br/>
 
-Last but not least, I quote my old Prolog tip from 2017, something which is also true for planning Mercury programs:
+Last but not least, I quote my old, personal Prolog tip from 2017, something which is also true for planning Mercury programs:
 
 > [!IMPORTANT]
 > DO NOT HAVE source code files with INITIAL Capital letter ("Hello_World.pl") => INITIAL Capital letters are ONLY FOR VARIABLES!
