@@ -1,4 +1,4 @@
-2025-11-05: TBD: finally, re-check the portability list on a fresh Oracle Linux 10 installation as a "basic Linux system".
+2025-11-05: TBD: finally, re-check this portability list on a fresh Oracle Linux 10 installation as a "basic Linux system".
 
 # Portability of programs
 
