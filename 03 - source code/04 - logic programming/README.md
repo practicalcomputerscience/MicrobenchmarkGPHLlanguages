@@ -6,7 +6,7 @@ https://mercurylang.org/index.html
 
 Mercury is a real hit in my opinion and should be way more popular! Like "Prolog on speed". (*)
 
-TBD: check this with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
+TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
 
 > Mercury is based on the paradigm of **purely declarative programming**...
 > After stripping away the declarations of a Mercury program, the syntax of the remaining part of the program is mostly compatible with **Prolog** syntax.
