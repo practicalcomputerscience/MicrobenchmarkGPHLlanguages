@@ -1,0 +1,380 @@
+% random_bitstring_and_flexible_password_generator.m
+%
+% A program for the Mercury logic programming system: https://github.com/Mercury-Language
+%
+% 2025-11-03/04/05
+%
+% predicate =~ statement
+%
+%
+% build on Ubuntu 24 LTS: $ mmc random_bitstring_and_flexible_password_generator.m
+%
+% run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
+%
+%
+% > mmc --version
+% Mercury Compiler, version rotd-2025-11-01
+% Copyright (C) 1993-2012 The University of Melbourne
+% Copyright (C) 2013-2025 The Mercury team
+% >
+%
+%-----------------------------------------------------------------------------%
+
+:- module random_bitstring_and_flexible_password_generator.  % declarations and clauses end with a full stop
+:- interface.                             % things to be exported
+:- import_module io.                      % things to be imported
+
+
+:- pred main(io::di, io::uo) is det.  % declare a predicate called main, which is
+                                      % needed for the compiler as the starting point:
+                                      %   arg.#1: di for destructive input
+                                      %   arg.#2: uo for unique output
+                                      % is det = deterministic predicate, a must for I/O op's:
+                                      %   with same input there will always be same output
+                                      % Arguments may be either input or output!
+                                      % io::di is a short form for:
+                                      %   :- pred main(io, io).
+                                      %   :- mode main(di, uo).
+
+:- implementation.
+
+% declarations at the start of the implementation section:
+:- import_module uint16, uint64, int, string, list.  % list for io.format()
+:- import_module char.                               % det_from_int
+:- import_module random, random.sfc16.               % sfc = small fast counting generator
+:- import_module stream.
+:- import_module stream.string_writer.
+:- import_module string.builder.
+:- import_module bool.  % https://github.com/Mercury-Language/mercury/blob/fca4505501852e5feda0734ff6c5ec6ac02bc638/library/bool.m
+
+
+%-----------------------------------------------------------------------------%
+%
+% user defined functions
+
+% this solution is completely and 1:1 based on MS Bing AI prompt:
+%   "Mercury language get system time in milliseconds"
+% Foreign import of a C function to get time in milliseconds
+:- pred get_time_ms(int::out) is det.
+:- pragma foreign_proc("C",
+    get_time_ms(Ms::out),
+    [will_not_call_mercury, promise_pure, thread_safe],
+"
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    Ms = (int)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));
+").
+
+:- pragma foreign_decl("C", "
+    #include <sys/time.h>
+    #include <stdint.h>
+").
+
+
+:- pred get_int_random(int::in, int::in, int::out, R::in, R::out) is det <= random(R).
+                                                                       % <= is for a type class constraint
+get_int_random(Start, Range, IntRandNbr, !R) :-
+  random.uniform_int_in_range(Start, Range, IntRandNbr, !R).
+
+
+% this padding is not working (but the conversion to a string):
+%   :- func integer_to_bin_string(int) = string.
+%   integer_to_bin_string(N) = PaddedBinString :-
+%     (StrRaw = string.int_to_base_string(N, 2),
+%      StrPadLen = 16 - string.length(StrRaw),
+%      ( if StrPadLen > 0 then
+%         PaddedBinString = string.pad_left(StrRaw, '0', StrPadLen)
+%      else
+%         PaddedBinString = StrRaw
+%      )
+%     ).
+%     % https://github.com/Mercury-Language/mercury/blob/fca4505501852e5feda0734ff6c5ec6ac02bc638/tests/hard_coded/bitmap_test.m#L511
+
+% MS Bing AI: this solution works!
+:- func pad_left(string, int) = string.
+pad_left(S, Width) = Result :-
+  Len = string.length(S),
+  (if Len >= Width then
+      Result = S  % No padding needed
+   else
+      PadCount = Width - Len,
+      PadStr = string.from_char_list(list.duplicate(PadCount, '0')),
+      Result = PadStr ++ S
+  ).
+
+
+% MS Bing AI based solution:
+:- pred write_to_file(string::in, string::in, string::in, io::di, io::uo) is det.
+write_to_file(FileName, Content, FileType, !IO) :-
+  io.open_output(FileName, OpenResult, !IO),
+  (
+    OpenResult = ok(Stream),
+    io.write_string(Stream, Content, !IO),
+    io.close_output(Stream, !IO),
+
+    (if FileType = "bit" then
+        io.format("\nBit stream has been written to disk under name:  %s", [s(FileName)], !IO)
+     else
+        io.format("\nByte stream has been written to disk under name: %s", [s(FileName)], !IO)
+    )
+  ;
+    OpenResult = error(Error),
+    io.format("\ncould not write to file: %s -- %s",
+              [s(FileName), s(io.error_message(Error))], !IO)
+  ).
+
+
+:- pred input_a_valid_number(int::in, int::out, io::di, io::uo) is det.
+input_a_valid_number(NCHar, NewNCHar, !IO) :-
+  io.format("\nPassword of %d printable chars OK? 'y' or another integer number >= 8: ", [i(NCHar)], !IO),
+
+  io.read_line_as_string(Result, !IO),
+  (if Result = ok(String),
+      FinalStr = string.strip(String)
+   then
+     (if FinalStr = "y" then
+         NewNCHar = NCHar
+      else
+        (if string.to_int(FinalStr, Nbr) then
+            (if Nbr < 8 then
+               io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
+               input_a_valid_number(NCHar, NewNCHar, !IO)
+             else
+               NewNCHar = Nbr
+            )
+         else  % failure branch
+            io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
+            input_a_valid_number(NCHar, NewNCHar, !IO)
+        )
+     )
+   else  % failure branch
+     io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
+     input_a_valid_number(NCHar, NewNCHar, !IO)
+  ).
+
+
+% solution based on: Tutorial on programming in Mercury, 2020
+:- pred answer_yes_or_no(bool::out, io::di, io::uo) is det.
+answer_yes_or_no(Answer, !IO) :-
+  io.format("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ", [], !IO),
+
+  io.read_line_as_string(Result, !IO),
+  (if Result = ok(String),
+     FinalStr = string.strip(String)
+   then
+     % io.format("FinalStr = %s\n", [s(FinalStr)], !IO),  % for testing
+     (if FinalStr = "y" then
+         Answer = yes
+      else  % some other answer
+         Answer = no
+     )
+   else  % failure branch
+     Answer = no
+  ).
+
+
+% helper function:
+:- pred int_of_binary_string(string::in, int::out) is det.
+int_of_binary_string(BinStr, IntResult) :-
+  (if string.base_string_to_int(2, BinStr, IntResult0) then
+    IntResult = IntResult0  %%%%%% an example how to get rid of a value of type pred %%%%%%
+   else  % failure branch
+    IntResult = 0
+  ).
+
+%********************  recursive password creation  ************************%
+%
+% 3 x input, 1 x output:
+:- pred pw_generator(int::in, list(int)::in, string::in, string::out, io::di, io::uo) is det.
+pw_generator(Length, RandomNbrs, CharPool, Password, !IO) :-
+  (if Length =< 0 then
+     Password = ""
+   else
+     (if [FirstRandNbr | NewRandomNbrs] = RandomNbrs then
+        % split RandomNbrs in first element and rest of list;
+        % this call to function can fail!
+
+        Bin0 = pad_left(string.int_to_base_string(FirstRandNbr, 2), 16),
+        % io.format("\n%d\n", [i(FirstRandNbr)], !IO),  % for testing
+        % io.format("%s\n", [s(Bin0)], !IO),  % for testing
+
+        % build the password string:
+        string.split(Bin0, 8, Bin0_0, Bin0_1),
+        % io.format("%s\n", [s(Bin0_0)], !IO),  % for testing
+        % io.format("%s\n", [s(Bin0_1)], !IO),  % for testing
+
+        % convert "10110001" into int number:
+        int_of_binary_string(Bin0_0, Char0),
+        int_of_binary_string(Bin0_1, Char1),
+        % io.format("%d\n", [i(Char0)], !IO),  % for testing
+        % io.format("%d\n", [i(Char1)], !IO),  % for testing
+
+        % convert int number via codepoint into a string..
+        % Char0as = string.from_char(char.det_from_int(Char0)),  % for testing
+        % Char1as = string.from_char(char.det_from_int(Char1)),  % for testing
+        % io.format("%s\n", [s(Char0as)], !IO),  % for testing
+        % io.format("%s\n", [s(Char1as)], !IO),  % for testing
+        % ..or character:
+        Char0a = char.det_from_int(Char0),
+        Char1a = char.det_from_int(Char1),
+
+
+        % similar tactics as in Clojure program:
+        %
+        % PasswordLength = string.length(PasswordPrev),  % this does not work here!
+        %   In clause for `pw_generator(in, in, in, out, di, uo)':
+        %   in argument 1 of call to function `string.length'/1:
+        %   mode error: variable `PasswordPrev' has instantiatedness `free',
+        %   expected instantiatedness was `ground'.
+        (if string.contains_char(CharPool, Char0a)
+         then
+            Char0_add = string.from_char(Char0a),
+            Char0_nbr_add = 1  % this part is different from Clojure
+         else
+            Char0_add = "",
+            Char0_nbr_add = 0  % this part is different from Clojure
+        ),
+
+        (if string.contains_char(CharPool, Char1a),  % comma (,) for logical and == logical conjunction
+            % => both goals must succeed!
+            Length - Char0_nbr_add > 0  % this part is different from Clojure
+         then
+            Char1_add = string.from_char(Char1a)
+         else
+            Char1_add = ""
+        ),
+
+        LengthAdded = string.length(Char0_add ++ Char1_add),
+
+        % recursion:
+        pw_generator(Length - LengthAdded, NewRandomNbrs, CharPool, PasswordPrev, !IO),
+
+        Password = Char0_add ++ Char1_add ++ PasswordPrev
+
+      else  % failure branch
+        io.write_string("\nFailure: list of random numbers is empty!\n", !IO),
+
+        Password = "Error occured!"
+        % Password is predicated as string::out;
+        % so have some **unification** for it in this failure branch too!
+     )
+  ).
+% end of password creation
+%***************************************************************************%
+
+
+%**********************  recursive master loop  ****************************%
+%
+% values are immutable in this purely declarative language;
+% then build all output lists recursively:
+%
+:- pred masterloop(int::in, int::in, list(int)::out, list(string)::out, list(string)::out) is det.
+masterloop(Length, Seed, X, BitsX, BitsHex) :-
+  (if Length =< 0 then  % =< is a semidet predicate
+     X = [],  % return empty list
+     BitsX = [],
+     BitsHex = []
+   else
+     NewSeed = (17364 * Seed + 0) `mod` 65521,  % there are no global constants in Mercury!
+
+     % recursion:
+     masterloop(Length - 1, NewSeed, XPrev, BitsXPrev, BitsHexPrev),
+     % what a trick with the introduction of XPrev etc.! MS Bing AI helped me out here.
+
+     % convert random integer number into its binary string representation:
+     NewBitsX0 = string.int_to_base_string(NewSeed, 2),
+     NewBitsX  = pad_left(NewBitsX0, 16),
+
+     NewBitsHex0 = string.int_to_base_string(NewSeed, 16),  % hexadecimal string representation
+     NewBitsHex  = pad_left(NewBitsHex0, 4),
+
+     % build lists and strings:
+     X       = [NewSeed | XPrev],  % [|] is the non-empty list constructor, pronounced "cons"
+     BitsX   = [NewBitsX | BitsXPrev],
+     BitsHex = [NewBitsHex | BitsHexPrev]
+  ).
+% end of masterloop
+%***************************************************************************%
+
+% end of user defined functions
+%
+%-----------------------------------------------------------------------------%
+
+
+main(!IO) :-
+
+  End = 62500,  % 62500 for exactly 1M binary digits; user defined Variables start with a Capital letter!
+                  % Otherwise, these names would be symbol names.
+  % End = 100,  % for testing
+
+  M = 65521,  % = 2^16 - 15
+
+  FileBitsX   = "random_bitstring.bin",
+  FileBitsHex = "random_bitstring.byte",
+
+  get_time_ms(Ms),
+  % io.format("Current time: %d ms since epoch\n", [i(Ms)], !IO).  % for testing
+  Time0 = uint64.cast_from_int(Ms),      % type conversion into uint64
+  R0 = sfc16.seed(Time0),                % initialize a 16-bit SFC generator with a time based seed
+  get_int_random(1, M, X0, R0, _),       % _: discard R::out; X0 is a dynamic random seed for the master loop
+  % io.format("X0 = %d\n", [i(X0)], !IO),  % for testing
+
+
+  io.write_string("\ngenerating a random bit stream...", !IO),
+
+  masterloop(End, X0, X, BitsX, BitsHex),  % 2 x input, 3 x output
+
+  % Str = string(X),  % for testing
+  % io.format("\nX = %s\n", [s(Str)], !IO),  % for testing
+
+  Builder0  = string.builder.init,
+  string.builder.append_strings(BitsX, Builder0, Builder1),
+  BitsXStr  = string.builder.to_string(Builder1),
+  % io.format("\nBitsXStr = %s\n", [s(BitsXStr)], !IO),  % for testing
+
+  Builder2  = string.builder.init,
+  string.builder.append_strings(BitsHex, Builder2, Builder3),
+  BitsHexStr = string.builder.to_string(Builder3),
+  % io.format("BitsHexStr = %s\n", [s(BitsHexStr)], !IO),  % for testing
+
+  write_to_file(FileBitsX, BitsXStr, "bit", !IO),
+  write_to_file(FileBitsHex, BitsHexStr, "byte", !IO),
+  io.write_string("\n", !IO),
+
+
+  NCharDefault = 12,
+  input_a_valid_number(NCharDefault, NChar, !IO),
+  % io.format("NChar = %d\n", [i(NChar)], !IO),  % for testing
+
+  answer_yes_or_no(WithSpecialChars, !IO),  % WithSpecialChars is bool: yes or no
+  % io.write("WithSpecialChars = ", !IO),  % for testing
+  % io.write(WithSpecialChars, !IO),  % for testing
+  % io.nl(!IO),  % for testing
+
+
+  % not using "Extra programs in the Mercury implementation" here, like lex to
+  % work with regular expressions and which needs an extra installation:
+  %   https://github.com/Mercury-Language/mercury/tree/6b031c1ec68260767cff8e334f2aeadc998293ba/extras#extra-programs-in-the-mercury-implementation
+  %   https://github.com/Mercury-Language/mercury/blob/6b031c1ec68260767cff8e334f2aeadc998293ba/extras/lex/samples/regex_demo.m
+  %
+  (if WithSpecialChars = yes then
+     CodePoints   = 33 `..` 126,  % !-~ = 33-126
+     CharSetList  = map(det_from_int, CodePoints),
+     CharSet      = string.from_char_list(CharSetList)
+   else
+     CodePoints1  = 48 `..` 57,   % 0-9 = 48-57
+     CodePoints2  = 65 `..` 90,   % A-Z = 65-90
+     CodePoints3  = 97 `..` 122,  % a-z = 97-122
+     CharSetList  = append(append(map(det_from_int, CodePoints1),
+                                  map(det_from_int, CodePoints2)),
+                                  map(det_from_int, CodePoints3)),
+     CharSet      = string.from_char_list(CharSetList)
+
+  ),
+  % io.format("CharSet = %s\n", [s(CharSet)], !IO),  % for testing
+
+  pw_generator(NChar, X, CharSet, PasswordChars, !IO),  % 3 x input, 1 x output
+
+  io.format("\nYour password of %d characters is: %s\n", [i(NChar), s(PasswordChars)], !IO).
+
+% end of random_bitstring_and_flexible_password_generator.m
