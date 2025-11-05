@@ -19,9 +19,9 @@ from:
 Table of contents:
 - [Concepts of Mercury](#concepts-of-mercury)
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
-- [How did I find it?](#how-did-I-find-it)
+- [How I found Mercury](#how-i-found-mercury)
 - [Installation tips](#installation-tips)
-- [Selected features of Mercury](#)
+- [Selected features of Mercury](#selected-features-of-mercury)
 
 <br/>
 
@@ -67,7 +67,7 @@ MS Bing Copilot gave me this answer, as part of a bigger answer (on 2025-11-03):
 
 <br/>
 
-## How did I find it?
+## How I found Mercury
 
 Here's how I tumbled over the Mercury programming language accidentally:
 
@@ -81,13 +81,16 @@ Mercury has a dedicated **string builder**: https://github.com/Mercury-Language/
 
 ..which makes the [speed part](TBD) of this program competitively fast with about 77 milliseconds execution time!
 
-See also these official "Raw benchmark times" in milliseconds: https://www.mercurylang.org/about/bench/times.html
+See also these official "Raw benchmark times" in milliseconds:
+
+- https://www.mercurylang.org/about/bench/times.html
+- https://mercurylang.org/about/benchmarks.html
 
 <br/>
 
 Mercury source code can be compiled to targets:
 
-- high-level C, the default target with _$ mmc <filename>.m_
+- high-level C, the default target with: _$ mmc < filename >.m_
 - Java
 - C#
 
@@ -97,14 +100,14 @@ See from: https://github.com/Mercury-Language/mercury/blob/fca4505501852e5feda07
 
 A note on some older Mercury code or documentation:
 
-> ![NOTE]
+> [!NOTE]
 > ( Gc -> Gt ; Ge ) is an alternative, albeit old-fashioned, syntax for ( if Gc then Gt else Ge ).
 
 - Gc = Goal condition (?)
 - Gt = Goal true (?)
 - Ge = Goal error (?)
 
-from: [Tutorial on programming in Mercury](https://mercurylang.org/documentation/learning.html) from 2020. Albeit not ready, this document was a main help for me to development the program in Mercury.
+from: [Tutorial on programming in Mercury](https://mercurylang.org/documentation/learning.html) from 2020. Albeit not ready, this document was a main help for me to develop the microbenchmark program in Mercury.
     
 <br/>
 
