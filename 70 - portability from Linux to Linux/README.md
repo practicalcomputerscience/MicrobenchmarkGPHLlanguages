@@ -1,3 +1,5 @@
+2025-11-05: TBD: finally, re-check the portability list on a fresh Oracle Linux 10 installation as a "basic Linux system".
+
 # Portability of programs
 
 Here's a list of programming languages where standalone executables can be compiled that should run **without any extra installations** on another, arbitrary ("basic") Linux machine:
