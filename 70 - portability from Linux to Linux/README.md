@@ -1,3 +1,5 @@
+2025-11-05: work on missing shared libraries; maybe this is a minor job only on a target system
+
 # Portability of programs
 
 Here's a list of programming languages where standalone executables can be compiled that should run **without any extra installations** on another, arbitrary ("basic") Linux machine:
@@ -35,6 +37,7 @@ Here's a list of programming languages where standalone executables can be compi
 
 - my [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips) executable may crash in another Linux system: "Illegal instruction (core dumped)"
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs a shared library being installed for perfect execution (though the program probably will work)
+- [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming#mercury): "error while loading shared libraries: libmer_std.so: cannot open shared object file"
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#installation-tips), which needs a shared library being installed
 - [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/README.md#size-of-executables): the Bigloo and CHICKEN executables need shared libraries being installed; the Racket executable needs Racket being installed
 - [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), which needs a shared library being installed
