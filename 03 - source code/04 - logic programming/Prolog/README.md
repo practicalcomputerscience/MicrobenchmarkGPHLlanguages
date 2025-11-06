@@ -78,8 +78,7 @@ So, at the moment, for Linux I can only recommend **SWI Prolog**. It's fast, eas
 
 SWI Prolog was already recommended in this super-old list: http://www.fraber.de/university/prolog/comparison.html#needs
 
-All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to
-port the source code from one dialect to the other without changes is a bigger benefit. 
+All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes the bigger benefit is.
 
 <br/>
 
