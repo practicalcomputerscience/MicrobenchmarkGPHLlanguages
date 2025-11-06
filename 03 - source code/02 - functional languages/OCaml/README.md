@@ -4,6 +4,14 @@ https://ocaml.org/
 
 https://dune.build/
 
+<br/>
+
+In my opinion: 
+
+> If you want to tinker in an imperative style in the source code of a functional (and fast) programming language, then take OCaml.
+>
+> Albeit, OCaml is probably not the easiest functional language to learn at first. It has a strict type system and you are forced to meticulously care about side effects.
+
 ---
 
 Table of contents:
