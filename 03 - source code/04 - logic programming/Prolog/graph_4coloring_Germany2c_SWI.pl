@@ -4,8 +4,12 @@
 
    test on swipl  v.9.0.4, 2025-11-06: OK!
 
-   build program in Ubuntu 24 LTS: $ swipl -o graph_4coloring_Germany2c_SWI -g graph_4coloring_Germany2c_SWI -c graph_4coloring_Germany2c_SWI.pl
+   build program in Ubuntu 24 LTS:
+   $ swipl -o graph_4coloring_Germany2c_SWI -g graph_4coloring_Germany2c_SWI -c graph_4coloring_Germany2c_SWI.pl --stand_alone=true
 
+   make shared library libswipl.so.9 available on a target system without SWI installation:
+     $ sudo cp libswipl.so.9 /lib64
+   
    run program in Ubuntu 24 LTS:   $ ./graph_4coloring_Germany2c_SWI
                                    $ time ./graph_4coloring_Germany2c_SWI => real	0m0,723s
 
