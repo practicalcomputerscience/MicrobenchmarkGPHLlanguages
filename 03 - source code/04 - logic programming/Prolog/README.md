@@ -66,7 +66,7 @@ $
 
 ## SWI Prolog
 
-I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and ran it without changes on SWI Prolog:
+I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and could run it without changes on SWI Prolog:
 
 ```
 $ swipl graph_4coloring_Germany2a.pl
@@ -79,7 +79,7 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
-Howeever, this didn't make a standalone executable program. Building one isn't so easy in SWI Prolog.
+However, this didn't make a standalone executable program. Building one isn't so easy in SWI Prolog.
 
 TBD
 
@@ -89,7 +89,7 @@ To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
 
 TBD
 
-Building a standalone executable is easy in Ciao Prolog: _$ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl_, with the _-S_ switch to build a standalone executable.
+Building a standalone executable is easy in Ciao Prolog: _$ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl_, with the _-S_ switch for building a standalone executable.
 
 <br/>
 
@@ -99,7 +99,7 @@ All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.
 
 ## Portability of executables
 
-Right next to the portability of source code sits the challenge of portability of executable programs.
+Right next to the portability of source code sits the challenge of portability of standalone executables.
 
 TBD
 
