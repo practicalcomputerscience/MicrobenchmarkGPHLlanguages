@@ -100,7 +100,7 @@ number N of different solutions = 191808
 ...
 Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
 $
-
 */
 
 /* end of graph_4coloring_Germany2a.pl */
+
