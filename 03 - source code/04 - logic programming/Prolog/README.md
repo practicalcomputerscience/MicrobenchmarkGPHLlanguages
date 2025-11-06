@@ -4,7 +4,7 @@
 
 This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs only exist for one reason:
 
-> How fast is a (compiled) program in the [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) language compared to a (compiled) version in its precursor language Prolog?
+> How fast is a (compiled) program in the [Mercury language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) compared to a (compiled) version in its precursor language Prolog?
 
 <br/>
 
@@ -12,11 +12,11 @@ This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs only ex
 
 Table of contents:
 
-- [The map coloring problem of Germany with 16 states and 4 colors](#)
-- [GNU Proglog](#)
-- [SWI Proglog](#)
-- [Ciao Proglog](#)
-- [Portability of executables](#)
+- [The map coloring problem of Germany with 16 states and 4 colors](#the-map-coloring-problem-of-germany-with-16-states-and-4-colors)
+- [GNU Prolog](#gnu-prolog)
+- [SWI Prolog](#swi-prolog)
+- [Ciao Prolog](#ciao-prolog)
+- [Portability of executables](#portability-of-executables)
 
 <br/>
 
@@ -44,7 +44,7 @@ After some survey of modern [Prolog implementations](https://en.wikipedia.org/wi
 
 <br/>
 
-## GNU Proglog
+## GNU Prolog
 
 However, with GNU Prolog I immediately ran into a problem: 
 
