@@ -4,7 +4,7 @@
 
 https://mercurylang.org/index.html
 
-Mercury is a real hit in my opinion and should be way more popular! Like "Prolog on speed". (*)
+The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit in my opinion and should be way more popular! Mercury feels like "Prolog on speed". (*)
 
 TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
 
@@ -47,7 +47,7 @@ This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/p
 
 The **OCaml** reference is true in my opinion. Knowing some [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) helps with understanding and developing Mercury programs.
 
-Also helpful was my [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) program, specifically with its "pure" style, since Clojure, in contrast to Ocaml, also adheres to **strictly immutable data structures**.
+Also helpful was my [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) experience, specifically with its "pure" style, since Clojure, in contrast to Ocaml, also adheres to **strictly immutable data structures**.
 
 <br/>
 
