@@ -9,13 +9,15 @@
    build program in Ubuntu 24 LTS: $ gplc ./graph_4coloring_Germany2a.pl  # do not forget file extension .pl!!
 
    add global environment variable (in .bashrc for example): export GLOBALSZ=524288
-   to have enough stack size (32KB is too small for this program)
+   to have enough stack size (32kB is too small for this program)
    and check it like this for example: $ printenv GLOBALSZ  # answer should be: 524288
 
    run program in Ubuntu 24 LTS: $ ./graph_4coloring_Germany2a
                                  $ time ./graph_4coloring_Germany2a => real	0m1,599s
 
-   run with SWI Prolog:          $ time swipl graph_4coloring_Germany2a.pl => real	0m0,700s <<<!!
+   SWI Prolog:
+     - run program:              $ time swipl graph_4coloring_Germany2a.pl => real	0m0,700s <<<!!
+   
 
 
    $ gplc --version
@@ -103,4 +105,3 @@ $
 */
 
 /* end of graph_4coloring_Germany2a.pl */
-
