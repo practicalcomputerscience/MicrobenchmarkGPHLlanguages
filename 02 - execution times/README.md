@@ -25,6 +25,8 @@ $
 
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
+So far, OCaml is the fastest [functional programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages), and [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) the fastest interpreted language.
+
 ---
 
 ### Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
