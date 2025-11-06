@@ -17,6 +17,7 @@ Table of contents:
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
 - [Portability of executables](#portability-of-executables)
+- [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 
 <br/>
 
@@ -52,7 +53,7 @@ TBD
 
 Building a standalone executable is very easy in GNU Prolog and a big advantage from my point of view: _$ gplc ./graph_4coloring_Germany2a.pl_
 
-But before running program _graph_4coloring_Germany2a_, make sure to have enough space on the stack. The usual 32kB is too small for this program.
+But before running program [graph_4coloring_Germany2a](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), make sure to have enough space on the stack. The usual 32kB is too small for this program.
 
 So, as one way, you could add in your _.bashrc_ file this global environment variable: _export GLOBALSZ=524288_
 
@@ -79,19 +80,65 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
-However, this didn't make a standalone executable program. Building one isn't so easy in SWI Prolog.
+However, this didn't make a standalone executable program. Building one is bit more complicated than in SWI Prolog.
 
-TBD
+This web page gives a hint how to accomplish it: https://www.swi-prolog.org/FAQ/UnixExe.md
+
+I slightly changed the original program, now named [graph_4coloring_Germany2c_SWI.pl](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2c_SWI.pl), where I changed goal _main_ into _graph_4coloring_Germany2c_SWI_, the later with no more initialization:
+
+```
+/* :- initialization(graph_4coloring_Germany2c_SWI). */
+...
+graph_4coloring_Germany2c_SWI :- ...
+```
+
+Then I managed with this command:
+
+```
+$ swipl -o graph_4coloring_Germany2c_SWI -g graph_4coloring_Germany2c_SWI -c graph_4coloring_Germany2c_SWI.pl
+Warning: /usr/lib/swi-prolog/library/ansi_term.pl:45: 
+Warning:   library(uri): No such file
+% Disabled autoloading (loaded 32 files)
+% Disabled autoloading (loaded 0 files)
+$
+$ ./graph_4coloring_Germany2c_SWI 
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = 
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+$ 
+```
+
+Both dialects, GNU and SWI, came to the same number of different solutions, that is 191808, and also show the same 1st solution and same last solution.
+
 
 ## Ciao Prolog
 
 To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
 
-TBD
+Again, I had to slightly change the original source code to make the program working in this [dialect](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2b_Ciao.pl).
+
+What's unkown in Ciao, is predicate _nth0()_, which I changed to _nth()_, which I made available with clause: _:- use_module(library(lists))._
 
 As one may have noticed, the default character for comments is _%_ here, not _/* ... */_. Apparently, comment blocks in Ciao Prolog are not possible.
 
-Building a standalone executable is easy in Ciao Prolog: _$ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl_, with the _-S_ switch for building a standalone executable.
+Building a standalone executable is easy in Ciao Prolog:
+
+```
+$ ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl  # -S_ switch for building a standalone executable
+$ ./graph_4coloring_Germany2b_Ciao
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = 
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,green,yellow,red
+$
+```
+
+While the 1st solution is the same as with GNU and SWI, the last solution is different. At least, we can say that Ciao Prolog obviously makes things a little bit differently.
 
 <br/>
 
@@ -104,6 +151,10 @@ I don't have a clear favorite Prolog dialect; all three have their cons, but als
 ## Portability of executables
 
 Right next to the portability of source code sits the challenge of portability of standalone executables.
+
+TBD
+
+## Speed in the Land of Prolog's
 
 TBD
 
