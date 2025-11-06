@@ -6,6 +6,7 @@ Table of contents:
 - [Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM](#java-native-languages-scala-kotlin-and-clojure-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
 - [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
+- [The Clojure example](the-clojure-example)
 
 <br/>
 
