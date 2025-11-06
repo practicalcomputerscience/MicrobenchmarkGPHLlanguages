@@ -50,7 +50,36 @@ However, with GNU Prolog I immediately ran into a problem:
 
 TBD
 
+Building a standalone executable is very easy in GNU Prolog and a big advantage from my point of view: _$ gplc ./graph_4coloring_Germany2a.pl_
+
+But before running program _graph_4coloring_Germany2a_, make sure to have enough space on the stack. The usual 32kB is too small for this program.
+
+So, as one way, you could add in your _.bashrc_ file this global environment variable: _export GLOBALSZ=524288_
+
+..where 524288 bytes is just my proposal, which works in my system. Activate: _$ source ./.bashrc_ and check the new environment variable:
+
+```
+$ printenv GLOBALSZ
+524288
+$
+```
+
 ## SWI Prolog
+
+I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and ran it without changes on SWI Prolog:
+
+```
+$ swipl graph_4coloring_Germany2a.pl
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+$
+```
+
+Howeever, this didn't make a standalone executable program. Building one isn't so easy in SWI Prolog.
 
 TBD
 
@@ -60,23 +89,9 @@ To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
 
 TBD
 
-pros:
-
-- xxx
-- xxx
-
-cons:
-
-- xxx
-- xxx
-
-(TBD)
+Building a standalone executable is easy in Ciao Prolog: _$ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl_, with the _-S_ switch to build a standalone executable.
 
 <br/>
-
-So, at the moment, for Linux I can only recommend **SWI Prolog**. It's fast, easy to install and its syntax looks like "mainstream Prolog", whatever this may be.
-
-SWI Prolog was already recommended in this super-old list: http://www.fraber.de/university/prolog/comparison.html#needs
 
 All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes the bigger benefit is.
 
