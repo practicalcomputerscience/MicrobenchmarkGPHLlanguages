@@ -4,7 +4,9 @@
 
 https://mercurylang.org/index.html
 
-The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit in my opinion and should be way more popular! Mercury feels like "Prolog on speed". (*)
+The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit in my opinion and should be way more popular!
+
+Mercury feels like "Prolog on speed". (*)
 
 TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
 
@@ -137,13 +139,13 @@ I found this webpage: https://plasmalang.org/roadmap.html
 
 However, that functional language, named _Plasma_, apparently has nothing do (directly) with the old PLASMA system.
 
-So, I put that language, obviously under heavy construction, aside for while, only to read now more about it. There I read that the compiler for that language has been written in a language called Mercury:
+So, I put that language, obviously under heavy construction, aside for while, only to read now more about it. There I read that the compiler for Plasma has been written in a language called Mercury:
 
 > Plasma is written in Mercury (at least until we get to a self hosting stage) which means if you want to compile Plasma (to contribute to it) you may need to build Mercury from source...
 
 from: https://plasmalang.org/docs/dev_mercury_grades.html, Updated: March 2020
 
-And then I got interest in Mercury, specifically for its background as a "Prolog on speed" programming language.
+And then I got interested in Mercury, specifically for its background as a "Prolog on speed" programming language.
 
 <br/>
 
@@ -190,7 +192,7 @@ Last but not least, I quote my old, personal Prolog tip from 2017, something whi
 > [!IMPORTANT]
 > DO NOT HAVE source code files with INITIAL Capital letter ("Hello_World.pl") => INITIAL Capital letters are ONLY FOR VARIABLES!
 
-So, name your variables maybe in _CamelCase_, but your functions, predicates ("statements"), program names etc in small letters only (like _hello_world.pl_ in Prolog).
+So, name your variables maybe in _CamelCase_, but your function, predicate ("statement"), program names etc in small letters only (like _hello_world.pl_ in Prolog).
 
 <br/>
 
