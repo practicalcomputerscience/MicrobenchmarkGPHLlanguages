@@ -2,7 +2,7 @@
 
 # Prolog
 
-This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs only exist for one reason:
+This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs exist for one reason:
 
 > How fast is a (compiled) program in the [Mercury language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) compared to a (compiled) version in its precursor language Prolog?
 
@@ -38,9 +38,9 @@ However, Prolog shows the same phenomenon than Scheme: what dialect to use?
 
 After some survey of modern [Prolog implementations](https://en.wikipedia.org/wiki/Comparison_of_Prolog_implementations), I came down to this short list of well maintained Prolog dialects:
 
-- GNU Prolog: (TBD)
-- SWI Prolog: (TBD)
-- Ciao Prolog: (TBD)
+- GNU Prolog: http://gprolog.org/
+- SWI Prolog: https://www.swi-prolog.org/
+- Ciao Prolog: https://ciao-lang.org/
 
 <br/>
 
@@ -56,7 +56,7 @@ TBD
 
 ## Ciao Prolog
 
-To have a third opinion, I tested Ciao Prolog: 
+To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
 
 TBD
 
@@ -78,7 +78,7 @@ So, at the moment, for Linux I can only recommend **SWI Prolog**. It's fast, eas
 
 SWI Prolog was already recommended in this super-old list: http://www.fraber.de/university/prolog/comparison.html#needs
 
-All three dialects claim to follow the ISO standard of Prolog (TBD), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to
+All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to
 port the source code from one dialect to the other without changes is a bigger benefit. 
 
 <br/>
@@ -86,6 +86,8 @@ port the source code from one dialect to the other without changes is a bigger b
 ## Portability of executables
 
 Right next to the portability of source code sits the challenge of portability of executable programs.
+
+TBD
 
 <br/>
 
