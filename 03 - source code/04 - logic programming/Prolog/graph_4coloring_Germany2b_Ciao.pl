@@ -4,10 +4,10 @@
 %
 %  test on Ciao Prolog Ciao 1.25.0 [LINUXx86_64], 2025-11-06: OK!!!
 %
-%  build program in Ubuntu 24 LTS: $ ciao comp ./graph_4coloring_Germany2b_Ciao.pl
+%  build program in Ubuntu 24 LTS: $ ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl  # -S for standalone executable
 %
 %  run program in Ubuntu 24 LTS:   $ ./graph_4coloring_Germany2b_Ciao
-%                                  $ time ./graph_4coloring_Germany2b_Ciao => real	0m0,751s <<<!!
+%                                  $ time ./graph_4coloring_Germany2b_Ciao => real	0m0,770s <<<!!
 %
 %
 %
