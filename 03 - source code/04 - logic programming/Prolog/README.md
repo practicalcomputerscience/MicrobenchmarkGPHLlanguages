@@ -1,4 +1,4 @@
-2025-11-06: work in progress
+2025-11-06: work in progress: check remaining TBD's
 
 # Prolog
 
@@ -16,8 +16,8 @@ Table of contents:
 - [GNU Prolog](#gnu-prolog)
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
-- [Portability of executables](#portability-of-executables)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
+- [The Mercury benchmark program](#the-mercury-benchmark-program)
 
 <br/>
 
@@ -80,9 +80,9 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
-However, this didn't make a standalone executable program. Building one is bit more complicated than in SWI Prolog.
+However, this didn't make a standalone executable program. Building one is more complicated than in SWI Prolog.
 
-This web page gives a hint how to accomplish it: https://www.swi-prolog.org/FAQ/UnixExe.md
+This web page gives a hint how to accomplish it: https://www.swi-prolog.org/FAQ/UnixExe.md (*)
 
 I slightly changed the original program, now named [graph_4coloring_Germany2c_SWI.pl](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2c_SWI.pl), where I changed goal _main_ into _graph_4coloring_Germany2c_SWI_, the later with no more initialization:
 
@@ -95,7 +95,7 @@ graph_4coloring_Germany2c_SWI :- ...
 Then I managed with this command:
 
 ```
-$ swipl -o graph_4coloring_Germany2c_SWI -g graph_4coloring_Germany2c_SWI -c graph_4coloring_Germany2c_SWI.pl
+$ swipl -o graph_4coloring_Germany2c_SWI -g graph_4coloring_Germany2c_SWI -c graph_4coloring_Germany2c_SWI.pl --stand_alone=true
 Warning: /usr/lib/swi-prolog/library/ansi_term.pl:45: 
 Warning:   library(uri): No such file
 % Disabled autoloading (loaded 32 files)
@@ -109,6 +109,36 @@ number N of different solutions = 191808
 ...
 Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
 $ 
+```
+
+However, program _graph_4coloring_Germany2c_SWI_ doesn't run on a foreign Linux system without needed shared libraries (*): 
+
+> Otherwise, you must make the shared objects available and findable to make the program usable on another computer.
+
+Here, I look at the **target system** to see what is missing (and hope that it's not too much):
+
+```
+> ldd ./graph_4coloring_Germany2c_SWI
+        linux-vdso.so.1 (0x00007fefeb954000)
+        libswipl.so.9 => not found
+        libc.so.6 => /lib64/libc.so.6 (0x00007fefeb73a000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007fefeb956000)
+>
+```
+
+..and copy file _libswipl.so.9_ from the source system to the target system, into a directory where it can be found automatically, like this for example: _sudo cp libswipl.so.9 /lib64_
+
+This should work now:
+
+```
+> ./graph_4coloring_Germany2c_SWI
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+>
 ```
 
 Both dialects, GNU and SWI, came to the same number of different solutions, that is 191808, and also show the same 1st solution and same last solution.
@@ -127,7 +157,7 @@ As one may have noticed, the default character for comments is _%_ here, not _/*
 Building a standalone executable is easy in Ciao Prolog:
 
 ```
-$ ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl  # -S_ switch for building a standalone executable
+$ ciao comp -S ./graph_4coloring_Germany2b_Ciao.pl  # -S switch for building a standalone executable
 $ ./graph_4coloring_Germany2b_Ciao
 number N of different solutions = 191808
 
@@ -138,23 +168,40 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
-While the 1st solution is the same as with GNU and SWI, the last solution is different. At least, we can say that Ciao Prolog obviously makes things a little bit differently.
+While the 1st solution is the same as with GNU and SWI, the last solution is different. Ciao Prolog obviously computes things a little bit differently.
 
 <br/>
 
 All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
 
-I don't have a clear favorite Prolog dialect; all three have their cons, but also their pros. Choosing the right dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
+I don't have a clear favorite dialect; all three have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
 
 <br/>
 
-## Portability of executables
-
-Right next to the portability of source code sits the challenge of portability of standalone executables.
-
-TBD
-
 ## Speed in the Land of Prolog's
+
+Now that true portability has been checked for:
+
+- _graph_4coloring_Germany2a_GNU_
+- _graph_4coloring_Germany2b_Ciao_
+- _graph_4coloring_Germany2c_SWI_ + _libswipl.so.9_
+
+..let the benchmarking game begin with usual command _$ sudo perf stat -r 20 ./graph_4coloring_Germany2..._, again with the best run out of 3:
+
+Prolog dialect | best run out of 3
+--- | ---
+Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
+SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
+
+However, there was problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. This can be checked by running [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2): _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_, which works also fine here.
+
+Prolog dialect | best run out of 3
+--- | ---
+GNU | mean = 1597 [milliseconds]
+
+So, about 690 milliseconds is the bechmark time a logically equivalent Mercury program must beat!
+
+## The Mercury benchmark program
 
 TBD
 
