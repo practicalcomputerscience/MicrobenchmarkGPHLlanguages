@@ -27,9 +27,7 @@ Table of contents:
 
 Here I use a different microbenchmark program, albeit one, which I think is much more typical for problems of logic programming than my accidental microbenchmark program.
 
-In 2017, I successfully tested this [Prolog program](), which I implemented back then in GNU Prolog version 1.3.0. It's this source code from 2013 at chapter "The Graph Coloring Problem":
-
-[Try logic programming! A gentle introduction to Prolog](https://web.archive.org/web/20170106042155/https://bernardopires.com/2013/10/try-logic-programming-a-gentle-introduction-to-prolog/)
+In 2017, I successfully tested this [Prolog program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), which I implemented back then in GNU Prolog version 1.3.0. It's this source code from 2013 at chapter "The Graph Coloring Problem": [Try logic programming! A gentle introduction to Prolog](https://web.archive.org/web/20170106042155/https://bernardopires.com/2013/10/try-logic-programming-a-gentle-introduction-to-prolog/)
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/map_coloring_germany-636x310.png)
 
@@ -80,7 +78,7 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
-However, this didn't make a standalone executable program. Building one is more complicated than in SWI Prolog.
+However, this didn't make a standalone executable program. Building one is more complicated than in GNU Prolog.
 
 This web page gives a hint how to accomplish it: https://www.swi-prolog.org/FAQ/UnixExe.md (*)
 
@@ -150,7 +148,7 @@ To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
 
 Again, I had to slightly change the original source code to make the program working in this [dialect](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2b_Ciao.pl).
 
-What's unkown in Ciao, is predicate _nth0()_, which I changed to _nth()_, which I made available with clause: _:- use_module(library(lists))._
+What's unkown in Ciao, is predicate _nth0()_, which I changed to _nth()_, which I made available with clause: _:- use_module(library(lists))._ See from here at [core/lib/lists.pl](https://github.com/ciao-lang/ciao/blob/fdff410cf2b7f2b85baff97485a2db5522d785f3/core/lib/lists.pl)
 
 As one may have noticed, the default character for comments is _%_ here, not _/* ... */_. Apparently, comment blocks in Ciao Prolog are not possible.
 
@@ -193,13 +191,13 @@ Prolog dialect | best run out of 3
 Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
 SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
 
-However, there was problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. This can be checked by running [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2): _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_, which works also fine here.
+However, there was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. This can be checked by running [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2): _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_, which works also fine here:
 
 Prolog dialect | best run out of 3
 --- | ---
 GNU | mean = 1597 [milliseconds]
 
-So, about 690 milliseconds is the bechmark time a logically equivalent Mercury program must beat!
+So, about 690 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
 ## The Mercury benchmark program
 
