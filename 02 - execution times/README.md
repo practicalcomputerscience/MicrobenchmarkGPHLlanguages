@@ -25,7 +25,13 @@ $
 
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-So far, OCaml is the fastest [functional programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages), and [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) the fastest interpreted language.
+So far:
+
+- OCaml is the fastest [functional programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages),
+- [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) the fastest interpreted language, and
+- [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#c) the fastest language on a virtual machine.
+
+<br/>
 
 ---
 
@@ -39,6 +45,8 @@ https://www.graalvm.org/
 
 See more details at page [Graal Virtual Machine (GraalVM)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm)
 
+<br/>
+
 ---
 
 ### Tested Scheme dialects
@@ -47,11 +55,15 @@ See more details at page [Graal Virtual Machine (GraalVM)](https://github.com/pr
 
 See more details at page [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme)
 
+<br/>
+
 ---
 
 ### Programming languages for virtual machines
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20VM.png)
+
+<br/>
 
 ---
 
