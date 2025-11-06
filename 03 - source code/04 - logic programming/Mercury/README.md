@@ -4,16 +4,22 @@
 
 https://mercurylang.org/index.html
 
-The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit in my opinion and should be way more popular!
+<br/>
 
-Mercury feels like "Prolog on speed". (*)
+In my opinion:
+
+> The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit and should be way more popular!
+> 
+> Mercury feels like "Prolog on speed". (*)
 
 TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
+
+<br/>
 
 > Mercury is based on the paradigm of **purely declarative programming**...
 > After stripping away the declarations of a Mercury program, the syntax of the remaining part of the program is mostly compatible with **Prolog** syntax.
 
-from:
+My emphasis in bold; sources:
 
 - https://mercurylang.org/information/doc-latest/mercury_reference_manual/Introduction.html#Introduction
 - https://mercurylang.org/about.html
