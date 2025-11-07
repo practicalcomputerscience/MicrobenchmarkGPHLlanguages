@@ -125,7 +125,7 @@ $
 
 ## How I discovered Mercury
 
-Here's how I tumbled over the Mercury programming language accidentally:
+This is how I tumbled over the Mercury programming language accidentally:
 
 While working on my [Functional languages overview](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages), I read about the **Actor model** for concurrent computing: PDF from 2023: [A Formal specification For Half a Century of Actor Systems](https://soft.vub.ac.be/Publications/2024/vub-tr-soft-24-01.pdf).
 
@@ -143,7 +143,7 @@ I wondered what has happened to the PLASMA (with capital letters) programming la
            (n * (factorial <= (n - 1)))))))
 ```
 
-I found this webpage: https://plasmalang.org/roadmap.html
+..and found this webpage: https://plasmalang.org/roadmap.html
 
 However, that functional language, named _Plasma_, apparently has nothing do (directly) with the old PLASMA system.
 
