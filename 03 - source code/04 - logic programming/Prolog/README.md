@@ -2,7 +2,7 @@
 
 # Prolog
 
-This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs exist for one reason:
+This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs started to exist for one reason:
 
 > How fast is a (compiled) program in the [Mercury language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) compared to a (compiled) version in its precursor language Prolog?
 
