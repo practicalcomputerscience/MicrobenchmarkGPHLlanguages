@@ -3,6 +3,9 @@
 - LP = Logic Programming
 - CLP = Constraint Logic Programming
 - CHR = Constraint Handling Rules
+- SLD = Selective Linear Definite (https://en.wikipedia.org/wiki/SLD_resolution): "logic programming, as a procedural interpretation of SLD resolution"; see at: [Absys: the first logic programming language —A retrospective and a commentary](https://www.sciencedirect.com/science/article/pii/0743106690900309?via%3Dihub)
+
+<br/>
 
 Here is a good overview paper on Prolog, "arguably the most prominent language under the logic programming (LP) umbrella", and Prolog-like systems, published in 2022 at the anniversary of Prolog: [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD).
 
