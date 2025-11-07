@@ -21,7 +21,7 @@
 - &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
 - **Julia** as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
-- &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put it onto my list for too slow languages, to my regret.)
+- &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
 
@@ -38,7 +38,8 @@
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
-- **Logic programming**: Prolog: https://www.iso.org/standard/21413.html
+- **Logic programming**:
+- &nbsp;&nbsp;Prolog: 2025-11-07: I've already said more about [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) than I originally intended, including implementations of a classical logic programming problem in three Prolog dialects! I think that any code additions here would not bring more value.
 - Haskell (I'm not sure if I'll do it)
 
 <br/>
