@@ -16,6 +16,7 @@ Table of contents:
 - [GNU Prolog](#gnu-prolog)
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
+- [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
 
@@ -150,8 +151,6 @@ Again, I had to slightly change the original source code to make the program wor
 
 What's unkown in Ciao, is predicate _nth0()_, which I changed to _nth()_, which I made available with clause: _:- use_module(library(lists))._ See from here at [core/lib/lists.pl](https://github.com/ciao-lang/ciao/blob/fdff410cf2b7f2b85baff97485a2db5522d785f3/core/lib/lists.pl)
 
-As one may have noticed, the default character for comments is _%_ here, not _/* ... */_. Apparently, comment blocks in Ciao Prolog are not possible.
-
 Building a standalone executable is easy in Ciao Prolog:
 
 ```
@@ -170,9 +169,15 @@ While the 1st solution is the same as with GNU and SWI, the last solution is dif
 
 <br/>
 
+### ISO standard, comments, etc.
+
 All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
 
 I don't have a clear favorite dialect; all three have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
+
+On commenting in Prolog source code: generally, % should work as a remaining line comment; /* ... */ should work as a block comment, potentially comprising more than one line. The official examples at the [Ciao playground](https://ciao-lang.org/playground/) _may_ give the impression that only character % works, but this is false, since both comment symbols have already been around the 1980ies, as a view into old documents can reveal: TBD
+
+It's maybe worth to note that Prolog was not the first logic programming languages, but Absys, which first appeared in 1967: https://en.wikipedia.org/wiki/Absys, [Absys: the first logic programming language —A retrospective and a commentary](https://www.sciencedirect.com/science/article/pii/0743106690900309?via%3Dihub)
 
 <br/>
 
