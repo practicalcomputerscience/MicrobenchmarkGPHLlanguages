@@ -17,6 +17,7 @@ Table of contents:
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
 - [YAP Prolog](#yap-prolog)
+- [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -267,7 +268,7 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 <br/>
 
-## ECLiPSe -- Constraint Logic Programming System
+## ECLiPSe - Constraint Logic Programming System
 
 I also tested ECLiPSe (https://eclipseclp.org/index.html), whose "aim is to serve as a platform for integrating various Logic Programming extension" (see from User Manual at: https://eclipseclp.org/doc/).
 
