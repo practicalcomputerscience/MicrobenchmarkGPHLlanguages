@@ -272,24 +272,28 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 I also tested ECLiPSe (https://eclipseclp.org/index.html), whose "aim is to serve as a platform for integrating various Logic Programming extension" (see from User Manual at: https://eclipseclp.org/doc/).
 
-Here's a quick installation guide for Ubuntu 24 LTS: download _eclipse_basic.tgz_ from: https://eclipseclp.org/Distribution/Builds/7.1_13/x86_64_linux/ and
-unzip it to (default) directory: _./eclipse_basic_
+Here's a quick installation guide for Ubuntu 24 LTS: I downloaded latest _eclipse_basic.tgz_ (as of 2025-11-08) from: https://eclipseclp.org/Distribution/Dev/7.2_4/x86_64_linux/, renamed it for some versioning to _eclipse_basic_7.2_4.tgz_ and unzipped it to (default) directory: _./eclipse_basic_7.2_4_
 
 Then change into this directory and do this:
 
 ```
-$ sudo ./RUNME  # here you are guided interactively through the installation process; you can skip TCL/TK and Java installations for basic functionality; as root seems to be essential in a "standard" Ubuntu installation
+$ sudo ./RUNME  # here you are guided interactively through the installation process;
+# you can skip TCL/TK and Java installations for basic functionality; as root seems to be essential in a "standard" Ubuntu installation
 ...
 $
 ```
 
-Add to your PATH in the _.bashrc_ file for example: _PATH=$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic/bin/x86_64_linux_ and activate it: _$ source ~/.bashrc_
+Add to your PATH in the _.bashrc_ file for example: _PATH=$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic_7.2_4/bin/x86_64_linux_ and activate it: _$ source ~/.bashrc_
 
 You may test it with starting its command-line interface: _$ eclipse_
 
 The _RUNME_ script can be run repeatedly, if things went wrong.
 
-For using ECLiPSe's Java interface, the path to your JRE (Java Runtime Environment) directory can be asked like this: _$ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'_
+For using ECLiPSe's Java interface, the path to your JRE (Java Runtime Environment) directory can be asked like this:
+
+```
+$ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'
+```
 
 The TCL/TK GUI can be installed and started like this, but first better make sure that _wish_ is visible, and not shadowed:
 
@@ -338,7 +342,7 @@ $
 
 It's 1st and last solutions are the same as Ciao's 1st and last solutions for example, if you take away the space characters from ECLiPSe's output.
 
-Building a standalone executable is easy in ECLiPSe: TBD
+Building a standalone executable is apparently not supported in ECLiPSe.
 
 And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
