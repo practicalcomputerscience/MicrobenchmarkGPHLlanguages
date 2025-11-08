@@ -327,9 +327,9 @@ sys	0m0,022s
 $
 ```
 
-..but again, not without changes again, like _local_ initialization and a _halt._ without an argument.
+..but again, not without changes, like _local_ initialization and a _halt._ without an argument.
 
-Adaption of the coloring of Germany program, including a custom predicate for _nth()_ or _nth0()_, got the [ECLiPSe program version](./) also running:
+Adaption of the coloring of Germany program, including a custom predicate for _nth()_ or _nth0()_, got the [ECLiPSe program version](./graph_4coloring_Germany2d_ECLiPSe.pl) also running:
 
 ```
 $ eclipse -f ./graph_4coloring_Germany2d_ECLiPSe.pl 
@@ -372,13 +372,13 @@ GNU | mean = 1597 [milliseconds]
 SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
 Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
 YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
-ECLiPSe | TBD
+ECLiPSe | mean = 574 [milliseconds]
 
-So, about 690 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
+So, about 570 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
 <br/>
 
-There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_
+There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_. I also took it for the ECLiPSe program.
 
 <br/>
 
