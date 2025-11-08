@@ -272,9 +272,9 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 I also tested ECLiPSe (https://eclipseclp.org/index.html), whose "aim is to serve as a platform for integrating various Logic Programming extension" (see from User Manual at: https://eclipseclp.org/doc/).
 
-Here's a quick installation guide for Ubuntu 24 LTS: I downloaded latest _eclipse_basic.tgz_ (as of 2025-11-08) from: https://eclipseclp.org/Distribution/Dev/7.2_4/x86_64_linux/, renamed it for some versioning to _eclipse_basic_7.2_4.tgz_ and unzipped it to (default) directory: _./eclipse_basic_7.2_4_
+Here's a quick installation guide for Ubuntu 24 LTS: I downloaded latest _eclipse_basic.tgz_ (as of 2025-11-08) from: https://eclipseclp.org/Distribution/Dev/7.2_4/x86_64_linux/, renamed it for some versioning to _eclipse_basic_7.2_4.tgz_ and unzipped it to directory: _./eclipse_basic_7.2_4_
 
-Then change into this directory and do this:
+Now change into that directory and do this:
 
 ```
 $ sudo ./RUNME  # here you are guided interactively through the installation process;
@@ -285,7 +285,7 @@ $
 
 Add to your PATH in the _.bashrc_ file for example: _PATH=$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic_7.2_4/bin/x86_64_linux_ and activate it: _$ source ~/.bashrc_
 
-You may test it with starting its command-line interface: _$ eclipse_
+You may test ECLiPSe with starting its command-line interface: _$ eclipse_
 
 The _RUNME_ script can be run repeatedly, if things went wrong.
 
@@ -293,6 +293,8 @@ For using ECLiPSe's Java interface, the path to your JRE (Java Runtime Environme
 
 ```
 $ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'
+    java.home = /usr/lib/jvm/java-21-openjdk-amd64
+$ 
 ```
 
 The TCL/TK GUI can be installed and started like this, but first better make sure that _wish_ is visible, and not shadowed:
