@@ -176,7 +176,7 @@ $ ./graph_4coloring_Germany2b_Ciao
 number N of different solutions = 191808
 
                SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
-1st solution = 
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
 ...
 Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,green,yellow,red
 $
