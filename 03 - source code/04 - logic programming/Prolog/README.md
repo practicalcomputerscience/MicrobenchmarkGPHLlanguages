@@ -43,13 +43,16 @@ Here's a list of [Prolog implementations](https://en.wikipedia.org/wiki/Comparis
 
 ## GNU Prolog
 
-However, with GNU Prolog I immediately ran into a problem: 
+With GNU Prolog I immediately ran into a problem: 
 
-- I was not able to compile and install later and latest versions of GNU Prolog: http://gprolog.org/#download!
+- I was not able to compile and install later (v.1.5.0) and latest versions (v.1.6.0) of GNU Prolog:
 
-I tried with three different Linux versions (openSUSE 16 Leap, Oracle Linux 10, Ubuntu 24 LTS) in vain. Another curious phenomenon was that all distributions showed different error messages.
+- http://gprolog.org/#download
+- https://github.com/didoudiaz/gprolog
 
-In the end I installed an older GNU Prolog version with the Ubuntu package manager, something which worked:
+I tried with three different Linux versions (openSUSE 16 Leap, Oracle Linux 10, Ubuntu 24 LTS) in vain. Another curious phenomenon was that all distributions showed (slightly) different error messages.
+
+Finally, I just installed an older GNU Prolog version with the [Ubuntu package manager](https://installati.one/install-gprolog-ubuntu-22-04/), something which worked:
 
 ```
 $ sudo apt-get update
@@ -60,15 +63,13 @@ Prolog compiler (GNU Prolog) 1.4.5
 $
 ```
 
+Obviously, I'm not the only one with GNU Prolog problems: https://github.com/didoudiaz/gprolog/issues/82
+
 <br/>
 
 Building a standalone executable is very easy in GNU Prolog: _$ gplc ./graph_4coloring_Germany2a.pl_
 
-But before running program [graph_4coloring_Germany2a](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), make sure to have enough space on the stack. The usual 32kB is too small for this program.
-
-So, as one way, you could add in your _.bashrc_ file this global environment variable: _export GLOBALSZ=524288_
-
-..where 524288 bytes is just my proposal, which works in my system. Activate: _$ source ./.bashrc_ and check the new environment variable:
+But before running program [graph_4coloring_Germany2a](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), make sure to have enough space on the stack. The usual 32kB is too small for this program. So, as one way, you could add in your _.bashrc_ file this global environment variable: _export GLOBALSZ=524288_, where 524288 bytes is just my proposal, which works in my system. Activate: _$ source ./.bashrc_ and check the new environment variable:
 
 ```
 $ printenv GLOBALSZ
@@ -257,9 +258,9 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 ### ISO standard, comments, etc.
 
-The first three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
+GNU, SWI and Ciao Prolog claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
 
-I don't have a clear favorite dialect from the first three dialects; all three have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
+I don't have a clear favorite dialect; all I tested so far have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
 
 On commenting in Prolog source code: generally, % should work as a remaining line comment; /* ... */ should work as a block comment, potentially comprising more than one line. The official examples at the [Ciao playground](https://ciao-lang.org/playground/) _may_ give the impression that only character % works, but this is false, since both comment symbols have already been around the 1980ies, as a view into old documents can reveal: [A Prolog Benchmark Suite for Aquarius](https://apps.dtic.mil/sti/tr/pdf/ADA211444.pdf)
 
