@@ -202,7 +202,7 @@ $ ./yap  # this is a preliminary test
 YAP 8.0.1-GITDIR-N (compiled  2025-11-08T00:11:56@...)
 database loaded from ~/scripts/Prolog/YAP Prolog/yap-master/Build/startup.yss
 
-?- halt.  # type halt. to stop the REPL
+?- halt.  # type halt. to stop the ommand-line interface
 YAP execution halted.
 $ sudo make install
 ```
@@ -258,6 +258,54 @@ from: [Chasing the Speed of SWI-Prolog: Exploring Optimizations and Hidden Perfo
 SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prolog.org/pldoc/man?section=jitindex):
 
 > YAP provides full JIT indexing, including indexing arguments of compound terms. YAP's indexing has been the inspiration for enhancing SWI-Prolog's indexing capabilities.
+
+## ECLiPSe -- Constraint Logic Programming System
+
+I also tested ECLiPSe (https://eclipseclp.org/index.html), whose "aim is to serve as a platform for integrating various Logic Programming extension" (see from User Manual at: https://eclipseclp.org/doc/).
+
+Here's a quick installation guide for Ubuntu 24 LTS: download _eclipse_basic.tgz_ from: https://eclipseclp.org/Distribution/Builds/7.1_13/x86_64_linux/ and
+unzip it to (default) directory: _./eclipse_basic_
+
+Then change into this directory and do this:
+
+```
+$ sudo ./RUNME  # here you are guided interactively through the installation process; you can skip TCL/TK and Java installations for basic functionality; as root seems to be essential in a "standard" Ubuntu installation
+...
+$
+```
+
+Add to your PATH in the _.bashrc_ file for example: _PATH=$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic/bin/x86_64_linux_ and activate it: _$ source ~/.bashrc_
+
+You may test it with starting its command-line interface: _$ eclipse_
+
+The _RUNME_ script can be run repeatedly, if things went wrong.
+
+For using ECLiPSe's Java interface, the path to your JRE (Java Runtime Environment) directory can be asked like this: _$ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'_
+
+The TCL/TK GUI can be installed and started like this, but first better make sure that _wish_ is visible, and not shadowed:
+
+```
+$ whereis wish
+wish: /usr/bin/wish /usr/share/man/man1/wish.1.gz
+$ sudo apt install wish  # you may do this if wish cannot be found; wish is essential for ECLiPSe's Tcl scripts
+$ sudo apt install tcl  # test with: $ tclsh
+$ sudo apt install tk
+$ tkeclipse
+```
+
+Hopefully, you get this window popping up now:
+
+![plot](./tkeclipse.png)
+
+
+
+
+
+
+
+
+
+TBD
 
 <br/>
 
