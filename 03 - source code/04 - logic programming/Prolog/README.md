@@ -16,6 +16,7 @@ Table of contents:
 - [GNU Prolog](#gnu-prolog)
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
+- [YAP Prolog](#yap-prolog)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -142,10 +143,9 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 
 Both dialects, GNU and SWI, came to the same number of different solutions, that is 191808, and also show the same 1st solution and same last solution.
 
-
 ## Ciao Prolog
 
-To have a third opinion, I tested Ciao Prolog: https://ciao-lang.org/
+I also tested Ciao Prolog: https://ciao-lang.org/
 
 Again, I had to slightly change the original source code to make the program working in this [dialect](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2b_Ciao.pl).
 
@@ -167,15 +167,80 @@ $
 
 While the 1st solution is the same as with GNU and SWI, the last solution is different. Ciao Prolog obviously computes things a little bit differently.
 
+## YAP Prolog
+
+I also tested YAP Prolog: https://www.dcc.fc.up.pt/~vsc/yap/index.html
+
+Here's a quick installation guide for Ubuntu 24 LTS:
+
+Make a zip file from related GitHub repository: https://github.com/vscosta/yap, and unzip it to (default) directory: _./yap-master_
+
+Then change into this directory and do this:
+
+```
+$ mkdir Build
+$ cd Build
+$ sudo apt install libreadline-dev  # for the readline() library: this is essential to have!
+$ cmake ../
+$ make
+$ ./yap  # this is a preliminary test
+YAP 8.0.1-GITDIR-N (compiled  2025-11-08T00:11:56@...)
+database loaded from ~/scripts/Prolog/YAP Prolog/yap-master/Build/startup.yss
+
+?- halt.  # type halt. to stop the REPL
+YAP execution halted.
+$ sudo make install
+```
+
+Now run a little test program, here I take David Warren's [original quicksort benchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/quicksort_benchmark.pl), which gives two warnings in modern Prolog versions, but runs OK otherwise:
+
+```
+$ time yap -L ./quicksort_benchmark.pl
+~/scripts/Prolog/YAP Prolog/quicksort_benchmark.pl:20:17: warning, singleton variable I in user:main/0.
+
+~/scripts/Prolog/YAP Prolog/quicksort_benchmark.pl:25:11: warning, singleton variable H in user:range/3.
+
+[27,74,17,33,94,18,46,83,65,2,32,53,28,85,99,47,28,82,6,11,55,29,39,81,90,37,10,0,66,51,7,21,85,27,31,63,75,4,95,99,11,28,61,74,18,92,40,53,59,8]
+[0,2,4,6,7,8,10,11,11,17,18,18,21,27,27,28,28,28,29,31,32,33,37,39,40,46,47,51,53,53,55,59,61,63,65,66,74,74,75,81,82,83,85,85,90,92,94,95,99,99]
+
+real	0m0,147s
+user	0m0,144s
+sys	    0m0,003s
+$ 
+```
+
+This microbenchmark program runs more than double as fast in YAP Prolog as in SWI Prolog: ~150 milliseconds versus ~360 milliseconds wall clock time!
+
+Practically, the Ciao version of the program of interest, that is _graph_4coloring_Germany2b_Ciao.pl_, runs in YAP Prolog without any problems, however this time slower than with SWI Prolog:
+
+```
+$ time yap -L ./graph_4coloring_Germany2b_Ciao.pl 
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,green,yellow,red
+
+real	0m0,946s
+user	0m0,913s
+sys	    0m0,033s
+$
+```
+
+The last solution is the same as with Ciao Prolog.
+
+Building a standalone executable is apparently not supported in YAP Prolog.
+
 <br/>
 
 ### ISO standard, comments, etc.
 
-All three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
+The first three dialects claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), including Ciao ("supporting the ISO-Prolog standard"), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
 
-I don't have a clear favorite dialect; all three have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
+I don't have a clear favorite dialect from the first three dialects; all three have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
 
-On commenting in Prolog source code: generally, % should work as a remaining line comment; /* ... */ should work as a block comment, potentially comprising more than one line. The official examples at the [Ciao playground](https://ciao-lang.org/playground/) _may_ give the impression that only character % works, but this is false, since both comment symbols have already been around the 1980ies, as a view into old documents can reveal: TBD
+On commenting in Prolog source code: generally, % should work as a remaining line comment; /* ... */ should work as a block comment, potentially comprising more than one line. The official examples at the [Ciao playground](https://ciao-lang.org/playground/) _may_ give the impression that only character % works, but this is false, since both comment symbols have already been around the 1980ies, as a view into old documents can reveal: [A Prolog Benchmark Suite for Aquarius](https://apps.dtic.mil/sti/tr/pdf/ADA211444.pdf)
 
 It's maybe worth to note that Prolog was not the first logic programming languages, but Absys, which first appeared in 1967: https://en.wikipedia.org/wiki/Absys, [Absys: the first logic programming language —A retrospective and a commentary](https://www.sciencedirect.com/science/article/pii/0743106690900309?via%3Dihub)
 
@@ -183,26 +248,22 @@ It's maybe worth to note that Prolog was not the first logic programming languag
 
 ## Speed in the Land of Prolog's
 
-Now that true portability has been checked for:
-
-- _graph_4coloring_Germany2a_GNU_
-- _graph_4coloring_Germany2b_Ciao_
-- _graph_4coloring_Germany2c_SWI_ + _libswipl.so.9_
-
-..let the benchmarking game begin with usual command _$ sudo perf stat -r 20 ./graph_4coloring_Germany2..._, again with the best run out of 3:
-
-Prolog dialect | best run out of 3
---- | ---
-Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
-SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
-
-However, there was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. This can be checked by running [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2): _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_, which works also fine here:
+Let the benchmarking game begin with usual command _$ sudo perf stat -r 20 ./graph_4coloring_Germany2..._, again with the best run out of 3:
 
 Prolog dialect | best run out of 3
 --- | ---
 GNU | mean = 1597 [milliseconds]
+SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
+Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
+YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
 
 So, about 690 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
+
+<br/>
+
+There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. This can be checked by running [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2): _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_.
+
+<br/>
 
 ## The Mercury benchmark program
 
