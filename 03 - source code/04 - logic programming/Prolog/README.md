@@ -265,6 +265,8 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 > YAP provides full JIT indexing, including indexing arguments of compound terms. YAP's indexing has been the inspiration for enhancing SWI-Prolog's indexing capabilities.
 
+<br/>
+
 ## ECLiPSe -- Constraint Logic Programming System
 
 I also tested ECLiPSe (https://eclipseclp.org/index.html), whose "aim is to serve as a platform for integrating various Logic Programming extension" (see from User Manual at: https://eclipseclp.org/doc/).
@@ -320,7 +322,7 @@ $
 
 ..but again, not without changes again, like _local_ initialization and a _halt._ without an argument.
 
-Adaption of the coloring of Germany program, including a custom predicate for _nth()_ or _nth0()_, got the [ECLiPSe program version](TBD) also running:
+Adaption of the coloring of Germany program, including a custom predicate for _nth()_ or _nth0()_, got the [ECLiPSe program version](./) also running:
 
 ```
 $ eclipse -f ./graph_4coloring_Germany2d_ECLiPSe.pl 
@@ -333,7 +335,9 @@ Last solution = yellow, green, green, yellow, blue, green, blue, yellow, blue, y
 $
 ```
 
-It's 1st and last solutions are the same as YAP's 1st and last solutions, if you take away the space characters from the output.
+It's 1st and last solutions are the same as Ciao's 1st and last solutions for example, if you take away the space characters from ECLiPSe's output.
+
+Building a standalone executable is easy in ECLiPSe: TBD
 
 And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
@@ -361,6 +365,7 @@ GNU | mean = 1597 [milliseconds]
 SWI | 0,69330 +- 0,00175 seconds time elapsed  ( +-  0,25% )
 Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
 YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
+ECLiPSe | TBD
 
 So, about 690 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
