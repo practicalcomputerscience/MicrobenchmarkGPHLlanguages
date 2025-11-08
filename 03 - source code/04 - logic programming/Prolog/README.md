@@ -37,11 +37,7 @@ In 2017, I successfully tested this [Prolog program](https://github.com/practica
 
 However, Prolog shows the same phenomenon than Scheme: what dialect to use?
 
-After some survey of modern [Prolog implementations](https://en.wikipedia.org/wiki/Comparison_of_Prolog_implementations), I came down to this short list of well maintained Prolog dialects:
-
-- GNU Prolog: http://gprolog.org/
-- SWI Prolog: https://www.swi-prolog.org/
-- Ciao Prolog: https://ciao-lang.org/
+Here's a list of [Prolog implementations](https://en.wikipedia.org/wiki/Comparison_of_Prolog_implementations).
 
 <br/>
 
@@ -49,9 +45,24 @@ After some survey of modern [Prolog implementations](https://en.wikipedia.org/wi
 
 However, with GNU Prolog I immediately ran into a problem: 
 
-TBD
+- I was not able to compile and install later and latest versions of GNU Prolog: http://gprolog.org/#download!
 
-Building a standalone executable is very easy in GNU Prolog and a big advantage from my point of view: _$ gplc ./graph_4coloring_Germany2a.pl_
+I tried with three different Linux versions (openSUSE 16 Leap, Oracle Linux 10, Ubuntu 24 LTS) in vain. Another curious phenomenon was that all distributions showed different error messages.
+
+In the end I installed an older GNU Prolog version with the Ubuntu package manager, something which worked:
+
+```
+$ sudo apt-get update
+$ sudo apt-get -y install gprolog
+$ gplc --version  # test the compiler
+Prolog compiler (GNU Prolog) 1.4.5
+...
+$
+```
+
+<br/>
+
+Building a standalone executable is very easy in GNU Prolog: _$ gplc ./graph_4coloring_Germany2a.pl_
 
 But before running program [graph_4coloring_Germany2a](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), make sure to have enough space on the stack. The usual 32kB is too small for this program.
 
@@ -171,9 +182,7 @@ While the 1st solution is the same as with GNU and SWI, the last solution is dif
 
 I also tested YAP Prolog: https://www.dcc.fc.up.pt/~vsc/yap/index.html
 
-Here's a quick installation guide for Ubuntu 24 LTS:
-
-Make a zip file from related GitHub repository: https://github.com/vscosta/yap, and unzip it to (default) directory: _./yap-master_
+Here's a quick installation guide for Ubuntu 24 LTS: make a zip file from related GitHub repository: https://github.com/vscosta/yap, and unzip it to (default) directory: _./yap-master_
 
 Then change into this directory and do this:
 
@@ -211,7 +220,7 @@ $
 
 This microbenchmark program runs more than double as fast in YAP Prolog as in SWI Prolog: ~150 milliseconds versus ~360 milliseconds wall clock time!
 
-Practically, the Ciao version of the program of interest, that is _graph_4coloring_Germany2b_Ciao.pl_, runs in YAP Prolog without any problems, however this time slower than with SWI Prolog:
+The Ciao version of the program of interest, that is _graph_4coloring_Germany2b_Ciao.pl_, runs in YAP Prolog without any problems, however this time slower than with SWI Prolog:
 
 ```
 $ time yap -L ./graph_4coloring_Germany2b_Ciao.pl 
@@ -231,6 +240,18 @@ $
 The last solution is the same as with Ciao Prolog.
 
 Building a standalone executable is apparently not supported in YAP Prolog.
+
+<br/>
+
+It may be no coincidence that **SWI Prolog** runs relatively faster at a problem with a higher number of elements (or iterations) than a lower number of elements (or iterations). I'm apparently not the only one to make this observation:
+
+> While testing SWI-Prolog’s performance, I noticed something interesting. When repeatedly running qsort, the speed isn’t particularly high for about 1,000 iterations, but at 10,000 iterations, it reaches 20 MLIPS. Why is this?
+
+from: [Chasing the Speed of SWI-Prolog: Exploring Optimizations and Hidden Performance Tricks](https://medium.com/@kenichisasagawa/chasing-the-speed-of-swi-prolog-exploring-optimizations-and-hidden-performance-tricks-152f91fb30cb), Kenichi Sasagawa, 2025-02-22
+
+SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prolog.org/pldoc/man?section=jitindex):
+
+> YAP provides full JIT indexing, including indexing arguments of compound terms. YAP's indexing has been the inspiration for enhancing SWI-Prolog's indexing capabilities.
 
 <br/>
 
