@@ -297,15 +297,39 @@ Hopefully, you get this window popping up now:
 
 ![plot](./tkeclipse.png)
 
+The [Quicksort_benchmark script](./quicksort_benchmark_eclipse.pl) runs OK:
 
+```
+$ time eclipse -f ./quicksort_benchmark_eclipse.pl
+File quicksort_benchmark_eclipse.pl, line 26: Singleton variable I
+File quicksort_benchmark_eclipse.pl, line 31: Singleton variable H
+[27, 74, 17, 33, 94, 18, 46, 83, 65, 2, 32, 53, 28, 85, 99, 47, 28, 82, 6, ...]
+[0, 2, 4, 6, 7, 8, 10, 11, 11, 17, 18, 18, 21, 27, 27, 28, 28, 28, 29, ...]
 
+real	0m0,175s
+user	0m0,152s
+sys	0m0,022s
+$
+```
 
+..but again, not without changes again, like _local_ initialization and a _halt._ without an argument.
 
+Adaption of the coloring of Germany program, including a custom predicate for _nth()_ or _nth0()_, got the [ECLiPSe program version](TBD) also running:
 
+```
+$ eclipse -f ./graph_4coloring_Germany2d_ECLiPSe.pl 
+number N of different solutions = 191808
 
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red, blue, blue, red, green, blue, green, red, green, red, blue, red, green, red, red, yellow
+...
+Last solution = yellow, green, green, yellow, blue, green, blue, yellow, blue, yellow, green, yellow, blue, green, yellow, red
+$
+```
 
+It's 1st and last solutions are the same as YAP's 1st and last solutions, if you take away the space characters from the output.
 
-TBD
+And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
 <br/>
 
