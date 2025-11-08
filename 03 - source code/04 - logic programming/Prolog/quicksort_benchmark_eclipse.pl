@@ -8,7 +8,7 @@ sources:
   https://www.cs.cmu.edu/Groups/AI/lang/prolog/impl/prolog/aquarius/bench.txt
   https://github.com/sasagawa888/nprolog/blob/master/bench/qsort.pl
 
-test on Ubuntu 24 LTS with Version 7.1beta #13 (x86_64_linux): OK, but warnings (see below)
+test on Ubuntu 24 LTS with 7.2development #4 (x86_64_linux): OK, but warnings (see below)
 
 run like: $ eclipse -f ./quicksort_benchmark_eclipse.pl
           $ time eclipse -f ./quicksort_benchmark_eclipse.pl => real	0m0,175s (on Intel Core i7-11700K, 3.6GHz, 32GB DDR4)
