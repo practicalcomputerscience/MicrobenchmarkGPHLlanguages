@@ -37,6 +37,11 @@ In 2017, I successfully tested this [Prolog program](https://github.com/practica
 
 However, Prolog shows the same phenomenon than Scheme: what dialect to use?
 
+> Even though the core of the Prolog programming language has been standardized by ISO since 1995, it remains difficult to write complex Prolog programs that can run unmodified on multiple
+Prolog implementations. Indeed, implementations sometimes deviate from the ISO standard and the standard itself fails to cover many features that are essential in practice.
+
+from: [Making ProB Compatible with SWI-Prolog](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/making-prob-compatible-with-swiprolog/4813E70D0F335F079CE013F2CD84D003), 2022
+
 Here's a list of [Prolog implementations](https://en.wikipedia.org/wiki/Comparison_of_Prolog_implementations).
 
 <br/>
