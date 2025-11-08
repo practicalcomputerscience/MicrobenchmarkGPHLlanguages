@@ -45,7 +45,7 @@ Here's a list of [Prolog implementations](https://en.wikipedia.org/wiki/Comparis
 
 With GNU Prolog I immediately ran into a problem: 
 
-- I was not able to compile and install later (v.1.5.0) and latest versions (v.1.6.0) of GNU Prolog:
+- I was not able to compile and install a later (v.1.5.0) and the latest version (v.1.6.0) of GNU Prolog:
 
 - http://gprolog.org/#download
 - https://github.com/didoudiaz/gprolog
@@ -260,7 +260,7 @@ SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prol
 
 GNU, SWI and Ciao Prolog claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
 
-I don't have a clear favorite dialect; all I tested so far have their cons, but also their pros. Choosing the right Prolog dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
+I don't have a clear favorite Prolog dialect; all I tested so far have their cons, but also their pros. Choosing the right dialect seems to be more difficult than with [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme).
 
 On commenting in Prolog source code: generally, % should work as a remaining line comment; /* ... */ should work as a block comment, potentially comprising more than one line. The official examples at the [Ciao playground](https://ciao-lang.org/playground/) _may_ give the impression that only character % works, but this is false, since both comment symbols have already been around the 1980ies, as a view into old documents can reveal: [A Prolog Benchmark Suite for Aquarius](https://apps.dtic.mil/sti/tr/pdf/ADA211444.pdf)
 
