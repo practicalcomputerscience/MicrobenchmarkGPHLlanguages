@@ -1,5 +1,3 @@
-2025-11-10: work in progress
-
 # Tau Prolog: Prolog embedded in JavaScript
 
 http://tau-prolog.org/
@@ -115,7 +113,7 @@ A good starting point for the following developments of smaller problems was thi
 Here's the [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/Tau%20Prolog/tau_prolog_products_and_shops_example.js), and some tips:
 
 - first, install Tau Prolog in your Linux system like this for example: _$ npm install tau-prolog_
-- run this program like this for example with argument _water_: _$ nodejs ./tau_prolog_products_and_shops_example.js water_, or alternatively: _$ nodejs ./tau_prolog_products_and_shops_example.js water_
+- run this program like this for example with argument _water_: _$ nodejs ./tau_prolog_products_and_shops_example.js water_, or alternatively: _$ node ./tau_prolog_products_and_shops_example.js water_
 
 Anyway, this output should be shown now:
 
