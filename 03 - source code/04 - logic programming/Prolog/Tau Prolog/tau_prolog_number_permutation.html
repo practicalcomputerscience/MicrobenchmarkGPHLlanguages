@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tau Prolog Demo: permutations of integer numbers</title>
+
+  <!-- check latest code version -->
+  <script src="https://unpkg.com/tau-prolog@0.3.4/modules/core.js"></script>
+  <script src="https://unpkg.com/tau-prolog@0.3.4/modules/lists.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    textarea { width: 100%; height: 50px; }
+    #output0 { margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Permutations of integer numbers: Prolog embedded in JavaScript</h1>
+  <p>Enter a Prolog query below and click "Run":</p>
+  <textarea id="query">permute([1, 2, 3, 4], Permutation).</textarea>
+  <button onclick="runQuery()">Run</button>
+  <div id="output0"></div>
+
+  <script>
+    // Create a Tau Prolog session
+    const session = pl.create(1000);
+    session.consult(`
+        % source: Duck.ai on prompt: "Tau Prolog all permuations of numbers 1, 2, 3, 4"
+        %
+        % Base case: the permutation of an empty list is an empty list
+        permute([], []).
+        
+        % Recursive case: permute a list by fixing each element and permuting the rest
+        permute([H|T], Permutation) :-
+            permute(T, RestPermutation),
+            insert(H, RestPermutation, Permutation).
+        
+        % Insert an element into all possible positions in a list
+        insert(X, L, [X|L]).  % Insert X at the head
+        insert(X, [Y|Rest], [Y|L]) :-
+            insert(X, Rest, L).  % Insert X into the tail      
+    `);
+
+    function runQuery() {
+      const query = document.getElementById("query").value;
+      document.getElementById("output0").textContent = "Running query...\n";
+
+      let length0 = 0;  // counter of permutations
+      
+      session.query(query);
+      session.answers(x => {
+        if (x === false) {
+          // document.getElementById("output0").textContent += "No more answers.\n";
+          document.getElementById("output0").textContent += "Number of different permutation: " + length0 + "\n";
+        } else {
+          document.getElementById("output0").textContent += session.format_answer(x) + "\n";
+          length0 += 1;  // calculate the number of permutations
+        }
+      });
+    }
+  </script>
+</body>
+</html>
