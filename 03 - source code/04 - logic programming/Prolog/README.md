@@ -358,7 +358,7 @@ And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
 ## Tau Prolog - Prolog for the web
 
-TL;DR: while Tau Prolog, [a Prolog Interpreter for the Web](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/tau-prolog-a-prolog-interpreter-for-the-web/4D99CAEBCF06B072AF4D028FA7B06CC5), seems like an interesting idea, I didn't get bigger things accomplished with it (in up-to-date version 0.3.4 beta), including the benchmarking program of the map coloring problem of Germany.
+While Tau Prolog, [a Prolog Interpreter for the Web](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/tau-prolog-a-prolog-interpreter-for-the-web/4D99CAEBCF06B072AF4D028FA7B06CC5), seems like an interesting idea, I didn't get bigger things accomplished with it (in up-to-date version 0.3.4 beta), including the benchmarking program of the map coloring problem of Germany.
 
 I made a subpage with more details: [Tau Prolog: Prolog embedded in JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/Tau%20Prolog#tau-prolog-prolog-embedded-in-javascript)
 
