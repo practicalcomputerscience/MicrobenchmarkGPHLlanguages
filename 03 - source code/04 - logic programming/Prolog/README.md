@@ -18,7 +18,7 @@ Table of contents:
 - [Ciao Prolog](#ciao-prolog)
 - [YAP Prolog](#yap-prolog)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
-- [reserve](#)
+- [reserve - TBD](#)
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
@@ -352,7 +352,7 @@ And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
 <br/>
 
-(XSB Prolog??)
+(XSB Prolog?? TBD)
 
 <br/>
 
