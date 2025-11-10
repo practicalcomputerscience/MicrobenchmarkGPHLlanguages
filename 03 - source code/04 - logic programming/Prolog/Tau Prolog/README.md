@@ -17,7 +17,7 @@ Table of contents:
 
 According to my experience, the best way to start with Tau Prolog is to use the official sandbox: http://tau-prolog.org/sandbox/
 
-I noticed that the _:- use_module(library(lists))._ rule isn't needed there, since this library seems to be visible anyway.
+I noticed that the _:- use_module(library(lists))._ clause isn't needed there, since this library seems to be visible anyway.
 
 Since the complete map coloring problem of Germany, with 16 states and 4 colors, also in this sandbox, doesn't come to a final result (within a reasonable amount of time), I developed a shorter version with only the first 8 states (but still with four colors):
 
@@ -65,7 +65,9 @@ findall((SH,MV,HH,HB,NI,ST,BE,BB),germany(SH,MV,HH,HB,NI,ST,BE,BB),L),length(L,N
 
 Or not, since with me, length N of solution list L is not shown - as if it has been forgotten!
 
-Later, I downsized the problem to only three colors and four simple variables A, B, C, D with these rules:
+By the way: for convenience, Prolog online service SWISH (https://swish.swi-prolog.org) can calculate the result correctly, it's: _N = 1728_ (and also correct solution _N = 191808_ for the complete problem.)
+
+Later, I downsized the problem to only three colors and four simple variables A, B, C, D of this program:
 
 ```
 color(red).
@@ -92,7 +94,7 @@ C \= D.
 What I can already say about Tau Prolog, is this from my point of view:
 
 > [!CAUTION]
-> At the moment, with version 0.3.4 beta, it's advised to re-check results and returns provided by a Tau Prolog program with another, more established Prolog dialect. 
+> At the moment, with version 0.3.4 beta, it's advised to re-check results and returns provided by a Tau Prolog program with another, more established Prolog system. 
 
 <br/>
 
