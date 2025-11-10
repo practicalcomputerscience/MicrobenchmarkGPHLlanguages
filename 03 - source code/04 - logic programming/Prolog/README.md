@@ -19,7 +19,7 @@ Table of contents:
 - [YAP Prolog](#yap-prolog)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [reserve](#)
-- [Tau Prolog](#tau-prolog)
+- [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -356,11 +356,11 @@ And, ECLiPSe runs pretty fast, beating SWI Prolog!
 
 <br/>
 
-## Tau Prolog
+## Tau Prolog - Prolog for the web
 
-TL;DR: while Tau Prolog, a [Prolog version for the web](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/tau-prolog-a-prolog-interpreter-for-the-web/4D99CAEBCF06B072AF4D028FA7B06CC5), seems like an interesting idea, I didn't get bigger things accomplished with it (in up-to-date version 0.3.4 beta), including the benchmarking program of the map coloring problem of Germany.
+TL;DR: while Tau Prolog, [a Prolog Interpreter for the Web](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/tau-prolog-a-prolog-interpreter-for-the-web/4D99CAEBCF06B072AF4D028FA7B06CC5), seems like an interesting idea, I didn't get bigger things accomplished with it (in up-to-date version 0.3.4 beta), including the benchmarking program of the map coloring problem of Germany.
 
-I have dedicated a subpage for more details: [Tau Prolog: Prolog embedded in JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/Tau%20Prolog#tau-prolog-prolog-embedded-in-javascript)
+I made a subpage with more details: [Tau Prolog: Prolog embedded in JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/Tau%20Prolog#tau-prolog-prolog-embedded-in-javascript)
 
 However, my results should not discourage anybody from experimenting with Prolog code inside JavaScript code, be it for web pages or for **node.js**.
 
