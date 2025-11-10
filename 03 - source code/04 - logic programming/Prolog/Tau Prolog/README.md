@@ -4,6 +4,8 @@
 
 http://tau-prolog.org/
 
+https://github.com/tau-prolog/tau-prolog
+
 ---
 
 Table of contents:
@@ -59,7 +61,7 @@ Then enter the Prolog query, that is also Prolog's goal, into its upper right bo
 findall((SH,MV,HH,HB,NI,ST,BE,BB),germany(SH,MV,HH,HB,NI,ST,BE,BB),L).
 ```
 
-Then press the [ENTER] key at the query's end to start Prolog's computations. List _L_ hopefully is then being shown, in this example with all valid results.
+Then press the [ENTER] key at the query's end to start Prolog's computations. List _L_ hopefully is then being shown after some time, in this example with all valid results.
 
 We can let Prolog count all resulting color combinations with an expanded query, like this for example:
 
@@ -178,7 +180,7 @@ for (let i = 0; i < runs; i++) {
 }
 ```
 
-The next issue was that I didn't intend to show the result of each quicksort run _in Prolog_, because the original program isn't doing it either, so here I finally do one last quicksorting only to show the sorted list:
+The next issue was that I didn't intend to show the result of each quicksort run _in Prolog_, because the original program isn't doing it either, so here I finally do one last quicksorting for only showing the sorted list:
 
 ```
 // do one last run to show the sorted result like in the other Prolog programs:
@@ -232,7 +234,7 @@ $
 
 ### Permuting a list of numbers for the web
 
-Natively embedding Prolog code in a web page with the help of JavaScript also has the great advantage to be very platform-agnostic; program development can also conveniently happen with a different operating system. So, here's the result when opening this [HTML page](./tau_prolog_number_permutation.html): (please download and open the _raw file_ :wink:)
+Natively embedding Prolog code in a web page with the help of JavaScript also has the great advantage to be very platform-agnostic; program development can also conveniently happen at a system with a different operating system. So, here's the result when opening this [HTML page](./tau_prolog_number_permutation.html): (please download and open the _raw file_ :wink:)
 
 ![plot](./tau_prolog_number_permutation0.png)
 
@@ -297,29 +299,13 @@ Basically, these two lines are the biggest secret of success for Tau Prolog, sin
 
 With the help of JavaScript, it's also rather easy to implement a counter of program runs, here named _length0_, for counting the number of permutations at the false branch of _if (x === false)_ with _length0 += 1;_.
 
-It's also interesting to see how Prolog query _permute([1, 2, 3, 4], Permutation)._, something which can be modified by the user before running the program, is then being sequentially evaluated and resulting in one answer _x_ after the other until there is no more answer.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+It's also interesting to see how Prolog query _permute([1, 2, 3, 4], Permutation)._, something which can be modified by the user before starting the program, is then being sequentially evaluated and resulting in one answer _x_ after the other until there is no more answer.
 
 <br/>
 
 So, at this point, I cannot provide a working Tau Prolog program for the map coloring problem of Germany. Hence, a Tau Prolog version is missing from the [Prolog benchmark list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#speed-in-the-land-of-prologs).
+
+It's also a pity from my point of view that the development of Tau Prolog obviously came to a break since two years or so, as a view in its GitHub repository can show: https://github.com/tau-prolog/tau-prolog?tab=readme-ov-file
 
 <br/>
 
