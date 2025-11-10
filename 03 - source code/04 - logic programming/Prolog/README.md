@@ -378,6 +378,16 @@ It's maybe worth to note that Prolog was not the first logic programming languag
 
 <br/>
 
+In Prolog, I also tumbled over the question: **Are rules and clauses the same thing in Prolog?**
+
+Apparently not always. A rule in Prolog looks like this or similarly to this and denotes a _conditional truth_:
+
+_nearby(X,Y):-connected(X,Z,L),connected(Z,Y,L)._ (I got this example from this classical book from 1994: https://github.com/simply-logical/simply-logical/releases/tag/v1.0 (*))
+
+Further: _A program is a set of clauses, each of them terminated by a period._(*). So, a clause is a higher level concept, and a rule is just one type of a clause in my understanding.
+
+<br/>
+
 ## Speed in the Land of Prolog's
 
 Let the benchmarking game begin with usual command _$ sudo perf stat -r 20 ./graph_4coloring_Germany2..._, again with the best run out of 3:
