@@ -65,7 +65,7 @@ findall((SH,MV,HH,HB,NI,ST,BE,BB),germany(SH,MV,HH,HB,NI,ST,BE,BB),L),length(L,N
 
 Or not, since with me, length N of solution list L is not shown - as if it has been forgotten!
 
-By the way: for convenience, Prolog online service SWISH (https://swish.swi-prolog.org) can calculate the result correctly, it's: _N = 1728_ (and also correct solution _N = 191808_ for the complete problem.)
+By the way: for convenience, Prolog online service SWISH (https://swish.swi-prolog.org), based in SWI Prolog, can calculate the result correctly, it's: _N = 1728_ (and also correct solution _N = 191808_ for the complete problem.)
 
 Later, I downsized the problem to only three colors and four simple variables A, B, C, D of this program:
 
