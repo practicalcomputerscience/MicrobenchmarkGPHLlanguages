@@ -20,6 +20,7 @@ Table of contents:
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [XSB Prolog](#xsb-prolog)
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
+- [Trealla Prolog](#trealla-prolog)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -396,6 +397,42 @@ However, my results should not discourage anybody from experimenting with Prolog
 
 <br/>
 
+## Trealla Prolog
+
+https://github.com/trealla-prolog/trealla/tree/main
+
+I took file _tpl-linux-x64.zip_ from here: https://github.com/trealla-prolog/trealla/releases/tag/v2.84.17, unzipped it to default directory _./tpl-linux-x64_, expanded my _$PATH_ environment variable to that directory and tested the version like this: _$ tpl -v_. Answer was: _realla Prolog (c) Infradig 2020, v2.84.16_
+
+So, this a very simple Prolog version to install. 
+
+I measured the microbenchmark's execution time like this, which means that the GNU version of this program works here without a change:
+
+```
+$ ./exe_times_statistics_for_one_test_case_in_cwd2 "tpl -f ./graph_4coloring_Germany2a.pl"
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+=======================
+SUM = 44810 [milliseconds]
+mean = 2224 [milliseconds]
+$
+```
+
+This result is identical to the one of GNU or SWI Prolog. Building a standalone executable is apparently not supported in Trealla Prolog.
+
+<br/>
+
+## TBD
+
+TBD
+
+<br/>
+
 ### ISO standard, comments, etc.
 
 GNU, SWI and Ciao Prolog claim to follow the [ISO standard of Prolog](https://www.iso.org/standard/21413.html), albeit I think that the potential possibility to port the source code from one dialect to the other without changes is the bigger benefit.
@@ -430,6 +467,7 @@ Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
 YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
 ECLiPSe | mean = 574 [milliseconds]
 XSB | mean = 612 [milliseconds]
+Trealla Prolog | mean = 2224 [milliseconds]
 
 So, about 570 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
