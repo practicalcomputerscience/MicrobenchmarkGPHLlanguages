@@ -1,4 +1,4 @@
-2025-11-06: work in progress: check remaining TBD's: XSB
+2025-11-06: work in progress: check remaining TBD's + diagram of map coloring problem of Germany-benchmark? I think so with so many tested dialects already/2025-11-11.
 
 # Prolog
 
