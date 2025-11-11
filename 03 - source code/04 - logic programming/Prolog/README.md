@@ -401,16 +401,15 @@ However, my results should not discourage anybody from experimenting with Prolog
 
 https://github.com/trealla-prolog/trealla/tree/main
 
-I took file _tpl-linux-x64.zip_ from here: https://github.com/trealla-prolog/trealla/releases/tag/v2.84.17, unzipped it to default directory _./tpl-linux-x64_, expanded my _$PATH_ environment variable to that directory and tested the version like this: _$ tpl -v_. Answer was: _realla Prolog (c) Infradig 2020, v2.84.16_
+I took file _tpl-linux-x64.zip_ from here: https://github.com/trealla-prolog/trealla/releases/tag/v2.84.17, unzipped it to default directory _./tpl-linux-x64_, expanded my _$PATH_ environment variable to that directory and tested the version like this: _$ tpl -v_
 
-So, this a very simple Prolog version to install. 
+Answer was: _realla Prolog (c) Infradig 2020, v2.84.16_ So, this a very simple Prolog version to install. 
 
 I measured the microbenchmark's execution time like this, which means that the GNU version of this program works here without a change:
 
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2 "tpl -f ./graph_4coloring_Germany2a.pl"
 ...
-Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
 number N of different solutions = 191808
 
                SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
@@ -473,7 +472,7 @@ So, about 570 milliseconds is the benchmark time a logically equivalent Mercury 
 
 <br/>
 
-There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_. I also used it to time measure the ECLiPSe and XSB programs.
+There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_. I also used it to time measure the ECLiPSe, XSB and Trealla Prolog programs.
 
 <br/>
 
