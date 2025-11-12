@@ -461,9 +461,23 @@ Also this result is identical to the one of GNU or SWI Prolog. Building a standa
 
 <br/>
 
-## xxx
+## ErgoAI
 
-TBD
+ErgoAI (https://github.com/ErgoAI), once proprietary software (***), features a nearness to **XSB Prolog**, that is having common origins at Stony Brook University, State University of New York. For example, ErgoAI states this among other things at [What is the ErgoAI platform?](https://sites.google.com/coherentknowledge.com/ergoai-tutorial/ergoai-tutorial/home#h.p_ID_32): _ErgoAI includes: ... XSB: a low-level reasoning component that supports ErgoAI Reasoner._
+
+Like ECLiPSe, ErgoAI also features a graphical user interface: _ErgoAI reasoner can start either in the studio mode, as part of the ErgoAI Studio IDE (suitable for development), or as a command line application._, seen here at: [Starting the ErgoAI System](https://sites.google.com/coherentknowledge.com/ergoai-tutorial/ergoai-tutorial/home#h.p_ID_539).
+
+(***) [ErgoAI's FAQ's](https://docs.google.com/document/d/1J_ASpGjDwgqMDzNgB-hqQC3keA8sIMZIHHs8gmJXG04/edit?tab=t.0#heading=h.y2mxm6jqtd4v) say this about the relation of XSB and ErgoAI:
+
+> XSB is a powerful and complex reasoning engine used by Ergo reasoner. XSB is very versatile and has many capabilities, but requires considerable expertise to use. Think of Ergo as a Cadillac sedan with its buttons and simple controls vs. XSB, an engine attached to a chassis and controlled by pulling multiple levers. Unless you are a mechanic who likes tinkering with complex engines, ErgoAI is a better option for you.
+
+<br/>
+
+Installation tips: TBD -- table version 3.0 (https://github.com/ErgoAI/.github/releases), TBD
+
+
+
+
 
 <br/>
 
