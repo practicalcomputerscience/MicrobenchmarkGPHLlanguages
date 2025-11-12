@@ -35,13 +35,21 @@ Like [ECLiPSe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlan
 
 > XSB is a powerful and complex reasoning engine used by Ergo reasoner. XSB is very versatile and has many capabilities, but requires considerable expertise to use. Think of Ergo as a Cadillac sedan with its buttons and simple controls vs. XSB, an engine attached to a chassis and controlled by pulling multiple levers. Unless you are a mechanic who likes tinkering with complex engines, ErgoAI is a better option for you.
 
-ErgoAI is a direct descendant of [Flora-2](https://flora.sourceforge.net/) as a view into this web page shows: https://sourceforge.net/projects/flora/files/FLORA-2/
+ErgoAI is a direct descendant of [Flora-2](https://flora.sourceforge.net/) as a view into this web page can show: https://sourceforge.net/projects/flora/files/FLORA-2/
 
 Flora = F-Logic tRAnslator:
 
 ![plot](./Flora-2.png)
 
 from the first part of the presentation from 2017: https://flora.sourceforge.net/tutorial/part1-foundations.ppt
+
+Flora-2's terms are [HiLog](https://flora.sourceforge.net/); XSB Prolog uses Prolog terms; both have different internal representation:
+
+> HiLog  is a logical formalism that provides higher-order and meta-programming features in a computationally tractable first-order setting.
+
+> Flora-2 is implemented as a set of run-time libraries and a compiler that translates a unified language of F-logic [10], HiLog [5], Transaction Logic [3, 2], and defeasible reasoning [16] into tabled Prolog code.
+
+from "ERGOLite (a.k.a. Flora-2 ): User’s Manual, Version 2.1 (Punica granatum), December 26, 2020": https://flora.sourceforge.net/docs/floraManual.pdf
 
 TBD
 
