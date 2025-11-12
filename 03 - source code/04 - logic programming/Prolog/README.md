@@ -15,7 +15,7 @@ Table of contents:
 - [The map coloring problem of Germany with 16 states and 4 colors](#the-map-coloring-problem-of-germany-with-16-states-and-4-colors)
 - [GNU Prolog](#gnu-prolog)
 - [SWI Prolog](#swi-prolog)
-- [Ciao Prolog](#ciao-prolog)0000000000000000
+- [Ciao Prolog](#ciao-prolog)
 - [YAP Prolog](#yap-prolog)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [XSB Prolog](#xsb-prolog)
