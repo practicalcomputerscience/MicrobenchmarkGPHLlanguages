@@ -435,7 +435,7 @@ I downloaded the file linked at _Linux (Ubuntu 22.04, 64 bits)_ at the project's
 
 Answer was: _e7ac3ae_ So, also this is a very simple Prolog version to install.
 
-The source code for Ciao Prolog is almost suitable for Scryer Prolog, but the _nth/3_ predicate was not understood, so I made another extra [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2f_Scryer.pl).
+The source code for Ciao Prolog is almost suitable for Scryer Prolog, but the _nth/3_ predicate is not understood, so I made another extra [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2f_Scryer.pl):
 
 ```
 $ scryer-prolog ./graph_4coloring_Germany2f_Scryer.pl 
