@@ -12,9 +12,14 @@ In my opinion:
 
 <br/>
 
-Although technically speaking, Mercury is not a Prolog system; see at page 782 from [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD) (because it does not follow Prolog's definition of _append()_: _append([], L, L). append([X | L], M, [X | N]) :- append(L, M, N)._)
+Although technically speaking, Mercury is not a Prolog system; see at page 782 from [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD), because it does not follow Prolog's definition of _append()_:
 
-TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem? GNU Prolog/grolog (http://gprolog.org/) or SWI Prolog?
+```
+append([], L, L).
+append([X | L], M, [X | N]) :- append(L, M, N).
+```
+
+TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem
 
 <br/>
 
