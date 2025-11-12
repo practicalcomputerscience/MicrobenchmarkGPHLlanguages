@@ -15,12 +15,13 @@ Table of contents:
 - [The map coloring problem of Germany with 16 states and 4 colors](#the-map-coloring-problem-of-germany-with-16-states-and-4-colors)
 - [GNU Prolog](#gnu-prolog)
 - [SWI Prolog](#swi-prolog)
-- [Ciao Prolog](#ciao-prolog)
+- [Ciao Prolog](#ciao-prolog)0000000000000000
 - [YAP Prolog](#yap-prolog)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [XSB Prolog](#xsb-prolog)
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [Trealla Prolog](#trealla-prolog)
+- [Scryer Prolog](#scryer-prolog)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -426,9 +427,19 @@ This result is identical to the one of GNU or SWI Prolog. Building a standalone 
 
 <br/>
 
-## TBD
+## Scryer Prolog
+
+https://github.com/mthom/scryer-prolog
+
+I downloaded the file at _Linux (Ubuntu 22.04, 64 bits)_ at its home page: https://www.scryer.pl/, TBD
 
 TBD
+
+The source code for Ciao Prolog was almost suitable for Scryer Prolog, but its _nth/3_ predicate was not understood, so I made another extra [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2f_Scryer.pl).
+
+TBD
+
+This result is identical to the one of TBD or TBD Prolog. Building a standalone executable is apparently not supported in Scryer Prolog.
 
 <br/>
 
@@ -467,6 +478,7 @@ YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
 ECLiPSe | mean = 574 [milliseconds]
 XSB | mean = 612 [milliseconds]
 Trealla Prolog | mean = 2224 [milliseconds]
+Scryer Prolog | mean = 1538 [milliseconds]
 
 So, about 570 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
