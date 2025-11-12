@@ -465,7 +465,7 @@ Also this result is identical to the one of GNU or SWI Prolog. Building a standa
 
 ## ErgoAI
 
-ErgoAI (https://github.com/ErgoAI), once proprietary software, is based also on **XSB Prolog**, given their common origins at Stony Brook University, State University of New York.
+ErgoAI (https://github.com/ErgoAI), once proprietary software, is based also on [XSB Prolog](#xsb-prolog), given their common origins at Stony Brook University, State University of New York.
 
 I made a subpage with more details: [ErgoAI: knowledge representation and reasoning](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/ErgoAI:%20knowledge%20representation%20and%20reasoning#ergoai-knowledge-representation-and-reasoning), because also this is a longer story to tell.
 
