@@ -484,7 +484,7 @@ So, about 570 milliseconds is the benchmark time a logically equivalent Mercury 
 
 <br/>
 
-There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_. I also used it to time measure the ECLiPSe, XSB and Trealla Prolog programs.
+There was a problem with the GNU Prolog program again, since environment variable _GLOBALSZ_ is apparently not recognized in the context of _perf stat_. Instead, I took the [shell script](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/exe_times_statistics_for_one_test_case_in_cwd2) again: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 ./graph_4coloring_Germany2a_. I also used it to time measure the ECLiPSe, XSB. Trealla and Scryer Prolog programs.
 
 <br/>
 
