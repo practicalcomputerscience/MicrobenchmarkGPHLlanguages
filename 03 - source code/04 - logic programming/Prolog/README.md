@@ -431,15 +431,30 @@ This result is identical to the one of GNU or SWI Prolog. Building a standalone 
 
 https://github.com/mthom/scryer-prolog
 
-I downloaded the file at _Linux (Ubuntu 22.04, 64 bits)_ at its home page: https://www.scryer.pl/, TBD
+I downloaded the file linked at _Linux (Ubuntu 22.04, 64 bits)_ at the project's home page: https://www.scryer.pl/, unzipped it to its default directory, expanded my _$PATH_ environment variable to that directory and tested the version like this: $ scryer-prolog -v
+
+Answer was: _e7ac3ae_ So, also this is a very simple Prolog version to install.
+
+The source code for Ciao Prolog is almost suitable for Scryer Prolog, but the _nth/3_ predicate was not understood, so I made another extra [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2f_Scryer.pl).
+
+```
+$ scryer-prolog ./graph_4coloring_Germany2f_Scryer.pl 
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red,blue,blue,red,green,blue,green,red,green,red,blue,red,green,red,red,yellow
+...
+Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,green,yellow,blue,yellow,yellow,red
+$
+```
+
+Also this result is identical to the one of GNU or SWI Prolog. Building a standalone executable is apparently not supported in Scryer Prolog.
+
+<br/>
+
+## xxx
 
 TBD
-
-The source code for Ciao Prolog was almost suitable for Scryer Prolog, but its _nth/3_ predicate was not understood, so I made another extra [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2f_Scryer.pl).
-
-TBD
-
-This result is identical to the one of TBD or TBD Prolog. Building a standalone executable is apparently not supported in Scryer Prolog.
 
 <br/>
 
