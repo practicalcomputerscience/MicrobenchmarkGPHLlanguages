@@ -15,7 +15,7 @@ http://coherentknowledge.com/product-overview-ergoai-platform/
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [ErgoAI and XSB Prolog](#ergoai-and-xsb-prolog)
+- [ErgoAI, XSB Prolog and Flora-2](#ergoai-xsb-prolog-and-flora-2)
 - [Installation tips](installation-tips)
 - [Socrates example](#socrates-example)
 - [Map coloring problem with 3 colors and 4 states](#map-coloring-problem-with-3-colors-and-4-states)
@@ -27,13 +27,23 @@ Table of contents:
 
 ---
 
-## ErgoAI and XSB Prolog
+## ErgoAI, XSB Prolog and Flora-2
 
 Like [ECLiPSe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#eclipse---constraint-logic-programming-system), ErgoAI also features a graphical user interface (GUI): _ErgoAI reasoner can start either in the studio mode, as part of the ErgoAI Studio IDE (suitable for development), or as a command line application._, seen here at: [Starting the ErgoAI System](https://sites.google.com/coherentknowledge.com/ergoai-tutorial/ergoai-tutorial/home#h.p_ID_539).
 
 [ErgoAI's FAQ's](https://docs.google.com/document/d/1J_ASpGjDwgqMDzNgB-hqQC3keA8sIMZIHHs8gmJXG04/edit?tab=t.0#heading=h.y2mxm6jqtd4v) say this about the relation of XSB Prolog and ErgoAI:
 
 > XSB is a powerful and complex reasoning engine used by Ergo reasoner. XSB is very versatile and has many capabilities, but requires considerable expertise to use. Think of Ergo as a Cadillac sedan with its buttons and simple controls vs. XSB, an engine attached to a chassis and controlled by pulling multiple levers. Unless you are a mechanic who likes tinkering with complex engines, ErgoAI is a better option for you.
+
+ErgoAI is a direct descendant of [Flora-2](https://flora.sourceforge.net/) as a view into this web page shows: https://sourceforge.net/projects/flora/files/FLORA-2/
+
+Flora = F-Logic tRAnslator:
+
+![plot](./Flora-2.png)
+
+from the first part of the presentation from 2017: https://flora.sourceforge.net/tutorial/part1-foundations.ppt
+
+TBD
 
 <br/>
 
