@@ -22,7 +22,7 @@ Table of contents:
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [Trealla Prolog](#trealla-prolog)
 - [Scryer Prolog](#scryer-prolog)
-- [](#)
+- [ErgoAI](#ergoai)
 - [](#)
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
