@@ -469,6 +469,16 @@ ErgoAI (https://github.com/ErgoAI), once proprietary software, is based also on 
 
 I made a subpage with more details: [ErgoAI: knowledge representation and reasoning](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/ErgoAI:%20knowledge%20representation%20and%20reasoning#ergoai-knowledge-representation-and-reasoning), because also this is a longer story to tell.
 
+Actually, ErgoAI is much more than a Prolog system: 
+
+> The Coherent ERGO reasoner is a sophisticated object-based knowledge representation and reasoning platform.
+> It is based on decades of research into logic rules systems and it presents a unified language of F-logic [10], HiLog [5], Transaction Logic [3, 2], and defeasible reasoning [16].
+> ERGO is based on the open-source Flora-2 inference system,1 but is much more scalable and extends Flora-2 in numerous ways that are crucial for enterprise use. 
+
+from: "ErgoAI Reasoner User’s Manual, Version 3.0 (Philo), May 2023": https://drive.google.com/file/d/1UzI2bV7DwSOWvmZBKZY-bhyEvbZVmCt-/view?usp=share_link
+
+And this fact represents a challenge (to me), because just transpiling a Prolog program into a program with _native_ Ergo syntax, which is the aim here and not just calling a Prolog program from ErgoAI, isn't so easy from my point of view.
+
 <br/>
 
 ## xxx
