@@ -431,7 +431,7 @@ This result is identical to the one of GNU or SWI Prolog. Building a standalone 
 
 https://github.com/mthom/scryer-prolog
 
-I downloaded the file linked at _Linux (Ubuntu 22.04, 64 bits)_ at the project's home page: https://www.scryer.pl/, unzipped it to its default directory, expanded my _$PATH_ environment variable to that directory and tested the version like this: $ scryer-prolog -v
+I downloaded the file linked at _Linux (Ubuntu 22.04, 64 bits)_ at the project's home page: https://www.scryer.pl/, unzipped it to its default directory, expanded my _$PATH_ environment variable to that directory and tested the version like this: _$ scryer-prolog -v_
 
 Answer was: _e7ac3ae_ So, also this is a very simple Prolog version to install.
 
