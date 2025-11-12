@@ -22,6 +22,9 @@ Table of contents:
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [Trealla Prolog](#trealla-prolog)
 - [Scryer Prolog](#scryer-prolog)
+- [](#)
+- [](#)
+- [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [The Mercury benchmark program](#the-mercury-benchmark-program)
@@ -461,6 +464,21 @@ Also this result is identical to the one of GNU or SWI Prolog. Building a standa
 ## xxx
 
 TBD
+
+<br/>
+
+## xxx
+
+TBD
+
+<br/>
+
+## Other Prolog systems
+
+I also had look at these Prolog systems:
+
+- **SICStus Prolog**, a rather well-known, commercial Prolog system: https://sicstus.sics.se/: it can only be used after an evaluation license has been obtained, something I didn't do. I think that I have already tested more than enough different Prolog systems.
+- **Strawberry Prolog**, which is not natively supported in Linux: https://dobrev.com/
 
 <br/>
 
