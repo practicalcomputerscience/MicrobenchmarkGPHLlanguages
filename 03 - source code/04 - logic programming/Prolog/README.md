@@ -291,7 +291,7 @@ $ sudo ./RUNME  # here you are guided interactively through the installation pro
 $
 ```
 
-Add to your PATH in the _.bashrc_ file for example: _PATH=$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic_7.2_4/bin/x86_64_linux_ and activate it: _$ source ~/.bashrc_
+Add to your PATH in the _.bashrc_ file for example: _export PATH="$PATH:~/scripts/Prolog/ECLiPSe/eclipse_basic_7.2_4/bin/x86_64_linux"_ and activate it: _$ source ~/.bashrc_
 
 You may test ECLiPSe with starting its command-line interface: _$ eclipse_
 
@@ -370,7 +370,7 @@ Then I ran: _$ ./configure_
 
 Like hopefully given as the last order, start the compilation with: _$ ./makexsb_
 
-Add the path to _xsb_ in your _.bashrc_ file (_PATH=$PATH:~/scripts/Prolog/XSB_Prolog/xsb-code/XSB/bin_) and activate it. The version can be tested with command: _$ xsb -v_
+Add the path to _xsb_ in your _.bashrc_ file (_export PATH="$PATH:~/scripts/Prolog/XSB_Prolog/xsb-code/XSB/bin"_) and activate it. The version can be tested with command: _$ xsb -v_
 
 However, I didn't figure out how to smarter provide the path to a source code file than providing its _absolute_ path: _$ xsb ~/scripts/Prolog/XSB_Prolog/graph_4coloring_Germany2e_XSB.pl_
 
@@ -438,7 +438,7 @@ https://github.com/mthom/scryer-prolog
 I downloaded the file linked at the "Download" button at _Linux (Ubuntu 22.04, 64 bits)_ at the project's home page: https://www.scryer.pl/, unzipped it to its default directory, expanded my _$PATH_ environment variable to:
 
 ```
-PATH=$PATH:~/scripts/Prolog/Scryer_Prolog/scryer-prolog_ubuntu-22.04_x86_64-unknown-linux-gnu/release
+export PATH="$PATH:~/scripts/Prolog/Scryer_Prolog/scryer-prolog_ubuntu-22.04_x86_64-unknown-linux-gnu/release"
 ```
 
 ..and tested the version like this: _$ scryer-prolog -v_
