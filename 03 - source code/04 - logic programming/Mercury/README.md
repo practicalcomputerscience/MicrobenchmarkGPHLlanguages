@@ -113,7 +113,7 @@ Alternatively, for speeding up installation with 4 concurrent jobs:
 $ sudo make PARALLEL=-j4 install
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _PATH=$PATH:/usr/local/mercury-rotd-2025-11-01/bin_
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:/usr/local/mercury-rotd-2025-11-01/bin"_
 
 ..and activate it:
 
