@@ -1,4 +1,4 @@
-2025-11-06: work in progress: check remaining TBD's + diagram of map coloring problem of Germany-benchmark? I think so with so many tested dialects already/2025-11-11.
+2025-11-13: work in progress: a/ Mercury benchmark program + b/diagram of map coloring problem of Germany-benchmark, incl. Mercury's execution time for the map coloring problem of Germany
 
 # Prolog
 
@@ -23,7 +23,6 @@ Table of contents:
 - [Trealla Prolog](#trealla-prolog)
 - [Scryer Prolog](#scryer-prolog)
 - [ErgoAI: knowledge representation and reasoning](#ergoai-knowledge-representation-and-reasoning)
-- [](#)
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
@@ -565,12 +564,6 @@ flora2 ?- \list[append(["[a,b]"^^\list,[c,d],"[e,f]"^^\list])->?R].
 No
 flora2 ?-
 ```
-
-<br/>
-
-## xxx
-
-TBD
 
 <br/>
 
