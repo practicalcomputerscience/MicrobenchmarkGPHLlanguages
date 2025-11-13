@@ -501,6 +501,73 @@ from: https://flora.sourceforge.net/, see under "About HiLog".
 
 <br/>
 
+By the way: Flora-2 and ErgoAI are not Prolog system according to this test (in my understanding): [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/README.md#mercury)
+
+This works literally in the underlying XSB Prolog (after a related import):
+
+```
+| ?- import append/3 from lists.
+...
+1: ?- append([1,2],[3,4],X).
+      append([1,2],[3,4],X).
+X = [1,2,3,4]
+yes
+1: ?- 
+```
+
+..but not in Flora-2 and ErgoAI.
+
+This is the official example for _append()_ in both Flora-2 and ErgoAI manuals, and it works literally like this in both systems:
+
+```
+flora2 ?- \list[append(["[a,b]"^^\list,[c,d],"[e,f]"^^\list])->?R]@\btp.
+          \list[append(["[a,b]"^^\list,[c,d],"[e,f]"^^\list])->?R]@\btp.
+?R = [a, b, c, d, e, f]
+1 solution(s) in 0.001 seconds; elapsed time = 0.001
+Yes
+flora2 ?- 
+```
+
+This is also working:
+
+```
+flora2 ?- \list[append(["[a,b]"^^\list,[],"[c,d]"^^\list])->?R]@\btp.
+          \list[append(["[a,b]"^^\list,[],"[c,d]"^^\list])->?R]@\btp.
+?R = [a, b, c, d]
+1 solution(s) in 0.000 seconds; elapsed time = 0.001
+Yes
+flora2 ?- \list[append(["[a,b]"^^\list,[],[c,d]])->?R]@\btp.  // also working
+...
+?R = [a, b, c, d]
+...
+flora2 ?- \list[append(["[a,b]"^^\list,[],[]])->?R]@\btp.  // also working
+...
+?R = [a, b]
+...
+flora2 ?-
+```
+
+..but not this (my Flora-2 and ErgoAI systems have to be stopped with [CTRL]-C):
+
+```
+flora2 ?- \list[append(["[a,b]"^^\list,"[c,d]"^^\list,[]"^^\list])->?R]@\btp.
+...
+flora2 ?-  // after pressing [CTRL]-C
+```
+
+_@\btp_ stands for _@\basetype_ and is a type annotation. _\basetype_ is a standard module. _\list_ is a primitive type in Flora-2 and ErgoAI, which is the usual Prolog list type.
+
+So, this query returns a _No_:
+
+```
+flora2 ?- \list[append(["[a,b]"^^\list,[c,d],"[e,f]"^^\list])->?R].
+...
+No
+flora2 ?-
+```
+
+<br/>
+
 ## xxx
 
 TBD
