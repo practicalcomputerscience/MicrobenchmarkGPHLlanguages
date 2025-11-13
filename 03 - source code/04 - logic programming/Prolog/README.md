@@ -465,9 +465,9 @@ Also this result is identical to the one of GNU or SWI Prolog. Building a standa
 
 ## ErgoAI
 
-ErgoAI (https://github.com/ErgoAI), once proprietary software, is based also on [XSB Prolog](#xsb-prolog), given their common origins at Stony Brook University, State University of New York.
+TL;DR: after much tinkering, I got serious doubts that this programming language is the right one to solve problems like the map coloring problem in a handy way.
 
-I made a subpage with more details: [ErgoAI: knowledge representation and reasoning](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/ErgoAI:%20knowledge%20representation%20and%20reasoning#ergoai-knowledge-representation-and-reasoning), because also this is a longer story to tell.
+ErgoAI (https://github.com/ErgoAI), once proprietary software, is based also on [XSB Prolog](#xsb-prolog), given their common origins at Stony Brook University, State University of New York.
 
 Actually, ErgoAI is much more than a Prolog system: 
 
@@ -477,7 +477,23 @@ Actually, ErgoAI is much more than a Prolog system:
 
 from: "ErgoAI Reasoner User’s Manual, Version 3.0 (Philo), May 2023": https://drive.google.com/file/d/1UzI2bV7DwSOWvmZBKZY-bhyEvbZVmCt-/view?usp=share_link
 
-And this fact represents a challenge (to me), because just transpiling a Prolog program into a program with _native_ Ergo syntax, which is the aim here and not just calling a Prolog program from ErgoAI, isn't so easy from my point of view.
+And this fact represents a challenge to me, because just transpiling a Prolog program into a program with _native_ Ergo syntax, which is the aim here and not just calling a Prolog program from ErgoAI, isn't so easy from my point of view. Even after hours, I was not able to implement the necessary constraints in Ergo compliant syntax.
+
+<br/>
+
+I also played with its precursor language, that is **Flora-2** (https://flora.sourceforge.net/) in the false hope that that system isn't yet so sophisticated as ErgoAI and thus allowing me to find a working solution.
+
+Flora = F-Logic tRAnslator:
+
+![plot](./Flora-2.png)
+
+from the first part of the presentation from 2017: https://flora.sourceforge.net/tutorial/part1-foundations.ppt
+
+Flora-2 "uses HiLog terms to represent objects, while Prolog uses Prolog terms terms ... the internal representation of HiLog and Prolog terms is different"; from the "ERGOLite (a.k.a. Flora-2 ): User’s Manual, Version 2.1 (Punica granatum), December 26, 2020": https://flora.sourceforge.net/docs/floraManual.pdf.
+
+> HiLog is a logical formalism that provides higher-order and meta-programming features in a computationally tractable first-order setting.
+
+from: https://flora.sourceforge.net/, see under "About HiLog".
 
 <br/>
 
