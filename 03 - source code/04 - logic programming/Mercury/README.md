@@ -15,7 +15,7 @@ In my opinion:
 Although technically speaking, Mercury is not a Prolog system; see at page 782 from [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD), because it does not follow Prolog's definition of _append()_:
 
 ```
-append([], L, L).
+append([], L, L).  // appending L to empty list [] returns list L
 append([X | L], M, [X | N]) :- append(L, M, N).
 ```
 
