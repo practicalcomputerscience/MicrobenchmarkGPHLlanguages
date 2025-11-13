@@ -22,7 +22,7 @@ Table of contents:
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
 - [Trealla Prolog](#trealla-prolog)
 - [Scryer Prolog](#scryer-prolog)
-- [ErgoAI](#ergoai)
+- [ErgoAI: knowledge representation and reasoning](#ergoai-knowledge-representation-and-reasoning)
 - [](#)
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
@@ -463,7 +463,7 @@ Also this result is identical to the one of GNU or SWI Prolog. Building a standa
 
 <br/>
 
-## ErgoAI
+## ErgoAI: knowledge representation and reasoning
 
 TL;DR: after much tinkering, I got serious doubts that this programming language is the right one to solve problems like the map coloring problem in a handy way.
 
@@ -483,7 +483,11 @@ And this fact represents a challenge to me, because just transpiling a Prolog pr
 
 I also played with its precursor language, that is **Flora-2** (https://flora.sourceforge.net/) in the false hope that that system isn't yet so sophisticated as ErgoAI and thus allowing me to find a working solution.
 
-Flora = F-Logic tRAnslator:
+Flora = F-Logic tRAnslator
+
+KR = knowledge representation
+
+KRR = knowledge representation and reasoning
 
 ![plot](./Flora-2.png)
 
