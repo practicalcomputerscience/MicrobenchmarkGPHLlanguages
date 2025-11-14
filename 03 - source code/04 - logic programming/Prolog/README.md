@@ -623,6 +623,12 @@ There was a problem with the GNU Prolog program again, since environment variabl
 
 ## The Mercury benchmark program
 
+The map coloring problem of Germany is a Constraint Satisfaction Problem (CSP), but:
+
+> The original design of Mercury did not support constraint logic programming (CLP).
+
+from: [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf), 2005
+
 TBD
 
 <br/>
