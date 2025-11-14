@@ -627,7 +627,7 @@ The map coloring problem of Germany is a Constraint Satisfaction Problem (CSP), 
 
 > The original design of Mercury did not support constraint logic programming (CLP).
 
-from: [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf), 2005
+from: [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf) by Ralph Becket, Maria Garcia de la Banda, Kim Marriott, Zoltan Somogyi, Peter J. Stuckey & Mark Wallace, 2005
 
 TBD
 
