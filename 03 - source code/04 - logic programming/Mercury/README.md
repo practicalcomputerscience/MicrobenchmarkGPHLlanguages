@@ -119,9 +119,7 @@ Alternatively, for speeding up installation with 4 concurrent jobs this command 
 $ make PARALLEL=-j4 install
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_
-
-Symbol _~_ refers to your home directory. Then activate the modified _.bashrc_ file:
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_ and activate the modified _.bashrc_ file:
 
 ```
 $ source ~/.bashrc
