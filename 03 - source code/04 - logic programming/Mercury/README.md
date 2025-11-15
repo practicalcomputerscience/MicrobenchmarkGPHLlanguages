@@ -16,7 +16,7 @@ Although technically speaking, Mercury is not a Prolog system; see at page 782 f
 
 ```
 append([], L, L).  // appending L to empty list [] returns list L
-append([X | L], M, [X | N]) :- append(L, M, N).
+append([X | L], M, [X | N]) :- append(L, M, N).  // appending lists L and M to new list N
 ```
 
 TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem
