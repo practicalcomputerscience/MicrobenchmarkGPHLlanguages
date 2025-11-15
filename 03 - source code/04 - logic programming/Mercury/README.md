@@ -186,7 +186,18 @@ inc  ints  lib  modules
 $ 
 ```
 
-Now comes the exciting part. Testing this extra installation:
+### eqneq solver
+
+However, my real goal is to use the _eqneq_ solver (equality/disequality) from here: https://github.com/Mercury-Language/mercury/tree/bdd2a574a86e5dfc37e7cbff7e5108313e796bc0/samples/solver_types
+
+I did this:
+
+`
+$ cd ry/mercury-srcdist-rotd-2025-11-01/samples/solver_types
+$ 
+
+
+
 
 TBD
 
