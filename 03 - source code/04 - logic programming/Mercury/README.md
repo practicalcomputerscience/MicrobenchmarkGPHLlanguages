@@ -145,7 +145,7 @@ bin  lib  share
 $
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_ and activate the modified _.bashrc_ file and test the Mercury compiler:
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_, and activate the modified _.bashrc_ file. Then test the Mercury compiler:
 
 ```
 $ source ~/.bashrc
