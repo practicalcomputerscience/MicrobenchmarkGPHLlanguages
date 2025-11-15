@@ -261,8 +261,10 @@ $ ls ~/Mercury
 bin  extras  lib  share
 $ ls ~/Mercury/extras/lib/mercury/
 inc  ints  lib  modules
-$ 
+$
 ```
+
+By the way: installing extra programs does not depend on ininitially installing the extra library grade _asm_fast.gc.tr_ according to my experience. Starting with only _--enable-minimal-install_, that is library grade _asm_fast.gc_, would be enough here.
 
 <br/>
 
