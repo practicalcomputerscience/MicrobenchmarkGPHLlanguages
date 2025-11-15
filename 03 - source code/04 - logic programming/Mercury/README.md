@@ -118,7 +118,7 @@ Alternatively, for speeding up installation with 4 concurrent jobs this command 
 $ make PARALLEL=-j4 install
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:~/Mercury/bin"_
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_
 
 Symbol _~_ refers to your home directory. Then activate the modified _.bashrc_ file:
 
@@ -145,7 +145,39 @@ If you want to unstall this installation, go back to the original installation d
 $ make uninstall
 ```
 
-In other words: keep the original installation directory!
+In other words:
+
+> [!TIP]
+> Keep the original installation directory! Also for later potentially installing "extra programs" (under _./extras_).
+
+<br/>
+
+### How to install extra programs
+
+This chapter relates to the [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/master/extras#extra-programs-in-the-mercury-implementation).
+
+My goal is to additionally install the [solver_types library](https://github.com/Mercury-Language/mercury/tree/master/extras/solver_types/library).
+
+I followed the given instructions:
+
+> Most of these can be built by running the commands _mmake depend_ and then _mmake_ in the relevant subdirectory, and many can be installed by running _mmake install_.
+
+So, I did this:
+
+```
+$ cd ./mercury-srcdist-rotd-2025-11-01/extras/solver_types/library
+$ mmake depend
+...
+$ mmake
+...
+$ mmake install
+...
+$
+```
+
+Now comes the exciting part. Test this extra installation:
+
+TBD
 
 <br/>
 
