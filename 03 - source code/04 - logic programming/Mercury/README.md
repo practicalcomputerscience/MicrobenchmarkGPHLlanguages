@@ -1,37 +1,39 @@
-2025-11-05: work in progress
+2025-11-05: work in progress: see TBD's
 
 # Mercury
 
 https://mercurylang.org/index.html
 
-In my opinion:
+The Mercury programming language puts functional programming on top of logic programming.
 
-> The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit and should be more popular!
-> 
-> Mercury can feel like "Prolog on speed". (*)
+TL;DR: however, Mercury is not the right language for solving **Constraint Satisfaction Problems (CSP's)**, like the map coloring problem, for what [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) seems to be made for. At the moment, Mercury only features a [simple solver type supporting equality and disequality constraints](https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types), which you can use to find **one** solution of a [map coloring problem](#the-first-solution-of-a-map-coloring-problem).
+
+---
+
+Table of contents:
+- [Concepts of Mercury](#concepts-of-mercury)
+- [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
+- [Installation tips](#installation-tips)
+- [Installing the eqneq solver](#installing-the-eqneq-solver)
+- [How to install extra programs](#how-to-install-extra-programs)
+- [The first solution of a map coloring problem](#the-first-solution-of-a-map-coloring-problem)
+- [How I discovered Mercury](#how-i-discovered-mercury)
+- [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
 
 <br/>
 
-Although technically speaking, Mercury is not a Prolog system; see at page 782 from [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD), because it does not follow Prolog's definition of _append()_:
+---
+
+## Concepts of Mercury
+
+Mercury is not a Prolog system; see at page 782 from [Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD), because it does not follow Prolog's definition of _append()_:
 
 ```
 append([], L, L).  // appending L to empty list [] returns list L
 append([X | L], M, [X | N]) :- append(L, M, N).  // appending lists L and M to new list N
 ```
 
-TBD: personally check this claim with a speed comparison: Prolog <--> Mercury of a much simpler program: 4 colors for 16 German states problem
-
-<br/>
-
-> Mercury is based on the paradigm of **purely declarative programming**...
-> After stripping away the declarations of a Mercury program, the syntax of the remaining part of the program is mostly compatible with **Prolog** syntax.
-
-My emphasis in bold; sources:
-
-- https://mercurylang.org/information/doc-latest/mercury_reference_manual/Introduction.html#Introduction
-- https://mercurylang.org/about.html
-
-Beside the point that Mercury is not a Prolog system, there's a big difference between Mercury and Prolog from my point of view:
+Beside this point, there's a big difference between Mercury and Prolog from my point of view:
 
 > [!NOTE]
 > Mercury uses an expressive, statically checked type system similar to that of ML and Haskell, while key characteristics of Prolog-based systems are a dynamic type system, ...
@@ -43,29 +45,20 @@ Sources:
 - [Tutorial on programming in Mercury](https://mercurylang.org/documentation/papers/book.pdf)
 - [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf)
 
-
----
-
-Table of contents:
-- [Concepts of Mercury](#concepts-of-mercury)
-- [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
-- [Installation tips](#installation-tips)
-- [Installing the eqneq solver](#installing-the-eqneq-solver)
-- [How to install extra programs](#how-to-install-extra-programs)
-- [How I discovered Mercury](#how-i-discovered-mercury)
-- [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
-
 <br/>
 
----
+> Mercury is based on the paradigm of **purely declarative programming**...
+> After stripping away the declarations of a Mercury program, the syntax of the remaining part of the program is mostly compatible with **Prolog** syntax.
 
-## Concepts of Mercury
+My emphasis in bold; sources:
 
-Even though not broadly known, I have the positive impression that the Mercury programming language,
-started in [1995](https://mercurylang.org/information/doc-latest/mercury_reference_manual/index.html#SEC_Contents),
-is in a mature state now. Although, it's development is still ongoing as its GitHub repository show: https://github.com/Mercury-Language/mercury
+- https://mercurylang.org/information/doc-latest/mercury_reference_manual/Introduction.html#Introduction
+- https://mercurylang.org/about.html
 
-This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/pub/pbone-2015-mercury/) from 2015 says:
+Although the development of the Mercury programming language started in [1995](https://mercurylang.org/information/doc-latest/mercury_reference_manual/index.html#SEC_Contents),
+development is still ongoing as its GitHub repository activity shows: https://github.com/Mercury-Language/mercury
+
+Furthermore, this "The Mercury Programming Language" [presentation](https://paul.bone.id.au/pub/pbone-2015-mercury/) from 2015 says:
 
 > Mercury is a purely declarative logic/functional programming language.
 > 
@@ -278,7 +271,7 @@ By the way: installing extra programs does not depend on ininitially installing 
 
 <br/>
 
-## xxx
+## The first solution of a map coloring problem
 
 TBD
 
@@ -328,8 +321,6 @@ See also these official "Raw benchmark times" in milliseconds (*):
 
 - https://www.mercurylang.org/about/bench/times.html
 - https://mercurylang.org/about/benchmarks.html
-
-Apparently, the execution speed of a (compiled, binary) Mercury program can be an order of magnitude higher than the execution speed of a [SWI Prolog](https://www.swi-prolog.org/) program.
 
 <br/>
 
