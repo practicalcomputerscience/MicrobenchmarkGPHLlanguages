@@ -1,10 +1,17 @@
-2025-11-13: work in progress: a/ Mercury benchmark program + b/diagram of map coloring problem of Germany-benchmark, incl. Mercury's execution time for the map coloring problem of Germany
+2025-11-13: work in progress:
+
+- TBD: C version for the map coloring problem of Germany-benchmark with a backtracking solution? (just for fun)
+- TBD: do an ECLiPSe version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
+- TBD: full ECLiPSe program? --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
+- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems
 
 # Prolog
 
-This page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs started to exist for one reason:
+Originally, this page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs have been started for one reason:
 
 > How fast is a (compiled) program in the [Mercury language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) compared to a (compiled) version in its precursor language Prolog?
+
+TBD: _random_streams_for_perf_stats.pl_ (ECLiPSe) <=> _random_streams_for_perf_stats.m_
 
 <br/>
 
@@ -26,7 +33,7 @@ Table of contents:
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
-- [The Mercury benchmark program](#the-mercury-benchmark-program)
+- [And Mercury?](#and-mercury)
 
 <br/>
 
@@ -637,7 +644,7 @@ There was a problem with the GNU Prolog program again, since environment variabl
 
 <br/>
 
-## The Mercury benchmark program
+## And Mercury?
 
 The map coloring problem of Germany is a Constraint Satisfaction Problem (CSP), but:
 
@@ -645,7 +652,13 @@ The map coloring problem of Germany is a Constraint Satisfaction Problem (CSP), 
 
 from: [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf) by Ralph Becket, Maria Garcia de la Banda, Kim Marriott, Zoltan Somogyi, Peter J. Stuckey & Mark Wallace, 2005
 
-TBD
+..and further:
+
+> The easiest way to add constraint solving capability to a Mercury program is to provide an interface to an existing solver such as CPLEX [2] written in a foreign language.
+
+That's it for Mercury in this benchmark. The farest I could get with Mercury is [The first solution of a map coloring problem](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#the-first-solution-of-a-map-coloring-problem).
+
+Which actually means that Mercury is (still) not a competing language to Prolog for solving Constraint Satisfaction Problems.
 
 <br/>
 
