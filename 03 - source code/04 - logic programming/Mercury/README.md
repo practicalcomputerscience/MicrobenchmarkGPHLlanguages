@@ -180,8 +180,6 @@ In other words:
 > [!TIP]
 > Keep the original installation directory! Also for later potentially installing "extra programs" (under _./extras_).
 
-<br/>
-
 ### Installing the eqneq solver
 
 Now comes the real test, that is using the _eqneq_ solver (equality/disequality) from here: https://github.com/Mercury-Language/mercury/tree/bdd2a574a86e5dfc37e7cbff7e5108313e796bc0/samples/solver_types
@@ -237,8 +235,6 @@ Installing Mercury in the right configurations is not the easiest language insta
 $ ./mercury-srcdist-rotd-2025-11-01/configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additional-libgrades=asm_fast.gc.tr
 ```
 
-<br/>
-
 ### How to install extra programs
 
 This chapter relates to the [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/master/extras#extra-programs-in-the-mercury-implementation). My goal is to additionally install the [solver_types library](https://github.com/Mercury-Language/mercury/tree/master/extras/solver_types/library). I followed the given instructions:
@@ -267,6 +263,8 @@ $ ls ~/Mercury/extras/lib/mercury/
 inc  ints  lib  modules
 $ 
 ```
+
+<br/>
 
 ## xxx
 
