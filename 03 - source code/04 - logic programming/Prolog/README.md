@@ -173,6 +173,22 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 
 Both dialects, GNU and SWI, came to the same number of different solutions, that is 191808, and also show the same 1st solution and same last solution.
 
+<br/>
+
+By the way: first, I had an older version of SWI Prolog installed (version 9.0.4) in Ubuntu 24 LTS, which gets installed by this command: _$ sudo apt install swi-prolog-core_
+
+This version may miss extra libraries. To install a later version with (some) extra libraries do this:
+
+```
+$ sudo apt remove swi-prolog-core  # deinstall this version
+$ sudo apt install swi-prolog  # install a later version with more "batteries"
+$ swipl --version  # check that version
+SWI-Prolog version 9.3.34 for x86_64-linux
+$
+```
+
+<br/>
+
 ## Ciao Prolog
 
 I also tested Ciao Prolog: https://ciao-lang.org/
