@@ -37,6 +37,7 @@ Table of contents:
 - [Concepts of Mercury](#concepts-of-mercury)
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
 - [Installation tips](#installation-tips)
+- [Installing the eqneq solver](#installing-the-eqneq-solver)
 - [How to install extra programs](#how-to-install-extra-programs)
 - [How I discovered Mercury](#how-i-discovered-mercury)
 - [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
@@ -99,27 +100,52 @@ I started with file _mercury-srcdist-rotd-2025-11-01.tar.gz_ from here: https://
 $ cd  # go to home directory
 $ mkdir Mercury  # create an extra target directory for the later language installation
 # change back into installation directory: ./mercury-srcdist-rotd-2025-11-01/
-$ ./configure --enable-minimal-install --prefix=$HOME/Mercury  # do not install as usual into directory /usr/local/... as a root user;
-# this is a root directory and would make future installations of "extras" as a normal user hard;
-# use instead a subdirectory of the current, normal user: --prefix=$HOME/Mercury
+$ ./configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additional-libgrades=asm_fast.gc.tr
+# do not install as usual into directory /usr/local/... as a root user,
+# as this directory is a root directory and would make future installations of "extras" as a normal user hard;
+# instead, use a subdirectory of the current, normal user: --prefix=$HOME/Mercury
+# here, we will also install one more library grade, that is asm_fast.gc.tr, on top of very basic one asm_fast.gc,
+# to later be able to compile the sudoku solver, which makes use of solver type "eqneq", and which needs library grade asm_fast.gc.tr.
+...
+using /home/booser/Mercury as the install prefix
+
+the set of library grades to install will be
+   asm_fast.gc
+   asm_fast.gc.tr
+
+Configuring to install 2 grades.
+This will likely take 20 to 60 minutes.
+...
 $ make  # this will take some time
 ```
 
-Alternatively, for speeding up compilation with 4 concurrent jobs this command could be used:
-```
-$ make -j4
-```
+Alternatively, for speeding up compilation with 4 concurrent jobs, this command could be used, something I highly recommend:
 
 ```
+$ make -j4
+...
 $ make install  # this will also take some time; installation is done here not as root user!
 ```
 
-Alternatively, for speeding up installation with 4 concurrent jobs this command could be used:
+Alternatively, for speeding up installation with 4 concurrent jobs, this command could be used, something I highly recommend:
+
 ```
 $ make PARALLEL=-j4 install
+...
+-- Installation complete.  # good to know -;
+...
+$
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_ and activate the modified _.bashrc_ file:
+There should be these three new directories now:
+
+```
+$ ls ~/Mercury
+bin  lib  share
+$
+```
+
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:$HOME/Mercury/bin"_ and activate the modified _.bashrc_ file and test the Mercury compiler:
 
 ```
 $ source ~/.bashrc
@@ -127,14 +153,6 @@ $ mmc --version  # compiler test
 Mercury Compiler, version rotd-2025-11-01
 Copyright (C) 1993-2012 The University of Melbourne
 Copyright (C) 2013-2025 The Mercury team
-$
-```
-
-Furthermore, there should be these three new directories:
-
-```
-$ ls ~/Mercury
-bin  lib  share
 $
 ```
 
@@ -148,6 +166,61 @@ In other words:
 
 > [!TIP]
 > Keep the original installation directory! Also for later potentially installing "extra programs" (under _./extras_).
+
+<br/>
+
+### Installing the eqneq solver
+
+Now comes the real test, that is using the _eqneq_ solver (equality/disequality) from here: https://github.com/Mercury-Language/mercury/tree/bdd2a574a86e5dfc37e7cbff7e5108313e796bc0/samples/solver_types
+
+I did this:
+
+```
+$ cd ./mercury-srcdist-rotd-2025-11-01/samples/solver_types
+$ make
+...
+$
+
+The _make_ command has created two links among other things in this directory:
+
+```
+$ ls -l
+...
+sudoku -> Mercury/asm_fast.gc.tr/x86_64-pc-linux-gnu/Mercury/bin/sudoku
+...
+test_eqneq -> Mercury/asm_fast.gc.tr/x86_64-pc-linux-gnu/Mercury/bin/test_eqneq
+...
+$ 
+```
+
+Let's do this test and the game:
+
+```
+$ ./test_eqneq
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+$ ./sudoku ./sudoku_puzzle.easy
+6 4 5  1 9 8  2 7 3  
+1 2 7  3 4 6  5 9 8  
+8 9 3  2 7 5  4 6 1  
+
+5 1 4  6 2 7  3 8 9  
+2 3 8  4 1 9  6 5 7  
+7 6 9  8 5 3  1 4 2  
+
+4 5 1  7 8 2  9 3 6  
+9 8 6  5 3 1  7 2 4  
+3 7 2  9 6 4  8 1 5  
+$ 
+
+Voilà!
+
+<br/>
+
+Installing Mercury in the right configurations is not the easiest language installation job. It took me three runs to come to this point. The key to success is to start correctly at the initial configuration:
+
+```
+./configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additional-libgrades=asm_fast.gc.tr
+```
 
 <br/>
 
@@ -184,18 +257,7 @@ inc  ints  lib  modules
 $ 
 ```
 
-### eqneq solver
-
-However, my real goal is to use the _eqneq_ solver (equality/disequality) from here: https://github.com/Mercury-Language/mercury/tree/bdd2a574a86e5dfc37e7cbff7e5108313e796bc0/samples/solver_types
-
-I did this:
-
-`
-$ cd ry/mercury-srcdist-rotd-2025-11-01/samples/solver_types
-$ 
-
-
-
+## xxx
 
 TBD
 
