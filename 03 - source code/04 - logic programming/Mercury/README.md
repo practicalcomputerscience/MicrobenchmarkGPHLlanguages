@@ -95,27 +95,32 @@ I started with file _mercury-srcdist-rotd-2025-11-01.tar.gz_ from here: https://
 ..where I did these things:
 
 ```
-$ ./configure --enable-minimal-install
-$ make      # this will take some time
+$ cd  # go to home directory
+$ mkdir Mercury  # create an extra target directory for the later language installation
+# change back into installation directory: ./mercury-srcdist-rotd-2025-11-01/
+$ ./configure --enable-minimal-install --prefix=$HOME/Mercury  # do not install as usual into directory /usr/local/... as a root user;
+# this is a root directory and would make future installations of "extras" as a normal user hard;
+# use instead a subdirectory of the current, normal user: --prefix=$HOME/Mercury
+$ make  # this will take some time
 ```
 
-Alternatively, for speeding up compilation with 4 concurrent jobs:
+Alternatively, for speeding up compilation with 4 concurrent jobs this command could be used:
 ```
 $ make -j4
 ```
 
 ```
-$ sudo make install               # this will also take some time
+$ make install  # this will also take some time; installation is done here not as root user!
 ```
 
-Alternatively, for speeding up installation with 4 concurrent jobs:
+Alternatively, for speeding up installation with 4 concurrent jobs this command could be used:
 ```
-$ sudo make PARALLEL=-j4 install
+$ make PARALLEL=-j4 install
 ```
 
-Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:/usr/local/mercury-rotd-2025-11-01/bin"_
+Add to your _PATH_ in the _.bashrc_ file: _export PATH="$PATH:~/Mercury/bin"_
 
-..and activate it:
+Symbol _~_ refers to your home directory. Then activate the modified _.bashrc_ file:
 
 ```
 $ source ~/.bashrc
@@ -125,6 +130,22 @@ Copyright (C) 1993-2012 The University of Melbourne
 Copyright (C) 2013-2025 The Mercury team
 $
 ```
+
+Furthermore, there should be these three new directories:
+
+```
+$ ls ~/Mercury
+bin  lib  share
+$
+```
+
+If you want to unstall this installation, go back to the original installation directory _./mercury-srcdist-rotd-2025-11-01/_ and do:
+
+```
+$ make uninstall
+```
+
+In other words: keep the original installation directory!
 
 <br/>
 
