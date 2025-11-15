@@ -6,7 +6,7 @@ https://mercurylang.org/index.html
 
 In my opinion:
 
-> The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit and should be way more popular!
+> The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit and should be more popular!
 > 
 > Mercury feels like "Prolog on speed". (*)
 
@@ -180,6 +180,7 @@ $ cd ./mercury-srcdist-rotd-2025-11-01/samples/solver_types
 $ make
 ...
 $
+```
 
 The _make_ command has created two links among other things in this directory:
 
@@ -210,7 +211,8 @@ $ ./sudoku ./sudoku_puzzle.easy
 4 5 1  7 8 2  9 3 6  
 9 8 6  5 3 1  7 2 4  
 3 7 2  9 6 4  8 1 5  
-$ 
+$
+```
 
 Voilà!
 
@@ -219,18 +221,14 @@ Voilà!
 Installing Mercury in the right configurations is not the easiest language installation job. It took me three runs to come to this point. The key to success is to start correctly at the initial configuration:
 
 ```
-./configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additional-libgrades=asm_fast.gc.tr
+$ ./mercury-srcdist-rotd-2025-11-01/configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additional-libgrades=asm_fast.gc.tr
 ```
 
 <br/>
 
 ### How to install extra programs
 
-This chapter relates to the [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/master/extras#extra-programs-in-the-mercury-implementation).
-
-My goal is to additionally install the [solver_types library](https://github.com/Mercury-Language/mercury/tree/master/extras/solver_types/library).
-
-I followed the given instructions:
+This chapter relates to the [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/master/extras#extra-programs-in-the-mercury-implementation). My goal is to additionally install the [solver_types library](https://github.com/Mercury-Language/mercury/tree/master/extras/solver_types/library). I followed the given instructions:
 
 > Most of these can be built by running the commands _mmake depend_ and then _mmake_ in the relevant subdirectory, and many can be installed by running _mmake install_.
 
