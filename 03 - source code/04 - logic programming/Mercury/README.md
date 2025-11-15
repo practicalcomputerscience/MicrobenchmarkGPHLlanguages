@@ -181,7 +181,9 @@ Now, there should be a new directory called _extras_:
 ```
 $ ls ~/Mercury
 bin  extras  lib  share
-$
+$ ls ~/Mercury/extras/lib/mercury/
+inc  ints  lib  modules
+$ 
 ```
 
 Now comes the exciting part. Testing this extra installation:
