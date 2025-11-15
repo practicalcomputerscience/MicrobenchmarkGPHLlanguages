@@ -36,12 +36,12 @@ Beside the point that Mercury is not a Prolog system, there's a big difference b
 > [!NOTE]
 > Mercury uses an expressive, statically checked type system similar to that of ML and Haskell, while key characteristics of Prolog-based systems are a dynamic type system, ...
 
-ML for [Standard ML](TBD).
+ML for [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml).
 
 Sources:
 
-- [Tutorial on programming in Mercury](TBD)
-- [Adding constraint solving to Mercury](TBD)
+- [Tutorial on programming in Mercury](https://mercurylang.org/documentation/papers/book.pdf)
+- [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf)
 
 
 ---
