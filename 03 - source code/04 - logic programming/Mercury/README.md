@@ -63,7 +63,7 @@ Table of contents:
 
 Even though not broadly known, I have the positive impression that the Mercury programming language,
 started in [1995](https://mercurylang.org/information/doc-latest/mercury_reference_manual/index.html#SEC_Contents),
-is in a very mature state now. Although, it's development is still ongoing as its GitHub repository show: https://github.com/Mercury-Language/mercury
+is in a mature state now. Although, it's development is still ongoing as its GitHub repository show: https://github.com/Mercury-Language/mercury
 
 This "The Mercury Programming Language" [presentation](https://paul.bone.id.au/pub/pbone-2015-mercury/) from 2015 says:
 
