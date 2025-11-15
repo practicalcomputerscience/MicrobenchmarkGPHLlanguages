@@ -140,7 +140,7 @@ Now start the compilation with:
 $ make  # this will take some time
 ```
 
-...however, for speeding up compilation with 4 concurrent jobs, this command could be used, something I highly recommend:
+However, for speeding up compilation with 4 concurrent jobs, this command could be used, something I highly recommend:
 
 ```
 $ make -j4
