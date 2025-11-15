@@ -31,6 +31,19 @@ My emphasis in bold; sources:
 - https://mercurylang.org/information/doc-latest/mercury_reference_manual/Introduction.html#Introduction
 - https://mercurylang.org/about.html
 
+Beside the point that Mercury is not a Prolog system, there's a big difference between Mercury and Prolog from my point of view:
+
+> [!NOTE]
+> Mercury uses an expressive, statically checked type system similar to that of ML and Haskell, while key characteristics of Prolog-based systems are a dynamic type system, ...
+
+ML for [Standard ML](TBD).
+
+Sources:
+
+- [Tutorial on programming in Mercury](TBD)
+- [Adding constraint solving to Mercury](TBD)
+
+
 ---
 
 Table of contents:
