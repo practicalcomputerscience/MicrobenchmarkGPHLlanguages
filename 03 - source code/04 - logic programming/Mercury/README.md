@@ -37,6 +37,7 @@ Table of contents:
 - [Concepts of Mercury](#concepts-of-mercury)
 - [Difference between logic programming and declarative programming](#difference-between-logic-programming-and-declarative-programming)
 - [Installation tips](#installation-tips)
+- [How to install extra programs](#how-to-install-extra-programs)
 - [How I discovered Mercury](#how-i-discovered-mercury)
 - [Selected features of and tips for Mercury](#selected-features-of-and-tips-for-mercury)
 
@@ -175,7 +176,15 @@ $ mmake install
 $
 ```
 
-Now comes the exciting part. Test this extra installation:
+Now, there should be a new directory called _extras_:
+
+```
+$ ls ~/Mercury
+bin  extras  lib  share
+$
+```
+
+Now comes the exciting part. Testing this extra installation:
 
 TBD
 
