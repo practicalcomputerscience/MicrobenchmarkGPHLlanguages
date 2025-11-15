@@ -129,10 +129,18 @@ the set of library grades to install will be
 Configuring to install 2 grades.
 This will likely take 20 to 60 minutes.
 ...
+$
+```
+
+The _tr_ in _asm_fast.gc.tr_ stands for _trailing_, that is to compile in a grade that supports trailing.
+
+Now start the compilation with:
+
+```
 $ make  # this will take some time
 ```
 
-Alternatively, for speeding up compilation with 4 concurrent jobs, this command could be used, something I highly recommend:
+...however, for speeding up compilation with 4 concurrent jobs, this command could be used, something I highly recommend:
 
 ```
 $ make -j4
@@ -168,6 +176,8 @@ Copyright (C) 1993-2012 The University of Melbourne
 Copyright (C) 2013-2025 The Mercury team
 $
 ```
+
+By the way: the Mercury compiler shows a huge help page with: _$ mmc --help_
 
 If you want to unstall this installation, go back to the original installation directory _./mercury-srcdist-rotd-2025-11-01/_ and do:
 
