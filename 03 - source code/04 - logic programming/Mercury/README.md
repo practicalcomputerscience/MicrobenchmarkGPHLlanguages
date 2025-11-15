@@ -8,7 +8,7 @@ In my opinion:
 
 > The idea of the Mercury programming language to put functional programming on top of logic programming is a real hit and should be more popular!
 > 
-> Mercury feels like "Prolog on speed". (*)
+> Mercury can feel like "Prolog on speed". (*)
 
 <br/>
 
