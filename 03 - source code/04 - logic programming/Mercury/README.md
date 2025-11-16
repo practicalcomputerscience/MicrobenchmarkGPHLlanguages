@@ -1,4 +1,4 @@
-2025-11-05: work in progress: see TBD's
+2025-11-05: work in progress: TBD: update slides, benchmark diagram etc.
 
 # Mercury
 
@@ -6,7 +6,7 @@ https://mercurylang.org/index.html
 
 The Mercury programming language puts functional programming on top of logic programming.
 
-TL;DR: however, Mercury is not the right language for solving **Constraint Satisfaction Problems (CSP's)**, like the map coloring problem, for what [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) seems to be made for. At the moment, Mercury only features a [simple solver type supporting equality and disequality constraints](https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types), which you can use to find **one** solution of a [map coloring problem](#the-first-solution-of-a-map-coloring-problem).
+However, Mercury is not the right language for solving **Constraint Satisfaction Problems (CSP's)**, like the map coloring problem, for what [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) seems to be made for. At the moment, Mercury only features a [simple solver type supporting equality and disequality constraints](https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types), which you can use to find **one** solution of a [map coloring problem](#the-first-solution-of-a-map-coloring-problem).
 
 ---
 
