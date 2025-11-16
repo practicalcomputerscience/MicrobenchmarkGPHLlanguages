@@ -385,4 +385,47 @@ So, name your variables maybe in _CamelCase_, but your function, predicate ("sta
 
 <br/>
 
+Compared to the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) compiler, the Mercury compiler is really helpful with its warnings and error messages from my of view.
+
+One common problem I have had with Mercury, and one which I couldn't always solve for more demanding algorithms, is this kind of type problem:
+
+```
+:- pred list_of_strings(int::in, string::in, list(string)::out) is det.
+list_of_strings(Length, BasicString, ListOut) :-
+  ( if Length = 0 then
+      ListOut = []
+  else
+      list_of_strings(Length - 1, BasicString, ListOutPrev),  % recursion
+      ListOut = [BasicString | ListOutPrev]
+  ).
+...
+% somewhere in the main predicate:
+  Strings = list_of_strings(10, "0"),
+  ...
+  Builder0  = string.builder.init,
+  string.builder.append_strings(Strings, Builder0, Builder1),
+  ...
+```
+
+Deconstruction(?) _Strings = list_of_strings(10, "0")_ will not work here as intended, because variable _String_ now is of type _pred(list.list(string))_:
+
+```
+$ mmc ./string_builder2_error_message_demo.m 
+./string_builder2_error_message_demo.m:055: In clause for predicate `main'/2:
+./string_builder2_error_message_demo.m:055:   in argument 1 of call to
+./string_builder2_error_message_demo.m:055:   predicate
+./string_builder2_error_message_demo.m:055:   `string.builder.append_strings'/3:
+./string_builder2_error_message_demo.m:055:   type error: variable `Strings'
+./string_builder2_error_message_demo.m:055:   has type
+./string_builder2_error_message_demo.m:055:     pred(list.list(string));
+./string_builder2_error_message_demo.m:055:   expected type was
+./string_builder2_error_message_demo.m:055:     list.list(string).
+For more information, recompile with `-E'.
+$
+```
+
+The solution here is to declare it like this unification to _Strings_: _list_of_strings(M, "0", Strings),_, since now _Strings_ is of correct type _list.list(string)_. (_list.list_ refers to predicate _list_ in library _list_)
+
+<br/>
+
 ##_end
