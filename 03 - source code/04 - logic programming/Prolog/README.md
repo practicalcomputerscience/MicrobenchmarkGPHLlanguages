@@ -644,6 +644,16 @@ There was a problem with the GNU Prolog program again, since environment variabl
 
 <br/>
 
+By the way: is 570 milliseconds a fast execution time for the map coloring problem of Germany?
+
+Not really. To answer this question I let basically MS Bing AI develop a [C/C++ program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/MapColoring_Germany.cpp), which is employing a (simple) backtracking algorithm.
+
+Result of _$ sudo perf stat -r 20 ./MapColoring_Germany_cpp: 0,033907 +- 0,000422 seconds time elapsed  ( +-  1,24% )_ (so, not even best out of 3 runs). This is about 1 / (34 milliseconds / 574 milliseconds) = ~17 times faster than the best Prolog program, that is the ECLiPSe program.
+
+By the way: here's an article which is mentioning techniques and algorithms, which are superior to the (original) backtracking algorithm: [Constraint Satisfaction Problems: A Comprehensive Guide to Map Coloring](https://medium.com/@payalsingh567951/constraint-satisfaction-problems-a-comprehensive-guide-to-map-coloring-d10955e261c7).
+
+<br/>
+
 ## And Mercury?
 
 The map coloring problem of Germany is a Constraint Satisfaction Problem (CSP), but:
