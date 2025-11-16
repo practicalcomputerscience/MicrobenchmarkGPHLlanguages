@@ -1,6 +1,6 @@
 2025-11-13: work in progress:
 
-- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems
+- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems + the C++ program
 - TBD: do an ECLiPSe version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
 - TBD: full ECLiPSe program? --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
 
@@ -10,8 +10,6 @@
 Originally, this page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs have been started for one reason:
 
 > How fast is a (compiled) program in the [Mercury language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) compared to a (compiled) version in its precursor language Prolog?
-
-TBD: _random_streams_for_perf_stats.pl_ (ECLiPSe) <=> _random_streams_for_perf_stats.m_
 
 <br/>
 
