@@ -6,13 +6,6 @@
 #      Platform: x86_64-w64-mingw32/x64
 #
 # test: OK
-#
-#
-#
-# sources:
-#   DAX volatility outlier anlysis.R
-#   https://stats.stackexchange.com/questions/177628/plotting-results-having-only-mean-and-standard-deviation
-#   http://www.cookbook-r.com/Graphs/Plotting_means_and_error_bars_(ggplot2)/
 
 
 library(tidyquant)  # loads tidyquant, tidyverse, lubridate, xts, quantmod, TTR, %>%, theme_tq()
@@ -100,5 +93,6 @@ print(bar_plot1)
 
 
 # end of mean_stddev_err_whiskers.R
+
 
 
