@@ -2,8 +2,8 @@
 
    source: https://bernardopires.com/2013/10/try-logic-programming-a-gentle-introduction-to-prolog/
 
-   test on grolog v.1.3.0, 2017-04-20: OK
-   test on grolog v.1.4.5, 2025-11-06: OK!!
+   test on gprolog v.1.3.0, 2017-04-20: OK
+   test on gprolog v.1.4.5, 2025-11-06: OK!!
    test on swipl  v.9.0.4, 2025-11-06: OK!!
 
    build program in Ubuntu 24 LTS: $ gplc ./graph_4coloring_Germany2a.pl  # do not forget file extension .pl!!
@@ -105,3 +105,4 @@ $
 */
 
 /* end of graph_4coloring_Germany2a.pl */
+
