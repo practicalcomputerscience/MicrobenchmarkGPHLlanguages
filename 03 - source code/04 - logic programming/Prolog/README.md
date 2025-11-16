@@ -1,9 +1,7 @@
 2025-11-13: work in progress:
 
-- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems + the C++ program
 - TBD: do an ECLiPSe version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
 - TBD: full ECLiPSe program? --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
-
 
 # Prolog
 
