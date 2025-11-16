@@ -1,0 +1,10 @@
+language;mean;std_dev
+GNU Prolog;1,597;0,0
+SWI Prolog;0,69330;0,00175
+Ciao Prolog;0,75810;0,00150
+YAP Prolog;0,93109;0,00254
+ECLiPSe;0,574;0,0
+XSB Prolog;0,612;0,0
+Trealla Prolog;2,224;0,0
+Scryer Prolog;1,538;0,0
+C++ (backtracking);0,033907;0,000422
