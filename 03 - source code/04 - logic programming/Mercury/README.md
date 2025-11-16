@@ -273,9 +273,9 @@ By the way: installing extra programs does not depend on ininitially installing 
 
 ## The first solution of a map coloring problem
 
-Here I worked with the GNU make tool, like shown in official example source code files: _test_eqneq.m_ and _sudoku.m_ from here: https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types
+Here I worked with the GNU make tool, like used for official example source code files _test_eqneq.m_ and _sudoku.m_ from here: https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types
 
-I also prepared related make files: _Makefile_ and _Mercury.options_ (as linked at the very top of this page), and put them together with program file _graph_4coloring_Australia.m_ (for coloring the Australian map and not the much bigger problem of the Germany map) into its own project directory, here named _./Mercury/graph_4coloring_Australia_
+I also prepared related make files _Makefile_ and _Mercury.options_ (as linked at the very top of this page), and put them together with the source code file _**graph_4coloring_Australia.m**_ (for coloring the Australian map and not the much bigger problem of the Germany map) into its own project directory, here named _./Mercury/graph_4coloring_Australia_
 
 So, all in all there are these files in this directory:
 
