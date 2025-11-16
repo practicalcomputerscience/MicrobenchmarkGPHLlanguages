@@ -66,11 +66,12 @@ Clojure            | 3
 Common Lisp        | 2
 Crystal            | 0
 FreeBASIC          | 1
-Gleam | 8
+Gleam              | 8
 Go                 | 0
 Inko               | 4
 Kotlin             | 1
 Lua                | 2
+Mercury            | 9
 Mojo               | 0
 OCaml              | 5
 Perl 5             | 0
