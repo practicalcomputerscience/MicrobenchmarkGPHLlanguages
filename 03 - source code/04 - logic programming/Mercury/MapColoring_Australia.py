@@ -67,8 +67,7 @@ def union(d1, d2):
 def union_arr(a, b):
     return list(set(a) | set(b))
 
-# colors = ["blue","green","red"]
-colors = ["blue","green","red","yellow"]
+colors = ["red","green","blue","yellow"]
 states = ["WA","NT","Q","NSW","V","SA","T"]
 
 class Problem:
@@ -143,3 +142,4 @@ def main():
         #     break
 
 main()
+
