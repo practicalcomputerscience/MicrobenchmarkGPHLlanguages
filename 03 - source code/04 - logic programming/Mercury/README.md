@@ -273,7 +273,39 @@ By the way: installing extra programs does not depend on ininitially installing 
 
 ## The first solution of a map coloring problem
 
-TBD
+Here I worked with the GNU make tool, like shown in official example source code files: _test_eqneq.m_ and _sudoku.m_ from here: https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types
+
+I also prepared related make files: _Makefile_ and _Mercury.options_ (as linked at the very top of the this page), and put them together with program file _graph_4coloring_Australia.m_ (for coloring the Australian map and not the much bigger problem of the Germany map) into its own project directory, here named _./Mercury/graph_4coloring_Australia_
+
+So, all in all there are these files in this directory:
+
+```
+$ ls -l
+total 24
+-rw------- 1 booser booser 11827 Nov 15 14:28 eqneq.m
+-rw------- 1 booser booser  3147 Nov 16 00:08 graph_4coloring_Australia.m
+-rw------- 1 booser booser   435 Nov 15 14:33 Makefile
+-rw------- 1 booser booser    42 Nov 15 14:33 Mercury.options
+$
+```
+
+Then I compiled this program with the _make_ command and executed the generated link to run the compiled program:
+
+```
+$ make
+mmc --make graph_4coloring_Australia
+...
+Making Mercury/asm_fast.gc.tr/x86_64-pc-linux-gnu/Mercury/bin/graph_4coloring_Australia
+$ ./graph_4coloring_Australia
+NT, QL, NSW, VIC, SA, WA, TAS
+["red", "green", "red", "green", "blue", "green", "red"]
+bye.
+$ 
+```
+
+This is only one solution, but not the 576 ones as computed with this [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py), which is actually a 1:1 copy of this elegant, object-oriented Python program: https://github.com/parisasl/MapColoring/blob/main/MapColoring.py, which is employing the **backtracking** algorithm.
+
+Backtracking is a standard algorithm for solving Constraint Satisfaction Problems: https://en.wikipedia.org/wiki/Backtracking
 
 <br/>
 
