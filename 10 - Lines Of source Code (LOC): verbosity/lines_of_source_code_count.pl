@@ -1,6 +1,7 @@
 # lines_of_source_code_count.pl
 #
-# 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27, 2025-07-08/12/14, 2025-10-29
+# 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
+# 2025-07-08/12/14, 2025-10-29, 2025-11-16
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -25,6 +26,7 @@ my $line_cmt_minus_dbl = 0;
 my $line_cmt_ML_style = 0;  # (*...*)
 my $line_cmt_Lisp_style = 0;
 my $line_cmt_Basic_style = 0;
+my $line_cmt_Mercury_style = 0;  # %
 
 
 my $fwdslash_star_detected = 0;              # 0 is false --> use strict prevents using true or false
@@ -54,6 +56,7 @@ my @lang_grp6 = ("clj");
 my @lang_grp7 = ("lisp", "rkt");
 my @lang_grp8 = ("bas");
 my @lang_grp9 = ("lua");
+my @lang_grp10 = ("m");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -436,6 +439,51 @@ if ( grep(/^$language_ext$/, @lang_grp9)) {
   }
 }
 
+if ( grep(/^$language_ext$/, @lang_grp10)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($fwdslash_star_detected) {
+      $line_of_block_comment2 += 1;
+    }
+
+    # at the moment, only caring about:
+    #   beginning /*: with potential leading white spaces and any kind of stuff beyond /*..
+    #   ending    */: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    if ($_ =~ /^\s*\/\*/ and not $fwdslash_star_detected) {
+      $fwdslash_star_detected = 1;
+      $star_bwdslash_detected = 0;
+      print "  fwdslash_star_detected", "\n";
+      $line_of_block_comment2 += 1;
+    } else {
+
+      if ($_ =~ /\*\/\s*$/ and $fwdslash_star_detected) {
+        $fwdslash_star_detected = 0;
+        $star_bwdslash_detected = 1;
+        print "  star_bwdslash_detected", "\n";
+      } else {
+        # case: empty line or line with white spaces:
+        if ($_ =~ /^\s*$/ and not $fwdslash_star_detected) {
+          $line_empty += 1;
+        } else {
+          # case: % with optional, leading white spaces:
+          if ($_ =~ /^\s*\%/ and not $fwdslash_star_detected) {
+            $line_cmt_Mercury_style += 1;
+          } else {
+            if (not $fwdslash_star_detected) {
+              $source_code_line_count += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 close( FILE );
 
 print "\ntotal number of lines = ", $line_count;
@@ -448,6 +496,7 @@ print "\nnumber of lines with ___-- = ", $line_cmt_minus_dbl;
 print "\nnumber of lines with ___(*..*)___ = ", $line_cmt_ML_style;
 print "\nnumber of lines with ___;(;) = ", $line_cmt_Lisp_style;
 print "\nnumber of lines with ___' = ", $line_cmt_Basic_style;
+print "\nnumber of lines with ___% = ", $line_cmt_Mercury_style;
 print "\nnumber of lines in block comment: \/\* ... \*\/ = ", $line_of_block_comment2;
 print "\nnumber of lines in block comment: \"\"\" ... \"\"\" = ", $line_of_block_comment3;
 print "\nnumber of lines in block comment: \(\* ... \*\) = ", $line_of_block_comment4;
