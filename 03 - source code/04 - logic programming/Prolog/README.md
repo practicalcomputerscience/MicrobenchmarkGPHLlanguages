@@ -1,9 +1,9 @@
 2025-11-13: work in progress:
 
-- TBD: C version for the map coloring problem of Germany-benchmark with a backtracking solution? (just for fun)
+- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems
 - TBD: do an ECLiPSe version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
 - TBD: full ECLiPSe program? --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
-- TBD: diagram of the map coloring problem of Germany-benchmark with Prolog systems
+
 
 # Prolog
 
