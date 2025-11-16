@@ -1,5 +1,3 @@
-2025-11-05: work in progress: TBD: update slides, benchmark diagram etc.
-
 # Mercury
 
 https://mercurylang.org/index.html
