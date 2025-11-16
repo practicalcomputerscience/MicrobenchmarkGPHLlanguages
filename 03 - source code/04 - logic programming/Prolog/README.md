@@ -631,8 +631,8 @@ Ciao | 0,75810 +- 0,00150 seconds time elapsed  ( +-  0,20% )
 YAP | 0,93109 +- 0,00254 seconds time elapsed  ( +-  0,27% )
 ECLiPSe | mean = 574 [milliseconds]
 XSB | mean = 612 [milliseconds]
-Trealla Prolog | mean = 2224 [milliseconds]
-Scryer Prolog | mean = 1538 [milliseconds]
+Trealla | mean = 2224 [milliseconds]
+Scryer | mean = 1538 [milliseconds]
 
 So, about 570 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
 
