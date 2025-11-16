@@ -111,7 +111,7 @@ $ ./configure --enable-minimal-install --prefix=$HOME/Mercury --enable-additiona
 # as this directory is a root directory and would make future installations of "extras" as a normal user hard;
 # instead, use a subdirectory of the current, normal user: --prefix=$HOME/Mercury
 # here, we will also install one more library grade, that is asm_fast.gc.tr, on top of very basic one asm_fast.gc,
-# to later be able to compile the sudoku solver, which makes use of solver type "eqneq", and which needs library grade asm_fast.gc.tr.
+# to later be able to compile the Sudoku solver, which makes use of solver type "eqneq", and which needs library grade asm_fast.gc.tr.
 ...
 using /home/booser/Mercury as the install prefix
 
