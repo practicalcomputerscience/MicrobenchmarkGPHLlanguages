@@ -96,6 +96,7 @@ FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no
 Go | 0 bytes in 0 blocks | -- | yes <<<<<<
 Inko | Segmentation fault (core dumped) | -- | no
 Koka | program doesn't finish | -- | no
+Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no
 Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no
 OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
 Racket Scheme | Valgrind is doing nothing | -- | no
