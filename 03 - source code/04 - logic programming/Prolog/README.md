@@ -13,6 +13,10 @@ Originally, this page and its Prolog (= _**PRO**grammation en **LOG**ique_) prog
 
 <br/>
 
+#### The TL;DR execution speed diagram
+
+![plot](./mean_stddev_err_whiskers%20--%20only%20Prolog%2C%20Germany%20map.png)
+
 ---
 
 Table of contents:
@@ -635,6 +639,8 @@ Trealla | mean = 2224 [milliseconds]
 Scryer | mean = 1538 [milliseconds]
 
 So, about 570 milliseconds is the benchmark time a logically equivalent Mercury program must beat!
+
+See this table as a diagram at the top of this page: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram)
 
 <br/>
 
