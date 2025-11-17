@@ -35,6 +35,7 @@ Table of contents:
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [And Mercury?](#and-mercury)
 - [MiniZinc - constraint modelling language](#minizinc---constraint-modelling-language)
+- [Measuring execution time with MiniZinc](#measuring-execution-time-with-minizinc)
 
 <br/>
 
@@ -771,6 +772,29 @@ $
 ```
 
 I also tried the other solvers from the list provided with command _$ minizinc --solvers_, only to find out that those solvers are for other problems or need a license as commercial solutions.
+
+#### Measuring execution time with MiniZinc
+
+Time measuring this command: _$ minizinc ./MapColoring_Germany.mzn --all-solutions | grep "^-" | wc_ is not so easy. Perf-stat, my own script or [hyperfine](https://github.com/sharkdp/hyperfine) couldn't do it "out of the box".
+
+Finally, I discovered the **multitime** tool: https://tratt.net/laurie/src/multitime/
+
+```
+$ sudo apt-get install multitime  # install this command in a Ubuntu system; then run the following command:
+$ multitime -n 20 ~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin/minizinc ./MapColoring_Germany.mzn --all-solutions | grep "^-" | wc
+===> multitime results
+1: ~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin/minizinc ./MapColoring_Germany.mzn --all-solutions
+            Mean        Std.Dev.    Min         Median      Max
+real        3.222       0.039       3.142       3.223       3.308       
+user        4.500       0.051       4.422       4.490       4.641       
+sys         0.289       0.016       0.248       0.292       0.309       
+3836160 3836160 42197760
+$
+```
+
+By the way: 3836160 = 191808 * 20
+
+So, 3.222 seconds of real execution time with a standard deviation of 0.039 seconds are the numbers I have been looking for.
 
 <br/>
 
