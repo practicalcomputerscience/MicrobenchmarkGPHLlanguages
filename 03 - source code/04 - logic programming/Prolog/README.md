@@ -34,6 +34,7 @@ Table of contents:
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [And Mercury?](#and-mercury)
+- [MiniZinc - constraint modelling language](#minizinc-constraint-modelling-language)
 
 <br/>
 
@@ -671,6 +672,105 @@ from: [Adding constraint solving to Mercury](https://mercurylang.org/documentati
 That's it for Mercury in this benchmark. The farest I could get with Mercury is [The first solution of a map coloring problem](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#the-first-solution-of-a-map-coloring-problem).
 
 Which actually means that Mercury is (still) not a competing language to Prolog for solving Constraint Satisfaction Problems.
+
+<br/>
+
+## MiniZinc - constraint modelling language
+
+While looking around for potential Prolog systems and solutions for constraint programming (CP), I tumbled over this system: [MiniZinc](https://www.minizinc.org/) + https://github.com/minizinc
+
+I gave it a try to find out how a dedicated language and implementation can do compared to Prolog at the map coloring problem of Germany.
+
+I downloaded file _MiniZincIDE-2.9.4-bundle-linux-x86_64.tgz_ from here: https://www.minizinc.org/downloads/, unzipped this file and expanded _PATH_ to: _export PATH="$PATH:~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin"_
+
+I only quickly implemented a skeleton of the basic Prolog program in MiniZinc, so its functionality isn't exactly the same, as this would require much more time from me.
+
+However, my concept is also correctly computing the total number of solutions, which also could be displayed individually (but not screened for first and last solutions so easily).
+
+Here's the [whole program](TBD), with this source code, which makes it a "low-code" solution:
+
+```
+int: nc = 4;
+
+var 1..nc: SH;
+var 1..nc: MV;
+var 1..nc: HH;
+var 1..nc: HB;
+var 1..nc: NI;
+var 1..nc: ST;
+var 1..nc: BE;
+var 1..nc: BB;
+var 1..nc: SN;
+var 1..nc: NW;
+var 1..nc: HE;
+var 1..nc: TH;
+var 1..nc: RP;
+var 1..nc: SL;
+var 1..nc: BW;
+var 1..nc: BY;
+
+constraint SH != NI;
+constraint SH != HH;
+constraint SH != MV;
+constraint HH != NI;
+constraint MV != NI;
+constraint MV != BB;
+constraint NI != HB;
+constraint NI != BB;
+constraint NI != ST;
+constraint NI != TH;
+constraint NI != HE;
+constraint NI != NW;
+constraint ST != BB;
+constraint ST != SN;
+constraint ST != TH;
+constraint BB != BE;
+constraint BB != SN;
+constraint NW != HE;
+constraint NW != RP;
+constraint SN != TH;
+constraint SN != BY;
+constraint RP != SL;
+constraint RP != HE;
+constraint RP != BW;
+constraint HE != BW;
+constraint HE != TH;
+constraint HE != BY;
+constraint TH != BY;
+constraint BW != BY;
+
+solve satisfy;
+```
+
+I ran this program like this to count me the total number of solutions, which is 191808:
+
+```
+$ time minizinc ./MapColoring_Germany.mzn --all-solutions | grep "^-" | wc
+ 191808  191808 2109888
+
+real	0m3,292s
+user	0m4,672s
+sys	0m0,555s
+$
+```
+
+By the way: here is the MiniZinc playground: https://play.minizinc.dev/
+
+So, this isn't a fast solution compared to let's say a very common solution in SWI Prolog for this specific problem. Above, MiniZinc has been using its default solver, which is constraint solver _gecode_, that is currently **Gecode** 6.3.0: https://www.gecode.dev/ + https://en.wikipedia.org/wiki/Gecode
+
+Then, I tried the other working one for this problem, which is Chuffed CP solver 0.13.2 (https://github.com/chuffed/chuffed), with lazy clause generation for search reduction, which is a little bit slower at this specific problem:
+
+```
+$ time minizinc ./MapColoring_Germany.mzn --all-solutions --solver chuffed | grep "^-" | wc
+ 191808  191808 2109888
+
+real	0m3,373s
+user	0m4,471s
+sys	0m0,591s
+$
+```
+
+I also tried the other solvers from the list provided with command _$ minizinc --solvers_, only to find out that those solvers are for other problems or need a license as commercial solutions.
 
 <br/>
 
