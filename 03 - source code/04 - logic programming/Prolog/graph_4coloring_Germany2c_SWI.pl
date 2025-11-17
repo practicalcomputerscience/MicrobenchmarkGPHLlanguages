@@ -15,6 +15,8 @@
 
 
    $ swipl --version
+   SWI-Prolog version 9.3.34 for x86_64-linux
+   $
 
 */
 
@@ -90,3 +92,4 @@ $
 */
 
 /* end of graph_4coloring_Germany2c_SWI.pl */
+
