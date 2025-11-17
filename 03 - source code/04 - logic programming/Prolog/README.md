@@ -780,7 +780,7 @@ Time measuring this command: _$ minizinc ./MapColoring_Germany.mzn --all-solutio
 Finally, I discovered the **multitime** tool: https://tratt.net/laurie/src/multitime/
 
 ```
-$ sudo apt-get install multitime  # install this command in a Ubuntu system; then run the following command:
+$ sudo apt-get install multitime  # install with this command in a Ubuntu system; then run the following command:
 $ multitime -n 20 ~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin/minizinc ./MapColoring_Germany.mzn --all-solutions | grep "^-" | wc
 ===> multitime results
 1: ~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin/minizinc ./MapColoring_Germany.mzn --all-solutions
@@ -794,7 +794,7 @@ $
 
 By the way: 3836160 = 191808 * 20
 
-So, 3.222 seconds of real execution time with a standard deviation of 0.039 seconds are the numbers I have been looking for.
+So, 3.222 seconds of mean, real execution time with a standard deviation of 0.039 seconds are the numbers I have been looking for.
 
 <br/>
 
