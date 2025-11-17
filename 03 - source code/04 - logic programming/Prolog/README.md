@@ -34,7 +34,7 @@ Table of contents:
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
 - [And Mercury?](#and-mercury)
-- [MiniZinc - constraint modelling language](#minizinc-constraint-modelling-language)
+- [MiniZinc - constraint modelling language](#minizinc---constraint-modelling-language)
 
 <br/>
 
@@ -683,11 +683,11 @@ I gave it a try to find out how a dedicated language and implementation can do c
 
 I downloaded file _MiniZincIDE-2.9.4-bundle-linux-x86_64.tgz_ from here: https://www.minizinc.org/downloads/, unzipped this file and expanded _PATH_ to: _export PATH="$PATH:~/scripts/MiniZinc/MiniZincIDE-2.9.4-bundle-linux-x86_64/bin"_
 
-I only quickly implemented a skeleton of the basic Prolog program in MiniZinc, so its functionality isn't exactly the same, as this would require much more time from me.
+I only quickly implemented a skeleton of the basic Prolog program in MiniZinc, so its functionality isn't exactly the same, as this would require much more of my time.
 
-However, my concept is also correctly computing the total number of solutions, which also could be displayed individually (but not screened for first and last solutions so easily).
+However, my concept is also correctly computing the total number of solutions, where the later could also be displayed individually (but not screened for first and last solutions only so easily).
 
-Here's the [whole program](TBD), with this source code, which makes it a "low-code" solution:
+Here's the [whole program](./MapColoring_Germany.mzn), with this source code, which makes it an easy to modify "low-code" solution:
 
 ```
 int: nc = 4;
@@ -742,7 +742,7 @@ constraint BW != BY;
 solve satisfy;
 ```
 
-I ran this program like this to count me the total number of solutions, which is 191808:
+I ran this program like this to count the total number of solutions, which is 191808:
 
 ```
 $ time minizinc ./MapColoring_Germany.mzn --all-solutions | grep "^-" | wc
