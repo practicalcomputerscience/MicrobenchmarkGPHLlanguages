@@ -76,8 +76,10 @@ dat1_sort
 
 if (plot_type < 4) {
   y_break_max = 1100  # milliseconds
+  y_tick = 100  # milliseconds
 } else if (plot_type == 4) {
-  y_break_max = 2300
+  y_break_max = 3500
+  y_tick = 200  # milliseconds
 }
 
 # problem: ggplotting with x = language will sort it alphanumerically before!
@@ -94,7 +96,7 @@ bar_plot1 <- ggplot(dat1_sort,
                geom_point(aes(y = mean*sec_to_ms)) +
 
                scale_y_continuous(
-                 breaks = seq(0, y_break_max, 100)
+                 breaks = seq(0, y_break_max, y_tick)
                ) +
 
                labs(title = plot_title,
