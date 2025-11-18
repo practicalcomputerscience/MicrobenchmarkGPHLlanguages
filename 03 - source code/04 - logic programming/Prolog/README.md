@@ -38,6 +38,7 @@ Table of contents:
 - [And Mercury?](#and-mercury)
 - [MiniZinc - constraint modelling language](#minizinc---constraint-modelling-language)
 - [Measuring execution time with MiniZinc](#measuring-execution-time-with-minizinc)
+- [Microbenchmark program in SWI Prolog](#microbenchmark-program-in-swi-prolog)
 
 <br/>
 
@@ -873,6 +874,16 @@ $
 By the way: 3836160 = 191808 * 20
 
 So, 3.222 seconds of mean, real execution time with a standard deviation of 0.039 seconds are the numbers I have been looking for.
+
+<br/>
+
+## Microbenchmark program in SWI Prolog
+
+At first, the microbenchmark program was meant to be implemented in [ECLiPSe](#eclipse---constraint-logic-programming-system), just because it's the fastest Prolog system for the map coloring problem of Germany: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram).
+
+But as programming language ECLiPSe is too rudimentary for this program. And it's fair to compare a Prolog system with more "batteries included", like [SWI Prolog](#swi-prolog), with the program version implemented in [Mercury](TBD).
+
+TBD
 
 <br/>
 
