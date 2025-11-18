@@ -1,7 +1,7 @@
 2025-11-13: work in progress:
 
-- TBD: do an ECLiPSe version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
-- TBD: full ECLiPSe program? --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
+- TBD: do an SWI version of _random_streams_for_perf_stats.pl_ (don't use .pl --> Perl 5)
+- TBD: full SWI program --> _random_bitstring_and_flexible_password_generator.pl_ (don't use .pl --> Perl 5)
 
 # Prolog
 
@@ -595,9 +595,9 @@ flora2 ?-
 
 ## ALS Prolog
 
-While I've been working on implementing the microbenchmark program in SWI Prolog, I tumbled into ALS Prolog: https://alsprolog.com/ ..and had to try it too.
+While I've been working on implementing the microbenchmark program in SWI Prolog, I tumbled into ALS Prolog: https://alsprolog.com/, and had to try it too.
 
-It's installation is also a little bit tricky, since the official installation guide isn't working anymore according to my experience:
+It's installation is also a little bit tricky, since the official installation guide isn't working anymore completely according to my experience:
 
 ```
 $ sudo apt-get update && sudo apt-get install build-essential git gcc-multilib ruby ruby-dev php libcurl4-openssl-dev tk-dev
@@ -605,14 +605,14 @@ $ sudo apt-get update && sudo apt-get install build-essential git gcc-multilib r
 
 from: https://github.com/AppliedLogicSystems/ALSProlog
 
-So, check **at least** these requirements individually before compiling ALS Prolog in your Linux target system:
+So, check at least these requirements individually before compiling ALS Prolog in your Linux target system:
 
 ```
-$ find /usr/include -name "curl.h"  # this is for checking
+$ find /usr/include -name "curl.h"  # this is for checking the curl installation
 $ sudo apt-get install libcurl-devel  # if curl.h can't be found, install it
-$ sudo apt-get install tcl-devel  # this package also has a good chance to be not installed yet
+$ sudo apt-get install tcl-devel  # this package also has a good chance to not be installed yet
 $ sudo apt-get install tk-devel  # this package too
-$ sudo apt-get install ruby  # the compiling of ALS Prolog heavily depends on a Ruby infrastructure, including Ruby Bundle
+$ sudo apt-get install ruby  # the compiling of ALS Prolog heavily depends on a Ruby infrastructure, including Ruby Bundler
 $ sudo apt-get install ruby-devel
 $ sudo apt-get install ruby-bundler
 ```
@@ -640,9 +640,11 @@ $
 
 Update the _.bashrc_ file with: _export PATH="$PATH:$HOME/scripts/Prolog/ALS_Prolog/ALSProlog/unix/linux/als-prolog"_
 
+Warning message "gc not 64-bit yet" indicates that: _It is a 32-bit system_; see from here: https://alsprolog.com/ again; "gc" may mean "garbage collection". I suppress this warning and other system messages with switch _-q_ below.
+
 From the provided, official examples, I only got the _./ALS_Prolog/ALSProlog/examples/als/queens.pro_ example working immediately, after testing some of them. Not surprisingly, I had to re-work the benchmarking program of the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro) for ALS Prolog. Here, mainly predicates _nth0()_ and _nth()_ are not existing, and had to be replaced with other ones.
 
-Then, similar to GNU Prolog, the (Ubuntu) default stack size is too small and must be lifted, something which can be done with a switch.
+Then, similar to GNU Prolog, the (Ubuntu) default stack size is too small for this problem and must be lifted, something which can be done with switch: _-stack 512_
 
 To start this program automatically, its _main_ predicate has to be provided from the shell command with switch _-g main._:
 
