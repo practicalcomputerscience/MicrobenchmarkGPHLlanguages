@@ -31,6 +31,7 @@ Table of contents:
 - [Scryer Prolog](#scryer-prolog)
 - [ErgoAI: knowledge representation and reasoning](#ergoai-knowledge-representation-and-reasoning)
 - [ALS Prolog](#als-prolog)
+- [Map of Australia](#map-of-australia)
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
@@ -660,6 +661,12 @@ $
 ```
 
 Otherwise, these 1st and last solutions are the same as GNU Prolog's 1st and last solutions.
+
+#### Map of Australia
+
+Before I tackled the German map problem here, I implemented the much smaller [problem of the Australian map](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Australia_ALS.pro). Its list of solutions only contains 576 color lists, if Tasmania has to have a different color than Victoria.
+
+Its a much handier problem than Germany, and its core clauses could also serve as a starting point for other hard to handle Prolog systems, like [Tau Prolog](#tau-prolog) for example, or generally systems for solving Constraint Satisfaction Problems.
 
 <br/>
 
