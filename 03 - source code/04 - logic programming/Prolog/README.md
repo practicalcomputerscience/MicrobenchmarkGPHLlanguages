@@ -30,6 +30,7 @@ Table of contents:
 - [Trealla Prolog](#trealla-prolog)
 - [Scryer Prolog](#scryer-prolog)
 - [ErgoAI: knowledge representation and reasoning](#ergoai-knowledge-representation-and-reasoning)
+- [ALS Prolog](#als-prolog)
 - [Other Prolog systems](#other-prolog-systems)
 - [ISO standard, comments, etc.](#iso-standard-comments-etc)
 - [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs)
@@ -589,6 +590,74 @@ flora2 ?- \list[append(["[a,b]"^^\list,[c,d],"[e,f]"^^\list])->?R].
 No
 flora2 ?-
 ```
+
+<br/>
+
+## ALS Prolog
+
+While I've been working on implementing the microbenchmark program in SWI Prolog, I tumbled into ALS Prolog: https://alsprolog.com/ ..and had to try it too.
+
+It's installation is also a little bit tricky, since the official installation guide isn't working anymore according to my experience:
+
+```
+$ sudo apt-get update && sudo apt-get install build-essential git gcc-multilib ruby ruby-dev php libcurl4-openssl-dev tk-dev
+```
+
+from: https://github.com/AppliedLogicSystems/ALSProlog
+
+So, check **at least** these requirements individually before compiling ALS Prolog in your Linux target system:
+
+```
+$ find /usr/include -name "curl.h"  # this is for checking
+$ sudo apt-get install libcurl-devel  # if curl.h can't be found, install it
+$ sudo apt-get install tcl-devel  # this package also has a good chance to be not installed yet
+$ sudo apt-get install tk-devel  # this package too
+$ sudo apt-get install ruby  # the compiling of ALS Prolog heavily depends on a Ruby infrastructure, including Ruby Bundle
+$ sudo apt-get install ruby-devel
+$ sudo apt-get install ruby-bundler
+```
+
+Git and make should now work fine:
+
+```
+$ mkdir ./ALS_Prolog  # make a ALS Prolog working directory, and change into it:
+$ cd ./ALS_Prolog
+$ git clone https://github.com/AppliedLogicSystems/ALSProlog.git 
+$ cd ./ALSProlog/unix
+$ sudo make  # this command only worked as root user in my Ubuntu system, even though it's not recommended
+...
+$ cd ./linux/als-prolog
+$ ./alspro  # start the REPL as a version test
+ALS Prolog (Threaded) Version 3.5.0-297-gd921ab03 [linux]
+   Copyright (c) 1987-2025 Applied Logic Systems, Inc.
+
+Setting up library indicies...may take a moment...Done.
+
+gc not 64-bit yet
+?- halt.  # exit ALS Prolog
+$
+```
+
+Update the _.bashrc_ file with: _export PATH="$PATH:$HOME/scripts/Prolog/ALS_Prolog/ALSProlog/unix/linux/als-prolog"_
+
+From the provided, official examples, I only got the _./ALS_Prolog/ALSProlog/examples/als/queens.pro_ example working immediately, after testing some of them. Not surprisingly, I had to re-work the benchmarking program of the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro) for ALS Prolog. Here, mainly predicates _nth0()_ and _nth()_ are not existing, and had to be replaced with other ones.
+
+Then, similar to GNU Prolog, the (Ubuntu) default stack size is too small and must be lifted, something which can be done with a switch.
+
+To start this program automatically, its _main_ predicate has to be provided from the shell command with switch _-g main._:
+
+```
+$ alspro ./graph_4coloring_Germany2g_ALS.pro -g main. -q -stack 512
+number N of different solutions = 191808
+
+               SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY
+1st solution = red, blue, blue, red, green, blue, green, red, green, red, blue, red, green, red, red, yellow
+...
+Last solution = yellow, green, green, yellow, blue, green, blue, yellow, blue, yellow, green, yellow, blue, yellow, yellow, red
+$
+```
+
+Otherwise, these 1st and last solutions are the same as GNU Prolog's 1st and last solutions.
 
 <br/>
 
