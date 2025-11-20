@@ -2,7 +2,7 @@
 %
 % A program for the Mercury logic programming system: https://github.com/Mercury-Language
 %
-% 2025-11-03/04/05
+% 2025-11-03/04/05/20
 %
 % predicate =~ statement
 %
@@ -125,7 +125,7 @@ write_to_file(FileName, Content, FileType, !IO) :-
 
 
 :- pred input_a_valid_number(int::in, int::out, io::di, io::uo) is det.
-input_a_valid_number(NCHar, NewNCHar, !IO) :-
+input_a_valid_number(NCHar, NewNChar, !IO) :-
   io.format("\nPassword of %d printable chars OK? 'y' or another integer number >= 8: ", [i(NCHar)], !IO),
 
   io.read_line_as_string(Result, !IO),
@@ -133,23 +133,23 @@ input_a_valid_number(NCHar, NewNCHar, !IO) :-
       FinalStr = string.strip(String)
    then
      (if FinalStr = "y" then
-         NewNCHar = NCHar
+         NewNChar = NCHar
       else
         (if string.to_int(FinalStr, Nbr) then
             (if Nbr < 8 then
                io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-               input_a_valid_number(NCHar, NewNCHar, !IO)
+               input_a_valid_number(NCHar, NewNChar, !IO)
              else
-               NewNCHar = Nbr
+               NewNChar = Nbr
             )
          else  % failure branch
             io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-            input_a_valid_number(NCHar, NewNCHar, !IO)
+            input_a_valid_number(NCHar, NewNChar, !IO)
         )
      )
    else  % failure branch
      io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-     input_a_valid_number(NCHar, NewNCHar, !IO)
+     input_a_valid_number(NCHar, NewNChar, !IO)
   ).
 
 
