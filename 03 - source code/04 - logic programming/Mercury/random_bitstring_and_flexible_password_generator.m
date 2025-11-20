@@ -125,31 +125,31 @@ write_to_file(FileName, Content, FileType, !IO) :-
 
 
 :- pred input_a_valid_number(int::in, int::out, io::di, io::uo) is det.
-input_a_valid_number(NCHar, NewNChar, !IO) :-
-  io.format("\nPassword of %d printable chars OK? 'y' or another integer number >= 8: ", [i(NCHar)], !IO),
+input_a_valid_number(NChar, NewNChar, !IO) :-
+  io.format("\nPassword of %d printable chars OK? 'y' or another integer number >= 8: ", [i(NChar)], !IO),
 
   io.read_line_as_string(Result, !IO),
   (if Result = ok(String),
       FinalStr = string.strip(String)
    then
      (if FinalStr = "y" then
-         NewNChar = NCHar
+         NewNChar = NChar
       else
         (if string.to_int(FinalStr, Nbr) then
             (if Nbr < 8 then
                io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-               input_a_valid_number(NCHar, NewNChar, !IO)
+               input_a_valid_number(NChar, NewNChar, !IO)
              else
                NewNChar = Nbr
             )
          else  % failure branch
             io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-            input_a_valid_number(NCHar, NewNChar, !IO)
+            input_a_valid_number(NChar, NewNChar, !IO)
         )
      )
    else  % failure branch
      io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
-     input_a_valid_number(NCHar, NewNChar, !IO)
+     input_a_valid_number(NChar, NewNChar, !IO)
   ).
 
 
