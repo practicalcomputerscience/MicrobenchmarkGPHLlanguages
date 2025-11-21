@@ -99,7 +99,8 @@ Koka | program doesn't finish | -- | no
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no
 Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no
 OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
-Racket Scheme | Valgrind is doing nothing | -- | no
+Prolog, SWI | 14,030,993 bytes in 169,009 blocks | 4,933,940 bytes in 39,260 blocks | no
+Scheme, Racket | Valgrind is doing nothing | -- | no
 Roc | 0 bytes in 0 blocks | -- | yes <<<<<<
 Rust | 8,192 bytes in 1 blocks | 8,192 bytes in 1 blockss | no
 Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<<
