@@ -876,7 +876,7 @@ So, 3.222 seconds of mean, real execution time with a standard deviation of 0.03
 
 At first, the microbenchmark program was meant to be implemented in [ECLiPSe](#eclipse---constraint-logic-programming-system), just because it's the fastest Prolog system for the map coloring problem of Germany: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram).
 
-But as a programming language ECLiPSe is too rudimentary for this program. And it's fair to compare a Prolog system with more "batteries included", like [SWI Prolog](#swi-prolog), with the program version implemented in [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/random_streams_for_perf_stats.m).
+But as a programming language ECLiPSe is too rudimentary for this program. And it's fair to compare a Prolog system with more "batteries included", like [SWI Prolog](#swi-prolog), with the program version implemented in [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury).
 
 Here's the "speed part" of the microbenchmark program in [SWI Prolog](./random_streams_for_perf_stats.P), and here the [full program](./random_bitstring_and_flexible_password_generator.P).
 
