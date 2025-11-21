@@ -1,0 +1,141 @@
+/*
+random_streams_for_perf_stats.P
+(file extension .P is only there to distinguish this program from a Perl script with extension .pl)
+
+A program for SWI Prolog: https://www.swi-prolog.org/
+
+*** This program most probably won't work in any other Prolog system than SWI! ***
+
+
+2025-11-17/18/19
+
+run program in Ubuntu 24 LTS: $ swipl random_streams_for_perf_stats.P
+                              NN ?- random_streams_for_perf_stats.  % enter this goal inside the SWI REPL
+                              $
+
+build program in Ubuntu 24 LTS:
+  $ swipl -o random_streams_for_perf_stats -g random_streams_for_perf_stats -c random_streams_for_perf_stats.P --stand_alone=true
+
+run compiled program: $ ./random_streams_for_perf_stats
+
+
+$ swipl --version
+SWI-Prolog version 9.3.34 for x86_64-linux
+$
+
+*/
+
+
+
+%-----------------------------------------------------------------------------%
+%
+% user defined functions
+
+% based on MS Bing AI prompt: "SWI Prolog predicate to write a string to a file, including error handling"
+write_to_file(FileName, Content, FileType) :-
+    % must_be(atom, FileName),   % Ensure FileName is an atom (string-like)
+    % must_be(string, Content),  % Ensure Content is a Prolog string
+    catch(
+        (setup_call_cleanup(
+             open(FileName, write, Stream, [encoding(utf8)]),  % Open file for writing
+                 (write(Stream, Content),                      % Write the string
+                  flush_output(Stream)
+                 ),
+             close(Stream)                                     % Always close the file
+             ),
+             % if-then-else
+             FileType == "bit" ->
+                 format("\nBit stream has been written to disk under name:  ~w", [FileName]),
+                 flush_output  % force the text to appear immediately
+                 ;
+                 format("\nByte stream has been written to disk under name: ~w", [FileName]),
+                 flush_output
+        ),
+
+        Error,
+
+        (format(user_error, "\ncould not write to file: ~w -- ~w", [FileName, Error]),
+         flush_output)
+    ).
+
+
+%**********************  recursive master loop  ****************************%
+%
+masterloop(0, _, [], [], []).  % Base case: counter has reached 0
+                               % have only the empty list as last list elements!!
+                               % lists are running in sync here:
+                               %   X       = [17150,65176,37352,53270,20323,57987,25061,34243,57898,52169]
+                               %   BitsHex = [42FE,FE98,91E8,D016,4F63,E283,61E5,85C3,E22A,CBC9]
+masterloop(Length, Seed, [NewSeed|RestX], [BitsX|RestBitsX], [BitsHex|RestBitsHex]) :-
+                               % [|] is the non-empty list constructor, pronounced "cons"
+  Length > 0,
+  % write("\nLength = "), write(Length),  % for testing
+
+  NewSeed is (17364 * Seed + 0) mod 65521,  % 'is' is the infix operator to evaluate an arithmetic expression;
+                                            % same situation for global constants as in Mercury,
+                                            % which are not available so easily.
+                                            % But I'm not playing around in Prolog with functor() and arg() to
+                                            % implement global constants here.
+  % write("\n  NewSeed = "), write(NewSeed),  % for testing
+  % write("\n  L = "), write(L),  % for testing
+
+  format(atom(BitsX),"~|~`0t~2r~16+",[NewSeed]),    % NewSeed = 10120 => BitsX = 0010011110001000
+                                                    % https://www.swi-prolog.org/pldoc/man?predicate=format/2
+  % write("\n  BitsX = "), write(BitsX),  % for testing
+
+  format(atom(BitsHex),"~|~`0t~16R~4+",[NewSeed]),  % NewSeed = 10120 => BitsHex = 2788
+  % write("\n  BitsHex = "), write(BitsHex),  % for testing
+
+  NewLength is Length - 1,  % decrement counter
+  masterloop(NewLength, NewSeed, RestX, RestBitsX, RestBitsHex).  % recursion
+
+% end of masterloop
+%***************************************************************************%
+
+% end of user defined functions
+%
+%-----------------------------------------------------------------------------%
+
+
+random_streams_for_perf_stats :-
+
+    End = 62500,  % 62500 for exactly 1M binary digits
+    % End = 10,     % for testing
+
+    M = 65521,      % = 2^16 - 15
+
+    FileBitsX   = 'random_bitstring.bin',  % this must be an atom with '', not string with ""
+    FileBitsHex = 'random_bitstring.byte',
+
+    random_between(1, M, X0),
+    % write("\nX0 = "), write(X0),  % for testing
+
+    write("\ngenerating a random bit stream..."),
+
+    masterloop(End, X0, _, BitsX, BitsHex),  % 2 x input, 3 x output
+    % masterloop(End, X0, X, BitsX, BitsHex),  % 2 x input, 3 x output  % for testing
+    % write("\n\nX = "), write(X),  % for testing
+    % write("\n\nBitsX = "), write(BitsX),  % for testing
+    % write("\n\nBitsHex = "), write(BitsHex),  % for testing
+
+    % convert lists of strings into big strings:
+    maplist(atom_string, AtomsX, BitsX),
+    atomic_list_concat(AtomsX, AtomResultX),
+    % MS Bing AI:
+    %   The fastest idiomatic way is to use atomic_list_concat/2 (or /3 if you need a separator).
+    %   It works directly on a list of strings/atoms and builds the result in one pass.
+    atom_string(AtomResultX, BitsXStr),
+    % format("\nBitsXStr = ~w", [BitsXStr]),  % for testing
+
+    maplist(atom_string, AtomsHex, BitsHex),
+    atomic_list_concat(AtomsHex, AtomResultHex),
+    atom_string(AtomResultHex, BitsHexStr),
+    % format("\nBitsHexStr = ~w", [BitsHexStr]),  % for testing
+
+    write_to_file(FileBitsX, BitsXStr, "bit"),
+    write_to_file(FileBitsHex, BitsHexStr, "byte"),
+
+    write('\n'),
+    halt(0).
+
+% end of random_streams_for_perf_stats.P
