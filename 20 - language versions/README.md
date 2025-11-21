@@ -30,6 +30,7 @@ Mojo | mojo 25.4.0.dev2025050405 (0e8f7772) | $ mojo --version
 OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
 PowerShell | PowerShell 7.4.5 | $ pwsh -v
+Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
 Raku | Welcome to Rakudo™ v2025.08.; Implementing the Raku® Programming Language v6.d.; Built on MoarVM version 2025.08. | $ raku -version
 Roc | roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC | $ roc --version
