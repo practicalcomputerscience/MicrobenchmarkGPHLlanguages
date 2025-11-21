@@ -18,9 +18,6 @@ C#;0,06847;0,00580
 Inko;0,13525;0,00211
 Chapel;0,24797;0,00122
 Bigloo Scheme;0,03622;0,00133
-Racket Scheme;0,14448;0,00308
-CHICKEN Scheme;0,074262;0,000857
-Gambit Scheme;0,05632;0,00236
 Lua;0,13011;0,00135
 Python;0,165;0
 PowerShell;0,74138;0,00160
@@ -29,3 +26,5 @@ Scala JVM uberjar;0,19436;0,00261
 Kotlin JVM uberjar;0,106915;0,000808
 Clojure JVM uberjar;0,61368;0,00406
 Gleam (Erlang VM);0,244;0,0
+Mercury;0,07729;0,00137
+SWI Prolog;0,20199;0,00208
