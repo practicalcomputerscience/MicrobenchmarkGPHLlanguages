@@ -27,6 +27,7 @@ V                 | 179 | compiled, very young programming language: needs some 
 C3                | 163 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 148 | compiled, very mature language
+SWI Prolog        | 132 | compiled, very mature language
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
