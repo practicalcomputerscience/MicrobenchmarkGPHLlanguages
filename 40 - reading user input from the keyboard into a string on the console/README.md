@@ -12,4 +12,6 @@ from: [Reading user input from the keyboard into a string](https://github.com/pr
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console/Computer%20Programming%20Languages%2C%20reading%20from%20keyboard%203.png)
 
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console/Computer%20Programming%20Languages%2C%20reading%20from%20keyboard%204.png)
+
 ##_end
