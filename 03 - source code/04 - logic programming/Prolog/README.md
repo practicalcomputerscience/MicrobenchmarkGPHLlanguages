@@ -1,8 +1,3 @@
-2025-11-13: work in progress:
-
-- TBD: do a SWI version _random_streams_for_perf_stats.P_ (don't use .pl --> Perl 5)
-- TBD: do a full SWI program _random_bitstring_and_flexible_password_generator.P_ (don't use .pl --> Perl 5)
-
 # Prolog
 
 Originally, this page and its Prolog (= _**PRO**grammation en **LOG**ique_) programs have been started for one reason:
@@ -883,7 +878,41 @@ At first, the microbenchmark program was meant to be implemented in [ECLiPSe](#e
 
 But as a programming language ECLiPSe is too rudimentary for this program. And it's fair to compare a Prolog system with more "batteries included", like [SWI Prolog](#swi-prolog), with the program version implemented in [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/random_streams_for_perf_stats.m).
 
-TBD
+Here's the "speed part" of the microbenchmark program in [SWI Prolog](./random_streams_for_perf_stats.P), and here the [full program](./random_bitstring_and_flexible_password_generator.P).
+
+To some extent the Mercury version served as a role model for my implementation, but I also consulted MS Bing AI and Duck.ai (see comments in the source code). There's enough (SWI) Prolog source code "in the wild" for this.
+
+With about 200 milliseconds, the execution time of the SWI Prolog version is surprisingly fast from my point of view, and about as fast as the Scala variant: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+
+On the other side, I, as so often, found out accidentally that installing SWI Prolog outside of [Ubuntu 24 LTS](#swi-prolog) is surprinsingly tough. In Alma Linux 10 for example, based on the DNF package manager, I just ended up to to take its [Flatpak version](https://www.swi-prolog.org/build/unix.html), which is not a real installation, and only allows me to use the Java based GUI (and not its console version as usual in my developments here):
+
+![plot](./SWI%20Prolog%20GUI%20in%20Alma%20Linux%2010.png)
+
+I cannot really recommend to build and install SWI Prolog from its massive sources, unless you really know what to do here.
+
+#### Developing SWI Prolog programs
+
+During development I did this:
+
+```
+$ swipl random_bitstring_and_flexible_password_generator.P  % load the source code into the SWI Prolog REPL
+101 ?- random_bitstring_and_flexible_password_generator.  % inside the REPL, call its main goal, including the '.' character, and
+% here named like the source code file, which is then being executed until the 'halt(0).' predicate to return back to the Linux shell;
+% the later part can be dropped to make more queries etc.
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+Password of 12 printable chars OK? 'y' or another integer number >= 8: y
+
+Do you want me to use special characters like .;,+*... ? 'y' or 'n': y
+
+Your password of 12 characters is: yZ+~2#(!Czgk
+$
+```
+
+My debugging style here was the same like in the other programs, just using a lot of "print" predicates, which are finally being commented out.
 
 <br/>
 
