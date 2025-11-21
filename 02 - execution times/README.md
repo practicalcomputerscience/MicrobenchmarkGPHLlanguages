@@ -1,7 +1,3 @@
-2025-11-21: TBD: I think I should drop all Scheme variants from the master diagram, except the fastest of the tested dialects, and that is Bigloo Scheme. Scheme dialects are anyway shown in their own diagram below at [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#tested-scheme-dialects).
-
-<br/>
-
 # Program execution times
 
 Table of contents:
