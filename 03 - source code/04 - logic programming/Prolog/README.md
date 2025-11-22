@@ -34,6 +34,7 @@ Table of contents:
 - [MiniZinc - constraint modelling language](#minizinc---constraint-modelling-language)
 - [Measuring execution time with MiniZinc](#measuring-execution-time-with-minizinc)
 - [Microbenchmark program in SWI Prolog](#microbenchmark-program-in-swi-prolog)
+- [Python with python-constraint module](#python-with-python-constraint-module)
 
 <br/>
 
@@ -913,6 +914,38 @@ $
 ```
 
 My debugging style here was the same like in the other programs, just using a lot of "print" predicates, which are finally being commented out.
+
+<br/>
+
+## Python with python-constraint module
+
+At last, I wondered how a Python integrated, or embedded, solution would fare against a native Prolog solution for the map coloring problem of Germany. Here's an explicit Python solution for the Australian map with a standard backtracking algorithm: [MapColoring_Australia.py](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py)
+
+Then I discovered Python module [python-constraint](https://python-constraint.github.io/python-constraint/index.html#), which doesn't need any Prolog source code, and allows a "Pythonic" implementation of a Constraint Satisfaction Problem: [graph_4coloring_Germany-constraint.py](./graph_4coloring_Germany-constraint.py):
+
+```
+    ...
+    colors = ['red', 'green', 'blue', 'yellow']
+
+    def notEqual(a, b):
+        """A helper function to ensure two variables are not equal."""
+        return a != b
+
+    regions = ["SH", "MV", "HH", "HB", "NI", "ST", "BE", "BB", "SN", "NW", "HE", "TH", "RP", "SL", "BW", "BY"]
+
+    problem = Problem()
+
+    problem.addVariables(regions, colors)
+
+    problem.addConstraint(notEqual, ("SH", "NI"))
+    ...
+    problem.addConstraint(notEqual, ("BW", "BY"))
+
+    all_solutions = problem.getSolutions()
+    ...
+```
+
+This solution is lightning fast with about 380 milliseconds execution time (while the Python version with backtracking takes over 15 seconds for the German map!), and is thus beating all Prolog versions easily: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram)
 
 <br/>
 
