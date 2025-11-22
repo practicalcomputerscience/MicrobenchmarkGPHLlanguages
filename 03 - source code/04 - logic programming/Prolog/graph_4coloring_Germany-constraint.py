@@ -12,6 +12,13 @@ install package in your virtual Python environment: $ pip3 install python-constr
 
 run in your virtual Python environment:
   $ python3 ./graph_4coloring_Germany-constraint.py
+  number N of different solutions = 191808
+
+  1st solution = {'NI': 'yellow', 'HE': 'blue', 'BB': 'blue', 'TH': 'green', 'ST': 'red', 'SN': 'yellow', 'RP': 'yellow', 'BY': 'red', 'SH': 'blue', 'MV': 'green', 'NW': 'green', 'BW': 'green', 'HH': 'green', 'HB': 'blue', 'BE': 'yellow', 'SL': 'blue'}
+  ...
+  Last solution = {'NI': 'red', 'HE': 'yellow', 'BB': 'yellow', 'TH': 'green', 'ST': 'blue', 'SN': 'red', 'RP': 'red', 'BY': 'blue', 'SH': 'yellow', 'MV': 'green', 'NW': 'blue', 'BW': 'green', 'HH': 'green', 'HB': 'yellow', 'BE': 'red', 'SL': 'yellow'}
+  $ 
+  
   $ multitime -n 20 python3 ./graph_4coloring_Germany-constraint.py
               Mean        Std.Dev.    Min         Median      Max
   real        0.380       0.007       0.371       0.380       0.408
@@ -84,3 +91,4 @@ if __name__ == "__main__":
     main()
 
 # end of graph_4coloring_Germany-constraint.py
+
