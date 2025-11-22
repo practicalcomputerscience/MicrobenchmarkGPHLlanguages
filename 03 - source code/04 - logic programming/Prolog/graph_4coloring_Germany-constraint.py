@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-e:/zzz_Scripts/Python/python-constraint/graph_4coloring_Germany-constraint.py
+graph_4coloring_Germany-constraint.py
 
 2025-11-22
 
@@ -91,4 +91,5 @@ if __name__ == "__main__":
     main()
 
 # end of graph_4coloring_Germany-constraint.py
+
 
