@@ -3,11 +3,13 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
-2025-11-16: done [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), a logic and functional language in a purely declarative style: my microbenchmark program is working correctly and swiftly in this language. However and apparently, implementing solutions for more than simple Constraint Satisfaction Problems is (almost) impossible in this language.
+2025-11-22: done: [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog) as a representative for the still numerous and actively maintained Prolog systems
+
+2025-11-16: done: [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), a logic and functional language in a purely declarative style: my microbenchmark program is working correctly and swiftly in this language. However and apparently, implementing solutions for more than simple Constraint Satisfaction Problems is (almost) impossible in this language.
 
 2025-11-01: done: [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language): too slow, but working
 
-2025-10-29: done: [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam)
+2025-10-29: done: [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam), statically typed, functional programming on Erlang's BEAM virtual machine
 
 2025-10-25: done: [Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark): not a general-purpose language, though I did a little demo
 
@@ -38,9 +40,7 @@
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
-- **Logic programming**:
-- &nbsp;&nbsp;Prolog: 2025-11-07: I've already said more about [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) than I originally intended, including implementations of a classical logic programming problem in three Prolog dialects! I think that any code additions here would not bring more value.
-- Haskell (I'm not sure if I'll do it)
+- Haskell?!?
 
 <br/>
 
