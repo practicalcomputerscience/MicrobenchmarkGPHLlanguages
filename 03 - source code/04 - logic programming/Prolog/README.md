@@ -83,6 +83,8 @@ $
 
 Building a standalone executable is very easy in GNU Prolog: _$ gplc ./graph_4coloring_Germany2a.pl_
 
+If not done yet, expand your _PATH_ environment variable with _/usr/local/gprolog-1.6.0/bin_ to find the _gplc_ compiler.
+
 But before running program [graph_4coloring_Germany2a](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2a.pl), make sure to have enough space on the stack. The usual 32kB is too small for this program. So, as one way, you could add in your _.bashrc_ file this global environment variable: _export GLOBALSZ=524288_, where 524288 bytes is just my proposal, which works in my system. Activate: _$ source ./.bashrc_ and check the new environment variable:
 
 ```
