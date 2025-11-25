@@ -947,6 +947,12 @@ Then I discovered Python module [python-constraint](https://python-constraint.gi
 
 This solution is lightning fast with about 380 milliseconds execution time (while the Python version with backtracking takes over 15 seconds for the German map!), and is thus beating all Prolog versions easily: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram)
 
+Same like the question in chapter [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs), I asked this question: is 380 milliseconds a fast execution time for the map coloring problem of Germany with an interpreted but native Python solution?
+
+I thought of Scheme, and specifically the quick [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#tested-scheme-dialects), for a comparison; here with another backtracking solution as a transpilation in two steps from a Prolog program into a Scheme program with [ChatGPT](https://chatgpt.com/) (with the usual, manual adaptions for a correct _main_ program entry point): [graph_4coloring_Germany.scm](./graph_4coloring_Germany.scm)
+
+Result: about 370 milliseconds; so yes, the constraint-package-based Python solution is competitively fast.
+
 <br/>
 
 ##_end
