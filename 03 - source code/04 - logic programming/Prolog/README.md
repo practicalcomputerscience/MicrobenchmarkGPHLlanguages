@@ -63,27 +63,23 @@ Here's a list of [Prolog implementations](https://en.wikipedia.org/wiki/Comparis
 
 ## GNU Prolog
 
-With GNU Prolog I immediately ran into a problem: 
+Update 2025-11-25:
 
-- I was not able to compile and install a later (v.1.5.0) and the latest version (v.1.6.0) of GNU Prolog:
+> [!IMPORTANT]
+> Do not have space characters in your path to GNU Prolog!
 
-- http://gprolog.org/#download
-- https://github.com/didoudiaz/gprolog
+After changing my working directory name from _GNU Prolog_ to _GNU_Prolog_, building and installing GNU Prolog worked like it should with the common triple jump of: _$ ./configure; make; sudo make install_ in the _./src_ directory.
 
-I tried with three different Linux versions (openSUSE 16 Leap, Oracle Linux 10, Ubuntu 24 LTS) in vain. Another curious phenomenon was that all distributions showed (slightly) different error messages.
-
-Finally, I just installed an older GNU Prolog version with the [Ubuntu package manager](https://installati.one/install-gprolog-ubuntu-22-04/), something which worked:
+Otherwiese you can just install an older GNU Prolog version with the [Ubuntu package manager](https://installati.one/install-gprolog-ubuntu-22-04/):
 
 ```
 $ sudo apt-get update
 $ sudo apt-get -y install gprolog
 $ gplc --version  # test the compiler
-Prolog compiler (GNU Prolog) 1.4.5
+Prolog compiler (GNU Prolog) 1.6.0
 ...
 $
 ```
-
-Obviously, I'm not the only one with GNU Prolog problems: https://github.com/didoudiaz/gprolog/issues/82
 
 Building a standalone executable is very easy in GNU Prolog: _$ gplc ./graph_4coloring_Germany2a.pl_
 
