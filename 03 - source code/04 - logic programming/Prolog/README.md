@@ -960,7 +960,7 @@ Result: about 370 milliseconds; so yes, the constraint-package-based Python solu
 
 ## Picat - further development of the old B-Prolog
 
-While I also tumbled into well reputated [B-Prolog](https://www.picat-lang.org/bprolog/), only to see that its development stopped in 2014, and heard about "logic-based" programming language [Picat](https://picat-lang.org/), I haven't seen their close relationship at first.
+While I also tumbled into well reputated but deprecated [B-Prolog](https://www.picat-lang.org/bprolog/) (1994 - 2014), and heard about "logic-based" programming language [Picat](https://picat-lang.org/), I haven't seen their close relationship at first.
 
 Since also this is a longer story, I made a subpage with more details: [Picat: further development of the old B-Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#picat-further-development-of-the-old-b-prolog)
 
