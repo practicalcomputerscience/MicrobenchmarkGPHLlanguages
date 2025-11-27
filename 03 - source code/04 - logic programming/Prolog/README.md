@@ -35,6 +35,7 @@ Table of contents:
 - [Measuring execution time with MiniZinc](#measuring-execution-time-with-minizinc)
 - [Microbenchmark program in SWI Prolog](#microbenchmark-program-in-swi-prolog)
 - [Python with python-constraint module](#python-with-python-constraint-module)
+- [Picat - further development of the old B-Prolog](picat-further-development-of-the-old-b-prolog)
 
 <br/>
 
@@ -917,7 +918,7 @@ My debugging style here was the same like in the other programs, just using a lo
 
 ## Python with python-constraint module
 
-At last, I wondered how a Python integrated, or embedded, solution would fare against a native Prolog solution for the map coloring problem of Germany. Here's an explicit Python solution for the Australian map with a standard backtracking algorithm: [MapColoring_Australia.py](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py)
+After a while, I wondered how a Python integrated, or embedded, solution would fare against a native Prolog solution for the map coloring problem of Germany. Here's an explicit Python solution for the Australian map with a standard backtracking algorithm: [MapColoring_Australia.py](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py)
 
 Then I discovered Python module [python-constraint](https://python-constraint.github.io/python-constraint/index.html#), which doesn't need any Prolog source code, and allows a "Pythonic" implementation of a Constraint Satisfaction Problem: [graph_4coloring_Germany-constraint.py](./graph_4coloring_Germany-constraint.py):
 
@@ -952,5 +953,11 @@ I thought of Scheme, and specifically the quick [Bigloo Scheme](https://github.c
 Result: about 370 milliseconds; so yes, the constraint-package-based Python solution is competitively fast.
 
 <br/>
+
+## Picat - further development of the old B-Prolog
+
+While I also tumbled into well reputated [B-Prolog](https://www.picat-lang.org/bprolog/), only to see that its development stopped in 2014, and heard about "logic-based" programming language [Picat](https://picat-lang.org/), I haven't seen their close relationship at first.
+
+Since also this is a longer story, I made a subpage with more details: [Picat: further development of the old B-Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#picat-further-development-of-the-old-b-prolog)
 
 ##_end
