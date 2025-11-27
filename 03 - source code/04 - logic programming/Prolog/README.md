@@ -35,7 +35,7 @@ Table of contents:
 - [Measuring execution time with MiniZinc](#measuring-execution-time-with-minizinc)
 - [Microbenchmark program in SWI Prolog](#microbenchmark-program-in-swi-prolog)
 - [Python with python-constraint module](#python-with-python-constraint-module)
-- [Picat - further development of the old B-Prolog](picat-further-development-of-the-old-b-prolog)
+- [Picat - further development of the old B-Prolog](#picat---further-development-of-the-old-b-prolog)
 
 <br/>
 
