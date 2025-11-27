@@ -102,6 +102,10 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 $
 ```
 
+Here's another note on environment variables for GNU Prolog from 2025: [The following was relevant when we used GNU Prolog](https://github.com/Waqar-107/ASU-CSE-259-Prolog/blob/main/some%20notes.md#the-following-was-relevant-when-we-used-gnu-prolog)
+
+<br/>
+
 ## SWI Prolog
 
 I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and could run it without changes on SWI Prolog:
