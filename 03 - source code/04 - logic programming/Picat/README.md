@@ -232,8 +232,7 @@ main =>
     nl.
 ```
 
-This predicate cuts down program execution time by more than half, even with its default strategy _L = solve_all([_], Regions),_; here down to about 170 milliseconds with the
-combination of the _ff_ and _constr_ strategies (_ffc_). Although, my experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
+This predicate cuts down program execution time by more than half, even with its default strategy; here down to about 170 milliseconds with the combination of the _ff_ and _constr_ strategies (_ffc_). Although, my experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
 
 The color domain constraint _Regions :: 1..4,_ obviously cannot be provided with real color names, but only with integer values, which I map into color names after the solving phase.
 
