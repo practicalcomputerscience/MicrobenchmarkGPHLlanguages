@@ -1,0 +1,108 @@
+/* graph_4coloring_Germany_with_cp_module.pi
+
+test with Picat version 3.9, 2025-11-28: OK
+
+run program in Ubuntu 24 LTS: $ picat ./graph_4coloring_Germany_with_cp_module.pi
+                              $ multitime -n 20 picat graph_4coloring_Germany_with_cp_module.pi => mean: real  0.172
+
+
+based on MS Bing AI prompt: "Picat color map problem with cp module"
+
+*/
+
+import cp.
+
+main =>
+    % Number of regions
+    Regions = [SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY],
+    Regions :: 1..4,   % Colors: 1..4 as a domain constraint
+
+    % Constraints: adjacent regions must differ
+    SH #!= NI,
+    SH #!= HH,
+    SH #!= MV,
+    HH #!= NI,
+    MV #!= NI,
+    MV #!= BB,
+    NI #!= HB,
+    NI #!= BB,
+    NI #!= ST,
+    NI #!= TH,
+    NI #!= HE,
+    NI #!= NW,
+    ST #!= BB,
+    ST #!= SN,
+    ST #!= TH,
+    BB #!= BE,
+    BB #!= SN,
+    NW #!= HE,
+    NW #!= RP,
+    SN #!= TH,
+    SN #!= BY,
+    RP #!= SL,
+    RP #!= HE,
+    RP #!= BW,
+    HE #!= BW,
+    HE #!= TH,
+    HE #!= BY,
+    TH #!= BY,
+    BW #!= BY,
+
+    % Search for **all** solutions
+    % L = solve_all([ff,split], Regions),
+    % L = solve_all([_], Regions),
+    L = solve_all([ffc], Regions),
+    % L = solve_all([ff], Regions),
+    % L = solve_all([ffd], Regions),
+    % L = solve_all([degree], Regions),
+    % L = solve_all([max], Regions),
+    % L = solve_all([min], Regions),
+    /*
+    experiments with solve_all() Options:
+      see from chapter: "3.5 Search and Search Strategies (cp Module)" in
+                        "Constraint Solving and Planning with Picat"
+                        by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman on September 28, 2020
+
+      [ff,split] => real	0m0,170s -- ff + Bisect the variable’s domain, excluding the upper half first
+      [_]        => real	0m0,171s -- default strategy: forward and down
+      [ffc]      => real	0m0,163s -- combination of ff and constr: Variables are first ordered by the number of constraints to which they are attached
+      [ff]       => real	0m0,166s -- first-fail principle
+      [ffd]      => real	0m0,167s -- combination of ff and degree
+      [degree]   => real	0m0,172s -- ariables are first ordered by degree, i.e., the number of connected variables
+      [max]      => real	0m0,184s -- First, select a variable whose domain has the largest upper bound, breaking ties by selecting a variable with the smallest domain
+      [min]      => real	0m0,184s -- First, select a variable whose domain has the smallest lower bound, break- ing ties by selecting a variable with the smallest domain
+    */
+
+    X = L.len,
+
+    % replace numbers with color names in a list of lists:
+    ColorMap  = new_map([
+            1 = red,
+            2 = green,
+            3 = blue,
+            4 = yellow]),
+    Elem_0a = L[1],
+    Elem_0  = [ColorMap.get(I) : I in Elem_0a],
+    Lasta = L[X],
+    Last  = [ColorMap.get(I) : I in Lasta],
+
+    printf("number N of different solutions = %w", X),
+    printf("%n%n               NT, QL, NSW, VIC, SA, WA, TAS"),
+    printf("%n1st solution = %w", Elem_0),
+    printf("%n..."),
+    printf("%nLast solution = %w", Last),
+    nl.
+
+
+/* output:
+$ picat graph_4coloring_Germany_with_cp_module.pi
+number N of different solutions = 191808
+
+               NT, QL, NSW, VIC, SA, WA, TAS
+1st solution = [red,green,green,red,blue,red,red,yellow,green,red,green,yellow,blue,red,red,blue]
+...
+Last solution = [yellow,blue,blue,yellow,green,blue,blue,yellow,green,yellow,blue,yellow,green,yellow,yellow,red]
+$
+*/
+
+% end of graph_4coloring_Germany_with_cp_module.pi
