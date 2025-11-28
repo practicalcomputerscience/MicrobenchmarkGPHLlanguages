@@ -60,8 +60,7 @@ germany(SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY) :-
     neighbor(BW, BY).
 
 main =>
-    L = findall(
-            (SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY),
+    L = findall((SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY),
             germany(SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY)
         ),
     X = L.len,
@@ -103,3 +102,4 @@ $
 */
 
 /* end of graph_4coloring_Germany.pi */
+
