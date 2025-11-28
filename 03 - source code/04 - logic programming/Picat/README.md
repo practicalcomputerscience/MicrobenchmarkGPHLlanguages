@@ -18,7 +18,7 @@ Table of contents:
 - [Some concepts of Picat](#some-concepts-of-picat)
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
-- []()
+- [Program map_coloring.pi](program-map_coloring.pi)
 - []()
 - []()
 - []()
@@ -160,6 +160,40 @@ $
 Mean execution time, again after 20 runs, increased to almost 500 milliseconds.
 
 <br/>
+
+### Program map_coloring.pi
+
+I modified this apparently suitable Picat program [map_coloring.pi](https://www.hakank.org/picat/map_coloring.pi), only to find out that the resulting number of solutions is obviously not correct for the German states with 4 colors, which should be 191808. I also experimented with its symmetry breaking, a concept to reduce the search space size, which resulted in another different number of solutions.
+
+Its connections matrix **A** can easily be taken from this [C++ solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/MapColoring_Germany.cpp):
+
+```
+...
+       //   1 = S1 and S1 are neighbors
+        vector<vector<int>> graph =
+            {{0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0},  // SH ok 3
+             {1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0},  // MV ok 3
+             {1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},  // HH ok 2
+             {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},  // HB ok 1
+             {1,1,1,1,0,1,0,1,0,1,1,1,0,0,0,0},  // NI ok 9
+             {0,0,0,0,1,0,0,1,1,0,0,1,0,0,0,0},  // ST ok 4
+             {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},  // BE ok 1
+             {0,1,0,0,1,1,1,0,1,0,0,0,0,0,0,0},  // BB ok 5
+             {0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1},  // SN ok 4
+             {0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0},  // NW ok 3
+             {0,0,0,0,1,0,0,0,0,1,0,1,1,0,1,1},  // HE ok 6
+             {0,0,0,0,1,1,0,0,1,0,1,0,0,0,0,1},  // TH ok 5
+             {0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0},  // RP ok 4
+             {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},  // SL ok 1
+             {0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1},  // BW ok 3
+             {0,0,0,0,0,0,0,0,1,0,1,1,0,0,1,0}}; // BY ok 4
+             // 29 x 2 = 58 x "1"
+...
+```
+
+
+
+
 
 
 TBD
