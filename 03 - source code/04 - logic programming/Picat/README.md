@@ -19,9 +19,8 @@ Table of contents:
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
 - [Constraint programming module cp](#constraint-programming-module-cp)
-- []()
-- []()
-- []()
+- [Installation tips](installation-tips)
+- [Microbenchmark program in Picat](microbenchmark-program-in-picat)
 
 <br/>
 
@@ -126,7 +125,7 @@ This result is the same as with [GNU Prolog](https://github.com/practicalcompute
 
 <br/>
 
-### Program execution speed
+## Program execution speed
 
 Execution speed is this:
 
@@ -160,7 +159,7 @@ Mean execution time, again after 20 runs, increased to almost 500 milliseconds.
 
 <br/>
 
-### Constraint programming module cp
+## Constraint programming module cp
 
 I modified this apparently suitable Picat program [map_coloring.pi](https://www.hakank.org/picat/map_coloring.pi), only to find out that the resulting number of solutions is obviously not correct for the German states with 4 colors, which should be 191808.
 
@@ -240,15 +239,17 @@ The color domain constraint _Regions :: 1..4,_ obviously cannot be provided with
 
 <br/>
 
-## Microbenchmark program in Picat
-
-TBD
-
-### Installation tips
+## Installation tips
 
 If [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog) is a direct contender to Picat, Picat has the great advantage of an easy installation in all kind of Linux systems.
 
 Just download its Linux (64-bit) tarball file from here: https://picat-lang.org/download.html, extract it in a working directory, and add a path to your _PATH_ environment variable, something like this for example: _export PATH="$PATH:$HOME/scripts/Picat/picat39_linux64/Picat"_
+
+<br/>
+
+## Microbenchmark program in Picat
+
+TBD
 
 <br/>
 
