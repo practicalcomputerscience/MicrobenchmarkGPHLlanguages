@@ -191,10 +191,7 @@ Its connections matrix **A** can easily be taken from this [C++ solution](https:
 ...
 ```
 
-
-
-
-
+However, this program employs a different concept, which is based on Picat's constraint programming module _cp_. 
 
 TBD
 
