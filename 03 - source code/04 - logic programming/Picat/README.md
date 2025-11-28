@@ -19,8 +19,8 @@ Table of contents:
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
 - [Constraint programming module cp](#constraint-programming-module-cp)
-- [Installation tips](installation-tips)
-- [Microbenchmark program in Picat](microbenchmark-program-in-picat)
+- [Installation tips](#installation-tips)
+- [Microbenchmark program in Picat](#microbenchmark-program-in-picat)
 
 <br/>
 
