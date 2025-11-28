@@ -15,7 +15,7 @@ Picat = **P**attern-matching - **I**ntuitive - **C**onstraints - **A**ctors - **
 
 Table of contents:
 
-- [Some concepts of Picat](some-concepts-of-picat)
+- [Some concepts of Picat](#some-concepts-of-picat)
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
 - []()
