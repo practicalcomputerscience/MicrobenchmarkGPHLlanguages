@@ -18,7 +18,7 @@ Table of contents:
 - [Some concepts of Picat](#some-concepts-of-picat)
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
-- [Program map_coloring.pi](program-map_coloring.pi)
+- [Program map_coloring.pi](#program-map_coloringpi)
 - []()
 - []()
 - []()
