@@ -145,7 +145,7 @@ $
 
 <br/>
 
-I experimented with smaller memory sizes and run this program with only one eighth of the first sizes:
+I experimented with smaller memory sizes and run the program with only one eighth of the first sizes:
 
 ```
 $ multitime -n 20 picat -p 64000000 -s 64000000 -b 64000000 ./graph_4coloring_Germany.pi
@@ -234,16 +234,21 @@ main =>
 ```
 
 This predicate cuts down program execution time by more than half, even with its default strategy _L = solve_all([_], Regions),_; here down to about 170 milliseconds with the
-combination of the _ff_ and _constr_ strategies (ffc). My experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
+combination of the _ff_ and _constr_ strategies (_ffc_). My experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
 
 The color domain constraint _Regions :: 1..4,_ obviously cannot be provided with real color names, but only with integer values, which I map into color names after the solving phase.
 
-
-TBD
-
 <br/>
 
+## Microbenchmark program in Picat
+
 TBD
+
+### Installation tips
+
+If [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog) is a direct contender to Picat, Picat has the great advantage of an easy installation in all kind of Linux systems.
+
+Just download its Linux (64-bit) tarball file from here: https://picat-lang.org/download.html, extract it in a working directory, and add a path to your _PATH_ environment variable, something like this for example: _export PATH="$PATH:$HOME/scripts/Picat/picat39_linux64/Picat"_
 
 <br/>
 
