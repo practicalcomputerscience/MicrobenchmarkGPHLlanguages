@@ -196,7 +196,7 @@ The needed connections matrix **A** for Germany can easily be taken from this [C
 
 <br/>
 
-However, this program is using Picat's constraint programming module _cp_ (https://picat-lang.org/download/cp.pi), which features the _solve_all()_ predicate, see at page 58 from (**):
+However, this program is using Picat's constraint programming module _cp_ (https://picat-lang.org/download/cp.pi), which features the _solve_all()_ predicate, see at page 58 from (**), which allowed me to elegantly implement the map coloring problem of Germany:
 
 ```
 import cp.
@@ -234,7 +234,7 @@ main =>
 ```
 
 This predicate cuts down program execution time by more than half, even with its default strategy _L = solve_all([_], Regions),_; here down to about 170 milliseconds with the
-combination of the _ff_ and _constr_ strategies (_ffc_). My experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
+combination of the _ff_ and _constr_ strategies (_ffc_). Although, my experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
 
 The color domain constraint _Regions :: 1..4,_ obviously cannot be provided with real color names, but only with integer values, which I map into color names after the solving phase.
 
