@@ -50,7 +50,7 @@ $
 
 (empty lines removed)
 
-So, I would say that Picat still is a Prolog system, even when there are syntactical, grammatical and conceptual differences to a "normal" Prolog system. However, KÖRNER P, LEUSCHEL M, BARBOSA J, et al. do not consider Picat as a Prolog system (*).
+So, I would say that Picat still is a Prolog system, even when there are syntactical, grammatical and conceptual differences to a "normal" Prolog system. However, KÖRNER P, LEUSCHEL M, BARBOSA J, et al. do not consider Picat to be a Prolog system (*).
 
 <br/>
 
