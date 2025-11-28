@@ -163,9 +163,13 @@ Mean execution time, again after 20 runs, increased to almost 500 milliseconds.
 
 ### Program map_coloring.pi
 
-I modified this apparently suitable Picat program [map_coloring.pi](https://www.hakank.org/picat/map_coloring.pi), only to find out that the resulting number of solutions is obviously not correct for the German states with 4 colors, which should be 191808. I also experimented with its symmetry breaking, a concept to reduce the search space size, which resulted in another different number of solutions.
+I modified this apparently suitable Picat program [map_coloring.pi](https://www.hakank.org/picat/map_coloring.pi), only to find out that the resulting number of solutions is obviously not correct for the German states with 4 colors, which should be 191808.
 
-Its connections matrix **A** can easily be taken from this [C++ solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/MapColoring_Germany.cpp):
+It may be that this program eliminates permutations of solutions, see from here from 2020: [Constraint Solving and Planning with Picat](http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf) by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman.
+
+So, I experimented with its symmetry breaking, a concept to reduce the search space size, which resulted in another different number of solutions.
+
+The needed connections matrix **A** for Germany can easily be taken from this [C++ solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/MapColoring_Germany.cpp):
 
 ```
 ...
