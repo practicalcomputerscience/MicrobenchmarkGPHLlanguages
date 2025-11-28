@@ -124,6 +124,8 @@ $
 
 This result is the same as with [GNU Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#gnu-prolog).
 
+<br/>
+
 ### Program execution speed
 
 Execution speed is this:
