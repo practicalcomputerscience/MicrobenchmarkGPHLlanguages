@@ -18,7 +18,7 @@ Table of contents:
 - [Some concepts of Picat](#some-concepts-of-picat)
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
 - [Program execution speed](#program-execution-speed)
-- [Program map_coloring.pi](#program-map_coloringpi)
+- [Constraint programming module cp](#constraint-programming-module-cp)
 - []()
 - []()
 - []()
@@ -109,7 +109,7 @@ So,
 
 At least this little Picat source code feels like a dialect of Prolog.
 
-Important here with this already bigger map coloring problem and similar to [GNU Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#gnu-prolog), is to increase memory sizes for program area, global and local stack, and trail stack, which I did like this:
+Important here with this already bigger map coloring problem, and similar to [GNU Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#gnu-prolog), is to increase memory sizes for program area, global and local stack, and trail stack, which I did like this:
 
 ```
 $ picat -p 512000000 -s 512000000 -b 512000000 ./graph_4coloring_Germany.pi
@@ -139,14 +139,13 @@ real        0.445       0.006       0.439       0.443       0.464
 user        0.411       0.006       0.402       0.412       0.421       
 sys         0.034       0.005       0.022       0.034       0.040       
 $ 
-
 ```
 
 ...with a mean value of only 445 milliseconds from 20 runs, which makes Picat the fastest Prolog system in this microbenchmark: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram).
 
 <br/>
 
-I experimented with potentially smaller memory sizes and run this program with only one eighth of the first sizes:
+I experimented with smaller memory sizes and run this program with only one eighth of the first sizes:
 
 ```
 $ multitime -n 20 picat -p 64000000 -s 64000000 -b 64000000 ./graph_4coloring_Germany.pi
@@ -161,11 +160,11 @@ Mean execution time, again after 20 runs, increased to almost 500 milliseconds.
 
 <br/>
 
-### Program map_coloring.pi
+### Constraint programming module cp
 
 I modified this apparently suitable Picat program [map_coloring.pi](https://www.hakank.org/picat/map_coloring.pi), only to find out that the resulting number of solutions is obviously not correct for the German states with 4 colors, which should be 191808.
 
-It may be that this program eliminates permutations of solutions, see from here from 2020: [Constraint Solving and Planning with Picat](http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf) by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman.
+It may be that this program eliminates permutations of solutions, see from here from 2020: [Constraint Solving and Planning with Picat](http://picat-lang.org/picatbook2015/constraint_solving_and_planning_with_picat.pdf) (**) by Neng-Fa Zhou, Hakan Kjellerstrand, and Jonathan Fruhman.
 
 So, I experimented with its symmetry breaking, a concept to reduce the search space size, which resulted in another different number of solutions.
 
@@ -195,7 +194,50 @@ The needed connections matrix **A** for Germany can easily be taken from this [C
 ...
 ```
 
-However, this program employs a different concept, which is based on Picat's constraint programming module _cp_: https://picat-lang.org/download/cp.pi
+<br/>
+
+However, this program is using Picat's constraint programming module _cp_ (https://picat-lang.org/download/cp.pi), which features the _solve_all()_ predicate, see at page 58 from (**):
+
+```
+import cp.
+
+main =>
+    % Number of regions
+    Regions = [SH, MV, HH, HB, NI, ST, BE, BB, SN, NW, HE, TH, RP, SL, BW, BY],
+    Regions :: 1..4,   % Colors: 1..4 as a domain constraint
+
+    % Constraints: adjacent regions must differ
+    SH #!= NI,
+    SH #!= HH,
+    ...
+    TH #!= BY,
+    BW #!= BY,
+
+    % Search for **all** solutions
+    ...
+    L = solve_all([ffc], Regions),
+    ...
+    X = L.len,
+
+    % replace numbers with color names in a list of lists:
+    ColorMap  = new_map([
+            1 = red,
+            2 = green,
+            3 = blue,
+            4 = yellow]),
+    Elem_0a = L[1],
+    Elem_0  = [ColorMap.get(I) : I in Elem_0a],
+    Lasta = L[X],
+    Last  = [ColorMap.get(I) : I in Lasta],
+    ...
+    nl.
+```
+
+This predicate cuts down program execution time by more than half, even with its default strategy _L = solve_all([_], Regions),_; here down to about 170 milliseconds with the
+combination of the _ff_ and _constr_ strategies (ffc). My experiments showed that the differences in execution times of the different strategies is rather small with the given problem.
+
+The color domain constraint _Regions :: 1..4,_ obviously cannot be provided with real color names, but only with integer values, which I map into color names after the solving phase.
+
 
 TBD
 
