@@ -888,7 +888,7 @@ To some extent, the Mercury version served as a role model for my implementation
 
 With about 200 milliseconds, the execution time of the SWI Prolog version is surprisingly fast from my point of view, and about as fast as the Scala variant: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
-On the other side and as so often, I found out accidentally that installing SWI Prolog outside of [Ubuntu 24 LTS](#swi-prolog) is surprinsingly tough. In Alma Linux 10 for example, based on the DNF package manager, I just ended up to to take its [Flatpak version](https://www.swi-prolog.org/build/unix.html), which is not a real installation, and only allows me to use the Java based GUI (and not its console version as usual):
+On the other side and as so often, I found out accidentally that installing SWI Prolog outside of [Ubuntu 24 LTS](#swi-prolog) is surprisingly tough. In Alma Linux 10 for example, based on the DNF package manager, I just ended up to to take its [Flatpak version](https://www.swi-prolog.org/build/unix.html), which is not a real installation, and only allows me to use the Java based GUI (and not its console version as usual):
 
 ![plot](./SWI%20Prolog%20GUI%20in%20Alma%20Linux%2010.png)
 
