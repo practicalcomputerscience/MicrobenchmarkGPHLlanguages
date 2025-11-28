@@ -77,7 +77,6 @@ masterloop(Length, Seed, [NewSeed|RestX], [BitsX|RestBitsX], [BitsHex|RestBitsHe
                                             % But I'm not playing around in Prolog with functor() and arg() to
                                             % implement global constants here.
   % write("\n  NewSeed = "), write(NewSeed),  % for testing
-  % write("\n  L = "), write(L),  % for testing
 
   format(atom(BitsX),"~|~`0t~2r~16+",[NewSeed]),    % NewSeed = 10120 => BitsX = 0010011110001000
                                                     % https://www.swi-prolog.org/pldoc/man?predicate=format/2
