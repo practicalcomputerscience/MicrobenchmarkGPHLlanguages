@@ -195,7 +195,7 @@ The needed connections matrix **A** for Germany can easily be taken from this [C
 ...
 ```
 
-However, this program employs a different concept, which is based on Picat's constraint programming module _cp_. 
+However, this program employs a different concept, which is based on Picat's constraint programming module _cp_: https://picat-lang.org/download/cp.pi
 
 TBD
 
