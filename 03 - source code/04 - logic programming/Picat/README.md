@@ -17,7 +17,7 @@ Table of contents:
 
 - [Some concepts of Picat](#some-concepts-of-picat)
 - [Map coloring problem of Germany](#map-coloring-problem-of-germany)
-- [Program execution speed](#program-execution-speed)
+- [Program execution speed, Prolog style](#program-execution-speed-prolog-style)
 - [Constraint programming module cp](#constraint-programming-module-cp)
 - [Installation tips](#installation-tips)
 - [Microbenchmark program in Picat](#microbenchmark-program-in-picat)
@@ -125,7 +125,7 @@ This result is the same as with [GNU Prolog](https://github.com/practicalcompute
 
 <br/>
 
-## Program execution speed
+## Program execution speed, Prolog style
 
 Execution speed is this:
 
@@ -195,7 +195,7 @@ The needed connections matrix **A** for Germany can easily be taken from this [C
 
 <br/>
 
-However, this program is using Picat's constraint programming module _cp_ (https://picat-lang.org/download/cp.pi), which features the _solve_all()_ predicate, see at page 58 from (**), which allowed me to elegantly implement the map coloring problem of Germany:
+However, this program is using Picat's constraint programming module _cp_ (https://picat-lang.org/download/cp.pi), which features the _solve_all()_ predicate, see at page 58 from (**), which allowed me to elegantly implement the map coloring problem of Germany with this [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat/graph_4coloring_Germany_with_cp_module.pi):
 
 ```
 import cp.
