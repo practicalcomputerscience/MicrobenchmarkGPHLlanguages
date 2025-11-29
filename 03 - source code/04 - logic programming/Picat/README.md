@@ -256,7 +256,7 @@ Just download its Linux (64-bit) tarball file from here: https://picat-lang.org/
 
 While Picat is the [winner](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) of the Prolog systems at the map coloring problem of Germany, this cannot be said for my microbenchmark program, where Picat is clearly falling behind the version in [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog).
 
-After a couple of experiments, see comment block in the [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat/random_streams_for_perf_stats.pi), it looks like that these [SWI Prolog predicates](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/random_streams_for_perf_stats.P):
+After a couple of experiments, see the top comment block in the [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat/random_streams_for_perf_stats.pi), it looks like that these [SWI Prolog predicates](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/random_streams_for_perf_stats.P):
 
 ```
     ...
