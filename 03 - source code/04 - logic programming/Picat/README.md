@@ -21,6 +21,7 @@ Table of contents:
 - [Constraint programming module cp](#constraint-programming-module-cp)
 - [Installation tips](#installation-tips)
 - [Microbenchmark program in Picat](#microbenchmark-program-in-picat)
+- [SWI Prolog versus Picat](#swi-prolog-versus-picat)
 
 <br/>
 
@@ -281,6 +282,24 @@ The equivalent predicate in Picat is _join_, and the fastest method for this job
 Another tip: as so often, using the _++_ operator for string concatenation is not the fastest method apparently. Predicate _append(L1,L2,L3)_ is slightly faster here according to my test.
 
 But of course, this doesn't matter with little string concatenations here and there.
+
+<br/>
+
+## SWI Prolog versus Picat
+
+A general remark: from my point of view, SWI Prolog with its "many batteries included" is the much better option for general purpose programming tasks than Picat.
+
+You only have to look into Picat's official literature or source code examples for practical examples of character, string and list handling with predicates _member()_, _membchk()_ or _find()_.
+
+Specifically, in user defined function _pw_generator()_ the contrast between both languages becomes obvious from my point of view. Here's my SWI Prolog version:
+
+(TBD)
+
+And here's my Picat version:
+
+(TBD)
+
+With Picat, I way more often had the feeling to have to search for the exactly one working solution to a programming task than in SWI Prolog with its many built-in predicates.
 
 <br/>
 
