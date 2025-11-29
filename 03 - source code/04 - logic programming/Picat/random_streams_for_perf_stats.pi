@@ -1,0 +1,134 @@
+/* random_streams_for_perf_stats.pi
+
+2025-11-26/28/29
+
+run on Ubuntu 24 LTS:  $ picat ./random_streams_for_perf_stats.pi
+                       $ multitime -n 20 picat random_streams_for_perf_stats.pi
+                       ===> multitime results
+                                   Mean        Std.Dev.
+                       real        0.545       0.007
+
+
+$ picat --version
+Picat version 3.9
+$
+
+
+Tests for potential execution speed improvements:
+  - using lists instead of arrays is apparently not slower here
+  - string concatenation in the masterloop? Better not, join() in main seems to be the fastest method here
+  - not building list X in the masterloop isn't improving execution speed
+  - a test for curiosity: not doing string padding decreases execution time to around 490 milliseconds
+  - "append(Zerosstring, BinStr0, BinStr)" instead of "BinStr = Zerosstring ++ BinStr0"
+    decreases execution time very slightly to around 545 milliseconds from 555 milliseconds
+  - a test for curiosity: not writing BitsXStr and BitsHexStr to disk decreases execution time slightly to around 533 milliseconds
+
+
+*/
+
+
+import util.  % for join()
+
+
+%-----------------------------------------------------------------------------%
+%
+% user defined functions
+
+integer_to_bin_string(N, BinStr) :-
+    BinStr0 = to_binary_string(N),
+    BitsXPadLen = 16 - BinStr0.len,
+    if (BitsXPadLen > 0)
+        Zerosstring = to_string(['0' : _ in 1..BitsXPadLen]),
+        append(Zerosstring, BinStr0, BinStr)
+    else
+        BinStr = BinStr0
+    end.
+
+integer_to_hex_string(N, HexStr) :-
+    HexStr0 = to_hex_string(N),
+    BitsHexPadLen = 4 - HexStr0.len,
+    if (BitsHexPadLen > 0)
+        Zerosstring = to_string(['0' : _ in 1..BitsHexPadLen]),
+        append(Zerosstring, HexStr0, HexStr)
+    else
+        HexStr = HexStr0
+    end.
+
+
+write_to_file(FileName, Content, FileType) :-
+    catch(
+        (Writer = open(FileName, write),
+         print(Writer, Content),
+         flush(Writer),
+         close(Writer),
+         FileType == "bit" ->
+             printf("\nBit stream has been written to disk under name:  %w", FileName)
+             ;
+             printf("\nByte stream has been written to disk under name: %w", FileName)
+        ),
+
+        Error,
+
+        printf("\ncould not write to file: %w -- %w", FileName, Error)
+    ).
+
+
+%**********************  recursive master loop  ****************************%
+%
+masterloop(0, _, [], [], []).  % Base case: counter has reached 0
+masterloop(Length, Seed, [NewSeed|RestX], [BitsX|RestBitsX], [BitsHex|RestBitsHex]) :-
+                               % [|] is the non-empty list constructor, pronounced "cons"
+    Length > 0,
+    % printf("%nLength = %d", Length),  % for testing
+
+    NewSeed = (17364 * Seed + 0) mod 65521,
+    % printf("%n  NewSeed = %d", NewSeed),  % for testing
+
+    integer_to_bin_string(NewSeed, BitsX),
+    % printf("%n  BitsX = %s", BitsX),  % for testing
+
+    integer_to_hex_string(NewSeed, BitsHex),
+    % printf("%n  BitsHex = %s", BitsHex),  % for testing
+
+    NewLength is Length - 1,  % decrement counter
+    masterloop(NewLength, NewSeed, RestX, RestBitsX, RestBitsHex).  % recursion
+
+% end of masterloop
+%***************************************************************************%
+
+% end of user defined functions
+%
+%-----------------------------------------------------------------------------%
+
+
+main =>
+    End = 62500,  % for production
+    % End = 10,  % for testing
+
+    M = 65521,  % = 2^16 - 15
+
+    FileBitsX   = 'random_bitstring.bin',
+    FileBitsHex = 'random_bitstring.byte',
+
+    _ = random2(),  % have a different seed with every program run
+    X0 = random(1, M - 1),
+    % printf("X0 = %w", X0),  % for testing
+
+    writef("%ngenerating a random bit stream..."),
+
+    masterloop(End, X0, _, BitsX, BitsHex),  % 2 x input, 3 x output
+    % printf("\n\nX = %w", X),  % for testing
+    % printf("\n\nBitsX = %w", BitsX),  % for testing
+    % printf("\n\nBitsHex = %w", BitsHex),  % for testing
+
+    BitsXStr = join(BitsX, ''),
+    BitsHexStr = join(BitsHex, ''),
+    % printf("\n\nBitsXStr = %w", BitsXStr),  % for testing
+    % printf("\n\nBitsHexStr = %w", BitsHexStr),  % for testing
+
+    write_to_file(FileBitsX, BitsXStr, "bit"),
+    write_to_file(FileBitsHex, BitsHexStr, "byte"),
+
+    writef("%n").
+
+% end of random_streams_for_perf_stats.pi
