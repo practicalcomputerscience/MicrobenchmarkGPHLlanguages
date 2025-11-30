@@ -6,6 +6,7 @@
 - CHR = Constraint Handling Rules
 - DCG = Definite Clause Grammars
 - SLD = Selective Linear Definite (https://en.wikipedia.org/wiki/SLD_resolution): "logic programming, as a procedural interpretation of SLD resolution"; see at: [Absys: the first logic programming language —A retrospective and a commentary](https://www.sciencedirect.com/science/article/pii/0743106690900309?via%3Dihub). SLD performs top-down execution.
+- SLDNF = SLD Negation as Failure
 
 <br/>
 
