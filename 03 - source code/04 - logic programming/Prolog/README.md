@@ -6,6 +6,10 @@ Originally, this page and its Prolog (= _**PRO**grammation en **LOG**ique_) prog
 
 <br/>
 
+Curated list of Prolog packages and resources: https://github.com/klaudiosinani/awesome-prolog
+
+<br/>
+
 #### The TL;DR execution speed diagram
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20Prolog%2C%20Germany%20map.png)
