@@ -6,6 +6,10 @@ The Mercury programming language puts functional programming on top of logic pro
 
 However, Mercury is not the right language for solving **Constraint Satisfaction Problems (CSP's)**, like the map coloring problem, for what [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#prolog) seems to be made for. At the moment, Mercury only features a [simple solver type supporting equality and disequality constraints](https://github.com/Mercury-Language/mercury/tree/master/samples/solver_types), which you can use to find **one** solution of a [map coloring problem](#the-first-solution-of-a-map-coloring-problem).
 
+> The easiest way to add constraint solving capability to a Mercury program is to provide an interface to an existing solver such as CPLEX [2] written in a foreign language.
+
+from: [Adding constraint solving to Mercury](https://mercurylang.org/documentation/papers/padl_solver.pdf), 2005
+
 ---
 
 Table of contents:
