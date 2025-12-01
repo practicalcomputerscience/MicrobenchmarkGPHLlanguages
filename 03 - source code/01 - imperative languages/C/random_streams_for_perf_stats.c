@@ -3,31 +3,40 @@ random_streams_for_perf_stats.c
 
 2025-05-31, 2025-07-10 (compiling with clang)
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
+2025-12-01: leaving the slow sprintf() functions, but now compiling much more modern clang compiler 
 
 test on Ubuntu 24 LTS: OK
 
 build on Ubuntu 24 LTS: $ gcc -Wall -Ofast -faggressive-loop-optimizations random_streams_for_perf_stats.c -o random_streams_for_perf_stats_c
 
 run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats_c
-                        => 0,008218 +- 0,000159 seconds time elapsed  ( +-  1,93% )
+                        => 0,010267 +- 0,000136 seconds time elapsed  ( +-  1,33% )
 
 ---
-Compiling with clang:   $ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
-                          -ffast-math is not improving exe speed here
+Compiling with clang:   $ clang random_streams_for_perf_stats.c -O3 -ffast-math -o random_streams_for_perf_stats_clang
+                        # -ffast-math is not improving exe speed here
 
-                        $ time ./random_streams_for_perf_stats_clang => real	0m0,013s
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
-                        => 0,008383 +- 0,000491 seconds time elapsed  ( +-  5,86% )
+                        => 0,0099561 +- 0,0000851 seconds time elapsed  ( +-  0,86% )
 
 
 $ gcc --version --> gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)
 
-$  clang -v
-clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 901f89886dcd5d1eaf07c8504d58c90f37b0cfdf)
+$ clang -v
+Homebrew clang version 21.1.4
 Target: x86_64-unknown-linux-gnu
-Thread model: posix....
+Thread model: posix
+InstalledDir: /home/linuxbrew/.linuxbrew/Cellar/llvm/21.1.4/bin
+System configuration file directory: /home/linuxbrew/.linuxbrew/etc/clang
+User configuration file directory: ~/.config/clang
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/12
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/13
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/14
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/14
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
 $
-
 
 */
 
