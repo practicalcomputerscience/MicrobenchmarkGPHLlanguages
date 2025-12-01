@@ -252,9 +252,9 @@ Just download its Linux (64-bit) tarball file from here: https://picat-lang.org/
 
 ## Microbenchmark program in Picat
 
-While Picat is the [winner](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) of the Prolog systems at the map coloring problem of Germany, this cannot be said for my microbenchmark program, where Picat is clearly falling behind the version in [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog).
+While Picat is the [winner](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) of the Prolog systems at the map coloring problem of Germany, the Picat version is slightly slower than the version in [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog).
 
-After a couple of experiments, see the top comment block in the [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat/random_streams_for_perf_stats.pi), it looks like that these [SWI Prolog predicates](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/random_streams_for_perf_stats.P):
+After a couple of experiments, I got the impression that these [SWI Prolog predicates](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/random_streams_for_perf_stats.P):
 
 ```
     ...
@@ -266,9 +266,9 @@ After a couple of experiments, see the top comment block in the [source code](ht
     ...
 ```
 
-..make fast concatenation of many little strings, contained in a list, into one big string possible.
+..support fast concatenation of many little strings, contained in a list, into one big string.
 
-The equivalent predicate in Picat is _join_, and the fastest method for this job that I have found so far:
+The equivalent predicate in Picat is just _join_, and the fastest method for this job that I have found so far:
 
 ```
     ...
@@ -276,7 +276,7 @@ The equivalent predicate in Picat is _join_, and the fastest method for this job
     ...
 ```
 
-Another tip: as so often, using the _++_ operator for string concatenation is not the fastest method apparently. Predicate _append(L1,L2,L3)_ is slightly faster here according to my test.
+Another tip: as so often, using the _++_ operator for string concatenation is not the fastest method apparently. Even predicate _append(L1,L2,L3)_ is slightly faster here according to my tests.
 
 But of course, this doesn't matter with little string concatenations here and there.
 
