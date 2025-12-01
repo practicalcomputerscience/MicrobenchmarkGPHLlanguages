@@ -26,6 +26,6 @@ Scala JVM uberjar;0,19436;0,00261
 Kotlin JVM uberjar;0,106915;0,000808
 Clojure JVM uberjar;0,61368;0,00406
 Gleam (Erlang VM);0,244;0,0
-Mercury;0,07729;0,00137
-SWI Prolog;0,20199;0,00208
-Picat (B-Prolog);0,545;0,007
+Mercury;0,07794;0,00161
+SWI Prolog;0,21396;0,00211
+Picat (B-Prolog);0.240;0.004
