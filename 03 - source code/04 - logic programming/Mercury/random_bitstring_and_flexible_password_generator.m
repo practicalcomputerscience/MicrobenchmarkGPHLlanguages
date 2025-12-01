@@ -2,7 +2,7 @@
 %
 % A program for the Mercury logic programming system: https://github.com/Mercury-Language
 %
-% 2025-11-03/04/05/20
+% 2025-11-03/04/05/20, 2025-12-01: have small hex letters a...f
 %
 % predicate =~ statement
 %
@@ -285,8 +285,9 @@ masterloop(Length, Seed, X, BitsX, BitsHex) :-
      NewBitsX0 = string.int_to_base_string(NewSeed, 2),
      NewBitsX  = pad_left(NewBitsX0, 16),
 
-     NewBitsHex0 = string.int_to_base_string(NewSeed, 16),  % hexadecimal string representation
-     NewBitsHex  = pad_left(NewBitsHex0, 4),
+     NewBitsHex0a = string.int_to_base_string(NewSeed, 16),  % hexadecimal string representation, but in capital letters A..F
+     NewBitsHex0  = string.to_lower(NewBitsHex0a),  % hexadecimal string representation in correct small letters a..f
+     NewBitsHex   = pad_left(NewBitsHex0, 4),
 
      % build lists and strings:
      X       = [NewSeed | XPrev],  % [|] is the non-empty list constructor, pronounced "cons"
