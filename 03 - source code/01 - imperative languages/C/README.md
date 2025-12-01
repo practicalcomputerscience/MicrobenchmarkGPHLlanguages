@@ -70,6 +70,8 @@ With this [solution](https://github.com/practicalcomputerscience/MicrobenchmarkG
 $ ~/scripts/Checked_C/CheckedC-Clang-12.0.0git-Linux/bin/clang ./random_streams_for_perf_stats.checked_c.c -O3 -ffast-math -o random_streams_for_perf_stats.checked_c
 ```
 
+(_-ffast-math_ doesn't have an effect here according to my tests)
+
 ..dropped from around 10 milliseconds (with old command _gcc -Wall -Ofast -faggressive-loop-optimizations_) to around 4.7 milliseconds!
 
 Be aware that Checked C brings along its own version of the clang compiler: https://github.com/checkedc/checkedc-clang/releases/tag/CheckedC-Clang-12.0.2
@@ -86,17 +88,12 @@ I try to use user defined functions only in cases where I cannot find a suitable
 
 <br/>
 
-However, what I have done now as my official C program, at least of the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c), is:
+However, what I have done now for my official C program, at least for the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c), is:
 
-- using a more modern version of the clang compiler with (normal) version 21.1.4 instead of formerly version 17.0.0, and
-- using its execution speed result as my official one for C: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
+- using a more modern version of the clang compiler with (normal) version 21.1.4 instead of former version 17.0.0, and
+- using its execution speed result as my official one for the C program: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
 
-I noticed that with clang version 21.1.4 I'm now able to compile a slightly faster executable than with gcc version 13.3.0:
-
-It's now 98.1 milliseconds versus 10.0 milliseconds (best out of 3 runs with _$ perf stat -r 20_), with comiler switches:
-
-- _gcc -Wall -Ofast -faggressive-loop-optimizations_
-- _clang -O3 -ffast-math_  # though -ffast-math doesn't have an effect according to my tests
+Because I also noticed that with clang version 21.1.4 I'm now able to compile a slightly faster executable than with gcc version 13.3.0. It's now 98.1 milliseconds versus 10.0 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
 
 <br/>
 
