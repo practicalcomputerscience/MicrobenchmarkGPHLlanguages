@@ -890,7 +890,7 @@ Here's the "speed part" of the microbenchmark program in [SWI Prolog](./random_s
 
 To some extent, the Mercury version served as a role model for my implementation, but I also consulted MS Bing AI and Duck.ai (see comments in the source code). There's enough (SWI) Prolog source code "in the wild" for this.
 
-With about 200 milliseconds, the execution time of the SWI Prolog version is surprisingly fast, something which becomes even clearer when you compare it to the [version in Picat](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#microbenchmark-program-in-picat), which takes about 550 milliseconds to run.
+With about 215 milliseconds, the execution time of the SWI Prolog version is surprisingly fast, and thus beating the winner of the map coloring problem of Germany, that is [Picat](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#microbenchmark-program-in-picat), which takes about 240 milliseconds to run.
 
 On the other side and as so often, I found out accidentally that installing SWI Prolog outside of [Ubuntu 24 LTS](#swi-prolog) is surprisingly tough. In Alma Linux 10 for example, based on the DNF package manager, I just ended up to to take its [Flatpak version](https://www.swi-prolog.org/build/unix.html), which is not a real installation, and only allows me to use the Java based GUI (and not its console version as usual):
 
