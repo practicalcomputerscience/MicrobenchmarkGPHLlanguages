@@ -1,5 +1,5 @@
 language;mean;std_dev
-C;0,009999;0,000127
+C;0,009809;0,000160
 Rust;0,010621;0,000156
 Crystal;0,011636;0,000445
 C3;0,019028;0,000127
@@ -28,4 +28,4 @@ Clojure JVM uberjar;0,61368;0,00406
 Gleam (Erlang VM);0,244;0,0
 Mercury;0,07794;0,00161
 SWI Prolog;0,21396;0,00211
-Picat (B-Prolog);0.240;0.004
+Picat (B-Prolog);0,240;0,004
