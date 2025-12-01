@@ -7,7 +7,7 @@ A program for SWI Prolog: https://www.swi-prolog.org/
 *** This program most probably won't work in any other Prolog system than SWI! ***
 
 
-2025-11-17/18/19
+2025-11-17/18/19, 2025-12-01: have small hex letters a...f
 
 run program in Ubuntu 24 LTS: $ swipl random_streams_for_perf_stats.P
                               NN ?- random_streams_for_perf_stats.  % enter this goal inside the SWI REPL
@@ -82,7 +82,8 @@ masterloop(Length, Seed, [NewSeed|RestX], [BitsX|RestBitsX], [BitsHex|RestBitsHe
                                                     % https://www.swi-prolog.org/pldoc/man?predicate=format/2
   % write("\n  BitsX = "), write(BitsX),  % for testing
 
-  format(atom(BitsHex),"~|~`0t~16R~4+",[NewSeed]),  % NewSeed = 10120 => BitsHex = 2788
+  format(atom(BitsHex0),"~|~`0t~16R~4+",[NewSeed]),  % NewSeed = 10120 => BitsHex = 2788: bad example, was hiding capital letter output!
+  downcase_atom(BitsHex0, BitsHex),                  % correct result now: 101244c6d74f524d95e5647bf63c7....
   % write("\n  BitsHex = "), write(BitsHex),  % for testing
 
   NewLength is Length - 1,  % decrement counter
