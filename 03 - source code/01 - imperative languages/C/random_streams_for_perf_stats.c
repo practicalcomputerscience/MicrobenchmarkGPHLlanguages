@@ -13,7 +13,7 @@ run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats_c
                         => 0,010267 +- 0,000136 seconds time elapsed  ( +-  1,33% )
 
 ---
-Compiling with clang:   $ clang random_streams_for_perf_stats.c -O3 -ffast-math -o random_streams_for_perf_stats_clang
+Compiling with clang:   $ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
                         # -ffast-math is not improving exe speed here
 
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
@@ -154,4 +154,5 @@ int main()
 }
 
 // end of random_streams_for_perf_stats.c
+
 
