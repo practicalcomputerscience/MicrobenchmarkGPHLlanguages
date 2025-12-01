@@ -16,7 +16,7 @@ Checked C "for making existing C code more secure":
 With program [random_streams_for_perf_stats.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) I compiled directly like this:
 
 ```
-$ gcc -Wall -Ofast -faggressive-loop-optimizations random_streams_for_perf_stats.c -o random_streams_for_perf_stats_c
+$ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
 ```
 
 With program [random_bitstring_and_flexible_password_generator.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_bitstring_and_flexible_password_generator.c) I used a [make file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/makefile) for compilation:
@@ -27,10 +27,10 @@ $ make
 
 <br/>
 
-Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "usual" [gcc](https://gcc.gnu.org/), at least with the compiler versions I used, did not build a faster executable, but program size is significantly smaller with clang (with aggressive compiler switches for execution speed in both cases):
+Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "usual" [gcc](https://gcc.gnu.org/), at least with the compiler versions I used (on 2025-12-01), built a slighlty faster executable of comparable size (with aggressive compiler switches for execution speed in both cases):
 
-- clang: 8,208 bytes produced with command: _$ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
-- gcc: 17,912 bytes
+- clang: 16,312 bytes produced with command: _$ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
+- gcc: 17,912 bytes produced with command: _$ gcc -Wall -Ofast -faggressive-loop-optimizations random_streams_for_perf_stats.c -o random_streams_for_perf_stats_c_
 
 <br/>
 
@@ -67,10 +67,8 @@ void integer_to_bin_string(int n, char *binary_str) {
 With this [solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.checked_c.c), I noticed a significantly faster program. Execution time with compilation command:
 
 ```
-$ ~/scripts/Checked_C/CheckedC-Clang-12.0.0git-Linux/bin/clang ./random_streams_for_perf_stats.checked_c.c -O3 -ffast-math -o random_streams_for_perf_stats.checked_c
+$ ~/scripts/Checked_C/CheckedC-Clang-12.0.0git-Linux/bin/clang ./random_streams_for_perf_stats.checked_c.c -O3 -o random_streams_for_perf_stats.checked_c
 ```
-
-(_-ffast-math_ doesn't have an effect here according to my tests)
 
 ..dropped from around 10 milliseconds (with old command _gcc -Wall -Ofast -faggressive-loop-optimizations_) to around 4.7 milliseconds!
 
