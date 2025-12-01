@@ -28,7 +28,7 @@ C3                | 163 | compiled, very young language: DStrings (dynamic strin
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 148 | compiled, very mature language
 Picat (old B-Prolog) | 141 | interpreted, mature language: lots of user-defined functions 
-SWI Prolog        | 132 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
+SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
