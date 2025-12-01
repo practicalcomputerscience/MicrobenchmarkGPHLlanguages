@@ -27,7 +27,7 @@ V                 | 179 | compiled, very young programming language: needs some 
 C3                | 163 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 148 | compiled, very mature language
-Picat (old B-Prolog) | 141 | interpreted, mature language: lots of user-defined functions 
+Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
