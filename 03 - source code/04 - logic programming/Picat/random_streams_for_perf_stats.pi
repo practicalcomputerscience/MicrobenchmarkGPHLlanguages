@@ -1,28 +1,17 @@
 /* random_streams_for_perf_stats.pi
 
-2025-11-26/28/29
+2025-11-26/28/29, 2025-12-01: have small hex letters a...f
 
 run on Ubuntu 24 LTS:  $ picat ./random_streams_for_perf_stats.pi
                        $ multitime -n 20 picat random_streams_for_perf_stats.pi
                        ===> multitime results
                                    Mean        Std.Dev.
-                       real        0.545       0.007
+                       real        0.240       0.004
 
 
 $ picat --version
 Picat version 3.9
 $
-
-
-Tests for potential execution speed improvements:
-  - using lists instead of arrays is apparently not slower here
-  - string concatenation in the masterloop? Better not, join() in main seems to be the fastest method here
-  - not building list X in the masterloop isn't improving execution speed
-  - a test for curiosity: not doing string padding decreases execution time to around 490 milliseconds
-  - "append(Zerosstring, BinStr0, BinStr)" instead of "BinStr = Zerosstring ++ BinStr0"
-    decreases execution time very slightly to around 545 milliseconds from 555 milliseconds
-  - a test for curiosity: not writing BitsXStr and BitsHexStr to disk decreases execution time slightly to around 533 milliseconds
-
 
 */
 
@@ -45,7 +34,9 @@ integer_to_bin_string(N, BinStr) :-
     end.
 
 integer_to_hex_string(N, HexStr) :-
-    HexStr0 = to_hex_string(N),
+    HexStr0a = to_hex_string(N),  % predicate to_hex_string is producing capital letters A..F
+    HexStr0 = to_lowercase(HexStr0a),  % hexadecimal string representation in correct small letters a..f
+
     BitsHexPadLen = 4 - HexStr0.len,
     if (BitsHexPadLen > 0)
         Zerosstring = to_string(['0' : _ in 1..BitsHexPadLen]),
