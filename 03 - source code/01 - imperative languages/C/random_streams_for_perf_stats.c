@@ -3,7 +3,7 @@ random_streams_for_perf_stats.c
 
 2025-05-31, 2025-07-10 (compiling with clang)
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
-2025-12-01: leaving the slow sprintf() functions, but now compiling much more modern clang compiler 
+2025-12-01: leaving the slow sprintf() functions, but now compiling with a more modern version of the clang compiler
 
 test on Ubuntu 24 LTS: OK
 
@@ -154,3 +154,4 @@ int main()
 }
 
 // end of random_streams_for_perf_stats.c
+
