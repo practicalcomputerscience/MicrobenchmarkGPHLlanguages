@@ -108,6 +108,7 @@ end
 
 ```
 $ ozc -c prolog_system_test.oz
+$
 ```
 
 3/ finally, run this object file:
@@ -161,7 +162,7 @@ append([1,2], [3,4], N).
 
 ### Defining variables, procedures and functions in a module
 
-Again, this is not so easy when the usual examples in tutorials and documents are not working when using the ozc and ozengine tools.
+Again, this is not so easy when examples from tutorials and documents are not working when using the ozc and ozengine tools.
 
 In case of doubt, look into the GitHub repository for examples: https://github.com/mozart/mozart2
 
