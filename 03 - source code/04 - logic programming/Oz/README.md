@@ -25,7 +25,8 @@ Table of contents:
 - [Oz is not a Prolog system](#oz-is-not-a-prolog-system)
 - [Application development with the Oz compiler and engine](#application-development-with-the-oz-compiler-and-engine)
 - [](#)
-- [](#)
+- [The future of Oz?](#the-future-of-oz)
+- 
 
 <br/>
 
@@ -207,6 +208,16 @@ ideas:
 - xxx
 - xxx
 - xxx
+
+<br/>
+
+## The future of Oz?
+
+The short conclusion in [A History of the Oz Multiparadigm Language](https://www.ps.uni-saarland.de/Publications/documents/vanRoyHaridiSchulteSmolka2020.pdf) from 2020 doesn't sound optimistic:
+
+> We hope that the ideas of this article will be an inspiration to future language designers.
+
+Almost two years after the last update of the Mozart Compiler, this last statement could be interpreted as the quasi official obituary of Oz.
 
 <br/>
 
