@@ -14,7 +14,7 @@ useful since also current Mozart version 2.0.1 is still using many old parts.
 
 Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/base/List.oz) for example.
 
-For Oz's (original) terminology I took "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
+For Oz's **terminology** I took "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
 ---
 
@@ -65,7 +65,7 @@ Oz has a strong focus on teaching computer programming, and doing this with mean
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs.png)
 
-(Initially _Buffers_ is set to "Oz")
+(Initially, "Buffers" is set to "Oz")
 
 This approach makes it not so easy to do (Linux) shell based software development like in a typical Prolog system. It took me a while, but finally I found a solution with the help of Big AI.
 
@@ -73,13 +73,13 @@ This approach makes it not so easy to do (Linux) shell based software developmen
 
 Installation in a Linux system is easy with just downloading the suitable (Linux) operating system package and installing it with the related packager manager (by double clicking on the package), here file _mozart2-2.0.1-x86_64-linux.deb_ from: https://github.com/mozart/mozart2/releases/tag/v2.0.1 for a Debian based Linux system like Ubuntu.
 
-Also shell commands to start the Mozart tools are now avaiable without extra configurations, though the question is: how to start an Oz compiler or interpreter from a Linux shell, like in a Prolog system for example?
+Also shell commands to start Mozart tools are now available without extra configurations, though the question is: how to start an Oz compiler or interpreter from a Linux shell, like in a Prolog system for example?
 
-When you enter shell command: _$ oz_, the Emacs pops up like shown above.
+When you enter shell command: _$ oz_, the Emacs editor pops up like shown above.
 
 Instead do this:
 
-1/ write your "normal" source code file, like here for example [prolog_system_test.oz](TBD) (to skip the usual "Hello, World!" example):
+1/ write a usual source code file, like here for example [prolog_system_test.oz](./prolog_system_test.oz) (to skip the usual "Hello, World!" example):
 
 ```
 functor
@@ -107,7 +107,7 @@ end
 $ ozc -c prolog_system_test.oz
 ```
 
-3/ finally, run this compiled object file:
+3/ finally, run this object file:
 
 ```
 $ ozengine prolog_system_test.ozf
@@ -125,16 +125,18 @@ $
 
 Here's another way as the common way via the GUI to demonstrate that the Mozart-Oz pair is not a Prolog system.
 
-Just enter or copy&paste and then execute the predicates from this [Picat example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#some-concepts-of-picat):
+Just enter or copy&paste, and then execute the predicates from this [Picat example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#some-concepts-of-picat):
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs%20b.png)
+
+<br/>
 
 But as a first exercise I copied the first example of a **procedure call**: _{Browse 9999*9999}_ from [Declarative programming with Oz](https://staff.fmi.uvt.ro/~mircea.marin/lectures/ALFP/Oz-introduction.pdf), 2017, and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** must be executed with mouse clicks or Emacs keyboard commands:
 
 - mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
 - keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
 
-Now the "Oz Browser" window should pop, as shown above. 
+Now the "Oz Browser" window should pop up as shown above. 
 
 <br/>
 
