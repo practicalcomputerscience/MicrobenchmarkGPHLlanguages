@@ -34,10 +34,15 @@ define
     % {Browse {Append [1 2 3] [4 5 6]} -- becomes:
     {System.showInfo {Value.toVirtualString {Append [1 2 3] [4 5 6]} 0 0}}
 
-    % my extra definition with a function:
+    % my extra definition of a function from Big AI:
     fun {AppendF L1 L2}
-        {Append L1 L2}
+        % {Append L1 L2}  % joking, but working
+        case L1
+        of nil then L2  % If first list is empty, return second list
+        [] H|T then H | {AppendF T L2}  % Otherwise, keep head and append recursively
+        end
     end
+
     A1 = {AppendF [1 2 3] [4 5 6]}
     {System.showInfo "with a function: A1 = "#{Value.toVirtualString A1 0 0}}
 
