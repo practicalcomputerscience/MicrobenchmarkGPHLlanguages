@@ -59,7 +59,7 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 <br/>
 
-## Installation und usage tips
+## Installation and usage tips
 
 Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor:
 
@@ -158,7 +158,7 @@ append([1,2], [3,4], N).
 
 ### Application development with the Oz compiler and engine
 
-So, I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor**: [deterministic_logic_programming_test.oz](.deterministic_logic_programming_test.oz):
+So, I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor** again: [deterministic_logic_programming_test.oz](./deterministic_logic_programming_test.oz):
 
 ```
 functor
