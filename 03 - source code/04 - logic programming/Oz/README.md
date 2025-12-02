@@ -23,7 +23,9 @@ Table of contents:
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
 - [Oz is not a Prolog system](#oz-is-not-a-prolog-system)
-- [Application development with the Oz compiler and engine](#application-development-with-the-oz-compiler-and-engine)
+- [Defining variables, procedures and functions in a module](#defining-variables-procedures-and-functions-in-a-module)
+- [](#)
+- [](#)
 - [](#)
 - [The future of Oz?](#the-future-of-oz)
 - 
@@ -120,7 +122,7 @@ L5 = [[[1 2] 3 4]]
 $ 
 ```
 
-By the way: the following approach is not working at the moment (at least in my system), though it should work from my point of view:
+By the way: the following approach is not working at the moment (at least in my system):
 
 ```
 $ ozc -x prolog_system_test.oz
@@ -157,9 +159,13 @@ append([1,2], [3,4], N).
 
 <br/>
 
-### Application development with the Oz compiler and engine
+### Defining variables, procedures and functions in a module
 
-So, I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor** again: [deterministic_logic_programming_test.oz](./deterministic_logic_programming_test.oz):
+Again, this is not so easy when the usual examples in tutorials and documents are not working when using the ozc and ozengine tools.
+
+In case of doubt, look into the GitHub repository for examples: https://github.com/mozart/mozart2
+
+I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor** (+) again: [deterministic_logic_programming_test.oz](./deterministic_logic_programming_test.oz):
 
 ```
 functor
@@ -179,18 +185,54 @@ define
 
     % {declare A in} -- not to be used here
     A = {Append [1 2 3] [4 5 6]}
-    {System.showInfo "A = "#{Value.toVirtualString A 0 0}}
+    {System.showInfo "with a procedure: A = "#{Value.toVirtualString A 0 0}}
 
     % {Browse {Append [1 2 3] [4 5 6]} -- becomes:
     {System.showInfo {Value.toVirtualString {Append [1 2 3] [4 5 6]} 0 0}}
+
+    % my extra definition of a function from Big AI:
+    fun {AppendF L1 L2}
+        % {Append L1 L2}  % joking, but working
+        case L1
+        of nil then L2  % If first list is empty, return second list
+        [] H|T then H | {AppendF T L2}  % Otherwise, keep head and append recursively
+        end
+    end
+
+    A1 = {AppendF [1 2 3] [4 5 6]}
+    {System.showInfo "with a function: A1 = "#{Value.toVirtualString A1 0 0}}
 
     {Application.exit 0}
 end
 ```
 
-From (*):
+Run this app like this:
+
+```
+$ ozc -c deterministic_logic_programming_test.oz
+$ ozengine deterministic_logic_programming_test.ozf
+with a procedure: A = [1 2 3 4 5 6]
+[1 2 3 4 5 6]
+with a function: A1 = [1 2 3 4 5 6]
+$
+```
+
+<br/>
+
+(+) from (*):
 
 > A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
+
+Here's (*) something about the curly brackets ("braces": {}) for functions and procedures in Oz:
+
+> The syntax design was a difficult issue because of the project’s ambition: we aimed to support as many programming paradigms as possible. This put a strong constraint on the syntax: it needed to
+support all paradigms in a clean and factored manner. For example, we used parentheses for records and brackets for lists; this left us with braces for functions and procedures. This is an important
+lesson for future language designers: be especially careful about syntax, and be prepared to make big changes in the syntax when evolving the system.
+
+- parentheses: ()
+- brackets: []
+
+
 
 <br/>
 
