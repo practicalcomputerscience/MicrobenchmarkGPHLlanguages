@@ -8,7 +8,7 @@ Oz cheat sheet from 2019: https://github.com/alhassy/OzCheatSheet/blob/master/Ch
 
 At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandoned construction site with numerous dead links in the web,
 here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to just outdated but still useful documentation (https://www.mozart-oz.org/documentation/),
-since also Mozart version 2.0.1 is still using many old parts.
+since also current Mozart version 2.0.1 is still using many old parts.
 
 Therefore, I often look into its GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/base/List.oz) for example.
 
@@ -16,15 +16,20 @@ Therefore, I often look into its GitHub repository to see what functions are cur
 
 ## Concepts of Oz
 
-Maybe this computer programming book became more famous:
+Maybe this computer programming book of two of the later developers became more famous:
 
-
+![plot](./Concepts%2C%20Techniques%2C%20and%20Models%20of%20Computer%20Programming.jpg)
 
 from: https://webperso.info.ucl.ac.be/~pvr/book.html
 
 ..than the language itself.
 
 Oz feels like that its supported programming paradigms are existing in parallel, which stands in contrast to layered [Mercury](TBD) with logic programming as the clear bottom layer for example.
+
+
+
+
+from: https://www.ps.uni-saarland.de/Publications/documents/vanRoyHaridiSchulteSmolka2020.pdf
 
 Since Oz obviously still has a 
 
