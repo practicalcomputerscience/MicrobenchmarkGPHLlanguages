@@ -2,28 +2,28 @@
 
 # Oz
 
-Development and execution environment **Mozart** (version 2): http://mozart2.org/
+Development and execution environment **Mozart** (current version 2): http://mozart2.org/
 
 Oz cheat sheet from 2019: https://github.com/alhassy/OzCheatSheet/blob/master/CheatSheet.pdf
 
 <br/>
 
 At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandoned construction site with numerous dead links in the web,
-here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to just outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
+here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
 useful since also current Mozart version 2.0.1 is still using many old parts.
 
 Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/base/List.oz) for example.
 
-For Oz's **terminology** I took "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
+For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
 ---
 
 Table of contents:
 
-- [Concepts of Oz](#TBD)
-- [Installation und usage tips](#TBD)
-- [Oz is not a Prolog system](#)
-- [](#)
+- [Concepts of Oz](#concepts-of-oz)
+- [Installation and usage tips](#installation-and-usage-tips)
+- [Oz is not a Prolog system](#oz-is-not-a-prolog-system)
+- [Application development with the Oz compiler and engine](#application-development-with-the-oz-compiler-and-engine)
 - [](#)
 - [](#)
 
@@ -47,9 +47,9 @@ Though the Mozart-Oz pair has been marketed as a "Multi-paradigm Programming Sys
 
 > We give the history of Oz as it developed from its origins in logic programming, starting with Prolog, followed by concurrent logic programming and constraint logic programming, and leading to its two direct precursors, the concurrent constraint model and the Andorra Kernel Language (AKL). 
 
-from: "A History of the Oz Multiparadigm Language", 2020, by its initial and main developers: https://www.ps.uni-saarland.de/Publications/documents/vanRoyHaridiSchulteSmolka2020.pdf, a very good source
+(*) from: "A History of the Oz Multiparadigm Language", 2020, by its initial and main developers: https://www.ps.uni-saarland.de/Publications/documents/vanRoyHaridiSchulteSmolka2020.pdf, a very good source
 
-Also see "Logic Programming in Oz with Mozart" by Peter Van Roy from 1999: http://mozart2.org/publications/abstracts/lpinoz99.html, which still can be searched as a ready PDF file in the web:
+(**) also see "Logic Programming in Oz with Mozart" by Peter Van Roy from 1999: http://mozart2.org/publications/abstracts/lpinoz99.html, which still can be searched as a ready PDF file in the web:
 
 > This short tutorial explains how to do Prolog-style logic programming in Oz. ... The Oz computation model subsumes both search-based logic programming and committed-choice (concurrent) logic programming with deep guards.
 
@@ -144,8 +144,6 @@ But as a first exercise, I copied the first example of a **procedure call**: _{B
 
 Now the "Oz Browser" window should pop up as shown above. 
 
-<br/>
-
 However, when these Prolog predicates:
 
 ```
@@ -158,7 +156,50 @@ append([1,2], [3,4], N).
 
 <br/>
 
-TBD
+### Application development with the Oz compiler and engine
+
+So, I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor**: [deterministic_logic_programming_test.oz](.deterministic_logic_programming_test.oz):
+
+```
+functor
+import
+  System
+  Application
+
+define
+    % definition of Append predicate:
+    % declare -- not to be used here
+    proc {Append L1 L2 L3}
+        case L1
+        of nil then L2=L3
+        [] X|M1 then L3=X|{Append M1 L2}
+        end
+    end
+
+    % {declare A in} -- not to be used here
+    A = {Append [1 2 3] [4 5 6]}
+    {System.showInfo "A = "#{Value.toVirtualString A 0 0}}
+
+    % {Browse {Append [1 2 3] [4 5 6]} -- becomes:
+    {System.showInfo {Value.toVirtualString {Append [1 2 3] [4 5 6]} 0 0}}
+
+    {Application.exit 0}
+end
+```
+
+From (*):
+
+> A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
+
+<br/>
+
+I think that these little examples for a shell based development approach in Mozart-Oz are already enough to start making bigger applications.
+
+<br/>
+
+## xxxxxxxxxxxxx
+
+TBD 
 
 ideas:
 
