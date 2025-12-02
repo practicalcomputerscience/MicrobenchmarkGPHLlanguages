@@ -29,10 +29,17 @@ define
 
     % {declare A in} -- not to be used here
     A = {Append [1 2 3] [4 5 6]}
-    {System.showInfo "A = "#{Value.toVirtualString A 0 0}}
+    {System.showInfo "with a procedure: A = "#{Value.toVirtualString A 0 0}}
 
     % {Browse {Append [1 2 3] [4 5 6]} -- becomes:
     {System.showInfo {Value.toVirtualString {Append [1 2 3] [4 5 6]} 0 0}}
+
+    % my extra definition with a function:
+    fun {AppendF L1 L2}
+        {Append L1 L2}
+    end
+    A1 = {AppendF [1 2 3] [4 5 6]}
+    {System.showInfo "with a function: A1 = "#{Value.toVirtualString A1 0 0}}
 
     {Application.exit 0}
 end
@@ -40,8 +47,9 @@ end
 /*
 output:
 $ ozengine deterministic_logic_programming_test.ozf
-A = [1 2 3 4 5 6]
+with a procedure: A = [1 2 3 4 5 6]
 [1 2 3 4 5 6]
+with function: A1 = [1 2 3 4 5 6]
 $
 */
 
