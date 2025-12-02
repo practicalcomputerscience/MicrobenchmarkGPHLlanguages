@@ -14,13 +14,15 @@ useful since also current Mozart version 2.0.1 is still using many old parts.
 
 Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/base/List.oz) for example.
 
+For Oz's (original) terminology I took "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
+
 ---
 
 Table of contents:
 
 - [Concepts of Oz](#TBD)
 - [Installation und usage tips](#TBD)
-- [](#)
+- [Oz is not a Prolog system](#)
 - [](#)
 - [](#)
 - [](#)
@@ -47,7 +49,7 @@ Though the Mozart-Oz pair has been marketed as a "Multi-paradigm Programming Sys
 
 from: "A History of the Oz Multiparadigm Language", 2020, by its initial and main developers: https://www.ps.uni-saarland.de/Publications/documents/vanRoyHaridiSchulteSmolka2020.pdf, a very good source
 
-Also see "Logic Programming in Oz with Mozart" by Peter Van Roy from 1999: http://mozart2.org/publications/abstracts/lpinoz99.html, which still can be searched as a ready PDF document in the web:
+Also see "Logic Programming in Oz with Mozart" by Peter Van Roy from 1999: http://mozart2.org/publications/abstracts/lpinoz99.html, which still can be searched as a ready PDF file in the web:
 
 > This short tutorial explains how to do Prolog-style logic programming in Oz. ... The Oz computation model subsumes both search-based logic programming and committed-choice (concurrent) logic programming with deep guards.
 
@@ -59,9 +61,11 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 ## Installation und usage tips
 
-Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically as menu tree "Oz" in the Emacs text editor:
+Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically with command in menu tree "Oz" of the **GNU Emacs** text editor:
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs.png)
+
+(Initially _Buffers_ is set to "Oz")
 
 This approach makes it not so easy to do (Linux) shell based software development like in a typical Prolog system. It took me a while, but finally I found a solution with the help of Big AI.
 
@@ -71,7 +75,9 @@ Installation in a Linux system is easy with just downloading the suitable (Linux
 
 Also shell commands to start the Mozart tools are now avaiable without extra configurations, though the question is: how to start an Oz compiler or interpreter from a Linux shell, like in a Prolog system for example?
 
-Do this:
+When you enter shell command: _$ oz_, the Emacs pops up like shown above.
+
+Instead do this:
 
 1/ write your "normal" source code file, like here for example [prolog_system_test.oz](TBD) (to skip the usual "Hello, World!" example):
 
@@ -107,7 +113,7 @@ $ ozc -c prolog_system_test.oz
 $ ozengine prolog_system_test.ozf
 ```
 
-By the way: this approach is not working at the moment (at least in my system), though it should work from my point of view:
+By the way: the following approach is not working at the moment (at least in my system), though it should work from my point of view:
 
 ```
 $ ozc -x prolog_system_test.oz
@@ -115,7 +121,43 @@ bash: ./prolog_system_test: cannot execute binary file: Exec format error
 $
 ```
 
+### Oz is not a Prolog system
+
+Here's another way as the common way via the GUI to demonstrate that the Mozart-Oz pair is not a Prolog system.
+
+Just enter or copy&paste and then execute the predicates from this [Picat example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#some-concepts-of-picat):
+
+![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs%20b.png)
+
+But as a first exercise I copied the first example of a **procedure call**: _{Browse 9999*9999}_ from [Declarative programming with Oz](https://staff.fmi.uvt.ro/~mircea.marin/lectures/ALFP/Oz-introduction.pdf), 2017, and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** must be executed with mouse clicks or Emacs keyboard commands:
+
+- mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
+- keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
+
+Now the "Oz Browser" window should pop, as shown above. 
+
+<br/>
+
+However, when these Prolog predicates:
+
+```
+append([], L, L).
+append([X | [1,2]], [3,4], [X | N]).
+append([1,2], [3,4], N).
+```
+
+..are being pasted into the upper text buffer and executed, nothing is happening, not even an error message is thrown out.
+
+<br/>
+
 TBD
+
+ideas:
+
+- GeOz: Integration with Gecode for the map coloring problem of Germany??
+- xxx
+- xxx
+- xxx
 
 <br/>
 
