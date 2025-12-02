@@ -61,7 +61,7 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 ## Installation und usage tips
 
-Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically with command in menu tree "Oz" of the **GNU Emacs** text editor:
+Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor:
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs.png)
 
@@ -111,6 +111,12 @@ $ ozc -c prolog_system_test.oz
 
 ```
 $ ozengine prolog_system_test.ozf
+L1 = [1 2]
+L2 = [3 4]
+L3 = [1 2 3 4]
+L4 = [1 2]
+L5 = [[[1 2] 3 4]]
+$ 
 ```
 
 By the way: the following approach is not working at the moment (at least in my system), though it should work from my point of view:
@@ -131,7 +137,7 @@ Just enter or copy&paste, and then execute the predicates from this [Picat examp
 
 <br/>
 
-But as a first exercise I copied the first example of a **procedure call**: _{Browse 9999*9999}_ from [Declarative programming with Oz](https://staff.fmi.uvt.ro/~mircea.marin/lectures/ALFP/Oz-introduction.pdf), 2017, and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** must be executed with mouse clicks or Emacs keyboard commands:
+But as a first exercise, I copied the first example of a **procedure call**: _{Browse 9999*9999}_ from [Declarative programming with Oz](https://staff.fmi.uvt.ro/~mircea.marin/lectures/ALFP/Oz-introduction.pdf), 2017, and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** must be executed with mouse clicks or Emacs keyboard commands:
 
 - mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
 - keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
