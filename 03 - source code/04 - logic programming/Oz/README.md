@@ -246,7 +246,7 @@ I think that these little examples for a shell based development approach in Moz
 TBD 
 
 
-A good source of knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/cp/FD.oz).
+A good source of knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/cp/FD.oz) (also called FD library).
 
 FD = Finite Domain
 
