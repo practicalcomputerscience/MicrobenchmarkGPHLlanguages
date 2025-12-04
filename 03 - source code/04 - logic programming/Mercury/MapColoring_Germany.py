@@ -4,10 +4,7 @@ MapColoring_Germany.py
 To solve the map coloring problem, which is a constraint satisfaction problem, I have employed backtracking
 algorithm. The colors should be assigned to the states considering the constraints (the borders).
 
-2025-11-14:
-  $ time python3 ./MapColoring_Germany.py
-  Possible solutions count: 191808
-  real	0m15,478s <<<<<<
+2025-11-14 + 2025-12-04 (Windows 11)
 
 source: https://github.com/parisasl/MapColoring/blob/main/MapColoring.py
 
@@ -153,14 +150,27 @@ problem.add_constraint(DifferentConstraint(["BW","BY"]))
 #print("possible solutions: " + str(len(problem.get_solutions())))
 
 def main():
-    # while True:
-        # print("For printing all solutions enter '1'\nFor printing the count of solutions enter '2'\nTo stop enter 'stop'")
-        # ipt=input()
-        # if ipt == '1':
-        #     print(problem.get_solutions())
-        # elif ipt=='2':
-            print("\nPossible solutions count: " + str(len(problem.get_solutions())))
-        # elif ipt == 'stop':
-        #     break
+    all_solutions     = problem.get_solutions()
+    all_solutions_len = len(all_solutions)
+    first_solution    = all_solutions [0]
+    last_solution     = all_solutions [-1]
+    
+    print("number N of different solutions = " + str(all_solutions_len))
+
+    print("\n1st solution = "  + str(first_solution))
+    print("...")
+    print("last solution = " + str(last_solution))
 
 main()
+
+'''
+output:
+>python MapColoring_Germany.py
+number N of different solutions = 191808
+
+1st solution = {'BY': 'red', 'BW': 'green', 'SL': 'red', 'RP': 'blue', 'TH': 'green', 'HE': 'yellow', 'NW': 'red', 'SN': 'blue', 'BB': 'red', 'BE': 'green', 'ST': 'yellow', 'NI': 'blue', 'HB': 'red', 'HH': 'red', 'MV': 'green', 'SH': 'yellow'}
+...
+last solution = {'BY': 'yellow', 'BW': 'blue', 'SL': 'yellow', 'RP': 'green', 'TH': 'blue', 'HE': 'red', 'NW': 'yellow', 'SN': 'green', 'BB': 'yellow', 'BE': 'blue', 'ST': 'red', 'NI': 'green', 'HB': 'yellow', 'HH': 'yellow', 'MV': 'blue', 'SH': 'red'}
+
+>
+'''

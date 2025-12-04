@@ -1,11 +1,10 @@
 '''
+MapColoring_Australia.py
+
 To solve the map coloring problem, which is a constraint satisfaction problem, I have employed backtracking
 algorithm. The colors should be assigned to the states considering the constraints (the borders).
 
-2025-11-14:
-  $ time python3 ./MapColoring_Australia.py 
-  Possible solutions count: 576
-  real	0m0,042s
+2025-11-14 + 2025-12-04 (Windows 11)
 
 source: https://github.com/parisasl/MapColoring/blob/main/MapColoring.py
 
@@ -131,15 +130,24 @@ problem.add_constraint(DifferentConstraint(["T", "V"]))  # 2025-11-14 my additio
 #print("possible solutions: " + str(len(problem.get_solutions())))
 
 def main():
-    # while True:
-        # print("For printing all solutions enter '1'\nFor printing the count of solutions enter '2'\nTo stop enter 'stop'")
-        # ipt=input()
-        # if ipt == '1':
-        #     print(problem.get_solutions())
-        # elif ipt=='2':
-            print("\nPossible solutions count: " + str(len(problem.get_solutions())))
-        # elif ipt == 'stop':
-        #     break
+    print("number N of different solutions = " + str(len(problem.get_solutions())))
+
+    first_solution = problem.get_solutions()[0]
+    last_solution  = problem.get_solutions()[-1]
+    print("\n1st solution = "  + str(first_solution))
+    print("...")
+    print("last solution = " + str(last_solution))
 
 main()
 
+'''
+output:
+>python MapColoring_Australia.py
+number N of different solutions = 576
+
+1st solution = {'T': 'red', 'SA': 'red', 'V': 'green', 'NSW': 'blue', 'Q': 'green', 'NT': 'blue', 'WA': 'green'}
+...
+last solution = {'T': 'yellow', 'SA': 'yellow', 'V': 'blue', 'NSW': 'green', 'Q': 'blue', 'NT': 'green', 'WA': 'blue'}
+
+>
+'''
