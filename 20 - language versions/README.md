@@ -28,7 +28,7 @@ LunarML | LunarML version 0.2.1 | $ lunarml -v
 Mercury | Mercury Compiler, version rotd-2025-11-01; Copyright (C) 1993-2012 The University of Melbourne; Copyright (C) 2013-2025 The Mercury team | $ mmc --version
 Mojo | mojo 25.4.0.dev2025050405 (0e8f7772) | $ mojo --version
 OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
-Oz | Mozart Compiler 2.0.1 (Wed, 5 Sep 2018 03:16:51 +0200) playing Oz 3 | $ ozc -v  # misusing verbose switch
+Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
 Picat | Picat version 3.9 | picat --version
 PowerShell | PowerShell 7.4.5 | $ pwsh -v
