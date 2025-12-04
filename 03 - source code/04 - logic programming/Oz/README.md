@@ -51,12 +51,11 @@ Table of contents:
 - [Functors and curly brackets in Oz](#functors-and-curly-brackets-in-oz)
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
-- [Defining variables, procedures and functions in a module](#defining-variables-procedures-and-functions-in-a-module)
+- [From the GUI to the command shell (terminal)](#from-the-gui-to-the-command-shell-terminal)
 - [](#)
 - [](#)
 - [](#)
 - [The future of Oz?](#the-future-of-oz)
-- 
 
 <br/>
 
@@ -104,20 +103,20 @@ No "Oz Browser" windows pops up here with some results (see below for a counter 
 
 Oz has, or better to say had, a strong focus on teaching computer programming, and doing this with means of a GUI, or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor.
 
-However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/blob/master/examples/rainy.oz), without any problems in Windows (11) with Mozart version 1.4.0:
+However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/blob/master/examples/rainy.oz), without any problems in **Windows** (11) with Mozart version 1.4.0:
 
 ![plot](./rainy.oz%20works%20in%20Win11%20with%20Mozart%20v.1.4.0%20--%202025-12-04.png)
 
-..doesn't work with latest Mozart version 2.0.1 from 2018 in Linux, here ready Debain package _mozart2-2.0.1-x86_64-linux.deb_ from: https://github.com/mozart/mozart2/releases/tag/v2.0.1, which can easily be installed with Ubuntu's App Center for example; the app can then be found as the "Mozart Programming System":
+..doesn't work with latest Mozart version 2.0.1 from 2018 in **Linux**, here ready Debain package _mozart2-2.0.1-x86_64-linux.deb_ from: https://github.com/mozart/mozart2/releases/tag/v2.0.1, which can easily be installed with Ubuntu's App Center for example; the app can then be found as the "Mozart Programming System":
 
 ![plot](./rainy.oz%20in%20Ubuntu%2024%20LTS%20with%20Mozart%20v.2.0.1%20fails%20--%202025-12-04.png)
 
-Do replay this example, just copy all the source code from file _rainy.oz_ and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** can be executed with mouse clicks or Emacs keyboard commands:
+To replay this example, just copy all the source code from file _rainy.oz_ and past it into the upper text buffer of the "Oz Programming interface". Then this **application** can be executed with mouse clicks or Emacs keyboard commands:
 
 - mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
 - keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
 
-Now the "Oz Browser" window should pop up as shown above. 
+Now the "Oz Browser" window should pop up as shown above for **Windows**. 
 
 ### Functors and curly brackets in Oz
 
@@ -324,6 +323,7 @@ define
 
     {Application.exit 0}
 end
+```
 
 As you can see at the top of this source code, we create our own _functor_ for this app. Also the _declare_ statements, like one shown in the _rainy.oz_ example above, are gone.
 
