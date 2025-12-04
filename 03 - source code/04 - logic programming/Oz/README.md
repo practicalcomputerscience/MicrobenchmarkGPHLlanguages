@@ -48,9 +48,9 @@ Table of contents:
 
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
+- [Functors and curly brackets in Oz](#functors-and-curly-brackets-in-oz)
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
-- [](#)
 - [Defining variables, procedures and functions in a module](#defining-variables-procedures-and-functions-in-a-module)
 - [](#)
 - [](#)
@@ -96,7 +96,7 @@ No, it's not. A direct test of the two relevant Prolog predicates in Mozart's GU
 
 ![plot](./prolog_system_test_in_mozart_1.4.0_in_win11_fails.png)
 
-No "Oz Browser" windows pops up here for some results (see below for a counter case).
+No "Oz Browser" windows pops up here with some results (see below for a counter case).
 
 <br/>
 
@@ -112,11 +112,35 @@ However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/b
 
 ![plot](./rainy.oz%20in%20Ubuntu%2024%20LTS%20with%20Mozart%20v.2.0.1%20fails%20--%202025-12-04.png)
 
-This example, without extra declarations in the source code, uses Oz library, or _functor_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), something which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem.
+Do replay this example, just copy all the source code from file _rainy.oz_ and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** can be executed with mouse clicks or Emacs keyboard commands:
 
-### Mozart-Oz is not working in a modern Linux system out of the box
+- mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
+- keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
 
-Building Mozart version 1.4.0 from 2008 from sources, that is file _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubnuntu 24 LTS, or any other modern Linux system, fails out of the box.
+Now the "Oz Browser" window should pop up as shown above. 
+
+### Functors and curly brackets in Oz
+
+The _rainy.oz_ example, without extra declarations in the source code, uses the Oz library, or _**functor**_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), something which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem. From (*):
+
+> A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
+
+Here's (*) also something about the rather unusual curly brackets ("braces": {}) for functions and procedures in Oz:
+
+> The syntax design was a difficult issue because of the project’s ambition: we aimed to support as many programming paradigms as possible. This put a strong constraint on the syntax: it needed to
+support all paradigms in a clean and factored manner. For example, we used parentheses for records and brackets for lists; this left us with braces for functions and procedures. This is an important
+lesson for future language designers: be especially careful about syntax, and be prepared to make big changes in the syntax when evolving the system.
+
+- parentheses: ()
+- brackets: []
+
+Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz), FD for Finite Domain, also called FD library, see below.
+
+<br/>
+
+## Mozart-Oz is not working in a modern Linux system out of the box
+
+Building Mozart version 1.4.0 from 2008 from sources, that is file _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubuntu 24 LTS, or any other modern Linux system, fails out of the box.
 
 A Mozart installation in Linux requires these components as well, but they are all easy to install:
 
@@ -126,9 +150,7 @@ A Mozart installation in Linux requires these components as well, but they are a
 - GNU bison: _$ sudo apt install bison_
 - GNU Emacs: _$ sudo apt install emacs_
 
-<br/>
-
-### The GNU Multiple Precision Arithmetic Library (GMP)
+#### The GNU Multiple Precision Arithmetic Library (GMP)
 
 The reason for this failure is the "version hell" in connection with the needed GNU Multiple Precision Arithmetic Library (GMP): https://gmplib.org/, on which the Mozart programming system heavily relies on.
 
@@ -138,7 +160,7 @@ And I'm not willing to fix this file or any other Mozart configuration files to 
 
 <br/>
 
-Anyway, I installed current GMP version 6.3.0, that is file _gmp-6.3.0.tar.gz_, from here: https://ftp.gnu.org/gnu/gmp/, because the GMP version mentioned during Mozart's configuration process (_$ ./configure_), that is GMP version 4.1.2, cannot be installed anymore in Ubuntu 24 LTS (or any modern Linux system most probably). However, also this old GMP version provides useful information (which has been deleted or rearranged in later versions).
+Anyway, I installed current GMP version 6.3.0, that is file _gmp-6.3.0.tar.gz_, from here: https://ftp.gnu.org/gnu/gmp/, because the GMP version mentioned during Mozart's configuration process (_$ ./configure_), that is GMP version 4.1.2, cannot be installed anymore in Ubuntu 24 LTS (or any other modern Linux system most probably). However, also this old GMP version provides useful information (which has been deleted or rearranged in later versions).
 
 Yet, you may have a look into GMP's text files named _INSTALL_, located in extracted installation directory _gmp-X.X.X_, for more background information.
 
@@ -151,7 +173,7 @@ $ make -j 4  # 4 CPU's used to accelerate the make process
 ...
 $ sudo make install
 ...
-$ make check_  # this check must not fail!
+$ make check  # this check must not fail!
 ...
 ```
 
@@ -179,7 +201,7 @@ $ ./gmp_test_example 999999999999999999999 999999999999999999999
 $
 ```
 
-You may also check a GMP installation with (the Debian) package manager command _dpkg_ command:
+You may also check a GMP installation with (the Debian) package manager command _dpkg_:
 
 ```
 $ dpkg -l | grep gmp
@@ -191,7 +213,7 @@ $
 
 GMP works, but the Mozart v.1.4.0 installation not:
 
-_./configure_ can be used with option _--with-gmp=<dir>_, see in Mozart's _aclocal.m4_ file, to provide the _configure_ command with location information of GMP's library and header. However, according to my tests this option just isn't working anymore as intended many years ago:
+_./configure_ can be used with option _--with-gmp=\<dir\>_, see in Mozart's _aclocal.m4_ file, to provide the _configure_ command with location information of GMP's library and header. However, according to my tests this option just isn't working anymore as intended many years ago:
 
 ```
 $ ./configure
@@ -215,184 +237,131 @@ configure: error: ~/scripts/Oz/mozart-1.4.0.20080704-src/mozart-1.4.0.20080704/p
 $
 ```
 
-That's my end here for a Mozart-Oz programming system in a Linux system.
+This is my end here for a Mozart-Oz programming system in a Linux system. For a change, I will continue with **Windows** (11) from now on.
 
 <br/>
 
-### From the GUI to the command shell (terminal)
+## From the GUI to the command shell (terminal)
+
+The GUI based approach makes it not so easy to do command shell based software development like in a typical Prolog system. Oz examples from tutorials and documents are not working when using Mozart-Oz command shell tools. The definition of variables, procedures and functions in an Oz source code file, that is a module, works differently than many textbook examples.
+
+It took me a while, but finally I found a solution with the help of Big AI.
+
+After an installation of the Mozart programming system, also shell commands to start Mozart tools are available without extra configurations, though the question is: how to start an Oz compiler or interpreter from a command shell, like in a Prolog system for example?
+
+After a Windows installation, I added these two enviroment variables as a Windows user ([Win]+R --> _sysdm.cpl_ --> "Advanced" --> "Enviroment Variables..."):
+
+- new: OZEMACS: runemacs.exe
+- extended PATH: C:\Program Files\Emacs\emacs-30.1\bin
+
+So, also Windows users need to install the Emacs editor: https://www.gnu.org/software/emacs/download.html
+
+When you now enter in the Windows Command Prompt: _>oz_, the Emacs editor with menue tree "Oz" should pop up like shown above.
+
+<br/>
+
+However, at this point we want to have a "usual" source code file, like for example for the [Australian map](./graph_4coloring_Australia_Win11_for_cmd.oz) as a starter problem to solve, which is making use of functors Search and **FD** for the [Finite Domain functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz):
+
+```
+functor
+import
+  System
+  Application
+  FD       % Finite Domain functor in lib/main/cp/FD.oz
+  Search   % Search functor in lib/main/cp/Search.oz
+
+define
+    proc {Color ?MapColor}  % ? symbol to denote that MapColor is an output argument
+           NT
+           QL
+           NSW
+           VIC
+           SA
+           WA
+           TAS
+    in
+       map(
+           % map() is just the name of an Oz record:
+           % label(feature1:value1 feature2:value2)
+           % from: https://strasheela.sourceforge.net/strasheela/doc/Basics-1.html
+           nt  : NT
+           ql  : QL
+           nsw : NSW
+           vic : VIC
+           sa  : SA
+           wa  : WA
+           tas : TAS
+          ) = MapColor
+
+       {Record.forAll MapColor proc {$ Country} Country :: 1#4 end}
+                              % $ transforms a statement to an expression
+                              % which can be used to mimic anonymous procedures;
+                              % the :: operator imposes a basic finite domain,
+                              % here with a finite set of integers 1..4 (inclusive);
+                              % # is a pairing symbol
+       WA  \=: NT
+       WA  \=: SA
+       NT  \=: SA
+       NT  \=: QL
+       SA  \=: QL
+       SA  \=: NSW
+       SA  \=: VIC
+       QL  \=: NSW
+       VIC \=: NSW
+       TAS \=: VIC
+       {FD.distribute ff MapColor}  % branching and exploration algorithm ff = first-fail ??
+                                     % I looked this up from Picat's CP module (for Constraint Programming)
+    end
+
+    ColorSolutions = {Search.base.all Color}
+
+    {System.showInfo "number N of different solutions = "#{Value.toVirtualString {Length ColorSolutions} 0 0}}
+
+    FirstSolution | _ = ColorSolutions
+
+    ReverseColorSolutions = {Reverse ColorSolutions}
+    LastSolution | _ = ReverseColorSolutions
+
+    {Application.exit 0}
+end
+
+As you can see at the top of this source code, we create our own _functor_ for this app. Also the _declare_ statements, like one shown in the _rainy.oz_ example above, are gone.
+
+Now you can compile this file in your Oz working directory in Windows:
+
+```
+>ozc -c graph_4coloring_Australia_Win11_for_cmd.oz
+>
+```
+
+Distributable object file (.ozf) _graph_4coloring_Australia_Win11_for_cmd.ozf_ has been created during compilation, which can be executed like this:
+
+```
+>ozengine graph_4coloring_Australia_Win11_for_cmd.ozf
+number N of different solutions = 576
+
+1st solution  = map(nsw:1 nt:1 ql:2 sa:3 tas:1 vic:2 wa:2)
+...
+Last solution = map(nsw:4 nt:4 ql:3 sa:2 tas:4 vic:3 wa:3)
+
+>
+```
+
+Wow! :smile:
+
+576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different here.
+
+Command option _-x_ generates directly a Windows executable:
+
+```
+>ozc -x graph_4coloring_Australia_Win11_for_cmd.oz
+>graph_4coloring_Australia_Win11_for_cmd.exe
+<same answer>
+>
+```
+<br/>
 
 TBD
-
-<br/>
-
-This approach makes it not so easy to do (Linux) shell based software development like in a typical Prolog system. It took me a while, but finally I found a solution with the help of Big AI.
-
-<br/>
-
-Installation in a Linux system is easy with just downloading the suitable (Linux) operating system package and installing it with the related packager manager (by double clicking on the package), here file _mozart2-2.0.1-x86_64-linux.deb_ from: https://github.com/mozart/mozart2/releases/tag/v2.0.1 for a Debian based Linux system like Ubuntu.
-
-Also shell commands to start Mozart tools are now available without extra configurations, though the question is: how to start an Oz compiler or interpreter from a Linux shell, like in a Prolog system for example?
-
-When you enter shell command: _$ oz_, the Emacs editor pops up like shown above.
-
-Instead do this:
-
-1/ write a usual source code file, like here for example [prolog_system_test.oz](./prolog_system_test.oz) (to skip the usual "Hello, World!" example):
-
-```
-functor
-import
-  System
-  Application
-define
-    L1 = [1 2]
-    L2 = [3 4]
-    {System.showInfo "L1 = "#{Value.toVirtualString L1 0 0}}
-    {System.showInfo "L2 = "#{Value.toVirtualString L2 0 0}}
-    L3 = {Append L1 L2}
-    {System.showInfo "L3 = "#{Value.toVirtualString L3 0 0}}
-    L4 = {Append nil L1}
-    {System.showInfo "L4 = "#{Value.toVirtualString L4 0 0}}
-    L5 = [L1|L2]
-    {System.showInfo "L5 = "#{Value.toVirtualString L5 0 0}}
-    {Application.exit 0}
-end
-```
-
-2/ then compile this file to a distributable object file (.ozf):
-
-```
-$ ozc -c prolog_system_test.oz
-$
-```
-
-3/ finally, run this object file:
-
-```
-$ ozengine prolog_system_test.ozf
-L1 = [1 2]
-L2 = [3 4]
-L3 = [1 2 3 4]
-L4 = [1 2]
-L5 = [[[1 2] 3 4]]
-$ 
-```
-
-By the way: the following approach is not working at the moment (at least in my system):
-
-```
-$ ozc -x prolog_system_test.oz
-bash: ./prolog_system_test: cannot execute binary file: Exec format error
-$
-```
-
-### Oz is not a Prolog system
-
-Here's another way as the common way via the GUI to demonstrate that the Mozart-Oz pair is not a Prolog system.
-
-Just enter or copy&paste, and then execute the predicates from this :
-
-![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs%20b.png)
-
-<br/>
-
-But as a first exercise, I copied the first example of a **procedure call**: _{Browse 9999*9999}_ from [Declarative programming with Oz](https://staff.fmi.uvt.ro/~mircea.marin/lectures/ALFP/Oz-introduction.pdf), 2017, and pasted it into the upper text buffer of the "Oz Programming interface". Then this **application** must be executed with mouse clicks or Emacs keyboard commands:
-
-- mouse: for example, click on menu bar item "Oz" and then "Feed Buffer"
-- keyboard: for example, press key [F10] to activate the menu bar. Then use the arrow right key to open the "Oz" menu tree. There scroll down to "Feed Buffer" and press [ENTER]
-
-Now the "Oz Browser" window should pop up as shown above. 
-
-However, when these Prolog predicates:
-
-```
-append([], L, L).
-append([X | [1,2]], [3,4], [X | N]).
-append([1,2], [3,4], N).
-```
-
-..are being pasted into the upper text buffer and executed, nothing is happening, not even an error message is thrown out.
-
-<br/>
-
-### Defining variables, procedures and functions in a module
-
-Again, this is not so easy when examples from tutorials and documents are not working when using the ozc and ozengine tools.
-
-In case of doubt, look into the GitHub repository for examples: https://github.com/mozart/mozart2
-
-I took the fist source code example from (**) at chapter "2  Deterministic Logic Programming" and put it into a source code file with a **functor** (+) again: [deterministic_logic_programming_test.oz](./deterministic_logic_programming_test.oz):
-
-```
-functor
-import
-  System
-  Application
-
-define
-    % definition of Append predicate:
-    % declare -- not to be used here
-    proc {Append L1 L2 L3}
-        case L1
-        of nil then L2=L3
-        [] X|M1 then L3=X|{Append M1 L2}
-        end
-    end
-
-    % {declare A in} -- not to be used here
-    A = {Append [1 2 3] [4 5 6]}
-    {System.showInfo "with a procedure: A = "#{Value.toVirtualString A 0 0}}
-
-    % {Browse {Append [1 2 3] [4 5 6]} -- becomes:
-    {System.showInfo {Value.toVirtualString {Append [1 2 3] [4 5 6]} 0 0}}
-
-    % my extra definition of a function from Big AI:
-    fun {AppendF L1 L2}
-        % {Append L1 L2}  % joking, but working
-        case L1
-        of nil then L2  % If first list is empty, return second list
-        [] H|T then H | {AppendF T L2}  % Otherwise, keep head and append recursively
-        end
-    end
-
-    A1 = {AppendF [1 2 3] [4 5 6]}
-    {System.showInfo "with a function: A1 = "#{Value.toVirtualString A1 0 0}}
-
-    {Application.exit 0}
-end
-```
-
-Run this app like this:
-
-```
-$ ozc -c deterministic_logic_programming_test.oz
-$ ozengine deterministic_logic_programming_test.ozf
-with a procedure: A = [1 2 3 4 5 6]
-[1 2 3 4 5 6]
-with a function: A1 = [1 2 3 4 5 6]
-$
-```
-
-<br/>
-
-(+) from (*):
-
-> A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
-
-Here's (*) something about the curly brackets ("braces": {}) for functions and procedures in Oz:
-
-> The syntax design was a difficult issue because of the project’s ambition: we aimed to support as many programming paradigms as possible. This put a strong constraint on the syntax: it needed to
-support all paradigms in a clean and factored manner. For example, we used parentheses for records and brackets for lists; this left us with braces for functions and procedures. This is an important
-lesson for future language designers: be especially careful about syntax, and be prepared to make big changes in the syntax when evolving the system.
-
-- parentheses: ()
-- brackets: []
-
-
-
-<br/>
-
-I think that these little examples for a shell based development approach in Mozart-Oz are already enough to start making bigger applications.
 
 <br/>
 
@@ -400,14 +369,7 @@ I think that these little examples for a shell based development approach in Moz
 
 TBD 
 
-
-A good source of knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz) (also called FD library).
-
-FD = Finite Domain
-
-
-
-ideas:
+Ideas:
 
 - GeOz: Integration with Gecode for the map coloring problem of Germany??
 - xxx
