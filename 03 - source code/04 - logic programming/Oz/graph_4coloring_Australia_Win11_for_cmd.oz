@@ -12,7 +12,7 @@ Alternatively: compile and execute:
 
 source:
   this solution is based on file: platform-test/fd/color.oz
-  https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/platform-test/fd/color.oz
+  https://github.com/mozart/mozart2/blob/master/platform-test/fd/color.oz
 
 */
 
@@ -104,3 +104,4 @@ Last solution = map(nsw:4 nt:4 ql:3 sa:2 tas:4 vic:3 wa:3)
 */
 
 % end of graph_4coloring_Australia_Win11_for_cmd.oz
+
