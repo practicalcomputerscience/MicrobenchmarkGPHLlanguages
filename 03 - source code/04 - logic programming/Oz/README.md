@@ -48,9 +48,9 @@ Table of contents:
 
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
+- [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
 - [](#)
-- [Oz is not a Prolog system](#oz-is-not-a-prolog-system)
 - [Defining variables, procedures and functions in a module](#defining-variables-procedures-and-functions-in-a-module)
 - [](#)
 - [](#)
@@ -90,6 +90,16 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 <br/>
 
+This already, although indirectly, answers this question: Is Oz a Prolog system?
+
+No, it's not. A direct test of the two relevant Prolog predicates in Mozart's GUI environment (from here for example: [Picat example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#some-concepts-of-picat)) shows this too:
+
+![plot](./prolog_system_test_in_mozart_1.4.0_in_win11_fails.png)
+
+No "Oz Browser" windows pops up here for some results (see below for a counter case).
+
+<br/>
+
 ## Installation and usage tips
 
 Oz has, or better to say had, a strong focus on teaching computer programming, and doing this with means of a GUI, or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor.
@@ -98,11 +108,15 @@ However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/b
 
 ![plot](./rainy.oz%20works%20in%20Win11%20with%20Mozart%20v.1.4.0%20--%202025-12-04.png)
 
-..doesn't work with latest Mozart version 2.0.1 from 2018 in Linux:
+..doesn't work with latest Mozart version 2.0.1 from 2018 in Linux, here ready Debain package _mozart2-2.0.1-x86_64-linux.deb_ from: https://github.com/mozart/mozart2/releases/tag/v2.0.1, which can easily be installed with Ubuntu's App Center for example; the app can then be found as the "Mozart Programming System":
 
-(TBD)
+![plot](./rainy.oz%20in%20Ubuntu%2024%20LTS%20with%20Mozart%20v.2.0.1%20fails%20--%202025-12-04.png)
 
-And building Mozart version 1.4.0 from 2008 from sources, that is file _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubnuntu 24 LTS, or any other modern Linux system, fails!
+This example, without extra declarations in the source code, uses Oz library, or _functor_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), something which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem.
+
+### Mozart-Oz is not working in a modern Linux system out of the box
+
+Building Mozart version 1.4.0 from 2008 from sources, that is file _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubnuntu 24 LTS, or any other modern Linux system, fails out of the box.
 
 A Mozart installation in Linux requires these components as well, but they are all easy to install:
 
@@ -276,7 +290,7 @@ $
 
 Here's another way as the common way via the GUI to demonstrate that the Mozart-Oz pair is not a Prolog system.
 
-Just enter or copy&paste, and then execute the predicates from this [Picat example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#some-concepts-of-picat):
+Just enter or copy&paste, and then execute the predicates from this :
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs%20b.png)
 
