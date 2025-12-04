@@ -2,7 +2,33 @@
 
 # Oz
 
-Development and execution environment **Mozart** (current version 2): http://mozart2.org/
+Development and execution environment **Mozart**:
+
+- http://mozart2.org/
+- https://github.com/mozart/mozart2/tree/master
+
+GUI = Graphical User Interface
+
+<br/>
+
+> [!IMPORTANT]
+> Current Mozart version 2.0.1 from 2018 is too buggy to do anything advanced. It's anyway marked as: "The status of Mozart 2 is currently _alpha quality_. It is not ready for production, ...".
+> 
+> Unfortunately, it's also pratically impossible to build from sources former version 1.4.0 from 2008 in a modern Linux system, not to mention any older version of the Mozart-Oz programming system.
+> 
+> However, what is working according to my tests, is **version 1.4.0 in Windows 11**. I tested it successfully with a couple of old or even very old examples, official ones and others.
+
+<br/>
+
+This means I cannot really benchmark the map coloring problem of Germany in its Oz version against the versions of Prolog systems: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram), because my benchmarking system will stay in the same PC with Ubuntu 24 LTS.
+
+<br/>
+
+Install Mozart version 1.4.0 for Windows 11 from installation file _Mozart-1.4.0.20080704.exe_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-04-windows/
+
+Also install (latest) version of GNU Emacs for Windows, the (usual) GUI for Mozart: https://www.gnu.org/software/emacs/download.html
+
+<br/>
 
 Oz cheat sheet from 2019: https://github.com/alhassy/OzCheatSheet/blob/master/CheatSheet.pdf
 
@@ -12,7 +38,7 @@ At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandone
 here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
 useful since also current Mozart version 2.0.1 is still using many old parts.
 
-Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/base/List.oz) for example.
+Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
 
 For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
@@ -64,11 +90,43 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 ## Installation and usage tips
 
-Oz has a strong focus on teaching computer programming, and doing this with means of a graphical user interface (GUI), or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor:
+Oz has a strong focus on teaching computer programming, and doing this with means of a GUI, or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor.
+
+However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/blob/master/examples/rainy.oz), without any problems in Windows (11) with Mozart version 1.4.0:
 
 ![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs.png)
 
-(Initially, "Buffers" is set to "Oz")
+..doesn't work with latest Mozart version 2.0.1 from 2018 in Linux:
+
+(TBD)
+
+And building Mozart version 1.4.0 from 2008 from sources, that is file _TBD_, shown as _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubnuntu 24 LTS, or any other modern Linux system, fails!
+
+### GNU Multiple Precision Arithmetic Library (GMP)
+
+The reason for this failure is the "version hell" in connection with the needed GNU Multiple Precision Arithmetic Library (GMP): https://gmplib.org/, on which the Mozart programming system heavily relies on.
+
+Any old GMP version, that is 2 or 3, which was meant to be used back in 2008 with Mozart v1.4.0, cannot be installed in a modern Linux system, and installing a more modern GMP version doesn't work with Mozart's v.1.4.0 Linux installation scripts, here specifically with file _aclocal.m4_.
+
+I'm not willing to fix this file or any other Mozart configuration file to make Mozart version 1.4.0 work with a working GMP version.
+
+A good test for any successful GMP
+
+
+Mozart requires other components as well, see requirements from file _TBD_:
+
+
+
+..but they are all easy to install in Linux.
+
+
+
+### From the GUI to the command shell (terminal)
+
+TBD
+
+
+<br/>
 
 This approach makes it not so easy to do (Linux) shell based software development like in a typical Prolog system. It took me a while, but finally I found a solution with the help of Big AI.
 
@@ -246,7 +304,7 @@ I think that these little examples for a shell based development approach in Moz
 TBD 
 
 
-A good source of knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/83c83da2f670fbd1d08d4145eca3d88f1687582c/lib/main/cp/FD.oz) (also called FD library).
+A good source of knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz) (also called FD library).
 
 FD = Finite Domain
 
