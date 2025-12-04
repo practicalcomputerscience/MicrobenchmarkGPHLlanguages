@@ -20,11 +20,11 @@ GUI = Graphical User Interface
 
 <br/>
 
-This means I cannot really benchmark the map coloring problem of Germany in its Oz version against the versions of Prolog systems: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram), because my benchmarking system will stay in the same PC with Ubuntu 24 LTS.
+This means I cannot really benchmark the map coloring problem of Germany in its Oz version against the results of the various Prolog systems: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram), because my "official" benchmarking system will stay in the same PC with Ubuntu 24 LTS.
 
 <br/>
 
-Install Mozart version 1.4.0 for Windows 11 from installation file _Mozart-1.4.0.20080704.exe_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-04-windows/
+So, to advance, install Mozart version 1.4.0 for Windows 11 from installation file _Mozart-1.4.0.20080704.exe_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-04-windows/
 
 Also install (latest) version of GNU Emacs for Windows, the (usual) GUI for Mozart: https://www.gnu.org/software/emacs/download.html
 
@@ -38,7 +38,7 @@ At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandone
 here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
 useful since also current Mozart version 2.0.1 is still using many old parts.
 
-Therefore, I often look into its **GitHub repository** to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
+Therefore, I often looked into its **GitHub repository** to see what functions are available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
 
 For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
@@ -52,7 +52,7 @@ Table of contents:
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
 - [From the GUI to the command shell (terminal)](#from-the-gui-to-the-command-shell-terminal)
-- [](#)
+- [Map coloring of Germany - Oz versus Python](#map-coloring-of-germany---oz-versus-python)
 - [](#)
 - [](#)
 - [The future of Oz?](#the-future-of-oz)
@@ -354,7 +354,7 @@ Last solution = map(nsw:4 nt:4 ql:3 sa:2 tas:4 vic:3 wa:3)
 
 Wow! :smile:
 
-576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different with the Oz solution.
+576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different.
 
 Command option _-x_ generates directly an executable Windows program:
 
@@ -364,13 +364,10 @@ Command option _-x_ generates directly an executable Windows program:
 <same answer>
 >
 ```
-<br/>
-
-TBD
 
 <br/>
 
-## Map coloring of Germany: Oz versus Pythin benchmarking
+## Map coloring of Germany - Oz versus Python
 
 Here's Oz's implementation of the map coloring of Germany problem: [graph_4coloring_Germany_Win11_for_cmd.oz](./graph_4coloring_Germany_Win11_for_cmd.oz)
 
@@ -380,7 +377,11 @@ In order to compare, I benchmarked both Python 3 solutions, the one with [backtr
 
 (TBD diagram)
 
-What is also noticeable, is the fact that running the compiled Oz program with the _ozengine_ yields a slightly faster program execution time than running the Windows executable directly.
+So, under the given circumstances, Oz is doing slightly better than Python with the CP (Constraint Programming) package!
+
+What is also noticeable, is the fact that running the compiled Oz program with the _ozengine_ yields a slightly faster program execution time than running its Windows executable directly.
+
+<br/>
 
 The next question I have is this: can this competive Oz result be somehow corroborated from another source?
 
@@ -388,8 +389,9 @@ TBD
 
 Further ideas:
 
+- "speed part" of my own microbenchmark program in Oz?
+- full microbenchmark program in Oz?
 - GeOz: Integration with Gecode for the map coloring problem of Germany??
-- xxx
 - xxx
 - xxx
 
