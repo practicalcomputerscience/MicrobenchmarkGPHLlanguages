@@ -243,7 +243,7 @@ This is my end here for a Mozart-Oz programming system in a Linux system. For a 
 
 ## From the GUI to the command shell (terminal)
 
-The GUI based approach makes it not so easy to do command shell based software development like in a typical Prolog system. Oz examples from tutorials and documents are not working when using Mozart-Oz command shell tools. The definition of variables, procedures and functions in an Oz source code file, that is a module, works differently than many textbook examples.
+The GUI based approach makes it not so easy to do command shell based software development like in a typical Prolog system. Many Oz examples from tutorials and documents are not working when using Mozart-Oz command shell tools. The definition of variables, procedures and functions in an Oz source code file, that is a module, works differently than many textbook examples.
 
 It took me a while, but finally I found a solution with the help of Big AI.
 
