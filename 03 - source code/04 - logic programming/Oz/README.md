@@ -38,7 +38,7 @@ At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandone
 here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
 useful since also current Mozart version 2.0.1 is still using many old parts.
 
-Therefore, I often look into the GitHub repository to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
+Therefore, I often look into its **GitHub repository** to see what functions are currently available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
 
 For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
@@ -94,7 +94,7 @@ Oz has a strong focus on teaching computer programming, and doing this with mean
 
 However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/blob/master/examples/rainy.oz), without any problems in Windows (11) with Mozart version 1.4.0:
 
-![plot](./Oz%20programming%20interface%2C%20GNU%20Emacs.png)
+![plot](./rainy.oz%20works%20in%20Win11%20with%20Mozart%20v.1.4.0%20--%202025-12-04.png)
 
 ..doesn't work with latest Mozart version 2.0.1 from 2018 in Linux:
 
