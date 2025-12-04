@@ -370,11 +370,23 @@ TBD
 
 <br/>
 
-## xxxxxxxxxxxxx
+## Map coloring of Germany: Oz versus Pythin benchmarking
+
+Here's Oz's implementation of the map coloring of Germany problem: [graph_4coloring_Germany_Win11_for_cmd.oz](./graph_4coloring_Germany_Win11_for_cmd.oz)
+
+Now the question is: how good is this Oz program faring against another implementation on the same Windows platform? (Intel Core i5 14600K, Windows 11 Pro 64-bit, ASUS PRIME B760-PLUS)
+
+In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py) and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
+
+(TBD diagram)
+
+What is also noticeable, is the fact that running the compiled Oz program with the _ozengine_ yields a slightly faster program execution time than running the Windows executable directly.
+
+The next question I have is this: can this competive Oz result be somehow corroborated from another source?
 
 TBD 
 
-Ideas:
+Further ideas:
 
 - GeOz: Integration with Gecode for the map coloring problem of Germany??
 - xxx
