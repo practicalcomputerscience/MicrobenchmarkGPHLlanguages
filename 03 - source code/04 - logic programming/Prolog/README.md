@@ -952,7 +952,7 @@ Then I discovered Python module [python-constraint](https://python-constraint.gi
     ...
 ```
 
-This solution is lightning fast with about 380 milliseconds execution time (while the Python version with backtracking takes over 15 seconds for the German map!), and is thus beating all Prolog versions easily: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram)
+This solution is lightning fast with about 380 milliseconds execution time (while the [Python version with backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py) takes over 15 seconds for the German map!), and is thus beating all Prolog versions easily: [The TL;DR execution speed diagram](#the-tldr-execution-speed-diagram)
 
 Same like the question in chapter [Speed in the Land of Prolog's](#speed-in-the-land-of-prologs), I asked this question: is 380 milliseconds a fast execution time for the map coloring problem of Germany with an interpreted but native Python solution?
 
