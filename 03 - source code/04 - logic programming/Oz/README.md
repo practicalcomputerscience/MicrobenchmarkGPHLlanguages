@@ -48,6 +48,8 @@ Table of contents:
 
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
+- [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
+- [](#)
 - [Oz is not a Prolog system](#oz-is-not-a-prolog-system)
 - [Defining variables, procedures and functions in a module](#defining-variables-procedures-and-functions-in-a-module)
 - [](#)
@@ -90,7 +92,7 @@ KÖRNER P, LEUSCHEL M, BARBOSA J, et al. ([Fifty Years of Prolog and Beyond](htt
 
 ## Installation and usage tips
 
-Oz has a strong focus on teaching computer programming, and doing this with means of a GUI, or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor.
+Oz has, or better to say had, a strong focus on teaching computer programming, and doing this with means of a GUI, or more specifically with commands in menu tree "Oz" of the **GNU Emacs** text editor.
 
 However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/blob/master/examples/rainy.oz), without any problems in Windows (11) with Mozart version 1.4.0:
 
@@ -102,22 +104,53 @@ However, what works, here example [rainy.oz](https://github.com/mayc2/proglang/b
 
 And building Mozart version 1.4.0 from 2008 from sources, that is file _TBD_, shown as _mozart-1.4.0.20080704-src.tar.gz_ from here: https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-02-tar/, in Ubnuntu 24 LTS, or any other modern Linux system, fails!
 
-### GNU Multiple Precision Arithmetic Library (GMP)
+<br/>
+
+### The GNU Multiple Precision Arithmetic Library (GMP)
 
 The reason for this failure is the "version hell" in connection with the needed GNU Multiple Precision Arithmetic Library (GMP): https://gmplib.org/, on which the Mozart programming system heavily relies on.
 
-Any old GMP version, that is 2 or 3, which was meant to be used back in 2008 with Mozart v1.4.0, cannot be installed in a modern Linux system, and installing a more modern GMP version doesn't work with Mozart's v.1.4.0 Linux installation scripts, here specifically with file _aclocal.m4_.
+Any old GMP version, that is 2 or 3, which was meant to be used back in 2008 with Mozart v1.4.0, cannot be installed in a modern Linux system anymore, and installing a more modern GMP version doesn't work with Mozart's v.1.4.0 Linux installation scripts, here specifically with file _aclocal.m4_, written in 2008. (Be careful not to mix this manually written configuration file with GMP's automatically generated _aclocal.m4_ configuration files!)
 
-I'm not willing to fix this file or any other Mozart configuration file to make Mozart version 1.4.0 work with a working GMP version.
+And I'm not willing to fix this file or any other Mozart configuration files to make Mozart version 1.4.0 work with an (old) GMP version I was able to install.
 
-A good test for any successful GMP
+<br/>
+
+Anyway, I installed current GMP version 6.3.0, that is file _gmp-6.3.0.tar.gz_, from here: https://ftp.gnu.org/gnu/gmp/, because the version mentioned during Mozart's configuration process (_$ ./configure_), that is GMP version 4.1.2, cannot be installed anymore in Ubuntu 24 LTS (or any modern Linux system most probably). However, also this old GMP version provides useful information (which has been deleted or rearranged in later versions).
+
+Thus, you may have a look into GMP's text file _INSTALL_, located in extracted installation directory _gmp-X.X.X_, for more background information.
+
+Do this in GMP's extracted installation directory:
+
+- _./configure_
+- _make -j 4  # 4 CPU's used to accelerate the make process_
+- _sudo make install_
+- _make check_  # this check must not fail!
+
+_./configure_ can be used with option _--with-gmp=<dir>_, see in Mozart's _aclocal.m4_ file, to provide _configure_ command with location information of GMP's library and header.
+
+However, according to my tests this option just isn't working anymore as intenden many years ago.
+
+Anyhow, another good, practical test for a successful GMP installation is this: I copied the second source code example (under "An experienced GMP user might write") from the _INSTALL_ file of GMP version **4.1.2** and successfully built a C based program from it: (TBD)
+
+To do this, you don't have to be located in GMP's installation directory anymore, because you just hopefully installed a working GMP version!
+
+So, I changed back to my Oz working directory to do this:
+
+```
+$ 
+
+```
 
 
-Mozart requires other components as well, see requirements from file _TBD_:
+Mozart requires other components as well, but they are all easy to install in Linux:
 
-
-
-..but they are all easy to install in Linux.
+- GNU Make: _$ sudo apt install make_
+- gcc etc.: _$sudo apt install build-essential_
+- GNU flex: _$ sudo apt install flex_
+- GNU bison: _$ sudo apt install bison_
+- xxx
+- xxx
 
 
 
