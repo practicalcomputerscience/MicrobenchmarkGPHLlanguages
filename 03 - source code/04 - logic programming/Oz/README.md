@@ -14,7 +14,7 @@ GUI = Graphical User Interface
 > [!IMPORTANT]
 > Current Mozart version 2.0.1 from 2018 is too buggy to do anything advanced. It's anyway marked as: "The status of Mozart 2 is currently _alpha quality_. It is not ready for production, ...".
 > 
-> Unfortunately, it's also pratically impossible to build from sources former version 1.4.0 from 2008 in a modern Linux system, not to mention any older version of the Mozart-Oz programming system.
+> Unfortunately, it's also pratically impossible to build from sources former version 1.4.0 from 2008 in a **modern** Linux system, not to mention any older version of the Mozart-Oz programming system.
 > 
 > However, what is working according to my tests, is **version 1.4.0 in Windows 11**. I tested it successfully with a couple of old or even very old examples, official ones and others.
 
@@ -120,7 +120,7 @@ Now the "Oz Browser" window should pop up as shown above for **Windows**.
 
 ### Functors and curly brackets in Oz
 
-The _rainy.oz_ example, without extra declarations in the source code, uses the Oz library, or _**functor**_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), something which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem. From (*):
+The _rainy.oz_ example, without extra declarations in the source code, directly uses the Oz library, or _**functor**_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), a library which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem. From (*):
 
 > A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
 
@@ -174,6 +174,7 @@ $ sudo make install
 ...
 $ make check  # this check must not fail!
 ...
+$
 ```
 
 With this procedure, GMP has been installed into directory: _/usr/local/lib_, and header file _gmp.h_ into directory: _/usr/local/include_ (as its lonely file in a fresh Ubuntu installation.)
@@ -325,6 +326,10 @@ define
 end
 ```
 
+The role model for this app was platform test file _**color.oz**_ from here: https://github.com/mozart/mozart2/blob/master/platform-test/fd/color.oz, which then only had to be mixed with the important ideas in the little _rainy.oz_ example.
+
+Honestly, I would have not been able to write source code file _graph_4coloring_Australia_Win11_for_cmd.oz_ within an acceptable amount of time without discovering _color.oz_, even in the age of Big AI.
+
 As you can see at the top of this source code, we create our own _functor_ for this app. Also the _declare_ statements, like one shown in the _rainy.oz_ example above, are gone.
 
 Now you can compile this file in your Oz working directory in Windows:
@@ -334,7 +339,7 @@ Now you can compile this file in your Oz working directory in Windows:
 >
 ```
 
-Distributable object file (.ozf) _graph_4coloring_Australia_Win11_for_cmd.ozf_ has been created during compilation, which can be executed like this:
+Distributable object file (.ozf) _graph_4coloring_Australia_Win11_for_cmd.ozf_ has been created during compilation, which can then be executed like this:
 
 ```
 >ozengine graph_4coloring_Australia_Win11_for_cmd.ozf
@@ -349,9 +354,9 @@ Last solution = map(nsw:4 nt:4 ql:3 sa:2 tas:4 vic:3 wa:3)
 
 Wow! :smile:
 
-576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different here.
+576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different with the Oz solution.
 
-Command option _-x_ generates directly a Windows executable:
+Command option _-x_ generates directly an executable Windows program:
 
 ```
 >ozc -x graph_4coloring_Australia_Win11_for_cmd.oz
