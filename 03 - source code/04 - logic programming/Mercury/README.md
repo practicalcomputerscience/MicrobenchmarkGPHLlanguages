@@ -304,7 +304,7 @@ bye.
 $ 
 ```
 
-This result represents only one solution, but not the 576 ones as computed with this [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py), which is actually a 1:1 copy of this elegant, object-oriented Python program: https://github.com/parisasl/MapColoring/blob/main/MapColoring.py, which is employing **backtracking**.
+This result represents only one solution, but not the 576 ones as computed with this [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Australia.py), which is practically a 1:1 copy of this elegant, object-oriented Python program: https://github.com/parisasl/MapColoring/blob/main/MapColoring.py, which is employing **backtracking**.
 
 Backtracking is a standard algorithm for solving Constraint Satisfaction Problems: https://en.wikipedia.org/wiki/Backtracking
 
