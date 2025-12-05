@@ -371,7 +371,7 @@ Wow! :smile:
 
 576 different solutions is the same and almost certainly correct result of [ALS Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#map-of-australia), though the color structures of the first and last solutions are different.
 
-Command option _-x_ generates directly an executable Windows program:
+Command option _-x_ generates directly an "executable" Windows program:
 
 ```
 >ozc -x graph_4coloring_Australia_Win11_for_cmd.oz
@@ -379,6 +379,8 @@ Command option _-x_ generates directly an executable Windows program:
 <same answer>
 >
 ```
+
+This ~.ozf file is also called "a compiled functor", see tool _ozmake_ below.
 
 <br/>
 
