@@ -394,10 +394,10 @@ In order to compare, I benchmarked both Python 3 solutions, the one with [backtr
 
 So, under the given circumstances, Oz is doing slightly better than Python with a Constraint Programming package!
 
-What is also noticeable, is the fact that running the Oz object file with the _ozengine_ yields a slightly faster program execution than running the Windows executable directly. My suspicion for this phenomenon is that running the Mozart generated ~.exe file needs some more time first to look up directory paths of Windows. Because this ~.exe file is not freely portable as its file extension may suggest; it also needs the _ozengine.exe_ program to be executed. Mozart's (standard) Windows installation is adding this directory to environment variable _PATH_: _C:\Program Files (x86)\Mozart\bin_3, a directory where also _ozengine.exe_ is located. Here are the two file sizes:
+What is also noticeable, is the fact that running the Oz object file with the _ozengine_ yields a slightly faster program execution than running the Windows executable directly. My suspicion for this phenomenon is that running the Mozart generated ~.exe file needs some more time first to look up directory paths of Windows. Because this ~.exe file is not freely portable as its file extension may suggest; it also needs the _ozengine.exe_ program to be executed. Mozart's (standard) Windows installation is adding this directory to environment variable _PATH_: _C:\Program Files (x86)\Mozart\bin_, a directory where _ozengine.exe_ and the other Mozart tools is located. Here are the two file sizes:
 
-- _graph_4coloring_Germany_Win11_for_cmd.ozf_: 3,889 bytes
-- _graph_4coloring_Germany_Win11_for_cmd.exe_: 9,519 bytes
+- _graph_4coloring_Germany_Win11_for_cmd.ozf_: 3,889 bytes ("Oz ozengine")
+- _graph_4coloring_Germany_Win11_for_cmd.exe_: 9,519 bytes ("Oz executable")
 
 <br/>
 
