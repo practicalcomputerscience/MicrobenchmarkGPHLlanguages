@@ -18,6 +18,8 @@ GUI = Graphical User Interface
 > 
 > However, what is working according to my tests, is **version 1.4.0 in Windows 11**. I tested it successfully with a couple of old or even very old examples, official ones and others.
 
+Mozart 2 has been designed to fully support today's multicore processors, see below at [Mozart's virtual machines](#mozarts-virtual-machines).
+
 <br/>
 
 This means I cannot really benchmark the map coloring problem of Germany in its Oz version against the results of the various Prolog systems: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram), because my "official" benchmarking system will stay in the same PC with Ubuntu 24 LTS.
@@ -50,6 +52,7 @@ Table of contents:
 - [Functors and curly brackets in Oz](#functors-and-curly-brackets-in-oz)
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
+- [Mozart's virtual machines](#mozarts-virtual-machines)
 - [From the GUI to the command shell (terminal)](#from-the-gui-to-the-command-shell-terminal)
 - [Map coloring of Germany - Oz versus Python](#map-coloring-of-germany---oz-versus-python)
 - [](#)
@@ -133,8 +136,6 @@ lesson for future language designers: be especially careful about syntax, and be
 - brackets: []
 
 Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz), FD for Finite Domain, also called FD library, see below.
-
-Maxime Istasse's master thesis from 2017, [An Oz implementation using Truffle and Graal](https://thesis.dial.uclouvain.be/entities/masterthesis/df736f1e-0021-42f2-b484-f86538a8150b) may provide interesting insights into Mozart's inner workings.
 
 <br/>
 
@@ -239,6 +240,19 @@ $
 ```
 
 This is my end here for a Mozart-Oz programming system in a Linux system. For a change, I will continue with **Windows** (11) from now on.
+
+<br/>
+
+#### Mozart's virtual machines
+
+Maxime Istasse's master thesis from 2017, [An Oz implementation using Truffle and Graal](https://thesis.dial.uclouvain.be/entities/masterthesis/df736f1e-0021-42f2-b484-f86538a8150b) may provide interesting insights into Mozart's inner workings:
+
+> In the meantime, the Oz programming language [14] has almost exclusively been executed on dedicated Virtual Machines (VMs). Mozart 1 [15], though highly optimized, now suffers from it because the hardware has evolved. Mozart 2 has been an attempt at making a new dedicated VM adapted to today’s hardware, but cannot be claimed as complete yet.
+
+Another technical source may be Benoit Daloze's master theses [Extending Mozart 2 to support multicore processors](http://mozart2.org/publications/abstracts/daloze-thesis.html) from 2014:
+
+> The concurrent programming models of Oz have supported lightweight threads for ages. ... Nowadays, processors are getting more and more cores, or computer are having more and more
+processors and the model of lightweight threads does not take advantage of this computational power. ... In current operating systems, a process needs to use multiple operating system threads to actually use multiple cores. This kind of threads is much harder to use, not deterministic and using them properly is so complicated that we tend to avoid them as much as we can.
 
 <br/>
 
