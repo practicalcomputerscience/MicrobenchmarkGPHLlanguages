@@ -249,7 +249,7 @@ Maxime Istasse's master thesis from 2017, [An Oz implementation using Truffle an
 
 > In the meantime, the Oz programming language [14] has almost exclusively been executed on dedicated Virtual Machines (VMs). Mozart 1 [15], though highly optimized, now suffers from it because the hardware has evolved. Mozart 2 has been an attempt at making a new dedicated VM adapted to today’s hardware, but cannot be claimed as complete yet.
 
-Another technical source may be Benoit Daloze's master theses [Extending Mozart 2 to support multicore processors](http://mozart2.org/publications/abstracts/daloze-thesis.html) from 2014:
+Another technical source may be Benoit Daloze's master thesis [Extending Mozart 2 to support multicore processors](http://mozart2.org/publications/abstracts/daloze-thesis.html) from 2014:
 
 > The concurrent programming models of Oz have supported lightweight threads for ages. ... Nowadays, processors are getting more and more cores, or computer are having more and more
 processors and the model of lightweight threads does not take advantage of this computational power. ... In current operating systems, a process needs to use multiple operating system threads to actually use multiple cores. This kind of threads is much harder to use, not deterministic and using them properly is so complicated that we tend to avoid them as much as we can.
