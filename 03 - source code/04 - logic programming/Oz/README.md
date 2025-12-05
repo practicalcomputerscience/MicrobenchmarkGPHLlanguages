@@ -35,8 +35,7 @@ Oz cheat sheet from 2019: https://github.com/alhassy/OzCheatSheet/blob/master/Ch
 <br/>
 
 At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandoned construction site with numerous dead links in the web,
-here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/);
-useful since also current Mozart version 2.0.1 is still using many old parts.
+here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/); useful since also current Mozart version 2.0.1 is still using many old parts.
 
 Therefore, I often looked into its **GitHub repository** to see what functions are available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
 
@@ -134,6 +133,8 @@ lesson for future language designers: be especially careful about syntax, and be
 - brackets: []
 
 Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz), FD for Finite Domain, also called FD library, see below.
+
+Maxime Istasse's master thesis from 2017, [An Oz implementation using Truffle and Graal](https://thesis.dial.uclouvain.be/entities/masterthesis/df736f1e-0021-42f2-b484-f86538a8150b) may provide interesting insights into Mozart's inner workings.
 
 <br/>
 
