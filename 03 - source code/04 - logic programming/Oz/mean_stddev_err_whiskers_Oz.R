@@ -24,7 +24,7 @@ library(ggplot2)
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
 plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the map coloring
-problem of Germany in Oz 1.4.0 versus Python (Miniconda3)")
+problem of Germany in Mozart-Oz 1.4.0 versus Python (Miniconda3)")
 
 sub_title0 <- paste("PowerShell cmdlet for execution time measurement in Windows 11")
 
