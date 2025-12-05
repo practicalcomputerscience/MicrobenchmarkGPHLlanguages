@@ -396,7 +396,7 @@ Here's Oz's implementation of the map coloring of Germany problem: [graph_4color
 
 Now the question is: how good is this Oz program faring against another implementation on the same Windows platform? (Intel Core i5 14600K, Windows 11 Pro 64-bit, ASUS PRIME B760-PLUS)
 
-In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py) and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
+In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 15 seconds to 0.5 seconds below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
 
 ![plot](./mean_stddev_err_whiskers%20--%20Oz%20and%20Python%2C%20Germany%20map.png)
 
