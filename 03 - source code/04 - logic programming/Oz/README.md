@@ -126,6 +126,10 @@ The _rainy.oz_ example, without extra declarations in the source code, directly 
 
 > A functor is a module specification that defines a function whose arguments are modules and whose result is a new module. Instantiating a functor means to call this function with the correct modules as inputs. All libraries were then rewritten to become modules. A running application is a graph of modules.
 
+"Functors are comparable to Java packages.", see from (~) below.
+
+<br/>
+
 Here's (*) also something about the rather unusual curly brackets ("braces": {}) for functions and procedures in Oz:
 
 > The syntax design was a difficult issue because of the project’s ambition: we aimed to support as many programming paradigms as possible. This put a strong constraint on the syntax: it needed to
@@ -211,7 +215,7 @@ ii  libgmp10:amd64  2:6.3.0+dfsg-2ubuntu6.1  amd64  Multiprecision arithmetic li
 $
 ```
 
-So, with using the GNU Multiple Precision Arithmetic Library, "Oz provides arbitrary long integers. That means the size of an integer is just limited by the memory size. Integers with a size of up to 28 bits are stored in registers, if an integer is larger than 28 bit, it gets always loaded from main memory,"; see from: [The Oz Programming Language](http://cl-informatik.uibk.ac.at/teaching/ss15/bob/reports/ss15-BV.pdf), Seminar Report, Benjamin Vettori, 2015
+So, with using the GNU Multiple Precision Arithmetic Library, "Oz provides arbitrary long integers. That means the size of an integer is just limited by the memory size. Integers with a size of up to 28 bits are stored in registers, if an integer is larger than 28 bit, it gets always loaded from main memory,"; see from: [The Oz Programming Language](http://cl-informatik.uibk.ac.at/teaching/ss15/bob/reports/ss15-BV.pdf), Seminar Report, Benjamin Vettori, 2015 (~)
 
 <br/>
 
