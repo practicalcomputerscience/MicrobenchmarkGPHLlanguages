@@ -39,7 +39,7 @@ Oz cheat sheet from 2019: https://github.com/alhassy/OzCheatSheet/blob/master/Ch
 At the moment, Oz, now in Version 3, and Mozart feel like a big, almost abandoned construction site with numerous dead links in the web,
 here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentation/, or links to outdated but still useful documentation (https://www.mozart-oz.org/documentation/); useful since also current Mozart version 2.0.1 is still using many old parts.
 
-Therefore, I often looked into its **GitHub repository** to see what functions are available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example.
+Therefore, I often looked into its **GitHub repository** to see what functions are available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example, though this is for Mozart 2 and not Mozart 1.4.0, what I'm using here: http://mozart2.org/mozart-v1/doc-1.4.0/index.html
 
 For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
