@@ -49,7 +49,7 @@ Table of contents:
 
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
-- [Functors and curly brackets in Oz](#functors-and-curly-brackets-in-oz)
+- [Functors, curly brackets and scoping in Oz](#functors-curly-brackets-and-scoping-in-oz)
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
 - [Mozart's virtual machines](#mozarts-virtual-machines)
@@ -120,7 +120,7 @@ To replay this example, just copy all the source code from file _rainy.oz_ and p
 
 Now the "Oz Browser" window should pop up as shown above for **Windows**. 
 
-### Functors and curly brackets in Oz
+### Functors, curly brackets and scoping in Oz
 
 The _rainy.oz_ example, without extra declarations in the source code, directly uses the Oz library, or _**functor**_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), a library which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem. From (*):
 
@@ -138,6 +138,33 @@ lesson for future language designers: be especially careful about syntax, and be
 
 - parentheses: ()
 - brackets: []
+
+<br/>
+
+**Scoping** is also not so easy in Oz from my point of view. After elaborate experimentation I found out that this style with the consequential usage of keyword _local_ is the easiest for me to define functions and procedures. Although, it's most probably not the shortest solution:
+
+```
+fun {My_func X Y}  % fun could also be a proc here with Y, or ?Y to mark the output more visually, holding the result
+    local
+        fun {Func1 ...}
+        ...
+        end  % of Func1
+
+        fun {Func2 ...}
+        ...
+        end  % of Func2
+
+        Var1 Var2 Var3 ...
+    in
+       Var1 = ... {Func1 ...} ...
+       Var2 = ... {Func2 ...} ...
+       ...
+       Var3  % return value of My_func
+    end  % of in
+end  % of fun or proc
+```
+
+<br/>
 
 Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz), FD for Finite Domain, also called FD library, see below.
 
