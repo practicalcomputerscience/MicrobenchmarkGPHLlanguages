@@ -194,7 +194,7 @@ B = ", World!"  % this is a second virtual string
 C = A#B  % C is then a concatenated virtual string
 {Browse {StringToAtom {VirtualString.toString C}}}  % this nested function first converts virtual string C into a string,
 % which is then converted into an atom, which is then being browsed
-{Browse {VirtualString.toString C}}  # here the conversion into an atom is omitted, and only a list is being browsed
+{Browse {VirtualString.toString C}}  # here the conversion into an atom is omitted, and only a list of codepoints is being browsed
 ```
 
 ..and this is how the results look like in the Oz Browser:
