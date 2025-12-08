@@ -41,7 +41,7 @@ here for example for Oz version 2: https://www.ps.uni-saarland.de/oz2/documentat
 
 Therefore, I often looked into its **GitHub repository** to see what functions are available and how to use them, like here for [lists](https://github.com/mozart/mozart2/blob/master/lib/main/base/List.oz) for example, though this is for Mozart 2 and not Mozart 1.4.0, what I'm using here: http://mozart2.org/mozart-v1/doc-1.4.0/index.html
 
-For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
+For Oz's **terminology** I also had a look into "A Tutorial of Oz 2.0" (+) from 1996 by Seif Haridi: https://www.researchgate.net/publication/2408237_Tutorial_of_Oz_2
 
 ---
 
@@ -50,6 +50,7 @@ Table of contents:
 - [Concepts of Oz](#concepts-of-oz)
 - [Installation and usage tips](#installation-and-usage-tips)
 - [Functors, curly brackets and scoping in Oz](#functors-curly-brackets-and-scoping-in-oz)
+- [Strings in Oz](#strings-in-oz)
 - [Mozart-Oz is not working in a modern Linux system out of the box](#mozart-oz-is-not-working-in-a-modern-linux-system-out-of-the-box)
 - [The GNU Multiple Precision Arithmetic Library (GMP)](#the-gnu-multiple-precision-arithmetic-library-gmp)
 - [Mozart's virtual machines](#mozarts-virtual-machines)
@@ -136,8 +137,8 @@ Here's (*) also something about the rather unusual curly brackets ("braces": {})
 support all paradigms in a clean and factored manner. For example, we used parentheses for records and brackets for lists; this left us with braces for functions and procedures. This is an important
 lesson for future language designers: be especially careful about syntax, and be prepared to make big changes in the syntax when evolving the system.
 
-- parentheses: ()
-- brackets: []
+- parentheses: () -- for records in Oz, which are structured compound entities with a label and some number of components or arguments, which are Feature:Field pairs; records are **tuples** when the features are omitted
+- brackets: [] -- for lists in Oz
 
 <br/>
 
@@ -167,6 +168,42 @@ end  % of fun or proc
 <br/>
 
 Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constraint Propagation in Mozart](https://publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/25775/1/TobiasMueller_ProfDrGertSmolka.pdf) from 2001 in English language, who was also one of the authors of the [FD functor](https://github.com/mozart/mozart2/blob/master/lib/main/cp/FD.oz), FD for Finite Domain, also called FD library, see below.
+
+<br/>
+
+## Strings in Oz
+
+Strings in Oz have been a real pain point when I started to implement my own [microbenchmark program in Oz](TBD.).
+
+I was desperately looking for a way to make a simple but concatenated string and show this string in the terminal, like in all the other programming languages I've tested so far. But this is practically impossible in Oz according to my experiments. Therefore, this microbenchmark implementation so far is the only one where I cannot show the two big strings on the console for testing purposes, and before writing them to files. The later functionality works, but in an (imperative) for-loop (could be also recursively functional I guess), where each "atom" is individually, and "correctly" without any extra characters, appended to its file!
+
+It was finally _Figure 26: The class Point_ in the **A Tutorial of Oz 2.0** from 1996 (+) which opened me the eyes with its last function call to show a "string" in the Oz Browser:
+
+```
+{Browse {StringToAtom{VirtualString.toString "point at ("#@x#" , "#@y#")"}}}
+```
+
+The _#_ operator, or **common infix tuple-operator**, see from here for example: http://mozart2.org/mozart-v1/doc-1.4.0/tutorial/node3.html, is practically the only tool for string concatenation in Oz. The @ operator is for showing the value of a variable.
+
+Here's a little Oz program based in this concept to be entered in the upper text buffer of the Oz-extended Emacs editor, and then be submitted into the "Feed Buffer" command under the Oz menu (see also above):
+
+```
+declare
+A = "Hello"  % this is a virtual string, a list made of character codes
+B = ", World!"  % this is a second virtual string
+C = A#B  % C is then a concatenated virtual string
+{Browse {StringToAtom {VirtualString.toString C}}}  % this nested function first converts virtual string C into a string,
+% which is then converted into an atom, which is then being browsed
+{Browse {VirtualString.toString C}}  # here the conversion into an atom is omitted, and only a list is being browsed
+```
+
+[Virtual strings in Oz](http://mozart2.org/mozart-v1/doc-1.4.0/op/node4.html#section.data.virtualstrings).
+
+..and this is how the results look like in the Oz Browser:
+
+![plot](./2%20strings%20concatenated%20with%20%23%20character%2C%20Fig.26%20from%20A%20Tutorial%20of%20Oz%202.0%2C%201996.png)
+
+Be also aware that there are no built-in functions in Oz to easily convert between lists, (virtual) strings and arrays.
 
 <br/>
 
