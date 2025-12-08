@@ -197,13 +197,19 @@ C = A#B  % C is then a concatenated virtual string
 {Browse {VirtualString.toString C}}  # here the conversion into an atom is omitted, and only a list is being browsed
 ```
 
-[Virtual strings in Oz](http://mozart2.org/mozart-v1/doc-1.4.0/op/node4.html#section.data.virtualstrings).
-
 ..and this is how the results look like in the Oz Browser:
 
 ![plot](./2%20strings%20concatenated%20with%20%23%20character%2C%20Fig.26%20from%20A%20Tutorial%20of%20Oz%202.0%2C%201996.png)
 
 Be also aware that there are no built-in functions in Oz to easily convert between lists, (virtual) strings and arrays.
+
+[Virtual strings in Oz](http://mozart2.org/mozart-v1/doc-1.4.0/op/node4.html#section.data.virtualstrings):
+
+I see it now layered this this for example:
+
+- top layer: virtual strings for coding
+- middle layer: strings (not really "visible")
+- bottom layer: atoms for visible results
 
 <br/>
 
