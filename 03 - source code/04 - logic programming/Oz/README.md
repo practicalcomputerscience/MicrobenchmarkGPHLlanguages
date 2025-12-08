@@ -205,7 +205,7 @@ Be also aware that there are no built-in functions in Oz to easily convert betwe
 
 [Virtual strings in Oz](http://mozart2.org/mozart-v1/doc-1.4.0/op/node4.html#section.data.virtualstrings):
 
-I see it now layered this this for example:
+I see it now layered like this for example:
 
 - top layer: virtual strings for coding
 - middle layer: strings (not really "visible")
