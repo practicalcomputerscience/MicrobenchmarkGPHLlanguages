@@ -56,8 +56,8 @@ Table of contents:
 - [Mozart's virtual machines](#mozarts-virtual-machines)
 - [From the GUI to the command shell (terminal)](#from-the-gui-to-the-command-shell-terminal)
 - [Map coloring of Germany - Oz versus Python](#map-coloring-of-germany---oz-versus-python)
-- [](#)
-- [](#)
+- [Microbenchmark program in Oz - not complete](#microbenchmark-program-in-oz---not-complete)
+- [Oz versus Python in Windows 11 - speed part](#oz-versus-python-in-windows-11---speed-part)
 - [The future of Oz?](#the-future-of-oz)
 
 <br/>
@@ -483,7 +483,7 @@ Some of the Mozart tools, like _> ozmake.exe --help_ for "for building Mozart-ba
 
 <br/>
 
-## Microbenchmark program in SWI Prolog - not complete
+## Microbenchmark program in Oz - not complete
 
 What I could have accomplished is the "speed part" of the Microbenchmark program in Oz: [random_streams_for_perf_stats.oz](./random_streams_for_perf_stats.oz)
 
