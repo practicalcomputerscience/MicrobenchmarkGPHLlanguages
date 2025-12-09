@@ -466,13 +466,13 @@ Here's Oz's implementation of the map coloring of Germany problem: [graph_4color
 
 Now the question is: how good is this Oz program faring against another implementation on the same Windows platform? (Intel Core i5 14600K, Windows 11 Pro 64-bit, ASUS PRIME B760-PLUS)
 
-In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 15 seconds to 1.0 second below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
+In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 16 seconds to 1.0 second below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
 
 ![plot](./mean_stddev_err_whiskers%20--%20Oz%20and%20Python%2C%20Germany%20map.png)
 
-I used this Windows PowerShell script for the execution time measurements: [Program_exe_time_measurement.ps1](./Program_exe_time_measurement.ps1)
+I used this Windows PowerShell script for measuring execution times: [Program_exe_time_measurement.ps1](./Program_exe_time_measurement.ps1)
 
-So, under the given circumstances, Oz is doing slightly better than Python with a Constraint Programming package!
+So, under the given circumstances, Oz is doing noticeably better than Python with a Constraint Programming package!
 
 What is also noticeable, is the fact that running the Oz object file with the _ozengine_ yields a slightly faster program execution than running the Windows executable directly. My suspicion for this phenomenon is that running the Mozart generated ~.exe file needs some more time first to look up its execution environment. Because this ~.exe file is not freely portable as its file extension may suggest; it also needs the _ozengine.exe_ program to be executed. Mozart's (standard) Windows installation is adding this directory to environment variable _PATH_: _C:\Program Files (x86)\Mozart\bin_, a directory where _ozengine.exe_ and the other Mozart tools are located. Here are the two file sizes:
 
@@ -487,7 +487,7 @@ Some of the Mozart tools, like _> ozmake.exe --help_ for "for building Mozart-ba
 
 What I could have accomplished is the "speed part" of the Microbenchmark program in Oz: [random_streams_for_perf_stats.oz](./random_streams_for_perf_stats.oz)
 
-Oz has no string builder, see also at [Strings in Oz](#strings-in-oz), but (imperative) [arrays](http://mozart2.org/mozart-v1/doc-1.4.0/tutorial/node11.html#label62) can be defined, where the individual elements can then be manipulated directly with procedure _put_, and read back with procedure _get_.
+Oz has no string builder, see also at [Strings in Oz](#strings-in-oz), but (imperative) [arrays](http://mozart2.org/mozart-v1/doc-1.4.0/tutorial/node11.html#label62) can be defined, where individual elements can then be manipulated directly with procedure _put_, and read back with procedure _get_.
 
 It was not possible for me the write the complete microbenchmark program with its user interaction in a terminal, because [Reading user input from the keyboard into a string on the console](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console#reading-user-input-from-the-keyboard-into-a-string-on-the-console) seems to be impossible in Windows with Oz. Oz apparently was never meant to be used for this. I also haven't found any single (Linux) example in its [repository](https://github.com/mozart/mozart2), which may come close to a potential solution.
 
@@ -513,12 +513,14 @@ But since Oz is no longer working in modern Linux, this is also not an option.
 
 ### Oz versus Python in Windows 11 - speed part
 
-What I then could have done is a little benchmark for [Oz](./random_streams_for_perf_stats.oz) versus [Python](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) in the same Windows 11 PC. Here are the statistics:
+What I then could have done is a little benchmark for Oz versus Python in the same Windows 11 PC. Here are the statistics:
 
 programming language | mean of 10 runs in milliseconds | standard deviation in milliseconds
 --- | --- | ---
 Oz 1.4.0 with ozengine | 513 | 16.6
 Python 3.13.9 + numpy-2.3.5 | 208 | 7.8
+
+Now, Python with its [io.StringIO](https://docs.python.org/3/library/io.html#io.StringIO) class, which can be used for efficient string building, is clearly beating Oz.
 
 <br/>
 
