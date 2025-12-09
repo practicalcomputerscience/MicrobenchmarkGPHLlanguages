@@ -1,6 +1,6 @@
 # mean_stddev_err_whiskers_Oz.R
 #
-# 2025-12-05
+# 2025-12-05/09
 #
 # env: R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
 #      Platform: x86_64-w64-mingw32/x64
@@ -24,13 +24,13 @@ library(ggplot2)
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
 plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the map coloring
-problem of Germany in Mozart-Oz 1.4.0 versus Python (Miniconda3)")
+problem of Germany in Mozart-Oz 1.4.0 versus Python 3.13.9")
 
-sub_title0 <- paste("PowerShell cmdlet for execution time measurement in Windows 11")
+sub_title0 <- paste("PowerShell script for execution time measurement in Windows 11")
 
 date_time  <- paste(format(Sys.Date()), format(Sys.time(), "%H:%M"))
 
-sub_title <- paste(sub_title0, "\nbest out of 3 manual runs of each program -- plot version", date_time)
+sub_title <- paste(sub_title0, "\nbased on 10 automatic runs of each program -- plot version", date_time)
 
 setwd("e:/zzz_Scripts/R/comparison plot with only mean and standard deviations")
 
@@ -51,12 +51,9 @@ dat1_sort
 # # A tibble: 3 × 3
 #   language             mean std_dev
 #   <chr>               <dbl>   <dbl>
-# 1 Oz ozengine         0.286       0
-# 2 Oz executable       0.304       0
-# 3 Python (CP package) 0.328       0
 
 
-y_break_max = 500  # milliseconds
+y_break_max = 1000  # milliseconds
 y_tick = 100  # milliseconds
 
 

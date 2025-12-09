@@ -1,5 +1,5 @@
 language;mean;std_dev
-Oz executable;0,3040598;0,0
-Oz ozengine;0,285932;0,0
-Python (CP package);0,3282307;0,0
-Python backtracking >15sec;0,5;0,0
+Oz executable;0,313239;0,020671
+Oz ozengine;0,299388;0,010554
+Python (CP package);0,529958;0,021962
+Python backtracking >16sec;1,0;0,0
