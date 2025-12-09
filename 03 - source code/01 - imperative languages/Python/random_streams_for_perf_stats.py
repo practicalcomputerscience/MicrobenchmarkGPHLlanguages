@@ -7,7 +7,7 @@ random_streams_for_perf_stats.py
 run on Ubuntu 24 LTS: $ cd ./scripts/Python/_virtual_envs
                       $ source ./prng_test/bin/activate
                       $ cd ./prng_test
-                      $ python3 ./random_bitstring_and_flexible_password_generator.py
+                      $ python3 ./random_streams_for_perf_stats.py
                       $ deactivate
 
                       exe times measurements:
@@ -88,3 +88,4 @@ else:
   print(f"Byte stream has been written to disk under name: {file_bits_hex}")
 
 # end of random_streams_for_perf_stats.py
+
