@@ -173,7 +173,7 @@ Another good source of Oz knowledge is the PhD thesis of Tobias Mueller: [Constr
 
 ## Strings in Oz
 
-Strings in Oz have been a real pain point when I started to implement my own [microbenchmark program in Oz](TBD.).
+Strings in Oz have been a real pain point when I started to implement my own [microbenchmark program in Oz](./random_streams_for_perf_stats.oz).
 
 I was desperately looking for a way to make a simple but concatenated string and show this string in the terminal, like in all the other programming languages I've tested so far. But this is practically impossible in Oz according to my experiments. Therefore, this microbenchmark implementation so far is the only one where I cannot show the two big strings on the console for testing purposes, and before writing them to files. The later functionality works, but in an (imperative) for-loop (could be also recursively functional I guess), where each "atom" is individually, and "correctly" without any extra characters, appended to its file!
 
@@ -466,34 +466,61 @@ Here's Oz's implementation of the map coloring of Germany problem: [graph_4color
 
 Now the question is: how good is this Oz program faring against another implementation on the same Windows platform? (Intel Core i5 14600K, Windows 11 Pro 64-bit, ASUS PRIME B760-PLUS)
 
-In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 15 seconds to 0.5 seconds below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
+In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 15 seconds to 1.0 second below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
 
 ![plot](./mean_stddev_err_whiskers%20--%20Oz%20and%20Python%2C%20Germany%20map.png)
+
+I used this Windows PowerShell for the execution time measurements: [Program_exe_time_measurement.ps1](./Program_exe_time_measurement.ps1)
 
 So, under the given circumstances, Oz is doing slightly better than Python with a Constraint Programming package!
 
 What is also noticeable, is the fact that running the Oz object file with the _ozengine_ yields a slightly faster program execution than running the Windows executable directly. My suspicion for this phenomenon is that running the Mozart generated ~.exe file needs some more time first to look up its execution environment. Because this ~.exe file is not freely portable as its file extension may suggest; it also needs the _ozengine.exe_ program to be executed. Mozart's (standard) Windows installation is adding this directory to environment variable _PATH_: _C:\Program Files (x86)\Mozart\bin_, a directory where _ozengine.exe_ and the other Mozart tools are located. Here are the two file sizes:
 
 - _graph_4coloring_Germany_Win11_for_cmd.ozf_: 3,889 bytes ("Oz ozengine")
-- _graph_4coloring_Germany_Win11_for_cmd.exe_: 9,519 bytes ("Oz executable")
+- _graph_4coloring_Germany_Win11_for_cmd.exe_: 9,521 bytes ("Oz executable")
 
 Some of the Mozart tools, like _> ozmake.exe --help_ for "for building Mozart-based projects and for creating and installing Mozart packages", have long help pages.
 
 <br/>
 
-The next question I have is this: can this competive Oz result be somehow corroborated from another source?
+## Microbenchmark program in SWI Prolog - not complete
 
-TBD 
+What I could have accomplished is the "speed part" of the Microbenchmark program in Oz: [random_streams_for_perf_stats.oz](./random_streams_for_perf_stats.oz)
+
+It was not possible for me the write the complete microbenchmark program with its user interaction in the terminal, because [Reading user input from the keyboard into a string on the console](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/40%20-%20reading%20user%20input%20from%20the%20keyboard%20into%20a%20string%20on%20the%20console#reading-user-input-from-the-keyboard-into-a-string-on-the-console) seems to be impossible in Windows with Oz. Oz apparently was never meant to be used for this. I also haven't found any single (Linux) example in its [repository](https://github.com/mozart/mozart2), which may come close to a potential solution.
+
+However, it may have worked in Linux many years ago, doing it indirectly with using a **Linux pipe**: [6 Running Processes](http://mozart2.org/mozart-v1/doc-1.4.0/op/node16.html#chapter.pipe):
+
+> A frequent need in programming open applications is to start an operating system process from Oz and to send information to and receive information from the running process. For this purpose we provide a class Open.pipe.
+
+See also: [6.1 Example: A Shell in Oz](http://mozart2.org/mozart-v1/doc-1.4.0/op/node17.html#section.pipe.shell)
+
+In Linux, there's command [read](https://www.man7.org/linux/man-pages/man2/read.2.html), which may have been used for this purpose:
+
+```
+$ read name
+Tim
+$ echo "$name"
+Tim
+$
+```
+
+But since Oz is no longer working in modern Linux, this is also not an option.
 
 <br/>
 
-Further ideas:
+### Oz versus Python in Windows 11 - speed part
 
-- "speed part" of my own microbenchmark program in Oz?
-- full microbenchmark program in Oz?
-- GeOz: Integration with Gecode for the map coloring problem of Germany??
-- xxx
-- xxx
+What I could have done so far is a little benchmark for [Oz](./random_streams_for_perf_stats.oz) versus [Python](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) in the same Windows 11 PC. Here are the statistics:
+
+programming language | mean of 10 runs in milliseconds | standard deviation in milliseconds
+--- | --- | ---
+Oz 1.4.0 with ozengine | 513 | 16.6
+Python 3.13.9 + numpy-2.3.5 | 208 | 7.8
+
+<br/>
+
+By the way: the "normal" Python installation in Windows (11) is not very efficient (though I used it to be able to use the [PowerShell script](./Program_exe_time_measurement.ps1)). For better execution speeds (around 1/3 less execution times according to me experiments), take [Miniconda3 for Windows](https://www.anaconda.com/docs/getting-started/miniconda/install) (but then the PowerShell script is not working).
 
 <br/>
 
