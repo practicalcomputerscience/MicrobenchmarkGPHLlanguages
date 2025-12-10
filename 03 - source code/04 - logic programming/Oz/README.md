@@ -1,5 +1,3 @@
-2025-12-02: work in progress
-
 # Oz
 
 Development and execution environment **Mozart**:
