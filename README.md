@@ -463,7 +463,7 @@ My (older) hardware from 2022 is always this:
 - CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz
 - mainboard: Gigabyte Technology, Z590 GAMING X
 - RAM: 32GB of DDR4-3200
-- SSD: 512GB Crucial MX500 SSD, CT500MX500SSD1Z
+- SSD: 512GB Crucial MX500 SSD, CT500MX500SSD1Z; from 2025-12-10 on: 1TB Crucial BX500 SATA SSD, CT1000BX500SSD101, since I corrupted the Ubuntu file system during the [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz) development
 
 For the language versions see here: ![Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions)
 
