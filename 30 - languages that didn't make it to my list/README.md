@@ -5,6 +5,7 @@
 Table of contents:
 
 - [Hack](#hack)
+- [Oz](#oz)
 - [Pony](#pony)
 - [Toit](#toit)
 - [Futhark](#futhark)
@@ -33,6 +34,12 @@ async function main(): Awaitable<void> {
 ```
 
 ..I learned that also this language didn't survive because PHP had its comeback: https://medium.com/@thoughtsfromryan/the-rapid-rise-and-fall-of-facebooks-hack-and-hhvm-7eeea401b04
+
+### Oz
+
+See from here: [Microbenchmark program in Oz - not complete](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#microbenchmark-program-in-oz---not-complete):
+
+> It was not possible for me the write the complete microbenchmark program with its user interaction in a terminal, because reading user input from the keyboard into a string on the console seems to be impossible in Windows with Oz. Oz apparently was never meant to be used for this. I also haven't found any single (Linux) example in its repository, which may come close to a potential solution.
 
 ### Pony
 
