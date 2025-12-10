@@ -1,3 +1,7 @@
+2025-12-10: see [On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments): the new SSD drive is faster than the old one; so, one day I have to redo all execution time measurements as shown below
+
+<br/>
+
 # Program execution times
 
 Table of contents:
