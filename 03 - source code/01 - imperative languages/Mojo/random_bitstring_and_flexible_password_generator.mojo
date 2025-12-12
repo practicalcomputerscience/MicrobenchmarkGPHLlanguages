@@ -1,10 +1,9 @@
 # random_bitstring_and_flexible_password_generator.mojo
 #
-# 2025-05-05/06/07/21/22, 2025-06-18
+# 2025-05-05/06/07/21/22, 2025-06-18, 2025-12-13
 #
 # build on Ubuntu 24 LTS: $ cd <project dir>
-#                         $ magic shell  # <<<<<<<<<<<<<<<<<<<<<<<<
-#                         $ mojo random_bitstring_and_flexible_password_generator.mojo
+#                         $ pixi shell  # <<<<<<<<<<<<<<<<<<<<<<<<
 #                         $ mojo build random_bitstring_and_flexible_password_generator.mojo
 #                         $ exit
 #
@@ -22,7 +21,7 @@
 #                      --> solution: not using ***char_set*** in this program, but there are still bytes left on the heap at exit
 #
 # $ mojo --version
-# mojo 25.4.0.dev2025050405 (0e8f7772)
+# Mojo 0.26.1.0.dev2025121217 (3e295ef6)
 # $
 
 
@@ -32,14 +31,14 @@ from random import random_ui64, seed
 
 def main():  # def for error handling below at user inputs: https://docs.modular.com/stable/mojo/manual/errors#raise-an-error
 
-    alias END = 62501  # 62501 for exactly 1M binary digits
-    # alias END  = 12  # for testing
-    # alias M1   = 1_000_000
-    # alias K250 = 250_000
+    comptime END = 62501  # 62501 for exactly 1M binary digits
+    # comptime END  = 12  # for testing
+    # comptime M1   = 1_000_000
+    # comptime K250 = 250_000
 
-    alias m    = 65521  # = 2^16 - 15
-    alias a    = 17364
-    alias c    = 0
+    comptime m    = 65521  # = 2^16 - 15
+    comptime a    = 17364
+    comptime c    = 0
 
     file_bits_x   = "random_bitstring.bin"
     file_bits_hex = "random_bitstring.byte"
@@ -100,7 +99,7 @@ def main():  # def for error handling below at user inputs: https://docs.modular
           # N_CHAR = 12
         else:
           try:
-            N_CHAR = Int(answer_str)
+            _ = Int(answer_str)
           except:
             N_CHAR = 12
             print("enter an integer number >= 8 or 'y'")

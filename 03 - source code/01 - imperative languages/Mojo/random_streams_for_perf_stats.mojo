@@ -1,9 +1,9 @@
 # random_streams_for_perf_stats.mojo
 #
-# 2025-05-31
+# 2025-05-31, 2025-12-13
 #
 # build on Ubuntu 24 LTS: $ cd password_encryption
-#                         $ magic shell
+#                         $ pixi shell
 #                         $ mojo build random_streams_for_perf_stats.mojo
 #                         $ exit
 #
@@ -15,14 +15,14 @@ from random import random_ui64, seed
 
 def main():  # def for error handling below at user inputs: https://docs.modular.com/stable/mojo/manual/errors#raise-an-error
 
-    alias END = 62501  # 62501 for exactly 1M binary digits
-    # alias END  = 12  # for testing
-    # alias M1   = 1_000_000
-    # alias K250 = 250_000
+    comptime END = 62501  # 62501 for exactly 1M binary digits
+    # comptime END  = 12  # for testing
+    # comptime M1   = 1_000_000
+    # comptime K250 = 250_000
 
-    alias m    = 65521  # = 2^16 - 15
-    alias a    = 17364
-    alias c    = 0
+    comptime m    = 65521  # = 2^16 - 15
+    comptime a    = 17364
+    comptime c    = 0
 
     file_bits_x   = "random_bitstring.bin"
     file_bits_hex = "random_bitstring.byte"
