@@ -21,6 +21,10 @@ Also noteworthy: Gleam does not know **exceptions**:
 - https://tour.gleam.run/advanced-features/use/
 - https://gleam.run/frequently-asked-questions/#why-does-division-by-zero-return-zero
 
+<br/>
+
+I have chosen statically typed Gleam over much more popular [Elixir](https://elixir-lang.org/) (on Erlang's virtual machine), because that is dynamically typed. I thought statically typed would be just more interesting, specifically with functional programming languages.
+
 ---
 
 Table of contents:
