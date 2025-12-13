@@ -1,6 +1,6 @@
 // random_bitstring_and_flexible_password_generator.rs
 //
-// 2025-05-07/08/17/19/22/31, 2025-07-19
+// 2025-05-07/08/17/19/22/31, 2025-07-19, 2025-12-13: see below
 //
 //
 // make on Ubuntu 24 LTS: ../Rust$ cargo new password_encryption
@@ -62,7 +62,7 @@ fn main() {
     let mut bits_hex = "".to_string();  // needed for program ENT - A Pseudorandom Number Sequence Test Program
 
     let mut rng = ChaCha20Rng::from_os_rng();  // https://rust-random.github.io/book/guide-seeding.html
-    x[0] = rng.random_range(0..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html
+    x[0] = rng.random_range(1..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html; 2025-12-13: 0..M --> 1..M
 
     println!("\ngenerating a random bit stream...");
     for i in 1..END {
