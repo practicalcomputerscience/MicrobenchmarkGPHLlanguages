@@ -4,13 +4,10 @@
 
 After [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam), LFE is another functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/) with "a lisp syntax front-end to the Erlang compiler":
 
-https://lfe.io/
-
-GitHub: https://github.com/lfe/lfe
-
-User Guide: https://github.com/lfe/lfe/blob/master/doc/src/lfe_guide.7.md
-
-rebar3 plugin for LFE projects: https://github.com/lfe/rebar3#upgrading-rebar3_lfe-globally
+- https://lfe.io/
+- GitHub: https://github.com/lfe/lfe
+- User Guide: https://github.com/lfe/lfe/blob/master/doc/src/lfe_guide.7.md
+- rebar3 plugin for LFE projects: https://github.com/lfe/rebar3#upgrading-rebar3_lfe-globally
 
 <br/>
 
