@@ -10,7 +10,7 @@
 //
 // run on Ubuntu 24 LTS:    $ gleam run --no-print-progress
 //                          $ time gleam run --no-print-progress --> real	0m0,234s
-//                          $ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"    
+//                          $ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"
 //
 // $ gleam -V
 // gleam 1.13.0
@@ -163,4 +163,5 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
 }
 
 // end of random_streams_for_perf_stats.gleam
+
 
