@@ -2,7 +2,7 @@
 """
 random_bitstring_and_flexible_password_generator.py
 
-2025-03-09/10/13/15/26/29/30/31, 2025-05-05/28, 2025-06-01/03/18
+2025-03-09/10/13/15/26/29/30/31, 2025-05-05/28, 2025-06-01/03/18, 2025-12-13: see below
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -59,7 +59,7 @@ file_bits_hex = "random_bitstring.byte"
 
 
 x = [0 for i in range(0,END)]  # also needed for the password later
-x[0] = np.random.randint(0, m, size=1, dtype=int)[0]
+x[0] = np.random.randint(1, m, size=1, dtype=int)[0]  # 2025-12-13: (0, m,.. --> (1, m,): m is exclusive
 
 # needed for bit stream:
 # bits_x = ''  # original solution with string

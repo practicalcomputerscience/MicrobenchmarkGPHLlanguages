@@ -2,7 +2,7 @@
 """
 random_streams_for_perf_stats.py
 
-2025-06-01/03/18
+2025-06-01/03/18, 2025-12-13: see below
 
 run on Ubuntu 24 LTS: $ cd ./scripts/Python/_virtual_envs
                       $ source ./prng_test/bin/activate
@@ -40,7 +40,7 @@ file_bits_hex = "random_bitstring.byte"
 
 
 x = [0 for i in range(0,END)]  # also needed for the password later
-x[0] = np.random.randint(0, m, size=1, dtype=int)[0]
+x[0] = np.random.randint(1, m, size=1, dtype=int)[0]  # 2025-12-13: (0, m,.. --> (1, m,): m is exclusive
 
 # needed for bit stream:
 # bits_x = ''  # original solution with string
@@ -88,4 +88,3 @@ else:
   print(f"Byte stream has been written to disk under name: {file_bits_hex}")
 
 # end of random_streams_for_perf_stats.py
-
