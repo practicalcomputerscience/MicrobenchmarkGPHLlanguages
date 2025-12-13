@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.swift
 
-2025-05-31, 2025-06-08
+2025-05-31, 2025-06-08, 2025-12-13: see below
 
 build on Ubuntu 24 LTS: $ mkdir random_streams_for_perf_stats
                         $ cd random_streams_for_perf_stats
@@ -37,7 +37,7 @@ let file_bits_hex = "random_bitstring.byte"
 var x = [Int]()
 // https://www.hackingwithswift.com/articles/128/array-performance-append-vs-reservecapacity
 
-x.append(Int.random(in: 0..<m))
+x.append(Int.random(in: 1..<m))  // 2025-12-13: 0..<m --> 1..<m
 // print(x[0])  // for testing
 
 var bits_x         = ""
