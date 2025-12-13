@@ -1,6 +1,6 @@
 // random_streams_for_perf_stats_rust.rs
 //
-// 2025-05-31
+// 2025-05-31, 2025-12-13: see below
 //
 // make on Ubuntu 24 LTS: ../Rust$ cargo new password_encryption_perf_stats
 //                        ../Rust$ cd password_encryption_perf_stats
@@ -60,7 +60,7 @@ fn main() {
     let mut bits_hex = "".to_string();  // needed for program ENT - A Pseudorandom Number Sequence Test Program
 
     let mut rng = ChaCha20Rng::from_os_rng();  // https://rust-random.github.io/book/guide-seeding.html
-    x[0] = rng.random_range(0..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html
+    x[0] = rng.random_range(1..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html; 2025-12-13: 1..M --> 0..M
 
     println!("\ngenerating a random bit stream...");
     for i in 1..END {
