@@ -6,7 +6,7 @@ https://lfe.io/
 
 https://github.com/lfe/lfe/tree/master
 
-https://github.com/lfe/lfe/blob/master/doc/src/lfe_guide.7.md
+User Guide: https://github.com/lfe/lfe/blob/master/doc/src/lfe_guide.7.md
 
 <br/>
 
