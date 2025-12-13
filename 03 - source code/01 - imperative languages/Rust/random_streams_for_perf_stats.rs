@@ -60,7 +60,7 @@ fn main() {
     let mut bits_hex = "".to_string();  // needed for program ENT - A Pseudorandom Number Sequence Test Program
 
     let mut rng = ChaCha20Rng::from_os_rng();  // https://rust-random.github.io/book/guide-seeding.html
-    x[0] = rng.random_range(1..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html; 2025-12-13: 1..M --> 0..M
+    x[0] = rng.random_range(1..M);  // exclusive M; https://rust-random.github.io/book/quick-start.html; 2025-12-13: 0..M --> 1..M
 
     println!("\ngenerating a random bit stream...");
     for i in 1..END {
