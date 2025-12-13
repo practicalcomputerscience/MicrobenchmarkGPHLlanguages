@@ -1,6 +1,6 @@
 --[[ random_bitstring_and_flexible_password_generator.lua
 
-2025-07-14, 2025-07-23: fixing the string matching when creating the password
+2025-07-14, 2025-07-23: fixing the string matching when creating the password; 2025-12-13: see below
 
 run in Ubuntu 24 LTS:  $ lua random_bitstring_and_flexible_password_generator.lua
 
@@ -74,7 +74,7 @@ local file_bits_hex = 'random_bitstring.byte'
 local x = {}  -- also needed for the password later
 
 math.randomseed(os.time())
-x[1] = math.random(0, m)  -- exclusive of m
+x[1] = math.random(1, m)  -- exclusive of m; 2025-12-13: (0, m) --> (1, m)
 
 local bits_x   = {}  -- array of strings for the bit stream:  "0"'s + "1"'s
 local bits_hex = {}  -- array of strings for the byte stream: [0..9][a..f]'s
@@ -211,3 +211,4 @@ end
 print ("\nYour password of "..n_char.." characters is: "..pw_chars)
 
 -- end of random_bitstring_and_flexible_password_generator.lua
+
