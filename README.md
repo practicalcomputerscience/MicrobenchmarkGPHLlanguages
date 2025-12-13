@@ -68,7 +68,7 @@ file_bits_x   = "random_bitstring.bin"
 file_bits_hex = "random_bitstring.byte"
 
 x = [0 for i in range(0,END)]
-x[0] = np.random.randint(0, m, size=1, dtype=int)[0]
+x[0] = np.random.randint(1, m, size=1, dtype=int)[0]
 
 bits_x = StringIO()
 bits_hex = StringIO()
