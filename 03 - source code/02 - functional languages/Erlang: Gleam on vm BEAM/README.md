@@ -113,7 +113,9 @@ Hello, world from Gleam on the Erlang virtual machine!
 $
 ```
 
-Install this package: _$ gleam add simplifile_ to make the Gleam programs run.
+Install this package: _$ gleam add simplifile_ in a Gleam project directory to make the Gleam program workable -- **after** having created the related project with: _$ gleam new <project name>_
+
+<br/>
 
 ### Lists
 
