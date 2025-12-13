@@ -1,6 +1,6 @@
 // random_streams_for_perf_stats.gleam
 //
-// 2025-10-26/27
+// 2025-10-26/27, 2025-12-13: random integer must be returned from the masterloop function, like in the other functional language versions
 //
 // install this package:    $ gleam add simplifile
 //
@@ -107,7 +107,6 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
 
   let bits_x_str   = integer_to_bin_string(seed)
   let bits_hex_str = integer_to_hex_string(seed)
-
   // echo bits_x_str    // for testing
   // echo bits_hex_str  // for testing
 
@@ -115,8 +114,8 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
 
   case n {
     // return bits_x + bits_hex lists as a tuple
-    // 0 -> #(x, bits_x, bits_hex)  // for testing
-    0 -> #(bits_x, bits_hex)
+    0 -> #(x, bits_x, bits_hex)
+    // 0 -> #(bits_x, bits_hex)  // don't do like this!
 
     _ -> masterloop(n - 1, new_seed, [seed, ..x], [bits_x_str, ..bits_x], [bits_hex_str, ..bits_hex])
                                                             // .. is the cons operator
@@ -143,8 +142,8 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
   io.println("\ngenerating a random bit stream...")
 
   // counting down from end; pass lists:
-  // let #(random_numbers, bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])  // for testing
-  let #(bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])  // for testing
+  let #(random_numbers, bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])
+  // let #(bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])  // don't do like this!
 
   // echo random_numbers  // for testing
   // reverse this list due to prepending: https://hexdocs.pm/gleam_stdlib/gleam/list.html#reverse

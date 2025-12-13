@@ -1,6 +1,6 @@
 // random_bitstring_and_flexible_password_generator.gleam
 //
-// 2025-10-27/28/29
+// 2025-10-27/28/29, 2025-12-13: edit of comments; source code untouched 
 //
 // install these packages:  $ gleam add simplifile
 //
@@ -19,7 +19,6 @@ import gleam/string
 import gleam/int  // for random, parse (string to integer)
 import gleam/list
 import gleam/result  // for unwrap
-// import gleam/option
 
 import simplifile
 // for writing to files: https://github.com/bcpeinhardt/simplifile/blob/d8e69974b2bfe9382e7c2ebeaf374950e0d4d6d0/src/simplifile.gleam
@@ -152,14 +151,15 @@ fn answer_yes_or_no () -> Bool {
 //   j: char counter for x
 fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String) -> String {
 
-  let next_elem_x = result.unwrap(list.first(x), 0)  // type of next_elem_x: Result(Int, Nil)
+  let next_elem_x = result.unwrap(list.first(x), 0)  // type of next_elem_x: Result(Int, Nil); 0 is the bad case alternative
   // echo next_elem_x  // for testing
-  let next_x      = result.unwrap(list.rest(x),[])
+  let next_x      = result.unwrap(list.rest(x),[])   // shrink the random number list by the first element
+                                                     // empty list [] is the bad case alternative
 
   let bin0 = integer_to_bin_string(next_elem_x)
   // echo bin0  // for testing
 
-  let bin0_0 = string.slice(from: bin0, at_index: 0, length: 8)
+  let bin0_0 = string.slice(from: bin0, at_index: 0, length: 8)  // "00111001"
   let bin0_1 = string.slice(from: bin0, at_index: 8, length: 8)
   // echo bin0_0  // for testing
   // echo bin0_1  // for testing
@@ -193,12 +193,11 @@ fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String)
       False -> ""
     }
   }
-  // echo char0_add  // for testing
-
+  // echo char1_add  // for testing
 
   let new_pw_str  = pw_str <> char0_add <> char1_add
   let new_pw_size = string.length(new_pw_str)
-  
+
   case new_pw_size >= n {
     True  -> new_pw_str
     False -> pw_generator (j+1, new_pw_str, n, next_x, char_set)  // recursion
@@ -213,15 +212,14 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
 
   let bits_x_str   = integer_to_bin_string(seed)
   let bits_hex_str = integer_to_hex_string(seed)
-
   // echo bits_x_str    // for testing
   // echo bits_hex_str  // for testing
 
   let new_seed = { a * seed + c } % m  // use curly brackets to group expressions together
 
   case n {
-    // return bits_x + bits_hex lists as a tuple
-    0 -> #(x, bits_x, bits_hex)  // for testing
+    // return x + bits_x + bits_hex lists as a tuple
+    0 -> #(x, bits_x, bits_hex)
 
     _ -> masterloop(n - 1, new_seed, [seed, ..x], [bits_x_str, ..bits_x], [bits_hex_str, ..bits_hex])
                                                             // .. is the cons operator
