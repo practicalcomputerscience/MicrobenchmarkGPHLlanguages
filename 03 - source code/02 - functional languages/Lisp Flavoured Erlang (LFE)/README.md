@@ -2,7 +2,7 @@
 
 # Lisp Flavoured Erlang (LFE)
 
-After [Gleam](TBD), LFE is another functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/) with "a lisp syntax front-end to the Erlang compiler":
+After [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam), LFE is another functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/) with "a lisp syntax front-end to the Erlang compiler":
 
 https://lfe.io/
 
@@ -18,7 +18,21 @@ TBD
 
 ## Installation tips
 
-Download and run the installation script for the **rebar3** build tool for Erlang (and other BEAM languages): https://www.rebar3.org/docs/getting-started/#installing-binary, in your local working directory:
+First, compile and install latest LFE version, here from: https://github.com/lfe/lfe/releases/tag/v2.2.0, in an unzipped working directory like: _./lfe-2.2.0_
+
+```
+$ make compile
+$ make tests
+...
+$ sudo make install
+$ lfe --version
+Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 16.1.2
+$
+```
+
+<br/>
+
+Now, download and run the installation script for the **rebar3** build tool for Erlang (and other BEAM languages): https://www.rebar3.org/docs/getting-started/#installing-binary, in your local working directory:
 
 ```
 $ rebar3 local install
@@ -68,6 +82,8 @@ $ rebar3 lfe eval '(+ 1 2 3)'
 6
 $
 ```
+
+
 
 TBD
 
