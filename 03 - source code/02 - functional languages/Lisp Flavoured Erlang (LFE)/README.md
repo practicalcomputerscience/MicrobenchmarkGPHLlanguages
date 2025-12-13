@@ -2,9 +2,11 @@
 
 # Lisp Flavoured Erlang (LFE)
 
+After [Gleam](TBD), LFE is another functional language on Erlang's virtual machine (vm) [BEAM](https://www.erlang-solutions.com/blog/the-beam-erlangs-virtual-machine/) with "a lisp syntax front-end to the Erlang compiler":
+
 https://lfe.io/
 
-https://github.com/lfe/lfe/tree/master
+GitHub: https://github.com/lfe/lfe
 
 User Guide: https://github.com/lfe/lfe/blob/master/doc/src/lfe_guide.7.md
 
