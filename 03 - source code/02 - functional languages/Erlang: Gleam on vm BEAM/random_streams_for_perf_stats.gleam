@@ -142,7 +142,7 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
   io.println("\ngenerating a random bit stream...")
 
   // counting down from end; pass lists:
-  let #(random_numbers, bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])
+  let #(_random_numbers, bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])
   // let #(bits_x, bits_hex) = masterloop (end, start_seed, [], [], [])  // don't do like this!
 
   // echo random_numbers  // for testing
@@ -163,3 +163,4 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
 }
 
 // end of random_streams_for_perf_stats.gleam
+
