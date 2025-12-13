@@ -1,6 +1,6 @@
 -- random_streams_for_perf_stats.lua
 --
--- 2025-07-13/14
+-- 2025-07-13/14, 2025-12-13: see below
 --
 -- run in Ubuntu 24 LTS: $ time lua random_streams_for_perf_stats.lua
 --                       $ sudo perf stat -r 20 lua ./random_streams_for_perf_stats.lua
@@ -65,7 +65,7 @@ local file_bits_hex = 'random_bitstring.byte'
 local x = {}  -- also needed for the password later
 
 math.randomseed(os.time())
-x[1] = math.random(0, m)  -- exclusive of m
+x[1] = math.random(1, m)  -- exclusive of m; 2025-12-13: (0, m) --> (1, m)
 
 local bits_x   = {}  -- array of strings for the bit stream:  "0"'s + "1"'s
 local bits_hex = {}  -- array of strings for the byte stream: [0..9][a..f]'s
@@ -111,3 +111,4 @@ else
 end
 
 -- end of random_streams_for_perf_stats.lua
+
