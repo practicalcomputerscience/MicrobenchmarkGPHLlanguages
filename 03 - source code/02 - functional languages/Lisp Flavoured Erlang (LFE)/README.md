@@ -56,7 +56,7 @@ Get the latest rebar3 plugin for LFE projects: https://github.com/lfe/rebar3/rel
 ]}.
 ```
 
-List plugins as a first test:
+List rebar3 plugins as a first test:
 
 ```
 $ rebar3 plugins list
