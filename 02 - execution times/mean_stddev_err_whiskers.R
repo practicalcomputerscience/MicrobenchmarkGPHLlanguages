@@ -16,7 +16,7 @@ library(ggplot2)
 ##########################
 #
 # user switch:
-plot_type <-  4
+plot_type <-  0
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
@@ -67,11 +67,12 @@ xlabel <- paste("")
 dat1_sort <- as_tibble(dat1[order(dat1$mean),])
 
 dat1_sort
-# # A tibble: 2 × 3
-#   language    mean   std_dev
-#   <chr>      <dbl>     <dbl>
-# 1 C        0.00790 0.0000327
-# 2 C3       0.0155  0.000109
+# # A tibble: 30 × 4
+#    language     mean  std_dev date 
+#    <chr>       <dbl>    <dbl> <chr>
+#  1 C         0.00981 0.00016  ""   
+#  2 Rust      0.0106  0.000156 ""   
+#  3 Crystal   0.0116  0.000445 "" 
 
 
 if (plot_type < 4) {
