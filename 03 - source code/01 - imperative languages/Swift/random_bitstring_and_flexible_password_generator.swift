@@ -1,7 +1,7 @@
 /*
 random_bitstring_and_flexible_password_generator.swift
 
-2025-05-08/09/17/31, 2025-06-01
+2025-05-08/09/17/31, 2025-06-01, 2025-12-13: see below
 
 build on Ubuntu 24 LTS: $ swift package init --name random_bitstring_and_flexible_password_generator --type executable
                         $ swift build  # Building for ***debugging***
@@ -48,7 +48,7 @@ let file_bits_hex = "random_bitstring.byte"
 var x = [Int]()
 // https://www.hackingwithswift.com/articles/128/array-performance-append-vs-reservecapacity
 
-x.append(Int.random(in: 0..<m))
+x.append(Int.random(in: 1..<m))  // 2025-12-13: 0..<m --> 1..<m
 // print(x[0])  // for testing
 
 var bits_x         = ""
