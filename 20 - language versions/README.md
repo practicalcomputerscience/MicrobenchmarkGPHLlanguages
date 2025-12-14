@@ -8,7 +8,7 @@ Usually, I've no intention to re-test a language when an update has been publish
 
 programming language | versions | Bash command to retrieve versions
 --- | --- | ---
-Ada | alr 2.1.0; gprbuild 22.0.1; gnat_native 13.2.1; gnat_external 13.3.0 | $ alr --version; $ alr toolchain
+Ada | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
 C | gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04); Homebrew clang version 21.1.4 | $ gcc --version; clang -v  # clang for the "speed part"
 C# | Microsoft.AspNetCore.App 8.0.18 ... ; Microsoft.NETCore.App 8.0.18 ...; 8.0.104 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
 C3 | C3 Compiler Version:       0.7.1; ... ; Backends: LLVM; LLVM version: 17.0.6; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
