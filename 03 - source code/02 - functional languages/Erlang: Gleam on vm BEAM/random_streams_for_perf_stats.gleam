@@ -1,6 +1,7 @@
 // random_streams_for_perf_stats.gleam
 //
 // 2025-10-26/27, 2025-12-13: random integer must be returned from the masterloop function, like in the other functional language versions
+// 2025-12-14: see below
 //
 // install this package:    $ gleam add simplifile
 //
@@ -135,7 +136,9 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
 
 pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the last return type!
 
-  let start_seed = int.random(m)
+  let start_seed = int.random(m-1) + 1
+  // 2025-12-14: start from 1, not 0! And don't exceed m!
+  
   // m is exclusive: https://hexdocs.pm/gleam_stdlib/gleam/int.html#random
   // echo start_seed  // for testing
 
@@ -163,5 +166,3 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
 }
 
 // end of random_streams_for_perf_stats.gleam
-
-
