@@ -3,6 +3,7 @@
 --  2025-05-31, 2025-07-12: removing dead code
 --  2025-07-13: repaired Exception Handling when writing to files => program must not stop at an exception here!
 --  2025-07-16: speed improved Integer_to_bin_string => change not measurable, but leave changed code!
+--  2025-12-14: see below
 --
 --
 --  build on Ubuntu 24 LTS: $ alr init --bin random_streams_for_perf_stats
@@ -61,7 +62,7 @@ procedure random_streams_for_perf_stats is
    use Seq_IO;
    F : Seq_IO.File_Type;
 
-   subtype Random_Range is Integer range 0 .. m;
+   subtype Random_Range is Integer range 1 .. m - 1;  --  2025-12-14: don't start with 0 or m!
    --  Learning Ada - the complete contents of learn.adacore.com, 2025,
    --  23.2. Random Number Generation
    package R is new
