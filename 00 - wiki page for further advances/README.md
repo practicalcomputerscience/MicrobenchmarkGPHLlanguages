@@ -3,6 +3,8 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-12-16: not continuing with LFE (Lisp Flavoured Erlang: https://lfe.io/about/): even already compiled escripts are being re-compiled when running them again (_$ rebar3 lfe run-escript_); thus, LFE programs always have a slow start. I'm happy with [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam) as a language representative on Erlang's virtual machine and will keep it like that.
+
 2025-12-13: update to latest Mojo version 0.26.1.0... with the Pixi package manager. The old Magic package manager, a fork of Pixi, is now deprecated: https://docs.modular.com/pixi; some slight, formalistic source code changes to get rid of new warnings: [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo)
 
 2025-12-10: [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz): "speed part" of microbenchmark done, though not the rest
@@ -23,8 +25,6 @@
 
 2025-10-29: so far, I haven't touched yet these corners of programming languages:
 
-- **Land of Erlang's**, here languages on its virtual machine BEAM (https://github.com/llaisdy/beam_languages); maybe:
-- &nbsp;&nbsp;LFE: Lisp Flavoured Erlang: https://lfe.io/about/
 - **Julia** as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
 - &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
