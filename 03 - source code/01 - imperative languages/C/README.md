@@ -34,10 +34,16 @@ Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "
 
 <br/>
 
-In case that command _$ gcc ..._ isn't working (in Ubuntu), at least version 13 can be found here and made visible with this alias:
+In case that command _$ gcc ..._ isn't working (in Ubuntu), at least version 13 can be found here and made visible with this alias in config file _~/.bash_aliases_:
 
 ```
 alias gcc="/usr/bin/gcc-13"
+```
+
+..and symbolic link with name _gcc_ in directory _/usr/bin_ like this for example:
+
+```
+$ sudo ln -s /usr/bin/x86_64-linux-gnu-gcc-13 /usr/bin/gcc
 ```
 
 <br/>
