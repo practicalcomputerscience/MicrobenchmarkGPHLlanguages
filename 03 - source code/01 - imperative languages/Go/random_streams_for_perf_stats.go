@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.go
 
-2025-05-31, 2025-06-02/03/18, 2025-07-17
+2025-05-31, 2025-06-02/03/18, 2025-07-17; 2025-12-17
 
 build on Ubuntu 24 LTS: $ go build random_streams_for_perf_stats.go
 
@@ -36,7 +36,7 @@ func main() {
 
   var x = make([]int, END)  // allocate memory --> automatic garbage collection with Go
   // also needed for the password
-  x[0] = rand.Intn(int(m))
+  x[0] = rand.Intn(int(m-1)) + 1  // returns a non-negative pseudo-random number in the half-open interval [0,n); 2025-12-17
 
   // var bits_x [M1]string    // needed for bit stream; old solution --> 0,038946 +- 0,000305 seconds time elapsed  ( +-  0,78% )
   var bits_x strings.Builder  //                        new solution --> 0,014174 +- 0,000118 seconds time elapsed  ( +-  0,83% )

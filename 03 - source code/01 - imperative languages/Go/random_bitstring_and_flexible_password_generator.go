@@ -1,7 +1,7 @@
 /*
 random_bitstring_and_flexible_password_generator.go
 
-2025-03-25/26/27/28/29/31, 2025-05-05/17/31, 2025-06-03/06/18, 2025-07-17
+2025-03-25/26/27/28/29/31, 2025-05-05/17/31, 2025-06-03/06/18, 2025-07-17; 2025-12-17
 
 build on Ubuntu 24 LTS: $ go build random_bitstring_and_flexible_password_generator.go
 
@@ -47,7 +47,7 @@ func main() {
 
   var x = make([]int, END)  // allocate memory --> automatic garbage collection with Go
   // also needed for the password
-  x[0] = rand.Intn(int(m))
+  x[0] = rand.Intn(int(m-1)) + 1  // returns a non-negative pseudo-random number in the half-open interval [0,n); 2025-12-17
 
   var bits_x strings.Builder  // new solution --> 0,014174 +- 0,000118 seconds time elapsed  ( +-  0,83% )
   // https://golangdocs.com/concatenate-strings-in-golang
