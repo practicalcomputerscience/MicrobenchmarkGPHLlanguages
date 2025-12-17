@@ -1,30 +1,24 @@
 # random_streams_for_perf_stats.inko
 #
 # 2025-07-19/20
+# 2025-12-17: see below; also a (soft) re-write for Inko version 0.19.1
 #
 # make on Ubuntu 24 LTS: $ inko build random_streams_for_perf_stats.inko
+# run on Ubuntu 24 LTS:  $ ./build/debug/random_streams_for_perf_stats
 #
-# run on Ubuntu 24 LTS:  $ ./build/random_streams_for_perf_stats
-#                        $ time ./build/random_streams_for_perf_stats
-#
-#                        $ inko build random_streams_for_perf_stats.inko --opt aggressive
-#                        $ time ./build/aggressive/random_streams_for_perf_stats
-#                        $ sudo perf stat -r 20 ./build/aggressive/random_streams_for_perf_stats
+# make on Ubuntu 24 LTS for release: $ inko build --release random_streams_for_perf_stats.inko
+# run this release:                  $ sudo perf stat -r 20 ./build/release/random_streams_for_perf_stats
 #
 #
-# correctly install LLVM 17, including the essential Polly LLVM framework (libpolly-17-dev):
-#   $ sudo apt-get install --yes rustc cargo git build-essential llvm-17 llvm-17-dev libstdc++-11-dev libclang-common-17-dev zlib1g-dev libpolly-17-dev libzstd-dev
-#   $ cargo install ivm --force  # installing the installation manager ivm first: https://docs.inko-lang.org/manual/latest/setup/ivm/
-#   $ ivm install latest  # now installing the Inko compiler
-#   $ inko --version
-#   inko 0.18.1
-#   $
+# $ inko --version
+# inko 0.19.1
+# $
 
 
 import std.stdio (Stdout)
 import std.string (StringBuffer)
 import std.rand (Random)
-import std.fs.file (ReadWriteFile)
+import std.fs.file (WriteOnlyFile)
 
 
 let STR_LENGTH_BIN = 16
@@ -57,11 +51,11 @@ fn Integer_to_bin_string (n: Int) -> String {  # N not possible here --> choose 
   j = STR_LENGTH_BIN - 1  # reverse char order and write to StringBuffer
   while j >= 0 {
     k = STR_LENGTH_BIN - j - 1
-    bin_str_ret.push(bin_str_arr.get(k))
+    bin_str_ret.push(bin_str_arr.get(k).or_panic)
     j -= 1
   }
 
-  return bin_str_ret.to_string
+  return bin_str_ret.into_string
 }
 
 
@@ -102,11 +96,11 @@ fn Integer_to_hex_string (n: Int) -> String {
   j = STR_LENGTH_HEX - 1  # reverse char order and write to StringBuffer
   while j >= 0 {
     k = STR_LENGTH_HEX - j - 1
-    hex_str_ret.push(hex_str_arr.get(k))
+    hex_str_ret.push(hex_str_arr.get(k).or_panic)
     j -= 1
   }
 
-  return hex_str_ret.to_string
+  return hex_str_ret.into_string
 }
 
 
@@ -138,52 +132,51 @@ type async Main {  # a lightweight process
 
     # https://github.com/inko-lang/inko/blob/main/std/src/std/array.inko
     let rng = Random.new
-    x.push(rng.int_between(min: 0, max: m - 1))
+    x.push(rng.int_between(min: 1, max: m - 1))  # 2025-12-17
 
     let mut i: Int = 1
-    let out = Stdout.new
-    # let mut buf = StringBuffer.new
 
-    out.print("\ngenerating a random bit stream...")
+    Stdout.new.print("\ngenerating a random bit stream...")
+
     while i < upper_limit {
-      x.push((a*x.get(i - 1) + c) % m)  # no i-1 here!
-      # out.print("")  # for testing -- this is a newline substitute
-      # out.print(x.get(i).to_string)  # for testing
+      x.push((a*x.get(i - 1).or_panic + c) % m)  # no i-1 here!
+      # Stdout.new.print("")  # for testing -- this is a newline substitute
+      # Stdout.new.print(x.get(i).into_string)  # for testing
 
       # doing here like in Ada to convert a natural integer number into
       # a binary string of "0"'s and "1"'s of fixed length ("16 bits"):
-      # out.print(Integer_to_bin_string(x.get(i)))  # for testing
-      bits_x.push(Integer_to_bin_string(x.get(i)))
+      # Stdout.new.print(Integer_to_bin_string(x.get(i)))  # for testing
+      bits_x.push(Integer_to_bin_string(x.get(i).or_panic))
 
-      # out.print(Integer_to_hex_string(x.get(i)))  # for testing
+      # Stdout.new.print(Integer_to_hex_string(x.get(i)))  # for testing
 
-      bits_hex.push(Integer_to_hex_string(x.get(i)))
+      bits_hex.push(Integer_to_hex_string(x.get(i).or_panic))
 
       i += 1
     }
 
     # write bit stream to disk:
-    match ReadWriteFile.new(file_bits_x.to_path) {
+    match WriteOnlyFile.new(file_bits_x.to_path) {
       case Ok(_) -> {
-        let mut file1 = ReadWriteFile.new(file_bits_x.to_path).get
-        match file1.write_string(bits_x.to_string) {
-          case Ok(_) -> out.print("Bit stream has been written to disk under name:  ${file_bits_x}")
-          case Error(e) -> out.print("could not write to file: ${file_bits_x} -- ${e}")
+        let mut file1 = WriteOnlyFile.new(file_bits_x.to_path).get
+        match file1.write(bits_x.into_string) {
+          case Ok(_) -> Stdout.new.print("Bit stream has been written to disk under name:  ${file_bits_x}")
+          case Error(e) -> Stdout.new.print("could not write to file: ${file_bits_x} -- ${e}")
         }
       }
-      case Error(e) -> out.print("could not write to file: ${file_bits_x} -- ${e}")
+      case Error(e) -> Stdout.new.print("could not write to file: ${file_bits_x} -- ${e}")
     }
 
     # write byte stream to disk:
-    match ReadWriteFile.new(file_bits_hex.to_path) {
+    match WriteOnlyFile.new(file_bits_hex.to_path) {
       case Ok(_) -> {
-        let mut file2 = ReadWriteFile.new(file_bits_hex.to_path).get
-        match file2.write_string(bits_hex.to_string) {
-          case Ok(_) -> out.print("Byte stream has been written to disk under name: ${file_bits_hex}")
-          case Error(e) -> out.print("could not write to file: ${file_bits_hex} -- ${e}")
+        let mut file2 = WriteOnlyFile.new(file_bits_hex.to_path).get
+        match file2.write(bits_hex.into_string) {
+          case Ok(_) -> Stdout.new.print("Byte stream has been written to disk under name: ${file_bits_hex}")
+          case Error(e) -> Stdout.new.print("could not write to file: ${file_bits_hex} -- ${e}")
         }
       }
-      case Error(e) -> out.print("could not write to file: ${file_bits_hex} -- ${e}")
+      case Error(e) -> Stdout.new.print("could not write to file: ${file_bits_hex} -- ${e}")
     }
   }
 }
