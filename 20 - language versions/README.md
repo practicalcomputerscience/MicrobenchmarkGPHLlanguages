@@ -36,7 +36,7 @@ Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
 Raku | Welcome to Rakudo™ v2025.08.; Implementing the Raku® Programming Language v6.d.; Built on MoarVM version 2025.08. | $ raku -version
 Roc | roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC | $ roc --version
-Rust | rustc 1.88.0 (6b00bc388 2025-06-23); binary: rustc; commit-hash: 6b00bc3880198600130e1cf62b8f8a93494488cc; commit-date: 2025-06-23; host: x86_64-unknown-linux-gnu; release: 1.88.0; LLVM version: 20.1.5 | $ rustc -V -v
+Rust | rustc 1.92.0 (ded5c06cf 2025-12-08); binary: rustc; commit-hash: ded5c06cf21d2b93bffd5d884aa6e96934ee4234; commit-date: 2025-12-08; host: x86_64-unknown-linux-gnu; release: 1.92.0; LLVM version: 21.1.3 | $ rustc -V -v
 Scala | sbt 1.11.0 (Ubuntu Java 21.0.7); Scala code runner version: 1.5.4; Scala version (default): 3.6.4 | $ sbt; $ sbt --version; $ scala --version
 Scheme, Bigloo | Bigloo (4.6a) | $ bigloo -version
 Scheme, CHICKEN | CHICKEN; (c) 2008-2022, The CHICKEN Team; (c) 2000-2007, Felix L. Winkelmann; Version 5.4.0 (rev 1a1d1495); linux-unix-gnu-x86-64 [ 64bit dload ptables ] | $ csc -version
