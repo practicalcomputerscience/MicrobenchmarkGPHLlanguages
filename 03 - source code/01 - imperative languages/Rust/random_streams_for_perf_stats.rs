@@ -1,16 +1,16 @@
-// random_streams_for_perf_stats_rust.rs
+// random_streams_for_perf_stats.rs
 //
 // 2025-05-31, 2025-12-13: see below
 //
-// make on Ubuntu 24 LTS: ../Rust$ cargo new password_encryption_perf_stats
-//                        ../Rust$ cd password_encryption_perf_stats
+// make on Ubuntu 24 LTS: ../Rust$ cargo new random_streams_for_perf_stats
+//                        ../Rust$ cd random_streams_for_perf_stats
 //                        ../Rust$ cargo build
-// run on Ubuntu 24 LTS:  ../Rust$ ./target/debug/password_encryption
+// run on Ubuntu 24 LTS:  ../Rust$ ./target/debug/random_streams_for_perf_stats
 //
-// build for optimized release:  ../Rust/password_encryption_perf_stats$ cargo build -r -v
+// build for optimized release:  ../Rust/random_streams_for_perf_stats$ cargo build -r -v
 //
-// run on Ubuntu 24 LTS:  ../Rust/password_encryption_perf_stats$ ./target/release/password_encryption
-//                                                              $ sudo perf stat -r 20 ./target/release/password_encryption
+// run on Ubuntu 24 LTS:  ../Rust/random_streams_for_perf_stats$ ./target/release/random_streams_for_perf_stats
+//                                                             $ sudo perf stat -r 20 ./target/release/random_streams_for_perf_stats
 //
 //
 // [dependencies] --> add:
@@ -19,15 +19,15 @@
 //    radix_fmt = "1"
 //
 // $ rustc -V -v
-// rustc 1.88.0 (6b00bc388 2025-06-23)
+// rustc 1.92.0 (ded5c06cf 2025-12-08)
 // binary: rustc
-// commit-hash: 6b00bc3880198600130e1cf62b8f8a93494488cc
-// commit-date: 2025-06-23
+// commit-hash: ded5c06cf21d2b93bffd5d884aa6e96934ee4234
+// commit-date: 2025-12-08
 // host: x86_64-unknown-linux-gnu
-// release: 1.88.0
-// LLVM version: 20.1.5
+// release: 1.92.0
+// LLVM version: 21.1.3
 // $
-
+//
 
 
 use rand::prelude::*;
@@ -110,4 +110,4 @@ fn main() {
 
 }
 
-// end of random_streams_for_perf_stats_rust.rs
+// end of random_streams_for_perf_stats.rs
