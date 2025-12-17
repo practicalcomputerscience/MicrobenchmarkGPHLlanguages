@@ -3,8 +3,7 @@ random_bitstring_and_flexible_password_generator.c
 
 2025-05-29
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
-
-test on Ubuntu 24 LTS: OK
+2025-12-17: see below
 
 build on Ubuntu 24 LTS: $ make  # see make file below
 
@@ -13,34 +12,15 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 makefile with tabs:
-all: random_bitstring_and_flexible_password_generator
 
-random_bitstring_and_flexible_password_generator: random_bitstring_and_flexible_password_generator.o
-	gcc -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
 
-random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexible_password_generator.c
-	gcc -Wall -Ofast -c random_bitstring_and_flexible_password_generator.c
-~~~
-see from: https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html
-
--Ofast is faster than -O3 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are these warnings when compiling with -Wall:
-  random_bitstring_and_flexible_password_generator.c:175:19: warning: comparison between pointer and integer
-    175 |       if (*endptr != NULL) {  // 89sad is not accepted
-        |                   ^~
-  random_bitstring_and_flexible_password_generator.c:231:5: warning: ‘__builtin_strncpy’ output may be truncated copying 8 bytes from a string of length 16 [-Wstringop-truncation]
-    231 |     strncpy(bin0_0, bin0, 8);
-        |     ^
-  random_bitstring_and_flexible_password_generator.c:232:5: warning: ‘__builtin_strncpy’ output may be truncated copying 8 bytes from a string of length 8 [-Wstringop-truncation]
-    232 |     strncpy(bin0_1, bin0 + 8, 8);
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-$ gcc --version --> gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04)
+$ clang -v
+Homebrew clang version 21.1.7
+...
+$
 
 */
 
@@ -76,7 +56,7 @@ int main()
 
   srand(time(NULL));      // Initialize RNG seed.
   // printf("%i\n", rand()); // Make one draw.
-  x[0] = rand() % (m);    //Generate a random number between 0 and N
+  x[0] = rand() % (m-1) + 1;  // rand(): random number between 0 and RAND_MAX, both included; 2025-12-17
   // printf("x[0] = %d\n", x[0]);  // for testing
 
   char bits_x[M1];
@@ -140,7 +120,7 @@ int main()
     printf("\nBit stream has been written to disk under name:  %s", file_bits_x);
     fclose(f1);
   }
-  
+
   // write byte stream to disk:
   FILE *f2 = fopen(file_bits_hex, "w");
   if (f2 == NULL)
