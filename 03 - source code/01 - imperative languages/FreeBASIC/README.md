@@ -15,7 +15,7 @@ Table of contents:
 
 ---
 
-### On BASIC
+## On BASIC
 
 BASIC (for _Beginner's All-purpose Symbolic Instruction Code_) was historically a direct response to the state of FORTRAN in the 60ies:
 
@@ -47,20 +47,26 @@ next
 
 I'm happy with the fast execution speed of this program and thus didn't start to experiment with potentially other possibilities of a big string concatenation, like not testing the ZSTRING type and thus leaving it with the STRING type.
 
-### Installation tips
+## Installation tips
 
 Make sure that _**libtinfo5**_ is installed in your Linux system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
 
-This means that the compiled program depends on this **shared library** at least, being installed on the target machine.
+This means that the compiled program depends on this **shared library** at least, being installed on the target machine. Install it like this for example if it's missing yet:
+
+```
+sudo dpkg -i ./libtinfo5_6.3-2ubuntu0.1_amd64.deb
+```
+
+FreeBASIC depends on _gcc_; see here for more information about this GNU compiler if there may be problems with it: [C and Checked C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#c-and-checked-c)
 
 
-### Other functionalities of FreeBASIC
+## Other functionalities of FreeBASIC
 
 You may have a look into the _./FreeBASIC-1.10.1-linux-x86_64/examples_ directory after installation to see FreeBASIC's scope of functionalities, but also its capabilities to interact with other programming languages and potentially its GUI capabilities. A look into directory _./FreeBASIC-1.10.1-linux-x86_64/./include/freebasic_ shows bindings for many different libraries.
 
 <br/>
 
-### Other BASIC dialects
+## Other BASIC dialects
 
 I also tapped into other implementations of BASIC, like:
 
