@@ -15,7 +15,7 @@ C3 | C3 Compiler Version:       0.7.8; ... ; Backends: LLVM; LLVM version: 19.1.
 Chapel | chpl version 2.6.0; built with LLVM version 20.1.8; ... ; Copyright 2020-2025 Hewlett Packard Enterprise Development LP; Copyright 2004-2019 Cray Inc. ... | $ chpl --version
 Clojure | Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM | $ lein version
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
-Crystal | Crystal 1.16.3 [3f369d2c7] (2025-05-12); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
+Crystal | Crystal 1.18.2 [635ca37a6] (2025-10-21); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.24.1 linux/amd64 | $ go version
