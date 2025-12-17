@@ -20,12 +20,14 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 $ c3c -V
-C3 Compiler Version:       0.7.1
-Installed directory:       $HOME/scripts/C3/c3-ubuntu-22/c3/
-Git Hash:                  c5494a23ce18ad16a382774a2f360c94b1515e3f
+C3 Compiler Version:       0.7.8
+Installed directory:       ~/scripts/C3/c3-ubuntu-22/c3
+Git Hash:                  5961bcaf866a1d866747c12426436864ebaa4cb1
 Backends:                  LLVM
-LLVM version:              17.0.6
+LLVM version:              19.1.7
 LLVM default target:       x86_64-pc-linux-gnu
+$
+
 */
 
 
