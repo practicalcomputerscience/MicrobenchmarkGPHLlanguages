@@ -1,7 +1,7 @@
 /*
 random_bitstring_and_flexible_password_generator.cs
 
-2025-06-07/08
+2025-06-07/08; 2025-12-17: see below
 
 build on Ubuntu 24 LTS: $ dotnet new console -n random_bitstring_and_flexible_password_generator --use-program-main
                         $ cd ./random_bitstring_and_flexible_password_generator
@@ -17,20 +17,15 @@ run on Ubuntu 24 LTS:   $ ./bin/Debug/net8.0/random_bitstring_and_flexible_passw
 run on Ubuntu 24 LTS:   $ ./bin/Release/net8.0/linux-x64/random_bitstring_and_flexible_password_generator
 
 
-(a) install the .NET runtime:
-$ wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-$ ./dotnet-install.sh --version latest
-https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+Install .NET:
+$ sudo apt install dotnet8
 
 $ dotnet --list-runtimes
-  Microsoft.AspNetCore.App 8.0.4 [/usr/lib/dotnet/shared/Microsoft.AspNetCore.App]
-  Microsoft.NETCore.App 8.0.4 [/usr/lib/dotnet/shared/Microsoft.NETCore.App]
-  difference? AspNetCore <=> NETCore.App
-
-(b) install the .NET SDK:
-$ sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
+  Microsoft.AspNetCore.App 8.0.22 [/usr/lib/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 8.0.22 [/usr/lib/dotnet/shared/Microsoft.NETCore.App]
 $ dotnet --list-sdks
-8.0.104 [/usr/lib/dotnet/sdk]
+8.0.122 [/usr/lib/dotnet/sdk]
+$
 
 */
 
@@ -61,7 +56,7 @@ class Program
     int[] x = new int[END];  // arrays cannot be resized dynamically
 
     Random rand = new Random();
-    x[0] = rand.Next(1, m);
+    x[0] = rand.Next(1, m - 1);  // 2025-12-17
     // Console.WriteLine("x[0] = " + x[0]);  // for testing
 
     StringBuilder bits_x   = new StringBuilder(M1);
