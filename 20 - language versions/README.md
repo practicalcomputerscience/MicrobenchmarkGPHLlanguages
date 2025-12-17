@@ -11,7 +11,7 @@ programming language | versions | Bash command to retrieve versions
 Ada | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
 C | Homebrew clang version 21.1.7 | $ clang -v
 C# | Microsoft.AspNetCore.App 8.0.22 ... ; Microsoft.NETCore.App 8.0.22 ...; 8.0.122 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
-C3 | C3 Compiler Version:       0.7.1; ... ; Backends: LLVM; LLVM version: 17.0.6; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
+C3 | C3 Compiler Version:       0.7.8; ... ; Backends: LLVM; LLVM version: 19.1.7; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
 Chapel | chpl version 2.4.0; built with LLVM version 18.1.8; ... ; Copyright 2020-2025 Hewlett Packard Enterprise Development LP; Copyright 2004-2019 Cray Inc. (See LICENSE file for more details) | $ chpl --version
 Clojure | Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM | $ lein version
 Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
