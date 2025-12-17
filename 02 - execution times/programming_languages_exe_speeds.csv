@@ -1,8 +1,8 @@
 language;mean;std_dev;date
-C;0,009809;0,000160;xxxxxxxx
+C;0,0078372;0,0000580;2025-12-17
 Rust;0,010621;0,000156;xxxxxxxx
 Crystal;0,011636;0,000445;xxxxxxxx
-C3;0,019028;0,000127;xxxxxxxx
+C3;0,015786;0,000138;2025-12-17
 Go;0,020120;0,000251;xxxxxxxx
 Ada;0,018781;0.000101;2025-12-14
 V;0,023595;0,000242;xxxxxxxx
@@ -14,7 +14,7 @@ Swift;0,037442;0,000728;xxxxxxxx
 MLton Standard ML;0,06028;0,00231;xxxxxxxx
 Common Lisp;0,063953;0,000443;xxxxxxxx
 Roc;0,065474;0,000283;xxxxxxxx
-C#;0,06847;0,00580;xxxxxxxx
+C#;0,046873;0,000318;2025-12-17
 Inko;0,13525;0,00211;xxxxxxxx
 Chapel;0,24797;0,00122;xxxxxxxx
 Bigloo Scheme;0,03622;0,00133;xxxxxxxx
