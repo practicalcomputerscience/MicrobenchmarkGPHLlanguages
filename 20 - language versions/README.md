@@ -18,7 +18,7 @@ Common Lisp | SBCL 2.2.9.debian | $ sbcl --version
 Crystal | Crystal 1.18.2 [635ca37a6] (2025-10-21); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Gleam | gleam 1.13.0 | $ gleam -V
-Go | go version go1.24.1 linux/amd64 | $ go version
+Go | go version go1.25.5 linux/amd64 | $ go version
 Inko | inko 0.18.1 | $ inko --version
 Koka | Koka 3.1.2, 17:56:43 May 30 2024 (ghc release version) | $ koka --version
 Kotlin | info: kotlinc-jvm 2.1.21 (JRE 11.0.26+4) | $ $HOME/.sdkman/candidates/kotlin/current/bin/kotlinc -version
