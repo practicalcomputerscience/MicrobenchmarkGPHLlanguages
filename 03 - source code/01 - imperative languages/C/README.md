@@ -99,7 +99,7 @@ However, what I have done now for my official C program is:
 - using a more modern version of the clang compiler with (normal) version 21.1.7 instead of former version 17.0.0, and
 - using its execution speed result as my official one for the C program: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
 
-Because I also noticed that with clang version 21.1.7, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or version 14.2.0). It's now about 7.8 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
+Because I also noticed that with clang version 21.1.7, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or gcc version 14.2.0). It's now about 7.8 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
 
 <br/>
 
