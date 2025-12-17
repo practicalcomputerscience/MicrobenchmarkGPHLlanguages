@@ -1,7 +1,7 @@
 /'
 random_streams_for_perf_stats.bas
 
-2025-07-11
+2025-07-11; 2025-12-17
 
 build on Ubuntu 24 LTS: $ fbc ./random_streams_for_perf_stats.bas
 
@@ -39,7 +39,7 @@ const file_bits_hex = "random_bitstring.byte"
 dim x(0 to upper_limit) as integer
 
 randomize , 1  ' use C-rand() function
-x(0) = int(1 + rnd * m)
+x(0) = int(1 + rnd * (m - 1))  ' 2025-12-17
 ' print "x(0) = " & x(0)  ' for testing
 
 
