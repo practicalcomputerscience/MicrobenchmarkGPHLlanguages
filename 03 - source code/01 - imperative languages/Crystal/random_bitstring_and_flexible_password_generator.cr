@@ -1,6 +1,6 @@
 # random_bitstring_and_flexible_password_generator.cr
 #
-# 2025-06-01/02/06/18
+# 2025-06-01/02/06/18; 2025-12-17
 #
 # build on Ubuntu 24 LTS: $ crystal build random_bitstring_and_flexible_password_generator.cr --release
 #
@@ -22,7 +22,7 @@ FILE_BITS_HEX = "random_bitstring.byte"
 
 
 x = [] of Int32
-x << Random.rand(M)
+x << Random.rand(M-1) +1  # rand(): Generates a random integer which is greater than or equal to 0 and less than max; 2025-12-17
 # p! x  # for testing
 
 bits_x   = IO::Memory.new  # https://crystal-lang.org/reference/1.16/guides/performance.html
