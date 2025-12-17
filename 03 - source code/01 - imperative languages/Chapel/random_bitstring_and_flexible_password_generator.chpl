@@ -1,7 +1,7 @@
 /*
 random_bitstring_and_flexible_password_generator.chpl
 
-2025-06-05/06/18
+2025-06-05/06/18; 2025-12-17: see below
 
 build on Ubuntu 24 LTS: $ chpl random_bitstring_and_flexible_password_generator.chpl
         for production: $ chpl random_bitstring_and_flexible_password_generator.chpl --fast
@@ -10,10 +10,13 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 
 $ chpl --version
-chpl version 2.4.0
-  built with LLVM version 18.1.8
-...
-$
+chpl version 2.6.0
+  built with LLVM version 20.1.8
+  available LLVM targets: xcore, x86-64, x86, wasm64, wasm32, ve, systemz, spirv, spirv64, spirv32, sparcel, sparcv9, sparc, riscv64, riscv32, ppc64le, ppc64, ppc32le, ppc32, nvptx64, nvptx, msp430, mips64el, mips64, mipsel, mips, loongarch64, loongarch32, lanai, hexagon, bpfeb, bpfel, bpf, avr, thumbeb, thumb, armeb, arm, amdgcn, r600, aarch64_32, aarch64_be, aarch64, arm64_32, arm64
+Copyright 2020-2025 Hewlett Packard Enterprise Development LP
+Copyright 2004-2019 Cray Inc.
+(See LICENSE file for more details)
+$ 
 
 */
 
@@ -38,7 +41,7 @@ const FILE_BITS_HEX = "random_bitstring.byte";
 var x: [0..END] int;
 
 var randStream = new randomStream(int);
-x[0] = randStream.next(0,M-1);  // https://chapel-lang.org/docs/modules/standard/Random.html#random
+x[0] = randStream.next(1,M-1);  // https://chapel-lang.org/docs/modules/standard/Random.html#random; 2025-12-17
 // writeln(x[0]);  // for testing
 
 var bits_x:       string = "";
