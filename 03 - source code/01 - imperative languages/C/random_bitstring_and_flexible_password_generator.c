@@ -13,8 +13,13 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 makefile with tabs:
 
+all: random_bitstring_and_flexible_password_generator
 
+random_bitstring_and_flexible_password_generator: random_bitstring_and_flexible_password_generator.o
+	clang -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
 
+random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexible_password_generator.c
+	clang -O3 -c random_bitstring_and_flexible_password_generator.c
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 $ clang -v
