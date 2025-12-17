@@ -4,9 +4,9 @@ https://crystal-lang.org/
 
 <br/>
 
-I call Crystal "Compiled Ruby": this language can be **very fast**, even beating Go at my microbenchmark and for now: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+I call Crystal "Compiled Ruby": this language can be **very fast**: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
-Key for success here is using Crystal's _**IO::Memory**_ class (https://crystal-lang.org/api/1.17.1/IO/Memory.html) for fast string building:
+Key for success here is using Crystal's _**IO::Memory**_ class (https://crystal-lang.org/api/1.18.2/IO/Memory.html) for fast string building:
 
 ```
 ...
