@@ -1,9 +1,9 @@
 /*
 random_bitstring_and_flexible_password_generator.c3
 
-2025-05-30
+2025-05-30; 2025-12-17: see below
 
-build on Ubuntu 24 LTS: $ c3c compile -O3 random_bitstring_and_flexible_password_generator.c3
+build on Ubuntu 24 LTS: $ c3c compile -O3 random_bitstring_and_flexible_password_generator.c3 --max-stack-object-size 262144
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
@@ -12,7 +12,7 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 -O0  - Safe, no optimizations, emit debug info.
 -O1  - Safe, high optimization, emit debug info.
 -O2  - Unsafe, high optimization, emit debug info.
--O3  - Unsafe, high optimization, single module, emit debug info. <<<<<<< more stable exe times and smaller exe times ("wall clock")
+-O3  - Unsafe, high optimization, single module, emit debug info. <<<<<<< more stable exe times and lower exe times ("wall clock")
 -O4  - Unsafe, highest optimization, relaxed maths, single module, emit debug info, no panic messages.
 -O5  - Unsafe, highest optimization, fast maths, single module, emit debug info, no panic messages, no backtrace.
 -Os  - Unsafe, high optimization, small code, single module, no debug info, no panic messages.
@@ -55,7 +55,7 @@ fn int main()
 
   int[END] x;
 
-  x[0] = rand(M);  // Generate a random number between 0 and N
+  x[0] = rand(M-1) + 1;  // rand(): random number between 1 and M-1, both included; 2025-12-17
   // io::printfn("%d", x[0]);  // for testing: the n variants of the print functions will add a newline after printing
 
   char[M1] bits_x;

@@ -1,9 +1,9 @@
 /*
 random_streams_for_perf_stats.c3
 
-2025-05-31
+2025-05-31; 2025-12-17: see below
 
-build on Ubuntu 24 LTS: $ c3c compile -O3 random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3
+build on Ubuntu 24 LTS: $ c3c compile -O3 random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144
 
 run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats_c3
 
@@ -36,7 +36,7 @@ fn int main()
 
   int[END] x;
 
-  x[0] = rand(M);  // Generate a random number between 0 and N
+  x[0] = rand(M-1) + 1;  // rand(): random number between 1 and M-1, both included; 2025-12-17
   // io::printfn("%d", x[0]);  // for testing: the n variants of the print functions will add a newline after printing
 
   char[M1] bits_x;
