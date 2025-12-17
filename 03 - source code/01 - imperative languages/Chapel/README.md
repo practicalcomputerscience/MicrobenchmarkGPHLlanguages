@@ -14,7 +14,7 @@ Table of contents:
 
 ---
 
-### On parallel computing with Chapel
+## On parallel computing with Chapel
 
 Although Chapel still has it's rough edges (see for example [here](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/70%20-%20portability%20from%20Linux%20to%20Linux#other-omissions-from-above-list)), is still not big and still under development (lot's of "... is unstable and subject to change" or similar remarks in the manuals), this language seems to be a good candidate for parallel computing for me, next to [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go).
 
@@ -24,41 +24,17 @@ Let's see if this one will survive. [Mojo](https://github.com/practicalcomputers
 
 ---
 
-### Installation tips
+## Installation tips
 
-Chapel version 2.4.0 is built on LLVM version 18.1.8 (at least in my case).
-
-If a LLVM installation with version 18 has become missing, it can be (re-)installed like this: https://ubuntuhandbook.org/index.php/2023/09/how-to-install-clang-17-or-16-in-ubuntu-22-04-20-04/
-
-Apparently, this procedure also applies to other LLVM versions, like 17, 19, 20 and so on:
+[Chapel installation](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html) with:
 
 ```
-$ wget https://apt.llvm.org/llvm.sh
-$ chmod u+x llvm.sh
-$ sudo ./llvm.sh 18  # 18 for LLVM version 18
-$ sudo mkdir -p /etc/apt/keyrings  # dir /etc/apt/keyrings doesn't exist on my system
-$ sudo mv /etc/apt/trusted.gpg.d/apt.llvm.org.asc /etc/apt/keyrings/
-$ sudo nano /etc/apt/sources.list.d/archive_uri-http_apt_llvm_org_noble_*.list
+$ brew install chapel
 ```
 
-With the last command I edited original line:
+..works like a charm (in Ubuntu 24 LTS), and takes away a lot of potential hassle with LLVM and other supplementary installations.
 
-_deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
-
-into:
-
-_deb [arch=amd64 signed-by=/etc/apt/keyrings/apt.llvm.org.asc] http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main_
-
-Press keys Ctrl+S to save the changed file, and keys Ctrl+X to exit the nano editor.
-
-At last do:
-
-```
-$ sudo apt update
-$ clang-18 --version  # check installation
-```
-
-### String building with Chapel
+## String building with Chapel
 
 Like with the other programming languages, also with Chapel this question comes up with my microbenchmark program: does it have a string builder or similar concept?
 
@@ -128,14 +104,9 @@ while i < END {
 
 By the way: when experimenting with my Python program I came to the conclusion that looping over 16 assignments can be even slower; so I generally don't do it to not waste time on experiments like this.
 
-However and to my surprise, tactic #2 did not make a faster program in Chapel, maybe the only C-like language without a string builder concept where this tactic leads to an even slower solution:
+However and to my surprise, tactic #2 did not make a faster program in Chapel, maybe the only C-like language without a string builder concept where this tactic leads to an even slower solution.
 
-- naive string concatenation (#1): ~244 milliseconds execution time
-- with memory preallocation (#2): ~250 milliseconds execution time
-
-The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest with around 258 milliseconds.
-
-However, it looks a little bit suspicious that three very different tactics for string building lead to so close execution times.
+The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest.
 
 <br/>
 
