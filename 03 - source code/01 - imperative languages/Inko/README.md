@@ -2,6 +2,8 @@
 
 https://inko-lang.org/
 
+https://github.com/inko-lang/inko
+
 ---
 
 ## Installation tips
