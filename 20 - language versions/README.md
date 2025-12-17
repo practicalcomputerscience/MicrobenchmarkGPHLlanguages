@@ -1,8 +1,11 @@
 # Language versions
 
-A word of warning: when I've tested the last language, the version of the first language probably has already become outdated.
+> [!WARNING]
+> When I've tested the last language, the version of the first language probably has already become outdated.
 
-Usually, I've no intention to re-test a language when an update has been published. But I may do so, when I feel the need for further tests or potential improvements. This has already happened at least once.
+Usually, I've no intention to re-test a language when an update has been published. But I may do so, when I feel the need for further tests or potential improvements.
+
+This has already happened massively when I corrected a **logical error** in most language implementations in December 2025, that is constraining the initial and random seed value of the pseudo-random number generator to a range of 1 to m - 1, both inclusively, with m being 65521. If not, that is also allowing values 0 and 65521, the ouput of this number generator could be only **zero**.
 
 <br/>
 
@@ -30,7 +33,7 @@ Mojo | Mojo 0.26.1.0.dev2025121217 (3e295ef6) | $ pixi run mojo --version
 OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
-Picat | Picat version 3.9 | picat --version
+Picat | Picat version 3.9 | $ picat --version
 PowerShell | PowerShell 7.4.5 | $ pwsh -v
 Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
