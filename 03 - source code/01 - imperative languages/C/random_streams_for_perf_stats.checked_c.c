@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.checked_c.c
 
-2025-12-01
+2025-12-01; 2025-12-17: see below
 
 base version for Checked C of C program: random_streams_for_perf_stats.c
 
@@ -106,7 +106,8 @@ int main()
 
   srand(time(NULL));      // Initialize RNG seed.
   // printf("%i\n", rand()); // Make one draw.
-  x[0] = rand() % (m);    //Generate a random number between 0 and N
+
+  x[0] = rand() % (m-1) + 1;  // rand(): random number between 0 and RAND_MAX, both included; 2025-12-17
   // printf("x[0] = %d\n", x[0]);  // for testing
 
   char bits_x _Nt_checked[M1];
@@ -147,7 +148,7 @@ int main()
 
     // sprintf(bits_hex_str, "%04x", x[i]);
     // https://en.cppreference.com/w/c/io/fprintf
-    integer_to_hex_string(x[i], bits_hex_str);  // test for speed: 
+    integer_to_hex_string(x[i], bits_hex_str);  // test for speed:
     // printf("%s\n", bits_hex_str);  // for testing
 
     byte_nbr = (i-1)*4;
