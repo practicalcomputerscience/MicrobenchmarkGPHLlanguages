@@ -34,6 +34,14 @@ Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "
 
 <br/>
 
+In case that command _$ gcc ..._ isn't working (in Ubuntu), at least version 13 can be found here and made visible with this alias:
+
+```
+alias gcc="/usr/bin/gcc-13"
+```
+
+<br/>
+
 ## Checked C
 
 When I tumbled accidentally, like so often, into [Checked C](https://www.checkedc.org/), I gave it a try.
@@ -70,7 +78,7 @@ With this [solution](https://github.com/practicalcomputerscience/MicrobenchmarkG
 $ ~/scripts/Checked_C/CheckedC-Clang-12.0.0git-Linux/bin/clang ./random_streams_for_perf_stats.checked_c.c -O3 -o random_streams_for_perf_stats.checked_c
 ```
 
-..dropped from around 10 milliseconds (with old command _gcc -Wall -Ofast -faggressive-loop-optimizations_) to around 4.7 milliseconds!
+..dropped from around 8.2 milliseconds (with old command _gcc -Wall -Ofast -faggressive-loop-optimizations_) to around 4.7 milliseconds!
 
 Be aware that Checked C brings along its own version of the clang compiler: https://github.com/checkedc/checkedc-clang/releases/tag/CheckedC-Clang-12.0.2
 
@@ -91,7 +99,7 @@ However, what I have done now for my official C program is:
 - using a more modern version of the clang compiler with (normal) version 21.1.7 instead of former version 17.0.0, and
 - using its execution speed result as my official one for the C program: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
 
-Because I also noticed that with clang version 21.1.7, I'm now able to compile a faster executable than with gcc version 13.3.0. It's now about 78.4 milliseconds versus about 10.0 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
+Because I also noticed that with clang version 21.1.7, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or version 14.2.0). It's now about 7.8 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
 
 <br/>
 
