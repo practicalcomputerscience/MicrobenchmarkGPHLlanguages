@@ -1,8 +1,9 @@
 # random_bitstring_and_flexible_password_generator.mojo
 #
-# 2025-05-05/06/07/21/22, 2025-06-18, 2025-12-13
+# 2025-05-05/06/07/21/22, 2025-06-18, 2025-12-13, 2025-12-18: see below
 #
-# build on Ubuntu 24 LTS: $ cd <project dir>
+# build on Ubuntu 24 LTS: $ mkdir password_encryption  # this is just a project directory
+#                         $ cd password_encryption  
 #                         $ pixi shell  # <<<<<<<<<<<<<<<<<<<<<<<<
 #                         $ mojo build random_bitstring_and_flexible_password_generator.mojo
 #                         $ exit
@@ -18,9 +19,11 @@
 #
 #
 # valgrind, 2025-05-22 --> Illegal instruction (core dumped): how to fix??
-#                      --> solution: not using ***char_set*** in this program, but there are still bytes left on the heap at exit
+#                      --> solution: not using ***char_set*** in this program,
+#                                    but there are still bytes left on the heap at exit
 #
-# $ mojo --version
+#
+# $ mojo --version  # do this only in the Pixi shell!!
 # Mojo 0.26.1.0.dev2025121217 (3e295ef6)
 # $
 
@@ -50,8 +53,7 @@ def main():  # def for error handling below at user inputs: https://docs.modular
     var bits_hex:   String = ""  # needed for program ENT - A Pseudorandom Number Sequence Test Program
 
     seed()
-    # x[0] = UInt32(random_ui64(0, m))
-    x.append(UInt32(random_ui64(0, m)))
+    x.append(UInt32(random_ui64(1, m - 1)))  # min and max are inclusive
 
     print("\ngenerating a random bit stream...")
     for i in range(1,END):

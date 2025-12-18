@@ -1,13 +1,19 @@
 # random_streams_for_perf_stats.mojo
 #
-# 2025-05-31, 2025-12-13
+# 2025-05-31, 2025-12-13, 2025-12-18: see below
 #
-# build on Ubuntu 24 LTS: $ cd password_encryption
+# build on Ubuntu 24 LTS: $ mkdir password_encryption  # this is just a project directory
+#                         $ cd password_encryption  
 #                         $ pixi shell
 #                         $ mojo build random_streams_for_perf_stats.mojo
 #                         $ exit
 #
-# run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats_mojo
+# run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats
+#
+#
+# $ mojo --version  # do this only in the Pixi shell!!
+# Mojo 0.26.1.0.dev2025121217 (3e295ef6)
+# $
 
 
 from random import random_ui64, seed
@@ -33,7 +39,7 @@ def main():  # def for error handling below at user inputs: https://docs.modular
     var bits_hex:   String = ""  # needed for program ENT - A Pseudorandom Number Sequence Test Program
 
     seed()
-    x.append(UInt32(random_ui64(0, m)))
+    x.append(UInt32(random_ui64(1, m - 1)))  # min and max are inclusive
 
     print("\ngenerating a random bit stream...")
     for i in range(1,END):
