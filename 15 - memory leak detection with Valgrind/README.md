@@ -95,7 +95,7 @@ Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | TBD with v.3.27.0
 Go | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
 Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
-Koka | program doesn't finish | -- | no | TBD with v.3.27.0
+Koka | program doesn't finish | -- | no | 2025-12-18
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | TBD with v.3.27.0
 Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no | TBD with v.3.27.0
 OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no | TBD with v.3.27.0
