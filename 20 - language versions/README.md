@@ -47,7 +47,7 @@ Scheme, Gambit | v4.9.6 20250310181758 x86_64-pc-linux-gnu "./configure '--enabl
 Scheme, Racket | Welcome to Racket v8.17 [cs]. | $ racket --version
 Standard ML | MLton 20241230 | $ mlton
 Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
-V | V 0.4.10 ddfedc7 | $ v version
+V | V 0.4.12 26305ec | $ v version
 wren | wren 0.4.0 | $ wren_cli --version
 Zig | 0.14.1 | $ zig version
 
