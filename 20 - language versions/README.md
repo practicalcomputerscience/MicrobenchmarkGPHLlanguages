@@ -46,7 +46,7 @@ Scheme, CHICKEN | CHICKEN; (c) 2008-2022, The CHICKEN Team; (c) 2000-2007, Felix
 Scheme, Gambit | v4.9.6 20250310181758 x86_64-pc-linux-gnu "./configure '--enable-single-host'" | $ gsc -v
 Scheme, Racket | Welcome to Racket v8.17 [cs]. | $ racket --version
 Standard ML | MLton 20241230 | $ mlton
-Swift | Swift version 6.1 (swift-6.1-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
+Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
 V | V 0.4.10 ddfedc7 | $ v version
 wren | wren 0.4.0 | $ wren_cli --version
 Zig | 0.14.1 | $ zig version
