@@ -182,7 +182,7 @@ let c    = 0
 
 ### On other languages
 
-Not all executable programs are finishing and have to be manually interupted by pressing CTRL+C keys. The **Chapel** version is one example:
+Not all executable programs are finishing and have to be manually interrupted by pressing CTRL+C keys. The **Chapel** version is one example:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -279,7 +279,7 @@ $
 
 ### Compiling the source code in a special way to get the executable through Valgrind
 
-The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version; see from here: [Compilation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#compilation-tips)
+The [Zig program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig) shows another potential impact of Valgrind on a program version; see from chapter: [Compilation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#compilation-tips)
 
 <br/>
 
