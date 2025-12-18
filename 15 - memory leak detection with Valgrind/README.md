@@ -231,7 +231,7 @@ $
 
 This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above.
 
-With the other tested Scheme dialects, I only implemented the "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks:
+With the other tested Scheme dialects, I only implemented the "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks when exiting:
 
 - Bigloo: _still reachable: 2,512 bytes in 2 blocks_
 - CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
