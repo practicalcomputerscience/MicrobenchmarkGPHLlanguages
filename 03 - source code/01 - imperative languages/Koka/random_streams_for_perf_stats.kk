@@ -4,10 +4,7 @@
 
 test on Ubuntu 24 LTS: OK, but slow!
 
-build on Ubuntu 24 LTS: $ koka -o random_streams_for_perf_stats random_streams_for_perf_stats.kk
-                        $ chmod 755 random_streams_for_perf_stats
-                        $
-                        $ koka -O2 -o random_streams_for_perf_stats random_streams_for_perf_stats.kk
+build on Ubuntu 24 LTS: $ koka -O2 -o random_streams_for_perf_stats random_streams_for_perf_stats.kk
 
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
                         $ time ./random_streams_for_perf_stats with -O2: real	0m3,221s <<<<<<<<<<<<<<<<<<<<<<<<<
@@ -18,7 +15,8 @@ https://pldb.io/concepts/koka.html
 
 
 $ koka --version
-Koka 3.1.2, 17:56:43 May 30 2024 (ghc release version)
+Koka 3.2.2, 20:30:51 Jul 22 2025 (ghc release version)
+...
 $
 
 */
@@ -44,7 +42,7 @@ fun main()  // fun: named function
   val file_bits_x   = "random_bitstring.bin"
   val file_bits_hex = "random_bitstring.byte"
 
-  val x0 = srandom-int32-range(1.int32, m.int32).int
+  val x0 = srandom-int32-range(1.int32, m.int32).int  // strong random int32 uniformly distributed in the range [lo,hi).
   // println("\nx0 = " ++ x0.show)  // for testing
 
   // x: for implementing the OCaml solution with a Mutable array --> Todo:
