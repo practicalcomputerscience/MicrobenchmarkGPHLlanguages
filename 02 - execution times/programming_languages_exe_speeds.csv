@@ -1,12 +1,12 @@
 language;mean;std_dev;date
 C;0,0078372;0,0000580;2025-12-17
-Rust;0,010621;0,000156;xxxxxxxx
+Rust;0,0086204;0,0000635;2025-12-17
 Crystal;0,0076816;0,000957;2025-12-17
 C3;0,015786;0,000138;2025-12-17
 Go;0,015088;0,000118;2025-12-17
 Ada;0,018781;0.000101;2025-12-14
 V;0,023595;0,000242;xxxxxxxx
-Mojo;0,022881;0,000190;xxxxxxxx
+Mojo;0,022881;0,000190;2025-12-13
 OCaml;0,022674;0,000904;xxxxxxxx
 FreeBASIC;0,017189;0,000682;2025-12-17
 Zig;0,036571;0,000348;xxxxxxxx
@@ -25,7 +25,7 @@ Perl 5;0,05964;0,00104;xxxxxxxx
 Scala JVM uberjar;0,19436;0,00261;xxxxxxxx
 Kotlin JVM uberjar;0,106915;0,000808;xxxxxxxx
 Clojure JVM uberjar;0,61368;0,00406;xxxxxxxx
-Gleam (Erlang VM);0,244;0,0;2025-12-13
+Gleam (Erlang VM);0,232;0,0;2025-12-13
 Mercury;0,07794;0,00161;xxxxxxxx
 SWI Prolog;0,21396;0,00211;xxxxxxxx
 Picat (B-Prolog);0,240;0,004;xxxxxxxx
