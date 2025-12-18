@@ -102,7 +102,7 @@ OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
 Prolog, SWI | 14,030,993 bytes in 169,009 blocks | 4,933,940 bytes in 39,260 blocks | no
 Scheme, Racket | Valgrind is doing nothing | -- | no
 Roc | 0 bytes in 0 blocks | -- | yes <<<<<<
-Rust | 8,192 bytes in 1 blocks | 8,192 bytes in 1 blockss | no
+Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no
 Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<<
 Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no
 V | 0 bytes in 0 blocks | -- | yes <<<<<<
@@ -116,17 +116,17 @@ So, my main focus was on the possibly best test outcome, that is: _All heap bloc
 $ valgrind ./random_bitstring_and_flexible_password_generator
 ...
 
-Your password of 12 characters is: SMm`=URaYA~]
-==6207== 
-==6207== HEAP SUMMARY:
-==6207==     in use at exit: 0 bytes in 0 blocks
-==6207==   total heap usage: 6 allocs, 6 frees, 11,184 bytes allocated
-==6207== 
-==6207== All heap blocks were freed -- no leaks are possible
-==6207== 
-==6207== Use --track-origins=yes to see where uninitialised values come from
-==6207== For lists of detected and suppressed errors, rerun with: -s
-==6207== ERROR SUMMARY: 36 errors from 4 contexts (suppressed: 0 from 0)
+Your password of 12 characters is: }!033|JOt2T_
+==23336== 
+==23336== HEAP SUMMARY:
+==23336==     in use at exit: 0 bytes in 0 blocks
+==23336==   total heap usage: 6 allocs, 6 frees, 11,184 bytes allocated
+==23336== 
+==23336== All heap blocks were freed -- no leaks are possible
+==23336== 
+==23336== Use --track-origins=yes to see where uninitialised values come from
+==23336== For lists of detected and suppressed errors, rerun with: -s
+==23336== ERROR SUMMARY: 25 errors from 3 contexts (suppressed: 0 from 0)
 $
 ```
 
@@ -144,7 +144,7 @@ Only looking by the table above, I would implement a security related program on
 
 #### Rust
 
-From point of view of Valgrind, even Rust is potentially not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,192 bytes in 1 blocks_. 
+From point of view of Valgrind, even Rust is potentially not a (totally) "memory safe" language. After the Rust based executable exited, there were _still reachable: 8,648 bytes in 2 blocks_. 
 
 In my [Rust program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_bitstring_and_flexible_password_generator.rs), it's this line of source code which causes the memory leak:
 
