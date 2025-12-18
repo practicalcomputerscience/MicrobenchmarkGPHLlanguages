@@ -23,7 +23,7 @@ FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x8
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.25.5 linux/amd64 | $ go version
 Inko | inko 0.19.1 | $ inko --version
-Koka | Koka 3.1.2, 17:56:43 May 30 2024 (ghc release version) | $ koka --version
+Koka | Koka 3.2.2, 20:30:51 Jul 22 2025 (ghc release version) | $ koka --version
 Kotlin | info: kotlinc-jvm 2.1.21 (JRE 11.0.26+4) | $ $HOME/.sdkman/candidates/kotlin/current/bin/kotlinc -version
 Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 LuaJIT | LuaJIT 2.1.1753364724 -- Copyright (C) 2005-2025 Mike Pall. https://luajit.org/ | $ luajit -v
