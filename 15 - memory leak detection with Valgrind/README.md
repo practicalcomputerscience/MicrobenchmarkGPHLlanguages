@@ -28,7 +28,7 @@ My installed version is:
 
 ```
 $ valgrind --version
-valgrind-3.25.1
+valgrind-3.27.0.GIT
 $
 ```
 
@@ -36,43 +36,43 @@ $
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
-==5443== Memcheck, a memory error detector
-==5443== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==5443== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
-==5443== Command: ./random_bitstring_and_flexible_password_generator
-==5443== 
+==23314== Memcheck, a memory error detector
+==23314== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==23314== Using Valgrind-3.27.0.GIT and LibVEX; rerun with -h for copyright info
+==23314== Command: ./random_bitstring_and_flexible_password_generator
+==23314==
 ...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
 
-Password of 12 printable chars OK? 'y' or another integer number >= 8: ==5443== Warning: client switching stacks?  SP change: 0x1ffeffe2d0 --> 0x594efb8
-==5443==          to suppress, use: --max-stackframe=137328522008 or greater
-==5443== Warning: client switching stacks?  SP change: 0x594e3f0 --> 0x614efb8
-==5443==          to suppress, use: --max-stackframe=8391624 or greater
-==5443== Warning: client switching stacks?  SP change: 0x614e210 --> 0x594e3f0
-==5443==          to suppress, use: --max-stackframe=8388128 or greater
-==5443==          further instances of this message will not be shown.
+Password of 12 printable chars OK? 'y' or another integer number >= 8: ==23314== Warning: client switching stacks?  SP change: 0x1ffeffeae0 --> 0x5957fb8
+==23314==          to suppress, use: --max-stackframe=137328487208 or greater
+==23314== Warning: client switching stacks?  SP change: 0x5957410 --> 0x6157fb8
+==23314==          to suppress, use: --max-stackframe=8391592 or greater
+==23314== Warning: client switching stacks?  SP change: 0x61572a0 --> 0x5957410
+==23314==          to suppress, use: --max-stackframe=8388240 or greater
+==23314==          further instances of this message will not be shown.
 y
 
 Do you want me to use special characters like .;,+*... ? 'y' or 'n': y
 
-Your password of 12 characters is: JEKg&T7qK5v.
-==5443== 
-==5443== HEAP SUMMARY:
-==5443==     in use at exit: 8,192 bytes in 1 blocks
-==5443==   total heap usage: 15 allocs, 14 frees, 12,336 bytes allocated
-==5443== 
-==5443== LEAK SUMMARY:
-==5443==    definitely lost: 8,192 bytes in 1 blocks
-==5443==    indirectly lost: 0 bytes in 0 blocks
-==5443==      possibly lost: 0 bytes in 0 blocks
-==5443==    still reachable: 0 bytes in 0 blocks
-==5443==         suppressed: 0 bytes in 0 blocks
-==5443== Rerun with --leak-check=full to see details of leaked memory
-==5443== 
-==5443== Use --track-origins=yes to see where uninitialised values come from
-==5443== For lists of detected and suppressed errors, rerun with: -s
-==5443== ERROR SUMMARY: 674 errors from 36 contexts (suppressed: 0 from 0)
+Your password of 12 characters is: ^0JSm*SO;|RX
+==23314==
+==23314== HEAP SUMMARY:
+==23314==     in use at exit: 8,192 bytes in 1 blocks
+==23314==   total heap usage: 15 allocs, 14 frees, 12,336 bytes allocated
+==23314==
+==23314== LEAK SUMMARY:
+==23314==    definitely lost: 8,192 bytes in 1 blocks
+==23314==    indirectly lost: 0 bytes in 0 blocks
+==23314==      possibly lost: 0 bytes in 0 blocks
+==23314==    still reachable: 0 bytes in 0 blocks
+==23314==         suppressed: 0 bytes in 0 blocks
+==23314== Rerun with --leak-check=full to see details of leaked memory
+==23314==
+==23314== Use --track-origins=yes to see where uninitialised values come from
+==23314== For lists of detected and suppressed errors, rerun with: -s
+==23314== ERROR SUMMARY: 695 errors from 38 contexts (suppressed: 0 from 0)
 $ 
 ```
 
