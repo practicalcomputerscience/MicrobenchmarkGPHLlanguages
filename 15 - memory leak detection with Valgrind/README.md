@@ -84,29 +84,29 @@ Another, maybe overlooked fact: I could repeat all test results as far as I have
 
 ## Summaries table
 
-programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ?
---- | --- | --- | ---
-Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no
-C | 0 bytes in 0 blocks | -- | yes <<<<<<
-C3 | 0 bytes in 0 blocks | -- | yes <<<<<<
-Chapel | program doesn't finish | -- | no
-Common Lisp | 1,538,080 bytes in 17 blocks | 1,275,640 bytes in 15 blocks | no
-Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no
-FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no
-Go | 0 bytes in 0 blocks | -- | yes <<<<<<
-Inko | Segmentation fault (core dumped) | -- | no
-Koka | program doesn't finish | -- | no
-Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no
-Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no
-OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no
-Prolog, SWI | 14,030,993 bytes in 169,009 blocks | 4,933,940 bytes in 39,260 blocks | no
-Scheme, Racket | Valgrind is doing nothing | -- | no
-Roc | 0 bytes in 0 blocks | -- | yes <<<<<<
-Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no
-Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<<
-Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no
-V | 0 bytes in 0 blocks | -- | yes <<<<<<
-Zig | 0 bytes in 0 blocks | -- | yes <<<<<<
+programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ? | test date
+--- | --- | --- | --- | ---
+Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | TBD with v.3.27.0
+C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2025-12-18
+C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
+Chapel | program doesn't finish | -- | no | 2025-12-18
+Common Lisp | 1,538,080 bytes in 17 blocks | 1,275,640 bytes in 15 blocks | no | TBD with v.3.27.0
+Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
+FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | TBD with v.3.27.0
+Go | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
+Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
+Koka | program doesn't finish | -- | no | TBD with v.3.27.0
+Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | TBD with v.3.27.0
+Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no | TBD with v.3.27.0
+OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no | TBD with v.3.27.0
+Prolog, SWI | 14,030,993 bytes in 169,009 blocks | 4,933,940 bytes in 39,260 blocks | no | TBD with v.3.27.0
+Scheme, Racket | Valgrind is doing nothing | -- | no | TBD with v.3.27.0
+Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
+Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2025-12-18
+Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
+Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no | TBD with v.3.27.0
+V | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
+Zig | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
 
 <br/>
 
