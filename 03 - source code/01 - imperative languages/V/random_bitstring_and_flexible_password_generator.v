@@ -1,7 +1,7 @@
 /*
 random_bitstring_and_flexible_password_generator.v
 
-2025-05-20/21/31
+2025-05-20/21/31; 2025-12-18: see below
 
 build on Ubuntu 24 LTS: $ v random_bitstring_and_flexible_password_generator.v
   build for production: $ v -prod random_bitstring_and_flexible_password_generator.v
@@ -72,7 +72,7 @@ fn main() {
   // x[0] := ... is not working in V!
   // !!you cannot **update** an individual array element, be it a fixed size array or not!! => this smells like functional programming
   // https://modules.vlang.io/rand.html#PRNG.u32n
-  x << int(rand.u32n(u32(m))!)
+  x << int(rand.u32n(u32(m-1))!) + 1  // returns a uniformly distributed pseudorandom 32-bit unsigned positive u32 in range [0, max); 2025-12-18
 
   println("\ngenerating a random bit stream...")
   for i := 1; i < upper_limit; i++ {
