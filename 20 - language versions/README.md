@@ -49,7 +49,7 @@ Standard ML | MLton 20241230 | $ mlton
 Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
 V | V 0.4.12 26305ec | $ v version
 wren | wren 0.4.0 | $ wren_cli --version
-Zig | 0.14.1 | $ zig version
+Zig | 0.15.2 | $ zig version
 
 <br/>
 
