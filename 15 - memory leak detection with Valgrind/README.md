@@ -130,7 +130,7 @@ Your password of 12 characters is: }!033|JOt2T_
 $
 ```
 
-Only looking by the table above, I would implement a security related program only with these programming languages (at the moment):
+Only looking by the table above, I would implement a security related program only with these programming languages:
 
 - C
 - C3
@@ -186,18 +186,17 @@ Not all executable programs are finishing and have to be manually interupted by 
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
-==6129== Memcheck, a memory error detector
-==6129== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==6129== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
-==6129== Command: ./random_bitstring_and_flexible_password_generator
-==6129== 
-hwloc x86 backend cannot work under Valgrind, disabling.
-May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
-and reloading them under Valgrind with HWLOC_CPUID_PATH.
+==23385== Memcheck, a memory error detector
+==23385== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==23385== Using Valgrind-3.27.0.GIT and LibVEX; rerun with -h for copyright info
+==23385== Command: ./random_bitstring_and_flexible_password_generator
+==23385==
+==23385== Warning: client switching stacks?  SP change: 0x6d743b8 --> 0x7c00f78
+==23385==          to suppress, use: --max-stackframe=15256512 or greater
 ...
 ^C
-==6129==
-==6129== Process terminating with default action of signal 2 (SIGINT)
+==23385==
+==23385== Process terminating with default action of signal 2 (SIGINT)
 ...
 $
 ```
@@ -265,12 +264,12 @@ So, variable _char_set_ is not in use in the Mojo program anymore.
 I didn't try to re-write the [Inko program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/random_bitstring_and_flexible_password_generator.inko) to see if I can make the _Segmentation fault (core dumped)_ go away:
 
 ```
-$ valgrind ./random_bitstring_and_flexible_password_generator
-==5800== Memcheck, a memory error detector
-==5800== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==5800== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
-==5800== Command: ./random_bitstring_and_flexible_password_generator
-==5800== 
+$ valgrind ./build/release/random_bitstring_and_flexible_password_generator
+==23373== Memcheck, a memory error detector
+==23373== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==23373== Using Valgrind-3.27.0.GIT and LibVEX; rerun with -h for copyright info
+==23373== Command: ./build/release/random_bitstring_and_flexible_password_generator
+==23373==
 ...
 Segmentation fault (core dumped)
 $
