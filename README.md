@@ -456,7 +456,7 @@ See from here at: [Old computer programming languages learning new tricks](https
 
 My testing environment is this as of 2025-10-19:
 
-- Operating system (OS): Ubuntu 24 LTS or in long with _$ uname -a_: _Linux ... 6.8.0-85-generic #85-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 18 15:26:59 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux_
+- Operating system (OS): Ubuntu 24 LTS or in long with command _$ cat /etc/os-release_: _PRETTY_NAME="Ubuntu 24.04.3 LTS"_ ...
 - Settings: Power: Power Mode set to "Performance"
 
 My (older) hardware from 2022 is always this:
