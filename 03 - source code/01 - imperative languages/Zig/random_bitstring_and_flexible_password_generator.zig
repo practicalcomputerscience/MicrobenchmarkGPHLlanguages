@@ -1,8 +1,9 @@
 // random_bitstring_and_flexible_password_generator.zig
 //
 // 2025-05-14/15/16/22, 2025-06-01, 2025-07-22: fixing error handling when writing to files without a try-catch construct
+// 2025-12-19: see below
 //
-// build on Ubuntu 24 LTS: $ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f
+// build on Ubuntu 24 LTS: $ zig build-exe random_bitstring_and_flexible_password_generator.zig -mcpu=native-avx512f -O ReleaseFast
 //                           switch -mcpu=native-avx512f is absolutely needed at the test system,
 //                           otherwise and even with an "empty" program, running valgrind would crash immediately!
 //                           $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -10,14 +11,8 @@
 // run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 //
 // $ zig version
-// 0.14.0
+// 0.15.2
 // $
-//
-//
-// lessons:
-//   1) "var bits_x: [M1]u8 = undefined;" is not faster than "var bits_x = std.ArrayList(u8).init(allocator);" !!
-//   2) experiments on std.heap. ... brought no exe speed improvement: https://zig.guide/standard-library/allocators/
-//   3) tests with: zig build-exe -Doptimize=ReleaseFast -fno-single-threaded switches <... .zig>: no faster executables!
 
 
 const std = @import("std");
@@ -66,41 +61,23 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
     // bringing seed/u64 into usize with maximum value m: type casting
     //   https://zig.guide/language-basics/floats/
-    const seed2 = @as(f32, @floatFromInt(seed)) / @as(f32, @floatFromInt(std.math.maxInt(u64))) * @as(f32, @floatFromInt(m));
+    // 2025-12-19:
+    const seed2 = @as(f32, @floatFromInt(seed)) / @as(f32, @floatFromInt(std.math.maxInt(u64))) * @as(f32, @floatFromInt(m-1)) + @as(f32, @floatFromInt(1));
+
     x[0] = @intFromFloat(seed2);
     // std.debug.print("x[0] = {d}\n", .{x[0]});  // for testing
 
     var buf16: [16]u8 = undefined;  // for several use cases in this program to hold a "string" of 16 "bits"
-    var buf99: [99]u8 = undefined;  // for several use cases in this program to hold a "string" of 99 characters
+    var buf99: [99]u8 = undefined;  // for holding a "string" of 99 characters as user input from the keyboard until newline
 
 
     const allocator = std.heap.page_allocator;  // for several use cases in this program, not just here
 
-    // this even seems slower:
-    // var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    // const allocator = gpa.allocator();
-    // defer {
-    //     const deinit_status = gpa.deinit();
-    //     //fail test; can't try in defer as defer is executed after we return
-    //     if (deinit_status == .leak) expect(false) catch @panic("TEST FAIL");
-    // }
+    var bits_x:   std.ArrayList(u8) = .empty;  // 2025-12-19
+    defer bits_x.deinit(allocator);            // 2025-12-19
+    var bits_hex: std.ArrayList(u8) = .empty;  // 2025-12-19
+    defer bits_hex.deinit(allocator);          // 2025-12-19
 
-    // not faster either:
-    // var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
-    // defer arena.deinit();
-    // const allocator = arena.allocator();
-
-    // not faster either:
-    // var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    // const allocator = gpa.allocator();
-    // https://www.openmymind.net/learning_zig/heap_memory/
-    //
-    // build with: $ ... -lc to link with libc
-    // const allocator = std.heap.c_allocator;  // for several use cases in this program, not just here
-    // => not faster than: const allocator = std.heap.page_allocator;
-
-    var bits_x = std.ArrayList(u8).init(allocator);
-    var bits_hex = std.ArrayList(u8).init(allocator);
 
     std.debug.print("\ngenerating a random bit stream...\n", .{});
     var i: usize = 1;
@@ -114,11 +91,14 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
         // std.debug.print("@typeName(bits_x_str) = {s}\n", .{@typeName(@TypeOf(bits_x_str))}); // for testing
         // https://ziggit.dev/t/how-typeof-chooses-the-resulting-type-when-there-are-more-than-one-arguments/3265
         // std.debug.print("bits_x_str = {s}\n", .{bits_x_str});  // for testing
-        try bits_x.appendSlice(bits_x_str);
+
+        try bits_x.appendSlice(allocator, bits_x_str);  // 2025-12-19
+
 
         const bits_hex_str = try std.fmt.bufPrint(&buf16, "{x:0>4}", .{x[i]});  // with padding: a544 --> 2 bytes; type: []u8
         // std.debug.print("bits_hex_str = {s}\n", .{bits_hex_str});  // for testing
-        try bits_hex.appendSlice(bits_hex_str);
+
+        try bits_hex.appendSlice(allocator, bits_hex_str);  // 2025-12-19
 
     }
     // std.debug.print("\nbits_x = {s}\n", .{bits_x.items});  // for testing
@@ -163,60 +143,67 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
     // make a password of N_CHAR printable chars: user input requested here
     var N_CHAR: i32 = 12;
     var answer: bool = false;
-    const stdin = std.io.getStdIn().reader();
+    // const stdin = std.io.getStdIn().reader();  // for version 0.14
+
+    var stdin_reader = std.fs.File.stdin().reader(&buf99);  // 2025-12-19
+    const stdin = &stdin_reader.interface;                  // 2025-12-19
+    // see: https://stackoverflow.com/questions/62018241/current-way-to-get-user-input
 
     while (!answer) {
         N_CHAR = 12;
-        const q1_str = try std.fmt.bufPrint(&buf99, "{}", .{N_CHAR});
+        const q1_str = try std.fmt.bufPrint(&buf16, "{}", .{N_CHAR});
         std.debug.print("\nPassword of {s} printable chars OK? 'y' or another integer number >= 8: ", .{q1_str});
 
-        if (try stdin.readUntilDelimiterOrEof(buf99[0..], '\n')) |answer_str| {
-            // std.debug.print("\nanswer_str = {s}", .{answer_str});  // for testing
-            if ( std.mem.eql(u8, answer_str, "y")) {
-                answer = true;
-            } else {
-                // const int_input = try std.fmt.parseInt(i32, answer_str, 10);  // this crashes on inputs like: 6.6, sadkjg, ...
-                // https://github.com/ziglang/zig/blob/0.6.0/test/standalone/guess_number/main.zig
-                const int_input = std.fmt.parseInt(i32, answer_str, 10) catch {
-                    std.debug.print("enter an integer number >= 8 or 'y'\n", .{});
-                    continue;  // this is the trick here!
-                };
+        const answer_str = try stdin.takeDelimiterExclusive('\n');  // 2025-12-19
+        // std.debug.print("\nanswer_str = {s}", .{answer_str});  // for testing
+        stdin.tossBuffered();  // essential: "clear" this buffer!stdin.tossBuffered();  // essential: "clear" this buffer!
 
-                // std.debug.print("\nnumber = {d}\n", .{int_input});  // for testing
-                N_CHAR = int_input;
-                if (N_CHAR < 8) {
-                    std.debug.print("enter an integer number >= 8 or 'y'\n", .{});
-                } else {
-                    answer = true;
-                }
-            }
+        if ( std.mem.eql(u8, answer_str, "y")) {
+            answer = true;
         } else {
-           std.debug.print("enter an integer number >= 8 or 'y'\n", .{});
+            // const int_input = try std.fmt.parseInt(i32, answer_str, 10);  // this crashes on inputs like: 6.6, sadkjg, ...
+            // https://github.com/ziglang/zig/blob/0.6.0/test/standalone/guess_number/main.zig
+            const int_input = std.fmt.parseInt(i32, answer_str, 10) catch {
+                std.debug.print("enter an integer number >= 8 or 'y'\n", .{});
+                continue;  // this is the trick here!
+            };
+
+            // std.debug.print("\nnumber = {d}\n", .{int_input});  // for testing
+            N_CHAR = int_input;
+            if (N_CHAR < 8) {
+                std.debug.print("enter an integer number >= 8 or 'y'\n", .{});
+            } else {
+                answer = true;
+            }
         }
     }
     // std.debug.print("\nN_CHAR ={d}---\n", .{N_CHAR});  // for testing
+
 
     var WITH_SPECIAL_CHARS = true;
     answer = false;
     while (!answer) {
       std.debug.print("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ", .{});
-        if (try stdin.readUntilDelimiterOrEof(buf99[0..], '\n')) |answer_str| {
 
-            if ( std.mem.eql(u8, answer_str, "y")) {
-                answer = true;
-            } else {
-                WITH_SPECIAL_CHARS = false;
-                answer = true;
-            }
-        } else {
-           std.debug.print("user intput failed...\n", .{});
-        }
+      const answer_str = try stdin.takeDelimiterExclusive('\n');  // 2025-12-19
+      stdin.tossBuffered();  // essential: "clear" this buffer!
+
+      // std.debug.print("\nanswer_str ={s}---\n", .{answer_str});  // for testing
+
+      if ( std.mem.eql(u8, answer_str, "y")) {
+          answer = true;
+      } else {
+          WITH_SPECIAL_CHARS = false;
+          answer = true;
+      }
     }
 
 
     // building char_set:
     //   https://zig.guide/standard-library/arraylist
-    var char_set = std.ArrayList(u8).init(allocator);
+    var char_set: std.ArrayList(u8) = .empty;  // 2025-12-19
+    defer char_set.deinit(allocator);          // 2025-12-19
+
 
     var utf8_buffer = try allocator.alloc(u8, 1);  // allocate 1 byte for one UTF-8 character
     // https://character-encoding-decoding.mojoauth.com/utf-32-encoding--zig/
@@ -226,10 +213,10 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
       while (codepoint <= 127) : (codepoint += 1) {
         utf8_buffer[0] = @intCast(codepoint);
 
-        try char_set.appendSlice(utf8_buffer);
+        try char_set.appendSlice(allocator, utf8_buffer);
       }
     } else {
-      try char_set.appendSlice("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+      try char_set.appendSlice(allocator, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
     }
     // std.debug.print("char_set = {s}\n", .{char_set.items});  // for testing
     // https://stackoverflow.com/questions/77290888/can-i-sprintf-to-an-arraylist-in-zig
@@ -237,10 +224,13 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
     i = 0;             // char counter for the password
     var j: usize = 0;  // char counter for x
-    var pw_chars = std.ArrayList(u8).init(allocator);
+
+    var pw_chars: std.ArrayList(u8) = .empty;  // 2025-12-19
+    defer pw_chars.deinit(allocator);          // 2025-12-19
+
     var char0_buffer_pw = try allocator.alloc(u8, 1);  // allocate 1 byte for 1 UTF-8 character
     var char1_buffer_pw = try allocator.alloc(u8, 1);
-    const char_set1 = try char_set.toOwnedSlice();  // char_set is of type std.ArrayList(u8) --> convert to: []const u8
+    const char_set1 = try char_set.toOwnedSlice(allocator);  // char_set is of type std.ArrayList(u8) --> convert to: []const u8
     // https://ziggit.dev/t/how-to-use-toownedslice-and-alternatives/2465
 
     while (i < N_CHAR) {
@@ -259,12 +249,12 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
       // std.debug.print("\nchar0_test = {any}, char1_test = {any}\n", .{char0_test, char1_test});  // for testing
 
       if (char0_test) {
-        try pw_chars.appendSlice(char0_buffer_pw);
+        try pw_chars.appendSlice(allocator, char0_buffer_pw);
         i += 1;
       }
 
       if (char1_test and i < N_CHAR) {
-        try pw_chars.appendSlice(char1_buffer_pw);
+        try pw_chars.appendSlice(allocator, char1_buffer_pw);
         i += 1;
       }
 

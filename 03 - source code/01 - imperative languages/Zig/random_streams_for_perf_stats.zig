@@ -1,13 +1,17 @@
 // random_streams_for_perf_stats.zig
 //
 // 2025-06-01, 2025-07-22: fixing error handling when writing to files without a try-catch construct
+// 2025-12-18: see below
 //
-// build on Ubuntu 24 LTS: $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f
+// build on Ubuntu 24 LTS: $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O ReleaseFast
 //                           switch -mcpu=native-avx512f is absolutely needed at the test system,
 //                           otherwise and even with an "empty" program, running valgrind would crash immediately!
 //
 // run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 //
+// $ zig version
+// 0.15.2
+// $
 
 
 const std = @import("std");
@@ -56,7 +60,9 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
     // bringing seed/u64 into usize with maximum value m: type casting
     //   https://zig.guide/language-basics/floats/
-    const seed2 = @as(f32, @floatFromInt(seed)) / @as(f32, @floatFromInt(std.math.maxInt(u64))) * @as(f32, @floatFromInt(m));
+    // 2025-12-18:
+    const seed2 = @as(f32, @floatFromInt(seed)) / @as(f32, @floatFromInt(std.math.maxInt(u64))) * @as(f32, @floatFromInt(m-1)) + @as(f32, @floatFromInt(1));
+
     x[0] = @intFromFloat(seed2);
     // std.debug.print("x[0] = {d}\n", .{x[0]});  // for testing
 
@@ -65,31 +71,16 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
     const allocator = std.heap.page_allocator;  // for several use cases in this program, not just here
 
-    // this even seems slower:
-    // var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    // const allocator = gpa.allocator();
-    // defer {
-    //     const deinit_status = gpa.deinit();
-    //     //fail test; can't try in defer as defer is executed after we return
-    //     if (deinit_status == .leak) expect(false) catch @panic("TEST FAIL");
-    // }
-
-    // not faster either:
-    // var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
-    // defer arena.deinit();
-    // const allocator = arena.allocator();
-
-    // not faster either:
-    // var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    // const allocator = gpa.allocator();
-    // https://www.openmymind.net/learning_zig/heap_memory/
-    //
-    // build with: $ ... -lc to link with libc
-    // const allocator = std.heap.c_allocator;  // for several use cases in this program, not just here
-    // => not faster than: const allocator = std.heap.page_allocator;
-
-    var bits_x = std.ArrayList(u8).init(allocator);
-    var bits_hex = std.ArrayList(u8).init(allocator);
+    // var bits_x   = std.array_list.Managed(u8).init(allocator);  // 2025-12-18:
+    //                                                             // 3.83 milliseconds from 3 * 20 runs
+    // var bits_hex = std.array_list.Managed(u8).init(allocator);  // 2025-12-18
+    // extremely high variability, for example: 0.00509 +- 0.00175 seconds time elapsed  ( +- 34.39% )
+    
+    var bits_x:   std.ArrayList(u8) = .empty;  // 2025-12-18: 4.00 milliseconds from 3 * 20 runs: take this version for lower variability
+    defer bits_x.deinit(allocator);            // 2025-12-18
+    var bits_hex: std.ArrayList(u8) = .empty;  // 2025-12-18
+    defer bits_hex.deinit(allocator);          // 2025-12-18
+    
 
     std.debug.print("\ngenerating a random bit stream...\n", .{});
     var i: usize = 1;
@@ -103,11 +94,16 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
         // std.debug.print("@typeName(bits_x_str) = {s}\n", .{@typeName(@TypeOf(bits_x_str))}); // for testing
         // https://ziggit.dev/t/how-typeof-chooses-the-resulting-type-when-there-are-more-than-one-arguments/3265
         // std.debug.print("bits_x_str = {s}\n", .{bits_x_str});  // for testing
-        try bits_x.appendSlice(bits_x_str);
+        
+        try bits_x.appendSlice(allocator, bits_x_str);  // 2025-12-18
+        // try bits_x.appendSlice(bits_x_str);  // 2025-12-18
+
 
         const bits_hex_str = try std.fmt.bufPrint(&buf16, "{x:0>4}", .{x[i]});  // with padding: a544 --> 2 bytes; type: []u8
         // std.debug.print("bits_hex_str = {s}\n", .{bits_hex_str});  // for testing
-        try bits_hex.appendSlice(bits_hex_str);
+        
+        try bits_hex.appendSlice(allocator, bits_hex_str);  // 2025-12-18
+        // try bits_hex.appendSlice(bits_hex_str);  // 2025-12-18
 
     }
     // std.debug.print("\nbits_x = {s}\n", .{bits_x.items});  // for testing
