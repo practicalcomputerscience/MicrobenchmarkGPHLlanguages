@@ -1,10 +1,11 @@
 # random_streams_for_perf_stats.ps
 #
 # 2025-06-01/18
+# 2025-12-19: see below
 #
 # run on Ubuntu 24 LTS: $ chmod 755 random_streams_for_perf_stats.ps
 #                       $ pwsh ./random_streams_for_perf_stats.ps
-#                       $ ./exe_times_statistics_for_one_test_case_in_cwd2 pwsh random_streams_for_perf_stats.ps
+#                       $ multitime -n 20 pwsh random_streams_for_perf_stats.ps
 #
 
 
@@ -23,7 +24,7 @@ $file_bits_hex = "random_bitstring.byte"
 
 $x = [int]0..($END - 1)  # define an empty array
 
-$x[0] = Get-Random -Maximum $m
+$x[0] = (Get-Random -Maximum ($m - 1)) + 1  # Maximum is exclusive; 2025-12-19
 # Write-Output "x[0] = $($x[0])"  # for testing; a formatted string
 
 # needed for bit stream:
