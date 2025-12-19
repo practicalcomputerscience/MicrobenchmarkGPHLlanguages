@@ -1,6 +1,7 @@
 # random_bitstring_and_flexible_password_generator.raku
 #
 # 2025-05-04, 2025-06-15/18, 2025-10-05
+# 2025-12-19: see below
 #
 # test in Ubuntu 24 LTS:
 #
@@ -13,7 +14,6 @@
 #   - speed?
 #   - writing to files: QC??
 #   - memory allocation of string arrays @bits_x_str + @bits_hex_str??
-
 
 
 my constant $END = 62501;  # 62501 for exactly 1M binary digits
@@ -31,7 +31,7 @@ my constant $file_bits_hex = 'random_bitstring.byte';
 
 
 # 2025-06-18: this setup: real	0m5,854s
-my $random_start = $m.rand.Int;  # exclusive of m
+my $random_start = ($m - 1).rand.Int + 1;  # exclusive of m; 2025-12-19
 my @x[$END];
 @x[0] = ($random_start);  # also needed for the password later
 
@@ -151,3 +151,4 @@ print "\nYour password of " ~ $N_CHAR ~ " characters is: " ~ $pw_chars ~ "\n";
 =end comment
 
 # end of random_bitstring_and_flexible_password_generator.raku
+
