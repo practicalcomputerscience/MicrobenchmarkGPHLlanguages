@@ -32,11 +32,11 @@ SWI Prolog        | 133 | compiled, very mature language: lots of user-defined f
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
+Zig               | 129 | compiled, young language still going through major changes
 Go                | 127 | compiled, mature language
 Rust              | 126 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
-Zig               | 121 | compiled, young language
 Swift             | 114 | compiled, mature language
 Common Lisp       | 114 | compiled, very mature language
 Crystal           | 113 | compiled, young language
