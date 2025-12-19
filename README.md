@@ -456,7 +456,7 @@ See from here at: [Old computer programming languages learning new tricks](https
 
 My testing environment is this as of 2025-10-19:
 
-- Operating system (OS): Ubuntu 24 LTS or in long with command _$ cat /etc/os-release_: _PRETTY_NAME="Ubuntu 24.04.3 LTS"_ ...
+- Operating system (OS): Ubuntu 24 LTS or with command: _$ cat /etc/os-release_: _PRETTY_NAME="Ubuntu 24.04.3 LTS"_ ...
 - Settings: Power: Power Mode set to "Performance"
 
 My (older) hardware from 2022 is always this:
