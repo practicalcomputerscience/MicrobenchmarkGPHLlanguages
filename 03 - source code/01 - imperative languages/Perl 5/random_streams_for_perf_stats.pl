@@ -1,6 +1,7 @@
 # random_streams_for_perf_stats.pl
 #
 # 2025-06-01, 2025-07-21: better error handling when writing to files
+# 2025-12-19: see below
 #
 # run on Ubuntu 24 LTS: $ sudo perf stat -r 20 perl random_streams_for_perf_stats.pl
 #
@@ -28,7 +29,7 @@ my constant $file_bits_x   = 'random_bitstring.bin';
 my constant $file_bits_hex = 'random_bitstring.byte';
 
 
-my $random_start = int(rand($m));  # exclusive of m
+my $random_start = int(rand($m - 1)) + 1;  # exclusive of m; 2025-12-19
 
 my @x = ($random_start);  # also needed for the password later
 my @bits_x_str;    # array of strings for the bit stream:  "0"'s + "1"'s
