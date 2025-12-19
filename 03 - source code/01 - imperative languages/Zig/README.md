@@ -1,5 +1,3 @@
-2025-12-19: TBD: LOC; readline pres.; ..??
-
 # Zig
 
 https://ziglang.org/
