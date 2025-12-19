@@ -34,7 +34,7 @@ OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml -
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
 Picat | Picat version 3.9 | $ picat --version
-PowerShell | PowerShell 7.4.5 | $ pwsh -v
+PowerShell | PowerShell 7.5.4 | $ pwsh -v
 Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
 Raku | Welcome to Rakudo™ v2025.08.; Implementing the Raku® Programming Language v6.d.; Built on MoarVM version 2025.08. | $ raku -version
