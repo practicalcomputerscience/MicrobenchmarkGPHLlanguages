@@ -15,7 +15,7 @@ I installed like this: _$ brew install zig_
 
 <br/>
 
-On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)) I'm compiling like this:
+On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)), I'm compiling like this:
 
 ```
 $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O ReleaseFast
