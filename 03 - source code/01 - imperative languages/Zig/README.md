@@ -2,19 +2,28 @@
 
 https://ziglang.org/
 
+https://codeberg.org/ziglang/zig.git
+
+> [!NOTE]
+> Zig still makes breaking changes, like with _ArrayList_ for a buffer that can change in size in 2025: https://codeberg.org/ziglang/zig/src/branch/master/lib/std/array_list.zig
+
 ---
 
-### Compilation tips
+### Installation and compilation tips
+
+I installed like this: _$ brew install zig_
+
+<br/>
 
 On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)) I'm compiling like this:
 
 ```
-$ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f
+$ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O ReleaseFast
 ```
 
-..that is with compiler switch _-mcpu=native-avx512f_ activated.
+..where switch _-O ReleaseFast_ is essential to build a fast program.
 
-Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind) and if the Zig program would have been compiled without this switch, it would crash immediately.
+Also compiler switch _-mcpu=native-avx512f_ is activated. Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind) and if the Zig program would have been compiled without this switch, it would crash immediately.
 
 My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
@@ -56,5 +65,7 @@ After some experimentation, including "AI prompt engineering", I gave up on _try
 ```
 
 It was this comment which showed me the way to success: https://github.com/ziglang/zig/issues/5421#issuecomment-633720665
+
+<br/>
 
 ##_end
