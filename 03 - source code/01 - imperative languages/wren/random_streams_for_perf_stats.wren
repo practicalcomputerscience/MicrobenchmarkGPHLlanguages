@@ -1,8 +1,9 @@
 /* random_streams_for_perf_stats.wren
 
 2025-07-15/16
+2025-12-19
 
-test in Ubuntu 24 LTS:
+test in Ubuntu 24 LTS: OK
 
 run in Ubuntu 24 LTS:  $ wren_cli ./random_streams_for_perf_stats.wren
                        $ time wren_cli ./random_streams_for_perf_stats.wren => real	0m34,036s with simple string concatenation
@@ -14,6 +15,10 @@ $
 
 REPL: $ wren_cli
 
+2025-12-19: observation:
+  the Lua strategy with first filling arrays with little strings
+  and then concatenating them into big strings is even much slower with over 3 minutes!
+
 */
 
 
@@ -21,7 +26,6 @@ import "random" for Random
 // import "io" for Stdin, Stdout // https://github.com/joshgoebel/wren-console/blob/network/example/animals.wren
 
 import "io" for File
-
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -48,7 +52,7 @@ var Integer_to_bin_string = Fn.new { |N|
   if (diff > 0) {
     return "0"*(diff) + bin_str
   } else {
-    return bin_str  // not padding needed
+    return bin_str  // no padding needed
   }
 }
 
@@ -136,15 +140,13 @@ var Integer_to_hex_string = Fn.new { |N|
   if (diff > 0) {
     return "0"*(diff) + hex_str
   } else {
-    return hex_str  // not padding needed
+    return hex_str  // no padding needed
   }
 }
-
 
 // end of user defined functions
 //
 //////////////////////////////////////////////////////////////////////////
-
 
 
 var END = 62500  // 62500 for exactly 1M binary digits
@@ -158,17 +160,23 @@ var file_bits_x   = "random_bitstring.bin"
 var file_bits_hex = "random_bitstring.byte"
 
 var x = []  // the basic list, also needed for the password later
-// var x = (0..m).toList as an alternative?
+// var x = (0..m).toList // alternative? Test, 2025-12-19: same exe speed of about 34 seconds!
 
 var x_new = 0
 var random = Random.new()
-x_new = random.int(1, m)
+x_new = random.int(1, m)  // including 1 but excluding m.
 x.add(x_new)
+// x[0] = x_new
 
 var bits_x       = ""
 var bits_hex     = ""
-var bits_x_str   = ""
-var bits_hex_str = ""
+// var bits_x       = []  // this strategy, together with a later bits_x.join(""), is super-slow!!
+// var bits_hex     = []
+// var bits_x = (0..m).toList // also this strategy, together with a later bits_x.join(""), is super-slow!!
+// var bits_hex = (0..m).toList
+
+var bits_x_str   = "0000000000000000"
+var bits_hex_str = "0000"
 
 
 System.print("\ngenerating a random bit stream...")
@@ -176,20 +184,26 @@ System.print("\ngenerating a random bit stream...")
 for (i in 1..END) {  // with .. END is exclusive
   x_new = ((a * x[i-1]) + c) % m
   // System.print("\nx_new = %(x_new)")  // for testing
+  x.add(x_new)
+  // x[i] = x_new
 
   bits_x_str = Integer_to_bin_string.call(x_new)
   // System.print("  bits_x_str = %(bits_x_str)")  // for testing
   bits_x = bits_x + bits_x_str
+  // bits_x[i-1] = bits_x_str
 
   bits_hex_str = Integer_to_hex_string.call(x_new)
   // System.print("  bits_hex_str = %(bits_hex_str)")  // for testing
   bits_hex = bits_hex + bits_hex_str
-
-  x.add(x_new)
+  // bits_hex[i-1] = bits_hex_str
 }
+
 
 // System.print("bits_x = %(bits_x)")  // for testing
 // System.print("bits_hex = %(bits_hex)")  // for testing
+
+// var bits_x_str_total   = bits_x.join("")
+// var bits_hex_str_total = bits_hex.join("")
 
 
 // see fiber idea for error handling from here: https://wren.io/error-handling.html
