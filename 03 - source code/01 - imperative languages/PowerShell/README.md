@@ -21,7 +21,7 @@ Microsoft says [here](https://learn.microsoft.com/en-us/powershell/scripting/lan
 
 <br/>
 
-## Installation tips
+### Installation tips
 
 For installation in Ubuntu, I followed this procedure: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.5
 
