@@ -105,10 +105,15 @@ Since installing lastest SBCL version from sources needs a working Common Lisp i
 - now, change into the extracted directory, that is: _.../sbcl-2.5.11-source/sbcl-2.5.11_
 - there, I ran: _$ sh ./make.sh_
 - I followed the given tips at the end of this compilation process, like:
-- _$ cd ./tests && sh ./run-tests.sh_  # this test will take a really long time!
+- _$ cd ./tests && sh ./run-tests.sh_  # this test will take a really long time: ..._(28 tests skipped for this combination of platform and features); test failed, expected 104 return code, got 1_...
+- _$ cd .._
+- _$ sudo apt-get install texinfo_  # needed to install the documentation
+- _$ sudo apt-get install texlive-base_  # needed to install the documentation
 - _$ cd ./doc/manual && make_  # install the documentation
-- then, I installed this version of SBCL: _$ sh install.sh_
-- finally, xxxxxxxxxxxxxxxxxxxxxxxxxxxxx TBD
+- _$ cd ../.._
+- then, I installed this version of SBCL: _$ sudo sh install.sh_: _...SBCL has been installed: binary /usr/local/bin/sbcl; core and contribs in /usr/local/lib/sbcl/..._
+- finally, I did this simple test: _$ /usr/local/bin/sbcl --version_: _SBCL 2.5.11_, which means that I have to restart my Bash shell
+- now, try again: _$ sbcl --version_: _SBCL 2.5.11_
 
 <br/>
 
@@ -203,13 +208,13 @@ Since these are three different Common Lisp environments, there are differences 
 
 With my microbenchmark program I got these mean execution times, again time stopped  with _$ sudo perf stat -r 20 ./< program name >_:
 
-- SBCL: 64 milliseconds
+- SBCL: 64 milliseconds  (still with version _SBCL 2.2.9.debian_)
 - CCL: 222 milliseconds
 - ECL: 590 milliseconds
 
 Sizes of the related executables (if not applying tricks with SBCL and CCL) also differ greatly:
 
-- SBCL: 46.1 MB -- there's a reason why a Lisp implementation is hosting a [World](#the-lisp-machine-as-a-world)
+- SBCL: 46.1 MB -- there's a reason why a Lisp implementation is hosting a [World](#the-lisp-machine-as-a-world); still with version _SBCL 2.2.9.debian_
 - CCL: 27.2 MB
 - ECL: 79.1 kB -- this little size helps to explain "Embeddable..."
 
