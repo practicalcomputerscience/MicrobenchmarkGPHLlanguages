@@ -1,22 +1,18 @@
 #| random_bitstring_and_flexible_password_generator.lisp
 
 2025-06-17/21
+2025-12-21: see below
 
 build on Ubuntu 24 LTS:
-  $ sbcl --script random_bitstring_and_flexible_password_generator.lisp
-
-  for final standalone app **AFTER** modification of main():
   $ sbcl --load random_bitstring_and_flexible_password_generator.lisp --eval "(sb-ext:save-lisp-and-die \"random_bitstring_and_flexible_password_generator\" \
     :executable t :toplevel #'main)"
-
-  #' = searching for a function name, rather than a value of the function
-
+  #' is for searching for a function name, rather than a value of the function
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 
 $ sbcl --version
-SBCL 2.2.9.debian
+SBCL 2.5.11
 $
 
 |#
@@ -90,8 +86,9 @@ $
 
   (setf *random-state* (make-random-state t))  ; random seeding must be in main(): http://johnj.com/from-elegance-to-speed.html
 
-  (setf *old-seed* (random m))  ; setf macro to set value of old-seed:
+  (setf *old-seed* (+ (random (- m 1)) 1))  ; setf macro to set value of old-seed:
   ; here should be no warning like "In MAIN: Undeclared free variable END"
+  ; end is exclusive; 2025-12-21
   ; (format t "old-seed = ~d~%" *old-seed*)  ; for testing
 
 
