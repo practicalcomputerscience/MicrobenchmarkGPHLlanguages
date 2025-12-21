@@ -30,7 +30,7 @@ LuaJIT | LuaJIT 2.1.1753364724 -- Copyright (C) 2005-2025 Mike Pall. https://lua
 LunarML | LunarML version 0.2.1 | $ lunarml -v
 Mercury | Mercury Compiler, version rotd-2025-11-01; Copyright (C) 1993-2012 The University of Melbourne; Copyright (C) 2013-2025 The Mercury team | $ mmc --version
 Mojo | Mojo 0.26.1.0.dev2025121217 (3e295ef6) | $ pixi run mojo --version
-OCaml | 3.19.0; The OCaml toplevel, version 4.14.1 | $ dune --version; $ ocaml --version
+OCaml | 2.5.0; 3.20.2; The OCaml toplevel, version 5.4.0 | $ opam --version; $ dune --version; $ ocaml --version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
 Picat | Picat version 3.9 | $ picat --version
