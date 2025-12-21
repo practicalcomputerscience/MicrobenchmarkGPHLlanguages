@@ -12,9 +12,6 @@ To-do:
 - (17364 * 65521 + c) modulo 65521 = 0 => loop with only 0 as a random, integer number => failure!
 - (17364 * 0 + c) modulo 65521 = 0 => loop with only 0 as a random, integer number => failure!
 - ironically, this has never happened so far (2025-12-13) during development or testing
-- _
-- parallel computing: implement a concurreny solution in Chapel and Gleam, compare to the Go solution (not published here)
-- test: exhausting the generated random bitstream when user asks for a super-long password
 
 <br/>
 
