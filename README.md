@@ -648,9 +648,7 @@ $ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
 $
 ```
 
-So, I just took the best out of three _perf-stat_ command runs in terms of the mean. You could call it a sloppy best out of 3 approach.
-
-I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now, all execution time measurement values have only indicative character.
+So, I just took the best out of three _perf-stat_, Bash script or multitime runs in terms of their lowest mean value. You could call it a sloppy best out of 3 approach.
 
 <br/>
 
