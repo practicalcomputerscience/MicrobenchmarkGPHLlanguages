@@ -23,6 +23,40 @@ Table of contents:
 
 ### Installation tips
 
+First, I installed the OCaml Package Manager, called opam, see from here: https://opam.ocaml.org/doc/Install.html:
+
+```
+$ bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
+$ opam --version
+2.5.0
+$ 
+```
+
+Restart the Bash shell and do:
+
+```
+$ opam init
+...
+1  # select 1 to update your ~/.bashrc file with this script
+...  # the OCaml compiler will be made, which will take a little while
+$ eval $(opam env --switch=default)
+$ ocaml --version
+The OCaml toplevel, version 5.4.0
+$
+```
+
+Now, install the Dune build tool, see from here: https://dune.readthedocs.io/en/stable/howto/install-dune.html
+
+```
+$ opam install dune
+...
+$ dune --version
+3.20.2
+$
+```
+
+<br/>
+
 Rename:
 
 - _random_streams_for_perf_stats_main.ml_ into _main.ml_ located in the _./bin_ project subdirectory
@@ -36,7 +70,8 @@ $ cd random_streams_for_perf_stats  # check main.ml file in project subdirectory
 $ dune build
 $ ./_build/default/bin/main.exe  # run program in Ubuntu 24 LTS
 ```
-I'm not configuring special things in the _dune_ and _dune-project_ configuration files.
+
+I'm not configuring special things in the generated _dune_ and _dune-project_ configuration files.
 
 <br/>
 
