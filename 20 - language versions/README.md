@@ -56,7 +56,7 @@ Zig | 0.15.2 | $ zig version
 other environments | versions | how to retrieve versions
 --- | --- | ---
 GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01); Substrate VM Oracle GraalVM 24+36.1 (build 24+36, serial gc, compressed references) | $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image --version
-Java | openjdk 21.0.8 2025-07-15; OpenJDK Runtime Environment (build 21.0.8+9-Ubuntu-0ubuntu124.04.1); OpenJDK 64-Bit Server VM (build 21.0.8+9-Ubuntu-0ubuntu124.04.1, mixed mode, sharing) | $ java --version
+Java | openjdk 27-ea 2026-09-15; OpenJDK Runtime Environment (build 27-ea+2-79); OpenJDK 64-Bit Server VM (build 27-ea+2-79, mixed mode, sharing) | $ java --version
 SDKMAN | SDKMAN!; script: 5.20.0; native: 0.7.14 (linux x86_64) | $ sdk version
 
 <br/>
