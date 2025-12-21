@@ -4,13 +4,13 @@ https://www.roc-lang.org/
 
 ---
 
-Roc is the only so called _pure_ functional programming language for implementing this microbenchmark program so far.
+Roc is a so called _pure_ functional programming language.
 
 Wikipedia (https://en.wikipedia.org/wiki/Purely_functional_programming) has a short description about what "pure" means here: _...(treating) all computation as the evaluation of mathematical functions._ 
 
-While **Haskell** (https://www.haskell.org/) being the "mother and father" of all modern pure functional programming languages, Roc as a "small" language may have the advantage to really learn _functional programming_ with one "baby step" after the other. A pure functional programming language is forcing one to do so, because there are no imperative constructs like a for-loop for example!
+While **Haskell** (https://www.haskell.org/), being the "mother and father" of all modern **pure** functional programming languages, Roc as a "small" language may have the advantage to really learn _functional programming_ with one "baby step" after the other. A pure functional programming language is forcing you to do so, because there are no imperative constructs like a for-loop for example!
 
-So, even coding a simple (recursive) loop, from scratch and without help of AI, to count from 1 to 10 for example may be the first challenge when coding in a pure functional programming language for the first time.
+So, even coding a simple (recursive) loop, from scratch and without help of AI, to count from 1 to 10 for example, may be the first challenge, when coding in a pure functional programming language for the first time.
 
 First I struggled heavily, but then I found a solution:
 
