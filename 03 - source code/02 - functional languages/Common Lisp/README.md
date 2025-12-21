@@ -16,6 +16,7 @@ Overview of modern Lisp implementations: https://lisp-lang.org/wiki/article/impl
 Table of contents:
 
 - [A little exercise in Common Lisp](#a-little-exercise-in-common-lisp)
+- [Installing Steel Bank Common Lisp](#installing-steel-bank-common-lisp)
 - [Execution speed of a Lisp program as a standalone executable in Linux: Steel Bank Common Lisp](#execution-speed-of-a-lisp-program-as-a-standalone-executable-in-linux-steel-bank-common-lisp)
 - [Common Lisp on the Java Virtual Machine (JVM) with Armed Bear Common Lisp (ABCL)](#common-lisp-on-the-java-virtual-machine-jvm-with-armed-bear-common-lisp-abcl)
 
@@ -92,6 +93,22 @@ What I want demonstrate with these examples is this:
 > Functional Programming is (obviously) not taking over the world.
 
 which refers to: _If Haskell is so great, why hasn't it taken over the world? ..._ from 2017: https://pchiusano.github.io/2017-01-20/why-not-haskell.html
+
+<br/>
+
+## Installing Steel Bank Common Lisp
+
+Since installing lastest SBCL version from sources needs a working Common Lisp installation (though not necessarily SBCL), I did this to install it from scratch:
+
+- first, I installed an older version of SBCL with Ubuntu's package manager: _$ sudo apt install sbcl_
+- then I downloaded and extracted latest SBCL sources as described here: https://sbcl.org/platform-table.html; I got tarball file: _sbcl-2.5.11-source.tar.bz2_
+- now, change into the extracted directory, that is: _.../sbcl-2.5.11-source/sbcl-2.5.11_
+- there, I ran: _$ sh ./make.sh_
+- I followed the given tips at the end of this compilation process, like:
+- _$ cd ./tests && sh ./run-tests.sh_  # this test will take a really long time!
+- _$ cd ./doc/manual && make_  # install the documentation
+- then, I installed this version of SBCL: _$ sh install.sh_
+- finally, xxxxxxxxxxxxxxxxxxxxxxxxxxxxx TBD
 
 <br/>
 
