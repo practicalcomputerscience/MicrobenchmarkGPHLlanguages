@@ -1,10 +1,17 @@
 # random_streams_for_perf_stats.roc
 #
 # 2025-06-01
+# 2025-12-21: see below
 #
-# build with: $ roc random_streams_for_perf_stats.roc --optimize  # <<<<<<<<<<<<<<< OPTIMIZE!!
+# build with: $ roc build random_streams_for_perf_stats.roc --optimize  # <<<<<<<<<<<<<<< OPTIMIZE!!
 # run with:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 #
+#
+# $ roc --version
+# roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC
+# $
+#
+
 
 app [main!] {
               cli: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
@@ -37,13 +44,13 @@ main! = |_args|
 
   seed = Random.seed(now3)
   # seed = Random.seed(42)  # fixed seed for testing
-  generator = Random.bounded_u32(0, m)
+  generator = Random.bounded_u32(1, m - 1)  # range is inclusive; 2025-12-21
   # https://github.com/kili-ilo/roc-random/blob/main/examples/simple.roc
 
   random_start = Random.step(seed, generator).value  # U32 return type
 
 
-  _ = Stdout.line!("generating a random bit stream...")
+  _ = Stdout.line!("\ngenerating a random bit stream...")
 
   # make a list of random, integer numbers: also needed for the password
   s_int_32 = prng({y : random_start, limit : upper_limit, x : []})
@@ -112,7 +119,7 @@ main! = |_args|
           Err(_) ->
               Stderr.line!("could not write to file: ${file_bits_hex} !")
 
-  Stdout.line!("Bye.")
+  Stdout.line!("Bye.")  # for doing a FINAL EXPRESSION
 
 
 

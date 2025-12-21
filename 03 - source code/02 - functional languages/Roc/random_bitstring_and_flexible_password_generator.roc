@@ -1,6 +1,7 @@
 # random_bitstring_and_flexible_password_generator.roc
 #
 # 2025-04-17/18/27/../30/, 2025-05-01/03/04/05/23, 2025-06-01
+# 2025-12-21: see below
 #
 # check with: $ roc check random_bitstring_and_flexible_password_generator.roc
 # build with: $ roc build random_bitstring_and_flexible_password_generator.roc --optimize  # <<<<<<<<<<<<<<< OPTIMIZE!!
@@ -8,12 +9,11 @@
 # or:         $ ./random_bitstring_and_flexible_password_generator
 #
 #
-#
 # remark on U16: this type doesn't work here; program will crash: "Roc crashed with: Integer addition overflowed! ..."
 #
 #
 # $ roc --version
-# roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC
+# roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC
 # $
 #
 
@@ -50,13 +50,13 @@ main! = |_args|
 
   seed = Random.seed(now3)
   # seed = Random.seed(42)  # fixed seed for testing
-  generator = Random.bounded_u32(0, m)
+  generator = Random.bounded_u32(1, m - 1)  # range is inclusive; 2025-12-21
   # https://github.com/kili-ilo/roc-random/blob/main/examples/simple.roc
 
   random_start = Random.step(seed, generator).value  # U32 return type
 
 
-  _ = Stdout.line!("generating a random bit stream...")
+  _ = Stdout.line!("\ngenerating a random bit stream...")
 
   # make a list of random, integer numbers: also needed for the password
   s_int_32 = prng({y : random_start, limit : upper_limit, x : []})
@@ -174,8 +174,7 @@ main! = |_args|
   _ = Stdout.line!("\nYour password of ${n_char_actual_str} characters is: ${pw_chars}\n")
 
 
-  Stdout.line!("Bye.")
-
+  Stdout.line!("Bye.")  # for doing a FINAL EXPRESSION
 
 
 
