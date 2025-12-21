@@ -111,9 +111,9 @@ Since installing lastest SBCL version from sources needs a working Common Lisp i
 - _$ sudo apt-get install texlive-base_  # needed to install the documentation
 - _$ cd ./doc/manual && make_  # install the documentation
 - _$ cd ../.._
-- then, I installed this version of SBCL: _$ sudo sh install.sh_: _...SBCL has been installed: binary /usr/local/bin/sbcl; core and contribs in /usr/local/lib/sbcl/..._
-- finally, I did this simple test: _$ /usr/local/bin/sbcl --version_: _SBCL 2.5.11_, which means that I have to restart my Bash shell
-- now, try again: _$ sbcl --version_: _SBCL 2.5.11_
+- then, I started the installation process: _$ sudo sh install.sh_ => _...SBCL has been installed: binary /usr/local/bin/sbcl; core and contribs in /usr/local/lib/sbcl/..._
+- finally, I did this simple test: _$ /usr/local/bin/sbcl --version_ => _SBCL 2.5.11_, which means that I have to restart my Bash shell
+- now, try again: _$ sbcl --version_ => _SBCL 2.5.11_
 
 <br/>
 
