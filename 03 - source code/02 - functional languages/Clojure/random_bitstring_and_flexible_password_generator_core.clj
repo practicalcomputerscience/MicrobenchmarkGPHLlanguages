@@ -1,6 +1,7 @@
 ;; core.clj of random_bitstring_and_flexible_password_generator
 ;;
 ;; 2025-06-10/11/12/13/14/15/18/21, 2025-07-13
+;; 2025-12-21: see below
 ;;
 ;; build on Ubuntu 24 LTS: $ lein new app random_bitstring_and_flexible_password_generator
 ;;                         $ cd random_bitstring_and_flexible_password_generator
@@ -12,7 +13,7 @@
 ;;
 ;;
 ;; $ lein version
-;; Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM
+;; Leiningen 2.10.0 on Java 25.0.1 OpenJDK 64-Bit Server VM
 ;; $
 
 
@@ -83,7 +84,8 @@
   (def file_bits_x   "random_bitstring.bin")  ; declaring a string variable
   (def file_bits_hex "random_bitstring.byte")
 
-  (def x0 (rand-int m))
+  (def x0 (+ (rand-int (- m 1)) 1))  ; end is exclusive; 2025-12-21
+  ; https://clojuredocs.org/clojure.core/rand-int
   ; (println x0) ; for testing
 
 

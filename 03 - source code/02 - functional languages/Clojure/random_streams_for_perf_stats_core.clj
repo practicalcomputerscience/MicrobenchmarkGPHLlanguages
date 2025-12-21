@@ -1,6 +1,7 @@
 ;; core.clj of random_streams_for_perf_stats
 ;;
 ;; 2025-06-10/11/12/15
+;; 2025-12-21: see below
 ;;
 ;; build on Ubuntu 24 LTS: $ lein new random_streams_for_perf_stats
 ;;                         $ cd random_streams_for_perf_stats
@@ -11,9 +12,8 @@
 ;; run on Ubuntu 24 LTS:   $ java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
 ;;
 ;; exe time measurement:
-;; $ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
+;; $ multitime -n 20 java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
 ;;
-;; $ time java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
 ;;
 ;;
 ;; Experiment: (if (> (.length bits_x_str_) 15)...) is slower
@@ -23,7 +23,7 @@
 ;;
 ;;
 ;; $ lein version
-;; Leiningen 2.10.0 on Java 21.0.7 OpenJDK 64-Bit Server VM
+;; Leiningen 2.10.0 on Java 25.0.1 OpenJDK 64-Bit Server VM
 ;; $
 
 
@@ -61,7 +61,8 @@
   (def file_bits_x   "random_bitstring.bin")  ; declaring a string variable
   (def file_bits_hex "random_bitstring.byte")
 
-  (def x0 (rand-int m))
+  (def x0 (+ (rand-int (- m 1)) 1))  ; end is exclusive; 2025-12-21
+  ; https://clojuredocs.org/clojure.core/rand-int
   ; (println x0) ; for testing
 
 
