@@ -403,9 +403,9 @@ $
 
 Well, it got me an error, but it worked!
 
-(this error may come from the different JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java default environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
+(this error may come from the different JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
 
-However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and ran without any problems:
+However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and ran it without any problems:
 
 ```
 > java -jar ./hello_world_abcl-jar-with-dependencies.jar
@@ -450,9 +450,9 @@ $
 
 #### Execution speed
 
-My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 600 milliseconds ([Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)), but better than my first version in Clojure without Java's _StringBuilder_ class with over 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
+My program takes about 4 seconds to run in this environment, this is much slower than Clojure's 600 milliseconds, but better than my first version in Clojure without Java's _StringBuilder_ class with over 7 seconds: [Initial struggles with execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#initial-struggles-with-execution-speed)
 
-But again, this is a solution with "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
+But again, this is a solution with a "natural" functional approach to exception handling and not Clojure's "natural" fallback to an imperative _try-catch_ construct.
 
 #### What about the GraalVM? (doesn't work)
 
