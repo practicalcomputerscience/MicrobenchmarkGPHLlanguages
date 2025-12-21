@@ -405,7 +405,7 @@ Well, it got me an error, but it worked!
 
 (this error may come from the different JDK versions, because Armed Bear Common Lisp 1.9.2 is using _Java 11.0.26 Eclipse Adoptium, OpenJDK 64-Bit Server VM_ and my Java default environment is: _$ java -version_ --> _openjdk version "21.0.7" 2025-04-15 ..._).
 
-However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and ran it like:
+However, I copied _hello_world_abcl-jar-with-dependencies.jar_ ("Write once, run anywhere": https://en.wikipedia.org/wiki/Write_once%2C_run_anywhere) to my Windows 11 machine and ran without any problems:
 
 ```
 > java -jar ./hello_world_abcl-jar-with-dependencies.jar
