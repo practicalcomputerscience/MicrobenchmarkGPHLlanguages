@@ -124,7 +124,7 @@ Now comes the critical moment, that is compiling "1 Scala source" with the assem
 $ sbt assembly
 ...
 [info] Built: ~/scripts/Scala/random_streams_for_perf_stats/target/scala-3.7.4/random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT.jar
-[info] Jar hash: 182b39856ce32cc1a1afb7cc424c93a4820e4951
+[info] Jar hash: ae0649bc2db004ffe9898874f05933357fed162e
 [success] Total time: 2 s, completed Dec 21, 2025, 1:13:29 PM
 $ 
 ```
