@@ -62,20 +62,29 @@ sudo apt-get install libgmp3-dev
 
 Some years ago, MLton published this benchmark page with five Standard ML dialects: http://www.mlton.org/Performance
 
-I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for example:
+<br/>
+
+I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for [example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml):
 
 ```
-val m = 65521 (* = 2^16 - 15 *)
-val m_word = 0wx0000fff1 (* same number as hex word *)
-val seed_ = MLton.Random.seed () (* this is a new random number with every program start! *)
-val seed_word = valOf seed_ (* type conversion from word option to word *)
+    ...
+    val m = 65521  (* = 2^16 - 15 *)
+    val m_word = 0wx0000fff1  (* same number as hex word *)
+    val m_word_ = m_word - 0wx00000001  (* seed adaption; 2025-12-21 *)
+    ...
+    val seed_ = MLton.Random.seed ()  (* this is a new random number with every program start! *)
+    val seed_word = valOf seed_       (* type conversion from word option to word *)
+    ...
+    (* this can easily overflow if not taken care of => modulus operation: *)
+    val seed_word_mod = seed_word mod (m_word_) + 0wx00000001  (* 2025-12-21 *)
 
-(* this can easily overflow if not taken care of => modulus operation: *)
-val seed_word_mod = seed_word mod m_word
-val start_seed = Word.toInt seed_word_mod
+    val start_seed = Word.toInt seed_word_mod
+    ...
 ```
 
-Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) in milliseconds as basis for a seed to get ahead with the MLKit program) there was no need to change my MLton program to make it through the MLKit compiler. Otherwise both programs show the same execution speed.
+Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) in milliseconds as basis for a seed to get ahead with the MLKit program) there was no need to change my MLton program to make it through the MLKit compiler.
+
+Otherwise, both programs, one compiled with MLton and the other compiled with MLKit, show the same execution speed.
 
 <br/>
 
