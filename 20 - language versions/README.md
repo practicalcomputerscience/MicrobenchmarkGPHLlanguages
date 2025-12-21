@@ -38,7 +38,7 @@ PowerShell | PowerShell 7.5.4 | $ pwsh -v
 Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
 Raku | Welcome to Rakudo™ v2025.11.; Implementing the Raku® Programming Language v6.d.; Built on MoarVM version 2025.11. | $ raku -version
-Roc | roc nightly pre-release, built from commit c47a8e9 on Sa 22 Mär 2025 09:02:05 UTC | $ roc --version
+Roc | roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC | $ roc --version
 Rust | rustc 1.92.0 (ded5c06cf 2025-12-08); binary: rustc; commit-hash: ded5c06cf21d2b93bffd5d884aa6e96934ee4234; commit-date: 2025-12-08; host: x86_64-unknown-linux-gnu; release: 1.92.0; LLVM version: 21.1.3 | $ rustc -V -v
 Scala | sbt runner version: 1.11.7; Scala code runner version: 1.9.1; Scala version (default): 3.7.4 | $ sbt --version; $ scala --version
 Scheme, Bigloo | Bigloo (4.6a) | $ bigloo -version
