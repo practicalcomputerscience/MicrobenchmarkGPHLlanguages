@@ -5,7 +5,7 @@
 
 Usually, I've no intention to re-test a language when an update has been published. But I may do so, when I feel the need for further tests or potential improvements.
 
-This has already happened massively when I corrected a **logical error** in most language implementations in December 2025, that is constraining the initial and random seed value of the pseudo-random number generator to a range of 1 to m - 1, both inclusively, with m being 65521. If not, that is also allowing values 0 and 65521, the ouput of this number generator could be only **zero**.
+This has already happened massively when I corrected a **logical error** in most language implementations in December 2025, that is constraining the random seed value of the pseudo-random number generator to a range of 1 to m - 1, both inclusively, with m being 65521. If not, that is also allowing values 0 and 65521, the ouput of this number generator would only be **zero's**.
 
 <br/>
 
