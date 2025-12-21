@@ -1,6 +1,7 @@
 (* random_streams_for_perf_stats3.sml  -- for MLton Standard ML: this is with a Standard ML of New Jersey compliant random seed
 
 2025-07-06/09/10
+2025-12-21: see below
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
@@ -160,7 +161,7 @@ structure Main =
     (* this is systematically causing an overflow in MLton, but works fine in SML/NJ: *)
     (*val seed1 = (Random.randInt r)  (* SML/NJ: this is a new random number in a wide range with every call: int *)*)
 
-    val start_seed = Random.randRange (1, m) r
+    val start_seed = Random.randRange (1, m - 1) r  (* ending point is inclusive; 2025-12-21 *)
     (* https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml *)
     (*val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *)*)
 
@@ -222,4 +223,3 @@ structure Main =
 
 
 (* end of random_streams_for_perf_stats3.sml *)
-

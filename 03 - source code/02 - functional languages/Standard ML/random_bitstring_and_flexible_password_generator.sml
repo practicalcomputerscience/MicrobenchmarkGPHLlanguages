@@ -1,6 +1,7 @@
 (* random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 
 2025-07-07/08
+2025-12-21: see below
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
@@ -181,6 +182,7 @@ structure Main =
 
     val m = 65521  (* = 2^16 - 15 *)
     val m_word = 0wx0000fff1  (* same number as hex word *)
+    val m_word_ = m_word - 0wx00000001  (* seed adaption; 2025-12-21 *)
 
     val a = 17364
     val c = 0
@@ -204,7 +206,7 @@ structure Main =
     (*val _ = print ("seed_word = " ^ Word.toString seed_word ^ "\n")  (* for testing *)*)
     (*  23EF4897, 3F741FB, 23D4B19D *)
     (* this can easily overflow if not taken care of => modulus operation: *)
-    val seed_word_mod = seed_word mod m_word
+    val seed_word_mod = seed_word mod (m_word_) + 0wx00000001  (* 2025-12-21 *)
 
     val start_seed = Word.toInt seed_word_mod
     (*val _ = print ("start_seed = " ^ Int.toString start_seed ^ "\n")  (* for testing *)*)
@@ -337,4 +339,3 @@ structure Main =
   end
 
 (* end of random_bitstring_and_flexible_password_generator.sml *)
-
