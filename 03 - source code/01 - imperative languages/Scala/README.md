@@ -58,7 +58,7 @@ In Ubuntu, also expand the _PATH_ environment variable in your _~/.bashrc_ confi
 export PATH="$PATH:~/.local/share/coursier/bin"
 ```
 
-Have some tests now:
+Do some tests now:
 
 ```
 $ sbt --version
@@ -70,6 +70,8 @@ Scala version (default): 3.7.4
 $
 ```
 
+<br/>
+
 ## Building tips
 
 I started with the sbt (simple build tool) in my Scala working directory:
@@ -77,16 +79,16 @@ I started with the sbt (simple build tool) in my Scala working directory:
 ```
 $ sbt new
 ... # be patient here
-Select a template: d  # select option d
-name [Scala 3 Project Template]: password_encryption_perf_stats
+Select a template: d  # select option d for a Scala 3 seed template
+name [Scala 3 Project Template]: random_streams_for_perf_stats
 
-Template applied in ~/scripts/Scala/./password_encryption_perf_stats
+Template applied in ~/scripts/Scala/./random_streams_for_perf_stats
 
-$ cd ./password_encryption_perf_stats
+$ cd ./random_streams_for_perf_stats  # change into the Scala app directory
 $
 ```
 
-In the Scala app directory, that is the project root directory named _password_encryption_perf_stats_, I configured these files:
+In the Scala app directory, that is the project root directory named _random_streams_for_perf_stats_, I configured these files:
 
 _./project/plugins.sbt_ like this:
 
@@ -103,7 +105,7 @@ val scala3Version = "3.7.4"
 lazy val root = project
   .in(file("."))
   .settings(
-    name := "password_encryption_perf_stats",
+    name := "random_streams_for_perf_stats",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
     libraryDependencies += "org.scalameta" %% "munit" % "1.0.0" % Test
@@ -112,10 +114,33 @@ lazy val root = project
   scalacOptions ++= Seq("-deprecation", "-feature")
 ```
 
-TBD
+As last preperation, copy source code file _random_streams_for_perf_stats.scala_ as _Main.scala_ into subdirectoy: _./src/main/scala/Main.scala_
 
+<br/>
 
+Now comes the critical moment, that is compiling "1 Scala source" with the assembly plugin:
 
+```
+$ sbt assembly
+...
+[info] Built: ~/scripts/Scala/random_streams_for_perf_stats/target/scala-3.7.4/random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+[info] Jar hash: 182b39856ce32cc1a1afb7cc424c93a4820e4951
+[success] Total time: 2 s, completed Dec 21, 2025, 1:13:29 PM
+$ 
+```
+
+Beware that "assembly" is not a sbt command but the name of a sbt plugin.
+
+Let's run the program:
+
+```
+$ java -jar ./target/scala-3.7.4/random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
 
 <br/>
 
