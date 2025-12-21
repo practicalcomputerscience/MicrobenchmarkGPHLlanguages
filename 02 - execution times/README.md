@@ -18,7 +18,7 @@ My version of _perf-stat_ (https://linux.die.net/man/1/perf-stat) in use is:
 
 ```
 $ perf --version
-perf version 6.8.12
+perf version 6.14.11
 $
 ```
 
