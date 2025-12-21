@@ -7,7 +7,7 @@
 
 2025-12-13: update to latest Mojo version 0.26.1.0... with the Pixi package manager. The old Magic package manager, a fork of Pixi, is now deprecated: https://docs.modular.com/pixi; some slight, formalistic source code changes to get rid of new warnings: [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo)
 
-2025-12-10: [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz): "speed part" of microbenchmark done, though not the rest because impossible
+2025-12-10: [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz): "speed part" of microbenchmark done, though not the rest because that has become practically impossible
 
 2025-11-22: done: [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog) as a representative for the still numerous and actively maintained Prolog systems
 
