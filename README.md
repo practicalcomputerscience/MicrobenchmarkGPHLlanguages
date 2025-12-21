@@ -607,7 +607,7 @@ So, in the end I mostly used the _perf-stat_ program for Linux:
 
 ..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script.
 
-Later, I discovered the [multitime](https://tratt.net/laurie/src/multitime/) command as an alternative to my Bash shell scripts.
+Later, I discovered the [multitime](https://tratt.net/laurie/src/multitime/) command as an alternative to my Bash scripts.
 
 <br/>
 
@@ -629,7 +629,7 @@ $ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_st
 $
 ```
 
-..where the average and +- standard deviation values are printed at the last results.
+..where the mean and +- standard deviation values are printed at the last results.
 
 This rather wide variance of execution times can be obeserved with (almost) all programming languages. With C for example, the mean execution times and their related standard deviations are located like this (on 2025-12-21):
 
