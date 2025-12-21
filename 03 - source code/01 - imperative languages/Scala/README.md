@@ -6,6 +6,15 @@ https://www.scala-sbt.org/
 
 ---
 
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [Building tips](#building-tips)
+
+<br/>
+
+---
+
 ## Installation tips
 
 First, in my _~/.bashrc_ config file I masked this OpenJDK (Open **Java** Development Kit) installation for [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips), which is not usuable with Scala!!
@@ -148,7 +157,7 @@ Otherwise, you may have a look at: [Running and building Scala programs: baby st
 
 Originally, these pages have been created in April 2025 for another GitHub account and have now been moved to this account, albeit re-structured with even more subpages for even better orientation.
 
-So, this documentation may be already outdated in the fast evolving environment of Scala.
+So, this documentation may be already outdated in the fast evolving Scala environment.
 
 <br/>
 
