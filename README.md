@@ -564,7 +564,7 @@ After implementing the microbenchmark program in some languages I noticed that *
 
 ![plot](./02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
-As of September 2025 I've got one language implementation where I was not able to bring down the execution time under 1 second: [Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
+So far, I've got these languages where I was not able to bring down the execution time under 1 second: [Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
 
 This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
@@ -610,7 +610,7 @@ So, in the end I mostly used the _perf-stat_ program for Linux:
 
 ..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script.
 
-Later I discovered the [multitime](https://tratt.net/laurie/src/multitime/) command as an alternative to my Bash shell scripts.
+Later, I discovered the [multitime](https://tratt.net/laurie/src/multitime/) command as an alternative to my Bash shell scripts.
 
 <br/>
 
@@ -653,7 +653,7 @@ $
 
 So, I just took the best out of three _perf-stat_ command runs in terms of the mean. You could call it a sloppy best out of 3 approach.
 
-I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now all execution time measurement values have only indicative character.
+I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now, all execution time measurement values have only indicative character.
 
 <br/>
 
