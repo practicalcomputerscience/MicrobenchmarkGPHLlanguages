@@ -1,6 +1,7 @@
 #| random_streams_for_perf_stats.scm -- this is the Bigloo Scheme version
 
 2025-06-29
+2025-12-21: see below
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_streams_for_perf_stats.scm -o random_streams_for_perf_stats
 
@@ -54,7 +55,7 @@ $
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
 ; see from here: Bigloo, A practical Scheme compiler (4.3g), User manual for version 4.3g, December 2019
-(set! old-seed (random m))
+(set! old-seed (+ (random (- m 1)) 1))  ; 0..m, with m is exclusive, 2025-12-21
 ; (display old-seed)  ; for testing
 
 
