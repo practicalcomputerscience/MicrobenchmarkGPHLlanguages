@@ -52,7 +52,7 @@ Checking if the standard Scala applications are installed
 $ 
 ```
 
-In Ubuntu, also expand the _PATH_ environment variable in your _~/.bashrc_ config file to have access to the Scala app's as listed above:
+In Ubuntu, also expand the _PATH_ environment variable in your _~/.bashrc_ config file to have access to the Scala app's as listed above (under "Checking if the standard Scala applications are installed"):
 
 ```
 export PATH="$PATH:~/.local/share/coursier/bin"
@@ -86,9 +86,36 @@ $ cd ./password_encryption_perf_stats
 $
 ```
 
-In the Scala app (or porject) directory _password_encryption_perf_stats_ I configured these files:
+In the Scala app directory, that is the project root directory named _password_encryption_perf_stats_, I configured these files:
+
+_./project/plugins.sbt_ like this:
+
+```
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.3.1")
+```
+
+Look up latest version for _SBT Assembly_, the sbt plugin to create a **single über jar**, from here: https://mvnrepository.com/artifact/com.eed3si9n/sbt-assembly_2.12_1.0
+
+..and the _build.sbt_ config file in the project root directory:
+
+```
+val scala3Version = "3.7.4"
+lazy val root = project
+  .in(file("."))
+  .settings(
+    name := "password_encryption_perf_stats",
+    version := "0.1.0-SNAPSHOT",
+    scalaVersion := scala3Version,
+    libraryDependencies += "org.scalameta" %% "munit" % "1.0.0" % Test
+  )
+  Global / onChangedBuildSource := IgnoreSourceChanges
+  scalacOptions ++= Seq("-deprecation", "-feature")
+```
 
 TBD
+
+
+
 
 <br/>
 
