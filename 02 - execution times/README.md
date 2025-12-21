@@ -79,9 +79,25 @@ The execution time of uberJAR file _random_streams_for_perf_stats-0.1.0-SNAPSHOT
 ```
 $ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
 ...
-mean = 787 [milliseconds]
+mean = 424 [milliseconds]
 $
 ```
+
+..or with the [multitime](https://tratt.net/laurie/src/multitime/) command:
+
+```
+$ multitime -n 20 java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
+...
+===> multitime results
+1: java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar
+            Mean        Std.Dev.    Min         Median      Max
+real        0.422       0.006       0.414       0.421       0.434       
+user        1.222       0.019       1.189       1.224       1.249       
+sys         0.083       0.007       0.073       0.083       0.100       
+$
+```
+
+<br/>
 
 With the _perf-stat_ program, mean and other summary statistics may look like this:
 
@@ -90,27 +106,25 @@ $ sudo perf stat -r 20 java -jar ./target/uberjar/random_streams_for_perf_stats-
 ...
  Performance counter stats for 'java -jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar' (20 runs):
 
-          3.070,27 msec task-clock                       #    3,939 CPUs utilized               ( +-  3,23% )
-             6.112      context-switches                 #    1,991 K/sec                       ( +-  0,68% )
-               242      cpu-migrations                   #   78,820 /sec                        ( +-  3,64% )
-            76.138      page-faults                      #   24,798 K/sec                       ( +-  0,88% )
-    11.931.501.930      cycles                           #    3,886 GHz                         ( +-  1,02% )
-    15.158.326.578      instructions                     #    1,27  insn per cycle              ( +-  0,69% )
-     2.954.916.075      branches                         #  962,428 M/sec                       ( +-  0,71% )
-        72.941.379      branch-misses                    #    2,47% of all branches             ( +-  0,50% )
-                        TopdownL1                 #     24,2 %  tma_backend_bound      
-                                                  #     34,0 %  tma_bad_speculation    
-                                                  #     21,0 %  tma_frontend_bound     
-                                                  #     20,8 %  tma_retiring             ( +-  0,87% )
+          1,339.08 msec task-clock                       #    3.118 CPUs utilized               ( +-  0.66% )
+             6,314      context-switches                 #    4.715 K/sec                       ( +-  0.80% )
+               136      cpu-migrations                   #  101.562 /sec                        ( +-  4.60% )
+            46,337      page-faults                      #   34.604 K/sec                       ( +-  0.37% )
+     8,429,448,451      instructions                     #    1.39  insn per cycle              ( +-  0.50% )
+     6,072,948,170      cycles                           #    4.535 GHz                         ( +-  0.65% )
+     1,667,136,764      branches                         #    1.245 G/sec                       ( +-  0.53% )
+        53,257,086      branch-misses                    #    3.19% of all branches             ( +-  0.44% )
+                        TopdownL1                 #     10.0 %  tma_backend_bound      
+                                                  #     39.2 %  tma_bad_speculation    
+                                                  #     29.3 %  tma_frontend_bound     
+                                                  #     21.5 %  tma_retiring             ( +-  0.54% )
 
-            0,7794 +- 0,0306 seconds time elapsed  ( +-  3,92% )
+           0.42950 +- 0.00210 seconds time elapsed  ( +-  0.49% )
 
 $
 ```
 
-Both results are close and within a standard deviation of +-3,92%.
-
-(results are from September 2025; in October 2025, same like during development time, this JAR file runs faster, like many programs but not all, on the same machine! This is somehow a never ending story :confused:)
+These three execution time measurements took place on 2025-12-21.
 
 <br/>
 
