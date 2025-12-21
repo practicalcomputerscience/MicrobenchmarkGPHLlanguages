@@ -1,8 +1,8 @@
 language;mean;std_dev
-C#;0,06847;0,00580;xxxxxxxx
-Python;0,165;0;2025-12-13
-PowerShell;0,74138;0,00160;xxxxxxxx
-Scala JVM uberjar;0,19436;0,00261;xxxxxxxx
-Kotlin JVM uberjar;0,106915;0,000808;xxxxxxxx
-Clojure JVM uberjar;0,61368;0,00406;xxxxxxxx
-Gleam (Erlang VM);0,244;0,0;xxxxxxxx
+C#;0,046873;0,000318;2025-12-17
+Python;0,139;0;2025-12-13
+PowerShell;0,625;0,016;2025-12-19
+Scala JVM uberjar;0,142;0,003;2025-12-21
+Kotlin JVM uberjar;0,073;0,003;2025-12-21
+Clojure JVM uberjar;0,416;0,004;2025-12-21
+Gleam (Erlang VM);0,232;0,0;2025-12-13
