@@ -608,42 +608,50 @@ So, in the end I mostly used the _perf-stat_ program for Linux:
 - https://linux.die.net/man/1/perf-stat
 - https://commandmasters.com/commands/perf-linux/
 
-..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script, this is for languages:
+..because this is the method which should also precisely measure the execution times of the faster programs. "Mostly" because _perf-stat_ wasn't working with all my programs. Then I still used the _exe_times_statistics_for_one_test_case_in_cwd2_ Bash script.
 
-- Gleam: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"_
-- Python: _$ ./exe_times_statistics_for_one_test_case_in_cwd2 python3 ./random_streams_for_perf_stats.py_
+Later I discovered the [multitime](https://tratt.net/laurie/src/multitime/) command as an alternative to my Bash shell scripts.
 
-However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs:
+<br/>
+
+However, also using _perf-stat_ is apparently not a guarantee for precise and repeatable execution time measurements. For example when running the C# program, results varied like this with three command runs (on 2025-12-21):
 
 ```
 $ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
 ...
-            0,1382 +- 0,0120 seconds time elapsed  ( +-  8,72% )
+            0.05252 +- 0.00430 seconds time elapsed  ( +-  8.19% )
 
 $ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
 ...
-           0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )
+           0.048703 +- 0.000465 seconds time elapsed  ( +-  0.96% )
 
 $ sudo perf stat -r 20 ./bin/Release/net8.0/linux-x64/random_streams_for_perf_stats
 ...
-            0,1565 +- 0,0116 seconds time elapsed  ( +-  7,38% )
+           0.048417 +- 0.000367 seconds time elapsed  ( +-  0.76% )
 
 $
 ```
 
 ..where the average and +- standard deviation values are printed at the last results.
 
-The three resulting probability density functions look like this, if normal distributions are assumed:
+This rather wide variance of execution times can be obeserved with (almost) all programming languages. With C for example, the mean execution times and their related standard deviations are located like this (on 2025-12-21):
 
-![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/three%20resulting%20probability%20density%20functions%20from%20means%20and%20stddevs%20a.png)
+```
+$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
+...
+          0.008794 +- 0.000737 seconds time elapsed  ( +-  8.38% )
 
-All three command runs can only agree on the area marked with red color: this is a very small area!
+$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
+...
+          0.008113 +- 0.000286 seconds time elapsed  ( +-  3.53% )
 
-However, this wide variance of execution times cannot be obeserved with all programming languages. With C for example, the mean execution times and their related standard deviations are located fairly narrowly around 10 milliseconds:
+$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
+...
+          0.007992 +- 0.000103 seconds time elapsed  ( +-  1.29% )
+$
+```
 
-![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/three%20resulting%20probability%20density%20functions%20from%20means%20and%20stddevs_C.png)
-
-So, I just took the best out of three _perf-stat_ command runs in terms of the mean, with C# it's _0,11500 +- 0,00895 seconds time elapsed  ( +-  7,79% )_ for example. You could call it a sloppy best out of 3 approach.
+So, I just took the best out of three _perf-stat_ command runs in terms of the mean. You could call it a sloppy best out of 3 approach.
 
 I admit that this is not a very satisfactory outcome of measuring the execution time of a computer program. So, for now all execution time measurement values have only indicative character.
 
