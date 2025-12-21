@@ -8,9 +8,25 @@ https://www.scala-sbt.org/
 
 ## Installation tips
 
-First, I installed the OpenJDK (Open Java Development Kit), see from here at [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips)
+First, in my _~/.bashrc_ config file I masked this OpenJDK (Open **Java** Development Kit) installation for [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips), which is not usuable with Scala!!
 
-I continued with installing the **Coursier** application and artifact manager to install Scala app's as decribed here: https://get-coursier.io/docs/cli-installation
+Then I installed this OpenJDK version:
+
+```
+$ sudo apt install openjdk-25-jre-headless
+...
+$ java --version
+openjdk 25.0.1 2025-10-21
+OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing)
+$ 
+```
+
+..and set environment variable _JAVA_HOME_ in the _~/.bashrc_ config file with: _export JAVA_HOME="/usr/lib/jvm/java-25-openjdk-amd64"_
+
+<br/>
+
+I continued with installing the **Coursier** application and artifact manager to install Scala app's as decribed here: https://get-coursier.io/docs/cli-installation:
 
 ```
 $ curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs
@@ -55,6 +71,22 @@ $
 ```
 
 ## Building tips
+
+I started with the sbt (simple build tool) in my Scala working directory:
+
+```
+$ sbt new
+... # be patient here
+Select a template: d  # select option d
+name [Scala 3 Project Template]: password_encryption_perf_stats
+
+Template applied in ~/scripts/Scala/./password_encryption_perf_stats
+
+$ cd ./password_encryption_perf_stats
+$
+```
+
+In the Scala app (or porject) directory _password_encryption_perf_stats_ I configured these files:
 
 TBD
 
