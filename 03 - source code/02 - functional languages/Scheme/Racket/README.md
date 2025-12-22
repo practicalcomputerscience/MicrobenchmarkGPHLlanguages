@@ -107,7 +107,7 @@ By the way: I was not willing to use Racket as a **wrapper language** around C s
 
 I'm not doing this with any language in my programming language testing project.
 
-However, one could argue that I'm doing such a thing in my Clojure program ![Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj), which is tapping into the ecosystem of another programming language by using Java's _StringBuilder_ Class, but I think that this is a very different use case, because Clojure is sitting on top of Java's ecosystem and is able to use it seamlessly. And this strategy doesn't change the nature of the Clojure program at all (which still isn't super fast with at least 600 milliseconds execution time).
+However, one could argue that I'm doing such a thing in my Clojure program ![Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj), which is tapping into the ecosystem of another programming language by using Java's _StringBuilder_ Class, but I think that this is a very different use case, because Clojure is sitting on top of Java's ecosystem and is able to use it seamlessly. And this strategy doesn't change the nature of the Clojure program at all (which still isn't super fast with at least 420 milliseconds execution time).
 
 <br/>
 
