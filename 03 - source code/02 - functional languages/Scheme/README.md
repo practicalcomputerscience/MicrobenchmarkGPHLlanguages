@@ -162,7 +162,7 @@ So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192
 
 ### Scheme's on Speed
 
-When doing it right, Scheme programs can be running competitively fast. Here's a diagram of program execution times with all five tested dialects:
+When doing it right, Scheme programs can be running competitively fast. Here's a diagram of program execution times:
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
