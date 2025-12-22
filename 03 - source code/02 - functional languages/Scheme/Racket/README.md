@@ -124,7 +124,7 @@ For example, the execution time of the Chez version of my microbenchmark program
 
 However, Chez Scheme programs are by default not meant to be compiled into standalone, binary executables, but to be run like scripts, for example like this: _$ petite --script random_streams_for_perf_stats.ss_ (![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss))
 
-I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez This is the reason why I don't further consider my Chez Scheme version.
+I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez. This is the reason why I don't further consider my Chez Scheme version.
 
 <br/>
 
