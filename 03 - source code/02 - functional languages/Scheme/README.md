@@ -231,23 +231,15 @@ Only then I slowly got the idea that my Gambit installation is missing libraries
 
 ### Re-installation of Gambit Scheme
 
-So, I deinstalled my old Gambit installation (that is reverting an installation with _$ sudo apt install gambc_ with command _$ sudo apt-get remove gambc_), zipped the official repository: https://github.com/gambit/gambit, unzipped it on my Ubuntu machine and installed it like this:
+So, I deinstalled my old Gambit installation (that is reverting an installation with _$ sudo apt install gambc_ with command _$ sudo apt-get remove gambc_) and did it then like explained here: [Installation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit#installation-tips).
 
-```
-$ ./configure --enable-single-host  # only this option worked OK with my system
-$ make
-$ make check
-$ make modules  # optional, but I did this too
-$ sudo make install
-```
-
-The installation documents emphasize the importance of the _--enable-single-host_ switch for speedy Gambit programs. However, at least one of the other switches caused problems with my installation and so I started successfully over with above sequence of commands.
+The installation documents emphasize the importance of the _--enable-single-host_ switch for speedy Gambit programs. However, at least one of the other switches caused problems with my installation and so I started successfully over with the given sequence of commands.
 
 Finally, in my _.bashrc_ file I added the two paths to both Gambit programs, gsi (REPL) and gsc (compiler), for convenience. And suddenly, also expressions _(define s "abc"); (string-concatenate (list s s s))_ worked as they should in the Gambit REPL!
 
-By the way: this is also an installation procedure similar to my:
+By the way: this Gambit installation is similar to my:
 
-- CHICKEN installation: https://code.call-cc.org/ + https://code.call-cc.org/githtml/chicken-core/chicken-5/files/README.html and my
+- CHICKEN installation: https://code.call-cc.org/ + https://code.call-cc.org/githtml/chicken-core/chicken-5/files/README.html, and my
 - Bigloo installation: https://www-sop.inria.fr/mimosa/fp/Bigloo/download.html
 
 <br/>
@@ -530,7 +522,7 @@ But maybe this benchmark is specifically unfair to **CHICKEN** Scheme, because w
 
 ### FIB: a classic benchmark, computes fib(n) inefficiently
 
-As a comparison to my microbenchmark, here the official 2024 benchmark ranking for the _fib_ program with "01" being the the fastest rank:
+As a comparison to my microbenchmark, here the official 2024 benchmark ranking for the _fib_ program with "01" being the fastest rank:
 
 - 01 -- Bigloo (in version 4.5b)
 - 02 -- GambitC (4.9.5)
