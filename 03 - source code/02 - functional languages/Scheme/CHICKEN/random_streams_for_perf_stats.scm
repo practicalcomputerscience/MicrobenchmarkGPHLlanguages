@@ -1,6 +1,7 @@
 #| random_streams_for_perf_stats.scm -- this is the CHICKEN Scheme version
 
 2025-06-27/28
+2025-12-21: see below
 
 build on Ubuntu 24 LTS: $ cd ./scripts/CHICKEN_Scheme/chicken-5.4.0
                         $ sudo ./chicken-install srfi-152  # for example --> this takes time
@@ -10,7 +11,6 @@ build on Ubuntu 24 LTS: $ cd ./scripts/CHICKEN_Scheme/chicken-5.4.0
 
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
                         $ time ./random_streams_for_perf_stats
-
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 
                  REPL:  $ csi
@@ -57,7 +57,7 @@ $
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
 ; see from here: https://api.call-cc.org/5/doc/chicken/random
-(set! old-seed (pseudo-random-integer m))
+(set! old-seed (+ (pseudo-random-integer (- m 1)) 1))  ; pseudo random integer between 0 and RANGE-1, 2025-12-22
 ; (display old-seed)  ; for testing
 
 
