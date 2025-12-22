@@ -1,5 +1,3 @@
-2025-12-22: work in progress
-
 # Chez Scheme
 
 https://cisco.github.io/ChezScheme/
@@ -30,7 +28,35 @@ $ petite --version  # test version info
 $
 ```
 
-TBD
+## Standalone executable
+
+I also managed to make a standalone executable with this help: [A Chez program, compiled into a standalone executable.](https://github.com/Kato-Dax/selfcontained-chez/tree/main), though I had to modify the compiler program, now named [compile2.scm](./compile2.scm) to mask this expression: _(vfasl-convert-file custom-boot-file custom-boot-file '()))_, which would systematically lead to an error ("Exception in vfasl: cannot vfasl with unknown endianness") otherwise:
+
+- download zip file from: https://github.com/Blugatroff/selfcontained-chez, which is saved as _selfcontained-chez-main.zip_
+- extract it into a working directory: _./selfcontained-chez-main_
+
+There do:
+
+```
+$ export SCHEME_DIRS=$(echo /usr/lib/csv10.3.0/pb)
+$ cp ./random_streams_for_perf_stats.ss ./selfcontained-chez-main  # copy the source code file into this new directory
+$ cd ./selfcontained-chez-main  # change into this new directory
+$ ./compile2.scm ./random_streams_for_perf_stats.ss  # compile the source code file with the modified compiler program
+$ ./random_streams_for_perf_stats  # run the standalone executable
+...
+$
+```
+
+However, also this method doesn't generate a really fast Scheme program: _$ time ./random_streams_for_perf_stats_ shows a wallclock time of about 770 milliseconds.
+
+This is a bit slower than doing the conventional way with:
+
+```
+$ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
+$ time petite --program random_streams_for_perf_stats.so
+```
+
+..which shows a wallclock time of about 670 milliseconds.
 
 <br/>
 
