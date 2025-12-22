@@ -82,7 +82,7 @@ Here's the final and significantly faster solution, where _x_ is not starting as
 
 Also see item #2 of this list: ![My 5 best practices with Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#my-5-best-practices-with-scheme-dialects)
 
-Here's a comment for current Racket version 8.17 on an improvement of the _string-append_ function: https://blog.racket-lang.org/2025/05/racket-v8-17.html:
+Here's a comment for Racket version 8.17 (as of July 2025) on an improvement of the _string-append_ function: https://blog.racket-lang.org/2025/05/racket-v8-17.html:
 
 > The string-append function has improved performance and reduced memory use for long lists of strings in the Racket CS implementation. Differences are clearly noticeable for lists of length 1 million.
 
