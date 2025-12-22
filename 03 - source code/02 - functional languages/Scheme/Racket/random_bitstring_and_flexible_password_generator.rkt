@@ -12,7 +12,7 @@ build on Ubuntu 24 LTS: $ raco exe random_bitstring_and_flexible_password_genera
                         $ raco make random_bitstring_and_flexible_password_generator.rkt
 
 $ racket --version
-Welcome to Racket v8.17 [cs].
+Welcome to Racket v9.0 [cs].
 $
 
 |#

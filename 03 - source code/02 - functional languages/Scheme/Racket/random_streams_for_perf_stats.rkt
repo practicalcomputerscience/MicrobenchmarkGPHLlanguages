@@ -14,7 +14,7 @@ build on Ubuntu 24 LTS: $ raco exe random_streams_for_perf_stats.rkt
                         $ raco make random_streams_for_perf_stats.rkt
 
 $ racket --version
-Welcome to Racket v8.17 [cs].
+Welcome to Racket v9.0 [cs].
 $
 
 |#
@@ -53,7 +53,8 @@ $
 (define ini-string-bits_hex "0000")
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
-(set! old-seed (random 1 m))
+(set! old-seed (random 1 m))  ; random exact integer in the range min to max-1
+; see at: https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)
 
 
 
