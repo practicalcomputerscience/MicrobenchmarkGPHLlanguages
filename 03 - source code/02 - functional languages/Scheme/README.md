@@ -168,7 +168,7 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 The best out of three _perf-stat_ runs of the Gambit program in its final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) runs slightly faster than the first [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats_8batch.scm) as shown in the diagram above.
 
-The result of the [Chez Scheme program](TBD) is not shown in the diagram above, because a program run takes more than 600 milliseconds; so, this dialect is somehow "out-of-competition".
+The result of the [Chez Scheme program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss) is not shown in the diagram above, because a program run takes about 660 milliseconds; so, this dialect is somehow "out-of-competition".
 
 <br/>
 
@@ -277,7 +277,7 @@ CHICKEN and Bigloo Scheme's compile to very small binary executables:
 Scheme dialect | size of executable program in bytes | compilation command
 --- | --- | ---
 Gambit | 10,109,464 | _$ gsc -exe ./< program name >.scm_
-Chez | TBD ~3MB | _$ ./compile2.scm ./< program name >.ss_
+Chez | 3,639,280 | _$ ./compile2.scm ./< program name >.ss_
 Racket | 2,109,470 | _$ raco exe ./< program name >.rkt_
 CHICKEN | 40,032 | _$ csc -O5 ./< program name >.scm_
 Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
