@@ -1,16 +1,18 @@
 #| random_streams_for_perf_stats.scm -- this is the Gambit Scheme version
 
 2025-06-26/27/28, 2025-07-01
+2025-12-22: see below
 
 build on Ubuntu 24 LTS: (don't do like this because no batteries included and old: $ sudo apt install gambc)
-                        Instead, download this zip file:
-                        https://github.com/gambit/gambit/tree/6b898fc90c0a2842093d9c92cd6c30be329c4cea
+                        Instead, download latest zip file from: https://github.com/gambit/gambit/tags,
+                        here gambit-4.9.7.tar.gz, unzip it and in the unzipped dir do:
                         $ ./configure --enable-single-host  # only this option worked OK with my system
                         $ make
                         $ make check
                         $ make modules  # optional, but I did this too
                         $ sudo make install
-                        fix .bashrc for pathes to ./gsi + ./gsc
+                        fix .bashrc for pathes to subdirs ./gsi + ./gsc in dir ./gambit-4.9.7/
+
 
                         $ gsc -exe ./random_streams_for_perf_stats.scm
                         => this is apparently as fast as this compilation:
@@ -24,8 +26,8 @@ run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
                         > (exit)
 
 $ gsc -v
-v4.9.6 20250310181758 x86_64-pc-linux-gnu "./configure '--enable-single-host'"
-$
+v4.9.7 20250713105902 x86_64-pc-linux-gnu "./configure '--enable-single-host'"
+$ 
 
 |#
 
@@ -57,7 +59,7 @@ $
 (define s (random-source-state-ref default-random-source))
 (random-source-randomize! default-random-source)
 ; see from here: https://gambitscheme.org/latest/manual/#Pseudo-random-numbers
-(set! old-seed (random-integer m))  ; 2025-06-26: change from Chez Scheme + Gambit Scheme
+(set! old-seed (+ (random-integer (- m 1)) 1))  ; exact integer in the range 0 to n-1, 2025-12-22
 ; (display old-seed)  ; for testing
 
 
