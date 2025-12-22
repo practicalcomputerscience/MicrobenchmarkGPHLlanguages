@@ -6,6 +6,7 @@ https://racket-lang.org/
 
 Table of contents:
 
+- [Installation tips](#installation-tips)
 - [Execution speed](#execution-speed)
 - [FFI's (Foreign Function Interfaces)](#ffis-foreign-function-interfaces)
 - [Chez Scheme (CS)](#chez-scheme-cs)
@@ -13,13 +14,25 @@ Table of contents:
 
 ---
 
-Racket has an easy build system: 
+## Installation tips
+
+Download installation script _racket-9.0-x86_64-linux-buster-cs.sh_ (as of 2025-12-22) from here: https://download.racket-lang.org/, and run it like this (in Ubuntu 24 LTS): _sudo sh ./racket-9.0-x86_64-linux-buster-cs.sh_, where my answers were: "yes" (for a Unix-style distribution) - "1" (/usr/... as installation base) - "[ENTER]" (no change to target directories).
+
+Then, have a little test:
+
+```
+$ racket --version
+Welcome to Racket v9.0 [cs].
+$ 
+```
+
+Otherwise, Racket has an easy build system: 
 ```
 $ raco exe random_bitstring_and_flexible_password_generator.rkt
 ```
 ..and decent documentation: https://docs.racket-lang.org/
 
-### Execution speed
+## Execution speed
 
 Though it's syntax and grammar would definitely make a modern Lisp-like language, it's also easy to write slow programs if you are not careful enough or just an inexperienced beginner.
 
@@ -88,7 +101,7 @@ Here's a comment for Racket version 8.17 (as of July 2025) on an improvement of 
 
 Apparently, the Racket developers seem to be aware of the speed issue of the _string-append_ function (CS = Chez Scheme, see below at ![Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs)).
 
-#### FFI's (Foreign Function Interfaces)
+### FFI's (Foreign Function Interfaces)
 
 By the way: I was not willing to use Racket as a **wrapper language** around C source code for example for a speedier program, that is using its Foreign Function Interface: https://docs.racket-lang.org/foreign/index.html "to run performance sensitive parts of your application in C or C++".
 
@@ -115,7 +128,7 @@ I didn't succeed with this program to make a standalone executable from a Chez S
 
 <br/>
 
-### Stack and heap usage
+## Stack and heap usage
 
 Here's another observation with Racket Scheme, here relating to its stack and heap usage (https://phoenixnap.com/kb/stack-vs-heap): as an experiment I declared the final strings as local variables _bits_x__ and _bits_hex__. However, this was a bad idea since the Ubuntu operating system killed this program after a while, presumably to prevent running out of stack memory:
 
