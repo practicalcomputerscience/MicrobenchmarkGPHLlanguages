@@ -12,7 +12,6 @@ Table of contents:
 - [Scheme's on Speed](#schemes-on-speed)
 - [Re-installation of Gambit Scheme](#re-installation-of-gambit-scheme)
 - [Bigloo Scheme](#bigloo-scheme)
-- [Why do I not publish my Chez Scheme results?](#why-do-i-not-publish-my-chez-scheme-results-no-easy-standalone-excutable-program)
 - [Size of executables](#size-of-executables)
 - [Functional error handling](#functional-error-handling)
 - [Procedures or functions?](#procedures-or-functions-procedures)
@@ -169,6 +168,8 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 The best out of three _perf-stat_ runs of the Gambit program in its final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) runs slightly faster than the first [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats_8batch.scm) as shown in the diagram above.
 
+The result of the [Chez Scheme program](TBD) is not shown in the diagram above, because a program run takes more than 600 milliseconds; so, this dialect is somehow "out-of-competition".
+
 <br/>
 
 The **Gambit** program in its 8-batch version is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
@@ -266,15 +267,6 @@ At last I ported my program to Bigloo Scheme (https://www-sop.inria.fr/indes/fp/
 ```
 
 ..works like a charm!
-
-<br/>
-
-### Why do I not publish my Chez Scheme results? (no easy standalone excutable program!)
-
-Racket, Gambit, CHICKEN and Bigloo Scheme all have two nice features in common:
-
-- they are more or less easy to install (specifically Racket) or easy to build with the common triple jump of: _$ ./configure; make; sudo make install_
-- but what counts more: these dialects, though they are not the only ones, actively support compiling to a standalone executable program, a thing Chez Scheme obviously tries to avoid (I tried two 3rd party script solutions from GitHub to no avail). It's not an essential feature, but all other programs have it, including the Common Lisp program
 
 <br/>
 
