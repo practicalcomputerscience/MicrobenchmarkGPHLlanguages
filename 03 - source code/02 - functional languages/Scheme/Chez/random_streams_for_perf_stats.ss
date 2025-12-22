@@ -1,6 +1,7 @@
 #| random_streams_for_perf_stats.ss
 
 2025-06-25
+2025-12-22: see below
 
 test on Ubuntu 24 LTS: OK, and < 50% of exe time of Racket, but still without exception handling when writing files!!
 
@@ -64,7 +65,7 @@ to-do:
 (define ini-string-bits_hex "0000")
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
-(set! old-seed (random m))
+(set! old-seed (+ (random (- m 1)) 1))  ; 0..m, with m is exclusive, 2025-12-22
 
 
 
