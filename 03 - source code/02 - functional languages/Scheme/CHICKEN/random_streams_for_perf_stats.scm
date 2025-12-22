@@ -1,7 +1,7 @@
 #| random_streams_for_perf_stats.scm -- this is the CHICKEN Scheme version
 
 2025-06-27/28
-2025-12-21: see below
+2025-12-22: see below
 
 build on Ubuntu 24 LTS: $ cd ./scripts/CHICKEN_Scheme/chicken-5.4.0
                         $ sudo ./chicken-install srfi-152  # for example --> this takes time
@@ -164,3 +164,4 @@ $
 (main)
 
 ; end of random_streams_for_perf_stats.scm
+
