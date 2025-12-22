@@ -163,7 +163,7 @@ So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192
 
 ### Scheme's on Speed
 
-When doing it right, Scheme programs can be running competitively fast. Here's a diagram of program execution times with all four tested dialects:
+When doing it right, Scheme programs can be running competitively fast. Here's a diagram of program execution times with all five tested dialects:
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
@@ -296,7 +296,7 @@ Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux s
 
 The Racket Scheme program needs a Racket Scheme installation to be executable.
 
-So, out of these 4 tested Scheme dialects, only the Gambit version is a truly portable and standalone executable for Linux and the big size of its program indicates this.
+So, out of these five tested Scheme dialects, only the Gambit and the Chez versions (with this adapted help: https://github.com/Kato-Dax/selfcontained-chez/tree/main) are truly portable and standalone executables for Linux. The bigger sizes of their program files indicates this.
 
 <br/>
 
