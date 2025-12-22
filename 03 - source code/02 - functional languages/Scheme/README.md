@@ -285,6 +285,7 @@ CHICKEN and Bigloo Scheme's compile to very small binary executables:
 Scheme dialect | size of executable program in bytes | compilation command
 --- | --- | ---
 Gambit | 10,109,464 | _$ gsc -exe ./< program name >.scm_
+Chez | TBD ~3MB | _$ ./compile2.scm ./< program name >.ss_
 Racket | 2,109,470 | _$ raco exe ./< program name >.rkt_
 CHICKEN | 40,032 | _$ csc -O5 ./< program name >.scm_
 Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
