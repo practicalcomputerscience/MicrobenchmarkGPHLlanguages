@@ -167,7 +167,7 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
-The best out of three _perf-stat_ runs of the Gambit program in its [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm) runs slightly faster than the final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) as shwon in the diagram above:
+The best out of three _perf-stat_ runs of the Gambit program in its [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm) runs slightly faster than the final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) as shown in the diagram above:
 
 ```
            0,09287 +- 0,00726 seconds time elapsed  ( +-  7,82% )
@@ -582,7 +582,7 @@ However, in the "Revised6 Report on the Algorithmic Language Scheme" from 2007 (
 
 > List and pair data, representing pairs and lists of values (see section 11.9) are represented using parentheses or brackets. Matching pairs of brackets that occur in the rules of 〈list〉are equivalent to matching pairs of parentheses.
 
-Even with latest version 4.9.6 Gambit won't let you compile _([...])_ due to "Ill-formed binding".
+Even with version 4.9.6 (as of June 2025) Gambit won't let you compile _([...])_ due to "Ill-formed binding".
 
 <br/>
 
