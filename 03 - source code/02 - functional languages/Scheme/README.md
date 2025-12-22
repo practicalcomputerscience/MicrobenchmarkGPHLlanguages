@@ -159,7 +159,7 @@ This refers to item #2 of [My 5 best practices with Scheme dialects](#my-5-best-
 
 from: https://docs.scheme.org/guide/arrays/
 
-So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192 arguments) in 8 batches - a very imperative programming style - in one of the first versions of my Gambit Scheme program: [source code old](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm), but not in my final version: [source code new](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm)
+So, I ended up with 8 global (and dynamic) vectors for (62500 arguments) / (8192 arguments) in 8 batches - a very imperative programming style - in one of the first versions of my Gambit Scheme program: [source code old](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats_8batch.scm), but not in my final version: [source code new](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm)
 
 ### Scheme's on Speed
 
@@ -167,11 +167,7 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20Scheme.png)
 
-The best out of three _perf-stat_ runs of the Gambit program in its [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats%20-%20OK%2C%20superfast%208%20batch%20new%20solution.scm) runs slightly faster than the final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) as shown in the diagram above:
-
-```
-           0,09287 +- 0,00726 seconds time elapsed  ( +-  7,82% )
-```
+The best out of three _perf-stat_ runs of the Gambit program in its final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) runs slightly faster than the first [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats_8batch.scm) as shown in the diagram above.
 
 <br/>
 
