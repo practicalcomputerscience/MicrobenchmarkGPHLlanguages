@@ -42,6 +42,7 @@ Roc | roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:
 Rust | rustc 1.92.0 (ded5c06cf 2025-12-08); binary: rustc; commit-hash: ded5c06cf21d2b93bffd5d884aa6e96934ee4234; commit-date: 2025-12-08; host: x86_64-unknown-linux-gnu; release: 1.92.0; LLVM version: 21.1.3 | $ rustc -V -v
 Scala | sbt runner version: 1.11.7; Scala code runner version: 1.9.1; Scala version (default): 3.7.4 | $ sbt --version; $ scala --version
 Scheme, Bigloo | Bigloo (4.6a) | $ bigloo -version
+Scheme, Chez | 10.3.0 | $ petite --version
 Scheme, CHICKEN | CHICKEN; (c) 2008-2022, The CHICKEN Team; (c) 2000-2007, Felix L. Winkelmann; Version 5.4.0 (rev 1a1d1495); linux-unix-gnu-x86-64 [ 64bit dload ptables ] | $ csc -version
 Scheme, Gambit | v4.9.7 20250713105902 x86_64-pc-linux-gnu "./configure '--enable-single-host'" | $ gsc -v
 Scheme, Racket | Welcome to Racket v9.0 [cs]. | $ racket --version
