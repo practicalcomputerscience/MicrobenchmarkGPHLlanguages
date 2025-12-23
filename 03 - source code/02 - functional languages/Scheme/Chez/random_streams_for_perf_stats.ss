@@ -2,23 +2,29 @@
 
 2025-06-25
 2025-12-22: see below
+2025-12-23
 
 test on Ubuntu 24 LTS: OK
 
 build on Ubuntu 24 LTS: $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q  # compiling
 
-run on Ubuntu 24 LTS:   $ petite --script random_streams_for_perf_stats.ss  <<< FIRST TRY THIS TO TEST THE PROGRAM!!
+run on Ubuntu 24 LTS: Petite interpreter:
+                        $ petite --script random_streams_for_perf_stats.ss  <<< FIRST TRY THIS TO TEST THE PROGRAM!!
                         $ petite --program random_streams_for_perf_stats.so
                         $ time petite --program random_streams_for_perf_stats.so => real	0m0.709s
 
                         $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
                           "to generate “unsafe” code"
                         $ time petite --program random_streams_for_perf_stats.so => real	0m0.668s
-                          => this seems to be the fastest solution of all I tried
+
+                      Chez compiler:
+                        $ time chezscheme --script ./random_streams_for_perf_stats.ss => real	0m0.083s
 
 
-$ petite --version
+$ petite --version  # Petite interpreter
 10.3.0
+$ chezscheme --version  # Chez compiler
+9.5.8
 $
 
 
