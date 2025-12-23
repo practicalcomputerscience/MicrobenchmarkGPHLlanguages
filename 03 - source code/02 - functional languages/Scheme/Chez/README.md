@@ -91,7 +91,7 @@ $
 Notes:
 
 - compiling for pb leads to much slower programs than using ta6le, which is for threaded 64-bit Linux.
-- command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new configuration, make and sudo make install is needed then (though should be quick when not done the first time); don't forget about the ncurses!
+- command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new _configuration_, _make_ and _sudo make install_ command chain is needed then (though this should be quick when not doing it the first time); don't forget about the ncurses!
 
 <br/>
 
