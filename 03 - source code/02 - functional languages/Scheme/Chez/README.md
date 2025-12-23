@@ -6,7 +6,16 @@ See some more information from here: [Chez Scheme (CS)](https://github.com/pract
 
 pb = portable bytecode
 
+---
+
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [Standalone executable with the Petite interpreter](#standalone-executable-with-the-petite-interpreter)
+
 <br/>
+
+---
 
 ## Installation tips
 
