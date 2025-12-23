@@ -26,10 +26,10 @@ See from file _IMPLEMENTATION.md_:
 
 > Chez Scheme is a bootstrapped compiler, meaning you need a Chez Scheme compiler to build a Chez Scheme compiler.
 
-You may get, build and install (latest version of) Chez Scheme like this:
+You may get, build and install (latest version of) Chez Scheme like this -- and exactly in this order!!
 
 ```
-$ sudo apt install libncurses-dev  # may be missing, but is needed
+$ sudo apt install libncurses-dev  # may be missing, but is needed: THIS WILL INSTALL petite and scheme version 9.5.8 as of 2025-12-23!!!
 $ sudo apt install libx11-dev  # may be missing, but is needed
 $ curl -L -O https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz  # get version 10.3.0 as of 2025-12-23
 $ tar -xf csv10.3.0.tar.gz  # unpack
@@ -46,7 +46,7 @@ $ petite --version  # test version info of Petite interpreter
 $ 
 ```
 
-Now, you can execute the Chez Scheme source code like this:
+Now, you should be able to execute the microbenchmark source code for Chez Scheme like this:
 
 ```
 $ time scheme --script ./random_streams_for_perf_stats.ss
@@ -55,56 +55,44 @@ generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
 
-real	0m7.097s
+real	0m0.083s
+
 ...
 $
 ```
 
-..or like this, with first compiling to “unsafe” code in an ~.so file and then running it with the Petite interpreter:
+..or like this, with first compiling to “unsafe” code, that is file _random_streams_for_perf_stats.so_, and then running it with the Petite interpreter:
 
 ```
 $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
 $ time petite --program random_streams_for_perf_stats.so
 ...
-real	0m4.146s
+real	0m0.070s
 ...
 $
 ```
-
-Bummer times!
-
-What went wrong?
 
 ### Ncurses
 
+When you see (much) slower execution times (at a comparable system), in the seconds or even over one minute and more, then something with the Ncurses may be wrong:
+
 > [!IMPORTANT]
-> After elaborate experimentation, I found out, also with the help of Big AI ("Chez Scheme is very slow in Ubuntu"), that a re-installation of the Terminal User Interface (TUI) library _ncurses_, short for "new curses", may be of utmost importance after building and installing Chez Scheme as shown above:
+> After elaborate experimentation, I found out, also with the help of Big AI ("Chez Scheme is very slow in Ubuntu"), that the installation of the Terminal User Interface (TUI) library _ncurses_, short for "new curses", may be of utmost importance **before** installing Chez Scheme as shown above.
 
-```
-$ sudo apt install libncurses-dev
-```
+So, when you have forgotten it, just repeat the complete order of commands as shown above. After that, re-check the installed version:
 
-I did so and repeated above tests:
-
-```
-$ time scheme --script ./random_streams_for_perf_stats.ss
-...
-real	0m0.084s
-...
-$ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
-$ time petite --program random_streams_for_perf_stats.so
-...
-real	0m0.069s
-...
-$
-```
+$ scheme --version  # test version info of Chez compiler
+10.3.0
+$ petite --version  # test version info of Petite interpreter
+10.3.0
+$ 
 
 <br/>
 
 Notes:
 
-- compiling for pb leads to much slower programs than using ta6le, which is for for threaded 64-bit Linux.
-- command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new configuration, make and sudo make install is needed then (though should be quick when not the first time); don't forget about the ncurses!
+- compiling for pb leads to much slower programs than using ta6le, which is for threaded 64-bit Linux.
+- command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new configuration, make and sudo make install is needed then (though should be quick when not done the first time); don't forget about the ncurses!
 
 <br/>
 
