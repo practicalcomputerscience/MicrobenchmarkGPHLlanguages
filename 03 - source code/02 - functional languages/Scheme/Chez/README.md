@@ -90,15 +90,6 @@ $
 
 However, also this method doesn't generate a really fast Scheme program: _$ time ./random_streams_for_perf_stats_ shows a wallclock time of about 770 milliseconds.
 
-This is a bit slower than doing the conventional way with:
-
-```
-$ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
-$ time petite --program random_streams_for_perf_stats.so
-```
-
-..which shows a wallclock time of about 670 milliseconds.
-
 <br/>
 
 ##_end
