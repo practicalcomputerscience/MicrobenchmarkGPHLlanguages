@@ -4,7 +4,7 @@
 2025-12-22: see below
 2025-12-23
 
-test on Ubuntu 24 LTS: Petite interpreter + Chez compiler OK; making a standalone executable not working (may work in a complete 9.5.8 environment though)
+test on Ubuntu 24 LTS: Petite interpreter + Chez compiler OK; making a standalone executable has been working in a fresh Ubuntu 24 LTS system!
 
 First, install: $ sudo apt install libncurses-dev
 
@@ -40,8 +40,10 @@ $ cp ./random_streams_for_perf_stats.ss ./selfcontained-chez-main  # copy this f
 $ cd ./selfcontained-chez-main  # change into this new dir
 $ ./compile.scm ./random_streams_for_perf_stats.ss  # compile this source code file
 $ ./random_streams_for_perf_stats
-/tmp/bootfileYeAi5U is for Version 0.0.0-pre-release.73; need Version 10.3.0
-Aborted (core dumped) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ?????????????????
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
 $
 ------
 
@@ -224,4 +226,3 @@ $
 
 
 ; end of random_streams_for_perf_stats.ss
-
