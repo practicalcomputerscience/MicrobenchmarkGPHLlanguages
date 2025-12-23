@@ -275,6 +275,7 @@ CHICKEN and Bigloo Scheme's compile to very small binary executables:
 Scheme dialect | size of executable program in bytes | compilation command
 --- | --- | ---
 Gambit | 10,109,464 | _$ gsc -exe ./< program name >.scm_
+Chez | 4,952,848 | _./compile.scm ./random_streams_for_perf_stats.ss_
 Racket | 2,109,470 | _$ raco exe ./< program name >.rkt_
 CHICKEN | 40,032 | _$ csc -O5 ./< program name >.scm_
 Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
@@ -285,7 +286,7 @@ Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux s
 
 The Racket Scheme program needs a Racket Scheme installation to be executable.
 
-So, out of these five tested Scheme dialects, only the Gambit version is a truly portable and standalone executable for Linux. The bigger size of its program file indicates this.
+So, out of these five tested Scheme dialects, the Chez and the Gambit versions are truly portable and standalone executables for Linux. The bigger sizes of their program files indicates this.
 
 <br/>
 
