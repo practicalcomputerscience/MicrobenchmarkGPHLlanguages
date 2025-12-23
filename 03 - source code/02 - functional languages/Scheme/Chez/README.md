@@ -40,7 +40,8 @@ $ scheme --version  # test version info of Chez compiler
 10.3.0
 $ petite --version  # test version info of Petite interpreter
 10.3.0
-$ 
+$ cd ..
+$
 ```
 
 Now, you should be able to execute the microbenchmark source code for Chez Scheme like this:
