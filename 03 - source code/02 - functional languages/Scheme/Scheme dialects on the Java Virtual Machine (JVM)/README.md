@@ -92,7 +92,7 @@ Scheme comments with semicolons (';' or ';;') work, but not these: #| ... |#
 You can run this Scheme program like this on the JVM:
 
 ```
-$ java -jar ./-1.4PF2/runtime.jar ./hello_world.scm
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./hello_world.scm
 Hello World from  version 1.4PF2!
 0.9192306489663782
 $
