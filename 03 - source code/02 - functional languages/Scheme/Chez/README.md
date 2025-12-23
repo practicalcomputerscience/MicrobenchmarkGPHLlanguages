@@ -27,9 +27,11 @@ See from file _IMPLEMENTATION.md_:
 > Chez Scheme is a bootstrapped compiler, meaning you need a Chez Scheme compiler to build a Chez Scheme compiler.
 
 ```
-$ sudo apt install libncurses-dev
-$ sudo apt install libx11-dev
-$ curl -L -O https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz  # version 10.3.0 as of 2025-12-23
+$ sudo apt install libncurses-dev  # may be missing, but is needed
+$ sudo apt install libx11-dev  # may be missing, but is needed
+$ curl -L -O https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz  # get version 10.3.0 as of 2025-12-23
+$ tar -xf csv10.3.0.tar.gz  # unpack
+$ cd csv10.3.0
 $ ./configure
 Configuring for ta6le, and will create boot files via pb
 $ make  # this may take some time
