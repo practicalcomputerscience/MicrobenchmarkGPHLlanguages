@@ -123,7 +123,7 @@ Now I can also run Peter Norvig's original _r4rstest.scm_ compliance test succes
 However, I made one change to it and added expression _(exit)_ at the bottom of this source code file to leave the JSchemePlus REPL at the end of this test program. Run this test like this:
 
 ```
-$ java -jar ./-1.4PF2/runtime.jar ./r4rstest.scm
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar ./r4rstest.scm
 ```
 
 The tail of the console output of this program looks like this:
@@ -145,7 +145,7 @@ Beware that file name _r4rstest.scm_ is hard coded in this source code file (tho
 You can directly enter the JSchemePlus REPL like this:
 
 ```
-$ java -jar ./-1.4PF2/runtime.jar
+$ java -jar ./JSchemePlus-1.4PF2/runtime.jar
 ```
 
 You will have more editing comfort in this REPL when you call _rlwrap_ (a readline wrapper: https://linux.die.net/man/1/rlwrap) before:
