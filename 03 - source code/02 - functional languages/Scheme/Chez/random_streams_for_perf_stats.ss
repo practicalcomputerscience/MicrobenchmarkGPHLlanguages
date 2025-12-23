@@ -4,40 +4,45 @@
 2025-12-22: see below
 2025-12-23
 
-test on Ubuntu 24 LTS: OK
+test on Ubuntu 24 LTS: Petite interpreter + Chez compiler OK; making a standalone executable not working (may work in a complete 9.5.8 environment though)
 
-build on Ubuntu 24 LTS: $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q  # compiling
+First, install: $ sudo apt install libncurses-dev  # it will also install petite and scheme version 9.5.8 (as of 2025-12-23)!!
+
+build on Ubuntu 24 LTS: $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme  # compiling
 
 run on Ubuntu 24 LTS: Petite interpreter:
-                        $ petite --script random_streams_for_perf_stats.ss  <<< FIRST TRY THIS TO TEST THE PROGRAM!!
+                        $ petite --script random_streams_for_perf_stats.ss  <<< FIRST, TRY THIS TO TEST THE PROGRAM!!
                         $ petite --program random_streams_for_perf_stats.so
-                        $ time petite --program random_streams_for_perf_stats.so => real	0m0.709s
+                        $ time petite --program random_streams_for_perf_stats.so => real	0m0.071s
 
-                        $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
+                        $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme --optimize-level 3
                           "to generate “unsafe” code"
-                        $ time petite --program random_streams_for_perf_stats.so => real	0m0.668s
+                        $ time petite --program random_streams_for_perf_stats.so => real	0m0.069s
 
                       Chez compiler:
-                        $ time chezscheme --script ./random_streams_for_perf_stats.ss => real	0m0.083s
+                        $ time scheme --script ./random_streams_for_perf_stats.ss => real	0m0.088s
 
 
 $ petite --version  # Petite interpreter
 10.3.0
-$ chezscheme --version  # Chez compiler
-9.5.8
+$ scheme --version  # Chez compiler
+10.3.0
 $
 
 
 ------
-Make a standalone executable: compilation with compile2.scm (my slight adaption) is working:
+Make a standalone executable: compilation with compile.scm from here:
 Download zip file from: https://github.com/Blugatroff/selfcontained-chez --> selfcontained-chez-main.zip
 Extract this zip file into dir: ./selfcontained-chez-main
-$ export SCHEME_DIRS=$(echo /usr/lib/csv10.3.0/pb)  # this is from: ./configure; make; sudo make install: from csv10.3.0.tar.gz
-# pb = portable bytecode
+$ ls -al /usr/lib/csv10.3.0/ta6le  # check the existence of this directory
+$ export SCHEME_DIRS=$(echo /usr/lib/csv10.3.0/ta6le)  # make these version related Chez Scheme development files visible
 $ cp ./random_streams_for_perf_stats.ss ./selfcontained-chez-main  # copy this file into this new dir
 $ cd ./selfcontained-chez-main  # change into this new dir
-$ ./compile2.scm ./random_streams_for_perf_stats.ss  # compile this source code file
-$ time ./random_streams_for_perf_stats => real	0m0.772s
+$ ./compile.scm ./random_streams_for_perf_stats.ss  # compile this source code file
+$ ./random_streams_for_perf_stats
+/tmp/bootfileYeAi5U is for Version 0.0.0-pre-release.73; need Version 10.3.0
+Aborted (core dumped) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ?????????????????
+$
 ------
 
 |#
