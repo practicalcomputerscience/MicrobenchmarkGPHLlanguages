@@ -507,7 +507,7 @@ real	0m1.806s
 ...
 ```
 
-Chez Scheme doesn't work with me for benchmark program _fib.scm_, be it with the Petite interpreter or the Chez compiler. This is in contrast to these official [Chez benchmark results](https://github.com/ecraven/r7rs-benchmarks/blob/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce/results.Chez).
+Chez Scheme doesn't work with me for benchmark program _fib.scm_ (this expression is the culprit: _(import (scheme base) (scheme read) (scheme write) (scheme time))_), be it with the Petite interpreter or the Chez compiler. This is in contrast to these official [Chez benchmark results](https://github.com/ecraven/r7rs-benchmarks/blob/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce/results.Chez).
 
 <br/>
 
@@ -521,6 +521,7 @@ As a comparison to my microbenchmark, here the official 2024 benchmark ranking f
 
 - 01 -- Bigloo (in version 4.5b)
 - 02 -- GambitC (4.9.5)
+- 04 -- Chez (10.0.0)
 - 05 -- Racket (8.13)
 - 15 -- CHICKEN (5.3.0)
 
