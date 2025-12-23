@@ -122,9 +122,7 @@ Chez Scheme is more "complete" and also speedier than other Scheme dialects in a
 
 For example, the execution time of the Chez version of my microbenchmark program dropped by more than 50% compared to my (hand optimized) Racket program - though the source code files are not identical, see from here: ![What they don't tell you in the Land of Scheme's at first](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#what-they-dont-tell-you-in-the-land-of-schemes-at-first)
 
-However, Chez Scheme programs are by default not meant to be compiled into standalone, binary executables, but to be run like scripts, for example like this: _$ petite --script random_streams_for_perf_stats.ss_ (![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss))
-
-I didn't succeed with this program to make a standalone executable from a Chez Scheme source code file: https://github.com/Blugatroff/selfcontained-chez. This is the reason why I don't further consider my Chez Scheme version.
+However, Chez Scheme programs are by default not meant to be compiled into standalone, binary executables, but to be run like scripts, for example like this for the Chez compiler: _$ chezscheme --script ./random_streams_for_perf_stats.ss_ (![Chez source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss)), though I finally found a hack here: [Standalone executable with the Petite interpreter](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez#standalone-executable-with-the-petite-interpreter).
 
 <br/>
 
