@@ -97,7 +97,7 @@ $ ./random_streams_for_perf_stats  # run the standalone executable
 $
 ```
 
-However, also this method doesn't generate a really fast Scheme program: _$ time ./random_streams_for_perf_stats_ shows a wallclock time of about 770 milliseconds.
+However, this method only generates an executable, which shows a wallclock time of about 770 milliseconds in my system: _$ time ./random_streams_for_perf_stats_
 
 <br/>
 
