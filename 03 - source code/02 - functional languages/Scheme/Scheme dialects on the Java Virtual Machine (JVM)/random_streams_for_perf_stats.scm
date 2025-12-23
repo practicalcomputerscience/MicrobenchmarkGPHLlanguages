@@ -1,6 +1,7 @@
 ; random_streams_for_perf_stats.scm -- this is the JScheme version
 ;
 ; 2025-07-01
+; 2025-12-23: see below
 ;
 ; test on Ubuntu 24 LTS: - only a partly solution: only 8192 random numbers are created
 ;                        - no exception handling when writing to files
@@ -65,7 +66,7 @@
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
 
-(set! old-seed (random-up-to m))
+(set! old-seed (+ (random-up-to (- m 1)) 1))  ; 2025-12-23
 ; (display old-seed)  ; for testing
 ; (newline)  ; for testing
 
