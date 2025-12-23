@@ -14,7 +14,6 @@ Table of contents:
 
 - [Installation tips](#installation-tips)
 - [Ncurses](#ncurses)
-- [Making a standalone executable](#making-a-standalone-executable)
 
 <br/>
 
@@ -93,51 +92,6 @@ Notes:
 
 - compiling for pb leads to much slower programs than using ta6le, which is for threaded 64-bit Linux.
 - command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new configuration, make and sudo make install is needed then (though should be quick when not done the first time); don't forget about the ncurses!
-
-<br/>
-
-## Making a standalone executable
-
-I also managed to make a standalone executable with this help: [A Chez program, compiled into a standalone executable.](https://github.com/Kato-Dax/selfcontained-chez/tree/main):
-
-- download zip file from: https://github.com/Blugatroff/selfcontained-chez, which is saved as _selfcontained-chez-main.zip_
-- extract it into a working directory: _./selfcontained-chez-main_
-
-However, I noticed that this procedure requires compiling to portable bytecode (pb) to make it working, at least it's the only solution that I've found. So, compile additional Chez Scheme programs with:
-
-```
-$ ./configure --pb
-Configuring for pb to run on a6le
-$ make
-...
-$ sudo make install
-...
-$ 
-```
-
-Now, with this second installation, directory _/usr/lib/csv10.3.0_ should look like this:
-
-```
-$ ls -1 /usr/lib/csv10.3.0
-examples
-pb
-ta6le
-$
-```
-
-Then do:
-
-```
-$ export SCHEME_DIRS=$(echo /usr/lib/csv10.3.0/pb)  # this directory came with the second installation: sudo make install
-$ cp ./random_streams_for_perf_stats.ss ./selfcontained-chez-main  # copy the source code file into this new directory
-$ cd ./selfcontained-chez-main  # change into this new directory
-$ ./compile.scm ./random_streams_for_perf_stats.ss  # compile the source code file with the compiler program
-$ ./random_streams_for_perf_stats  # run the standalone executable
-...
-$
-```
-
-However, this method only generates an executable, which shows a wallclock time of about 770 milliseconds in my system: _$ time ./random_streams_for_perf_stats_
 
 <br/>
 
