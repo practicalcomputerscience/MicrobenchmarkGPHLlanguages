@@ -26,7 +26,7 @@ See from file _IMPLEMENTATION.md_:
 You may get, build and install (latest version of) Chez Scheme like this -- and exactly in this order!!
 
 ```
-$ sudo apt install libncurses-dev  # may be missing, but is needed: THIS WILL INSTALL petite and scheme version 9.5.8 as of 2025-12-23!!!
+$ sudo apt install libncurses-dev  # may be missing, but is needed
 $ sudo apt install libx11-dev  # may be missing, but is needed
 $ curl -L -O https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz  # get version 10.3.0 as of 2025-12-23
 $ tar -xf csv10.3.0.tar.gz  # unpack
