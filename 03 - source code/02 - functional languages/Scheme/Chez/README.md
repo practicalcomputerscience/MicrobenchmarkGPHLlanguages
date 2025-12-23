@@ -13,7 +13,7 @@ pb = portable bytecode
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Preserving the path to Chez Scheme for machine type ta6le](#preserving-the-path-to-chez-scheme-for-machine-type-ta6le)
+- [Ncurses](#ncurses)
 - [Making a standalone executable](#making-a-standalone-executable)
 
 <br/>
@@ -42,8 +42,6 @@ $ sudo make install
 $ scheme --version  # test version info of Chez compiler
 10.3.0
 $ petite --version  # test version info of Petite interpreter
-10.3.0
-$ chezscheme --version  # test version info of the actual Chez compiler program
 10.3.0
 $ 
 ```
@@ -77,7 +75,36 @@ Bummer times!
 
 What went wrong?
 
-TBD
+### Ncurses
+
+> [!IMPORTANT]
+> After elaborate experimentation, I found out, also with the help of Big AI ("Chez Scheme is very slow in Ubuntu"), that a re-installation of the Terminal User Interface (TUI) library _ncurses_, short for "new curses", may be of utmost importance after building and installing Chez Scheme as shown above:
+
+```
+$ sudo apt install libncurses-dev
+```
+
+I did so and repeated above tests:
+
+```
+$ time scheme --script ./random_streams_for_perf_stats.ss
+...
+real	0m0.084s
+...
+$ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme -q --optimize-level 3
+$ time petite --program random_streams_for_perf_stats.so
+...
+real	0m0.069s
+...
+$
+```
+
+<br/>
+
+Notes:
+
+- compiling for pb leads to much slower programs than using ta6le, which is for for threaded 64-bit Linux.
+- command _$ sudo make uninstall_ removes the complete directory _/usr/lib/csv10.3.0_: a new configuration, make and sudo make install is needed then (though should be quick when not the first time); don't forget about the ncurses!
 
 <br/>
 
