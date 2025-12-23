@@ -78,11 +78,13 @@ When you see (much) slower execution times (at a comparable system), in the seco
 
 So, when you have forgotten it, just repeat the complete order of commands as shown above. After that, re-check the installed version:
 
+```
 $ scheme --version  # test version info of Chez compiler
 10.3.0
 $ petite --version  # test version info of Petite interpreter
 10.3.0
-$ 
+$
+```
 
 <br/>
 
