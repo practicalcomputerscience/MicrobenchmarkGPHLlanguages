@@ -1,5 +1,3 @@
-2025-12-23: work in progress
-
 # Chez Scheme
 
 https://cisco.github.io/ChezScheme/
