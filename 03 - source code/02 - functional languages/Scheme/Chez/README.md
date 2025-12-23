@@ -26,6 +26,8 @@ See from file _IMPLEMENTATION.md_:
 
 > Chez Scheme is a bootstrapped compiler, meaning you need a Chez Scheme compiler to build a Chez Scheme compiler.
 
+You may get, build and install (latest version of) Chez Scheme like this:
+
 ```
 $ sudo apt install libncurses-dev  # may be missing, but is needed
 $ sudo apt install libx11-dev  # may be missing, but is needed
