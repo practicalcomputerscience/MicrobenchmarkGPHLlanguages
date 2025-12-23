@@ -45,7 +45,7 @@ After I implemented the "speed part" program in 4 different Scheme dialects, I m
 
 ..which is based on the list as found here: _Scheme Containers - Available implementations - Big, actively maintained_ at: https://containers.scheme.org/ (*)
 
-However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)).
+However, this list is now outdated, which can be seen at best from my point of view with **Kawa**, a Scheme dialect for the Java Virtual Machine (JVM), see at ![Kawa](https://github.com/practicalcomputerscience/MicromarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)).
 
 My defintion of "maintained" was straightforward: has there been some update in the last 12 months?
 
@@ -56,7 +56,7 @@ Maintaining a computer programming language is important from my point of view (
 > Many (if not most) implementations keep working for years after active maintenance has ended, requiring few if any patches.
 
 This can be true or not, I've made both experiences:
-- OCaml for the Java Virtual Machine (JVM) from 2015 for example still runs fine: [OCaml on the Java Virtual Machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/README.md#ocaml-on-the-java-virtual-machine-jvm)
+- OCaml for the Java Virtual Machine (JVM) from 2015 for example still runs fine: [OCaml on the Java Virtual Machine](https://github.com/practicalcomputerscience/MicromarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/README.md#ocaml-on-the-java-virtual-machine-jvm)
 - the last update of Kawa Scheme (for the JVM) is much younger and still I wasn't able to run the _make_ process without errors, see at ![Kawa](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Scheme%20dialects%20on%20the%20Java%20Virtual%20Machine%20(JVM)), which has then become my showstopper with Kawa
 
 <br/>
@@ -446,22 +446,22 @@ Download the whole GitHub repository ("<> Code" ---> "Download ZIP") to your Lin
 Running benchmark program _fib.scm_ for **Racket** Scheme looks like this in my system:
 
 ```
-$ ./bench "racket" "fib"
+$ ./bench_new "racket" "fib"
 
 Testing fib under Racket
-Including prelude ... /Scheme_2024_benchmarks/r7rs-benchmarks_2024/src/Racket-prelude.scm
+Including prelude /home/booser/scripts/Scheme_2024_benchmarks/r7rs-benchmarks_2024/src/Racket-prelude.scm
 Compiling...
 racket_comp /tmp/r7rs-benchmarks/Racket/fib.scm /tmp/r7rs-benchmarks/Racket/fib.scm
 raco make /tmp/r7rs-benchmarks/Racket/fib.scm
 Running...
 time racket /tmp/r7rs-benchmarks/Racket/fib.scm
 Running fib:40:5
-Elapsed time: 2.276 seconds (2.276) for fib:40:5
-+!CSVLINE!+racket-8.17/r7rs+chez,fib:40:5,2.276
+Elapsed time: 2.19 seconds (2.189) for fib:40:5
++!CSVLINE!+racket-9.0/r7rs+chez,fib:40:5,2.19
 
-real 0m2,498s
-user 0m2,455s
-sys 0m0,042s
+real	0m2.410s
+user	0m2.351s
+sys	0m0.059s
 $
 ```
 
@@ -477,7 +477,7 @@ CHICKEN_CSI=${CHICKEN_CSI:-"csi"}
 ```
 $ ./bench_new "chicken" "fib"
 ...
-real 0m19,943s
+real	0m19.637s
 ...
 ```
 
@@ -490,7 +490,7 @@ $ ./bench_new "bigloo" "fib"
 ...
 *** WARNING: top-level
 ...
-real 0m1,773s
+real	0m1.770s
 ...
 ```
 
@@ -505,9 +505,13 @@ GAMBITC=${GAMBITC:-"gsc"}
 ```
 $ ./bench_new "gambitc" "fib"
 ...
-real 0m1,899s
+real	0m1.806s
 ...
 ```
+
+**Chez Scheme with the Petite interpreter**: _$ ./bench_new "petite-chez" "fib"_ => automatically killed after 5 minutes!
+
+<br/>
 
 I start to notice a pattern here: the Bigloo version is the fastest again.
 
