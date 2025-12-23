@@ -81,6 +81,11 @@ $
 $ time scheme-script ./random_streams_for_perf_stats.ss
 ```
 
+..or like this with _scheme_:
+
+```
+$ time scheme --program ./random_streams_for_perf_stats.ss
+```
 
 <br/>
 
