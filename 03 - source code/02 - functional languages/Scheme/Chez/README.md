@@ -26,27 +26,22 @@ See from file _IMPLEMENTATION.md_:
 
 > Chez Scheme is a bootstrapped compiler, meaning you need a Chez Scheme compiler to build a Chez Scheme compiler.
 
-- get tarball file csv10.3.0.tar.gz (as of December 2025) from here: https://github.com/cisco/ChezScheme/releases
-- extract it, and
-- change into extracted directory _./csv10.3.0_
-
-> [!TIP]
-> Before going on, I strongly recommend to remove all Chez Scheme installations from your system and to start all over!
-
-In directory _./csv10.3.0_ do this, based on information in file _BUILDING_:
-
 ```
-$ sudo apt install libx11-dev  # install a potentially missing X11/Xlib.h
+$ sudo apt install libncurses-dev
+$ sudo apt install libx11-dev
+$ curl -L -O https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz  # version 10.3.0 as of 2025-12-23
 $ ./configure
-Configuring for ta6le, and will create boot files via pb  # ta6le is the inferred machine type from the configure command
+Configuring for ta6le, and will create boot files via pb
 $ make  # this may take some time
 $ sudo make install
-$ petite --version  # test version info of Petite interpreter
-10.3.0
+...
 $ scheme --version  # test version info of Chez compiler
 10.3.0
-$ cd ..  # leaving the installation directory
-$
+$ petite --version  # test version info of Petite interpreter
+10.3.0
+$ chezscheme --version  # test version info of the actual Chez compiler program
+10.3.0
+$ 
 ```
 
 Now, you can execute the Chez Scheme source code like this:
@@ -78,36 +73,7 @@ Bummer times!
 
 What went wrong?
 
-Well, we should re-compile the whole thing:
-
-```
-$ ./configure --force  # if you have some version of Chez Scheme installed as `scheme`
-Configuring for ta6le
-$ make re.boot  # for creating boot files
-...
-$ sudo make install
-...
-$
-```
-
-Now, testing again: 
-
-
-
-
-
-
-
-
-
-
-#### Preserving the path to Chez Scheme for machine type ta6le
-
-Actually, this could be the end of the Chez Scheme story. However, when tinkering with Chez Scheme in the next chapter, it may be a good idea to preserve the path to this standard installation of Chez Scheme. Add in your _~/.bashrc_ file this command and activate it again with _$ source ~/.bashrc_:
-
-_export PATH="/usr/lib/csv10.3.0/ta6le:$PATH"_
-
-You may re-run above time measurement commands to see if things are still working OK with the "normal" Chez Scheme installation.
+TBD
 
 <br/>
 
