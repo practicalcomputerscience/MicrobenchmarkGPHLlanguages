@@ -527,11 +527,11 @@ As a comparison to my microbenchmark, here the official 2024 benchmark ranking f
 My own benchmarks confirm this ranking:
 
 - 01 -- Bigloo (4.6a)
-- 02 -- Gambit (4.9.6)
-- 03 -- Racket (8.17)
+- 02 -- Gambit (4.9.7)
+- 03 -- Racket (9.0)
 - 04 -- CHICKEN (5.4.0)
 
-In 2015 the original creators published a little rant about benchmarks in general: https://www.larcenists.org/bmcrock.temp.html
+In 2015, the original creators published a little rant about benchmarks in general: https://www.larcenists.org/bmcrock.temp.html
 
 > ...Many of our benchmarks test only a few aspects of performance. ... Such benchmarks are not so good if your goal is to predict how well an implementation will perform on "typical" Scheme programs. ... The performance of a benchmark, even if it is derived from a real program, may not help to predict the performance of similar programs that have different hot spots. ...
 
