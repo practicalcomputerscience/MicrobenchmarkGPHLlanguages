@@ -102,7 +102,7 @@ Notes:
 > [!WARNING]
 > The following procedure is not working in my standard test system, but in a freshly installed Ubuntu 24 LTS system.
 
-In my standard Ubuntu 24 LTS system (with lots of installations) I get these kind of errors when running the compiled executable:
+In my standard Ubuntu 24 LTS system (with lots of tinkering) I get these kind of errors when running the compiled executable:
 
 ```
 $ ./random_streams_for_perf_stats
@@ -135,8 +135,6 @@ $ time ./random_streams_for_perf_stats ... # => real	0m0.064s, when running in m
 ```
 
 The size of this standalone executable is 4,952,848 bytes.
-
-Directory _/usr/lib/csv10.3.0/ta6le_ in both machines have same files, but some of them have a different, much bigger size in my standard test system. So, heavy playing with _./configure_ etc. in my standard test system has probably led to some misconfigurations.
 
 <br/>
 
