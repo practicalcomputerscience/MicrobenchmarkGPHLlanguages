@@ -6,7 +6,7 @@
 
 test on Ubuntu 24 LTS: Petite interpreter + Chez compiler OK; making a standalone executable not working (may work in a complete 9.5.8 environment though)
 
-First, install: $ sudo apt install libncurses-dev  # it will also install petite and scheme version 9.5.8 (as of 2025-12-23)!!
+First, install: $ sudo apt install libncurses-dev
 
 build on Ubuntu 24 LTS: $ echo '(compile-file "random_streams_for_perf_stats.ss")' | scheme  # compiling
 
@@ -224,3 +224,4 @@ $
 
 
 ; end of random_streams_for_perf_stats.ss
+
