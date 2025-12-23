@@ -51,7 +51,7 @@ $ chezscheme --version
 $
 ```
 
-Now, you can execute the Chez Scheme source code like this:
+Now, you can execute the Chez Scheme source code like this (*):
 
 ```
 $ time chezscheme --script ./random_streams_for_perf_stats.ss
@@ -75,6 +75,12 @@ real	0m0.668s
 ...
 $
 ```
+
+(*) this command can also be done like this, using _scheme-script_:
+```
+$ time scheme-script ./random_streams_for_perf_stats.ss
+```
+
 
 <br/>
 
