@@ -168,8 +168,6 @@ When doing it right, Scheme programs can be running competitively fast. Here's a
 
 The best out of three _perf-stat_ runs of the Gambit program in its final [1-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats.scm) runs slightly faster than the first [8-batch version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Gambit/random_streams_for_perf_stats_8batch.scm) as shown in the diagram above.
 
-The result of the [Chez Scheme program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Chez/random_streams_for_perf_stats.ss) is not shown in the diagram above, because a program run takes about 660 milliseconds; so, this dialect is somehow "out-of-competition".
-
 <br/>
 
 The **Gambit** program in its 8-batch version is applying a _string-append_ for each batch and where each batch has the maximum number of 8192 _apply_ arguments:
@@ -288,7 +286,7 @@ Though, CHICKEN and Bigloo Scheme need libraries installed on the target Linux s
 
 The Racket Scheme program needs a Racket Scheme installation to be executable.
 
-So, out of these five tested Scheme dialects, only the Gambit and the Chez versions (with this adapted help: https://github.com/Kato-Dax/selfcontained-chez/tree/main) are truly portable and standalone executables for Linux. The bigger sizes of their program files indicates this.
+So, out of these five tested Scheme dialects, only the Gambit and the Chez versions (with this adapted help: https://github.com/Kato-Dax/selfcontained-chez/tree/main and only the slower Petite interpreted version) are truly portable and standalone executables for Linux. The bigger sizes of their program files indicates this.
 
 <br/>
 
@@ -509,7 +507,7 @@ real	0m1.806s
 ...
 ```
 
-**Chez Scheme with the Petite interpreter**: _$ ./bench_new "petite-chez" "fib"_ => automatically killed after 5 minutes!
+Chez Scheme doesn't work with me for benchmark program _fib.scm_, be it with the Petite interpreter or the Chez compiler. This is in contrast to these official [Chez benchmark results](https://github.com/ecraven/r7rs-benchmarks/blob/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce/results.Chez).
 
 <br/>
 
