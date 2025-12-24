@@ -3,6 +3,7 @@
 % A program for the Mercury logic programming system: https://github.com/Mercury-Language
 %
 % 2025-11-03/04/05/20, 2025-12-01: have small hex letters a...f
+% 2025-12-24: see below
 %
 % predicate =~ statement
 %
@@ -317,7 +318,9 @@ main(!IO) :-
   % io.format("Current time: %d ms since epoch\n", [i(Ms)], !IO).  % for testing
   Time0 = uint64.cast_from_int(Ms),      % type conversion into uint64
   R0 = sfc16.seed(Time0),                % initialize a 16-bit SFC generator with a time based seed
-  get_int_random(1, M, X0, R0, _),       % _: discard R::out; X0 is a dynamic random seed for the master loop
+  get_int_random(1, M - 1, X0, R0, _),   % _: discard R::out; X0 is a dynamic random seed for the master loop; 2025-12-24
+  % pseudo-random integer that is uniformly distributed in the range Start to (Start + Range - 1), inclusive
+  % see: https://mercurylang.org/information/doc-release/mercury_library/random.html
   % io.format("X0 = %d\n", [i(X0)], !IO),  % for testing
 
 
