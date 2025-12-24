@@ -25,7 +25,7 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version 24+36.1 (build 24+36-jvmci-b01) (see below); SE = "Standard Edition".
+Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version 24+36.1 (build 24+36-jvmci-b01) (see below); SE = Standard Edition.
 
 <br/>
 
@@ -79,6 +79,8 @@ When you want the "normal" **OpenJDK** (Java Development Kit: https://openjdk.or
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
+
+You may also have a look here at [Does the JDK (Java Development Kit) version matter at Kotlin?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#does-the-jdk-java-development-kit-version-matter-at-kotlin).
 
 <br/>
 
@@ -352,7 +354,7 @@ $
 
 ..as seen from here: [Building A Fast Command Line App With Clojure](https://dev.to/kiraemclean/building-a-fast-command-line-app-with-clojure-1kc8)
 
-By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, OpenJDK Java and GraalVM's Java, at least with my Clojure programs. With both Java versions the same standalone executable file was created.
+By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, OpenJDK Java and GraalVM's Java, at least with my Clojure programs. With both Java versions, the same standalone executable file was created.
 
 <br/>
 
