@@ -101,7 +101,7 @@ $
 Now I build the standalone binary executable with GraalVM's _native-image_ command:
 
 ```
-$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar random_streams_for_perf_stats.jar
+$ native-image -jar random_streams_for_perf_stats.jar
 ...
 $
 ```
@@ -233,7 +233,7 @@ So, after changing back to the OpenJDK Runtime Environment (see _.bashrc_ file f
 The next and final step is (almost) the same as shown above: compile the standalone executable with GraalVM's _native-image_ command:
 
 ```
-$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+$ native-image -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
 ```
 
 ..which is then located in the project's root directory as file: _./password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT_
@@ -313,7 +313,7 @@ $
 Build the standalone binary executable with GraalVM's _native-image_ command in this expanded version and test it:
 
 ```
-$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image \
+$ native-image \
 --initialize-at-build-time \
 -jar ./target/uberjar/my_project-0.1.0-SNAPSHOT-standalone.jar \
 -H:+UnlockExperimentalVMOptions \
