@@ -25,7 +25,7 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version 24+36.1 (build 24+36-jvmci-b01) (see below).
+Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version 24+36.1 (build 24+36-jvmci-b01) (see below); SE = "Standard Edition".
 
 <br/>
 
