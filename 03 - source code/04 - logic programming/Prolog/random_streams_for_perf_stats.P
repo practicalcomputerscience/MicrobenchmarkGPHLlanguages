@@ -103,7 +103,7 @@ random_streams_for_perf_stats :-
     End = 62500,  % 62500 for exactly 1M binary digits
     % End = 10,     % for testing
 
-    M = 65521,      % = 2^16 - 15
+    % M = 65521,    % = 2^16 - 15  %  2025-12-24
     M_ = 65520,     % 2025-12-24
 
     FileBitsX   = 'random_bitstring.bin',  % this must be an atom with '', not string with ""
