@@ -8,6 +8,7 @@ A program for SWI Prolog: https://www.swi-prolog.org/
 
 
 2025-11-17/18/19, 2025-12-01: have small hex letters a...f
+2025-12-24: see below
 
 run program in Ubuntu 24 LTS: $ swipl random_streams_for_perf_stats.P
                               NN ?- random_streams_for_perf_stats.  % enter this goal inside the SWI REPL
@@ -107,7 +108,7 @@ random_streams_for_perf_stats :-
     FileBitsX   = 'random_bitstring.bin',  % this must be an atom with '', not string with ""
     FileBitsHex = 'random_bitstring.byte',
 
-    random_between(1, M, X0),
+    random_between(1, M - 1, X0),  % including both L and U); 2025-12-24
     % write("\nX0 = "), write(X0),  % for testing
 
     write("\ngenerating a random bit stream..."),
