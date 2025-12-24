@@ -80,6 +80,17 @@ When you want the "normal" **OpenJDK** (Java Development Kit: https://openjdk.or
 
 <br/>
 
+Below, I had a problem with _libz.a_ missing and some unknown installations prevent me to officially install _$ sudo apt-get install libz-dev_, so I copied it from Chez Scheme:
+
+```
+$ sudo cp ~/scripts/Chez_Scheme/csv10.3.0/pb/zlib/libz.a /usr/lib/x86_64-linux-gnu/
+$ ls /usr/lib/x86_64-linux-gnu/libz* -al  # make a check
+…
+$ 
+```
+
+<br/>
+
 ### Kotlin
 
 I start with the Kotlin version because it's the easiest to do of all languages I tested.
