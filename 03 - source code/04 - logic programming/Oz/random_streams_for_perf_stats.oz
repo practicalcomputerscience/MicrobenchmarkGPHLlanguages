@@ -1,6 +1,7 @@
 /* random_streams_for_perf_stats.oz
 
 2025-12-06/07/08
+2025-12-24: see below
 
 build program in Windows 11 cmd: >ozc -c random_streams_for_perf_stats.oz
 run program in Windows 11 cmd:   >ozengine random_streams_for_perf_stats.ozf
@@ -165,14 +166,16 @@ define
     Bits_x   = {Array.new 1 End '0000000000000000'}
     Bits_hex = {Array.new 1 End '0000'}
 
-    % http://mozart2.org/mozart-v1/doc-1.4.0/system/node56.html#label721
-    {OS.srand 0}  % https://linux.die.net/man/3/srand: modulo 32768
-    % not great but much easier than a FFI to a C solution with Oz
-    % I'm also not willing to add more lines of code here
-    X0 = {OS.rand}
+
+    % 2025-12-24: have a better random seed, at least in Windows 11
+    % http://mozart2.org/mozart-v1/doc-1.4.0/system/node56.html
+    X0 = ({OS.getPID} + {OS.time}) mod (M - 1) + 1  % PID seems random enough in Windows
+    % OS.time: Returns the time since 00:00:00 GMT, Jan. 1, 1970 in seconds. For example: Tsec = 1766595266
+    % X0: have an inclusive range of [1..65520]
     % {System.showInfo "X0 = "#{Value.toVirtualString X0 0 0}}  % for testing
     % Bits_x_str0 = {Integer_to_bin_string X0}  % for testing: Bits_x_str0 = '111110100100011'
     % {System.showInfo "Bits_x_str0 = "#{Value.toVirtualString Bits_x_str0 0 0}}  % for testing
+
 
     % first array values: build X, Bits_x, Bits_hex in sync:
     {Array.put X        1 X0}
