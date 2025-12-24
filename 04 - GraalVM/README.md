@@ -132,7 +132,7 @@ $ ./random_streams_for_perf_stats
 
 ### Scala
 
-Also see the notes in the header comment block from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/password_encryption_perf_stats.scala) and also from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala)
+Also see the notes in the header comment block from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala) and also from this [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala)
 
 #### A first way
 
@@ -147,7 +147,7 @@ _**./build.sbt**_
 I post this file, which is located in the sbt project's root directory, in full to avoid any ambiguity:
 
 ```
-val scala3Version = "3.6.4"
+val scala3Version = "3.7.4"
 
 lazy val root = project
   .in(file("."))
@@ -210,7 +210,7 @@ Yes, the sbt is not for the faint of heart.
 If all went well, you can run the resulting standalone executable like this:
 
 ```
-$ ./target/scala-3.6.4/password_encryption_perf_stats_graalvm
+$ ./target/scala-3.7.4/password_encryption_perf_stats_graalvm
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -239,12 +239,12 @@ So, after changing back to the OpenJDK Runtime Environment (see _.bashrc_ file f
 .../password_encryption_perf_stats$ sbt assembly
 ```
 
-..which creates this uberJAR file: _./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar_
+..which creates this uberJAR file: _./target/scala-3.7.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar_
 
 The next and final step is (almost) the same as shown above: compile the standalone executable with GraalVM's _native-image_ command:
 
 ```
-$ native-image -jar ./target/scala-3.6.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+$ native-image -jar ./target/scala-3.7.4/password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT.jar
 ```
 
 ..which is then located in the project's root directory as file: _./password_encryption_perf_stats-assembly-0.1.0-SNAPSHOT_
