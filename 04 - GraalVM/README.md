@@ -53,6 +53,9 @@ Then the GraalVM (for Java version 24) can be installed with like this:
 
 ```
 $ sdk install java 24-graal
+...
+Do you want java 24-graal to be set as default? (Y/n): Y  # I say "yes" here
+...
 ```
 
 This command will install its own Java version at: _$HOME/.sdkman/candidates/java/current/bin_
