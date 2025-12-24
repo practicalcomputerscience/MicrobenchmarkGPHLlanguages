@@ -104,11 +104,12 @@ random_streams_for_perf_stats :-
     % End = 10,     % for testing
 
     M = 65521,      % = 2^16 - 15
+    M_ = 65520,     % 2025-12-24
 
     FileBitsX   = 'random_bitstring.bin',  % this must be an atom with '', not string with ""
     FileBitsHex = 'random_bitstring.byte',
 
-    random_between(1, M - 1, X0),  % including both L and U); 2025-12-24
+    random_between(1, M_, X0),  % including both L and U); 2025-12-24
     % write("\nX0 = "), write(X0),  % for testing
 
     write("\ngenerating a random bit stream..."),
