@@ -24,7 +24,7 @@ Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.25.5 linux/amd64 | $ go version
 Inko | inko 0.19.1 | $ inko --version
 Koka | Koka 3.2.2, 20:30:51 Jul 22 2025 (ghc release version) | $ koka --version
-Kotlin | info: kotlinc-jvm 2.3.0 (JRE 27-ea+2-79) | $ $HOME/.sdkman/candidates/kotlin/current/bin/kotlinc -version
+Kotlin | info: kotlinc-jvm 2.3.0 (JRE 25.0.1+8-Ubuntu-124.04) | $ $HOME/.sdkman/candidates/kotlin/current/bin/kotlinc -version
 Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 LuaJIT | LuaJIT 2.1.1753364724 -- Copyright (C) 2005-2025 Mike Pall. https://luajit.org/ | $ luajit -v
 LunarML | LunarML version 0.2.1 | $ lunarml -v
@@ -82,6 +82,8 @@ When working with the [GraalVM](https://github.com/practicalcomputerscience/Micr
 ```
 $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar <name of your uberJAR file>.jar
 ```
+
+Then, my default OpenJDK Runtime Environment is the active Java Runtime Environment.
 
 <br/>
 
