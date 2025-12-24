@@ -11,8 +11,8 @@ Way #1:
                           sbt:password_encryption_perf_stats_GraalVM> run
                           sbt:password_encryption_perf_stats_GraalVM> exit
 
-  run on Ubuntu 24 LTS:   $ ./target/scala-3.6.4/password_encryption_perf_stats_graalvm
-                          $ sudo perf stat -r 20 ./target/scala-3.6.4/password_encryption_perf_stats_graalvm
+  run on Ubuntu 24 LTS:   $ ./target/scala-3.7.4/password_encryption_perf_stats_graalvm
+                          $ sudo perf stat -r 20 ./target/scala-3.7.4/password_encryption_perf_stats_graalvm
 
 Way #2 which makes faster code: 1/ compile to uberjar with OpenJDK
                                 2/ compile this uberjar with GraalVM's native-image:
