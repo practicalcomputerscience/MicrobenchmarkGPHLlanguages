@@ -183,7 +183,7 @@ The sbt takes care about the given versions in the project's configuration files
 
 However, also check your _.bashrc_ file to see that your active Java environment is indeed the Oracle GraalVM one (see from above).
 
-Now start the sbt project, here named _password_encryption_perf_stats_GraalVM_, with Scala [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala) located in the _./src/main/scala_ subdirectory.
+Now start the sbt project (with _$ sbt new_ and option d), here named _password_encryption_perf_stats_GraalVM_, with Scala [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala) located in the _./src/main/scala_ subdirectory.
 
 Then you start the sbt and enter sbt commands _compile_, _run_ (as a test) and _exit_:
 
