@@ -1,8 +1,8 @@
-language;mean;std_dev
-Scala GraalVM exec.(OpenJDK);0,023577;0,000757
-Scala GraalVM executable;0,07417;0,00207 
-Kotlin GraalVM executable;0,024175;0,000764
-Clojure GraalVM executable;0,085858;0,000729
-Scala JVM uberjar;0,19436;0,00261
-Kotlin JVM uberjar;0,106915;0,000808
-Clojure JVM uberjar;0,61368;0,00406
+language;mean;std_dev;date
+Scala GraalVM, OpenJDK;0,014506;0,000123;2025-12-24
+Scala GraalVM, Java SE;0,057009;0,000202;2025-12-24
+Kotlin GraalVM, OpenJDK;0,016725;0,000145;2025-12-24
+Clojure GraalVM, OpenJDK;0,073325;0,000269;2025-12-24
+Scala JVM uberjar, OpenJDK;0,142;0,003;2025-12-21
+Kotlin JVM uberjar, OpenJDK;0,073;0,003;2025-12-21
+Clojure JVM uberjar, OpenJDK;0,416;0,004;2025-12-21
