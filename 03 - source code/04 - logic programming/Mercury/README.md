@@ -95,6 +95,7 @@ When installing Mercury for the first time (bootstrapping) and these programs ar
 - flex
 - make
 - bison
+- texinfo
 
 Also read at least this document to gain more background knowledge for installing Mercury: [README.bootstrap](https://github.com/Mercury-Language/mercury/blob/499d1935801e855cc0c824c2cb5635802542d729/README.bootstrap#L4)
 
