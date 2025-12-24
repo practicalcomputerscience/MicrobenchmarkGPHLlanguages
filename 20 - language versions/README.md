@@ -35,7 +35,7 @@ Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misu
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
 Picat | Picat version 3.9 | $ picat --version
 PowerShell | PowerShell 7.5.4 | $ pwsh -v
-Prolog, SWI | SWI-Prolog version 9.3.34 for x86_64-linux | $ swipl --version
+Prolog, SWI | SWI-Prolog version 9.0.4 for x86_64-linux | $ swipl --version
 Python | Python 3.12.3 | $ python3 --version
 Raku | Welcome to Rakudo™ v2025.11.; Implementing the Raku® Programming Language v6.d.; Built on MoarVM version 2025.11. | $ raku -version
 Roc | roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC | $ roc --version
