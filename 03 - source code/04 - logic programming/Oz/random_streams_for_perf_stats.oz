@@ -18,7 +18,7 @@ functor
 import
   System
   Application
-  OS  % rand + srand
+  OS  % getPID, OS.time  
   Open(file)
 
 define
