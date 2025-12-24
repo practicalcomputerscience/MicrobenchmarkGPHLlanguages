@@ -25,7 +25,7 @@ https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristi
 
 ---
 building a binary executable with GraalVM:
-$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/scala-3.6.4/random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT.jar
+$ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar ./target/scala-3.7.4/random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT.jar
 $ ./random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT
 $ sudo perf stat -r 20 ./random_streams_for_perf_stats-assembly-0.1.0-SNAPSHOT
 
@@ -130,3 +130,4 @@ object random_streams_for_perf_stats {
 }
 
 // end of random_streams_for_perf_stats.scala
+
