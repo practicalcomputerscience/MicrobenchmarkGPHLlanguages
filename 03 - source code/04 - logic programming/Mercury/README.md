@@ -186,6 +186,38 @@ In other words:
 > [!TIP]
 > Keep the original installation directory! Also for later potentially installing "extra programs" (under _./extras_).
 
+<br/>
+
+> [!NOTE]
+> It's easy to struggle with building and installing Mercury. Starting all over is the key.
+
+For example, I noticed a warning with _csc_ at the _./configure ..._ command. So, I deleted the whole directory with: _sudo rm -rf /usr/local/bin/csc_, which was used by CHICKEN Scheme. _csc_ is assumed to be for Microsofts's C# by Mercury. This shouldn't be related to installation problems, but who knows.
+
+Then, I noticed a problem with building the Mercury documentation. I re-installed _texinfo_ and additionally installed _texlive_. Also this shouldn't be related to installation problems, but who knows.
+
+Then, I did this cleanup in installation directory _./mercury-srcdist-rotd-2025-11-01_: _**$ make realclean**_, only to first install the minimal installation from scratch:
+
+```
+$ ./configure --enable-minimal-install --prefix=$HOME/Mercury
+...
+$ make
+...
+$ make install
+...
+$ cd ..
+$ mmc --version  # get your ~/.bashrc config file in order for this
+...
+$ mmc ./random_streams_for_perf_stats.m  # compilation of the "speed part" of the microbenchmark program
+$ random_streams_for_perf_stats
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+<br/>
+
 ### Installing the eqneq solver
 
 Now comes the real test, that is using the _eqneq_ solver (equality/disequality) from here: https://github.com/Mercury-Language/mercury/tree/bdd2a574a86e5dfc37e7cbff7e5108313e796bc0/samples/solver_types
