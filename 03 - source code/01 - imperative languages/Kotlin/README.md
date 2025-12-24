@@ -67,7 +67,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 real	0m0.072s
 user	0m0.163s
 sys	0m0.024s
-$ time java -jar ./random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar 
+$ time java -jar ./random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar  # this came with what?
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
