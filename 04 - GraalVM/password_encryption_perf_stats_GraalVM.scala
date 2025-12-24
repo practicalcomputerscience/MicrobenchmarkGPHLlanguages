@@ -2,6 +2,7 @@
 password_encryption_perf_stats_GraalVM.scala
 
 2025-06-09/10
+2025-12-24: see below
 
 Way #1:
   build on Ubuntu 34 LTS: $ sbt
@@ -42,7 +43,8 @@ import scala.util.{Try}
   // also needed for the password
 
   val rnd = new scala.util.Random
-  x(0) = rnd.nextInt(m)
+  x(0) = rnd.nextInt(m - 1) + 1  // end is exclusive; 2025-12-24
+  
 
   var bits_x_str:   String = ""  // needs initialization
   var bits_hex_str: String = ""  // needs initialization
