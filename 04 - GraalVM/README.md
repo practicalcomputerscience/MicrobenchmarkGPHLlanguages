@@ -25,6 +25,8 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
+Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version tbd (see below).
+
 <br/>
 
 ## How to make a standalone executable for Linux with the GraalVM
@@ -43,8 +45,8 @@ $ source "$HOME/.sdkman/bin/sdkman-init.sh"  # this command adds two (active) li
 $ sdk version  # check out installation success
 
 SDKMAN!
-script: 5.19.0
-native: 0.7.4 (linux x86_64)
+script: 5.20.0
+native: 0.7.14 (linux x86_64)
 
 $
 ```
@@ -172,25 +174,24 @@ _**./project/plugin.sbt**_
 This file needs to be created in the project's subdirectory _project_ and has only one directive:
 
 ```
-addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.7")
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.9")
 ```
 
 You don't need to install the **Maven** tool at this point.
 
 This is a build tool for Java projects: https://mvnrepository.com/artifact/org.scala-native/sbt-scala-native_2.12_1.0 and can be installed like this for example: _$ sdk install maven_ to use the SDKMAN! another time) 
 
-The sbt takes care about the given versions in the project's configuration files. This means for example that you could conveniently upgrade from older version 0.5.7 to latest version 0.5.8 (as of 2025-09-08) of Scala Native by only updating the _plugin.sbt_ file and running the sbt again.
+The sbt takes care about the given versions in the project's configuration files. This means for example that you could conveniently upgrade from older version 0.5.7 to latest version 0.5.9 (as of 2025-12-24) of Scala Native by only updating the _plugin.sbt_ file and running the sbt again.
 
 However, also check your _.bashrc_ file to see that your active Java environment is indeed the Oracle GraalVM one (see from above).
 
 Now start the sbt project (with _$ sbt new_ and option d), here named _password_encryption_perf_stats_GraalVM_, with Scala [source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/password_encryption_perf_stats_GraalVM.scala) located in the _./src/main/scala_ subdirectory.
 
-Then you start the sbt and enter sbt commands _compile_, _run_ (as a test) and _exit_:
+Then you start the sbt in project directory _password_encryption_perf_stats_graalvm_ (automatically lowered letters) and enter sbt commands _compile_, _run_ (as a test) and _exit_:
 
 ```
 $ sbt
-copying runtime jar...
-[info] welcome to sbt 1.10.11 (Ubuntu Java 21.0.8)
+[info] welcome to sbt 1.11.7 (Oracle Corporation Java 24)
 ...
 sbt:password_encryption_perf_stats_GraalVM> compile
 ...
@@ -199,7 +200,7 @@ sbt:password_encryption_perf_stats_GraalVM> run
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-[success] Total time: 5 s, completed Sep 8, 2025, 11:54:06 AM
+[success] Total time: 4 s, completed Dec 24, 2025, 11:31:52 PM
 sbt:password_encryption_perf_stats_GraalVM> exit
 [info] shutting down sbt server
 $
@@ -224,9 +225,9 @@ However, using the Java(TM) SE Runtime Environment of the Oracle GraalVM isn't t
 
 ```
 $ java -version
-openjdk version "21.0.8" 2025-07-15
-OpenJDK Runtime Environment (build 21.0.8+9-Ubuntu-0ubuntu124.04.1)
-OpenJDK 64-Bit Server VM (build 21.0.8+9-Ubuntu-0ubuntu124.04.1, mixed mode, sharing)
+openjdk 27-ea 2026-09-15
+OpenJDK Runtime Environment (build 27-ea+2-79)
+OpenJDK 64-Bit Server VM (build 27-ea+2-79, mixed mode, sharing)
 $
 ```
 
@@ -251,13 +252,13 @@ $ native-image -jar ./target/scala-3.7.4/password_encryption_perf_stats-assembly
 
 Get the mean execution time of 20 runs with shell command: _$ sudo perf stat -r 20 < program name >_:
 
-- Java(TM) SE Runtime Environment of the Oracle GraalVM: 74.2 milliseconds +- 2.79% standard deviation (2025-10-20)
-- **OpenJDK based: 23.6 milliseconds +- 3.21% standard deviation** (2025-10-20)
+- Java(TM) SE Runtime Environment of the Oracle GraalVM: 57.0 milliseconds +- 0.35% standard deviation (2025-12-24)
+- **OpenJDK based: 14.5 milliseconds +- 0.85% standard deviation** (2025-12-24)
 
 Though, the file size of the standalone executable based on the OpenJDK is significantly bigger:
 
-- Java(TM) SE Runtime Environment of the Oracle GraalVM: 3,244,144 bytes
-- OpenJDK based: 15,665,416 bytes
+- Java(TM) SE Runtime Environment of the Oracle GraalVM: 3,235,096 bytes
+- OpenJDK based: 15,730,952 bytes
 
 <br/>
 
