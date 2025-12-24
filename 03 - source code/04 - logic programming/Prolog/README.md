@@ -190,17 +190,9 @@ Both dialects, GNU and SWI, came to the same number of different solutions, that
 
 <br/>
 
-By the way: first, I had an older version of SWI Prolog installed (version 9.0.4) in Ubuntu 24 LTS, which gets installed by this command: _$ sudo apt install swi-prolog-core_
+By the way: I have an older version of SWI Prolog installed (version 9.0.4) in Ubuntu 24 LTS, which gets installed by this command: _$ sudo apt install swi-prolog_
 
-This version may miss extra libraries. To install a later version with (some) extra libraries do this:
-
-```
-$ sudo apt remove swi-prolog-core  # deinstall this version
-$ sudo apt install swi-prolog  # install a later version with more "batteries"
-$ swipl --version  # check that version
-SWI-Prolog version 9.3.34 for x86_64-linux
-$
-```
+This version may miss extra libraries. But it's OK for building and running programs _graph_4coloring_Germany2c_SWI.pl_, _random_streams_for_perf_stats.P_, and _random_bitstring_and_flexible_password_generator.P_.
 
 <br/>
 
