@@ -335,6 +335,20 @@ Hello, World!
 $ 
 ```
 
+That are in case of the microbenchmark program these commands:
+
+```
+$ native-image \
+--initialize-at-build-time \
+-jar ./target/uberjar/random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone.jar \
+-H:+UnlockExperimentalVMOptions \
+-H:Name=random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone
+...
+$ ./random_streams_for_perf_stats-0.1.0-SNAPSHOT-standalone
+...
+$
+```
+
 ..as seen from here: [Building A Fast Command Line App With Clojure](https://dev.to/kiraemclean/building-a-fast-command-line-app-with-clojure-1kc8)
 
 By the way: creating the uberJAR file and building the standalone binary executable worked with both Java versions, OpenJDK Java and GraalVM's Java, at least with my Clojure programs. With both Java versions the same standalone executable file was created.
