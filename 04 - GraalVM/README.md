@@ -25,7 +25,7 @@ Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/02%20-%20execution%20times/mean_stddev_err_whiskers%20--%20only%20GraalVM.png)
 
-Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version tbd (see below).
+Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, here in version 24+36.1 (build 24+36-jvmci-b01) (see below).
 
 <br/>
 
@@ -225,9 +225,9 @@ However, using the Java(TM) SE Runtime Environment of the Oracle GraalVM isn't t
 
 ```
 $ java -version
-openjdk 27-ea 2026-09-15
-OpenJDK Runtime Environment (build 27-ea+2-79)
-OpenJDK 64-Bit Server VM (build 27-ea+2-79, mixed mode, sharing)
+openjdk 25.0.1 2025-10-21
+OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing)
 $
 ```
 
