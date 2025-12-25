@@ -1,3 +1,5 @@
+2025-12-25: TBD: something to say about the full program _random_bitstring_and_flexible_password_generator.scm_ <=> Racket solution
+
 # Bigloo Scheme
 
 https://www-sop.inria.fr/indes/fp/Bigloo/
