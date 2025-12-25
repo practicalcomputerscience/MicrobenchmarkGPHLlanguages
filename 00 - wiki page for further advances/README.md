@@ -3,11 +3,13 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-12-25: cleanup work almost done; cf. [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme)
+
 2025-12-16: I'm not continuing with LFE (Lisp Flavoured Erlang: https://lfe.io/about/): even already compiled escripts are being re-compiled when running them again (_$ rebar3 lfe run-escript_); thus, LFE programs always have a slow start. I'm happy with [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam) as a (performant) language on Erlang's virtual machine and will keep it like that.
 
 2025-12-13: update to latest Mojo version 0.26.1.0... with the Pixi package manager. The old Magic package manager, a fork of Pixi, is now deprecated: https://docs.modular.com/pixi; some slight, formalistic source code changes to get rid of new warnings: [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo)
 
-2025-12-10: [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz): "speed part" of microbenchmark done, though not the rest because that has become practically impossible
+2025-12-10: [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz): "speed part" of microbenchmark done, though not the rest because that has become practically impossible with this dead programming language
 
 2025-11-22: done: [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#microbenchmark-program-in-swi-prolog) as a representative for the still numerous and actively maintained Prolog systems
 
