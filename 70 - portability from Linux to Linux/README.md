@@ -1,4 +1,4 @@
-2025-11-05: TBD: finally, re-check this portability list on a fresh Oracle Linux 10 installation as a "basic Linux system".
+2025-11-05: TBD: finally, re-check this portability list on a fresh Oracle Linux 10 installation as a "basic Linux system", that is the "target system".
 
 # Portability of programs
 
@@ -7,9 +7,10 @@ Here's a list of programming languages where standalone executables can be compi
 - Ada
 - C
 - C3
+- Chez Scheme (only the "speed part" tested)
 - Common Lisp (SBCL)
 - Crystal
-- Gambit Scheme
+- Gambit Scheme (only the "speed part" tested)
 - Go
 - Inko
 - OCaml
