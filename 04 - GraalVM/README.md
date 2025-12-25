@@ -338,7 +338,7 @@ Hello, World!
 $ 
 ```
 
-That are in case of the microbenchmark program these commands:
+In case of the microbenchmark program, it's these commands:
 
 ```
 $ native-image \
@@ -462,7 +462,7 @@ By the way: this app is a monster with a file size of 352 megabytes!
 
 ### Peak performance with the JVM, time to start performance with the GraalVM
 
-However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is faster with the GraalVM; see from here: https://www.graalvm.org/python/docs/#comparison
+However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is lower with the GraalVM; see from here: https://www.graalvm.org/python/docs/#comparison
 
 <br/>
 
