@@ -22,7 +22,7 @@ Here's a list of programming languages where standalone executables can be compi
 [GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
 - Clojure
 - Kotlin
-- Scala ([OpenJDK based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#a-siginificantly-faster-scala-based-program))
+- Scala
 
 <br/>
 
