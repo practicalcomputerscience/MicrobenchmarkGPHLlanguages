@@ -27,7 +27,7 @@ But before starting to work with Kotlin, one has to have a JDK (Java Development
 
 There are many [JDK Distributions](https://sdkman.io/jdks/).
 
-Now, one should have a running Kotlin environment (after the [GraalVM installation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#sdkman-and-java-versions) and SDKMAN! being active):
+Now, one should have a running Kotlin environment (here, after the [GraalVM installation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#sdkman-and-java-versions) and SDKMAN! being active):
 
 ```
 $ java --version
@@ -49,9 +49,9 @@ As long as it's somehow "recent", I guess not; at least not with versions from 2
 
 ```
 $ ls -al random_streams*.jar
--rw-rw-r-- 1 booser booser 5280546 Dec 25 00:10 random_streams_for_perf_stats_with_Java_SE_Oracle_GraalVM_24+36.1.jar
--rw-rw-r-- 1 booser booser 5280546 Dec 25 00:24 random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar
--rw-rw-r-- 1 booser booser 5280544 Dec 21 10:43 random_streams_for_perf_stats_with_openjdk_27-ea_2026-09-15.jar
+-rw-rw-r-- 1 ... 5280546 Dec 25 00:10 random_streams_for_perf_stats_with_Java_SE_Oracle_GraalVM_24+36.1.jar
+-rw-rw-r-- 1 ... 5280546 Dec 25 00:24 random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar
+-rw-rw-r-- 1 ... 5280544 Dec 21 10:43 random_streams_for_perf_stats_with_openjdk_27-ea_2026-09-15.jar
 $ 
 ```
 
