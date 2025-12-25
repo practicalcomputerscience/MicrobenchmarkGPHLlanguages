@@ -447,7 +447,7 @@ Running benchmark program _fib.scm_ for **Racket** Scheme looks like this in my 
 $ ./bench_new "racket" "fib"
 
 Testing fib under Racket
-Including prelude /home/booser/scripts/Scheme_2024_benchmarks/r7rs-benchmarks_2024/src/Racket-prelude.scm
+Including prelude ~/scripts/Scheme_2024_benchmarks/r7rs-benchmarks_2024/src/Racket-prelude.scm
 Compiling...
 racket_comp /tmp/r7rs-benchmarks/Racket/fib.scm /tmp/r7rs-benchmarks/Racket/fib.scm
 raco make /tmp/r7rs-benchmarks/Racket/fib.scm
