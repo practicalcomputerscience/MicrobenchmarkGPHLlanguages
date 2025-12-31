@@ -34,7 +34,7 @@ But what counts more are **substantial algorithmic differences** between Bigloo 
 
 In short: it's easier to program in Racket Scheme than in Bigloo Scheme from my point of view.
 
-One example is **program execution order**, which can be easily maintained in (interpreted) Racket Scheme with a "natural" order of _:(define ...)_ expressions, like here for variable _n_char_ for example:
+One example is **program execution order**, which can be easily maintained in (interpreted) Racket Scheme with a "natural" order of _(define ...)_ expressions, like here for variable _n_char_ for example:
 
 ```
   ...
@@ -44,7 +44,7 @@ One example is **program execution order**, which can be easily maintained in (i
   ...
 ```
 
-Such a construct is not working as intended in Bigloo Scheme, where procedure _input_a_valid_number_ as a user defined functions would be executed **before** "generating a random bit stream..." is being displayed.
+Such a construct is not working as intended in Bigloo Scheme, where procedure _input_a_valid_number_ as a user defined function would be executed **before** "generating a random bit stream..." is being displayed.
 
 To prevent this in Bigloo Scheme, one must first define _n_char_ and then imperatively set it like this:
 
@@ -91,6 +91,10 @@ Here's the definition of string _char_set_ with Racket Scheme, an elegant constr
                                               (for/list ([i (in-range 65 91)]) i)
                                               (for/list ([i (in-range 97 123)]) i)))))  ; all alphanumerical ASCII values
 ```
+
+<br/>
+
+So, if execution speed doesn't matter, I would generally prefer Racket Scheme over Bigloo Scheme, and the other tested dialects CHICKEN, Chez and Gambit Scheme.
 
 <br/>
 
