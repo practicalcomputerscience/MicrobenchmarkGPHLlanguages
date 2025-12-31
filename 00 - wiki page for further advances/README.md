@@ -3,6 +3,8 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-12-31: full microbenchmark program in [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme). It highlights the differences to [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme).
+
 2025-12-25: cleanup work almost done; cf. [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme)
 
 2025-12-16: I'm not continuing with LFE (Lisp Flavoured Erlang: https://lfe.io/about/): even already compiled escripts are being re-compiled when running them again (_$ rebar3 lfe run-escript_); thus, LFE programs always have a slow start. I'm happy with [Gleam](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM#gleam) as a (performant) language on Erlang's virtual machine and will keep it like that.
