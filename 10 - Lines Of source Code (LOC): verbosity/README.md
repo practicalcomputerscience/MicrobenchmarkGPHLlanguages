@@ -35,6 +35,7 @@ Perl 5            | 130 | interpreted, very mature language: verbosity with if-t
 Zig               | 129 | compiled, young language still going through major changes
 Go                | 127 | compiled, mature language
 Rust              | 126 | compiled, mature language
+Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
 Swift             | 114 | compiled, mature language
