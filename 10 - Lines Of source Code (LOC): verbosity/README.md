@@ -85,6 +85,7 @@ Python             | 0
 Roc                | 9
 Rust               | 0
 Scala              | 0
+Scheme, Bigloo     | 7
 Scheme, Racket     | 5
 Standard ML (MLton) | 8
 Swift              | 1
