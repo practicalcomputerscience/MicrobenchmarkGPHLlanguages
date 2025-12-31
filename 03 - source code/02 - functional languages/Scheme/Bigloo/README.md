@@ -58,7 +58,9 @@ To prevent this in Bigloo Scheme, one must first define _n_char_ and then impera
   ...
 ```
 
-The definition of _char_set_ also highlights, what it means to have "smaller batteries" in Bigloo Scheme:
+<br/>
+
+The definition of _char_set_ pretty well highlights, what it means to have "smaller batteries" in Bigloo Scheme:
 
 ```
 (define (iota-range low high)
