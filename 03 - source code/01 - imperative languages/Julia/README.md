@@ -14,7 +14,7 @@ Fast string building, even with the help of [IOBuffer](https://docs.julialang.or
 
 After some experimentation, I found out that the conventional approach, that is initially defining an array of strings of fixed size and finally concatenating these strings into one big string, is (also) the best solution in Julia.
 
-The solution with _IOBuffer_ didn't make a faster program; it's execution speed is about the same:
+This solution with _IOBuffer_ didn't make a faster program; it's execution speed is about the same:
 
 ```
 ...
