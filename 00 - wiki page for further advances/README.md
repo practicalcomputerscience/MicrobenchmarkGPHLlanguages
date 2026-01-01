@@ -3,6 +3,8 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-01-02: working on [Julia](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Julia#julia) as a contender to Mojo and Chapel
+
 2025-12-31: full microbenchmark program in [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme). It highlights the differences to [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme).
 
 2025-12-25: cleanup work almost done; cf. [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme)
@@ -29,7 +31,6 @@
 
 2025-10-29: so far, I haven't touched yet these corners of programming languages:
 
-- **Julia** as a contender to Mojo and Chapel: https://julialang.org/; although, I still think that the world doesn't need another "scientific computing" programming language
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
 - &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
 - &nbsp;&nbsp;ELI - A System for Programming with Arrays: https://fastarray.appspot.com/index.html: the documentation is showing user input and writing to files, something this microbenchmark program needs
