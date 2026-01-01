@@ -30,7 +30,7 @@ end
 ...
 ```
 
-(above solution is not implemented, but this: [Julia program](TBD))
+(above solution is not implemented, but this: [Julia program](./random_streams_for_perf_stats.jl))
 
 Execution speed is about 170 milliseconds, but only with optimization level switch _-O0_, that's a bit slower than the [Python solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) with the help of _StringIO_ with about 140 milliseconds.
 
