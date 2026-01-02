@@ -1,5 +1,3 @@
-2025-01-02: work in progress
-
 # Julia
 
 https://julialang.org/
@@ -40,7 +38,7 @@ end
 
 So, execution speed with the conventional solution is about 170 milliseconds, but only with optimization level switch _-O0_, that's a bit slower than the [Python solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py) with the help of _StringIO_ with about 140 milliseconds.
 
-Beware of the direction of the optimization level switch, where _-O0_, and not _-O3_, yields the fastest program execution time (with this microbenchmark program):
+Beware of the direction of the optimization level switch, where _-O0_, and not _-O3_, yields the fastest program execution time (with this microbenchmark program at least):
 
 ```
 $ time julia -O0 random_streams_for_perf_stats.jl
@@ -49,8 +47,6 @@ real	0m0.173s
 ...
 $ 
 ```
-
-TBD
 
 <br/>
 
