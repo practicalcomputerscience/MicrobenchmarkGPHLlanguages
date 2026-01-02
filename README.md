@@ -388,7 +388,7 @@ Examples for **automatic garbage collection**, which needs _a runtime system and
 - C#
 - Go (tricolor mark and sweep algorithm): can be tuned or switched off
 - OCaml
-- Python
+- Python + Julia
 - Scala + Kotlin + Clojure (at the JVM)
 
 <br/>
