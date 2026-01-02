@@ -8,10 +8,6 @@ GPHL = general purpose, high-level (programming language)
 To-do:
 - fix TBD's (this is a continous task)
 - _
-- initial random, integer number must not be 0 or M (65521), but [1..65521-1], because constant c is 0:
-- (17364 * 65521 + c) modulo 65521 = 0 => loop with only 0 as a random, integer number => failure!
-- (17364 * 0 + c) modulo 65521 = 0 => loop with only 0 as a random, integer number => failure!
-- ironically, this has never happened so far (2025-12-13) during development or testing
 
 <br/>
 
