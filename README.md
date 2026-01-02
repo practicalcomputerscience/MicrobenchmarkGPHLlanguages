@@ -214,7 +214,7 @@ while i < N_CHAR:
     j += 1
 
 pw_string = ''.join(pw_chars)
-print(f'\nmy password of {N_CHAR} characters is:', pw_string)
+print(f'\nYour password of {N_CHAR} characters is:', pw_string)
 ```
 
 Run the complete program like this:
@@ -229,7 +229,7 @@ Password of 12 printable chars OK? "y" or another integer number >= 8: y
 
 Do you want me to use special characters like .;,+*... ? "y" or "n": y
 
-my password of 12 characters is: {5mkkR""dmtC
+Your password of 12 characters is: {5mkkR""dmtC
 (prng_test) $ 
 ```
 
