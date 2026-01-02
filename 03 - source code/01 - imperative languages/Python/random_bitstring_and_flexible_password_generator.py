@@ -3,6 +3,7 @@
 random_bitstring_and_flexible_password_generator.py
 
 2025-03-09/10/13/15/26/29/30/31, 2025-05-05/28, 2025-06-01/03/18, 2025-12-13: see below
+2026-01-03: see below
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -184,6 +185,6 @@ while i < N_CHAR:
     j += 1
 
 pw_string = ''.join(pw_chars)
-print(f'\nmy password of {N_CHAR} characters is:', pw_string)
+print(f'\nYour password of {N_CHAR} characters is:', pw_string)  # 2026-01-03
 
 # end of random_bitstring_and_flexible_password_generator.py
