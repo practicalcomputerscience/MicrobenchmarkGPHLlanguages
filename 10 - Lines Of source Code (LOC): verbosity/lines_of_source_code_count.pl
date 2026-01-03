@@ -2,7 +2,7 @@
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
-# 2026-01-03 
+# 2026-01-03a
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -51,7 +51,7 @@ my $language_ext = $file;
 
 my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam");
 
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl");
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
