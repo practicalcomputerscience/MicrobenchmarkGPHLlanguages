@@ -97,6 +97,7 @@ Zig                | 0
 ---
 
 Re-testing script _lines_of_source_code_count.pl_ from 2026-01-03, LOC:
+
 .adb: 231
 
 .bas: 122
