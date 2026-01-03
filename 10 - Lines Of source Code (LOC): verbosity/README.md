@@ -98,36 +98,67 @@ Zig                | 0
 
 Re-testing script _lines_of_source_code_count.pl_ from 2026-01-03, LOC:
 .adb: 231
+
 .bas: 122
+
 .c: 148
+
 .c3: 163
+
 .chpl: 121
+
 .clj: 102
+
 .cr: 111
+
 .cs: 0 <<<<<<<<<<<<<<<<<<<<<<<<
+
 .gleam: 162
+
 .go: 127
+
 .inko: 224
+
 .jl: 106
+
 .kt: 109
+
 .lisp: 114
+
 .lua: 130
+
 .m: 194
+
 .ml: 131
+
 .mojo: 93
+
 .P: 133
+
 .pi: 142
+
 .pl: 130
+
 .ps: 90
+
 .py: 87
+
 .rkt: 110
+
 .roc: 191
+
 .rs: 126
+
 .scala: 98
+
 .scm: 124
+
 .sml: 216
+
 .swift: 114
+
 .v: 179
+
 .zig: 129
 
 <br/>
