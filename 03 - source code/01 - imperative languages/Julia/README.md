@@ -48,6 +48,12 @@ real	0m0.173s
 $ 
 ```
 
+### Julia and Python
+
+I gave transpiler [py2many](https://github.com/py2many/py2many) a chance to transpile my original [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_bitstring_and_flexible_password_generator.py) quickly into a Julia program. But this was a dud. Then, I manually transpiled everything piece by piece from Python.
+
+Yes, there's a certain nearness beteen both languages, but one must be careful with **indices** in Julia, which are starting with 1, and not 0 like in Python. This sounds more trivial than it actually is from my point of view, because this feature also affects comparisons, which should be re-tested carefully after a Python to Julia transpilation.
+
 <br/>
 
 ##_end
