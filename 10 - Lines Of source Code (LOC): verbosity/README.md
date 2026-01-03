@@ -96,71 +96,73 @@ Zig                | 0
 
 ---
 
-Re-testing script _lines_of_source_code_count.pl_ from 2026-01-03, LOC:
+#### Re-testing script lines_of_source_code_count.pl
 
-.adb: 231
+version of 2026-01-03, LOC:
 
-.bas: 122
+.adb: 231 -- OK
 
-.c: 148
+.bas: 122 -- OK
 
-.c3: 163
+.c: 148 -- OK
 
-.chpl: 121
+.c3: 163 -- OK
 
-.clj: 102
+.chpl: 121 -- OK
 
-.cr: 111
+.clj: 102 -- OK
+
+.cr: 111 <<<<<<<<<<<<<<<<<<<<<<<<
 
 .cs: 0 <<<<<<<<<<<<<<<<<<<<<<<<
 
-.gleam: 162
+.gleam: 162 -- OK
 
-.go: 127
+.go: 127 -- OK
 
-.inko: 224
+.inko: 224 -- OK
 
-.jl: 106
+.jl: 106 -- OK
 
-.kt: 109
+.kt: 109 -- OK
 
-.lisp: 114
+.lisp: 114 -- OK
 
-.lua: 130
+.lua: 130 -- OK
 
-.m: 194
+.m: 194 -- OK
 
-.ml: 131
+.ml: 131 -- OK (OCaml)
 
-.mojo: 93
+.mojo: 93 -- OK
 
-.P: 133
+.P: 133 -- OK (SWI Prolog)
 
-.pi: 142
+.pi: 142 -- OK
 
-.pl: 130
+.pl: 130 -- OK
 
-.ps: 90
+.ps: 90 -- OK
 
-.py: 87
+.py: 87 -- OK
 
-.rkt: 110
+.rkt: 110 -- OK
 
-.roc: 191
+.roc: 191 -- OK
 
-.rs: 126
+.rs: 126 -- OK
 
-.scala: 98
+.scala: 98 -- OK
 
-.scm: 124
+.scm: 124  -- OK (Bigloo Scheme)
 
-.sml: 216
+.sml: 216 -- OK
 
-.swift: 114
+.swift: 114 -- OK
 
-.v: 179
+.v: 179 -- OK
 
-.zig: 129
+.zig: 129 -- OK
 
 <br/>
 
