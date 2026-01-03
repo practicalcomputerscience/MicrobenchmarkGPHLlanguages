@@ -1,7 +1,8 @@
 # lines_of_source_code_count.pl
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
-# 2025-07-08/12/14, 2025-10-29, 2025-11-16
+# 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
+# 2026-01-03 
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -42,6 +43,8 @@ my $fwdslash_singlequote_detected = 0;       # 0 is false
 my $singlequote_fwdslash_detected = 0;       # 0 is false
 my $doubleminus_squarebracket_detected = 0;  # 0 is false
 my $doublesquarebracket_detected = 0;        # 0 is false
+my $hash_equal_detected = 0;                 # 0 is false
+my $equal_hash_detected = 0;                 # 0 is false
 
 
 my $language_ext = $file;
@@ -53,10 +56,11 @@ my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
 my @lang_grp6 = ("clj");
-my @lang_grp7 = ("lisp", "rkt");
+my @lang_grp7 = ("lisp", "rkt", "scm");
 my @lang_grp8 = ("bas");
 my @lang_grp9 = ("lua");
-my @lang_grp10 = ("m");
+my @lang_grp10 = ("m", "P", "pi");
+my @lang_grp11 = ("jl");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -65,6 +69,7 @@ my $line_of_block_comment6 = 0;
 my $line_of_block_comment7 = 0;
 my $line_of_block_comment8 = 0;
 my $line_of_block_comment9 = 0;
+my $line_of_block_comment11 = 0;
 
 
 $language_ext =~ s/^\w+\.//;
@@ -83,17 +88,17 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
       $line_empty += 1;
     } else {
 
-      # case: // with optional, leading white spaces: Rust, Zig, Gleam
+      # case: // with optionally leading white spaces: Rust, Zig, Gleam
       if ($_ =~ /^\s*\/\//) {
         $line_cmt_fwdslash_dbl += 1;
       } else {
 
-        # case: # with optional, leading white spaces: Perl, Mojo, Roc, Inko
+        # case: # with optionally leading white spaces: Perl, Mojo, Roc, Inko
         if ($_ =~ /^\s*#/) {
           $line_cmt_hash += 1;
         } else {
 
-          # case: -- with optional, leading white spaces: Ada
+          # case: -- with optionally leading white spaces: Ada
           if ($_ =~ /^\s*--/) {
             $line_cmt_minus_dbl += 1;
           } else {
@@ -119,8 +124,8 @@ if ( grep(/^$language_ext$/, @lang_grp2)) {
     }
 
     # at the moment, only caring about:
-    #   beginning /*: with potential leading white spaces and any kind of stuff beyond /*..
-    #   ending    */: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    #   beginning /*: with potentially leading white spaces and any kind of stuff beyond /*..
+    #   ending    */: with potentially any kind of stuff before ..*/ and potentially trailing white spaces
     if ($_ =~ /^\s*\/\*/ and not $fwdslash_star_detected) {
       $fwdslash_star_detected = 1;
       $star_bwdslash_detected = 0;
@@ -137,7 +142,7 @@ if ( grep(/^$language_ext$/, @lang_grp2)) {
         if ($_ =~ /^\s*$/ and not $fwdslash_star_detected) {
           $line_empty += 1;
         } else {
-          # case: // with optional, leading white spaces:
+          # case: // with optionally leading white spaces:
           if ($_ =~ /^\s*\/\// and not $fwdslash_star_detected) {
             $line_cmt_fwdslash_dbl += 1;
           } else {
@@ -165,8 +170,8 @@ if ( grep(/^$language_ext$/, @lang_grp3)) {
     }
 
     # at the moment, only caring about:
-    #   beginning /*: with potential leading white spaces and any kind of stuff beyond /*..
-    #   ending    */: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    #   beginning /*: with potentially leading white spaces and any kind of stuff beyond /*..
+    #   ending    */: with potentially any kind of stuff before ..*/ and potentially trailing white spaces
     if ($_ =~ /^\s*"""/ and not $triple_dbl_quote_detected) {
       $triple_dbl_quote_detected = 1;
       print "  triple_dbl_quote_detected", "\n";
@@ -181,7 +186,7 @@ if ( grep(/^$language_ext$/, @lang_grp3)) {
         if ($_ =~ /^\s*$/ and not $triple_dbl_quote_detected) {
           $line_empty += 1;
         } else {
-          # case: # with optional, leading white spaces:
+          # case: # with optionally leading white spaces:
           if ($_ =~ /^\s*#/ and not $triple_dbl_quote_detected) {
             $line_cmt_hash += 1;
           } else {
@@ -207,7 +212,7 @@ if ( grep(/^$language_ext$/, @lang_grp4)) {
     if ($bracket_star_detected) {
       $line_of_block_comment4 += 1;
     }
-    # (*..*): with potential leading and trailing white spaces and any kind of stuff in between
+    # (*..*): with potentially leading and trailing white spaces and any kind of stuff in between
     if ($_ =~ /^\s*\(\*.*\*\)\s*$/ and not $bracket_star_detected) {
         $line_cmt_ML_style += 1;
     } else {
@@ -250,8 +255,8 @@ if ( grep(/^$language_ext$/, @lang_grp5)) {
     }
 
     # at the moment, only caring about:
-    #   beginning /*: with potential leading white spaces and any kind of stuff beyond /*..
-    #   ending    */: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    #   beginning /*: with potentially leading white spaces and any kind of stuff beyond /*..
+    #   ending    */: with potentially any kind of stuff before ..*/ and potentially trailing white spaces
     if ($_ =~ /^\s*\<\#/ and not $less_than_hash_detected) {
       $less_than_hash_detected = 1;
       print "  less_than_hash_detected", "\n";
@@ -266,7 +271,7 @@ if ( grep(/^$language_ext$/, @lang_grp5)) {
         if ($_ =~ /^\s*$/ and not $less_than_hash_detected) {
           $line_empty += 1;
         } else {
-          # case: # with optional, leading white spaces:
+          # case: # with optionally leading white spaces:
           if ($_ =~ /^\s*#/ and not $less_than_hash_detected) {
             $line_cmt_hash += 1;
           } else {
@@ -293,7 +298,7 @@ if ( grep(/^$language_ext$/, @lang_grp6)) {
       $line_empty += 1;
     } else {
 
-      # case: ; with optional, leading white spaces: Clojure
+      # case: ; with optionally leading white spaces: Clojure
       if ($_ =~ /^\s*;/) {
         $line_cmt_Lisp_style += 1;
       } else {
@@ -317,8 +322,8 @@ if ( grep(/^$language_ext$/, @lang_grp7)) {
     }
 
     # at the moment, only caring about:
-    #   beginning #|: with potential leading white spaces and any kind of stuff beyond /*..
-    #   ending    |#: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    #   beginning #|: with potentially leading white spaces and any kind of stuff beyond /*..
+    #   ending    |#: with potentially any kind of stuff before ..*/ and potentially trailing white spaces
     if ($_ =~ /^\s*\#\|/ and not $hash_bar_detected) {
       $hash_bar_detected = 1;
       $bar_hash_detected = 0;
@@ -335,7 +340,7 @@ if ( grep(/^$language_ext$/, @lang_grp7)) {
         if ($_ =~ /^\s*$/ and not $hash_bar_detected) {
           $line_empty += 1;
         } else {
-          # case: ; with optional, leading white spaces:
+          # case: ; with optionally leading white spaces:
           if ($_ =~ /^\s*\;/ and not $hash_bar_detected) {
             $line_cmt_Lisp_style += 1;
           } else {
@@ -362,8 +367,8 @@ if ( grep(/^$language_ext$/, @lang_grp8)) {
     }
 
     # at the moment, only caring about:
-    #   beginning /': with potential leading white spaces and any kind of stuff beyond /'..
-    #   ending    '/: with potential any kind of stuff before ..'/ and potential trailing white spaces
+    #   beginning /': with potentially leading white spaces and any kind of stuff beyond /'..
+    #   ending    '/: with potentially any kind of stuff before ..'/ and potentially trailing white spaces
     if ($_ =~ /^\s*\/\'/ and not $fwdslash_singlequote_detected) {
       $fwdslash_singlequote_detected = 1;
       $singlequote_fwdslash_detected = 0;
@@ -380,7 +385,7 @@ if ( grep(/^$language_ext$/, @lang_grp8)) {
         if ($_ =~ /^\s*$/ and not $fwdslash_singlequote_detected) {
           $line_empty += 1;
         } else {
-          # case: ' with optional, leading white spaces:
+          # case: ' with optionally leading white spaces:
           if ($_ =~ /^\s*\'/ and not $fwdslash_singlequote_detected) {
             $line_cmt_Basic_style += 1;
           } else {
@@ -407,8 +412,8 @@ if ( grep(/^$language_ext$/, @lang_grp9)) {
     }
 
     # at the moment, only caring about:
-    #   beginning --[[: with potential leading white spaces and any kind of stuff beyond --[[..
-    #   ending      ]]: with potential any kind of stuff before ..]] and potential trailing white spaces
+    #   beginning --[[: with potentially leading white spaces and any kind of stuff beyond --[[..
+    #   ending      ]]: with potentially any kind of stuff before ..]] and potentially trailing white spaces
     if ($_ =~ /^\s*\-\-\[\[/ and not $doubleminus_squarebracket_detected) {
       $doubleminus_squarebracket_detected = 1;
       $doublesquarebracket_detected = 0;
@@ -425,7 +430,7 @@ if ( grep(/^$language_ext$/, @lang_grp9)) {
         if ($_ =~ /^\s*$/ and not $doubleminus_squarebracket_detected) {
           $line_empty += 1;
         } else {
-          # case: -- with optional, leading white spaces:
+          # case: -- with optionally leading white spaces:
           if ($_ =~ /^\s*\-\-/ and not $doubleminus_squarebracket_detected) {
             $line_cmt_minus_dbl += 1;
           } else {
@@ -451,8 +456,8 @@ if ( grep(/^$language_ext$/, @lang_grp10)) {
     }
 
     # at the moment, only caring about:
-    #   beginning /*: with potential leading white spaces and any kind of stuff beyond /*..
-    #   ending    */: with potential any kind of stuff before ..*/ and potential trailing white spaces
+    #   beginning /*: with potentially leading white spaces and any kind of stuff beyond /*..
+    #   ending    */: with potentially any kind of stuff before ..*/ and potentially trailing white spaces
     if ($_ =~ /^\s*\/\*/ and not $fwdslash_star_detected) {
       $fwdslash_star_detected = 1;
       $star_bwdslash_detected = 0;
@@ -469,7 +474,7 @@ if ( grep(/^$language_ext$/, @lang_grp10)) {
         if ($_ =~ /^\s*$/ and not $fwdslash_star_detected) {
           $line_empty += 1;
         } else {
-          # case: % with optional, leading white spaces:
+          # case: % with optionally leading white spaces:
           if ($_ =~ /^\s*\%/ and not $fwdslash_star_detected) {
             $line_cmt_Mercury_style += 1;
           } else {
@@ -482,6 +487,52 @@ if ( grep(/^$language_ext$/, @lang_grp10)) {
     }
   }
 }
+
+
+if ( grep(/^$language_ext$/, @lang_grp11)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($hash_equal_detected) {
+      $line_of_block_comment11 += 1;
+    }
+
+    # at the moment, only caring about:
+    #   beginning #=: with potentially leading white spaces and any kind of stuff beyond #=..
+    #   ending    =#: with potentially any kind of stuff before ..=# and potentially trailing white spaces
+    if ($_ =~ /^\s*#=/ and not $hash_equal_detected) {
+      $hash_equal_detected = 1;
+      $equal_hash_detected = 0;
+      print "  hash_equal_detected", "\n";
+      $line_of_block_comment11 += 1;
+    } else {
+
+      if ($_ =~ /=#\s*$/ and $hash_equal_detected) {
+        $hash_equal_detected = 0;
+        $equal_hash_detected = 1;
+        print "  equal_hash_detected", "\n";
+      } else {
+        # case: empty line or line with white spaces:
+        if ($_ =~ /^\s*$/ and not $hash_equal_detected) {
+          $line_empty += 1;
+        } else {
+          # case: # with optionally leading white spaces:
+          if ($_ =~ /^\s*#/ and not $hash_equal_detected) {
+            $line_cmt_hash += 1;
+          } else {
+            if (not $hash_equal_detected) {
+              $source_code_line_count += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 
 close( FILE );
@@ -504,6 +555,7 @@ print "\nnumber of lines in block comment: <# ... #> = ", $line_of_block_comment
 print "\nnumber of lines in block comment: #| ... |# = ", $line_of_block_comment7;
 print "\nnumber of lines in block comment: /' ... '/ = ", $line_of_block_comment8;
 print "\nnumber of lines in block comment: --[[ ... ]] = ", $line_of_block_comment9;
+print "\nnumber of lines in block comment: #= ... =# = ", $line_of_block_comment11;
 
 print "\n";
 
