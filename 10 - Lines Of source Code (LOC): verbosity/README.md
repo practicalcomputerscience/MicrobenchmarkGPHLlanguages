@@ -44,6 +44,7 @@ Crystal           | 113 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
+Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
 Mojo              |  93 | compiled, very young language
@@ -72,6 +73,7 @@ FreeBASIC          | 1
 Gleam              | 8
 Go                 | 0
 Inko               | 4
+Julia              | 0
 Kotlin             | 1
 Lua                | 2
 Mercury            | 9
