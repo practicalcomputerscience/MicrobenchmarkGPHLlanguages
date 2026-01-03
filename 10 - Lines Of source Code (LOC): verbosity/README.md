@@ -40,7 +40,7 @@ FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
 Swift             | 114 | compiled, mature language
 Common Lisp       | 114 | compiled, very mature language
-Crystal           | 113 | compiled, young language
+Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
@@ -98,7 +98,7 @@ Zig                | 0
 
 #### Re-testing script lines_of_source_code_count.pl
 
-version of 2026-01-03, LOC:
+version of 2026-01-03a, LOC:
 
 .adb: 231 -- OK
 
@@ -112,9 +112,9 @@ version of 2026-01-03, LOC:
 
 .clj: 102 -- OK
 
-.cr: 111 <<<<<<<<<<<<<<<<<<<<<<<<
+.cr: 111 -- OK (Crystal, fixed on 2025-01-03)
 
-.cs: 0 <<<<<<<<<<<<<<<<<<<<<<<<
+.cs: 109 -- OK (C#, fixed on 2025-01-03)
 
 .gleam: 162 -- OK
 
