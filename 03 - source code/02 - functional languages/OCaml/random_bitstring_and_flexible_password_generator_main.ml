@@ -3,6 +3,7 @@ main.ml of random_bitstring_and_flexible_password_generator
 
 2025-05-24/25/26/27/31, 2025-06-22
 2025-12-21: see below
+2026-01-04: cosmetics
 
 build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
                         $ cd random_bitstring_and_flexible_password_generator
@@ -73,11 +74,11 @@ let rec input_a_valid_number n_char =
   ) else
     match int_of_string_opt answer_str with
     | Some n -> if n < 8 then (
-                  Printf.printf "enter an integer number >= 8 or 'y': \n";
+                  Printf.printf "enter an integer number >= 8 or 'y'\n";
                   flush stdout;
                   input_a_valid_number n_char_default;
                 ) else n
-    | None   -> (Printf.printf "enter an integer number >= 8 or 'y': \n";
+    | None   -> (Printf.printf "enter an integer number >= 8 or 'y'\n";
                  flush stdout;
                  input_a_valid_number n_char_default;)
 
