@@ -68,11 +68,11 @@ Yes, there's a certain nearness beteen both languages, but one must be careful w
 
 ### Building a "standalone" app from a Julia program
 
-TL;DR: building a standalone executable in Linux is possible with Julia, but Julia is not really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable.
+TL;DR: building a standalone executable in Linux is possible with Julia, but Julia is not really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
 
-After some experimentation in vain, I discovered this article: [5. Creating Packages](https://engee.com/helpcenter/stable/en/julia/Pkg/creating-packages.html) on my way to build a "standalone" app with Julia.
+After some experimentation in vain, I discovered this very helpful article: [5. Creating Packages](https://engee.com/helpcenter/stable/en/julia/Pkg/creating-packages.html)
 
-However, is was only this prompt: "Julia UndefVarError: 'julia_main' not defined, standalone application for Linux" for Google AI, which returned the essential information. I've also roughly provided the workflow in this [app related source code file](./random_streams_for_perf_stats_app.jl), which I present below.
+However, is was only this prompt: "Julia UndefVarError: 'julia_main' not defined, standalone application for Linux" for Google AI, which gave me essential information. I've also roughly provided the workflow in the [app related source code file](./random_streams_for_perf_stats_app.jl), and which I present below.
 
 Everything starts with correctly preparing the source code and defining a suitable entry point. This is done with function _julia_main()::Cint_
 
@@ -105,11 +105,11 @@ Very important: correctly handling the dependencies of imported modules, here mo
 
 Function _julia_main()::Cint_ then tries to call function _real_main()_. Actually, original program [random_streams_for_perf_stats.jl](./random_streams_for_perf_stats.jl), with the exception of _using Random_, has been put into the _real_main()_ function.
 
-Actually, that's it for the configuration. Everything else can now be done with the Julia REPL (Read-Eval-Print Loop) and its package manager _pkg_.
+Actually, that's it for the configuration. Everything else can now be done with the Julia REPL (Read-Eval-Print Loop) and package manager _pkg_, which is invoked from the Julia REPL.
 
 <br/>
 
-So, start the Julia REPL:
+So, let's start the Julia REPL:
 
 ```
 $ julia
@@ -118,7 +118,7 @@ julia>
 
 At the Julia prompt, activate the package manager. This is done with entering the _]_ character (and may need some exercise). 
 
-At the package manager, we now generate a little directory structure with the name of our app, and which includes a "Hello, World!" source code example (however without the needed  _julia_main()::Cint_ function), and add the Random dependency:
+At the package manager, we now generate a little directory structure with the name of our app, and which includes a "Hello, World!" source code example (however without the needed  _julia_main()::Cint_ function), and finally add the Random dependency:
 
 ```
 julia> ]  # entering the package manager
@@ -138,7 +138,7 @@ julia>
 
 In the meanwhile, copy source code file _random_streams_for_perf_stats_app.jl_ into subdirectory _./random_streams_for_perf_stats_app/src/_, where it replaces the generated "Hello, World!" source code example.
 
-Back in in the Julia REPL, we can now test this application by calling the _julia_main()_ function: 
+Back in in the Julia REPL (started like before from the same working directory), we can now test this application by calling the _julia_main()_ function: 
 
 ```
 julia> import random_streams_for_perf_stats_app
@@ -154,7 +154,7 @@ julia>
 
 <br/>
 
-An important aspect of software development is **changing the source code**. There are helpers in Julia ([TBD] or [TBD] for example, which I didn't test), but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after every change of source code. So, basic software development in Julia should start outside of a Julia REPL loop with using the "normal" _$ julia \<~.jl\>_ compiler.
+An important aspect of software development is **changing source code**. There are helpers in Julia ([TBD] or [TBD] for example, which I didn't test), but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
 
 
 
