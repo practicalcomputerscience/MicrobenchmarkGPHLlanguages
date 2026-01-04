@@ -68,13 +68,13 @@ Yes, there's a certain nearness beteen both languages, but one must be careful w
 
 ### Building a "standalone" app from a Julia program
 
-TL;DR: building a standalone executable in Linux is possible with Julia, but Julia is not really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
+TL;DR: building a standalone executable in Linux is possible with Julia, but Julia is not (yet) really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
 
 After some experimentation in vain, I discovered this very helpful article: [5. Creating Packages](https://engee.com/helpcenter/stable/en/julia/Pkg/creating-packages.html)
 
 However, is was only this prompt: "Julia UndefVarError: 'julia_main' not defined, standalone application for Linux" for Google AI, which gave me essential information. I've also roughly provided the workflow in the [app related source code file](./random_streams_for_perf_stats_app.jl), and which I present below.
 
-Everything starts with correctly preparing the source code and defining a suitable entry point. This is done with function _julia_main()::Cint_
+Everything starts with correctly defining a suitable entry point. This is done with function _julia_main()::Cint_
 
 ```
 module random_streams_for_perf_stats_app
@@ -105,7 +105,7 @@ Very important: correctly handling the dependencies of imported modules, here mo
 
 Function _julia_main()::Cint_ then tries to call function _real_main()_. Actually, original program [random_streams_for_perf_stats.jl](./random_streams_for_perf_stats.jl), with the exception of _using Random_, has been put into the _real_main()_ function.
 
-Actually, that's it for the configuration. Everything else can now be done with the Julia REPL (Read-Eval-Print Loop) and package manager _pkg_, which is invoked from the Julia REPL.
+That's it for the configuration. Everything else can from now on be done within the Julia REPL (Read-Eval-Print Loop) and package manager _pkg_, which is invoked from the Julia REPL.
 
 <br/>
 
@@ -156,13 +156,93 @@ julia>
 
 An important aspect of software development is **changing source code**. There are helpers in Julia ([TBD] or [TBD] for example, which I didn't test), but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
 
+<br/>
 
+Inside the Julia REPL, we change into project directory _random_streams_for_perf_stats_app_, where we install the [PackageCompiler](https://julialang.github.io/PackageCompiler.jl/dev/) (see also from here: https://github.com/JuliaLang/PackageCompiler.jl):
 
+```
+julia> cd("./random_streams_for_perf_stats_app")
+julia> using Pkg
+julia> Pkg.activate(".")
+  Activating project at `~/scripts/Julia/random_streams_for_perf_stats_app`
+
+julia> Pkg.add("PackageCompiler")
+...
+julia> 
+```
+
+Now, we compile the standalone executable, mostly by calling the _create_app()_ function with some arguments:
+
+```
+julia> using PackageCompiler
+julia> create_app(
+".", # project folder
+"build/random_streams_for_perf_stats_app"; # output folder
+force=true
+)
+...
+```
+
+This building will take minutes, so be patient:
+
+```
+...
+  Total library file size: 284.981 MiB
+✔ [04m:25s] PackageCompiler: creating compiler sysimage (incremental=false)
+✔ [02m:09s] PackageCompiler: compiling fresh sysimage (incremental=false)
+Precompiling Pkg finished.
+  31 dependencies successfully precompiled in 16 seconds
+Precompiling packages finished.
+  6 dependencies successfully precompiled in 2 seconds. 31 already precompiled.
+✔ [02m:51s] PackageCompiler: compiling nonincremental system image
+
+julia>
+```
+
+Finally, we leave the Julia REPL, and test the app from the Linux shell, here starting from the working directory:
+```
+julia> [CTRL+Z]
+$
+$ ./random_streams_for_perf_stats_app/build/random_streams_for_perf_stats_app/bin/random_streams_for_perf_stats_app
+
+generating a random bit stream...
+Bit stream has been written to disk under name: random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+Voilà!
 
 <br/>
 
-TBD
+However, the execution time here is around sobering 300 milliseconds, which is way higher than just using the julia compiler for around 170 milliseconds!
+
+This compilation created 85 files in 8 folders in the generated _build_ subdirectory, which has a staggering size of 1.2GB!
+
+The most important and generated project configuration files are:
+
+- _Manifest.toml_
+- _Project.toml_
+
+With the workflow as described above, there's no need to manually modify these two files.
+
+"Standalone" executable _./random_streams_for_perf_stats_app/build/random_streams_for_perf_stats_app/bin/random_streams_for_perf_stats_app_ cannot be just copied to another Linux system to work there, because it has many dependencies, that is shared object files, located in the _build_ subdirectory. So, to make _random_streams_for_perf_stats_app_ work in another Linux system, just copy the whole _build_ subdirectory.
+
+<br/>
+
+Here's a recent article about making "standalone" executables in Julia, which makes use of the [JuliaC](https://github.com/JuliaLang/JuliaC.jl?tab=readme-ov-file#juliac) package:
+
+November 4, 2025: [Julia 1.12 brings progress on standalone binaries and more](https://lwn.net/Articles/1044280/)
+
+See also from here: [New --trim feature](https://julialang.org/blog/2025/10/julia-1.12-highlights/#new_--trim_feature).
 
 
+TBD: testing JuliaC
+
+<br/>
+
+There are also other helpers, like here with the [StaticCompiler](https://github.com/tshort/StaticCompiler.jl#staticcompiler) (which I didn't test).
+
+<br/>
 
 ##_end
