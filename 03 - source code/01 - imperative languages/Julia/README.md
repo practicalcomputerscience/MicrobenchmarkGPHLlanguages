@@ -215,9 +215,13 @@ Voilà!
 
 <br/>
 
-However, the execution time here is around sobering 300 milliseconds, which is way higher than just using the julia compiler for around 170 milliseconds!
+However, the execution time here is around sobering 300 milliseconds, which is way higher than just using the julia compiler resulting in around 170 milliseconds!
 
-This compilation created 85 files in 8 folders in the generated _build_ subdirectory, which has a staggering size of 1.2GB!
+My suspicion is that all this precompilation isn't as effective as _julia's_ just-in-time compilation.
+
+<br/>
+
+Otherwise, this compilation created 85 files in 8 folders in the generated _build_ subdirectory, which has a staggering size of 1.2GB!
 
 The most important and generated project configuration files are:
 
@@ -234,10 +238,17 @@ Here's a recent article about making "standalone" executables in Julia, which ma
 
 November 4, 2025: [Julia 1.12 brings progress on standalone binaries and more](https://lwn.net/Articles/1044280/)
 
-See also from here: [New --trim feature](https://julialang.org/blog/2025/10/julia-1.12-highlights/#new_--trim_feature).
+See also from here: [New --trim feature](https://julialang.org/blog/2025/10/julia-1.12-highlights/#new_--trim_feature) (*)
 
+Basically, the procedure for making the _AppProject_ with JuliaC as described in (*) is working according to my test, but my microbenchmark program, and there only the [speed part](./random_streams_for_perf_stats.jl), is too much for it.
 
-TBD: testing JuliaC
+The _juliac_ compiler cannot take function _lpad()_, and others, without needed modifications, modifications which are unknown to me. See from (*) how the _println()_ function has been expanded to:
+
+```
+    println(Core.stdout, "Hello World!")
+```
+
+However, when I leave away the _--trim_ feature, which is of course the whole point here, the modified program (see at (*)) can be compiled successfully, but executing it will cause a fatal error.
 
 <br/>
 
