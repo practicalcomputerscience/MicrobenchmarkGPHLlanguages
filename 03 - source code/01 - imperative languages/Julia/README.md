@@ -231,7 +231,7 @@ The most important and generated project configuration files are:
 
 With the workflow as described above, there's no need to manually modify these two files.
 
-"Standalone" executable _./random_streams_for_perf_stats_app/build/random_streams_for_perf_stats_app/bin/random_streams_for_perf_stats_app_ cannot be just copied to another Linux system to work there, because it has many dependencies, that is shared object files, located in the _build_ subdirectory. So, to make _random_streams_for_perf_stats_app_ work in another Linux system, just copy the whole _build_ subdirectory.
+"Standalone" executable _./random_streams_for_perf_stats_app/build/random_streams_for_perf_stats_app/bin/random_streams_for_perf_stats_app_ cannot be just copied to another Linux system to work there, because it has many dependencies, that is shared object files, located in the _build_ subdirectory tree. So, to make program _random_streams_for_perf_stats_app_ work in another Linux system, just copy the whole _build_ subdirectory to it.
 
 <br/>
 
