@@ -221,7 +221,7 @@ My suspicion is that all this precompilation isn't as effective as _julia's_ jus
 
 <br/>
 
-Otherwise, this compilation created 85 files in 8 folders in the generated _build_ subdirectory, which has a staggering size of 1.2GB!
+Otherwise, this compilation created 85 files in 8 folders in the generated _build_ subdirectory tree, which has a staggering size of 1.2GB!
 
 The most important and generated project configuration files are:
 
