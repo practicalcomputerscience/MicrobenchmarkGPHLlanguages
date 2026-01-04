@@ -68,7 +68,7 @@ Yes, there's a certain nearness beteen both languages, but one must be careful w
 
 ### Building a "standalone" app from a Julia program
 
-TL;DR: building a standalone executable in Linux is possible with Julia, but Julia is not (yet) really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
+TL;DR: building a "standalone" executable in Linux is possible with Julia, but Julia is not (yet) really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
 
 After some experimentation in vain, I discovered this very helpful article: [5. Creating Packages](https://engee.com/helpcenter/stable/en/julia/Pkg/creating-packages.html)
 
@@ -154,7 +154,7 @@ julia>
 
 <br/>
 
-An important aspect of software development is **changing source code**. There are helpers in Julia ([TBD] or [TBD] for example, which I didn't test), but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
+An important aspect of software development is **changing source code**. There are helpers in Julia, like [Revise](https://timholy.github.io/Revise.jl/stable/#Introduction-to-Revise) for example, and which I didn't test, but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
 
 <br/>
 
