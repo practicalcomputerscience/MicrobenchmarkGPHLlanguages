@@ -11,6 +11,7 @@ Table of contents:
 - [Microbenchmark program in Julia](#microbenchmark-program-in-julia)
 - [Julia and Python](#julia-and-python)
 - [Building a "standalone" app from a Julia program](#building-a-standalone-app-from-a-julia-program)
+- [Further experiments for a "standalone" app](further-experiments-for-a-standalone-app)
 
 <br/>
 
@@ -233,6 +234,8 @@ With the workflow as described above, there's no need to manually modify these t
 "Standalone" executable _./random_streams_for_perf_stats_app/build/random_streams_for_perf_stats_app/bin/random_streams_for_perf_stats_app_ cannot be just copied to another Linux system to work there, because it has many dependencies, that is shared object files, located in the _build_ subdirectory. So, to make _random_streams_for_perf_stats_app_ work in another Linux system, just copy the whole _build_ subdirectory.
 
 <br/>
+
+### Further experiments for a "standalone" app
 
 Here's a recent article about making "standalone" executables in Julia, which makes use of the [JuliaC](https://github.com/JuliaLang/JuliaC.jl?tab=readme-ov-file#juliac) package:
 
