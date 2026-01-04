@@ -2,6 +2,7 @@
 
 2025-07-07/08
 2025-12-21: see below
+2026-01-04: cosmetics
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
@@ -127,12 +128,12 @@ fun input_a_valid_number (n_char: int) =
            if n_char_ >= 8 then
              n_char_
            else
-             (print ("enter an integer number >= 8 or 'y': \n");
+             (print ("enter an integer number >= 8 or 'y'\n");
               input_a_valid_number n_char)
          end
 
        else
-         (print ("enter an integer number >= 8 or 'y': \n");
+         (print ("enter an integer number >= 8 or 'y'\n");
                   input_a_valid_number n_char)
    end)
 
