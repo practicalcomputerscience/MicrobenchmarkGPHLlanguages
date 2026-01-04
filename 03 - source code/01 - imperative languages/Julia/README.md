@@ -73,7 +73,7 @@ TL;DR: building a "standalone" executable in Linux is possible with Julia, but J
 
 After some experimentation in vain, I discovered this very helpful article: [5. Creating Packages](https://engee.com/helpcenter/stable/en/julia/Pkg/creating-packages.html)
 
-However, is was only this prompt: "Julia UndefVarError: 'julia_main' not defined, standalone application for Linux" for Google AI, which gave me essential information. I've also roughly provided the workflow in the [app related source code file](./random_streams_for_perf_stats_app.jl), and which I present below.
+However, it was only this prompt: "Julia UndefVarError: 'julia_main' not defined, standalone application for Linux" for Google AI, which gave me essential information. I've also roughly provided the workflow in the [app related source code file](./random_streams_for_perf_stats_app.jl), and which I present below.
 
 Everything starts with correctly defining a suitable entry point. This is done with function _julia_main()::Cint_
 
@@ -119,7 +119,7 @@ julia>
 
 At the Julia prompt, activate the package manager. This is done with entering the _]_ character (and may need some exercise). 
 
-At the package manager, we now generate a little directory structure with the name of our app, and which includes a "Hello, World!" source code example (however without the needed  _julia_main()::Cint_ function), and finally add the Random dependency:
+At the package manager, we now generate a little directory structure with the name of our app, and which includes a "Hello, World!" source code example (however without the needed  _julia_main()::Cint_ function), and finally add the _Random_ dependency:
 
 ```
 julia> ]  # entering the package manager
@@ -155,7 +155,7 @@ julia>
 
 <br/>
 
-An important aspect of software development is **changing source code**. There are helpers in Julia, like [Revise](https://timholy.github.io/Revise.jl/stable/#Introduction-to-Revise) for example, and which I didn't test, but this is a weak point of Julia from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
+An important aspect of software development is **changing source code**. There are helpers in Julia, like [Revise](https://timholy.github.io/Revise.jl/stable/#Introduction-to-Revise) for example, and which I didn't test, but this is a weak point of Julia REPL from my point of view. The easiest way I found was just starting over with the Julia REPL after **every change of source code**. So, basic software development in Julia may better start outside of the Julia REPL with using the "normal" _$ julia \<~.jl\>_ compiler first.
 
 <br/>
 
@@ -172,7 +172,7 @@ julia> Pkg.add("PackageCompiler")
 julia> 
 ```
 
-Now, we compile the standalone executable, mostly by calling the _create_app()_ function with some arguments:
+Now, we compile the standalone executable, mostly by calling the [create_app](https://julialang.github.io/PackageCompiler.jl/dev/refs.html#PackageCompiler.create_app) function of the _PackageCompiler_ with some arguments:
 
 ```
 julia> using PackageCompiler
