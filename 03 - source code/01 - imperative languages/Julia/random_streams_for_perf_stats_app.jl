@@ -170,9 +170,10 @@ module random_streams_for_perf_stats_app
             println("could not write to file: ", file_bits_hex, " -- ", e)
         end
 
-    end  # function main_()
+    end  # function real_main()
 
 end  # module
 
 
 # end of random_streams_for_perf_stats_app.jl
+
