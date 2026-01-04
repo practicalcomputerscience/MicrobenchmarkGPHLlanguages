@@ -243,7 +243,7 @@ November 4, 2025: [Julia 1.12 brings progress on standalone binaries and more](h
 
 See also from here: [New --trim feature](https://julialang.org/blog/2025/10/julia-1.12-highlights/#new_--trim_feature) (*)
 
-Basically, the procedure for making the _AppProject_ with JuliaC as described in (*) is working according to my test, but my microbenchmark program, and there only the [speed part](./random_streams_for_perf_stats.jl), is too much for it.
+Basically, the procedure for making the _AppProject_ with JuliaC as described in (*) is working according to my test, but the microbenchmark program, and there only the [speed part](./random_streams_for_perf_stats.jl), is too much for it.
 
 The _juliac_ compiler cannot take function _lpad()_, and others, without needed modifications, modifications which are unknown to me. See from (*) how the _println()_ function has been expanded to:
 
@@ -251,11 +251,25 @@ The _juliac_ compiler cannot take function _lpad()_, and others, without needed 
     println(Core.stdout, "Hello World!")
 ```
 
-However, when I leave away the _--trim_ feature, which is of course the whole point here, the modified program (see at (*)) can be compiled successfully, but executing it will cause a fatal error.
+However, when I omit the _--trim_ feature, which is of course the whole point here, the modified program (see at (*)) can be compiled successfully, but executing it will cause a fatal error.
 
 <br/>
 
-There are also other helpers, like here with the [StaticCompiler](https://github.com/tshort/StaticCompiler.jl#staticcompiler) (which I didn't test).
+There are also other helpers, like the [StaticCompiler](https://github.com/tshort/StaticCompiler.jl#staticcompiler), which is also not working for the microbenchmark program.
+
+It also needs modified function calls, like this one for example:
+
+```
+    ...
+    println(c"Hello, World!")
+    ...
+```
+
+..with an essential _c_ qualifier (_println("Hello, World!")_ is not working here according to my experiments), and which probably signifies that the following string should be treated as a character string.
+
+However, this "Example 1: Basic Hello World" from [Julia, my love!](https://joel.id/julia-my-love/) from 23 Nov 2025 worked with me; the rest not so much.
+
+What's notable in this article is chapter "Benchmark results (1000x1000 matrices):". It says that "Benchmark: Matrix Multiplication" runs for 1435 milliseconds in the "Compiled Julia" version (that's probably with using the _StaticCompiler_) on that testing system, but 1425 milliseconds with the "Julia (runtime)", which is the "normal" _julia_ compiler I guess.
 
 <br/>
 
