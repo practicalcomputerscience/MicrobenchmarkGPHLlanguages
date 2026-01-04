@@ -11,7 +11,7 @@ Table of contents:
 - [Microbenchmark program in Julia](#microbenchmark-program-in-julia)
 - [Julia and Python](#julia-and-python)
 - [Building a "standalone" app from a Julia program](#building-a-standalone-app-from-a-julia-program)
-- [Further experiments for a "standalone" app](further-experiments-for-a-standalone-app)
+- [Further experiments for a "standalone" app](#further-experiments-for-a-standalone-app)
 
 <br/>
 
