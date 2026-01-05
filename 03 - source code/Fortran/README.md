@@ -19,6 +19,13 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 $
 ```
 
+I also installed the Fortran Standard Library:
+
+- https://stdlib.fortran-lang.org/
+- https://github.com/kz6fittycent/stdlib
+
+..because it features useful functions. For Ubuntu I used snap: _$ sudo snap install stdlib_ from here: https://snapcraft.io/install/stdlib/ubuntu
+
 TBD
 
 <br/>
