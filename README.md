@@ -61,7 +61,7 @@ file_bits_x   = "random_bitstring.bin"
 file_bits_hex = "random_bitstring.byte"
 
 x = [0 for i in range(0,END)]
-x[0] = np.random.randint(1, m, size=1, dtype=int)[0]
+x[0] = np.random.randint(1, m, size=1, dtype=int)[0]  # 2025-12-13: (0, m,.. --> (1, m,): m is exclusive
 
 bits_x = StringIO()
 bits_hex = StringIO()
@@ -188,7 +188,7 @@ else:
     pattern = re.compile(r"[A-Za-z0-9]+")
 
 i = 0  # char counter in password
-j = 0  # char counter in bits_char
+j = 0  # counter in x[j]
 pw_chars = []
 
 while i < N_CHAR:
