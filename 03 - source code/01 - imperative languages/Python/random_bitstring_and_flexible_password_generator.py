@@ -157,7 +157,7 @@ else:
     pattern = re.compile(r"[A-Za-z0-9]+")
 
 i = 0  # char counter in password
-j = 0  # char counter in bits_char
+j = 0  # counter in x[j]
 pw_chars = []
 
 while i < N_CHAR:
@@ -188,3 +188,4 @@ pw_string = ''.join(pw_chars)
 print(f'\nYour password of {N_CHAR} characters is:', pw_string)  # 2026-01-03
 
 # end of random_bitstring_and_flexible_password_generator.py
+
