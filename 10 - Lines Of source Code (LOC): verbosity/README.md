@@ -49,7 +49,7 @@ Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
 Mojo              |  93 | compiled, very young language
-PowerShell        |  90 | interpreted, very mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
+PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
 
 <br/>
