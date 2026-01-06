@@ -92,6 +92,7 @@ C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
 Chapel | program doesn't finish | -- | no | 2025-12-18
 Common Lisp | 1,538,080 bytes in 17 blocks | 1,275,640 bytes in 15 blocks | no | TBD with v.3.27.0
 Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
+Fortran | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-01-06
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | TBD with v.3.27.0
 Go | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD with v.3.27.0
 Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
