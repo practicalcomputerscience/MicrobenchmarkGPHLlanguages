@@ -3,6 +3,8 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here - as my plan :wink:
 
 ---
+2025-01-06: done: [Fortran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Fortran#fortran)
+
 2025-01-05: change of mind: I plan to implement the microbenchmark program, if possible for me, at last in [J](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/J#j), because I'm afraid that it will take me a long time, longer than a week for example. Although, my first baby steps in J worked. Before, I just shortly played with [ELI - A System for Programming with Arrays](https://fastarray.appspot.com/index.html), but didn't get it working. This language (from McGill University: https://www.sable.mcgill.ca/~hanfeng.c/eli/) hasn't been updated since 2015. The only question then is what to with The Nial Language: https://www.nial-array-language.org/, as another array-oriented language. This means that the next language will be (imperative) [Fortran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Fortran#fortran).
 
 2025-01-04: done: [Julia](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Julia#julia) (which is not a contender to Mojo or Chapel)
