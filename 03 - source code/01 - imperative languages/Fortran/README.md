@@ -20,10 +20,10 @@ to automatically append a line feed (LF) control character when writing strings 
 It seems to me that the _write_ function provides more flexibility for acceptable output formatting than the _print_ function; see for example:
 
 ```
-                write(*, '(A, A)') "Bit stream has been written to disk under name:  ", trim(filename)
+  write(*, '(/,A, I2, A, A)') "Your password of ", N_CHAR, " characters is: ", pw_chars
 ```
 
-..where _'(A, A)'_ signifies two strings of **A**rbitrary length.
+..where _A_ signifies a string of **A**rbitrary length. _/_ is for writing here first a new line; _I2_ is for writing an integer number with two digits.
 
 <br/>
 
