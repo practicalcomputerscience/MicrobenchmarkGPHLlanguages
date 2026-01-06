@@ -4,7 +4,7 @@
 
 https://fortran-lang.org
 
-The fact that Fortan doesn't have an integrated **standard library** is a bummer (https://stdlib.fortran-lang.org/): 
+The fact that Fortan doesn't have an official, integrated **standard library** is a bummer (https://stdlib.fortran-lang.org/): 
 
 > The Fortran Standard, as published by the ISO (https://wg5-fortran.org/), does not have a Standard Library.
 
@@ -13,7 +13,25 @@ This would require to think about how to get _reasonable_ access to this standar
 The second bummer are the legacy _print_ and _write_ functions with their notorious desire to "reserve the first column of all output for carriage control" and
 to automatically append a line feed (LF) control character when writing strings to files.
 
-I gave up here after some tinkering with these functions to cast their behavior into a "more modern" direction.
+It seems to me that the _write_ function provides more flexibility for acceptable output formatting than the _print_ function; see for example:
+
+```
+                write(*, '(A, A)') "Bit stream has been written to disk under name:  ", trim(filename)
+```
+
+..where _'(A, A)'_ signifies two strings of **A**rbitrary length.
+
+<br/>
+
+On block comments in Fortran:
+
+```
+go to 100
+ ! CHUNK OF CODE YOU WANT TO COMMENT OUT
+100 continue
+```
+
+seen from here: https://stackoverflow.com/questions/22049963/how-to-do-block-comment-in-fortran
 
 ---
 
