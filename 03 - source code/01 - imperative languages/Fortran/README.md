@@ -32,7 +32,7 @@ $
 
 ## Building tips
 
-I checked out potentially usefull compiler switches to compile a fast executable, but in vain:
+I checked out potentially useful compiler switches to compile a fast executable, but in vain:
 
 ```
 $ gfortran --help:
@@ -55,8 +55,8 @@ $ gfortran --help=warnings
 $
 ```
 
-In the end, and also after reading this article: [Best Practices for Optimizing Performance in Fortran Applications - A Comprehensive Guide](https://moldstud.com/articles/p-best-practices-for-optimizing-performance-in-fortran-applications-a-comprehensive-guide) from August 2025, I've chosen to only take these three extra warning switches,
-where I think that the _-fcheck=all_ switch is specifically useful when you are used to work with indices that start with 0, instead of 1 at Fortran, in other programming languages:
+In the end, and also after reading this article: [Best Practices for Optimizing Performance in Fortran Applications - A Comprehensive Guide](https://moldstud.com/articles/p-best-practices-for-optimizing-performance-in-fortran-applications-a-comprehensive-guide) from August 2025, I've chosen to only take three extra warning switches,
+where I think that the _-fcheck=all_ switch is specifically useful when you are used to work with indices that start with 0, instead of 1 at Fortran, like in other programming languages:
 
 ```
 $ gfortran -Wall -Wextra -fcheck=all random_streams_for_perf_stats.f90 -o random_streams_for_perf_stats
