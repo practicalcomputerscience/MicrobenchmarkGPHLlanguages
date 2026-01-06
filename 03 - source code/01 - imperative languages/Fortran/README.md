@@ -4,13 +4,19 @@
 
 https://fortran-lang.org
 
+<br/>
+
+---
+
+## Fortran is computer programming legacy
+
 The fact that Fortan doesn't have an official, integrated **standard library** is a bummer (https://stdlib.fortran-lang.org/): 
 
 > The Fortran Standard, as published by the ISO (https://wg5-fortran.org/), does not have a Standard Library.
 
 This would require to think about how to get _reasonable_ access to this standard library, and its useful functions, in your system without starting another monster configuration workflow. I have not done this.
 
-The second bummer are the legacy _print_ and _write_ functions with their notorious desire to "reserve the first column of all output for carriage control" and
+The second bummer are the legacy _print_ and _write_ functions with their notorious desire to "reserve the first column of all output for carriage control" ([Formatted Input/Output](https://cyber.dabamos.de/programming/modernfortran/formatted-input-output.html)) and
 to automatically append a line feed (LF) control character when writing strings to files.
 
 It seems to me that the _write_ function provides more flexibility for acceptable output formatting than the _print_ function; see for example:
