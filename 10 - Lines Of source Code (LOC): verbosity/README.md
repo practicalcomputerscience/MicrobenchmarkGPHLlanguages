@@ -24,6 +24,7 @@ Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
 V                 | 179 | compiled, very young programming language: needs some user-defined functions
+Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 C3                | 163 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 148 | compiled, very mature language
@@ -69,6 +70,7 @@ Chapel             | 1
 Clojure            | 3
 Common Lisp        | 2
 Crystal            | 0
+Fortran            | 3
 FreeBASIC          | 1
 Gleam              | 8
 Go                 | 0
