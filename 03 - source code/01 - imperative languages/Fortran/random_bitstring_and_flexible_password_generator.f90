@@ -221,7 +221,7 @@ program random_bitstring_and_flexible_password_generator
       j = j + 1
   end do
 
-  write(*, '(A, I2, A, A)') "Your password of ", N_CHAR, " characters is: ", pw_chars
+  write(*, '(/,A, I2, A, A)') "Your password of ", N_CHAR, " characters is: ", pw_chars
 
   deallocate(CHAR_SET)
   deallocate(pw_chars)
