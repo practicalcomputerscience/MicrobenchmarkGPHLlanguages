@@ -77,6 +77,8 @@ $ gfortran --help=warnings
 $
 ```
 
+ (above times have been measured in a simple run before implementing the conversion of string _bits_hex_ into lower case hexadecimal letters a..f like the other programs generate; this takes extra time of course)
+ 
 In the end, and also after reading this article: [Best Practices for Optimizing Performance in Fortran Applications - A Comprehensive Guide](https://moldstud.com/articles/p-best-practices-for-optimizing-performance-in-fortran-applications-a-comprehensive-guide) from August 2025, I've chosen to only take three extra warning switches,
 where I think that the _-fcheck=all_ switch is specifically useful when you are used to work with indices that start with 0, instead of 1 at Fortran, like in other programming languages:
 
