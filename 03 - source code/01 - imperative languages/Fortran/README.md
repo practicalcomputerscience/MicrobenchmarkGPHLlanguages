@@ -1,5 +1,3 @@
-2025-01-05: work in progress
-
 # Fortran
 
 https://fortran-lang.org
@@ -85,8 +83,6 @@ where I think that the _-fcheck=all_ switch is specifically useful when you are 
 ```
 $ gfortran -Wall -Wextra -fcheck=all random_streams_for_perf_stats.f90 -o random_streams_for_perf_stats
 ```
-
-TBD
 
 <br/>
 
