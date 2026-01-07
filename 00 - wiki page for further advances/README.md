@@ -48,9 +48,11 @@
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Haskell?!?
-- - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
+- **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
 - &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
 - &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
+- &nbsp;&nbsp;**J**
+  
 
 <br/>
 
