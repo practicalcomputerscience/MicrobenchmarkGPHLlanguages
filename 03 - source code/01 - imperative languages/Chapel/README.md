@@ -106,7 +106,17 @@ By the way: when experimenting with my Python program I came to the conclusion t
 
 However and to my surprise, tactic #2 did not make a faster program in Chapel, maybe the only C-like language without a string builder concept where this tactic leads to an even slower solution.
 
-The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest.
+The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest of these three solutions.
+
+<br/>
+
+And yes, I compiled with switch _--fast_ on before measuring the rather slow program execution speed:
+
+```
+chpl random_streams_for_perf_stats.chpl --fast
+```
+
+This switch is essential for a faster program, at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail.
 
 <br/>
 
