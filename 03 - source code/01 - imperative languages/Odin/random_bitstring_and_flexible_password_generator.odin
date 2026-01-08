@@ -62,7 +62,7 @@ main :: proc() {
   fmt.println("\ngenerating a random bit stream...")
   for i in 1..<END {  // i is a variable
 	    // fmt.eprintln("\ni =", i)  // for testing
-      x[i] = ((a * x[i-1]) + c) % m;
+      x[i] = ((a * x[i-1]) + c) % m
       // fmt.eprintln("x[i] =", x[i])  // for testing
 
       bits_x_str = fmt.tprintf("%016b", x[i])   // t for temporary
@@ -166,7 +166,7 @@ main :: proc() {
           strings.write_string(&char_set_sb, s)  // finally, append this string to a string builder
       }
   } else {
-      strings.write_string(&char_set_sb, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+      strings.write_string(&char_set_sb, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
   }
   char_set := strings.to_string(char_set_sb)  // convert string builder into a string
   // fmt.eprintln("\nchar_set =", char_set)  // for testing
@@ -217,3 +217,4 @@ main :: proc() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.odin
+
