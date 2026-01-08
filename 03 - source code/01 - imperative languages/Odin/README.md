@@ -15,7 +15,7 @@ import "core:fmt"  // println, eprintln, printf
 import "core:math/rand"
 ...
 main :: proc() {
-	END : int : 62500  // 62500 for exactly 1M binary digits: constant
+  END : int : 62500  // 62500 for exactly 1M binary digits: constant
   M1  : int : END * 16
   ...
   m : int : 65521  // = 2^16 - 15
