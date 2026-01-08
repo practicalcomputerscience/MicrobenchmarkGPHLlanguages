@@ -66,7 +66,7 @@ main :: proc() {
   fmt.println("\ngenerating a random bit stream...")
   for i in 1..<END {  // i is a variable
 	    // fmt.eprintln("\ni =", i)  // for testing
-      x[i] = ((a * x[i-1]) + c) % m;
+      x[i] = ((a * x[i-1]) + c) % m
       // fmt.eprintln("x[i] =", x[i])  // for testing
 
       bits_x_str = fmt.tprintf("%016b", x[i])   // t for temporary
@@ -106,3 +106,4 @@ main :: proc() {
 }
 
 // end of random_streams_for_perf_stats.odin
+
