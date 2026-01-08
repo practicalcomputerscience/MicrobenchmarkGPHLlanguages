@@ -57,7 +57,7 @@ Above solution is not implemented, but this [Odin program](https://github.com/pr
 
 So, using a string builder for bigger string concatenation jobs is apparently the idiomatic way in Odin.
 
-One way or the other, Odin has a place in the Top 10 of languages in terms of execution speed: [Master diagram with most program environments](github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+One way or the other, Odin has a place in the Top 10 of languages in terms of execution speed: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
 TBD
 
