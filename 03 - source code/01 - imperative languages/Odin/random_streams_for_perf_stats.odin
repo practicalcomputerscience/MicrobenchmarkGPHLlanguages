@@ -52,11 +52,11 @@ main :: proc() {
   x[0] = int(rand.int_max(m - 1))  // range is: [1...max]
   // fmt.eprintln("x[0] =", x[0])  // for testing
 
-  bits_x   := strings.builder_make()  // OK; strings.builder_make(0, M1) is not faster
+  bits_x   := strings.builder_make()  // strings.builder_make(0, M1) is not faster
   defer strings.builder_destroy(&bits_x)
   // see: https://github.com/odin-lang/Odin/blob/f9d9166ff11f3b6eeedb4355dfa930d69c40be8a/core/flags/usage.odin#L91
 
-  bits_hex := strings.builder_make()  // OK
+  bits_hex := strings.builder_make()
   defer strings.builder_destroy(&bits_hex)
 
   bits_x_str   := "0000000000000000"
@@ -79,7 +79,7 @@ main :: proc() {
   }
 
 
-  bits_x_str_total := strings.to_string(bits_x)
+  bits_x_str_total := strings.to_string(bits_x)  // convert string builder into a string
   // fmt.eprintln("bits_x_str_total =", bits_x_str_total)  // for testing
   bits_hex_str_total := strings.to_string(bits_hex)
   // fmt.eprintln("bits_hex_str_total =", bits_hex_str_total)  // for testing
