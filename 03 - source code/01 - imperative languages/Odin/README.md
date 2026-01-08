@@ -53,7 +53,7 @@ main :: proc() {
 }
 ```
 
-Above solution is not implemented, but this [Odin program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_streams_for_perf_stats.odin) with a **string builder**, a concept which is also used numerous times in [Odin's GitHub repository](https://github.com/odin-lang); look there for (_strings.builder_make()_).
+Above solution is not implemented, but this [Odin program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_streams_for_perf_stats.odin) with a **string builder**, a concept which is also used numerous times in [Odin's GitHub repository](https://github.com/odin-lang); look there for _strings.builder_make()_.
 
 So, using a string builder for bigger string concatenation jobs is apparently the idiomatic way in Odin.
 
