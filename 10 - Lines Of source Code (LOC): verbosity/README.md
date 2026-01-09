@@ -34,6 +34,7 @@ OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
 Zig               | 129 | compiled, young language still going through major changes
+Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 Go                | 127 | compiled, mature language
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
@@ -81,6 +82,7 @@ Lua                | 2
 Mercury            | 9
 Mojo               | 0
 OCaml              | 5
+Odin               | 0
 Perl 5             | 0
 Picat (old B-Prolog) | 8
 Prolog, SWI        | 11
