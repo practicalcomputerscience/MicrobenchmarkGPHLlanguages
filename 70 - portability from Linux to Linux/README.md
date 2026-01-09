@@ -15,6 +15,7 @@ Here's a list of programming languages where standalone executables can be compi
 - Go
 - Inko
 - OCaml
+- Odin
 - Roc
 - Rust
 - SML MLton
