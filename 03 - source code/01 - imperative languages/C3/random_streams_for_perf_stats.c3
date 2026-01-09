@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.c3
 
-2025-05-31; 2025-12-17: see below
+2025-05-31; 2025-12-17: see below; 2026-01-09: deleted one outdated definition
 
 build on Ubuntu 24 LTS: $ c3c compile -O3 random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144
 
@@ -26,8 +26,6 @@ const int C = 0;
 
 const FILE_BITS_X   = "random_bitstring.bin";
 const FILE_BITS_HEX = "random_bitstring.byte";
-
-const NANOSEC_TO_MILLISEC = 1_000_000;
 
 
 fn int main()
