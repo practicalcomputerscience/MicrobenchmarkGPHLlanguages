@@ -49,7 +49,7 @@ C#                | 109 | interpreted, mature language (together with .NET ecosy
 Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
-Mojo              |  91 | compiled, very young language
+Mojo              |  91 | compiled, very young language (2026-01-10)
 PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
 
@@ -97,76 +97,6 @@ Standard ML (MLton) | 8
 Swift              | 1
 V                  | 3
 Zig                | 0
-
----
-
-#### Re-testing script lines_of_source_code_count.pl
-
-version of 2026-01-03a, LOC:
-
-.adb: 231 -- OK
-
-.bas: 122 -- OK
-
-.c: 148 -- OK
-
-.c3: 163 -- OK
-
-.chpl: 121 -- OK
-
-.clj: 102 -- OK
-
-.cr: 111 -- OK (Crystal, fixed on 2025-01-03)
-
-.cs: 109 -- OK (C#, fixed on 2025-01-03)
-
-.gleam: 162 -- OK
-
-.go: 127 -- OK
-
-.inko: 224 -- OK
-
-.jl: 106 -- OK
-
-.kt: 109 -- OK
-
-.lisp: 114 -- OK
-
-.lua: 130 -- OK
-
-.m: 194 -- OK
-
-.ml: 131 -- OK (OCaml)
-
-.mojo: 93 -- OK
-
-.P: 133 -- OK (SWI Prolog)
-
-.pi: 142 -- OK
-
-.pl: 130 -- OK
-
-.ps: 90 -- OK
-
-.py: 87 -- OK
-
-.rkt: 110 -- OK
-
-.roc: 191 -- OK
-
-.rs: 126 -- OK
-
-.scala: 98 -- OK
-
-.scm: 124  -- OK (Bigloo Scheme)
-
-.sml: 216 -- OK
-
-.swift: 114 -- OK
-
-.v: 179 -- OK
-
-.zig: 129 -- OK
 
 <br/>
 
