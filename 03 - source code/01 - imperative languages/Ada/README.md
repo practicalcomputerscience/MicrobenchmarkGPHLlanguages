@@ -2,7 +2,7 @@
 
 https://learn.adacore.com/index.html
 
-https://alire.ada.dev/
+https://alire.ada.dev/: ALIRE = Ada LIbrary REpository, plus command-line tool _alr_
 
 https://www.adaic.org/
 
