@@ -16,7 +16,7 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 
 The results of this list are [script-based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity/lines_of_source_code_count.pl): _$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.< ... >_
 
-programming language | LOC | comments
+programming language | LOC | comments | date
 --- | --- | ---
 Ada               | 231 | compiled, very mature language: lots of declarations and type definitions
 Inko              | 224 | compiled, very young language: lots of user-defined functions
@@ -49,7 +49,7 @@ C#                | 109 | interpreted, mature language (together with .NET ecosy
 Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
-Mojo              |  91 | compiled, very young language (2026-01-10)
+Mojo              |  91 | compiled, very young language | 2026-01-10
 PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
 
