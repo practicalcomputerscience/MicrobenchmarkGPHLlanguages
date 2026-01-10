@@ -2,6 +2,8 @@
 
 https://chapel-lang.org/
 
+https://chapel-lang.org/download/
+
 ---
 
 Table of contents:
