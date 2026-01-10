@@ -88,16 +88,16 @@ programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reacha
 --- | --- | --- | --- | ---
 Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
 C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2025-12-18
-C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD 
+C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Chapel | program doesn't finish | -- | no | 2025-12-18
-Common Lisp | 1,538,080 bytes in 17 blocks | 1,275,640 bytes in 15 blocks | no | TBD
+Common Lisp | 554,806 bytes in 12 blocks | 292,358 bytes in 10 blocks | no | 2026-01-10
 Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
 Fortran | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-01-06
-FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | TBD
-Go | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD
+FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-01-10
+Go | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
 Koka | program doesn't finish | -- | no | 2025-12-18
-Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | TBD
+Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
 Mojo | 5,702 bytes in 7 blocks | 5,702 bytes in 7 blocks | no | TBD
 OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no | TBD
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
@@ -244,23 +244,9 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 
 ### Changing source code to get the executable through Valgrind
 
-At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the executable through Valgrind without crashing it:
+At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the executable through Valgrind without crashing it. It worked.
 
-```
-...
-    # this makes problems with valgrind --> Illegal instruction (core dumped)
-    # when creating the password below
-    # var char_set: String = ""
-    # if WITH_SPECIAL_CHARS == True:
-    #     # add chars dec 33 .. dec 126:
-    #     for i in range(33,127):
-    #       char_set += chr(i)
-    # else:
-    #     char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-...
-```
-
-So, variable _char_set_ is not in use in the Mojo program anymore.
+But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_, like in other languages for a better initial random seed, and it crashed again. So, I re-implemented the original version of program _random_bitstring_and_flexible_password_generator.mojo_, knowing that it will crash when running it with Valgrind, which is indeed the case.
 
 <br/>
 
