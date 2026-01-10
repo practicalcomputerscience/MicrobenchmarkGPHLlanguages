@@ -99,16 +99,16 @@ Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
 Koka | program doesn't finish | -- | no | 2025-12-18
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
 Mojo | SIGILL signal raised which killed the program | -- | no | 2026-01-10
-OCaml | 6,591,286 bytes in 66 blocks | 3,355,334 bytes in 63 blocks | no | TBD
+OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
-Prolog, SWI | 14,030,993 bytes in 169,009 blocks | 4,933,940 bytes in 39,260 blocks | no | TBD
-Scheme, Racket | Valgrind is doing nothing | -- | no | TBD 
-Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD 
+Prolog, SWI | 20,529,534 bytes in 178,711 blocks | 19,486,208 bytes in 162,301 blocks | no | 2026-01-10
+Scheme, Racket | Valgrind is doing nothing | -- | no | 2026-01-10
+Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2025-12-18
-Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD
-Swift | 2,001,798 bytes in 38 blocks | 2,001,670 bytes in 35 blocks | no | TBD 
-V | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD 
-Zig | 0 bytes in 0 blocks | -- | yes <<<<<< | TBD 
+Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
+Swift | 2,001,942 bytes in 40 blocks | 2,001,814 bytes in 37 blocks | no | 2026-01-10
+V | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
+Zig | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 
 <br/>
 
@@ -246,7 +246,7 @@ With the other tested Scheme dialects, I only implemented the "random_streams_fo
 
 At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the executable through Valgrind without crashing it. It worked.
 
-But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_, like in other languages for a better initial random seed, and Valgrind killed the executable. So, I re-implemented the original version of program [random_bitstring_and_flexible_password_generator.mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), knowing that it will be killed when running it with Valgrind, which is indeed the case.
+But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_, like in other languages for a better initial random seed, and Valgrind killed the new executable. So, I re-implemented the original version of this program, knowing that it will be killed when running it with Valgrind, which is indeed the case.
 
 <br/>
 
