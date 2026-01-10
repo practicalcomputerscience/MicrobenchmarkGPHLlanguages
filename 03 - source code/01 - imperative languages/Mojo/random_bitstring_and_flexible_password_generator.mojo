@@ -1,9 +1,11 @@
 # random_bitstring_and_flexible_password_generator.mojo
 #
 # 2025-05-05/06/07/21/22, 2025-06-18, 2025-12-13, 2025-12-18: see below
+# 2026-01-10: Valgrind is also raising now a SIGILL signal even with prior program modifications at var char_set
+#             => so, I will re-implement the old version, even though Valgrind will kill this program
 #
 # build on Ubuntu 24 LTS: $ mkdir password_encryption  # this is just a project directory
-#                         $ cd password_encryption  
+#                         $ cd password_encryption
 #                         $ pixi shell  # <<<<<<<<<<<<<<<<<<<<<<<<
 #                         $ mojo build random_bitstring_and_flexible_password_generator.mojo
 #                         $ exit
@@ -18,7 +20,7 @@
 #                         https://docs.modular.com/mojo/cli/build/
 #
 #
-# valgrind, 2025-05-22 --> Illegal instruction (core dumped): how to fix??
+# Valgrind, 2025-05-22 --> Illegal instruction (core dumped): how to fix??
 #                      --> solution: not using ***char_set*** in this program,
 #                                    but there are still bytes left on the heap at exit
 #
@@ -128,15 +130,20 @@ def main():  # def for error handling below at user inputs: https://docs.modular
         answer = True
 
 
-    # this makes problems with valgrind --> Illegal instruction (core dumped)
-    # when creating the password below
-    # var char_set: String = ""
-    # if WITH_SPECIAL_CHARS == True:
-    #     # add chars dec 33 .. dec 126:
-    #     for i in range(33,127):
-    #       char_set += chr(i)
-    # else:
-    #     char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    # 2026-01-10:
+    # this is the original definition of char_set, which will make Valgrind kill this program.
+    # However, it's not only this definition which will make Valgrind kill this program.
+    # So, any changes to make this program 'Valgrind-proof' may be futile,
+    # while trying to keep it idiomatic and still compiling it with
+    # "$ mojo build random_bitstring_and_flexible_password_generator.mojo",
+    # with this fast evolving language.
+    var char_set: String = ""
+    if WITH_SPECIAL_CHARS == True:
+        # add chars dec 33 .. dec 126:
+        for i in range(33,127):
+          char_set += chr(i)
+    else:
+        char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 
     var i = 0  # char counter for the password
@@ -163,47 +170,24 @@ def main():  # def for error handling below at user inputs: https://docs.modular
       int0_0 = atol(bin0_0, 0)
       int0_1 = atol(bin0_1, 0)
 
-      # var char0: String = chr(int0_0)
-      # var char1: String = chr(int0_1)
-      #
-      # valgrind:
-      # ...
-      # vex amd64->IR: unhandled instruction bytes: 0x62 0xF2 0x7D 0x8 0x7C 0xC7 0x62 0xF3 0x7D 0x8
-      # vex amd64->IR: unhandled instruction bytes: 0x62 0xF2 0x7D 0x8 0x7C 0xC7 0x62 0xF3 0x7D 0x8 -- repeatable
-      # vex amd64->IR: unhandled instruction bytes: 0x62 0xF2 0x7D 0x48 0x7A 0xC0 0x48 0xB9 0xC0 0xFF
-      # ...
-      # Illegal instruction (core dumped)
+      var char0: String = chr(int0_0)
+      var char1: String = chr(int0_1)
 
-      # the following code is to avoid Illegal instruction (core dumped) when running this program with valgrind:
-      if WITH_SPECIAL_CHARS == True:
-          if int0_0 >= 33 and int0_0 <= 126:  # only a valid char?
-              pw_chars += chr(int0_0)  # this function (chr()) makes problems
-              i += 1
-          if int0_1 >= 33 and int0_1 <= 126 and i < N_CHAR:  # only a valid char?
-              pw_chars += chr(int0_1)  # this function (chr()) makes problems
-              i += 1
+      # https://docs.modular.com/mojo/std/collections/string/string/String/
+      if char_set.find(char0) != -1:
+          pw_chars += char0
+          i += 1
+          if i == N_CHAR:
+            break
 
-      # case: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-      #        [48..57]  [65..90]                  [97..122]
-      else:
-          if int0_0 >= 48 and int0_0 <= 57 or
-             int0_0 >= 65 and int0_0 <= 90 or
-             int0_0 >= 97 and int0_0 <= 122:
-              pw_chars += chr(int0_0)
-              i += 1
-
-          if int0_1 >= 48 and int0_1 <= 57 or
-             int0_1 >= 65 and int0_1 <= 90 or
-             int0_1 >= 97 and int0_1 <= 122 and i < N_CHAR:
-              pw_chars += chr(int0_1)
-              i += 1
+      if char_set.find(char1) != -1 :
+          pw_chars += char1
+          i += 1
 
       j += 1
 
     print("\nYour password of", N_CHAR, "characters is:", pw_chars, "\n")
 
-
     # x.free()
-
 
 # end of random_bitstring_and_flexible_password_generator.mojo
