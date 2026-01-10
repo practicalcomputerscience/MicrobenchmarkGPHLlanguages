@@ -17,7 +17,7 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 The results of this list are [script-based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity/lines_of_source_code_count.pl): _$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.< ... >_
 
 programming language | LOC | comments | date
---- | --- | ---
+--- | --- | --- | ---
 Ada               | 231 | compiled, very mature language: lots of declarations and type definitions
 Inko              | 224 | compiled, very young language: lots of user-defined functions
 Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
