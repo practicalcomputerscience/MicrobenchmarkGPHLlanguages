@@ -7,6 +7,8 @@ A compiler named _Rakudo_ implements the Raku programming language (https://raku
 
 .., here on the Moar ("Metamodel On A Runtime") Virtual Machine (**MoarVM**): https://www.moarvm.org/
 
+NQP = [Not Quite Perl](https://github.com/Raku/nqp): "a lightweight Raku-like environment for virtual machines" and "is focused on being a high-level way to create compilers and libraries for virtual machines like MoarVM, the JVM, and others."
+
 <br/>
 
 Although Raku is (still) a very slow programming language ([Languages that were too slow](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#languages-that-were-too-slow)), its modern and more "computer science oriented" syntax is definitely an improvement over the syntax of Perl 5 from my point of view.
