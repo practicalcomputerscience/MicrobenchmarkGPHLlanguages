@@ -2,6 +2,8 @@
 
 https://www.picat-lang.org/bprolog/
 
+https://picat-lang.org/download.html
+
 https://picat-lang.org/
 
 > Picat is a .. logic-based multi-paradigm programming language aimed for general-purpose applications.
