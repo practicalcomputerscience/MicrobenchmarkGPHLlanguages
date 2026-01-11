@@ -4,6 +4,8 @@ https://www.scala-lang.org/
 
 https://www.scala-sbt.org/
 
+Dotty, the Scala 3 compiler (_dotc_): https://github.com/scala/scala3/tree/main
+
 ---
 
 Table of contents:
