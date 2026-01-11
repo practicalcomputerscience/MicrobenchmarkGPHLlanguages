@@ -62,7 +62,7 @@ Scheme, CHICKEN | -- |
 Scheme, Gambit | -- | 
 Scheme, Racket | runs on Chez Scheme runtime system |
 Standard ML (MLton) | C for GCC or clang | 
-Swift | initially, C++ for LLVM and clang; otherwise self-hosting | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); sIL = Swift Intermediate Language
+Swift | initially, C++ for LLVM and clang; otherwise self-hosting | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
 V | C for GCC or clang or Tiny C Compiler (TCC) | [TCC](https://repo.or.cz/w/tinycc.git)
 wren | C for GCC (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others, for asynchronous i⁠/o | GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
 Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction; the Zig compiler was originally written in C++ | see (*) from above
