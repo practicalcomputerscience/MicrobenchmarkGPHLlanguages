@@ -27,4 +27,12 @@ For installation in Ubuntu, I followed this procedure: https://learn.microsoft.c
 
 <br/>
 
+### Performance tips
+
+See from [PowerShell scripting performance considerations](https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.5):
+
+> Many of the techniques described here aren't idiomatic PowerShell and may reduce the readability of a PowerShell script. Script authors are advised to use idiomatic PowerShell unless performance dictates otherwise.
+
+<br/>
+
 ##_end
