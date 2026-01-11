@@ -22,48 +22,48 @@ So, I started to compile another table, where I try to list more or less close d
 
 dependent programming language | underlying programming language or environment | comment
 --- | --- | ---
-Ada | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC: https://ftp.gnu.org/gnu/gcc/
+Ada | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC see: https://ftp.gnu.org/gnu/gcc/
 C | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosting nowadays, not even C anymore with GCC and LLVM (**)
-C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosting nowadays; Microsoft's .NET Framework (CLR = Common Language Runtime) is then used to run the compiled Common Intermediate Language (CIL) code by Just-In-Time (JIT) compilation into native machine code | 
-C3 | C for LLVM | 
-Chapel | C++ for LLVM and clang | 
+C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosting nowadays; Microsoft's .NET Framework (CLR = Common Language Runtime) is then used to run the compiled Common Intermediate Language (CIL) code by Just-In-Time (JIT) compilation into native machine code | see at [Roslyn Compiler](https://github.com/dotnet/roslyn/tree/main/docs/compilers#roslyn-compiler)
+C3 | C for LLVM | see at [Compiling on Ubuntu 24.04 LTS](https://github.com/c3lang/c3c#compiling-on-ubuntu-2404-lts)
+Chapel | C++ for LLVM and clang | see at [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
 Clojure | the Clojure compiler (_compile-clj_) is written in Java; JVM (Java Virtual Machine) to run generated JVM bytecode | the Java compiler _javac_ is nowadays self-hosting, while the first Java compilers have been written in C
-Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
-Crystal | bootstrapping by using an older version of the Crystal compiler; otherwise self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
-Fortran (GNU) | C for gcc | GCC: https://ftp.gnu.org/gnu/gcc/
-FreeBASIC | C for gcc | 
-Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam
-Go | self-hosting since 2015; the Rust compiler was originally written in C |
-Inko | Rust for LLVM | 
-Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries), [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
-Koka | Haskell and Stack for developing Haskell projects | [Build from Source](https://github.com/koka-lang/koka?tab=readme-ov-file#build-from-source); the Glasgow Haskell Compiler (GHC) is nowadays self-hosting, where a new version is compiled using a previous version
+Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation is needed for compilation | see at https://www.sbcl.org/getting.html
+Crystal | bootstrapping by using an older version of the Crystal compiler; otherwise self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | see at https://crystal-lang.org/install/from_sources/
+Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
+FreeBASIC | self-hosting with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | see at https://www.freebasic.net/
+Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/installing/#installing-gleam
+Go | self-hosting since 2015; the Rust compiler was originally written in C | see at [Installing Go from source](https://go.dev/doc/install/source)
+Inko | Rust for LLVM | see at Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
+Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | see at [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries) and [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
+Koka | Haskell and Stack for developing Haskell projects | see at [Build from Source](https://github.com/koka-lang/koka?tab=readme-ov-file#build-from-source); the Glasgow Haskell Compiler (GHC) is nowadays self-hosting, where a new version is compiled using a previous version
 Kotlin | TBD; JVM (Java Virtual Machine); LLVM multiplatform | Android: source code compiles to JVM bytecode, iOS: source code compiles to ARM64 machine code via LLVM for example
-Lua | implemented in pure ISO C; Lua also compiles as C++ | 
-LuaJIT | C for gcc or LLVM | https://github.com/LuaJIT/LuaJIT/tree/v2.1
-LunarML | Standard ML (MLton) | 
-Mercury | bootstrapping with C for gcc for an initial installation; Mercury is then self-hosting for more advanced library grades | 
-Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | https://mlir.llvm.org/
-OCaml | bootstrapping in a staged approach, where C has been compiled to bytecode for booting; then gradually self-hosting | https://github.com/ocaml/ocaml/tree/trunk/boot
-Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosting | [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
-Perl 5 | C for gcc or clang |
-Picat | C and C++ for gcc and g++, respectively |
+Lua | implemented in pure ISO C; Lua also compiles as C++ | see at https://www.lua.org/download.html
+LuaJIT | C for gcc or LLVM | see at https://github.com/LuaJIT/LuaJIT/tree/v2.1
+LunarML | Standard ML (MLton) | see at [Building and Installing](https://github.com/minoki/LunarML#building-and-installing)
+Mercury | bootstrapping with C for gcc for an initial installation; Mercury is then self-hosting for more advanced library grades | see at [Bootstrapping a Mercury environment](https://github.com/Mercury-Language/mercury/blob/master/Documentation/README.bootstrap)
+Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | see at https://mlir.llvm.org/
+OCaml | bootstrapping in a staged approach, where C has been compiled to bytecode for booting; then gradually self-hosting | see at https://github.com/ocaml/ocaml/tree/trunk/boot
+Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosting | see at [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
+Perl 5 | C for gcc or clang | see at _README.linux_ in [Perl Source](https://www.cpan.org/src/README.html)
+Picat | C and C++ for gcc and g++, respectively | see _README_ from sources at page [Download](https://picat-lang.org/download.html)
 PowerShell | script is compiled into PowerShell bytecode, which is then interpreted by the Common Language Runtime, often involving lots of overhead with PowerShell's object-heavy architecture | this doesn't explain the language: TBD C#? <<<<<<<<<<<<<<<<<
-Prolog, SWI | C for gcc or clang | https://github.com/SWI-Prolog/swipl-devel
-Python | TBD |
-Raku | Rakudo compiler: C for a C compiler, and a Perl 5 installation; bootstrapping also includes the help of NQP ("Not Quite Perl") files; multiplatform | [Build requirements (Installing from source)](https://github.com/rakudo/rakudo/blob/main/INSTALL.md#build-requirements-installing-from-source)
-Roc | Rust and later additionally Zig |
-Rust | bootstrapping with a current beta release of the _rustc_ compiler; otherwise self-hosting since 2011; the Rust compiler was originally written in OCaml | [Bootstrapping the compiler](https://rustc-dev-guide.rust-lang.org/building/bootstrapping/intro.html)
-Scala | bootstrapping by using an older version of a Scala compiler; otherwise self-hosting (that is using Scala 3 resources); JVM (Java Virtual Machine) to run generated JVM bytecode, multiplatform | SJSIR = Scala JavaScript Intermediate Representation
-Scheme, Bigloo | TBD | 
-Scheme, Chez | bootstrapping with C for gcc or clang; otherwise self-hosting |
-Scheme, CHICKEN | TBD | 
-Scheme, Gambit | TBD | 
-Scheme, Racket | runs on the Chez Scheme runtime system; Chez Scheme: TBD |
-Standard ML (MLton) | C for gcc or clang | 
-Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosting | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
-V | C for gcc or clang or Tiny C Compiler (TCC) | [TCC](https://repo.or.cz/w/tinycc.git); https://download.savannah.gnu.org/releases/tinycc/
-Wolfram Language | TBD | 
-wren | C for gcc (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others, for asynchronous i⁠/o | GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
+Prolog, SWI | C for gcc or clang | see at https://github.com/SWI-Prolog/swipl-devel
+Python | CPython is the reference implementation for Python,  | see for example from the CPython git (_$ git clone https://github.com/python/cpython.git_)
+Raku | Rakudo compiler: C for a C compiler, and a Perl 5 installation; bootstrapping also includes the help of NQP ("Not Quite Perl") files; multiplatform | see at [Build requirements (Installing from source)](https://github.com/rakudo/rakudo/blob/main/INSTALL.md#build-requirements-installing-from-source)
+Roc | Rust and later additionally Zig | see at [Building the new Roc compiler from source](https://github.com/roc-lang/roc/blob/main/BUILDING_FROM_SOURCE.md#building-the-new-roc-compiler-from-source)
+Rust | bootstrapping with a current beta release of the _rustc_ compiler; otherwise self-hosting since 2011; the Rust compiler was originally written in OCaml | see at [Bootstrapping the compiler](https://rustc-dev-guide.rust-lang.org/building/bootstrapping/intro.html)
+Scala | bootstrapping by using an older version of a Scala compiler; otherwise self-hosting (that is using Scala 3 resources); JVM (Java Virtual Machine) to run generated JVM bytecode; multiplatform | SJSIR = Scala JavaScript Intermediate Representation
+Scheme, Bigloo | Bigloo Scheme initially starts from a bootstrap version of it; then gradually self-hosting also with C code for gcc | see at [Bigloo Installation Notice](https://github.com/manuel-serrano/bigloo/blob/master/INSTALL.md#bigloo-installation-notice) and [configure](https://github.com/manuel-serrano/bigloo/blob/master/configure)
+Scheme, Chez | bootstrapping with C for gcc or clang; otherwise self-hosting | see at [BUILDING](https://github.com/cisco/ChezScheme/blob/main/BUILDING)
+Scheme, CHICKEN | C for gcc or clang | see at [Installing CHICKEN](https://wiki.call-cc.org/man/5/Getting%20started#installing-chicken)
+Scheme, Gambit | C for gcc | see at [INSTALL](https://github.com/gambit/gambit/blob/master/INSTALL.txt)
+Scheme, Racket | using Chez Scheme as its core compiler and runtime system | see at [1.5 Implementations](https://docs.racket-lang.org/reference/implementations.html#(part._implementations))
+Standard ML (MLton) | C for gcc or clang | see at [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
+Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosting | see at [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
+V | C for gcc or clang or Tiny C Compiler (TCC) | see at [TCC](https://repo.or.cz/w/tinycc.git) and https://download.savannah.gnu.org/releases/tinycc/
+Wolfram Language | Wolfram System: "..written in C/C++, Java, and the Wolfram Language.." | see at [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
+wren | C for gcc (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others (like Bigloo Scheme), for asynchronous i⁠/o | see at GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
 Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction (while Wasm typically depends on C, C++, Rust or Go); the Zig compiler was originally written in C++ | see (*) from above
 
 <br/>
