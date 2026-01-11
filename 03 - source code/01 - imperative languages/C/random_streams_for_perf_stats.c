@@ -5,6 +5,7 @@ random_streams_for_perf_stats.c
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
 2025-12-01: leaving the slow sprintf() functions, but now compiling with a more modern version of the clang compiler
 2025-12-17: see below
+2026-01-11: deleted one outdated definition for nanosec_to_millisec
 
 build on Ubuntu 24 LTS: $ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
                         # -ffast-math is not improving exe speed here
@@ -37,8 +38,6 @@ $
 
 #define file_bits_x   "random_bitstring.bin"
 #define file_bits_hex "random_bitstring.byte"
-
-#define nanosec_to_millisec 1000000
 
 
 int main()

@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.c
 2025-05-29
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
 2025-12-17: see below
+2026-01-11: deleted one outdated definition for nanosec_to_millisec
 
 build on Ubuntu 24 LTS: $ make  # see make file below
 
@@ -49,8 +50,6 @@ $
 
 #define file_bits_x   "random_bitstring.bin"
 #define file_bits_hex "random_bitstring.byte"
-
-#define nanosec_to_millisec 1000000
 
 
 int main()
