@@ -32,7 +32,7 @@ Chapel | C++ for LLVM and clang |
 Clojure | the Clojure compiler (_compile-clj_) is written in Java; JVM (Java Virtual Machine) to run JVM bytecode | 
 Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
 Crystal | self-hosting since 2013; LLVM still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
-Fortran (GNU) | C for GCC | for GCC: https://ftp.gnu.org/gnu/gcc/
+Fortran (GNU) | C for GCC | GCC: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | C for GCC | 
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam
 Go | self-hosting since 2015; the Rust compiler was originally written in C |
@@ -62,8 +62,8 @@ Scheme, CHICKEN | -- |
 Scheme, Gambit | -- | 
 Scheme, Racket | runs on Chez Scheme runtime system |
 Standard ML (MLton) | C for GCC or clang | 
-Swift | -- | 
-V | -- | 
+Swift | initially, C++ for LLVM and clang; otherwise self-hosting | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); sIL = Swift Intermediate Language
+V | C for GCC or clang or Tiny C Compiler (TCC) | [TCC](https://repo.or.cz/w/tinycc.git)
 wren | C for GCC (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others, for asynchronous i⁠/o | GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
 Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction; the Zig compiler was originally written in C++ | see (*) from above
 
