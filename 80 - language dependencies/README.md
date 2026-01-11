@@ -27,7 +27,7 @@ C | C for GCC or LLVM, with both requiring a working C++ compiler version and ha
 C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosting nowadays; Microsoft's .NET Framework (CLR = Common Language Runtime) is then used to run the compiled Common Intermediate Language (CIL) code by Just-In-Time (JIT) compilation into native machine code | see at [Roslyn Compiler](https://github.com/dotnet/roslyn/tree/main/docs/compilers#roslyn-compiler)
 C3 | C for LLVM | see at [Compiling on Ubuntu 24.04 LTS](https://github.com/c3lang/c3c#compiling-on-ubuntu-2404-lts)
 Chapel | C++ for LLVM and clang | see at [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
-Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's self-hosting | the Java compiler itself is self-hosting since the late 90ies at least (***)
+Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's partly self-hosting | the Java compiler itself is completely self-hosting since the late 90ies at least, see below at [Java](#java)
 Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation is needed for compilation | see at https://www.sbcl.org/getting.html
 Crystal | bootstrapping by using an older version of the Crystal compiler; otherwise self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | see at https://crystal-lang.org/install/from_sources/
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
@@ -36,7 +36,7 @@ Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/instal
 Go | self-hosting since 2015; the Rust compiler was originally written in C | see at [Installing Go from source](https://go.dev/doc/install/source)
 Inko | Rust for LLVM | see at Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
 Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | see at [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries) and [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
-Koka | Haskell and Stack for developing Haskell projects | see at [Build from Source](https://github.com/koka-lang/koka?tab=readme-ov-file#build-from-source); the Glasgow Haskell Compiler (GHC) is nowadays self-hosting, where a new version is compiled using a previous version
+Koka | Haskell and Stack for developing Haskell projects | see at [Build from Source](https://github.com/koka-lang/koka?tab=readme-ov-file#build-from-source); the Glasgow Haskell Compiler (GHC) is nowadays self-hosting; see below at [Haskell](#haskell)
 Kotlin | compiler _kotlinc_ is written in a mixture of Java and Kotlin and uses a "staged, JVM‑based bootstrap pipeline: an older, trusted compiler builds the newer compiler" (MS Bing AI); LLVM multiplatform | see at [JetBrains/kotlin](https://github.com/JetBrains/kotlin/)
 Lua | implemented in pure ISO C; Lua also compiles as C++ | see at https://www.lua.org/download.html
 LuaJIT | C for gcc or LLVM | see at https://github.com/LuaJIT/LuaJIT/tree/v2.1
@@ -45,7 +45,7 @@ Mercury | bootstrapping with C for gcc for an initial installation; Mercury is t
 Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | see at https://mlir.llvm.org/
 OCaml | bootstrapping in a staged approach, where C has been compiled to bytecode for booting; then gradually self-hosting | see at https://github.com/ocaml/ocaml/tree/trunk/boot
 Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosting | see at [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
-Perl 5 | C for gcc or clang | see at _README.linux_ in [Perl Source](https://www.cpan.org/src/README.html)
+Perl 5 | C for gcc or clang | see _README.linux_ in [Perl Source](https://www.cpan.org/src/README.html)
 Picat | C and C++ for gcc and g++, respectively | see _README_ from sources at page [Download](https://picat-lang.org/download.html)
 PowerShell | C# is mainly used for the command-line interface _pwsh_ ("PowerShell Core" to run PowerShell scripts in Linux); see from here: https://openhub.net/p/powershell/analyses/latest/languages_summary | see also for example [Program.cs](https://github.com/PowerShell/PowerShell/blob/master/src/powershell/Program.cs)
 Prolog, SWI | C for gcc or clang | see at https://github.com/SWI-Prolog/swipl-devel
@@ -85,13 +85,25 @@ So, by looking at above list, only these languages are "very original" ecosystem
 
 <br/>
 
-The **Black Duck Open Hub** website may provide some high-level insights into the usage of programming languages of open-source software project, here for Perl for example: https://openhub.net/p/perl/analyses/latest/languages_summary
+#### Black Duck Open Hub
+
+The Black Duck Open Hub website may provide some high-level insights into the usage of programming languages of open-source software projects, here for Perl for example: https://openhub.net/p/perl/analyses/latest/languages_summary
 
 <br/>
 
-(***) one of the earlier **Java** compilers and started in 1998, and which later became mainstream, has already been written exclusively in Java. That was the **GJ (Generic Java) compiler** (https://homepages.inf.ed.ac.uk/wadler/gj/Distribution/#gjc), also developed by Martin Odersky among others, the main inventor of Scala: https://lampwww.epfl.ch/gj/
+#### Java
 
-_**javac**_: 
+One of the earlier **Java** compilers and started in 1998, and which later became mainstream, has already been written exclusively in Java. That was the **GJ (Generic Java) compiler** (https://homepages.inf.ed.ac.uk/wadler/gj/Distribution/#gjc), also developed by Martin Odersky among others, the main inventor of Scala: https://lampwww.epfl.ch/gj/
+
+_**javac**_: TBD
+
+<br/>
+
+#### Haskell
+
+While the Glasgow Haskell Compiler ([GHC](https://www.haskell.org/ghc/)) is self-hosting since many years ([1.1. Obtaining GHC](https://downloads.haskell.org/ghc/latest/docs/users_guide/intro.html#obtaining-ghc)), Haskell's runtime system ([RTS](https://gitlab.haskell.org/ghc/ghc/-/tree/master/rts)) is not. That is written in a mixture of mostly C and a derivative of [C--](https://www.cs.tufts.edu/~nr/c--/), which is **Cmm**: [GHC Commentary: What the hell is a .cmm file?](https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/rts/cmm):
+
+<br/>
 
 ##_end
 
