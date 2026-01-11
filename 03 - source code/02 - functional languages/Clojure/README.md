@@ -2,7 +2,7 @@
 
 https://clojure.org/
 
-https://leiningen.org/
+The Clojure project build tool: https://leiningen.org/
 
 The official **Clojure Cheat Sheet**, which is practical for orientation in this feature rich language: https://clojure.org/api/cheatsheet
 
