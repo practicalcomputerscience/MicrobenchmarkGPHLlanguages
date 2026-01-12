@@ -35,14 +35,13 @@
 
 ---
 
-2026-01-09: so far, I haven't touched yet these corners of programming languages:
+2026-01-12: so far, I haven't touched yet these corners of programming languages:
 
+- change of working order: next is Nim (https://github.com/phillvancejr/Cpp-Go-Zig-Odin), then C++, because of the ideas of this new page and the obvious fundamental role of C++ in the landscape of programming languages: [Language dependencies](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/80%20-%20language%20dependencies#language-dependencies) and the potential implementation in D (with GCC?): https://github.com/jinyus/related_post_gen; even though a specific "object-orientation" isn't really needed for this microbenchmark program
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Pure Programming Language is a functional programming language:
 - &nbsp;&nbsp;https://github.com/agraef/pure-lang/wiki
 - &nbsp;&nbsp;https://agraef.github.io/pure-lang/
-- D?? --> https://github.com/jinyus/related_post_gen => D faster than Mojo?
-- Nim?? --> https://github.com/phillvancejr/Cpp-Go-Zig-Odin
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
 - &nbsp;&nbsp;2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
