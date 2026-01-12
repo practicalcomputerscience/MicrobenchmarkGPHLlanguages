@@ -2,15 +2,20 @@
 #
 # 2025-06-01/18
 # 2025-12-19: see below
+# 2026-01-12: use $i more efficiently in the "masterloop"
 #
 # run on Ubuntu 24 LTS: $ chmod 755 random_streams_for_perf_stats.ps
 #                       $ pwsh ./random_streams_for_perf_stats.ps
 #                       $ multitime -n 20 pwsh random_streams_for_perf_stats.ps
 #
+# $ pwsh --version
+# PowerShell 7.5.4
+# $
+#
 
 
-$END = 62501  # 62501 for exactly 1M binary digits
-# $END  = 50  # for testing
+$END = 62500  # 62500 for exactly 1M binary digits; 2026-01-12
+# $END  = 10  # for testing
 # $M1   = $END * 16
 # $K250 = $END * 4
 
@@ -24,8 +29,8 @@ $file_bits_hex = "random_bitstring.byte"
 
 $x = [int]0..($END - 1)  # define an empty array
 
-$x[0] = (Get-Random -Maximum ($m - 1)) + 1  # Maximum is exclusive; 2025-12-19
-# Write-Output "x[0] = $($x[0])"  # for testing; a formatted string
+$x_0 = (Get-Random -Maximum ($m - 1)) + 1  # Maximum is exclusive; 2025-12-19, 2026-01-12
+# Write-Output "x_0 = $($x_0)"  # for testing; a formatted string, 2026-01-12
 
 # needed for bit stream:
 # $bits_x = [byte]0..($M1 - 1)
@@ -40,23 +45,25 @@ $bits_hex = [System.Text.StringBuilder]::new()
 
 Write-Output "`ngenerating a random bit stream..."
 
-$x_old = $x[0]
-for ($i = 1; $i -lt $x.Count; $i++) {
+$x_old = $x_0  # 2026-01-12
+for ($i = 0; $i -lt $END; $i++) {  # 2026-01-12
   $x_new = ($a * $x_old + $c) % $m
   $x[$i] = $x_new
-  # Write-Output "i = ${i}: x[i] = $x_new"  # for testing
+  # Write-Output "`ni = ${i}: x[i] = $x_new"  # for testing; 2026-01-12
 
   $bits_x_str = [Convert]::ToString($x_new, 2).PadLeft(16, '0')
   # Write-Output "bits_x_str = ${bits_x_str}"  # for testing
   [void]$bits_x.append($bits_x_str)  # non verbose output
   # https://stackoverflow.com/questions/7801651/powershell-and-stringbuilder
 
-  $bits_hex_str = "{0:x4}" -f $($x[${i}])
+  # $bits_hex_str = "{0:x4}" -f $($x[${i}])
+  $bits_hex_str = "{0:x4}" -f $x_new  # 2026-01-12
   # Write-Output "bits_hex_str = ${bits_hex_str}"  # for testing
   [void]$bits_hex.append($bits_hex_str)
 
   $x_old = $x_new
 }
+
 # Write-Output "${bits_x}"    # for testing
 # Write-Output "${bits_hex}"  # for testing
 
