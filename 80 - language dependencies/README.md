@@ -35,7 +35,7 @@ Crystal | bootstrapping by using an older version of the Crystal compiler; other
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosting with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | see at https://www.freebasic.net/
 Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
-Go | self-hosting since 2015; the Rust compiler was originally written in C | see at [Installing Go from source](https://go.dev/doc/install/source)
+Go | self-hosting since 2015; the Go compiler was originally written in C | see at [Installing Go from source](https://go.dev/doc/install/source)
 Inko | Rust for LLVM | see at [Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
 Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | see at [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries) and [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
 Koka | Haskell and Stack for developing Haskell projects | see at [Build from Source](https://github.com/koka-lang/koka?tab=readme-ov-file#build-from-source); the Glasgow Haskell Compiler (GHC) is nowadays self-hosting; see below at [Haskell](#haskell)
