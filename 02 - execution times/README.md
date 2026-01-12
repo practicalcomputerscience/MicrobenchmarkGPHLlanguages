@@ -1,4 +1,4 @@
-2025-12-10: see [On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments): the new SSD drive is faster than the old one; in December 2025 I repeated all execution time measurements for all languages I implemented so far, often - but not always - with up-to-date language versions.
+2025-12-10: see [On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments): the new SSD drive is faster than the old one; in December 2025, I repeated all execution time measurements for all languages I implemented so far, often - but not always - with up-to-date language versions.
 
 <br/>
 
