@@ -46,6 +46,7 @@ LunarML | Standard ML (MLton) | see at [Building and Installing](https://github.
 Mercury | bootstrapping with C for gcc for an initial installation; Mercury is then self-hosting for more advanced library grades | see at [Bootstrapping a Mercury environment](https://github.com/Mercury-Language/mercury/blob/master/Documentation/README.bootstrap)
 Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | see at https://mlir.llvm.org/
 OCaml | bootstrapping in a staged approach, where C has been compiled to bytecode for booting; then gradually self-hosting | see at https://github.com/ocaml/ocaml/tree/trunk/boot
+Odin | C and mostly C++ for clang | see at [3.3 Others (Unix)](https://odin-lang.org/docs/install/#others-unix)
 Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosting | see at [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
 Perl 5 | C for gcc or clang | see _README.linux_ in [Perl Source](https://www.cpan.org/src/README.html)
 Picat | C and C++ for gcc and g++, respectively | see _README_ from sources at page [Download](https://picat-lang.org/download.html)
