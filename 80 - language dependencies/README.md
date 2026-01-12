@@ -1,4 +1,4 @@
-Take the conclusions here with a grain of salt. In the end, all programming languages are ecosystems, where most probably some parts have been written in one or more other programming languages.
+Take the information of this page with a grain of salt. In the end, all programming languages are ecosystems, where most probably some parts have been written in one or more other programming languages.
 
 <br/>
 
@@ -71,12 +71,12 @@ Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for
 
 <br/>
 
-So, by looking at above list, the following languages may be seen as "very original" languages, though their related runtime systems, if present, may often depend (still) on C and/or derivatives:
+So, by looking at above list, the following languages may be seen as "very original" languages nowadays, though their related runtime systems, if present, may often depend (still) on C and/or derivatives:
 
 - C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for its making in a Linux system, and that C compiler may be very well _gcc_ in this Linux system, which has been implemented in C++ since 2013: [GCC 4.8 Release Series](https://www.gnu.org/software/gcc/gcc-4.8/changes.html) + [GCC 4.8 released](https://isocpp.org/blog/2013/03/gcc-4.8-released))
 - C# and .NET
 - Chrystal
-- Common Lisp
+- Common Lisp (SBCL)
 - Erlang
 - FreeBASIC
 - Go
