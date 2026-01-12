@@ -4,9 +4,7 @@ https://kotlinlang.org/
 
 <br/>
 
-Kotlin is the better Scala in my opinion.
-
-If Scala from Switzerland (https://scala.epfl.ch/) doesn't ramp up its efforts, it could end up as an academic language in my opinion. Kotlin is also ready for enterprise level software development, think of Google Maps and Google Drive and their association with Kotlin:
+Kotlin feels like the "industrial version" of (academic) Scala and is (also) ready for enterprise level software development, think of Google Maps and Google Drive and their association with Kotlin:
 
 - https://github.com/googlemaps-samples/codelab-maps-platform-101-android-kotlin/tree/main
 - https://medium.com/@sergei.rybalkin/upload-file-to-google-drive-with-kotlin-931cec5252c1
@@ -58,7 +56,8 @@ $
 ...and execution speeds also:
 
 ```
-$ time java -jar ./random_streams_for_perf_stats_with_Java_SE_Oracle_GraalVM_24+36.1.jar  # this version came along with the installation of GraalVM, which has been installed with SDKMAN!
+# this version came along with the installation of GraalVM, which has been installed with SDKMAN!:
+$ time java -jar ./random_streams_for_perf_stats_with_Java_SE_Oracle_GraalVM_24+36.1.jar
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -67,7 +66,11 @@ Byte stream has been written to disk under name: random_bitstring.byte
 real	0m0.072s
 user	0m0.163s
 sys	0m0.024s
-$ time java -jar ./random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar  # this version came with what?
+#
+# ------
+# 2026-01-12: this version came after installing one of several, precise proposals by the apt package manager,
+# when there's no Java installed yet in an Ubuntu 24 LTS system, like: $ sudo apt install openjdk-25-jre-headless
+$ time java -jar ./random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -76,7 +79,10 @@ Byte stream has been written to disk under name: random_bitstring.byte
 real	0m0.072s
 user	0m0.163s
 sys	0m0.029s
-$ time java -jar ./random_streams_for_perf_stats_with_openjdk_27-ea_2026-09-15.jar  # this version has been installed with SDKMAN!
+#
+# ------
+# this version has been installed with SDKMAN!:
+$ time java -jar ./random_streams_for_perf_stats_with_openjdk_27-ea_2026-09-15.jar
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -88,6 +94,10 @@ sys	0m0.023s
 $
 ```
 
-However, I didn't make these tests for Scala and Clojure.
+However, I didn't make these tests with Scala and Clojure.
+
+2026-01-12: however 2: in case of doubt and in my opinion, run the uberjar file with a JDK (Java Development Kit) as proposed by Ubuntu (or another Linux distribution in use), even when this uberjar file has been originally generated with a JDK version with a Java(TM) SE (Standard Edition) for the Oracle GraalVM for example.
+
+<br/>
 
 ##_end
