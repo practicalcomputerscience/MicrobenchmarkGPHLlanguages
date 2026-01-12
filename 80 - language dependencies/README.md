@@ -1,4 +1,4 @@
-Take the conclusions here with a grain of salt. In the end, all programming languages are ecosystems, where at least some parts have been written in one or more other programming languages.
+Take the conclusions here with a grain of salt. In the end, all programming languages are ecosystems, where most probably some parts have been written in one or more other programming languages.
 
 <br/>
 
@@ -66,13 +66,13 @@ Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosting | see 
 V | C for gcc or clang or Tiny C Compiler (TCC) | see at [TCC](https://repo.or.cz/w/tinycc.git) and https://download.savannah.gnu.org/releases/tinycc/
 Wolfram Language | the Wolfram System is "..written in C/C++, Java, and the Wolfram Language.." | see at [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
 wren | C for gcc (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others (like Bigloo Scheme), for asynchronous i⁠/o | see at GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
-Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction (while Wasm typically depends on C, C++, Rust or Go); the Zig compiler was originally written in C++ | see (*) from above
+Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction with WASI (WebAssembly System Interface), where "a minimal WASI interpreter implementation that is built from C source" is provided; the Zig compiler was originally written in C++ | see (*) from above
 
 <br/>
 
-So, by looking at above list, these languages may be seen as "very original" languages, though their related runtime systems, if present, may often depend (still) on C:
+So, by looking at above list, these languages may be seen as "very original" languages, though their related runtime systems, if present, may often depend (still) on C and/or derivatives:
 
-- C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for making (in a Linux system); and that C compiler may be very well _gcc_ in this Linux system)
+- C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for its making in a Linux system, and that C compiler may be very well _gcc_ in this Linux system)
 - C# and .NET
 - Chrystal
 - Common Lisp
@@ -87,10 +87,10 @@ So, by looking at above list, these languages may be seen as "very original" lan
 
 #### Black Duck Open Hub
 
-The Black Duck Open Hub website may provide some high-level insights into the usage of programming languages of open-source software projects:
+The Black Duck Open Hub website may provide some high-level insights into the usage of programming languages of open-source software projects, for example:
 
-- here for Perl for example: https://openhub.net/p/perl/analyses/latest/languages_summary
-- here for the Glasgow Haskell Compiler for example: https://openhub.net/p/ghc/analyses/latest/languages_summary
+- Perl: https://openhub.net/p/perl/analyses/latest/languages_summary
+- Glasgow Haskell Compiler: https://openhub.net/p/ghc/analyses/latest/languages_summary
 
 <br/>
 
