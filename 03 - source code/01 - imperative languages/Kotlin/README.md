@@ -69,7 +69,7 @@ sys	0m0.024s
 #
 # ------
 # 2026-01-12: this version came after installing one of several, precise proposals by the apt package manager,
-# when there's no Java installed yet in an Ubuntu 24 LTS system, like: $ sudo apt install openjdk-25-jre-headless
+# when there's no Java installed yet in an Ubuntu 24 LTS system, like for example: $ sudo apt install openjdk-25-jre-headless
 $ time java -jar ./random_streams_for_perf_stats_with_OpenJDK_25.0.1+8-Ubuntu-124.04.jar
 
 generating a random bit stream...
