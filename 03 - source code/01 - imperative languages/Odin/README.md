@@ -2,6 +2,8 @@
 
 https://odin-lang.org/
 
+https://github.com/odin-lang/Odin
+
 <br/>
 
 ---
