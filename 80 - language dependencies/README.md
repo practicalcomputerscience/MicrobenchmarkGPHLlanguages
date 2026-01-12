@@ -31,7 +31,7 @@ C3 | C for LLVM | see at [Compiling on Ubuntu 24.04 LTS](https://github.com/c3la
 Chapel | C++ for LLVM and clang | see at [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
 Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's partly self-hosting | the Java compiler itself is completely self-hosting since the late 90ies at least, see below at [Java](#java)
 Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation is needed for compilation | see at https://www.sbcl.org/getting.html
-Crystal | bootstrapping by using an older version of the Crystal compiler; otherwise self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | see at https://crystal-lang.org/install/from_sources/
+Crystal | bootstrapping by using an older version of the Crystal compiler; self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | see at https://crystal-lang.org/install/from_sources/
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosting with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | see at https://www.freebasic.net/
 Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
@@ -55,7 +55,7 @@ Prolog, SWI | C for gcc or clang | see at https://github.com/SWI-Prolog/swipl-de
 Python | C for gcc or clang for CPython, which is the reference implementation for Python | see for example from [README.rst](https://github.com/python/cpython/blob/main/README.rst)
 Raku | Rakudo compiler: C for a C compiler, and a Perl 5 installation; bootstrapping also includes the help of NQP ("Not Quite Perl") files; multiplatform | see at [Build requirements (Installing from source)](https://github.com/rakudo/rakudo/blob/main/INSTALL.md#build-requirements-installing-from-source)
 Roc | Rust and later additionally Zig | see at [Building the new Roc compiler from source](https://github.com/roc-lang/roc/blob/main/BUILDING_FROM_SOURCE.md#building-the-new-roc-compiler-from-source)
-Rust | bootstrapping with a current beta release of the _rustc_ compiler; otherwise self-hosting since 2011; the Rust compiler was originally written in OCaml | see at [Bootstrapping the compiler](https://rustc-dev-guide.rust-lang.org/building/bootstrapping/intro.html)
+Rust | bootstrapping with a current beta release of the _rustc_ compiler; self-hosting since 2011; the Rust compiler was originally written in OCaml | see at [Bootstrapping the compiler](https://rustc-dev-guide.rust-lang.org/building/bootstrapping/intro.html)
 Scala | bootstrapping by using an older version of a Scala compiler since 2015: [We got liftoff!](https://dotty.epfl.ch/blog/2015/10/23/dotty-compiler-bootstraps.html); otherwise self-hosting (that is using Scala 3 resources); multiplatform | SJSIR = Scala JavaScript Intermediate Representation
 Scheme, Bigloo | Bigloo Scheme initially starts from a bootstrap version of it; then gradually self-hosting also with C code for gcc | see at [Bigloo Installation Notice](https://github.com/manuel-serrano/bigloo/blob/master/INSTALL.md#bigloo-installation-notice) and [configure](https://github.com/manuel-serrano/bigloo/blob/master/configure)
 Scheme, Chez | bootstrapping with C for gcc or clang; otherwise self-hosting | see at [BUILDING](https://github.com/cisco/ChezScheme/blob/main/BUILDING)
@@ -78,6 +78,7 @@ So, by looking at above list, the following languages may be seen as "very origi
 - Chrystal
 - Common Lisp
 - Erlang
+- FreeBASIC
 - Go
 - Haskell
 - Java
