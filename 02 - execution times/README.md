@@ -30,6 +30,8 @@ $
 
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
+![plot](./exe_times_of_the_master_diagram.png)
+
 So far:
 
 - [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) is the fastest [functional programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages),
