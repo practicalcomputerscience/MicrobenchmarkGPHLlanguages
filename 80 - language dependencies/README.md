@@ -1,4 +1,6 @@
-2026-01-10: work in progress
+Take the conclusions here with a grain of salt. In the end, all programming languages are ecosystems, where at least some parts have been written in one or more other programming languages.
+
+<br/>
 
 # Language dependencies
 
@@ -14,11 +16,11 @@ Then I had this question:
 Thus, every time the underlying high-level programming language makes a change,
 there's more or less the latent danger that the dependent high-level programming language may be up for a change too, also indirectly for the source code written in the dependent language.
 
-Here's an interesting article on self-hosting and "dogfooding" in compiler building from 2022: [Goodbye to the C++ Implementation of Zig](https://ziglang.org/news/goodbye-cpp/#:~:text=How%20we%20used%20WebAssembly%20to%20annihilate%2080%2C000,one%2C%20written%20in%20250%2C000%20lines%20of%20Zig.)
+Here's an interesting article on self-hosting and "dogfooding" in compiler building from 2022 (*): [Goodbye to the C++ Implementation of Zig](https://ziglang.org/news/goodbye-cpp/#:~:text=How%20we%20used%20WebAssembly%20to%20annihilate%2080%2C000,one%2C%20written%20in%20250%2C000%20lines%20of%20Zig.)
 
 <br/>
 
-So, I started to compile another table, where I try to list more or less close dependencies:
+So, I started to compile another table, where I try to list some main dependencies:
 
 dependent programming language | underlying programming language or environment | comment
 --- | --- | ---
@@ -32,7 +34,7 @@ Common Lisp (SBCL) | self-hosting; an ANSI-compliant Common Lisp implementation 
 Crystal | bootstrapping by using an older version of the Crystal compiler; otherwise self-hosting since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | see at https://crystal-lang.org/install/from_sources/
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosting with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | see at https://www.freebasic.net/
-Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/installing/#installing-gleam
+Gleam | Rust and Erlang (BEAM) | see at https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
 Go | self-hosting since 2015; the Rust compiler was originally written in C | see at [Installing Go from source](https://go.dev/doc/install/source)
 Inko | Rust for LLVM | see at Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
 Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | see at [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries) and [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
@@ -62,46 +64,49 @@ Scheme, Racket | using Chez Scheme as its core compiler and runtime system | see
 Standard ML (MLton) | C for gcc or clang | see at [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
 Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosting | see at [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
 V | C for gcc or clang or Tiny C Compiler (TCC) | see at [TCC](https://repo.or.cz/w/tinycc.git) and https://download.savannah.gnu.org/releases/tinycc/
-Wolfram Language | Wolfram System: "..written in C/C++, Java, and the Wolfram Language.." | see at [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
+Wolfram Language | the Wolfram System is "..written in C/C++, Java, and the Wolfram Language.." | see at [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
 wren | C for gcc (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others (like Bigloo Scheme), for asynchronous i⁠/o | see at GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
 Zig | partly self-hosting nowadays with the help of C and WebAssembly (Wasm) for operating system abstraction (while Wasm typically depends on C, C++, Rust or Go); the Zig compiler was originally written in C++ | see (*) from above
 
 <br/>
 
-So, by looking at above list, only these languages are "very original" ecosystems, that modern programming languages cannot do without:
+So, by looking at above list, these languages may be seen as "very original" languages, though their related runtime systems, if present, may often depend (still) on C:
 
 - C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for making (in a Linux system); and that C compiler may be very well _gcc_ in this Linux system)
 - C# and .NET
+- Chrystal
+- Common Lisp
+- Erlang
 - Go
 - Haskell
 - Java
 - Rust
 - Scala
-- ...
-- ...
-- ...
-- TBD
-- ...
 
 <br/>
 
 #### Black Duck Open Hub
 
-The Black Duck Open Hub website may provide some high-level insights into the usage of programming languages of open-source software projects, here for Perl for example: https://openhub.net/p/perl/analyses/latest/languages_summary
+The Black Duck Open Hub website may provide some high-level insights into the usage of programming languages of open-source software projects:
+
+- here for Perl for example: https://openhub.net/p/perl/analyses/latest/languages_summary
+- here for the Glasgow Haskell Compiler for example: https://openhub.net/p/ghc/analyses/latest/languages_summary
 
 <br/>
 
 #### Java
 
-One of the earlier **Java** compilers and started in 1998, and which later became mainstream, has already been written exclusively in Java. That was the **GJ (Generic Java) compiler** (https://homepages.inf.ed.ac.uk/wadler/gj/Distribution/#gjc), also developed by Martin Odersky among others, the main inventor of Scala: https://lampwww.epfl.ch/gj/
+One of the earlier Java compilers and started in 1998, and which later became mainstream, has already been written exclusively in Java. That was the **GJ (Generic Java) compiler** (https://homepages.inf.ed.ac.uk/wadler/gj/Distribution/#gjc), also developed by Martin Odersky among others, the main inventor of Scala: https://lampwww.epfl.ch/gj/
 
-_**javac**_: TBD
+From [Introduction to Java](https://www.realjavaonline.com/java_introduction/introductiontojava.php):
+
+> In 1993, Arthur Van Hoff joined Sun Microsystems. He implemented Java compiler in Java which Gosling had previously implemented in C language. 
 
 <br/>
 
 #### Haskell
 
-While the Glasgow Haskell Compiler ([GHC](https://www.haskell.org/ghc/)) is self-hosting since many years ([1.1. Obtaining GHC](https://downloads.haskell.org/ghc/latest/docs/users_guide/intro.html#obtaining-ghc)), Haskell's runtime system ([RTS](https://gitlab.haskell.org/ghc/ghc/-/tree/master/rts)) is not. That is written in a mixture of mostly C and a derivative of [C--](https://www.cs.tufts.edu/~nr/c--/), which is **Cmm**: [GHC Commentary: What the hell is a .cmm file?](https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/rts/cmm):
+While the Glasgow Haskell Compiler ([GHC](https://www.haskell.org/ghc/)) is self-hosting since many years ([1.1. Obtaining GHC](https://downloads.haskell.org/ghc/latest/docs/users_guide/intro.html#obtaining-ghc)), Haskell's runtime system ([RTS](https://gitlab.haskell.org/ghc/ghc/-/tree/master/rts)) is not. That is written in a mixture of mostly C and a derivative of [C--](https://www.cs.tufts.edu/~nr/c--/), which is Cmm: [GHC Commentary: What the hell is a .cmm file?](https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/rts/cmm):
 
 <br/>
 
