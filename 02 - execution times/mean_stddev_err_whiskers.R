@@ -1,8 +1,9 @@
 # mean_stddev_err_whiskers.R
 #
 # 2025-05-31, 2025-06-10/15, 2025-09-28/29, 2025-10-20, 2025-11-16
+# 2026-01-12: print a sorted list from lowest mean to highest
 #
-# env: R version 4.5.0 (2025-04-11 ucrt) -- "How About a Twenty-Six"
+# env: R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
 #      Platform: x86_64-w64-mingw32/x64
 #
 # test: OK
@@ -11,12 +12,15 @@
 library(tidyquant)  # loads tidyquant, tidyverse, lubridate, xts, quantmod, TTR, %>%, theme_tq()
 library(tibble)
 library(ggplot2)
+library(webshot2)   # to save gt tables as images
+library(gt)         # for gt tables for nicely formatted tables
+library(dplyr)
 
 
 ##########################
 #
 # user switch:
-plot_type <-  3
+plot_type <-  0
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
@@ -67,17 +71,41 @@ xlabel <- paste("")
 dat1_sort <- as_tibble(dat1[order(dat1$mean),])
 
 dat1_sort
-# > dat1_sort
-# # A tibble: 7 × 4
-#   language              mean  std_dev date      
-#   <chr>                <dbl>    <dbl> <chr>     
-# 1 C#                  0.0469 0.000318 2025-12-17
-# 2 Kotlin JVM uberjar  0.073  0.003    2025-12-21
-# 3 Python              0.139  0        2025-12-13
-# 4 Scala JVM uberjar   0.142  0.003    2025-12-21
-# 5 Gleam (Erlang VM)   0.232  0        2025-12-13
-# 6 Clojure JVM uberjar 0.416  0.004    2025-12-21
-# 7 PowerShell          0.625  0.016    2025-12-19
+#  # A tibble: 33 × 4
+#     language     mean   std_dev date
+#     <chr>       <dbl>     <dbl> <chr>
+#   1 Zig       0.00335 0.0000609 2025-12-18
+#   2 Crystal   0.00768 0.000957  2025-12-17
+#   3 C         0.00784 0.000058  2025-12-17
+#   4 Rust      0.00862 0.0000635 2025-12-17
+#   5 Odin      0.0139  0.000136  2026-01-08
+#   6 Go        0.0151  0.000118  2025-12-17
+#   7 C3        0.0158  0.000138  2025-12-17
+#   8 FreeBASIC 0.0172  0.000682  2025-12-17
+#   9 OCaml     0.0176  0.000136  2025-12-21
+#  10 V         0.0180  0.0000972 2025-12-18
+#  # ℹ 23 more rows
+#  # ℹ Use `print(n = ...)` to see more rows
+
+
+#----------------------------------------------------------------
+# 2026-01-12: make and print a nice table:
+dat1_nice_sort <- as_tibble(dat1_sort$language)
+dat1_nice_sort$mean <- dat1_sort$mean * 1000  # for milliseconds
+dat1_nice_sort$date <- dat1_sort$date
+
+# rename columns:
+dat1_nice_sort <- dat1_nice_sort %>%
+        rename(
+          language = value,  # rename(<new> = <old>)
+          'mean in milliseconds'  = mean    # rename(<new> = <old>)
+        )
+
+dat1_nice_sort %>%
+  gt() %>%
+  tab_header(title = "Execution times of the master diagram") %>%
+  gtsave("exe_times_of_the_master_diagram.png", zoom = 1.0)
+#----------------------------------------------------------------
 
 
 if (plot_type < 4) {
