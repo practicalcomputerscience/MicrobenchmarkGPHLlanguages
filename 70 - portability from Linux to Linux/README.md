@@ -18,7 +18,7 @@ Here's a list of programming languages where standalone executables can be compi
 - Odin
 - Roc
 - Rust
-- SML MLton
+- Standard ML (MLton)
 - V
 - Zig
 
