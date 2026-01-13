@@ -99,6 +99,7 @@ Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
 Koka | program doesn't finish | -- | no | 2025-12-18
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
 Mojo | SIGILL signal raised which killed the program | -- | no | 2026-01-10
+Nim | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-13
 OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
 Prolog, SWI | 20,529,534 bytes in 178,711 blocks | 19,486,208 bytes in 162,301 blocks | no | 2026-01-10
@@ -137,6 +138,7 @@ Only looking by the table above, I would implement a security related program on
 - C
 - C3
 - Go
+- Nim
 - Odin
 - Roc
 - Standard ML (MLton)
