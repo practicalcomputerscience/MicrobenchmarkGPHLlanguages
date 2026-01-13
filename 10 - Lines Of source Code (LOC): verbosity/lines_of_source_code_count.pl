@@ -2,7 +2,7 @@
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
-# 2026-01-03a
+# 2026-01-03a/06/09/13
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -28,6 +28,7 @@ my $line_cmt_ML_style = 0;  # (*...*)
 my $line_cmt_Lisp_style = 0;
 my $line_cmt_Basic_style = 0;
 my $line_cmt_Mercury_style = 0;  # %
+my $line_cmt_Fortran_style = 0;  # !
 
 
 my $fwdslash_star_detected = 0;              # 0 is false --> use strict prevents using true or false
@@ -45,13 +46,19 @@ my $doubleminus_squarebracket_detected = 0;  # 0 is false
 my $doublesquarebracket_detected = 0;        # 0 is false
 my $hash_equal_detected = 0;                 # 0 is false
 my $equal_hash_detected = 0;                 # 0 is false
+my $hash_bracket_detected = 0;               # 0 is false
+my $bracket_hash_detected = 0;               # 0 is false
 
 
 my $language_ext = $file;
 
-my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam");
 
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs");
+# language group without block comments:
+my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90");
+
+
+# language groups with block comments:
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
@@ -59,8 +66,9 @@ my @lang_grp6 = ("clj");
 my @lang_grp7 = ("lisp", "rkt", "scm");
 my @lang_grp8 = ("bas");
 my @lang_grp9 = ("lua");
-my @lang_grp10 = ("m", "P", "pi");
+my @lang_grp10 = ("m", "P", "pi");  # single line comment: %, block comments: /* ... */; m without block comments
 my @lang_grp11 = ("jl");
+my @lang_grp12 = ("nim");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -70,6 +78,7 @@ my $line_of_block_comment7 = 0;
 my $line_of_block_comment8 = 0;
 my $line_of_block_comment9 = 0;
 my $line_of_block_comment11 = 0;
+my $line_of_block_comment12 = 0;
 
 
 $language_ext =~ s/^\w+\.//;
@@ -102,7 +111,13 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
           if ($_ =~ /^\s*--/) {
             $line_cmt_minus_dbl += 1;
           } else {
-            $source_code_line_count += 1;
+
+            # case: ! with optionally leading white spaces: Fortran
+            if ($_ =~ /^\s*\!/) {
+              $line_cmt_Fortran_style += 1;
+            } else {
+              $source_code_line_count += 1;
+            }
           }
         }
       }
@@ -534,6 +549,50 @@ if ( grep(/^$language_ext$/, @lang_grp11)) {
 }
 
 
+if ( grep(/^$language_ext$/, @lang_grp12)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($hash_bracket_detected) {
+      $line_of_block_comment12 += 1;
+    }
+
+    # at the moment, only caring about:
+    #   beginning #[: with potentially leading white spaces and any kind of stuff beyond #=..
+    #   ending    ]#: with potentially any kind of stuff before ..=# and potentially trailing white spaces
+    if ($_ =~ /^\s*#\[/ and not $hash_bracket_detected) {
+      $hash_bracket_detected = 1;
+      $bracket_hash_detected = 0;
+      print "  hash_bracket_detected", "\n";
+      $line_of_block_comment12 += 1;
+    } else {
+
+      if ($_ =~ /\]#\s*$/ and $hash_bracket_detected) {
+        $hash_bracket_detected = 0;
+        $bracket_hash_detected = 1;
+        print "  bracket_hash_detected", "\n";
+      } else {
+        # case: empty line or line with white spaces:
+        if ($_ =~ /^\s*$/ and not $hash_bracket_detected) {
+          $line_empty += 1;
+        } else {
+          # case: # with optionally leading white spaces:
+          if ($_ =~ /^\s*#/ and not $hash_bracket_detected) {
+            $line_cmt_hash += 1;
+          } else {
+            if (not $hash_bracket_detected) {
+              $source_code_line_count += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 close( FILE );
 
@@ -548,6 +607,7 @@ print "\nnumber of lines with ___(*..*)___ = ", $line_cmt_ML_style;
 print "\nnumber of lines with ___;(;) = ", $line_cmt_Lisp_style;
 print "\nnumber of lines with ___' = ", $line_cmt_Basic_style;
 print "\nnumber of lines with ___% = ", $line_cmt_Mercury_style;
+print "\nnumber of lines with ___! = ", $line_cmt_Fortran_style;
 print "\nnumber of lines in block comment: \/\* ... \*\/ = ", $line_of_block_comment2;
 print "\nnumber of lines in block comment: \"\"\" ... \"\"\" = ", $line_of_block_comment3;
 print "\nnumber of lines in block comment: \(\* ... \*\) = ", $line_of_block_comment4;
@@ -556,6 +616,7 @@ print "\nnumber of lines in block comment: #| ... |# = ", $line_of_block_comment
 print "\nnumber of lines in block comment: /' ... '/ = ", $line_of_block_comment8;
 print "\nnumber of lines in block comment: --[[ ... ]] = ", $line_of_block_comment9;
 print "\nnumber of lines in block comment: #= ... =# = ", $line_of_block_comment11;
+print "\nnumber of lines in block comment: #[ ... ]# = ", $line_of_block_comment12;
 
 print "\n";
 
