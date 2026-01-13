@@ -14,6 +14,7 @@ Here's a list of programming languages where standalone executables can be compi
 - Gambit Scheme (only the "speed part" tested)
 - Go
 - Inko
+- Nim
 - OCaml
 - Odin
 - Roc
