@@ -1,12 +1,10 @@
-2026-01-12: work in progress
-
 # Nim
 
 https://nim-lang.org/
 
 ---
 
-### Demanding string building in Nim
+### On how to do demanding string building in Nim
 
 Based on other microbenchmarks, like this one for example: https://github.com/zupat/related_post_gen, I had somehow higher expectations for the execution speed of my microbenchmark program in a Nim implementation.
 
@@ -33,16 +31,8 @@ However, since I'm not doing it in my official [C version](https://github.com/pr
 
 All and all, I think test #3, that is using only the _-d:release_ compiler switch, using ropes instead of the not overly helpful string builder here, and using only built-in functions for the integer to string conversions, is a fair compromise. On the other hand, this setup will put the Nim program just behind [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments), a functional programming language, in terms of execution speed! (as of 2026-01-12)
 
-TBD
-
-
-
-
-
-
+Additionally, I think that it's also interesting to implement another concept than using the language's string builder, specifically if the alternative concept offers even more efficient string concatenation (though, potentially only for specific use cases).
 
 <br/>
-
-
 
 ##_end
