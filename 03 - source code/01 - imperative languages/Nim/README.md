@@ -31,7 +31,7 @@ I guess it's highly probable that replacing the other built-in function _fmt"{x[
 
 However, since I'm not doing it in my official [C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs), I'm also not doing it here beyond some experimentation.
 
-All and all, I think test #3, that is using only the _-d:release_ compiler switch, using ropes instead of the not overly helpful string builder here, and using only built-in functions for the integer to string conversions, is a fair compromise. On the other hand, this setup will put this Nim program just behind [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments), a functional programming language, in terms of execution speed as of 2026-01-12!
+All and all, I think test #3, that is using only the _-d:release_ compiler switch, using ropes instead of the not overly helpful string builder here, and using only built-in functions for the integer to string conversions, is a fair compromise. On the other hand, this setup will put the Nim program just behind [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments), a functional programming language, in terms of execution speed! (as of 2026-01-12)
 
 TBD
 
