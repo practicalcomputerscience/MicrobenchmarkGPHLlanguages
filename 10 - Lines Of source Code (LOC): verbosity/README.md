@@ -49,6 +49,7 @@ C#                | 109 | interpreted, mature language (together with .NET ecosy
 Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
+Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity (2026-01-13) 
 Mojo              |  91 | compiled, very young language (2026-01-10)
 PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
@@ -81,6 +82,7 @@ Kotlin             | 1
 Lua                | 2
 Mercury            | 9
 Mojo               | 0
+Nim                | 0
 OCaml              | 5
 Odin               | 0
 Perl 5             | 0
