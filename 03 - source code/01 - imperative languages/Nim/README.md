@@ -35,4 +35,31 @@ Additionally, I think that it's also interesting to implement another concept th
 
 <br/>
 
+### Why is Nim still not very popular?
+
+Being on the market since 2008, I had this question, and just saw that I'm not the only one to ask it:
+
+- 2023: [Ask HN: Why did Nim not catch on like Rust did?](https://news.ycombinator.com/item?id=36475744)
+- 2024: [What are the biggest issues with Nim right now?](https://www.reddit.com/r/nim/comments/1dkze0x/what_are_the_biggest_issues_with_nim_right_now/)
+
+Bold points why Nim is still a niche language are discussed. However, I still have two more structural points:
+
+- Nim is still basically a one person language development (in Germany), same like Odin in UK. What happens with Nim, if Andreas Rumpf is no more with Nim? Compare this situation to the fate of the originally one-person-language Clojure, started by Rich Hickey, and which has been finally saved by selling it to a (bigger) corporation (in Brazil). Chrystal (since 2014) and Mojo (since 2023) right from start have been backed by companies (in Buenos Aires, Argentina and L.A., U.S., respectively). Roc has a (small) U.S. team as backing for example
+- I think that European one-person-programming languages generally have a hard time. A European "university language" with superior concept, and backed by no less than four employed professors, has gone into oblivion, that is Oz. Don't tell me that this was the original match plan. Or think of the abondonment of [The Tiny C Compiler (TCC)](https://www.bellard.org/tcc/) ("TinyCC is about 9 times faster than GCC.") by [Fabrice Bellard](https://en.wikipedia.org/wiki/Fabrice_Bellard) from France, and with a last official release from 2017
+
+=> who wants to invest serious time and money in such a high-risk endeavor?
+
+Yes, a foundation could solve this (allegedly, this has been declined by the founder). Roc has one for example: https://www.roc-lang.org/foundation
+
+But how do you pull this off in a fragmented European landscape?
+
+<br/>
+
+Just to know:
+
+- [futhark](https://github.com/PMunch/futhark) "aims to allow you to simply import C header files directly into Nim, and allow you to use them like you would from C without any manual intervention."
+- [nimpy](https://scinim.github.io/getting-started/external_language_integration/nim_with_py.html) "to integrate Python code with Nim"
+
+<br/>
+
 ##_end
