@@ -22,12 +22,4 @@ bits_x   = IO::Memory.new  # https://crystal-lang.org/reference/1.16/guides/perf
 
 <br/>
 
-With execution speed and other features Crystal is clearly - but unspoken of - aiming for low-level systems programming from my point of view. This may seem to be counter-intuitive, when you think of Ruby with it's aim to be the better Perl: 
-
-> I was talking with my colleague about the possibility of an object-oriented scripting language. I knew Perl (Perl4, not Perl5), but I didn’t like it really, because it had the smell of a toy language (it still has).
-
-from: https://www.ruby-lang.org/en/documentation/faq/1/
-
-<br/>
-
 ##_end
