@@ -4,7 +4,7 @@ There's a deeper sense why I wrote a little bit more about this exotic corner of
 
 ## Microsoft's efforts with transpilation
 
-In March 2025, Microsoft announced: [A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/), where Microsoft takes Google's **Go** programming language (https://github.com/microsoft/typescript-go) to transpile TypeScript source code into JavaScript source code.
+In March 2025, Microsoft announced: [A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/), where Microsoft takes Google's [Go programming language](https://github.com/microsoft/typescript-go) to transpile TypeScript source code into JavaScript source code.
 
 This news was my incentive to "transpile" my [original little Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main?tab=readme-ov-file#what-this-repository-is-about), the language I usually use to test an idea and in which I just quickly implemented a simple PRNG (pseudo-random number generator), plus extras, into other languages, including Go, which has been on my "long list" for language testing since 2023.
 
