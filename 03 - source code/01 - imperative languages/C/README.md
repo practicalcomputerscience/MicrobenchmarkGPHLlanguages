@@ -9,6 +9,10 @@ Checked C "for making existing C code more secure":
 - https://www.checkedc.org/
 - https://github.com/checkedc/checkedc-clang/wiki
 
+<br/>
+
+See also page [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take)
+
 ---
 
 ## Program building tips
