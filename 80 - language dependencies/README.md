@@ -72,7 +72,7 @@ Zig | partly self-hosted nowadays with the help of C and WebAssembly (Wasm) for 
 
 <br/>
 
-So, by looking at above list, the following languages may be seen as "very original" and powerful languages nowadays, though their related runtime systems, if present, may often depend (still) on C and/or derivatives:
+So, by looking at above list, the following languages may be seen as "very original" and powerful languages nowadays, though their related runtime systems, if present, may often depend (still) on C and/or derivatives for simpler **foundational parts**:
 
 - C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for its making in a Linux system, and that C compiler may be very well _gcc_ in this Linux system, which has been implemented to some extent in C++ since 2013: [GCC 4.8 Release Series](https://www.gnu.org/software/gcc/gcc-4.8/changes.html) + [GCC 4.8 released](https://isocpp.org/blog/2013/03/gcc-4.8-released))
 - C# and .NET
