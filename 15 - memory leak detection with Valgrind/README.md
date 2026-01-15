@@ -88,6 +88,7 @@ programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reacha
 --- | --- | --- | --- | ---
 Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
 C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2025-12-18
+C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-15
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Chapel | program doesn't finish | -- | no | 2025-12-18
 Common Lisp | 554,806 bytes in 12 blocks | 292,358 bytes in 10 blocks | no | 2026-01-10
@@ -136,6 +137,7 @@ $
 Only looking by the table above, I would implement a security related program only with these programming languages:
 
 - C
+- C++
 - C3
 - Go
 - Nim
