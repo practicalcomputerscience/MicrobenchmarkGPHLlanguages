@@ -6,6 +6,7 @@ Here's a list of programming languages where standalone executables can be compi
 
 - Ada
 - C
+- C++
 - C3
 - Chez Scheme (only the "speed part" tested)
 - Common Lisp (SBCL)
