@@ -11,14 +11,14 @@ The main reason why I implemented the microbenchmark program in C++ are these tw
 - [Language dependencies](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/80%20-%20language%20dependencies#language-dependencies)
 - [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take)
 
-..and their long term implications from my point of view, that is that the world of computer programming may replace (classical) C increasingly with something else,
-but that (evolving) C++ will be around for still many years to come.
+..and their long term implications from my point of view, that is that the world of computer programming may replace (classical) C (for "system programming") increasingly with something else,
+but that (evolving) C++ (for "application programming") will be around for still many years to come.
 
 At least at the moment, including the fact that also C++ (as such) is not doing pointers and array indices bounds checking, C++ is indispensable in the computer programming world.
 
 <br/>
 
-Same like with C, I tried both compilers for compilation of the [speed part](TBD) of the microbenchmark program, with these results:
+Same like with C, I tried both compilers for compilation of the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp) of the microbenchmark program, with these results:
 
 compiler version | compiler switches for release | mean exe time in milliseconds | +/-standard deviation
 --- | --- | --- | ---
