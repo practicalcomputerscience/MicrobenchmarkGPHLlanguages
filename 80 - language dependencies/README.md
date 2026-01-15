@@ -25,7 +25,7 @@ So, I started to compile another table, where I try to list some main dependenci
 dependent programming language | underlying programming language or environment | comment
 --- | --- | ---
 Ada | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC see: https://ftp.gnu.org/gnu/gcc/
-C / C++ | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosted nowadays, not even C anymore with GCC and LLVM (**)
+C / C++ | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosted to some extent nowadays, not even C anymore with GCC and LLVM (**); as of January 2026, about 29% of the gcc compiler is still written in C: https://github.com/gcc-mirror/gcc
 C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosted nowadays; Microsoft's .NET Framework (CLR = Common Language Runtime) is then used to run the compiled Common Intermediate Language (CIL) code by Just-In-Time (JIT) compilation into native machine code | [Roslyn Compiler](https://github.com/dotnet/roslyn/tree/main/docs/compilers#roslyn-compiler)
 C3 | C for LLVM | [Compiling on Ubuntu 24.04 LTS](https://github.com/c3lang/c3c#compiling-on-ubuntu-2404-lts)
 Chapel | C++ for LLVM and clang | [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
@@ -74,7 +74,7 @@ Zig | partly self-hosted nowadays with the help of C and WebAssembly (Wasm) for 
 
 So, by looking at above list, the following languages may be seen as "very original" and powerful languages nowadays, though their related runtime systems, if present, may often depend (still) on C and/or derivatives:
 
-- C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for its making in a Linux system, and that C compiler may be very well _gcc_ in this Linux system, which has been implemented in C++ since 2013: [GCC 4.8 Release Series](https://www.gnu.org/software/gcc/gcc-4.8/changes.html) + [GCC 4.8 released](https://isocpp.org/blog/2013/03/gcc-4.8-released))
+- C++ (**) (but not C nowadays, where even the Tiny C Compiler looks for another C compiler when configuring it for its making in a Linux system, and that C compiler may be very well _gcc_ in this Linux system, which has been implemented to some extent in C++ since 2013: [GCC 4.8 Release Series](https://www.gnu.org/software/gcc/gcc-4.8/changes.html) + [GCC 4.8 released](https://isocpp.org/blog/2013/03/gcc-4.8-released))
 - C# and .NET
 - Chrystal
 - Common Lisp (SBCL)
