@@ -25,7 +25,7 @@ So, I started to compile another table, where I try to list some main dependenci
 dependent programming language | underlying programming language or environment | comment
 --- | --- | ---
 Ada | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC see: https://ftp.gnu.org/gnu/gcc/
-C | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosted nowadays, not even C anymore with GCC and LLVM (**)
+C / C++ | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosted nowadays, not even C anymore with GCC and LLVM (**)
 C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosted nowadays; Microsoft's .NET Framework (CLR = Common Language Runtime) is then used to run the compiled Common Intermediate Language (CIL) code by Just-In-Time (JIT) compilation into native machine code | [Roslyn Compiler](https://github.com/dotnet/roslyn/tree/main/docs/compilers#roslyn-compiler)
 C3 | C for LLVM | [Compiling on Ubuntu 24.04 LTS](https://github.com/c3lang/c3c#compiling-on-ubuntu-2404-lts)
 Chapel | C++ for LLVM and clang | [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
