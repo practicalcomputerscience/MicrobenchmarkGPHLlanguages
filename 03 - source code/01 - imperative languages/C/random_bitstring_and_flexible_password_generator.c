@@ -251,7 +251,7 @@ int main()
       // printf("i = %d -- %c\n", i, char1b);  // for testing
     }
 
-  j++;
+    j++;
   }
 
   printf("\nYour password of %d characters is: %s\n", N_CHAR, pw_chars);
@@ -260,5 +260,6 @@ int main()
 }
 
 // end of random_bitstring_and_flexible_password_generator.c
+
 
 
