@@ -31,7 +31,7 @@ C                 | 147 | compiled, very mature language (2026-01-11)
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
-C++               | 131 | compiled, very mature language
+C++               | 131 | compiled, very mature language (2026-01-15); memory-safe source code can be very well more concise and compiled to a bit faster program compared to C
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
 Zig               | 129 | compiled, young language still going through major changes
