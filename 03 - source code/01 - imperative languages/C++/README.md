@@ -1,5 +1,3 @@
-2026-01-15: work in progress
-
 # C++
 
 https://isocpp.org/
