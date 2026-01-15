@@ -213,7 +213,7 @@ int main()
   char bin0_1[9];
 
   int i = 0;  // char counter for the password
-  int j = 0;  // char counter for x
+  int j = 0;  // counter for x
 
   while (i < N_CHAR) {
     // printf("%d\n", x[j]);      // for testing
@@ -260,4 +260,5 @@ int main()
 }
 
 // end of random_bitstring_and_flexible_password_generator.c
+
 
