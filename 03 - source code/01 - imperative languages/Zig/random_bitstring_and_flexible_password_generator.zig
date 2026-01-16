@@ -156,7 +156,7 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
         const answer_str = try stdin.takeDelimiterExclusive('\n');  // 2025-12-19
         // std.debug.print("\nanswer_str = {s}", .{answer_str});  // for testing
-        stdin.tossBuffered();  // essential: "clear" this buffer!stdin.tossBuffered();  // essential: "clear" this buffer!
+        stdin.tossBuffered();  // essential: "clear" this buffer!
 
         if ( std.mem.eql(u8, answer_str, "y")) {
             answer = true;
@@ -265,3 +265,4 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 }
 
 // end of random_bitstring_and_flexible_password_generator.zig
+
