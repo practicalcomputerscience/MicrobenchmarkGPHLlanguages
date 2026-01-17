@@ -37,7 +37,7 @@ Additionally, I think that it's also interesting to implement another concept th
 
 #### Nim's Memory Management
 
-It should be noted that Nim by default, something I didn't play with, is a **garbage-collected** programming language: [Nim's Memory Management](https://nim-lang.org/1.4.8/gc.html)
+It should be noted that Nim by default is a **garbage-collected** programming language: [Nim's Memory Management](https://nim-lang.org/1.4.8/gc.html), something I didn't play with.
 
 However, [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) is also a garbage-collected programming language, and the Go version has an execution time of under 16 milliseconds.
 
