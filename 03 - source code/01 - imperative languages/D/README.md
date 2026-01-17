@@ -21,6 +21,18 @@ However, one could argue that something similar to Java and its contenders happe
 
 ---
 
+You have the choice of three compilers (in Linux and architectures i386, amd64):
+
+- DMD ("Digital Mars D compiler"): Official reference compiler
+- GDC: GCC-based D compiler
+- LDC: LLVM-based D compiler
+
+On "Which compiler should I use?" this answer is given: "For beginners, DMD is the recommended choice, as it is the implementation closest to the D Language Specification." from: https://wiki.dlang.org/Compilers
+
+However: "GDC and LDC both generate substantially faster binaries than DMD."
+
+So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster executable than Homebrew clang 21.1.7: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
+
 TBD
 
 <br/>
