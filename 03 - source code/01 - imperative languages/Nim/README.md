@@ -35,6 +35,16 @@ Additionally, I think that it's also interesting to implement another concept th
 
 <br/>
 
+#### Nim's Memory Management
+
+It should be noted that Nim by default, something I didn't play with, is a **garbage-collected** programming language: [Nim's Memory Management](https://nim-lang.org/1.4.8/gc.html)
+
+However, [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) is also a garbage-collected programming language, and the Go version has an execution time of under 16 milliseconds.
+
+And [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) too ([Avoiding memory allocations](https://crystal-lang.org/reference/1.19/guides/performance.html#avoiding-memory-allocations)), with the Chrystal version featuring a sensational execution time of under 8 milliseconds.
+
+<br/>
+
 ### Why is Nim still not very popular?
 
 Being on the market since 2008, I had this question, and just saw that I'm not the only one to ask it:
