@@ -48,6 +48,17 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 $
 ```
 
+### DMD 
+
+```
+$ curl -fsS https://dlang.org/install.sh | bash -s dmd
+$ source ~/dlang/dmd-2.112.0/activate  # for using dmd-2.112.0
+(dmd-2.112.0)...:~/scripts/D$
+...
+$ deactivate  # restoring to default environment
+$
+```
+
 TBD
 
 <br/>
