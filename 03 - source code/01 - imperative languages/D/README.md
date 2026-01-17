@@ -35,7 +35,9 @@ However: **"GDC and LDC both generate substantially faster binaries than DMD."**
 
 So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster executable than Homebrew clang 21.1.7: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
 
-I installed GDC like this:
+### Installing the GDC
+
+I installed the GDC like this:
 
 ```
 ($ sudo apt install zlib1g=1:1.3.dfsg-3.1ubuntu2
@@ -50,14 +52,17 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 $
 ```
 
-### DMD 
+### Installing DMD
+
+I installed DMD like described here: https://dlang.org/download.html#dmd
 
 ```
 $ curl -fsS https://dlang.org/install.sh | bash -s dmd
 $ source ~/dlang/dmd-2.112.0/activate  # for using dmd-2.112.0
-(dmd-2.112.0)...:~/scripts/D$
-...
-$ deactivate  # restoring to default environment
+(dmd-2.112.0)...:~/scripts/D$ dmd --version
+DMD64 D Compiler v2.112.0
+Copyright (C) 1999-2025 by The D Language Foundation, All Rights Reserved written by Walter Bright
+(dmd-2.112.0)...:~/scripts/D$ deactivate  # for restoring the default environment
 $
 ```
 
