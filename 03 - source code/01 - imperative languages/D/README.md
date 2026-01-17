@@ -29,9 +29,22 @@ You have the choice of three compilers (in Linux and architectures i386, amd64):
 
 On "Which compiler should I use?" this answer is given: "For beginners, DMD is the recommended choice, as it is the implementation closest to the D Language Specification." from: https://wiki.dlang.org/Compilers
 
-However: "GDC and LDC both generate substantially faster binaries than DMD."
+However: **"GDC and LDC both generate substantially faster binaries than DMD."**
 
 So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster executable than Homebrew clang 21.1.7: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
+
+I installed GDC like this:
+
+```
+($ sudo apt install zlib1g=1:1.3.dfsg-3.1ubuntu2  # this version was needed in my system; just as a tip here when version conflicts like this exist)
+$ sudo apt install gdc
+...
+$ gdc --version
+gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+...
+$
+```
 
 TBD
 
