@@ -4,6 +4,8 @@
 
 https://dlang.org/
 
+https://gdcproject.org/
+
 <br/>
 
 One of the first languages, since 1999, with the aim to overcome the deficits of C++: 
