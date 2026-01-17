@@ -8,7 +8,7 @@ https://gdcproject.org/
 
 <br/>
 
-One of the first languages, since 1999, with the aim to overcome the deficits of C++: 
+D is one of the first languages, since 1999, with the aim to overcome the deficits of C++: 
 
 2020: _Origins of the D Programming Language_
 
@@ -23,6 +23,8 @@ However, one could argue that something similar to Java and its contenders happe
 
 ---
 
+### Installing the GDC
+
 You have the choice of three compilers (in Linux and architectures i386, amd64):
 
 - DMD ("Digital Mars D compiler"): Official reference compiler
@@ -33,11 +35,7 @@ On "Which compiler should I use?" this answer is given: "For beginners, DMD is t
 
 However: **"GDC and LDC both generate substantially faster binaries than DMD."**
 
-So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster executable than Homebrew clang 21.1.7: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
-
-### Installing the GDC
-
-I installed the GDC like this:
+So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster executable than Homebrew clang 21.1.7: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c). I installed it like this:
 
 ```
 ($ sudo apt install zlib1g=1:1.3.dfsg-3.1ubuntu2
@@ -52,19 +50,25 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 $
 ```
 
-### Installing DMD
+### Garbage collection
 
-I installed DMD like described here: https://dlang.org/download.html#dmd
+Same like [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nims-memory-management), D by default is a garbage-collected programming language.
+
+With the help of "Big AI", I had a short look into the possibilities for source code which is disabling the garbage collection, while retaining the _gdc_ compiler, so, writing something like this:
 
 ```
-$ curl -fsS https://dlang.org/install.sh | bash -s dmd
-$ source ~/dlang/dmd-2.112.0/activate  # for using dmd-2.112.0
-(dmd-2.112.0)...:~/scripts/D$ dmd --version
-DMD64 D Compiler v2.112.0
-Copyright (C) 1999-2025 by The D Language Foundation, All Rights Reserved written by Walter Bright
-(dmd-2.112.0)...:~/scripts/D$ deactivate  # for restoring the default environment
-$
+...
+@nogc int main() {
+    ...
+    int* x = cast(int*) malloc(int.sizeof * END);
+    ...  // and many more constructs like this memory allocation
+    free(x);
+}
 ```
+
+However, this kind of re-writing would be a major effort, since only for example function call _std.random.uniform(1, m, rnd)_ is a _non-@nogc function_, and thus must be replaced.
+
+Doing such re-writing would lead to massively low-level, non-idiomatic source code, something I generally refrain from in this project.
 
 TBD
 
