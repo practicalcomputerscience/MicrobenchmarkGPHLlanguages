@@ -38,7 +38,9 @@ So, I'll start with GDC after my experience that g++ v.13.3.0 compiled a faster 
 I installed GDC like this:
 
 ```
-($ sudo apt install zlib1g=1:1.3.dfsg-3.1ubuntu2  # this version was needed in my system; just as a tip here when version conflicts like this exist)
+($ sudo apt install zlib1g=1:1.3.dfsg-3.1ubuntu2
+# this version was needed in my system; just as a tip here when version conflicts like this exist)
+$
 $ sudo apt install gdc
 ...
 $ gdc --version
