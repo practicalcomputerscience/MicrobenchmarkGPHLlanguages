@@ -6,6 +6,8 @@ https://dlang.org/
 
 https://gdcproject.org/
 
+DUB, the D package registry: https://code.dlang.org/
+
 <br/>
 
 D is one of the first languages, since 1999, with the aim to overcome the deficits of C++: 
@@ -50,6 +52,8 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 $
 ```
 
+<br/>
+
 ### Garbage collection
 
 Same like [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nims-memory-management), D by default is a garbage-collected programming language.
@@ -69,6 +73,26 @@ With the help of "Big AI", I had a short look into the possibilities for source 
 However, this kind of re-writing would be a major effort, since only for example function call _std.random.uniform(1, m, rnd)_ is a _non-@nogc function_, and thus must be replaced.
 
 Doing such re-writing would lead to massively low-level, non-idiomatic source code, something I generally refrain from in this project.
+
+<br/>
+
+### On how to do demanding string building in D
+
+TBD
+
+<br/>
+
+### Why is D still not very popular?
+
+Same like at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question.
+
+However, there's a big difference to Nim: D is a U.S. based programming language, which should have made it easier to grow its ecosystem fast, at least theoretically from my point of view.
+
+However 2: both languages are only #51 to #100 languages in the TIOBE Index as of January 2026: https://www.tiobe.com/tiobe-index/
+
+After reading a number of posts, I came to the conclusion that D was never too far away from C++ to really differentiate itself positively. One could claim too, that also D is missing an "elevator pitch selling point"; see at Nim at: [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take)
+
+Even though only a [bottom answer](https://softwareengineering.stackexchange.com/a/232739) (from 2014), I found there an interesting argument, one that D shares with Nim: until this day, both languages have remained "one, single, vendor" ecosystems, where I should add: "one, **small**, single, vendor" ecosystem.
 
 TBD
 
