@@ -41,7 +41,7 @@ It should be noted that Nim by default is a **garbage-collected** programming la
 
 However, [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) is also a garbage-collected programming language, and the Go version has an execution time of under 16 milliseconds.
 
-And [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) too ([Avoiding memory allocations](https://crystal-lang.org/reference/1.19/guides/performance.html#avoiding-memory-allocations)), with the Chrystal version featuring a sensational execution time of under 8 milliseconds.
+And [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) too ([Avoiding memory allocations](https://crystal-lang.org/reference/1.19/guides/performance.html#avoiding-memory-allocations)), with the Chrystal version of the "speed part" of this microbenchmark program featuring a sensational execution time of under 8 milliseconds.
 
 <br/>
 
