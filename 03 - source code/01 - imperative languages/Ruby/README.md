@@ -6,6 +6,8 @@ https://www.ruby-lang.org/en/
 
 https://github.com/planetruby/awesome-rubies
 
+IR often stands for "Intermediate Representation", which is then a compiler's internal language.
+
 ---
 
 Table of contents:
@@ -74,9 +76,11 @@ Here's the original branch repository for the MJIT compiler in GitHub (*): [rtl_
 
 The MJIT compiler of the official Ruby distributions is still using Ruby’s **YARV** bytecode: YARV = Yet Another Ruby VM (Virtual Machine), which has been the official Ruby interpreter since Ruby 1.9, introduced in 2007/2008.
 
+YARV has been "designed for an interpreter" (**), which makes designing a JIT compiler for it difficult.
+
 ### YJIT in 2021
 
-However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021 (**).
+However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
 
 However 2: as it can be seen at the table above, YJIT is not part of the commonly distributed Ruby version 3.2.3.
 
@@ -88,7 +92,7 @@ In 2025, and from the same team, an early successor of YJIT has been introduced:
 to overcome YJIT's deficits in "large-scale production environments".
 
 Same like MJIT, also ZJIT is using Ruby’s YARV bytecode as input data, see from: [ZJIT has been merged into Ruby](https://railsatscale.com/2025-05-14-merge-zjit/),
-and same like MJIT, ZJIT is again a "method-based" JIT (YJIT is "based on Basic Block Versioning (BBV)" (**)).
+and same like MJIT, ZJIT is again a conventional "method-based" JIT, while YJIT is based on a new concept called "Lazy Basic Block Versioning" (LBBV), see from: https://de.slideshare.net/slideshow/zjit-building-a-next-generation-ruby-jit/278807093 (**)
 
 A method-based JIT is "a JIT that optimizes hot code paths using a method as the smallest optimization target", see from: https://www.heroku.com/blog/ruby-mjit/.
 
@@ -100,7 +104,11 @@ Ruby's help command says this: _enable JIT for the platform, same as --mjit (exp
 
 <br/>
 
-So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code.
+So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code. Let's see if a ruby switch named _--zjit_ may be officially supported some day. (TBD)
+
+_$ ./configure --enable-yjit_ (TBD)
+
+_$ ./configure --enable-zjit_ (TBD)
 
 <br/>
 
