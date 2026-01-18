@@ -67,7 +67,7 @@ possible to the access the (Linux) file system, which - unintentionally again - 
 
 The Hack example shows that also big corporations with decent ecosystems can fail with a new general purpose, high-level programming language.
 
-Think of the fate of the **Modula-3** language of the once mighty and profitable Digital Equipment Corporation, together with Olivetti, for example: https://www.modula3.org/quotes/: this language is more dead now than **Self**, which just got an update last year: https://selflanguage.org/
+Think of the fate of the **Modula-3** language of the once mighty and profitable Digital Equipment Corporation, together with Olivetti, for example: https://www.modula3.org/quotes/: this language is more dead now than **Self**, which just got an update in 2024: https://selflanguage.org/
 
 > I wish the whole world were programming in Modula-3.
 
