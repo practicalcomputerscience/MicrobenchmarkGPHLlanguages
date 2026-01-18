@@ -101,9 +101,9 @@ ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
 $
 ```
 
-Since Ruby's execution time is already beating Python's hands down, I refrained from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) as of 2026-01-18.
+Since Ruby's execution time is already beating Python's hands down, I refrain from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) as of 2026-01-18.
 
-For the same reason, I also refrained from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby).
+For the same reason, I also refrain from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby).
 
 <br/>
 
