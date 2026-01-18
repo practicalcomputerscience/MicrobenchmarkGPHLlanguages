@@ -26,7 +26,7 @@ Table of contents:
 
 While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024.
 
-These claims of good execution speed motivated me to give Ruby a try (though I didn't have it even on my long list), only to be very positively surprised:
+These claims of good execution speed motivated me to give Ruby a try (though I didn't even have it on my long list), only to be very positively surprised:
 
 - [Python 3.12.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py): 139 milliseconds 
 - [Ruby 3.2.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/random_streams_for_perf_stats.rb): 73 milliseconds
@@ -76,13 +76,13 @@ Here's the original branch repository for the MJIT compiler in GitHub (*): [rtl_
 
 The MJIT compiler of the official Ruby distributions is still using Ruby’s **YARV** bytecode: YARV = Yet Another Ruby VM (Virtual Machine), which has been the official Ruby interpreter since Ruby 1.9, introduced in 2007/2008.
 
-YARV has been "designed for an interpreter" (**), which makes designing a JIT compiler for it difficult.
+YARV has been "designed for an interpreter" (**), which makes designing a JIT compiler for Ruby difficult.
 
 ### YJIT in 2021
 
-However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
+MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see at: [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
 
-However 2: as it can be seen at the table above, YJIT is not part of the commonly distributed Ruby version 3.2.3.
+However, and as it can be seen at the table above, YJIT is not part of the commonly distributed Ruby version 3.2.3.
 
 **CRuby** is the common implementation of Ruby (same like CPython for Python).
 
@@ -91,10 +91,10 @@ However 2: as it can be seen at the table above, YJIT is not part of the commonl
 In 2025, and from the same team, an early successor of YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
 to overcome YJIT's deficits in "large-scale production environments".
 
-Same like MJIT, also ZJIT is using Ruby’s YARV bytecode as input data, see from: [ZJIT has been merged into Ruby](https://railsatscale.com/2025-05-14-merge-zjit/),
-and same like MJIT, ZJIT is again a conventional "method-based" JIT, while YJIT is based on a new concept called "Lazy Basic Block Versioning" (LBBV), see from: https://de.slideshare.net/slideshow/zjit-building-a-next-generation-ruby-jit/278807093 (**)
+Same like MJIT and YJIT, also ZJIT is using Ruby’s YARV bytecode as input data, see from here: [ZJIT has been merged into Ruby](https://railsatscale.com/2025-05-14-merge-zjit/),
+and same like MJIT, ZJIT is again a conventional "method-based" JIT, while YJIT is based on a new concept called "Lazy Basic Block Versioning" (LBBV), see from here: https://de.slideshare.net/slideshow/zjit-building-a-next-generation-ruby-jit/278807093 (**)
 
-A method-based JIT is "a JIT that optimizes hot code paths using a method as the smallest optimization target", see from: https://www.heroku.com/blog/ruby-mjit/.
+A method-based JIT is "a JIT that optimizes hot code paths using a method as the smallest optimization target", see from here: https://www.heroku.com/blog/ruby-mjit/
 
 By the way: building Ruby from source for the usage with YJIT or ZJIT needs a working Rust compiler: _$ curl https://sh.rustup.rs -sSf | sh; rustc --version_
 
@@ -106,15 +106,13 @@ Ruby's help command says this: _enable JIT for the platform, same as --mjit (exp
 
 <br/>
 
-So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code. Let's see if a ruby switch named _--zjit_ may be officially supported some day.
+So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code.
 
 <br/>
 
 ## Installation tips
 
-Building the latest version of Ruby from sources ([Quick start guide](https://github.com/ruby/ruby/blob/master/doc/contributing/building_ruby.md#quick-start-guide)) needs an older Ruby installation.
-
-Thus, I just installed Ruby with Ubuntu 24 LTS's package management: 
+Building the latest version of Ruby from sources ([Quick start guide](https://github.com/ruby/ruby/blob/master/doc/contributing/building_ruby.md#quick-start-guide)) needs an older Ruby installation. Thus, I just installed Ruby with Ubuntu 24 LTS's package management: 
 
 ```
 $ sudo apt install ruby
@@ -124,9 +122,17 @@ ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
 $
 ```
 
-Since Ruby's execution time is already beating Python's hands down, I refrain from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) as of 2026-01-18.
+Since Ruby's execution time is already beating Python's hands down, I refrain from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) on my testing system as of 2026-01-18.
 
-For the same reason, I also refrain from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby).
+For the same reason, I also refrain from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby) on my testing system.
+
+<br/>
+
+However, on a different Ubuntu 24 LTS system I experimented with installing latest Ruby version 4.0.1 (https://www.ruby-lang.org/en/news/2026/01/13/ruby-4-0-1-released/) as of 2026-01-18, and found out that building it "naked" from sources isn't so easy.
+
+But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above), when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
+
+Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% longer!
 
 <br/>
 
