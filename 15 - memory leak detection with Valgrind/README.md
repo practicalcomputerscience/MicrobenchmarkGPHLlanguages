@@ -76,7 +76,7 @@ Your password of 12 characters is: ^0JSm*SO;|RX
 $ 
 ```
 
-I ran Valgrind only on programs from compiled languages, not scripting languages like Python for example.
+I ran Valgrind only on programs from compiled languages, not scripting languages like Python or Ruby for example.
 
 Another, maybe overlooked fact: I could repeat all test results as far as I have done repeated tests.
 
