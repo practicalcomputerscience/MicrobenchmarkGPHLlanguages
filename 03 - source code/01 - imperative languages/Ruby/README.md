@@ -24,7 +24,7 @@ Table of contents:
 
 While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024.
 
-The new claims of good speed motivated me to give Ruby a try (though I didn't have it even on my long list), only to be very positively surprised:
+These claims of good execution speed motivated me to give Ruby a try (though I didn't have it even on my long list), only to be very positively surprised:
 
 - [Python 3.12.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py): 139 milliseconds 
 - [Ruby 3.2.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/random_streams_for_perf_stats.rb): 73 milliseconds
@@ -91,7 +91,7 @@ to overcome YJIT's deficits in "large-scale production environments".
 
 This leaves me this question: what kind of JIT compilation do you get, in version 3.2.3 at least, when you use Ruby's _--jit_ switch?
 
-Ruby's help command says this: _enable JIT for the platform, same as --mjit (experimental)_, with _--mjit_ to: _enable C compiler-based JIT compiler (experimental)_
+Ruby's help command says this: _enable JIT for the platform, same as --mjit (experimental)_, with switch _--mjit_ to: _enable C compiler-based JIT compiler (experimental)_
 
 <br/>
 
