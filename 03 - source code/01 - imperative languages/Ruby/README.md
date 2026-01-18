@@ -90,7 +90,7 @@ to overcome YJIT's deficits in "large-scale production environments".
 Same like MJIT, also ZJIT is using Ruby’s YARV bytecode as input data, see from: [ZJIT has been merged into Ruby](https://railsatscale.com/2025-05-14-merge-zjit/),
 and same like MJIT, ZJIT is again a "method-based" JIT (YJIT is "based on Basic Block Versioning (BBV)" (**)).
 
-A method-based JIT, is "a JIT that optimizes hot code paths using a method as the smallest optimization target." (https://www.heroku.com/blog/ruby-mjit/).
+A method-based JIT is "a JIT that optimizes hot code paths using a method as the smallest optimization target", see from: https://www.heroku.com/blog/ruby-mjit/.
 
 <br/>
 
