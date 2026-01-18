@@ -10,16 +10,16 @@ https://github.com/planetruby/awesome-rubies
 
 ## Execution speed
 
-While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024
+While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024.
 
-The new claims of good speed motivated me to give Ruby a try (though I didn't had it even on my long list), only to be very positively surprised:
+The new claims of good speed motivated me to give Ruby a try (though I didn't have it even on my long list), only to be very positively surprised:
 
 - [Python 3.12.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py): 139 milliseconds 
-- [Ruby 3.2.3](TBD): 73 milliseconds
+- [Ruby 3.2.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/random_streams_for_perf_stats.rb): 73 milliseconds
 
 ..for the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments) of this microbenchmark program.
 
-Same like Python (_StringIO_), Ruby has a string builder:
+Same like Python (called _StringIO_), Ruby has a string builder of the same name:
 
 ```
 ...
@@ -60,17 +60,15 @@ See also these articles, both from 2018:
 
 Here's the original branch repository for the MJIT compiler in GitHub (*): [rtl_mjit_branch](https://github.com/vnmakarov/ruby/tree/rtl_mjit_branch#whats-the-branch-about)
 
-Though, the MJIT compiler is still using Ruby’s YARV bytecode: YARV = Yet Another Ruby VM (Virtual Machine), which has been the official Ruby interpreter since Ruby 1.9 in 2007/2008.
-
-<br/>
+The MJIT compiler of the official Ruby distributions is still using Ruby’s **YARV** bytecode: YARV = Yet Another Ruby VM (Virtual Machine), which has been the official Ruby interpreter since Ruby 1.9, introduced in 2007/2008.
 
 ### YJIT in 2021
 
 However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
 
-However 2: as it can be seen at the table above, YJIT has not been a part of commonly distributed Ruby version 3.2.3.
+However 2: as it can be seen at the table above, YJIT is not part of the commonly distributed Ruby version 3.2.3.
 
-<br/>
+**CRuby** is the common implementation of Ruby (same like CPython for Python).
 
 ### ZJIT
 
@@ -81,11 +79,11 @@ to overcome YJIT's deficits in "large-scale production environments".
 
 This leaves me this question: what kind of JIT compilation do you get, in version 3.2.3 at least, when you use Ruby's _--jit_ switch?
 
-Ruby's help command says this: _enable JIT for the platform, same as --mjit (experimental)_, with --mjit saying: _enable C compiler-based JIT compiler (experimental)_
+Ruby's help command says this: _enable JIT for the platform, same as --mjit (experimental)_, with _--mjit_ to: _enable C compiler-based JIT compiler (experimental)_
 
 <br/>
 
-So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development.
+So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code.
 
 <br/>
 
@@ -93,7 +91,7 @@ So, all in all, it looks like that the JIT compilation landscape of Ruby is stil
 
 Building the latest version of Ruby from sources ([Quick start guide](https://github.com/ruby/ruby/blob/master/doc/contributing/building_ruby.md#quick-start-guide)) needs an older Ruby installation.
 
-So, I just installed it with Ubuntu's package management: 
+Thus, I just installed Ruby with Ubuntu 24 LTS's package management: 
 
 ```
 $ sudo apt install ruby
@@ -106,10 +104,6 @@ $
 Since Ruby's execution time is already beating Python's hands down, I refrained from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) as of 2026-01-18.
 
 For the same reason, I also refrained from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby).
-
-
-
-
 
 <br/>
 
