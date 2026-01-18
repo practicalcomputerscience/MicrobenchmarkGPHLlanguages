@@ -91,7 +91,7 @@ Perl 5             | 0
 Picat (old B-Prolog) | 8
 Prolog, SWI        | 11
 PowerShell         | 0
-Python             | 0
+Python             | 1
 Roc                | 9
 Rust               | 0
 Scala              | 0
