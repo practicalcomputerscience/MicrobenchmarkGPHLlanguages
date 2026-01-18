@@ -96,6 +96,8 @@ and same like MJIT, ZJIT is again a conventional "method-based" JIT, while YJIT 
 
 A method-based JIT is "a JIT that optimizes hot code paths using a method as the smallest optimization target", see from: https://www.heroku.com/blog/ruby-mjit/.
 
+By the way: building Ruby from source for the usage with YJIT or ZJIT needs a working Rust compiler: _$ curl https://sh.rustup.rs -sSf | sh; rustc --version_
+
 <br/>
 
 This leaves me this question: what kind of JIT compilation do you get, in version 3.2.3 at least, when you use Ruby's _--jit_ switch?
@@ -104,11 +106,7 @@ Ruby's help command says this: _enable JIT for the platform, same as --mjit (exp
 
 <br/>
 
-So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code. Let's see if a ruby switch named _--zjit_ may be officially supported some day. (TBD)
-
-_$ ./configure --enable-yjit_ (TBD)
-
-_$ ./configure --enable-zjit_ (TBD)
+So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code. Let's see if a ruby switch named _--zjit_ may be officially supported some day.
 
 <br/>
 
