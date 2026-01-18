@@ -49,6 +49,7 @@ Kotlin            | 109 | interpreted, young language (together with Java ecosys
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
+Ruby              |  99 | interpreted, very mature language
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
 Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity (2026-01-13) 
 Mojo              |  91 | compiled, very young language (2026-01-10)
@@ -93,6 +94,7 @@ Prolog, SWI        | 11
 PowerShell         | 0
 Python             | 1
 Roc                | 9
+Ruby               | 1
 Rust               | 0
 Scala              | 0
 Scheme, Bigloo     | 7
