@@ -8,6 +8,18 @@ https://github.com/planetruby/awesome-rubies
 
 ---
 
+Table of contents:
+
+- [Execution speed](#execution-speed)
+- [MJIT in 2018](#mjit-in-2018)
+- [YJIT in 2021](#yjit-in-2021)
+- [ZJIT in 2025](#zjit-in-2025)
+- [Installation tips](#installation-tips)
+
+<br/>
+
+---
+
 ## Execution speed
 
 While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024.
@@ -70,9 +82,9 @@ However 2: as it can be seen at the table above, YJIT is not part of the commonl
 
 **CRuby** is the common implementation of Ruby (same like CPython for Python).
 
-### ZJIT
+### ZJIT in 2025
 
-In 2025, and from the same team, a successor to YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
+In 2025, and from the same team, a successor of YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
 to overcome YJIT's deficits in "large-scale production environments".
 
 <br/>
