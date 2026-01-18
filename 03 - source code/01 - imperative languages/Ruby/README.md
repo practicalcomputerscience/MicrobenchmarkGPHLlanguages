@@ -1,5 +1,3 @@
-2026-01-18: work in progress
-
 # Ruby
 
 https://www.ruby-lang.org/en/
