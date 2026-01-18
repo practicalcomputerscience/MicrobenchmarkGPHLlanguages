@@ -1,0 +1,116 @@
+2026-01-18: work in progress
+
+# Ruby
+
+https://www.ruby-lang.org/en/
+
+https://github.com/planetruby/awesome-rubies
+
+---
+
+## Execution speed
+
+While Ruby had a reputation to be rather on the slow side, this has apparently changed significantly in the last couple of years: [Ruby Performance Evolution: From 1.0 to Today](https://dev.to/daviducolo/ruby-performance-evolution-from-10-to-today-4hc0) from 17. Dez. 2024
+
+The new claims of good speed motivated me to give Ruby a try (though I didn't had it even on my long list), only to be very positively surprised:
+
+- [Python 3.12.3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py): 139 milliseconds 
+- [Ruby 3.2.3](TBD): 73 milliseconds
+
+..for the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments) of this microbenchmark program.
+
+Same like Python (_StringIO_), Ruby has a string builder:
+
+```
+...
+require 'stringio'
+...
+bits_x   = StringIO.new
+...
+  bits_x_str = format('%016b', x[i])
+  bits_x.write(bits_x_str)
+...
+```
+
+Playing with Ruby's (default) possibilities for just-in-time (JIT) compilation didn't improve the execution speed:
+
+command | exe time (real of time command in a single run)
+--- | ---
+_$ ruby ./random_streams_for_perf_stats.rb_ | 76 milliseconds
+_$ ruby --mjit ./random_streams_for_perf_stats.rb_ | 83 milliseconds
+_$ ruby --jit ./random_streams_for_perf_stats.rb_  | 85 milliseconds
+_$ ruby --yjit ./random_streams_for_perf_stats.rb_ | _ruby: warning: Ruby was built without YJIT support. You may need to install rustc to build Ruby with YJIT._
+
+<br/>
+
+### MJIT in 2018
+
+The first major JIT success has been MJIT ("MRI JIT" for "Matz's Ruby Interpreter JIT" named after Ruby creator Yukihiro Matsumoto ("Matz"), or in short "MJIT",
+and also named "Matz JIT" or "Method-based JIT"), which was introduced with [Ruby 2.6.0 Released](https://www.ruby-lang.org/en/news/2018/12/25/ruby-2-6-0-released/) in 2018:
+
+> The JIT compiler aims to improve the performance of Ruby programs. Unlike traditional JIT compilers which operate in-process, 
+> Ruby’s JIT compiler writes out C code to disk and spawns a common C compiler to generate native code.
+
+The MJIT compiler is doing this with existing compilers, see at (*) below.
+
+See also these articles, both from 2018:
+
+- [The method JIT compiler for Ruby 2.6](https://k0kubun.medium.com/the-method-jit-compiler-for-ruby-2-6-388ee0989c13)
+- [Ruby’s New JIT](https://developer.squareup.com/blog/rubys-new-jit/), which lists prior attempts of JIT compilation in Ruby
+
+Here's the original branch repository for the MJIT compiler in GitHub (*): [rtl_mjit_branch](https://github.com/vnmakarov/ruby/tree/rtl_mjit_branch#whats-the-branch-about)
+
+Though, the MJIT compiler is still using Ruby’s YARV bytecode: YARV = Yet Another Ruby VM (Virtual Machine), which has been the official Ruby interpreter since Ruby 1.9 in 2007/2008.
+
+<br/>
+
+### YJIT in 2021
+
+However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
+
+However 2: as it can be seen at the table above, YJIT has not been a part of commonly distributed Ruby version 3.2.3.
+
+<br/>
+
+### ZJIT
+
+In 2025, and from the same team, a successor to YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
+to overcome YJIT's deficits in "large-scale production environments".
+
+<br/>
+
+This leaves me this question: what kind of JIT compilation do you get, in version 3.2.3 at least, when you use Ruby's _--jit_ switch?
+
+Ruby's help command says this: _enable JIT for the platform, same as --mjit (experimental)_, with --mjit saying: _enable C compiler-based JIT compiler (experimental)_
+
+<br/>
+
+So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development.
+
+<br/>
+
+## Installation tips
+
+Building the latest version of Ruby from sources ([Quick start guide](https://github.com/ruby/ruby/blob/master/doc/contributing/building_ruby.md#quick-start-guide)) needs an older Ruby installation.
+
+So, I just installed it with Ubuntu's package management: 
+
+```
+$ sudo apt install ruby
+...
+$ ruby -v
+ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
+$
+```
+
+Since Ruby's execution time is already beating Python's hands down, I refrained from installing latest [Ruby version 4.0.1](https://github.com/ruby/ruby/releases/tag/v4.0.1) as of 2026-01-18.
+
+For the same reason, I also refrained from trying Ruby's (official) implementation on the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), called [TruffleRuby](https://github.com/truffleruby/truffleruby).
+
+
+
+
+
+<br/>
+
+##_end
