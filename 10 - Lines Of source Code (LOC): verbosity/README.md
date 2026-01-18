@@ -27,11 +27,11 @@ V                 | 179 | compiled, very young programming language: needs some 
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 C3                | 162 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
-C                 | 147 | compiled, very mature language (2026-01-11)
+C                 | 147 | compiled, very mature language | 2026-01-11
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
-C++               | 131 | compiled, very mature language (2026-01-15); memory-safe source code can be very well more concise and compiled to a bit faster program compared to C
+C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and compiled to a bit faster program compared to C | 2026-01-15
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
 Zig               | 129 | compiled, young language still going through major changes
@@ -49,10 +49,10 @@ Kotlin            | 109 | interpreted, young language (together with Java ecosys
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Julia             | 106 | just-in-time compiled, mature language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
-Ruby              |  99 | interpreted, very mature language
+Ruby              |  99 | interpreted, very mature language | 2026-01-18
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
-Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity (2026-01-13) 
-Mojo              |  91 | compiled, very young language (2026-01-10)
+Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-01-13 
+Mojo              |  91 | compiled, very young language | 2026-01-10
 PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
 
