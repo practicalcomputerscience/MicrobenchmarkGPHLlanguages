@@ -76,7 +76,7 @@ The MJIT compiler of the official Ruby distributions is still using Ruby’s **Y
 
 ### YJIT in 2021
 
-However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021.
+However, MJIT has "been less successful at delivering real-world speedups on widely used Ruby applications such as Ruby on Rails.", see [YJIT: Building a New JIT Compiler for CRuby](https://shopify.engineering/yjit-just-in-time-compiler-cruby#) from 2021 (**).
 
 However 2: as it can be seen at the table above, YJIT is not part of the commonly distributed Ruby version 3.2.3.
 
@@ -84,8 +84,13 @@ However 2: as it can be seen at the table above, YJIT is not part of the commonl
 
 ### ZJIT in 2025
 
-In 2025, and from the same team, a successor of YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
+In 2025, and from the same team, an early successor of YJIT has been introduced: [ZJIT: Building a Next Generation Ruby JIT](https://rubykaigi.org/2025/presentations/maximecb.html),
 to overcome YJIT's deficits in "large-scale production environments".
+
+Same like MJIT, also ZJIT is using Ruby’s YARV bytecode as input data, see from: [ZJIT has been merged into Ruby](https://railsatscale.com/2025-05-14-merge-zjit/),
+and same like MJIT, ZJIT is again a "method-based" JIT (YJIT is "based on Basic Block Versioning (BBV)" (**)).
+
+A method-based JIT, is "a JIT that optimizes hot code paths using a method as the smallest optimization target." (https://www.heroku.com/blog/ruby-mjit/).
 
 <br/>
 
