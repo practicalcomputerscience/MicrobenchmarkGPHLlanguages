@@ -15,6 +15,7 @@ Table of contents:
 - [YJIT in 2021](#yjit-in-2021)
 - [ZJIT in 2025](#zjit-in-2025)
 - [Installation tips](#installation-tips)
+- [mruby to make a standalone Ruby based app](#mruby-to-make-a-standalone-ruby-based-app)
 
 <br/>
 
@@ -131,6 +132,18 @@ However, on a different Ubuntu 24 LTS system I experimented with installing late
 But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above), when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
 
 Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% longer!
+
+<br/>
+
+### mruby to make a standalone Ruby based app
+
+Later I discovered [mruby](https://mruby.org/), a Ruby project officially sponsored by the government of Japan.
+
+TL;DR: it's not a panacea, but it works with the "speed part" of this microbenchmark program (and I'm sure it would work with the whole microbenchmark program), cutting off around 50% from the execution speed.
+
+Actually, mruby is generating a C-based wrapper around mruby's bytecode for its virtual machine inside from my point of view: "mruby can be linked and embedded within your application."
+
+Since this is a longer story, I made a subpage with more details: [mruby for embedding a Ruby application](./TBD)
 
 <br/>
 
