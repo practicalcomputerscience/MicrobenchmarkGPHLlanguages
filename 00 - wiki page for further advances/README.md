@@ -3,19 +3,22 @@
 2025-10-20: all major advances starting with scripting language [wren](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren#wren) and all major changes of existing documentation will be noted here
 
 ---
-2025-01-15: done: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
 
-2025-01-13: done: [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nim)
+2026-01-19: done: [Ruby](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#ruby)
 
-2025-01-12: cleaned up the "masterloop" in the [PowerShell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/PowerShell#powershell) programs a bit to have a more logical and efficient program
+2026-01-15: done: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
 
-2025-01-09: done: [Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin#odin)
+2026-01-13: done: [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nim)
 
-2025-01-06: done: [Fortran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Fortran#fortran)
+2026-01-12: cleaned up the "masterloop" in the [PowerShell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/PowerShell#powershell) programs a bit to have a more logical and efficient program
 
-2025-01-05: change of mind: I plan to implement the microbenchmark program, if possible for me, at last in [J](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/J#j), because I'm afraid that it will take me a long time, longer than a week for example. Although, my first baby steps in J worked. Before, I just shortly played with [ELI - A System for Programming with Arrays](https://fastarray.appspot.com/index.html), but didn't get it working. This language (from McGill University: https://www.sable.mcgill.ca/~hanfeng.c/eli/) hasn't been updated since 2015. The only question then is what to do with The Nial Language: https://www.nial-array-language.org/, as another array-oriented language.
+2026-01-09: done: [Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin#odin)
 
-2025-01-04: done: [Julia](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Julia#julia) (which is not a contender to Mojo or Chapel)
+2026-01-06: done: [Fortran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Fortran#fortran)
+
+2026-01-05: change of mind: I plan to implement the microbenchmark program, if possible for me, at last in [J](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/J#j), because I'm afraid that it will take me a long time, longer than a week for example. Although, my first baby steps in J worked. Before, I just shortly played with [ELI - A System for Programming with Arrays](https://fastarray.appspot.com/index.html), but didn't get it working. This language (from McGill University: https://www.sable.mcgill.ca/~hanfeng.c/eli/) hasn't been updated since 2015. The only question then is what to do with The Nial Language: https://www.nial-array-language.org/, as another array-oriented language.
+
+2026-01-04: done: [Julia](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Julia#julia) (which is not a contender to Mojo or Chapel)
 
 2025-12-31: full microbenchmark program in [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme). It highlights the differences to [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme).
 
@@ -41,9 +44,13 @@
 
 ---
 
+<br/>
+
 2026-01-15: so far, I haven't touched yet these corners of programming languages:
 
 - D (with GCC?) as a "natural" alternative to C++
+- Carbon Language: An experimental successor to C++: https://docs.carbon-lang.dev/#why-build-carbon
+- Eiffel: https://www.eiffel.org/
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
