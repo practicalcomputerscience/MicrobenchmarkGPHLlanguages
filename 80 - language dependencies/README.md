@@ -32,6 +32,7 @@ Chapel | C++ for LLVM and clang | [Building From Source](https://chapel-lang.org
 Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's partly self-hosted | the Java compiler itself is completely self-hosted since the late 90ies at least, see below at [Java](#java)
 Common Lisp (SBCL) | self-hosted; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
 Crystal | bootstrapping by using an older version of the Crystal compiler; self-hosted since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
+D | TBD | TBD
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
@@ -56,6 +57,7 @@ Prolog, SWI | C for gcc or clang | https://github.com/SWI-Prolog/swipl-devel
 Python | C for gcc or clang for CPython, which is the reference implementation for Python | see for example from [README.rst](https://github.com/python/cpython/blob/main/README.rst)
 Raku | Rakudo compiler: C for a C compiler, and a Perl 5 installation; bootstrapping also includes the help of NQP ("Not Quite Perl") files; multiplatform | [Build requirements (Installing from source)](https://github.com/rakudo/rakudo/blob/main/INSTALL.md#build-requirements-installing-from-source)
 Roc | Rust and later additionally Zig | [Building the new Roc compiler from source](https://github.com/roc-lang/roc/blob/main/BUILDING_FROM_SOURCE.md#building-the-new-roc-compiler-from-source)
+Ruby | C for gcc to implement the YARV (Yet Another Ruby VM) | [YARV: Yet Another RubyVM](http://www.atdot.net/yarv/oopsla2005eabstract-rc1.pdf) by its designer Koichi Sasada from 2005
 Rust | bootstrapping with a current beta release of the _rustc_ compiler; self-hosted since 2011; the Rust compiler was originally written in OCaml | [Bootstrapping the compiler](https://rustc-dev-guide.rust-lang.org/building/bootstrapping/intro.html)
 Scala | bootstrapping by using an older version of a Scala compiler since 2015: [We got liftoff!](https://dotty.epfl.ch/blog/2015/10/23/dotty-compiler-bootstraps.html); otherwise self-hosted (that is using Scala 3 resources); multiplatform | SJSIR = Scala JavaScript Intermediate Representation
 Scheme, Bigloo | Bigloo Scheme initially starts from a bootstrap version of it; then gradually self-hosting also with C code for gcc | [Bigloo Installation Notice](https://github.com/manuel-serrano/bigloo/blob/master/INSTALL.md#bigloo-installation-notice) and [configure](https://github.com/manuel-serrano/bigloo/blob/master/configure)
