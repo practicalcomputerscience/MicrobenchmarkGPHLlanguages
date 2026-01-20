@@ -141,9 +141,9 @@ Later I discovered [mruby](https://mruby.org/), a Ruby project officially sponso
 
 TL;DR: it's not a panacea, but it works with the "speed part" of this microbenchmark program (and I'm sure it would work with the whole microbenchmark program), cutting off around 50% from the execution speed.
 
-Actually, mruby is generating a C-based wrapper around mruby's bytecode for its virtual machine inside from my point of view: "mruby can be linked and embedded within your application."
+Actually, mruby is generating a C-based wrapper around mruby's bytecode for an application specific virtual machine inside: "mruby can be linked and embedded within your application."
 
-Since this is a longer story, I made a subpage with more details: [mruby for embedding a Ruby application](./mruby%20for%20embedding%20a%20Ruby%20application#mruby-to-make-a-standalone-ruby-based-app)
+Since this is a longer story, I made a subpage for a simple workflow: [mruby for embedding a Ruby application](./mruby%20for%20embedding%20a%20Ruby%20application#mruby-to-make-a-standalone-ruby-based-app)
 
 <br/>
 
