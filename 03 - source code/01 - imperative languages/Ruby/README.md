@@ -143,7 +143,7 @@ TL;DR: it's not a panacea, but it works with the "speed part" of this microbench
 
 Actually, mruby is generating a C-based wrapper around mruby's bytecode for an application specific virtual machine inside: "mruby can be linked and embedded within your application."
 
-Since this is a longer story, I made a subpage for a simple workflow: [mruby for embedding a Ruby application](./mruby%20for%20embedding%20a%20Ruby%20application#mruby-to-make-a-standalone-ruby-based-app)
+Since this is a longer story, I made a subpage with a simple workflow: [mruby for embedding a Ruby application](./mruby%20for%20embedding%20a%20Ruby%20application#mruby-to-make-a-standalone-ruby-based-app)
 
 <br/>
 
