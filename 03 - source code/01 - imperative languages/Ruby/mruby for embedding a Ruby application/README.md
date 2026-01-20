@@ -83,7 +83,7 @@ b/ the source code of the app itself
 
 ### Compiling to bytecode for mruby's virtual machine (vm)
 
-mruby obviously has its own implementation of a vm, see at: [The new bytecode](https://github.com/mruby/mruby/blob/master/doc/internal/opcode.md#the-new-bytecode), or: [vm.c](https://github.com/mruby/mruby/blob/master/src/vm.c), and which is also under active development.
+mruby has its own implementation of a (register-based) vm (+), called **RiteVM** (++), see at: [The new bytecode](https://github.com/mruby/mruby/blob/master/doc/internal/opcode.md#the-new-bytecode), or: [vm.c](https://github.com/mruby/mruby/blob/master/src/vm.c), and which is also under active development.
 
 So, talking about compiling at this point in the workflow, it's about compiling source code for a specific mruby implementation into bytecode for its (specific) vm, which is then packed into a **C array** just named _app_bytecode_:
 
@@ -167,6 +167,12 @@ However, this standalone executable has the same program execution time of about
 It looks like that embedding mruby's bytecode into a C program doesn't change the execution speed (much).
 
 Anyhow, "transpiling" the Ruby source code of the "speed part" of the microbenchmark program into mruby source code, and its virtual machine, reduced the program execution time by around 48%, which means that this program is a little bit faster than the Perl 5 version: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+
+<br/>
+
+(+) 2022: [Compiling Ruby. Part 2: RiteVM](https://lowlevelbits.org/compiling-ruby-part-2/)
+
+(++) RiteVM as seen here: [opcode.h](https://github.com/mruby/mruby/blob/master/include/mruby/opcode.h)
 
 <br/>
 
