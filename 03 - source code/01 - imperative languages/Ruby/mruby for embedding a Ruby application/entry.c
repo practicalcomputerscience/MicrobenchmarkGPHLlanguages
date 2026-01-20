@@ -9,7 +9,7 @@ workflow for mruby to make a standalone, native binary executable for Linux:
   $ cd mruby  # change into the project dir, that is the working dir
   <edit config file ./build_config/default.rb: add there: conf.gem :mgem => 'mruby-stringio'>
   $ rake  # compile mruby
-  <edit your ~/.bashrc config file to include path to the ./mruby working dir for convenience>
+  <edit your ~/.bashrc config file to include the path to the ./mruby/bin dir for convenience>
   $ mruby ./main.rb  # test the mruby source code before compiling it
   $ time mruby ./main.rb  # => real	0m0.037s
   ...
@@ -53,3 +53,4 @@ int main() {
 }
 
 // end of entry.c
+
