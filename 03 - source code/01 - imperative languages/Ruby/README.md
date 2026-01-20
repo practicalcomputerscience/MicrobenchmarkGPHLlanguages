@@ -106,10 +106,6 @@ Ruby's help command says this: _enable JIT for the platform, same as --mjit (exp
 
 <br/>
 
-So, all in all, it looks like that the JIT compilation landscape of Ruby is still under active development, and that JIT compilation is still not automatically activated when running Ruby source code.
-
-<br/>
-
 ## Installation tips
 
 Building the latest version of Ruby from sources ([Quick start guide](https://github.com/ruby/ruby/blob/master/doc/contributing/building_ruby.md#quick-start-guide)) needs an older Ruby installation. Thus, I just installed Ruby with Ubuntu 24 LTS's package management: 
@@ -134,7 +130,7 @@ However, on a different Ubuntu 24 LTS system I experimented with installing late
 
 But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above), when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
 
-Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% longer!
+Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% higher!
 
 However, with Ruby code like this:
 
@@ -148,9 +144,12 @@ puts fib(35)
 puts "Time: #{Time.now - start_time}s"
 ```
 
-..specifically switch _--yjit_ has a substantial, positive effect of reducing the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_)
+..switch _--yjit_ (same like _--jit_) had a substantial effect of reducing the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_).
 
-Switch _--zjit_ only offers a slight reduction of execution time by -11%.
+Switch _--zjit_ only yielded a slight reduction of execution time by -11%, though clearly measurable.
+
+> [!NOTE]
+> Using JIT compilation at Ruby has been for years and still is a moving target under active development.
 
 <br/>
 
@@ -158,7 +157,7 @@ Switch _--zjit_ only offers a slight reduction of execution time by -11%.
 
 Later I discovered [mruby](https://mruby.org/), a Ruby project officially sponsored by the government of Japan.
 
-TL;DR: it's not a panacea, but it works with the "speed part" of this microbenchmark program (and I'm sure it would work with the whole microbenchmark program), cutting off around 48% from the execution speed.
+TL;DR: it's not a panacea, but it works with the "speed part" of this microbenchmark program (and I'm sure it would work with the whole microbenchmark program), cutting off around 48% from the execution time.
 
 Actually, mruby is generating a C-based wrapper around mruby's bytecode for an application specific virtual machine inside: "mruby can be linked and embedded within your application."
 
