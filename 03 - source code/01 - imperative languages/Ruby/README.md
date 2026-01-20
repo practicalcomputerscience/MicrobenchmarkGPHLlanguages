@@ -15,6 +15,7 @@ Table of contents:
 - [YJIT in 2021](#yjit-in-2021)
 - [ZJIT in 2025](#zjit-in-2025)
 - [Installation tips](#installation-tips)
+- [JIT experiments with Ruby v.4](#jit-experiments-with-ruby-v4)
 - [mruby to make a standalone Ruby based app](#mruby-to-make-a-standalone-ruby-based-app)
 
 <br/>
@@ -127,11 +128,29 @@ For the same reason, I also refrain from trying Ruby's (official) implementation
 
 <br/>
 
+### JIT experiments with Ruby v.4
+
 However, on a different Ubuntu 24 LTS system I experimented with installing latest Ruby version 4.0.1 (https://www.ruby-lang.org/en/news/2026/01/13/ruby-4-0-1-released/) as of 2026-01-18, and found out that building it "naked" from sources isn't so easy.
 
 But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above), when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
 
 Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% longer!
+
+However, with Ruby code like this:
+
+```
+def fib(n)
+  return n if n <= 1
+  fib(n - 1) + fib(n - 2)
+end
+start_time = Time.now
+puts fib(35)
+puts "Time: #{Time.now - start_time}s"
+```
+
+..specifically switch _--yjit_ has a substantial, positive effect of reducing the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_)
+
+Switch _--zjit_ only offers a slight reduction of execution time by -11%.
 
 <br/>
 
