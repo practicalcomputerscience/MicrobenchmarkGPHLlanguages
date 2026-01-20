@@ -105,6 +105,8 @@ const uint8_t app_bytecode[] = {
 };
 ```
 
+<br/>
+
 ### Have a C program to define the program's entry point
 
 Here just named [entry.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/mruby%20for%20embedding%20a%20Ruby%20application/entry.c), and also located in the _./mruby_ directory:
@@ -158,13 +160,13 @@ real	0m0.037s
 $ 
 ```
 
-I also copied this executable to another, basic Linux system to see if its really a standalone executable without any dependencies (including testing the error handling when there's a problem with writing strings to files). Yes, it is.
+I also copied this executable to another, basic Linux system to see if it's really a standalone executable without any dependencies (including testing the error handling when there's a problem with writing strings to files). Yes, it is.
 
 However, this standalone executable has the same program execution time of about 37.5 milliseconds as running it with the mruby interpreter as seen above! So, I played with my usual gcc compiler switches to see if I could get a faster executable, but to no avail. The same with playing with the clang compiler.
 
 It looks like that embedding mruby's bytecode into a C program doesn't change the execution speed (much).
 
-Anyhow, "transpiling" the Ruby source code of the "speed part" of the microbenchmark program into mruby source code, and its virtual machine, reduced the program execution time by around 48%.
+Anyhow, "transpiling" the Ruby source code of the "speed part" of the microbenchmark program into mruby source code, and its virtual machine, reduced the program execution time by around 48%, which means that this program is a little bit faster than the Perl 5 version: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
 <br/>
 
