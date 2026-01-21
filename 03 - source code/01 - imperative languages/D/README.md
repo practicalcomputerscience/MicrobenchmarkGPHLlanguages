@@ -78,7 +78,7 @@ Doing such re-writing would lead to massively low-level, non-idiomatic source co
 
 ### On how to do demanding string building in D
 
-TBD
+TBD: on experiments here
 
 <br/>
 
