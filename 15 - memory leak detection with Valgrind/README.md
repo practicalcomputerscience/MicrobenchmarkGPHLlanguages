@@ -90,6 +90,7 @@ Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
 C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2025-12-18
 C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-15
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
+D | 256 bytes in 4 blocks | 224 bytes in 3 blocks | no | 2026-01-21
 Chapel | program doesn't finish | -- | no | 2025-12-18
 Common Lisp | 554,806 bytes in 12 blocks | 292,358 bytes in 10 blocks | no | 2026-01-10
 Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
