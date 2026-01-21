@@ -41,7 +41,7 @@ Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
-D                 | 116 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
+D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language
 Common Lisp       | 114 | compiled, very mature language
 Crystal           | 111 | compiled, young language
