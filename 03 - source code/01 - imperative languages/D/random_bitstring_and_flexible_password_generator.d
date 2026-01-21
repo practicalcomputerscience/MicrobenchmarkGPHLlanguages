@@ -30,7 +30,7 @@ import std.array : appender;
 import std.string;
 import std.conv;
 import std.algorithm;
-import core.stdc.stdlib : strtol;
+
 
 // Constants and Macros
 enum END = 62501;  // Equivalent to #define END
@@ -201,3 +201,4 @@ int main() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.d
+
