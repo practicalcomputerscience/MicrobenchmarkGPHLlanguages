@@ -32,7 +32,7 @@ Chapel | C++ for LLVM and clang | [Building From Source](https://chapel-lang.org
 Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's partly self-hosted | the Java compiler itself is completely self-hosted since the late 90ies at least, see below at [Java](#java)
 Common Lisp (SBCL) | self-hosted; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
 Crystal | bootstrapping by using an older version of the Crystal compiler; self-hosted since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
-D | TBD | TBD
+D | LDC (LLVM-based D Compiler): D + C++ + C; DMD (Digital Mars D compiler): D + C++ + C | https://github.com/ldc-developers/ldc; https://github.com/dlang/dmd; https://github.com/D-Programming-GDC/gcc
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
