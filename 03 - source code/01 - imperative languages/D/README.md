@@ -25,7 +25,7 @@ However, one could argue that something similar to Java and its contenders happe
 
 ---
 
-### Installing the GDC
+### Installing the GDC (GCC-based D compiler)
 
 You have the choice of three compilers (in Linux and architectures i386, amd64):
 
@@ -84,7 +84,7 @@ TBD
 
 ### Why is D still not very popular?
 
-Same like at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question.
+Same like at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question here.
 
 However, there's a big difference to Nim: D is a U.S. based programming language, which should have made it easier to grow its ecosystem fast, at least theoretically from my point of view.
 
@@ -92,7 +92,7 @@ However 2: both languages are only #51 to #100 languages in the TIOBE Index as o
 
 After reading a number of posts, I came to the conclusion that D was never too far away from C++ to really differentiate itself positively. One could claim too, that also D is missing an "elevator pitch selling point"; see at Nim at: [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take)
 
-Even though only a [bottom answer](https://softwareengineering.stackexchange.com/a/232739) (from 2014), I found there an interesting argument, one that D shares with Nim: until this day, both languages have remained "one, single, vendor" ecosystems, where I should add: "one, **small**, single, vendor" ecosystem.
+Even though only a [bottom answer](https://softwareengineering.stackexchange.com/a/232739) (from 2014), I found there an interesting argument, one that D shares with Nim: until this day, both languages have remained "one, single, vendor" ecosystems, where I should add: "one, **small**, single, vendor" ecosystems.
 
 TBD
 
