@@ -2,7 +2,7 @@
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
-# 2026-01-03a/06/09/13/15/18
+# 2026-01-03a/06/09/13/15/18/21
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -671,3 +671,4 @@ print "\nnumber of lines in block comment: =begin ... =end = ", $line_of_block_c
 print "\n";
 
 # end of lines_of_source_code_count.pl
+
