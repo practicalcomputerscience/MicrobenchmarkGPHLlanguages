@@ -2,7 +2,7 @@
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
-# 2026-01-03a/06/09/13/15
+# 2026-01-03a/06/09/13/15/18
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -48,6 +48,8 @@ my $hash_equal_detected = 0;                 # 0 is false
 my $equal_hash_detected = 0;                 # 0 is false
 my $hash_bracket_detected = 0;               # 0 is false
 my $bracket_hash_detected = 0;               # 0 is false
+my $equal_begin_detected = 0;                # 0 is false
+my $equal_end_detected = 0;                  # 0 is false
 
 
 my $language_ext = $file;
@@ -58,7 +60,7 @@ my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam",
 
 
 # language groups with block comments:
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp");
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
@@ -69,6 +71,7 @@ my @lang_grp9 = ("lua");
 my @lang_grp10 = ("m", "P", "pi");  # single line comment: %, block comments: /* ... */; m without block comments
 my @lang_grp11 = ("jl");
 my @lang_grp12 = ("nim");
+my @lang_grp13 = ("rb");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -79,6 +82,7 @@ my $line_of_block_comment8 = 0;
 my $line_of_block_comment9 = 0;
 my $line_of_block_comment11 = 0;
 my $line_of_block_comment12 = 0;
+my $line_of_block_comment13 = 0;
 
 
 $language_ext =~ s/^\w+\.//;
@@ -594,6 +598,51 @@ if ( grep(/^$language_ext$/, @lang_grp12)) {
 }
 
 
+if ( grep(/^$language_ext$/, @lang_grp13)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($equal_begin_detected) {
+      $line_of_block_comment13 += 1;
+    }
+
+    # at the moment, only caring about:
+    #   beginning =begin: with potentially leading white spaces and any kind of stuff beyond #=..
+    #   ending    : with potentially any kind of stuff before ..=# and potentially trailing white spaces
+    if ($_ =~ /^\s*\=begin/ and not $equal_begin_detected) {
+      $equal_begin_detected = 1;
+      $equal_end_detected = 0;
+      print "  equal_begin_detected", "\n";
+      $line_of_block_comment13 += 1;
+    } else {
+
+      if ($_ =~ /\=end\s*$/ and $equal_begin_detected) {
+        $equal_begin_detected = 0;
+        $equal_end_detected = 1;
+        print "  equal_end_detected", "\n";
+      } else {
+        # case: empty line or line with white spaces:
+        if ($_ =~ /^\s*$/ and not $equal_begin_detected) {
+          $line_empty += 1;
+        } else {
+          # case: # with optionally leading white spaces:
+          if ($_ =~ /^\s*#/ and not $equal_begin_detected) {
+            $line_cmt_hash += 1;
+          } else {
+            if (not $equal_begin_detected) {
+              $source_code_line_count += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 close( FILE );
 
 print "\ntotal number of lines = ", $line_count;
@@ -617,6 +666,7 @@ print "\nnumber of lines in block comment: /' ... '/ = ", $line_of_block_comment
 print "\nnumber of lines in block comment: --[[ ... ]] = ", $line_of_block_comment9;
 print "\nnumber of lines in block comment: #= ... =# = ", $line_of_block_comment11;
 print "\nnumber of lines in block comment: #[ ... ]# = ", $line_of_block_comment12;
+print "\nnumber of lines in block comment: =begin ... =end = ", $line_of_block_comment13;
 
 print "\n";
 
