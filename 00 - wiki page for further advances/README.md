@@ -48,10 +48,10 @@
 
 <br/>
 
-2026-01-22: so far, I haven't touched yet these corners of programming languages:
+2026-01-22a: so far, I haven't touched yet these corners of programming languages:
 
+- Eiffel: https://www.eiffel.org/: this language looks quite unique, which raises the question: what is its basic programming paramdigm? I cannot really say that it's imperative; this language looks like being designed around the basic construct of a class; so, I'd really says that this is truly an object-oriented language
 - Carbon Language: An experimental successor to C++: https://docs.carbon-lang.dev/#why-build-carbon
-- Eiffel: https://www.eiffel.org/
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
