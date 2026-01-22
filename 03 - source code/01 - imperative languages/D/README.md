@@ -8,7 +8,7 @@ DUB, the D package registry: https://code.dlang.org/
 
 <br/>
 
-D is one of the first languages, since 1999, with the aim to overcome the deficits of C++: 
+D is one of the earlier languages, since 1999, with the aim to overcome the deficits of C++: 
 
 2020: _Origins of the D Programming Language_
 
