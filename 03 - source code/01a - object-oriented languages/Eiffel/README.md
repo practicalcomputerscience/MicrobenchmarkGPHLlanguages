@@ -8,6 +8,8 @@ https://archive.eiffel.com/eiffel/nutshell.html
 
 ECMA-367: Eiffel: Analysis, design and programming language, 2nd ed., June 2006: https://ecma-international.org/publications-and-standards/standards/ecma-367/
 
+https://github.com/seamus-brady/awesome-eiffel
+
 ## Idea of Eiffel
 
 I came to Eiffel when I noticed that it had an influence on the design of 
