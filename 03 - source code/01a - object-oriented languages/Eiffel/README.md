@@ -2,13 +2,19 @@
 
 # Eiffel
 
-https://www.eiffel.org/
+ISE (Interactive Software Engineering or Eiffel Software) EiffelStudio: https://www.eiffel.org/
 
-https://archive.eiffel.com/eiffel/nutshell.html
+Liberty Eiffel: https://www.liberty-eiffel.org/
+
+[Eiffel in a Nutshell](https://archive.eiffel.com/eiffel/nutshell.html)
 
 ECMA-367: Eiffel: Analysis, design and programming language, 2nd ed., June 2006: https://ecma-international.org/publications-and-standards/standards/ecma-367/
 
-https://github.com/seamus-brady/awesome-eiffel
+"curated list of awesome Eiffel and Eiffel libraries, resources and tools": https://github.com/seamus-brady/awesome-eiffel
+
+<br/>
+
+---
 
 ## Idea of Eiffel
 
@@ -17,7 +23,7 @@ I came to Eiffel when I noticed that it had an influence on the design of
 and [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d) (and others), 
 clearly two languages where the programming paradim of **object-oriention** is sitting above the basic, **imperative** paradigm.
 
-But then I noticed that (also) Eiffel is different from your "usual", object-oriented language. I guess it's clear that historically Eiffel has been designed 
+But then I noticed that (also) Eiffel is different from your "usual" object-oriented language. I guess it's clear that historically Eiffel has been designed 
 around the basic construct of a **class**. So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!":
 
 TBD
@@ -44,7 +50,31 @@ Fun facts:
 - in the same year, the first version of Self was designed: [Self](https://selflanguage.org/)
 
 Although both languages are still updated from time to time, they are not listed in the TIOBE index of popularity as of January 2026: https://www.tiobe.com/tiobe-index/,
-where Eiffel peaked there at #33 in 2012: https://www.eiffel.com/2012/eiffel_tiobe/, while Self was apparently never listed there.
+where Eiffel peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_tiobe/, while Self was apparently never listed there.
+
+<br/>
+
+## Installation tips
+
+Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an account registration by default, I skipped it and tried performance-oriented [Liberty Eiffel](https://github.com/LibertyEiffel/Liberty). I decided to build it from sources: https://wiki.liberty-eiffel.org/index.php/Getting_Started
+
+(With me to be additionally installed: _$sudo apt-get install castxml libgc-dev libcurl4-openssl-dev libssl-dev_ as **missing pre-requisites**.)
+
+Then, I download latest zip file from: https://github.com/LibertyEiffel/Liberty, and unzipped it to a working directory. There I did:
+
+```
+$ cd ./Liberty-master
+$ ./configure
+$ ./install.sh -bootstrap  # this takes some time!
+...
+$
+```
+
+Among other things, a directory _./target/bin_ should have been created by now, and which holds a number of tools. 
+
+But first, I added this directory to my PATH enviroment variable (activate this file!): _export PATH="$PATH:~/scripts/Eiffel/Liberty-master/target/bin"_
+
+One of the [tools](https://wiki.liberty-eiffel.org/index.php/Tools) there is [eiffeltest](https://wiki.liberty-eiffel.org/index.php/Eiffeltest). 
 
 TBD
 
