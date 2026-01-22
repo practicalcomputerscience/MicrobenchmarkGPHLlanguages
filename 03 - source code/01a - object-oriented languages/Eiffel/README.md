@@ -12,6 +12,14 @@ ECMA-367: Eiffel: Analysis, design and programming language, 2nd ed., June 2006:
 
 "curated list of awesome Eiffel and Eiffel libraries, resources and tools": https://github.com/seamus-brady/awesome-eiffel
 
+---
+
+Table of contents:
+
+- [Idea of Eiffel](#idea-of-eiffel)
+- [Installation tips](#installation-tips)
+- [TBD](#TBD)
+
 <br/>
 
 ---
