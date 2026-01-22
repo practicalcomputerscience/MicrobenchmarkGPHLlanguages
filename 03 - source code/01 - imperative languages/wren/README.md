@@ -32,7 +32,7 @@ This means two things:
 
 Though, technically this script works OK.
 
-A _switch_ statement in this language would also be very nice, then the big _if-(then)-else_ cascade in user defined function [Integer_to_hex_string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren/random_streams_for_perf_stats.wren) would look much better.
+A _switch_ instruction in this language would also be very nice, then the big _if-(then)-else_ cascade in user defined function [Integer_to_hex_string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/wren/random_streams_for_perf_stats.wren) would look much better.
 
 <br/>
 
