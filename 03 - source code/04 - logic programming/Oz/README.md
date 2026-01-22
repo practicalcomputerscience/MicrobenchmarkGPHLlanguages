@@ -218,7 +218,7 @@ Building Mozart version 1.4.0 from 2008 from sources, that is file _mozart-1.4.0
 A Mozart installation in Linux requires these components as well, but they are all easy to install:
 
 - GNU Make: _$ sudo apt install make_
-- gcc etc.: _$sudo apt install build-essential_
+- gcc etc.: _$ sudo apt install build-essential_
 - GNU flex: _$ sudo apt install flex_
 - GNU bison: _$ sudo apt install bison_
 - GNU Emacs: _$ sudo apt install emacs_
