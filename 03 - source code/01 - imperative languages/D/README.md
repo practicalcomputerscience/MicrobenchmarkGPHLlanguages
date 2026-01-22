@@ -88,17 +88,17 @@ Here's a table with indicative execution times from only one run to just get an 
 
 test # | construct | compiler switches | exe time in milliseconds | comment
 --- | --- | --- | --- | ---
-1 | _char[] bits_x; bits_x ~= bits_x_str;_ | _-O3_ | ~36 | simple string concatenation
+1 | _char[] bits_x; bits_x ~= bits_x_str;_ | _-O3_ | ~35 | simple string concatenation
 2 | _char[] bits_x; size_t pos_x; auto result_x = copy(bits_x_str, bits_x[pos_x .. $]); pos_x += 16; string bits_x_str_total = bits_x.idup;_ | _-O3_ | ~33 | using D's range copying: _std.algorithm.mutation : copy;_
 3 | _auto bits_x = appender!string(); bits_x.put(bits_x_str); string bits_x_str_total = bits_x.data;_ | _-O3_ | ~33 | using D's string builder: _std.array : appender;_
 
 Same like with Nim (and C), I guess it's also here probable that replacing built-in function _format("%016b", x[i])_ with a user defined function would lower the execution time.
 
-Using D's string builder ("appender") tallies a slightly lower execution time than using D's range copying ("copy"): 32.8 versus 33.3 milliseconds (mean)
+Using D's string builder ("appender") tallies a slightly lower execution time than using D's range copying ("copy"): 32.8 versus 33.3 milliseconds (mean; running _$ sudo perf stat -r 20 ..._)
 
 Both tactics are anyway not far away from simple string concatenation with the _~=_ operator.
 
-Using the string builder not only yields the lowest execution time, it's also a little bit less verbose the range copying, since no position counter is needed. So, using the appender is my official solution here.
+Using the appender is also a little bit less verbose than range copying, since no position counter is needed. So, using the appender is my official solution here.
 
 <br/>
 
