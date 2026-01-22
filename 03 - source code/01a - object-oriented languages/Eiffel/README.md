@@ -78,6 +78,10 @@ where Eiffel peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_ti
 
 <br/>
 
+Otherwise, it seems to that Eiffel has been heavily influenced by [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada#ada) from my point of view.
+
+<br/>
+
 ## Installation tips
 
 Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an account registration by default, I skipped it and tried performance-oriented [Liberty Eiffel](https://github.com/LibertyEiffel/Liberty). I decided to build it from sources: https://wiki.liberty-eiffel.org/index.php/Getting_Started (*)
