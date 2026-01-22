@@ -4,6 +4,8 @@
 
 ---
 
+2026-01-22: done: [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d)
+
 2026-01-19: done: [Ruby](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#ruby)
 
 2026-01-15: done: [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B#c)
@@ -46,9 +48,8 @@
 
 <br/>
 
-2026-01-15: so far, I haven't touched yet these corners of programming languages:
+2026-01-22: so far, I haven't touched yet these corners of programming languages:
 
-- D (with GCC?) as a "natural" alternative to C++
 - Carbon Language: An experimental successor to C++: https://docs.carbon-lang.dev/#why-build-carbon
 - Eiffel: https://www.eiffel.org/
 - https://haxe.org/: strictly-typed programming language
