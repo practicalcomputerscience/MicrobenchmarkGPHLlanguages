@@ -68,7 +68,7 @@ And no, _let*_ instead of _let_ doesn't change the order of output (in my system
 
 While it's said that _let_ doesn't guarantee you a certain order of execution (because: _let performs the bindings in parallel and let* does them sequentially_ from: https://lisp-docs.github.io/cl-language-reference/chap-5/f-d-dictionary/let_let_special-operator) it's pretty clear (to me), that the old "left-to-right evaluation" of Lisp prevails more often than one might think.
 
-See for example standard ISO/IEC 13816 (https://www.iso.org/standard/44338.html) and it's numerous statements like this for example:
+See for example standard ISO/IEC 13816 (https://www.iso.org/standard/44338.html) and its numerous statements like this for example:
 
 > All of the arguments are evaluated, from left to right, ...
 
