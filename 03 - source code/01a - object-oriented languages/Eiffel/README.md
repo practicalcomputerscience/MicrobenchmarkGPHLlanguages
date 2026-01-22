@@ -24,9 +24,25 @@ and [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/
 clearly two languages where the programming paradim of **object-oriention** is sitting above the basic, **imperative** paradigm.
 
 But then I noticed that (also) Eiffel is different from your "usual" object-oriented language. I guess it's clear that historically Eiffel has been designed 
-around the basic construct of a **class**. So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!":
+around the basic construct of a **class**. So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!" from the [Liberty Eiffel examples](https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/hello_world.e):
 
-TBD
+```
+class HELLO_WORLD
+   -- ...
+   -- To compile an optimized version type : se c hello_world -boost -O2
+   --
+
+create {ANY}
+   main
+
+feature {ANY}
+   main
+      do
+         io.put_string("Hello World.%N")
+      end
+
+end -- class HELLO_WORLD
+```
 
 I say _also_, because this primary paradigm of object-orientation reminds me, without having any experience, of language Self:
 
@@ -56,15 +72,14 @@ where Eiffel peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_ti
 
 ## Installation tips
 
-Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an account registration by default, I skipped it and tried performance-oriented [Liberty Eiffel](https://github.com/LibertyEiffel/Liberty). I decided to build it from sources: https://wiki.liberty-eiffel.org/index.php/Getting_Started
+Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an account registration by default, I skipped it and tried performance-oriented [Liberty Eiffel](https://github.com/LibertyEiffel/Liberty). I decided to build it from sources: https://wiki.liberty-eiffel.org/index.php/Getting_Started (*)
 
-(With me to be additionally installed: _$sudo apt-get install castxml libgc-dev libcurl4-openssl-dev libssl-dev_ as **missing pre-requisites**.)
+(With me to be additionally installed: _$ sudo apt-get install castxml libgc-dev libcurl4-openssl-dev libssl-dev_ as **missing pre-requisites**.)
 
-Then, I download latest zip file from: https://github.com/LibertyEiffel/Liberty, and unzipped it to a working directory. There I did:
+Then, I download latest zip file from: https://github.com/LibertyEiffel/Liberty, and unzipped it to a working directory. There I did as described in (*):
 
 ```
 $ cd ./Liberty-master
-$ ./configure
 $ ./install.sh -bootstrap  # this takes some time!
 ...
 $
@@ -72,11 +87,22 @@ $
 
 Among other things, a directory _./target/bin_ should have been created by now, and which holds a number of tools. 
 
-But first, I added this directory to my PATH enviroment variable (activate this file!): _export PATH="$PATH:~/scripts/Eiffel/Liberty-master/target/bin"_
+But first, I added this directory to my _PATH_ enviroment variable (activate the _~/.bashrc_ config file!): _export PATH="$PATH:~/scripts/Eiffel/Liberty-master/target/bin"_
 
-One of the [tools](https://wiki.liberty-eiffel.org/index.php/Tools) there is [eiffeltest](https://wiki.liberty-eiffel.org/index.php/Eiffeltest). 
+Finally, I did a first compilation test as described in the page above (*):
 
-TBD
+```
+$ se compile ./Liberty-master/tutorial/hello_world.e -o hello_world
+$ ./hello_world 
+Hello World.
+$ 
+```
+
+_se_ stands for the old SmartEiffel compiler, and has later become a wrapper around the Liberty Eiffel tools.
+
+<br/>
+
+TBD: To compile an optimized version type : se c hello_world -boost -O2 from: _./Liberty-master/tutorial/hello_world.e_
 
 <br/>
 
