@@ -100,7 +100,7 @@ I also shortly tapped into **Poly/ML** (https://polyml.org/) only to find out th
 
 I had another motivation to test Standard ML: what can I learn from it for my OCaml program?
 
-This: in my Standard ML program, right from start of development, I used as much _val_-statements for my printing expressions, expressions where I don't expect a return value or don't care of any respectively:
+This: in my Standard ML program, right from start of development, I _val_-expressions for printing tasks, expressions where I don't expect a return value or don't care of any:
 
 ```
 val _ = print ("\n....")
@@ -112,7 +112,7 @@ While in my OCaml program right from start I did it like this:
 Printf.printf "\n...";
 ```
 
-Instead I should have written this OCaml expression similarly like this:
+Instead I should have written this OCaml expression like this:
 
 ```
 let _ = Printf.printf "\n..." in
