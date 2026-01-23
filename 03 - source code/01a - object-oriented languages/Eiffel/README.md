@@ -18,7 +18,6 @@ Table of contents:
 
 - [Idea of Eiffel](#idea-of-eiffel)
 - [Installation tips](#installation-tips)
-- [TBD](#TBD)
 
 <br/>
 
@@ -78,7 +77,7 @@ where Eiffel peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_ti
 
 <br/>
 
-Otherwise, it seems to that Eiffel has been heavily influenced by [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada#ada) from my point of view.
+Otherwise, it seems to me that Eiffel has been heavily influenced by [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada#ada).
 
 <br/>
 
@@ -111,10 +110,6 @@ $
 ```
 
 _se_ stands for the old SmartEiffel compiler, and has later become a wrapper around the Liberty Eiffel tools.
-
-<br/>
-
-TBD: To compile an optimized version type : se c hello_world -boost -O2 from: _./Liberty-master/tutorial/hello_world.e_
 
 <br/>
 
