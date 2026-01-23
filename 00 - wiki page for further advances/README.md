@@ -4,8 +4,11 @@
 
 ---
 
-2026-01-23: After [Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel) I gonna make a break again and re-check, if the very low level string concatenation solutions in C + C3 + specifically Ada can be brought at least to the more abstract level
-of Fortran or C++ without sacrificing too much of execution speed; generally, I will also fix or try to find better solutions in languages like Swift, Perl 5, and V for example
+2026-01-23: After [Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel) I gonna make a break again and:
+- re-check, if the very low level string concatenation solutions in **C + C3 + specifically Ada** can be brought to at least the more abstract level of Fortran or C++ without sacrificing too much of execution speed. Also the Eiffel solution of _create bits_x.make (M1) + bits_x.append (bits_x_str)_ may serve here as a role model
+- I will also fix Perl 5 and V with their confusing variable naming (for experimental reasons back then)
+- I will also fix Inko for having, like the other languages, an extra string variable _bits_x_str_ (just to be fair and having it for testing purposes)
+- I will also try to a find better solution in Swift for the needed string padding of _bits_x_str_
 
 2026-01-22: done: [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d)
 
