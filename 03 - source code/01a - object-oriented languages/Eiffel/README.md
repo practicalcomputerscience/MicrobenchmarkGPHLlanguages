@@ -81,7 +81,7 @@ Otherwise, it seems to me that Eiffel has been heavily influenced by [Ada](https
 
 <br/>
 
-My two programs _random_streams_for_perf_stats.e_, and specifically _random_bitstring_and_flexible_password_generator.e_, are working, but are not following an **object-oriented design**, something Eiffel strongly aims for. There could be easily more classes than just _RANDOM_STREAMS_FOR_PERF_STATS_ and _RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR_, respectively:
+My two programs _random_streams_for_perf_stats.e_, and specifically _random_bitstring_and_flexible_password_generator.e_, are not following an **object-oriented design**, something Eiffel strongly aims for. There could be easily more classes than just _RANDOM_STREAMS_FOR_PERF_STATS_ and _RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR_, respectively:
 
 - a class for the random number generator
 - a class for the user defined (helper) functions
