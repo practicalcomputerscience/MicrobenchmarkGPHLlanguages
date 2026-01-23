@@ -18,6 +18,7 @@ Table of contents:
 
 - [Idea of Eiffel](#idea-of-eiffel)
 - [Installation tips](#installation-tips)
+- [On how to do demanding string building in Eiffel](#on-how-to-do-demanding-string-building-in-eiffel)
 
 <br/>
 
@@ -110,6 +111,12 @@ $
 ```
 
 _se_ stands for the old SmartEiffel compiler, and has later become a wrapper around the Liberty Eiffel tools.
+
+<br/>
+
+### On how to do demanding string building in Eiffel
+
+TBD: see from D for example
 
 <br/>
 
