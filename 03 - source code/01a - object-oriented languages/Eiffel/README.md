@@ -72,8 +72,8 @@ Fun facts:
 - Eiffel was first published in October 1986: https://archive.eiffel.com/eiffel/nutshell.html
 - in the same year, the first version of Self was designed: [Self](https://selflanguage.org/)
 
-Although both languages are still updated from time to time, they are not listed in the TIOBE index of popularity as of January 2026: https://www.tiobe.com/tiobe-index/,
-where Eiffel peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_tiobe/, while Self was apparently never listed there.
+Although both languages are still being updated from time to time, they are not listed in the TIOBE index of popularity as of January 2026: https://www.tiobe.com/tiobe-index/,
+where Eiffel was peaking there at #33 in 2012: https://www.eiffel.com/2012/eiffel_tiobe/, while Self was apparently never listed there.
 
 <br/>
 
@@ -122,7 +122,7 @@ Hello World.
 $ 
 ```
 
-_se_ stands for the old SmartEiffel compiler, and has later become a wrapper around the Liberty Eiffel tools.
+_se_ stands for the old SmartEiffel compiler, and has later became a wrapper around the Liberty Eiffel tools.
 
 <br/>
 
