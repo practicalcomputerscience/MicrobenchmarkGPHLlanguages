@@ -37,7 +37,6 @@ around the basic construct of a **class** (+). So, I'd say that this is truly an
 ```
 class HELLO_WORLD
    -- ...
-   -- To compile an optimized version type : se c hello_world -boost -O2
    --
 
 create {ANY}
@@ -82,6 +81,19 @@ Otherwise, it seems to me that Eiffel has been heavily influenced by [Ada](https
 
 <br/>
 
+My two programs _random_streams_for_perf_stats.e_, and specifically _random_bitstring_and_flexible_password_generator.e_, are working, but are not following an **object-oriented design**, something Eiffel strongly aims for. There could be easily more classes than just _RANDOM_STREAMS_FOR_PERF_STATS_ and _RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR_, respectively:
+
+- a class for the random number generator
+- a class for the user defined (helper) functions
+- a class for the chosen character set from which the password characters are selected
+- a class for writing strings to files
+- a class for the user dialog, so something for a potential graphical user interface (GUI)
+- a class for the password generator
+
+..for example.
+
+<br/>
+
 ## Installation tips
 
 Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an account registration by default, I skipped it and tried performance-oriented [Liberty Eiffel](https://github.com/LibertyEiffel/Liberty). I decided to build it from sources: https://wiki.liberty-eiffel.org/index.php/Getting_Started (*)
@@ -121,6 +133,24 @@ TBD: see from D for example
 <br/>
 
 (+) https://courses.cs.vt.edu/~cs3304/Spring02/lectures/lect12.pdf -- Programming Languages, Eiffel, Benjamin J. Keller, Department of Computer Science, Virginia Tech
+
+<br/>
+
+### Boosting the execution speed at the Liberty configuration
+
+To further boost the execution speed of the compiled program, change the default optimization switch _-O2_ for the gcc (and g++) compiler in configuration file: _.../Eiffel/Liberty-master/target/liberty-eiffel/liberty.se_ to _-O3_ under the [boost] section:
+
+```
+...
+[boost]
+...
+c_compiler_options: -O3 -pipe
+...
+cpp_compiler_options: -O3 -pipe
+...
+```
+
+"Upgrading" this switch to _-Ofast -faggressive-loop-optimizations_ (see from here at C: [Program building tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#program-building-tips)) made the executable a little bit slower according the my experiments!
 
 <br/>
 
