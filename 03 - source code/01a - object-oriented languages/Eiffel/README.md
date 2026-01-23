@@ -32,7 +32,7 @@ and [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/
 clearly two languages where the programming paradim of **object-oriention** is sitting above the basic, **imperative** paradigm.
 
 But then I noticed that (also) Eiffel is different from your "usual" object-oriented language. I guess it's clear that historically Eiffel has been designed 
-around the basic construct of a **class**. So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!" from the [Liberty Eiffel examples](https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/hello_world.e):
+around the basic construct of a **class** (+). So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!" from the [Liberty Eiffel examples](https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/hello_world.e):
 
 ```
 class HELLO_WORLD
@@ -115,6 +115,10 @@ _se_ stands for the old SmartEiffel compiler, and has later become a wrapper aro
 <br/>
 
 TBD: To compile an optimized version type : se c hello_world -boost -O2 from: _./Liberty-master/tutorial/hello_world.e_
+
+<br/>
+
+(+) https://courses.cs.vt.edu/~cs3304/Spring02/lectures/lect12.pdf -- Programming Languages, Eiffel, Benjamin J. Keller, Department of Computer Science, Virginia Tech
 
 <br/>
 
