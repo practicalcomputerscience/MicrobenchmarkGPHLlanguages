@@ -14,6 +14,8 @@ When I started to code my microbenchmark program in V, I was already aware of th
 
 ---
 
+<br/>
+
 Individually filling an array needs the << operator since something like _x[i]_ is not working here:
 
 ```
@@ -28,7 +30,7 @@ from: [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGP
 
 <br/>
 
-The standard library (https://modules.vlang.io/) is decent but still needs fixing. So, I had to write my own user defined functions based on code in the V libraries. However, that made the programm a little bit faster because of no need to support generality here.
+The standard library (https://modules.vlang.io/) is decent but still needs fixing. So, I had to write my own user defined functions based on code I found in the V libraries. However, that made the programm a little bit faster because general functionality is not supported here.
 
 <br/>
 
