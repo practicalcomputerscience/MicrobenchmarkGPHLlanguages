@@ -36,9 +36,11 @@ Table of contents:
 - [Recursive functions in Gleam](#recursive-functions-in-gleam)
 - [Conclusion](#conclusion)
 
+<br/>
+
 ---
 
-### Installation tips
+## Installation tips
 
 I looks like that Gleam's preferred package manager is **Homebrew**. Since "Gleam compiles to Erlang code", the installation of Gleam with Homebrew should also automatically install Erlang:
 
@@ -117,7 +119,7 @@ Install this package: _$ gleam add simplifile_ in a Gleam project directory to m
 
 <br/>
 
-### Lists
+## Lists
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml).
 
@@ -139,7 +141,9 @@ Prepending was adviced to me by the code checker (with command _$ gleam test_) f
 
 So, I changed it to: _[new_seed, ..x]_
 
-### Using Erlang from Gleam
+<br/>
+
+## Using Erlang from Gleam
 
 With the "speed part" of the [program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104), coding in Gleam was a rather pleasant experience. But with the development of the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
 
@@ -188,7 +192,7 @@ This is exactly what I've been looking for!
 
 <br/>
 
-### From a list of integer numbers to a string
+## From a list of integer numbers to a string
 
 Putting together a string like this for example: "ABC", starting from a list of integer numbers, is not the easiest task in Gleam. You have to go via (Unicode) codepoints, a subtask which involves obtaining results of the [Result](https://github.com/gleam-lang/stdlib/blob/main/src/gleam/result.gleam) type ("Option" type in functional programming) - at least implicitly.
 
@@ -226,6 +230,8 @@ let my_single_codepoint_as_int = [65]
 
 So far, I haven't found a more direct way to convert single integer number 65 into a string of one character, that is "A".
 
+<br/>
+
 ## Recursive functions in Gleam
 
 The implementation of the two recursive functions in the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) may not to the best approach, but they work:
@@ -261,7 +267,7 @@ However, Gleam claims that **tail call optimisation** is applied (**):
 
 All in all, I think that Gleam is an interesting alternative on Erlang's virtual machine BEAM.
 
-With having or not having:
+With:
 
 - immutable single-linked lists
 - no arrays and no vectors
