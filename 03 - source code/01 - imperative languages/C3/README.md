@@ -15,7 +15,7 @@ example.
 
 ---
 
-#### Compilation tips
+## Compilation tips
 
 I played with compiler switches for optimizations of the compiler. These switches can be shown with the _$ c3c --help_ command:
 
