@@ -14,7 +14,7 @@ Table of contents:
 
 ---
 
-### On concurrency in Go
+## On concurrency in Go
 
 On the [main page](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages#other-aspects-of-a-computer-programming-language) I said this:
 
