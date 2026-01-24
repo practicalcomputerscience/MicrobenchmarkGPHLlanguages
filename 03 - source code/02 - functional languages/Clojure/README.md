@@ -22,7 +22,7 @@ Table of contents:
 
 ---
 
-### Installation tips
+## Installation tips
 
 Rename:
 - _random_bitstring_and_flexible_password_generator_core.clj_ into _core.clj_
@@ -45,7 +45,7 @@ You may also have a look at this page: [Clojure](https://github.com/practicalcom
 
 <br/>
 
-### On execution speed in Clojure
+## On execution speed in Clojure
 
 In both _project.clj_ files I'm not skipping aot (ahead-of-time) compilation:
 
@@ -68,7 +68,7 @@ However, I didn't notice any statistically relevant difference to not skipping i
 
 ..in terms of execution speed. Both methods seem to come to the same results statistically.
 
-### Initial struggles with execution speed
+## Initial struggles with execution speed
 
 As usual, I refer to the "speed part" of the program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
 
@@ -104,7 +104,7 @@ This alone, and no other experiments, including experimenting with _Transient Da
 
 <br/>
 
-### On complexity in Clojure
+## On complexity in Clojure
 
 Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) and specifically to this user defined function:
 
@@ -157,7 +157,7 @@ Instead I do this:
 
 <br/>
 
-### Recursive loops with loop-recur: simple at the bottom, simple at the top!
+## Recursive loops with loop-recur: simple at the bottom, simple at the top!
 
 Some other tips for the ubiquitous recursive loops in Clojure, so for the _**loop-recur**_-constructs: keep it simple with:
 
@@ -175,7 +175,7 @@ from slide #19/50 at (*) above, my annotations in blue color
 
 <br/>
 
-### The usual way of error handling in Clojure is imperative
+## The usual way of error handling in Clojure is imperative
 
 The official Clojure guide at https://www.clojure.org/guides/learn/flow#_exception_handling shows the imperative _try/catch/finally_ construct ("as in Java") for exception handling.
 
@@ -207,7 +207,7 @@ from: https://dev.to/almaclaine/either-algebraic-data-type-3onk
 
 <br/>
 
-### Clojure is a demanding functional programming language
+## Clojure is a demanding functional programming language
 
 During my research on Clojure I tumbled into this comment on Clojure in Hacker News (HN) on Oct 1, 2021: https://news.ycombinator.com/item?id=28723447 with this nice slogan: _I write Clojure for food, and Common Lisp for fun._ It shows that obviously I'm not the only (lay)man who struggled with execution speed problems with Clojure.
 
@@ -215,5 +215,7 @@ Here are two replies to this comment with stepwise improvements in execution spe
 
 - 2021: _Fast and Elegant Clojure_: https://bsless.github.io/fast-and-elegant-clojure/
 - 2021: _From Elegance to Speed, with Clojure_: https://noahbogart.com/posts/2021-10-02-from-elegance-to-speed-with-clojure/
+
+<br/>
 
 ##_end
