@@ -10,11 +10,12 @@ Table of contents:
 - [Execution speed](#execution-speed)
 - [Pause[] function to prevent output races](#pause-function-to-prevent-output-races)
 - [Error Handling](#error-handling)
+
 <br/>
 
 ---
 
-### Installation tips for the Wolfram Engine
+## Installation tips for the Wolfram Engine
 
 The free for private use and locale Wolfram Engine is also used for executing **WolframScripts** (_~.wls_): https://www.wolfram.com/wolframscript/
 
@@ -45,7 +46,9 @@ In[1]:= Exit[]
 $
 ```
 
-### Execution speed
+<br/>
+
+## Execution speed
 
 Since I haven't found any string builder in this language (https://reference.wolfram.com/language/guide/StringOperations.html), this script is a bit on the slow side with a mean of **1546 milliseconds** execution time over 20 runs, so I had to put it on my [Languages that were too slow list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#wolfram-language).
 
@@ -56,7 +59,9 @@ This is already my [optimized version](https://github.com/practicalcomputerscien
 
 The original version with string concatenation was about five times slower.
 
-### Pause[] function to prevent output races
+<br/>
+
+## Pause[] function to prevent output races
 
 The _Pause[]_ function of the Wolfram Language is a real hit: https://reference.wolfram.com/language/ref/Pause.html
 
@@ -99,7 +104,9 @@ While[answer === False,
 
 Without _Pause[0.65];_, the next prompt for user input after some invalid user input would be constantly displayed **before** error message _enter an integer number >= 8 or 'y'_!
 
-### Error Handling
+<br/>
+
+## Error Handling
 
 Error handling in the Wolfram language is done with the [Check](https://reference.wolfram.com/language/ref/Check.html) function, and can be fine-tuned, like in user defined function [exportData](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_bitstring_and_flexible_password_generator.wls), which is here just named after its main function, the _Export[]_ function, for writing the final strings to files: 
 
@@ -131,4 +138,3 @@ exportData[data_, filePath_, type_] := Module[
 <br/>
 
 ##_end
-
