@@ -8,7 +8,7 @@ https://www.adaic.org/
 
 ---
 
-#### Installation tips
+## Installation tips
 
 I modified the default project configuration files, both located in the _./config_ directory of their related projects:
 
