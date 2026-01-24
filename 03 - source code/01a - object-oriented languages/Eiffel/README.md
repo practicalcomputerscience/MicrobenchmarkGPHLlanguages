@@ -8,6 +8,8 @@ Liberty Eiffel: https://www.liberty-eiffel.org/
 
 [Eiffel in a Nutshell](https://archive.eiffel.com/eiffel/nutshell.html)
 
+[A comprehensive guide to Eiffel syntax](https://eiffel-guide.com/)
+
 ECMA-367: Eiffel: Analysis, design and programming language, 2nd ed., June 2006: https://ecma-international.org/publications-and-standards/standards/ecma-367/
 
 "curated list of awesome Eiffel and Eiffel libraries, resources and tools": https://github.com/seamus-brady/awesome-eiffel
@@ -127,7 +129,7 @@ _se_ stands for the old SmartEiffel compiler, and has later became a wrapper aro
 
 <br/>
 
-### On how to do demanding string building in Eiffel
+## On how to do demanding string building in Eiffel
 
 I started with a simple form of string building at string _bits_x_ with initialization _create bits_x.make_empty_ and appending with _bits_x.append (bits_x_str)_.
 
@@ -137,13 +139,15 @@ Liberty Eiffel offers the possibility to convert an integer number into its hexa
 
 Since also my [Ada](TBD) solution implements user defined functions for both conversion jobs, I would say it's fair to use two user defined functions also in the Eiffel program:
 
-TBD : table
+test # | construct | compiler switches | exe time in milliseconds | comment
+--- | --- | --- | --- | ---
 
+TBD
 
 
 <br/>
 
-### Boosting the execution speed at the Liberty configuration
+## Boosting the execution speed at the Liberty configuration
 
 To further boost the execution speed of the compiled program, change the default optimization switch _-O2_ for the gcc (and g++) compiler in configuration file: _.../Eiffel/Liberty-master/target/liberty-eiffel/liberty.se_ to _-O3_ under the [boost] section:
 
