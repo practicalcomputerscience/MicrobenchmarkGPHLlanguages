@@ -26,9 +26,11 @@ Table of contents:
 - [Hello world! example for Lua and JavaScript](#hello-world-example-for-lua-and-javascript)
 - [Motivation of the creator of LunarML](#motivation-of-the-creator-of-lunarml)
 
+<br/>
+
 ---
 
-### MLton compiler
+## MLton compiler
 
 Here I'm talking about Standard ML since 1997: https://smlfamily.github.io and specifically with the help of the MLton compiler:
 
@@ -46,7 +48,9 @@ Spoiler alert: the chances that a (basically same) program in SML will be faster
 
 However, MLton doesn't have a REPL, so I still have a SML/NJ installation for quick tests (of "standard" Standard ML features). Start the SML/NJ REPL in Linux with: _$ rlwrap sml_
 
-### MLton installation tips
+<br/>
+
+## MLton installation tips
 
 I didn't manage to build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
 
@@ -88,7 +92,7 @@ Otherwise, both programs, one compiled with MLton and the other compiled with ML
 
 <br/>
 
-### Other Standard ML dialects
+## Other Standard ML dialects
 
 The old **Moscow ML** precompiled binaries (https://mosml.org/) from 2014 don't work in my machine.
 
@@ -96,7 +100,7 @@ I also shortly tapped into **Poly/ML** (https://polyml.org/) only to find out th
 
 <br/>
 
-### Semicolons in Standard ML and OCaml
+## Semicolons in Standard ML and OCaml
 
 I had another motivation to test Standard ML: what can I learn from it for my OCaml program?
 
@@ -174,7 +178,7 @@ from: https://kar.kent.ac.uk/24064/1/FuncOlaf.pdf ("Functional Programming", Ola
 
 <br/>
 
-### Using Standard ML of New Jersey (SML/NJ) libraries from MLton
+## Using Standard ML of New Jersey (SML/NJ) libraries from MLton
 
 This should apply nowadays:
 
@@ -256,7 +260,9 @@ unhandled exception: Overflow
 $
 ```
 
-### The legacy Github repository of SML/NJ
+<br/>
+
+## The legacy Github repository of SML/NJ
 
 So, _my_program_ is working fine in the SML/NJ REPL, but not when being compiled with MLton!?!
 
@@ -303,7 +309,7 @@ Now my compiled microbenchmark program in [Standard ML](https://github.com/pract
 
 <br/>
 
-### String building with Standard ML
+## String building with Standard ML
 
 The speed bottleneck of my initial and slow SML program was not my string handling, but having **a local list of integers** in the masterloop **to which I append one integer number in each iteration**!
 
@@ -313,7 +319,7 @@ However, in a new functional programming I would always start with ("easy") _lis
 
 <br/>
 
-### Transpiling from Standard ML to Lua and JavaScript with LunarML
+## Transpiling from Standard ML to Lua and JavaScript with LunarML
 
 While having a look at [Standard ML dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#other-standard-ml--dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
 
@@ -381,7 +387,9 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-### Hello world! example for Lua and JavaScript
+<br/>
+
+## Hello world! example for Lua and JavaScript
 
 LunarML features the _Hello world!_ example:
 
