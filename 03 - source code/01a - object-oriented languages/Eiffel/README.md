@@ -1,5 +1,3 @@
-2026-01-22: work in progress
-
 # Eiffel
 
 ISE (Interactive Software Engineering or Eiffel Software) EiffelStudio: https://www.eiffel.org/
@@ -29,10 +27,10 @@ Table of contents:
 
 ## Idea of Eiffel
 
-I came to Eiffel when I noticed that it had an influence on the design of 
+I came to Eiffel when I read that it had an influence on the design of 
 [Ruby](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#ruby) 
 and [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d) (and others), 
-clearly two languages where the programming paradim of **object-oriention** is sitting above the basic, **imperative** paradigm.
+two languages where the programming paradim of **object-oriention** is sitting on the basic, **imperative** paradigm.
 
 But then I noticed that (also) Eiffel is different from your "usual" object-oriented language. I guess it's clear that historically Eiffel has been designed 
 around the basic construct of a **class** (+). So, I'd say that this is truly an object-oriented language; see its version of "Hello, World!" from the [Liberty Eiffel examples](https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/hello_world.e):
@@ -103,7 +101,7 @@ Since also the ISE Eiffel Studio Community Edition, an IDE, is asking for an acc
 
 (With me to be additionally installed: _$ sudo apt-get install castxml libgc-dev libcurl4-openssl-dev libssl-dev_ as **missing pre-requisites**.)
 
-Then, I download latest zip file from: https://github.com/LibertyEiffel/Liberty, and unzipped it to a working directory. There I did as described in (*):
+Then, I download latest zip file from: https://github.com/LibertyEiffel/Liberty, and unzipped it to a working directory. There, I did as described in (*):
 
 ```
 $ cd ./Liberty-master
@@ -137,13 +135,14 @@ Then I started to experiment, and discovered that an initial memory allocation m
 
 Liberty Eiffel offers the possibility to convert an integer number into its hexadecimal representation as a string with function [to_hexadecimal](https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/numeric.d/loadpath.se.d/NATURAL_GENERAL.html#to_hexadecimal), but not into its binary representation. This string result also needs further processing for trimming it down to 4 hexdecimal digits, and finally converting upper case characters for digits _A ... F_ into their lower cases.
 
-Since also my [Ada](TBD) solution implements user defined functions for both conversion jobs, I would say it's fair to use two user defined functions also in the Eiffel program:
+Since also my [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) solution implements user defined functions for both conversion jobs, I would say it's fair to use two user defined functions also in the Eiffel program:
 
 test # | construct | compiler switches | exe time in milliseconds | comment
 --- | --- | --- | --- | ---
-
-TBD
-
+1 | _create bits_x.make_empty; bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~31 | using builtin function for integer to hexadecimal representation string
+2 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~29 | using builtin function for integer to hexadecimal representation string
+3 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~27 | using also a user defined function for integer to hexadecimal representation string
+4 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with switch _-O3_ for gcc | ~24.5 | using also a user defined function for integer to hexadecimal representation string
 
 <br/>
 
@@ -162,6 +161,8 @@ cpp_compiler_options: -O3 -pipe
 ```
 
 "Upgrading" this switch to _-Ofast -faggressive-loop-optimizations_ (see from here at C: [Program building tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#program-building-tips)) made the executable a little bit slower according the my experiments!
+
+<br/>
 
 ---
 
