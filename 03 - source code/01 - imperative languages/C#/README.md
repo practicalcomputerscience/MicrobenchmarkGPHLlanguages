@@ -8,7 +8,7 @@ See the related language description slide [Part 3](https://github.com/practical
 
 ---
 
-#### Installation tips
+## Installation tips
 
 Both source code files, that is _random_bitstring_and_flexible_password_generator.cs_ and _random_streams_for_perf_stats.cs_, must have name _Program.cs_ in their related project directories. (Here they are just named differently to store them in the same GitHub directory.)
 
@@ -21,7 +21,7 @@ $ dotnet --list-runtimes
 $ dotnet --list-sdks
 ```
 
-#### Virtual machine?
+## Virtual machine?
 
 Is a C# program being executed on a virtual machine?
 
