@@ -15,7 +15,9 @@ Although Raku is (still) a very slow programming language ([Languages that were 
 
 ---
 
-### Installation tips
+<br/>
+
+## Installation tips
 
 See from: https://raku.org/nav/1/install
 
