@@ -6,8 +6,6 @@ https://gdcproject.org/
 
 DUB, the D package registry: https://code.dlang.org/
 
-<br/>
-
 ---
 
 Table of contents:
