@@ -4,7 +4,7 @@ https://nim-lang.org/
 
 ---
 
-### On how to do demanding string building in Nim
+## On how to do demanding string building in Nim
 
 Based on other microbenchmarks, like this one for example: https://github.com/zupat/related_post_gen, I had somehow higher expectations for the execution speed of my microbenchmark program in a Nim implementation.
 
@@ -35,7 +35,7 @@ Additionally, I think that it's also interesting to implement another concept th
 
 <br/>
 
-#### Nim's Memory Management
+## Nim's Memory Management
 
 It should be noted that Nim by default is a **garbage-collected** programming language: [Nim's Memory Management](https://nim-lang.org/1.4.8/gc.html), something I didn't play with.
 
@@ -45,7 +45,7 @@ And [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlan
 
 <br/>
 
-### Why is Nim still not very popular?
+## Why is Nim still not very popular?
 
 Being on the market since 2008, I had this question, and just saw that I'm not the only one to ask it:
 
