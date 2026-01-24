@@ -2,12 +2,14 @@
 #
 # 2025-07-19/20
 # 2025-12-17: see below; also a (soft) re-write for Inko version 0.19.1
+# 2026-01-24: introduction of strings bits_x_str and bits_hex_str like with the other programming languages
 #
 # make on Ubuntu 24 LTS: $ inko build random_streams_for_perf_stats.inko
 # run on Ubuntu 24 LTS:  $ ./build/debug/random_streams_for_perf_stats
 #
 # make on Ubuntu 24 LTS for release: $ inko build --release random_streams_for_perf_stats.inko
-# run this release:                  $ sudo perf stat -r 20 ./build/release/random_streams_for_perf_stats
+# run this release:                  $ ./build/release/random_streams_for_perf_stats
+#                                    $ sudo perf stat -r 20 ./build/release/random_streams_for_perf_stats
 #
 #
 # $ inko --version
@@ -130,27 +132,37 @@ type async Main {  # a lightweight process
     # let mut bits_x_str = StringBuffer.new
     let bits_hex = StringBuffer.new  # needed for program ENT - A Pseudorandom Number Sequence Test Program
 
+    let mut bits_x_str = "0000000000000000"
+    let mut bits_hex_str = "0000"
+
+    let mut x_old: Int = 0
+    let mut x_now: Int = 0
+
     # https://github.com/inko-lang/inko/blob/main/std/src/std/array.inko
     let rng = Random.new
-    x.push(rng.int_between(min: 1, max: m - 1))  # 2025-12-17
+    x_old = rng.int_between(min: 1, max: m - 1)  # 2025-12-17; 2026-01-24
 
     let mut i: Int = 1
 
-    Stdout.new.print("\ngenerating a random bit stream...")
+    let _ = Stdout.new.print("\ngenerating a random bit stream...")
 
     while i < upper_limit {
-      x.push((a*x.get(i - 1).or_panic + c) % m)  # no i-1 here!
+      x_now = (a*x_old + c) % m
+      x.push(x_now)
       # Stdout.new.print("")  # for testing -- this is a newline substitute
-      # Stdout.new.print(x.get(i).into_string)  # for testing
+      # Stdout.new.print(x_now.into_string)  # for testing
 
+      bits_x_str = Integer_to_bin_string(x_now)
       # doing here like in Ada to convert a natural integer number into
       # a binary string of "0"'s and "1"'s of fixed length ("16 bits"):
-      # Stdout.new.print(Integer_to_bin_string(x.get(i)))  # for testing
-      bits_x.push(Integer_to_bin_string(x.get(i).or_panic))
+      # Stdout.new.print(bits_x_str)  # for testing
+      bits_x.push(bits_x_str)
 
-      # Stdout.new.print(Integer_to_hex_string(x.get(i)))  # for testing
+      bits_hex_str = Integer_to_hex_string(x_now)
+      # Stdout.new.print(bits_hex_str)  # for testing
+      bits_hex.push(bits_hex_str)
 
-      bits_hex.push(Integer_to_hex_string(x.get(i).or_panic))
+      x_old = x_now
 
       i += 1
     }
