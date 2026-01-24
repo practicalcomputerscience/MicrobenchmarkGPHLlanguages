@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.swift
 
 2025-05-08/09/17/31, 2025-06-01, 2025-12-13: see below
+2026-01-24: cosmetics at password user dialog and password printing
 
 build on Ubuntu 24 LTS: $ swift package init --name random_bitstring_and_flexible_password_generator --type executable
                         $ swift build  # Building for ***debugging***
@@ -115,12 +116,12 @@ while !answer {
     if Int(answer_str) != nil {
       N_CHAR = Int(answer_str)!
       if N_CHAR < 8 {
-        print("enter an integer number >= 8 or 'y'", terminator: "")
+        print("enter an integer number >= 8 or 'y'\n", terminator: "")
       } else {
         answer = true
       }
     } else {
-      print("enter an integer number >= 8 or 'y'", terminator: "")
+      print("enter an integer number >= 8 or 'y'\n", terminator: "")
     }
   }
 }
@@ -197,7 +198,7 @@ while i < N_CHAR {
   j += 1
 }
 
-print("\nYour password of \(N_CHAR) characters is: \(pw_chars)\n")
+print("\nYour password of \(N_CHAR) characters is: \(pw_chars)")
 
 
 
