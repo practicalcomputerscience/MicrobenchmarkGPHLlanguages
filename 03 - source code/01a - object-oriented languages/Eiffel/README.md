@@ -129,7 +129,17 @@ _se_ stands for the old SmartEiffel compiler, and has later became a wrapper aro
 
 ### On how to do demanding string building in Eiffel
 
-TBD
+I started with a simple form of string building at string _bits_x_ with initialization _create bits_x.make_empty_ and appending with _bits_x.append (bits_x_str)_.
+
+Then I started to experiment, and discovered that an initial memory allocation makes a slightly faster program: _create bits_x.make (M1)_
+
+Liberty Eiffel offers the possibility to convert an integer number into its hexadecimal representation as a string with function [to_hexadecimal](https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/numeric.d/loadpath.se.d/NATURAL_GENERAL.html#to_hexadecimal), but not into its binary representation. This string result also needs further processing for trimming it down to 4 hexdecimal digits, and finally converting upper case characters for digits _A ... F_ into their lower cases.
+
+Since also my [Ada](TBD) solution implements user defined functions for both conversion jobs, I would say it's fair to use two user defined functions also in the Eiffel program:
+
+TBD : table
+
+
 
 <br/>
 
