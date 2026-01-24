@@ -1,5 +1,15 @@
 # Scheme
 
+A home page for Scheme: https://www.scheme.org/schemers/
+
+<br/>
+
+> Some say there are more implementations than applications.
+
+from: https://scheme.fail/manual/loko.html
+
+---
+
 Table of contents:
 
 - [What Scheme dialects are still maintained?](#what-scheme-dialects-are-still-maintained)
@@ -23,19 +33,9 @@ Table of contents:
 - [Two more Scheme dialects](#two-more-scheme-dialects)
 - [Common Lisp & Scheme, a comparison](#common-lisp--scheme-a-comparison)
 
----
-
-A home page for Scheme: https://www.scheme.org/schemers/
-
----
-
 <br/>
 
-> Some say there are more implementations than applications.
-
-from: https://scheme.fail/manual/loko.html
-
-<br/>
+---
 
 ## What Scheme dialects are still maintained?
 
