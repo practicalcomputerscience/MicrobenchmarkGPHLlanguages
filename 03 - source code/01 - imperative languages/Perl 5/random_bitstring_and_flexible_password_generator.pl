@@ -108,7 +108,8 @@ while (!$answer) {
   print "\nPassword of $N_CHAR printable chars OK? 'y' or another integer number >= 8: ";
   $answer_str = <STDIN>;
   chomp $answer_str;
-  if ($answer_str =~ /^y$/) {
+
+  if ($answer_str =~ /^y$/) {  # exact string match
     $answer = 1;
   } else {
     if ($answer_str =~ /^\d+\z/) {  # catch inpute like 9.9
