@@ -131,7 +131,7 @@ _se_ stands for the old SmartEiffel compiler, and has later became a wrapper aro
 
 ## On how to do demanding string building in Eiffel
 
-I started with a simple form of string building at string _bits_x_ with initialization _create bits_x.make_empty_ and appending with _bits_x.append (bits_x_str)_.
+I started with a simple form of string building at string _bits_x_ with initialization _create bits_x.make_empty_ and appending the individual strings with _bits_x.append (bits_x_str)_.
 
 Then I started to experiment, and discovered that an initial memory allocation makes a slightly faster program: _create bits_x.make (M1)_
 
