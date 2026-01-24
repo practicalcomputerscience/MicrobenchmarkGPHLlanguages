@@ -68,7 +68,7 @@ However, I didn't notice any statistically relevant difference to not skipping i
 
 ..in terms of execution speed. Both methods seem to come to the same results statistically.
 
-## Initial struggles with execution speed
+### Initial struggles with execution speed
 
 As usual, I refer to the "speed part" of the program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
 
