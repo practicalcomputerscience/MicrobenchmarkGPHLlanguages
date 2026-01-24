@@ -18,13 +18,13 @@ The results of this list are [script-based](https://github.com/practicalcomputer
 
 programming language | LOC | comments | date
 --- | --- | --- | ---
+Inko              | 232 | compiled, very young language: lots of user-defined functions; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Ada               | 231 | compiled, very mature language: lots of declarations and type definitions
-Inko              | 224 | compiled, very young language: lots of user-defined functions
-Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead
+Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
 Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
-V                 | 179 | compiled, very young programming language: needs some user-defined functions
+V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 C3                | 162 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
@@ -34,7 +34,7 @@ SWI Prolog        | 133 | compiled, very mature language: lots of user-defined f
 OCaml             | 131 | compiled, mature language
 C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and compiled to a bit faster program compared to C | 2026-01-15
 Lua               | 130 | compiled, very mature language
-Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files
+Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-01-24
 Zig               | 129 | compiled, young language still going through major changes
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 Go                | 127 | compiled, mature language
