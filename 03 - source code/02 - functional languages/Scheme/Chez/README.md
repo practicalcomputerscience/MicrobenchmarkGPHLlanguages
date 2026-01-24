@@ -71,7 +71,9 @@ real	0m0.070s
 $
 ```
 
-### Ncurses
+<br/>
+
+## Ncurses
 
 When you see (much) slower execution times (at a comparable system), in the seconds or even over one minute and more, then something with the Ncurses may be wrong:
 
