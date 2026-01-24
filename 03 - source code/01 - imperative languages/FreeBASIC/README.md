@@ -59,6 +59,7 @@ sudo dpkg -i ./libtinfo5_6.3-2ubuntu0.1_amd64.deb
 
 FreeBASIC depends on _gcc_; see here for more information about this GNU compiler if there may be problems with it: [C and Checked C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#c-and-checked-c)
 
+<br/>
 
 ## Other functionalities of FreeBASIC
 
