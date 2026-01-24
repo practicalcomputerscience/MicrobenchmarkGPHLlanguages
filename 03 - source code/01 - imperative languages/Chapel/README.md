@@ -24,7 +24,7 @@ There have been many serious attempts for integrated languages for parallel comp
 
 Let's see if this one will survive. [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#mojo) in the end also falls into this category from my point of view, but the later is still riding its wave of (AI) enthusiasm.
 
----
+<br/>
 
 ## Installation tips
 
@@ -35,6 +35,8 @@ $ brew install chapel
 ```
 
 ..works like a charm (in Ubuntu 24 LTS), and takes away a lot of potential hassle with LLVM and other supplementary installations.
+
+<br/>
 
 ## String building with Chapel
 
