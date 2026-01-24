@@ -2,7 +2,7 @@
 
 https://racket-lang.org/
 
-<br/>
+---
 
 Table of contents:
 
@@ -11,6 +11,8 @@ Table of contents:
 - [FFI's (Foreign Function Interfaces)](#ffis-foreign-function-interfaces)
 - [Chez Scheme (CS)](#chez-scheme-cs)
 - [Stack and heap usage](#stack-and-heap-usage)
+
+<br/>
 
 ---
 
@@ -31,6 +33,8 @@ Otherwise, Racket has an easy build system:
 $ raco exe random_bitstring_and_flexible_password_generator.rkt
 ```
 ..and decent documentation: https://docs.racket-lang.org/
+
+<br/>
 
 ## Execution speed
 
@@ -101,7 +105,9 @@ Here's a comment for Racket version 8.17 (as of July 2025) on an improvement of 
 
 Apparently, the Racket developers seem to be aware of the speed issue of the _string-append_ function (CS = Chez Scheme, see below at ![Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs)).
 
-### FFI's (Foreign Function Interfaces)
+<br/>
+
+## FFI's (Foreign Function Interfaces)
 
 By the way: I was not willing to use Racket as a **wrapper language** around C source code for example for a speedier program, that is using its Foreign Function Interface: https://docs.racket-lang.org/foreign/index.html "to run performance sensitive parts of your application in C or C++".
 
@@ -111,7 +117,7 @@ However, one could argue that I'm doing such a thing in my Clojure program ![Clo
 
 <br/>
 
-### Chez Scheme (CS)
+## Chez Scheme (CS)
 
 Racket is a **bytecode** language, nowadays based on Chez Scheme (CS):
 
