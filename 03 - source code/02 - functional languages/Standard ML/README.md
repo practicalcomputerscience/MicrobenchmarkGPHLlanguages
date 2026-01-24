@@ -203,6 +203,8 @@ Therefore this question naturally comes up:
 
 Spoiler alert: yes, we can!
 
+<br/>
+
 ### Some random number generation in Standard ML of New Jersey
 
 But first let's have a little exercise in the SML/NJ REPL with: _$ rlwrap sml_
@@ -223,6 +225,8 @@ val _ = print("\n");
 By the way: _seed1_ can take really big integer numbers, positive or negative, but the modulus operator mod will not only make them much smaller (absolutely), but also only positive, which is practical.
 
 Since everything works, we now put above expressions - **without the semicolons** - into a source code file named _my_program.sml_.
+
+<br/>
 
 ### Tapping into libraries of Standard ML of New Jersey with ML Basis
 
@@ -389,7 +393,7 @@ $
 
 <br/>
 
-## Hello world! example for Lua and JavaScript
+### Hello world! example for Lua and JavaScript
 
 LunarML features the _Hello world!_ example:
 
