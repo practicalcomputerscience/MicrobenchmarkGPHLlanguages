@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.v
 
 2025-05-20/21/31; 2025-12-18: see below
+2026-01-24: renaming variable bits_x_str0a back to bits_x_str (and also at bits_hex_str)
 
 build on Ubuntu 24 LTS: $ v random_bitstring_and_flexible_password_generator.v
   build for production: $ v -prod random_bitstring_and_flexible_password_generator.v
@@ -93,15 +94,15 @@ fn main() {
     //   cf. https://github.com/vlang/v/blob/4dc34650466779e00b037ed0984cdb543440ab6f/vlib/strconv/format.v#L80
     //
     // => writing my own functions based on the Inko code:
-    bits_x_str0 := integer_to_bin_string(x_now)
-    // println(bits_x_str0)   // for testing
-    bits_x.write_string(bits_x_str0)
+    bits_x_str := integer_to_bin_string(x_now)
+    // println(bits_x_str)   // for testing
+    bits_x.write_string(bits_x_str)
 
 
     // byte stream for program ENT:
-    bits_hex_str0 := integer_to_hex_string(x_now)
-    // println(bits_hex_str0)   // for testing
-    bits_hex.write_string(bits_hex_str0)
+    bits_hex_str := integer_to_hex_string(x_now)
+    // println(bits_hex_str)   // for testing
+    bits_hex.write_string(bits_hex_str)
   }
   // println(bits_x)    // for testing
   // println(bits_hex)  // for testing
