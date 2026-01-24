@@ -2,6 +2,8 @@
 
 https://futhark-lang.org/ (*)
 
+---
+
 Table of contents:
 
 - [Futhark as an array-oriented, pure functional programming language](#futhark-as-an-array-oriented-pure-functional-programming-language)
@@ -35,6 +37,8 @@ from: https://futhark.readthedocs.io/en/latest/versus-other-languages.html#evalu
 
 (my emphasis in bold)
 
+<br/>
+
 ## Installation tips
 
 For installation I followed this advice: [1.3. Installing from a precompiled snapshot](https://futhark.readthedocs.io/en/stable/installation.html#installing-from-a-precompiled-snapshot), extracted binary snapshots _futhark-nightly-linux-x86_64.tar.xz_ and ran: _$ sudo make install_ in the extracted directory.
@@ -47,6 +51,8 @@ Futhark 0.26.0 (prerelease - include info below when reporting bugs).
 ...
 $ 
 ```
+
+<br/>
 
 ## Entry point 'main'
 
@@ -73,6 +79,8 @@ $
 ```
 
 Be aware that type _f32_ is also provided at the result.
+
+<br/>
 
 ## Using OpenCL
 
@@ -102,7 +110,9 @@ ICD = Installable Client Driver
 
 If missing, _clinfo_ can be installed in Ubuntu like this: _$ sudo apt install clinfo_
 
-Here may be help, if OpenCL is missing from the system (I didn't test it): [Getting started with OpenCL on Ubuntu Linux](https://github.com/KhronosGroup/OpenCL-Guide/blob/main/chapters/getting_started_linux.md#getting-started-with-opencl-on-ubuntu-linux)
+This information may be help if OpenCL is missing from the system (I didn't test it): [Getting started with OpenCL on Ubuntu Linux](https://github.com/KhronosGroup/OpenCL-Guide/blob/main/chapters/getting_started_linux.md#getting-started-with-opencl-on-ubuntu-linux)
+
+<br/>
 
 ## Interaction with gnuplot example
 
