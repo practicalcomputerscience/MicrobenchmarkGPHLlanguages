@@ -11,7 +11,7 @@ https://lisp-lang.org/
 
 Overview of modern Lisp implementations: https://lisp-lang.org/wiki/article/implementations
 
-<br/>
+---
 
 Table of contents:
 
@@ -19,6 +19,8 @@ Table of contents:
 - [Installing Steel Bank Common Lisp](#installing-steel-bank-common-lisp)
 - [Execution speed of a Lisp program as a standalone executable in Linux: Steel Bank Common Lisp](#execution-speed-of-a-lisp-program-as-a-standalone-executable-in-linux-steel-bank-common-lisp)
 - [Common Lisp on the Java Virtual Machine (JVM) with Armed Bear Common Lisp (ABCL)](#common-lisp-on-the-java-virtual-machine-jvm-with-armed-bear-common-lisp-abcl)
+
+<br/>
 
 ---
 
