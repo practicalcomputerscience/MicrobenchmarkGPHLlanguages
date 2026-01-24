@@ -10,7 +10,7 @@
 - [x] with the fixing of the Perl 5 program came a more polished version of the Raku program (which didn't fix the issue of its slow exe speed, however)
 - [x] fixing V with its confusing variable naming (for experimental reasons back then)
 - [x] fixing Inko for having, like the other languages, extra string variables _bits_x_str_ and _bits_hex_str_ (just to be fair and having them for testing purposes)
-- [ ] trying to a find better solution in Swift for the needed string padding of _bits_x_str_
+- [x] trying to a find better solution in Swift for the needed string padding of _bits_x_str_: didn't find anything
 
 2026-01-24a: done: [Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel)
 
