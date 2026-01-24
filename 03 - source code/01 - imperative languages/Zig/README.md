@@ -11,7 +11,7 @@ https://codeberg.org/ziglang/zig.git
 
 ---
 
-### Installation and compilation tips
+## Installation and compilation tips
 
 I installed like this: _$ brew install zig_
 
@@ -30,6 +30,8 @@ Also compiler switch _-mcpu=native-avx512f_ is activated. Background is this: I 
 My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
 To not be misunderstood: compiling without this switch, just like _$ zig build-exe random_streams_for_perf_stats.zig_, also compiles to a correctly working program, also on my system, but not for _Valgrind_.
+
+<br/>
 
 ### On error handling 
 
