@@ -6,7 +6,7 @@ https://github.com/JuliaLang/julia
 
 Julia Micro-Benchmarks: https://julialang.org/benchmarks/
 
-<br/>
+---
 
 Table of contents:
 
@@ -61,7 +61,9 @@ real	0m0.173s
 $ 
 ```
 
-### Julia and Python
+<br/>
+
+## Julia and Python
 
 I gave transpiler [py2many](https://github.com/py2many/py2many) a chance to transpile my original [Python program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_bitstring_and_flexible_password_generator.py) quickly into a Julia program. But this was a dud. Then, I manually transpiled everything piece by piece from Python.
 
@@ -69,7 +71,7 @@ Yes, there's a certain nearness beteen both languages, but one must be careful w
 
 <br/>
 
-### Building a "standalone" app from a Julia program
+## Building a "standalone" app from a Julia program
 
 TL;DR: building a "standalone" executable in Linux is possible with Julia, but Julia is not (yet) really made for this kind of task. And such an app, at least how I've done it, is not really standalone and distributable within one executable file.
 
@@ -237,7 +239,7 @@ With the workflow as described above, there's no need to manually modify these t
 
 <br/>
 
-### Further experiments for a "standalone" app
+## Further experiments for a "standalone" app
 
 Here's a recent article about making "standalone" executables in Julia, which makes use of the [JuliaC](https://github.com/JuliaLang/JuliaC.jl?tab=readme-ov-file#juliac) package:
 
