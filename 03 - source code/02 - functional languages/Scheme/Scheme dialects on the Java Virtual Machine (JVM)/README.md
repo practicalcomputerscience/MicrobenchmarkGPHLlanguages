@@ -11,9 +11,9 @@ Table of contents:
 - [What about my Scheme program?](#what-about-my-scheme-program)
 - [Program performance with JSchemePlus](#program-performance-with-jschemeplus)
 
----
-
 <br/>
+
+---
 
 With [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure) arguably being the premier Lisp- or Scheme-like language on the JVM, this question came to my mind:
 
@@ -49,6 +49,8 @@ I have no idea if those first-class continuations have ever been implemented in 
 
 Kawa is not the only Scheme dialect to target the JVM. Heap-based **SISC** (_Second Interpreter of Scheme Code_) after stack-based **LISC** (_Lightweight Interpreter of Scheme_): https://sisc-scheme.org/manual/html/index.html + http://sisc-scheme.org/sisc.pdf, was another one.
 
+<br/>
+
 ## JScheme
 
 Then there was JScheme: https://norvig.com/jscheme.html
@@ -67,6 +69,8 @@ So, I followed the link as indicated above (1):
 
 ..to a **JScheme** version 7.2 from 3/1/2005: https://sourceforge.net/projects/jscheme/files/
 It even has a _make_ installation procedure (with _$ sh bin/make_), but again, the only thing that worked for me was a JScheme REPL.
+
+<br/>
 
 ## JSchemePlus
 
@@ -238,7 +242,7 @@ However, same like my original _file-exists?_-based solution, this is not except
 
 <br/>
 
-## Program performance with JSchemePlus
+### Program performance with JSchemePlus
 
 I tested my microbenchmark program with JSchemePlus for one reason: how far can I get? So, it's more like a very basic Proof of Concept (until the Kawa Scheme installation gets fixed some day?).
 
