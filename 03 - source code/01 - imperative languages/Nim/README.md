@@ -4,6 +4,16 @@ https://nim-lang.org/
 
 ---
 
+Table of contents:
+
+- [On how to do demanding string building in Nim](#on-how-to-do-demanding-string-building-in-nim)
+- [Nim's Memory Management](#nims-memory-management)
+- [Why is Nim still not very popular?](#why-is-nim-still-not-very-popular)
+
+<br/>
+
+---
+
 ## On how to do demanding string building in Nim
 
 Based on other microbenchmarks, like this one for example: https://github.com/zupat/related_post_gen, I had somehow higher expectations for the execution speed of my microbenchmark program in a Nim implementation.
