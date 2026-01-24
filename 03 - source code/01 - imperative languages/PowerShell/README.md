@@ -9,7 +9,7 @@ PowerShell is an underrated programming language in my opinion, even though it's
 > [!TIP]
 > Thanks to the vast .NET framework, this was the easiest and fastest language to implement my microbenchmark program.
 
-For scripting tasks I don't mind if a language is a bit slower than others. I wonder if Microsoft did this by design, at least for Linux.
+For scripting tasks I don't mind if a language is a bit slower than others.
 
 <br/>
 
@@ -21,15 +21,15 @@ Microsoft says [here](https://learn.microsoft.com/en-us/powershell/scripting/lan
 
 <br/>
 
-### Installation tips
+---
+
+## Installation tips
 
 For installation in Ubuntu, I followed this procedure: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.5
 
 <br/>
 
-2026-01-11/12:
-
-### Performance tips
+## Performance tips
 
 See from [PowerShell scripting performance considerations](https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.5):
 
@@ -46,7 +46,7 @@ $bits_x = @("----------------") * $END | pre-allocation of an array of strings; 
 
 Result: with this microbenchmark program, using the Power Shell string builder clearly remains the fastest solution, which is not the case in this article, where building an array of joined strings is much faster (on a Windows 11 machine in PowerShell 7.4.2; while I'm on a Ubuntu 24 LTS machine in PowerShell 7.5.4).
 
-Then, I run the program listed under chapter [String addition](https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.5#string-addition) on my system -- and the Power Shell string builder is always the fastest solution:
+Then, I ran the program listed under chapter [String addition](https://learn.microsoft.com/en-us/powershell/scripting/dev-cross-plat/performance/script-authoring-considerations?view=powershell-7.5#string-addition) on my system -- and the Power Shell string builder was always the fastest solution:
 
 ```
 $ pwsh ./string_addition_speed_test.ps
