@@ -11,6 +11,7 @@ Here's a list of programming languages where standalone executables can be compi
 - Chez Scheme (only the "speed part" tested)
 - Common Lisp (SBCL)
 - Crystal
+- Eiffel (Liberty)
 - Fortran
 - Gambit Scheme (only the "speed part" tested)
 - Go
