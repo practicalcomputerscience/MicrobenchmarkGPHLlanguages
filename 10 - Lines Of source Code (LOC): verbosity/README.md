@@ -20,6 +20,7 @@ programming language | LOC | comments | date
 --- | --- | --- | ---
 Ada               | 231 | compiled, very mature language: lots of declarations and type definitions
 Inko              | 224 | compiled, very young language: lots of user-defined functions
+Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead
 Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
@@ -77,6 +78,7 @@ Clojure            | 3
 Common Lisp        | 2
 Crystal            | 0
 D                  | 0
+Eiffel (Liberty)   | 4
 Fortran            | 3
 FreeBASIC          | 1
 Gleam              | 8
