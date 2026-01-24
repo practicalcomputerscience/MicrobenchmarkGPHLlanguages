@@ -19,9 +19,11 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [OCaml on the Java Virtual Machine (JVM)](#ocaml-on-the-java-virtual-machine-jvm)
 
+<br/>
+
 ---
 
-### Installation tips
+## Installation tips
 
 First, I installed the OCaml Package Manager, called opam, see from here: https://opam.ocaml.org/doc/Install.html:
 
@@ -75,7 +77,7 @@ I'm not configuring special things in the generated _dune_ and _dune-project_ co
 
 <br/>
 
-### OCaml on the Java Virtual Machine (JVM)
+## OCaml on the Java Virtual Machine (JVM)
 
 When I had a look at what functional programming languages are available on the JVM: https://en.wikipedia.org/wiki/List_of_JVM_languages, I found OCaml: http://www.ocamljava.org/index.html
 
