@@ -37,7 +37,7 @@ go to 100
 
 seen from here: https://stackoverflow.com/questions/22049963/how-to-do-block-comment-in-fortran
 
----
+<br/>
 
 ## Installation tips
 
@@ -51,6 +51,8 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 ...
 $
 ```
+
+<br/>
 
 ## Building tips
 
