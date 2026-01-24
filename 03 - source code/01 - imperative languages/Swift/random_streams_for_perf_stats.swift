@@ -2,6 +2,7 @@
 random_streams_for_perf_stats.swift
 
 2025-05-31, 2025-06-08, 2025-12-13: see below
+2026-01-24: var bits_x_str_pad is not needed here => moved behind comment
 
 build on Ubuntu 24 LTS: $ mkdir random_streams_for_perf_stats
                         $ cd random_streams_for_perf_stats
@@ -42,7 +43,7 @@ x.append(Int.random(in: 1..<m))  // 2025-12-13: 0..<m --> 1..<m
 
 var bits_x         = ""
 var bits_x_str     = ""
-var bits_x_str_pad = ""
+// var bits_x_str_pad = ""
 var bits_hex       = ""  // needed for program ENT - A Pseudorandom Number Sequence Test Program
 
 
