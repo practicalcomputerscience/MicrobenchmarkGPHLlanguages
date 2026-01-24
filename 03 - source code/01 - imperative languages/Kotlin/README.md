@@ -2,8 +2,6 @@
 
 https://kotlinlang.org/
 
-<br/>
-
 Kotlin feels like the "industrial version" of (academic) Scala and is (also) ready for enterprise level software development, think of Google Maps and Google Drive and their association with Kotlin:
 
 - https://github.com/googlemaps-samples/codelab-maps-platform-101-android-kotlin/tree/main
@@ -13,7 +11,7 @@ Kotlin feels like the "industrial version" of (academic) Scala and is (also) rea
 
 Kotlin also shines with a high quality language documentation in my opinion: https://kotlinlang.org/docs/home.html
 
-<br/>
+---
 
 ## Installation tips
 
