@@ -119,7 +119,9 @@ To replay this example, just copy all the source code from file _rainy.oz_ and p
 
 Now the "Oz Browser" window should pop up as shown above for **Windows**. 
 
-### Functors, curly brackets and scoping in Oz
+<br/>
+
+## Functors, curly brackets and scoping in Oz
 
 The _rainy.oz_ example, without extra declarations in the source code, directly uses the Oz library, or _**functor**_, [Search](https://github.com/mozart/mozart2/blob/master/lib/main/cp/Search.oz), a library which would be a good help to find solutions of a Constraint Satisfaction Problem (CSP), like the map coloring problem. From (*):
 
@@ -223,7 +225,9 @@ A Mozart installation in Linux requires these components as well, but they are a
 - GNU bison: _$ sudo apt install bison_
 - GNU Emacs: _$ sudo apt install emacs_
 
-#### The GNU Multiple Precision Arithmetic Library (GMP)
+<br/>
+
+### The GNU Multiple Precision Arithmetic Library (GMP)
 
 The reason for this failure is the "version hell" in connection with the needed GNU Multiple Precision Arithmetic Library (GMP): https://gmplib.org/, on which the Mozart programming system heavily relies on.
 
@@ -317,7 +321,7 @@ This is my end here for a Mozart-Oz programming system in a Linux system. For a 
 
 <br/>
 
-#### Mozart's virtual machines
+### Mozart's virtual machines
 
 Maxime Istasse's master thesis from 2017, [An Oz implementation using Truffle and Graal](https://thesis.dial.uclouvain.be/entities/masterthesis/df736f1e-0021-42f2-b484-f86538a8150b) may provide interesting insights into Mozart's inner workings:
 
