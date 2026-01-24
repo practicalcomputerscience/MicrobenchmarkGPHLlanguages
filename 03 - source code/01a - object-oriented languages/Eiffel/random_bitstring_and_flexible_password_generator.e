@@ -1,30 +1,13 @@
-class RANDOM_STREAMS_FOR_PERF_STATS
--- random_streams_for_perf_stats.e for Liberty Eiffel
+class RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR
+-- random_bitstring_and_flexible_password_generator.e for Liberty Eiffel
 --
--- 2026-01-22/23
+-- 2026-01-23/24
 --
--- build on Ubuntu 24 LTS: $ se compile ./random_streams_for_perf_stats.e -o ./random_streams_for_perf_stats  # for development
---                         $ se compile -boost ./random_streams_for_perf_stats.e -o ./random_streams_for_perf_stats  # for production
---                           -boost: Enable all optimizations, but disable all run-time checks <-- with gcc -O2 (default switch)
---                           see from: ./Liberty-master/target/liberty-eiffel/liberty.se
+-- build on Ubuntu 24 LTS: $ se compile ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for development
+--                         $ se compile -boost ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for production
+--                           -boost: Enable all optimizations, but disable all run-time checks
 --
--- run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
---                         $ time ./random_streams_for_perf_stats
---                           with create bits_x.make_empty + bits_x.append: => real	0m0.031s
---                           with M1, K250 + create bits_x.make (M1); create bits_hex.make (K250) => real	0m0.029s
---                           same with user defined function integer_to_hex_string => real	0m0.027s
---
---                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats
---                           => 0.027882 +- 0.000167 seconds time elapsed  ( +-  0.60% )
---                         Now compile with -O3 instead of -O2 for gcc: edit config file liberty.se in the [boost] section:
---                           c_compiler_options: -O3 -pipe
---                           cpp_compiler_options: -O3 -pipe
---                           => real	0m0.024s => perf stat: 0.024526 +- 0.000109 seconds time elapsed  ( +-  0.44% ) <<<<<<
---                         Now compile with -Ofast -faggressive-loop-optimizations for gcc:
---                           c_compiler_options: -Ofast -faggressive-loop-optimizations -pipe
---                           cpp_compiler_options: -Ofast -faggressive-loop-optimizations -pipe
---                           => real	0m0.025s!!! => perf stat: 0.025369 +- 0.000128 seconds time elapsed  ( +-  0.50% )
---
+-- run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 --
 --
 -- $ se compile --version
@@ -33,10 +16,6 @@ class RANDOM_STREAMS_FOR_PERF_STATS
 --     release 2022.dev (preparing Glenn Curtiss)
 -- ...
 -- $
---
--- ROPE class for efficient concatenation:
---   https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/src/lib/string/rope.e
---   => how to use this?
 
 create {ANY}
     main
@@ -48,14 +27,25 @@ feature {} -- Initialization
             upper_limit: INTEGER
             m, a, c: INTEGER
             x: ARRAY [INTEGER]
-            i, x_i: INTEGER  -- x_i: current random number x at index i: this is just avoiding x.item(index)
+            i, x_i, n_char, j: INTEGER  -- x_i: current random number x at index i: this is just avoiding x.item(index)
             M1, K250: INTEGER
-            -- bits_hex_str2: STRING
             bits_x, bits_hex, bits_x_str, bits_hex_str: STRING
             file_bits_x, file_bits_hex: STRING
 
             out_file: TEXT_FILE_WRITE
             -- see from: https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/io/redirection_example.e
+
+            answer, with_special_chars: BOOLEAN
+            reply, bin0, bin0_0, bin0_1, pw_chars: STRING
+            char0, char1: INTEGER
+            char0a, char1a: CHARACTER
+
+            reg_expr_builder: REGULAR_EXPRESSION_BUILDER
+            pattern: REGULAR_EXPRESSION
+            -- see from: https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/src/lib/regular_expression/regular_expression_builder.e#L7
+            --   posix_builder, perl5_builder, python_builder
+            -- https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/tutorial/regular_expression/example2.e#L18
+
         do
             upper_limit := 62501  -- 62501 for exactly 1M binary digits
             -- upper_limit := 50  -- for testing
@@ -72,20 +62,17 @@ feature {} -- Initialization
             -- see from: https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/storage.d/loadpath.se.d/collection.d/ARRAY.html
 
             -- Initialize strings
-            -- create bits_x.make_empty
             create bits_x.make (M1)
             create bits_x_str.make (16)
-            -- create bits_hex.make_empty
             create bits_hex.make (K250)
             create bits_hex_str.make (8)
-            -- create bits_hex_str2.make (4)
 
             -- Initialize RNG with a random seed
             random_number_generator.next
             x_i := random_number_generator.last_integer(m - 1)
             -- last_integer(n): 1 <= Result and Result <= n
             -- see from: https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/random.d/RANDOM_NUMBER_GENERATOR.html
-            -- io.put_integer ("%N" + x_i)  -- for testing
+            -- io.put_integer (x_i)  -- for testing
 
             x.put (x_i, 0)  -- start at index 0 here
 
@@ -106,14 +93,7 @@ feature {} -- Initialization
                 bits_x.append (bits_x_str)
 
                 -- Append 4-digit hexadecimal string
-                -- bits_hex_str := x_i.to_hexadecimal
-                -- outcome of .to_hexadecimal function: 33933 --> "0000848D" => should be: "848D", basically "848d"
-                -- https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/numeric.d/loadpath.se.d/NATURAL_GENERAL.html#to_hexadecimal
                 bits_hex_str := integer_to_hex_string (x_i)
-                -- bits_hex_str2.copy_substring (bits_hex_str, 5, 8)  -- string indices start at 1!!
-                -- bits_hex_str2 := bits_hex_str2.as_lower  -- have lower a...f hex digits only
-                -- io.put_string ("%N" + bits_hex_str2)  -- for testing
-                -- bits_hex.append (bits_hex_str2)
                 -- io.put_string ("%N" + bits_hex_str)  -- for testing
                 bits_hex.append (bits_hex_str)
 
@@ -142,6 +122,107 @@ feature {} -- Initialization
                 io.put_string ("%Ncould not write to file: " + file_bits_hex)
             end
 
+            io.put_new_line
+
+
+            -- make a password of N_CHAR printable chars:
+            n_char := 12
+            answer := False
+            from
+            until
+                answer
+            loop
+                io.put_string("%NPassword of " + n_char.out + " printable chars OK? 'y' or another integer >= 8: ")
+                io.read_line
+                reply := io.last_string
+
+                if reply.is_equal("y") then
+                    answer := True
+                else
+                    if reply.is_integer and then reply.to_integer >= 8 then
+                        n_char := reply.to_integer
+                        answer := True
+                    else
+                        io.put_string("enter an integer number >= 8 or 'y'%N")
+                    end
+                end
+            end
+            -- io.put_string ("%Nn_char = " + n_char.out)  -- for testing
+
+
+            with_special_chars := True
+            answer := False
+            from
+            until
+                answer
+            loop
+                io.put_string("%NDo you want me to use special characters like .;,+*... ? 'y' or 'n': ")
+                io.read_line
+                reply := io.last_string
+
+                if reply.is_equal("y") then
+                    answer := True
+                else
+                    with_special_chars := False
+                    answer := True
+                end
+            end
+            -- io.put_string ("%Nwith_special_chars = " + with_special_chars.out)  -- for testing
+
+
+            if with_special_chars then
+                pattern := reg_expr_builder.convert_perl_pattern("[!-~]")
+            else
+                pattern := reg_expr_builder.convert_perl_pattern("[A-Za-z0-9]")
+            end
+            -- io.put_string ("%Npattern = " + pattern.out)  -- for testing
+
+
+            j := 0  -- counter in x[j]
+            create pw_chars.make (n_char)
+            create bin0_0.make (8)
+            create bin0_1.make (8)
+
+            from
+                i := 0  -- char counter in password
+            invariant
+                i <= n_char
+            until
+                i >= n_char
+            loop
+                -- io.put_string ("%N%Nx(j) = " + x.item(j).out)  -- for testing
+                bin0 := integer_to_bin_string (x.item(j))
+                -- io.put_string ("%Nbin0 = " + bin0)  -- for testing
+
+                bin0_0.copy_substring (bin0, 1, 8)
+                bin0_1.copy_substring (bin0, 9, 16)
+                -- io.put_string ("%Nbin0_0 = " + bin0_0)  -- for testing
+                -- io.put_string ("%Nbin0_1 = " + bin0_1)  -- for testing
+
+                char0 := bin_string_to_integer(bin0_0)
+                char1 := bin_string_to_integer(bin0_1)
+                -- io.put_string ("%Nchar0 = " + char0.out)  -- for testing
+                -- io.put_string ("%Nchar1 = " + char1.out)  -- for testing
+
+                char0a := char0.to_character
+                char1a := char1.to_character
+                -- io.put_string ("%Nchar0a = " + char0a.out)  -- for testing
+                -- io.put_string ("%Nchar1a = " + char1a.out)  -- for testing
+
+                if pattern.match(char0a.out) then
+                    pw_chars.append(char0a.out)
+                    i := i + 1
+                end
+
+                if pattern.match(char1a.out) and i < n_char then
+                    pw_chars.append(char1a.out)
+                    i := i + 1
+                end
+
+                j := j + 1
+            end
+
+            io.put_string ("%NYour password of " + n_char.out + " characters is: " + pw_chars)
             io.put_new_line
         end
 
@@ -221,6 +302,29 @@ feature {}
         end
 
 
+    bin_string_to_integer (binary_string: STRING): INTEGER
+    -- a Duck.ai solution on prompt:
+    -- "Parse a string with the binary representation of an integer number and convert it into an integer in Liberty Eiffel language."
+        local
+            binary_as_integer: INTEGER
+            base: INTEGER
+        do
+            from
+                binary_as_integer := 0
+                base := 1  -- This represents 2^0
+            until
+                binary_string.is_empty
+            loop
+                if binary_string.last = '1' then
+                    binary_as_integer := binary_as_integer + base
+                end
+                binary_string.remove_last  -- Remove the last character for the next iteration
+                base := base * 2  -- Move to the next position (2^n)
+            end
+            Result := binary_as_integer
+        end
+
+
     random_number_generator: RANDOM_NUMBER_GENERATOR
     -- from: https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/random/example1.e
     -- Note: this is a once function in order to use always the same RANDOM_NUMBER_GENERATOR.
@@ -232,4 +336,4 @@ feature {}
 --
 ------------------------------------------------------------------------------------------------------
 
-end -- class RANDOM_STREAMS_FOR_PERF_STATS
+end -- class RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR
