@@ -19,6 +19,7 @@ Table of contents:
 - [Idea of Eiffel](#idea-of-eiffel)
 - [Installation tips](#installation-tips)
 - [On how to do demanding string building in Eiffel](#on-how-to-do-demanding-string-building-in-eiffel)
+- [Boosting the execution speed at the Liberty configuration](#boosting-the-execution-speed-at-the-liberty-configuration)
 
 <br/>
 
@@ -128,11 +129,7 @@ _se_ stands for the old SmartEiffel compiler, and has later became a wrapper aro
 
 ### On how to do demanding string building in Eiffel
 
-TBD: see from D for example
-
-<br/>
-
-(+) https://courses.cs.vt.edu/~cs3304/Spring02/lectures/lect12.pdf -- Programming Languages, Eiffel, Benjamin J. Keller, Department of Computer Science, Virginia Tech
+TBD
 
 <br/>
 
@@ -151,6 +148,10 @@ cpp_compiler_options: -O3 -pipe
 ```
 
 "Upgrading" this switch to _-Ofast -faggressive-loop-optimizations_ (see from here at C: [Program building tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#program-building-tips)) made the executable a little bit slower according the my experiments!
+
+---
+
+(+) https://courses.cs.vt.edu/~cs3304/Spring02/lectures/lect12.pdf -- Programming Languages, Eiffel, Benjamin J. Keller, Department of Computer Science, Virginia Tech
 
 <br/>
 
