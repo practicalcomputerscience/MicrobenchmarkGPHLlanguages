@@ -6,6 +6,8 @@ Table of contents:
 - [What came after APL](#what-came-after-apl)
 - [Speakeasy](#speakeasy)
 
+<br/>
+
 ---
 
 ## APL's nearness to functional programming
@@ -20,6 +22,8 @@ Though I guess it's fair to say that what later became **Speakeasy** established
 
 - https://digital.library.unt.edu/ark:/67531/metadc1030830/
 - https://en.wikipedia.org/wiki/Speakeasy_(computational_environment)
+
+<br/>
 
 ## What came after APL
 
@@ -53,12 +57,13 @@ from: http://archive.computerhistory.org/resources/access/text/2013/12/102746804
 
 APL was still a Top 100 language in July 2025: https://www.tiobe.com/tiobe-index/; now in October 2025 I see **J** and **Q** there.
 
+<br/>
+
 ## Speakeasy
 
 However, I think that Speakeasy's influence on MATLAB was greater than APL's, and if its only for practical reasons of language implementation. And Speakeasy, built on top of Fortran, clearly is an imperative programming language. Or was, since what happened to Speakeasy?
 
 It looks like that this language, just like many others, just fizzled out: https://retrocomputing.stackexchange.com/questions/20444/what-happened-to-the-speakeasy-computational-environment
-
 
 <br/>
 
