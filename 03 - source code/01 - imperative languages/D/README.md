@@ -37,7 +37,7 @@ syntax of those languages. The areas D set out to improve focused initially on r
 
 However, one could argue that something similar to Java and its contenders happened here too: [Old computer programming languages learning new tricks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#old-computer-programming-languages-learning-new-tricks)
 
----
+<br/>
 
 ## Installing the GDC (GCC-based D compiler)
 
