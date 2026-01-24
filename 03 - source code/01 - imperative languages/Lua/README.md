@@ -18,7 +18,7 @@ if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char th
 
 ---
 
-### Installation tips
+## Installation tips
 
 ```
 $ curl -L -R -O https://www.lua.org/ftp/lua-5.4.8.tar.gz
@@ -33,7 +33,7 @@ $
 
 <br/>
 
-### LuaJIT
+## LuaJIT
 
 An indicator for my suspicion as stated at the top ("weakness") is this: when I run this script with _LuaJIT_, a Just-In-Time compiler (https://luajit.org/):
 
@@ -76,7 +76,7 @@ Roberto Ierusalimschya, Luiz Henrique de Figueiredob, Waldemar Celesa, Departmen
 
 <br/>
 
-### Lua coding tips
+## Lua coding tips
 
 I declared variables, functions, libraries etc. as _**local**_, that is for stack usage (https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), throughout the scripts. It helps running a Lua script faster, and according to my experience by at least 15%:
 
