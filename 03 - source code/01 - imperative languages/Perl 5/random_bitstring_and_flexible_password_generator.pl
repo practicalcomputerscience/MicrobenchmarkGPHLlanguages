@@ -3,6 +3,8 @@
 # 2025-05-05/31, 2025-06-06/18
 # 2025-07-21: better error handling when writing to files
 # 2025-12-19: see below
+# 2025-01-24: correcting the confusing variable naming (for experimental reasons back then)
+# 2025-01-24: streamlining of user dialog
 #
 # run on Ubuntu 24 LTS: $ perl random_bitstring_and_flexible_password_generator.pl
 #
@@ -33,11 +35,11 @@ my constant $file_bits_hex = 'random_bitstring.byte';
 my $random_start = int(rand($m - 1)) + 1;  # exclusive of m; 2025-12-19
 
 my @x = ($random_start);  # also needed for the password later
-my @bits_x_str;    # array of strings for the bit stream:  "0"'s + "1"'s
-my @bytes_x_str;   # array of strings for the byte stream: [0..9][a..f]'s
+my @bits_x;    # array of strings for the bit stream:  "0"'s + "1"'s
+my @bits_hex;  # array of strings for the byte stream: [0..9][a..f]'s
 
 
-print('generating a random bit stream...');
+print("\ngenerating a random bit stream...");
 STDOUT->flush();
 
 my $i = 1;
@@ -45,17 +47,17 @@ while ($i < $END) {
   my $y = ($a * $x[$i-1] + $c) % $m;
   push @x, $y;
 
-  my $bits_x = sprintf('%016b', $y);  # Bin: 0001011111001100
-  push @bits_x_str, $bits_x;
+  my $bits_x_str = sprintf('%016b', $y);  # Bin: 0001011111001100
+  push @bits_x, $bits_x_str;
 
-  my $bytes_x = sprintf('%04x', $y);  # Hex
-  push @bytes_x_str, $bytes_x;
+  my $bits_hex_str = sprintf('%04x', $y);  # Hex
+  push @bits_hex, $bits_hex_str;
 
   $i++;
 }
 
-my $bits_x_str_total  = join('', @bits_x_str);
-my $bytes_x_str_total = join('', @bytes_x_str);
+my $bits_x_str_total   = join('', @bits_x);
+my $bits_hex_str_total = join('', @bits_hex);
 
 # write bit stream to disk:
 my $FH1_flag = 1;  # True = 1
@@ -82,7 +84,7 @@ unless(open(FH, '>', $file_bits_hex)) {
   warn "\ncan't open file: $file_bits_hex -- $!";
   $FH2_flag = 0;
 }
-unless(print FH $bytes_x_str_total) {
+unless(print FH $bits_hex_str_total) {
   warn "could not write to file: $file_bits_hex";
   $FH2_flag = 0;
 }
@@ -92,10 +94,9 @@ unless(close(FH)) {
 }
 STDOUT->flush();
 if ($FH2_flag == 1) {
-  print "\nByte stream has been written to disk under name: $file_bits_hex";
+  print "\nByte stream has been written to disk under name: $file_bits_hex\n";
 }
 STDOUT->flush();
-
 
 
 # make a password of N_CHAR printable chars: user input requested here
@@ -104,21 +105,21 @@ my $answer = 0;  # 0 = False
 my $answer_str = "";
 while (!$answer) {
   $N_CHAR = 12;
-  print "\n\nPassword of $N_CHAR printable chars OK? 'y' or another integer number >= 8: ";
+  print "\nPassword of $N_CHAR printable chars OK? 'y' or another integer number >= 8: ";
   $answer_str = <STDIN>;
   chomp $answer_str;
-  if ($answer_str =~ "y") {
+  if ($answer_str =~ /^y$/) {
     $answer = 1;
   } else {
     if ($answer_str =~ /^\d+\z/) {  # catch inpute like 9.9
       $N_CHAR = int($answer_str);
       if ($N_CHAR < 8) {
-        print 'enter an integer number >= 8 or "y"';
+        print "enter an integer number >= 8 or 'y'\n";
       } else {
         $answer = 1;
       }
     } else {
-      print 'enter an integer number >= 8 or "y"';
+      print "enter an integer number >= 8 or 'y'\n";
     }
   }
 }
