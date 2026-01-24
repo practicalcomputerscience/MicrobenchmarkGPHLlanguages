@@ -11,13 +11,15 @@ https://codeberg.org/ziglang/zig.git
 
 ---
 
+<br/>
+
 ## Installation and compilation tips
 
-I installed like this: _$ brew install zig_
+I installed Zig like this: _$ brew install zig_
 
 <br/>
 
-On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)), I'm compiling like this:
+On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)), I'm compiling Zig programs like this:
 
 ```
 $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O ReleaseFast
@@ -25,7 +27,7 @@ $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O Releas
 
 ..where switch _-O ReleaseFast_ is essential to build a fast program.
 
-Also compiler switch _-mcpu=native-avx512f_ is activated. Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind) and if the Zig program would have been compiled without this switch, it would crash immediately.
+Notice that compiler switch _-mcpu=native-avx512f_ is activated here. Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind), and if the Zig program would have been compiled without this switch, it would crash immediately.
 
 My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
@@ -33,7 +35,7 @@ To not be misunderstood: compiling without this switch, just like _$ zig build-e
 
 <br/>
 
-### On error handling 
+## On error handling 
 
 Initially I had source code like this when writing the strings to their files:
 
