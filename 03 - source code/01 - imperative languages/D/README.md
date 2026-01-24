@@ -8,6 +8,22 @@ DUB, the D package registry: https://code.dlang.org/
 
 <br/>
 
+---
+
+Table of contents:
+
+- [Idea of D](#idea-of-d)
+- [Installing the GDC (GCC-based D compiler)](#installing-the-gdc-gcc-based-d-compiler)
+- [Garbage collection](#garbage-collection)
+- [On how to do demanding string building in D](#on-how-to-do-demanding-string-building-in-d)
+- [Why is D still not very popular?](why-is-d-still-not-very-popular)
+
+<br/>
+
+---
+
+## Idea of D
+
 D is one of the earlier languages, since 1999, with the aim to overcome the deficits of C++: 
 
 2020: _Origins of the D Programming Language_
@@ -23,7 +39,7 @@ However, one could argue that something similar to Java and its contenders happe
 
 ---
 
-### Installing the GDC (GCC-based D compiler)
+## Installing the GDC (GCC-based D compiler)
 
 You have the choice of three compilers (in Linux and architectures i386, amd64):
 
@@ -52,7 +68,7 @@ $
 
 <br/>
 
-### Garbage collection
+## Garbage collection
 
 Same like [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nims-memory-management), D by default is a garbage-collected programming language.
 
@@ -74,7 +90,7 @@ Doing such re-writing would lead to massively low-level, non-idiomatic source co
 
 <br/>
 
-### On how to do demanding string building in D
+## On how to do demanding string building in D
 
 Same like with [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#on-how-to-do-demanding-string-building-in-nim), I had somehow higher expectations for the execution speed of my microbenchmark program in a D implementation.
 
@@ -100,7 +116,7 @@ Using the appender is also a little bit less verbose than range copying, since n
 
 <br/>
 
-### Why is D still not very popular?
+## Why is D still not very popular?
 
 Same like at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question here.
 
