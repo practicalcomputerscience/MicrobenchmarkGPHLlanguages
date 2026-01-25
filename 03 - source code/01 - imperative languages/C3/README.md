@@ -46,4 +46,37 @@ I assume that my microbenchmark programs, also in its C3 implementation, have su
 
 <br/>
 
+## On how to do demanding string building in C3
+
+This new solution:
+
+```
+    bits_x[byte_nbr..byte_nbr+15] = bits_x_str[0..15];  // 2026-01-25
+```
+
+..is not only more idiomatic from my point of view, but also a little bit faster with around 15.4 milliseconds than the old solution:
+
+```
+    bits_x[byte_nbr]     = bits_x_str[0];
+    bits_x[byte_nbr+1]   = bits_x_str[1];
+    bits_x[byte_nbr+2]   = bits_x_str[2];
+    bits_x[byte_nbr+3]   = bits_x_str[3];
+    bits_x[byte_nbr+4]   = bits_x_str[4];
+    bits_x[byte_nbr+5]   = bits_x_str[5];
+    bits_x[byte_nbr+6]   = bits_x_str[6];
+    bits_x[byte_nbr+7]   = bits_x_str[7];
+    bits_x[byte_nbr+8]   = bits_x_str[8];
+    bits_x[byte_nbr+9]   = bits_x_str[9];
+    bits_x[byte_nbr+10]  = bits_x_str[10];
+    bits_x[byte_nbr+11]  = bits_x_str[11];
+    bits_x[byte_nbr+12]  = bits_x_str[12];
+    bits_x[byte_nbr+13]  = bits_x_str[13];
+    bits_x[byte_nbr+14]  = bits_x_str[14];
+    bits_x[byte_nbr+15]  = bits_x_str[15];
+```
+
+..with around 15.8 milliseconds of execution time (though, this may be well within the statistical errors of the true means).
+
+<br/>
+
 ##_end
