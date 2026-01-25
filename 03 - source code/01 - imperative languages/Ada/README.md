@@ -39,4 +39,29 @@ $ alr run
 $ ./bin/random_bitstring_and_flexible_password_generator
 ```
 
+<br/>
+
+## On how to do demanding string building in Ada
+
+The implemented [C-like solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) with copying the individual characters of _bits_x_str_ into the big, final string _bits_x_ is still a little bit faster with around 18.8 milliseconds than this solution with around 20.6 milliseconds (which would be more like the Fortran, C++ or Eiffel solutions):
+
+```
+...
+   bits_x : String (1 .. upper_limit * STR_LENGTH_BIN) := (others => ' ');
+   bits_x_str : String (1 .. STR_LENGTH_BIN);
+   ...
+   
+   for i in 2 .. upper_limit loop
+      ...
+      byte_nbr := (i - 2) * STR_LENGTH_BIN + 1;
+      bits_x (byte_nbr .. byte_nbr + 15) := bits_x_str;
+      ...
+   end loop;
+...
+```
+
+So, I keep the original solution as implemented.
+
+<br/>
+
 ##_end
