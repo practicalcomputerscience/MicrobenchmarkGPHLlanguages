@@ -2,6 +2,8 @@
 random_bitstring_and_flexible_password_generator.c3
 
 2025-05-30; 2025-12-17: see below; 2026-01-09: deleted one outdated definition
+2026-01-25: fixing the error of last missing digits in bits_x and bits_hex
+2026-01-25: copying from little strings into big strings to have more abstraction here like in Fortran, C++ or Eiffel
 
 build on Ubuntu 24 LTS: $ c3c compile -O3 random_bitstring_and_flexible_password_generator.c3 --max-stack-object-size 262144
 
@@ -21,11 +23,9 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 $ c3c -V
 C3 Compiler Version:       0.7.8
-Installed directory:       ~/scripts/C3/c3-ubuntu-22/c3
-Git Hash:                  5961bcaf866a1d866747c12426436864ebaa4cb1
-Backends:                  LLVM
+...
 LLVM version:              19.1.7
-LLVM default target:       x86_64-pc-linux-gnu
+...
 $
 
 */
@@ -36,10 +36,10 @@ import std::math::random;
 import std::time;  // now()
 
 
-const int END = 62500;  // 62501 for exactly 1M binary digits; val is immutable
+const int END = 62501;  // 62501 for exactly 1M binary digits; val is immutable
 // const int END  = 50;     // for testing
-const int M1   = END * 16;
-const int K250 = END * 4;
+const int M1   = END * 16 - 16;  // 2026-01-25
+const int K250 = END * 4 - 4;  // 2026-01-25
 
 const int M = 65521;  // = 2^16 - 15
 const int A = 17364;
@@ -66,7 +66,7 @@ fn int main()
   char[4] bits_hex_str;
 
 
-  io::printn("generating a random bit stream...");
+  io::printn("\ngenerating a random bit stream...");
   for (int i = 1; i < END; i++) {
     x[i] = ((A * x[i-1]) + C) % M;
     // io::printfn("\n%d", x[i]);      // for testing
@@ -77,31 +77,13 @@ fn int main()
     // https://c3-lang.org/language-fundamentals/basic-types-and-values/#printing-values
 
     byte_nbr = (i-1)*16;
-    bits_x[byte_nbr]     = bits_x_str[0];
-    bits_x[byte_nbr+1]   = bits_x_str[1];
-    bits_x[byte_nbr+2]   = bits_x_str[2];
-    bits_x[byte_nbr+3]   = bits_x_str[3];
-    bits_x[byte_nbr+4]   = bits_x_str[4];
-    bits_x[byte_nbr+5]   = bits_x_str[5];
-    bits_x[byte_nbr+6]   = bits_x_str[6];
-    bits_x[byte_nbr+7]   = bits_x_str[7];
-    bits_x[byte_nbr+8]   = bits_x_str[8];
-    bits_x[byte_nbr+9]   = bits_x_str[9];
-    bits_x[byte_nbr+10]  = bits_x_str[10];
-    bits_x[byte_nbr+11]  = bits_x_str[11];
-    bits_x[byte_nbr+12]  = bits_x_str[12];
-    bits_x[byte_nbr+13]  = bits_x_str[13];
-    bits_x[byte_nbr+14]  = bits_x_str[14];
-    bits_x[byte_nbr+15]  = bits_x_str[15];
+    bits_x[byte_nbr..byte_nbr+15] = bits_x_str[0..15];  // 2026-01-25
 
     io::bprintf(&bits_hex_str, "%04x", x[i]);
     // io::printfn("%s", (String)&bits_hex_str);  // for testing
 
     byte_nbr = (i-1)*4;
-    bits_hex[byte_nbr]     = bits_hex_str[0];
-    bits_hex[byte_nbr+1]   = bits_hex_str[1];
-    bits_hex[byte_nbr+2]   = bits_hex_str[2];
-    bits_hex[byte_nbr+3]   = bits_hex_str[3];
+    bits_hex[byte_nbr..byte_nbr+3] = bits_hex_str[0..3];  // 2026-01-25
   }
   // io::printfn("%s", (String)&bits_x);  // for testing
   // io::printfn("%s", (String)&bits_hex);  // for testing
@@ -261,7 +243,7 @@ fn int main()
     j++;
   }
 
-  io::printfn("\nYour password of %d characters is: %s\n", n_char, pw_chars);  // for testing
+  io::printfn("\nYour password of %d characters is: %s", n_char, pw_chars);  // for testing
 
   return main_return_val;
 }
