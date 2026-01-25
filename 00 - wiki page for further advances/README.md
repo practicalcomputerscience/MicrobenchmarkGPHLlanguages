@@ -8,7 +8,7 @@
 - [ ] re-checking if the very low level string concatenation solutions in **C and C3 and specifically Ada** can be brought to at least the more abstract level of Fortran or C++ without sacrificing too much of execution speed. Also the Eiffel solution of _create bits_x.make (M1) + bits_x.append (bits_x_str)_ may serve as a role model here
 - [x] Ada: no faster solution (~20.6ms) with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length (~18.8ms)
 - [ ] C:
-- [ ] C++
+- [ ] C3
 - [x] fixing Perl 5 with its confusing variable naming (for experimental reasons back then)
 - [x] with the fixing of the Perl 5 program came a more polished version of the Raku program (which didn't fix the issue of its slow exe speed, however)
 - [x] fixing V with its confusing variable naming (for experimental reasons back then)
