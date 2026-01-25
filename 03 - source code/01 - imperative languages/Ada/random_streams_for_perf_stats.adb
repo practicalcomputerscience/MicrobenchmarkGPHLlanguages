@@ -4,6 +4,7 @@
 --  2025-07-13: repaired Exception Handling when writing to files => program must not stop at an exception here!
 --  2025-07-16: speed improved Integer_to_bin_string => change not measurable, but leave changed code!
 --  2025-12-14: see below
+--  2026-01-25: fixing some warnings
 --
 --
 --  build on Ubuntu 24 LTS: $ alr init --bin random_streams_for_perf_stats
@@ -22,10 +23,10 @@ with Ada.Text_IO; use Ada.Text_IO;  --  with use clause
 --  => Put("5 + 9 - 3 = "); Put(5 + 9 - 3, 3); New_Line;
 --     instead of Ada.Text_IO.Put(), Ada.Integer_Text_IO.Put()
 --  with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO;
+--  with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
+--  with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+--  with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
 
 with Ada.Numerics.Discrete_Random;
 
@@ -36,7 +37,7 @@ with Ada.Sequential_IO;  --  a generic package is not allowed in a use clause!!
 --  with a final line feed character at the end of files:
 --  https://perso.telecom-paristech.fr/pautet/Ada95/e_c24_p1.ada
 
-with Ada.Real_Time; use Ada.Real_Time;
+--  with Ada.Real_Time; use Ada.Real_Time;
 
 procedure random_streams_for_perf_stats is
 
@@ -81,10 +82,10 @@ procedure random_streams_for_perf_stats is
    bits_hex_str : String (1 .. STR_LENGTH_HEX);
    hex_str : String (1 .. STR_LENGTH_HEX);
 
-   byte_nbr, j, i, remainder : Integer;
+   byte_nbr, j, remainder : Integer;
    k : UInt16;
 
-   package SU renames Ada.Strings.Unbounded;
+   --  package SU renames Ada.Strings.Unbounded;
 
    function Integer_to_bin_string (N : UInt16) return String is
    begin
@@ -146,7 +147,7 @@ begin
    for i in 2 .. upper_limit loop
       x (i) := (a * x (i - 1) + c) mod m;
       --  for testing: formatted printing:
-      --  Ada.Integer_Text_IO.Put(x (i), Width => 5); New_Line;
+      --  New_Line; Ada.Integer_Text_IO.Put(x (i), Width => 5); New_Line;
 
       bits_x_str := Integer_to_bin_string (x (i));
       --  for testing:
