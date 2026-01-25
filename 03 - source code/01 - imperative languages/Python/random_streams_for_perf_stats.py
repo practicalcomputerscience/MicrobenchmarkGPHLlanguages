@@ -17,7 +17,7 @@ new: from io import StringIO => mean = 142 [milliseconds] <==> 237 [milliseconds
 
 """
 
-import re
+# import re  # not needed here!  2026-01-25
 import numpy as np
 
 from io import StringIO  # new on 2025-06-03
@@ -88,3 +88,4 @@ else:
   print(f"Byte stream has been written to disk under name: {file_bits_hex}")
 
 # end of random_streams_for_perf_stats.py
+
