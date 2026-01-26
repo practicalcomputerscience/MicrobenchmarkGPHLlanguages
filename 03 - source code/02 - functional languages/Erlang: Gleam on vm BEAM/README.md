@@ -119,6 +119,29 @@ Install this package: _$ gleam add simplifile_ in a Gleam project directory to m
 
 <br/>
 
+2026-01-26: I just noticed that program _random_bitstring_and_flexible_password_generator.gleam_ wasn't working anymore in installed version 1.13.0:
+
+```
+$ gleam test
+error: Incompatible Gleam version
+
+The package `gleam_stdlib` requires a Gleam version satisfying >=1.14.0 but you are using v1.13.0.
+
+$ gleam -V
+gleam 1.13.0
+$
+```
+
+So, basically Gleam, in connection with the Homebrew package manager, has practically forced me to do an upgrade:
+
+```
+$ brew upgrade gleam
+...
+$
+```
+
+<br/>
+
 ## Lists
 
 So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml).
