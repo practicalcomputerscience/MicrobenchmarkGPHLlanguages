@@ -11,7 +11,7 @@ Table of contents:
 - [Two branches of Functional Programming (FP): pure and impure](#two-branches-of-functional-programming-fp-pure-and-impure)
 - [Logic for Computable Functions (LCF)](#logic-for-computable-functions-lcf)
 - [If You See What I Mean (ISWIM) and Pedagogic Algorithmic Language (PAL)](#if-you-see-what-i-mean-iswim-and-pedagogic-algorithmic-language-pal)
-- [What functional programming language introduced the idea of "immutuable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutuable-variables)
+- [What functional programming language introduced the idea of "immutable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutable-variables)
 - [Functional languages on the Java Virtual Machine (JVM)](#functional-languages-on-the-java-virtual-machine-jvm)
 - [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#so-who-is-mostly-using-functional-programming)
 
@@ -54,11 +54,11 @@ ISWIM was a language that broke with some traditions of the ALGOL family of prog
 
 From: "Some History of Functional Programming Languages", **David Turner**, 2012 (https://en.wikipedia.org/wiki/David_Turner_(computer_scientist)): https://www.cs.kent.ac.uk/people/staff/dat/tfp12/tfp12.pdf (5)
 
-And not only ALGOL, but also Lisp: _...Lisp has some dark corners, especially outside "pure LISP,"..._ (1). But ISWIM was not the programming language which introduced the concept of "immutuable variables" (and also not PAL).
+And not only ALGOL, but also Lisp: _...Lisp has some dark corners, especially outside "pure LISP,"..._ (1). But ISWIM was not the programming language which introduced the concept of "immutable variables" (and also not PAL).
 
 This leaves this question to me: 
 
-## What functional programming language introduced the idea of "immutuable variables"?
+## What functional programming language introduced the idea of "immutable variables"?
 
 I think it was **SASL** (St Andrews Static Language) from 1972/1973 (5) by David Turner:
 
