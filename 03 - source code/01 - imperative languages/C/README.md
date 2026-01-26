@@ -9,9 +9,18 @@ Checked C "for making existing C code more secure":
 - https://www.checkedc.org/
 - https://github.com/checkedc/checkedc-clang/wiki
 
-<br/>
-
 See also page [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take)
+
+---
+
+Table of contents:
+
+- [Program building tips](#program-building-tips)
+- [Checked C](#checked-c)
+- [Keeping using idiomatic constructs](#keeping-using-idiomatic-constructs)
+- [On how to do demanding string building in C](#on-how-to-do-demanding-string-building-in-c)
+
+<br/>
 
 ---
 
@@ -98,7 +107,7 @@ Now the execution time dropped even further to only around 3.2 milliseconds!
 
 <br/>
 
-### Keeping using idiomatic constructs
+## Keeping using idiomatic constructs
 
 However, replacing the _sprintf_ function in my C program would not serve the goals of this microbenchmarking well in my opinion. I try to use idiomatic constructs as long as they make sense and thus forego savings in speed or space here and there. The other pretty fast languages, that is Rust, [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal/random_streams_for_perf_stats_cr.cr), [C3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C3/random_streams_for_perf_stats.c3), [Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_streams_for_perf_stats.zig), [Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_streams_for_perf_stats.odin) and [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go/random_streams_for_perf_stats.go), all use their own version of string formatting, sometimes with more than one function call, like in [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_streams_for_perf_stats.rs).
 
@@ -112,6 +121,28 @@ However, what I have done now for my official C program is:
 - using its execution speed result as my official one for the C program: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
 
 Because I also noticed that with clang version 21.1.7, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or gcc version 14.2.0). It's now about 7.8 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
+
+<br/>
+
+## On how to do demanding string building in C
+
+The currently implemented [solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) with copying the individual characters of _bits_x_str_ into the big, final string _bits_x_ is still a bit faster with around 7.8 milliseconds than this solution with around 8.2 milliseconds of execution time (which would be more like the Fortran, C++, C3 or Eiffel solutions, but not the [Ada solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb), which is also still employing the same tactics for performance reasons):
+
+```
+  ...
+  char bits_x[M1];
+  char bits_x_str[17];
+  ...
+  for (int i = 1; i < END; i++) {
+    ...
+    byte_nbr = (i-1)*16;
+    strncpy(bits_x + byte_nbr, bits_x_str, 16);  // 2026-01-26: dest <== src
+    ...
+  }
+  ...
+```
+
+So, I keep the original solution as implemented.
 
 <br/>
 
