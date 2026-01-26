@@ -144,6 +144,8 @@ The currently implemented [solution](https://github.com/practicalcomputerscience
 
 So, I keep the original solution as implemented.
 
+By the way: there were two warnings from _gcc -Wall ..._ related to _char bits_x_str[17];_ and _char bits_hex_str[5];_, which I didn't follow up, when I was experimenting with the _strncpy_-based tactics. However, the big string results in both files were fine.
+
 <br/>
 
 ##_end
