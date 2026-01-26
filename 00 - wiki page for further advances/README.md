@@ -4,18 +4,18 @@
 
 ---
 
-2026-01-24b:
-- [ ] re-checking if the very low level string concatenation solutions in **C and C3 and specifically Ada** can be brought to at least the more abstract level of Fortran or C++ without sacrificing too much of execution speed. Also the Eiffel solution of _create bits_x.make (M1)_ and _bits_x.append (bits_x_str)_ may serve as a role model here
-- [x] Ada: no faster solution (~20.6ms) with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length than the old, C-like solution
-- [ ] C:
-- [x] C3: in contrast to Ada, the new solution with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length is even a little bit faster than the old, C-like solution!
+2026-01-26:
+- [x] re-checking if the very low level string concatenation solutions in **C and C3 and specifically Ada** can be brought to at least the more abstract level of Fortran or C++ without sacrificing too much of execution speed. Also the Eiffel solution of _create bits_x.make (M1)_ and _bits_x.append (bits_x_str)_ may serve as a role model here
+- [x] Ada: no faster solution with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length than the original C-like solution: 20.6ms versus original solution with 18.8 ms
+- [x] C: no faster solution with using function _strncpy_ to copy from little strings into the big strings: 82.1 ms versus original solution with 78.4 ms
+- [x] C3: in contrast to Ada, the new solution with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length is even a little bit faster than the original C-like solution!
 - [x] fixing Perl 5 with its confusing variable naming (for experimental reasons back then)
 - [x] with the fixing of the Perl 5 program came a more polished version of the Raku program (which didn't fix the issue of its slow exe speed, however)
 - [x] fixing V with its confusing variable naming (for experimental reasons back then)
 - [x] fixing Inko for having, like the other languages, extra string variables _bits_x_str_ and _bits_hex_str_ (just to be fair and having them for testing purposes)
 - [x] trying to a find better solution in Swift for the needed string padding of _bits_x_str_: I didn't find anything
 
-2026-01-24a: done: [Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel)
+2026-01-24: done: [Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel)
 
 2026-01-22: done: [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d)
 
