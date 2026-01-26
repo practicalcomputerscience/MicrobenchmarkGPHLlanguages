@@ -2,6 +2,7 @@
 //
 // 2025-10-27/28/29, 2025-12-13: edit of some comments
 // 2025-12-14: see below
+// 2026-01-26: cosmetics in first user dialog
 //
 // install these packages:  $ gleam add simplifile
 //
@@ -121,13 +122,13 @@ fn input_a_valid_number(n_char: Int) -> Int {
           case value {
             value if value >= 8 -> value
             _ -> {
-              io.println("enter an integer number >= 8 or 'y'")
+              io.println("enter an integer number >= 8 or 'y'\n")  // 2026-01-26
               input_a_valid_number(n_char_default)
             }
           }
         }
         Error(_)  -> {
-          io.println("enter an integer number >= 8 or 'y'")
+          io.println("enter an integer number >= 8 or 'y'\n")  // 2026-01-26
           input_a_valid_number(n_char_default)
         }
       }
