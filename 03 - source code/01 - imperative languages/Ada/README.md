@@ -50,7 +50,6 @@ The implemented [C-like solution](https://github.com/practicalcomputerscience/Mi
    bits_x : String (1 .. upper_limit * STR_LENGTH_BIN) := (others => ' ');
    bits_x_str : String (1 .. STR_LENGTH_BIN);
    ...
-   
    for i in 2 .. upper_limit loop
       ...
       byte_nbr := (i - 2) * STR_LENGTH_BIN + 1;
