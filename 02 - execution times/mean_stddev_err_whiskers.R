@@ -2,11 +2,13 @@
 #
 # 2025-05-31, 2025-06-10/15, 2025-09-28/29, 2025-10-20, 2025-11-16
 # 2026-01-12: print a sorted list from lowest mean to highest
+# 2026-01-26: split the "master diagram" into 2 halfs for better overview
 #
 # env: R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
 #      Platform: x86_64-w64-mingw32/x64
 #
 # test: OK
+#
 
 
 library(tidyquant)  # loads tidyquant, tidyverse, lubridate, xts, quantmod, TTR, %>%, theme_tq()
@@ -33,8 +35,13 @@ plot_type <-  0
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
 if (plot_type < 4) {
-plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
+  if (plot_type == 0) {  # "master diagram in two parts"
+    plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
+hobby project program in different programming languages -- part 1/2")
+  } else {
+    plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
 hobby project program in different programming languages")
+  }
 } else if (plot_type == 4) {
 plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the
 map coloring problem of Germany with 16 states and 4 colors")
@@ -88,32 +95,52 @@ dat1_sort
 #  # ℹ Use `print(n = ...)` to see more rows
 
 
+# cut this tibble into 2 halfs for the otherwise too crowded master diagram:
+if (plot_type == 0) {
+  dat1_sort_len      <- nrow(dat1_sort)  # number of data rows
+  dat1_sort_len_half <- ceiling(dat1_sort_len / 2)
+  dat1a_sort         <- head(dat1_sort, dat1_sort_len_half)
+  dat1b_sort         <- tail(dat1_sort, dat1_sort_len_half)
+}
+
+
 #----------------------------------------------------------------
-# 2026-01-12: make and print a nice table:
-dat1_nice_sort <- as_tibble(dat1_sort$language)
-dat1_nice_sort$mean <- dat1_sort$mean * 1000  # for milliseconds
-dat1_nice_sort$date <- dat1_sort$date
+# master diagram: make and print a nice table too:
+if (plot_type == 0) {
+  dat1_nice_sort <- as_tibble(dat1_sort$language)
+  dat1_nice_sort$mean <- dat1_sort$mean * 1000  # for milliseconds
+  dat1_nice_sort$date <- dat1_sort$date
 
-# rename columns:
-dat1_nice_sort <- dat1_nice_sort %>%
-        rename(
-          language = value,  # rename(<new> = <old>)
-          'mean in milliseconds'  = mean    # rename(<new> = <old>)
-        )
+  # rename columns:
+  dat1_nice_sort <- dat1_nice_sort %>%
+          rename(
+            language = value,  # rename(<new> = <old>)
+            'mean in milliseconds'  = mean    # rename(<new> = <old>)
+          )
 
-dat1_nice_sort %>%
-  gt() %>%
-  tab_header(title = "Execution times of the master diagram") %>%
-  gtsave("exe_times_of_the_master_diagram.png", zoom = 1.0)
+  dat1_nice_sort %>%
+    gt() %>%
+    tab_header(title = "Execution times of the master diagram") %>%
+    gtsave("exe_times_of_the_master_diagram.png", zoom = 1.0)
+}
 #----------------------------------------------------------------
 
 
-if (plot_type < 4) {
-  y_break_max = 1100  # milliseconds
-  y_tick = 100  # milliseconds
+
+if (plot_type == 0) {
+  y_break_max = 100  # milliseconds
+  y_tick = 10  # milliseconds
 } else if (plot_type == 4) {
   y_break_max = 3500
   y_tick = 200  # milliseconds
+} else {
+  y_break_max = 1100  # milliseconds
+  y_tick = 100  # milliseconds
+}
+
+
+if (plot_type == 0) {  # master diagram": part 1/2
+  dat1_sort <- dat1a_sort
 }
 
 # problem: ggplotting with x = language will sort it alphanumerically before!
@@ -142,6 +169,40 @@ bar_plot1 <- ggplot(dat1_sort,
                      axis.text.x = element_text(angle = 90, size = 12))
 
 print(bar_plot1)
+
+
+# master diagram": part 2/2
+if (plot_type == 0) {
+  y_break_max = 1100  # milliseconds
+  y_tick      = 100  # milliseconds
+  plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
+hobby project program in different programming languages -- part 2/2")
+
+  bar_plot1b <- ggplot(dat1b_sort,
+                 # aes(x = language)) +
+                 aes(x = reorder(language,  mean*sec_to_ms),
+                     y =  mean*sec_to_ms)) +
+
+                 geom_errorbar(aes(ymin = (mean - std_dev)*sec_to_ms,
+                                   ymax = (mean + std_dev)*sec_to_ms),
+                                   width=.1) +
+
+                 geom_point(aes(y = mean*sec_to_ms)) +
+
+                 scale_y_continuous(
+                   breaks = seq(0, y_break_max, y_tick)
+                 ) +
+
+                 labs(title = plot_title,
+                      subtitle = sub_title,
+                      x = xlabel,
+                      y = ylabel) +
+
+                 theme(text = element_text(size = 12),
+                       axis.text.x = element_text(angle = 90, size = 12))
+
+  print(bar_plot1b)
+}
 
 
 # end of mean_stddev_err_whiskers.R
