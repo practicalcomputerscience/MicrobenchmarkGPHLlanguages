@@ -26,9 +26,9 @@ Mercury           | 194 | compiled, mature language: lots of user-defined functi
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
 V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
-C3                | 162 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings
 Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
 C                 | 147 | compiled, very mature language | 2026-01-11
+C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
@@ -43,7 +43,7 @@ Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
-Swift             | 114 | compiled, mature language
+Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
