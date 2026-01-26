@@ -8,7 +8,7 @@ random_streams_for_perf_stats.c3
 build on Ubuntu 24 LTS: $ c3c compile random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144  # for development
                         $ c3c compile -O3 random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144  # for production
 
-run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats_c3 => real	0m0.015s
+run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats_c3 => real	0m0.015s
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_c3
                         => 0.015396 +- 0.000116 seconds time elapsed  ( +-  0.75% ) => a little bit faster than the old, C-like solution!
 
@@ -119,3 +119,4 @@ fn int main()
 }
 
 // end of random_streams_for_perf_stats.c3
+
