@@ -30,6 +30,8 @@ $
 
 ![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM.png)
 
+![plot](./mean_stddev_err_whiskers%20--%20no%20GraalVM2.png)
+
 ![plot](./exe_times_of_the_master_diagram.png)
 
 So far:
