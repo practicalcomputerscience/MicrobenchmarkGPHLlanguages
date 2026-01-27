@@ -36,7 +36,7 @@ fn Run() {
 }
 ```
 
-However, printing integer numbers work; so this example from [Getting started](https://docs.carbon-lang.dev/#getting-started) works:
+However, printing integer numbers works; so this example from [Getting started](https://docs.carbon-lang.dev/#getting-started) works:
 
 ```
 $ echo "import Core library \"io\"; fn Run() { Core.Print(42); }" > forty_two.carbon
