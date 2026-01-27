@@ -10,7 +10,7 @@ This news was my incentive to "transpile" my [original little Python program](ht
 
 So far, the transpilation from TypeScript into JavaScript has been done with "self-hosting", that is that the TypeScript compiler is implemented in TypeScript, which also is JIT (Just-In-Time) compiled into JavaScript while doing its compilation work.
 
-The choice of Go for the new transpilation language obviously was a surprise move for many observers - does it mean in my understanding that Microsoft is apparently no longer developing its own [statically typed programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) which can be compiled into standalone executables for a variety of platforms; at least not with "full force". 
+The choice of Go for the new transpilation language obviously was a surprise move for many observers - does it mean in my understanding that Microsoft is apparently no longer developing its own [statically typed programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Koka#koka) which can be compiled into standalone executables for a variety of platforms; at least not with "full force". 
 
 Anyhow, the TypeScript-Go liaison shows how important transpiling from one language to an other can become in modern software development, even though officially Microsoft apparently avoids the term "transpiling" here.
 
