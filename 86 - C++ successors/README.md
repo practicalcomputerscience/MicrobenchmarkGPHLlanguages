@@ -1,7 +1,6 @@
 # Potential "C++ successors": which one to take?
 
-In reference to page [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take),
-here's a rough collection of potential "C++ successors":
+In reference to page [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take), here's a rough collection of potential "C++ successors":
 
 - Carbon (see below)
 - D
@@ -37,7 +36,7 @@ fn Run() {
 }
 ```
 
-However, printing integer numbers work, so this example from [Getting started](https://docs.carbon-lang.dev/#getting-started) works:
+However, printing integer numbers work; so this example from [Getting started](https://docs.carbon-lang.dev/#getting-started) works:
 
 ```
 $ echo "import Core library \"io\"; fn Run() { Core.Print(42); }" > forty_two.carbon
@@ -45,6 +44,28 @@ $ carbon compile --output=forty_two.o forty_two.carbon
 $ carbon link --output=forty_two forty_two.o
 $ ./forty_two
 42
+$
+```
+
+However, with the help of C++ the "Hello world!" program can be saved:
+
+```
+import Core library "io";
+import Cpp library "<iostream>";
+
+fn Run() {
+  // Core.PrintStr("Hello world!\n");
+  Cpp.std.cout << "Hello world!\n";
+}
+```
+
+Compile and link it like this:
+
+```
+$ carbon compile hello_world2.carbon --output=hello_world2.o
+$ carbon -v link hello_world2.o --output=hello_world2  # -v for verbose
+$ ./hello_world2
+Hello world!
 $
 ```
 
