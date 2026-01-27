@@ -89,11 +89,11 @@ These languages have (substantially) exceeded [The 1 second execution time limit
 
 ### Koka
 
-Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Koka#koka) program works correctly, it's just slow with an execution time of over 3 seconds.
+Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Koka#koka) program works correctly, and despite some experimentation with big string concatenation (2026-01-26), it's just slow with an execution time of over 3 seconds.
 
 ### Raku
 
-Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, despite elaborate experimentation with big string concatenation (2026-01-24), it's just super-slow with an execution time of over 5 seconds.
+Although my [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)#raku) program works correctly, and despite elaborate experimentation with big string concatenation (2026-01-24), it's just super-slow with an execution time of over 5 seconds.
 
 ### Wolfram Language
 
