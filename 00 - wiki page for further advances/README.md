@@ -61,9 +61,8 @@
 
 <br/>
 
-2026-01-25: so far, I haven't touched yet these corners of programming languages:
+2026-01-28: so far, I haven't touched yet these corners of programming languages:
 
-- Carbon Language: An experimental successor to C++: https://docs.carbon-lang.dev/#why-build-carbon
 - https://haxe.org/: strictly-typed programming language
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
@@ -71,6 +70,7 @@
 - &nbsp;&nbsp;https://github.com/agraef/pure-lang/wiki
 - &nbsp;&nbsp;https://agraef.github.io/pure-lang/
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
+- Groovy on the JVM: https://groovy-lang.org/
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
 - &nbsp;&nbsp;2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
 - Haskell?!?
