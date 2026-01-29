@@ -143,7 +143,7 @@ char_set = char_set_.to_s  # char_set has type IO::Memory
 
 
 i = 0  # char counter for the password
-j = 0  # char counter for x
+j = 0  # counter for x
 pw_chars = IO::Memory.new
 
 while i < n_char
@@ -190,3 +190,4 @@ end
 puts "\nYour password of #{n_char} characters is: #{pw_chars}\n"
 
 # end of random_bitstring_and_flexible_password_generator.cr
+
