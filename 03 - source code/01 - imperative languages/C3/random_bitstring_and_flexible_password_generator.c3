@@ -200,7 +200,7 @@ fn int main()
   char[8] bin0_1;
 
   int i = 0;  // char counter for the password
-  int j = 0;  // char counter for x
+  int j = 0;  // counter for x
 
   String char_set_str = DString.str_view(char_set);
 
@@ -249,3 +249,4 @@ fn int main()
 }
 
 // end of random_bitstring_and_flexible_password_generator.c3
+
