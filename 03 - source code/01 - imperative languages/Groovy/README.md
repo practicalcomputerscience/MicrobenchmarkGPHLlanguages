@@ -25,14 +25,15 @@ Table of contents:
 
 ---
 
-## Idea of Groovy
+## Idea of Groovy: combining static and dynamic approaches, with a simpler syntax than Java
 
 After [Scala](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#scala),
 [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#kotlin)
 and [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure),
 I decided to (quickly) implement the microbenchmark program also in Groovy as another language, which is being natively executed on the JVM.
 
-While imperative languages Scala and Kotlin are statically typed, Groovy is dynamically typed by default, same like functional language Clojure.
+While imperative languages Scala and Kotlin are statically typed, Groovy is dynamically typed by default, same like functional language Clojure. It's dynamic execution model
+combines runtime metaprogramming with optional, static type checking.
 
 However, the typing here is done differently, since Groovy also allows static compilation to JVM bytecode, a fact which usually improves the execution speed of a Groovy program
 (though and in average, it probably won't beat Java in terms of execution speed).
@@ -87,8 +88,6 @@ class random_streams_for_perf_stats {
     ...
 }
 ```
-
-You may also have a look at [Dynamic programming with Groovy](https://livebook.manning.com/book/groovy-in-action-second-edition/chapter-8) from 2015.
 
 <br/>
 
