@@ -8,9 +8,11 @@ https://github.com/apache/groovy/tree/master
 
 PDF: [Groovy Language Documentation, Version 5.0.4](https://docs.groovy-lang.org/docs/latest/html/documentation/index.pdf)
 
-JVM = Java Virtual Machine
+<br/>
 
-JDK = Java Development Kit
+- JVM = Java Virtual Machine
+- JDK = Java Development Kit
+- GDK = Groovy Development Kit
 
 ---
 
