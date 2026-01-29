@@ -165,7 +165,7 @@ func main() {
 
 
   i := 0  // char counter for the password
-  j := 0  // char counter for x
+  j := 0  // counter for x
   pw_chars := ""
 
   for {
@@ -209,3 +209,4 @@ func main() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.go
+
