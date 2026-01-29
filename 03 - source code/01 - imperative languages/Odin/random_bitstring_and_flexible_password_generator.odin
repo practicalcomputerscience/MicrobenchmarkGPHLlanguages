@@ -176,7 +176,7 @@ main :: proc() {
   pw_chars_sb := strings.builder_make()
   defer strings.builder_destroy(&pw_chars_sb)
   i := 0  // char counter for the password
-  j := 0  // char counter for x
+  j := 0  // counter for x
 
   for i < N_CHAR {
       bin0 := fmt.tprintf("%016b", x[j])
@@ -217,4 +217,5 @@ main :: proc() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.odin
+
 
