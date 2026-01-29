@@ -184,7 +184,7 @@
   ;
   (defn pw_generator [n_char]
     (loop [j 0 pw_chars_ ""]  ; loop is a keyword in Clojure: https://clojuredocs.org/clojure.core/loop
-      ; like in the other languages: j: char counter for x
+      ; like in the other languages: j: counter for x
       ; (println "\nj =" j "-- pw_chars_ = " pw_chars_) ;  for testing
 
       (def bin0a (Integer/toBinaryString ^long (nth x j)))
