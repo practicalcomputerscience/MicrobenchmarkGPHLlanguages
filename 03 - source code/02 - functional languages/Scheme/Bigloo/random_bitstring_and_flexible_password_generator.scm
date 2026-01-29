@@ -230,7 +230,7 @@ $
   ;
   ; very similar to the Racket solution, but not identical! See at char0_add and char1_add:
   (define (pw_generator n_char)
-    (let pw_loop ([j 0]  ; j: char counter for x
+    (let pw_loop ([j 0]  ; j: counter for x
                   [pw_chars_ ""])
 
       ; (define x_j (vector-ref x j))  ; for testing
@@ -279,4 +279,5 @@ $
 )
 
 ; end of random_bitstring_and_flexible_password_generator.scm
+
 
