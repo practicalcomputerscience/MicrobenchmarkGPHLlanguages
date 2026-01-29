@@ -178,7 +178,7 @@ $
   ;
   ; similar to the Clojure solution
   (define (pw_generator n_char)
-    (let pw_loop ([j 0]  ; j: char counter for x
+    (let pw_loop ([j 0]  ; j: counter for x
                   [pw_chars_ ""])
 
       ; (define bin0 (Integer_to_bin_string (list-ref x j)))  ; old solution
@@ -228,3 +228,4 @@ $
 
 
 ; end of random_bitstring_and_flexible_password_generator.rkt
+
