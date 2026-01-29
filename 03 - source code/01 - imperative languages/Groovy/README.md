@@ -6,6 +6,8 @@ https://groovy-lang.org/index.html
 
 https://github.com/apache/groovy/tree/master
 
+PDF: [Groovy Language Documentation, Version 5.0.4](https://docs.groovy-lang.org/docs/latest/html/documentation/index.pdf)
+
 JVM = Java Virtual Machine
 
 JDK = Java Development Kit
@@ -85,6 +87,8 @@ class random_streams_for_perf_stats {
     ...
 }
 ```
+
+You may also have a look at [Dynamic programming with Groovy](https://livebook.manning.com/book/groovy-in-action-second-edition/chapter-8) from 2015.
 
 <br/>
 
