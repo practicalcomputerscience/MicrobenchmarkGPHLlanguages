@@ -99,6 +99,14 @@ uberjar with @CompileStatic | _time time java -jar ./build/libs/random_streams_f
 
 <br/>
 
+For comparision, Scala's, Kotlin's and Clojure's uberjar files run on the same JVM version with these execution times (from [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)):
+
+- Scala: 142 milliseconds
+- Kotlin: 73 milliseconds
+- Clojure: 416 milliseconds
+
+<br/>
+
 ## Installation tips
 
 For the final version of my Groovy installation, I conveniently used the [SDKMAN!](https://sdkman.io/) software development kits manager, see also at the [Kotlin Installation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips):
