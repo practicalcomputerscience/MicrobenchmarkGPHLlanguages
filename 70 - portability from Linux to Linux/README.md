@@ -35,7 +35,7 @@ Here's a list of programming languages where standalone executables can be compi
 ## This list does not contain
 
 - program versions which are exceeding the [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
-- program versions which depend on the Java Virtual Machine (JVM), like Clojure, Scala and Kotlin, where portability between operating systems, including Windows, is anyway strived for
+- program versions which depend on the Java Virtual Machine (JVM), like Clojure, Groovy, Kotlin and Scala, where portability between operating systems, including Windows, is anyway strived for
 - program versions which depend on the .NET ecosystem, like [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#installation-tips), where portability between operating systems, including Windows, is anyway strived for
 - intepreted languages ("scripting languages") like Lua, Perl 5, PowerShell, Python, or Ruby which usually depend on some prior language related installation
 - Julia, which in one form or another needs to bring its runtime along with the original source code or along with a precompiled program for anything more demanding than "Hello, World!"
