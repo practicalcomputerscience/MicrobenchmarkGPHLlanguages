@@ -223,7 +223,7 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 
 
     i = 0;             // char counter for the password
-    var j: usize = 0;  // char counter for x
+    var j: usize = 0;  // counter for x
 
     var pw_chars: std.ArrayList(u8) = .empty;  // 2025-12-19
     defer pw_chars.deinit(allocator);          // 2025-12-19
@@ -265,4 +265,5 @@ pub fn main() !void {  // ! --> error handling: allow this function to return an
 }
 
 // end of random_bitstring_and_flexible_password_generator.zig
+
 
