@@ -33,7 +33,7 @@ And Caml goes back to ML (**Meta Language**), which was developed from 1973 to 1
 Meta Language itself has its roots in (Stanford) LCF, a proof-checking program developed at Stanford University by **Robin Milner** in 1972, who later moved to Edinburgh University, where ML has been created: https://www.cl.cam.ac.uk/archive/mjcg/papers/HolHistory.pdf:
 
 - ML has been built with Lisp: "(5) Edinburgh LCF, including the ML interpreter, was implemented in Lisp."
-- "The original LCF team at Stanford consisted of Robin Milner, assisted by Whitfield Diffie (from whom Milner learnt Lisp)." Whitfield Diffie is one of the creators of public-key cryptography.
+- "The original LCF team at Stanford consisted of Robin Milner, assisted by Whitfield Diffie (from whom Milner learned Lisp)." Whitfield Diffie is one of the creators of public-key cryptography.
 
 <br/>
 
