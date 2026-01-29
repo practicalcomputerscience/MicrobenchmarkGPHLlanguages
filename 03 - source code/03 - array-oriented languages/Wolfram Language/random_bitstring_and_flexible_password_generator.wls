@@ -167,7 +167,7 @@ If[withspecialchars === True,
 
 
 i = 0;  (* char counter for the password *)
-j = 1;  (* char counter for x *)
+j = 1;  (* counter for x *)
 pwchars = "";
 
 While[i < nchar,
@@ -205,3 +205,4 @@ While[i < nchar,
 Print["\nYour password of " <> IntegerString[nchar] <> " characters is: " <> pwchars];
 
 (* end of random_bitstring_and_flexible_password_generator.wls *)
+
