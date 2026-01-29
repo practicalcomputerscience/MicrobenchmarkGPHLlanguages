@@ -83,7 +83,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
 
-Actually, I need this environment only when working with Kotlin.
+Actually, I need this environment only when working with Kotlin and doing Groovy related installations.
 
 When working with the [GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm), that is building a standalone, binary executable from a so called uberJAR file, I call the related command directly like this:
 
