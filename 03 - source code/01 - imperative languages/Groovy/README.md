@@ -14,11 +14,10 @@ JDK = Java Development Kit
 
 Table of contents:
 
-- [Idea of Groovy](#idea.of-groovy)
+- [Idea of Groovy](#idea-of-groovy)
 - [Groovy and the GraalVM](#groovy-and-the-graalvm)
-- [](#)
-- [](#)
-- [](#)
+- [Installation tips](#installation-tips)
+- [Building uberjar files](#building-uberjar-files)
 
 <br/>
 
@@ -72,6 +71,8 @@ See also from [here](https://github.com/practicalcomputerscience/MicrobenchmarkG
 
 > ...in case of doubt and in my opinion, run the uberjar file with a JDK (Java Development Kit) as proposed by Ubuntu (or another Linux distribution in use), even when this uberjar file has been originally generated with a JDK version with a Java(TM) SE (Standard Edition) for the Oracle GraalVM for example.
 
+<br/>
+
 A a zero-cost trick for speedy Groovy programs is to use type definitions and annotations, specifically annotation _@CompileStatic_ on classes and methods.
 _@CompileStatic_ bypasses Groovy’s dynamic [Meta-Object Protocol (MOP)](https://docs.groovy-lang.org/latest/html/documentation/core-metaprogramming.html#_runtime_metaprogramming),
 allowing the JVM to perform standard optimizations:
@@ -85,20 +86,88 @@ class random_streams_for_perf_stats {
 }
 ```
 
-test # | command | exe time in milliseconds | commant
---- | --- | --- | --- 
+<br/>
 
-TBD
+Here's a table with indicative execution times from only one run to just get an overview:
+
+test # | command | exe time in milliseconds | comment
+--- | --- | --- | --- 
+groovy without @CompileStatic | _time groovy ./random_streams_for_perf_stats_no_static_compilation.groovy_ | ~1017 |
+groovy with @CompileStatic | _time groovy ./random_streams_for_perf_stats.groovy_ | ~925 |
+uberjar without @CompileStatic | _time time java -jar ./build/libs/random_streams_for_perf_stats_no_static_compilation.jar_ | ~587 | 
+uberjar with @CompileStatic | _time time java -jar ./build/libs/random_streams_for_perf_stats.jar_ | ~340 | 
+
+<br/>
 
 ## Installation tips
 
-TBD
+For the final version of my Groovy installation, I conveniently used the [SDKMAN!](https://sdkman.io/) software development kits manager, see also at the [Kotlin Installation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips):
+
+```
+$ sdk install groovy  # install latest Groovy version
+...
+$ sdk install gradle  # install latest Gradle build tool version
+...
+$
+```
+
+Then I individually expanded my _.bashrc_ configuration file like this for both tools, and re-commented the SDKMAN related entries again, see at [On SDKMAN and Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/20%20-%20language%20versions/README.md#on-sdkman-and-kotlin).
+
+Don't forget to activate it after changes: _$ source ~/.bashrc_:
+
+```
+export PATH="$PATH:~/.sdkman/candidates/groovy/5.0.4/bin"
+export PATH="$PATH:~/.sdkman/candidates/gradle/9.3.0/bin"
+```
+
+<br/>
 
 ## Building uberjar files
 
-TBD
+As indicated above, I used Gradle to make an uberjar file. But before that, a couple of things must be made.
+
+First, I built the simple subdirectory manually. Then I stored the Groovy program in this subdirectory: _./src/main/groovy/random_streams_for_perf_stats.groovy_
+
+Next, the build configuration file [build.gradle](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/build.gradle) must be prepared. Again, I manually put its content together like this:
+
+```
+plugins {
+    id 'groovy'
+    id 'application'
+    id 'com.gradleup.shadow' version '9.3.1'  // Replace with your Gradle version
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.groovy:groovy-all:5.0.4'  // Replace with your required Groovy version
+}
+
+application {
+    mainClass = 'random_streams_for_perf_stats'  // Replace with your Groovy script's main class name
+}
+
+tasks.named('shadowJar') {
+    archiveBaseName.set('random_streams_for_perf_stats')
+    archiveVersion.set('')
+    archiveClassifier.set('')
+}
+```
+
+<br/>
+
+Finally, the uberjar file can be generated, and hopefully then executed on the JVM like this:
+
+```
+$ gradle shadowJar
+...
+$ java -jar ./build/libs/random_streams_for_perf_stats.jar
+...
+$
+```
 
 <br/>
 
 ##_end
-
