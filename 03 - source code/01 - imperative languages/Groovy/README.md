@@ -126,7 +126,7 @@ export PATH="$PATH:~/.sdkman/candidates/gradle/9.3.0/bin"
 
 As indicated above, I used Gradle to make an uberjar file. But before that, a couple of things must be made.
 
-First, I built the simple subdirectory manually. Then I stored the Groovy program in this subdirectory: _./src/main/groovy/random_streams_for_perf_stats.groovy_
+First, I built the simple subdirectory manually. Then I stored Groovy program [random_streams_for_perf_stats.groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/random_streams_for_perf_stats.groovy) in this subdirectory: _./src/main/groovy/_
 
 Next, the build configuration file [build.gradle](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/build.gradle) must be prepared. Again, I manually put its content together like this:
 
@@ -158,7 +158,7 @@ tasks.named('shadowJar') {
 
 <br/>
 
-Finally, the uberjar file can be generated, and hopefully then executed on the JVM like this:
+Now, the uberjar file can be hopefully generated, and then executed on the JVM like this:
 
 ```
 $ gradle shadowJar
