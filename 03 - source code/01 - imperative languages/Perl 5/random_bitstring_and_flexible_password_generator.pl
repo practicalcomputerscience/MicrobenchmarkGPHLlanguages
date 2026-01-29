@@ -143,7 +143,7 @@ while (!$answer) {
 
 
 $i = 0;  # char counter for the password
-my $j = 0;  # char counter for x
+my $j = 0;  # counter for x
 my $pw_chars = "";
 
 while ($i < $N_CHAR) {
@@ -186,3 +186,4 @@ print "\nYour password of $N_CHAR characters is: $pw_chars\n";
 
 
 # end of random_bitstring_and_flexible_password_generator.pl
+
