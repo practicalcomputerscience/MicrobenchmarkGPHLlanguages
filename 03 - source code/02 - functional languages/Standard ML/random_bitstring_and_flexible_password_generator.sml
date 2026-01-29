@@ -287,7 +287,7 @@ structure Main =
     (*  similar to the  Racket solution *)
     fun pw_generator (n: int) =
       let
-        fun loop (j: int, pw_str: string) =  (* j: char counter for x *)
+        fun loop (j: int, pw_str: string) =  (* j: counter for x *)
           let
             val bin0 = integer_to_bin_string (Array.sub (x, j))
             (*val _ = print ("\n\nbin0 = " ^ bin0) (* for testing *)*)
@@ -340,3 +340,4 @@ structure Main =
   end
 
 (* end of random_bitstring_and_flexible_password_generator.sml *)
+
