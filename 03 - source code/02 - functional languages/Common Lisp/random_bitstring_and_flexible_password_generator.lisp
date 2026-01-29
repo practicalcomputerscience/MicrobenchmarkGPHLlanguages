@@ -181,7 +181,7 @@ $
   ;------------------  password creation  ---------------------------
   ;
   (setf *pw_chars*
-    (let ((i 0) (j 0) ; i = char counter for the password, j = char counter for x
+    (let ((i 0) (j 0) ; i = char counter for the password, j = counter for x
           (bin0) (bin0_0) (bin0_1)
           (char0) (char1)
           (pw_chars_ nil))
@@ -223,3 +223,4 @@ $
 
 
 ; end of random_bitstring_and_flexible_password_generator.lisp
+
