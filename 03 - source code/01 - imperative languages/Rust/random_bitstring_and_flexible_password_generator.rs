@@ -192,7 +192,7 @@ fn main() {
 
 
     let mut i = 0;  // char counter for the password
-    let mut j = 0;  // char counter for x
+    let mut j = 0;  // counter for x
     let mut pw_chars = "".to_string();
 
     while i < n_char {
