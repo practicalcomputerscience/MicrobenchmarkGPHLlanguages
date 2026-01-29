@@ -148,7 +148,7 @@ fun main() {
 
 
   var i: Int = 0  // char counter for the password
-  var j: Int = 0  // char counter for x
+  var j: Int = 0  // counter for x
   var pw_chars: String = ""
   var bin0: String = ""
 
@@ -199,3 +199,4 @@ val numberHexFormat = HexFormat {
 }
 
 // end of random_bitstring_and_flexible_password_generator.kt
+
