@@ -148,7 +148,7 @@ class Program
 
 
     i = 0;  // char counter for the password
-    int j = 0;  // char counter for x
+    int j = 0;  // counter for x
     string pw_chars = "";
 
     while (i < N_CHAR) {
