@@ -147,7 +147,7 @@ def main():  # def for error handling below at user inputs: https://docs.modular
 
 
     var i = 0  # char counter for the password
-    var j = 0  # char counter for x
+    var j = 0  # counter for x
     var pw_chars: String = ""
 
     while i < N_CHAR:
@@ -191,3 +191,4 @@ def main():  # def for error handling below at user inputs: https://docs.modular
     # x.free()
 
 # end of random_bitstring_and_flexible_password_generator.mojo
+
