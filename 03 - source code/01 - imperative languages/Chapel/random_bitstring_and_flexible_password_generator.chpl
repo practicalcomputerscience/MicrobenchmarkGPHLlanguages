@@ -154,7 +154,7 @@ if with_special_chars {
 
 
 i = 0;           // char counter for the password
-var j: int = 0;  // char counter for x
+var j: int = 0;  // counter for x
 var pw_chars: string = "";
 
 while i < n_char {
@@ -212,3 +212,4 @@ proc bin_string_to_int(str: string): int(32) {
 
 
 // end of random_bitstring_and_flexible_password_generator.chpl
+
