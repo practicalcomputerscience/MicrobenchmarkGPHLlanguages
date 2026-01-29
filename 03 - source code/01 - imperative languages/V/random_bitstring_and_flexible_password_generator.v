@@ -168,7 +168,7 @@ fn main() {
 
 
   mut i := 0  // char counter for the password
-  mut j := 0  // char counter for x
+  mut j := 0  // counter for x
   mut pw_chars := ""
 
   for i < n_char {  // char counter for the password
@@ -313,3 +313,4 @@ fn string_to_file (file_name string, str_b strings.Builder, stream string ) {
 ///////////////////////////////////////////////////////
 
 // end of random_bitstring_and_flexible_password_generator.v
+
