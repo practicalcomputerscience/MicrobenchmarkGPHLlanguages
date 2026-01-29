@@ -84,7 +84,7 @@ procedure random_bitstring_and_flexible_password_generator is
    byte_nbr, i, j, remainder : Integer;
    k : UInt16;
 
-   --  char counter for x: don't take j, it's not working!?!
+   --  counter for x: don't take j, it's not working!?!
    jj : Integer := 0;
 
    subtype PW_Range is Integer range 8 .. 99;
