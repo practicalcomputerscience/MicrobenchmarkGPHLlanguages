@@ -150,7 +150,7 @@ fn answer_yes_or_no () -> Bool {
 
 // recursive password loop
 //   this solution is based on the MLton Standard ML solution
-//   j: char counter for x
+//   j: counter for x
 fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String) -> String {
 
   let next_elem_x = result.unwrap(list.first(x), 0)  // type of next_elem_x: Result(Int, Nil); 0 is the bad case alternative
@@ -309,4 +309,5 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
 }
 
 // end of random_bitstring_and_flexible_password_generator.gleam
+
 
