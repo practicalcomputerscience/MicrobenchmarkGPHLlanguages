@@ -160,7 +160,7 @@ if WITH_SPECIAL_CHARS {
 
 
 var i = 0  // char counter for the password
-var j = 0  // char counter for x
+var j = 0  // counter for x
 var pw_chars = ""
 
 while i < N_CHAR {
