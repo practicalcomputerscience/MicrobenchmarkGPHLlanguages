@@ -37,7 +37,7 @@ combines runtime metaprogramming with optional, static type checking.
 
 So, Groovy allows static compilation to JVM bytecode, a fact which usually improves the execution speed of a Groovy program (though and in average, it probably won't beat Java in terms of execution speed).
 
-But I think that the real appeal of Groovy lies in its **much simpler syntax** compared to Java, while being fully compatible with the Java ecosystem.
+But I think that the real appeal of Groovy lies in its **much simpler syntax** compared to Java, while being (almost) fully compatible with the Java ecosystem.
 
 Same like Scala and Kotlin, Groovy also allows functional programming.
 
