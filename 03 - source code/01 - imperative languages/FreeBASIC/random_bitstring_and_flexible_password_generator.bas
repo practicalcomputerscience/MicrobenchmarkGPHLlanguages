@@ -165,7 +165,7 @@ end if
 
 
 i = 0                 ' char counter for the password
-dim j as integer = 0  ' char counter for x
+dim j as integer = 0  ' counter for x
 dim pw_chars as string = ""
 dim bin0 as string, bin0_0 as string, bin0_1 as string
 dim char0 as string, char1 as string
@@ -198,3 +198,4 @@ wend
 print !"\r\nYour password of " & n_char & " characters is: " & pw_chars
 
 ' end of random_bitstring_and_flexible_password_generator.bas
+
