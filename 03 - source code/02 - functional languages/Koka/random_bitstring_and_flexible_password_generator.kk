@@ -296,7 +296,7 @@ fun binary_str_to_unsigned_int(inp_str : string) : <div|_e> int
 // similar to the Racket solution
 fun pw_generator(n_char_ : int, x_ : list<int>, char_set_ : string)
   var pw_chars_ := ""
-  var j         := 0  // char counter for x
+  var j         := 0  // counter for x
   val x_v        = x_.vector  // convert list into vector since vector allows access to individual elements
                               // like in binary_str_to_unsigned_int
   var char0_add := ""
@@ -352,3 +352,4 @@ fun pw_generator(n_char_ : int, x_ : list<int>, char_set_ : string)
 
 
 // end of random_bitstring_and_flexible_password_generator.kk
+
