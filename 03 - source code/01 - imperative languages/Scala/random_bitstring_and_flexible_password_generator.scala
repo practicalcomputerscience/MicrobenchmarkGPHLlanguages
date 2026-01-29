@@ -157,7 +157,7 @@ object random_bitstring_and_flexible_password_generator {
 
 
     var i = 0  // char counter for the password
-    var j = 0  // char counter for x
+    var j = 0  // counter for x
     var pw_chars = ""
 
     while i < N_CHAR do {
@@ -189,3 +189,4 @@ object random_bitstring_and_flexible_password_generator {
 }
 
 // end of random_bitstring_and_flexible_password_generator.scala
+
