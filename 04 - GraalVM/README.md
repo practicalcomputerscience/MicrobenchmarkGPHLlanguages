@@ -233,8 +233,8 @@ OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing)
 $
 ```
 
-> **Warning**
-Now be careful: you need another sbt project to continue, here just named _password_encryption_perf_stats_. You cannot use the same sbt project as with the GraalVM!
+> [!IMPORTANT]
+> Now be careful: you need another sbt project to continue, here just named _password_encryption_perf_stats_. You cannot use the same sbt project as with the GraalVM!
 
 So, after changing back to the OpenJDK Runtime Environment (see _.bashrc_ file from above) I run the _assembly_ command of the sbt in the _password_encryption_perf_stats_ project:
 
