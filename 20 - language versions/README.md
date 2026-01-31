@@ -67,6 +67,7 @@ other environments | versions | Bash command to retrieve versions
 --- | --- | ---
 GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01); Substrate VM Oracle GraalVM 24+36.1 (build 24+36, serial gc, compressed references) | $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image --version
 Java | openjdk 25.0.1 2025-10-21; OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04); OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing) | $ java --version
+node.js | v22.21.0 | $ node -v
 SDKMAN | SDKMAN!; script: 5.20.0; native: 0.7.14 (linux x86_64) | $ sdk version
 
 <br/>
