@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.groovy
 
-2026-01-28/29
+2026-01-28/29/31
 
 build on Ubuntu 24 LTS: <have a build.gradle file for Groovy version 5.0.4 and OpenJDK 25 ready in the project's root dir>
                         there make an uberjar file:
@@ -67,7 +67,7 @@ class random_streams_for_perf_stats {
         final int c = 0
 
         String file_bits_x   = "random_bitstring.bin"
-        String file_bits_hex = "random_bitstring.hex"
+        String file_bits_hex = "random_bitstring.byte"  // 2026-01-31
 
         int[] x = new int[END]
 
@@ -110,3 +110,4 @@ class random_streams_for_perf_stats {
 }
 
 // end of random_streams_for_perf_stats.groovy
+
