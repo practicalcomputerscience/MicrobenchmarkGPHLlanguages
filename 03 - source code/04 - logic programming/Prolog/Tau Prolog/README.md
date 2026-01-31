@@ -23,7 +23,7 @@ According to my experience, the best way to start with Tau Prolog is to use the 
 
 I noticed that the _:- use_module(library(lists))._ clause isn't needed there, since this library seems to be visible anyway.
 
-Since the complete map coloring problem of Germany, with 16 states and 4 colors, also in this sandbox, doesn't come to a final result (within a reasonable amount of time), I developed a shorter version with only the first 8 states (but still with four colors):
+Since the complete map coloring problem of Germany, with 16 states and 4 colors, also in this sandbox, doesn't conclude to a final result (within a reasonable amount of time), I developed a shorter version with only the first 8 states (but still with four colors):
 
 ![plot](./tau_prolog_graph_4coloring_Germany%20-%20Tau%20sandbox%20OK%2C%20smaller%20number%20of%20states.png)
 
