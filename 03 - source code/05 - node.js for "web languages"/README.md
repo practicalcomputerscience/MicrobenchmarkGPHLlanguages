@@ -19,11 +19,13 @@ From that point on, it was only a small step to transpile program [random_stream
 with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), version 5.9.3, tumbled over warnings):
 
 - first, into [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.ts), and
-- then from there into [JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.js), into which TypeScript scripts are anyway transpiled before execution.
+- then from there into [JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.js), again with Duck.ai
 
 <br/>
 
-The TypeScript script should work out of the box for node.js version v22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as standard with Ubuntu 24 LTS for example, is too old for it for example. In Linux you can upgrade the version with the nvm (the Node Version Manager for a node.js installation per Linux user) like this (see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/):
+The TypeScript script should work out of the box for node.js version v22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as standard with Ubuntu 24 LTS for example, is too old for it for example.
+
+In Linux you can upgrade the version with the nvm (the Node Version Manager for a node.js installation per Linux user) like this (see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/):
 
 ```
 $ sudo apt install curl build-essential libssl-dev -y
