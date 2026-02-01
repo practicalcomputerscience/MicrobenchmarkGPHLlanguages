@@ -1,8 +1,8 @@
 2026-01-31: work in progress
 
-- WebAssembly (Wasm) works! --> ...
-- ReScript??
-- https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly
+- WebAssembly (Wasm) works! --> TBD 
+- ReScript?? TBD
+
 
 <br/>
 
@@ -12,7 +12,7 @@ These are quick implementations of the speed part of the microbenchmark program 
 
 Though web programming was not even on my long list, I got the idea to implement the microbenchmark program in web programming languages for two reasons:
 
-- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in program: [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
+- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in this monster file that contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
 - my [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy) implementation, with Groovy often being described as a "scripting language for the Java Virtual Machine", and which "can largely be viewed as a superset of Java": [Introducing Groovy](https://www.oracle.com/technical-resources/articles/java/groovy.html)
 
 <br/>
@@ -44,7 +44,7 @@ $ nvm install --lts  # install latest long term support version
 $ nvm ls  # check all locally available versions, including the default version
 ...
 $ node -v
-v24.13.0  # this version is pretty modern (though, I'm still using v.22.21.0 for benchmarking)
+v24.13.0  # this version is pretty modern (though, I'm still using v.22.21.0 for official benchmarking)
 $ node ./random_streams_for_perf_stats.ts
 
 generating a random bit stream...
@@ -67,9 +67,7 @@ This leaves this question to me:
 
 Transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example obviously.
 
-By the way: when I experimented with different versions of node.js, I noticed **substantial differences in program execution speeds**! So, above diagram is only valid for node.js version 22.21.0 (and as usual on the same testing machine).
-
-You can the switch to a specific node.js version like this:
+By the way: you can switch to a specific node.js version like this:
 
 ```
 $ nvm use 22.21.0
@@ -79,6 +77,11 @@ $ node -v
 $
 ```
 
+I checked both script versions with node.js versions 22.21.0, 24.13.0 and 25.5.0. Program execution times are about the same:
+
+- JavaScript, mean in milliseconds (one batch with 20 runs): 42, 39, 41
+- TypeScript, mean in milliseconds (one batch with 20 runs): 64, 64, 66
+
 <br/>
 
 Otherwise this should hold:
@@ -86,6 +89,16 @@ Otherwise this should hold:
 > While TypeScript introduces an additional compilation step, its impact on runtime performance is negligible, as both TypeScript and JavaScript execute similarly in modern engines.
 
 from: Performance Benchmarking: TypeScript vs. JavaScript in Modern Web Development, Juliana George, Date: 03/20: https://www.researchgate.net/publication/389555848_Performance_Benchmarking_TypeScript_vs_JavaScript_in_Modern_Web_Development
+
+<br/>
+
+## WebAssembly (Wasm)
+
+https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly
+
+I took the [C version]() of the microbenchmark program ("speed part" only) **unchanged**, and ...
+
+TBD
 
 <br/>
 
