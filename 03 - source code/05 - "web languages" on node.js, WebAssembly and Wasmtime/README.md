@@ -225,8 +225,7 @@ Homebrew clang version 21.1.8
 $
 ```
 
-In the [original C program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c)
-I had to use a user defined function for the conversion of the random integer numbers into their binary representation as a string, same like in the [Checked C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb055d399cdd454982c7cb4b93c65c6e2e18f4ea/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.checked_c.c#L62).
+In the [modified C program](./random_streams_for_perf_stats_wasmtime.c) I had to use a user defined function for the conversion of the random integer numbers into their binary representation as a string, same like in the [Checked C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb055d399cdd454982c7cb4b93c65c6e2e18f4ea/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.checked_c.c#L62).
 
 It looks like that this funtionality, that is the notorious format specifier _"%016b"_, is not yet implemented in the WASI libc implementation for WebAssembly: https://github.com/WebAssembly/wasi-libc
 
@@ -234,7 +233,11 @@ It looks like that this funtionality, that is the notorious format specifier _"%
     integer_to_bin_string(x[i], bits_x_str);  // fixed version from random_streams_for_perf_stats.checked_c.c
 ```
 
+<br/>
+
 WASI = WebAssembly System Interface, a group of standards-track API specifications for software compiled to the WebAssembly standard: https://wasi.dev/
+
+<br/>
 
 Then install Wasmtime, WASI C-header files for LLVM and WASI runtimes for LLVM:
 
@@ -250,7 +253,7 @@ $ brew install wasi-runtimes  # install WASI runtimes for LLVM
 $
 ```
 
-With hopefully all pre-requisites being fulfilled by now, program [random_streams_for_perf_stats_wasmtime.c](tbd) is to be compiled into a WebAssembly binary file _random_streams_for_perf_stats.wasm_:
+With hopefully all pre-requisites being fulfilled by now, program [random_streams_for_perf_stats_wasmtime.c](./random_streams_for_perf_stats_wasmtime.c) is to be compiled into a WebAssembly binary file _random_streams_for_perf_stats.wasm_:
 
 ```
 $ clang -O3 --target=wasm32-wasi random_streams_for_perf_stats_wasmtime.c \
@@ -259,7 +262,7 @@ $ clang -O3 --target=wasm32-wasi random_streams_for_perf_stats_wasmtime.c \
 $
 ```
 
-The resulting WebAssembly file is being executed like this, and executed quickly with around 11 milliseconds:
+This resulting WebAssembly file is then being executed like this:
 
 ```
 $ wasmtime --dir=. random_streams_for_perf_stats.wasm
@@ -267,7 +270,9 @@ $ wasmtime --dir=. random_streams_for_perf_stats.wasm
 
 I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime).
 
-Here's the updated execution speeds diagram with the results from WebAssembly and Wasmtime, both being competitively fast in comparision with other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
+<br/>
+
+Here's the updated execution speeds diagram with the results from WebAssembly and Wasmtime, both being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
