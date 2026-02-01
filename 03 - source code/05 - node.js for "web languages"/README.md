@@ -1,8 +1,8 @@
 2026-01-31: work in progress
 
-- WebAssembly (Wasm) + AssemblyScript + ReScript??
+- WebAssembly (Wasm) works! --> ...
+- ReScript??
 - https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly
-- https://www.assemblyscript.org/
 
 <br/>
 
@@ -67,7 +67,7 @@ This leaves this question to me:
 
 Transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example obviously.
 
-By the way: when I experimented with different versions of node.js, I noticed **substantial differences in program execution speeds**! So, above diagram is only valid for node.js version 22.21.0 (and on the same testing machine of course, as usual).
+By the way: when I experimented with different versions of node.js, I noticed **substantial differences in program execution speeds**! So, above diagram is only valid for node.js version 22.21.0 (and as usual on the same testing machine).
 
 You can the switch to a specific node.js version like this:
 
