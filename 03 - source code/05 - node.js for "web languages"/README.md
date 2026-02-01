@@ -191,7 +191,7 @@ A WebAssembly binary file can also be compiled from other sources, like:
 Actually, the "WebAssembly binary file" does not represent native, binary machine code (like compiled from C source code for example). It is a standardized bytecode format, which is being
 executed on a stack-based virtual machine inside a web browser or a runtime environment like node.js: https://webassembly.org/
 
-Though, WebAssembly officially seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
+Though, WebAssembly apparently seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
 
 <br/>
 
@@ -206,7 +206,7 @@ Also not with the _--dir=._ parameter trick as seen here at [Executing in Wasmti
 
 <br/>
 
-However, here's a short sketch how to compile and run a C program for Wasmtime:
+However, here's a short sketch how to compile and run a C program with Wasmtime:
 
 First, make sure that the Homebrew installed programs and environments are available again (see above):
 
