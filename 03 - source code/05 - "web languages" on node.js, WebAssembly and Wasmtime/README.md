@@ -230,7 +230,11 @@ In the [modified C program](./random_streams_for_perf_stats_wasmtime.c) I had to
 It looks like that this funtionality, that is the notorious format specifier _"%016b"_, is not yet implemented in the WASI libc implementation for WebAssembly: https://github.com/WebAssembly/wasi-libc
 
 ```
+    ...
+    // sprintf(bits_x_str, "%016b", x[i]);  // this is not working (yet) for Wasmtime!
+    ...
     integer_to_bin_string(x[i], bits_x_str);  // fixed version from random_streams_for_perf_stats.checked_c.c
+    ...
 ```
 
 <br/>
