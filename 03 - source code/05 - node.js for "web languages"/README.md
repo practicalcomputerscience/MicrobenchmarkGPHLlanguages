@@ -162,7 +162,7 @@ This command has hopefully created two files:
 
 (output file name _random_streams_for_perf_stats_wasm.js_ was just chosen here to not mix it with the native JavaScript microbenchmark program _random_streams_for_perf_stats.js_, see above)
 
-Now, we can run this WebAssembly binary file, which is being called from the generated JavaScript file:
+Now, we can run this WebAssembly binary file, which is being called from the generated JavaScript file, which serves as the "glue" code:
 
 ```
 $ node ./random_streams_for_perf_stats_wasm.js
@@ -173,11 +173,13 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $ 
 ```
 
-As seen above, an ahead-of-time (AOT) compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages with the microbenchmark program.
+As seen above, a compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages with this microbenchmark program.
+
+A reason for this may be the fact that by default WebAssembly binary files are not ahead-of-time (AOT) compiled; see **Wasmtime** for compiling to "compiled wasm" (~.cwasm) files: https://docs.wasmtime.dev/cli-options.html#compile
 
 <br/>
 
-A WebAssembly binary file could have been compiled from other sources too, like:
+A WebAssembly binary file can also be compiled from other sources, like:
 
 - C++, also with the emscripten compiler, or
 - [Rust](https://rust-lang.org/what/wasm/), or
@@ -186,9 +188,9 @@ A WebAssembly binary file could have been compiled from other sources too, like:
 <br/>
 
 Actually, the "WebAssembly binary file" does not represent native, binary machine code (like compiled from C source code for example). It is a standardized bytecode format, which is being
-executed on a stack-based virtual machine inside a web browser or runtime environments like node.js: https://webassembly.org/
+executed on a stack-based virtual machine inside a web browser or a runtime environments like node.js: https://webassembly.org/
 
-Though, WebAssembly avoids terms "bytecode" and "virtual machine", see at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html) for example.
+Though, WebAssembly officially seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
 
 <br/>
 
