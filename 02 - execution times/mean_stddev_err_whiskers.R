@@ -3,11 +3,12 @@
 # 2025-05-31, 2025-06-10/15, 2025-09-28/29, 2025-10-20, 2025-11-16
 # 2026-01-12: print a sorted list from lowest mean to highest
 # 2026-01-26: split the "master diagram" into 2 halfs for better overview
+# 2026-02-01: new diagram type for web programming languages
 #
 # env: R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
 #      Platform: x86_64-w64-mingw32/x64
 #
-# test: OK
+# test: 
 #
 
 
@@ -22,19 +23,20 @@ library(dplyr)
 ##########################
 #
 # user switch:
-plot_type <-  0
+plot_type <-  5
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
             # 3 = only virtual machine (VM) languages
             # 4 = Prolog systems for the map coloring problem of Germany-benchmark
+            # 5 = web programming languages
 #
 ##########################
 
 
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
-if (plot_type < 4) {
+if (plot_type < 4 || plot_type == 5) {
   if (plot_type == 0) {  # "master diagram in two parts"
     plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
 hobby project program in different programming languages -- part 1/2")
@@ -47,11 +49,17 @@ plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the
 map coloring problem of Germany with 16 states and 4 colors")
 }
 
-sub_title0 <- paste("using Linux perf-stat with 20 individual runs of each program (on Ubuntu 24 LTS)")
 
 date_time  <- paste(format(Sys.Date()), format(Sys.time(), "%H:%M"))
 
-sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with perf-stat -- plot version", date_time)
+if (plot_type < 5) {
+    sub_title0 <- paste("using Linux perf-stat with 20 individual runs of each program (on Ubuntu 24 LTS)")
+    sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with perf-stat -- plot version", date_time)    
+} else if (plot_type == 5) {
+    sub_title0 <- paste("using Linux multitime with 20 individual runs of each program (on Ubuntu 24 LTS)")
+    sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with multitime -- plot version", date_time)
+}
+
 
 setwd("e:/zzz_Scripts/R/comparison plot with only mean and standard deviations")
 
@@ -67,7 +75,9 @@ if (plot_type == 0) {
     dat1 <- read.csv("programming_languages_exe_speeds_VM.csv", header = T, dec = ",", sep = ";", comment.char = '%')
   } else if (plot_type == 4) {
     dat1 <- read.csv("programming_languages_exe_speeds_Prolog.csv", header = T, dec = ",", sep = ";", comment.char = '%')
-  }
+  } else if (plot_type == 5) {
+    dat1 <- read.csv("programming_languages_exe_speeds_web_programming.csv", header = T, dec = ",", sep = ";", comment.char = '%')
+  }  
 
 ylabel <-  paste("mean, +/- standard deviation in milliseconds")
 # xlabel <- paste("programming language")
@@ -133,6 +143,9 @@ if (plot_type == 0) {
 } else if (plot_type == 4) {
   y_break_max = 3500
   y_tick = 200  # milliseconds
+} else if (plot_type == 5) {
+  y_break_max = 100
+  y_tick = 10  # milliseconds
 } else {
   y_break_max = 1100  # milliseconds
   y_tick = 100  # milliseconds
@@ -169,6 +182,11 @@ bar_plot1 <- ggplot(dat1_sort,
                      axis.text.x = element_text(angle = 90, size = 12))
 
 print(bar_plot1)
+
+
+####################
+# make a manual copy here!!
+####################
 
 
 # master diagram": part 2/2

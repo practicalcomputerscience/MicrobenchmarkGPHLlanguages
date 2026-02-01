@@ -1,0 +1,4 @@
+language;mean;std_dev;date
+JavaScript on node.js;0,042;0,001;2026-01-31
+TypeScript on node.js;0,065;0,001;2026-01-31
+WebAssembly on node.js;0,030;0,001;2026-02-01
