@@ -1,6 +1,6 @@
 2026-01-31: work in progress
 
-- Wasmtime: https://wasmtime.dev/ -- https://bytecodealliance.org/articles/wasmtime-portability
+- Wasmtime:  -- https://bytecodealliance.org/articles/wasmtime-portability
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages
@@ -11,6 +11,7 @@ Table of contents:
 - [TypeScript and JavaScript](#typescript-and-javascript)
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
+- [Wasmtime](#wasmtime)
 
 
 <br/>
@@ -191,6 +192,68 @@ Actually, the "WebAssembly binary file" does not represent native, binary machin
 executed on a stack-based virtual machine inside a web browser or a runtime environment like node.js: https://webassembly.org/
 
 Though, WebAssembly officially seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
+
+<br/>
+
+## Wasmtime
+
+Since I mentioned [Wasmtime](https://wasmtime.dev/) above, this question emerged after some experimentation:
+
+> Can this microbenchmark program be compiled and then executed in the Wasmtime runtime?
+
+It can be compiled without showing errors, but the resulting _~.wasm_ program cannot be completely executed in the Wasmtime runtime due to its writing to files of the Linux file system.
+Also not with the _--dir=._ parameter trick as seen here at [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime).
+
+<br/>
+
+However, here's a short sketch how to compile and run a C program for Wasmtime:
+
+First, make sure that the Homebrew installed programs and environments are available again (see above):
+
+```
+$ clang -v  # make sure that LLVM's clang compiler is accessible
+Homebrew clang version 21.1.8
+...
+$
+```
+
+Then, have a little C program, here named _hello_wasmtime.c_:
+
+```
+#include <stdio.h>
+
+int main() {
+    printf("Hello, Wasmtime!\n");
+    return 0;
+}
+```
+
+Install Wasmtime, WASI C-header files for LLVM and WASI runtimes for LLVM:
+
+```
+$ curl https://wasmtime.dev/install.sh -sSf | bash
+...
+$ wasmtime -V  # just check version
+wasmtime 41.0.1 (c30fce86b 2026-01-26)
+$ brew install wasi-libc  # install WASI C-header files for LLVM
+...
+$ brew install wasi-runtimes  # install WASI runtimes for LLVM
+...
+$
+```
+
+**WASI** = WebAssembly System Interface, a group of standards-track API specifications for software compiled to the WebAssembly standard: https://wasi.dev/
+
+<br/>
+
+With hopefully all pre-requisites being available by now, program _hello_wasmtime.c_ is to be compiled into a WebAssembly binary file, which is then being executed:
+
+```
+$ clang --target=wasm32-wasi hello_wasmtime.c -o hello_wasmtime.wasm -Wl,--export=main  # -Wl,--export=main: exports the main function to make it callable from Wasmtime
+$ wasmtime hello_wasmtime.wasm
+Hello, Wasmtime!
+$
+```
 
 <br/>
 
