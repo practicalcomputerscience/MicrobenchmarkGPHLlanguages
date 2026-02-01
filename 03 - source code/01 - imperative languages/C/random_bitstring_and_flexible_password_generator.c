@@ -5,6 +5,7 @@ random_bitstring_and_flexible_password_generator.c
 2025-07-15: repaired Exception Handling when writing to files => program must not stop at an exception here!
 2025-12-17: see below
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
+2026-02-01: deleted one oudated import ctype.h
 
 build on Ubuntu 24 LTS: $ make  # see make file below
 
@@ -31,12 +32,10 @@ $
 */
 
 
-#include <stdio.h>   //printf()
-#include <stdlib.h>
+#include <stdio.h>   // printf()
+#include <stdlib.h>  // srand(), rand(); 2026-02-01
 #include <string.h>  // strncpy()
-#include <ctype.h>   //
-#include <time.h>
-
+#include <time.h>    // srand(time(NULL))
 
 
 #define END  62501  // 62501 for exactly 1M binary digits; val is immutable
@@ -260,6 +259,4 @@ int main()
 }
 
 // end of random_bitstring_and_flexible_password_generator.c
-
-
 

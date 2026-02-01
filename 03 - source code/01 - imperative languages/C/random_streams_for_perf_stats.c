@@ -22,9 +22,9 @@ $
 
 #include <time.h>    // srand(time(NULL))
 #include <stdio.h>   // printf()
-#include <stdlib.h>
-#include <string.h>  // strncpy()
-#include <ctype.h>   //
+#include <stdlib.h>  // srand(), rand(); 2026-02-01
+// #include <string.h>  // strncpy(); 2026-02-01: not needed here
+// #include <ctype.h>   // 2026-02-01: not needed here
 
 
 #define END  62501  // 62501 for exactly 1M binary digits; val is immutable
