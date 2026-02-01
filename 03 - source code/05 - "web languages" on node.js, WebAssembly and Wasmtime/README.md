@@ -85,7 +85,7 @@ This leaves this question to me:
 
 ## Why is the TypeScript variant slower than the equivalent JavaScript variant?
 
-![plot](./mean_stddev_err_whiskers -- web programming%2C JS%2BTS.png)
+![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20JS+TS.png)
 
 Transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example obviously.
 
@@ -269,7 +269,7 @@ I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmt
 
 Here's the updated execution speeds diagram with the results from WebAssembly and Wasmtime, both being competitively fast in comparision with other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
 
-![plot](./mean_stddev_err_whiskers -- web programming%2C full.png)
+![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
 "Standard ML to JS / node.js" = transpiled from Standard ML to JavaScript with the LunarML transpiler, where the JavaScript code is then being executed and time measured on node.js
 
