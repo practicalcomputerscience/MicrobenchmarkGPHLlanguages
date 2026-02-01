@@ -69,6 +69,18 @@ Transpiling from TypeScript code into JavaScript code, even though with the tran
 
 By the way: when I experimented with different versions of node.js, I noticed substantial differences in program execution speeds! So, above diagram is only valid for node.js version 22.21.0 (and on the same testing machine of course, as usual).
 
+You change node.js versions like this:
+
+```
+$ nvm use 22.21.0
+Now using node v22.21.0 (npm v10.9.4)
+$ node -v
+22.21.0
+$
+```
+
+<br/>
+
 Otherwise this should hold:
 
 > While TypeScript introduces an additional compilation step, its impact on runtime performance is negligible, as both TypeScript and JavaScript execute similarly in modern engines.
