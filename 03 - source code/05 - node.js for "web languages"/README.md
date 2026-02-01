@@ -151,7 +151,8 @@ Now, emcc is not visible anymore, but I will call it with an absolute path (see 
 With source code file _random_streams_for_perf_stats.c_ being located in a WebAssembly working directory, it can now be compiled like this, including clang compiler optimization switch _-O3_:
 
 ```
-$ /home/linuxbrew/.linuxbrew/bin/emcc -O3 random_streams_for_perf_stats.c -s WASM=1 -o random_streams_for_perf_stats_wasm.js -s STACK_SIZE=2048000
+$ /home/linuxbrew/.linuxbrew/bin/emcc -O3 random_streams_for_perf_stats.c -s WASM=1 \
+-o random_streams_for_perf_stats_wasm.js -s STACK_SIZE=2048000
 ...
 $
 ```
