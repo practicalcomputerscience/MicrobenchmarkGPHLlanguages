@@ -225,7 +225,7 @@ Homebrew clang version 21.1.8
 $
 ```
 
-In the [modified C program](./random_streams_for_perf_stats_wasmtime.c) I had to use a user defined function for the conversion of the random integer numbers into their binary representation as a string, same like in the [Checked C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb055d399cdd454982c7cb4b93c65c6e2e18f4ea/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.checked_c.c#L62).
+In the [modified C program](./random_streams_for_perf_stats_wasmtime.c) I had to use user defined function _integer_to_bin_string()_ for the conversion of the random integer numbers into their binary representation as a string, same like in the [Checked C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/eb055d399cdd454982c7cb4b93c65c6e2e18f4ea/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.checked_c.c#L62).
 
 It looks like that this funtionality, that is the notorious format specifier _"%016b"_, is not yet implemented in the WASI libc implementation for WebAssembly: https://github.com/WebAssembly/wasi-libc
 
