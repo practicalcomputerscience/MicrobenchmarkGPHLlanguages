@@ -1,5 +1,6 @@
 2026-01-31: work in progress
 
+- speed diagram: random_streams_for_perf_stats.mjs + Wasmtime
 - Wasmtime for compiling to "compiled wasm" (~.cwasm) files?
 - ReScript?? TBD
 
@@ -20,9 +21,8 @@ Table of contents:
 
 ## Idea for this page
 
-These are quick implementations of the "speed part" of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
-
-Though web programming was not even on my long list, I got the idea to implement the microbenchmark program in web programming languages for two reasons:
+Originally, this page was only meant to show some quick implementations of the "speed part" of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
+"Web programming" was not even on my long list. However, this has changed for two reasons:
 
 - the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in a monster big file that contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
 - my [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy) implementation, with Groovy often being described as a "scripting language for the Java Virtual Machine", and which "can largely be viewed as a superset of Java": [Introducing Groovy](https://www.oracle.com/technical-resources/articles/java/groovy.html)
@@ -37,9 +37,9 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 
 <br/>
 
-From the "old school combo" JavaScript and node.js, it was then again only a minor jump into WebAssembly, and there another (bigger) jump into Wasmtime.
+From the "old school combo" JavaScript and node.js, it was then again only a minor step into WebAssembly, and there another, albeit bigger step into Wasmtime.
 
-With WebAssembly and specifically Wasmtime, where source code has a good chance no longer to "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages
+With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages
 has become blurry in the last couple of years.
 
 <br/>
@@ -260,7 +260,7 @@ $ clang -O3 --target=wasm32-wasi random_streams_for_perf_stats_wasmtime.c \
 $
 ```
 
-The resulting WebAssembly file is being executed like this:
+The resulting WebAssembly file is being executed like this, and executed quickly with around 11 milliseconds:
 
 ```
 $ wasmtime --dir=. random_streams_for_perf_stats.wasm
