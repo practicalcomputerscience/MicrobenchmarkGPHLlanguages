@@ -67,6 +67,8 @@ This leaves this question to me:
 
 Transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example obviously.
 
+By the way: when I experimented with different versions of node.js, I noticed substantial differences in program execution speeds! So, above diagram is only valid for node.js version 22.21.0 (and on the same testing machine of course, as usual).
+
 Otherwise this should hold:
 
 > While TypeScript introduces an additional compilation step, its impact on runtime performance is negligible, as both TypeScript and JavaScript execute similarly in modern engines.
