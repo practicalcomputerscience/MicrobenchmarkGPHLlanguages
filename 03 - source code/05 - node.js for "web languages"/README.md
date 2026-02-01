@@ -3,10 +3,21 @@
 - WebAssembly (Wasm) works! --> TBD 
 - ReScript?? TBD
 
+# From "back-end" to "front-end" programming languages
+
+Table of contents:
+
+- [Idea for this page](#idea-for-this-page)
+- [TypeScript and JavaScript](#typescript-and-javascript)
+- [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
+- [WebAssembly (Wasm)](#webassembly-wasm)
+
 
 <br/>
 
-# From "back-end" to "front-end" programming languages
+---
+
+## Idea for this page
 
 These are quick implementations of the speed part of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
 
@@ -23,13 +34,17 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 - first, into [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.ts), and
 - then from there into [JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.js), again with Duck.ai
 
+<br/>
+
+## TypeScript and JavaScript
+
 JavaScript is a "a dynamic just-in-time compiled language": https://www.assemblyscript.org/introduction.html#frequently-asked-questions
 
 <br/>
 
 The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as standard with Ubuntu 24 LTS for example, is too old for it.
 
-In Linux you can upgrade the node.js version with the nvm (the Node Version Manager for a node.js installation per Linux user) like this (see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/):
+In Linux you can upgrade the node.js version with the nvm, the **Node Version Manager** which allows a node.js installation per Linux user, like this, see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
 
 ```
 $ sudo apt install curl build-essential libssl-dev -y
@@ -94,11 +109,77 @@ from: Performance Benchmarking: TypeScript vs. JavaScript in Modern Web Developm
 
 ## WebAssembly (Wasm)
 
-https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly
+There's another (cheap) possibility to run the microbenchmark program on node.js, and that is compiling it into a WebAssembly binary file (~.wasm), which is then being called from a machine generated JavaScript file: [Node.js with WebAssembly](https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly) (*)
 
-I took the [C version]() of the microbenchmark program ("speed part" only) **unchanged**, and ...
+I took the [C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) of the microbenchmark program ("speed part" only) **unchanged**, and compiled it to a WebAssembly binary file with the help of the **Emscripten** compiler toolchain, which is using the LLVM compiler infrastructure.
 
-TBD
+The Emscripten compiler is being called from the emcc (Emscripten Compiler Frontend), and which "is effectively a drop-in replacement for a standard compiler like gcc or clang": [Emscripten Compiler Frontend (emcc)](https://emscripten.org/docs/tools_reference/emcc.html)
+
+For convenience, I installed the Emscripten compiler with the Homebrew package manager (again):
+
+```
+$ brew install emscripten
+...
+$ emcc -v
+emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 4.0.24-git
+clang version 23.0.0git
+Target: wasm32-unknown-emscripten
+Thread model: posix
+InstalledDir: /home/linuxbrew/.linuxbrew/Cellar/emscripten/5.0.0/libexec/llvm/bin
+$
+```
+
+You may have a view at the [Emscripten Compiler Settings](https://emscripten.org/docs/tools_reference/settings_reference.html).
+
+One of the settings is essential here according to my experiments, that is _-s STACK_SIZE=2048000_ (for example) to have a big enough stack size.
+
+<br/>
+
+Then, in the _~/.bashrc_ configuration file I commented out any possible paths to programs that have been installed with Homebrew, because they may block the nvm (see above) from being found in your paths:
+
+```
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
+
+At this point, you may have to **re-start** the Bash shell to make the changed configuration becoming fully effective.
+
+Now, emcc is not visible anymore, but I will call it with an absolute path (see below).
+
+<br/>
+
+With source code file _random_streams_for_perf_stats.c_ being located in a WebAssembly working directory, it can now be compiled like this, including clang compiler optimization switch _-O3_:
+
+```
+$ /home/linuxbrew/.linuxbrew/bin/emcc -O3 random_streams_for_perf_stats.c -s WASM=1 -o random_streams_for_perf_stats_wasm.js -s STACK_SIZE=2048000
+...
+$
+```
+
+This command has hopefully created two files:
+
+- random_streams_for_perf_stats_wasm.js, and
+- random_streams_for_perf_stats_wasm.wasm
+
+(output file name _random_streams_for_perf_stats_wasm.js_ was just chosen here to not mix it with the native JavaScript microbenchmark program file _random_streams_for_perf_stats.js_, see above)
+
+Now, we can run this WebAssembly binary file, which is being called from the generated JavaScript file:
+
+```
+$ node ./random_streams_for_perf_stats_wasm.js
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$ 
+```
+
+<br/>
+
+The WebAssembly binary file could have been compiled from other sources too, like C++, Rust, and AssemblyScript (*).
+
+<br/>
+
+As seen above, an ahead-of-time (AOT) compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages. However, I noticed that the variance of execution times is lower than with the (native) JavaScript or TypeScript programs.
 
 <br/>
 
