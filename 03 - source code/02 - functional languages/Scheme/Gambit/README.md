@@ -24,7 +24,7 @@ $ make modules  # optional, but I did this too; this may also take some time
 $ sudo make install
 ```
 
-At last, fix your _~/.bashrc_ config file for pathes to subdirectories _./gsi_ (for the REPL) and _./gsc_ (for the compiler) in extracted directory _./gambit-4.9.7_.
+At last, fix your _~/.bashrc_ config file for paths to subdirectories _./gsi_ (for the REPL) and _./gsc_ (for the compiler) in extracted directory _./gambit-4.9.7_.
 
 Then, have a little test:
 
