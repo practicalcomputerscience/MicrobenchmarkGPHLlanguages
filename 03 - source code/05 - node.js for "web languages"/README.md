@@ -1,6 +1,6 @@
 2026-01-31: work in progress
 
-- WebAssembly (Wasm) works! --> TBD 
+- Wasmtime: https://wasmtime.dev/ -- https://bytecodealliance.org/articles/wasmtime-portability
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages
@@ -10,7 +10,7 @@ Table of contents:
 - [Idea for this page](#idea-for-this-page)
 - [TypeScript and JavaScript](#typescript-and-javascript)
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
-- [WebAssembly (Wasm)](#webassembly-wasm)
+- [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
 
 
 <br/>
@@ -23,7 +23,7 @@ These are quick implementations of the speed part of the microbenchmark program 
 
 Though web programming was not even on my long list, I got the idea to implement the microbenchmark program in web programming languages for two reasons:
 
-- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in this monster file that contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
+- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in a monster big file that contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
 - my [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy) implementation, with Groovy often being described as a "scripting language for the Java Virtual Machine", and which "can largely be viewed as a superset of Java": [Introducing Groovy](https://www.oracle.com/technical-resources/articles/java/groovy.html)
 
 <br/>
@@ -107,13 +107,13 @@ from: Performance Benchmarking: TypeScript vs. JavaScript in Modern Web Developm
 
 <br/>
 
-## WebAssembly (Wasm)
+## The WebAssembly (Wasm) virtual machine
 
-There's another (cheap) possibility to run the microbenchmark program on node.js, and that is compiling it into a WebAssembly binary file (~.wasm), which is then being called from a machine generated JavaScript file: [Node.js with WebAssembly](https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly) (*)
+There's another (cheap) possibility to run the microbenchmark program on node.js, and that is compiling it into a WebAssembly binary file (~.wasm), which is then being called from a machine generated JavaScript file: [Node.js with WebAssembly](https://nodejs.org/en/learn/getting-started/nodejs-with-webassembly)
 
-I took the [C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) of the microbenchmark program ("speed part" only) **unchanged**, and compiled it to a WebAssembly binary file with the help of the **Emscripten** compiler toolchain, which is using the LLVM compiler infrastructure.
+I took the [C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) of the microbenchmark program ("speed part" only) **unchanged**, and compiled it to a WebAssembly binary file with the help of the [Emscripten](https://emscripten.org/) compiler toolchain, which is using the LLVM compiler infrastructure.
 
-The Emscripten compiler is being called from the emcc (Emscripten Compiler Frontend), and which "is effectively a drop-in replacement for a standard compiler like gcc or clang": [Emscripten Compiler Frontend (emcc)](https://emscripten.org/docs/tools_reference/emcc.html)
+The Emscripten compiler is being called from the emcc (Emscripten Compiler Frontend), and "is effectively a drop-in replacement for a standard compiler like gcc or clang": [Emscripten Compiler Frontend (emcc)](https://emscripten.org/docs/tools_reference/emcc.html)
 
 For convenience, I installed the Emscripten compiler with the Homebrew package manager (again):
 
@@ -135,7 +135,7 @@ One of the settings is essential here according to my experiments, that is _-s S
 
 <br/>
 
-Then, in the _~/.bashrc_ configuration file I commented out any possible paths to programs that have been installed with Homebrew, because they may block the nvm (see above) from being found in your paths:
+Then, in the _~/.bashrc_ configuration file I commented out any possible paths to programs that have been installed with Homebrew, because they may block nvm (see above) from being found in your paths:
 
 ```
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -157,10 +157,10 @@ $
 
 This command has hopefully created two files:
 
-- random_streams_for_perf_stats_wasm.js, and
-- random_streams_for_perf_stats_wasm.wasm
+- _random_streams_for_perf_stats_wasm.js_, and
+- _random_streams_for_perf_stats_wasm.wasm_
 
-(output file name _random_streams_for_perf_stats_wasm.js_ was just chosen here to not mix it with the native JavaScript microbenchmark program file _random_streams_for_perf_stats.js_, see above)
+(output file name _random_streams_for_perf_stats_wasm.js_ was just chosen here to not mix it with the native JavaScript microbenchmark program _random_streams_for_perf_stats.js_, see above)
 
 Now, we can run this WebAssembly binary file, which is being called from the generated JavaScript file:
 
@@ -173,13 +173,22 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $ 
 ```
 
-<br/>
-
-The WebAssembly binary file could have been compiled from other sources too, like C++, Rust, and AssemblyScript (*).
+As seen above, an ahead-of-time (AOT) compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages with the microbenchmark program.
 
 <br/>
 
-As seen above, an ahead-of-time (AOT) compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages. However, I noticed that the variance of execution times is lower than with the (native) JavaScript or TypeScript programs.
+A WebAssembly binary file could have been compiled from other sources too, like:
+
+- C++, also with the emscripten compiler, or
+- [Rust](https://rust-lang.org/what/wasm/), or
+- [AssemblyScript](https://www.assemblyscript.org/)
+
+<br/>
+
+Actually, the "WebAssembly binary file" does not represent native, binary machine code (like compiled from C source code for example). It is a standardized bytecode format, which is being
+executed on a stack-based virtual machine inside a web browser or runtime environments like node.js: https://webassembly.org/
+
+Though, WebAssembly avoids terms "bytecode" and "virtual machine", see at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html) for example.
 
 <br/>
 
