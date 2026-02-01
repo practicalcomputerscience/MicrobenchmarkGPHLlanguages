@@ -1,6 +1,5 @@
 2026-01-31: work in progress
 
-- speed diagram: random_streams_for_perf_stats.mjs + Wasmtime
 - Wasmtime for compiling to "compiled wasm" (~.cwasm) files?
 - ReScript?? TBD
 
@@ -86,7 +85,7 @@ This leaves this question to me:
 
 ## Why is the TypeScript variant slower than the equivalent JavaScript variant?
 
-![plot](./mean_stddev_err_whiskers%20--%20only%20node.js.png)
+![plot](./mean_stddev_err_whiskers -- web programming%2C JS%2BTS.png)
 
 Transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example obviously.
 
@@ -155,7 +154,7 @@ Now, emcc is not visible anymore, but I will call it with an absolute path (see 
 
 <br/>
 
-With source code file _random_streams_for_perf_stats.c_ being located in a WebAssembly working directory, it can now be compiled like this, including clang compiler optimization switch _-O3_:
+With source code file [random_streams_for_perf_stats.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) being located in a WebAssembly working directory, it can now be compiled like this, including clang compiler optimization switch _-O3_:
 
 ```
 $ /home/linuxbrew/.linuxbrew/bin/emcc -O3 random_streams_for_perf_stats.c -s WASM=1 \
@@ -268,7 +267,11 @@ $ wasmtime --dir=. random_streams_for_perf_stats.wasm
 
 I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime).
 
-TBD
+Here's the updated execution speeds diagram with the results from WebAssembly and Wasmtime, both being competitively fast in comparision with other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
+
+![plot](./mean_stddev_err_whiskers -- web programming%2C full.png)
+
+"Standard ML to JS / node.js" = transpiled from Standard ML to JavaScript with the LunarML transpiler, where the JavaScript code is then being executed and time measured on node.js
 
 <br/>
 
