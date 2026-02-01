@@ -222,4 +222,20 @@ My emphasis.
 
 <br/>
 
+On the other side:
+
+#### 2026: Goodbye Java, Hello Go!
+
+https://wso2.com/library/blogs/goodbye-java-hello-go
+
+> Why Go and not Rust?
+> 
+> We, of course, discussed both options. Rust is a fantastic language that gives developers incredible control. If we were writing an operating system, a browser, or some code that runs for a very long time without a restart, then Rust would be a better choice.
+> 
+> However, we build middleware infrastructure like (API, identity) gateways and orchestrate other systems. At this level, we are always quite a bit above bare metal.
+> 
+> Go provides the perfect balance for that. It does memory management very well, provides sufficient low-level concurrency primitives, and cross-compiles to native code.
+
+<br/>
+
 ##_end
