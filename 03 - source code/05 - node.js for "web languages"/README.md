@@ -173,7 +173,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $ 
 ```
 
-As seen above, a compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages with this microbenchmark program.
+As seen in the diagram above, a compilation to a WebAssembly binary file can make a speedier program, but with an execution time of around 30 milliseconds it's not a quantum leap into the league of super-fast programming languages with this microbenchmark program.
 
 A reason for this may be the fact that by default WebAssembly binary files are not ahead-of-time (AOT) compiled; see **Wasmtime** for compiling to "compiled wasm" (~.cwasm) files: https://docs.wasmtime.dev/cli-options.html#compile
 
@@ -188,7 +188,7 @@ A WebAssembly binary file can also be compiled from other sources, like:
 <br/>
 
 Actually, the "WebAssembly binary file" does not represent native, binary machine code (like compiled from C source code for example). It is a standardized bytecode format, which is being
-executed on a stack-based virtual machine inside a web browser or a runtime environments like node.js: https://webassembly.org/
+executed on a stack-based virtual machine inside a web browser or a runtime environment like node.js: https://webassembly.org/
 
 Though, WebAssembly officially seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
 
