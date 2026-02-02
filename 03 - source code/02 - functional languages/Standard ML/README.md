@@ -25,6 +25,7 @@ Table of contents:
 - [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml)
 - [Hello world! example for Lua and JavaScript](#hello-world-example-for-lua-and-javascript)
 - [Motivation of the creator of LunarML](#motivation-of-the-creator-of-lunarml)
+- [Building MLton from sources](#building-mlton-from-sources)
 
 <br/>
 
@@ -52,7 +53,11 @@ However, MLton doesn't have a REPL, so I still have a SML/NJ installation for qu
 
 ## MLton installation tips
 
-I didn't manage to build my MLton implementation from sources, but downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _.../StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/_
+At first, I didn't manage to build my MLton implementation from sources. But as of 2026-02-02, I succeeded. See at [Building MLton from sources](#building-mlton-from-sources) at the very bottom of this page.
+
+So, back then I just downloaded file _mlton-20241230.x86_64-linux-gnu.tar.gz_ with the compiled compiler from here: https://github.com/ii8/mlton-builds/releases/tag/20241230, unzipped it and just expanded my Bash _$PATH_ environment variable to: _export PATH="$PATH:$HOME/scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin_
+
+For efficiency, I still recommend this quick installation of the MLton compiler.
 
 See also here for specific Linux distributions: https://github.com/MLton/mlton/releases/tag/on-20241230-release
 
@@ -460,6 +465,82 @@ Furthermore, he said this why choosing Standard ML:
 <br/>
 
 See also: [The future of transpiling](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#the-future-of-transpiling)
+
+<br/>
+
+---
+
+### Building MLton from sources
+
+Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
+
+However, this was a failure, and probably it will stay like that. In the end and after elaborate experimentation, file _assert.h_ was missing during compilation. Then I gave up on this direct way.
+
+By the way: the MLton compiler starts from Linux shell script _./bin/mlton_, which first starts the transpilation from Standard ML code into C code with native compiler _./lib/milton/mlton-compile_, and then calls the _cc_ compiler for compiling that C code into native machine code finally. In my system, _cc_ is this version:
+
+```
+$ cc --version
+cc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+...
+$ 
+```
+
+So, I will try to take the indirect way of first transpiling from Standard ML code into C code with the MLton compiler, and then from there using the _clang_ compiler to compile into a WebAssembly binary file (~.wasm) as described here: [The Wasmtime runtime](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-wasmtime-runtime)
+
+<br/>
+
+I built the MLton compiler successfully from sources like this:
+
+It's important to know that the MLton sources need another Standard ML installation to be compiled (bootstrapping), preferably with another MLton installation. See from [MLton installation tips](#mlton-installation-tips) at the top.
+
+Next task is to get the right GMP installation working, here for an amd64 based Linux system ("self"), or another GMP installation which fits to the target system of MLton compiled programs.
+
+Get source code file _gmp-6.3.0.tar.xz_ (as of 2026-02-02) from: https://gmplib.org/ and extract it into a working directory. There do this:
+
+```
+$ mkdir build
+$ cd build
+../configure --prefix=$HOME/gmp-x86_64-INSTALL  # or any other name and directory you like; $HOME is advantageous for a non-root installation
+...
+$ make
+...
+$ make check
+...  # this check should indicate OK for a Linux target system!
+$ make install  # no need for a root installation here
+...
+$
+```
+
+<br/>
+
+With GMP hopefully ready by now, we can build MLton for the amd64 Linux runtime target:
+
+I got sources _mlton-20241230.src.tgz_ from this page at chapter "20241230 source packages": http://mlton.org/Release20241230
+
+I unzipped this file and did this:
+
+```
+$ cd ./mlton-20241230.src/mlton-20241230
+$ make CC=gcc-14 WITH_GMP_DIR=$HOME/gmp-x86_64-INSTALL all  # this is using gcc!!!
+...
+Build of MLton succeeded.  # (hopefully!)
+...
+$
+```
+
+That was the secret of my success: compiling with gcc (in version 14; though, I guess that version 13 would also be fine), and not with clang, and with providing the correct GMP installation directory
+
+The MLton compiler script should be now located in directory: _./mlton-20241230.src/mlton-20241230/build/bin_
+
+..and which can be shortly tested like this:
+
+```
+$ ./mlton-20241230.src/mlton-20241230/build/bin/mlton
+MLton 20241230
+$
+```
+
+By the way: gcc is not (yet) ready for building for a WASI (WebAssembly System Interface) runtime target. For now, you have to use a LLVM-based clang compiler for this _wasm32-wasi_ target: [WASI-enabled WebAssembly C/C++ toolchain](https://github.com/WebAssembly/wasi-sdk)
 
 <br/>
 
