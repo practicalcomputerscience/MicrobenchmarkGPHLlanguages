@@ -1,6 +1,6 @@
 2026-01-31: work in progress
 
-- Standard ML to Wasm? --> http://mlton.org/RunningOnWASI
+- Standard ML to Wasm via MLton to C code only, and then with clang?
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages, and back
