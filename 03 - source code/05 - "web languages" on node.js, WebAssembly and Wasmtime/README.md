@@ -1,9 +1,6 @@
 2026-01-31: work in progress
 
 - Wasmtime for compiling to "compiled wasm" (~.cwasm) files?
-- Dart: put this into the "final" exe speeds diagram: Dart natively has its own runtime (but also supports transpilation into JS)
-  - mean_stddev_err_whiskers -- web programming, full2.png
-  - programming_languages_exe_speeds_web_programming.csv
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages
@@ -15,7 +12,6 @@ Table of contents:
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
 - [The Wasmtime runtime](#the-wasmtime-runtime)
-
 
 <br/>
 
