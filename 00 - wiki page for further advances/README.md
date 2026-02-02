@@ -67,17 +67,17 @@
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Pure Programming Language is a functional programming language:
-- &nbsp;&nbsp;https://github.com/agraef/pure-lang/wiki
-- &nbsp;&nbsp;https://agraef.github.io/pure-lang/
+  - https://github.com/agraef/pure-lang/wiki
+  - https://agraef.github.io/pure-lang/
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
 - Groovy on the JVM: https://groovy-lang.org/
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
-- &nbsp;&nbsp;2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
+  - 2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
 - Haskell?!?
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
-- &nbsp;&nbsp;(GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
-- &nbsp;&nbsp;The Nial Language: https://www.nial-array-language.org/
-- &nbsp;&nbsp;**J** 
+  - (GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
+  - The Nial Language: https://www.nial-array-language.org/
+  - **J** 
 
 <br/>
 
