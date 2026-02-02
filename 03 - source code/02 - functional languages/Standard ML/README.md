@@ -101,7 +101,7 @@ Otherwise, both programs, one compiled with MLton and the other compiled with ML
 
 The old **Moscow ML** precompiled binaries (https://mosml.org/) from 2014 don't work in my machine.
 
-I also shortly tapped into **Poly/ML** (https://polyml.org/) only to find out that this dialect seems to be the archaic version of Standard ML and thus would require refactoring many details of my MLton program.
+I also shortly tapped into **Poly/ML** (https://polyml.org/), only to find out that this dialect seems to be the archaic version of Standard ML and thus would require refactoring many details of my MLton program.
 
 <br/>
 
