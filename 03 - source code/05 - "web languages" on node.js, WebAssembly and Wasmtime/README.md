@@ -1,6 +1,6 @@
 2026-01-31: work in progress
 
-- Wasmtime for compiling to "compiled wasm" (~.cwasm) files?
+- Standard ML to Wasm?
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages
@@ -12,6 +12,8 @@ Table of contents:
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
 - [The Wasmtime runtime](#the-wasmtime-runtime)
+- [Ahead-of-time (AOT) compiling with Wasmtime](#ahead-of-time-aot-compiling-with-wasmtime)
+- [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
 
@@ -22,7 +24,7 @@ Table of contents:
 Originally, this page was only meant to show some quick implementations of the "speed part" of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
 "Web programming" was not even on my long list. However, this has changed for two reasons:
 
-- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in a monster big file that contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
+- the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in a monster big file, which contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
 - my [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy) implementation, with Groovy often being described as a "scripting language for the Java Virtual Machine", and which "can largely be viewed as a superset of Java": [Introducing Groovy](https://www.oracle.com/technical-resources/articles/java/groovy.html)
 
 <br/>
@@ -35,7 +37,7 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 
 <br/>
 
-From the "old school combo" JavaScript and node.js, it was then again only a minor step into WebAssembly, and from there another, albeit bigger step into Wasmtime.
+From the "old school combo" JavaScript and node.js, it was then again only a minor step into **WebAssembly**, and from there another, albeit bigger, step into **Wasmtime**.
 
 With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages
 has become blurry in the last couple of years.
@@ -265,17 +267,49 @@ $ clang -O3 --target=wasm32-wasi random_streams_for_perf_stats_wasmtime.c \
 $
 ```
 
-This resulting WebAssembly file is then being executed like this:
+This resulting WebAssembly file can then be executed like this:
 
 ```
-$ wasmtime --dir=. random_streams_for_perf_stats.wasm
+$ wasmtime --dir=. ./random_streams_for_perf_stats.wasm
 ```
+
+..which brings down the execution time to around 11 milliseconds!
 
 I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime).
 
 <br/>
 
-Here's the updated execution speeds diagram with the results from WebAssembly and Wasmtime, both being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
+## Ahead-of-time (AOT) compiling with Wasmtime
+
+Here I'm coming back to Wasmtime's capability of AOT compilation: https://docs.wasmtime.dev/cli-options.html#compile
+
+With the wasm file, which has been just created with the clang compiler above, but not with the emcc compiled version, it is possible to AOT compile it into a ~.cwasm file, which can then be executed:
+
+```
+$ wasmtime compile random_streams_for_perf_stats.wasm  # this wasm file was compiled with clang
+$ time wasmtime --allow-precompiled --dir=. ./random_streams_for_perf_stats.cwasm
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.011s
+...
+$ 
+```
+
+So, these two commands, based on the same original C code, tally the same execution times:
+
+```
+$ time wasmtime --dir=. ./random_streams_for_perf_stats.wasm
+$ time wasmtime --allow-precompiled --dir=. ./random_streams_for_perf_stats.cwasm
+```
+
+<br/>
+
+## Complete execution speeds diagram
+
+Here's the updated execution speeds diagram with the additional results from WebAssembly and Wasmtime, both concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
