@@ -379,7 +379,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Transpiling my microbenchmark program to JavaScript also works, but only with transpiler switch _--nodejs-cps_ activated:
+Transpiling my microbenchmark program into JavaScript also works, but only with transpiler switch _--nodejs-cps_ activated:
 
 ```
 $ lunarml compile --nodejs-cps ./random_streams_for_perf_stats3.mlb
@@ -404,8 +404,7 @@ print "Hello world!\n";
 $
 ```
 
-After its transpilation with lunaarml the first 10 lines of the resulting Lua script look
-like this:
+After its transpilation with lunarml the first 10 lines of the resulting Lua script look like this:
 
 ```
 $ lunarml compile ./LunarML-0.2.1/example/hello.sml
@@ -424,7 +423,7 @@ local _exn_meta = {}
 $
 ```
 
-In total this script has (_$ wc -l ./LunarML-0.2.1/example/hello.lua_) 95 lines of Lua source code!
+In total, this script has (_$ wc -l ./LunarML-0.2.1/example/hello.lua_) 95 lines of Lua source code!
 
 The JavaScript version has only 5 lines of source code:
 
@@ -444,7 +443,7 @@ However, my benchmark program with 133 lines of Standard ML source code in files
 - 4627 lines of Lua source code and
 - 3264 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 280 milliseconds (2026-01-31)
 
-Apparently these transpiled source code files are not meant for the human reader.
+Apparently, these transpiled source code files are not meant for the human reader.
 
 <br/>
 
