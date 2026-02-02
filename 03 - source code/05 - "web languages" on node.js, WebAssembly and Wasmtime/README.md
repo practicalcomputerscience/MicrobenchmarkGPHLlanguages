@@ -1,6 +1,6 @@
 2026-01-31: work in progress
 
-- Standard ML to Wasm?
+- Standard ML to Wasm? --> http://mlton.org/RunningOnWASI
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages, and back
