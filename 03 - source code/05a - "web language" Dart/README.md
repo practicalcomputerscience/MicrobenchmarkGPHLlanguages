@@ -8,7 +8,7 @@ https://dart.dev/tutorials/server/get-started
 
 ---
 
-# Idea of Dart
+## Idea of Dart
 
 Dart was an earlier effort than TypeScript to overcome the deficits of JavaScript. However, Dart evolved around its own ecosystem, with "front-end" and "back-end" in mind.
 
