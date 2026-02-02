@@ -14,11 +14,11 @@ https://dart.dev/tutorials/server/get-started
 
 ## Idea of Dart
 
-At first, I also wanted to cramp Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back).
+At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as a "web language", and same like TypeScript, a web language to overcome the deficits of JavaScript.
+
+For example, in 2011 Dart was officially introduced as a "programming language for building web applications": https://blog.chromium.org/2011/10/dart-language-for-structured.html
 
 But then I discovered that Dart right from start evolved around its own and rich ecosystem, with "front-end" and "back-end" in mind, which allows Dart source code to run on a variety of plattforms.
-
-By the way: Dart was an earlier effort than TypeScript to overcome the deficits of JavaScript.
 
 So, I came to the conclusion that Dart deserves it's own page. 
 
@@ -26,7 +26,7 @@ I think that specifically Dart is one of those languages that right from start h
 
 > With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages has become blurry in the last couple of years.
 
-from: tbd
+from: [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back)
 
 <br/>
 
