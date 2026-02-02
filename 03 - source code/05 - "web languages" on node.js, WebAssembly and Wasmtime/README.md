@@ -1,6 +1,7 @@
 2026-01-31: work in progress
 
 - Wasmtime for compiling to "compiled wasm" (~.cwasm) files?
+- Dart?
 - ReScript?? TBD
 
 # From "back-end" to "front-end" programming languages
