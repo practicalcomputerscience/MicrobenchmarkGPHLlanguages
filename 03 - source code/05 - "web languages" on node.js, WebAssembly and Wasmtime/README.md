@@ -258,7 +258,7 @@ $ brew install wasi-runtimes  # install WASI runtimes for LLVM
 $
 ```
 
-With hopefully all pre-requisites being fulfilled by now, program [random_streams_for_perf_stats_wasmtime.c](./random_streams_for_perf_stats_wasmtime.c) is to be compiled into a WebAssembly binary file _random_streams_for_perf_stats.wasm_:
+With hopefully all pre-requisites being fulfilled by now, program [random_streams_for_perf_stats_wasmtime.c](./random_streams_for_perf_stats_wasmtime.c) is to be compiled into a WebAssembly binary file, here called _random_streams_for_perf_stats.wasm_:
 
 ```
 $ clang -O3 --target=wasm32-wasi random_streams_for_perf_stats_wasmtime.c \
