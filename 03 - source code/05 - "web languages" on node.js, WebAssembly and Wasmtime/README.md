@@ -3,7 +3,7 @@
 - Standard ML to Wasm?
 - ReScript?? TBD
 
-# From "back-end" to "front-end" programming languages
+# From "back-end" to "front-end" programming languages, and back
 
 Table of contents:
 
