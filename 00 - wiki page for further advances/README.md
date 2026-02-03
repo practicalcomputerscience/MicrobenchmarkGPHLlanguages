@@ -63,7 +63,7 @@
 
 2026-01-28: so far, I haven't touched yet these corners of programming languages:
 
-- https://haxe.org/: strictly-typed programming language
+- https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Pure Programming Language is a functional programming language:
