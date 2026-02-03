@@ -1,5 +1,3 @@
-2026-01-31: work in progress
-
 # From "back-end" to "front-end" programming languages, and back
 
 Table of contents:
