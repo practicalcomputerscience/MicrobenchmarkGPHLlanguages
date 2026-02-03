@@ -30,8 +30,9 @@ Originally, this page was only meant to show some quick implementations of the "
 From that point on, it was only a small step to transpile program [random_streams_for_perf_stats.groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/random_streams_for_perf_stats.groovy), which is here type annotated for speedy, static compilation,
 with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), version 5.9.3, tumbled over warnings):
 
-- first, into [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.ts), and
-- then from there into [JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20node.js%20for%20%22web%20languages%22/random_streams_for_perf_stats.js), again with Duck.ai
+- first, into [TypeScript](./random_streams_for_perf_stats.ts), and
+- then from there into [JavaScript](./random_streams_for_perf_stats.js), again with Duck.ai
+- however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair
 
 <br/>
 
