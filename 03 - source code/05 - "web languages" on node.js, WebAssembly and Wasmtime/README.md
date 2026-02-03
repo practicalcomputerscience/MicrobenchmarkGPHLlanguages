@@ -1,17 +1,16 @@
 2026-01-31: work in progress
 
-- ReScript?? TBD
-
 # From "back-end" to "front-end" programming languages, and back
 
 Table of contents:
 
-- [Idea for this page](#idea-for-this-page)
+- [Idea of this page](#idea-of-this-page)
 - [TypeScript and JavaScript](#typescript-and-javascript)
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
 - [The Wasmtime runtime](#the-wasmtime-runtime)
 - [Ahead-of-time (AOT) compiling with Wasmtime](#ahead-of-time-aot-compiling-with-wasmtime)
+- [ReScript: OCaml's JavaScript](#rescript-ocamls-javascript)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
@@ -303,6 +302,100 @@ So, these two commands, based on the same original C code, tally the same execut
 $ time wasmtime --dir=. ./random_streams_for_perf_stats.wasm
 $ time wasmtime --allow-precompiled --dir=. ./random_streams_for_perf_stats.cwasm
 ```
+
+<br/>
+
+## ReScript: OCaml's JavaScript
+
+https://rescript-lang.org
+
+There's another "web programming language" next to staple languages JavaScript and TypeScript, and that is ReScript, or like I call it: "OCaml's JavaScript" (though, the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) traces are slowly vanashing from ReScript: Nov 25, 2025: [Announcing ReScript 12](https://rescript-lang.org/blog/release-12-0-0/))
+
+Following [Installation](https://rescript-lang.org/docs/manual/installation), I created a ReScript project for the speed part of the microbenchmark program with the npm (package manager for [Node.js](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)) like this:
+
+```
+$ npm create rescript-app@latest
+```
+
+Now enter these three project parameters for example:
+
+- name of ReScript project: random-streams-for-perf-stats
+- template: Basic
+- ReScript version: 12.1.0
+
+Then do: _$ cd random-streams-for-perf-stats_
+
+Copy source code [random-streams-for-perf-stats.res](./random-streams-for-perf-stats.res) to directory _./random-streams-for-perf-stats/src_
+
+Delete example file  _./random-streams-for-perf-stats/src/Demo.res_, and finally generate a JavaScript file named _random-streams-for-perf.res.mjs_ with command: _$ npm run res:build_
+
+This file can then be executed like this as usual:
+
+```
+$ node ./src/random-streams-for-perf.res.mjs
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$ 
+```
+
+<br/>
+
+From my point of view, there's (still) one substantial weak point with this otherwise fine and statically-typed web language:
+
+> [!NOTE]
+> ReScript does not have official bindings for node.js!
+
+There's a community-driven library called [rescript-nodejs](https://github.com/TheSpyder/rescript-nodejs#rescript-nodejs) for related tasks (which I haven't used in my implementation).
+
+Here's a cookbook for this issue: [ReScript Bindings Cookbook](https://github.com/rescriptbr/rescript-bindings-cookbook?tab=readme-ov-file#rescript-bindings-cookbook):
+
+> Writing ReScript bindings can be somewhere between an art and a science, taking some learning investment into both the JavaScript and ReScript type systems to get a proper feel for it.
+
+I may add: initially, my biggest problem with writing bindings for node.js in my ReScript program was to find out:
+
+- what is a JavaScript resource, and
+- what is a ReScript resource, and
+- what is actually a node.js resource?
+
+"fs" for "file system" in [JavaScript](./random_streams_for_perf_stats.js) (_const fs = require('fs');_) is actually a node.js resource and can be handled like this for example in ReScript (there are other possibilities):
+
+```
+...
+@module("fs")  // this is a resource of node.js!
+external writeFileSync: (string, string) => unit = "writeFileSync"
+...
+module RandomStreamsForPerfStats = {
+  let main = () => {
+    ...
+    try {
+      writeFileSync(file_bits_x, bits_x_str_total)
+      Console.log("Bit stream has been written to disk under name:  " + file_bits_x)
+    } catch {
+      | JsExn(obj) =>
+        // Use JsExn.message(obj) to safely handle the 'unknown' type
+        switch JsExn.message(obj) {
+          | Some(msg) => Console.log("could not write to file: " + file_bits_x + " -- " + msg)
+          | None      => Console.log("Caught a JS error with no message")
+        }
+      | _ => Console.log("Caught a non-JS error")
+    }
+    ...
+  }
+}
+...
+```
+
+Function, or _method_, _writeFileSync_ can thus be looked up from node.js: [Writing a file synchronously](https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs#writing-a-file-synchronously)
+
+Handling JavaScript exceptions in ReScript (_JsExn(obj)_) is a ReScript resource: [JsExn](https://rescript-lang.org/docs/manual/api/stdlib/jsexn)
+
+> Provide utilities for dealing with JS exceptions. JS exceptions can be of any type, even though they should be of type Error of one of its subclasses.
+
+<br/>
+
+Otherwise, ReScript is the result of a merger of "BuckleScript" and "Reason" in 2020: [BuckleScript & Reason Rebranding](https://rescript-lang.org/blog/bucklescript-is-rebranding/)
 
 <br/>
 
