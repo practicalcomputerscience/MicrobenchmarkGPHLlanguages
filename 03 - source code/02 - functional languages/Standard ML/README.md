@@ -474,7 +474,7 @@ See also: [The future of transpiling](https://github.com/practicalcomputerscienc
 
 Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
 
-However, this was a failure, and probably it will stay like that. In the end and after elaborate experimentation, file _assert.h_ was missing during compilation. Then I gave up on this direct way.
+However, this was a failure, and probably it will stay like that. In the end and after elaborate experimentation, file _assert.h_ was missing during compilation. Then I gave up.
 
 By the way: the MLton compiler starts from Linux shell script _./bin/mlton_, which first starts the transpilation from Standard ML code into C code with native compiler _./lib/milton/mlton-compile_, and then calls the _cc_ compiler for compiling that C code into native machine code finally. In my system, _cc_ is this version:
 
