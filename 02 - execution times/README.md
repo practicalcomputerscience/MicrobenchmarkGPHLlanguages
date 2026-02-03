@@ -10,6 +10,7 @@ Table of contents:
 - [Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM](#java-native-languages-scala-kotlin-and-clojure-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
 - [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
+- ["Web programming"](#web-programming)
 - [The Clojure example](the-clojure-example)
 
 <br/>
@@ -71,6 +72,16 @@ See more details at page [Scheme](https://github.com/practicalcomputerscience/Mi
 ### Programming languages for virtual machines
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20VM.png)
+
+<br/>
+
+---
+
+### "Web programming"
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/mean_stddev_err_whiskers%20--%20web%20programming%2C%20full.png)
+
+Well, WebAssembly is also a virtual machine: [The WebAssembly (Wasm) virtual machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)
 
 <br/>
 
