@@ -309,7 +309,7 @@ $ time wasmtime --allow-precompiled --dir=. ./random_streams_for_perf_stats.cwas
 
 https://rescript-lang.org
 
-There's another "web programming language" next to staple languages JavaScript and TypeScript, and that is ReScript, or like I call it: "OCaml's JavaScript" (though, the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) traces are slowly vanashing from ReScript: Nov 25, 2025: [Announcing ReScript 12](https://rescript-lang.org/blog/release-12-0-0/))
+There's another web programming language next to staple languages JavaScript and TypeScript, and that is ReScript, or like I call it: "OCaml's JavaScript" (though, the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) traces are slowly vanashing from ReScript: Nov 25, 2025: [Announcing ReScript 12](https://rescript-lang.org/blog/release-12-0-0/))
 
 Following [Installation](https://rescript-lang.org/docs/manual/installation), I created a ReScript project for the speed part of the microbenchmark program with the npm (package manager for [Node.js](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)) like this:
 
@@ -327,9 +327,9 @@ Then do: _$ cd random-streams-for-perf-stats_
 
 Copy source code [random-streams-for-perf-stats.res](./random-streams-for-perf-stats.res) to directory _./random-streams-for-perf-stats/src_
 
-Delete example file  _./random-streams-for-perf-stats/src/Demo.res_, and finally generate a JavaScript file named _random-streams-for-perf.res.mjs_ with command: _$ npm run res:build_
+Delete example file  _./random-streams-for-perf-stats/src/Demo.res_, and finally generate a JavaScript file with command: _$ npm run res:build_
 
-This file can then be executed like this as usual:
+The generated JavaScript file named _random-streams-for-perf.res.mjs_ can then be executed like this as usual:
 
 ```
 $ node ./src/random-streams-for-perf.res.mjs
@@ -388,6 +388,19 @@ module RandomStreamsForPerfStats = {
 ```
 
 Function, or _method_, _writeFileSync_ can thus be looked up from node.js: [Writing a file synchronously](https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs#writing-a-file-synchronously)
+
+<br/>
+
+[External (Bind to Any JS Library)](https://rescript-lang.org/docs/manual/external/) 
+
+> external is the primary ReScript feature for bringing in and using JavaScript values.
+>
+> external is like a let binding, but:
+> - The right side of = isn't a value; it's the name of the JS value you're referring to.
+> - The type for the binding is mandatory, since we need to know what the type of that JS value is.
+> - Can only exist at the top level of a file or module.
+
+<br/>
 
 Handling JavaScript exceptions in ReScript (_JsExn(obj)_) is a ReScript resource: [JsExn](https://rescript-lang.org/docs/manual/api/stdlib/jsexn)
 
