@@ -18,7 +18,7 @@ Table of contents:
 
 ---
 
-## Idea for this page
+## Idea of this page
 
 Originally, this page was only meant to show some quick implementations of the "speed part" of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
 "Web programming" was not even on my long list. However, this has changed for two reasons:
