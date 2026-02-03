@@ -414,7 +414,7 @@ Otherwise, ReScript is the result of a merger of "BuckleScript" and "Reason" in 
 
 ## Complete execution speeds diagram
 
-Here's the updated execution speeds diagram with the additional results from WebAssembly and Wasmtime, both concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
+Here's the updated execution speeds diagram with the additional results from ReScript, WebAssembly and Wasmtime, the later concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
