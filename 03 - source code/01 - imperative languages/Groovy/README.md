@@ -18,7 +18,7 @@ PDF: [Groovy Language Documentation, Version 5.0.4](https://docs.groovy-lang.org
 
 Table of contents:
 
-- [Idea of Groovy](#idea-of-groovy)
+- [Idea of Groovy: combining static and dynamic approaches, with a simpler syntax than Java](#idea-of-groovy-combining-static-and-dynamic-approaches-with-a-simpler-syntax-than-java)
 - [Groovy and the GraalVM](#groovy-and-the-graalvm)
 - [Installation tips](#installation-tips)
 - [Building uberjar files](#building-uberjar-files)
@@ -42,6 +42,15 @@ So, Groovy allows static compilation to JVM bytecode, a fact which usually impro
 But I think that the real appeal of Groovy lies in its **much simpler syntax** compared to Java, while being (almost) fully compatible with the Java ecosystem.
 
 Same like Scala and Kotlin, Groovy also allows functional programming.
+
+<br/>
+
+From my point of view, Groovy is an excellent language to transpile programs (with the help of "Big AI") into "web languages": [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back).
+
+So far, I transpiled the "speed part" of the microbenchmark program in its (static) [Groovy implementation](./random_streams_for_perf_stats.groovy) into:
+
+- [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts), and from there into [JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.js) (again with the help of "Big AI), and
+- [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart/random_streams_for_perf_stats.dart)
 
 <br/>
 
