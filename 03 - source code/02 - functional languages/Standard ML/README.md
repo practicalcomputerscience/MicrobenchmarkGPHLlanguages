@@ -485,8 +485,6 @@ cc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
 $ 
 ```
 
-So, I will try to take the indirect way of first transpiling from Standard ML code into C code with the MLton compiler, and then from there using the _clang_ compiler to compile into a WebAssembly binary file (~.wasm) as described here: [The Wasmtime runtime](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-wasmtime-runtime)
-
 <br/>
 
 I built the MLton compiler successfully from sources like this:
