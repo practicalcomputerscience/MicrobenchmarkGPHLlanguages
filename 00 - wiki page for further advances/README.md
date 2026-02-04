@@ -86,7 +86,7 @@
 
 <br/>
 
-[ ] a "non-web" GUI for random_streams_for_perf_stats: Python with PyGTK/Gtk+3 ??
+[ ] a "non-web" GUI for random_streams_for_perf_stats: Tkinter is Python's de facto standard GUI: https://docs.python.org/3/library/tkinter.html
 
 <br/>
 
