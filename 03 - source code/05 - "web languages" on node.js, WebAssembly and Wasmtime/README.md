@@ -420,6 +420,8 @@ Handling JavaScript exceptions in ReScript (_JsExn(obj)_) is a ReScript resource
 
 Otherwise, ReScript is the result of a merger of "BuckleScript" and "Reason" in 2020: [BuckleScript & Reason Rebranding](https://rescript-lang.org/blog/bucklescript-is-rebranding/)
 
+So, when you see "bs" in this environment, it may be the short form of BuckleScript.
+
 <br/>
 
 ## Complete execution speeds diagram
