@@ -61,19 +61,22 @@
 
 <br/>
 
-2026-01-28: so far, I haven't touched yet these corners of programming languages:
+2026-02-04: so far, I haven't touched yet these corners of programming languages:
 
+- web programming:
+  - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
+  - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this after Haskell!
+- Groovy on the JVM: https://groovy-lang.org/ (partly ready as of 2026-02-04)
 - https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
-- Pure Programming Language is a functional programming language:
-  - https://github.com/agraef/pure-lang/wiki
-  - https://agraef.github.io/pure-lang/
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
-- Groovy on the JVM: https://groovy-lang.org/
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
   - 2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
-- Haskell?!?
+- Haskell, a pure functional programming language
+- Pure Programming Language is a pure functional programming language:
+  - https://github.com/agraef/pure-lang/wiki
+  - https://agraef.github.io/pure-lang/ 
 - **[Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages)**; maybe:
   - (GNU Octave (https://octave.org/): 2025-11-01: I will skip this MATLAB clone (https://www.rath.org/matlab-is-a-terrible-programming-language.html), since I successfully implemented the microbenchmark program in [Wolfram Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language#wolfram-language), though I had to put that language onto my list of too slow languages, to my regret by the way.)
   - The Nial Language: https://www.nial-array-language.org/
