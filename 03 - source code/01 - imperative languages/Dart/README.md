@@ -24,7 +24,7 @@ So, I came to the conclusion that Dart deserves it's own page.
 
 I think that specifically Dart is one of those languages that right from start had "blurrying the lines" in mind:
 
-> With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages has become blurry in the last couple of years.
+> With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages has even become more blurry in the last couple of years.
 
 from: [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back)
 
