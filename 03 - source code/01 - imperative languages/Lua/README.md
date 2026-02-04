@@ -4,6 +4,12 @@ https://www.lua.org/
 
 <br/>
 
+> Lua is dynamically typed, runs by interpreting bytecode with a register-based **virtual machine**, and has automatic memory management with a generational garbage collection, making it ideal for configuration, scripting, and rapid prototyping.
+
+See from "Lua 5.4 Reference Manual ", 2025, chapter "1 – Introduction": https://www.lua.org/manual/5.4/manual.html
+
+<br/>
+
 The Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
 
 ```
