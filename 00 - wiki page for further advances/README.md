@@ -63,10 +63,12 @@
 
 2026-02-04: so far, I haven't touched yet these corners of programming languages:
 
+- Groovy on the JVM: https://groovy-lang.org/ (partly ready as of 2026-02-04)
+- Dart
 - web programming:
+  - AssemblyScript : https://www.assemblyscript.org/: "A TypeScript-like language for WebAssembly"
   - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
   - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this after Haskell!
-- Groovy on the JVM: https://groovy-lang.org/ (partly ready as of 2026-02-04)
 - https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
