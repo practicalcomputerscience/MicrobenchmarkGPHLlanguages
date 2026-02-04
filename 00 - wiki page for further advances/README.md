@@ -65,6 +65,7 @@
 
 - Groovy on the JVM: https://groovy-lang.org/ (partly ready as of 2026-02-04)
 - Dart
+- Ballerina: https://ballerina.io/: "cloud-native programming language optimized for integration"
 - web programming:
   - AssemblyScript : https://www.assemblyscript.org/: "A TypeScript-like language for WebAssembly"
   - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
