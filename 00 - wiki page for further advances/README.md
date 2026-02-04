@@ -82,6 +82,12 @@
   - The Nial Language: https://www.nial-array-language.org/
   - **J** 
 
+---
+
+<br/>
+
+[ ] a "non-web" GUI for random_streams_for_perf_stats: Python with PyGTK/Gtk+3 ??
+
 <br/>
 
 ##_ end
