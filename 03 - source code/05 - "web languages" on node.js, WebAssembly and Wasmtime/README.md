@@ -2,6 +2,7 @@
 
 adding:
 
+- AssemblyScript: https://www.assemblyscript.org/
 - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
 
