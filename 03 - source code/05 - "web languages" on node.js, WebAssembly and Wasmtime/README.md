@@ -48,6 +48,8 @@ From the "old school combo" JavaScript and node.js, it was then again only a min
 With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages
 has even become more blurry in the last couple of years.
 
+With the release of node.js in 2009, JavaScript also became a back-end programming language: [The Origins of JavaScript: How It Became the Backbone of the Internet](https://medium.com/@Abhishek-Tiwari/the-origins-of-javascript-how-it-became-the-backbone-of-the-internet-2755b1efab1e)
+
 <br/>
 
 ## TypeScript and JavaScript
