@@ -2,7 +2,7 @@
 
 adding:
 
-- JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
+- JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
 
 <br/>
@@ -46,7 +46,7 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 From the "old school combo" JavaScript and node.js, it was then again only a minor step into **WebAssembly**, and from there another, albeit bigger, step into **Wasmtime**.
 
 With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages
-has become blurry in the last couple of years.
+has even become more blurry in the last couple of years.
 
 <br/>
 
