@@ -1,3 +1,12 @@
+2026-02-03: work in progress
+
+adding?:
+
+- JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
+- PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
+
+<br/>
+
 # From "back-end" to "front-end" programming languages, and back
 
 Table of contents:
