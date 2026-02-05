@@ -1,5 +1,3 @@
-2026-01-29: work in progress
-
 # Groovy
 
 https://groovy-lang.org/index.html
