@@ -97,13 +97,15 @@
 One or two "non-web" GUI apps for random_streams_for_perf_stats for Linux:
 
 [ ] **Tkinter** is Python's de facto standard GUI: https://docs.python.org/3/library/tkinter.html
-[ ] binary compiled language: **Vala** with	GNOME-centric GTK	for very low overhead; compiles to C (instead of the usual combo C++ + Qt): a "Hello, World!" app is already portable and working in a few Linux distros 
+
+[ ] binary compiled language: **Vala** with	GNOME-centric GTK	with very low overhead; compiles to C (instead of the usual combo C++ + Qt): a "Hello, World!" app is already portable and working in a few Linux distros 
 
 <br/>
 
 One or two "web-based" GUI app for random_streams_for_perf_stats for Linux:
 
 [ ] **Dart**
+
 [ ] **ReScript** + React: https://rescript-lang.org/docs/react/introduction/
 
 <br/>
