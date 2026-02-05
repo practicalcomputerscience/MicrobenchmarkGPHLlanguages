@@ -20,6 +20,7 @@ Table of contents:
 - [Groovy and the GraalVM](#groovy-and-the-graalvm)
 - [Installation tips](#installation-tips)
 - [Building uberjar files](#building-uberjar-files)
+- [Groovy scripts](#groovy-scripts)
 
 <br/>
 
@@ -177,6 +178,32 @@ $ java -jar ./build/libs/random_streams_for_perf_stats.jar
 ...
 $
 ```
+
+<br/>
+
+## Groovy scripts
+
+Groovy comes along with a couple of tools, and one of them is **GroovyConsole** (actually, the Groovy Swing console), which allows to run Groovy scripts.
+
+It can be started from the **Groovy shell**:
+
+```
+$ groovysh
+...
+groovy> /console
+<a window pops up>
+```
+
+..or directly like this for example, depending on your installation: _$ $HOME/.sdkman/candidates/groovy/5.0.4/bin/groovyConsole_
+
+
+Actually, the GroovyConsole is a Graphical User Interface for the Groovy shell:
+
+![plot](./Groovyconsole.png)
+
+As a further possibility: "The console can be embedded in either Java or Groovy code.", see from the Groovy Language Documentation, linked above.
+
+Swing refers to the Swing GUI widget toolkit for Java: [Trail: Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/)
 
 <br/>
 
