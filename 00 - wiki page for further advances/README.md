@@ -4,6 +4,10 @@
 
 ---
 
+<br/>
+
+2026-02-05: done: [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy)
+
 2026-01-26:
 - [x] re-checking if the very low level string concatenation solutions in **C and C3 and specifically Ada** can be brought to at least the more abstract level of Fortran or C++ without sacrificing too much of execution speed. Also the Eiffel solution of _create bits_x.make (M1)_ and _bits_x.append (bits_x_str)_ may serve as a role model here
 - [x] Ada: no faster solution with copying little strings _bits_x_str_ at a dynamic position in the one, big string _bits_x_ of fixed length than the original C-like solution: 20.6ms versus original solution with 18.8 ms
@@ -61,9 +65,8 @@
 
 <br/>
 
-2026-02-04: so far, I haven't touched yet these corners of programming languages:
+2026-02-05: so far, I haven't touched yet these corners of programming languages:
 
-- Groovy on the JVM: https://groovy-lang.org/ (partly ready as of 2026-02-04)
 - Dart
 - Ballerina: https://ballerina.io/: "cloud-native programming language optimized for integration"
 - web programming:
@@ -89,7 +92,17 @@
 
 <br/>
 
-[ ] a "non-web" GUI for random_streams_for_perf_stats: Tkinter is Python's de facto standard GUI: https://docs.python.org/3/library/tkinter.html
+One or two "non-web" GUI apps for random_streams_for_perf_stats for Linux:
+
+[ ] **Tkinter** is Python's de facto standard GUI: https://docs.python.org/3/library/tkinter.html
+[ ] binary compiled language: **Vala** with	GNOME-centric GTK	for very low overhead; compiles to C (instead of the usual combo C++ + Qt): a "Hello, World!" app is already portable and working in a few Linux distros 
+
+<br/>
+
+One or two "web-based" GUI app for random_streams_for_perf_stats for Linux:
+
+[ ] **Dart**
+[ ] **ReScript** + React: https://rescript-lang.org/docs/react/introduction/
 
 <br/>
 
