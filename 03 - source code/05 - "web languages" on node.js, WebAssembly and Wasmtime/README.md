@@ -432,7 +432,7 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 
 See Google's Dart web language with its own ecosystem at page: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
 
-There, I also made a dedicated execution speeds diagrams of the various Dart formats and environments: [tbd](tbd)
+There, I also made a dedicated execution speeds diagram of the various Dart formats and environments: [tbd](tbd)
 
 <br/>
 
