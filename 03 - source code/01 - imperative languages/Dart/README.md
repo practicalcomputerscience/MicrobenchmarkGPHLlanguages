@@ -78,10 +78,10 @@ It also seems that there's no switch for _dart run_ to shut off the JIT compilat
 
 ### Compilation to JavaScript
 
-Same like [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#typescript-and-javascript), Dart source code for a web browser is (nowadays) transpiled into JavaScript first, but can also be done explicitly and then being executed on node.js:
+Also Dart source code can be explicitely transpiled into JavaScript (nowadays), then executed on node.js like this:
 
 ```
-$ dart compile js ./random_streams_for_perf_stats.dart  # this is implicitly optimization level -O1
+$ dart compile js ./random_streams_for_perf_stats.dart  # implicitly compiles with optimization level -O1
 $ node ./random_streams_for_perf_stats.js
 could not write to file: random_bitstring.bin ! -- Unsupported operation: _Namespace <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 $
@@ -108,7 +108,7 @@ TBD
 
 ### AOT snapshot compilation
 
-Ahead-of-time compilation is done like this:
+An Ahead-of-time compilation can be snapshot like this:
 
 ```
 $ dart compile aot-snapshot random_streams_for_perf_stats.dart
