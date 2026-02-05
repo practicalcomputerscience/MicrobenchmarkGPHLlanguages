@@ -92,6 +92,8 @@
 
 <br/>
 
+## GUI (Graphical User Interface)
+
 One or two "non-web" GUI apps for random_streams_for_perf_stats for Linux:
 
 [ ] **Tkinter** is Python's de facto standard GUI: https://docs.python.org/3/library/tkinter.html
