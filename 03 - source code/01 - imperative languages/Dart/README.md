@@ -14,19 +14,13 @@ https://dart.dev/tutorials/server/get-started
 
 ## Idea of Dart
 
-At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as a "web language", and same like TypeScript, a web language to overcome the deficits of JavaScript.
+At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as a "web language".
 
-For example, in 2011 Dart was officially introduced as a "programming language for building web applications": https://blog.chromium.org/2011/10/dart-language-for-structured.html
+For example, in 2011 Dart was officially introduced as a "programming language for building web applications": [Dart: A language for structured web programming ](https://blog.chromium.org/2011/10/dart-language-for-structured.html)
 
 But then I discovered that Dart right from start evolved around its own and rich ecosystem, with "front-end" and "back-end" in mind, which allows Dart source code to run on a variety of plattforms.
 
 So, I came to the conclusion that Dart deserves it's own page. 
-
-I think that specifically Dart is one of those languages that right from start had "blurrying the lines" in mind:
-
-> With WebAssembly and specifically Wasmtime, where source code has a good chance to no longer "meet" some JavaScript code, the line between "back-end" and "front-end" programming languages has even become more blurry in the last couple of years.
-
-from: [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back)
 
 <br/>
 
@@ -48,11 +42,9 @@ $
 
 Dart features a not so small variety of formats and environments: [Dart: The platforms](https://dart.dev/overview#platform)
 
-<br/>
-
 ### JIT compilation
 
-In Linux, the "default mode" on the console is to let the Dart **virtual machine** just-in-time compile and run [Dart source code](./random_streams_for_perf_stats.dart) like this: 
+In Linux, the "default mode" on the console is to let the Dart **virtual machine** just-in-time compile and run [Dart source code](./random_streams_for_perf_stats.dart) like this, see at [dart run](https://dart.dev/tools/dart-run):
 
 ```
 $ dart run ./random_streams_for_perf_stats.dart
@@ -64,15 +56,13 @@ $
 
 ```
 
-See at [dart run](https://dart.dev/tools/dart-run).
-
-However, also this command works:
+However, this command works too:
 
 ```
 $ dart ./random_streams_for_perf_stats.dart
 ```
 
-Page [https://dart.dev/tools/dart-tool](https://dart.dev/tools/dart-tool) says this on the _run_ command:
+Page [dart: The Dart command-line tool](https://dart.dev/tools/dart-tool) says this on the _run_ command:
 
 > Prefer dart run.
 
@@ -85,8 +75,6 @@ Why is that?
 Anyway, I guess it's clear that _dart run <~.dart>_ comes with overhead that _dart <~.dart>_ doesn't have.
 
 It also seems that there's no switch for _dart run_ to shut off the JIT compilation.
-
-<br/>
 
 ### Compilation to JavaScript
 
@@ -103,8 +91,6 @@ There are 5 optimization levels, from _-O0_ to _-O4_, (see with _$ dart compile 
 
 TBD
 
-<br/>
-
 ### JIT snapshot compilation
 
 A JIT compilation can be snapshot from "a warm JIT" like this:
@@ -119,8 +105,6 @@ $
 Here, command _dart run ./random_streams_for_perf_stats.jit_ is substantially slower than command _dart ./random_streams_for_perf_stats.jit_: around 107 milliseconds versus around 38 milliseconds
 
 TBD
-
-<br/>
 
 ### AOT snapshot compilation
 
@@ -138,8 +122,6 @@ _dartaotruntime_ provides a minimal Dart runtime for running AOT modules: https:
 ..and is the only command which works with AOT modules.
 
 TBD
-
-<br/>
 
 ### Standalone (or self-contained) executable
 
@@ -160,8 +142,6 @@ Portability of ./random_streams_for_perf_stats.exe ?!? _bash: ./random_streams_f
 
 
 TBD
-
-<br/>
 
 ### WebAssembly
 
