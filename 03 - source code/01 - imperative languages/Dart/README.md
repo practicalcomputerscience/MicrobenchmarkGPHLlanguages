@@ -30,15 +30,158 @@ from: [From "back-end" to "front-end" programming languages, and back](https://g
 
 <br/>
 
-In Linux, the "default mode" is to let the Dart virtual machine interpret Dart source code: _$ tbd_
+## Installation tips
 
-Same like TypeScript, Dart source code for a web browser is (nowadays) transpiled into JavaScript first.
+For Ubuntu 24 LTS, I installed and shortly tested Dart like this:
+
+```
+$ brew install dart-sdk
+...
+$ dart --version
+Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64"
+$ 
+```
+
+<br/>
+
+## Execution forms
+
+Dart features a not so small variety of formats and environments: [Dart: The platforms](https://dart.dev/overview#platform)
+
+<br/>
+
+### JIT compilation
+
+In Linux, the "default mode" on the console is to let the Dart **virtual machine** just-in-time compile and run [Dart source code](./random_streams_for_perf_stats.dart) like this: 
+
+```
+$ dart run ./random_streams_for_perf_stats.dart
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$ 
+
+```
+
+See at [dart run](https://dart.dev/tools/dart-run).
+
+However, also this command works:
+
+```
+$ dart ./random_streams_for_perf_stats.dart
+```
+
+Page [https://dart.dev/tools/dart-tool](https://dart.dev/tools/dart-tool) says this on the _run_ command:
+
+> Prefer dart run.
+
+While _$ dart run random_streams_for_perf_stats.dart_ takes about 220 milliseconds, running this microbenchmark program ("speed part" only) without the _run_ command takes only about 150 milliseconds.
+
+Why is that?
+
+"Big AI" has answers to this, but doesn't tell sources that can explain something. Dart's official documentation is also shy about this phenomenon.
+
+Anyway, I guess it's clear that _dart run <~.dart>_ comes with overhead that _dart <~.dart>_ doesn't have.
+
+It also seems that there's no switch for _dart run_ to shut off the JIT compilation.
+
+<br/>
+
+### Compilation to JavaScript
+
+Same like [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#typescript-and-javascript), Dart source code for a web browser is (nowadays) transpiled into JavaScript first, but can also be done explicitly and then being executed on node.js:
+
+```
+$ dart compile js ./random_streams_for_perf_stats.dart  # this is implicitly optimization level -O1
+$ node ./random_streams_for_perf_stats.js
+could not write to file: random_bitstring.bin ! -- Unsupported operation: _Namespace <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$
+```
+
+There are 5 optimization levels, from _-O0_ to _-O4_, (see with _$ dart compile js -h -v_).
+
+TBD
+
+<br/>
+
+### JIT snapshot compilation
+
+A JIT compilation can be snapshot from "a warm JIT" like this:
+
+```
+$ dart compile jit-snapshot random_streams_for_perf_stats.dart
+$ dart run ./random_streams_for_perf_stats.jit
+...
+$
+```
+
+Here, command _dart run ./random_streams_for_perf_stats.jit_ is substantially slower than command _dart ./random_streams_for_perf_stats.jit_: around 107 milliseconds versus around 38 milliseconds
+
+TBD
+
+<br/>
+
+### AOT snapshot compilation
+
+Ahead-of-time compilation is done like this:
+
+```
+$ dart compile aot-snapshot random_streams_for_perf_stats.dart
+$ dartaotruntime ./random_streams_for_perf_stats.aot
+...
+$
+```
+
+_dartaotruntime_ provides a minimal Dart runtime for running AOT modules: https://github.com/dart-lang/sdk/blob/8c7e9a045ca46f4430494810a62eddb960e76bc2/README.dart-sdk#L8
+
+..and is the only command which works with AOT modules.
+
+TBD
+
+<br/>
+
+### Standalone (or self-contained) executable
+
+```
+$ dart compile exe ./random_streams_for_perf_stats.dart
+$ ./random_streams_for_perf_stats.exe
+...
+$
+```
+
+Running _./random_streams_for_perf_stats.exe_ takes the same time than running the AOT snapshot from above.
+
+TBD
 
 Portability of ./random_streams_for_perf_stats.exe ?!? _bash: ./random_streams_for_perf_stats.exe: cannot execute: required file not found_
 
 --> make a proper Dart project here first: tbd
 
+
 TBD
+
+<br/>
+
+### WebAssembly
+
+Nowadays, Dart can be compiled to WebAssembly: [WebAssembly (Wasm) compilation](https://dart.dev/web/wasm)
+
+Though:
+
+> The compiled Wasm output currently targets JavaScript environments (such as browsers), and thus currently doesn't support execution in standard Wasm run-times like wasmtime and wasmer.
+
+```
+$ dart compile wasm -Da=1 ./random_streams_for_perf_stats.dart
+$ node ./random_streams_for_perf_stats.mjs
+$ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+So, command dart compile wasm produces a wrapper JavaScript file named _random_streams_for_perf_stats.mjs_.
+
+TBD
+
+
 
 <br/>
 
