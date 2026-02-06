@@ -6,3 +6,4 @@ C to WebAssembly / Wasmtime;0,011;0,000;2026-02-01
 C to WebAss. / Wasmtime (AOT);0,011;0,000;2026-02-02
 Standard ML to JS / node.js;0,283;0,004;2026-02-01
 ReScript to JS / node.js;0,045;0,002;2026-02-03
+Dart to JS / node.js;0,045;0,001;2026-02-06
