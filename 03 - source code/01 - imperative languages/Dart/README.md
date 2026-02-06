@@ -1,6 +1,6 @@
 2026-02-02: work in progress
 
-- tbd: benchmark Dart to JS for node.js
+- benchmark Dart to JS for node.js: done (2026-02-06)
 - tbd: have its own exe speeds diagram: programming_languages_exe_speeds_Dart.csv
 - tbd: put the AOT version into the master diagram
 
