@@ -14,13 +14,13 @@ https://dart.dev/tutorials/server/get-started
 
 ## Idea of Dart
 
-At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as a "web language".
+At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as just another "web language".
 
-For example, in 2011 Dart was officially introduced as a "programming language for building web applications": [Dart: A language for structured web programming ](https://blog.chromium.org/2011/10/dart-language-for-structured.html)
+But then I discovered that Dart right from start evolved around its own and rich ecosystem, with "front-end" and "back-end" in mind, which allows Dart source code to be run on a variety of platforms.
 
-But then I discovered that Dart right from start evolved around its own and rich ecosystem, with "front-end" and "back-end" in mind, which allows Dart source code to run on a variety of plattforms.
+So, I came to the conclusion that Dart deserves it's own page. A page, which has become much longer than initially anticipated by me. 
 
-So, I came to the conclusion that Dart deserves it's own page. 
+By the way: Dart was officially introduced in 2011 as a "programming language for building web applications": [Dart: A language for structured web programming ](https://blog.chromium.org/2011/10/dart-language-for-structured.html)
 
 <br/>
 
@@ -62,7 +62,7 @@ However, this command works too:
 $ dart ./random_streams_for_perf_stats.dart
 ```
 
-Page [dart: The Dart command-line tool](https://dart.dev/tools/dart-tool) says this on the _run_ command:
+Page [dart: The Dart command-line tool](https://dart.dev/tools/dart-tool) says on the _run_ command:
 
 > Prefer dart run.
 
@@ -70,15 +70,30 @@ While _$ dart run random_streams_for_perf_stats.dart_ takes about 220 millisecon
 
 Why is that?
 
-"Big AI" has answers to this, but doesn't tell sources that can explain something. Dart's official documentation is also shy about this phenomenon.
+"Big AI" has answers to this, but doesn't tell original sources that can explain something. Dart's official documentation is also shy about this phenomenon.
 
-Anyway, I guess it's clear that _dart run <~.dart>_ comes with overhead that _dart <~.dart>_ doesn't have.
+Anyway, I guess it's clear that _$ dart run <~.dart>_ comes with overhead that _$ dart <~.dart>_ just doesn't have.
 
-It also seems that there's no switch for _dart run_ to shut off the JIT compilation.
+It also seems that there's no switch for _$ dart run_ to shut off the JIT compilation (just for curiosity).
 
 ### Compilation to JavaScript
 
-Also Dart source code can be explicitely transpiled into JavaScript (nowadays), then executed on node.js like this:
+Also Dart source code can be explicitely transpiled into JavaScript (nowadays), and then executed on node.js.
+
+However, the original [Dart program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart/random_streams_for_perf_stats.dart) cannot be transpiled into JavaScript source code, which can work unmodfied on node.js. There are two (major) reasons for this:
+
+- writing to the file system needs direct bindings from Dart to the _fs_ resource of node.js
+- the code of _preamble.js_ has to prepended to the generated JavaScript source code, because standalone engines like node.js lack browser-specific globals that Dart's generated code expects (Google AI)
+
+So, here's the adapted [Dart program](tbd):
+
+```
+tbd
+
+```
+
+
+
 
 ```
 $ dart compile js ./random_streams_for_perf_stats.dart -o ./random_streams_for_perf_stats.js  # compiles with optimization level -O1
