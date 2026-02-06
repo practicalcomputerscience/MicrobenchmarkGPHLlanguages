@@ -81,7 +81,8 @@ It also seems that there's no switch for _dart run_ to shut off the JIT compilat
 Also Dart source code can be explicitely transpiled into JavaScript (nowadays), then executed on node.js like this:
 
 ```
-$ dart compile js ./random_streams_for_perf_stats.dart  # implicitly compiles with optimization level -O1
+$ dart compile js ./random_streams_for_perf_stats.dart -o ./random_streams_for_perf_stats.js  # compiles with optimization level -O1
+$ dart compile js -Ddart.library.io=false ./random_streams_for_perf_stats.dart -o ./random_streams_for_perf_stats.js
 $ node ./random_streams_for_perf_stats.js
 could not write to file: random_bitstring.bin ! -- Unsupported operation: _Namespace <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 $
