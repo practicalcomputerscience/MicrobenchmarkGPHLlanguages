@@ -1,38 +1,45 @@
-2025-11-05: TBD: finally, re-check this portability list on a fresh Oracle Linux 10 installation as a "basic Linux system", that is the "target system".
-
-# Portability of programs
-
-Here's a list of programming languages where standalone executables can be compiled that should run **without any extra installations** on another, arbitrary ("basic") Linux machine:
-
-- Ada
-- C
-- C++
-- C3
-- Chez Scheme (only the "speed part" tested)
-- Common Lisp (SBCL)
-- Crystal
-- Eiffel (Liberty)
-- Fortran
-- Gambit Scheme (only the "speed part" tested)
-- Go
-- Inko
-- Nim
-- OCaml
-- Odin
-- Roc
-- Rust
-- Standard ML (MLton)
-- V
-- Zig
-
-[GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
-- Clojure
-- Kotlin
-- Scala
+2025-11-05: TBD: finally, re-check this portability list on a fresh Vanilla OS installation (for example), the target system, with a **very different, but "modern" Linux kernel version** than the testing system (that is _6.14.0-37-generic #37~24.04.1-Ubuntu_ as of 2026-02-07)
 
 <br/>
 
-You may have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd <executable file name>_
+# Portability of programs
+
+Here's a list of programming languages where standalone executables can be compiled that **may** run **without any extra installations** on another, arbitrary ("basic") Linux machine.
+
+You may have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
+
+programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command)
+-- | -- | --
+Ada | yes | yes
+C | yes | yes
+C++ | yes | yes
+C3 | yes | yes
+Chez Scheme (only the "speed part" tested) | yes | yes
+Common Lisp (SBCL) | yes | yes
+Crystal | yes | yes
+Eiffel (Liberty) | yes | yes
+Fortran | yes | yes
+Gambit Scheme (only the "speed part" tested) | yes | yes
+Go | no | "not a dynamic executable"
+Inko | yes | yes
+Nim | yes | yes
+OCaml | yes | yes
+Odin | yes | yes
+Roc | no | "statically linked"
+Rust | yes | yes
+Standard ML (MLton) | yes | yes
+V | yes | yes
+Zig | no | "not a dynamic executable"
+
+<br/>
+
+[GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
+
+programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command)
+-- | -- | --
+Clojure (only the "speed part" tested) | yes | yes
+Kotlin (only the "speed part" tested) | yes | yes
+Scala (only the "speed part" tested) | yes | yes
 
 <br/>
 
