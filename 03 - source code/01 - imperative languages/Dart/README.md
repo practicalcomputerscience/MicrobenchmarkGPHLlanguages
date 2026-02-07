@@ -41,7 +41,7 @@ Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64
 $ 
 ```
 
-In Ubuntu, Dart can also be installed with the [Futter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
+In Ubuntu, Dart can also be installed with the [Flutter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
 
 <br/>
 
