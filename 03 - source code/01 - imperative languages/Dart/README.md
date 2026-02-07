@@ -200,15 +200,15 @@ $ dartaotruntime ./random_streams_for_perf_stats.aot
 $
 ```
 
-_dartaotruntime_ provides a minimal Dart runtime for running AOT modules: https://github.com/dart-lang/sdk/blob/8c7e9a045ca46f4430494810a62eddb960e76bc2/README.dart-sdk#L8
+_dartaotruntime_ provides a minimal runtime for running Dart AOT modules: https://github.com/dart-lang/sdk/blob/8c7e9a045ca46f4430494810a62eddb960e76bc2/README.dart-sdk#L8
 
 ..and is the only command which works with Dart AOT modules.
 
 <br/>
 
-### Standalone (or self-contained) executable
+### Standalone (or self-contained) executable (which may not be independently portable)
 
-A Dart script can be be compiled directly to a standalone, native executable like this:
+A Dart script can be compiled directly to a "standalone executable" like this:
 
 ```
 $ dart compile exe ./random_streams_for_perf_stats.dart
@@ -219,15 +219,28 @@ $
 
 ..where running _./random_streams_for_perf_stats.exe_ takes the same time than running the AOT snapshot from above.
 
-However, executable _random_streams_for_perf_stats.exe_ is not portable to another Linux system without any Dart installation.
+<br/>
 
+However, executable _random_streams_for_perf_stats.exe_ is often not portable to another, "foreign" Linux system, a Linux system which doesn't feature the same Linux kernel version for _linux-vdso.so.1_ (in this case for kernel version _6.14.0-37-generic_; see with command: _uname -a_).
 
+This executable has also other dependencies, which can be seen with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command, and which may be missing at the target Linux system:
 
-TBD: portability of ./random_streams_for_perf_stats.exe ?!? _bash: ./random_streams_for_perf_stats.exe: cannot execute: required file not found_
+```
+$ ldd ./random_streams_for_perf_stats.exe
+linux-vdso.so.1 (0x00007ffff4e52000)
+libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007310ecbde000)
+libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007310ecbd9000)
+libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007310ec517000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007310ec200000)
+/home/linuxbrew/.linuxbrew/lib/ld.so => /lib64/ld-linux-x86-64.so.2 (0x00007310ecbf7000)
+$
+```
 
---> make a proper Dart project here first: tbd
+_linux-vdso.so.1_ is a "virtual dynamic shared object", which "is a small shared library that the kernel automatically maps into the address space of all user-space applications." See from: https://man7.org/linux/man-pages/man7/vdso.7.html
 
-TBD
+So, in this case the easiest solution from my point of view would be to install a suitable Dart version on the target Linux system, and then compile the Dart script into a specific executable program version again.
+
+<br/>
 
 ### WebAssembly
 
