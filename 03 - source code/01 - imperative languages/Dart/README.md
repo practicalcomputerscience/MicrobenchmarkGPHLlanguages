@@ -272,7 +272,7 @@ $ node ./random_streams_for_perf_stats.mjs
 $ # no program execution!
 ```
 
-Though:
+But:
 
 > The compiled Wasm output currently targets JavaScript environments (such as browsers), and thus currently doesn't support execution in standard Wasm run-times like wasmtime and wasmer.
 
