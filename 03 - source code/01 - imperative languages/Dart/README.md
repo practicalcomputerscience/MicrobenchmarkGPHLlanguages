@@ -244,7 +244,7 @@ So, in this case the easiest solution from my point of view would be to install 
 
 ### WebAssembly
 
-Nowadays, Dart can be compiled to WebAssembly: [WebAssembly (Wasm) compilation](https://dart.dev/web/wasm)
+Nowadays, also Dart source code can be compiled to WebAssembly: [WebAssembly (Wasm) compilation](https://dart.dev/web/wasm)
 
 ```
 $ dart compile wasm -Da=1 ./random_streams_for_perf_stats.dart
