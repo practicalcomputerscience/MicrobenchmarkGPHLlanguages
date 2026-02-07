@@ -185,7 +185,7 @@ The JavaScript file generated with command _$ dart compile js ..._ implicitly ap
 Optimization level | real execution time (1 program run only) | comment
 --- | --- | ---
 -O0 | 53 milliseconds | 
--O1 | 45 milliseconds | default, implicit optimization level; measured with _multitime -n 20 node ..._
+-O1 | 45 milliseconds | default, implicit optimization level; measured with _multitime -n 20 node ./random_streams_for_perf_stats_js.node.js_
 -O2 | 45 milliseconds | 
 -O3 | 43 milliseconds | 
 -O4 | 45 milliseconds | 
