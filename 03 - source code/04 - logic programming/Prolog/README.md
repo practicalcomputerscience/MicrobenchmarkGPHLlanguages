@@ -186,6 +186,8 @@ Last solution = yellow,green,green,yellow,blue,green,blue,yellow,blue,yellow,gre
 >
 ```
 
+However, read about _linux-vdso.so.1_ from here: [Standalone (or self-contained) executable (which may not be independently portable)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#standalone-or-self-contained-executable-which-may-not-be-independently-portable). If the Linux kernel version of the target system is different, than there's a high chance that running _graph_4coloring_Germany2c_SWI_ may also fail.
+
 Both dialects, GNU and SWI, came to the same number of different solutions, that is 191808, and also show the same 1st solution and same last solution.
 
 <br/>
