@@ -32,6 +32,10 @@ Here's a list of programming languages where standalone executables can be compi
 
 <br/>
 
+You may have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd <executable file name>_
+
+<br/>
+
 ## This list does not contain
 
 - program versions which are exceeding the [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
