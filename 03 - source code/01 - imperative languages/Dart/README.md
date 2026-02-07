@@ -160,7 +160,7 @@ $
 
 <br/>
 
-The JavaScript file generated with command _$ dart compile js ..._ implicitly applied optimization level 1. There are 5 optimization levels, from _-O0_ to _-O4_, (see with _$ dart compile js -h -v_), though. I found out that, at least in this case, _-O1_ is as good as it gets:
+The JavaScript file generated with command _$ dart compile js ..._ implicitly applied optimization level 1. There are 5 optimization levels (see with _$ dart compile js -h -v_), though. I found out that, at least in this case, _-O1_ is as good as it gets:
 
 Optimization level | real execution time (1 program run only) | comment
 --- | --- | ---
@@ -206,7 +206,7 @@ _dartaotruntime_ provides a minimal runtime for running Dart AOT modules: https:
 
 <br/>
 
-### Standalone (or self-contained) executable (which may not be independently portable)
+### Standalone (or self-contained) executable (which may not be portable so easily)
 
 A Dart script can be compiled directly to a "standalone executable" like this:
 
@@ -221,7 +221,7 @@ $
 
 <br/>
 
-However, executable _random_streams_for_perf_stats.exe_ is often not portable to another, "foreign" Linux system, a Linux system which doesn't feature the same Linux kernel version for _linux-vdso.so.1_ (in this case for kernel version _6.14.0-37-generic_; see with command: _uname -a_).
+However, executable _random_streams_for_perf_stats.exe_ is often not portable to another, "foreign" Linux system, a Linux system which doesn't feature the same Linux kernel version for _linux-vdso.so.1_ (in this case for kernel version _6.14.0-37-generic_; see with command: _$ uname -a_) for example.
 
 This executable has also other dependencies, which can be seen with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command, and which may be missing at the target Linux system:
 
@@ -236,7 +236,7 @@ libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007310ec200000)
 $
 ```
 
-_linux-vdso.so.1_ is a "virtual dynamic shared object", which "is a small shared library that the kernel automatically maps into the address space of all user-space applications." See from: https://man7.org/linux/man-pages/man7/vdso.7.html
+_linux-vdso.so.1_ is a "virtual ELF dynamic shared object" (ELF = Executable and Linkable Format), which "is a small shared library that the kernel automatically maps into the address space of all user-space applications." See from: https://man7.org/linux/man-pages/man7/vdso.7.html. It's used in (Linux) programming languages where dynamic executables are compiled by default, and these are the most compiled programming languages: [Portability of programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/70%20-%20portability%20from%20Linux%20to%20Linux#portability-of-programs)
 
 So, in this case the easiest solution from my point of view would be to install a suitable Dart version on the target Linux system, and then compile the Dart script into a specific executable program version again.
 
