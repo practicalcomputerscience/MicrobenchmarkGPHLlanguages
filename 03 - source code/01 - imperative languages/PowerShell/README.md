@@ -39,10 +39,10 @@ I had a look at the listed techniques, and one other (that is _Generic.List_), a
 
 construct | comment | real execution time (1 program run only)
 --- | --- | ---
-$bits_x = @() | start with an empty array | real	0m11.649s
-$bits_x = New-Object System.Collections.Generic.List[string] | needs final conversion into an array and then string | real	0m0.729s
+$bits_x = @() | start with an empty array | 0m11.649s
+$bits_x = New-Object System.Collections.Generic.List[string] | needs final conversion into an array and then string | 0m0.729s
 $bits_x = [System.Text.StringBuilder]::new() | my final solution | real  0m0.573s
-$bits_x = @("----------------") * $END | pre-allocation of an array of strings; needs final conversion into a string | real	0m0.706s
+$bits_x = @("----------------") * $END | pre-allocation of an array of strings; needs final conversion into a string | 0m0.706s
 
 Result: with this microbenchmark program, using the Power Shell string builder clearly remains the fastest solution, which is not the case in this article, where building an array of joined strings is much faster (on a Windows 11 machine in PowerShell 7.4.2; while I'm on a Ubuntu 24 LTS machine in PowerShell 7.5.4).
 
