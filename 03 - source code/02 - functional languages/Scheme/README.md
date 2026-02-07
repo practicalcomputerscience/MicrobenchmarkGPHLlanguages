@@ -142,7 +142,7 @@ With only 8192 arguments the (real) time ("wall clock") of the program to run wa
 
 Did you notice that 62500 multiplied with 16 is 1,000,000? I want exactly 1,000,000 (simple) characters in my string and write this string into one file in one take without further changes to this file.
 
-Next I changed my Racket program and artificially limited the number of _apply_ arguments also to 8192. This program then took only **0.200** seconds to run! Slower than the Gambit version, but a tremendous jump into the right direction. So, there can be acceptable execution speed in Scheme land!
+Next, I changed my Racket program and artificially limited the number of _apply_ arguments also to 8192. This program then took only **0.200** seconds to run! Slower than the Gambit version, but a tremendous jump into the right direction. So, there can be acceptable execution speed in Scheme land!
 
 And: Racket allows you to have _define_'s inside another function, here _main()_, which makes refactoring (https://en.wikipedia.org/wiki/Code_refactoring) easier for me than doing it directly in Gambit Scheme. (Though after testing, I changed this to local _let*_ expressions to be more functional and support translations between Scheme dialects.)
 
