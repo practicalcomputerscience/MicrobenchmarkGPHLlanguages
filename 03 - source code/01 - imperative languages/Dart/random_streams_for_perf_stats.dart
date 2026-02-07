@@ -3,21 +3,27 @@ random_streams_for_perf_stats.dart
 
 2026-02-02
 
-run on Ubuntu 24 LTS: $ dart ./random_streams_for_perf_stats.dart
-                      $ time dart ./random_streams_for_perf_stats.dart => real	0m0.151s
+run on Ubuntu 24 LTS: 
+                      
+    JIT compilation:  $ dart run ./random_streams_for_perf_stats.dart => real	0m0.219s
+    
+
+    JIT compilation:  $ dart ./random_streams_for_perf_stats.dart
+                      $ time dart ./random_streams_for_perf_stats.dart => real	0m0.151s 
                       $ multitime -n 20 dart ./random_streams_for_perf_stats.dart
                       =>
                                     Mean        Std.Dev.
-                        real        0.146       0.002    ==> so, this is the interpreted version, by the Dart VM
+                        real        0.146       0.002
 
        JIT snapshot:  $ dart compile jit-snapshot random_streams_for_perf_stats.dart
                       $ dart run ./random_streams_for_perf_stats.jit
                       $ time dart run ./random_streams_for_perf_stats.jit => real	0m0.107s
-                      
+                      $ time dart ./random_streams_for_perf_stats.jit => real	0m0.038s
+
        AOT snapshot:  $ dart compile aot-snapshot ./random_streams_for_perf_stats.dart
                       $ dartaotruntime ./random_streams_for_perf_stats.aot
                       $ time dartaotruntime ./random_streams_for_perf_stats.aot => real	0m0.014s
-                       
+
 
 $ dart --version
 Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64"
