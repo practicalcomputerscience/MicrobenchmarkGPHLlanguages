@@ -356,7 +356,7 @@ $
 
 <br/>
 
-From my point of view, there's (still) one substantial weak point with this otherwise fine and statically-typed web language:
+From my point of view, there's (still) one substantial weak point with this otherwise fine and statically-typed web programming language:
 
 > [!NOTE]
 > ReScript does not have official bindings for node.js!
@@ -430,7 +430,7 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 
 ## Dart
 
-See Google's Dart web language with its own ecosystem at page: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
+See Google's Dart web programming language with its own ecosystem at page: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
 
 There, I also made a dedicated execution speeds diagram of the various Dart formats and environments: [tbd](tbd)
 
