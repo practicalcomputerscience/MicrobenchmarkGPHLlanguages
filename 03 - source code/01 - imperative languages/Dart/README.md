@@ -2,12 +2,11 @@
 
 - tbd: fix Wasm for a web browser
 - tbd: do script _random_bitstring_and_flexible_password_generator.dart_ <<<<<<<<<<<<<<<<<<<<<<<<<<<
-- tbd: make a TOC
-- tbd: have its own exe speeds diagram: programming_languages_exe_speeds_Dart.csv
+- tbd: have its own exe speeds diagram: _programming_languages_exe_speeds_Dart.csv_
 - tbd: put the AOT version into the master diagram
-- benchmark Dart to JS for node.js: done (2026-02-06)
+- done: benchmark Dart to JS for node.js
 
-
+<br/>
 
 # Dart
 
