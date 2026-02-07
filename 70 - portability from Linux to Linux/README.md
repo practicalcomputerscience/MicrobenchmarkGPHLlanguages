@@ -4,7 +4,7 @@
 
 # Portability of programs
 
-Here's a list of programming languages where standalone executables can be compiled that **may** run **without any extra installations** on another, arbitrary ("basic") Linux machine.
+Here's a list of programming languages where standalone executables can be compiled by default that **may** run **without any extra installations** on another, arbitrary ("basic") Linux machine.
 
 You may have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
 
@@ -30,6 +30,10 @@ Rust | yes | yes
 Standard ML (MLton) | yes | yes
 V | yes | yes
 Zig | no | "not a dynamic executable"
+
+<br/>
+
+As of 2026-02-07, I haven't taken extra efforts to potentially compile into statically linked executables where possible. So, above table is a "default compilation" table.
 
 <br/>
 
