@@ -3,12 +3,17 @@
 - benchmark Dart to JS for node.js: done (2026-02-06)
 - tbd: have its own exe speeds diagram: programming_languages_exe_speeds_Dart.csv
 - tbd: put the AOT version into the master diagram
+- tbd: do script _random_bitstring_and_flexible_password_generator.dart_
 
 # Dart
 
 https://dart.dev/
 
 https://dart.dev/tutorials/server/get-started
+
+JIT = just-in-time compiled
+
+AOT = ahead-of-time compiled
 
 ---
 
@@ -74,38 +79,96 @@ Why is that?
 
 Anyway, I guess it's clear that _$ dart run <~.dart>_ comes with overhead that _$ dart <~.dart>_ just doesn't have.
 
-It also seems that there's no switch for _$ dart run_ to shut off the JIT compilation (just for curiosity).
+It also seems that there's no switch for command _$ dart run_ to shut off the JIT compilation (just for curiosity).
+
+<br/>
 
 ### Compilation to JavaScript
 
-Also Dart source code can be explicitely transpiled into JavaScript (nowadays), and then executed on node.js.
+Also Dart source code can be explicitely transpiled into JavaScript source code (nowadays), which is then executable on node.js.
 
-However, the original [Dart program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart/random_streams_for_perf_stats.dart) cannot be transpiled into JavaScript source code, which can work unmodfied on node.js. There are two (major) reasons for this:
+However, the original [Dart program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart/random_streams_for_perf_stats.dart) cannot be simply transpiled into JavaScript source code which can then work unmodfied on node.js. There are two (major) reasons for this:
 
-- writing to the file system needs direct bindings from Dart to the _fs_ resource of node.js
-- the code of _preamble.js_ has to prepended to the generated JavaScript source code, because standalone engines like node.js lack browser-specific globals that Dart's generated code expects (Google AI)
+- writing to the file system needs direct bindings from Dart to the _fs_ (file system) resource of node.js
+- the transpiled JavaScript code has to be prepended with some preamble, because standalone engines like node.js lack browser-specific globals that Dart's generated code expects (Google AI)
 
-So, here's the adapted [Dart program](tbd):
-
-```
-tbd
+So, here are the modified parts of a Dart program named [random_streams_for_perf_stats_js.dart](./random_streams_for_perf_stats_js.dart), which is suitable starting point for node.js:
 
 ```
+...
+import 'package:node_interop/fs.dart';  // Direct fs bindings
 
+...
+  // Write bit stream to disk:
+  try {
+    // Accessing node's fs module
+    fs.writeFileSync(fileBitsX, bitsX.toString());
+    print("Bit stream has been written to disk under name:  $fileBitsX");
+  } catch (e) {
+    print("could not write to file: $fileBitsX ! -- ${e.toString()}");
+  }
+...
+```
 
-
+Next, we need a configuration file called [pubspec.yaml](./pubspec.yaml) to declare the dependency on _node_interop_:
 
 ```
-$ dart compile js ./random_streams_for_perf_stats.dart -o ./random_streams_for_perf_stats.js  # compiles with optimization level -O1
-$ dart compile js -Ddart.library.io=false ./random_streams_for_perf_stats.dart -o ./random_streams_for_perf_stats.js
-$ node ./random_streams_for_perf_stats.js
-could not write to file: random_bitstring.bin ! -- Unsupported operation: _Namespace <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+name: random_streams_for_perf_stats_js
+description: A logic-only script using Node.js fs.
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  node_interop: ^2.1.0
+```
+
+..which we will download with command:
+
+```
+$ dart pub get
+```
+
+Then, we can transpile into an intermediate version of a JavaScript file, here called _random_streams_for_perf_stats_js.js_:
+
+```
+$ dart compile js ./random_streams_for_perf_stats_js.dart -o ./random_streams_for_perf_stats_js.js
+```
+
+<br/>
+
+Next step is a add a preamble to that file, because standalone engines like node.js lack browser-specific globals (like _self_ or _window_) that Dart's generated code expects. You can download file _preamble.js_ from here: https://github.com/mbullington/node_preamble.dart/blob/master/lib/preamble.js
+
+..and prepend it:
+
+```
+$ cat preamble.js random_streams_for_perf_stats_js.js > random_streams_for_perf_stats_js.node.js
+```
+
+..to produce the final JavaScript file, here named _random_streams_for_perf_stats_js.node.js_, which can then be executed correctly on node.js hopefully:
+
+```
+$ node ./random_streams_for_perf_stats_js.node.js
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-There are 5 optimization levels, from _-O0_ to _-O4_, (see with _$ dart compile js -h -v_).
+<br/>
 
-TBD
+The JavaScript file generated with command _$ dart compile js ..._ implicitly applied optimization level 1. There are 5 optimization levels, from _-O0_ to _-O4_, (see with _$ dart compile js -h -v_), though. I found out that, at least in this case, _-O1_ is as good as it gets:
+
+Optimization level | real execution time (1 program run only) | comment
+--- | --- | ---
+-O0 | 53 milliseconds | 
+-O1 | 45 milliseconds | default, implicit optimization level; measured with _multitime -n 20 node ..._
+-O2 | 45 milliseconds | 
+-O3 | 43 milliseconds | 
+-O4 | 45 milliseconds | 
+
+<br/>
 
 ### JIT snapshot compilation
 
@@ -120,7 +183,9 @@ $
 
 Here, command _dart run ./random_streams_for_perf_stats.jit_ is substantially slower than command _dart ./random_streams_for_perf_stats.jit_: around 107 milliseconds versus around 38 milliseconds
 
-TBD
+By the way: help command _$ dart compile jit-snapshot --help_ doesn't show any possibilities for refined optimization.
+
+<br/>
 
 ### AOT snapshot compilation
 
@@ -135,11 +200,13 @@ $
 
 _dartaotruntime_ provides a minimal Dart runtime for running AOT modules: https://github.com/dart-lang/sdk/blob/8c7e9a045ca46f4430494810a62eddb960e76bc2/README.dart-sdk#L8
 
-..and is the only command which works with AOT modules.
+..and is the only command which works with Dart AOT modules.
 
-TBD
+<br/>
 
 ### Standalone (or self-contained) executable
+
+A Dart script can be be compiled directly to a standalone, native executable like this:
 
 ```
 $ dart compile exe ./random_streams_for_perf_stats.dart
@@ -148,14 +215,15 @@ $ ./random_streams_for_perf_stats.exe
 $
 ```
 
-Running _./random_streams_for_perf_stats.exe_ takes the same time than running the AOT snapshot from above.
+..where running _./random_streams_for_perf_stats.exe_ takes the same time than running the AOT snapshot from above.
 
-TBD
+However, executable _random_streams_for_perf_stats.exe_ is not portable to another Linux system without any Dart installation.
 
-Portability of ./random_streams_for_perf_stats.exe ?!? _bash: ./random_streams_for_perf_stats.exe: cannot execute: required file not found_
+
+
+TBD: portability of ./random_streams_for_perf_stats.exe ?!? _bash: ./random_streams_for_perf_stats.exe: cannot execute: required file not found_
 
 --> make a proper Dart project here first: tbd
-
 
 TBD
 
@@ -163,21 +231,37 @@ TBD
 
 Nowadays, Dart can be compiled to WebAssembly: [WebAssembly (Wasm) compilation](https://dart.dev/web/wasm)
 
+```
+$ dart compile wasm -Da=1 ./random_streams_for_perf_stats.dart
+$ node ./random_streams_for_perf_stats.mjs
+$ # no program execution!
+```
+
 Though:
 
 > The compiled Wasm output currently targets JavaScript environments (such as browsers), and thus currently doesn't support execution in standard Wasm run-times like wasmtime and wasmer.
 
-```
-$ dart compile wasm -Da=1 ./random_streams_for_perf_stats.dart
-$ node ./random_streams_for_perf_stats.mjs
-$ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-```
+Command _$ dart compile wasm -Da=1 <~.dart>_ generated a wrapper JavaScript file named _random_streams_for_perf_stats.mjs_ (which doesn't work on node.js), and other files:
 
-So, command dart compile wasm produces a wrapper JavaScript file named _random_streams_for_perf_stats.mjs_.
+```
+$ ls -1
+random_streams_for_perf_stats.dart
+random_streams_for_perf_stats.mjs
+random_streams_for_perf_stats.support.js
+random_streams_for_perf_stats.unopt.wasm
+random_streams_for_perf_stats.unopt.wasm.map
+random_streams_for_perf_stats.wasm
+random_streams_for_perf_stats.wasm.map
+$ 
+```
 
 TBD
 
+<br/>
 
+## Dart execution speeds diagram
+
+TBD
 
 <br/>
 
