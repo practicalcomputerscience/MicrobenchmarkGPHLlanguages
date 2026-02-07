@@ -79,7 +79,7 @@ Why is that?
 
 "Big AI" has answers to this, but doesn't tell original sources that can explain something. Dart's official documentation is also shy about this phenomenon.
 
-Anyway, I guess it's clear that _$ dart run <~.dart>_ comes with overhead that _$ dart <~.dart>_ just doesn't have.
+Anyway, I guess it's clear that _$ dart run \<~.dart\>_ comes with overhead that _$ dart \<~.dart\>_ just doesn't have.
 
 It also seems that there's no switch for command _$ dart run_ to shut off the JIT compilation (just for curiosity).
 
@@ -256,7 +256,7 @@ Though:
 
 > The compiled Wasm output currently targets JavaScript environments (such as browsers), and thus currently doesn't support execution in standard Wasm run-times like wasmtime and wasmer.
 
-Command _$ dart compile wasm -Da=1 <~.dart>_ generated a wrapper JavaScript file named _random_streams_for_perf_stats.mjs_ (which doesn't work on node.js), and other files:
+Command _$ dart compile wasm -Da=1 \<~.dart\>_ generated a wrapper JavaScript file named _random_streams_for_perf_stats.mjs_ (which doesn't work on node.js), and other files:
 
 ```
 $ ls -1
