@@ -1,9 +1,13 @@
 2026-02-02: work in progress
 
-- benchmark Dart to JS for node.js: done (2026-02-06)
+- tbd: fix Wasm for a web browser
+- tbd: do script _random_bitstring_and_flexible_password_generator.dart_ <<<<<<<<<<<<<<<<<<<<<<<<<<<
+- tbd: make a TOC
 - tbd: have its own exe speeds diagram: programming_languages_exe_speeds_Dart.csv
 - tbd: put the AOT version into the master diagram
-- tbd: do script _random_bitstring_and_flexible_password_generator.dart_
+- benchmark Dart to JS for node.js: done (2026-02-06)
+
+
 
 # Dart
 
@@ -14,6 +18,23 @@ https://dart.dev/tutorials/server/get-started
 JIT = just-in-time compiled
 
 AOT = ahead-of-time compiled
+
+---
+
+Table of contents:
+
+- [Idea of Dart](#idea-of-dart)
+- [Installation tips](#installation-tips)
+- [Execution forms](#execution-forms)
+- [JIT compilation](#jit-compilation)
+- [Compilation to JavaScript](#compilation-to-javascript)
+- [JIT snapshot compilation](#jit-snapshot-compilation)
+- [AOT snapshot compilation](#aot-snapshot-compilation)
+- [Standalone (or self-contained) executable (which may not be portable so easily)](#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
+- [WebAssembly](#webassembly)
+- [Dart execution speeds diagram](#dart-execution-speeds-diagram)
+
+<br/>
 
 ---
 
