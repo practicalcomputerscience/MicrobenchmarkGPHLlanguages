@@ -1,6 +1,5 @@
 2026-02-02: work in progress
 
-- tbd: fix Wasm for a web browser
 - tbd: do script _random_bitstring_and_flexible_password_generator.dart_ <<<<<<<<<<<<<<<<<<<<<<<<<<<
 - tbd: have its own exe speeds diagram: _programming_languages_exe_speeds_Dart.csv_
 - tbd: put the AOT version into the master diagram
