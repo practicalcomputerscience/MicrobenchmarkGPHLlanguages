@@ -1,13 +1,3 @@
-2026-02-02: work in progress
-
-- tbd: do script _random_bitstring_and_flexible_password_generator.dart_ <<<<<<<<<<<<<<<<<<<<<<<<<<<
-- tbd: optimizations: show file size from: _random_streams_for_perf_stats_o0.js_ to _random_streams_for_perf_stats_o4.js_
-- tbd: have its own exe speeds diagram: _programming_languages_exe_speeds_Dart.csv_
-- tbd: put the AOT version into the master diagram
-- done: benchmark Dart to JS for node.js
-
-<br/>
-
 # Dart
 
 https://dart.dev/
@@ -182,13 +172,15 @@ $
 
 The JavaScript file generated with command _$ dart compile js ..._ implicitly applied optimization level 1. There are 5 optimization levels (see with _$ dart compile js -h -v_), though. I found out that, at least in this case, _-O1_ is as good as it gets:
 
-Optimization level | real execution time (1 program run only) | comment
---- | --- | ---
--O0 | 53 milliseconds | 
--O1 | 45 milliseconds | default, implicit optimization level; measured with _multitime -n 20 node ./random_streams_for_perf_stats_js.node.js_
--O2 | 45 milliseconds | 
--O3 | 43 milliseconds | 
--O4 | 45 milliseconds | 
+Optimization level | real execution time (1 program run only) | final ~.js file size (incl. preamble) | comment
+--- | --- | --- | ---
+-O0 | 53 milliseconds | 375,380 bytes | 
+-O1 | 45 milliseconds | 145,330 bytes | default, implicit optimization level; measured with _multitime -n 20 node ./random_streams_for_perf_stats_js.node.js_
+-O2 | 45 milliseconds | 57,063 bytes | 
+-O3 | 43 milliseconds | 55,828 bytes | 
+-O4 | 45 milliseconds | 54,586 bytes | 
+
+However, with increasing the optimization level the size of the generated JavaScript file is shrinking.
 
 <br/>
 
@@ -296,7 +288,7 @@ So, that's the end of this development starting with _random_streams_for_perf_st
 
 ## Dart execution speeds diagram
 
-TBD
+![plot](./mean_stddev_err_whiskers -- only Dart.png)
 
 <br/>
 
