@@ -33,6 +33,7 @@ Clojure | Clojure's core for the JVM is written exclusively in [Java](https://gi
 Common Lisp (SBCL) | self-hosted; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
 Crystal | bootstrapping by using an older version of the Crystal compiler; self-hosted since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
 D | LDC (LLVM-based D Compiler): D + C++ + C; DMD (Digital Mars D compiler): D + C++ + C | https://github.com/ldc-developers/ldc; https://github.com/dlang/dmd; https://github.com/D-Programming-GDC/gcc
+Dart | Dart + C++ + C, so, it's partly self-hosted | 
 Eiffel (Liberty) | C for gcc or g++, and also Eiffel, or cl in Windows; so it's partly self-hosted | Eiffel source code is first fully transpiled into ANSI C code, which is then compiled to executable machine code by a standard C compiler
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
