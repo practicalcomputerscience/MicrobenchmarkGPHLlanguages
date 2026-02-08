@@ -1,6 +1,7 @@
 2026-02-02: work in progress
 
 - tbd: do script _random_bitstring_and_flexible_password_generator.dart_ <<<<<<<<<<<<<<<<<<<<<<<<<<<
+- tbd: optimizations: show file size from: _random_streams_for_perf_stats_o0.js_ to _random_streams_for_perf_stats_o4.js_
 - tbd: have its own exe speeds diagram: _programming_languages_exe_speeds_Dart.csv_
 - tbd: put the AOT version into the master diagram
 - done: benchmark Dart to JS for node.js
