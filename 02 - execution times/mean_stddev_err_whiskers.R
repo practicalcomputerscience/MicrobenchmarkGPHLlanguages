@@ -4,11 +4,12 @@
 # 2026-01-12: print a sorted list from lowest mean to highest
 # 2026-01-26: split the "master diagram" into 2 halfs for better overview
 # 2026-02-01: new diagram type for web programming languages
+# 2026-02-08: Dart execution forms
 #
 # env: R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
 #      Platform: x86_64-w64-mingw32/x64
 #
-# test: 
+# test:
 #
 
 
@@ -23,13 +24,14 @@ library(dplyr)
 ##########################
 #
 # user switch:
-plot_type <-  5
+plot_type <-  0
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
             # 3 = only virtual machine (VM) languages
             # 4 = Prolog systems for the map coloring problem of Germany-benchmark
             # 5 = web programming languages
+            # 6 = Dart execution forms
 #
 ##########################
 
@@ -45,8 +47,11 @@ hobby project program in different programming languages -- part 1/2")
 hobby project program in different programming languages")
   }
 } else if (plot_type == 4) {
-plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the
+    plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the
 map coloring problem of Germany with 16 states and 4 colors")
+} else if (plot_type == 6) {
+    plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
+hobby project program in different Dart execution forms")
 }
 
 
@@ -58,6 +63,9 @@ if (plot_type < 5) {
 } else if (plot_type == 5) {
     sub_title0 <- paste("using Linux multitime with 20 individual runs of each program (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with multitime -- plot version", date_time)
+} else if (plot_type == 6) {
+    sub_title0 <- paste("using Linux multitime with 20 individual runs of each execution form (on Ubuntu 24 LTS)")
+    sub_title <- paste(sub_title0, "\nplot version", date_time)
 }
 
 
@@ -77,7 +85,9 @@ if (plot_type == 0) {
     dat1 <- read.csv("programming_languages_exe_speeds_Prolog.csv", header = T, dec = ",", sep = ";", comment.char = '%')
   } else if (plot_type == 5) {
     dat1 <- read.csv("programming_languages_exe_speeds_web_programming.csv", header = T, dec = ",", sep = ";", comment.char = '%')
-  }  
+  } else if (plot_type == 6) {
+    dat1 <- read.csv("programming_languages_exe_speeds_Dart.csv", header = T, dec = ",", sep = ";", comment.char = '%')
+  }
 
 ylabel <-  paste("mean, +/- standard deviation in milliseconds")
 # xlabel <- paste("programming language")
@@ -144,8 +154,8 @@ if (plot_type == 0) {
   y_break_max = 3500
   y_tick = 200  # milliseconds
 } else if (plot_type == 5) {
-  y_break_max = 100
-  y_tick = 10  # milliseconds
+  y_break_max = 300
+  y_tick = 50  # milliseconds
 } else {
   y_break_max = 1100  # milliseconds
   y_tick = 100  # milliseconds
