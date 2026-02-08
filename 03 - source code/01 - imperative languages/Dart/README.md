@@ -292,6 +292,8 @@ So, that's the end of this development starting with _random_streams_for_perf_st
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20Dart.png)
 
+The same Dart program can tally a wide range of execution times, depending on its final format and execution environment.
+
 <br/>
 
 ##_end
