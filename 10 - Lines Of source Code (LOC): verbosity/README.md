@@ -50,6 +50,7 @@ Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Julia             | 106 | just-in-time compiled, mature language
+Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
 Groovy            |  99 | interpreted, very mature language | 2026-02-05
 Ruby              |  99 | interpreted, very mature language | 2026-01-18
@@ -79,6 +80,7 @@ Clojure            | 3
 Common Lisp        | 2
 Crystal            | 0
 D                  | 0
+Dart               | 0
 Eiffel (Liberty)   | 4
 Fortran            | 3
 FreeBASIC          | 1
