@@ -6,6 +6,8 @@
 
 <br/>
 
+2026-02-08: done: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
+
 2026-02-05: done: [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy)
 
 2026-01-26:
@@ -65,9 +67,8 @@
 
 <br/>
 
-2026-02-05: so far, I haven't touched yet these corners of programming languages:
+2026-02-08: so far, I haven't touched yet these corners of programming languages:
 
-- Dart
 - Ballerina: https://ballerina.io/: "cloud-native programming language optimized for integration"
 - web programming:
   - AssemblyScript : https://www.assemblyscript.org/: "A TypeScript-like language for WebAssembly"
