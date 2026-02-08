@@ -288,7 +288,7 @@ So, that's the end of this development starting with _random_streams_for_perf_st
 
 ## Dart execution speeds diagram
 
-![plot](./mean_stddev_err_whiskers -- only Dart.png)
+![plot](./mean_stddev_err_whiskers%20--%20only%20Dart.png)
 
 <br/>
 
