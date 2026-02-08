@@ -68,7 +68,7 @@ void main(List<String> args) {
   bool answer = false;
   while (!answer) {
     stdout.write("\nPassword of $N_CHAR printable chars OK? 'y' or another integer number >= 8: ");
-    String? answerStr = stdin.readLineSync();
+    String? answerStr = stdin.readLineSync();  // ? indicates that the variable can hold a value of type String or be null
 
     if (answerStr == 'y') {
       answer = true;
@@ -154,3 +154,4 @@ void main(List<String> args) {
 }
 
 // end of random_bitstring_and_flexible_password_generator.dart
+
