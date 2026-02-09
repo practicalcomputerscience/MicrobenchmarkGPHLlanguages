@@ -1,5 +1,3 @@
-2026-02-09: work in progress
-
 # PHP
 
 https://www.php.net/
@@ -84,12 +82,6 @@ $
 ```
 
 So, running mathematical calculations with JIT compilation in modern PHP can have a substantial effect on the program execution time, here by -68% (measured with: _$ multitime -n 20 php \<switches\> ./fib.php_).
-
-
-TBD
-
-
-
 
 <br/>
 
