@@ -4,10 +4,11 @@ main.ml of random_bitstring_and_flexible_password_generator
 2025-05-24/25/26/27/31, 2025-06-22
 2025-12-21: see below
 2026-01-04: cosmetics
+2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
 
 build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
                         $ cd random_bitstring_and_flexible_password_generator
-                        $ dune build
+                        $ dune build --display=verbose
 
 run on Ubuntu 24 LTS:   $ ./_build/default/bin/main.exe
 
@@ -16,7 +17,7 @@ $ dune --version
 3.20.2
 $ ocaml --version
 The OCaml toplevel, version 5.4.0
-$ 
+$
 
 *)
 
@@ -129,7 +130,7 @@ let write_to_file filename content file_type =
 
 let main () =
   x.(0) <- Random.int (m - 1) + 1;  (* 0 (inclusive) and bound (exclusive); 2025-12-21 *)
-  (* https://ocaml.org/manual/5.4/api/Random.html *) 
+  (* https://ocaml.org/manual/5.4/api/Random.html *)
 
   Printf.printf "\ngenerating a random bit stream...";  (* only one ; to get here stdout immediately! *)
 
@@ -138,9 +139,13 @@ let main () =
     x.(i) <- (a*x.(i-1) + c) mod m;
     (*Printf.printf "x.(i) = %d\n" x.(i);  (* for testing *)*)
 
-    Buffer.add_string bits_x (integer_to_bin_string(x.(i)));
+    (* 2026-02-09: have extra string here like in the other language implementations *)
+    let bits_x_str = (integer_to_bin_string(x.(i))) in
+    Buffer.add_string bits_x bits_x_str;
     (*https://stackoverflow.com/questions/54517086/how-to-append-to-string-in-ocaml*)
-    Buffer.add_string bits_hex (Printf.sprintf "%04x" x.(i));
+
+    let bits_hex_str = (Printf.sprintf "%04x" x.(i)) in
+    Buffer.add_string bits_hex bits_hex_str;
 
     if i >= upper_limit-1 then i
     else masterloop (i+1) (* brackets are essential here *)
@@ -153,13 +158,14 @@ let main () =
 
   (* write bit stream to disk *)
   let file_type = "bit" in
-  let bits_x_str = Buffer.contents bits_x in
-  write_to_file file_bits_x bits_x_str file_type;
+  (* 2026-02-09: have this name due to introduction of bits_x_str in the masterloop *)
+  let bits_x_str_total = Buffer.contents bits_x in
+  write_to_file file_bits_x bits_x_str_total file_type;
 
   (* write byte stream to disk *)
   let file_type = "byte" in
-  let bits_hex_str = Buffer.contents bits_hex in
-  write_to_file file_bits_hex bits_hex_str file_type;
+  let bits_hex_str_total = Buffer.contents bits_hex in  (* 2026-02-09 *)
+  write_to_file file_bits_hex bits_hex_str_total file_type;
 
 
 
