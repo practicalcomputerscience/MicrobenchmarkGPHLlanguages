@@ -33,7 +33,7 @@ async function main(): Awaitable<void> {
 }
 ```
 
-..I learned that also this language didn't survive because PHP had its comeback: https://medium.com/@thoughtsfromryan/the-rapid-rise-and-fall-of-facebooks-hack-and-hhvm-7eeea401b04
+..I learned that also this language didn't survive, because PHP had its comeback: https://medium.com/@thoughtsfromryan/the-rapid-rise-and-fall-of-facebooks-hack-and-hhvm-7eeea401b04
 
 ### Oz
 
