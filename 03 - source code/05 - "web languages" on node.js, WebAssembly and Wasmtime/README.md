@@ -19,7 +19,6 @@ Table of contents:
 - [The Wasmtime runtime](#the-wasmtime-runtime)
 - [Ahead-of-time (AOT) compiling with Wasmtime](#ahead-of-time-aot-compiling-with-wasmtime)
 - [ReScript: OCaml's JavaScript](#rescript-ocamls-javascript)
-- [Dart](#dart)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
@@ -425,14 +424,6 @@ Handling JavaScript exceptions in ReScript (_JsExn(obj)_) is a ReScript resource
 Otherwise, ReScript is the result of a merger of "BuckleScript" and "Reason" in 2020: [BuckleScript & Reason Rebranding](https://rescript-lang.org/blog/bucklescript-is-rebranding/)
 
 So, when you see "bs" in this environment, it may be the short form of BuckleScript.
-
-<br/>
-
-## Dart
-
-See Google's Dart web programming language with its own ecosystem at page: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
-
-There, I also made a dedicated execution speeds diagram of the various Dart formats and environments: [tbd](tbd)
 
 <br/>
 
