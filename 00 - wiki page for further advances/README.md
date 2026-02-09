@@ -6,7 +6,7 @@
 
 <br/>
 
-- [ ] 2026-02-09: another clean-up job: have dedicared string variables _bits_x_str_ + _bits_hex_str_ in the masterloop; if needed, rename existing string variables _bits_x_str_ + _bits_hex_str_ to _bits_x_str_total_ + _bits_hex_str_total_
+- [ ] 2026-02-09: another clean-up job: have dedicared string variables _bits_x_str_ + _bits_hex_str_ in the masterloop (which have been introduced for testing); if needed, rename existing string variables _bits_x_str_ + _bits_hex_str_ to _bits_x_str_total_ + _bits_hex_str_total_: this will further even out the different implementations of the algorithm (though, it shouldn't have a siginificant effect on execution speeds)
 
 2026-02-08: done: [Dart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart)
 
