@@ -3,12 +3,13 @@ main.ml of random_streams_for_perf_stats
 
 2025-05-31, 2025-06-22
 2025-12-21: see below
+2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
 
 build on Ubuntu 24 LTS: $ dune init proj random_streams_for_perf_stats
                         $ cd random_streams_for_perf_stats
                         $ dune build
                         $ dune build --display=verbose
-                        
+
 run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./_build/default/bin/main.exe
 
 
@@ -16,7 +17,7 @@ $ dune --version
 3.20.2
 $ ocaml --version
 The OCaml toplevel, version 5.4.0
-$ 
+$
 
 *)
 
@@ -65,7 +66,7 @@ let integer_to_bin_string n =
 let write_to_file filename content file_type =
   (* solution based on MS Bing prompt: "OCaml Out_channel.with_open_bin try with"
      using module Stdlib.Out_channel: https://ocaml.org/manual/5.3/api/Out_channel.html#examples *)
-  
+
   try
     let out_channel = open_out_bin filename in  (*open_out_bin is OK for strings in Linux*)
     try
@@ -91,9 +92,9 @@ let write_to_file filename content file_type =
 let main () =
   x.(0) <- Random.int (m - 1) + 1;  (* 0 (inclusive) and bound (exclusive); 2025-12-21 *)
   (* https://ocaml.org/manual/5.4/api/Random.html *)
-  
+
   Printf.printf "\ngenerating a random bit stream...";  (* only one ; to get here stdout immediately! *)
-  
+
   (* Order of Evaluation of Arguments
      https://caml.inria.fr/pub/docs/oreilly-book/html/book-ora029.html
   *)
@@ -103,28 +104,33 @@ let main () =
     x.(i) <- (a*x.(i-1) + c) mod m;
     (*Printf.printf "x.(i) = %d\n" x.(i);  (* for testing *)*)
 
-    Buffer.add_string bits_x (integer_to_bin_string(x.(i)));
+    (* 2026-02-09: have extra string here like in the other language implementations *)
+    let bits_x_str = (integer_to_bin_string(x.(i))) in
+    Buffer.add_string bits_x bits_x_str;
     (*https://stackoverflow.com/questions/54517086/how-to-append-to-string-in-ocaml*)
-    Buffer.add_string bits_hex (Printf.sprintf "%04x" x.(i));
+
+    let bits_hex_str = (Printf.sprintf "%04x" x.(i)) in
+    Buffer.add_string bits_hex bits_hex_str;
 
     if i >= upper_limit-1 then i
     else masterloop (i+1) (* brackets are essential here *)
   in
   ignore(masterloop 1);
   (**********************  end of recursive master loop  **********************)
-  
+
   (*print_endline(Buffer.contents bits_x); (* for testing *)*)
   (*print_endline(Buffer.contents bits_hex); (* for testing *)*)
 
   (* write bit stream to disk *)
   let file_type = "bit" in
-  let bits_x_str = Buffer.contents bits_x in
-  write_to_file file_bits_x bits_x_str file_type;
+  (* 2026-02-09: have this name due to introduction of bits_x_str in the masterloop *)
+  let bits_x_str_total = Buffer.contents bits_x in
+  write_to_file file_bits_x bits_x_str_total file_type;
 
   (* write byte stream to disk *)
   let file_type = "byte" in
-  let bits_hex_str = Buffer.contents bits_hex in
-  write_to_file file_bits_hex bits_hex_str file_type;;
+  let bits_hex_str_total = Buffer.contents bits_hex in  (* 2026-02-09 *)
+  write_to_file file_bits_hex bits_hex_str_total file_type;;
 
 
 main ();;  (* same as: let _ = main () *)
