@@ -31,7 +31,7 @@ Table of contents:
 
 ## Idea of Dart
 
-At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as just another "web language".
+At first, I also wanted to cramp Google's Dart into page [From "back-end" to "front-end" programming languages, and back](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#from-back-end-to-front-end-programming-languages-and-back) as just another "web language".
 
 But then I discovered that Dart right from start evolved around its own and rich ecosystem, with "front-end" and "back-end" in mind, which allows Dart source code to be run on a variety of platforms.
 
@@ -53,7 +53,7 @@ Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64
 $ 
 ```
 
-In Ubuntu, Dart can also be installed with the [Flutter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
+In Ubuntu, Dart can also be installed with the Flutter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
 
 <br/>
 
