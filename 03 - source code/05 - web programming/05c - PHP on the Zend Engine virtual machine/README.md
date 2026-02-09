@@ -5,7 +5,7 @@ https://www.php.net/
 <br/>
 
 Using modern PHP (originally for "Personal Home Page" tools) on the [Zend Engine](https://www.zend.com/), a stack-based virtual machine
-(same like [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)) has become a real hit:
+(same like [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)) has become a real hit:
 
 - the "speed part" of the microbenchmark program is executed in around just 15 milliseconds, which is just a little bit slower than ahead-of-time compiled Dart code: [Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#dart-execution-speeds-diagram)
 
@@ -34,7 +34,7 @@ $
 
 ## JIT experiments
 
-Since 2020, PHP can also employ just-in-time (JIT) compilation; see here at: [PHP 8.0: JIT](https://php.watch/versions/8.0/JIT)
+Since 2020, PHP can also employ just-in-time (JIT) compilation; see here at: [PHP 8.0: JIT](https://php.watch/versions/8.0/JIT), where PHP is then using [DynASM](https://luajit.org/dynasm.html) from [LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#luajit). Also see [Configuring JIT ](https://php.watch/versions/8.0/JIT#jit-configure).
 
 However, with this microbenchmark program, JIT compilation doesn't move the needle in terms of execution speed:
 
