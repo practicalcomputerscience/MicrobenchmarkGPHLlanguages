@@ -38,7 +38,7 @@ $
 
 Since 2020, PHP can also employ just-in-time (JIT) compilation; see here at: [PHP 8.0: JIT](https://php.watch/versions/8.0/JIT)
 
-However, with this microbenchmark program, practically an "on-off script", JIT compilation doesn't move the needle in terms of execution speed:
+However, with this microbenchmark program, JIT compilation doesn't move the needle in terms of execution speed:
 
 ```
 $ time php -d opcache.enable_cli=1 -d opcache.jit_buffer_size=100M -d opcache.jit=1255 ./random_streams_for_perf_stats.php
@@ -52,7 +52,18 @@ real	0m0.015s
 $ 
 ```
 
-Same like with [Ruby version 4](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/README.md#jit-experiments-with-ruby-version-4), I also tried here using JIT compilation for recursively calculating the 35th Fibonacci number.
+Same like with [Ruby version 4](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby/README.md#jit-experiments-with-ruby-version-4), I also tried here using JIT compilation for recursively calculating the 35th Fibonacci number:
+
+```
+<?php
+function fib($n) {
+    return $n <= 1 ? $n : fib($n - 1) + fib($n - 2);
+}
+$start_time = microtime(true);
+echo fib(35) . "\n";
+echo "Time: " . (microtime(true) - $start_time) . "s\n";
+?>
+```
 
 First, normal execution of Zend bytecode:
 
