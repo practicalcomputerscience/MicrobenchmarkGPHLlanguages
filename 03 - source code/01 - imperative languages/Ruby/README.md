@@ -15,7 +15,7 @@ Table of contents:
 - [YJIT in 2021](#yjit-in-2021)
 - [ZJIT in 2025](#zjit-in-2025)
 - [Installation tips](#installation-tips)
-- [JIT experiments with Ruby v.4](#jit-experiments-with-ruby-v4)
+- [JIT experiments with Ruby version 4](#jit-experiments-with-ruby-version-4)
 - [mruby to make a standalone Ruby based app](#mruby-to-make-a-standalone-ruby-based-app)
 
 <br/>
@@ -124,7 +124,7 @@ For the same reason, I also refrain from trying Ruby's (official) implementation
 
 <br/>
 
-## JIT experiments with Ruby v.4
+## JIT experiments with Ruby version 4
 
 However, on a different Ubuntu 24 LTS system I experimented with installing latest Ruby version 4.0.1 (https://www.ruby-lang.org/en/news/2026/01/13/ruby-4-0-1-released/) as of 2026-01-18, and found out that building it "naked" from sources isn't so easy.
 
