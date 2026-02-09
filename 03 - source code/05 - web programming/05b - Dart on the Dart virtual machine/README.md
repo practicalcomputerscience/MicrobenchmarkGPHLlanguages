@@ -53,7 +53,7 @@ Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64
 $ 
 ```
 
-In Ubuntu, Dart can also be installed with the Flutter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
+In Ubuntu, Dart can also be installed with the [Flutter web framework](https://flutter.dev/) like this: _$ sudo snap install flutter_
 
 <br/>
 
@@ -101,7 +101,7 @@ It also seems that there's no switch for command _$ dart run_ to shut off the JI
 
 Also Dart source code can be explicitely transpiled into JavaScript source code (nowadays), which is then executable on node.js.
 
-However, the original [Dart program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart/random_streams_for_perf_stats.dart) cannot be simply transpiled into JavaScript source code which can then work unmodfied on node.js. There are two (major) reasons for this:
+However, the original [Dart program](./random_streams_for_perf_stats.dart) cannot be simply transpiled into JavaScript source code which can then work unmodfied on node.js. There are two (major) reasons for this:
 
 - writing to the file system needs direct bindings from Dart to the _fs_ (file system) resource of node.js
 - the transpiled JavaScript code has to be prepended with some preamble, because standalone engines like node.js lack browser-specific globals that Dart's generated code expects (Google AI)
@@ -284,7 +284,7 @@ random_streams_for_perf_stats.wasm.map
 $ 
 ```
 
-So, that's the end of this development starting with _random_streams_for_perf_stats.dart_. However, starting with this program in its **C version**, I succeeded with making a WebAssembly based program as described here: [The WebAssembly (Wasm) virtual machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)
+So, that's the end of this development starting with _random_streams_for_perf_stats.dart_. However, starting with this program in its **C version**, I succeeded with making a WebAssembly based program as described here: [The WebAssembly (Wasm) virtual machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)
 
 <br/>
 
