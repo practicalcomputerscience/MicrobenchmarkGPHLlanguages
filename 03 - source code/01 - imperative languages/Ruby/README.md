@@ -128,11 +128,11 @@ For the same reason, I also refrain from trying Ruby's (official) implementation
 
 However, on a different Ubuntu 24 LTS system I experimented with installing latest Ruby version 4.0.1 (https://www.ruby-lang.org/en/news/2026/01/13/ruby-4-0-1-released/) as of 2026-01-18, and found out that building it "naked" from sources isn't so easy.
 
-But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above), when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
+But with the help of the [Ruby Version Manager](https://rvm.io/) (RVM) I succeeded! Think of a working Rust compiler (see above) when configuring Ruby for YJIT or ZJIT: _$ rvm install ruby-4.0.1 --with-configure-flag --enable-zjit_
 
 Running the microbenchmark program with Ruby v.4.0.1 with switches _--yjit_ or _--zjit_ or no JIT didn't improve the execution speed of the microbenchmark program! The opposite is true: running it with Ruby v.4.0.1 tallied a slightly slower execution time in all three variants, which was about +5.5% higher!
 
-However, with Ruby code like this:
+However, with Ruby code to recursively calculate the **nth Fibonacci number**, here for 35, like this for example:
 
 ```
 def fib(n)
@@ -144,12 +144,12 @@ puts fib(35)
 puts "Time: #{Time.now - start_time}s"
 ```
 
-..switch _--yjit_ (same like _--jit_) had a substantial effect of reducing the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_).
+..switch _--yjit_ (same like switch _--jit_) had a substantial effect of reducing the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_).
 
 Switch _--zjit_ only yielded a slight reduction of execution time by -11%, though clearly measurable.
 
 > [!NOTE]
-> Using JIT compilation at Ruby has been for years and still is a moving target under active development.
+> Using JIT compilation at Ruby has been for years a moving target under active development.
 
 <br/>
 
