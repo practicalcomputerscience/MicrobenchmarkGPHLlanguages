@@ -4,15 +4,33 @@
 
 https://www.php.net/
 
----
-
 <br/>
 
 Using modern PHP on the [Zend Engine](https://www.zend.com/), a stack-based virtual machine
-(same like [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine))
-has become a real hit:
+(same like [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)) has become a real hit:
 
-- the "speed part" of the microbenchmark program is executed in around just 15 milliseconds, which is just a little bit slower than ahead-of-time compiled Dart: [Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#dart-execution-speeds-diagram)
+- the "speed part" of the microbenchmark program is executed in around just 15 milliseconds, which is just a little bit slower than ahead-of-time compiled Dart: [Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#dart-execution-speeds-diagram)
+
+<br/>
+
+## Installation tips
+
+In Ubuntu 24 LTS, I installed PHP and the Zend Engine like this:
+
+```
+$ sudo apt install php8.3-cli
+$ cat ./hello_world.php  # a small PHP script for testing
+<?php
+echo "Hello, World from PHP!\n";
+?>
+$ php ./hello_world.php  # run script on the Zend Engine as compiled Zend opcodes (bytecode) 
+Hello, World from PHP!
+$ 
+```
+
+<br/>
+
+## Just-in-time compilation
 
 Sime 2020, PHP can also employ just-in-time (JIT) compilation; see here at: [PHP 8.0: JIT](https://php.watch/versions/8.0/JIT)
 
@@ -37,5 +55,7 @@ $
 ```
 
 TBD
+
+<br/>
 
 ##_end
