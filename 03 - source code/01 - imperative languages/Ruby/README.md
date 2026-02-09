@@ -144,7 +144,7 @@ puts fib(35)
 puts "Time: #{Time.now - start_time}s"
 ```
 
-..switch _--yjit_ (same like switch _--jit_) substantially reduced the program execution time by -78% (measured with: _$ multitime -n 20 ruby <jit-switch> ./fib.rb_).
+..switch _--yjit_ (same like switch _--jit_) substantially reduced the program execution time by -78% (measured with: _$ multitime -n 20 ruby \<jit-switch\> ./fib.rb_).
 
 Switch _--zjit_ only yielded a slight reduction of execution time by -11%, though clearly measurable.
 
