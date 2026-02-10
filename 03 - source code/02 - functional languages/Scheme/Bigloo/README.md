@@ -98,7 +98,7 @@ Here's the definition of string _char_set_ with Racket Scheme, an elegant constr
 
 <br/>
 
-So, if execution speed doesn't matter, I would generally prefer Racket Scheme over Bigloo Scheme, and the other tested dialects CHICKEN, Chez and Gambit Scheme.
+So, if execution speed doesn't matter, I would generally prefer Racket Scheme over Bigloo Scheme, and the other tested dialects, that is CHICKEN, Chez and Gambit Scheme.
 
 <br/>
 
