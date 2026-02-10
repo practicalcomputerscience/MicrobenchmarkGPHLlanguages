@@ -6,4 +6,17 @@ See the related language description slide [Part 1](https://github.com/practical
 
 <br/>
 
+I installed and shortly tested Rust in Ubuntu 24 LTS like this:
+
+```
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+...
+$ source "$HOME/.cargo/env"
+$ rustc --version
+rustc 1.92.0 (ded5c06cf 2025-12-08)
+$
+```
+
+<br/>
+
 ##_end
