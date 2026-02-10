@@ -23,13 +23,12 @@ But this page is not about benchmarking algorithms, but for comparing different 
 
 <br/>
 
-Same like with the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) implemented in different Prolog systems, I also provide a [C++ solution](./fib_recursive_small_argument.cpp) just for some orientation on the fast side (and also on the slow side with the
-[GMP based solution](./fib_recursive_small_argument_GMP.cpp)):
+Same like with the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) implemented in different Prolog systems, I also provide a [C++ solution](./fib_recursive_small_argument.cpp) just for some orientation on the fast side:
 
 > [!CAUTION]
 > However and as so often, one has to be careful with correctly calculating Fibonacci numbers in C++ to not exceed the maximum limits of integer numbers!
 
-At first, I naively did a [GMP based implementation](./fib_recursive_small_argument_GMP.cpp), only to realize that while it correctly calculates "higher" Fibonacci numbers, it is also a super-slow implementation!
+At first, I naively did a [GMP based implementation](./fib_recursive_small_argument_GMP.cpp), only to realize that while it correctly calculates "higher" Fibonacci numbers, it is also a super-slow solution!
 (GMP = GNU Multiple Precision Arithmetic Library: https://gmplib.org/)
 
 Then I turned to the [unsigned long long integer type](./fib_recursive_small_argument.cpp), which should allow to calculate Fibonacci numbers up to argument 93 with result 12,200,160,415,121,876,738: https://zeptomath.com/calculators/fibonaccinumbers.php?number=93
