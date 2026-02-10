@@ -1,12 +1,14 @@
 =begin
 random_streams_for_perf_stats.rb
 
-2026-01-18
+2026-01-18, 2026-02-10
 
 run on Ubuntu 24 LTS: $ ruby ./random_streams_for_perf_stats.rb        => real	0m0.076s
-                      $ ruby --mjit ./random_streams_for_perf_stats.rb => real	0m0.083s
-                      $ ruby --jit ./random_streams_for_perf_stats.rb  => real	0m0.085s
+                      $ ruby --mjit ./random_streams_for_perf_stats.rb => real	0m0.342s (2026-02-10)
+                      $ ruby --jit ./random_streams_for_perf_stats.rb  => real	0m0.345s (2026-02-10)
                       $ ruby --yjit ./random_streams_for_perf_stats.rb => ruby: warning: Ruby was built without YJIT support. You may need to install rustc to build Ruby with YJIT.
+                        => behaves here like with no switch: real	0m0.076s
+
 
                       $ multitime -n 20 ruby ./random_streams_for_perf_stats.rb
 
