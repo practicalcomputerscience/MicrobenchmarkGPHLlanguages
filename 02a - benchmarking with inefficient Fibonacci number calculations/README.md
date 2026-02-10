@@ -13,7 +13,7 @@ that with string concatenation, just-in-time compilation (JIT) of bytecode of a 
 
 But with (non-trivial) **arithmetic calculations**, just-in-compilation or even ahead-of-time compilation (AOT) almost always improves execution speed.
 
-And a good testing algorithm is the inefficient (recursive) Fibonacci number calculation, as it has been used in 2024 to benchmark different Scheme dialects: [FIB: a classic benchmark, computes fib(n) inefficiently](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#fib-a-classic-benchmark-computes-fibn-inefficiently)
+And a good testing algorithm is the inefficient (recursive) Fibonacci number calculation, as it has been also used to benchmark different Scheme dialects in 2024: [FIB: a classic benchmark, computes fib(n) inefficiently](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#fib-a-classic-benchmark-computes-fibn-inefficiently)
 
 <br/>
 
@@ -24,7 +24,7 @@ But this page is not about benchmarking algorithms, but for comparing different 
 <br/>
 
 Same like with the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) implemented in different Prolog systems, I also provide a [C++ solution](./fib_recursive_small_argument.cpp) just for some orientation on the fast side (and also on the slow side with the
-[GMP based solution](./fib_recursive_small_argument_GMP.cpp)!):
+[GMP based solution](./fib_recursive_small_argument_GMP.cpp)):
 
 > [!CAUTION]
 > However and as so often, one has to be careful with correctly calculating Fibonacci numbers in C++ to not exceed the maximum limits of integer numbers!
@@ -34,7 +34,7 @@ At first, I naively did a [GMP based implementation](./fib_recursive_small_argum
 
 Then I turned to the [unsigned long long integer type](./fib_recursive_small_argument.cpp), which should allow to calculate Fibonacci numbers up to argument 93 with result 12,200,160,415,121,876,738: https://zeptomath.com/calculators/fibonaccinumbers.php?number=93
 
-This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should be the highest _unsigned long long_ number in a typical C++ compilation: [C and C++ Integer Limits](https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170) (however, calculating this result recursively, even in C++, may not stop before hours!)
+This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should be the highest _unsigned long long_ number in a typical C++ compilation: [C and C++ Integer Limits](https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170) (however, calculating this result recursively, even in C++, may not stop in hours!)
 
 <br/>
 
@@ -42,14 +42,15 @@ This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should b
 
 programming language | execution format | nth Fibonacci number | one program run, internally measured | comments | date
 --- | --- | --- | --- | --- | ---
+[Bigloo Scheme](tbd) |  | 47 |  |  | tbd
 [C++](./fib_recursive_small_argument.cpp) | compiled with _g++ -O3_ | 47 | 3.14 seconds | _unsigned long long_ integer type | 2026-02-10
 [C++](./fib_recursive_small_argument_GMP.cpp) | compiled with _g++ -O3 ... -lgmpxx -lgmp_ | 47 | 115.44 seconds | _mpz_class_ for large integers | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dart run ./fib_recursive_argument.dart_ <n> | 47 | 16.15 seconds | JIT compiled (default) | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dartaotruntime ./fib_recursive_argument.aot_ <n> | 47 | 12.89 seconds | AOT compiled | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php ./fib_recursive_argument.php_ <n> | 47 | 99.82 seconds | interpreted Zend VM bytecode | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php -d opcache.enable_cli=1 -d opcache.jit_buffer_size=100M -d opcache.jit=1255 ./fib_recursive_argument.php_ <n> | 47 | 27.74 seconds | JIT compiled | 2026-02-10
-[Ruby](tbd) |  |  |  | interpreted ??? VM bytecode | tbd
-[Ruby](tbd) |  |  |  | YJIT compiled | tbd
+[Ruby](tbd) |  | 47 |  | interpreted ??? VM bytecode | tbd
+[Ruby](tbd) |  | 47 |  | YJIT compiled | tbd
 
 VM = virtual machine
 
@@ -59,7 +60,7 @@ VM = virtual machine
 
 Here, above table in a diagram:
 
-TBD
+TBD: extra R script: _mean_stddev_err_whiskers_recursive_fib.R_
 
 <br/>
 
