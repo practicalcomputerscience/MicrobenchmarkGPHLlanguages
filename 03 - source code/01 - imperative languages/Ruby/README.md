@@ -53,7 +53,7 @@ command | exe time (real of time command in a single run) | comment
 _$ ruby ./random_streams_for_perf_stats.rb_ | 76 milliseconds | confirmed on 2026-02-10
 _$ ruby --mjit ./random_streams_for_perf_stats.rb_ | 342 milliseconds | new test on 2026-02-10
 _$ ruby --jit ./random_streams_for_perf_stats.rb_  | 345 milliseconds | net test on 2026-02-10
-_$ ruby --yjit ./random_streams_for_perf_stats.rb_ | _ruby: warning: Ruby was built without YJIT support. You may need to install rustc to build Ruby with YJIT._ | confirmed on 2026-02-10
+_$ ruby --yjit ./random_streams_for_perf_stats.rb_ | _ruby: warning: Ruby was built without YJIT support. You may need to install rustc to build Ruby with YJIT._; 76 milliseconds | confirmed on 2026-02-10
 
 When repeating these tests on 2026-02-10, I noticed that the _--jit_ and _--mjit_ results are substantially higher than running the Ruby program without these switches (or with switch _--yjit_ on, which doesn't have an effect in my Ruby installation). I could repeat these results in another Ubuntu 24 LTS system.
 
