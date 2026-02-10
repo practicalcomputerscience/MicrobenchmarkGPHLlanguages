@@ -3,7 +3,7 @@ fib_recursive_argument.rb
 
 2026-02-10
 
-test on Ubuntu 24 LTS with Ruby 3.2.10, installed with rvm (Ruby Version Manager): 
+test on Ubuntu 24 LTS with Ruby 3.2.10, installed with rvm (Ruby Version Manager): OK
 
 
 output:
@@ -59,3 +59,4 @@ elapsed_time = end_time - start_time
 puts "Time: #{elapsed_time}s"
 
 # end on fib_recursive_argument.rb
+
