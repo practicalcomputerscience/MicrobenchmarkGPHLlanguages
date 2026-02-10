@@ -7,7 +7,7 @@ https://www.php.net/
 Using modern PHP (originally for "Personal Home Page" tools) on the [Zend Engine](https://www.zend.com/), a stack-based virtual machine
 (same like [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)) has become a real hit:
 
-- the "speed part" of the microbenchmark program is executed in around just 15 milliseconds, which is just a little bit slower than ahead-of-time compiled Dart code: [Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#dart-execution-speeds-diagram)
+- the "speed part" of the microbenchmark program is executed in around just 15 milliseconds (as interpreted bytecode), which is just a little bit slower than ahead-of-time compiled Dart code: [Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#dart-execution-speeds-diagram)
 
 Remember from facebook's [Hack](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#hack):
 
