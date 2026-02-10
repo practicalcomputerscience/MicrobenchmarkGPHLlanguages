@@ -49,9 +49,9 @@ programming language | execution format | nth Fibonacci number | one program run
 [Dart](./fib_recursive_argument.dart) | _$ dartaotruntime ./fib_recursive_argument.aot_ <n> | 47 | 12.89 seconds | AOT compiled | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php ./fib_recursive_argument.php_ <n> | 47 | 99.82 seconds | interpreted Zend VM bytecode | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php -d opcache.enable_cli=1 -d opcache.jit_buffer_size=100M -d opcache.jit=1255 ./fib_recursive_argument.php_ <n> | 47 | 27.74 seconds | JIT compiled | 2026-02-10
-[Ruby](tbd) | _$ ruby ./fib_recursive_argument.rb_ <n> | 47 | 150.44 seconds | interpreted YARV VM bytecode | 2026-02-10
-[Ruby](tbd) | _$ ruby --mjit ./fib_recursive_argument.rb_ <n> | 47 | 50.13 seconds | MJIT compiled | 2026-02-10
-[Ruby](tbd) | _$ ruby --yjit ./fib_recursive_argument.rb_ <n> | 47 | 39.76 seconds | YJIT compiled | 2026-02-10
+[Ruby](./fib_recursive_argument.rb) | _$ ruby ./fib_recursive_argument.rb_ <n> | 47 | 150.44 seconds | interpreted YARV VM bytecode | 2026-02-10
+[Ruby](./fib_recursive_argument.rb) | _$ ruby --mjit ./fib_recursive_argument.rb_ <n> | 47 | 50.13 seconds | MJIT compiled | 2026-02-10
+[Ruby](./fib_recursive_argument.rb) | _$ ruby --yjit ./fib_recursive_argument.rb_ <n> | 47 | 39.76 seconds | YJIT compiled | 2026-02-10
 
 YARV = Yet Another Ruby VM
 VM = virtual machine
@@ -72,7 +72,7 @@ $
 
 The results were not disappointing, see from the table above:
 
-- not only was using version 3.2.10 generally a bit faster than using version 3.2.3, using JIT compiling was also faster in both cases, that is using switch _--mjit_ and switch _--yjit_ (which is now the same like switch _--jit_), with YJIT compiling again being the winner like seen here at [JIT experiments with Ruby version 4](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#jit-experiments-with-ruby-version-4) (*)
+- not only was using version 3.2.10 generally a bit faster than using version 3.2.3, using JIT compiling was also faster in both cases, that is using switch _--mjit_ and switch _--yjit_ (which is now the same as switch _--jit_), with YJIT compiling again being the winner like seen here at [JIT experiments with Ruby version 4](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#jit-experiments-with-ruby-version-4) (*)
 
 The Ruby 3.2.10 help says this (_$ ruby --help_) on the JIT compiler switches:
 
