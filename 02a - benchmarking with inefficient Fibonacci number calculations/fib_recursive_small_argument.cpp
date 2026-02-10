@@ -19,8 +19,8 @@ output:
   n = 46 => fib = 1836311903          => Time: 1.83729s
   n = 47 => fib = 2971215073          => Time: 3.13644s <==> with GMP: 113.722s
   ...
-  n = 92 => fib = 7,540,113,804,746,346,429 => Time: manually stopped after 10 minutes!
-  see from: https://zeptomath.com/calculators/fibonaccinumbers.php?number=92
+  n = 93 => fib = 12,200,160,415,121,876,738 => Time: manually stopped after 10 minutes!
+  see from: https://zeptomath.com/calculators/fibonaccinumbers.php?number=93
 
 
 $ g++ --version
@@ -46,8 +46,8 @@ public:
         }
 
         unsigned long long n = std::atoi(argv[1]); // Convert argument to integer
-        if (n < 2 || n > 92) {
-            std::cout << "Please provide an argument of 2 <= n <= 92" << std::endl;
+        if (n < 2 || n > 93) {
+            std::cout << "Please provide an argument of 2 <= n <= 93" << std::endl;
             return;
         }
 
