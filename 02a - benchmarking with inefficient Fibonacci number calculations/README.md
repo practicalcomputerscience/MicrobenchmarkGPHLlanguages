@@ -11,17 +11,44 @@ and Ruby ([JIT experiments with Ruby version 4](https://github.com/practicalcomp
 but not Dart ([Dart execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#dart-execution-speeds-diagram)),
 that with string concatenation, just-in-time compilation (JIT) of bytecode of a virtual machine isn't necessarily improving execution speed.
 
-But with (non-trivial) **mathematical calculations**, **just-in-compilation** or even **ahead-of-time** compilation (AOT) almost always improves execution speed.
+But with (non-trivial) **mathematical calculations**, just-in-compilation or even ahead-of-time compilation (AOT) almost always improves execution speed.
 
 And a good testing algorithm is the inefficient (recursive) Fibonacci number calculation, as it has been used in 2024 to benchmark different Scheme dialects: [FIB: a classic benchmark, computes fib(n) inefficiently](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#fib-a-classic-benchmark-computes-fibn-inefficiently)
 
 <br/>
 
-First: calculating Fibonacci numbers recursively is not a good idea algorithmically. There are much more efficient algorithms to do this job: [Fast Fibonacci algorithms](https://www.nayuki.io/page/fast-fibonacci-algorithms)
+First: calculating Fibonacci numbers recursively is not a good idea algorithmically. There are much more efficient algorithms for this job: [Fast Fibonacci algorithms](https://www.nayuki.io/page/fast-fibonacci-algorithms)
 
-But this page is not about benchmarking algorithms to calculate Fibonacci numbers, but for comparing different execution formats of different programming languages.
+But this page is not about benchmarking algorithms, but for comparing different execution formats of different programming languages.
 
 <br/>
+
+Same like with the [map coloring problem of Germany](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram) implemented in different Prolog systems, I also provide a [C++ solution](./fib_recursive_small_argument.cpp) just for some orientation on the fast side (and also on the slow side with the
+(GMP based solution](./fib_recursive_small_argument_GMP.cpp)!)
+
+> [!CAUTION]
+> However and as so often, one has to be careful with correctly calculating Fibonacci numbers in C++ to not exceed the maximum limits of integer numbers!
+
+At first, I naively did a [GMP based implementation](./fib_recursive_small_argument_GMP.cpp), only to realize that while it correctly calculates "higher" Fibonacci numbers, it is also a super-slow implementation!
+(GMP = GNU Multiple Precision Arithmetic Library: https://gmplib.org/)
+
+Then I turned to the [unsigned long long integer type](./fib_recursive_small_argument.cpp), which should allow to calculate Fibonacci numbers up to argument 93 with result 12,200,160,415,121,876,738: https://zeptomath.com/calculators/fibonaccinumbers.php?number=93
+
+This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should be the highest _unsigned long long_ number in a typical C++ compilation: [C and C++ Integer Limits](https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170) (however, calculating this result recursively, even in C++, may not stop before hours!)
+
+<br/>
+
+programming language | execution format | nth Fibonacci number | one program run measured with _time_ command | comments | date
+--- | --- | --- | --- | ---
+C++ | compiled with _g++ -O3_ | 47 | 3.14 seconds | unsigned long long integer type | 2026-02-10
+C++ | compiled with _g++ -O3_ | 47 | 113.72 seconds |  | 2026-02-10
+
+
+
+
+
+
+
 
 
 
