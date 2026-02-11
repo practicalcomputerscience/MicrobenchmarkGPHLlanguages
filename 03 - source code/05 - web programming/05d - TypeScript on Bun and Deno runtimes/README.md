@@ -1,12 +1,20 @@
-2026-02-11: work in progress
-
 I discovered these rather new node.js replacements here: [Languages](https://github.com/bddicken/languages?tab=readme-ov-file#languages) and here: https://benjdd.com/languages2/
 
 ..and just wanted to compare their execution times with of one of [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) on node.js: [Complete execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#complete-execution-speeds-diagram)
 
 <br/>
 
-# Deno
+Table of contents:
+
+- [Deno](deno)
+- [Bun](bun)
+- [Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js diagram](#microbenchmark-program-in-typescript-execution-speeds-on-bun-deno-and-nodejs-diagram)
+
+<br/>
+
+---
+
+## Deno
 
 https://deno.com/, which uses [Safari browser's](https://www.apple.com/safari/) JavaScriptCore engine
 
@@ -65,7 +73,7 @@ It's file size is big with 92,477,439 bytes.
 
 <br/>
 
-# Bun
+## Bun
 
 https://bun.com/, which uses the V8 JavaScript engine, same like node.js
 
@@ -79,7 +87,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 Now, let's run the script on Bun: 
 
 ```
-$ bun ./random_streams_for_perf_stats.ts
+$ bun run ./random_streams_for_perf_stats.ts
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -90,7 +98,7 @@ $
 The script works out of the box! And execution time is excellent:
 
 ```
-$ time bun ./random_streams_for_perf_stats.ts
+$ time bun run ./random_streams_for_perf_stats.ts
 ...
 real	0m0.024s
 ...
@@ -136,7 +144,9 @@ It's file size is also big with 102,377,912 bytes.
 
 ## Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js diagram
 
-TBD
+Here also combined with the result of TypeScript on node.js from [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant):
+
+![plot](./mean_stddev_err_whiskers -- web programming, TypeScript.png)
 
 <br/>
 
