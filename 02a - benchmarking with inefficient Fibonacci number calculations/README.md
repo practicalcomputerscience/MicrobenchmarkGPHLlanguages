@@ -41,7 +41,7 @@ This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should b
 
 programming language | execution format | nth Fibonacci number | one program run, internally measured | comments | date
 --- | --- | --- | --- | --- | ---
-[Bigloo Scheme](tbd) |  | 47 |  |  | tbd
+[Bigloo Scheme](./fib_recursive_argument.scm) | compiled with _bigloo -call/cc -O6_ | 47 | 10.20 seconds | it started with _fib.scm_ from the [2024 benchmarks](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#2024-benchmarks) | 2026-02-11
 [C++](./fib_recursive_small_argument.cpp) | compiled with _g++ -O3_ | 47 | 3.14 seconds | _unsigned long long_ integer type | 2026-02-10
 [C++](./fib_recursive_small_argument_GMP.cpp) | compiled with _g++ -O3 ... -lgmpxx -lgmp_ | 47 | 115.44 seconds | _mpz_class_ for large integers | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dart run ./fib_recursive_argument.dart_ \<n\> | 47 | 16.15 seconds | JIT compiled (default) | 2026-02-10
@@ -51,6 +51,10 @@ programming language | execution format | nth Fibonacci number | one program run
 [Ruby](./fib_recursive_argument.rb) | _$ ruby ./fib_recursive_argument.rb_ \<n\> | 47 | 150.44 seconds | interpreted YARV VM bytecode | 2026-02-10
 [Ruby](./fib_recursive_argument.rb) | _$ ruby --mjit ./fib_recursive_argument.rb_ \<n\> | 47 | 50.13 seconds | MJIT compiled | 2026-02-10
 [Ruby](./fib_recursive_argument.rb) | _$ ruby --yjit ./fib_recursive_argument.rb_ \<n\> | 47 | 39.76 seconds | YJIT compiled | 2026-02-10
+
+<br/>
+
+The result of the 47th Fibonacci number should be 2971215073: https://zeptomath.com/calculators/fibonaccinumbers.php?number=47
 
 YARV = Yet Another Ruby VM
 
@@ -76,7 +80,7 @@ The results were not disappointing, see from the table above:
 
 - not only was using version 3.2.10 generally a bit faster than using version 3.2.3, using JIT compiling was also faster in both cases, that is using switch _--mjit_ and switch _--yjit_ (which is now the same as switch _--jit_), with YJIT compilation again being the winner like seen here at [JIT experiments with Ruby version 4](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#jit-experiments-with-ruby-version-4) (*)
 
-The Ruby 3.2.10 help says this (_$ ruby --help_) on the JIT compiler switches:
+The Ruby 3.2.10 help says this on the JIT compiler switches: _$ ruby --help_
 
 - _mjit -- C compiler-based JIT compiler (default: disabled)_
 - _yjit -- in-process JIT compiler (default: disabled)_
