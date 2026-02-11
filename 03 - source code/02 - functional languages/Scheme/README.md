@@ -93,7 +93,7 @@ After coding in a few Scheme dialects, I made these experiences:
 - with the "Hello, World!" program for example due to needed but different imports and potentially (global) declarations
 - having source code for the compiler or having commands ("expressions") for the interpreter (REPL) of a Scheme dialect may be a different thing in the lands of Lisp's and Scheme's. This may give you a false sense of security
 - sometimes the differences may only emerge later during production, because a Scheme compiler (and build script) of one dialect may also produce a standalone, binary executable without any complaints from source(s) that have been "battle tested" in another Scheme dialect, only to cause a runtime crash during production! So, having sufficient tests is essential when moving from one Scheme dialect to another for a production ready program, specifically for rarely used, user defined functions
-- [Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket) is no exception here according to my experience: it may be very easy to take source code meant for [Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs) for example without any changes and compile it (with: _$ raco exe < program name >.ss_ with file name extension _.ss_ for a Chez source code file) successfully into a Racket based standalone program - only to find out later that it runs differently - but without any crashes or error messages for example! This is potentially a worse scenario than a visible crash during runtime
+- [Racket](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket) is no exception here according to my experience: it may be very easy to take source code meant for [Chez Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#chez-scheme-cs) for example without any changes and compile it (with: _$ raco exe \<program name\>.ss_ with file name extension _.ss_ for a Chez source code file) successfully into a Racket based standalone program - only to find out later that it runs differently - but without any crashes or error messages for example! This is potentially a worse scenario than a visible crash during runtime
 
 This is not only my experience:
 
@@ -274,11 +274,11 @@ CHICKEN and Bigloo Scheme's compile to very small binary executables:
 
 Scheme dialect | size of executable program in bytes | compilation command
 --- | --- | ---
-Gambit | 10,109,464 | _$ gsc -exe ./< program name >.scm_
-Chez | 4,952,848 | _./compile.scm ./random_streams_for_perf_stats.ss_
-Racket | 2,109,470 | _$ raco exe ./< program name >.rkt_
-CHICKEN | 40,032 | _$ csc -O5 ./< program name >.scm_
-Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./<program name>.scm -o < program name >_
+Gambit | 10,109,464 | _$ gsc -exe ./\<program name\>.scm_
+Chez | 4,952,848 | _$ ./compile.scm ./\<program name\>.ss_
+Racket | 2,109,470 | _$ raco exe ./\<program name\>.rkt_
+CHICKEN | 40,032 | _$ csc -O5 ./\<program name\>.scm_
+Bigloo Scheme | 24,120 | _$ bigloo -call/cc -O6 ./\<program name\>.scm -o \<program name\>_
 
 <br/>
 
@@ -431,7 +431,7 @@ other reasons as well; furthermore, our benchmarking script gives up on any benc
 
 Or as stated in 2024: https://ecraven.github.io/r7rs-benchmarks/
 
-> Many of these implementations do not fully implement R7RS, but instead there is a bit of "shim" code. You can find this by looking at _src/< Name >-prelude.scm_ and _src/< Name >-postlude.scm_, to see which changes are necessary. Some changes are also made by the _bench_ script, especially relating to _imports_.
+> Many of these implementations do not fully implement R7RS, but instead there is a bit of "shim" code. You can find this by looking at _src/\<Name\>-prelude.scm_ and _src/\<Name\>-postlude.scm_, to see which changes are necessary. Some changes are also made by the _bench_ script, especially relating to _imports_.
 
 Beware that in order to be able to run these tests, at least for CHICKEN and Racket dialects, extra libraries or packages have to be installed: https://github.com/ecraven/r7rs-benchmarks/tree/8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce#notes-for-specific-implementations
 
