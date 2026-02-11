@@ -55,6 +55,7 @@ Odin | C and mostly C++ for clang | [3.3 Others (Unix)](https://odin-lang.org/do
 Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosted | [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
 Perl 5 | C for gcc or clang | see _README.linux_ in [Perl Source](https://www.cpan.org/src/README.html)
 Picat | C and C++ for gcc and g++, respectively | see _README_ from sources at page [Download](https://picat-lang.org/download.html)
+PHP | the Zend engine, a virtual machine, is written in C | [PHP 7 Virtual Machine](https://www.npopov.com/2017/04/14/PHP-7-Virtual-machine.html) from 2017
 PowerShell | C# is mainly used for the command-line interface _pwsh_ ("PowerShell Core" to run PowerShell scripts in Linux); see from here: https://openhub.net/p/powershell/analyses/latest/languages_summary | see also for example [Program.cs](https://github.com/PowerShell/PowerShell/blob/master/src/powershell/Program.cs)
 Prolog, SWI | C for gcc or clang | https://github.com/SWI-Prolog/swipl-devel
 Python | C for gcc or clang for CPython, which is the reference implementation for Python | see for example from [README.rst](https://github.com/python/cpython/blob/main/README.rst)
