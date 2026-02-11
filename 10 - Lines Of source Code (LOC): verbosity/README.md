@@ -1,5 +1,7 @@
 # Lines Of source Code (LOC): verbosity
 
+LOC is here understood as Source Lines Of Code or SLOC.
+
 Table of contents:
 
 - [Idea of this page](#idea-of-this-page)
@@ -53,6 +55,7 @@ Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Chapel            | 121 | compiled, mature language
+PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
@@ -108,6 +111,7 @@ Nim                | 0
 OCaml              | 5
 Odin               | 0
 Perl 5             | 0
+PHP                | 1 
 Picat (old B-Prolog) | 8
 Prolog, SWI        | 11
 PowerShell         | 0
@@ -129,7 +133,10 @@ Zig                | 0
 
 A recent article from February 2026: Boilerplate Tax - Ranking popular programming languages by density, 2026/02/03 (1799 words): https://boyter.org/posts/boilerplate-tax-ranking-popular-languages-by-density/
 
-With an "dryness" index, where: 
+With an "dryness" index which is defined in percentage as: DRYness = ULOC / SLOC, where:
+
+- ULOC = Unique Lines Of Code
+- SLOC = Source Lines Of code
 
 > Interpreting Dryness,
 > 
@@ -137,13 +144,15 @@ With an "dryness" index, where:
 > - 60% - 70% (Standard): A healthy balance of logic and structural ceremony. (Example: Java, Python)
 > - < 55% (High Boilerplate): High repetition. Likely due to mandatory error handling, auto-generated code, or verbose configuration. (Example: C#, CSS)
 
+<br/>
+
 I'm not suprised that Clojure is a winner here in terms of expressiveness ("Almost every line is an expression of business logic."), though this comes with a price (and for Haskell too):
 
 > ..because from my point of view Clojure is not the easiest functional programming language to learn.
 
 from: [On complexity in Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#on-complexity-in-clojure)
 
-Though, a Clojure expert could probably argue that my Clojure implementation also has some boilerplate code.
+Though, a Clojure expert could probably argue that my Clojure implementation also features some boilerplate code.
 
 Boilerplate code in Wikipedia: https://en.wikipedia.org/wiki/Boilerplate_code
 
