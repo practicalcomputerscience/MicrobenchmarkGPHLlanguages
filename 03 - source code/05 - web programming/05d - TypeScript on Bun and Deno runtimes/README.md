@@ -146,7 +146,7 @@ It's file size is also big with 102,377,912 bytes.
 
 Above results, here also combined with the result of TypeScript on node.js from [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant):
 
-![plot](./mean_stddev_err_whiskers -- web programming, TypeScript.png)
+![plot](./mean_stddev_err_whiskers -- web programming%2C TypeScript.png)
 
 <br/>
 
