@@ -21,12 +21,13 @@ As advertised, I can compile this TypeScript script into a standalone executable
 ```
 $ deno compile --unstable-detect-cjs --allow-write --no-check \
 -o random_streams_for_perf_stats_ts_deno ./random_streams_for_perf_stats.ts
+...
 $ ./random_streams_for_perf_stats_ts_deno
 ...
 $
 ```
 
-Switch _--unstable-detect-cjs_ is needed suppress this error:
+Switch _--unstable-detect-cjs_ is needed to suppress this error:
 
 ```
 error: Uncaught (in promise) ReferenceError: require is not defined
@@ -58,7 +59,7 @@ $ ldd ./random_streams_for_perf_stats_ts_deno
 $ 
 ```
 
-With about 43 milliseconds, the execution time of the standalone executable is a little bit faster.
+With about 43 milliseconds, the execution time of the standalone executable is a little bit faster compared to the _$ deno run_ command with around 45 milliseconds.
 
 It's file size is big with 92,477,439 bytes.
 
@@ -104,16 +105,32 @@ $\textcolor{red}{could\ not\ write\ to\ file:\ random\\_bitstring.bin\ !\ --\ EA
 
 Deno is not doing this, node.js is not doing this, and none of the other programming languages I've tested so far!
 
+Let's compile this script also into a standalone executable. See from: [Optimization -- Bytecode Caching](https://bun.com/docs/bundler/bytecode#with-standalone-executables), Speed up JavaScript execution with bytecode caching in Bun’s bundler:
 
+```
+$ bun build ./random_streams_for_perf_stats.ts --compile --bytecode --outfile=random_streams_for_perf_stats_ts_bun
+...
+$ ./random_streams_for_perf_stats_ts_bun
+...
+$
+```
 
+There are some less dependencies:
 
+```
+$ ldd ./random_streams_for_perf_stats_ts_bun
+	linux-vdso.so.1 (0x00007ffdae15c000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007915fcc00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007915fce89000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007915fce70000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007915fce6b000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007915fcb17000)
+$ 
+```
 
+With about 22 milliseconds, the execution time of the standalone executable is also a little bit compared to the _$ bun_ command with around 23 milliseconds.
 
-
-
-
-
-TBD
+It's file size is also big with 102,377,912 bytes.
 
 <br/>
 
