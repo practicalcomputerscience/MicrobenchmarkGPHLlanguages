@@ -1,0 +1,11 @@
+language;mean;std_dev;date
+Bigloo Scheme, compiled;10,20;0,0;2026-02-11
+C++, compiled, unsigned long long;3,14;0,0;2026-02-10
+Dart, JIT compiled;16,15;0,0;2026-02-10
+Dart, AOT compiled;12,89;0,0;2026-02-10
+mawk, interpreted AWK;200,0;0,0;2026-02-11
+PHP, interpreted;99,82;0,0;2026-02-10
+PHP, JIT compiled;27,74;0,0;2026-02-10
+Ruby, interpreted;150,44;0,0;2026-02-10
+Ruby, MJIT compiled;50,13;0,0;2026-02-10
+Ruby, YJIT compiled;39,76;0,0;2026-02-10
