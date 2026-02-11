@@ -21,6 +21,8 @@ As advertised, I can compile this TypeScript script into a standalone executable
 ```
 $ deno compile --unstable-detect-cjs --allow-write --no-check -o random_streams_for_perf_stats_ts_deno ./random_streams_for_perf_stats.ts
 $ ./random_streams_for_perf_stats_ts_deno
+...
+$
 ```
 
 Switch _--unstable-detect-cjs_ is needed suppress this error:
@@ -55,7 +57,7 @@ $ ldd ./random_streams_for_perf_stats_ts_deno
 $ 
 ```
 
-With about 43 milliseconds the execution time of the standalone executable is a little bit faster.
+With about 43 milliseconds, the execution time of the standalone executable is a little bit faster.
 
 It's file size is big with 92,477,439 bytes.
 
@@ -65,7 +67,7 @@ It's file size is big with 92,477,439 bytes.
 
 https://bun.com/, which uses the V8 JavaScript engine, same like node.js
 
-Let's do the same with Bun. Install like this: _$ curl -fsSL https://bun.sh/install | bash_, add this to your _~/.bashrc_ (and restart the shell finally):
+Let's do the same with Bun. Install like this: _$ curl -fsSL https://bun.sh/install | bash_, add this to your _~/.bashrc_ (and restart the shell then):
 
 ```
 export BUN_INSTALL="$HOME/.bun"
@@ -93,11 +95,13 @@ real	0m0.024s
 $
 ```
 
-But it get's even better. I manually set output file _random_bitstring.bin_ to read only, and see how exception handling works here.
+But it's getting even better. I manually set output file _random_bitstring.bin_ to "read-only", and see how exception handling works here.
 
-The error message is written in red color: _could not write to file: random_bitstring.bin ! -- EACCES: permission denied, open 'random_bitstring.bin'_
+The error message is written in red color in the Bash shell:
 
-Deno is not doing this, node.js is not doing this, and any other programming language I've tested so far not!
+$\textcolor{red}{could\ not\ write\ to\ file:\ random\\_bitstring.bin\ !\ --\ EACCES:\ permission\ denied,\ open\ 'random\\_bitstring.bin'}$
+
+Deno is not doing this, node.js is not doing this, and none of the other programming languages I've tested so far!
 
 
 
