@@ -1,12 +1,23 @@
 # Lines Of source Code (LOC): verbosity
 
+Table of contents:
+
+- [Idea of this page](#idea-of-this-page)
+- [LOC ranking list](#loc-ranking-list)
+- [Number of user defined functions](#number-of-user-defined-functions)
+- [Ranking popular programming languages by density](#ranking-popular-programming-languages-by-density)
+
+<br/>
+
+## Idea of this page
+
 This ranking list is arguably even more controversial than the ranking based on [execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#the-1-second-execution-time-limit).
 
 However, even with my limited knowledge I tried to make _idiomatic_ source code in every programming language. I think that naivety can even be a help here.
 
 On the other side, there _are_ programs with more **lines of code** (LOC) than actually needed, with my Ada version being the most prominent example from my point of view:
 
-> The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the Strings Edit library ..., but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the most lines of source code with 231, the highest so far...
+> The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the Strings Edit library ..., but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the second most lines of source code as of 2026-02-11...
 
 from: [AI experiments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#ai-experiments)
 
@@ -111,6 +122,30 @@ Standard ML (MLton) | 8
 Swift              | 1
 V                  | 3
 Zig                | 0
+
+<br/>
+
+### Ranking popular programming languages by density
+
+A recent article from February 2026: Boilerplate Tax - Ranking popular programming languages by density, 2026/02/03 (1799 words): https://boyter.org/posts/boilerplate-tax-ranking-popular-languages-by-density/
+
+With an "dryness" index, where: 
+
+> Interpreting Dryness,
+> 
+> - 75% (High Density): Very terse, expressive code. Every line counts. (Example: Clojure, Haskell)
+> - 60% - 70% (Standard): A healthy balance of logic and structural ceremony. (Example: Java, Python)
+> - < 55% (High Boilerplate): High repetition. Likely due to mandatory error handling, auto-generated code, or verbose configuration. (Example: C#, CSS)
+
+I'm not suprised that Clojure is a winner here in terms of expressiveness ("Almost every line is an expression of business logic."), though this comes with a price (and for Haskell too):
+
+> ..because from my point of view Clojure is not the easiest functional programming language to learn.
+
+from: [On complexity in Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#on-complexity-in-clojure)
+
+Though, a Clojure expert could probably argue that my Clojure implementation also has some boilerplate code.
+
+Boilerplate code in Wikipedia: https://en.wikipedia.org/wiki/Boilerplate_code
 
 <br/>
 
