@@ -24,7 +24,7 @@ library(dplyr)
 ##########################
 #
 # user switch:
-plot_type <-  0
+plot_type <-  3
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
@@ -38,7 +38,7 @@ plot_type <-  0
 
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
-if (plot_type < 4 || plot_type == 5) {
+if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 5) {
   if (plot_type == 0) {  # "master diagram in two parts"
     plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
 hobby project program in different programming languages -- part 1/2")
@@ -46,6 +46,9 @@ hobby project program in different programming languages -- part 1/2")
     plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
 hobby project program in different programming languages")
   }
+} else if (plot_type == 3) {
+    plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
+hobby project program in diff. programming languages -- virtual machines")
 } else if (plot_type == 4) {
     plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of the
 map coloring problem of Germany with 16 states and 4 colors")
@@ -57,10 +60,10 @@ hobby project program in different Dart execution forms")
 
 date_time  <- paste(format(Sys.Date()), format(Sys.time(), "%H:%M"))
 
-if (plot_type < 5) {
+if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 4) {
     sub_title0 <- paste("using Linux perf-stat with 20 individual runs of each program (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with perf-stat -- plot version", date_time)    
-} else if (plot_type == 5) {
+} else if (plot_type == 3 || plot_type == 5) {
     sub_title0 <- paste("using Linux multitime with 20 individual runs of each program (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with multitime -- plot version", date_time)
 } else if (plot_type == 6) {

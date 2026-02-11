@@ -1,7 +1,7 @@
 language;mean;std_dev;date
-C#;0,046873;0,000318;2025-12-17
+C# (CLR on .NET);0,046873;0,000318;2025-12-17
 Python;0,139;0;2025-12-13
-PowerShell;0,625;0,016;2025-12-19
+PowerShell (CLR on .NET);0,585;0,014;2026-01-12
 Scala JVM uberjar;0,142;0,003;2025-12-21
 Kotlin JVM uberjar;0,073;0,003;2025-12-21
 Clojure JVM uberjar;0,416;0,004;2025-12-21
@@ -9,3 +9,5 @@ Gleam (Erlang VM);0,232;0,0;2025-12-13
 Ruby (YARV);0,073;0,001;2026-01-18
 Groovy JVM uberjar;0,341;0,004;2026-01-29
 Lua;0,120762;0,000766;2025-12-21
+Dart ahead-of-time;0,014;0,003;2026-02-08
+PHP (Zend engine);0,015;0,001;2026-02-09
