@@ -10,4 +10,6 @@ Ruby (YARV);0,073;0,001;2026-01-18
 Groovy JVM uberjar;0,341;0,004;2026-01-29
 Lua;0,120762;0,000766;2025-12-21
 Dart ahead-of-time;0,014;0,003;2026-02-08
+Dart interpreted;0,217;0,004;2026-02-08
+Dart just-in-time;0,102;0,004;2026-02-08
 PHP (Zend engine);0,015;0,001;2026-02-09
