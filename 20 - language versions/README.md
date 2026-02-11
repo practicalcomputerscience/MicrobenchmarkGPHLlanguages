@@ -41,6 +41,7 @@ Nim | Nim Compiler Version 2.2.6 [Linux: amd64]; Compiled at 2025-10-31; Copyrig
 OCaml | 2.5.0; 3.20.2; The OCaml toplevel, version 5.4.0 | $ opam --version; $ dune --version; $ ocaml --version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
+PHP | PHP 8.3.6 (cli) (built: Jan  7 2026 08:40:32) (NTS), Copyright (c) The PHP Group, Zend Engine v4.3.6, Copyright (c) Zend Technologies, with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies | $ php --version
 Picat | Picat version 3.9 | $ picat --version
 PowerShell | PowerShell 7.5.4 | $ pwsh -v
 Prolog, SWI | SWI-Prolog version 9.0.4 for x86_64-linux | $ swipl --version
