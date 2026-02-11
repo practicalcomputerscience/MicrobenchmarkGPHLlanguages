@@ -24,7 +24,7 @@ library(dplyr)
 ##########################
 #
 # user switch:
-plot_type <-  3
+plot_type <-  7
             # 0 = Master diagram
             # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
@@ -32,13 +32,14 @@ plot_type <-  3
             # 4 = Prolog systems for the map coloring problem of Germany-benchmark
             # 5 = web programming languages
             # 6 = Dart execution forms
+            # 7 = TypeScript runtimes
 #
 ##########################
 
 
 sec_to_ms <- 1000  # raw data is in seconds => convert to milliseconds for better presentation here
 
-if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 5) {
+if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 5 || plot_type == 7) {
   if (plot_type == 0) {  # "master diagram in two parts"
     plot_title <- paste("Microbenchmark: execution speeds ('wall clock') of a
 hobby project program in different programming languages -- part 1/2")
@@ -66,7 +67,7 @@ if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 4) {
 } else if (plot_type == 3 || plot_type == 5) {
     sub_title0 <- paste("using Linux multitime with 20 individual runs of each program (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with multitime -- plot version", date_time)
-} else if (plot_type == 6) {
+} else if (plot_type == 6 || plot_type == 7) {
     sub_title0 <- paste("using Linux multitime with 20 individual runs of each execution form (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nplot version", date_time)
 }
@@ -90,6 +91,8 @@ if (plot_type == 0) {
     dat1 <- read.csv("programming_languages_exe_speeds_web_programming.csv", header = T, dec = ",", sep = ";", comment.char = '%')
   } else if (plot_type == 6) {
     dat1 <- read.csv("programming_languages_exe_speeds_Dart.csv", header = T, dec = ",", sep = ";", comment.char = '%')
+  } else if (plot_type == 7) {
+    dat1 <- read.csv("programming_languages_exe_speeds_TypeScript_runtimes.csv", header = T, dec = ",", sep = ";", comment.char = '%')
   }
 
 ylabel <-  paste("mean, +/- standard deviation in milliseconds")
@@ -150,7 +153,7 @@ if (plot_type == 0) {
 
 
 
-if (plot_type == 0) {
+if (plot_type == 0 || plot_type == 7) {
   y_break_max = 100  # milliseconds
   y_tick = 10  # milliseconds
 } else if (plot_type == 4) {
