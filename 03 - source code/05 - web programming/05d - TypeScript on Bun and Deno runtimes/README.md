@@ -59,7 +59,7 @@ $ ldd ./random_streams_for_perf_stats_ts_deno
 $ 
 ```
 
-With about 43 milliseconds, the execution time of the standalone executable is a little bit faster compared to the _$ deno run_ command with around 45 milliseconds.
+With around 43 milliseconds, the execution time of the standalone executable is a little bit faster compared to the _$ deno run_ command with around 45 milliseconds.
 
 It's file size is big with 92,477,439 bytes.
 
@@ -69,7 +69,7 @@ It's file size is big with 92,477,439 bytes.
 
 https://bun.com/, which uses the V8 JavaScript engine, same like node.js
 
-Let's do the same with Bun. Install like this: _$ curl -fsSL https://bun.sh/install | bash_, add this to your _~/.bashrc_ (and restart the shell then):
+Let's do the same with Bun. Install like this: _$ curl -fsSL https://bun.sh/install | bash_, and add this to your _~/.bashrc_ configuration file (and restart the shell then):
 
 ```
 export BUN_INSTALL="$HOME/.bun"
@@ -105,7 +105,7 @@ $\textcolor{red}{could\ not\ write\ to\ file:\ random\\_bitstring.bin\ !\ --\ EA
 
 Deno is not doing this, node.js is not doing this, and none of the other programming languages I've tested so far!
 
-Let's compile this script also into a standalone executable. See from: [Optimization -- Bytecode Caching](https://bun.com/docs/bundler/bytecode#with-standalone-executables), Speed up JavaScript execution with bytecode caching in Bun’s bundler:
+Let's compile this script also into a standalone executable. See from: [Optimization -- Bytecode Caching](https://bun.com/docs/bundler/bytecode#with-standalone-executables), "Speed up JavaScript execution with bytecode caching in Bun’s bundler":
 
 ```
 $ bun build ./random_streams_for_perf_stats.ts --compile --bytecode --outfile=random_streams_for_perf_stats_ts_bun
@@ -128,7 +128,7 @@ $ ldd ./random_streams_for_perf_stats_ts_bun
 $ 
 ```
 
-With about 22 milliseconds, the execution time of the standalone executable is also a little bit compared to the _$ bun_ command with around 23 milliseconds.
+With around 22 milliseconds, the execution time of the standalone executable is also a little bit faster compared to the _$ bun_ command with around 23 milliseconds.
 
 It's file size is also big with 102,377,912 bytes.
 
