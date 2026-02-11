@@ -46,6 +46,7 @@ programming language | execution format | nth Fibonacci number | one program run
 [C++](./fib_recursive_small_argument_GMP.cpp) | compiled with _g++ -O3 ... -lgmpxx -lgmp_ | 47 | 115.44 seconds | _mpz_class_ for large integers | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dart run ./fib_recursive_argument.dart_ \<n\> | 47 | 16.15 seconds | JIT compiled (default) | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dartaotruntime ./fib_recursive_argument.aot_ \<n\> | 47 | 12.89 seconds | AOT compiled | 2026-02-10
+[mawk](,/fib_recursive_argument.awk) | _$ mawk -f fib_recursive_argument.awk_ \<n\> | 47 | 200 seconds | interpreter (VM) for the AWK Programming Language | 2026-02-11
 [PHP](./fib_recursive_argument.php) | _$ php ./fib_recursive_argument.php_ \<n\> | 47 | 99.82 seconds | interpreted Zend VM bytecode | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php -d opcache.enable_cli=1 -d opcache.jit_buffer_size=100M -d opcache.jit=1255 ./fib_recursive_argument.php_ \<n\> | 47 | 27.74 seconds | JIT compiled | 2026-02-10
 [Ruby](./fib_recursive_argument.rb) | _$ ruby ./fib_recursive_argument.rb_ \<n\> | 47 | 150.44 seconds | interpreted YARV VM bytecode | 2026-02-10
@@ -86,6 +87,22 @@ The Ruby 3.2.10 help says this on the JIT compiler switches: _$ ruby --help_
 - _yjit -- in-process JIT compiler (default: disabled)_
 
 By the way: switch _--zjit_ needs a Ruby version >= 4.0 (*)
+
+<br/>
+
+### mawk – pattern scanning and text processing language
+
+https://invisible-island.net/mawk/
+
+Why is mawk ("Mike Brennan’s awk") listed here?
+
+Well, I saw "Gawk" and "Mawk" here at: [Performance comparison of programming languages](https://github.com/trizen/language-benchmarks#performance-comparison-of-programming-languages), a few years old now.
+
+Here's a conclusion on mawk: "mawk is the powerhouse for high-volume data. If your primary bottleneck is execution speed, its bytecode engine is unrivaled. It consistently defines the leading edge of the Pareto frontier, delivering the highest performance-to-resource ratio.": [Practical AWK Benchmarking - Conclusion](https://awklab.com/practical-awk-benchmarking#heading-conclusion) from 2026-02-05
+
+Once, mawk also showed up in this benchmark repository: https://github.com/bddicken/languages/blob/48fce55eef1aab3d88cbc969ae0824d6fca31fcc/run-legacy.sh#L79
+
+So, I thought of cheaply transpiling the Ruby version into a mawk version with the help of "Big AI", and include it in this page, also to show that a UNIX data-driven scripting language with a long history can be used for (smaller) general purpose programming tasks.
 
 <br/>
 
