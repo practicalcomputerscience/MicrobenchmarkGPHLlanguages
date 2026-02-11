@@ -1,5 +1,3 @@
-2026-02-10: work in progress
-
 # Benchmarking with inefficient (recursive) Fibonacci number calculations
 
 When I did [JIT experiments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05c%20-%20PHP%20on%20the%20Zend%20Engine%20virtual%20machine#jit-experiments)
