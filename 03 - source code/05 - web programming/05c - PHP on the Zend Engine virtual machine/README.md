@@ -63,7 +63,7 @@ echo "Time: " . (microtime(true) - $start_time) . "s\n";
 ?>
 ```
 
-First, normal execution of Zend bytecode:
+First, normal interpretation of Zend bytecode:
 
 ```
 $ php ./fib.php
@@ -81,7 +81,7 @@ Time: 0.098063945770264s
 $
 ```
 
-So, running mathematical calculations with JIT compilation in modern PHP can have a substantial effect on the program execution time, here by -68% (measured with: _$ multitime -n 20 php \<switches\> ./fib.php_).
+So, running arithmetic calculations with JIT compilation in modern PHP can have a substantial effect on the program execution time, here by -68% (measured with: _$ multitime -n 20 php \<switches\> ./fib.php_).
 
 <br/>
 
