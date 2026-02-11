@@ -15,6 +15,8 @@ But with (non-trivial) **arithmetic calculations**, just-in-compilation or even 
 
 And a good testing algorithm is the inefficient (recursive) Fibonacci number calculation, as it has been also used to benchmark different Scheme dialects in 2024: [FIB: a classic benchmark, computes fib(n) inefficiently](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#fib-a-classic-benchmark-computes-fibn-inefficiently)
 
+Original source of [FIB -- A classic benchmark, computes fib(35) inefficiently](https://github.com/larcenists/larceny/blob/fef550c7d3923deb7a5a1ccd5a628e54cf231c75/test/Benchmarking/CrossPlatform/src/fib.scm)
+
 <br/>
 
 By the way: calculating Fibonacci numbers recursively is not a good idea algorithmically. There are much more efficient algorithms for this job: [Fast Fibonacci algorithms](https://www.nayuki.io/page/fast-fibonacci-algorithms)
@@ -108,9 +110,9 @@ So, I thought of cheaply transpiling the Ruby version into a mawk version with t
 
 ## Execution speeds diagram
 
-Here, above table in a diagram:
+(Almost all) above table in a diagram:
 
-TBD: extra R script: _mean_stddev_err_whiskers_recursive_fib.R_
+![plot](./mean_stddev_err_whiskers%20--%20recursive_Fibonacci_numbers.png)
 
 <br/>
 
