@@ -8,7 +8,7 @@ Table of contents:
 
 - [Deno](deno)
 - [Bun](bun)
-- [Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js diagram](#microbenchmark-program-in-typescript-execution-speeds-on-bun-deno-and-nodejs-diagram)
+- [Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js](#microbenchmark-program-in-typescript-execution-speeds-on-bun-deno-and-nodejs)
 
 <br/>
 
@@ -142,9 +142,9 @@ It's file size is also big with 102,377,912 bytes.
 
 <br/>
 
-## Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js diagram
+## Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js
 
-Here also combined with the result of TypeScript on node.js from [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant):
+Above results, here also combined with the result of TypeScript on node.js from [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant):
 
 ![plot](./mean_stddev_err_whiskers -- web programming, TypeScript.png)
 
