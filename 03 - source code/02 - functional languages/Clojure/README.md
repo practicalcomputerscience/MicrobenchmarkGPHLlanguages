@@ -135,7 +135,7 @@ Here I refer to the full program with this source code: ![random_bitstring_and_f
 
 ..because from my point of view Clojure is not the easiest functional programming language to learn.
 
-Even experienced Clojure coders can struggle with it, see for example from below at [Clojure is a demanding functional programming language](clojure-is-a-demanding-functional-programming-language). So, some explanations might be helpful.
+Even experienced Clojure coders can struggle with it, see for example from below at [Clojure is a demanding functional programming language](#clojure-is-a-demanding-functional-programming-language). So, some explanations might be helpful.
 
 I **do not** do certain things at the _input_a_valid_number_ function, like for example:
 
