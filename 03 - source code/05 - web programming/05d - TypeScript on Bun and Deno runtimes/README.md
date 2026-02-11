@@ -19,7 +19,8 @@ The script execution time is about 45 milliseconds (_$ multitime -n 20 ..._), wh
 As advertised, I can compile this TypeScript script into a standalone executable like this:
 
 ```
-$ deno compile --unstable-detect-cjs --allow-write --no-check -o random_streams_for_perf_stats_ts_deno ./random_streams_for_perf_stats.ts
+$ deno compile --unstable-detect-cjs --allow-write --no-check \
+-o random_streams_for_perf_stats_ts_deno ./random_streams_for_perf_stats.ts
 $ ./random_streams_for_perf_stats_ts_deno
 ...
 $
