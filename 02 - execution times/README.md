@@ -81,7 +81,9 @@ See more details at page [Scheme](https://github.com/practicalcomputerscience/Mi
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/mean_stddev_err_whiskers%20--%20web%20programming%2C%20full.png)
 
-Well, WebAssembly is also a virtual machine: [The WebAssembly (Wasm) virtual machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)
+Well, WebAssembly and node.js are also virtual machines: [The WebAssembly (Wasm) virtual machine](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine)
+
+And [Deno and Bun](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05d%20-%20TypeScript%20on%20Bun%20and%20Deno%20runtimes) too.
 
 <br/>
 
