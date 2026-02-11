@@ -53,6 +53,8 @@ has even become more blurry in the last couple of years.
 
 With the release of node.js (which natively runs JavaScript and WebAssembly on the [V8 engine](https://v8.dev/)) in 2009, JavaScript also became a back-end programming language: [The Origins of JavaScript: How It Became the Backbone of the Internet](https://medium.com/@Abhishek-Tiwari/the-origins-of-javascript-how-it-became-the-backbone-of-the-internet-2755b1efab1e)
 
+By the way: The "V8 engine" is a stack-based virtual machine, processing bytecode: [Understanding V8’s Bytecode](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775)
+
 <br/>
 
 ## TypeScript and JavaScript
@@ -61,7 +63,7 @@ JavaScript is a "a dynamic just-in-time compiled language": https://www.assembly
 
 <br/>
 
-The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as standard with Ubuntu 24 LTS for example, is too old for it.
+The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as default with Ubuntu 24 LTS for example, is too old for it.
 
 In Linux you can upgrade the node.js version with the nvm, the **Node Version Manager** which allows a node.js installation per Linux user, like this, see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
 
@@ -210,7 +212,11 @@ A WebAssembly binary file can also be compiled from other sources, like:
 Actually, the "WebAssembly binary file" does not represent native, binary machine code (like compiled from C source code for example). It is a standardized bytecode format, which is being
 executed on a stack-based virtual machine inside a web browser or a runtime environment like node.js: https://webassembly.org/
 
-Though, WebAssembly apparently seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html).
+Though, WebAssembly apparently seems to avoid terms "bytecode" and "virtual machine", see for example at pages [Overview](https://webassembly.github.io/spec/core/intro/overview.html) and [Conventions](https://webassembly.github.io/spec/core/binary/conventions.html). This is apparently the same behavior as in the official documentation of Google's V8 engine: https://v8.dev/
+
+<br/>
+
+By the way: 
 
 <br/>
 
