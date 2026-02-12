@@ -1,14 +1,17 @@
 /*
 random_streams_for_perf_stats.ts
 
-2026-01-31
+2026-01-31, 2026-02-12
 
-run on Ubuntu 24 LTS: $ node ./random_streams_for_perf_stats.ts
-                      $ time node ./random_streams_for_perf_stats.ts => real	0m0.072s
+run on Ubuntu 24 LTS: $ node ./random_streams_for_perf_stats.ts                # running on node.js
+                      $ time node ./random_streams_for_perf_stats.ts => real	0m0.066s
                       $ multitime -n 20 node ./random_streams_for_perf_stats.ts
                       =>
                                     Mean        Std.Dev.
-                        real        0.069       0.001
+                        real        0.065       0.001
+
+                      $ deno --allow-write ./random_streams_for_perf_stats.ts  # running on Deno web runtime
+                      $ bun ./random_streams_for_perf_stats.ts                 # running on Bun web runtime
 
 
 $ node -v
@@ -20,7 +23,7 @@ transpiled from random_streams_for_perf_stats.groovy with Duck.ai
 
 */
 
-import * as fs from 'fs';
+import * as fs from 'node:fs';  // node:fs is for deno, but OK for node.js + bun
 
 class random_streams_for_perf_stats {
     static main(): void {
