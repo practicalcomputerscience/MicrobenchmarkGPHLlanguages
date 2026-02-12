@@ -59,6 +59,8 @@ By the way: The "V8 engine" is a stack-based virtual machine, processing bytecod
 
 ## TypeScript and JavaScript
 
+https://www.typescriptlang.org/
+
 JavaScript is a "a dynamic just-in-time compiled language": https://www.assemblyscript.org/introduction.html#frequently-asked-questions
 
 <br/>
