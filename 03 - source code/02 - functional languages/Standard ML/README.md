@@ -39,7 +39,7 @@ Here I'm talking about Standard ML since 1997: https://smlfamily.github.io and s
 - from: http://mlton.org/
 - https://github.com/MLton/mlton
 
-..in order to conveniently make standalone, binary executables for Linux: _$ mlton < your program >.sml_
+..in order to conveniently make standalone, binary executables for Linux: _$ mlton \<your program\>.sml_
 
 ..while in SML/NJ - again - some tinkering with "heap images" is needed: https://www.smlnj.org/doc/heap2exec/index.html
 
