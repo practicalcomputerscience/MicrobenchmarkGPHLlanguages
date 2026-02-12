@@ -37,7 +37,10 @@ But then I discovered that Dart right from start evolved around its own and rich
 
 So, I came to the conclusion that Dart deserves it's own page. A page, which has become much longer than initially anticipated by me. 
 
-By the way: Dart was officially introduced in 2011 as a "programming language for building web applications": [Dart: A language for structured web programming ](https://blog.chromium.org/2011/10/dart-language-for-structured.html)
+By the way:
+
+- Dart was officially introduced in 2011 as a "programming language for building web applications": [Dart: A language for structured web programming ](https://blog.chromium.org/2011/10/dart-language-for-structured.html)
+- nowadays, Dart is strictly, sound, and statically typed, while applying type inference and optionally providing the _dynamic_ type, which defers type checking into the runtime
 
 <br/>
 
