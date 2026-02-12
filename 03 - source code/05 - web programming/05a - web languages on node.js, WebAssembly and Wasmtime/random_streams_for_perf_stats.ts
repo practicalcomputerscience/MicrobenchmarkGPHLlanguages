@@ -16,6 +16,10 @@ run on Ubuntu 24 LTS: $ node ./random_streams_for_perf_stats.ts                #
 
 $ node -v
 v22.21.0
+$ deno -v
+deno 2.6.9
+$ bun -v
+1.3.9
 $
 
 
