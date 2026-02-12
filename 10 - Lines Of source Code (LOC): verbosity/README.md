@@ -59,7 +59,7 @@ PHP               | 118 | usually interpreted, very mature web programming langu
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
-TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language
+TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
@@ -67,12 +67,12 @@ C#                | 109 | interpreted, mature language (together with .NET ecosy
 Julia             | 106 | just-in-time compiled, mature language
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
-Groovy            |  99 | interpreted, very mature language | 2026-02-05
+Groovy            |  99 | interpreted, very mature language (together with Java ecosystem) | 2026-02-05
 Ruby              |  99 | interpreted, very mature language | 2026-01-18
 Scala             |  98 | interpreted, mature language (together with Java ecosystem)
 Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-01-13 
 Mojo              |  91 | compiled, very young language | 2026-01-10
-PowerShell        |  90 | interpreted, mature language (together with .Net ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
+PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
 
 <br/>
