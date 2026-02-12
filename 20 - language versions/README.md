@@ -58,6 +58,7 @@ Scheme, Gambit | v4.9.7 20250713105902 x86_64-pc-linux-gnu "./configure '--enabl
 Scheme, Racket | Welcome to Racket v9.0 [cs]. | $ racket --version
 Standard ML | MLton 20241230 | $ mlton
 Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
+TypeScript | v22.21.0; deno 2.6.9; 1.3.9 | $ node -v; deno -v; bun -v
 V | V 0.4.12 26305ec | $ v version
 Wolfram Language | WolframScript 1.13.0 for Linux x86 (64-bit) | > wolframscript -version
 wren | wren 0.4.0 | $ wren_cli --version
