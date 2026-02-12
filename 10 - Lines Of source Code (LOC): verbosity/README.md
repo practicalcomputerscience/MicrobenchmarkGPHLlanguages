@@ -1,6 +1,6 @@
 # Lines Of source Code (LOC): verbosity
 
-LOC is here understood as Source Lines Of Code or SLOC.
+LOC is here understood as Source Lines Of Code (SLOC).
 
 Table of contents:
 
