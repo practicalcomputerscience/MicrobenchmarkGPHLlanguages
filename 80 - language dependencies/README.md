@@ -71,6 +71,7 @@ Scheme, Gambit | C for gcc | [INSTALL](https://github.com/gambit/gambit/blob/mas
 Scheme, Racket | using Chez Scheme as its core compiler and runtime system | [1.5 Implementations](https://docs.racket-lang.org/reference/implementations.html#(part._implementations))
 Standard ML (MLton) | C for gcc or clang | [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
 Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosted | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
+TypeScript | runtimes: node.js: C and C++; Deno: Rust ; Bun: Zig | Deno: https://docs.deno.com/runtime/; Bun: https://bun.com/docs/runtime
 V | C for gcc or clang or Tiny C Compiler (TCC) | [TCC](https://repo.or.cz/w/tinycc.git) and https://download.savannah.gnu.org/releases/tinycc/
 Wolfram Language | the Wolfram System is "..written in C/C++, Java, and the Wolfram Language.." | [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
 wren | C for gcc (in Linux) to compile wren's virtual machine (vm); uses [libuv](https://libuv.org/), like some others (Bigloo Scheme for example), for asynchronous i⁠/o | GitHub: [vm](https://github.com/wren-lang/wren/tree/main/src/vm); [wren.mk](https://github.com/wren-lang/wren/blob/93dac9132773c5bc0bbe92df5ccbff14da9d25a6/util/wren.mk)
