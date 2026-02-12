@@ -59,6 +59,7 @@ PHP               | 118 | usually interpreted, very mature web programming langu
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
+TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
@@ -124,6 +125,7 @@ Scheme, Bigloo     | 7
 Scheme, Racket     | 5
 Standard ML (MLton) | 8
 Swift              | 1
+TypeScript         | 0
 V                  | 3
 Zig                | 0
 
