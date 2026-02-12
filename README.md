@@ -262,7 +262,7 @@ if reply != 'y':
     WITH_SPECIAL_CHARS = False
 ```
 
-..because I don't want to change to source code in so many programming languages anymore.
+..because I don't want to change the source code in so many programs anymore. Hastly doing this is a risk for correctly working programs.
 
 <br/>
 
