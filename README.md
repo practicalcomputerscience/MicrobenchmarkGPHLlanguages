@@ -264,6 +264,8 @@ if reply != 'y':
 
 ..because I don't want to change the source code in so many programs anymore. Hastly doing this is a risk for correctly working programs.
 
+Ironically, I only noticed this when I (mostly manually) transpiled the [Dart program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_bitstring_and_flexible_password_generator.dart) into a [TypeScript program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_bitstring_and_flexible_password_generator.ts), with TypeScript (and JavaScript) following a rather verbose functional programming style with an arrow function for the reading of a line from the console functionality.
+
 <br/>
 
 ### In terms of execution times this is a string concatenation benchmark
