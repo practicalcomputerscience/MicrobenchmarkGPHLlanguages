@@ -239,6 +239,33 @@ With one prominent language, that is Go, I'm still not sure if this allegedly li
 
 <br/>
 
+By the way: there's some redundancy at the second question with the extra while-loop. Originally, I had a similar idea like at the first question, but I dropped it later for simplicity. I saw no need to duplicate the idea of only accepting secure answers from the user like at the first question. So, every user input different from a clear 'y' is interpreted as not to use special characters:
+
+```
+WITH_SPECIAL_CHARS = True
+answer = False
+while answer is False:
+    reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+    if reply == 'y':
+        answer = True
+    else:
+        WITH_SPECIAL_CHARS = False
+        answer = True
+```
+
+I'm not willing to change it to this:
+
+```
+WITH_SPECIAL_CHARS = True
+reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+if reply != 'y':
+    WITH_SPECIAL_CHARS = False
+```
+
+..because I don't want to change to source code in so many programming languages anymore.
+
+<br/>
+
 ### In terms of execution times this is a string concatenation benchmark
 
 Though, it took me some programming languages to figure this out nonchalantly. 
