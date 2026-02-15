@@ -2,7 +2,7 @@
 /*
 random_streams_for_perf_stats.php
 
-2026-02-09
+2026-02-09, 2026-02-15
 
 run on Ubuntu 24 LTS: $ php ./random_streams_for_perf_stats.php
                       $ time php ./random_streams_for_perf_stats.php => real	0m0.015s
@@ -22,14 +22,14 @@ $
 
 mostly transpiled from random_streams_for_perf_stats.js with Duck.ai
 with a major modification with the introduction of
-user defined function writeToFile() mostly from MS Bing AI
+user defined function write_to_file() mostly from MS Bing AI
 
 */
 
 
 // user defined function:
 // see also at: https://docs.zendframework.com/zend-expressive/v3/features/error-handling/
-function writeToFile(string $filename, string $content, string $type) {
+function write_to_file(string $filename, string $content, string $type) {
     try {
         // Attempt to open the file for writing
         $fileHandle = @fopen($filename, 'w');
@@ -60,7 +60,7 @@ function writeToFile(string $filename, string $content, string $type) {
 // end of user defined function
 
 
-class RandomStreamsForPerfStats {
+class random_streams_for_perf_stats {
     public static function main() {
         $END = 62501;  // 62501 for exactly 1M binary digits
 
@@ -89,13 +89,13 @@ class RandomStreamsForPerfStats {
             $bits_hex .= $bits_hex_str;
         }
 
-        writeToFile($file_bits_x, $bits_x, "bit");
-        writeToFile($file_bits_hex, $bits_hex, "byte");
+        write_to_file($file_bits_x, $bits_x, "bit");
+        write_to_file($file_bits_hex, $bits_hex, "byte");
     }
 }
 
 // Run the main function
-RandomStreamsForPerfStats::main();
+random_streams_for_perf_stats::main();
 
 // end of random_streams_for_perf_stats.php
 ?>

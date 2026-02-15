@@ -2,7 +2,7 @@
 /*
 random_bitstring_and_flexible_password_generator.php
 
-2026-02-09
+2026-02-09, 2026-02-15
 
 run on Ubuntu 24 LTS: $ php ./random_bitstring_and_flexible_password_generator.php
 
@@ -22,7 +22,7 @@ User dialog part partly transpiled from random_bitstring_and_flexible_password_g
 
 // user defined function:
 // see also at: https://docs.zendframework.com/zend-expressive/v3/features/error-handling/
-function writeToFile(string $filename, string $content, string $type) {
+function write_to_file(string $filename, string $content, string $type) {
     try {
         // Attempt to open the file for writing
         $fileHandle = @fopen($filename, 'w');
@@ -53,7 +53,7 @@ function writeToFile(string $filename, string $content, string $type) {
 // end of user defined function
 
 
-class RandomStreamsForPerfStats {
+class random_bitstring_and_flexible_password_generator {
     public static function main() {
         $END = 62501;  // 62501 for exactly 1M binary digits
 
@@ -82,8 +82,8 @@ class RandomStreamsForPerfStats {
             $bits_hex .= $bits_hex_str;
         }
 
-        writeToFile($file_bits_x, $bits_x, "bit");
-        writeToFile($file_bits_hex, $bits_hex, "byte");
+        write_to_file($file_bits_x, $bits_x, "bit");
+        write_to_file($file_bits_hex, $bits_hex, "byte");
 
 
         // Make a password of N_CHAR printable chars: user input requested here
@@ -175,7 +175,7 @@ class RandomStreamsForPerfStats {
 }
 
 // Run the main function
-RandomStreamsForPerfStats::main();
+random_bitstring_and_flexible_password_generator::main();
 
 // end of random_bitstring_and_flexible_password_generator.php
 ?>
