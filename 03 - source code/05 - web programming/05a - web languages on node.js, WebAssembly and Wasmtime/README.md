@@ -387,7 +387,7 @@ I may add: initially, my biggest problem with writing bindings for node.js in my
 @module("fs")  // this is a resource of node.js!
 external writeFileSync: (string, string) => unit = "writeFileSync"
 ...
-module RandomStreamsForPerfStats = {
+module Random_streams_for_perf_stats = {  // 2025-02-15
   let main = () => {
     ...
     try {
