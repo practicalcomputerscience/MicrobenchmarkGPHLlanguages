@@ -2,7 +2,11 @@
 /*
 random_streams_for_perf_stats.php
 
-2026-02-09, 2026-02-15
+2026-02-09
+2026-02-15:
+  changed names RandomStreamsForPerfStats + writeToFile
+  to random_streams_for_perf_stats + write_to_file like in the other languages
+
 
 run on Ubuntu 24 LTS: $ php ./random_streams_for_perf_stats.php
                       $ time php ./random_streams_for_perf_stats.php => real	0m0.015s

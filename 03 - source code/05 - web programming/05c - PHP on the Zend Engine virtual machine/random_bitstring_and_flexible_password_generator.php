@@ -2,7 +2,12 @@
 /*
 random_bitstring_and_flexible_password_generator.php
 
-2026-02-09, 2026-02-15
+2026-02-09
+2026-02-15:
+  changed names RandomBitstringAndFlexiblePasswordGenerator + writeToFile
+  to random_bitstring_and_flexible_password_generator + write_to_file
+  like in the other languages
+
 
 run on Ubuntu 24 LTS: $ php ./random_bitstring_and_flexible_password_generator.php
 
