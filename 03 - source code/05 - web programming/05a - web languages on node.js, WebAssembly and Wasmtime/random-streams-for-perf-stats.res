@@ -50,7 +50,7 @@ external writeFileSync: (string, string) => unit = "writeFileSync"
 
 
 // module names must start with a capital letter:
-module Random_streams_for_perf_stats = {
+module Random_streams_for_perf_stats = {  // 2025-02-15
   let main = () => {
     // Define constants
     let upper_limit = 62501  // 62501 for exactly 1M binary digits
@@ -135,3 +135,4 @@ module Random_streams_for_perf_stats = {
 Random_streams_for_perf_stats.main()
 
 /* end of random-streams-for-perf-stats.res */
+
