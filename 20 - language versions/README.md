@@ -26,7 +26,7 @@ Eiffel, Liberty | ...; Liberty Eiffel The GNU Eiffel Compiler, Eiffel tools and 
 Fortran | GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gfortran --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Gleam | gleam 1.13.0 | $ gleam -V
-Go | go version go1.25.5 linux/amd64 | $ go version
+Go | go version go1.26.0 linux/amd64 | $ go version
 Groovy | Groovy Version: 5.0.4 JVM: 25.0.1 Vendor: Ubuntu OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.1 2025-10-21... | $ groovy --version; $ gradle -v; $ java --version
 Inko | inko 0.19.1 | $ inko --version
 Julia | julia version 1.12.3 | $ julia --version
