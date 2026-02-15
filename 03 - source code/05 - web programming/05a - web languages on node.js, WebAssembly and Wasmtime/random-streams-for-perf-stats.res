@@ -44,7 +44,7 @@ $
 // The easiest way to write to files in Node.js is to use the fs.writeFile() API.
 // https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs
 //
-// it's essential to place these statements outside of module random_streams_for_perf_stats:
+// it's essential to place these statements outside of module Random_streams_for_perf_stats:
 @module("fs")  // this is a resource of node.js!
 external writeFileSync: (string, string) => unit = "writeFileSync"
 
@@ -135,4 +135,5 @@ module Random_streams_for_perf_stats = {  // 2025-02-15
 Random_streams_for_perf_stats.main()
 
 /* end of random-streams-for-perf-stats.res */
+
 
