@@ -85,7 +85,7 @@ class random_bitstring_and_flexible_password_generator {
                 } else {
                     const numberValue = Number(answerStr);
 
-                    if (Number.isInteger(numberValue) && answerStr.trim() !== "" && numberValue >= 8) {
+                    if (Number.isInteger(numberValue) && numberValue >= 8) {
                         N_CHAR = numberValue;
                         askSpecialCharsUsage();
 
