@@ -2,6 +2,13 @@
 
 https://go.dev/
 
+2026-02-15: I updated from Go version 1.25.5 to new version 1.26.0 (with _$ go install golang.org/dl/go1.26.0@latest_ and _$HOME/go/bin/go1.26.0 download; ln go1.26.0 go_; check _~/.bashrc_) to
+see if the new Green Tea garbage collector is also providing execution speed gains in my microbenchmark program: https://antonz.org/go-1-26/#gc
+
+..and I can say: yes, it does! The mean exe speed (_sudo perf stat -r 20 ./random_streams_for_perf_stats_go1.26_) dropped from around 15.1 milliseconds to 14.1 milliseconds (-6.6%).
+
+The [source code](./random_streams_for_perf_stats.go) remains unchanged.
+
 ---
 
 Table of contents:
