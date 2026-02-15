@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.ts
 
 2026-02-12
+2026-02-15: see below
 
 run on Ubuntu 24 LTS: $ node ./random_bitstring_and_flexible_password_generator.ts                 # running on node.js
                       $ deno --allow-write ./random_bitstring_and_flexible_password_generator.ts   # running on Deno web runtime
@@ -103,6 +104,12 @@ class random_bitstring_and_flexible_password_generator {
                 if (answerStr === 'y') {
                     WITH_SPECIAL_CHARS = true;
                 }
+
+                // 2026-02-15:
+                // I moved this needed function call to here from being the very last function call,
+                // just after console.log(`\nYour...`), originally placed by Duck.ai:
+                rl.close();
+
                 charSetBuilding();
             });
         };
@@ -158,7 +165,6 @@ class random_bitstring_and_flexible_password_generator {
             }
 
             console.log(`\nYour password of ${N_CHAR} characters is: ${pw_chars}`);
-            rl.close();
         };
 
         askPasswordLength();
