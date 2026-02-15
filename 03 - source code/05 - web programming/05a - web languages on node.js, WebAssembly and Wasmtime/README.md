@@ -2,7 +2,7 @@
 
 adding:
 
-- CoffeeScript 2
+- CoffeeScript
 - AssemblyScript: https://www.assemblyscript.org/
 - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
@@ -439,7 +439,8 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 
 ## CoffeeScript
 
-CoffeeScript, now in [version 2](https://coffeescript.org/#coffeescript-2), as a tbd alternative to TypeScript (and JavaScript) from my point of view:
+CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 2017, as a viable alternative to TypeScript (and JavaScript)
+with its [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
 
 - TBD: no "functional approach" like in TypeScript (and JavaScript):
 
