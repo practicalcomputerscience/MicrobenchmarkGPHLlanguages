@@ -1,7 +1,7 @@
 /* random-streams-for-perf-stats.res
 
 2026-02-03
-2026-02-15: changed name RandomStreamsForPerfStats to Random_streams_for_perf_stats
+2026-02-15: changed name RandomStreamsForPerfStats to Random_streams_for_perf_stats;
             cannot be random_streams_for_perf_stats like in the other languages,
             because module names must start with a capital letter
 
@@ -135,5 +135,6 @@ module Random_streams_for_perf_stats = {  // 2025-02-15
 Random_streams_for_perf_stats.main()
 
 /* end of random-streams-for-perf-stats.res */
+
 
 
