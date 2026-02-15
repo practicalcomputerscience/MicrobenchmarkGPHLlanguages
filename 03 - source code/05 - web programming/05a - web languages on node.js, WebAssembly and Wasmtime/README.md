@@ -2,6 +2,7 @@
 
 adding:
 
+- CoffeeScript 2
 - AssemblyScript: https://www.assemblyscript.org/
 - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
@@ -19,6 +20,7 @@ Table of contents:
 - [The Wasmtime runtime](#the-wasmtime-runtime)
 - [Ahead-of-time (AOT) compiling with Wasmtime](#ahead-of-time-aot-compiling-with-wasmtime)
 - [ReScript: OCaml's JavaScript](#rescript-ocamls-javascript)
+- [CoffeeScript](#coffeescript)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
@@ -432,6 +434,20 @@ Handling JavaScript exceptions in ReScript (_JsExn(obj)_) is a ReScript resource
 Otherwise, ReScript is the result of a merger of "BuckleScript" and "Reason" in 2020: [BuckleScript & Reason Rebranding](https://rescript-lang.org/blog/bucklescript-is-rebranding/)
 
 So, when you see "bs" in this environment, it may be the short form of BuckleScript.
+
+<br/>
+
+## CoffeeScript
+
+CoffeeScript, now in [version 2](https://coffeescript.org/#coffeescript-2), as a tbd alternative to TypeScript (and JavaScript) from my point of view:
+
+- TBD: no "functional approach" like in TypeScript (and JavaScript):
+
+```
+tbd
+```
+
+TBD
 
 <br/>
 
