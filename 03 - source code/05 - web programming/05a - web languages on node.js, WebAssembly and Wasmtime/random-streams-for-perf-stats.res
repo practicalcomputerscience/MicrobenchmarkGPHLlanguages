@@ -1,6 +1,10 @@
 /* random-streams-for-perf-stats.res
 
 2026-02-03
+2026-02-15: changed name RandomStreamsForPerfStats to Random_streams_for_perf_stats
+            cannot be random_streams_for_perf_stats like in the other languages,
+            because module names must start with a capital letter
+
 
 build on Ubuntu 24 LTS: $ npm create rescript-app@latest
                         set these three project parameters for example:
@@ -40,13 +44,13 @@ $
 // The easiest way to write to files in Node.js is to use the fs.writeFile() API.
 // https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs
 //
-// it's essential to place these statements outside of module RandomStreamsForPerfStats:
+// it's essential to place these statements outside of module random_streams_for_perf_stats:
 @module("fs")  // this is a resource of node.js!
 external writeFileSync: (string, string) => unit = "writeFileSync"
 
 
 // module names must start with a capital letter:
-module RandomStreamsForPerfStats = {
+module Random_streams_for_perf_stats = {
   let main = () => {
     // Define constants
     let upper_limit = 62501  // 62501 for exactly 1M binary digits
@@ -128,6 +132,6 @@ module RandomStreamsForPerfStats = {
 }
 
 // Running the main function
-RandomStreamsForPerfStats.main()
+Random_streams_for_perf_stats.main()
 
 /* end of random-streams-for-perf-stats.res */
