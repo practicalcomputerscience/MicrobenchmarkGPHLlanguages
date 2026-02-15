@@ -69,7 +69,7 @@ JavaScript is a "a dynamic just-in-time compiled language": https://www.assembly
 
 The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as default with Ubuntu 24 LTS for example, is too old for it.
 
-In Linux you can upgrade the node.js version with the nvm, the **Node Version Manager** which allows a node.js installation per Linux user, like this, see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
+In Linux you can upgrade the node.js version with the nvm, the **Node Version Manager**, which allows a node.js installation per Linux user, like this, see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
 
 ```
 $ sudo apt install curl build-essential libssl-dev -y
