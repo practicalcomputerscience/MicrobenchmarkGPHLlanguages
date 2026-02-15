@@ -439,7 +439,7 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 
 ## CoffeeScript
 
-CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 2017, as a viable alternative to TypeScript (and JavaScript)
+CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 2017, is a viable alternative to TypeScript (and JavaScript)
 with its [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
 
 - TBD: no "functional approach" like in TypeScript (and JavaScript):
