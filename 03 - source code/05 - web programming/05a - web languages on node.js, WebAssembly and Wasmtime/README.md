@@ -442,8 +442,8 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 2017, is a viable alternative to TypeScript (and JavaScript)
 with its "pythonic", [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
 
-At least [my version](./random_bitstring_and_flexible_password_generator.coffee) only features two functions ("->"), _main_ and _ask_, while the "functional approach" in TypeScript (and JavaScript) with its
-lambda functions, that are anonymous functions, in the "fat arrow notation" ("=>") increases the level of verbosity:
+At least [my version](./random_bitstring_and_flexible_password_generator.coffee) only features two functions ("->"), _main_ and _ask_, while the functional approach in TypeScript (and JavaScript) with its
+lambda functions, that are anonymous functions, in the "fat arrow notation" ("=>") for node.js resources (which heavily relies on asynchronous programming: [Asynchronous Programming in NodeJS](https://www.geeksforgeeks.org/node-js/asynchronous-patterns-in-node-js/)) increases the level of verbosity:
 
 [TypeScript](./random_bitstring_and_flexible_password_generator.ts) implementation of the first question to the user:
 
