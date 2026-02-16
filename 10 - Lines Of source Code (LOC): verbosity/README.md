@@ -74,6 +74,7 @@ Nim               |  93 | compiled, young language, which is very effective in i
 Mojo              |  91 | compiled, very young language | 2026-01-10
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
 Python            |  87 | interpreted, very mature language
+CoffeeScript      |  86 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-16
 
 <br/>
 
@@ -92,6 +93,7 @@ C3                 | 0
 C#                 | 0
 Chapel             | 1
 Clojure            | 3
+CoffeeScript       | 0
 Common Lisp        | 2
 Crystal            | 0
 D                  | 0
