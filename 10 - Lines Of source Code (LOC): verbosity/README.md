@@ -78,6 +78,10 @@ CoffeeScript      |  86 | compiled to JavaScript, and then interpreted, JIT (Jus
 
 <br/>
 
+2026-02-16: there's a new leader in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and even beating Python, which features one user defined function (_binary_to_string_)
+
+<br/>
+
 ## Number of user defined functions
 
 ..because I didn't find anything useful or reliably working in the (official) language libraries.
