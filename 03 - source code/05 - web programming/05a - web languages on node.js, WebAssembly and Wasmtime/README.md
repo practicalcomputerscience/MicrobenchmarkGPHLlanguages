@@ -440,15 +440,75 @@ So, when you see "bs" in this environment, it may be the short form of BuckleScr
 ## CoffeeScript
 
 CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 2017, is a viable alternative to TypeScript (and JavaScript)
-with its [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
+with its "pythonic", [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
 
-- TBD: no "functional approach" like in TypeScript (and JavaScript):
+At least [my version](./random_bitstring_and_flexible_password_generator.coffee) only features two functions ("->"), _main_ and _ask_, while the "functional approach" in TypeScript (and JavaScript) with its
+lambda functions, that are anonymous functions, in the "fat arrow notation" ("=>") increases the level of verbosity:
+
+[TypeScript](./random_bitstring_and_flexible_password_generator.ts) implementation of the first question to the user:
 
 ```
-tbd
+        let N_CHAR = 12;
+        let answer = false;
+
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        const askPasswordLength = () => {
+            rl.question(`\nPassword of ${N_CHAR} printable chars OK? 'y' or another integer number >= 8: `, (answerStr) => {
+                if (answerStr === 'y') {
+                    answer = true;
+                    askSpecialCharsUsage();
+                } else {
+                    const numberValue = Number(answerStr);
+
+                    if (Number.isInteger(numberValue) && numberValue >= 8) {
+                        N_CHAR = numberValue;
+                        askSpecialCharsUsage();
+
+                    } else {
+                        console.log("enter an integer number >= 8 or 'y'");
+                        askPasswordLength();
+                    }
+                }
+            });
+        };
 ```
 
-TBD
+[CoffeeScript](./random_bitstring_and_flexible_password_generator.coffee) implementation of the first question to the user:
+
+```
+    N_CHAR = 12
+    answer = false
+
+    rl = readline.createInterface
+      input: process.stdin
+      output: process.stdout
+
+    ask = (q) ->
+      new Promise (resolve) ->
+        rl.question q, (ans) -> resolve ans
+
+    while not answer
+      answerStr = await ask "\nPassword of #{N_CHAR} printable chars OK? 'y' or another integer >= 8: "
+
+      if answerStr is 'y'
+        answer = true
+      else
+        numberValue = (Number) answerStr
+
+        if Number.isInteger(numberValue) and numberValue >= 8
+          N_CHAR = numberValue
+          answer = true
+        else
+          console.log "enter an integer number >= 8 or 'y'"
+```
+
+That's 19 source lines of code versus 23.
+
+CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-02-16: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
 <br/>
 
