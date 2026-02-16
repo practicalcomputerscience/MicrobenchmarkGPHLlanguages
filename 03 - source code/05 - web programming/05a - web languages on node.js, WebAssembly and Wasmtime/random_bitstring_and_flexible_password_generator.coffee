@@ -1,6 +1,6 @@
 # random_bitstring_and_flexible_password_generator.coffee
 #
-# 2026-02-15
+# 2026-02-15/16
 #
 # build on Ubuntu 24 LTS: $ npm install prompt-sync  # install, if still missing
 #                         $ coffee -c ./random_bitstring_and_flexible_password_generator.coffee
@@ -24,7 +24,9 @@ fs = require 'fs'
 readline = require 'readline'
 
 class random_bitstring_and_flexible_password_generator
-  @main = (args) ->
+  @main = (args) ->  # 2026-02-16: -> is for a function definition: function_name = -> function_body
+                     # -> becomes in JavaScript: (function() {});
+                     # see: https://www.tutorialspoint.com/coffeescript/coffeescript_functions.htm
     END = 62501  # 62501 for exactly 1M binary digits
     # END = 10  # for testing
 
@@ -59,7 +61,7 @@ class random_bitstring_and_flexible_password_generator
        console.log "Bit stream has been written to disk under name:  #{fileBitsX}"
      catch ex
        console.log "could not write to file: #{fileBitsX}! -- #{ex.message}"
-    
+
      # write byte stream to disk:
      try
        fs.writeFileSync fileBitsHex, bitsHex
@@ -126,26 +128,26 @@ class random_bitstring_and_flexible_password_generator
     i = 0  # char counter for the password
     j = 0  # counter for x
     pw = ""
-    
+
     while i < N_CHAR
       bin = x[j].toString(2).padStart(16, '0')
-    
+
       bin0 = bin[0...8]
       bin1 = bin[8...16]
-    
+
       char0 = String.fromCharCode parseInt(bin0, 2)
       char1 = String.fromCharCode parseInt(bin1, 2)
-    
+
       if char_set.has char0
         pw += char0
         i++
-    
+
       if i < N_CHAR and char_set.has char1
         pw += char1
         i++
-    
+
       j++
-    
+
     console.log "\nYour password of #{N_CHAR} characters is: #{pw}"
 
     rl.close()  # in the Coffeescript variant, this is the last function call, compared to TypeScript/JavaScript
