@@ -443,7 +443,14 @@ CoffeeScript, in [version 2](https://coffeescript.org/#coffeescript-2) since 201
 with its "pythonic", [clean syntax ](https://coffeescript.org/announcing-coffeescript-2/) from my point of view:
 
 At least [my version](./random_bitstring_and_flexible_password_generator.coffee) only features two functions ("->"), _main_ and _ask_, while the functional approach in TypeScript (and JavaScript) with its
-lambda functions, that are anonymous functions, in the "fat arrow notation" ("=>") for node.js resources (which heavily relies on asynchronous programming: [Asynchronous Programming in NodeJS](https://www.geeksforgeeks.org/node-js/asynchronous-patterns-in-node-js/)) increases the level of verbosity:
+lambda functions, that are anonymous functions, in the "fat arrow notation" ("=>") for node.js resources increases the level of verbosity.
+
+Background: node.js heavily relies on asynchronous programming ([Asynchronous Programming in NodeJS](https://www.geeksforgeeks.org/node-js/asynchronous-patterns-in-node-js/)), to which functional programming is a safe and efficient fit:
+
+- [Mastering Functional Programming: A Guide To Asynchronous Data Handling](https://peerdh.com/blogs/programming-insights/mastering-functional-programming-a-guide-to-asynchronous-data-handling)
+- [How Functional Programming Helps With Asynchronous And Parallel Code](https://hamidmosalla.com/2018/05/09/how-functional-programming-helps-with-asynchronous-and-parallel-code/)
+
+<br/>
 
 [TypeScript](./random_bitstring_and_flexible_password_generator.ts) implementation of the first question to the user:
 
