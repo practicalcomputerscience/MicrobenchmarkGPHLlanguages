@@ -2,7 +2,7 @@
 #
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
-# 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12
+# 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -56,7 +56,7 @@ my $language_ext = $file;
 
 
 # language group without block comments:
-my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e");
+my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee");
 
 
 # language groups with block comments:
@@ -89,7 +89,7 @@ $language_ext =~ s/^\w+\.//;
 print "language = ", $language_ext, "\n";
 
 
-if ( grep(/^$language_ext$/, @lang_grp1)) {
+if ( grep(/^$language_ext$/, @lang_grp1)) {  # 
   while ( <FILE> ) {
     chomp( $_ );
 
@@ -106,7 +106,7 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
         $line_cmt_fwdslash_dbl += 1;
       } else {
 
-        # case: # with optionally leading white spaces: Perl, Mojo, Roc, Inko
+        # case: # with optionally leading white spaces: Perl, Mojo, Roc, Inko, CoffeeScript
         if ($_ =~ /^\s*#/) {
           $line_cmt_hash += 1;
         } else {
@@ -641,6 +641,7 @@ if ( grep(/^$language_ext$/, @lang_grp13)) {
     }
   }
 }
+
 
 
 close( FILE );
