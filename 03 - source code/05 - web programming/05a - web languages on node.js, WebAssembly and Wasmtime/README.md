@@ -521,7 +521,7 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 
 ## Complete execution speeds diagram
 
-Here's the updated execution speeds diagram with the additional results from ReScript, WebAssembly and Wasmtime, the later concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
+Here's the updated execution speeds diagram with additional results from ReScript, CoffeeScript, WebAssembly and Wasmtime, the last two concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
