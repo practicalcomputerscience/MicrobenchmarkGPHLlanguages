@@ -238,7 +238,7 @@ $
 
 <br/>
 
-However, executable _random_streams_for_perf_stats.exe_ is often not portable to another, "foreign" Linux system, a Linux system which doesn't feature the same Linux kernel version for _linux-vdso.so.1_ (in this case for kernel version _6.14.0-37-generic_; see with command: _$ uname -a_) for example.
+However, executable _random_streams_for_perf_stats.exe_ is often not portable to another, "foreign" Linux system, a Linux system which doesn't feature the same Linux kernel version for _linux-vdso.so.1_ (in this case for kernel version _6.17.0-14-generic_ as of 2026-02-17; see with command: _$ uname -a_) for example.
 
 This executable has also other dependencies, which can be seen with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command, and which may also be missing at the target Linux system:
 
