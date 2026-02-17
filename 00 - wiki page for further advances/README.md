@@ -6,6 +6,8 @@
 
 <br/>
 
+- 2026-02-17: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript)
+
 - 2026-02-12: TypeScript: [05d - TypeScript on Bun and Deno runtimes](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05d%20-%20TypeScript%20on%20Bun%20and%20Deno%20runtimes) + [TypeScript and JavaScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#typescript-and-javascript)
 
 - 2026-02-11: [PHP](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05c%20-%20PHP%20on%20the%20Zend%20Engine%20virtual%20machine#php)
