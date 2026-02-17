@@ -4,7 +4,15 @@ https://www.python.org/
 
 ---
 
+Table of contents:
+
+- [On Python environments](#on-python-environments)
+- [Version experiments and just-in-time (JIT) compilation in Python](#version-experiments-and-just-in-time-jit-compilation-in-python)
+- [SPy: statically compilable Python](#spy-statically-compilable-python)
+
 <br/>
+
+---
 
 ## On Python environments
 
@@ -89,6 +97,20 @@ $ /usr/local/bin/python3.14 -c "import sys; print(sys._jit.is_enabled())"
 True  # JIT should be on now
 $
 ```
+
+<br/>
+
+### SPy: statically compilable Python
+
+> SPy is a variant of Python specifically designed to be statically compilable while retaining a lot of the "useful" dynamic parts of Python.
+
+from: https://github.com/spylang/spy
+
+<br/>
+
+[Inside SPy🥸, part 1: Motivations and Goals](https://antocuni.eu/2025/10/29/inside-spy-part-1-motivations-and-goals/?utm_source=www.pythonweekly.com&utm_medium=newsletter&utm_campaign=python-weekly-issue-720-october-30-2025&_bhlid=5644a7fa95afb3696ed9c70acf4712f2ef0bf95f#inside-spy-part-1-motivations-and-goals) from Oct 29, 2025:
+
+> Thanks to my work on PyPy, I came to the conclusion that Python is fundamentally impossible to optimize to the level of performance which I aim for. ... The first problem is that Python is extremely dynamic.
 
 <br/>
 
