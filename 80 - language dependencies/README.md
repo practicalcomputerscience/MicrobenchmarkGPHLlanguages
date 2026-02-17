@@ -30,6 +30,7 @@ C# | the C# compiler, _csc.exe_ or named _Roslyn_, is self-hosted nowadays; Micr
 C3 | C for LLVM | [Compiling on Ubuntu 24.04 LTS](https://github.com/c3lang/c3c#compiling-on-ubuntu-2404-lts)
 Chapel | C++ for LLVM and clang | [Building From Source](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#building-from-source)
 Clojure | Clojure's core for the JVM is written exclusively in [Java](https://github.com/clojure/clojure/tree/master/src/jvm/clojure), while the [core Clojure language](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj) is then exclusively written in Clojure, so it's partly self-hosted | the Java compiler itself is completely self-hosted since the late 90ies at least, see below at [Java](#java)
+CoffeeScript | self-hosted for transpiling CoffeeScript code into JavaScript code | https://github.com/jashkenas/coffeescript/tree/main
 Common Lisp (SBCL) | self-hosted; an ANSI-compliant Common Lisp implementation is needed for compilation | https://www.sbcl.org/getting.html
 Crystal | bootstrapping by using an older version of the Crystal compiler; self-hosted since 2013; LLVM is still needed; the Crystal compiler was originally written in Ruby | https://crystal-lang.org/install/from_sources/
 D | LDC (LLVM-based D Compiler): D + C++ + C; DMD (Digital Mars D compiler): D + C++ + C | https://github.com/ldc-developers/ldc; https://github.com/dlang/dmd; https://github.com/D-Programming-GDC/gcc
