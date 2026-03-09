@@ -7,6 +7,10 @@ Can this very elegant solution be used in other languages, which need an extra u
           TO BITS-HEX-STR(STR-INDEX:1)
 ```
 
+to-do:
+
+- make record of int random numbers: see from bubble_sort2.cob: WS-NUMBERS
+
 <br/>
 
 # COBOL
