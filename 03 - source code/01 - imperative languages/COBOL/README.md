@@ -1,5 +1,14 @@
 2026-03-09: work in progress
 
+Can this very elegant solution be used in other languages, which need an extra user defined function for the int number to hex string conversion?
+
+```
+        MOVE HEX-DIGITS(REM-HEX-VAL + 1:1)  *> source: "0123456789abcdef". This is a very elegant solution!!
+          TO BITS-HEX-STR(STR-INDEX:1)
+```
+
+<br/>
+
 # COBOL
 
 COBOL for: "Common Business Oriented Language": 
