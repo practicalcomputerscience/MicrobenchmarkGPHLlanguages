@@ -14,9 +14,28 @@ At first, I had no intention to implement the microbenchmark program in a langua
 
 2026-02-24: [IBM Sinks Most Since 2000 as Anthropic Touts Cobol Tool](https://finance.yahoo.com/news/ibm-sinks-most-since-2000-210436663.html)
 
-..COBOL made it into the news again recently, and so I just got curious how this archaic programming language would do with this microbenchmark program.
+..allegedly still widely used COBOL made it into the news again recently, and so I just got curious how this archaic, general purpose programming language (*1960: https://en.wikipedia.org/wiki/COBOL#History_and_specification) would do in this microbenchmark program.
+
+<br/>
+
+## Installation tips
+
+Install and test gnuCOBOL in Ubuntu (24 LTS) like this:
+
+```
+$ sudo apt install gnucobol
+...
+$ cobc -V
+cobc (GnuCOBOL) 3.1.2.0
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+...
+$
+```
 
 TBD
+
+
 
 <br/>
 
