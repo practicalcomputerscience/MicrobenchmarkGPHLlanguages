@@ -6,9 +6,13 @@
 
 COBOL for: "Common Business Oriented Language": 
 
-https://gnucobol.sourceforge.io/
+- https://gnucobol.sourceforge.io/
 
-https://www.iso.org/standard/74527.html
+- https://sourceforge.net/projects/gnucobol/files/gnucobol/3.2/
+
+- https://sourceforge.net/projects/gnucobol/files/gnucobol/nightly_snapshots/
+
+- https://www.iso.org/standard/74527.html
 
 <br/>
 
@@ -76,7 +80,7 @@ However, I thought that even in COBOL, the microbenchmark program is still not t
 
 <br/>
 
-## Optimizations
+## Trials for improvement of execution speed
 
 I played with compiler optimization switches, like _-O3_ for example, only to notice that at least with this microbenchmark program there's no advantage in execution speed, but in a smaller size of the executable. So, I'm not officially using them.
 
