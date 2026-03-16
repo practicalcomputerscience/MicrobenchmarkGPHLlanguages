@@ -10,7 +10,20 @@ COBOL for: "Common Business Oriented Language":
 
 - https://www.iso.org/standard/74527.html
 
+---
+
+Table of contents:
+
+- [Introduction](#introduction)
+- [Installation tips](#installation-tips)
+- [How to find available built-in functions in GnuCOBOL?](#how-to-find-available-built-in-functions-in-gnucobol)
+- [Trials for improvement of execution speed](#trials-for-improvement-of-execution-speed)
+
 <br/>
+
+---
+
+## Introduction
 
 At first, I had no intention to implement the microbenchmark program in a language which is supposed to be on the way out. However, with the rise of AI coding:
 
@@ -107,9 +120,18 @@ $
 
 <br/>
 
-Here's the background of this issue: in my [COBOL implementation](./flexible_password_generator.cob) of the microbenchmark program, I haven't implemented any **user defined functions** (UDF's), like in other languages which miss certain functionalities (at least in the older COBOL version I have used, see above). Instead, I implemented **used defined procedures**, namely _CONVERT-TO-BINARY_, _CONVERT-TO-HEX_ and _BINARY-STR-TO-UNSIGNED-INT_, which make use of program-wide variables. Of course, this concept is error prone.
+## User-defined functions in COBOL
 
-However, I thought that even in COBOL, the microbenchmark program is still not too complex to justify the effort to write more COBOL code, something which is needed for UDF's compared to user defined procedures. See from here for example: [COBOL user-defined function definition structure](https://www.ibm.com/docs/en/cobol-zos/6.5.0?topic=structure-cobol-user-defined-function-definition)
+Here's the background of the prior chapter: in my [COBOL implementation](./flexible_password_generator.cob) of the microbenchmark program, I haven't implemented any **user-defined functions** (UDF's), like in other languages which miss certain functionalities (at least in the older COBOL version I have used, see above). Instead, I implemented **used defined procedures**, namely _CONVERT-TO-BINARY_, _CONVERT-TO-HEX_ and _BINARY-STR-TO-UNSIGNED-INT_, which make use of program-wide variables. Of course, this concept is error prone.
+
+However, I thought that even in COBOL, the microbenchmark program is still not too complex to justify the effort to write more COBOL code, something which is needed for UDF's compared to user-defined procedures. See from here for example: [COBOL user-defined function definition structure](https://www.ibm.com/docs/en/cobol-zos/6.5.0?topic=structure-cobol-user-defined-function-definition)
+
+<br/>
+
+User-defined functions have only been officially introduced with the revision of the ISO/IEC 1989 standard in 2002:
+
+- [The History of COBOL](https://timthewebmaster.com/media/files/XX/History_of_COBOL.pdf) from 2010
+- [A Lasting Legacy: Thoughts on COBOL](https://datagubbe.se/cobol/) from 2021
 
 <br/>
 
