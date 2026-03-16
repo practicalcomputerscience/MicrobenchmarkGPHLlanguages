@@ -30,7 +30,7 @@ Since Bigloo Scheme is (now) listed in the [Master diagram with most program env
 
 However, Bigloo Scheme doesn't have so "big batteries" than Racket Scheme, and thus it's number of lines of source code is higher with 124 versus 110 for Racket Scheme: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list).
 
-[Number of user defined functions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#number-of-user-defined-functions) is also higher with 7 versus 5 for Racket Scheme.
+[Number of user-defined functions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#number-of-user-defined-functions) is also higher with 7 versus 5 for Racket Scheme.
 
 But what counts more are **substantial algorithmic differences** between Bigloo and Racket Scheme, even visible in this rather short program.
 
@@ -46,7 +46,7 @@ One example is **program execution order**, which can be easily maintained in (i
   ...
 ```
 
-Such a construct is not working as intended in Bigloo Scheme, where procedure _input_a_valid_number_ as a user defined function would be executed **before** "generating a random bit stream..." is being displayed.
+Such a construct is not working as intended in Bigloo Scheme, where procedure _input_a_valid_number_ as a user-defined function would be executed **before** "generating a random bit stream..." is being displayed.
 
 To prevent this in Bigloo Scheme, one must first define _n_char_ and then imperatively set it like this:
 
@@ -84,7 +84,7 @@ The definition of _char_set_ pretty well highlights, what it means to have "smal
                      (string-from-range 97 122))))
 ```
 
-Here's the definition of string _char_set_ with Racket Scheme, an elegant construct, which doesn't need any user defined functions:
+Here's the definition of string _char_set_ with Racket Scheme, an elegant construct, which doesn't need any user-defined functions:
 
 ```
   (define char_set
