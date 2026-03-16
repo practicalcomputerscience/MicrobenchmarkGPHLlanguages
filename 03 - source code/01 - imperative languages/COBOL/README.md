@@ -46,7 +46,9 @@ $
 
 Version 3.1.2.0 is not the latest (stable) version, but the easiest to install successfully in Ubuntu 24 LTS.
 
-I also tried to build version 3.3 from sources (https://sourceforge.net/projects/gnucobol/files/gnucobol/nightly_snapshots/), only to fail at first.
+<br/>
+
+I also tried to build version 3.3-dev from sources (https://sourceforge.net/projects/gnucobol/files/gnucobol/nightly_snapshots/), only to fail at first.
 
 But then "Big AI" helped me out with the installation procedure, indicating that some potentially missing tools may have to be installed first:
 
@@ -77,7 +79,9 @@ Written by Keisuke Nishida, Roger While, Ron Norman, Simon Sobisch, Edward Hart
 $ 
 ```
 
-tbd
+However, I couldn't detect any improvement in terms of execution speed from an executable being built with _cobc (GnuCOBOL) 3.3-dev.0_.
+
+Although, one advantage of a more modern version of GnuCOBOL would be to have more built-in functions available, including _HEX-OF_, see below.
 
 <br/>
 
@@ -86,7 +90,7 @@ tbd
 Just like this:
 
 ```
-$ cobc --list-intrinsics
+$ HEX-OF
 
 Intrinsic Function              Implemented     Parameters
 ABS                             Yes             1
