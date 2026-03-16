@@ -49,7 +49,7 @@ At first, I set a new "record" in slowliness with this solution, resulting at 53
 - finally, I convert the vector first into a list with the _vector->list_ function and then this list with the _string-join_ function (from the _racket/string_ library) into the resulting string
 - there are other little (and cheap) tricks involved, but they are not really moving the needle
 
-So, this is basically the old solution (here without user defined functions etc.):
+So, this is basically the old solution (here without user-defined functions etc.):
 
 ```
 #lang racket/base        ; this is supposed to make a little faster solution
