@@ -33,9 +33,9 @@ test # | construct | compiler switches | exe time in milliseconds | comment
 3 | _rope_ | _-d:release_ | ~41 |
 4 | _rope_ | _-d:danger_ | ~39 | so, the _-d:danger_ switch can apparently squeeze out some extra exe time
 5 | _seq[string] = @[]_ | _-d:release_ | ~53 | starting with an empty array, a container type under the _openArray_ umbrella; then adding the individual strings
-6 | _proc integerToBinString()_ | -d:danger | ~30 | replacing built-in function _fmt"{x[i]:016b}"_ with a user defined function
+6 | _proc integerToBinString()_ | -d:danger | ~30 | replacing built-in function _fmt"{x[i]:016b}"_ with a user-defined function
 
-I guess it's highly probable that replacing the other built-in function _fmt"{x[i]:04x}"_ with a user defined function would again lower the execution time.
+I guess it's highly probable that replacing the other built-in function _fmt"{x[i]:04x}"_ with a user-defined function would again lower the execution time.
 
 However, since I'm not doing it in my official [C version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs), I'm also not doing it here beyond some experimentation.
 
