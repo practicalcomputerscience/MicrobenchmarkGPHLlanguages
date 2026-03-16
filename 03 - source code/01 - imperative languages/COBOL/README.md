@@ -44,7 +44,40 @@ C version "13.2.0"
 $
 ```
 
-Version 3.1.2.0 is not the latest (stable) version, but the easiest to install successfully in Ubuntu 24 LTS. I quickly tried to build version 3.3 from sources, only to fail.
+Version 3.1.2.0 is not the latest (stable) version, but the easiest to install successfully in Ubuntu 24 LTS.
+
+I also tried to build version 3.3 from sources (https://sourceforge.net/projects/gnucobol/files/gnucobol/nightly_snapshots/), only to fail at first.
+
+But then "Big AI" helped me out with the installation procedure, indicating that some potentially missing tools may have to be installed first:
+
+```
+$ sudo apt install -y gcc make libncurses-dev libdb-dev bison flex
+...
+$ ./configure  # located in subdirectory ./gnucobol-3.3-dev for example
+...
+$ make
+...
+$ make check
+...
+1338 tests behaved as expected.
+18 tests were skipped.
+...
+$ sudo make install
+...
+$ sudo ldconfig  # make sure the system can find the new GnuCOBOL libraries
+...
+$ cobc --version
+cobc (GnuCOBOL) 3.3-dev.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Written by Keisuke Nishida, Roger While, Ron Norman, Simon Sobisch, Edward Hart
+$ 
+```
+
+tbd
 
 <br/>
 
