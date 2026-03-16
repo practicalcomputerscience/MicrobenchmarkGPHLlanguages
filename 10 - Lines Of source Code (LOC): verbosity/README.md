@@ -6,7 +6,7 @@ Table of contents:
 
 - [Idea of this page](#idea-of-this-page)
 - [LOC ranking list](#loc-ranking-list)
-- [Number of user defined functions](#number-of-user-defined-functions)
+- [Number of user-defined functions](#number-of-user-defined-functions)
 - [Ranking popular programming languages by density](#ranking-popular-programming-languages-by-density)
 
 <br/>
@@ -78,17 +78,17 @@ CoffeeScript      |  86 | compiled to JavaScript, and then interpreted, JIT (Jus
 
 <br/>
 
-2026-02-16: there's a new leader in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and even beating Python, which features one user defined function (_binary_to_string_)
+2026-02-16: there's a new leader in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and even beating Python, which features one user-defined function (_binary_to_string_)
 
 <br/>
 
-## Number of user defined functions
+## Number of user-defined functions
 
 ..because I didn't find anything useful or reliably working in the (official) language libraries.
 
 The results of this list have been manually counted:
 
-programming language | number of user defined functions
+programming language | number of user-defined functions
 --- | ---
 Ada                | 2
 C                  | 0
@@ -97,6 +97,7 @@ C3                 | 0
 C#                 | 0
 Chapel             | 1
 Clojure            | 3
+COBOL (GnuCOBOL)   | 3 (user-defined procedures)
 CoffeeScript       | 0
 Common Lisp        | 2
 Crystal            | 0
