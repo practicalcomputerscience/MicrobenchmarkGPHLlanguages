@@ -108,7 +108,7 @@ Without _Pause[0.65];_, the next prompt for user input after some invalid user i
 
 ## Error Handling
 
-Error handling in the Wolfram language is done with the [Check](https://reference.wolfram.com/language/ref/Check.html) function, and can be fine-tuned, like in user defined function [exportData](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_bitstring_and_flexible_password_generator.wls), which is here just named after its main function, the _Export[]_ function, for writing the final strings to files: 
+Error handling in the Wolfram language is done with the [Check](https://reference.wolfram.com/language/ref/Check.html) function, and can be fine-tuned, like in user-defined function [exportData](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Wolfram%20Language/random_bitstring_and_flexible_password_generator.wls), which is here just named after its main function, the _Export[]_ function, for writing the final strings to files: 
 
 ```
 exportData[data_, filePath_, type_] := Module[
