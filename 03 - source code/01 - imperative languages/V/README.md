@@ -30,7 +30,7 @@ from: [source code](https://github.com/practicalcomputerscience/MicrobenchmarkGP
 
 <br/>
 
-The standard library (https://modules.vlang.io/) is decent but still needs fixing. So, I had to write my own user defined functions based on code I found in the V libraries. However, that made the programm a little bit faster because general functionality is not supported here.
+The standard library (https://modules.vlang.io/) is decent but still needs fixing. So, I had to write my own user-defined functions based on code I found in the V libraries. However, that made the programm a little bit faster because general functionality is not supported here.
 
 <br/>
 
