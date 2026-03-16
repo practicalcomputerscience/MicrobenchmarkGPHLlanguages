@@ -156,14 +156,14 @@ Then I started to experiment, and discovered that an initial memory allocation m
 
 Liberty Eiffel offers the possibility to convert an integer number into its hexadecimal representation as a string with function [to_hexadecimal](https://doc.liberty-eiffel.org/api/libraries/api/liberty_core.d/numeric.d/loadpath.se.d/NATURAL_GENERAL.html#to_hexadecimal), but not into its binary representation. This string result also needs further processing for trimming it down to 4 hexdecimal digits, and finally converting upper case characters for digits _A ... F_ into their lower cases.
 
-Since also my [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) solution implements user defined functions for both conversion jobs, I would say it's fair to use two user defined functions also in the Eiffel program:
+Since also my [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) solution implements user-defined functions for both conversion jobs, I would say it's fair to use two user-defined functions also in the Eiffel program:
 
 test # | construct | compiler switches | exe time in milliseconds | comment
 --- | --- | --- | --- | ---
 1 | _create bits_x.make_empty; bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~31 | using builtin function for integer to hexadecimal representation string
 2 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~29 | using builtin function for integer to hexadecimal representation string
-3 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~27 | using also a user defined function for integer to hexadecimal representation string
-4 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with switch _-O3_ for gcc | ~24.5 | using also a user defined function for integer to hexadecimal representation string
+3 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with default switch _-O2_ for gcc | ~27 | using also a user-defined function for integer to hexadecimal representation string
+4 | _create bits_x.make (M1); bits_x.append (bits_x_str)_ | _-boost_ with switch _-O3_ for gcc | ~24.5 | using also a user-defined function for integer to hexadecimal representation string
 
 <br/>
 
