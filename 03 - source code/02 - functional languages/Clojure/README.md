@@ -106,7 +106,7 @@ This alone, and no other experiments, including experimenting with _Transient Da
 
 ## On complexity in Clojure
 
-Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) and specifically to this user defined function:
+Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) and specifically to this user-defined function:
 
 ```
 (defn input_a_valid_number [n_char]
@@ -153,7 +153,7 @@ I'm not so surprised to see the _loop-recur_ pair as a common proposal for all k
 Instead I do this:
 
 - using special form _do_: https://clojuredocs.org/clojure.core/do -- this simple form has become my "Swiss army knife" in Clojure: it's good for my imperative coding style impetus: I just concatenate some expressions to do stuff in a sequential order and the (return value of the) last expression wins
-- doing recursion the simple way, with first thinking of how _if-then-else_ works in a specific functional programming language: above I recursively call user defined function _input_a_valid_number_ inside two _do_ forms as part of the _then_-part. And this in the same way I call _input_a_valid_number_ from the _main_ function: no _recur_ (in Clojure), or _let rec_ like in the ![OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) version, to be seen!
+- doing recursion the simple way, with first thinking of how _if-then-else_ works in a specific functional programming language: above I recursively call user-defined function _input_a_valid_number_ inside two _do_ forms as part of the _then_-part. And this in the same way I call _input_a_valid_number_ from the _main_ function: no _recur_ (in Clojure), or _let rec_ like in the ![OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) version, to be seen!
 
 <br/>
 
@@ -163,7 +163,7 @@ Some other tips for the ubiquitous recursive loops in Clojure, so for the _**loo
 
 - try to avoid fancy _atom, (let […] (…)_) or other constructs
 - instead, make inside the loop some (immutable) variable definitions with _(def varN (<more or less complex, potentially conditionally based (if-then-else), calc’s for varN>))_ because they can potentially all be used at the final loop expression at _(recur …)_
-- some of these calculations can be done in user defined functions outside of this (bigger) loop to maintain good oversight
+- some of these calculations can be done in user-defined functions outside of this (bigger) loop to maintain good oversight
 - with that, you are going to have a rather simple tail recursion at _(recur …)_, which in return is also simplifying the _(loop […] …)_ part: simple at the bottom, simple at the top!
 - and: you probably can use some of these intermediate “inside-the-loop-variables” at the _Accept_ and _Return_ parts of the CPS (**Continuation-Passing Style**), that is the last if (Accept)-then (Return)-else (Continuation) construct, with _Continuation_ being the tail recursion
 
