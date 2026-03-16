@@ -1,23 +1,12 @@
 2026-03-09: work in progress
 
-Can this very elegant solution be used in other languages, which need an extra user defined function for the int number to hex string conversion?
-
-```
-        MOVE HEX-DIGITS(REM-HEX-VAL + 1:1)  *> source: "0123456789abcdef". This is a very elegant solution!!
-          TO BITS-HEX-STR(STR-INDEX:1)
-```
-
-to-do:
-
-- make record of int random numbers: see from bubble_sort2.cob: WS-NUMBERS
-
 <br/>
 
 # COBOL
 
 COBOL for: "Common Business Oriented Language": 
 
-https://savannah.gnu.org/projects/gnucobol
+https://gnucobol.sourceforge.io/
 
 https://www.iso.org/standard/74527.html
 
@@ -51,9 +40,70 @@ C version "13.2.0"
 $
 ```
 
-TBD
+Version 3.1.2.0 is not the latest (stable) version, but the easiest to install successfully in Ubuntu 24 LTS. I quickly tried to build version 3.3 from sources, only to fail.
 
+<br/>
 
+## How to find available built-in functions in GnuCOBOL?
+
+Just like this:
+
+```
+$ cobc --list-intrinsics
+
+Intrinsic Function              Implemented     Parameters
+ABS                             Yes             1
+ACOS                            Yes             1
+ANNUITY                         Yes             2
+ASIN                            Yes             1
+ATAN                            Yes             1
+BOOLEAN-OF-INTEGER              No              2
+BYTE-LENGTH                     Yes             1 - 2
+...
+TRIM                            Yes             1 - 2
+UPPER-CASE                      Yes             1
+VARIANCE                        Yes             Unlimited
+WHEN-COMPILED                   Yes             0
+YEAR-TO-YYYY                    Yes             1 - 3
+$ 
+```
+
+<br/>
+
+Here's the background for this issue: in my COBOL implementation of the microbenchmark program, I haven't implemented any **user defined functions** (UDF's), like in other languages which miss certain functionalities (at least in the older COBOL version I have used, see above). Instead, I implemented **used defined procedures**, namely _CONVERT-TO-BINARY_, _CONVERT-TO-HEX_ and _BINARY-STR-TO-UNSIGNED-INT_, which make use of program-wide variables. Of course, this concept is error prone.
+
+However, I thought that even in COBOL, the microbenchmark program is still not too complex to justify the effort to write more COBOL code, something which is needed for UDF's compared to user defined procedures. See from here for example: [COBOL user-defined function definition structure](https://www.ibm.com/docs/en/cobol-zos/6.5.0?topic=structure-cobol-user-defined-function-definition)
+
+<br/>
+
+## Optimizations
+
+I played with compiler optimization switches, like _-O3_ for example, only to notice that at least with this microbenchmark program there's no advantage in execution speed, but in a smaller size of the executable. So, I'm not officially using them.
+
+Instead, I also tried the alternative (and experimental) **gcobol** compiler:
+
+- download the pre-compiled ~.deb package from here: https://gitlab.cobolworx.com/COBOLworx/gcc-cobol/-/packages/6
+
+..and then installed this Debian package (in Ubuntu):
+
+```
+$ sudo dpkg -i gcobol-16_16.0.1.20260311-10a0db-ubu20_x86_64.deb
+$ gcobol --version
+gcobol (GCOBOL-16.0.1.20260311-10a0db-ubu20) 16.0.1 20260311 (experimental)
+...
+$ gcobol -W -O3 random_streams_for_perf_stats.cob -o random_streams_for_perf_stats_gcobol
+$ time ./random_streams_for_perf_stats_gcobol
+...
+real	0m0.734s
+...
+$
+```
+
+So, at least with this microbenchmark program there's no advantage in execution speed when compiling with this (new and free to use) COBOL compiler compared to GnuCOBOL, which makes an executable that takes about 430 milliseconds to run (as of 2026-03-16).
+
+I didn't try [IBM COBOL](https://www.ibm.com/products/cobol-compiler-linux-x86), which is said to compile to fast machine code.
+
+The last two compilers skip the step of first transpiling COBOL source code into C source code, like GnuCOBOL does, and - with an intermediate step at gcobol at least - compile more or less directly into machine code.
 
 <br/>
 
