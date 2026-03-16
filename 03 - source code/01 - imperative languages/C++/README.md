@@ -37,7 +37,7 @@ language | function call
 C | _sprintf(bits_x_str, "%016b", x[i]);_
 C++ | _std::format_to(bits_x_str, "{:016b}", x[i]);_
 
-However, I haven't done experiments, with the usual replacements with user defined functions, to support my suspicion.
+However, I haven't done experiments, with the usual replacements with user-defined functions, to support my suspicion.
 
 <br/>
 
