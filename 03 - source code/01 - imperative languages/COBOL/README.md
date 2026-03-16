@@ -1,7 +1,3 @@
-2026-03-09: work in progress
-
-<br/>
-
 # COBOL
 
 COBOL for: "Common Business Oriented Language": 
@@ -20,7 +16,7 @@ At first, I had no intention to implement the microbenchmark program in a langua
 
 2026-02-24: [IBM Sinks Most Since 2000 as Anthropic Touts Cobol Tool](https://finance.yahoo.com/news/ibm-sinks-most-since-2000-210436663.html)
 
-..allegedly still widely used COBOL made it into the news again recently, and so I just got curious how this archaic, general purpose programming language (*1960: https://en.wikipedia.org/wiki/COBOL#History_and_specification) would do in this microbenchmark program.
+..allegedly still widely used COBOL made it into the news again, and so I just got curious how this archaic, general purpose programming language (*1960: https://en.wikipedia.org/wiki/COBOL#History_and_specification) would do in this microbenchmark program.
 
 <br/>
 
@@ -111,7 +107,7 @@ $
 
 <br/>
 
-Here's the background for this issue: in my COBOL implementation of the microbenchmark program, I haven't implemented any **user defined functions** (UDF's), like in other languages which miss certain functionalities (at least in the older COBOL version I have used, see above). Instead, I implemented **used defined procedures**, namely _CONVERT-TO-BINARY_, _CONVERT-TO-HEX_ and _BINARY-STR-TO-UNSIGNED-INT_, which make use of program-wide variables. Of course, this concept is error prone.
+Here's the background of this issue: in my [COBOL implementation](./flexible_password_generator.cob) of the microbenchmark program, I haven't implemented any **user defined functions** (UDF's), like in other languages which miss certain functionalities (at least in the older COBOL version I have used, see above). Instead, I implemented **used defined procedures**, namely _CONVERT-TO-BINARY_, _CONVERT-TO-HEX_ and _BINARY-STR-TO-UNSIGNED-INT_, which make use of program-wide variables. Of course, this concept is error prone.
 
 However, I thought that even in COBOL, the microbenchmark program is still not too complex to justify the effort to write more COBOL code, something which is needed for UDF's compared to user defined procedures. See from here for example: [COBOL user-defined function definition structure](https://www.ibm.com/docs/en/cobol-zos/6.5.0?topic=structure-cobol-user-defined-function-definition)
 
