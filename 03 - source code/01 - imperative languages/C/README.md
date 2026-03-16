@@ -79,7 +79,7 @@ $
 
 Long story short, conversion specifier _b_, or _B_, which doesn't make sense here, is indeed not part of the official language specification (https://en.cppreference.com/w/c/io/fprintf), but just works in C and Checked C.
 
-So, I came to the conclusion to also have a user defined function for this job of converting a bounded, positive integer number into its binary representation with 16 '0' and '1' characters in order to get rid off this warning:
+So, I came to the conclusion to also have a user-defined function for this job of converting a bounded, positive integer number into its binary representation with 16 '0' and '1' characters in order to get rid off this warning:
 
 ```
 void integer_to_bin_string(int n, char *binary_str) {
@@ -101,7 +101,7 @@ $ ~/scripts/Checked_C/CheckedC-Clang-12.0.0git-Linux/bin/clang ./random_streams_
 
 Be aware that Checked C brings along its own version of the clang compiler: https://github.com/checkedc/checkedc-clang/releases/tag/CheckedC-Clang-12.0.2
 
-Then I became even more aggressive and also introduced a user defined function for the generation of the hexadecimal representation in a 4-character string with _char *integer_to_hex_string()_, based on the [Ada solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb).
+Then I became even more aggressive and also introduced a user-defined function for the generation of the hexadecimal representation in a 4-character string with _char *integer_to_hex_string()_, based on the [Ada solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb).
 
 Now the execution time dropped even further to only around 3.2 milliseconds!
 
@@ -111,7 +111,7 @@ Now the execution time dropped even further to only around 3.2 milliseconds!
 
 However, replacing the _sprintf_ function in my C program would not serve the goals of this microbenchmarking well in my opinion. I try to use idiomatic constructs as long as they make sense and thus forego savings in speed or space here and there. The other pretty fast languages, that is Rust, [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal/random_streams_for_perf_stats_cr.cr), [C3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C3/random_streams_for_perf_stats.c3), [Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_streams_for_perf_stats.zig), [Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_streams_for_perf_stats.odin) and [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go/random_streams_for_perf_stats.go), all use their own version of string formatting, sometimes with more than one function call, like in [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_streams_for_perf_stats.rs).
 
-I try to use user defined functions only in cases where I cannot find a suitable solution from more or less official libraries, or when I'm not able to tap into 3rd party libraries within a reasonable amount of time, like at my Ada implementation, which by the way more than once served as a good design input to translate less common functionalities into another programming language.
+I try to use user-defined functions only in cases where I cannot find a suitable solution from more or less official libraries, or when I'm not able to tap into 3rd party libraries within a reasonable amount of time, like at my Ada implementation, which by the way more than once served as a good design input to translate less common functionalities into another programming language.
 
 <br/>
 
