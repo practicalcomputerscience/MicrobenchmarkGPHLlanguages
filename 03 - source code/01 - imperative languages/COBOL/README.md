@@ -119,13 +119,13 @@ However, I thought that even in COBOL, the microbenchmark program is still not t
 
 ## Trials for improvement of execution speed
 
-I played with compiler optimization switches, like _-O3_ for example, only to notice that at least with this microbenchmark program there's no advantage in execution speed, but in a smaller size of the executable. So, I'm not officially using them.
+I played with compiler optimization switches, like _-O3_ for example, only to notice that at least with this microbenchmark program there's no advantage in execution speed, but in a significantly smaller size of the executable (a phenomenon which is subdued in GnuCOBOL version 3.3-dev for example). So, I'm not officially using them.
 
 Instead, I also tried the alternative (and experimental) **gcobol** compiler:
 
 - download the pre-compiled ~.deb package from here: https://gitlab.cobolworx.com/COBOLworx/gcc-cobol/-/packages/6
 
-..and then installed this Debian package (in Ubuntu):
+..and then install this Debian package (in Ubuntu) like this:
 
 ```
 $ sudo dpkg -i gcobol-16_16.0.1.20260311-10a0db-ubu20_x86_64.deb
