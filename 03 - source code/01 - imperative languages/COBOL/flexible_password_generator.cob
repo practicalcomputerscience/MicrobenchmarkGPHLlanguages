@@ -23,10 +23,6 @@
 *>
 *> $ cobc -V  # cobc (GnuCOBOL) 3.1.2.0
 *>
-*>
-*> to-do:
-*>   - ask Big AI, if the procedures can be turned into functions inside the same program FLEXIBLE-PASSWORD-GENERATOR
-*>   (- do the same for random_streams_for_perf_stats.cob ?)
 
 
 IDENTIFICATION DIVISION.
