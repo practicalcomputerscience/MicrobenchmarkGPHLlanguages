@@ -94,6 +94,23 @@ Although, one advantage of a more modern version of GnuCOBOL would be to have mo
 
 <br/>
 
+Both programs, that is [random_streams_for_perf_stats.cob](./random_streams_for_perf_stats.cob) and [flexible_password_generator.cob](./flexible_password_generator.cob), produce these warnings when building the related program (probably because I didn't build GnuCOBOL from its sources):
+
+```
+<command-line>: warning: "_FORTIFY_SOURCE" redefined
+<command-line>: note: this is the location of the previous definition
+```
+
+The full microbenchmark program produces these additional warnings in paragraph _MAIN-LOGIC_:
+
+```
+...warning: some digits may be truncated [-Wpossible-truncate]
+...note: 'N-CHAR-OUT' defined here as PIC 9(38) [-Wpossible-truncate]
+...note: 'N-CHAR' defined here as PIC 9(2) [-Wpossible-truncate]
+```
+
+<br/>
+
 ## How to find available built-in functions in GnuCOBOL?
 
 Just like this:
