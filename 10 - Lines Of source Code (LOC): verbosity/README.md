@@ -31,6 +31,7 @@ The results of this list are [script-based](https://github.com/practicalcomputer
 
 programming language | LOC | comments | date
 --- | --- | --- | ---
+GnuCOBOL | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
 Inko              | 232 | compiled, very young language: lots of user-defined functions; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Ada               | 229 | compiled, very mature language: lots of declarations and type definitions; still keeping the low level character copying from little strings into the big strings for performance reasons | 2026-01-26
 Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
@@ -120,7 +121,7 @@ OCaml              | 5
 Odin               | 0
 Perl 5             | 0
 PHP                | 1 
-Picat (old B-Prolog) | 8
+Picat (former B-Prolog) | 8
 Prolog, SWI        | 11
 PowerShell         | 0
 Python             | 1
