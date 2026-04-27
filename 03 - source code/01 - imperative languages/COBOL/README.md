@@ -179,7 +179,7 @@ So, at least with this microbenchmark program there's no advantage in execution 
 
 I didn't try [IBM COBOL](https://www.ibm.com/products/cobol-compiler-linux-x86), which is said to compile to fast machine code.
 
-The last two compilers skip the step of first transpiling COBOL source code into C source code, like GnuCOBOL does, and - with an intermediate step at gcobol at least - compile more or less directly into machine code.
+The last two compilers skip the step of first transpiling COBOL source code into C source code, like GnuCOBOL does, and - with an intermediate step at gcobol at least - compile more or less directly into native machine code.
 
 <br/>
 
