@@ -518,6 +518,20 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 
 <br/>
 
+## AssemblyScript
+
+2026-04-28: work in progress
+
+AssemblyScript is _A TypeScript-like language for WebAssembly_: https://github.com/AssemblyScript/assemblyscript
+
+### How to start developing
+
+I started with reading this [Introduction](https://www.assemblyscript.org/introduction.html#from-a-webassembly-perspective).
+
+2026-04-28: TBD
+
+<br/>
+
 ## Complete execution speeds diagram
 
 Here's the updated execution speeds diagram with additional results from ReScript, CoffeeScript, WebAssembly and Wasmtime, the last two concepts being competitively fast in comparison to other [natively compiled to machine code languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments):
