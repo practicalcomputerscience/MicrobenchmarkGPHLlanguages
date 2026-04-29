@@ -20,6 +20,7 @@ Table of contents:
 - [Ahead-of-time (AOT) compiling with Wasmtime](#ahead-of-time-aot-compiling-with-wasmtime)
 - [ReScript: OCaml's JavaScript](#rescript-ocamls-javascript)
 - [CoffeeScript](#coffeescript)
+- [AssemblyScript](#assemblyscript)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
@@ -208,7 +209,7 @@ A WebAssembly binary file can also be compiled from other sources, like:
 
 - C++, also with the emscripten compiler, or
 - [Rust](https://rust-lang.org/what/wasm/), or
-- [AssemblyScript](https://www.assemblyscript.org/)
+- AssemblyScript[#assemblyscript](https://www.assemblyscript.org/)
 
 <br/>
 
@@ -522,7 +523,7 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 
 2026-04-28: work in progress
 
-AssemblyScript is _A TypeScript-like language for WebAssembly_: https://github.com/AssemblyScript/assemblyscript
+[AssemblyScript](https://www.assemblyscript.org/) is _A TypeScript-like language for WebAssembly_: https://github.com/AssemblyScript/assemblyscript
 
 ### How to start developing
 
