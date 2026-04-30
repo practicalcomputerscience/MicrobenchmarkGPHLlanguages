@@ -296,7 +296,7 @@ $ wasmtime --dir=. ./random_streams_for_perf_stats.wasm
 
 ..which brings down the execution time to around 11 milliseconds!
 
-I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime).
+I discovered the essential _--dir=._ parameter in this page: [Executing in Wasmtime](https://github.com/bytecodealliance/wasmtime/blob/main/docs/WASI-tutorial.md#executing-in-wasmtime). It grants directory permissions to the guest environment, that is the current directory here.
 
 <br/>
 
