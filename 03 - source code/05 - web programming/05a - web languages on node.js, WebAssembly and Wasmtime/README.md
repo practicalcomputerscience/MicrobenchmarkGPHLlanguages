@@ -265,10 +265,10 @@ WASI = WebAssembly System Interface, a group of standards-track API specificatio
 
 <br/>
 
-Then install Wasmtime, WASI C-header files for LLVM and WASI runtimes for LLVM:
+Then install, or update, Wasmtime, WASI C-header files for LLVM and WASI runtimes for LLVM like this:
 
 ```
-$ curl https://wasmtime.dev/install.sh -sSf | bash
+$ curl https://wasmtime.dev/install.sh -sSf | bash  # use this command also to update to the latest stable release
 ...
 $ wasmtime -V  # just check version
 wasmtime 41.0.1 (c30fce86b 2026-01-26)
