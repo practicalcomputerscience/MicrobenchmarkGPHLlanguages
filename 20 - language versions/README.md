@@ -12,6 +12,7 @@ This has already happened massively when I corrected a **logical error** in most
 programming language | versions | Bash command to retrieve versions
 --- | --- | ---
 Ada | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
+AssemblyScript | Version 0.28.17 | $ asc --version
 C | Homebrew clang version 21.1.7 | $ clang -v
 C++ | g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc., ... | $ g++ --version
 C# | Microsoft.AspNetCore.App 8.0.22 ... ; Microsoft.NETCore.App 8.0.22 ...; 8.0.122 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
@@ -74,6 +75,7 @@ GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM
 Java | openjdk 25.0.1 2025-10-21; OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04); OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing) | $ java --version
 node.js | v22.21.0 | $ node -v
 SDKMAN | SDKMAN!; script: 5.20.0; native: 0.7.14 (linux x86_64) | $ sdk version
+Wasmtime runtime | wasmtime 41.0.1 (c30fce86b 2026-01-26) | $ wasmtime -V
 
 <br/>
 
