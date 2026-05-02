@@ -75,7 +75,7 @@ GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM
 Java | openjdk 25.0.1 2025-10-21; OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04); OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing) | $ java --version
 node.js | v22.21.0 | $ node -v
 SDKMAN | SDKMAN!; script: 5.20.0; native: 0.7.14 (linux x86_64) | $ sdk version
-Wasmtime runtime | wasmtime 41.0.1 (c30fce86b 2026-01-26) | $ wasmtime -V
+Wasmtime runtime | wasmtime 44.0.1 (f302ebd6b 2026-04-30) | $ wasmtime -V
 
 <br/>
 
