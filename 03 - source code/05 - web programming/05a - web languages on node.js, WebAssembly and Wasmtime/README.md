@@ -522,7 +522,7 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 
 [AssemblyScript](https://www.assemblyscript.org/) is _A TypeScript-like language for WebAssembly_: https://github.com/AssemblyScript/assemblyscript
 
-Both source code files can be found in subdirectory [AssemblyScript](./AssemblyScript)
+Both source code files can be found in subdirectory [AssemblyScript](./AssemblyScript).
 
 ### How to start developing
 
