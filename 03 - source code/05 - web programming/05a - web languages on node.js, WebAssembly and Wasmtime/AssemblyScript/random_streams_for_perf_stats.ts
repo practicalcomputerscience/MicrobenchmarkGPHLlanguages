@@ -1,7 +1,7 @@
 /*
 random_streams_for_perf_stats.ts -- this is an AssemblyScript (for WASI), not TypeScript, file to be compiled to a WebAssembly file
 
-2026-04-30, 2026-05-02
+2026-04-30, 2026-05-02/03
 
 built on Ubuntu 24 LTS: do this only once:
                         $ npm install -g npm@11.13.0          # update npm if needed
@@ -11,6 +11,8 @@ built on Ubuntu 24 LTS: do this only once:
                         #   this is a global solution for every project in the same directory!!! (so, be careful...)
                         $ npm install --save-dev @assemblyscript/wasi-shim
                         # tip: remove any prior files, like directory node_modules, if this command doesn't create new files and dir's!!
+                        # install as-wasi, if this directory is not existing at ./node_modules/as-wasi:
+                        $ npm install as-wasi
 
                         do this after every source code change:
                         # compile the AssemblyScript file to a WebAssembly file:
