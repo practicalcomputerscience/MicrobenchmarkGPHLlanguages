@@ -209,7 +209,7 @@ A WebAssembly binary file can also be compiled from other sources, like:
 
 - C++, also with the emscripten compiler, or
 - [Rust](https://rust-lang.org/what/wasm/), or
-- AssemblyScript[#assemblyscript](https://www.assemblyscript.org/)
+- AssemblyScript[#assemblyscript]
 
 <br/>
 
