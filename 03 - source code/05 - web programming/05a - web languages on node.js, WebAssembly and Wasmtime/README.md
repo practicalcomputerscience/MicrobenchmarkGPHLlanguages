@@ -79,7 +79,7 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 $ source ~/.bashrc  # re-activate your Bash shell configuration
 $ nvm --version  # check nvm version
 0.40.4
-$ nvm install --lts  # install latest long term support version
+$ nvm install --lts  # install latest long term support version of node.js
 ...
 $ nvm ls  # check all locally available versions, including the default version
 ...
@@ -527,9 +527,86 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 
 ### How to start developing
 
-I started with reading this [Introduction](https://www.assemblyscript.org/introduction.html#from-a-webassembly-perspective).
+I started with reading this [Introduction](https://www.assemblyscript.org/introduction.html#from-a-webassembly-perspective), only to find out that this didn't get me far.
 
-2026-04-28: TBD
+So, I started to experiment, often with the help of Big AI, to get a configuration that works for me. Some words of warning:
+
+- the following procedure is obviously not suitable for every use case, and if it's only for the fact that my AssemblyScript's are not connecting to Web API's as usual, but the WASI (WebAssembly System Interface)
+- further, I'm only using one common project directory for both programs, and this directory is global in nature for my AssemblyScript configuration and Ubuntu user as far as I understand the situation
+
+First, I just updated npm to the latest version (then), the package manager for Node.js:
+
+```
+$ npm install -g npm@11.13.0
+...
+$
+```
+
+It may be that also the node.js version needs an update. AssemblyScript recommends "a recent version of Node.js and its package manager npm (that comes with Node.js)": [Setting up a new project](https://www.assemblyscript.org/getting-started.html#setting-up-a-new-project). These older versions for example didn't do it for me (for the current Linux user):
+
+```
+$ node --version
+v18.19.1
+$ npm --version
+9.2.0
+$
+```
+
+From an error message, I got the information that versions have to be at least: _node: '>=20', npm: '>=10'_
+
+See from above at [TypeScript and JavaScript](#typescript-and-javascript) how to use the NVM (Node Version Manager) to install or update a node.js version. Following these instructions, I got these sufficient versions: 
+
+```
+$ node --version
+v24.13.0
+$ npm --version
+11.13.0
+$ 
+```
+
+Now, a crucial step: installing the WASI Shim to utilize WASI imports:
+
+```
+$ npm install --save-dev @assemblyscript/wasi-shim
+
+added 1 package in 643ms
+
+1 package is looking for funding
+  run `npm fund` for details
+$
+```
+
+Here, I encountered problems during experimentation, and solved them with **removing any prior configuration files and directories in the project directory**, like directory _node_modules_. This command definitely must install new files and a full directory tree if done the first time and done correctly!
+
+Another crucial step: make sure that directory _node_modules/as-wasi_ exists, if not, install it:
+
+```
+$ npm install as-wasi
+
+added 1 package, and audited 3 packages in 574ms
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+$ ls node_modules/as-wasi
+assembly  bindings.json  index.d.ts  LICENSE  package.json  README.md  REFERENCE_API_DOCS.md
+$
+```
+
+Hopefully, all configuration is complete and correct now, which means that an AssemblyScript source code file can be compiled to a WebAssembly file, which then can be executed in the Wasmtime runtime:
+
+```
+$ asc random_streams_for_perf_stats.ts --outFile random_streams_for_perf_stats.wasm --optimize --config node_modules/@assemblyscript/wasi-shim/asconfig.json
+$ wasmtime --dir=. ./random_streams_for_perf_stats.wasm  # --dir=. to grant permissions to the current dir
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+Voilà!
 
 <br/>
 
