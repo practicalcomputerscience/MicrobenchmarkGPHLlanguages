@@ -31,7 +31,7 @@ The results of this list are [script-based](https://github.com/practicalcomputer
 
 programming language | LOC | comments | date
 --- | --- | --- | ---
-GnuCOBOL | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
+GnuCOBOL          | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
 Inko              | 232 | compiled, very young language: lots of user-defined functions; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Ada               | 229 | compiled, very mature language: lots of declarations and type definitions; still keeping the low level character copying from little strings into the big strings for performance reasons | 2026-01-26
 Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
@@ -40,7 +40,8 @@ Mercury           | 194 | compiled, mature language: lots of user-defined functi
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
 V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
-Gleam | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem):  lots of user-defined functions
+Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions
+AssemblyScript    | 149 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions | 2026-05-03
 C                 | 147 | compiled, very mature language | 2026-01-11
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
