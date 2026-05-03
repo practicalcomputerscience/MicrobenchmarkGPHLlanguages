@@ -2,7 +2,6 @@
 
 adding:
 
-- AssemblyScript: https://www.assemblyscript.org/
 - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/
 
@@ -520,8 +519,6 @@ CoffeeScript's succinctness is even beating Python's by one source line of code 
 <br/>
 
 ## AssemblyScript
-
-2026-04-28: work in progress
 
 [AssemblyScript](https://www.assemblyscript.org/) is _A TypeScript-like language for WebAssembly_: https://github.com/AssemblyScript/assemblyscript
 
