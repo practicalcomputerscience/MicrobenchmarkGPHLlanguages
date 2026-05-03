@@ -93,6 +93,7 @@ The results of this list have been manually counted:
 programming language | number of user-defined functions
 --- | ---
 Ada                | 2
+AssemblyScript     | 6
 C                  | 0
 C++                | 0
 C3                 | 0
