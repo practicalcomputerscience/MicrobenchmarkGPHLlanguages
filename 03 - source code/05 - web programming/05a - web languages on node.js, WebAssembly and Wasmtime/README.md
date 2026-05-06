@@ -46,6 +46,8 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
 
+- the same was true when trying to transpile from TypeScript to JS++. I basically did this transpilation mostly manually.
+
 <br/>
 
 From the "old school combo" JavaScript and node.js, it was then again only a minor step into **WebAssembly**, and from there another, albeit bigger, step into **Wasmtime**.
