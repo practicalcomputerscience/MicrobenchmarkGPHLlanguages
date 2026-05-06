@@ -20,6 +20,7 @@ Table of contents:
 - [ReScript: OCaml's JavaScript](#rescript-ocamls-javascript)
 - [CoffeeScript](#coffeescript)
 - [AssemblyScript](#assemblyscript)
+- [JS++](#js)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
 
 <br/>
@@ -606,6 +607,20 @@ $
 ```
 
 Voilà!
+
+<br/>
+
+JS++
+
+JS++ was granted U.S. Patent #10,296,313 for the first sound, provably correct gradual type system. Find bugs before they occur, and bring your type errors down to zero.
+
+## JS++
+
+[JS++](https://www.onux.com/jspp/) claims this among other things: _JS++ was granted U.S. Patent #10,296,313 for the first sound, provably correct gradual type system. Find bugs before they occur, and bring your type errors down to zero._
+
+So, JS++ would be the second web programming language in this list to feature a sound type system after ReScript.
+
+TBD
 
 <br/>
 
