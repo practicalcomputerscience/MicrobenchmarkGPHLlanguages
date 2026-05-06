@@ -610,10 +610,6 @@ Voilà!
 
 <br/>
 
-JS++
-
-JS++ was granted U.S. Patent #10,296,313 for the first sound, provably correct gradual type system. Find bugs before they occur, and bring your type errors down to zero.
-
 ## JS++
 
 [JS++](https://www.onux.com/jspp/) claims this among other things: _JS++ was granted U.S. Patent #10,296,313 for the first sound, provably correct gradual type system. Find bugs before they occur, and bring your type errors down to zero._
