@@ -10,7 +10,7 @@ to-do:
 
 # Ballerina aka jBallerina
 
-https://ballerina.io/
+https://ballerina.io/ (*)
 
 https://github.com/ballerina-guides
 
@@ -25,7 +25,7 @@ https://en.wikipedia.org/wiki/Ballerina_(programming_language)
 
 ## Idea of Ballerina: simpler enterprise integration
 
-Ballerina, "developed by WSO2 since 2016 and first released in February 2022" makes a good job - at first - to hide the fact that it's another general purpose, high-level programming language to be natively executed on the Java Virtual Machine.
+Ballerina, "developed by WSO2 since 2016 and first released in February 2022" (*) makes a good job - at first - to hide the fact that it's another general purpose, high-level programming language to be natively executed on the Java Virtual Machine.
 
 I only noticed it at chapter [Run the package](https://ballerina.io/learn/get-started/#run-the-package) on page [Get started](https://ballerina.io/learn/get-started/), where "generate an executable file" with the _$ bal build_ shell command is explained. It's very easy to check this out:
 
