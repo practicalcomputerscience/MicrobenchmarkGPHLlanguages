@@ -31,7 +31,7 @@ Table of contents:
 After [Scala](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#scala),
 [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#kotlin)
 and [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure),
-I decided to (quickly) implement the microbenchmark program also in Groovy as another language, which is being natively executed on the JVM.
+I decided to (quickly) implement the microbenchmark program also in Groovy as another language, which is being natively executed on the Java Virtual Machine.
 
 While imperative languages Scala and Kotlin are statically typed, Groovy is dynamically typed by default, same like functional language Clojure. However, its dynamic execution model
 combines runtime metaprogramming with optional, static type checking.
