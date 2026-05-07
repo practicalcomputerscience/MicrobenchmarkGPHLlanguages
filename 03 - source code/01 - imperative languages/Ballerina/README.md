@@ -23,7 +23,7 @@ https://en.wikipedia.org/wiki/Ballerina_(programming_language)
 
 <br/>
 
-## Idea of Ballerina
+## Idea of Ballerina: simpler enterprise integration
 
 Ballerina, "developed by WSO2 since 2016 and first released in February 2022" makes a good job - at first - to hide the fact that it's another general purpose, high-level programming language to be natively executed on the Java Virtual Machine.
 
