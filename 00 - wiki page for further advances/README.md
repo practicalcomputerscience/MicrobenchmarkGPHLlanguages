@@ -6,6 +6,8 @@
 
 <br/>
 
+- 2026-05-07: [JS++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#js): program isn't completely working (try-catch exception handling fails); thus only "speed part" implemented, which is otherwise basically working => no further consideration of JS++
+
 - 2026-05-03: [AssemblyScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#assemblyscript)
 
 - 2026-04-27: [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol)
@@ -79,10 +81,9 @@
 
 <br/>
 
-2026-05-05: so far, I haven't touched yet these corners of programming languages:
+2026-05-07: so far, I haven't touched yet these corners of programming languages:
 
 - web programming:
-  - JS++: https://www.onux.com/jspp/, another superset of JavaScript, and which has its own type system and compiles to JavaScript **or** native machine code; it's a "front end" and "backend" web programming language
   - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this after Haskell!
 - Ballerina: https://ballerina.io/: "cloud-native programming language optimized for integration"
 - https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
