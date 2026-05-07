@@ -104,9 +104,9 @@ uberjar with @CompileStatic | _time time java -jar ./build/libs/random_streams_f
 
 For comparision, Scala's, Kotlin's and Clojure's uberjar files run on the same JVM version with these execution times (from [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)):
 
-- Scala: 142 milliseconds on openjdk 25.0.1
-- Kotlin: 73 milliseconds on openjdk 25.0.1
-- Clojure: 416 milliseconds on openjdk 25.0.1
+- [Scala](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#scala): 142 milliseconds on openjdk 25.0.1
+- [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#kotlin): 73 milliseconds on openjdk 25.0.1
+- [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure): 416 milliseconds on openjdk 25.0.1
 - [Ballerina](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ballerina#ballerina-aka-jballerina): 454 milliseconds on openjdk 21.0.10 and without using the Java StringBuilder Class (2026-05-07)
 
 <br/>
