@@ -1,8 +1,17 @@
 2026-05-07: work in progress
 
+to-do:
+
+- test: $ bal graph ... to print the dependency graph in the console --> https://ballerina.io/learn/cli-commands/
+- GraalVM: https://ballerina.io/learn/graalvm-executable-overview/
+
+<br/> 
+
 # Ballerina
 
 https://ballerina.io/
+
+https://github.com/ballerina-guides
 
 ---
 
