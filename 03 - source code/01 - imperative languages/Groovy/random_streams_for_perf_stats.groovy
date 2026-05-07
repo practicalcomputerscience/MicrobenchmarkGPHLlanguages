@@ -95,7 +95,7 @@ class random_streams_for_perf_stats {
             file.text = bits_x.toString()
             println "Bit stream has been written to disk under name:  $file_bits_x"
         } catch (IOException ex) {
-            println "could not write to file: $file_bits_x! -- ${ex.message}"
+            println "could not write to file: $file_bits_x ! -- ${ex.message}"
         }
 
         // write byte stream to disk:
@@ -104,7 +104,7 @@ class random_streams_for_perf_stats {
             file.text = bits_hex.toString()
             println "Byte stream has been written to disk under name: $file_bits_hex"
         } catch (IOException ex) {
-            println "could not write to file: $file_bits_hex! -- ${ex.message}"
+            println "could not write to file: $file_bits_hex ! -- ${ex.message}"
         }
     }
 }
