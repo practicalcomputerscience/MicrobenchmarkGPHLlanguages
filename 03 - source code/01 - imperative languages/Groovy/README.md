@@ -91,7 +91,7 @@ class random_streams_for_perf_stats {
 
 <br/>
 
-Here's a table with indicative execution times from only one run to just get an overview:
+Here's a table with indicative execution times from only one run to just get an overview (on openjdk 25.0.1):
 
 test # | command | exe time in milliseconds | comment
 --- | --- | --- | --- 
@@ -104,9 +104,10 @@ uberjar with @CompileStatic | _time time java -jar ./build/libs/random_streams_f
 
 For comparision, Scala's, Kotlin's and Clojure's uberjar files run on the same JVM version with these execution times (from [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)):
 
-- Scala: 142 milliseconds
-- Kotlin: 73 milliseconds
-- Clojure: 416 milliseconds
+- Scala: 142 milliseconds on openjdk 25.0.1
+- Kotlin: 73 milliseconds on openjdk 25.0.1
+- Clojure: 416 milliseconds on openjdk 25.0.1
+- [Ballerina](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ballerina#ballerina-aka-jballerina): 454 milliseconds on openjdk 21.0.10 and without using the Java StringBuilder Class (2026-05-07)
 
 <br/>
 
