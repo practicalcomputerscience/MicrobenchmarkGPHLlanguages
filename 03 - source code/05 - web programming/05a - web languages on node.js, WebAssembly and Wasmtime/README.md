@@ -618,7 +618,41 @@ Voilà!
 
 So, JS++ would be the second web programming language in this list to feature a sound type system after ReScript.
 
-TBD
+However, I noticed that the **exception handling** with the try-catch construct is not working as it should be, and as it works (so far) with the other web programming languages, when trying to write the strings to files and a problem occures:
+
+```
+$ js++ ./random_streams_for_perf_stats.jspp  # compiles the JS++ program to a JavaScript program (which is not human readable)
+Compiling: ~/JS++/random_streams_for_perf_stats.jspp
+           -> ~/JS++/random_streams_for_perf_stats.jspp.js
+ OK  (0) errors and (0) warnings
+$ node ./random_streams_for_perf_stats.jspp.js
+# also the JS++ version of the microbenchmark program is using node.js resources and thus cannot be directly executed with command: js++ -e ./random_streams_for_perf_stats.jspp
+
+generating a random bit stream...
+node:fs:2427
+    return binding.writeFileUtf8(
+                   ^
+
+Error: EACCES: permission denied, open 'random_bitstring.bin'
+    at Object.writeFileSync (node:fs:2427:20)
+...
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'open',
+  path: 'random_bitstring.bin'
+}
+
+Node.js v24.13.0
+$
+```
+
+So, the generated JavaScript program exits immediately at an exception.
+
+<br/>
+
+Then I noticed that development of JS++, which is still in version 0.10.0, apparently stopped at the end of year 2021. At that time, the last news item has been published: https://www.onux.com/jspp/blog/ Also see at "Archives" on the same web page.
+
+With the current limitations, I decided not to implement the whole program, but just to leave the otherwise working "speed part" here: [./random_streams_for_perf_stats.jspp](random_streams_for_perf_stats.jspp), and not to further consider JS++ in any benchmarking.
 
 <br/>
 
