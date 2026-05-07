@@ -1,0 +1,98 @@
+/*
+random_streams_for_perf_stats.jspp
+
+2026-05-06
+
+This program can only be compiled to JavaScript and then being run on node.js!!
+
+build on Ubuntu 24 LTS: $ js++ ./random_streams_for_perf_stats.jspp  # the resulting JS code is not human readable!
+
+run on Ubuntu 24 LTS:   $ node ./random_streams_for_perf_stats.jspp.js
+                        $ time node ./random_streams_for_perf_stats.jspp.js => real	0m0.055s
+                        $ multitime -n 20 node ./random_streams_for_perf_stats.jspp.js
+                        =>
+                                      Mean        Std.Dev.
+                          real        0.047       0.002
+
+
+WARNING: the try-catch exception handling is not working!
+The generated JavaScript program exits when there's an exception when trying to write to a file.
+
+
+$ js++ --version
+JS++(R) v.0.10.0
+$ node -v
+v24.13.0
+$
+
+*/
+
+import System;
+
+// https://docs.onux.com/en-US/Developers/JavaScript-PP/Language/Reference/Statements/external
+// Import 'require' first
+external require;
+// After 'require' has been imported, we can use it to import the 'fs' module
+external fs = require("fs");
+
+class random_streams_for_perf_stats {
+    public static void main() {
+        int END = 62501;  // 62501 for exactly 1M binary digits; integer types in JS++ are explicit
+        // int END = 10;  // for testing
+
+        int m = 65521;
+        int a = 17364;
+        int c = 0;
+
+        string file_bits_x   = "random_bitstring.bin";
+        string file_bits_hex = "random_bitstring.byte";
+
+        // JS++ arrays are strictly typed
+        int[] x = new System.Array<int>(END);
+
+        // Using standard JS Math through the external global scope
+        double rnd = System.Math.floor(System.Math.random() * (m - 1)) + 1;
+        x[0] = (int)rnd;
+
+        string bits_x   = "";
+        string bits_hex = "";
+
+        Console.log("\ngenerating a random bit stream...");
+
+        for (int i = 1; i < END; i++) {
+            x[i] = (int)((a * x[i - 1] + c) % m);
+            // Console.log("\nx[i] = " + x[i]?.toString());  // for testing
+
+            string bits_x_str = (string)(x[i]?.toString(2)?.padLeft(16, "0"));
+            // Console.log("bits_x_str = " + bits_x_str);  // for testing
+            bits_x += bits_x_str;
+
+            string bits_hex_str = (string)(x[i]?.toString(16)?.padLeft(4, "0"));
+            // Console.log("bits_hex_str = " + bits_hex_str);  // for testing
+            bits_hex += bits_hex_str;
+        }
+
+        // Console.log("\nbits_x = " + bits_x);  // for testing
+        // Console.log("bits_hex = " + bits_hex);  // for testing
+
+
+        try {
+            fs.writeFileSync(file_bits_x, bits_x);
+            System.Console.log("Bit stream has been written to disk under name:  " + file_bits_x);
+        } catch (System.Exception ex) {
+            System.Console.error("could not write to file: " + file_bits_x + " ! -- " + ex.getMessage());
+        }
+
+        try {
+            fs.writeFileSync(file_bits_hex, bits_hex);
+            System.Console.log("Byte stream has been written to disk under name: " + file_bits_hex);
+        } catch (System.Exception ex) {
+            System.Console.error("could not write to file: " + file_bits_hex + " ! -- " + ex.getMessage());
+        }
+    }
+}
+
+// Entry point execution
+random_streams_for_perf_stats.main();
+
+// end of random_streams_for_perf_stats.jspp
