@@ -16,6 +16,7 @@ https://github.com/ballerina-guides
 
 https://en.wikipedia.org/wiki/Ballerina_(programming_language)
 
+- JDK = Java Development Kit
 - JRE = Java Runtime Environment
 - JVM = Java Virtual Machine
 
@@ -72,13 +73,47 @@ Update Tool 1.5.1
 $ 
 ```
 
+<br/>
 
+See other tips at header comment block of program [random_streams_for_perf_stats.bal](./random_streams_for_perf_stats.bal).
 
+<br/>
 
+For a smooth program run without a JRE version warning of command:
 
+```
+$ java -jar ./target/bin/random_streams_for_perf_stats.jar
+```
 
+..I had to downgrade the active JRE version to version 21 with command:
 
+```
+$ sudo update-alternatives --config java
+There are 3 choices for the alternative java (providing /usr/bin/java).
 
+  Selection    Path                                            Priority   Status
+------------------------------------------------------------
+  0            /usr/lib/jvm/java-25-openjdk-amd64/bin/java      2511      auto mode
+* 1            /usr/lib/jvm/java-21-openjdk-amd64/bin/java      2111      manual mode
+  2            /usr/lib/jvm/java-25-openjdk-amd64/bin/java      2511      manual mode
+  3            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 
+...
+$ java --version
+openjdk 21.0.10 2026-01-20
+OpenJDK Runtime Environment (build 21.0.10+7-Ubuntu-124.04)
+OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
+$ 
+```
+
+If not, program execution also succeeds but emits this warning:
+
+```
+WARNING: Incompatible JRE version '25.0.2' found. This ballerina program supports running on JRE version '21.0.*'
+```
+
+On the other side, see at: [Does the JDK (Java Development Kit) version matter at Kotlin?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#does-the-jdk-java-development-kit-version-matter-at-kotlin)
 
 <br/>
 
