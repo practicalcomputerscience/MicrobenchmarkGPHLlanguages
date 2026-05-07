@@ -1,8 +1,19 @@
 2026-02-03: work in progress
 
-adding:
+adding/to-do:
 
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this only after a Haskell implementation
+- a "core web programming execution speeds diagram" with only: 
+  - TypeScript / node.js;0,065;0,001;2026-01-31
+  - TypeScript / Deno run;0,045;0,001;2026-02-11
+  - TypeScript / Bun run;0,023;0,001;2026-02-11
+  - JavaScript / node.js;0,042;0,001;2026-01-31
+  - ReScript to JS / node.js;0,045;0,002;2026-02-03
+  - CoffeeScript to JS / node.js;0,040;0,002;2026-02-15
+  - AssemblyScript on Wasmtime;0,028;0,001;2026-05-02
+  - PureScript --> compiles to readable JavaScript --> Bun????
+
+JS = JavaScript
 
 <br/>
 
