@@ -5,7 +5,7 @@ to-do:
 - test: $ bal graph ... to print the dependency graph in the console --> https://ballerina.io/learn/cli-commands/
 - GraalVM: https://ballerina.io/learn/graalvm-executable-overview/
   - $ bal build --graalvm
-- scan tool for static code analysis: https://ballerina.io/learn/scan-tool/
+- scan tool for static code analysis: https://ballerina.io/learn/scan-tool/: done
 
 <br/> 
 
