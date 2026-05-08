@@ -5,6 +5,7 @@ to-do:
 - test: $ bal graph ... to print the dependency graph in the console --> https://ballerina.io/learn/cli-commands/
 - GraalVM: https://ballerina.io/learn/graalvm-executable-overview/
   - $ bal build --graalvm
+- scan tool for static code analysis: https://ballerina.io/learn/scan-tool/
 
 <br/> 
 
@@ -77,7 +78,7 @@ $
 
 <br/>
 
-See other tips at header comment block of program [random_streams_for_perf_stats.bal](./random_streams_for_perf_stats.bal).
+See other tips at the header comment block of program [random_streams_for_perf_stats.bal](./random_streams_for_perf_stats.bal).
 
 <br/>
 
@@ -116,6 +117,10 @@ WARNING: Incompatible JRE version '25.0.2' found. This ballerina program support
 ```
 
 On the other side, see at: [Does the JDK (Java Development Kit) version matter at Kotlin?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#does-the-jdk-java-development-kit-version-matter-at-kotlin)
+
+<br/>
+
+TBD
 
 <br/>
 
