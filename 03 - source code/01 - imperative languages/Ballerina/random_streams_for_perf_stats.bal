@@ -1,6 +1,6 @@
 // random_streams_for_perf_stats.bal as main.bal
 //
-// 2026-05-07
+// 2026-05-07/09
 //
 // build on Ubuntu 24 LTS: $ bal new random_streams_for_perf_stats
 //                         $ cd random_streams_for_perf_stats
@@ -50,7 +50,7 @@ import ballerina/random;
 import ballerina/lang.'string;
 
 
-public function main(string[] args) returns error? {
+public function main() returns error? {  # 2026-05-09
     final int END = 62501;  // 62501 for exactly 1M binary digits
     // const values can only be located at the module level!
     // final int END = 10;  // for testing
