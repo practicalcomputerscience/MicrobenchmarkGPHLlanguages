@@ -5,7 +5,6 @@ to-do:
 - test: $ bal graph ... to print the dependency graph in the console --> https://ballerina.io/learn/cli-commands/
 - GraalVM for random_streams_for_perf_stats.bal: https://ballerina.io/learn/graalvm-executable-overview/
   - $ bal build --graalvm
-- scan tool for static code analysis: https://ballerina.io/learn/scan-tool/: done
 
 <br/> 
 
@@ -48,7 +47,7 @@ $
 
 from: [Call Java code from Ballerina](https://ballerina.io/learn/call-java-code-from-ballerina/)
 
-Though, initially this was not the plan, but implementing a virtual machine on their own:
+Though, initially this was not the plan, but implementing a virtual machine of their own:
 
 > Early in its development, the Ballerina team attempted to implement their own virtual machine, but experienced performance bottlenecks. Known as the Ballerina Virtual Machine (BVM), this VM executed Ballerina programs by interpreting BVM bytecode emitted by the Ballerina compiler. However, the Ballerina team ultimately decided that the BVM, despite having been implemented in Java, was not ready for production use, and decided in favor of including a compiler that targets the JVM with the release of version 1.0.
 
@@ -120,7 +119,46 @@ On the other side, see at: [Does the JDK (Java Development Kit) version matter a
 
 <br/>
 
-TBD
+## Static code analysis
+
+Ballerina features a quick to use tool, among tools, for [static code analysis](Scan tool):
+
+```
+$ bal tool pull scan  # install the tool
+$ bal tool list  # see installed tools and their versions:
+|TOOL ID               |VERSION                        |
+|----------------------|-------------------------------|
+|scan                  |0.11.0                         |
+|asyncapi              |0.12.0                         |
+|persist               |1.9.2                          |
+|graphql               |0.14.0                         |
+|openapi               |2.4.1                          |
+|grpc                  |1.0.0                          |
+
+6 active tool versions found.
+$ bal scan --scan-report  # makes a HTML based report of all *.bal soource code files in current working directory
+
+Running Scans
+...
+$
+```
+
+A report is located in directory ./target/report/index.html, and my example, at first, looked like this:
+
+![Alt text](./Ballerina%20scan%20report%201a.png)
+
+The report marks the lines of source code of concern:
+
+...
+
+![Alt text](./Ballerina%20scan%20report%201b.png)
+
+...
+
+
+
+
+
 
 <br/>
 
