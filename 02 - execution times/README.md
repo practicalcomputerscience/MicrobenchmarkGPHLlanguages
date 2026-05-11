@@ -7,7 +7,7 @@
 Table of contents:
 
 - [Master diagram with most program environments](#master-diagram-with-most-program-environments)
-- [Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM](#java-native-languages-scala-kotlin-and-clojure-and-their-speedup-with-the-graalvm)
+- [Java native languages Scala, Kotlin, Clojure and Ballerina and their speedup with the GraalVM](#java-native-languages-scala-kotlin-clojure-and-ballerina-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
 - [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
 - ["Web programming"](#web-programming)
@@ -45,7 +45,7 @@ So far:
 
 ---
 
-### Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
+### Java native languages Scala, Kotlin, Clojure and Ballerina and their speedup with the GraalVM
 
 GraalVM for the compilation of an ahead-of-time (AOT) native image, that is an standalone, binary executable for Linux :
 
