@@ -38,6 +38,7 @@ Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-define
 Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
+Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions
@@ -94,6 +95,7 @@ programming language | number of user-defined functions
 --- | ---
 Ada                | 2
 AssemblyScript     | 6
+Ballerina          | 2
 C                  | 0
 C++                | 0
 C3                 | 0
