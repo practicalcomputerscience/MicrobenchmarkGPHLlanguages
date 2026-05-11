@@ -277,7 +277,7 @@ However:
 
 > The long-term goal of the nBallerina project is to create a new compiler for the Ballerina language that is written in Ballerina and can generate native code using LLVM.
 
-from: [nBallerina](https://github.com/ballerina-platform/nballerina#nballerina)
+from: [nBallerina](https://github.com/ballerina-platform/nballerina#nballerina) ("native Ballerina")
 
 See also at [Ballerina FFI (Foreign Function Interface)](https://ballerina.io/learn/ballerina-ffi/):
 
