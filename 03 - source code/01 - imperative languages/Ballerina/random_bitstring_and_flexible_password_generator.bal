@@ -1,6 +1,6 @@
 // random_bitstring_and_flexible_password_generator.bal as main.bal
 //
-// 2026-05-08
+// 2026-05-08/11
 //
 // build on Ubuntu 24 LTS: $ bal new random_bitstring_and_flexible_password_generator
 //                         $ cd random_bitstring_and_flexible_password_generator
@@ -140,7 +140,7 @@ public function main() returns error? {
     boolean WITH_SPECIAL_CHARS = true;
     answer = false;
         while (!answer) {
-        string answer_str = io:readln(string:concat("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': "));
+        string answer_str = io:readln("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ");  // 2026-05-11
 
         if (answer_str == "y") {
             answer = true;
