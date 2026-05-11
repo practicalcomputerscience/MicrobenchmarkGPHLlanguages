@@ -2,7 +2,6 @@
 
 to-do:
 
-- test: $ bal graph ... to print the dependency graph in the console --> https://ballerina.io/learn/cli-commands/
 - GraalVM for random_streams_for_perf_stats.bal: https://ballerina.io/learn/graalvm-executable-overview/
   - $ bal build --graalvm
 
@@ -187,6 +186,91 @@ $
 The resulting text file with content in the DOT graph description language can be visualized with the [Edotor](https://edotor.net/) tool for example (I got this idea from here: [Visualizing the Dependency Graph of a Ballerina Project](https://medium.com/@g.c.dassanayake/visualising-the-dependencies-of-a-ballerina-project-d5e1b5642258)):
 
 ![Alt text](./random_bitstring_and_flexible_password_generator.png)
+
+<br/>
+
+## Ahead Of Time (AOT) program compilation with the GraalVM
+
+[GraalVM executable overview](https://ballerina.io/learn/graalvm-executable-overview/): Using the _$ bal test --graalvm_ command requires environmental variable _GRAALVM_HOME_ to be set, for example in the _~/.bashrc_ file:
+
+```
+export GRAALVM_HOME=~/.sdkman/candidates/java/24-graal/lib/svm/  # re-start the Bash shell for best activation
+```
+
+With all pre-requisites in place, building a fast Ballerina based standalone executable should succeed hopefully:
+
+```
+$ bal build --graalvm
+Compiling source
+	/random_streams_for_perf_stats:0.1.0
+
+========================================================================================================================
+GraalVM Native Image: Generating 'random_streams_for_perf_stats' (executable)...
+========================================================================================================================
+[1/8] Initializing...                                                                                    (3.0s @ 0.18GB)
+ Java version: 24+36, vendor version: Oracle GraalVM 24+36.1
+ Graal compiler: optimization level: 2, target machine: x86-64-v3, PGO: ML-inferred
+ C compiler: gcc (linux, x86_64, 13.3.0)
+...
+```
+
+Lets's run and time this program:
+
+```
+$ time ./target/bin/random_streams_for_perf_stats
+WARNING: Incompatible JRE version '24' found. This ballerina program supports running on JRE version '21.0.*'
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.163s
+user	0m0.140s
+sys	0m0.023s
+$
+```
+
+163 milliseconds is a bit underwhelming compared to the competition: [Ahead Of Time (AOT) program compilation with the GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/04%20-%20GraalVM/README.md#ahead-of-time-aot-program-compilation-with-the-graalvm), specifically Clojure, where the execution time could be brought down by approximately 82%.
+
+With Ballerina it's only by approximately 64%.
+
+So, I installed the older but correct GraalVM version to get rid of the extra version warning with every program run, see from above:
+
+```
+$ sdk install java 21-graal
+...
+Repackaging Java 21-graal...
+
+Done repackaging...
+
+Installing: java 21-graal
+Done installing!
+
+Do you want java 21-graal to be set as default? (Y/n): Y
+
+Setting java 21-graal as default.
+$ export GRAALVM_HOME=~/.sdkman/candidates/java/21-graal/lib/svm/
+$ java --version
+java 21 2023-09-19
+Java(TM) SE Runtime Environment Oracle GraalVM 21+35.1 (build 21+35-jvmci-23.1-b15)
+Java HotSpot(TM) 64-Bit Server VM Oracle GraalVM 21+35.1 (build 21+35-jvmci-23.1-b15, mixed mode, sharing)
+$ bal build --graalvm
+...
+$ time ./target/bin/random_streams_for_perf_stats
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m9.511s
+user	0m9.484s
+sys	0m0.028s
+$
+```
+
+This downgrade made the program substantially slower! So, I switched back to former version Oracle GraalVM 24+36.1 in my _~/.bashrc_ file: _export GRAALVM_HOME=~/.sdkman/candidates/java/24-graal/lib/svm/_
+
+I wonder now if the whole Ballerina ecosystem could be made a bit faster after a switch to a Java Runtime Environment of version 24 or later.
 
 <br/>
 
