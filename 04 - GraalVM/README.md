@@ -11,6 +11,7 @@ Table of contents:
 - [Clojure](#clojure)
 - [GraalVM and Python](#graalvm-and-python)
 - [GraalPy](#graalpy)
+- [Ballerina](ballerina)
 - [Peak performance with the JVM, time to start performance with the GraalVM](#peak-performance-with-the-jvm-time-to-start-performance-with-the-graalvm)
 
 <br/>
@@ -457,6 +458,12 @@ x[0] = random.randint(1,m)
 Now, running the standalone native application worked with me, but, as shown above, not in a fast fashion.
 
 By the way: this app is a monster with a file size of 352 megabytes!
+
+<br/>
+
+### Ballerina
+
+See the GraalVM compilation at Ballerina, another language with native target JVM, at: [Ahead Of Time (AOT) program compilation with the GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ballerina#ahead-of-time-aot-program-compilation-with-the-graalvm)
 
 <br/>
 
