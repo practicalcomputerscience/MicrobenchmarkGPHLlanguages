@@ -20,7 +20,7 @@ Table of contents:
 
 ## Ahead Of Time (AOT) program compilation with the GraalVM
 
-Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin** and **Clojure** program is a real hit:
+Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a **Scala**, **Kotlin**, **Clojure** and **Ballerina** program is a real hit:
 
 - fast, standalone, native binary executables for Linux can be built with it according to my experience:
 
@@ -32,7 +32,7 @@ Java SE stands for: _Java(TM) SE Runtime Environment of the Oracle GraalVM_, her
 
 ## How to make a standalone executable for Linux with the GraalVM
 
-Scala, Kotlin and Clojure are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux.
+Scala, Kotlin, Clojure and Ballerina are "native" JVM (Java Virtual Machine) languages and this means that it's easy to build so called "fat JAR" or "uberJAR"/"überJAR" (JAR = Java Archive) files from their source code files. This one uberJAR file can then be compiled - with the help of the GraalVM ecosystem - into one native binary executable for Linux.
 
 ### SDKMAN! and Java versions
 
@@ -365,7 +365,7 @@ I was not successful in building a standalone executable from my [Python program
 
 Because the GraalVM is not allowing me to build one "proper" uberJAR file (with a _main manifest attribute_), a fact which prevents the execution of a resulting uberJAR file on the JVM (with the _$ java -jar_ command).
 
-That's the end of this development path since Python is different than Java native languages like Scala, Kotlin or Clojure:
+That's the end of this development path since Python is different than Java native languages like Scala, Kotlin, Clojure or Ballerina:
 
 > Python is a large language. “Batteries included” has long been a core tenet of CPython.
 
