@@ -6,6 +6,8 @@
 
 <br/>
 
+- 2026-05-11: [Ballerina](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ballerina#ballerina-aka-jballerina)
+
 - 2026-05-07: [JS++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#js): program isn't completely working (try-catch exception handling fails); thus only "speed part" implemented, which is otherwise basically working => no further consideration of JS++
 
 - 2026-05-03: [AssemblyScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#assemblyscript)
@@ -83,9 +85,6 @@
 
 2026-05-07: so far, I haven't touched yet these corners of programming languages:
 
-- web programming:
-  - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this after Haskell!
-- Ballerina: https://ballerina.io/: "cloud-native programming language optimized for integration"
 - https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
@@ -93,6 +92,8 @@
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
   - 2025: _Implementing Forth in Go and C_: https://eli.thegreenplace.net/2025/implementing-forth-in-go-and-c/
 - Haskell, a pure functional programming language
+- web programming:
+  - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this after Haskell!
 - Pure Programming Language is a pure functional programming language:
   - https://github.com/agraef/pure-lang/wiki
   - https://agraef.github.io/pure-lang/ 
