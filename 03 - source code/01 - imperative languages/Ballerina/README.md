@@ -143,7 +143,7 @@ Running Scans
 $
 ```
 
-A report is located in directory ./target/report/index.html, and my example, at first, looked like this:
+A report is located in directory _./target/report/index.html_, and my example, at first, looked like this:
 
 ![Alt text](./Ballerina%20scan%20report%201a.png)
 
@@ -155,10 +155,38 @@ The report marks the lines of source code of concern:
 
 ...
 
+<br/>
 
+## Generating a dependency graph
 
+Generating a dependency graph can be done like this for example:
 
+```
+$ bal graph 1>&random_bitstring_and_flexible_password_generator.gv
+$ cat random_bitstring_and_flexible_password_generator.gv
 
+digraph "~/random_bitstring_and_flexible_password_generator:0.1.0" {
+	node [shape=record]
+	"~/random_bitstring_and_flexible_password_generator" [label="<0.1.0> ~/random_bitstring_and_flexible_password_generator:0.1.0"];
+	"ballerinai/observe" [label="<0.0.0> ballerinai/observe:0.0.0"];
+	"ballerina/random" [label="<1.7.0> ballerina/random:1.7.0"];
+	"ballerina/time" [label="<2.8.0> ballerina/time:2.8.0"];
+	"ballerina/observe" [label="<1.7.1> ballerina/observe:1.7.1"];
+	"ballerina/io" [label="<1.8.0> ballerina/io:1.8.0"];
+
+	// Edges
+	"~/random_bitstring_and_flexible_password_generator":"0.1.0" -> "ballerina/io":"1.8.0";
+	"~/random_bitstring_and_flexible_password_generator":"0.1.0" -> "ballerina/random":"1.7.0";
+	"~/random_bitstring_and_flexible_password_generator":"0.1.0" -> "ballerinai/observe":"0.0.0";
+	"ballerinai/observe":"0.0.0" -> "ballerina/observe":"1.7.1";
+	"ballerina/random":"1.7.0" -> "ballerina/time":"2.8.0";
+}
+$ 
+```
+
+The resulting text file with content in the DOT graph description language can be visualized with the [Edotor](https://edotor.net/) tool for example (I got this idea from here: [Visualizing the Dependency Graph of a Ballerina Project](https://medium.com/@g.c.dassanayake/visualising-the-dependencies-of-a-ballerina-project-d5e1b5642258)):
+
+![Alt text](./random_bitstring_and_flexible_password_generator.png)
 
 <br/>
 
