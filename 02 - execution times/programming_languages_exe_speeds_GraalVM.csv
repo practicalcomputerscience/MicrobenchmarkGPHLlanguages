@@ -6,3 +6,5 @@ Clojure GraalVM, OpenJDK;0,073325;0,000269;2025-12-24
 Scala JVM uberjar, OpenJDK;0,142;0,003;2025-12-21
 Kotlin JVM uberjar, OpenJDK;0,073;0,003;2025-12-21
 Clojure JVM uberjar, OpenJDK;0,416;0,004;2025-12-21
+Ballerina JVM uberjar, OpenJDK;0,454;0,007;2026-05-07
+Ballerina GraalVM, OpenJDK;0,165;0,005;2026-05-11
