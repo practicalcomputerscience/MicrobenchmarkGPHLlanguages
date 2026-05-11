@@ -11,7 +11,7 @@ Table of contents:
 - [Clojure](#clojure)
 - [GraalVM and Python](#graalvm-and-python)
 - [GraalPy](#graalpy)
-- [Ballerina](ballerina)
+- [Ballerina](#ballerina)
 - [Peak performance with the JVM, time to start performance with the GraalVM](#peak-performance-with-the-jvm-time-to-start-performance-with-the-graalvm)
 
 <br/>
