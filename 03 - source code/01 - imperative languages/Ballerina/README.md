@@ -1,12 +1,3 @@
-2026-05-07: work in progress
-
-to-do:
-
-- GraalVM for random_streams_for_perf_stats.bal: https://ballerina.io/learn/graalvm-executable-overview/
-  - $ bal build --graalvm
-
-<br/> 
-
 # Ballerina aka jBallerina
 
 https://ballerina.io/ (*)
@@ -23,7 +14,17 @@ https://en.wikipedia.org/wiki/Ballerina_(programming_language)
 
 ---
 
+Table of contents:
+
+- [Idea of Ballerina: simpler enterprise integration](#idea-of-ballerina-simpler-enterprise-integration)
+- [Installation and compilation tips](#installation-and-compilation-tips)
+- [Static code analysis](#static-code-analysis)
+- [Generating a dependency graph](#generating-a-dependency-graph)
+- [Ahead Of Time (AOT) program compilation with the GraalVM](#ahead-of-time-aot-program-compilation-with-the-graalvm)
+
 <br/>
+
+---
 
 ## Idea of Ballerina: simpler enterprise integration
 
