@@ -273,6 +273,16 @@ This downgrade made the program substantially slower! So, I switched back to for
 
 I wonder now if the whole Ballerina ecosystem could be made a bit faster after a switch to a Java Runtime Environment of version 24 or later.
 
+However:
+
+> The long-term goal of the nBallerina project is to create a new compiler for the Ballerina language that is written in Ballerina and can generate native code using LLVM.
+
+from: [nBallerina](https://github.com/ballerina-platform/nballerina#nballerina)
+
+See also at [Ballerina FFI (Foreign Function Interface)](https://ballerina.io/learn/ballerina-ffi/):
+
+> ..while the jBallerina compiler allows you to call any Java code, the nBallerina compiler allows you to call any C Code.
+
 <br/>
 
 ##_end
