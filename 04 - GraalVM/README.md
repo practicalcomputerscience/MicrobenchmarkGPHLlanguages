@@ -464,6 +464,10 @@ By the way: this app is a monster with a file size of 352 megabytes!
 
 However, be aware that peak performance (also considering GC = Garbage Collection) is probably better on the JVM, but time to start is lower with the GraalVM; see from here: https://www.graalvm.org/python/docs/#comparison
 
+At the Ballerina language I found this nice visualization: [GraalVM executable vs. Uber Jar](https://ballerina.io/learn/graalvm-executable-overview/#graalvm-executable-vs-uber-jar)
+
+![Alt text](./aot-vs-jit.png)
+
 <br/>
 
 ##_end
