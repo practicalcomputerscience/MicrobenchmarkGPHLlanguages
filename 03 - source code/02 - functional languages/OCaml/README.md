@@ -17,7 +17,7 @@ In my opinion:
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Consequence of the Hindley–Milner type inference: uninformative error reporting at compilation](consequence-of-the-hindley–milner-type-inference-uninformative-error-reporting-at-compilation)
+- [Consequence of the Hindley–Milner type inference: uninformative error reporting at compilation](#consequence-of-the-hindley–milner-type-inference-uninformative-error-reporting-at-compilation)
 - [OCaml on the Java Virtual Machine (JVM)](#ocaml-on-the-java-virtual-machine-jvm)
 
 <br/>
