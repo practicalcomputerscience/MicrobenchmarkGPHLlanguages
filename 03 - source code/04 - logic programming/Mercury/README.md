@@ -363,7 +363,7 @@ I wondered what has happened to the PLASMA (with capital letters) programming la
            (n * (factorial <= (n - 1)))))))
 ```
 
-..and found this webpage: https://plasmalang.org/roadmap.html
+..and found this web page: https://plasmalang.org/roadmap.html
 
 However, that functional language, named _Plasma_, apparently has nothing do (directly) with the old PLASMA system.
 
