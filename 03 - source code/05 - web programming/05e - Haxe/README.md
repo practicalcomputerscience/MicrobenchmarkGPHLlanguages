@@ -98,6 +98,8 @@ $
 
 <br/>
 
+#### Error messaging
+
 Then I started to develop Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) piece by piece with the help of the interpreter:
 
 ```
