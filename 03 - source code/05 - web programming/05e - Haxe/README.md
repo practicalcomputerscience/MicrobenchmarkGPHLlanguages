@@ -96,8 +96,6 @@ NekoVM 2.3.0 (c)2005-2017 Haxe Foundation
 $ 
 ```
 
-<br/>
-
 #### Error messaging
 
 Then I started to develop Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) piece by piece with the help of the interpreter:
@@ -108,7 +106,7 @@ RandomStreamsForPerfStats.hx:71: characters 11-12 : Missing ;
 $
 ```
 
-..only to notice that the error messaging of Haxe is not helpful (at all). The error was just this:
+..only to notice that the error messaging of Haxe is not helpful (at all). The error was in this line of source code:
 
 ```
 io:println('\nbits_x_str_total = $bits_x_str_total');  // for testing
@@ -120,11 +118,9 @@ io:println('\nbits_x_str_total = $bits_x_str_total');  // for testing
 Sys.println('\nbits_x_str_total = $bits_x_str_total');  // for testing
 ```
 
-Well, its compiler is based on OCaml: [Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)
+Well, Haxe's compiler is written in OCaml: [Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)
 
-
-
-
+TBD
 
 <br/>
 
