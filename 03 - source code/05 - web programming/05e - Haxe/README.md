@@ -37,7 +37,7 @@ https://nekovm.org/
 
 Haxe originated in the French MTASC (Motion-Twin ActionScript 2 Compiler), an ActionScript 2.0 compiler, written in the
 [OCaml programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) (from France!),
-and was meant to faster produce applications for the Flash Player than the original Adobe Flash ActionScript compiler. OCaml is still used today: 
+and was meant to faster produce applications for the Flash Player than the original Adobe Flash ActionScript compiler:
 
 - [History](https://haxe.org/manual/introduction-haxe-history.html)
 - [Haxe Interview](https://web.archive.org/web/20151208134720/http://ncannasse.fr/blog/haxe_interview)
@@ -96,7 +96,29 @@ NekoVM 2.3.0 (c)2005-2017 Haxe Foundation
 $ 
 ```
 
-TBD
+<br/>
+
+Then I started to develop Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) piece by piece with the help of the interpreter:
+
+```
+$ haxe --main RandomStreamsForPerfStats --interp
+RandomStreamsForPerfStats.hx:71: characters 11-12 : Missing ;
+$
+```
+
+..only to notice that the error messaging of Haxe is not helpful (at all). The error was just this:
+
+```
+io:println('\nbits_x_str_total = $bits_x_str_total');  // for testing
+```
+
+..instead of:
+
+```
+Sys.println('\nbits_x_str_total = $bits_x_str_total');  // for testing
+```
+
+Well, its compiler is based on OCaml: [Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)
 
 
 
