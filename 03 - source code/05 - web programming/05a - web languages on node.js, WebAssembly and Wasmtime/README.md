@@ -13,8 +13,10 @@ adding/to-do:
   - AssemblyScript on Wasmtime;0,028;0,001;2026-05-02
   - PureScript --> compiles to readable JavaScript --> Bun????
 
-JS = JavaScript
-TS = TypeScript
+<br/>
+
+- JS = JavaScript
+- TS = TypeScript
 
 <br/>
 
