@@ -14,6 +14,7 @@ adding/to-do:
   - PureScript --> compiles to readable JavaScript --> Bun????
 
 JS = JavaScript
+TS = TypeScript
 
 <br/>
 
