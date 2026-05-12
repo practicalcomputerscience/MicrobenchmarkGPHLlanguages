@@ -97,6 +97,8 @@ However:
 
 from pdf document: [Generalizing Hindley-Milner Type Inference Algorithms](https://github.com/egormkn/type-theory/blob/master/Generalizing%20Hindley-Milner%20Type%20Inference%20Algorithms.pdf) by Bastiaan Heeren, Jurriaan Hage and Doaitse Swierstra from 2002.
 
+Here's an example of how the error reporting of the OCaml compiler may emerge in a potentially unexpected way: [Error messaging](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#error-messaging) in Haxe language
+
 Here may be some more help for [Common Error Messages](https://ocaml.org/docs/common-errors?utm_source=copilot.com) when compiling OCaml source code.
 
 <br/>
