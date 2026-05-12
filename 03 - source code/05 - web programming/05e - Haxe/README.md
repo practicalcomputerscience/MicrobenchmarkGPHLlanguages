@@ -53,6 +53,28 @@ Apparently, the Haxe ecosystem is not the smallest one.
 
 <br/>
 
+## Installation and compilation tips
+
+I followed to some extent these instructions (for Ubuntu 24): [Linux Software Packages](https://haxe.org/download/linux/)
+
+```
+$ sudo apt-get update
+...
+$ sudo apt-get install haxe
+...
+$ mkdir ~/haxelib && haxelib setup ~/haxelib
+haxelib repository is now ~/haxelib
+$ haxe --version
+4.3.3
+$ 
+```
+
+
+
+
+
+<br/>
+
 ## Neko and the Neko virtual machine (NekoVM)
 
 [Neko](https://nekovm.org/) "is a high-level dynamically typed programming language. It can be used as an embedded scripting language. It has been designed to provide a common runtime for several different languages.",
