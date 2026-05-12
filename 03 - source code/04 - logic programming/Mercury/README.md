@@ -424,7 +424,7 @@ So, name your variables maybe in _CamelCase_, but your function, predicate ("sta
 
 Compared to the OCaml compiler ([Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)), the Mercury compiler is really helpful with its warnings and error messages from my of view.
 
-One common problem I have had with Mercury, and one which I couldn't always solve for more demanding algorithms, is this kind of type problem:
+One common problem I have had with Mercury, and one, which I couldn't always solve for more demanding algorithms, is this kind of type problem:
 
 ```
 :- pred list_of_strings(int::in, string::in, list(string)::out) is det.
