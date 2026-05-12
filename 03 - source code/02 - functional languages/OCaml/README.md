@@ -17,7 +17,7 @@ In my opinion:
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Consequence of the Hindley–Milner type inference: uninformative error reporting at compilation](#consequence-of-the-hindley–milner-type-inference-uninformative-error-reporting-at-compilation)
+- [Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)
 - [OCaml on the Java Virtual Machine (JVM)](#ocaml-on-the-java-virtual-machine-jvm)
 
 <br/>
@@ -79,7 +79,7 @@ I'm not configuring special things in the generated _dune_ and _dune-project_ co
 <br/>
 
 
-## Consequence of the Hindley–Milner type inference: uninformative error reporting at compilation
+## Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation
 
 > The Hindley–Milner type system (HM) is the foundation of type inference in functional languages such as ML, OCaml, and Haskell (in their pure fragments). Its power lies in automatically assigning the most general — or principal — types to expressions without explicit annotations.
 
