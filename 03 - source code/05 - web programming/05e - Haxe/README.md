@@ -1,5 +1,6 @@
 2026-05-12: work in progress
 
+- check: TBD's
 - runtime targets: VM's HashLink (JIT): _hl output.hl_ and NekoVM + bytecode interpretation in HashLink: _haxe --main HelloWorld --interp_
 
 - neko <file>               generate Neko bytecode into target file
