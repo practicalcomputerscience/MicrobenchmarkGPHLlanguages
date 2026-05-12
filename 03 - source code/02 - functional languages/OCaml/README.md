@@ -83,7 +83,7 @@ I'm not configuring special things in the generated _dune_ and _dune-project_ co
 
 > The Hindley–Milner type system (HM) is the foundation of type inference in functional languages such as ML, OCaml, and Haskell (in their pure fragments). Its power lies in automatically assigning the most general — or principal — types to expressions without explicit annotations.
 
-from: [Hindley–Milner & Type Inference](https://notes.camadkins.com/cs/pl/hindleymilner-type-inference). Also see [Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system).
+from: [Hindley–Milner & Type Inference](https://notes.camadkins.com/cs/pl/hindleymilner-type-inference). Also see [Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system) in Wikipedia.
 
 Fun fact:
 
