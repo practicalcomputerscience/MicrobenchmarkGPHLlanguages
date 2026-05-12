@@ -9,4 +9,9 @@ However, a somehow common, but not ideologic, naming convention for as much prog
 
 <br/>
 
+- JS = JavaScript
+- TS = TypeScript
+
+<br/>
+
 ##_end
