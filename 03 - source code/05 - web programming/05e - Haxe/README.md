@@ -37,19 +37,24 @@ However, Haxe then evolved to support the **OpenFL** (Open Flash Library for 2D 
 
 Later, Adobe Flash (Professional) evolved into Adobe Animate: https://www.adobe.com/products/animate.html
 
-Today, Haxe claims to transpile to a decent selection of target languages, and that it "allows access to each platform's native capabilities" (*). I won't compile a target list here, which easily may be wrong or incomplete.
+Today, Haxe claims to transpile to a decent selection of target languages, and that it "allows access to each platform's native capabilities" (*). Here's a list of currently supported target languages: [What is Haxe?](https://haxe.org/manual/introduction-what-is-haxe.html) (+)
 
 However, Haxe notes to have "its own VMs ([HashLink](https://hashlink.haxe.org/) and [NekoVM](https://nekovm.org/))", and the capability to "also run in interpreted mode" (*).
 
 Though, Neko is also a high-level  programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see below at [Neko and the Neko virtual machine (NekoVM)](neko-and-the-neko-virtual-machine-nekovm).
 
-While Haxe basically is a statically typed programming language, Neko is dynamically typed, though Haxe also allows for dynamic typing by the coder, see at [Types: Dynamic](https://haxe.org/manual/types-dynamic.html).
+While Haxe basically is a statically typed programming language, Neko is dynamically typed, though Haxe also allows for dynamic typing by the developer, see at [Types: Dynamic](https://haxe.org/manual/types-dynamic.html).
 
-Neko, being published as version 1.0 in 2005 (https://nekovm.org/news/) is older than HashLink, which was published as version 1.0 in 2016: https://github.com/HaxeFoundation/hashlink
+Neko, same as Haxe (+), has been published as version 1.0 in 2005 (https://nekovm.org/news/), and therefore is roughly a decade older than HashLink, which has been published as version 1.0 in 2016: https://github.com/HaxeFoundation/hashlink
+
+Web page (+) says this about main application targets:
+
+- Neko VM: _Desktop, Server, CLI_
+- HashLink VM: _Desktop, Mobile, Game consoles_
 
 <br/>
 
-Apparently, the Haxe ecosystem is not the smallest one.
+Apparently, the Haxe ecosystem is not the smallest one nowadays.
 
 <br/>
 
@@ -69,6 +74,7 @@ $ haxe --version
 $ 
 ```
 
+TBD
 
 
 
