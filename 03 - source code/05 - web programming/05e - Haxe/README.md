@@ -80,7 +80,7 @@ Apparently, the Haxe ecosystem is not the smallest one nowadays.
 
 ## Installation and compilation tips
 
-I followed to some extent these instructions (for Ubuntu 24): [Linux Software Packages](https://haxe.org/download/linux/)
+I followed to some extent the instructions (for Ubuntu 24) of web page [Linux Software Packages](https://haxe.org/download/linux/):
 
 ```
 $ sudo apt-get update
