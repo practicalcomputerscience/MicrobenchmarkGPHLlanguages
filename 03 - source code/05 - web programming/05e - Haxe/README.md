@@ -59,7 +59,7 @@ Just running command _$ haxe_ will also provide a list of compiler targets, or h
 
 Haxe also has "its own VMs ([HashLink](https://hashlink.haxe.org/) and [NekoVM](https://nekovm.org/))", and the capability to "also run in interpreted mode" (*).
 
-"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see also below at [Neko and the Neko virtual machine (NekoVM)](neko-and-the-neko-virtual-machine-nekovm).
+"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see also below at [Neko and the Neko virtual machine (NekoVM) - deprecated!](neko-and-the-neko-virtual-machine-nekovm-deprecated).
 
 #### Type system
 
