@@ -59,7 +59,7 @@ Just running command _$ haxe_ will also provide a list of compiler targets, or h
 
 Haxe also has "its own VMs ([HashLink](https://hashlink.haxe.org/) and [NekoVM](https://nekovm.org/))", and the capability to "also run in interpreted mode" (*).
 
-"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see also below at [Neko and the Neko virtual machine (NekoVM) - deprecated!](#neko-and-the-neko-virtual-machine-nekovm---deprecated).
+"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see also below at [Neko and the Neko virtual machine (NekoVM) - deprecated!](#neko-and-the-neko-virtual-machine-nekovm---deprecated)
 
 #### Type system
 
@@ -173,7 +173,7 @@ So, I will stick with older version 2.3.0, which also comes with Ubuntu command 
 
 However, the NekoVM is [Deprecated as of 2021-09-09](https://github.com/HaxeFoundation/neko#deprecated-as-of-2021-09-09)! 
 
-Which leaves me these open questions: what is going to happen to the [Neko Programming Language](https://nekovm.org/), and also the [NekoML high-order functional language with type inference](https://nekovm.org/doc/nekoml/)?
+Which leaves me these open questions: what is going to happen to the "high-level dynamically typed" [Neko Programming Language](https://nekovm.org/), and also the [NekoML high-order functional language with type inference](https://nekovm.org/doc/nekoml/)?
 
 <br/>
 
@@ -206,7 +206,7 @@ sys	0m0.011s
 $
 ```
 
-Around 150 milliseconds marks a significantly faster program execution time than using the (deprecated) NekoVM.
+Around 150 milliseconds marks a significantly faster program execution time than using the (deprecated) NekoVM!
 
 TBD
 
