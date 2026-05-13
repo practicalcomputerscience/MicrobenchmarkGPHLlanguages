@@ -59,7 +59,7 @@ Just running command _$ haxe_ will also provide a list of compiler targets, or h
 
 Haxe also has "its own VMs ([HashLink](https://hashlink.haxe.org/) and [NekoVM](https://nekovm.org/))", and the capability to "also run in interpreted mode" (*).
 
-"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see below at [Neko and the Neko virtual machine (NekoVM)](neko-and-the-neko-virtual-machine-nekovm).
+"Neko" is also the name of a high-level programming language ([Frequently Asked Questions about Neko](https://nekovm.org/faq/)), see also below at [Neko and the Neko virtual machine (NekoVM)](neko-and-the-neko-virtual-machine-nekovm).
 
 #### Type system
 
@@ -165,17 +165,15 @@ $
 
 Executing the Neko bytecode takes about 900 milliseconds of program execution time!
 
-Then I tested latest NekoVM version 2.4.1 (as of 2026-05-13) from here: https://nekovm.org/download/, only to notice that this NekoVM version needs more execution time with about 1.6 seconds!
+Then I tested latest NekoVM version 2.4.1 (as of 2026-05-13) from here: https://nekovm.org/download/, only to notice that this NekoVM version needs even more execution time with about 1.6 seconds!
 
-So, for now, I will stick with older version 2.3.0 which also comes with Ubuntu command _sudo apt-get install neko_.
+So, I will stick with older version 2.3.0, which also comes with Ubuntu command _$ sudo apt-get install neko_.
 
 <br/>
 
 However, the NekoVM is [Deprecated as of 2021-09-09](https://github.com/HaxeFoundation/neko#deprecated-as-of-2021-09-09)! 
 
-Which leaves me these open questions: what is going to happen to the Neko Programming Language, and also the [NekoML high-order functional language with type inference](https://nekovm.org/doc/nekoml/)?
-
-Since [Neko](https://nekovm.org/) "is a high-level dynamically typed programming language. It can be used as an embedded scripting language. It has been designed to provide a common runtime for several different languages."
+Which leaves me these open questions: what is going to happen to the [Neko Programming Language](https://nekovm.org/), and also the [NekoML high-order functional language with type inference](https://nekovm.org/doc/nekoml/)?
 
 <br/>
 
