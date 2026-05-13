@@ -1,10 +1,6 @@
 2026-05-12: work in progress
 
 - check: TBD's
-- runtime targets: VM's HashLink (JIT): _hl output.hl_ and NekoVM + bytecode interpretation in HashLink: _haxe --main HelloWorld --interp_
-
-- neko <file>               generate Neko bytecode into target file
-- hl <file>                 generate HashLink .hl bytecode or .c code into target file: _haxe -hl output.hl -main MyApp _
 - jvm <file>                generate JVM bytecode into target file: _haxe --main HelloWorld --jvm HelloWorld.jar_ See from: https://haxe.org/documentation/introduction/language-introduction.html
 - js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
 - java <directory>          generate Java code into target directory: _???_
@@ -208,7 +204,74 @@ $
 
 Around 150 milliseconds marks a significantly faster program execution time than using the (deprecated) NekoVM!
 
-TBD
+<br/>
+
+#### Producing a native executable from C code
+
+With the help of Google AI, I also managed to compile a native executable from C code: [HashLink/C code](https://haxe.org/manual/target-hl-c-compilation.html#hashlink/c-code)
+
+But I didn't succeed with the Homebrew based installation.
+
+First, I downloaded and extracted file _hashlink-1.15.tar.gz_ from here: https://github.com/HaxeFoundation/hashlink/releases/tag/1.15
+
+So, I got a HashLink source code subdirectory named _./hashlink-1.15_ in my Haxe project directory, where the Haxe source code file _RandomStreamsForPerfStats.hx_ is located.
+
+Then, I compiled the C source code file named _main.c_, located in subdirectory _./out_:
+
+```
+$ haxe --main RandomStreamsForPerfStats --hl out/main.c
+Code generated in out/main.c
+Set -D hlgen.makefile for automatic native compilation
+$
+```
+
+Switch _-D hlgen.makefile_ doesn't work here for direct compilation to a native executable, because a couple of resources must be set manually.
+
+The successful compilation command was then this:
+
+```
+$ gcc -O3 -o RandomStreamsForPerfStats -std=c11 -I out -I ./hashlink-1.15/src out/main.c -L ./hashlink-1.15 -Wl,-rpath,./hashlink-1.15 -lhl
+$
+```
+
+..where switch _lhl_ tells the linker to search for HashLink library file _libhl.so_, which is located in subdirectory _./hashlink-1.15_ (but unfortunately not file _libhl.a_ for static linking).
+
+Switch _-L_ searches for more libraries in given path _./hashlink-1.15_.
+
+Include switches _-I out -I ./hashlink-1.15/src_ search for header files in the given subdirectories.
+
+_-Wl,-rpath,./hashlink-1.15_ passes the runtime path (rpath) flags to the linker, so the executable can locate the shared library _~.so_ at runtime without needing the value of environment variable _LD_LIBRARY_PATH_.
+
+The native executable:
+
+```
+$ time ./RandomStreamsForPerfStats
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.142s
+user	0m0.127s
+sys	0m0.014s
+$
+```
+
+..runs a little bit faster than the bytecode for the HashLink virtual machine.
+
+A downside of this solution is the fact that Linux program _RandomStreamsForPerfStats_ depends on shared library _libhl.so_ (of size 741.448 bytes):
+
+```
+$ ldd RandomStreamsForPerfStats
+	linux-vdso.so.1 (0x00007b29552f6000)
+	libhl.so => ./hashlink-1.15/libhl.so (0x00007b29551fa000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007b2954e00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007b29550fc000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007b29552f8000)
+$
+```
+
+..which means that executing this program in a different location or Linux system needs this shared library always relatively stored as _./hashlink-1.15/libhl.so_.
 
 <br/>
 
