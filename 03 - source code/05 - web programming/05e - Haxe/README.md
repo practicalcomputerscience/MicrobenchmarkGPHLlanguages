@@ -121,39 +121,96 @@ Sys.println('\nbits_x_str_total = $bits_x_str_total');  // for testing
 
 Well, Haxe's compiler is written in OCaml: [Consequence of the Hindley-Milner type inference: uninformative error reporting at compilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#consequence-of-the-hindley-milner-type-inference-uninformative-error-reporting-at-compilation)
 
-TBD
+<br/>
+
+## Interpretation of Haxe source code
+
+I would say that the easiest starting point to test Haxe source code is to interpret it.
+
+_$ haxe --help_ says this about interpretation with the _--interp_ compiler switch: _interpret the program using internal macro system_
+
+So, something like this:
+
+```
+$ haxe --main RandomStreamsForPerfStats --interp
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+Simmilar to this is to use the _--run_ switch to "interpret a Haxe module with command line arguments":
+
+```
+$ haxe --run RandomStreamsForPerfStats
+...
+$
+```
+
+Both commands practically tally the same execution time of about 220 milliseconds.
 
 <br/>
 
-## Neko and the Neko virtual machine (NekoVM)
+## Neko and the Neko virtual machine (NekoVM) - deprecated!
 
-[Neko](https://nekovm.org/) "is a high-level dynamically typed programming language. It can be used as an embedded scripting language. It has been designed to provide a common runtime for several different languages."
+Bytecode, which is stored into file _RandomStreamsForPerfStats.n_, for the (old) NekoVM can be produced and executed like this:
+
+```
+$ haxe --neko RandomStreamsForPerfStats.n --main RandomStreamsForPerfStats
+$ neko RandomStreamsForPerfStats.n
+...
+$
+```
+
+Executing the Neko bytecode takes about 900 milliseconds of program execution time!
+
+Then I tested latest NekoVM version 2.4.1 (as of 2026-05-13) from here: https://nekovm.org/download/, only to notice that this NekoVM version needs more execution time with about 1.6 seconds!
+
+So, for now, I will stick with older version 2.3.0 which also comes with Ubuntu command _sudo apt-get install neko_.
+
+<br/>
+
+However, the NekoVM is [Deprecated as of 2021-09-09](https://github.com/HaxeFoundation/neko#deprecated-as-of-2021-09-09)! 
+
+Which leaves me these open questions: what is going to happen to the Neko Programming Language, and also the [NekoML high-order functional language with type inference](https://nekovm.org/doc/nekoml/)?
+
+Since [Neko](https://nekovm.org/) "is a high-level dynamically typed programming language. It can be used as an embedded scripting language. It has been designed to provide a common runtime for several different languages."
+
+<br/>
+
+## The new HashLink virtual machine (HashLinkVM)
+
+Since my Ubuntu system (already) has "unmet dependencies", I turned to the Homebrew package manager (again) to install the newer HashLink JIT VM:
+
+```
+$ brew install hashlink
+...
+$ hl
+HL/JIT 1.15.0 (c)2015-2025 Haxe Foundation
+  Usage : hl [--debug <port>] [--debug-wait] <file>
+$
+```
+
+Bytecode, which is stored into file _RandomStreamsForPerfStats.hl_, for the HashLinkVM can be produced and executed like this:
+
+```
+$ haxe --hl RandomStreamsForPerfStats.hl -main RandomStreamsForPerfStats
+$ time hl RandomStreamsForPerfStats.hl
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.153s
+user	0m0.143s
+sys	0m0.011s
+$
+```
+
+Around 150 milliseconds marks a significantly faster program execution time than using the (deprecated) NekoVM.
 
 TBD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TBD
-
-
-
-
 
 <br/>
 
