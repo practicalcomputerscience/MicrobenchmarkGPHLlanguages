@@ -32,14 +32,14 @@ https://nekovm.org/
 
 ## Idea of Haxe: from development of Adobe Flash games to cross-platform development for front-end and back-end
 
-Haxe originated in the French MTASC (Motion-Twin ActionScript 2 Compiler), an ActionScript 2.0 compiler, written in the
-[OCaml programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) (from France!),
+Haxe originated in the French Motion-Twin ActionScript 2 Compiler (MTASC), written in the
+[OCaml programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) (from France),
 and was meant to faster produce applications for the Flash Player than the original Adobe Flash ActionScript compiler:
 
 - [History](https://haxe.org/manual/introduction-haxe-history.html)
 - [Haxe Interview](https://web.archive.org/web/20151208134720/http://ncannasse.fr/blog/haxe_interview)
 
-However, Haxe then evolved to support the **OpenFL** (Open Flash Library for 2D development) (***). So, ActionScript 3.0 code needs transpilation into Haxe code to make it useful for OpenFL: https://github.com/openfl/AS3ConversionGuide/tree/master
+However, Haxe then evolved to support the **OpenFL** (Open Flash Library for 2D development) (***). So, ActionScript 3.0 code needs transpilation into Haxe code to make it usable for OpenFL: https://github.com/openfl/AS3ConversionGuide/tree/master
 
 Later, Adobe Flash (Professional) evolved into Adobe Animate: https://www.adobe.com/products/animate.html
 
@@ -62,15 +62,6 @@ Haxe also has "its own VMs ([HashLink](https://hashlink.haxe.org/) and [NekoVM](
 While Haxe basically is a statically typed programming language, Neko is dynamically typed, though Haxe also allows for dynamic typing by the developer, see at [Types: Dynamic](https://haxe.org/manual/types-dynamic.html).
 
 Neko, same as Haxe (+), has been published as version 1.0 in 2005 (https://nekovm.org/news/), and therefore is roughly a decade older than HashLink, which has been published as version 1.0 in 2016: https://github.com/HaxeFoundation/hashlink
-
-Web page (+) tells this about main application targets of these two VM's:
-
-- Neko VM: _Desktop, Server, CLI_
-- HashLink VM: _Desktop, Mobile, Game consoles_
-
-<br/>
-
-Apparently, the Haxe ecosystem is not the smallest one nowadays.
 
 <br/>
 
@@ -125,7 +116,7 @@ I would say that the easiest starting point to test Haxe source code is to inter
 
 _$ haxe --help_ says this about interpretation with the _--interp_ compiler switch: _interpret the program using internal macro system_
 
-So, something like this:
+So, interpretation works like this for example:
 
 ```
 $ haxe --main RandomStreamsForPerfStats --interp
@@ -136,7 +127,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Simmilar to this is to use the _--run_ switch to "interpret a Haxe module with command line arguments":
+Simmilar to this command is to use the _--run_ switch to "interpret a Haxe module with command line arguments":
 
 ```
 $ haxe --run RandomStreamsForPerfStats
@@ -163,7 +154,7 @@ Executing the Neko bytecode takes about 900 milliseconds of program execution ti
 
 Then I tested latest NekoVM version 2.4.1 (as of 2026-05-13) from here: https://nekovm.org/download/, only to notice that this NekoVM version needs even more execution time with about 1.6 seconds!
 
-So, I will stick with older version 2.3.0, which also comes with Ubuntu command _$ sudo apt-get install neko_.
+So, I will stick with older version 2.3.0, which also comes with Ubuntu command: _$ sudo apt-get install neko_.
 
 <br/>
 
@@ -225,12 +216,13 @@ Set -D hlgen.makefile for automatic native compilation
 $
 ```
 
-Switch _-D hlgen.makefile_ doesn't work here for direct compilation to a native executable, because a couple of resources must be set manually.
+Switch _-D hlgen.makefile_ doesn't work here, because a couple of resources must be set manually.
 
-The successful compilation command was then this:
+The successful compilation command was then this monster:
 
 ```
-$ gcc -O3 -o RandomStreamsForPerfStats -std=c11 -I out -I ./hashlink-1.15/src out/main.c -L ./hashlink-1.15 -Wl,-rpath,./hashlink-1.15 -lhl
+$ gcc -O3 -o RandomStreamsForPerfStats -std=c11 -I out -I ./hashlink-1.15/src out/main.c \
+> -L ./hashlink-1.15 -Wl,-rpath,./hashlink-1.15 -lhl
 $
 ```
 
