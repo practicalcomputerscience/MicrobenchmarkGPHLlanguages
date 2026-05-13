@@ -18,7 +18,7 @@ Table of contents:
 
 ## Installation tips
 
-Download installation script _racket-9.0-x86_64-linux-buster-cs.sh_ (as of 2025-12-22) from here: https://download.racket-lang.org/, and run it like this (in Ubuntu 24 LTS): _sudo sh ./racket-9.0-x86_64-linux-buster-cs.sh_, where my answers were: "yes" (for a Unix-style distribution) - "1" (/usr/... as installation base) - "[ENTER]" (no change to target directories).
+Download installation script _racket-9.0-x86_64-linux-buster-cs.sh_ (as of 2025-12-22) from here: https://download.racket-lang.org/, and run it like this (in Ubuntu 24 LTS): _$ sudo sh ./racket-9.0-x86_64-linux-buster-cs.sh_, where my answers were: "yes" (for a Unix-style distribution) - "1" (/usr/... as installation base) - "[ENTER]" (no change to target directories).
 
 Then, have a little test:
 
