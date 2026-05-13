@@ -191,7 +191,7 @@ In other words:
 > [!NOTE]
 > It's easy to struggle with building and installing Mercury. Starting all over is the key.
 
-For example, I noticed a warning with _csc_ at the _./configure ..._ command. So, I deleted the whole directory with: _sudo rm -rf /usr/local/bin/csc_, which was used by CHICKEN Scheme. _csc_ is assumed to be for Microsofts's C# by Mercury. This shouldn't be related to installation problems, but who knows.
+For example, I noticed a warning with _csc_ at the _./configure ..._ command. So, I deleted the whole directory with: _$ sudo rm -rf /usr/local/bin/csc_, which was used by CHICKEN Scheme. _csc_ is assumed to be for Microsofts's C# by Mercury. This shouldn't be related to installation problems, but who knows.
 
 Then, I noticed a problem with building the Mercury documentation. I re-installed _texinfo_ and additionally installed _texlive_. Also this shouldn't be related to installation problems, but who knows.
 
