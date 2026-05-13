@@ -171,7 +171,7 @@ Here, I look at the **target system** to see what is missing (and hope that it's
 >
 ```
 
-..and copy file _libswipl.so.9_ from the source system to the target system, into a directory where it can be found automatically, like this for example: _sudo cp libswipl.so.9 /lib64_
+..and copy file _libswipl.so.9_ from the source system to the target system, into a directory where it can be found automatically, like this for example: _$ sudo cp libswipl.so.9 /lib64_
 
 This should work now:
 
