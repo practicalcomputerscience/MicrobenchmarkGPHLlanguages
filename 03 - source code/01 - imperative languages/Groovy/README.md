@@ -202,7 +202,7 @@ Actually, the GroovyConsole is a Graphical User Interface for the Groovy shell:
 
 ![plot](./Groovyconsole.png)
 
-As a further possibility: "The console can be embedded in either Java or Groovy code.", see from the Groovy Language Documentation, linked above.
+As a further possibility: "The console can be embedded in either Java or Groovy code.", see from the Groovy Language Documentation PDF file, linked at the top of this page.
 
 Swing refers to the Swing GUI widget toolkit for Java: [Trail: Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/)
 
