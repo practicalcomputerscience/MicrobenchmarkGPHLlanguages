@@ -166,7 +166,7 @@ Which leaves me these open questions: what is going to happen to the "high-level
 
 ## The new HashLink virtual machine (HashLinkVM)
 
-Since my Ubuntu system (already) has "unmet dependencies", I turned to the Homebrew package manager (again) to install the newer HashLink JIT VM:
+Since my Ubuntu system (already) has "unmet dependencies" (see below at [SDL2](#sdl2) for more information), I turned to the Homebrew package manager (again) to install the newer HashLink JIT VM:
 
 ```
 $ brew install hashlink
@@ -266,5 +266,22 @@ $
 ..which means that executing this program in a different location or Linux system needs this shared library always relatively stored as _./hashlink-1.15/libhl.so_.
 
 <br/>
+
+### SDL2
+
+SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the latest SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8
+
+The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me in two Ubuntu 24.04.3 LTS systems.
+
+There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience. See from here at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#hashlink):
+
+```
+$ sudo apt update
+$ sudo apt-get install libpng-dev libturbojpeg-dev libvorbis-dev libopenal-dev libglu1-mesa-dev libmbedtls-dev libuv1-dev libsqlite3-dev
+```
+
+TBD
+
+
 
 ##_end
