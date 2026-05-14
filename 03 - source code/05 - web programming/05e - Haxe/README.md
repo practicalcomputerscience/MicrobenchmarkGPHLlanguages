@@ -344,7 +344,7 @@ real	0m0.079s
 $ 
 ```
 
-..created numerous JVM resources starting in (example) subdirectory _./bin_, that is exactly 75 files! (_$ find . -type f | wc -l_), though it's apparently allowing faster program execution.
+..created numerous JVM resources starting in (example) subdirectory _./bin_, that is exactly 75 files! (_$ find ./bin -type f | wc -l_), though it's apparently allowing faster program execution.
 
 So, I ran the _multitime_ command to better measure execution times:
 
