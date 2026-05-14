@@ -1,9 +1,9 @@
 2026-05-12: work in progress
 
-- check remaining TBD's
 - jvm <file>                generate JVM bytecode into target file: _haxe --main HelloWorld --jvm HelloWorld.jar_ See from: https://haxe.org/documentation/introduction/language-introduction.html
 - js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
 - java <directory>          generate Java code into target directory: _???_
+- check remaining TBD's
 
 <br/>
 
@@ -83,6 +83,8 @@ NekoVM 2.3.0 (c)2005-2017 Haxe Foundation
   Usage : neko <file>
 $ 
 ```
+
+Haxelib is the package manager for Haxe.
 
 #### Error messaging
 
