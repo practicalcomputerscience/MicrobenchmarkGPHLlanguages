@@ -1,6 +1,6 @@
 2026-05-12: work in progress
 
-- check: TBD's
+- check remaining TBD's
 - jvm <file>                generate JVM bytecode into target file: _haxe --main HelloWorld --jvm HelloWorld.jar_ See from: https://haxe.org/documentation/introduction/language-introduction.html
 - js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
 - java <directory>          generate Java code into target directory: _???_
@@ -286,7 +286,7 @@ The next step is to build and install the SDL2 resources. I downloaded file _SDL
 
 There I did the common triple jump of: _$ ./configure; make; sudo make install_
 
- At this point, it's a good idea to check the system-wide installed SDL2 resources:
+ At this point, it's a good idea to check the system-wide installed SDL2 resources, if everything went well at the prior command:
 
 ```
 $ sdl2-config --version
@@ -331,9 +331,7 @@ $
 
 HL version 1.16.0 is a later version than the one of my testing system with 1.15.0, which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
 
-However, I will the older Homebrew version, since version 1.16.0 looks like a Nightly Build Pre-release version as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
-
-TBD
+However, I will keep the older Homebrew version as my official version, since version 1.16.0 looks like a Nightly Build Pre-release as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
 
 <br/>
 
