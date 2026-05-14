@@ -269,7 +269,7 @@ $
 
 ### Build and install HashLink from sources with SDL2 
 
-SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the latest SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
+SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the last SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
 
 The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me ("unmet dependencies") in two Ubuntu 24.04.3 LTS systems.
 
@@ -281,6 +281,8 @@ $ sudo apt-get install libpng-dev libturbojpeg-dev libvorbis-dev libopenal-dev l
 ...
 $
 ```
+
+<br/>
 
 The next step is to build and install the SDL2 resources. I downloaded file _SDL-release-2.30.8.tar.gz_ from GitHub at (++), extracted it, and changed into its subdirectory with: _$ cd ./SDL-release-2.30.8_
 
@@ -314,7 +316,7 @@ $
 
 <br/>
 
-If all above packages have been installed successfully, the next step is to compile and install HaskLink (HL) from sources:
+If all above packages have been installed successfully, the next steps are to download, build from sources, install and verify HaskLink (HL):
 
 ```
 $ git clone https://github.com/HaxeFoundation/hashlink.git
@@ -329,7 +331,7 @@ HL/JIT 1.16.0 (c)2015-2025 Haxe Foundation
 $
 ```
 
-HL version 1.16.0 is a later version than the one of my testing system with 1.15.0, which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
+HL version 1.16.0 is a later version than the one of my testing system with 1.15.0 which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
 
 However, I will keep the older Homebrew version as my official version, since version 1.16.0 looks like a Nightly Build Pre-release as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
 
