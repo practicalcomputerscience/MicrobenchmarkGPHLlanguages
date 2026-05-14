@@ -373,7 +373,7 @@ public class RandomStreamsForPerfStats extends haxe.lang.HxObject
 
 (Though, running _$ java ./bin/src/haxe/root/RandomStreamsForPerfStats.java_ works here, but takes about 1.8 seconds!)
 
-So, Haxe itself is not capable of directly transpiling [RandomStreamsForPerfStats.hx](tbd) into something like _RandomStreamsForPerfStats.java_ in **one** source code file.
+So, Haxe itself is not capable of directly transpiling [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) into something like _RandomStreamsForPerfStats.java_ in **one** source code file.
 
 There's a conversion tool called [refactor](https://github.com/yar3333/haxe-refactor#refactor), which is using scripts (_$ haxelib run refactor <script>_) to basically apply a "massive search&replace in files". However, a script like _haxe_to_java_ doesn't exist there.
 
@@ -409,7 +409,7 @@ $
 
 #### JavaScript
 
-A JavaScript version cannot be created when using original, unmodified Haxe source code file [RandomStreamsForPerfStats.hx](tbd) because of its _File_ resource:
+A JavaScript version cannot be created when using original, unmodified Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) because of its _File_ resource:
 
 ```
 import sys.io.File;
