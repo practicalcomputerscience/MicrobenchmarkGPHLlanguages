@@ -344,7 +344,9 @@ real	0m0.079s
 $ 
 ```
 
-..created numerous JVM resources starting in (example) subdirectory _./bin_, apparently allowing even faster program execution. So, I ran the _multitime_ command to better measure execution times:
+..created numerous JVM resources starting in (example) subdirectory _./bin_, that is exactly 75 files! (_$ find . -type f | wc -l_), though it's apparently allowing faster program execution.
+
+So, I ran the _multitime_ command to better measure execution times:
 
 - "JVM": real mean = 81 ms, std.dev. = 0.001 ms
 - "Java": real mean = 78 ms, std.dev. = 0.001 ms
