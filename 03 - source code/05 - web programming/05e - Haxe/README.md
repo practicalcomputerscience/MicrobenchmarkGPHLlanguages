@@ -1,6 +1,7 @@
 2026-05-12: work in progress
 
 - js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
+- Haxe REPL (on JavaScript): https://github.com/elsassph/haxe-repl
 - check remaining TBD's
 
 <br/>
