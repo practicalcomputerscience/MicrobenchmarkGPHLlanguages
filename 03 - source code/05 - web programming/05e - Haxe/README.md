@@ -273,7 +273,7 @@ SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its versio
 
 The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me in two Ubuntu 24.04.3 LTS systems.
 
-There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience. See from here at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#hashlink):
+There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience. See from here at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#building-on-linuxosx):
 
 ```
 $ sudo apt update
