@@ -1,8 +1,6 @@
 2026-05-12: work in progress
 
-- jvm <file>                generate JVM bytecode into target file: _haxe --main HelloWorld --jvm HelloWorld.jar_ See from: https://haxe.org/documentation/introduction/language-introduction.html
 - js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
-- java <directory>          generate Java code into target directory: _???_
 - check remaining TBD's
 
 <br/>
