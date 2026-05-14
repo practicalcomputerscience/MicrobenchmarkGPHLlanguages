@@ -84,11 +84,21 @@ NekoVM 2.3.0 (c)2005-2017 Haxe Foundation
 $ 
 ```
 
-Haxelib is the package manager for Haxe. I list of all installed libraries can be obtained with command:
+Haxelib is the package manager for Haxe. A list of all installed libraries can be obtained with command:
 
 ```
 $ haxelib list
-TBD
+crypto: [1.3.0]
+greeter: [0.1.0]
+hashlink: git [dev:~/haxelib/hashlink/git/other/haxelib/]
+haxelib: [4.2.0]
+hlc-compiler: [0.3.0]
+hx3compat: [1.1.0]
+hx4compat: [1.0.0]
+hxjava: [4.2.0]
+locator: [0.5.0]
+refactor: [4.4.2]
+sinker: [0.6.0]
 $
 ```
 
