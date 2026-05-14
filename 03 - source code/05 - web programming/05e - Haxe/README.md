@@ -164,9 +164,9 @@ Which leaves me these open questions: what is going to happen to the "high-level
 
 <br/>
 
-## The new HashLink virtual machine (HashLinkVM)
+## The new HashLink virtual machine
 
-Since my Ubuntu system (already) has "unmet dependencies" (see below at [SDL2](#sdl2) for more information), I turned to the Homebrew package manager (again) to install the newer HashLink JIT VM:
+Since my Ubuntu system (already) has "unmet dependencies" (see below at [Build and install HashLink from sources with SDL2 ](#build-and-install-hashlink-from-sources-with-sdl2) for more information), I turned to the Homebrew package manager (again) to install the newer HashLink JIT VM:
 
 ```
 $ brew install hashlink
@@ -267,21 +267,74 @@ $
 
 <br/>
 
-### SDL2
+### Build and install HashLink from sources with SDL2 
 
-SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the latest SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8
+SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the latest SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
 
-The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me in two Ubuntu 24.04.3 LTS systems.
+The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me ("unmet dependencies") in two Ubuntu 24.04.3 LTS systems.
 
 There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience. See from here at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#building-on-linuxosx):
 
 ```
 $ sudo apt update
 $ sudo apt-get install libpng-dev libturbojpeg-dev libvorbis-dev libopenal-dev libglu1-mesa-dev libmbedtls-dev libuv1-dev libsqlite3-dev
+...
+$
 ```
+
+The next step is to build and install the SDL2 resources. I downloaded file _SDL-release-2.30.8.tar.gz_ from GitHub at (++), extracted it, and changed into its subdirectory with: _$ cd ./SDL-release-2.30.8_
+
+There I did the common triple jump of: _$ ./configure; make; sudo make install_
+
+ At this point, it's a good idea to check the system-wide installed SDL2 resources:
+
+```
+$ sdl2-config --version
+2.30.8
+$ pkg-config --modversion sdl2
+2.30.8
+$ 
+```
+
+A simple C program for testing could hopefully now be compiled and executed without errors:
+
+```
+$ cat ./SDL2_test.c
+#include <SDL.h>
+
+int main(void){
+  SDL_Init(SDL_INIT_VIDEO);
+  SDL_Quit();
+  return 0;
+}
+$ gcc $(sdl2-config --cflags) SDL2_test.c $(sdl2-config --libs) -o SDL2_test
+$ ./SDL2_test
+$
+```
+
+<br/>
+
+If all above packages have been installed successfully, the next step is to compile and install HaskLink (HL) from sources:
+
+```
+$ git clone https://github.com/HaxeFoundation/hashlink.git
+$ cd hashlink
+$ make
+...
+$ sudo make install  # install the hl binary system-wide
+...
+$ hl  # verify
+HL/JIT 1.16.0 (c)2015-2025 Haxe Foundation
+  Usage : hl [--debug <port>] [--debug-wait] <file>
+$
+```
+
+HL version 1.16.0 is a later version than the one of my testing system with 1.15.0, which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
+
+However, I will the older Homebrew version, since version 1.16.0 looks like a Nightly Build Pre-release version as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
 
 TBD
 
-
+<br/>
 
 ##_end
