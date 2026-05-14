@@ -23,6 +23,8 @@ https://nekovm.org/
 
 
 - FL = Flash Library
+- JDK = Java Development Kit
+- JVM = Java Virtual Machine
 - HL = HashLink, a JIT (Just-In-Time) VM
 - VM = Virtual Machine
 
@@ -84,7 +86,13 @@ NekoVM 2.3.0 (c)2005-2017 Haxe Foundation
 $ 
 ```
 
-Haxelib is the package manager for Haxe.
+Haxelib is the package manager for Haxe. I list of all installed libraries can be obtained with command:
+
+```
+$ haxelib list
+TBD
+$
+```
 
 #### Error messaging
 
@@ -199,7 +207,7 @@ Around 150 milliseconds marks a significantly faster program execution time than
 
 <br/>
 
-#### Producing a native executable from C code
+### Producing a native executable from C code
 
 With the help of Google AI, I also managed to compile a native executable from C code: [HashLink/C code](https://haxe.org/manual/target-hl-c-compilation.html#hashlink/c-code)
 
@@ -268,6 +276,87 @@ $
 ..which means that executing this program in a different location or Linux system needs this shared library always relatively stored as _./hashlink-1.15/libhl.so_.
 
 <br/>
+
+## Transpiling to Java Virtual Machine bytecode, JavaScript and Java
+
+
+#### Java Virtual Machine bytecode
+
+First, install the _hxjava_ library:
+
+```
+$ haxelib install hxjava
+...
+Installing hxjava...
+  Current version is now 4.2.0
+Done
+$ java --version  # a JDK version check to not run into version conflicts; if needed, change with: sudo update-alternatives --config java
+openjdk 25.0.2 2026-01-20
+...
+$ haxe --main RandomStreamsForPerfStats --jvm RandomStreamsForPerfStats.jar
+$ time java -jar ./RandomStreamsForPerfStats.jar
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.085s
+$
+```
+
+85 milliseconds of execution time is hot! 
+
+<br/>
+
+#### Java
+
+Command:
+
+```
+$ haxe --java bin --main RandomStreamsForPerfStats
+haxelib run hxjava hxjava_build.txt --haxe-version 4303 --feature-level 1 --out bin/RandomStreamsForPerfStats
+javac "-sourcepath" "src" "-d" "obj" "-g:none" "@cmd"
+$ time java -jar ./bin/RandomStreamsForPerfStats.jar
+...
+real	0m0.079s
+...
+$ 
+```
+
+..created JVM resources in subdirectory _./bin_ in a different form, apparently done for even faster execution. So, I ran the _multitime_ command to make a profounder execution time measurement:
+
+- "JVM": real mean = 81 ms, std.dev. = 0.001 ms
+- "Java": real mean = 78 ms, std.dev. = 0.001 ms
+
+Not much difference, but noticable.
+
+<br/>
+
+This leaves me with this question: 
+
+
+tbd
+
+#### JavaScript
+
+Target JavaScript is not working with the original Haxe source code file [RandomStreamsForPerfStats.hx](tbd), because of the _File_ resource:
+
+```
+import sys.io.File;
+```
+
+So, this command doen't work:
+
+$ haxe --main RandomStreamsForPerfStats --js RandomStreamsForPerfStats.js
+RandomStreamsForPerfStats.hx:35: characters 8-19 : You cannot access the sys package while targeting js (for sys.io.File)
+$
+```
+
+TBD
+
+<br/>
+
+---
 
 ### Build and install HashLink from sources with SDL2 
 
