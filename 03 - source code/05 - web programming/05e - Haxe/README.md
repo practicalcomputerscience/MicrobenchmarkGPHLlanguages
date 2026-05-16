@@ -18,15 +18,28 @@ https://hashlink.haxe.org/
 
 https://nekovm.org/
 
-<br/>
-
-
 - FL = Flash Library
 - JAR = Java Archive (file)
 - JDK = Java Development Kit
 - JVM = Java Virtual Machine
 - HL = HashLink, a JIT (Just-In-Time) VM
 - VM = Virtual Machine
+
+---
+
+Table of contents:
+
+- [Idea of Haxe: from development of Adobe Flash games to cross-platform development for front-end and back-end](#idea-of-haxe-from-development-of-adobe-flash-games-to-cross-platform-development-for-front-end-and-back-end)
+- [Installation and compilation tips](#installation-and-compilation-tips)
+- [Interpretation of Haxe source code](#interpretation-of-haxe-source-code)
+- [Neko and the Neko virtual machine (NekoVM) - deprecated!](#neko-and-the-neko-virtual-machine-nekovm---deprecated)
+- [The new HashLink virtual machine](#the-new-hashlink-virtual-machine)
+- [Producing a native executable from C code](#producing-a-native-executable-from-c-code)
+- [Transpiling to Java Virtual Machine bytecode, "Java", and JavaScript](#transpiling-to-java-virtual-machine-bytecode-java-and-javascript)
+  - [Java Virtual Machine bytecode](#java-virtual-machine-bytecode)
+  - [Java](#java)
+  - [JavaScript](#javascript)
+- [Build and install HashLink from sources with SDL2](#build-and-install-hashlink-from-sources-with-sdl2)
 
 <br/>
 
