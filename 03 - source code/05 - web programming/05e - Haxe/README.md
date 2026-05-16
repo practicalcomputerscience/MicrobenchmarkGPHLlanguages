@@ -423,7 +423,7 @@ $
 
 #### JavaScript
 
-Just naively cross-compiling the Haxe source code to JavaScript source code, which is using a system resource:
+Just naively cross-compiling Haxe source code, which is using a system resource, to JavaScript source code:
 
 ```
 import sys.io.File;
