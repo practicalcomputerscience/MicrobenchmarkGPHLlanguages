@@ -423,13 +423,13 @@ $
 
 #### JavaScript
 
-Just naively cross-compiling Haxe source code, which is using a system resource, to JavaScript source code:
+Just naively cross-compiling Haxe source code, which is using a system resource:
 
 ```
 import sys.io.File;
 ```
 
-..isn't working:
+..to JavaScript source code isn't working:
 
 ```
 $ haxe --main RandomStreamsForPerfStats --js RandomStreamsForPerfStats.js
