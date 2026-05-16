@@ -466,7 +466,7 @@ sys	0m0.013s
 $
 ```
 
-..and which generates a [JavaScript program](./RandomStreamsForPerfStats.js)
+This compilation command generated a [JavaScript program](./RandomStreamsForPerfStats.js)
 
 - which is not really meant to be human readable, and
 - which is with 57 milliseconds of program execution time (on Node.js v24.13.0) only a bit slower than the JavaScript version with 42 milliseconds, which has been transpiled from the Groovy and then the TypeScript source code with the help of "Big AI": [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
