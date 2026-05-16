@@ -12,17 +12,13 @@ https://haxe.org/ (*)
 
 https://en.wikipedia.org/wiki/Haxe
 
-https://en.wikipedia.org/wiki/OpenFL, https://www.openfl.org/, https://lib.haxe.org/p/OpenFL/9.5.1/, version 9.5.1 as of 2026-05-12 (***)
+(deprecated) Neko VM: https://nekovm.org/
 
-https://hashlink.haxe.org/
-
-https://nekovm.org/
-
-- FL = Flash Library
+- FL = (Open) Flash Library: https://en.wikipedia.org/wiki/OpenFL, https://www.openfl.org/, https://lib.haxe.org/p/OpenFL/9.5.1/, version 9.5.1 as of 2026-05-12 (***)
 - JAR = Java Archive (file)
 - JDK = Java Development Kit
 - JVM = Java Virtual Machine
-- HL = HashLink, a JIT (Just-In-Time) VM
+- HL = HashLink, a JIT (Just-In-Time) VM: https://hashlink.haxe.org/
 - VM = Virtual Machine
 
 ---
