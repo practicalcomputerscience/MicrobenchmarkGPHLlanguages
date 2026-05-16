@@ -1,6 +1,6 @@
 2026-05-12: work in progress
 
-- Haxe REPL (on JavaScript): https://github.com/elsassph/haxe-repl
+- full microbenchmark program in Haxe
 - check remaining TBD's
 
 <br/>
@@ -12,6 +12,8 @@ https://haxe.org/ (*)
 https://en.wikipedia.org/wiki/Haxe
 
 (deprecated) Neko VM: https://nekovm.org/
+
+[Haxe REPL (Read-Eval-Print-Loop on JavaScript)](https://github.com/elsassph/haxe-repl)
 
 - FL = (Open) Flash Library: https://en.wikipedia.org/wiki/OpenFL, https://www.openfl.org/, https://lib.haxe.org/p/OpenFL/9.5.1/, version 9.5.1 as of 2026-05-12 (***)
 - JAR = Java Archive (file)
@@ -235,7 +237,7 @@ First, I downloaded and extracted file _hashlink-1.15.tar.gz_ from here: https:/
 
 So, I got a HashLink source code subdirectory named _./hashlink-1.15_ in my Haxe project directory, where the Haxe source code file _RandomStreamsForPerfStats.hx_ is located.
 
-Then, I compiled the C source code file named _main.c_, located in subdirectory _./out_:
+Then, I generated C source code file _main.c_ among 99 other files (_$ find ./out -type f | wc -l_), located in subdirectory _./out_:
 
 ```
 $ haxe --main RandomStreamsForPerfStats --hl out/main.c
@@ -464,7 +466,7 @@ sys	0m0.013s
 $
 ```
 
-..and which generates a JavaScript program which is with 57 milliseconds (on Node.js v24.13.0) only a bit slower than this JavaScript version with 42 milliseconds, which has been transpiled from the Groovy and then TypeScript version with the help of "Big AI": [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
+..and which generates a JavaScript program, which is with 57 milliseconds of program execution time (on Node.js v24.13.0) only a bit slower than this JavaScript version with 42 milliseconds, which has been transpiled from the Groovy and then the TypeScript source code with the help of "Big AI": [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 
 <br/>
 
