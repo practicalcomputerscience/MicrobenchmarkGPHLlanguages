@@ -1,6 +1,5 @@
 2026-05-12: work in progress
 
-- js <file>                 generate JavaScript code into target file: _haxe --main HelloWorld --js HelloWorld.js_
 - Haxe REPL (on JavaScript): https://github.com/elsassph/haxe-repl
 - check remaining TBD's
 
@@ -422,13 +421,13 @@ $
 
 #### JavaScript
 
-A JavaScript version cannot be created when using original, unmodified Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) because of its _File_ resource:
+Just naively cross-compiling the Haxe source code to JavaScript source code, which is using a system resource:
 
 ```
 import sys.io.File;
 ```
 
-This command doesn't work:
+..isn't working:
 
 ```
 $ haxe --main RandomStreamsForPerfStats --js RandomStreamsForPerfStats.js
@@ -436,7 +435,36 @@ RandomStreamsForPerfStats.hx:35: characters 8-19 : You cannot access the sys pac
 $
 ```
 
-TBD
+Google AI was so friendly to help me out here: the "trick" is to first install the [Extern type definitions for Node.JS](https://lib.haxe.org/p/hxnodejs/):
+
+```
+$ haxelib install hxnodejs
+Downloading hxnodejs-12,2,0.zip...
+Download complete: 0.24KB in 0.1s (1.3KB/s)
+Download complete: 225.99KB in 0.2s (813.4KB/s)
+Installing hxnodejs...
+  Current version is now 12.2.0
+Done
+$
+```
+
+..and then to add the _-lib hxnodejs_ switch to the Haxe compilation command, so the compiler recognizes _Node.js_ core modules:
+
+```
+$ haxe -lib hxnodejs -main RandomStreamsForPerfStats --js RandomStreamsForPerfStats.js
+$ time node ./RandomStreamsForPerfStats.js
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.057s
+user	0m0.055s
+sys	0m0.013s
+$
+```
+
+..and which generates a JavaScript program which is with 57 milliseconds (on Node.js v24.13.0) only a bit slower than this JavaScript version with 42 milliseconds, which has been transpiled from the Groovy and then TypeScript version with the help of "Big AI": [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 
 <br/>
 
