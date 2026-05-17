@@ -1,6 +1,7 @@
 2026-05-12: work in progress
 
 - full microbenchmark program in Haxe
+- full microbenchmark program in Java
 - check remaining TBD's
 
 <br/>
