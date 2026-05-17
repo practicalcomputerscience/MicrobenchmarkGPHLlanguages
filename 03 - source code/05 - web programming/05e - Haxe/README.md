@@ -109,6 +109,18 @@ sinker: [0.6.0]
 $
 ```
 
+<br/>
+
+Running command _$ sudo apt-get install haxe_ (in Ubuntu) is the simplest way to install Haxe, though one gets an older version with version 4.3.3 from 2023 than the latest stable [version 4.3.7 from May 2025](https://github.com/HaxeFoundation/haxe/releases/tag/4.3.7), which is the last subversion of Haxe in version 4.
+
+However, building and installing that specific version, or any specific version, from sources is not easy, since Haxe strongly depends on the OCaml ecosystem. In may system, the installed [OCaml version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions) was way too new with 5.4.0 for Haxe version 4.x.x!!
+
+So, as a test, I downgraded to OCaml base compiler version 4.14.0 in order to be able to install the required sedlex package, which provides the ppx tool.
+
+TBD 
+
+<br/>
+
 #### Error messaging
 
 Then I started to develop Haxe source code file [RandomStreamsForPerfStats.hx](./RandomStreamsForPerfStats.hx) piece by piece with the help of the interpreter:
