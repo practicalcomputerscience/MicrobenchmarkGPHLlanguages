@@ -28,7 +28,7 @@ HL/JIT 1.15.0 (c)2015-2025 Haxe Foundation
   Usage : hl [--debug <port>] [--debug-wait] <file>
 $
 
-mainly transpiled from random_streams_for_perf_stats.groovy with Google Ai
+mainly transpiled from random_streams_for_perf_stats.groovy with Google AI
 
 **/
 
