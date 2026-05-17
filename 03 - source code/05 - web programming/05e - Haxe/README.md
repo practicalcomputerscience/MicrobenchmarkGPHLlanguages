@@ -217,6 +217,8 @@ HL/JIT 1.15.0 (c)2015-2025 Haxe Foundation
 $
 ```
 
+<br/>
+
 Bytecode, which is stored into file _RandomStreamsForPerfStats.hl_, for the HashLinkVM can be produced and executed like this:
 
 ```
