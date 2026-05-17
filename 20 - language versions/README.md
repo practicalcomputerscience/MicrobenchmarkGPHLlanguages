@@ -32,6 +32,7 @@ FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x8
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.26.0 linux/amd64 | $ go version
 Groovy | Groovy Version: 5.0.4 JVM: 25.0.1 Vendor: Ubuntu OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.1 2025-10-21... | $ groovy --version; $ gradle -v; $ java --version
+Haxe | 4.3.3; 1.15.0 | $ haxe --version; hl --version
 Inko | inko 0.19.1 | $ inko --version
 Julia | julia version 1.12.3 | $ julia --version
 Koka | Koka 3.2.2, 20:30:51 Jul 22 2025 (ghc release version) | $ koka --version
