@@ -1,9 +1,3 @@
-2026-05-12: work in progress
-
-- full microbenchmark program in Java <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< transpile from RandomBitstringAndFlexiblePasswordGenerator.hx (Haxe) with Duck.ai again
-
-<br/>
-
 # Haxe
 
 https://haxe.org/ (*)
