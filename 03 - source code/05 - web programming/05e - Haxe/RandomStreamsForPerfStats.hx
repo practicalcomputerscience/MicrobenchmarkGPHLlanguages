@@ -5,7 +5,7 @@ Also see: "The name of the file containing a Haxe class is the same as the name 
           https://haxe.org/manual/introduction-hello-world.html
 
 
-2026-05-12/13
+2026-05-12/13/17
 
 On Ubuntu 24 LTS:
   a/ run in Haxe interpreter:              $ haxe --main RandomStreamsForPerfStats --interp  # Class name only with initial uppercase letter
@@ -70,8 +70,8 @@ class RandomStreamsForPerfStats {  // Class name must start with an uppercase le
             // Sys.println(bits_hex_str);  // for testing
             bits_hex.add(bits_hex_str);
         }
-        
-        
+
+
         var bits_x_str_total   = bits_x.toString();
         var bits_hex_str_total = bits_hex.toString();
 
@@ -97,9 +97,12 @@ class RandomStreamsForPerfStats {  // Class name must start with an uppercase le
     }
 
 
-    /**
-     Helper to format integer values to 16-bit binary strings
-    **/
+    ////////////////////////////////////////////////////////////////////////
+    //
+    // user defined functions
+    //
+    //
+    // Helper to format integer values to 16-bit binary strings
     static function integer_to_bin_string(v:Int):String {
         // Manual binary conversion for cross-platform support
         var s = "";
@@ -111,6 +114,10 @@ class RandomStreamsForPerfStats {  // Class name must start with an uppercase le
         }
         return StringTools.lpad(s, "0", 16);
     }
+    //
+    // end of user defined functions
+    //
+    ////////////////////////////////////////////////////////////////////////
 }
 
 // end of RandomStreamsForPerfStats.hx
