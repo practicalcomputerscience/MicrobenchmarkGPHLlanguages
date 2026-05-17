@@ -497,7 +497,7 @@ There are more resources needed for HashLink, but they shouldn't make so much tr
 
 ```
 $ sudo apt update
-$ sudo apt-get install libpng-dev libturbojpeg-dev libvorbis-dev libopenal-dev libglu1-mesa-dev libmbedtls-dev libuv1-dev libsqlite3-dev
+$ sudo apt-get install libpng-dev libturbojpeg-dev libvorbis-dev libopenal-dev libglu1-mesa-dev libmbedtls-dev libuv1-dev libsqlite3-dev libxext-dev
 ...
 $
 ```
@@ -551,7 +551,7 @@ HL/JIT 1.16.0 (c)2015-2025 Haxe Foundation
 $
 ```
 
-HL version 1.16.0 is a later version than the one of my testing system with 1.15.0 which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
+HL version 1.16.0 is a later version than the one of my testing system with 1.15.0, which has been installed with Homebrew, see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
 
 However, I will keep the older Homebrew version as my official version, since version 1.16.0 looks like a Nightly Build Pre-release as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
 
