@@ -589,7 +589,7 @@ $ haxe --version  # check this installation!
 $
 ```
 
-See this latest version of Haxe also from these source: [5.0.0-preview.1](https://github.com/HaxeFoundation/haxe/releases/tag/5.0.0-preview.1)
+See this latest version of Haxe also from these sources: [5.0.0-preview.1](https://github.com/HaxeFoundation/haxe/releases/tag/5.0.0-preview.1)
 
 <br/>
 
