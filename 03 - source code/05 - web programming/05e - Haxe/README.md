@@ -38,6 +38,7 @@ Table of contents:
   - [Java](#java)
   - [JavaScript](#javascript)
 - [Build and install HashLink from sources with SDL2](#build-and-install-hashlink-from-sources-with-sdl2)
+- [Building and installing Haxe from sources](#building-and-installing-haxe-from-sources)
 
 <br/>
 
@@ -117,126 +118,9 @@ $
 
 <br/>
 
-TBD --> move below content to own chapter at the very bottom
-
 Running command _$ sudo apt-get install haxe_ (in Ubuntu) from above is the simplest way to install Haxe, though one only gets older version 4.3.3 from 2023, while that last stable [version 4.3.7](https://github.com/HaxeFoundation/haxe/releases/tag/4.3.7) (+++) is from May 2025.
 
-However, building and installing that specific version, or any specific Haxe version, from sources is not easy, since Haxe strongly depends on the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) ecosystem. In my Ubuntu system, the installed [OCaml version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions) was way too new with number 5.4.0 for a Haxe version of 4.x.x!
-
-Since Haxe is using the **PCRE2 library** ([Perl-compatible regular expression library 2](https://github.com/PCRE2Project/pcre2)], this should be installed (system-wide) in an Ubuntu system for simplicity with the usual means (no need to build and install the PCRE2 library from sources). The correct availability of this library was a major road block for me for some time!
-
-However, I finally discovered that my Ubuntu system was missing sources, so I added them like this:
-
-```
-$ sudo sed -i 's/Enabled: no/Enabled: yes/' /etc/apt/sources.list.d/ubuntu.sources
-$ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu noble-updates main universe restricted multiverse"
-$ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu noble-backports main universe restricted multiverse"
-```
-
-Then I rebooted my PC, and updated the Ubuntu system: _$ sudo apt update_
-
-Only then, it was possible to install all kind of PCRE2 resources **in the usualy way**:
-
-```
-$ sudo apt install libpcre2-8-0
-$ sudo apt install libpcre2-16-0
-$ sudo apt install libpcre2-32-0
-$ sudo apt install libpcre2-dev
-$ sudo apt list | grep libpcre2  # do some checks
-
-WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
-
-libpcre2-16-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
-libpcre2-16-0/noble-updates 10.42-4ubuntu2.1 i386
-libpcre2-32-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
-libpcre2-32-0/noble-updates 10.42-4ubuntu2.1 i386
-libpcre2-8-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
-libpcre2-8-0/noble-updates 10.42-4ubuntu2.1 i386
-libpcre2-dev/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
-libpcre2-dev/noble-updates 10.42-4ubuntu2.1 i386
-libpcre2-ocaml-dev/noble 7.5.2-1build1 amd64
-libpcre2-ocaml/noble 7.5.2-1build1 amd64
-libpcre2-posix3/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed,automatic]
-libpcre2-posix3/noble-updates 10.42-4ubuntu2.1 i386
-$
-```
-
-Then, I downloaded the Haxe sources of version 4.3.7, see from (+++) above, extracted them, and changed into extracted directory named _./haxe-4.3.7_.
-
-You may also have a look at these newer instructions for ideas: [Building Haxe from source](https://github.com/HaxeFoundation/haxe/blob/development/extra/BUILDING.md)
-
-Next, I downgraded the OCaml base compiler version:
-
-```
-$ opam --version  # check version of the OCaml Package Manager, should be some version 2
-2.5.0
-$ opam switch create 4.14.2
-...
-$ eval $(opam env --switch=4.14.2)
-$ ocaml --version  # check the downgraded OCaml version
-The OCaml toplevel, version 4.14.2
-$ opam pin add haxe ~/scripts/Haxe/haxe-4.3.7/src --kind=path --no-action  # replace ~ with the correct, absolute path!
-[haxe.4.1.1] synchronised (file://~/scripts/Haxe/haxe-4.3.7/src)
-haxe is now pinned to file://~/scripts/Haxe/haxe-4.3.7/src (version 4.1.1)
-$ opam update  # update existing OCaml packages
-...
-$
-```
-
-I also commented out all references to Homebrew and _.linuxbrew_ in my _./bashrc_ file (re-activate it after changes!) to avoid any potential version conflicts from that corner.
-
-Before we can build Haxe version 4.3.7 itself, a couple of OCaml packages must be installed. How did I know what exact OCaml packages have been still missing?
-
-Well, I progressed pragmatically: whenever below command _$ opam install haxe --deps-only_ didn't work without errors, I added that package!
-
-Doing so, I installed all missing OCaml packages:
-
-```
-$ opam install sedlex extlib luv sha ptmap xml-light camlp-streams
-...
-$
-```
-
-The [Preprocessor-pretty-printer of OCaml](https://opam.ocaml.org/packages/camlp5/) package was a big problem at first, because it depends on the correct (system-wide) installation of the PCRE2 library:
-
-```
-$ opam install camlp5
-...
-$
-```
-
-One more Ubuntu package had to be installed, and then I did a final OCaml package update:
-
-```
-$ sudo apt-get install xdot
-...
-$ opam update
-...
-$
-```
-
-Now with all dependencies being hopefully installed and available, Haxe version 4.3.7 can be compiled and installed:
-
-```
-$ opam install haxe --deps-only
-
-<><> Synchronising pinned packages ><><><><><><><><><><><><><><><><><><><><><><>
-[haxe.4.1.1] synchronised (no changes)
-
-The following actions will be performed:
-...
-∗ installed camlp5.8.04.01
-Done.
-# To update the current shell environment, run: eval $(opam env)
-$ eval $(opam env)
-$ make
-...
-Error: The function applied to this argument has type string -> bool
-...
-$
-```
-
-TBD 
+However, I was not able to build and install Haxe version 4.3.7 with a downgraded OCaml base compiler with version 4.14.2. Though, in a different Ubuntu 24.04.3 LTS system with modern OCaml version 5.4.1 I was able to build and install the Haxe Compiler in version 5.0.0-preview.1 from sources! See at chapter [Building and installing Haxe from sources](#building-and-installing-haxe-from-sources) at the bottom of this page.
 
 <br/>
 
@@ -601,7 +485,7 @@ This compilation command generated a [JavaScript program](./RandomStreamsForPerf
 
 ---
 
-### Build and install HashLink from sources with SDL2 
+### Build and install HashLink from sources with SDL2
 
 SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the last SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
 
@@ -668,6 +552,48 @@ $
 HL version 1.16.0 is a later version than the one of my testing system with 1.15.0 which has been installed with Homebrew; see above at [The new HashLink virtual machine](the-new-hashlink-virtual-machine).
 
 However, I will keep the older Homebrew version as my official version, since version 1.16.0 looks like a Nightly Build Pre-release as of 2026-05-14: https://github.com/HaxeFoundation/hashlink/releases
+
+<br/>
+
+### Building and installing Haxe from sources
+
+First step is to install the OCaml Package Manager, and thus the OCaml compiler, as described here: [Installation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#installation-tips)
+
+As of 2026-05-18, this procedure will install this version of the OCaml compiler:
+
+```
+$ ocaml --version
+The OCaml toplevel, version 5.4.1
+$
+```
+
+For the rest, I closely followed these official and up-to-date instructions: [Building Haxe from source](https://github.com/HaxeFoundation/haxe/blob/development/extra/BUILDING.md#building-haxe-from-source)
+
+```
+$ git clone --recursive https://github.com/HaxeFoundation/haxe.git
+...
+$ sudo apt install libpcre2-dev
+...
+$ sudo apt install zlib1g-dev
+...
+$ sudo apt install libmbedtls-dev
+...
+$ opam pin add haxe ~/scripts/Haxe/haxe --kind=path --no-action  # better replace ~/ with the absolute path
+...
+$ opam install haxe --deps-only
+...
+$ cd haxe
+$ make
+...
+$ sudo make install
+...
+$ cd ..  # step out of the source code directory and back into the Haxe project directory
+$ haxe --version  # check this installation!
+5.0.0-preview.1  # voilà
+$
+```
+
+See this latest version of Haxe also from these source: [5.0.0-preview.1](https://github.com/HaxeFoundation/haxe/releases/tag/5.0.0-preview.1)
 
 <br/>
 
