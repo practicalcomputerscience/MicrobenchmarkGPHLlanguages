@@ -235,10 +235,6 @@ Though, WebAssembly apparently seems to avoid terms "bytecode" and "virtual mach
 
 <br/>
 
-By the way: 
-
-<br/>
-
 ## The Wasmtime runtime
 
 Since I mentioned [Wasmtime](https://wasmtime.dev/) above, this question emerged after some experimentation:
