@@ -7,6 +7,7 @@ GPHL = general purpose, high-level (programming language)
 
 To-do:
 - fix TBD's (this is a continous task)
+- TBD: a list of languages I used with a **sound type system**, at least at their core parts: Gleam (Erlang VM), OCaml, ReScript, Standard ML
 - _
 
 <br/>
