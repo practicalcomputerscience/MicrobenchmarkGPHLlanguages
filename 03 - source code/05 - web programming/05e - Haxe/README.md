@@ -2,6 +2,8 @@
 
 https://haxe.org/ (*)
 
+https://github.com/HaxeFoundation/haxe
+
 https://en.wikipedia.org/wiki/Haxe
 
 (deprecated) Neko VM: https://nekovm.org/
