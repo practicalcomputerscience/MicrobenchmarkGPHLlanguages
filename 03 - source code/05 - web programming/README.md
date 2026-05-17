@@ -14,4 +14,22 @@ However, a somehow common, but not ideologic, naming convention for as much prog
 
 <br/>
 
+## Popularity of web programming languages
+
+As of May 2026, the following table gives an overview of introduced web programming languages which are or which are not top 100 programming languages according to the [TIOBE popularity Index](https://www.tiobe.com/tiobe-index/):
+
+web programming language | listed in the TIOBE popularity Index for May 2026?
+--- | ---
+AssemblyScript  | no
+CoffeeScript    | yes
+Dart            | yes
+Haxe            | no
+JavaScript      | yes
+PHP             | yes
+PureScript      | not implemented yet as of 2026-05-17
+ReScript        | no
+TypeScript      | yes
+
+<br/>
+
 ##_end
