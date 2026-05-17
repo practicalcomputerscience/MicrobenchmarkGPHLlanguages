@@ -1,3 +1,9 @@
+2026-05-17: work in progress
+
+check for TBD's
+
+<br/>
+
 # Haxe
 
 https://haxe.org/ (*)
@@ -111,11 +117,124 @@ $
 
 <br/>
 
-Running command _$ sudo apt-get install haxe_ (in Ubuntu) is the simplest way to install Haxe, though one gets an older version with version 4.3.3 from 2023 than the latest stable [version 4.3.7 from May 2025](https://github.com/HaxeFoundation/haxe/releases/tag/4.3.7), which is the last subversion of Haxe in version 4.
+TBD --> move below content to own chapter at the very bottom
 
-However, building and installing that specific version, or any specific version, from sources is not easy, since Haxe strongly depends on the OCaml ecosystem. In may system, the installed [OCaml version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions) was way too new with 5.4.0 for Haxe version 4.x.x!!
+Running command _$ sudo apt-get install haxe_ (in Ubuntu) from above is the simplest way to install Haxe, though one only gets older version 4.3.3 from 2023, while that last stable [version 4.3.7](https://github.com/HaxeFoundation/haxe/releases/tag/4.3.7) (+++) is from May 2025.
 
-So, as a test, I downgraded to OCaml base compiler version 4.14.0 in order to be able to install the required sedlex package, which provides the ppx tool.
+However, building and installing that specific version, or any specific Haxe version, from sources is not easy, since Haxe strongly depends on the [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) ecosystem. In my Ubuntu system, the installed [OCaml version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions) was way too new with number 5.4.0 for a Haxe version of 4.x.x!
+
+Since Haxe is using the **PCRE2 library** ([Perl-compatible regular expression library 2](https://github.com/PCRE2Project/pcre2)], this should be installed (system-wide) in an Ubuntu system for simplicity with the usual means (no need to build and install the PCRE2 library from sources). The correct availability of this library was a major road block for me for some time!
+
+However, I finally discovered that my Ubuntu system was missing sources, so I added them like this:
+
+```
+$ sudo sed -i 's/Enabled: no/Enabled: yes/' /etc/apt/sources.list.d/ubuntu.sources
+$ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu noble-updates main universe restricted multiverse"
+$ sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu noble-backports main universe restricted multiverse"
+```
+
+Then I rebooted my PC, and updated the Ubuntu system: _$ sudo apt update_
+
+Only then, it was possible to install all kind of PCRE2 resources **in the usualy way**:
+
+```
+$ sudo apt install libpcre2-8-0
+$ sudo apt install libpcre2-16-0
+$ sudo apt install libpcre2-32-0
+$ sudo apt install libpcre2-dev
+$ sudo apt list | grep libpcre2  # do some checks
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+libpcre2-16-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
+libpcre2-16-0/noble-updates 10.42-4ubuntu2.1 i386
+libpcre2-32-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
+libpcre2-32-0/noble-updates 10.42-4ubuntu2.1 i386
+libpcre2-8-0/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
+libpcre2-8-0/noble-updates 10.42-4ubuntu2.1 i386
+libpcre2-dev/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed]
+libpcre2-dev/noble-updates 10.42-4ubuntu2.1 i386
+libpcre2-ocaml-dev/noble 7.5.2-1build1 amd64
+libpcre2-ocaml/noble 7.5.2-1build1 amd64
+libpcre2-posix3/noble-updates,now 10.42-4ubuntu2.1 amd64 [installed,automatic]
+libpcre2-posix3/noble-updates 10.42-4ubuntu2.1 i386
+$
+```
+
+Then, I downloaded the Haxe sources of version 4.3.7, see from (+++) above, extracted them, and changed into extracted directory named _./haxe-4.3.7_.
+
+You may also have a look at these newer instructions for ideas: [Building Haxe from source](https://github.com/HaxeFoundation/haxe/blob/development/extra/BUILDING.md)
+
+Next, I downgraded the OCaml base compiler version:
+
+```
+$ opam --version  # check version of the OCaml Package Manager, should be some version 2
+2.5.0
+$ opam switch create 4.14.2
+...
+$ eval $(opam env --switch=4.14.2)
+$ ocaml --version  # check the downgraded OCaml version
+The OCaml toplevel, version 4.14.2
+$ opam pin add haxe ~/scripts/Haxe/haxe-4.3.7/src --kind=path --no-action  # replace ~ with the correct, absolute path!
+[haxe.4.1.1] synchronised (file://~/scripts/Haxe/haxe-4.3.7/src)
+haxe is now pinned to file://~/scripts/Haxe/haxe-4.3.7/src (version 4.1.1)
+$ opam update  # update existing OCaml packages
+...
+$
+```
+
+I also commented out all references to Homebrew and _.linuxbrew_ in my _./bashrc_ file (re-activate it after changes!) to avoid any potential version conflicts from that corner.
+
+Before we can build Haxe version 4.3.7 itself, a couple of OCaml packages must be installed. How did I know what exact OCaml packages have been still missing?
+
+Well, I progressed pragmatically: whenever below command _$ opam install haxe --deps-only_ didn't work without errors, I added that package!
+
+Doing so, I installed all missing OCaml packages:
+
+```
+$ opam install sedlex extlib luv sha ptmap xml-light camlp-streams
+...
+$
+```
+
+The [Preprocessor-pretty-printer of OCaml](https://opam.ocaml.org/packages/camlp5/) package was a big problem at first, because it depends on the correct (system-wide) installation of the PCRE2 library:
+
+```
+$ opam install camlp5
+...
+$
+```
+
+One more Ubuntu package had to be installed, and then I did a final OCaml package update:
+
+```
+$ sudo apt-get install xdot
+...
+$ opam update
+...
+$
+```
+
+Now with all dependencies being hopefully installed and available, Haxe version 4.3.7 can be compiled and installed:
+
+```
+$ opam install haxe --deps-only
+
+<><> Synchronising pinned packages ><><><><><><><><><><><><><><><><><><><><><><>
+[haxe.4.1.1] synchronised (no changes)
+
+The following actions will be performed:
+...
+∗ installed camlp5.8.04.01
+Done.
+# To update the current shell environment, run: eval $(opam env)
+$ eval $(opam env)
+$ make
+...
+Error: The function applied to this argument has type string -> bool
+...
+$
+```
 
 TBD 
 
