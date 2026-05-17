@@ -29,6 +29,8 @@ Table of contents:
 First, I installed the OCaml Package Manager, called opam, see from here: https://opam.ocaml.org/doc/Install.html:
 
 ```
+$ sudo apt-get update
+...
 $ bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
 $ opam --version
 2.5.0
