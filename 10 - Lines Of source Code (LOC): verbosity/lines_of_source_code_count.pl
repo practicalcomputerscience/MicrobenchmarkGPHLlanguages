@@ -3,10 +3,11 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03
+# 2026-03-29, 2026-05-03/11, 2026-05-17
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
+#                       $ perl lines_of_source_code_count.pl RandomBitstringAndFlexiblePasswordGenerator.hx
 #
 #
 # $ perl --version
@@ -58,11 +59,11 @@ my $language_ext = $file;
 
 
 # language group without block comments:
-my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob");
+my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob", "bal");
 
 
 # language groups with block comments:
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d", "groovy", "dart", "php", "ts", "ts_wasm");
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d", "groovy", "dart", "php", "ts", "ts_wasm", "hx");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
@@ -103,7 +104,7 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {  #
       $line_empty += 1;
     } else {
 
-      # case: // with optionally leading white spaces: Rust, Zig, Gleam
+      # case: // with optionally leading white spaces: Rust, Zig, Gleam, Ballerina
       if ($_ =~ /^\s*\/\//) {
         $line_cmt_fwdslash_dbl += 1;
       } else {
