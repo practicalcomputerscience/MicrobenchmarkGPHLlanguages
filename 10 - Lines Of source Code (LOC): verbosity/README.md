@@ -46,7 +46,7 @@ AssemblyScript    | 149 | interpreted, young language (together with WebAssembly
 C                 | 147 | compiled, very mature language | 2026-01-11
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions 
-Haxe              | 134 | interpreted, mature language: needs some user-defined functions
+Haxe              | 134 | interpreted, mature language: needs some user-defined functions | 2026-05-17
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
 OCaml             | 131 | compiled, mature language
 C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and compiled to a bit faster program compared to C | 2026-01-15
