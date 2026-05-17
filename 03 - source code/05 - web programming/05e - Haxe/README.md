@@ -1,9 +1,3 @@
-2026-05-17: work in progress
-
-check for TBD's
-
-<br/>
-
 # Haxe
 
 https://haxe.org/ (*)
