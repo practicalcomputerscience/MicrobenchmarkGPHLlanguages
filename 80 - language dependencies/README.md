@@ -1,3 +1,7 @@
+2026-05-18: tbd: what is the programming language for the Crystal runtime?
+
+<br/>
+
 Take the information of this page with a grain of salt. In the end, all programming languages are ecosystems, where most probably some parts have been written in one or more other programming languages.
 
 <br/>
