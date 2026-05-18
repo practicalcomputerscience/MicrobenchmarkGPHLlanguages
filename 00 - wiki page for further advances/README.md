@@ -6,6 +6,10 @@
 
 <br/>
 
+- 2026-05-dd, TBD: [Java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java#java)
+
+- 2026-05-18: [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)
+
 - 2026-05-11: [Ballerina](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ballerina#ballerina-aka-jballerina)
 
 - 2026-05-07: [JS++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#js): program isn't completely working (try-catch exception handling fails); thus only "speed part" implemented, which is otherwise basically working => no further consideration of JS++
@@ -83,9 +87,8 @@
 
 <br/>
 
-2026-05-07: so far, I haven't touched yet these corners of programming languages:
+2026-05-18: so far, I haven't touched yet these corners of programming languages:
 
-- https://haxe.org/: strictly-typed programming language, which has its own VMs (HashLink and NekoVM) but can also run in interpreted mode
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
