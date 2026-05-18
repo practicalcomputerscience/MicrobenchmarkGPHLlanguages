@@ -230,6 +230,6 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
     // end of user defined functions
     //
     ////////////////////////////////////////////////////////////////////////
-  }
+}
 
 // end of RandomBitstringAndFlexiblePasswordGenerator.hx
