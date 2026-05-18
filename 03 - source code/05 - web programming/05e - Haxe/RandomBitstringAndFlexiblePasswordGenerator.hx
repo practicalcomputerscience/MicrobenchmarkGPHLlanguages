@@ -34,7 +34,7 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         final END:Int = 62501;  // 62501 for exactly 1M binary digits
         // final END:Int = 100;  // for testing
 
-        final m:Int = 65521; // = 2^16 - 15
+        final m:Int = 65521;  // = 2^16 - 15
         final a:Int = 17364;
         final c:Int = 0;
 
@@ -66,13 +66,10 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             bits_hex.add(bits_hex_str);
         }
 
-
         var bits_x_str_total   = bits_x.toString();
         var bits_hex_str_total = bits_hex.toString();
-
         // Sys.println('\nbits_x_str_total = $bits_x_str_total');  // for testing
         // Sys.println('bits_hex_str_total = $bits_hex_str_total');  // for testing
-
 
         // write bit stream to disk:
         try {
@@ -188,7 +185,6 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
     ////////////////////////////////////////////////////////////////////////
     //
     // user defined functions
-    //
     //
     // Helper to format integer values to 16-bit binary strings
     static function integer_to_bin_string(v:Int):String {

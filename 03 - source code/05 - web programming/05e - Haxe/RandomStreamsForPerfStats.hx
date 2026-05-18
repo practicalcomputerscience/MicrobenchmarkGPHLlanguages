@@ -71,13 +71,10 @@ class RandomStreamsForPerfStats {  // Class name must start with an uppercase le
             bits_hex.add(bits_hex_str);
         }
 
-
         var bits_x_str_total   = bits_x.toString();
         var bits_hex_str_total = bits_hex.toString();
-
         // Sys.println('\nbits_x_str_total = $bits_x_str_total');  // for testing
         // Sys.println('bits_hex_str_total = $bits_hex_str_total');  // for testing
-
 
         // write bit stream to disk:
         try {
@@ -100,7 +97,6 @@ class RandomStreamsForPerfStats {  // Class name must start with an uppercase le
     ////////////////////////////////////////////////////////////////////////
     //
     // user defined functions
-    //
     //
     // Helper to format integer values to 16-bit binary strings
     static function integer_to_bin_string(v:Int):String {
