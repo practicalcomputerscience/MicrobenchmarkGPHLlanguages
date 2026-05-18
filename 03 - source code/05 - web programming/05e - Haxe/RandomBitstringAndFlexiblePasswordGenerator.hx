@@ -5,7 +5,7 @@ Also see: "The name of the file containing a Haxe class is the same as the name 
           https://haxe.org/manual/introduction-hello-world.html
 
 
-2026-05-17
+2026-05-17/18
 
 On Ubuntu 24 LTS:
   a/ run in Haxe interpreter:              $ haxe --main RandomBitstringAndFlexiblePasswordGenerator --interp  # Class name only with initial uppercase letter
@@ -96,7 +96,7 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         var answer:Bool = false;
         while (!answer) {
             Sys.print("\nPassword of " + N_CHAR + " printable chars OK? 'y' or another integer number >= 8: ");
-            var answer_str = Sys.stdin().readLine();
+            var answer_str = Sys.stdin().readLine();  // answer_str is just the text, no newline (2026-05-18)
 
             if (answer_str == "y") {
                 answer = true;
