@@ -98,7 +98,7 @@ public class RandomBitstringAndFlexiblePasswordGenerator {
                                                    //            this is simple and elegant solution!
                     N_CHAR = Integer.parseInt(answer_str);
                     if (N_CHAR < 8) {
-                        System.out.print("enter an integer number >= 8 or 'y'\n");
+                        System.out.println("enter an integer number >= 8 or 'y'");
                     } else {
                         answer = true;
                     }
@@ -125,8 +125,9 @@ public class RandomBitstringAndFlexiblePasswordGenerator {
         // System.out.println("WITH_SPECIAL_CHARS = " + WITH_SPECIAL_CHARS);  // for testing
 
 
-        // the original implementation, based on the Haxe source code, was not the most efficient.
-        // so, a Groovy based one with a HashSet was the design input here with Google AI:
+        // the original implementation, based on the Haxe source code
+        // ("explicit Set behavior across cross-platform targets"), was not the most efficient.
+        // So, a Groovy based one with a HashSet was then finally the design input here with Google AI:
         Set<String> char_set = new HashSet<>();
         if (WITH_SPECIAL_CHARS) {
             // Groovy ('!'..'~') range equivalent in Java
