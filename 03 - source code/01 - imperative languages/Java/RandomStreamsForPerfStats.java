@@ -24,7 +24,7 @@ build on Ubuntu 24 LTS: $ javac RandomStreamsForPerfStats.java
                         Bit stream has been written to disk under name:  random_bitstring.bin
                         Byte stream has been written to disk under name: random_bitstring.byte
 
-                        real	0m0.052s <<<<<<<<<<<<<<<
+                        real	0m0.052s <<<<<<<<<<<<<<< only after some prior run!
                         user	0m0.103s
                         sys	0m0.023s
                         $
