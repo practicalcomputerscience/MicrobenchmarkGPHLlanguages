@@ -2,7 +2,7 @@
 
 The source code of the Java version of the microbenchmark program was mostly transpiled with the help of "Big AI" from its [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe) source code.
 
-This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function (_isStrictPositiveInteger_) than actually necessary. In Java, that piece of code looks concisely like this:
+This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger]() than actually necessary. In Java, that piece of code looks concisely like this:
 
 ```
             String answer_str = scanner.nextLine().trim();  // nextLine() allows the evaluation of the full string
@@ -18,7 +18,7 @@ This was not a very efficient transpilation, although the initially resulting Ja
             }
 ```
 
-Only then I realized the same pattern matching idea, again after asking some "Big AI" systems for the "best" solution, in the Haxe program:
+Only then I realized the same pattern matching idea, again after asking some "Big AI" systems for the "best" solution, in the Haxe program version:
 
 ```
             var answer_str = Sys.stdin().readLine();  // answer_str is just the text, no newline (2026-05-18)
