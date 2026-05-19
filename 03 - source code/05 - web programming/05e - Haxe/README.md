@@ -130,7 +130,7 @@ RandomStreamsForPerfStats.hx:71: characters 11-12 : Missing ;
 $
 ```
 
-..only to notice that the error messaging of Haxe is not helpful (at all). The error was in this line of source code:
+..only to notice that the error messaging of Haxe may not be helpful at all, depending on the error type. The error was in this line of source code:
 
 ```
 io:println('\nbits_x_str_total = $bits_x_str_total');  // for testing
@@ -396,7 +396,7 @@ So, Haxe itself is not capable of directly transpiling [RandomStreamsForPerfStat
 
 There's a conversion tool called [refactor](https://github.com/yar3333/haxe-refactor#refactor), which is using scripts (_$ haxelib run refactor <script>_) to basically apply a "massive search&replace in files". However, a script like _haxe_to_java_ doesn't exist there.
 
-It's somehow interesting to see that [Source-to-source compilation](https://en.wikipedia.org/wiki/Source-to-source_compiler) with target language **Java** without creating a whole bunch of Java resources apparently became a domain of AI coding tools in recent times.
+It's somehow interesting to see that [Source-to-source compilation](https://en.wikipedia.org/wiki/Source-to-source_compiler) with target language **Java** without creating a whole bunch of Java resources apparently has become a domain of AI coding tools in recent times.
 
 I did exactly this now with resulting Java source code file [RandomStreamsForPerfStats.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java), so that nobody can say that I didn't implement the (speed part) of the microbenchmark program in Java: 😉
 
@@ -431,7 +431,7 @@ $
 
 #### JavaScript
 
-Just naively cross-compiling Haxe source code, which is using a system resource:
+Just naively cross-compiling Haxe source code, which is using a system resource like this for example:
 
 ```
 import sys.io.File;
@@ -485,11 +485,11 @@ This compilation command generated a [JavaScript program](./RandomStreamsForPerf
 
 ### Build and install HashLink from sources with SDL2
 
-SDL stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the last SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
+SDL2 stands for [Simple DirectMedia Layer](https://www.libsdl.org/) in its version 2, the version on which HashLink depends. SDL version 2.30.8 is the last SDL2 subversion I've found: https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8 (++)
 
-The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me ("unmet dependencies") in two Ubuntu 24.04.3 LTS systems.
+The usual command in Ubuntu to install SDL2 resources, that is _$ sudo apt install libsdl2-dev_, failed with me ("unmet dependencies") in two different Ubuntu 24.04.3 LTS systems.
 
-There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience. See from here at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#building-on-linuxosx):
+There are more resources needed for HashLink, but they shouldn't make so much trouble according to my experience; see at [Building on Linux/OSX](https://github.com/HaxeFoundation/hashlink/#building-on-linuxosx):
 
 ```
 $ sudo apt update
