@@ -1,5 +1,7 @@
 # Haxe
 
+Pronounce this language name as /hæks/, see at: https://voca.dev/word/haxe
+
 https://haxe.org/ (*)
 
 https://github.com/HaxeFoundation/haxe
