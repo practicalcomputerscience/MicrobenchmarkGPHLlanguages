@@ -95,7 +95,7 @@ public class RandomBitstringAndFlexiblePasswordGenerator {
                 answer = true;
             } else {
                 if (answer_str.matches("\\d+")) {  // Google AI: checks if the string contains only digits:
-                                                   //            this is simple and elegant solution!
+                                                   //            this is a simple and elegant solution!
                     N_CHAR = Integer.parseInt(answer_str);
                     if (N_CHAR < 8) {
                         System.out.println("enter an integer number >= 8 or 'y'");
