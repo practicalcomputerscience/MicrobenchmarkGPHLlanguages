@@ -98,7 +98,8 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             if (answer_str == "y") {
                 answer = true;
             } else {
-                if (isStrictPositiveInteger(answer_str)) {
+                var digitRegex = ~/^\d+$/;  // using Haxe's native regular expression class, EReg (Google AI); 2026-05-19
+                if (digitRegex.match(answer_str)) {  
                     var parsed = Std.parseInt(answer_str);
                     if (parsed == null) {
                         Sys.print("enter an integer number >= 8 or 'y'\n");
@@ -197,21 +198,6 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             n = Std.int(n / 2);
         }
         return StringTools.lpad(s, "0", 16);
-    }
-
-    // Function to check if a value is strictly an integer (by MS Copilot)
-    static function isStrictPositiveInteger(input:String):Bool {
-        var str = StringTools.trim(input);
-        // Regex: digits only
-        if (~/^\d+$/.match(str)) {
-            try {
-                var num = Std.parseInt(str);
-                return num != null;
-            } catch (e:Dynamic) {
-                return false;
-            }
-        }
-        return false;
     }
 
     // Helper to parse unsigned binary string back to an integer
