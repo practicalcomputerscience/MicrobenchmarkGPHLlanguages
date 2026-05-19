@@ -6,7 +6,7 @@
 
 <br/>
 
-- 2026-05-dd, TBD: [Java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java#java)
+- 2026-05-19: [Java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java#java)
 
 - 2026-05-18: [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)
 
@@ -87,7 +87,7 @@
 
 <br/>
 
-2026-05-18: so far, I haven't touched yet these corners of programming languages:
+2026-05-19: so far, I haven't touched yet these corners of programming languages:
 
 - Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
