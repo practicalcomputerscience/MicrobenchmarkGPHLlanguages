@@ -1,4 +1,4 @@
-2026-05-19: tbd: median value of SLOC over all languages in below list
+2026-05-19: tbd: median value of SLOC over all languages as listed below
 
 <br/>
 
@@ -72,6 +72,7 @@ Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
 Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
+Java              | 107 | interpreted, very mature language (together with Java ecosystem)
 Julia             | 106 | just-in-time compiled, mature language
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
@@ -121,6 +122,7 @@ Go                 | 0
 Groovy             | 0
 Haxe               | 2
 Inko               | 4
+Java               | 0
 Julia              | 0
 Kotlin             | 1
 Lua                | 2
