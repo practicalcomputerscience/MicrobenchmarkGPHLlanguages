@@ -1,3 +1,7 @@
+2026-05-19: tbd: median value of SLOC over all languages in below list
+
+<br/>
+
 # Lines Of source Code (LOC): verbosity
 
 LOC is here understood as Source Lines Of Code (SLOC).
@@ -38,7 +42,6 @@ Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-define
 Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined functions
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
-Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
 Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions
@@ -53,6 +56,7 @@ C++               | 131 | compiled, very mature language; memory-safe source cod
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-01-24
 Zig               | 129 | compiled, young language still going through major changes
+Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 Go                | 127 | compiled, mature language
 Rust              | 126 | compiled, mature language
