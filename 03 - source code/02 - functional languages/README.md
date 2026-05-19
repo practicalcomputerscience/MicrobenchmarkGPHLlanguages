@@ -14,6 +14,7 @@ Table of contents:
 - [What functional programming language introduced the idea of "immutable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutable-variables)
 - [Functional languages on the Java Virtual Machine (JVM)](#functional-languages-on-the-java-virtual-machine-jvm)
 - [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#so-who-is-mostly-using-functional-programming)
+- []()
 
 ---
 
@@ -122,6 +123,24 @@ https://www.risk.net/risk-management/6395366/functional-programming-reaches-for-
 In the technical space I still have to see the industrial corner which is prominently using functional programming.
 
 You may also have a look at [Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages).
+
+<br/>
+
+## Specific hardware for functional programming
+
+After some practical experience in functional programming, I think it's a natural idea to ask this question: 
+
+> Have there been efforts to build hardware specifically to be used for functional programming languages?
+
+Yes, there have been, see at [A History of Functional Hardware](https://haflang.github.io/history.html#event-functional-hardwarebr-1924-2024).
+
+Here a recent paper from 2024 as a PDF document from the same authors: [KappaMutor: A Compact Structured Combinator Processor for Haskell](https://trendsfp.github.io/2025/abstracts/paper-029.pdf)
+
+> 5.3 Hardware Implementation
+
+> The KappaMutor architecture is implemented on an Alveo U280 [2] UltraScale+ FPGA using Xilinx Vivado 2023.1 for synthesis and implementation. ...
+
+FPGA = Field Programmable Gate Array
 
 <br/>
 
