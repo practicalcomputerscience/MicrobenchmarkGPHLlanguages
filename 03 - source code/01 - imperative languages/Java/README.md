@@ -2,7 +2,9 @@
 
 The source code of the Java version of the microbenchmark program was mostly transpiled with the help of "Big AI" from its [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe) source code.
 
-This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger](#the-originally-extra-user-defined-function-in-haxe) than actually necessary. In Java, that piece of code looks concisely like this:
+This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger](#the-originally-extra-user-defined-function-in-haxe) than actually necessary.
+
+In **Java**, almost right from start, that piece of code looked concisely like this:
 
 ```
             String answer_str = scanner.nextLine().trim();  // nextLine() allows the evaluation of the full string
@@ -18,7 +20,7 @@ This was not a very efficient transpilation, although the initially resulting Ja
             }
 ```
 
-Only then I realized the same pattern matching idea, again after asking some "Big AI" systems for the "best" solution, in the Haxe program version:
+Only then I realized the same pattern matching idea, again after asking some "Big AI" systems for the "best" solution, in the **Haxe** program version:
 
 ```
             var answer_str = Sys.stdin().readLine();  // answer_str is just the text, no newline (2026-05-18)
@@ -34,6 +36,8 @@ Only then I realized the same pattern matching idea, again after asking some "Bi
             }
 ```
 
+<br/>
+
 However, and as this background at ["Java"](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#java) tries to explain,
 the idea here was not to find the best source language to transpile into the most efficient Java source code.
 
@@ -41,8 +45,8 @@ This "Big AI" based transpilation from one Haxe source code file into only **one
 
 language | source lines of code of full program (manually improved) | number of user defined functions in full program | program execution time of "speed part" of microbenchmark | comment
 --- | --- | --- | --- | ---
-Haxe    | 123  | 2 | 152 milliseconds with bytecode for the (modern) HashLink virtual machine | language for "cross-platform development"
-Groovy  | 99   | 0 | 341 milliseconds with an uberJAR file for the Java virtual machine | my preferred source language for transpilations
+[Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)    | 123  | 2 | 152 milliseconds with bytecode for the (modern) HashLink virtual machine | language for "cross-platform development"
+[Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy)  | 99   | 0 | 341 milliseconds with an uberJAR file for the Java virtual machine | my preferred source language for transpilations
 Java    | 107  | 0 | 51 milliseconds with an uberJAR file for the Java virtual machine | development target: having only one source code file in target language Java
 
 <br/>
