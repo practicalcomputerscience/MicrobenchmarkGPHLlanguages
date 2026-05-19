@@ -533,9 +533,11 @@ So, it's advisable to learn a little bit of functional programming nowadays.
 
 ### Prompt engineering
 
-It was already with the Go program where I started to use MS Bing AI (Artificial intelligence) for writing me little functions. Later, with functional programming languages like OCaml and Clojure for example with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write for me, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
+It was already with the Go program, where I started to use MS Bing AI (Artificial intelligence) for writing me little functions. Later, with functional programming languages like OCaml and Clojure for example, and with enough sources around, my usage of MS Bing AI increased. However, in all cases I more or less translated the basic program manually from language to language. I tried to estimate the "hit rate" of my prompts (https://en.wikipedia.org/wiki/Prompt_engineering). I think it's somewhere between 5% and 25%. Because if a procedure is easy enough to write for me, even in a new programming language, where I often search in examples and GitHub repositories, it's faster for me to focus on writing the source code instead of trying to find better prompts.
 
 I also consulted Stack Overflow (https://stackoverflow.com/questions) like in the "old times". From time to time, but not systematically, I added related reference notes in the source code files, also about my prompt engineering.
+
+2026-05: over the course of the last 14 months, I have got the vague feeling that the general quality of AI generated code has improved, but that may be only true for the "Top 50" programming languages.
 
 <br/>
 
@@ -565,7 +567,7 @@ My Standard ML program with around 120 lines of source code (in one _~.sml_ file
 
 ### AI experiments
 
-This gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua source code files were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
+Using the LunarML transpiler gave me the idea to test two of these AI based translation services in the web with free and limited trials. I entered my Perl and PowerShell versions with target language Lua. The resulting Lua source code files were not working. Then I helped with my Ada version with its user defined functions to help overcoming the problem of functions which are available in one language but not in the core of another. This helped. Both services generated working and concise Lua scipts, albeit both almost equally slow. My manually produced Lua script only needs a third of the execution time of the AI generated scripts.
 
 However, this episode showed me how challenging such a translation task really can become. This task is not only about the cores of two programming languages, but in many practical cases also about standard and third party **libraries**! The true reason why my Ada program was so helpful was because of my incompetence! Originally, I wanted to use the _Strings Edit_ library: https://www.dmitry-kazakov.de/ada/strings_edit.htm, but I was not able to figure out within an acceptable amount of time how to use such a third party library for Ada. Consequently, my Ada program has the second most lines of source code as of 2026-02-11: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
