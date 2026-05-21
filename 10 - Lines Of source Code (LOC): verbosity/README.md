@@ -1,4 +1,4 @@
-2026-05-19: tbd: median value of SLOC over all languages as listed below
+2026-05-19: tbd: finally, calculate the median value of SLOC over all languages as listed below
 
 <br/>
 
@@ -29,9 +29,32 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 
 <br/>
 
+After struggling with my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl), I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
+
+```
+$ sudo apt install cloc
+...
+$ cloc ./random_bitstring_and_flexible_password_generator.st
+       1 text file.
+       1 unique file.                              
+       0 files ignored.
+
+github.com/AlDanial/cloc v 1.98  T=0.00 s (250.2 files/s, 57044.9 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Smalltalk                        1             43             58            127
+-------------------------------------------------------------------------------
+$ 
+```
+
+With Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st), in its now simplified commenting, it arrived at the same number of source lines of code than my script.
+
+<br/>
+
 ## LOC ranking list
 
-The results of this list are [script-based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity/lines_of_source_code_count.pl): _$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.< ... >_
+The results of this list are [script-based](./lines_of_source_code_count.pl): _$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.< ... >_
 
 programming language | LOC | comments | date
 --- | --- | --- | ---
