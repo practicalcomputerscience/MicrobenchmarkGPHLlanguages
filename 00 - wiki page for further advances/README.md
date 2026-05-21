@@ -8,7 +8,7 @@
 
 - 2026-05-dd: **another round of refactoring**: (POSIX) _pattern_ (regexpr) <==> _char_set_ (set/hash of characters/strings): target: move more program versions, if feasible and reasonable, (back) from _char_set_ to _pattern_; it succeeded nicely with GNU Smalltalk, and thus should be possible with many more languages: this refactering will definitely decrease the SLOC's of a number of program versions!!
 
-- 2026-05-dd: [Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk)
+- 2026-05-21: [Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk)
 
 - 2026-05-19: [Java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java#java)
 
@@ -91,9 +91,8 @@
 
 <br/>
 
-2026-05-19: so far, I haven't touched yet these corners of programming languages:
+2026-05-21: so far, I haven't touched yet these corners of programming languages:
 
-- Smalltalk as the U.S.'s start into object-oriented programming
 - Dylan: https://opendylan.org/download/: _Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax).._ (CLOS = Common Lisp Object System)
 - Hy is a Lisp dialect that's embedded in Python: https://hylang.org/
 - **Stack-oriented programming languages**: https://en.wikipedia.org/wiki/Forth_(programming_language)
