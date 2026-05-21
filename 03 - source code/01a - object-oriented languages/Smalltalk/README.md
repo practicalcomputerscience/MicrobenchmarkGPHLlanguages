@@ -1,8 +1,6 @@
 2026-05-21: work in progress
 
-tbd: hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
-
-check remaining tbd's
+tbd: last job: hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
 
 <br/>
 
