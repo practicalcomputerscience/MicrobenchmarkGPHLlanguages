@@ -22,7 +22,7 @@ Table of contents:
 
 - [Idea of Smalltalk: a complete software application platform and development environment](#idea-of-smalltalk-a-complete-software-application-platform-and-development-environment)
 - [Lists of Smalltalk implementations](#lists-of-smalltalk-implementations)
-  - [Squeak](#squeak])
+  - [Squeak](#squeak)
   - [Pharo](#pharo)
   - [Cuis](#cuis)
 - [GNU Smalltalk for a text‑based workflow](#gnu-smalltalk-for-a-textbased-workflow)
