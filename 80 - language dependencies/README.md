@@ -75,6 +75,7 @@ Scheme, Chez | bootstrapping with C for gcc or clang; otherwise self-hosted | [B
 Scheme, CHICKEN | C for gcc or clang | [Installing CHICKEN](https://wiki.call-cc.org/man/5/Getting%20started#installing-chicken)
 Scheme, Gambit | C for gcc | [INSTALL](https://github.com/gambit/gambit/blob/master/INSTALL.txt)
 Scheme, Racket | using Chez Scheme as its core compiler and runtime system | [1.5 Implementations](https://docs.racket-lang.org/reference/implementations.html#(part._implementations))
+Smalltalk (GNU) | Smalltalk, C and C++ | https://github.com/gnu-smalltalk/smalltalk/tree/master
 Standard ML (MLton) | C for gcc or clang | [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
 Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosted | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
 TypeScript | runtimes: node.js: C and C++; Deno: Rust ; Bun: Zig | Deno: https://docs.deno.com/runtime/; Bun: https://bun.com/docs/runtime
