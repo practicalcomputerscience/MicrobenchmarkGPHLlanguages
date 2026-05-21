@@ -6,6 +6,10 @@
 
 <br/>
 
+- 2026-05-dd: **another round of refactoring**: (POSIX) pattern (regexpr) <==> char_set (set/hash of characters/strings): target: move more program versions, if feasible and reasonable, (back) from char_set to pattern; it succeeded nicely with GNU Smalltalk, and thus should be possible with many more languages
+
+- 2026-05-dd: [Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk)
+
 - 2026-05-19: [Java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java#java)
 
 - 2026-05-18: [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)
