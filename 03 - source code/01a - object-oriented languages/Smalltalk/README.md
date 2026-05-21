@@ -1,9 +1,3 @@
-2026-05-21: work in progress
-
-tbd: last job on this page: hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
-
-<br/>
-
 # GNU Smalltalk
 
 https://www.gnu.org/software/smalltalk/
@@ -149,7 +143,7 @@ $ sudo make install
 $
 ```
 
-Some small verifications of this installation:
+Some verifications of this installation:
 
 ```
 $ gst --version
@@ -157,11 +151,10 @@ GNU Smalltalk version 3.2.91
 Copyright 2009 Free Software Foundation, Inc.
 Written by Steve Byrne (sbb@gnu.org) and Paolo Bonzini (bonzini@gnu.org)
 ...
-$
 $ cat hello_world_gnu.st
-'Hello, world' printNl
+'Hello, world!' printNl
 $ gst hello_world_gnu.st
-'Hello, world'
+'Hello, world!'
 $ 
 ```
 
@@ -172,11 +165,18 @@ Transcript show: 'Hello, world'; cr.
 Smalltalk snapshot: false andQuit: true.
 ```
 
-..a file where the '!' character is missing because it would cause an error when being executed on the Pharo virtual machine:
+..a file where the '!' character is missing in the string to be printed, because it's causing an error when being executed on the Pharo virtual machine:
 
 ```
-$ ~/scripts/Smalltalk/pharo-launcher-linux-3.4.3-x64/pharo-launcher/pharo-vm/pharo --headless Pharo13.0-SNAPSHOT-64bit-374678e2d5.image hello_world_pharo.st
-tbd
+$ ~/scripts/Smalltalk/pharo-launcher-linux-3.4.3-x64/pharo-launcher/pharo-vm/pharo \
+> --headless Pharo13.0-SNAPSHOT-64bit-374678e2d5.image hello_world_pharo.st
+same directory as this image. named properly and is in theripts/Smalltalk/Pharo13.1-64bit-374678e.sources.
+Syntax Error on line 1: 'Unmatched '' in string literal.'
+=========================================================
+1: Transcript show: 'Hello, world
+...
+OCCodeError:OCSyntaxErrorNotice ???>>#DoIt 305:Unmatched ' in string literal.->'Hello, world
+...
 $
 ```
 
