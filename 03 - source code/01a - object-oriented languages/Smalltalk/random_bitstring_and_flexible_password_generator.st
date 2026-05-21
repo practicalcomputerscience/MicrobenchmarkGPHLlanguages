@@ -1,19 +1,18 @@
-"
-random_bitstring_and_flexible_password_generator.st
+" !!THIS SMALLTALK FILE MUST ONLY HAVE SIMPLE COMMENTING FOR RELIABLE COUNTING OF SOURCE LINES OF CODE!! "
+"random_bitstring_and_flexible_password_generator.st"
 
-2026-05-20
+"2026-05-20/21"
 
-run on Ubuntu 24 LTS:   $ gst --quiet random_bitstring_and_flexible_password_generator.st
+"run on Ubuntu 24 LTS:   $ gst --quiet random_bitstring_and_flexible_password_generator.st"
 
 
-$ gst --version
-GNU Smalltalk version 3.2.91
-Copyright 2009 Free Software Foundation, Inc.
-Written by Steve Byrne (sbb@gnu.org) and Paolo Bonzini (bonzini@gnu.org)
-...
-$
+"$ gst --version"
+"GNU Smalltalk version 3.2.91"
+"Copyright 2009 Free Software Foundation, Inc."
+"Written by Steve Byrne (sbb@gnu.org) and Paolo Bonzini (bonzini@gnu.org)"
+"..."
+"$"
 
-"
 
 " ----------------------------- "
 "                               "
@@ -26,7 +25,8 @@ Integer extend [
         binStr    := self printStringRadix: 2.
         binStr    := binStr copyFrom: 3 to: binStr size.
         padLength := (16 - binStr size) max: 0.
-        ^ (String new: padLength withAll: $0), binStr.  "^ for returning a value"
+        ^ (String new: padLength withAll: $0), binStr.
+        "^ for returning a value"
     ]
 ]
 
@@ -57,9 +57,10 @@ Object subclass: random_bitstring_and_flexible_password_generator [
           N_CHAR answer answer_str WITH_SPECIAL_CHARS pattern i j pw_chars bin0_0 bin0_1 char0 char1 current_x |
         "| v1 v2 | are variable declarations"
 
-        END := 62501.  "62501 for exactly 1M binary digits"
-        "END := 100."   "for testing"
-        m := 65521.    "m := 5. for testing"
+        END := 62501.
+        "62501 for exactly 1M binary digits"
+        "END := 100.  for testing"
+        m := 65521.
         a := 17364.
         c := 0.
 
@@ -69,9 +70,9 @@ Object subclass: random_bitstring_and_flexible_password_generator [
         "Initialize an Array of size 'END' filled with 0s"
         x := Array new: END.
 
-        rnd := Random new.  "GNU Smalltalk shared Random number generator"
-        x at: 1 put: ((rnd next * (m - 2)) asInteger + 1).  "(...) is for grouping expressions; m - 2 is really needed here"
-        "'x[1] = ' display. (x at: 1) printNl."  "for testing"
+        rnd := Random new.
+        x at: 1 put: ((rnd next * (m - 2)) asInteger + 1).
+        "'x[1] = ' display. (x at: 1) printNl.  for testing"
 
         "Use WriteStreams as the high-performance equivalent to StringBuilder"
         bits_x   := WriteStream on: (String new).
@@ -85,14 +86,15 @@ Object subclass: random_bitstring_and_flexible_password_generator [
             prevVal    := x at: (i - 1).
             currentVal := ((a * prevVal) + c) rem: m.
             x at: i put: currentVal.
-            "'' displayNl. 'x[i] = ' display. currentVal printNl."  "for testing"
+            "'' displayNl. 'x[i] = ' display. currentVal printNl.  for testing"
 
-            bits_x_str   := currentVal integer_to_bin_string.  "call user-defined function integer_to_bin_string"
-            "bits_x_str  displayNl."  "for testing"
+            "call user-defined function integer_to_bin_string:"
+            bits_x_str   := currentVal integer_to_bin_string.
+            "bits_x_str  displayNl.  for testing"
             bits_x nextPutAll: bits_x_str.
 
             bits_hex_str := currentVal integer_to_hex_string.
-            "bits_hex_str  displayNl."  "for testing"
+            "bits_hex_str  displayNl.  for testing"
             bits_hex nextPutAll: bits_hex_str.
         ].
 
@@ -124,11 +126,12 @@ Object subclass: random_bitstring_and_flexible_password_generator [
         N_CHAR := 12.
         answer := false.
         [ answer ] whileFalse: [
-            '' displayNl.  "a new line here"
+            "a new line here:"
+            '' displayNl.
             Transcript show: 'Password of ', N_CHAR printString, ' printable chars OK? ''y'' or another integer number >= 8: '.
             Transcript flush.
             answer_str := stdin nextLine.
-            "answer_str displayNl."  "for testing"
+            "answer_str displayNl.  for testing"
 
             (answer_str = 'y')
                 ifTrue:  [ answer := true ]
@@ -146,12 +149,13 @@ Object subclass: random_bitstring_and_flexible_password_generator [
                     ]
                 ]
         ].
-        "'N_CHAR = ' display. N_CHAR printNl."  "for testing"
+        "'N_CHAR = ' display. N_CHAR printNl.  for testing"
 
         WITH_SPECIAL_CHARS := true.
         answer := false.
         [ answer ] whileFalse: [
-            '' displayNl.  "a new line here"
+            "a new line here:"
+            '' displayNl.
             Transcript show: 'Do you want me to use special characters like .;,+*... ? ''y'' or ''n'': '.
             Transcript flush.
             answer_str := stdin nextLine.
@@ -163,26 +167,35 @@ Object subclass: random_bitstring_and_flexible_password_generator [
                     answer := true
                 ]
         ].
-        "'WITH_SPECIAL_CHARS = ' display. WITH_SPECIAL_CHARS printNl."  "for testing"
+        "'WITH_SPECIAL_CHARS = ' display. WITH_SPECIAL_CHARS printNl.  for testing"
 
 
         "Define the matching pattern using POSIX bracket groups (Google AI)"
         pattern := WITH_SPECIAL_CHARS
-            ifTrue:  [ '^[[:print:]]$' ]   "Strictly matches exactly one printable ASCII character"
-            ifFalse: [ '^[[:alnum:]]$' ].  "Strictly matches exactly one alphanumeric character"
+            "Strictly matches exactly one printable ASCII character:"
+            ifTrue:  [ '^[[:print:]]$' ]
+            "Strictly matches exactly one alphanumeric character:"
+            ifFalse: [ '^[[:alnum:]]$' ].
 
 
-        i := 0.   "char counter for the password"
-        j := 1.   "counter for x (Note: Smalltalk arrays are 1-indexed)"
+        "char counter for the password:"
+        i := 0.
+        "counter for x (Note: Smalltalk arrays are 1-indexed):"
+        j := 1.
         pw_chars := ''.
 
-        [ i < N_CHAR ] whileTrue: [  "Google AI"
-            current_x := x at: j.  "Get the current 16-bit integer value from array x"
+        [ i < N_CHAR ] whileTrue: [
+        "Google AI"
+            "Get the current 16-bit integer value from array x:"
+            current_x := x at: j.
 
-            bin0_0 := current_x bitShift: -8.   "Extract high 8 bits by shifting right 8 bits: elegant solution"
-            bin0_1 := current_x bitAnd: 16rFF.  "Extract low 8 bits using a bitwise AND mask with 255 (0xFF)"
+            "Extract high 8 bits by shifting right 8 bits: elegant solution:"
+            bin0_0 := current_x bitShift: -8.
+            "Extract low 8 bits using a bitwise AND mask with 255 (0xFF):"
+            bin0_1 := current_x bitAnd: 16rFF.
 
-            char0 := (Character value: bin0_0) asString.  "Convert the raw integer values into actual String objects"
+            "Convert the raw integer values into actual String objects:"
+            char0 := (Character value: bin0_0) asString.
             char1 := (Character value: bin0_1) asString.
 
             (char0 =~ pattern) ifMatched: [
@@ -191,9 +204,9 @@ Object subclass: random_bitstring_and_flexible_password_generator [
             ].
 
             (char1 =~ pattern) ifMatched: [ :match |
-                "Google AI: adding the :match variable fulfills GNU Smalltalk's regex design.
-                 If the string matches the pattern, it safely evaluates the block.
-                 If it fails, it cleanly returns nil and skips the block."
+                "Google AI: adding the :match variable fulfills GNU Smalltalk's regex design."
+                "If the string matches the pattern, it safely evaluates the block."
+                "If it fails, it cleanly returns nil and skips the block."
                 i < N_CHAR ifTrue: [
                     pw_chars := pw_chars, char1.
                     i := i + 1
@@ -203,7 +216,8 @@ Object subclass: random_bitstring_and_flexible_password_generator [
             j := j + 1
         ].
 
-        '' displayNl.  "a new line here"
+        "a new line here:"
+        '' displayNl.
         Transcript show: 'Your password of ', N_CHAR printString, ' characters is: ', pw_chars; cr.
     ]
 ]
