@@ -2,9 +2,7 @@
 
 tbd: hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
 
-tbd: table of content
-
-see remaining tbd's
+check remaining tbd's
 
 <br/>
 
@@ -18,7 +16,21 @@ https://github.com/gnu-smalltalk/smalltalk/tree/master (*)
 
 PDF document: [SMALLTALK-72 INSTRUCTION MANUAL](https://smalltalkzoo.computerhistory.org/papers/Smalltalk72_Manual.pdf), The Learning Research Group, Xerox Palo Alto Hesearch Center, by ADELE GOLDBERG AND ALAN KAY, EDITORS, 1976
 
+---
+
+Table of contents:
+
+- [Idea of Smalltalk: a complete software application platform and development environment](#idea-of-smalltalk-a-complete-software-application-platform-and-development-environment)
+- [Lists of Smalltalk implementations](#lists-of-smalltalk-implementations)
+  - [Squeak](#squeak])
+  - [Pharo](#pharo)
+  - [Cuis](#cuis)
+- [GNU Smalltalk for a text‑based workflow](#gnu-smalltalk-for-a-textbased-workflow)
+- [Installation and compilation tips of GNU Smalltalk](#installation-and-compilation-tips-of-gnu-smalltalk)
+
 <br/>
+
+---
 
 ## Idea of Smalltalk: a complete software application platform and development environment
 
@@ -41,6 +53,10 @@ In the 70ies alone, four versions of Smalltalk were developed: Smalltalk-71, Sma
 
 <br/>
 
+Same like [Ruby](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ruby#mjit-in-2018), Smalltalk apparently also belongs to a group of programming languages, which have seen some generations of virtual machine development: [Virtual Machines in Squeak](https://squeak.org/development/#virtual-machines), even including ahead-of-time compilation with the GraalVM: [TruffleSqueak](https://github.com/hpi-swa/trufflesqueak/).
+
+<br/>
+
 ### Lists of Smalltalk implementations
 
 Here's a list, but apparently not maintained anymore: http://www.smalltalk.org/#SmalltalkSystems
@@ -51,11 +67,13 @@ After a while of reading, two major open source implementations emerged:
 
 #### Squeak
 
-[Squeak](https://squeak.org/) is a Smalltalk environment created by the original Smalltalk-80 team.
+[Squeak](https://squeak.org/) is a Smalltalk environment created by the original Smalltalk-80 team, initially published in 1996.
 
 Latest release (as of May 2026): https://files.squeak.org/trunk/Squeak6.1alpha-23704-64bit/
 
 Running script _$ squeak.sh_ starts the "Smalltalk programming system", where configurations can be done initially.
+
+Front-end development can be done with [SqueakJS](https://squeak.js.org/) to run unmodified Smalltalk images (and Pharo and Cuis, too).
     
 #### Pharo
 
