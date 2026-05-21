@@ -1,5 +1,7 @@
 2026-05-21: work in progress
 
+hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
+
 see remaining tbd's
 
 <br/>
@@ -31,7 +33,7 @@ But over 50 years into this fully object-oriented, dynamically typed and reflect
 
 [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme) has dialects, [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming#logic-programming) has systems, and Smalltalk has implementations, where nowadays only a few have a language name with "Smalltalk" being a part of it.
 
-Even porting "Hello, World!" 1:1 from one Smalltalk implementation to the other has a high chance of failure.
+Even porting "Hello, world!" 1:1 from one Smalltalk implementation to the other has a high chance of failure.
 
 In the 70ies alone, four versions of Smalltalk were developed: Smalltalk-71, Smalltalk-72, Smalltalk-76 and Smalltalk-80 (https://drcuis.github.io/TheCuisBook/Preface-_0028Solutions_0029.html). 
 
@@ -65,7 +67,7 @@ Front-end development can be done with [PharoJS](https://pharojs.org/).
 
 > Cuis is a free Smalltalk-80 environment with a specific set of goals: being simple and powerful.
 
-The Cuis IDE (Integrated Development Environment) for printing "Hello, World!" on the "console", or in the "terminal", looks like this in Ubuntu 24:
+The Cuis IDE (Integrated Development Environment) for printing "Hello, world!" on the "console", or in the "terminal", looks like this in Ubuntu 24:
 
 ![plot](./GUI%20Cuis%20version%207.6a.png)
 
