@@ -3,7 +3,7 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -32,6 +32,8 @@ my $line_cmt_Basic_style = 0;
 my $line_cmt_Mercury_style = 0;  # %
 my $line_cmt_Fortran_style = 0;  # !
 my $line_cmt_COBOL_style = 0;    # *>
+my $line_cmt_Smalltalk_style = 0;    # "...": only these kind of comments are allowed (no block comments)
+                                     # and no mixing within the same line with source code!!
 
 
 my $fwdslash_star_detected = 0;              # 0 is false --> use strict prevents using true or false
@@ -63,7 +65,7 @@ my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam",
 
 
 # language groups with block comments:
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d", "groovy", "dart", "php", "ts", "ts_wasm", "hx");
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d", "groovy", "dart", "php", "ts", "ts_wasm", "hx", "java");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
@@ -75,6 +77,7 @@ my @lang_grp10 = ("m", "P", "pi");  # single line comment: %, block comments: /*
 my @lang_grp11 = ("jl");
 my @lang_grp12 = ("nim");
 my @lang_grp13 = ("rb");
+my @lang_grp14 = ("st");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -92,7 +95,7 @@ $language_ext =~ s/^\w+\.//;
 print "language = ", $language_ext, "\n";
 
 
-if ( grep(/^$language_ext$/, @lang_grp1)) {  # 
+if ( grep(/^$language_ext$/, @lang_grp1)) {  #
   while ( <FILE> ) {
     chomp( $_ );
 
@@ -123,7 +126,7 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {  #
             if ($_ =~ /^\s*\!/) {
               $line_cmt_Fortran_style += 1;
             } else {
-            
+
               # case: >* with optionally leading white spaces: COBOL
               if ($_ =~ /^\s*\>\*/) {
                 $line_cmt_COBOL_style += 1;
@@ -160,7 +163,6 @@ if ( grep(/^$language_ext$/, @lang_grp2)) {
       print "  fwdslash_star_detected", "\n";
       $line_of_block_comment2 += 1;
     } else {
-
       if ($_ =~ /\*\/\s*$/ and $fwdslash_star_detected) {
         $fwdslash_star_detected = 0;
         $star_bwdslash_detected = 1;
@@ -205,7 +207,6 @@ if ( grep(/^$language_ext$/, @lang_grp3)) {
       print "  triple_dbl_quote_detected", "\n";
       $line_of_block_comment3 += 1;
     } else {
-
       if ($_ =~ /"""\s*$/ and $triple_dbl_quote_detected) {
         $triple_dbl_quote_detected = 0;
         print "  triple_dbl_quote_detected", "\n";
@@ -290,7 +291,6 @@ if ( grep(/^$language_ext$/, @lang_grp5)) {
       print "  less_than_hash_detected", "\n";
       $line_of_block_comment5 += 1;
     } else {
-
       if ($_ =~ /\#\>\s*$/ and $less_than_hash_detected) {
         $less_than_hash_detected = 0;
         print "  hash_greater_than_detected", "\n";
@@ -358,7 +358,6 @@ if ( grep(/^$language_ext$/, @lang_grp7)) {
       print "  hash_bar_detected", "\n";
       $line_of_block_comment7 += 1;
     } else {
-
       if ($_ =~ /\|\#\s*$/ and $hash_bar_detected) {
         $hash_bar_detected = 0;
         $bar_hash_detected = 1;
@@ -403,7 +402,6 @@ if ( grep(/^$language_ext$/, @lang_grp8)) {
       print "  fwdslash_singlequote_detected", "\n";
       $line_of_block_comment8 += 1;
     } else {
-
       if ($_ =~ /\'\/\s*$/ and $fwdslash_singlequote_detected) {
         $fwdslash_singlequote_detected = 0;
         $singlequote_fwdslash_detected = 1;
@@ -448,7 +446,6 @@ if ( grep(/^$language_ext$/, @lang_grp9)) {
       print "  doubleminus_squarebracket_detected", "\n";
       $line_of_block_comment9 += 1;
     } else {
-
       if ($_ =~ /\-\-\s*$/ and $doubleminus_squarebracket_detected) {
         $doubleminus_squarebracket_detected = 0;
         $doublesquarebracket_detected = 1;
@@ -492,7 +489,6 @@ if ( grep(/^$language_ext$/, @lang_grp10)) {
       print "  fwdslash_star_detected", "\n";
       $line_of_block_comment2 += 1;
     } else {
-
       if ($_ =~ /\*\/\s*$/ and $fwdslash_star_detected) {
         $fwdslash_star_detected = 0;
         $star_bwdslash_detected = 1;
@@ -537,7 +533,6 @@ if ( grep(/^$language_ext$/, @lang_grp11)) {
       print "  hash_equal_detected", "\n";
       $line_of_block_comment11 += 1;
     } else {
-
       if ($_ =~ /=#\s*$/ and $hash_equal_detected) {
         $hash_equal_detected = 0;
         $equal_hash_detected = 1;
@@ -582,7 +577,6 @@ if ( grep(/^$language_ext$/, @lang_grp12)) {
       print "  hash_bracket_detected", "\n";
       $line_of_block_comment12 += 1;
     } else {
-
       if ($_ =~ /\]#\s*$/ and $hash_bracket_detected) {
         $hash_bracket_detected = 0;
         $bracket_hash_detected = 1;
@@ -627,7 +621,6 @@ if ( grep(/^$language_ext$/, @lang_grp13)) {
       print "  equal_begin_detected", "\n";
       $line_of_block_comment13 += 1;
     } else {
-
       if ($_ =~ /\=end\s*$/ and $equal_begin_detected) {
         $equal_begin_detected = 0;
         $equal_end_detected = 1;
@@ -652,6 +645,31 @@ if ( grep(/^$language_ext$/, @lang_grp13)) {
 }
 
 
+# Smalltalk doesn't allow nested comments, like for example "..."..."..."
+# here are no block comments allowed and no mix of source code and comments in the same line!!
+if ( grep(/^$language_ext$/, @lang_grp14)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    # detect a comment line:
+    if ($_ =~ /^\s*\"{1}.*\"{1}\s*$/) {
+      $line_cmt_Smalltalk_style += 1;
+    } else {
+      # detect an empty line:
+      if ($_ =~ /^\s*$/) {
+        $line_empty += 1;
+      } else {
+        # now, we have only the possibility of a line of source code:
+        $source_code_line_count += 1;
+      }
+    }
+  }
+}
+
+
 close( FILE );
 
 print "\ntotal number of lines = ", $line_count;
@@ -667,6 +685,7 @@ print "\nnumber of lines with ___' = ", $line_cmt_Basic_style;
 print "\nnumber of lines with ___% = ", $line_cmt_Mercury_style;
 print "\nnumber of lines with ___! = ", $line_cmt_Fortran_style;
 print "\nnumber of lines with ___>* = ", $line_cmt_COBOL_style;
+print "\nnumber of lines with ___\" = ", $line_cmt_Smalltalk_style;
 print "\nnumber of lines in block comment: \/\* ... \*\/ = ", $line_of_block_comment2;
 print "\nnumber of lines in block comment: \"\"\" ... \"\"\" = ", $line_of_block_comment3;
 print "\nnumber of lines in block comment: \(\* ... \*\) = ", $line_of_block_comment4;
