@@ -109,7 +109,7 @@ OpenJDK 64-Bit Server VM (build 21.0.10+7-Ubuntu-124.04, mixed mode, sharing)
 $ 
 ```
 
-If not, program execution also succeeds but emits this warning:
+If not downgraded, program execution also succeedsm, but emits this warning:
 
 ```
 WARNING: Incompatible JRE version '25.0.2' found. This ballerina program supports running on JRE version '21.0.*'
