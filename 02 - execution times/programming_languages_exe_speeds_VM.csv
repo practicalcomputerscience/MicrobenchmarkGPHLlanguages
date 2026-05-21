@@ -14,3 +14,5 @@ Dart interpreted;0,217;0,004;2026-02-08
 Dart just-in-time;0,102;0,004;2026-02-08
 PHP (Zend engine);0,015;0,001;2026-02-09
 Ballerina JVM uberjar;0,454;0,007;2026-05-07
+Java JVM uberjar;0,051;0,001;2026-05-19
+Smalltalk (GNU);0,258;0,006;2026-05-20
