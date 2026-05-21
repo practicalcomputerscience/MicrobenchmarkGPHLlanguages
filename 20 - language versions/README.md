@@ -62,6 +62,7 @@ Scheme, Chez | 10.3.0; 10.3.0 | $ petite --version; $ scheme --version
 Scheme, CHICKEN | CHICKEN; (c) 2008-2022, The CHICKEN Team; (c) 2000-2007, Felix L. Winkelmann; Version 5.4.0 (rev 1a1d1495); linux-unix-gnu-x86-64 [ 64bit dload ptables ] | $ csc -version
 Scheme, Gambit | v4.9.7 20250713105902 x86_64-pc-linux-gnu "./configure '--enable-single-host'" | $ gsc -v
 Scheme, Racket | Welcome to Racket v9.0 [cs]. | $ racket --version
+Smalltalk | GNU Smalltalk version 3.2.91, Copyright 2009 Free Software Foundation, Inc., ... | $ gst --version
 Standard ML | MLton 20241230 | $ mlton
 Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
 TypeScript | v22.21.0; deno 2.6.9; 1.3.9 | $ node -v; deno -v; bun -v
