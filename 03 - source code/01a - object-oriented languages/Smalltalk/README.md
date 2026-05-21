@@ -31,7 +31,7 @@ But over 50 years into this fully object-oriented, dynamically typed and reflect
 
 [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme) has dialects, [Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming#logic-programming) has systems, and Smalltalk has implementations, where nowadays only a few have a language name with "Smalltalk" being a part of it.
 
-Even porting "Hello, World!" 1:1 from one implementation to the other has a high chance of failure.
+Even porting "Hello, World!" 1:1 from one Smalltalk implementation to the other has a high chance of failure.
 
 In the 70ies alone, four versions of Smalltalk were developed: Smalltalk-71, Smalltalk-72, Smalltalk-76 and Smalltalk-80 (https://drcuis.github.io/TheCuisBook/Preface-_0028Solutions_0029.html). 
 
@@ -67,7 +67,7 @@ Front-end development can be done with [PharoJS](https://pharojs.org/).
 
 The Cuis IDE (Integrated Development Environment) for printing "Hello, World!" on the "console", or in the "terminal", looks like this in Ubuntu 24:
 
-![plot](./GUI%20Cuis%20version%207.6.png)
+![plot](./GUI%20Cuis%20version%207.6a.png)
 
 <br/>
 
@@ -91,9 +91,9 @@ From (*); this book is also called the "Blue book": https://wiki.squeak.org/sque
 So, in contrast to the graphical systems of Squeak, Pharo and Cuis, which provide an image‑based workflow, GNU Smalltalk is for a (traditional) text‑based workflow. However:
 
 > [!IMPORTANT]
-> GNU Smalltalk hasn't been updated anymore since more than 10 years: https://ftp.gnu.org/gnu/smalltalk/
+> GNU Smalltalk hasn't been updated since more than 10 years: https://ftp.gnu.org/gnu/smalltalk/
 
-However, even without no (substantial) updates in over 10 years, the text‑based workflow of GNU Smalltalk fits well to all the other language versions of the microbenchmark program in this repository.
+However, even without any (substantial) updates in over 10 years, the text‑based workflow of GNU Smalltalk fits well to all the other language versions of the microbenchmark program in this repository.
 
 <br/>
 
@@ -145,14 +145,14 @@ $ gst hello_world_gnu.st
 $ 
 ```
 
-Have I told you that the "most successful" version of "Hello, world!" for Pharo is this source code file:
+Have I told you that my "most successful" version of "Hello, world!" in Pharo is this source code file:
 
 ```
 Transcript show: 'Hello, world'; cr.
 Smalltalk snapshot: false andQuit: true.
 ```
 
-..a file where the '!' character is missing because it would cause an error when executing this file on the [Pharo virtual machine]():
+..a file where the '!' character is missing because it would cause an error when being executed on the Pharo virtual machine:
 
 ```
 $ ~/scripts/Smalltalk/pharo-launcher-linux-3.4.3-x64/pharo-launcher/pharo-vm/pharo --headless Pharo13.0-SNAPSHOT-64bit-374678e2d5.image hello_world_pharo.st
