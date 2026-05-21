@@ -10,7 +10,7 @@ https://github.com/gnu-smalltalk/smalltalk/tree/master (*)
 
 2020: [The Rise and Fall of Commercial Smalltalk](https://wirfs-brock.com/allen/posts/914) by Allen Wirfs-Brock
 
-PDF document: [SMALLTALK-72 INSTRUCTION MANUAL](https://smalltalkzoo.computerhistory.org/papers/Smalltalk72_Manual.pdf), The Learning Research Group, Xerox Palo Alto Hesearch Center, by ADELE GOLDBERG AND ALAN KAY, EDITORS, from 1976
+PDF document: [SMALLTALK-72 INSTRUCTION MANUAL](https://smalltalkzoo.computerhistory.org/papers/Smalltalk72_Manual.pdf), The Learning Research Group, Xerox Palo Alto Hesearch Center, by ADELE GOLDBERG AND ALAN KAY, EDITORS, 1976
 
 <br/>
 
