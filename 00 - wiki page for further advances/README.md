@@ -6,7 +6,7 @@
 
 <br/>
 
-- 2026-05-dd: **another round of refactoring**: (POSIX) pattern (regexpr) <==> char_set (set/hash of characters/strings): target: move more program versions, if feasible and reasonable, (back) from char_set to pattern; it succeeded nicely with GNU Smalltalk, and thus should be possible with many more languages
+- 2026-05-dd: **another round of refactoring**: (POSIX) _pattern_ (regexpr) <==> _char_set_ (set/hash of characters/strings): target: move more program versions, if feasible and reasonable, (back) from _char_set_ to _pattern_; it succeeded nicely with GNU Smalltalk, and thus should be possible with many more languages: this refactering will definitely decrease the SLOC's of a number of program versions!!
 
 - 2026-05-dd: [Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk)
 
