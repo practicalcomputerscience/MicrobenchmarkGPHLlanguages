@@ -1,6 +1,8 @@
 2026-05-21: work in progress
 
-hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
+tbd: hello_world_gnu.st: 'Hello, world' printNl with ! --> test and document
+
+tbd: table of content
 
 see remaining tbd's
 
@@ -43,7 +45,7 @@ In the 70ies alone, four versions of Smalltalk were developed: Smalltalk-71, Sma
 
 Here's a list, but apparently not maintained anymore: http://www.smalltalk.org/#SmalltalkSystems
 
-Another (outdated) list at "Implementations" at this web page: https://mvolkmann.github.io/programming/Smalltalk.html
+Another (outdated) list at "Implementations" on this web page: https://mvolkmann.github.io/programming/Smalltalk.html
 
 After a while of reading, two major open source implementations emerged:
 
