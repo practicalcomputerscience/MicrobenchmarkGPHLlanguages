@@ -43,7 +43,7 @@ Standard ML (MLton) | 216 | compiled, very mature language: lots of user-defined
 Mercury           | 194 | compiled, mature language: lots of user-defined functions
 Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
 V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
-Fortran           | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
+Fortran (GNU)     | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions
 AssemblyScript    | 149 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions | 2026-05-03
 C                 | 147 | compiled, very mature language | 2026-01-11
@@ -58,6 +58,7 @@ Zig               | 129 | compiled, young language still going through major cha
 Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 Go                | 127 | compiled, mature language
+Smalltalk (GNU)   | 127 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-21
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 Haxe              | 123 | interpreted, mature language: needs some user-defined functions | 2026-05-19
@@ -115,7 +116,7 @@ Crystal            | 0
 D                  | 0
 Dart               | 0
 Eiffel (Liberty)   | 4
-Fortran            | 3
+Fortran (GNU)      | 3
 FreeBASIC          | 1
 Gleam              | 8
 Go                 | 0
@@ -143,6 +144,7 @@ Rust               | 0
 Scala              | 0
 Scheme, Bigloo     | 7
 Scheme, Racket     | 5
+Smalltalk (GNU)    | 2
 Standard ML (MLton) | 8
 Swift              | 1
 TypeScript         | 0
