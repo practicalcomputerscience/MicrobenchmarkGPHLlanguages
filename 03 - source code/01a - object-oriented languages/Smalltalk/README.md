@@ -8,6 +8,8 @@ https://github.com/gnu-smalltalk/smalltalk/tree/master (*)
 
 PDF document: [SMALLTALK-72 INSTRUCTION MANUAL](https://smalltalkzoo.computerhistory.org/papers/Smalltalk72_Manual.pdf), The Learning Research Group, Xerox Palo Alto Hesearch Center, by ADELE GOLDBERG AND ALAN KAY, EDITORS, 1976
 
+Standardization of Smalltalk with: ANSI (InterNational Committee for Information Technology Standards) 319-1998 (R2007): https://webstore.ansi.org/standards/incits/ansiincits3191998r2007
+
 ---
 
 Table of contents:
