@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.jl
 
 2026-01-01
+2026-05-22: replace variable name reply with "standard" name answer_str
 
 run on Ubuntu 24 LTS: $ julia ./random_bitstring_and_flexible_password_generator.jl
 
@@ -86,14 +87,14 @@ global N_CHAR = 12  # base case
 global answer = false
 while answer != true
   print("\nPassword of ", N_CHAR, " printable chars OK? 'y' or another integer number >= 8: ")
-  reply = readline()
-  # println("reply =", reply, "--")  # for testing
+  answer_str = readline()
+  # println("answer_str =", answer_str, "--")  # for testing
 
-  if reply == "y"
+  if answer_str == "y"
       global answer = true
   else
       try
-          global N_CHAR = parse(Int64, reply)
+          global N_CHAR = parse(Int64, answer_str)
           if N_CHAR >= 8
               global answer = true
           else
@@ -113,8 +114,8 @@ global WITH_SPECIAL_CHARS = true
 global answer = false
 while answer != true
     print("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ")
-    reply = readline()
-    if reply == "y"
+    answer_str = readline()
+    if answer_str == "y"
         global answer = true
     else
         global WITH_SPECIAL_CHARS = false
