@@ -55,7 +55,7 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 
 - first, into [TypeScript](./random_streams_for_perf_stats.ts) with its **unsound** type system, and
 - then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai
-- however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair with its **sound** type system:
+- however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair with ReScripts's **sound** type system:
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
 
