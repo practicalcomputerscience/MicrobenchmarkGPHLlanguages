@@ -1,6 +1,7 @@
 ! random_bitstring_and_flexible_password_generator.f90
 !
 ! 2026-01-06
+! 2026-05-22: replace variable name reply with "standard" name answer_str
 !
 ! build on Ubuntu 24 LTS: $ gfortran -Wall -Wextra -fcheck=all random_bitstring_and_flexible_password_generator.f90 -o random_bitstring_and_flexible_password_generator
 ! run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
@@ -43,7 +44,7 @@ program random_bitstring_and_flexible_password_generator
   real :: ini_random_number  ! https://fortran-lang.org/learn/intrinsics/math/#random-number
   integer :: X0, i, byte_nbr, N_CHAR, j
   logical :: answer, WITH_SPECIAL_CHARS
-  character(len=99) :: reply  ! the reply string can never grow beyond 99 (ASCII) characters
+  character(len=99) :: answer_str  ! the answer_str string can never grow beyond 99 (ASCII) characters
   character(len=:), allocatable :: CHAR_SET
   character(len=:), allocatable :: pw_chars
 
@@ -115,17 +116,17 @@ program random_bitstring_and_flexible_password_generator
 
   do while (.not. answer)
       write(*, '(/,A, I2, A)', advance='no') "Password of ", N_CHAR, " printable chars OK? 'y' or another integer number >= 8: "
-      read(*, '(A)') reply  ! this will read the input string as is, including any leading or trailing spaces
-      ! write(*, '(A, A)') "reply =", reply  ! for testing
+      read(*, '(A)') answer_str  ! this will read the input string as is, including any leading or trailing spaces
+      ! write(*, '(A, A)') "answer_str =", answer_str  ! for testing
 
-      if (reply == "y") then  ! leading spaces are not accepted here as a 'y', but trailing spaces (but not tabs)
+      if (answer_str == "y") then  ! leading spaces are not accepted here as a 'y', but trailing spaces (but not tabs)
           answer = .true.
       else
           ! trailing spaces are allowed here, but not leading spaces:
-          if (verify(trim(reply), '0123456789') == 0) then  ! solution from Google AI
-              ! using trim(reply) is important because trailing blanks in a character variable
+          if (verify(trim(answer_str), '0123456789') == 0) then  ! solution from Google AI
+              ! using trim(answer_str) is important because trailing blanks in a character variable
               ! will cause verify to return a non-zero value unless spaces are included in your set
-              read(reply, fmt='(I2)') N_CHAR  ! string to integer conversion
+              read(answer_str, fmt='(I2)') N_CHAR  ! string to integer conversion
               ! write(*, '(A, A)') "N_CHAR =", N_CHAR  ! for testing
 
               if (N_CHAR >= 8) then
@@ -146,8 +147,8 @@ program random_bitstring_and_flexible_password_generator
   answer = .false.
   do while (.not. answer)
       write(*, '(/,A)', advance='no') "Do you want me to use special characters like .;,+*... ? 'y' or 'n': "
-      read(*, '(A)') reply  ! this will read the input string as is, including any leading or trailing spaces
-      if (reply == "y") then  ! leading spaces are not accepted here as a 'y', but trailing spaces (but not tabs)
+      read(*, '(A)') answer_str  ! this will read the input string as is, including any leading or trailing spaces
+      if (answer_str == "y") then  ! leading spaces are not accepted here as a 'y', but trailing spaces (but not tabs)
           answer = .true.
       else
           WITH_SPECIAL_CHARS = .false.
@@ -160,24 +161,24 @@ program random_bitstring_and_flexible_password_generator
   if (WITH_SPECIAL_CHARS) then
       ! doing the Pictat solution with a user defined function:
       CHAR_SET = ""
-      call build_cp_string(33, 126, reply)  ! misusing reply here
-      CHAR_SET = CHAR_SET // trim(reply)
+      call build_cp_string(33, 126, answer_str)  ! misusing answer_str here
+      CHAR_SET = CHAR_SET // trim(answer_str)
 
   else
       CHAR_SET = ""
-      call build_cp_string(48, 57, reply)  ! misusing reply here
-      ! print *, "reply = ", reply  ! for testing: OK
-      CHAR_SET = CHAR_SET // trim(reply)
+      call build_cp_string(48, 57, answer_str)  ! misusing answer_str here
+      ! print *, "answer_str = ", answer_str  ! for testing: OK
+      CHAR_SET = CHAR_SET // trim(answer_str)
       ! print *, "CHAR_SET = ", CHAR_SET  ! for testing: OK
 
-      call build_cp_string(65, 90, reply)
-      ! print *, "reply = ", reply  ! for testing: OK
-      CHAR_SET = CHAR_SET // trim(reply)
+      call build_cp_string(65, 90, answer_str)
+      ! print *, "answer_str = ", answer_str  ! for testing: OK
+      CHAR_SET = CHAR_SET // trim(answer_str)
       ! print *, "CHAR_SET = ", CHAR_SET  ! for testing: OK
 
-      call build_cp_string(97, 122, reply)
-      ! print *, "reply = ", reply  ! for testing: OK
-      CHAR_SET = CHAR_SET // trim(reply)
+      call build_cp_string(97, 122, answer_str)
+      ! print *, "answer_str = ", answer_str  ! for testing: OK
+      CHAR_SET = CHAR_SET // trim(answer_str)
       ! print *, "CHAR_SET = ", CHAR_SET  ! for testing: OK
   end if
   ! print *, "CHAR_SET = ", CHAR_SET  ! for testing
