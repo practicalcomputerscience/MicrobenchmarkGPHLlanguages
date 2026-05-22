@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.py
 
 2025-03-09/10/13/15/26/29/30/31, 2025-05-05/28, 2025-06-01/03/18, 2025-12-13: see below
 2026-01-03: see below
+2026-05-22: replace variable name reply with "standard" name answer_str
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -112,13 +113,13 @@ else:
 N_CHAR = 12  # base case
 answer = False
 while answer is False:
-    reply = input(f'\nPassword of {N_CHAR} printable chars OK? \
+    answer_str = input(f'\nPassword of {N_CHAR} printable chars OK? \
 "y" or another integer number >= 8: ')
-    if reply == 'y':
+    if answer_str == 'y':
         answer = True
     else:
         try:
-            N_CHAR = int(reply)
+            N_CHAR = int(answer_str)
             if N_CHAR >= 8:
                 answer = True
             else:
@@ -139,8 +140,8 @@ def binary_to_string(bits):
 WITH_SPECIAL_CHARS = True
 answer = False
 while answer is False:
-    reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
-    if reply == 'y':
+    answer_str = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+    if answer_str == 'y':
         answer = True
     else:
         WITH_SPECIAL_CHARS = False
@@ -188,4 +189,3 @@ pw_string = ''.join(pw_chars)
 print(f'\nYour password of {N_CHAR} characters is:', pw_string)  # 2026-01-03
 
 # end of random_bitstring_and_flexible_password_generator.py
-
