@@ -2,6 +2,7 @@ class RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR
 -- random_bitstring_and_flexible_password_generator.e for Liberty Eiffel
 --
 -- 2026-01-23/24
+-- 2026-05-22: replace variable name reply with "standard" name answer_str
 --
 -- build on Ubuntu 24 LTS: $ se compile ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for development
 --                         $ se compile -boost ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for production
@@ -36,7 +37,7 @@ feature {} -- Initialization
             -- see from: https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/io/redirection_example.e
 
             answer, with_special_chars: BOOLEAN
-            reply, bin0, bin0_0, bin0_1, pw_chars: STRING
+            answer_str, bin0, bin0_0, bin0_1, pw_chars: STRING
             char0, char1: INTEGER
             char0a, char1a: CHARACTER
 
@@ -134,13 +135,13 @@ feature {} -- Initialization
             loop
                 io.put_string("%NPassword of " + n_char.out + " printable chars OK? 'y' or another integer >= 8: ")
                 io.read_line
-                reply := io.last_string
+                answer_str := io.last_string
 
-                if reply.is_equal("y") then
+                if answer_str.is_equal("y") then
                     answer := True
                 else
-                    if reply.is_integer and then reply.to_integer >= 8 then
-                        n_char := reply.to_integer
+                    if answer_str.is_integer and then answer_str.to_integer >= 8 then
+                        n_char := answer_str.to_integer
                         answer := True
                     else
                         io.put_string("enter an integer number >= 8 or 'y'%N")
@@ -158,9 +159,9 @@ feature {} -- Initialization
             loop
                 io.put_string("%NDo you want me to use special characters like .;,+*... ? 'y' or 'n': ")
                 io.read_line
-                reply := io.last_string
+                answer_str := io.last_string
 
-                if reply.is_equal("y") then
+                if answer_str.is_equal("y") then
                     answer := True
                 else
                     with_special_chars := False
