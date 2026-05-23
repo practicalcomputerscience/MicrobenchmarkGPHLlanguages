@@ -160,24 +160,23 @@ $ gst hello_world_gnu.st
 $ 
 ```
 
-Have I told you that my "most successful" version of "Hello, world!" in Pharo is this source code file:
+<br/>
+
+"Hello, world!" in **Pharo** works differently because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
 ```
-Transcript show: 'Hello, world'; cr.
+$ cat hello_world_pharo.st
+Transcript show: 'Hello, world!!'; cr.
 Smalltalk snapshot: false andQuit: true.
+$ ./pharo --headless Pharo.image ./random_streams_for_perf_stats_pharo.st 
+Hello, World!
+$ 
 ```
 
-..a file where the '!' character is missing in the string to be printed, because it's causing an error when being executed on the Pharo virtual machine:
+A short Pharo installation in the current working directory, so be careful, is given at https://pharo.org/:
 
 ```
-$ ~/scripts/Smalltalk/pharo-launcher-linux-3.4.3-x64/pharo-launcher/pharo-vm/pharo \
-> --headless Pharo13.0-SNAPSHOT-64bit-374678e2d5.image hello_world_pharo.st
-same directory as this image. named properly and is in theripts/Smalltalk/Pharo13.1-64bit-374678e.sources.
-Syntax Error on line 1: 'Unmatched '' in string literal.'
-=========================================================
-1: Transcript show: 'Hello, world
-...
-OCCodeError:OCSyntaxErrorNotice ???>>#DoIt 305:Unmatched ' in string literal.->'Hello, world
+$ wget -O- https://get.pharo.org/64 | bash
 ...
 $
 ```
