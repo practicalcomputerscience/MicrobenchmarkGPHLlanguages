@@ -75,7 +75,7 @@ Front-end development can be done with [SqueakJS](https://squeak.js.org/) to run
   
 Front-end development can be done with [PharoJS](https://pharojs.org/).
 
-See also ["Hello, world!" in Pharo works differently]() at the bottom of this page.
+See also ["Hello, world!" in Pharo works differently](#hello-world-in-pharo-works-differently) at the bottom of this page.
 
 #### Cuis
 
