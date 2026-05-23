@@ -626,7 +626,7 @@ The history of my AssemblyScript implementation is also a warning of using too m
 > [!CAUTION]
 > My original and working programs in AssemblyScript used more user defined functions than actually needed!
 
-Only when doing some general refactoring work a few weeks later, I discovered that I could replace some of them with inbuilt functions and methods. Apparently, the "Big AI" systems I used have been trained on older versions of AssemblyScript.
+Only when doing some general refactoring work a few weeks later, I discovered that I could replace user defined function _padLeft()_ with an inbuilt method. Apparently, the "Big AI" systems missed this inbuilt method for whatever reason.
 
 <br/>
 
