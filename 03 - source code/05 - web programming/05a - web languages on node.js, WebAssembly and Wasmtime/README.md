@@ -621,6 +621,15 @@ Voilà!
 
 <br/>
 
+The history of my AssemblyScript implementation is also a warning of using too much "AI coding" with a language which is still in rapid development:
+
+> [!CAUTION]
+> My original and working programs in AssemblyScript used more user defined functions than actually needed!
+
+Only when doing some general refactoring work a few weeks later, I discovered that I could replace some of them with inbuilt functions and methods. Apparently, the "Big AI" systems I used have been trained on older versions of AssemblyScript.
+
+<br/>
+
 ## JS++
 
 [JS++](https://www.onux.com/jspp/) claims this among other things: _JS++ was granted U.S. Patent #10,296,313 for the first sound, provably correct gradual type system. Find bugs before they occur, and bring your type errors down to zero._
