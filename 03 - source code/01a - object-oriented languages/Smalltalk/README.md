@@ -75,6 +75,8 @@ Front-end development can be done with [SqueakJS](https://squeak.js.org/) to run
   
 Front-end development can be done with [PharoJS](https://pharojs.org/).
 
+See also ["Hello, world!" in Pharo works differently]() at the bottom of this page.
+
 #### Cuis
 
 [Cuis](https://cuis.st/) aims for simplicity:
@@ -162,7 +164,9 @@ $
 
 <br/>
 
-"Hello, world!" in **Pharo** works differently because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
+#### "Hello, world!" in Pharo works differently
+
+..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
 ```
 $ cat hello_world_pharo.st
