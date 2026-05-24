@@ -5,6 +5,7 @@ random_bitstring_and_flexible_password_generator.py
 2025-03-09/10/13/15/26/29/30/31, 2025-05-05/28, 2025-06-01/03/18, 2025-12-13: see below
 2026-01-03: see below
 2026-05-22: replace variable name reply with "standard" name answer_str
+2026-05-24: see below (only a minor change)
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -32,7 +33,10 @@ ideas:
 
 """
 
-import re
+import re   # 2026-05-24: built-in re module does not support POSIX character class syntax,
+            #             but still favor it over non-official module regex.
+            #             Using module regex (https://github.com/mrabarnett/mrab-regex)
+            #             is no improvement here because of its Unicode based treatment of characters.
 # import time
 import numpy as np
 
@@ -108,7 +112,6 @@ else:
   print(f"Byte stream has been written to disk under name: {file_bits_hex}")
 
 
-
 # make a password of N_CHAR printable chars:
 N_CHAR = 12  # base case
 answer = False
@@ -149,13 +152,11 @@ while answer is False:
 
 
 if WITH_SPECIAL_CHARS is True:
-    pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")
-    # hashcat special characters
-    # https://security.stackexchange.com/questions/201931/hashcat-specify-number-of-characters
-    # ?s = «space»!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-
+    # pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")  # old solution
+    pattern = re.compile(r"[!-~]+")  # 2026-05-24: new range solution, a bit more elegant
 else:
-    pattern = re.compile(r"[A-Za-z0-9]+")
+    pattern = re.compile(r"[A-Za-z0-9]+")   # keep this solution
+
 
 i = 0  # char counter in password
 j = 0  # counter in x[j]
