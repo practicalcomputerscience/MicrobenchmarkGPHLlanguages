@@ -1,3 +1,5 @@
+2026-05-24: work in progress: tbd
+
 # GNU Smalltalk
 
 https://www.gnu.org/software/smalltalk/
@@ -21,6 +23,8 @@ Table of contents:
   - [Cuis](#cuis)
 - [GNU Smalltalk for a text‑based workflow](#gnu-smalltalk-for-a-textbased-workflow)
 - [Installation and compilation tips of GNU Smalltalk](#installation-and-compilation-tips-of-gnu-smalltalk)
+- ["Hello, world!" in Pharo works differently](#tbd)
+- [Microbenchmark: the "speed part" in Pharo](#tbd)
 
 <br/>
 
@@ -170,9 +174,9 @@ $
 
 ```
 $ cat hello_world_pharo.st
-Transcript show: 'Hello, world!!'; cr.
+Transcript show: 'Hello, world!!'; cr.  # notice the !! characters!
 Smalltalk snapshot: false andQuit: true.
-$ ./pharo --headless Pharo.image ./random_streams_for_perf_stats_pharo.st 
+$ ./pharo --headless Pharo.image ./hello_world_pharo.st 
 Hello, World!
 $ 
 ```
@@ -184,6 +188,18 @@ $ wget -O- https://get.pharo.org/64 | bash
 ...
 $
 ```
+
+#### Microbenchmark: the "speed part" in Pharo
+
+The program also works in Pharo (version 9.0.22 from 2023) with source code file [random_streams_for_perf_stats_pharo.st](./random_streams_for_perf_stats_pharo.st):
+
+```
+$ time ./pharo --headless Pharo.image ./random_streams_for_perf_stats_pharo.st => 
+tbd
+$
+```
+
+Since Pharo has all needed functions already built in, that source code file has no user defined functions!
 
 <br/>
 
