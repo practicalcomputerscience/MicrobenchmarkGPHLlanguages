@@ -2,6 +2,7 @@
 random_streams_for_perf_stats.cpp
 
 2026-01-15
+2026-05-24: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ g++ -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for development
                         $ g++ -O3 -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for production
@@ -32,13 +33,14 @@ though much manual fine-tuning was needed
 #include <format>   // format_to()
 #include <cstring> // for strcspn
 #include <stdbool.h>  // For boolean data type (bool, true, false)
+#include <regex>    // 2026-05-24
 
 
 using namespace std;
 
 
 #define END  62501  // 62501 for exactly 1M binary digits; val is immutable
-// #define END  15     // for testing
+// #define END  50     // for testing
 #define M1    END * 16
 #define K250  END * 4
 
@@ -48,6 +50,15 @@ using namespace std;
 
 const string file_bits_x = "random_bitstring.bin";
 const string file_bits_hex = "random_bitstring.byte";
+
+// static const regex print_re("[[:print:]]");  // 2026-05-24: this includes the space character! (not wanted!)
+static const regex print_re(R"([!-~])");        // => correct solution
+static const regex alnum_re("[[:alnum:]]");
+
+// user defined function:
+const regex& pick(bool use_re) {
+    return use_re ? print_re : alnum_re;
+}
 
 
 int main() {
@@ -158,15 +169,10 @@ int main() {
     }
     // cout << "\nWITH_SPECIAL_CHARS = " << WITH_SPECIAL_CHARS;  // for testing
 
-    string char_set = "";
-    if (WITH_SPECIAL_CHARS) {
-        for (int i = 33; i < 127; i++) {
-            char_set += static_cast<char>(i);  // appends another character
-        }
-    } else {
-        char_set += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    }
-    // cout << "\nchar_set = " << char_set;  // for testing
+
+    // 2026-05-24: new solution with regular expressions (Duck.ai):
+    //             branching is not so elegant here, so work with a call user defined function:
+    const std::regex& pattern = pick(WITH_SPECIAL_CHARS);
 
 
     string pw_chars = "";
@@ -196,13 +202,18 @@ int main() {
         char char0b = static_cast<char>(char0a);
         char char1b = static_cast<char>(char1a);
 
-        if (char_set.find(char0b) != std::string::npos) {  // universally understood in C++
+        // 2026-05-24: for new solution with regular expressions:
+        string char0c(1, char0b);  // for function regex_match() we need the string type
+        string char1c(1, char1b);
+        // cout << "char0c = " << char0c << " -- char1c = " << char1c << endl;  // for testing
+
+        if (regex_match(char0c, pattern)) {
             pw_chars += char0b;
             i++;
             // cout << "i = " << i << " -- " << char0b << endl;  // for testing
         }
 
-        if (char_set.find(char1b) != std::string::npos && i < N_CHAR) {
+        if (regex_match(char1c, pattern) && i < N_CHAR) {
             pw_chars += char1b;
             i++;
             // cout << "i = " << i << " -- " << char1b << endl;  // for testing
