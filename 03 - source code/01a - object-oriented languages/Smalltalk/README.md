@@ -238,7 +238,8 @@ Now, let's run the script with the latest Pharo version "headlessly":
 
 ```
 $ pharo --headless \
-> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image --script ./hello_world_pharo.st
+> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image \
+> --script ./hello_world_pharo.st
 Hello, World!
 $ 
 ```
@@ -251,7 +252,8 @@ With so much new knowledge gained, a modified version of the "speed part" of the
 
 ```
 $ time pharo --headless \
-> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image --script ./random_streams_for_perf_stats_pharo.st
+> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image \
+> --script ./random_streams_for_perf_stats_pharo.st
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
