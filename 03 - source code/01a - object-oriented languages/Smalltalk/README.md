@@ -1,5 +1,3 @@
-2026-05-24: work in progress: tbd
-
 # GNU Smalltalk
 
 https://www.gnu.org/software/smalltalk/
@@ -267,14 +265,20 @@ $
 
 About 221 milliseconds is definitely faster than the (old) GNU version with about 254 milliseconds!
 
-A third argument pro Pharo is the fact that its microbenchmark version has all needed functions already built in (for the "speed part") and thus doesn't need any no user defined functions.
+Be also aware that the Pharo version of the "speed part" of the microbenchmark program doesn't need any no user defined functions like the GNU version.
 
-Counterarguments against using Pharo from my point of view are:
+<br/>
 
- - not so easy installation and configuration, and
- - its rather poor documentation of how to run Smalltalk scripts headlessly.
+However, transpiling the complete GNU Smalltalk program [random_bitstring_and_flexible_password_generator.st](./random_bitstring_and_flexible_password_generator.st) proved to be too much work so far.
+It's about this line of code, which is very hard to make it work in Pharo on the console (even with the help of "Big AI" and maybe practically impossible):
 
-All in all, I decided to take the Pharo version of Smalltalk as my official Smalltalk version.
+```
+            answer_str := stdin nextLine.
+```
+
+..because "Pharo is fundamentally an image-based environment designed around graphical event loops, not a sequential terminal-first ecosystem" like Google AI explains.
+
+This was my showstopper with Pharo Smalltalk, and thus GNU Smalltalk, even with its age, remains my official Smalltalk version.
 
 <br/>
 
