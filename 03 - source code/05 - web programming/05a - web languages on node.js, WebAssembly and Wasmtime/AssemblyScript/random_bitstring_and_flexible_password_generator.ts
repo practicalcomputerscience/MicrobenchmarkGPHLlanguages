@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.ts -- this is an AssemblyScript (for WASI), not TypeScript, file to be compiled to a WebAssembly file
 
 2026-05-02/03
+2026-05-23: replacing user defined function padLeft() with inbuilt method; other little improvements (see at "2026-05-23" below)
 
 built on Ubuntu 24 LTS: do this only once:
                         $ npm install -g npm@11.13.0          # update npm if needed
@@ -37,15 +38,10 @@ import { Console, FileSystem, Descriptor, Process } from "as-wasi/assembly";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
-// user defined functions:
-
-// helper to replace missing .padStart() function available in TypeScript:
-function padLeft(str: string, len: i32, char: string): string {
-  while (str.length < len) {
-    str = char + str;
-  }
-  return str;
-}
+// user defined functions
+//
+// extra user defined functions are not a problem in term of computation efficiency
+// with AssemblyScript's ahead of time (AOT) compilation.
 
 // helper to directly write the 16-bit binary representation into the byte buffer:
 function writeBinaryToBuffer(val: u32, buf: Uint8Array, offset: i32): void {
@@ -72,10 +68,11 @@ function writeHexToBuffer(val: u32, buf: Uint8Array, offset: i32): void {
 function saveToFile(path: string, content: string): bool {
   let file: Descriptor | null = FileSystem.open(path, "w");
 
-  if (file == null) {
-    // If open fails (usually due to missing --dir permissions), return false
-    return false;
-  }
+  // if (file == null) {
+  //   // If open fails (usually due to missing --dir permissions), return false
+  //   return false;
+  // }
+  if (!file) return false;
 
   // 1. Encode string to ArrayBuffer
   let buffer = String.UTF8.encode(content);
@@ -105,12 +102,11 @@ function readLine(): string {
 }
 
 // check if a string is strictly a positive integer number:
-function isIntegerString(s: string): bool {
+function isStrictlyIntegerString(s: string): bool {
   if (s.length == 0) return false;
-  let i = 0;
-  for (; i < s.length; i++) {
+  for (let i: i32 = 0; i < s.length; i++) {  // 2026-05-23
     let c = s.charCodeAt(i);
-    if (c < 48 || c > 57) return false;
+    if (c < 48 || c > 57) return false;  // allowed: '0' <= c <= '9'
   }
   return true;
 }
@@ -149,11 +145,12 @@ class random_bitstring_and_flexible_password_generator {
     for (let i: i32 = 1; i < END; i++) {
       x[i] = (a * x[i - 1] + c) % m;
 
-      const bits_x_str   = padLeft(x[i].toString(2), 16, "0");
+      const bits_x_str   = x[i].toString(2).padStart(16, "0");    // 2026-05-23: using inbuilt function (replace old user defined function)
+      // https://www.assemblyscript.org/stdlib/string.html#methods
       // Console.log("\nbits_x_str: " + bits_x_str);      // for testing; Console.log from the as-wasi module
       writeBinaryToBuffer(x[i], bits_x, (i - 1) * 16);
 
-      const bits_hex_str = padLeft(x[i].toString(16), 4, "0");
+      const bits_hex_str   = x[i].toString(16).padStart(4, "0");  // 2026-05-23: using inbuilt function (replace old user defined function)
       // Console.log("\nbits_hex_str: " + bits_hex_str);  // for testing
       writeHexToBuffer(x[i], bits_hex, (i - 1) * 4);
     }
@@ -173,7 +170,7 @@ class random_bitstring_and_flexible_password_generator {
     } else {
       Console.error("\ncould not write to file: " + file_bits_x);
     }
-
+    
     // write byte stream to disk:
     if (saveToFile(file_bits_hex, bits_hex_str_total)) {
       Console.log("\nByte stream has been written to disk under name: " + file_bits_hex + "\n");
@@ -188,15 +185,17 @@ class random_bitstring_and_flexible_password_generator {
     while (!answer) {
       Console.log("\nPassword of " + N_CHAR.toString() + " printable chars OK? 'y' or another integer number >= 8: ");
       let answerStr = readLine();
+      // 2026-05-23: it looks like that the functionality of reading user input on the console into a string
+      // actually needs a little user defined function (which is called two times in this program)
 
       if (answerStr == "y") {
         answer = true;
       } else {
-        let integerType = isIntegerString(answerStr);
+        let integerType = isStrictlyIntegerString(answerStr);
         if (integerType) {
-          let parsed = i32.parse(answerStr, 10);
+          let parsed = i32.parse(answerStr, 10);  // be careful with parse(): 66 ggg --> 66!!!!
           // AssemblyScript's parse returns 0 or NaN logic if it fails;
-          // checking if the string is numeric or the result is valid:
+
           if (parsed < 8) {
             console.log("enter an integer number >= 8 or 'y'");
           } else {
@@ -227,6 +226,7 @@ class random_bitstring_and_flexible_password_generator {
     // Console.log("\nWITH_SPECIAL_CHARS = " + WITH_SPECIAL_CHARS.toString() + "\n");  // for testing
 
 
+    // AssemblyScript doesn't have built-in RegExp (regular expression) support:
     let char_set = new Set<string>();
     if (WITH_SPECIAL_CHARS) {
       // '!' is 33, '~' is 126 in ASCII
@@ -252,7 +252,7 @@ class random_bitstring_and_flexible_password_generator {
     let pw_chars: string = "";
 
     while (i < N_CHAR) {
-      let bin0 = padLeft(x[j].toString(2), 16, "0");
+      let bin0 = x[j].toString(2).padStart(16, "0");  // 2026-05-23: using inbuilt function (replace old user defined function)
       // Console.log(bin0 + "\n");  // for testing
 
       let bin0_0 = bin0.substr(0, 8);

@@ -2,6 +2,7 @@
 random_streams_for_perf_stats.ts -- this is an AssemblyScript (for WASI), not TypeScript, file to be compiled to a WebAssembly file
 
 2026-04-30, 2026-05-02/03
+2026-05-24: replacing user defined function padLeft() with inbuilt method which makes this program a bit slower (see at "2026-05-24" below)
 
 built on Ubuntu 24 LTS: do this only once:
                         $ npm install -g npm@11.13.0          # update npm if needed
@@ -40,14 +41,6 @@ import { Console, FileSystem, Descriptor } from "as-wasi/assembly";
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
 // user defined functions:
-
-// helper to replace missing .padStart() function available in TypeScript:
-function padLeft(str: string, len: i32, char: string): string {
-  while (str.length < len) {
-    str = char + str;
-  }
-  return str;
-}
 
 // helper to write a string to a file. Returns true on success, false on failure
 // In AssemblyScript, a try-catch construct is not currently supported for error recovery.
@@ -135,11 +128,12 @@ class random_streams_for_perf_stats {
     for (let i: i32 = 1; i < END; i++) {
       x[i] = (a * x[i - 1] + c) % m;
 
-      const bits_x_str   = padLeft(x[i].toString(2), 16, "0");
+      const bits_x_str   = x[i].toString(2).padStart(16, "0");    // 2026-05-24: using inbuilt function (replace old user defined function)
+      // https://www.assemblyscript.org/stdlib/string.html#methods
       // Console.log("\nbits_x_str: " + bits_x_str);      // for testing; Console.log from the as-wasi module
       writeBinaryToBuffer(x[i], bits_x, (i - 1) * 16);
 
-      const bits_hex_str = padLeft(x[i].toString(16), 4, "0");
+      const bits_hex_str = x[i].toString(16).padStart(4, "0");  // 2026-05-24: using inbuilt function (replace old user defined function)
       // Console.log("\nbits_hex_str: " + bits_hex_str);  // for testing
       writeHexToBuffer(x[i], bits_hex, (i - 1) * 4);
     }
