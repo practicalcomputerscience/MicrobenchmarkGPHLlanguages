@@ -23,8 +23,8 @@ Table of contents:
   - [Cuis](#cuis)
 - [GNU Smalltalk for a text‑based workflow](#gnu-smalltalk-for-a-textbased-workflow)
 - [Installation and compilation tips of GNU Smalltalk](#installation-and-compilation-tips-of-gnu-smalltalk)
-- ["Hello, world!" in Pharo works differently](#tbd)
-- [Microbenchmark: the "speed part" in Pharo](#tbd)
+- ["Hello, world!" in Pharo works differently](#hello-world-in-pharo-works-differently)
+- [Microbenchmark: the "speed part" in Pharo](#microbenchmark-the-speed-part-in-pharo)
 
 <br/>
 
