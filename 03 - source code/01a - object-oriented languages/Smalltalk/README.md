@@ -172,6 +172,11 @@ $
 
 ..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
+That also means:
+
+> [!IMPORTANT]
+> In Pharo, also don't place ! characters inside the comments of script!
+
 A quick Pharo installation in the current working directory, so be careful, can be done like described at https://pharo.org/:
 
 ```
