@@ -43,7 +43,7 @@ github.com/AlDanial/cloc v 1.98  T=0.00 s (250.2 files/s, 57044.9 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-Smalltalk                        1             43             58            127
+Smalltalk                        1             43             56            122
 -------------------------------------------------------------------------------
 $ 
 ```
@@ -81,11 +81,11 @@ Zig               | 129 | compiled, young language still going through major cha
 Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 Go                | 127 | compiled, mature language
-Smalltalk (GNU)   | 127 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-21
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 Haxe              | 123 | interpreted, mature language: needs some user-defined functions | 2026-05-19
 FreeBASIC         | 122 | compiled, mature language
+Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Chapel            | 121 | compiled, mature language
 PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
