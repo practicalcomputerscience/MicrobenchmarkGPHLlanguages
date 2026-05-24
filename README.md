@@ -193,11 +193,7 @@ j = 0  # counter in x[j]
 pw_chars = []
 
 while i < N_CHAR:
-
-    # convert numpy.int32 into a string of '0's and '1's:
     bin0 = f'{x[j]:016b}'
-    # bin0 could be for example ' 111001001100101'
-    # --> padding needed with leading zeros: 016b
 
     bin0_0 = bin0[0:8]   # position 8 is exclusive in Python!!
     bin0_1 = bin0[8:16]
