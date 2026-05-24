@@ -1,7 +1,7 @@
 " !!THIS SMALLTALK FILE MUST ONLY HAVE SIMPLE COMMENTING FOR RELIABLE COUNTING OF SOURCE LINES OF CODE!! "
 "random_bitstring_and_flexible_password_generator.st"
 
-"2026-05-20/21"
+"2026-05-20/21/24"
 
 "run on Ubuntu 24 LTS:   $ gst --quiet random_bitstring_and_flexible_password_generator.st"
 
@@ -107,6 +107,7 @@ Object subclass: random_bitstring_and_flexible_password_generator [
             'Bit stream has been written to disk under name:  ' display. file_bits_x displayNl.
         ] on: Error do: [ :ex |
             Transcript nextPutAll: 'could not write to file: '; nextPutAll: file_bits_x;
+                       "cr for carriage return:"
                        nextPutAll: ' -- '; nextPutAll: ex messageText; cr.
         ].
 
@@ -126,10 +127,7 @@ Object subclass: random_bitstring_and_flexible_password_generator [
         N_CHAR := 12.
         answer := false.
         [ answer ] whileFalse: [
-            "a new line here:"
-            '' displayNl.
-            Transcript show: 'Password of ', N_CHAR printString, ' printable chars OK? ''y'' or another integer number >= 8: '.
-            Transcript flush.
+            Transcript cr; show: 'Password of ', N_CHAR printString, ' printable chars OK? ''y'' or another integer number >= 8: '; flush.
             answer_str := stdin nextLine.
             "answer_str displayNl.  for testing"
 
@@ -154,10 +152,7 @@ Object subclass: random_bitstring_and_flexible_password_generator [
         WITH_SPECIAL_CHARS := true.
         answer := false.
         [ answer ] whileFalse: [
-            "a new line here:"
-            '' displayNl.
-            Transcript show: 'Do you want me to use special characters like .;,+*... ? ''y'' or ''n'': '.
-            Transcript flush.
+            Transcript cr; show: 'Do you want me to use special characters like .;,+*... ? ''y'' or ''n'': '; flush.
             answer_str := stdin nextLine.
 
             (answer_str = 'y')
@@ -216,9 +211,7 @@ Object subclass: random_bitstring_and_flexible_password_generator [
             j := j + 1
         ].
 
-        "a new line here:"
-        '' displayNl.
-        Transcript show: 'Your password of ', N_CHAR printString, ' characters is: ', pw_chars; cr.
+        Transcript cr; show: 'Your password of ', N_CHAR printString, ' characters is: ', pw_chars; cr.
     ]
 ]
 
