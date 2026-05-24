@@ -14,11 +14,28 @@ See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepu
 
 <br/>
 
-programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | comments
---- | --- | --- | ---
-AssemblyScript |  | yes | _char_set_ is a set of characters compiled from codepoints
-Python | yes |  | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax
-Smalltalk (GNU) | yes |  | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_
+When using POSIX character classes:
+
+> [!CAUTION]
+> The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may contain the space character (decimal number 32), something which is not desired in this program!
+
+For example, in C++:
+
+```
+#include <regex>
+static const regex print_re("[[:print:]]");
+```
+
+..variable _print_re_ contains the space character!
+
+<br/>
+
+programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments
+--- | --- | --- | --- | ---
+AssemblyScript |  | yes | OK | _char_set_ is a set of characters compiled from codepoints
+C++ |  |  |  | tbd
+Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax
+Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_
 
 <br/>
 
