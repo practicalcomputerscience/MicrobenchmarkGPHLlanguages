@@ -272,7 +272,7 @@ Be also aware that the Pharo version of the "speed part" of the microbenchmark p
 <br/>
 
 However, transpiling the complete GNU Smalltalk program [random_bitstring_and_flexible_password_generator.st](./random_bitstring_and_flexible_password_generator.st) proved to be too much work so far.
-It's about this line of code, which is very hard to make it work in Pharo on the console (even with the help of "Big AI", and maybe practically impossible):
+It's about this line of code, which is very hard to make it work on the console in Pharo (even with the help of "Big AI", and maybe practically impossible):
 
 ```
             answer_str := stdin nextLine.
