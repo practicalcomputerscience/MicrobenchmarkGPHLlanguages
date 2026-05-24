@@ -168,7 +168,9 @@ Object subclass: random_bitstring_and_flexible_password_generator [
         "Define the matching pattern using POSIX bracket groups (Google AI)"
         pattern := WITH_SPECIAL_CHARS
             "Strictly matches exactly one printable ASCII character:"
+            "This class does not include control characters or whitespace"
             ifTrue:  [ '^[[:print:]]$' ]
+
             "Strictly matches exactly one alphanumeric character:"
             ifFalse: [ '^[[:alnum:]]$' ].
 
