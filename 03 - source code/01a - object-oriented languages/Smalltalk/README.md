@@ -181,7 +181,7 @@ $
 
 <br/>
 
-## "Hello, world!" in Pharo works differently
+### "Hello, world!" in Pharo works differently
 
 ..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
@@ -245,7 +245,7 @@ $
 
 <br/>
 
-## Microbenchmark: the "speed part" in Pharo
+### Microbenchmark: the "speed part" in Pharo
 
 With so much new knowledge gained, a modified version of the "speed part" of the microbenchmark program, named [random_streams_for_perf_stats_pharo.st](./random_streams_for_perf_stats_pharo.st), can be executed with the latest Pharo version "headlessly":
 
@@ -270,7 +270,7 @@ Be also aware that the Pharo version of the "speed part" of the microbenchmark p
 <br/>
 
 However, transpiling the complete GNU Smalltalk program [random_bitstring_and_flexible_password_generator.st](./random_bitstring_and_flexible_password_generator.st) proved to be too much work so far.
-It's about this line of code, which is very hard to make it work in Pharo on the console (even with the help of "Big AI" and maybe practically impossible):
+It's about this line of code, which is very hard to make it work in Pharo on the console (even with the help of "Big AI", and maybe practically impossible):
 
 ```
             answer_str := stdin nextLine.
