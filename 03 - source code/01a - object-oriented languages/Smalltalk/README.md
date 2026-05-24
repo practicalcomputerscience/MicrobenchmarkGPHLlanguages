@@ -166,16 +166,33 @@ $ gst hello_world_gnu.st
 $ 
 ```
 
+Now, run the  "speed part" of the microbenchmark program:
+
+```
+$ time gst --quiet random_streams_for_perf_stats.st
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.254s
+user	0m0.248s
+sys	0m0.006s
+$ 
+```
+
 <br/>
 
-#### "Hello, world!" in Pharo works differently
+## "Hello, world!" in Pharo works differently
 
 ..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
 That also means:
 
 > [!IMPORTANT]
-> In Pharo, also don't place ! characters inside the comments of script!
+> In Pharo, also don't place single ! characters inside the comments of a script! ('!!' is OK again)
+
+<br/>
 
 A quick Pharo installation in the current working directory, so be careful, can be done like described at https://pharo.org/:
 
@@ -196,17 +213,68 @@ Hello, World!
 $ 
 ```
 
-#### Microbenchmark: the "speed part" in Pharo
+<br/>
 
-The program also works in Pharo (version 9.0.22 from 2023) with source code file [random_streams_for_perf_stats_pharo.st](./random_streams_for_perf_stats_pharo.st):
+However, this installation is already older:
 
 ```
-$ time ./pharo --headless Pharo.image ./random_streams_for_perf_stats_pharo.st => 
-tbd
+$ ./pharo --version
+Pharo 9.0.22 built on Mar 30 2023 13:08:51 Compiler: 5.4.0 20160609
+Built from: v9.0.22 - Commit: 421845e - Date: 2023-03-30 09:49:26 +0200
 $
 ```
 
-Since Pharo has all needed functions already built in, that source code file has no user defined functions!
+The latest prebuilt version with file name _pharo-launcher-linux-3.4.3-x64.tar.gz_ can be downloaded from here: https://pharo.org/download
+
+Just extract this file and extablish the _pharo_ command with a (fixed) alias for example for convenience:
+
+```
+$ alias pharo='~/scripts/Smalltalk/Pharo/pharo-launcher-linux-3.4.3-x64/pharo-launcher/pharo-vm/pharo'
+$ pharo --version
+Pharo v10.3.8 built on Aug 13 2025 11:48:47 Compiler: 5.4.0 20160609
+Built from: v10.3.8+0.a7c8a0b - Commit: a7c8a0b - Date: 2025-08-12 19:03:31 +0200
+$
+```
+
+Now, let's run the script with the latest Pharo version "headlessly":
+
+```
+$ pharo --headless \
+> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image --script ./hello_world_pharo.st
+Hello, World!
+$ 
+```
+
+<br/>
+
+## Microbenchmark: the "speed part" in Pharo
+
+With so much new knowledge gained, a modified version of the "speed part" of the microbenchmark program, named [random_streams_for_perf_stats_pharo.st](./random_streams_for_perf_stats_pharo.st), can be executed with the latest Pharo version "headlessly":
+
+```
+$ time pharo --headless \
+> ./pharo-launcher-linux-3.4.3-x64/pharo-launcher/shared/images/pharo-stable/Pharo13.0-SNAPSHOT-64bit-374678e2d5.image --script ./random_streams_for_perf_stats_pharo.st
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.221s
+user	0m0.195s
+sys	0m0.028s
+$
+```
+
+About 221 milliseconds is definitely faster than the (old) GNU version with about 254 milliseconds!
+
+A third argument pro Pharo is the fact that its microbenchmark version has all needed functions already built in (for the "speed part") and thus doesn't need any no user defined functions.
+
+Counterarguments against using Pharo from my point of view are:
+
+ - not so easy installation and configuration, and
+ - its rather poor documentation of how to run Smalltalk scripts headlessly.
+
+All in all, I decided to take the Pharo version of Smalltalk as my official Smalltalk version.
 
 <br/>
 
