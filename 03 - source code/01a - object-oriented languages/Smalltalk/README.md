@@ -4,7 +4,7 @@ https://www.gnu.org/software/smalltalk/
 
 https://github.com/gnu-smalltalk/smalltalk/tree/master (*)
 
-2020: [The Rise and Fall of Commercial Smalltalk](https://wirfs-brock.com/allen/posts/914) by Allen Wirfs-Brock (**)
+2020: [The Rise and Fall of Commercial Smalltalk](https://wirfs-brock.com/allen/posts/914) byf Allen Wirfs-Brock (**)
 
 PDF document: [SMALLTALK-72 INSTRUCTION MANUAL](https://smalltalkzoo.computerhistory.org/papers/Smalltalk72_Manual.pdf), The Learning Research Group, Xerox Palo Alto Hesearch Center, by ADELE GOLDBERG AND ALAN KAY, EDITORS, 1976
 
@@ -119,7 +119,7 @@ However, even without any (substantial) updates in over 10 years, the text‑bas
 
 See also the [GNU Smalltalk User’s Guide](https://www.gnu.org/software/smalltalk/manual/gst.html).
 
-I downloaded and extracted file _smalltalk-3.2.91.tar.xz_ from here: https://ftp.gnu.org/gnu/smalltalk/
+I downloaded and extracted file _smalltalk-3.2.91.tar.xz_ from here: https://alpha.gnu.org/gnu/smalltalk/
 
 But first, I had to install this package on my system, because GNU Smalltalk depends on it:
 
