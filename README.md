@@ -264,8 +264,8 @@ I'm not willing to change it to this:
 
 ```
 WITH_SPECIAL_CHARS = True
-reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
-if reply != 'y':
+answer_str = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+if answer_str != 'y':
     WITH_SPECIAL_CHARS = False
 ```
 
