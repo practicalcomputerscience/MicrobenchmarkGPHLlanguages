@@ -172,6 +172,16 @@ $
 
 ..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
+A quick Pharo installation in the current working directory, so be careful, can be done like described at https://pharo.org/:
+
+```
+$ wget -O- https://get.pharo.org/64 | bash
+...
+$
+```
+
+Show the Pharo script and execute it "headlessly":
+
 ```
 $ cat hello_world_pharo.st
 Transcript show: 'Hello, world!!'; cr.  # notice the !! characters!
@@ -179,14 +189,6 @@ Smalltalk snapshot: false andQuit: true.
 $ ./pharo --headless Pharo.image ./hello_world_pharo.st 
 Hello, World!
 $ 
-```
-
-A short Pharo installation in the current working directory, so be careful, is given at https://pharo.org/:
-
-```
-$ wget -O- https://get.pharo.org/64 | bash
-...
-$
 ```
 
 #### Microbenchmark: the "speed part" in Pharo
