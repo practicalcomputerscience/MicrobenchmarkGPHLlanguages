@@ -8,7 +8,7 @@ Background of the page is this big refactoring job: [2026-05-22: another round o
 
 # Pattern matching: (POSIX compliant) regular expressions or a set or hash of characters or single character strings, respectively?
 
-See here at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepubs/9799919799/): basic regular expression (BRE) and extended regular expression (ERE)
+See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepubs/9799919799/): basic regular expression (BRE) and extended regular expression (ERE)
 
 [Regular Expressions (Regex) Character Classes Cheat Sheet](https://www.petefreitag.com/cheatsheets/regex/character-classes/)
 
