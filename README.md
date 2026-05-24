@@ -150,17 +150,17 @@ Out of the first random binary digits, this program - after some dialog with the
 
 ```
 import re
-...  # see from above
-N_CHAR = 12
+...  # see rest from above
+N_CHAR = 12  # base case
 answer = False
 while answer is False:
-    reply = input(f'\nPassword of {N_CHAR} printable chars OK? \
+    answer_str = input(f'\nPassword of {N_CHAR} printable chars OK? \
 "y" or another integer number >= 8: ')
-    if reply == 'y':
+    if answer_str == 'y':
         answer = True
     else:
         try:
-            N_CHAR = int(reply)
+            N_CHAR = int(answer_str)
             if N_CHAR >= 8:
                 answer = True
             else:
@@ -176,25 +176,30 @@ def binary_to_string(bits):
 WITH_SPECIAL_CHARS = True
 answer = False
 while answer is False:
-    reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
-    if reply == 'y':
+    answer_str = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+    if answer_str == 'y':
         answer = True
     else:
         WITH_SPECIAL_CHARS = False
         answer = True
 
 if WITH_SPECIAL_CHARS is True:
-    pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")
+    pattern = re.compile(r"[!-~]+")  # 2026-05-24: new range solution, a bit more elegant
 else:
-    pattern = re.compile(r"[A-Za-z0-9]+")
+    pattern = re.compile(r"[A-Za-z0-9]+")   # keep this solution
 
 i = 0  # char counter in password
 j = 0  # counter in x[j]
 pw_chars = []
 
 while i < N_CHAR:
+
+    # convert numpy.int32 into a string of '0's and '1's:
     bin0 = f'{x[j]:016b}'
-    bin0_0 = bin0[0:8]   # position 8 is exclusive in Python
+    # bin0 could be for example ' 111001001100101'
+    # --> padding needed with leading zeros: 016b
+
+    bin0_0 = bin0[0:8]   # position 8 is exclusive in Python!!
     bin0_1 = bin0[8:16]
 
     char0 = binary_to_string([bin0_0])
@@ -208,10 +213,11 @@ while i < N_CHAR:
     if pattern.fullmatch(char1) is not None:
         pw_chars.append(char1)
         i += 1
+
     j += 1
 
 pw_string = ''.join(pw_chars)
-print(f'\nYour password of {N_CHAR} characters is:', pw_string)
+print(f'\nYour password of {N_CHAR} characters is:', pw_string)  # 2026-01-03
 ```
 
 Run the complete program like this:
@@ -246,8 +252,8 @@ By the way: there's some redundancy at the second question with the extra while-
 WITH_SPECIAL_CHARS = True
 answer = False
 while answer is False:
-    reply = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
-    if reply == 'y':
+    answer_str = input('\nDo you want me to use special characters like .;,+*... ? "y" or "n": ')
+    if answer_str == 'y':
         answer = True
     else:
         WITH_SPECIAL_CHARS = False
