@@ -2,7 +2,7 @@
 random_streams_for_perf_stats.cpp
 
 2026-01-15
-2026-05-24: refactored from char_set to pattern (for regular expressions)
+2026-05-24/24: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ g++ -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for development
                         $ g++ -O3 -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for production
@@ -51,14 +51,9 @@ using namespace std;
 const string file_bits_x = "random_bitstring.bin";
 const string file_bits_hex = "random_bitstring.byte";
 
-// static const regex print_re("[[:print:]]");  // 2026-05-24: this includes the space character! (not wanted!)
+// static const regex print_re("[[:print:]]");  // 2026-05-24: [[:print:]] includes the space character! (not wanted!)
 static const regex print_re(R"([!-~])");        // => correct solution
 static const regex alnum_re("[[:alnum:]]");
-
-// user defined function:
-const regex& pick(bool use_re) {
-    return use_re ? print_re : alnum_re;
-}
 
 
 int main() {
@@ -182,8 +177,8 @@ int main() {
     //   cout << "\nchar_set = " << char_set;  // for testing
 
     // 2026-05-24: new solution with regular expressions (Duck.ai):
-    //             branching is not so elegant here, so call a user defined function:
-    const std::regex& pattern = pick(WITH_SPECIAL_CHARS);
+    // 2026-05-25: same like C solution: no extra user defined function:
+    const regex& pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
 
     string pw_chars = "";
