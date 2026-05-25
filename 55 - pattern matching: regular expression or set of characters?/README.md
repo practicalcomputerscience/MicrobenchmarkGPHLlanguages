@@ -26,7 +26,7 @@ For example, in C++:
 static const regex print_re("[[:print:]]");
 ```
 
-..variable _print_re_ also covers the space character!
+..variable _print_re_ also covers the space character, but not in the [GNU Smalltalk solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st)!
 
 <br/>
 
