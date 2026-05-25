@@ -33,7 +33,8 @@ static const regex print_re("[[:print:]]");
 programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments
 --- | --- | --- | --- | ---
 AssemblyScript |  | yes | OK | _char_set_ is a set of characters compiled from codepoints
-C++ |  |  |  | tbd
+C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX)
+C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX)
 Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax
 Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_
 
