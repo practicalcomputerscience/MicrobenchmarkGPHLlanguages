@@ -163,7 +163,7 @@ object random_bitstring_and_flexible_password_generator {
     //    because they are Unicode based!!
     //   So, only use ranges of ASCII characters, and without the space character:
     val pattern: Regex = {
-      val alnum_re: Regex = """[0-9A-Za-z]""".r
+      val alnum_re: Regex = """[A-Za-z0-9]""".r
       val print_re: Regex = """[!-~]""".r
       if (WITH_SPECIAL_CHARS) print_re else alnum_re
     }
