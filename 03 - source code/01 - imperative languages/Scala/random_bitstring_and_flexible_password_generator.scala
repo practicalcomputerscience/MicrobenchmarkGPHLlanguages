@@ -160,7 +160,8 @@ object random_bitstring_and_flexible_password_generator {
 
     // 2026-05-25: new solution with regular expressions ("Big AI"):
     //   POSIX patterns like [[:alnum:]] etc are not working here,
-    //    because they are Unicode based!!
+    //   because they are Unicode based by default!!
+    //   See Java flag UNICODE_CHARACTER_CLASS, which is usually set to true.
     //   So, only use ranges of ASCII characters, and without the space character:
     val pattern: Regex = {
       val alnum_re: Regex = """[A-Za-z0-9]""".r
