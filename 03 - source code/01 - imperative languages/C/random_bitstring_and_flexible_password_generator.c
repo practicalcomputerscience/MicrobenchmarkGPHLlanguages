@@ -6,6 +6,7 @@ random_bitstring_and_flexible_password_generator.c
 2025-12-17: see below
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
 2026-02-01: deleted one oudated import ctype.h
+2026-05-25: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ make  # see make file below
 
@@ -25,7 +26,7 @@ random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexibl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 $ clang -v
-Homebrew clang version 21.1.7
+Homebrew clang version 22.1.5
 ...
 $
 
@@ -36,10 +37,10 @@ $
 #include <stdlib.h>  // srand(), rand(); 2026-02-01
 #include <string.h>  // strncpy()
 #include <time.h>    // srand(time(NULL))
-
+#include <regex.h>   // 2026-05-25
 
 #define END  62501  // 62501 for exactly 1M binary digits; val is immutable
-// #define END  20     // for testing
+// #define END  25    // for testing
 #define M1   END * 16
 #define K250 END * 4
 
@@ -49,6 +50,9 @@ $
 
 #define file_bits_x   "random_bitstring.bin"
 #define file_bits_hex "random_bitstring.byte"
+
+const char *print_re = "^[!-~]+$";
+const char *alnum_re = "^[[:alnum:]]\+$";  // POSIX based solution
 
 
 int main()
@@ -192,16 +196,29 @@ int main()
     }
   }
 
-  char char_set[95] = {'\0'};  // 127 - 33 + 1 for \0; see also below at pw_chars
-  if (WITH_SPECIAL_CHARS) {
-    for (char chr = 33; chr < 127; chr++) {
-      char_set[chr - 33] = chr;
-    }
-  } else {
-    strcat(char_set, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-  }
-  // printf("\nchar_set = %s", char_set);  // for testing
-  // printf("\nlen of char_set = %ld\n", strlen(char_set));  // for testing
+
+  // 2026-05-25: old solution:
+  //   char char_set[95] = {'\0'};  // 127 - 33 + 1 for \0; see also below at pw_chars
+  //   if (WITH_SPECIAL_CHARS) {
+  //     for (char chr = 33; chr < 127; chr++) {
+  //       char_set[chr - 33] = chr;
+  //     }
+  //   } else {
+  //     strcat(char_set, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+  //   }
+  //   printf("\nchar_set = %s", char_set);  // for testing
+  //   printf("\nlen of char_set = %ld\n", strlen(char_set));  // for testing
+
+
+
+  // 2026-05-25: new solution with regular expressions (Duck.ai)
+  // type definitions for regexpr's:
+  regex_t re_printable, re_alphanum;
+  // compile both regexpr's:
+  regcomp(&re_printable, print_re, REG_EXTENDED);  // REG_EXTENDED is essential with "^[!-~]+$" for example
+  regcomp(&re_alphanum,  alnum_re, REG_EXTENDED);
+  // select the chosen regexpr:
+  regex_t *pattern = WITH_SPECIAL_CHARS ? &re_printable : &re_alphanum;
 
 
   char pw_chars[128] = {'\0'};  // get a really empty string here!
@@ -227,27 +244,27 @@ int main()
     int char1a = strtol(bin0_1, &endptr, 2);
     // printf("char0a = %d -- char1a = %d\n", char0a, char1a);  // for testing
 
-    char char0b = char0a;
-    char char1b = char1a;
+    // 2026-05-25: for new solution with regular expressions: build strings:
+    char char0b[2];
+    char0b[0] = (char)char0a;
+    char0b[1] = '\0';
+    char char1b[2];
+    char1b[0] = (char)char1a;
+    char1b[1] = '\0';
+    // printf("char0b = %s -- char1b = %s\n", char0b, char1b);  // for testing
 
-    const char* pos1 = strchr(char_set, char0b);
-    // ATTENTION:
-    //   i = 35 -- C
-    //   i = 36 --          <<<<<<<<<<<<<<<<<!! ==> && char0a > 0
-    //   i = 37 -- #
-    //  C standard says that the terminating null is treated as part of the string
-    //  https://www.reddit.com/r/learnprogramming/comments/w8hz5/whats_the_problem_with_my_strchr_function_c/
-    if (pos1 != NULL  && char0a > 0) {
-      pw_chars[i] = char0b;
+    // const char* pos1 = strchr(char_set, char0b);  // old solution
+
+    if (regexec(pattern, char0b, 0, NULL, 0) == 0) {
+      pw_chars[i] = char0a;  // char needed here, not string!
       i++;
-      // printf("i = %d -- %c\n", i, char0b);  // for testing
+      // printf("i = %d -- %s\n", i, char0b);  // for testing
     }
-    const char* pos2 = strchr(char_set, char1b);
 
-    if (pos2 != NULL  && char1a > 0 && i < N_CHAR) {
-      pw_chars[i] = char1b;
+    if (regexec(pattern, char1b, 0, NULL, 0) == 0 && i < N_CHAR) {
+      pw_chars[i] = char1a;
       i++;
-      // printf("i = %d -- %c\n", i, char1b);  // for testing
+      // printf("i = %d -- %s\n", i, char1b);  // for testing
     }
 
     j++;
