@@ -159,7 +159,7 @@ Otherwise, you may have a look at: [Running and building Scala programs: baby st
 
 Originally, these pages have been created in April 2025 for another GitHub account and have now been moved to this account, albeit re-structured with even more subpages for even better orientation.
 
-So, this documentation may be already outdated in the fast evolving Scala environment.
+So, that documentation may be already outdated in the fast evolving Scala environment.
 
 <br/>
 
