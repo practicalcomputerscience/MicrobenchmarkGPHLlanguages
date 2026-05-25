@@ -8,6 +8,7 @@ GPHL = general purpose, high-level (programming language)
 To-do:
 - fix TBD's (this is a continous task)
 - TBD: a list of languages I used with a **sound type system**, at least at their core parts: Gleam (Erlang VM), OCaml, ReScript, Standard ML
+- idea for another list: When has a specific programming language become generally available? Think of Smalltalk's history: With a first system released internally as _Smalltalk-71_, Smalltalk only became generally available years later in 1983 with Xerox's _Smalltalk-80 Version 2_ (under a restrictive license).
 - _
 
 <br/>
