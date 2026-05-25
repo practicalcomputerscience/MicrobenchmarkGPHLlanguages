@@ -100,9 +100,9 @@ Java              | 107 | interpreted, very mature language (together with Java 
 Julia             | 106 | just-in-time compiled, mature language
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Clojure           | 102 | interpreted, mature language (together with Java ecosystem)
+Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
 Groovy            |  99 | interpreted, very mature language (together with Java ecosystem) | 2026-02-05
 Ruby              |  99 | interpreted, very mature language | 2026-01-18
-Scala             |  98 | interpreted, mature language (together with Java ecosystem)
 Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-01-13 
 Mojo              |  91 | compiled, very young language | 2026-01-10
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code
