@@ -31,8 +31,8 @@ my constant $c = 0;
 my constant $file_bits_x   = 'random_bitstring.bin';
 my constant $file_bits_hex = 'random_bitstring.byte';
 
-my $print_re = qr/[A-Za-z0-9]/;  # 2026-05-25
-my $alnum_re = qr/[!-~]/;
+my $print_re = qr/[!-~]/;  # 2026-05-25  
+my $alnum_re = qr/[A-Za-z0-9]/;  
 
 
 my $random_start = int(rand($m - 1)) + 1;  # exclusive of m; 2025-12-19
@@ -144,7 +144,7 @@ while (!$answer) {
   }
 }
 
-my $pattern = $WITH_SPECIAL_CHARS ? $alnum_re : $print_re;  # 2026-05-25
+my $pattern = $WITH_SPECIAL_CHARS ? $print_re : $alnum_re;  # 2026-05-25
 
 
 $i = 0;  # char counter for the password
