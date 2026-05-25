@@ -17,7 +17,7 @@ See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepu
 When using POSIX character classes:
 
 > [!CAUTION]
-> The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may include the space character (decimal number 32), something which is not desired in this program!
+> The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may include the space character (decimal number 32), something which is not desired in the microbenchmark program!
 
 For example, in C++:
 
@@ -26,7 +26,69 @@ For example, in C++:
 static const regex print_re("[[:print:]]");
 ```
 
-..variable _print_re_ contains the space character!
+..variable _print_re_ also covers the space character!
+
+<br/>
+
+> [!CAUTION]
+> Another potential pitfall are Unicode characters!
+
+For example in [Scala](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala#scala), the pattern matching class [scala.util.matching.Regex](https://www.scala-lang.org/api/current/scala/util/matching/Regex.html) delegates to Java package [java.util.regex](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/package-summary.html). Java's handling of regular expressions may implicitly expect Unicode characters (while the microbenchmark program strictly adheres to ASCII characters), for example for this POSIX character class:
+
+```
+\p{Alnum} 	An alphanumeric character:[\p{IsAlphabetic}\p{IsDigit}]
+```
+
+..from Java page [Class Pattern](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html):
+
+> The following Predefined Character classes and POSIX character classes are in conformance with the recommendation of Annex C: Compatibility Properties of Unicode Regular Expression , when UNICODE_CHARACTER_CLASS flag is specified. 
+
+For the [Scala program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Scala/random_bitstring_and_flexible_password_generator.scala), this means that this code as such won't work:
+
+```
+      val alnum_re: Regex = "[[:alnum:]]".r
+```
+
+..but this one:
+
+```
+      val alnum_re: Regex = """[A-Za-z0-9]""".r
+```
+
+However, in [GNU Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk) for example, POSIX character class _[[:alnum:]]_ works fine with ASCII characters!
+
+<br/>
+
+Here's a little Java program to set and retrieve the state of Java flag _UNICODE_CHARACTER_CLASS_:
+
+```
+// AskStateOfFlagUNICODECHARACTERCLASS.java -- with help from Duck.ai
+import java.util.regex.Pattern;
+public class AskStateOfFlagUNICODECHARACTERCLASS {
+    public static void main(String[] args) {
+        Pattern p1 = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS);
+        boolean enabled1 = (p1.flags() & Pattern.UNICODE_CHARACTER_CLASS) != 0;
+        System.out.println("state of Java flag UNICODE_CHARACTER_CLASS = " + enabled1);
+        
+        Pattern p2 = Pattern.compile("\\w+");
+        boolean enabled2 = (p2.flags() & Pattern.UNICODE_CHARACTER_CLASS) != 0;
+        System.out.println("state of Java flag UNICODE_CHARACTER_CLASS = " + enabled2);
+    }
+}
+```
+
+Run it like this:
+
+```
+$ java AskStateOfFlagUNICODECHARACTERCLASS.java
+state of Java flag UNICODE_CHARACTER_CLASS = true
+state of Java flag UNICODE_CHARACTER_CLASS = false
+$
+```
+
+<br/>
+
+---
 
 <br/>
 
