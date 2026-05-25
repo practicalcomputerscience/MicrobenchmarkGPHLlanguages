@@ -73,10 +73,10 @@ C3                | 144 | compiled, very young language: DStrings (dynamic strin
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions
 AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions | 2026-05-24
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
-C++               | 132 | compiled, very mature language; memory-safe source code can be very well more concise and compiled to a bit faster program compared to C | 2026-05-24
 OCaml             | 131 | compiled, mature language
 Lua               | 130 | compiled, very mature language
 Perl 5            | 130 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-01-24
+C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes
 Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
@@ -127,7 +127,7 @@ Ada                | 2
 AssemblyScript     | 5
 Ballerina          | 2
 C                  | 0
-C++                | 1
+C++                | 0
 C3                 | 0
 C#                 | 0
 Chapel             | 1
