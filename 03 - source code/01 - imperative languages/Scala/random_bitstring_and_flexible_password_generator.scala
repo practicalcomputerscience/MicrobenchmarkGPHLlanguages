@@ -3,6 +3,7 @@ random_bitstring_and_flexible_password_generator.scala
 
 2025-04-05/06, 2025-05-05/19, 2025-06-01/02/03/18
 2025-12-21: see below
+2026-05-25: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: use sbt to make one "fat-Jar" (uberjar):
                       $ sbt new
@@ -34,13 +35,14 @@ $
 
 import java.io._          // for FileWriter etc.
 import scala.util.{Try}
+import scala.util.matching.Regex  // 2026-05-25
 
 
 object random_bitstring_and_flexible_password_generator {
   def main(args: Array[String]): Unit = { // keep main() to keep easier track with the Java tool chain
 
     val END: Int = 62501  // 62501 for exactly 1M binary digits; val is immutable
-    // val END: Int = 25  // for testing
+    // val END: Int = 50  // for testing
     // val M1: Int = END*16
     // val K250: Int = END*4
 
@@ -112,7 +114,6 @@ object random_bitstring_and_flexible_password_generator {
     }
 
 
-
     // make a password of N_CHAR printable chars: user input requested here
     var N_CHAR = 12
     var answer = false
@@ -150,10 +151,22 @@ object random_bitstring_and_flexible_password_generator {
         answer = true
     }
 
-    var char_set = (('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9')).toSet
-    // https://www.baeldung.com/scala/string-character-check-alphanumeric
-    if WITH_SPECIAL_CHARS then
-      char_set = (('!' to '~')).toSet
+
+    // 2026-05-25: elegant, but old solution:
+    //   var char_set = (('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9')).toSet
+    //   // https://www.baeldung.com/scala/string-character-check-alphanumeric
+    //   if WITH_SPECIAL_CHARS then
+    //     char_set = (('!' to '~')).toSet
+
+    // 2026-05-25: new solution with regular expressions ("Big AI"):
+    //   POSIX patterns like [[:alnum:]] etc are not working here,
+    //    because they are Unicode based!!
+    //   So, only use ranges of ASCII characters, and without the space character:
+    val pattern: Regex = {
+      val alnum_re: Regex = """[0-9A-Za-z]""".r
+      val print_re: Regex = """[!-~]""".r
+      if (WITH_SPECIAL_CHARS) print_re else alnum_re
+    }
 
 
     var i = 0  // char counter for the password
@@ -169,17 +182,22 @@ object random_bitstring_and_flexible_password_generator {
       var bin0_0 = bin0.substring(0, 8)   // end index is exclusive
       var bin0_1 = bin0.substring(8, 16)
 
-      // convert a string of '0' and '1' characters into a character:
-      var char0 = Integer.parseUnsignedInt(bin0_0, 2).toChar
-      var char1 = Integer.parseUnsignedInt(bin0_1, 2).toChar
+      var char0 = Integer.parseUnsignedInt(bin0_0, 2).toChar.toString
+      // pattern.matcher() needs a string, not a character
+      var char1 = Integer.parseUnsignedInt(bin0_1, 2).toChar.toString
+      // print(f"\nchar0 = $char0%s -- char1 = $char1%s")  // for testing
 
-      if char_set.contains(char0) then
+      // 2026-05-25: new solution with regular expressions:
+      if pattern.pattern.matcher(char0).matches() then
+        // pattern.pattern is unfortunate, but I keep variable with name pattern
         pw_chars = pw_chars + char0
         i += 1
+        // print(f"\nmatch char0")  // for testing
 
-      if char_set.contains(char1) && i < N_CHAR then
+      if pattern.pattern.matcher(char1).matches() && i < N_CHAR then
         pw_chars = pw_chars + char1
         i += 1
+        // print(f"\nmatch char1")  // for testing
 
       j += 1
     }
@@ -189,4 +207,3 @@ object random_bitstring_and_flexible_password_generator {
 }
 
 // end of random_bitstring_and_flexible_password_generator.scala
-
