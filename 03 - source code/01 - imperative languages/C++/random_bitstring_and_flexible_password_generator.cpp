@@ -170,6 +170,17 @@ int main() {
     // cout << "\nWITH_SPECIAL_CHARS = " << WITH_SPECIAL_CHARS;  // for testing
 
 
+    // 2026-05-24: old solution
+    //   string char_set = "";
+    //   if (WITH_SPECIAL_CHARS) {
+    //       for (int i = 33; i < 127; i++) {
+    //           char_set += static_cast<char>(i);  // appends another character
+    //       }
+    //   } else {
+    //       char_set += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    //   }
+    //   cout << "\nchar_set = " << char_set;  // for testing
+
     // 2026-05-24: new solution with regular expressions (Duck.ai):
     //             branching is not so elegant here, so call a user defined function:
     const std::regex& pattern = pick(WITH_SPECIAL_CHARS);
