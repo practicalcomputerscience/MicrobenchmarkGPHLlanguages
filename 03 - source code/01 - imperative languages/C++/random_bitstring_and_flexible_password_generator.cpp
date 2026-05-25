@@ -171,7 +171,7 @@ int main() {
 
 
     // 2026-05-24: new solution with regular expressions (Duck.ai):
-    //             branching is not so elegant here, so work with a call user defined function:
+    //             branching is not so elegant here, so call a user defined function:
     const std::regex& pattern = pick(WITH_SPECIAL_CHARS);
 
 
