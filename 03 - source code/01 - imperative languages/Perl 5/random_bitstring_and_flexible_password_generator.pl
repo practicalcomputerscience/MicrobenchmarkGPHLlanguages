@@ -3,8 +3,8 @@
 # 2025-05-05/31, 2025-06-06/18
 # 2025-07-21: better error handling when writing to files
 # 2025-12-19: see below
-# 2025-01-24: correcting the confusing variable naming (for experimental reasons back then)
-# 2025-01-24: streamlining of user dialog
+# 2025-01-24: correcting the confusing variable naming (for experimental reasons back then), streamlining of user dialog
+# 2026-05-25: refactored usage of pattern (for regular expressions) => less # of SLOC
 #
 # run on Ubuntu 24 LTS: $ perl random_bitstring_and_flexible_password_generator.pl
 #
@@ -30,6 +30,9 @@ my constant $c = 0;
 
 my constant $file_bits_x   = 'random_bitstring.bin';
 my constant $file_bits_hex = 'random_bitstring.byte';
+
+my $print_re = qr/[A-Za-z0-9]/;  # 2026-05-25
+my $alnum_re = qr/[!-~]/;
 
 
 my $random_start = int(rand($m - 1)) + 1;  # exclusive of m; 2025-12-19
@@ -112,7 +115,7 @@ while (!$answer) {
   if ($answer_str =~ /^y$/) {  # exact string match
     $answer = 1;
   } else {
-    if ($answer_str =~ /^\d+\z/) {  # catch inpute like 9.9
+    if ($answer_str =~ /^\d+\z/) {  # catch bad input like "9.9"
       $N_CHAR = int($answer_str);
       if ($N_CHAR < 8) {
         print "enter an integer number >= 8 or 'y'\n";
@@ -141,6 +144,8 @@ while (!$answer) {
   }
 }
 
+my $pattern = $WITH_SPECIAL_CHARS ? $alnum_re : $print_re;  # 2026-05-25
+
 
 $i = 0;  # char counter for the password
 my $j = 0;  # counter for x
@@ -157,26 +162,14 @@ while ($i < $N_CHAR) {
   my $char0 = chr(oct("0b" . $bin0_0));
   my $char1 = chr(oct("0b" . $bin0_1));
 
-  if (!$WITH_SPECIAL_CHARS) {
-    if ($char0 =~ /[A-Za-z0-9]/) {
-      $pw_chars .= $char0;
-      $i++;
-    }
-
-    if ($char1 =~ /[A-Za-z0-9]/ && $i < $N_CHAR) {
-      $pw_chars .= $char1;
-      $i++;
-    }
-  } else {
-    if ($char0 =~ /[!-~]/) {
-      $pw_chars .= $char0;
-      $i++;
-    }
-
-    if ($char1 =~ /[!-~]/ && $i < $N_CHAR) {
-      $pw_chars .= $char1;
-      $i++;
-    }
+  if ($char0 =~ $pattern) {
+    $pw_chars .= $char0;
+    $i++;
+  }
+  
+  if ($char1 =~ $pattern && $i < $N_CHAR) {
+    $pw_chars .= $char1;
+    $i++;
   }
 
   $j++;
@@ -186,4 +179,3 @@ print "\nYour password of $N_CHAR characters is: $pw_chars\n";
 
 
 # end of random_bitstring_and_flexible_password_generator.pl
-
