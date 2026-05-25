@@ -55,7 +55,7 @@ For the [Scala program](https://github.com/practicalcomputerscience/Microbenchma
       val alnum_re: Regex = """[A-Za-z0-9]""".r
 ```
 
-However, in [GNU Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk) for example, POSIX character class _[[:alnum:]]_ works fine with ASCII characters!
+However again, in [GNU Smalltalk](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk#gnu-smalltalk) for example, POSIX character class _[[:alnum:]]_ works fine with ASCII characters!
 
 <br/>
 
@@ -65,7 +65,7 @@ Here's a little Java program to set and retrieve the state of Java flag _UNICODE
 // AskStateOfFlagUNICODECHARACTERCLASS.java -- with help from Duck.ai
 import java.util.regex.Pattern;
 public class AskStateOfFlagUNICODECHARACTERCLASS {
-    public static void main(String[] args) {
+    public static void main() {
         Pattern p1 = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS);
         boolean enabled1 = (p1.flags() & Pattern.UNICODE_CHARACTER_CLASS) != 0;
         System.out.println("state of Java flag UNICODE_CHARACTER_CLASS = " + enabled1);
