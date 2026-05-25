@@ -17,7 +17,7 @@ See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepu
 When using POSIX character classes:
 
 > [!CAUTION]
-> The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may contain the space character (decimal number 32), something which is not desired in this program!
+> The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may include the space character (decimal number 32), something which is not desired in this program!
 
 For example, in C++:
 
@@ -30,7 +30,7 @@ static const regex print_re("[[:print:]]");
 
 <br/>
 
-programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments | revision date
+programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments | refactoring date
 --- | --- | --- | --- | --- | ---
 AssemblyScript |  | yes | OK | _char_set_ is a set of characters compiled from codepoints | 2026-05-24
 C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX) | 2026-05-25
