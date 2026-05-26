@@ -1,6 +1,7 @@
 # random_bitstring_and_flexible_password_generator.coffee
 #
 # 2026-02-15/16
+# 2026-05-24: refactored from char_set to pattern (for regular expressions)
 #
 # build on Ubuntu 24 LTS: $ npm install prompt-sync  # install, if still missing
 #                         $ coffee -c ./random_bitstring_and_flexible_password_generator.coffee
@@ -112,16 +113,22 @@ class random_bitstring_and_flexible_password_generator
     # console.log "WITH_SPECIAL_CHARS = #{WITH_SPECIAL_CHARS}"  # for testing
 
 
-    # Build character set
-    char_set = new Set()
-    if WITH_SPECIAL_CHARS
-      for code in [33..126]
-        char_set.add String.fromCharCode code
-    else
-      for code in [97..122] then char_set.add String.fromCharCode code   # a–z
-      for code in [65..90]  then char_set.add String.fromCharCode code   # A–Z
-      for code in [48..57]  then char_set.add String.fromCharCode code   # 0–9
+    # Build character set: 2026-05-26: old solution:
+    # char_set = new Set()
+    # if WITH_SPECIAL_CHARS
+    #   for code in [33..126]
+    #     char_set.add String.fromCharCode code
+    # else
+    #   for code in [97..122] then char_set.add String.fromCharCode code   # a–z
+    #   for code in [65..90]  then char_set.add String.fromCharCode code   # A–Z
+    #   for code in [48..57]  then char_set.add String.fromCharCode code   # 0–9
     # console.log(Array.from(char_set))  # for testing
+
+    # 2026-05-26: new solution with regular expressions ("Big AI"):
+    # also here: JavaScript doesn't support POSIX character classes:
+    print_re = (ch) -> /^[!-~]$/.test ch
+    alnum_re = (ch) -> /^[A-Za-z0-9]$/.test ch
+    pattern  = if WITH_SPECIAL_CHARS then print_re else alnum_re
 
 
     # Generate password
@@ -138,11 +145,11 @@ class random_bitstring_and_flexible_password_generator
       char0 = String.fromCharCode parseInt(bin0, 2)
       char1 = String.fromCharCode parseInt(bin1, 2)
 
-      if char_set.has char0
+      if pattern(char0)  # 2026-05-26
         pw += char0
         i++
 
-      if i < N_CHAR and char_set.has char1
+      if pattern(char1) and i < N_CHAR  # 2026-05-26
         pw += char1
         i++
 
