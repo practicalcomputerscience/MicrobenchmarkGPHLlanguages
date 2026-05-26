@@ -104,7 +104,10 @@ When working with the [GraalVM](https://github.com/practicalcomputerscience/Micr
 $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image -jar <name of your uberJAR file>.jar
 ```
 
-By doing so, the OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04, or later) can be the active Java Runtime Environment. So, make (always) sure what your current Java environment is.
+By doing so, the OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04, or later) can be the active Java Runtime Environment:
+
+> [!IMPORTANT]
+> Make always sure what your current Java environment is!
 
 <br/>
 
