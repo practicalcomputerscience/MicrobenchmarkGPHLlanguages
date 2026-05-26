@@ -1,10 +1,10 @@
 language;mean;std_dev;date
 Scala GraalVM, OpenJDK;0,014506;0,000123;2025-12-24
 Scala GraalVM, Java SE;0,057009;0,000202;2025-12-24
-Kotlin GraalVM, OpenJDK;0,016725;0,000145;2025-12-24
+Kotlin GraalVM, OpenJDK;0,012715;0,000819;2026-05-26
 Clojure GraalVM, OpenJDK;0,073325;0,000269;2025-12-24
 Scala JVM uberjar, OpenJDK;0,142;0,003;2025-12-21
-Kotlin JVM uberjar, OpenJDK;0,073;0,003;2025-12-21
+Kotlin JVM uberjar, OpenJDK;0,067;0,002;2026-05-26
 Clojure JVM uberjar, OpenJDK;0,416;0,004;2025-12-21
 Ballerina JVM uberjar, OpenJDK;0,454;0,007;2026-05-07
 Ballerina GraalVM, OpenJDK;0,165;0,005;2026-05-11
