@@ -2,6 +2,8 @@
 random_bitstring_and_flexible_password_generator.kt
 
 2025-06-03/18
+2025-12-21: see below
+2026-05-26: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS for the JVM:
 $ kotlinc random_bitstring_and_flexible_password_generator.kt -include-runtime -d random_bitstring_and_flexible_password_generator.jar -opt-in=kotlin.ExperimentalStdlibApi
@@ -9,23 +11,18 @@ $ kotlinc random_bitstring_and_flexible_password_generator.kt -include-runtime -
 run on Ubuntu 24 LTS on the JVM:
 $ java -jar random_bitstring_and_flexible_password_generator.jar
 
-
-exe time measurement:
-$ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar random_bitstring_and_flexible_password_generator.jar
-
-=> StringBuilder() needs only 55% of the time of var bits_x = Array<Char>(M1) {'0'}
-
 */
 
 
 import java.io.File
 import java.io.IOException
+import java.util.regex.Pattern  // 2026-05-26
 
 
 fun main() {
 
   val END: Int = 62501  // 62501 for exactly 1M binary digits; val is immutable
-  // val END:  Int = 100  // for testing
+  // val END:  Int = 50  // for testing
   // val M1:   Int = END*16
   // val K250: Int = END*4
 
@@ -43,17 +40,18 @@ fun main() {
   // https://kotlinlang.org/docs/arrays.html#create-arrays
   // also needed for the password
 
-  x[0] = kotlin.random.Random.nextInt(0, m)  // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.random/-random/
+  x[0] = kotlin.random.Random.nextInt(1, m - 1)  // start and end are inclusive; 2025-12-21
+  // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.random/-random/
   // https://stackoverflow.com/questions/54340057/first-app-random-nextint-unresolved-reference
   // println(x[0])  // for testing
 
+  var bits_x_str:   String = ""  // needs initialization
+  var bits_hex_str: String = ""  // needs initialization; introduced on 2026-05-26: same like in Scala
+  // var byte_nbr: Int = 0  // 2026-05-26: dead code
+
   // var bits_x = Array<Char>(M1) {'0'}   // needed for bit stream
-  val bits_x = StringBuilder()
+  val bits_x   = StringBuilder()
   // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/
-
-  var bits_x_str: String = ""  // needs initialization
-  var byte_nbr: Int = 0
-
   // var bits_hex = Array<Char>(K250) {'0'}  // needed for program ENT - A Pseudorandom Number Sequence Test Program
   val bits_hex = StringBuilder()
 
@@ -63,15 +61,13 @@ fun main() {
     x[i] = (a*x[i-1] + c) % m
     // println(x[i])  // for testing
 
-    bits_x_str = Integer.toBinaryString(x[i]).padStart(Int.SIZE_BITS, '0')
-    // 7832 --> 00000000000000000001111010011000
-    bits_x_str = bits_x_str.substring(16, 32)
+    bits_x_str = Integer.toBinaryString(x[i]).padStart(16, '0')  // 2026-05-26: streamlining the code
     // println(bits_x_str)  // for testing
     bits_x.append(bits_x_str)
 
-    bits_x_str = x[i].toHexString(numberHexFormat)
-    // println(bits_x_str)  // for testing
-    bits_hex.append(bits_x_str)
+    bits_hex_str = x[i].toHexString(numberHexFormat)
+    // println(bits_hex_str)  // for testing
+    bits_hex.append(bits_hex_str)
   }
   // println(bits_x.toString())  // for testing
   // println(bits_hex.toString())  // for testing
@@ -79,7 +75,7 @@ fun main() {
   // write bit stream to disk:
   try {
       val file = File(file_bits_x)
-      file.writeText(bits_x.toString())
+      file.writeText(bits_x.toString())  // 2026-05-26: method writes automatically handles closing in Kotlin
       println("Bit stream has been written to disk under name:  ${file_bits_x}")
   } catch (e: IOException) {
       println("could not write to file: ${file_bits_x} -- ${e.message}")
@@ -93,7 +89,6 @@ fun main() {
   } catch (e: IOException) {
       println("could not write to file: ${file_bits_hex} -- ${e.message}")
   }
-
 
 
   // make a password of N_CHAR printable chars: user input requested here
@@ -139,44 +134,67 @@ fun main() {
     }
   }
 
-  var char_set = ('a'..'z').toSet() + ('A'..'Z').toSet() + ('0'..'9').toSet()
-  if (WITH_SPECIAL_CHARS) {
-    char_set = ('!'..'~').toSet()
-  }
-  // println(char_set)  // for testing
 
+  // 2026-05-26: elegant, but old solution:
+  //   var char_set = ('a'..'z').toSet() + ('A'..'Z').toSet() + ('0'..'9').toSet()
+  //   if (WITH_SPECIAL_CHARS) {
+  //     char_set = ('!'..'~').toSet()
+  //   }
+  //   println(char_set)  // for testing
+
+  // 2026-05-26: new solution with regular expressions transpiled from new Scala solution with Duck.ai
+  // also here avoiding Java's flag UNICODE_CHARACTER_CLASS,
+  // and thus using ranges of ASCII characters, and without the space character:
+  val pattern: Pattern = run {
+    val alnum_re = Pattern.compile("[A-Za-z0-9]")
+    val print_re = Pattern.compile("[!-~]")
+    if (WITH_SPECIAL_CHARS) print_re else alnum_re
+  }
 
 
   var i: Int = 0  // char counter for the password
   var j: Int = 0  // counter for x
   var pw_chars: String = ""
-  var bin0: String = ""
+  // var bin0: String = ""  // 2026-05-26: too much extra code
 
   while (i < N_CHAR) {
-    bin0 = Integer.toBinaryString(x[j]).padStart(Int.SIZE_BITS, '0')
-    bin0 = bin0.substring(16, 32)
+    val bin0 = Integer.toBinaryString(x[j]).padStart(16, '0')  // 2026-05-26
 
     val bin0_0 = bin0.substring(0, 8)
     val bin0_1 = bin0.substring(8, 16)
 
-    val char0 = bin0_0!!.toIntOrNull(2)  // https://kotlinlang.org/docs/null-safety.html#not-null-assertion-operator
-    val char1 = bin0_1!!.toIntOrNull(2)
+    val char0 = bin0_0.toIntOrNull(2)  // 2026-05-26: unnecessary non-null assertion (!!) taken away
+    val char1 = bin0_1.toIntOrNull(2)  // 2026-05-26: unnecessary non-null assertion (!!) taken away
     // println(char0) // for testing
     // println(char1) // for testing
 
-    val char0a = char0!!.toChar()
-    val char1a = char1!!.toChar()
+    val char0a = char0!!.toChar().toString()  // 2026-05-26
+    val char1a = char1!!.toChar().toString()
     // println(char0a) // for testing
     // println(char1a) // for testing
 
-    if (char0a in char_set) {
-      pw_chars = pw_chars + char0a
-      i += 1
+    // 2026-05-26: old solution:
+    //  if (char0a in char_set) {
+    //    pw_chars = pw_chars + char0a
+    //    i += 1
+    //  }
+    //
+    //  if (char1a in char_set && i < N_CHAR) {
+    //    pw_chars = pw_chars + char1a
+    //    i += 1
+    //  }
+
+    // 2026-05-25: new solution with regular expressions:
+    if (pattern.matcher(char0a).matches()) {
+        pw_chars += char0a
+        i += 1
+        // println("match! ${char0a}")  // for testing
     }
 
-    if (char1a in char_set && i < N_CHAR) {
-      pw_chars = pw_chars + char1a
-      i += 1
+    if (pattern.matcher(char1a).matches() && i < N_CHAR) {
+        pw_chars += char1a
+        i += 1
+        // println("match! ${char1a}")  // for testing
     }
 
     j += 1
@@ -199,4 +217,3 @@ val numberHexFormat = HexFormat {
 }
 
 // end of random_bitstring_and_flexible_password_generator.kt
-

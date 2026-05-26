@@ -2,6 +2,8 @@
 random_streams_for_perf_stats.kt
 
 2025-06-03/10/18
+2025-12-21: see below
+2025-05-26: see below
 
 build on Ubuntu 24 LTS for the JVM:
 $ kotlinc random_streams_for_perf_stats.kt -include-runtime -d random_streams_for_perf_stats.jar -opt-in=kotlin.ExperimentalStdlibApi
@@ -10,7 +12,10 @@ run on Ubuntu 24 LTS:
 $ java -jar random_streams_for_perf_stats.jar
 
 exe time measurement:
-$ ./exe_times_statistics_for_one_test_case_in_cwd2a java -jar random_streams_for_perf_stats.jar
+$ multitime -n 20 java -jar random_streams_for_perf_stats.jar
+
+StringBuilder() needs only 55% of the time of var bits_x = Array<Char>(M1) {'0'}
+
 
 ---
 2025-06-10
@@ -48,17 +53,18 @@ fun main() {
   // https://kotlinlang.org/docs/arrays.html#create-arrays
   // also needed for the password
 
-  x[0] = kotlin.random.Random.nextInt(0, m)  // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.random/-random/
+  x[0] = kotlin.random.Random.nextInt(1, m - 1)  // start and end are inclusive; 2025-12-21
+  // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.random/-random/
   // https://stackoverflow.com/questions/54340057/first-app-random-nextint-unresolved-reference
   // println(x[0])  // for testing
 
+  var bits_x_str:   String = ""  // needs initialization
+  var bits_hex_str: String = ""  // needs initialization; introduced on 2026-05-26: same like in Scala
+  // var byte_nbr: Int = 0  // 2026-05-26: dead code
+
   // var bits_x = Array<Char>(M1) {'0'}   // needed for bit stream
-  val bits_x = StringBuilder()
+  val bits_x   = StringBuilder()
   // https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/
-
-  var bits_x_str: String = ""  // needs initialization
-  var byte_nbr: Int = 0
-
   // var bits_hex = Array<Char>(K250) {'0'}  // needed for program ENT - A Pseudorandom Number Sequence Test Program
   val bits_hex = StringBuilder()
 
@@ -68,15 +74,13 @@ fun main() {
     x[i] = (a*x[i-1] + c) % m
     // println(x[i])  // for testing
 
-    bits_x_str = Integer.toBinaryString(x[i]).padStart(Int.SIZE_BITS, '0')
-    // 7832 --> 00000000000000000001111010011000
-    bits_x_str = bits_x_str.substring(16, 32)
+    bits_x_str = Integer.toBinaryString(x[i]).padStart(16, '0')  // 2026-05-26: streamlining the code
     // println(bits_x_str)  // for testing
     bits_x.append(bits_x_str)
 
-    bits_x_str = x[i].toHexString(numberHexFormat)
-    // println(bits_x_str)  // for testing
-    bits_hex.append(bits_x_str)
+    bits_hex_str = x[i].toHexString(numberHexFormat)
+    // println(bits_hex_str)  // for testing
+    bits_hex.append(bits_hex_str)
   }
   // println(bits_x.toString())  // for testing
   // println(bits_hex.toString())  // for testing
