@@ -2,12 +2,14 @@
 random_bitstring_and_flexible_password_generator.rb
 
 2026-01-18
+2026-05-22: replace variable name reply with "standard" name answer_str
+2026-05-26: refactored regular expressions at pattern (mixed mode with POSIX and range of characters)
 
 run on Ubuntu 24 LTS: $ ruby ./random_bitstring_and_flexible_password_generator.rb
 
 
 $ ruby --version
-ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
+ruby 3.2.10 (2026-01-14 revision a3a6d25788) [x86_64-linux]
 $
 
 translated from random_bitstring_and_flexible_password_generator.py with Big AI;
@@ -81,16 +83,15 @@ end
 # make a password of N_CHAR printable chars:
 N_CHAR = [12] # base case; in Ruby, integers are immutable! But array elements can be modified later without a warning.
 answer = false
-
 while answer == false
   print "\nPassword of #{N_CHAR} printable chars OK? \"y\" or another integer number >= 8: "
-  reply = gets.chomp.downcase
+  answer_str = gets.chomp.downcase
 
-  if reply == 'y'
+  if answer_str == 'y'
     answer = true
   else
     begin
-      temp_n = Integer(reply)
+      temp_n = Integer(answer_str)
       if temp_n >= 8
         N_CHAR[0] = temp_n
         answer = true
@@ -104,17 +105,20 @@ while answer == false
 end
 # print "\nN_CHAR[0] = #{N_CHAR[0]}\n"  # for testing
 
+
+# user defined function:
 def binary_to_string(bits_array)
   # Ruby equivalent of ''.join([chr(int(i, 2)) for i in bits])
   bits_array.map { |b| b.to_i(2).chr }.join
 end
 
+
 # WITH_SPECIAL_CHARS = true: because of Ruby's immutability, a slightly different approach is followed:
 answer = false
 while answer == false
   print "\nDo you want me to use special characters like .;,+*... ? \"y\" or \"n\": "
-  reply = gets.chomp.downcase
-  if reply == 'y'
+  answer_str = gets.chomp.downcase
+  if answer_str == 'y'
     WITH_SPECIAL_CHARS = true
     answer = true
   else
@@ -127,9 +131,12 @@ end
 
 if WITH_SPECIAL_CHARS == true
   # Ruby Regexp literal
-  pattern = /\A[A-Za-z0-9!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]+\z/
+  # pattern = /\A[A-Za-z0-9!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]+\z/  # old solution
+  # pattern = /\A[[:print:]]+\z/  # 2026-05-26: this POSIX character class includes the unwanted space character
+  pattern = /\A[!-~]+\z/          # 2026-05-26: new solution
 else
-  pattern = /\A[A-Za-z0-9]+\z/
+  # pattern = /\A[A-Za-z0-9]+\z/  # old solution
+  pattern = /\A[[:alnum:]]+\z/    # 2026-05-26, new solution: using a POSIX character class
 end
 # print "\npattern = #{pattern}"  # for testing
 

@@ -14,7 +14,7 @@ run on Ubuntu 24 LTS: $ ruby ./random_streams_for_perf_stats.rb        => real	0
 
 
 $ ruby --version
-ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]
+ruby 3.2.10 (2026-01-14 revision a3a6d25788) [x86_64-linux]
 $
 
 translated from random_streams_for_perf_stats.py with Big AI;
