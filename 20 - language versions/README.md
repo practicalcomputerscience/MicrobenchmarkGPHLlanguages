@@ -31,7 +31,7 @@ Fortran | GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.26.0 linux/amd64 | $ go version
-Groovy | Groovy Version: 5.0.4 JVM: 25.0.1 Vendor: Ubuntu OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.1 2025-10-21... | $ groovy --version; $ gradle -v; $ java --version
+Groovy | Groovy Version: 5.0.4 JVM: 25.0.1 Vendor: Ubuntu OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.2 2026-01-20... | $ groovy --version; $ gradle -v; $ java --version
 Haxe | 4.3.3; 1.15.0 | $ haxe --version; hl --version
 Inko | inko 0.19.1 | $ inko --version
 Java | javac 25.0.2 | $ javac --version
@@ -76,8 +76,8 @@ Zig | 0.15.2 | $ zig version
 other environments | versions | Bash command to retrieve versions
 --- | --- | ---
 GraalVM | native-image 24 2025-03-18; GraalVM Runtime Environment Oracle GraalVM 24+36.1 (build 24+36-jvmci-b01); Substrate VM Oracle GraalVM 24+36.1 (build 24+36, serial gc, compressed references) | $ $HOME/.sdkman/candidates/java/24-graal/lib/svm/bin/native-image --version
-Java | openjdk 25.0.1 2025-10-21; OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04); OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing) | $ java --version
-node.js | v22.21.0 | $ node -v
+Java | openjdk 25.0.2 2026-01-20; OpenJDK Runtime Environment Homebrew (build 25.0.2); OpenJDK 64-Bit Server VM Homebrew (build 25.0.2, mixed mode, sharing); | $ java --version
+node.js | v24.13.0 | $ node -v
 SDKMAN | SDKMAN!; script: 5.20.0; native: 0.7.14 (linux x86_64) | $ sdk version
 Wasmtime runtime | wasmtime 44.0.1 (f302ebd6b 2026-04-30) | $ wasmtime -V
 
