@@ -94,8 +94,8 @@ Common Lisp       | 114 | compiled, very mature language
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
-Kotlin            | 109 | interpreted, young language (together with Java ecosystem)
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
+Kotlin            | 109 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 Java              | 107 | interpreted, very mature language (together with Java ecosystem) | 2026-05-19
 Julia             | 106 | just-in-time compiled, mature language
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
