@@ -102,7 +102,7 @@ Clojure           | 102 | interpreted, mature language (together with Java ecosy
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
 Ruby              |  99 | interpreted, very mature language | 2026-05-26
-Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-02-27
+Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
 Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-01-13 
 Mojo              |  91 | compiled, very young language | 2026-01-10
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-05-26
