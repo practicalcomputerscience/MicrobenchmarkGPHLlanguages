@@ -1,6 +1,6 @@
 # Mojo
 
-https://www.modular.com/mojo
+https://mojolang.org/
 
 <br/>
 
