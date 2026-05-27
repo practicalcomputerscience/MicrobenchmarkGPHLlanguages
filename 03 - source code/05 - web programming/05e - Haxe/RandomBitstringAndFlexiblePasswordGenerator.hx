@@ -156,7 +156,12 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         **/
 
         // 2026-05-27: new solution with regular expressions ("Big AI"):
-        var alnum_re = new EReg("[A-Za-z0-9]", "");
+        var alnum_re = new EReg("[A-Za-z0-9]", "");  // this is the safe solution
+        // The EReg class uses the underlying regular expression engine of the target platform.
+        // EReg: https://api.haxe.org/EReg.html, https://haxe.org/manual/std-regex.html
+        // POSIX character classes may not work everywhere, like some JavaScript engines
+        //
+        // var alnum_re = new EReg("[[:alnum:]]", "");  // POSIX character class works too with target HashLink VM
         var print_re = new EReg("[!-~]", "");
         var pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
