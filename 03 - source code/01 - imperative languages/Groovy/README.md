@@ -140,7 +140,7 @@ As indicated above, I used Gradle to make an uberjar file. But before that, a co
 
 First, I built the simple subdirectory manually. Then I stored Groovy program [random_streams_for_perf_stats.groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/random_streams_for_perf_stats.groovy) in this subdirectory: _./src/main/groovy/_
 
-Next, the build configuration file [build.gradle](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/build.gradle) must be prepared. Again, I manually put its content together like this:
+Next, the build configuration file [build.gradle](./build.gradle%20for%20random_streams_for_perf_stats) must be prepared (rename the needed _build.gradle for ..._ file into its real name _build.gradle_). Again, I manually put its content together like this:
 
 ```
 plugins {
