@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.groovy
 
 2026-01-29, 2026-02-05
+2026-05-27: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: <have a build.gradle file for Groovy version 5.0.4 and OpenJDK 25 ready in the project's root dir>
                         there make an uberjar file:
@@ -11,13 +12,13 @@ run on Ubuntu 24 LTS:   $ java -jar ./build/libs/random_bitstring_and_flexible_p
 
 
 $ groovy --version
-Groovy Version: 5.0.4 JVM: 25.0.1 Vendor: Ubuntu OS: Linux
+Groovy Version: 5.0.4 JVM: 25.0.2 Vendor: Homebrew OS: Linux
 $
 
 $ java --version
-openjdk 25.0.1 2025-10-21
-OpenJDK Runtime Environment (build 25.0.1+8-Ubuntu-124.04)
-OpenJDK 64-Bit Server VM (build 25.0.1+8-Ubuntu-124.04, mixed mode, sharing)
+openjdk 25.0.2 2026-01-20
+OpenJDK Runtime Environment Homebrew (build 25.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 25.0.2, mixed mode, sharing)
 $
 
 $ gradle -v
@@ -36,6 +37,7 @@ partly transpiled from Scala's Main.scala with Duck.ai
 // import java.io.FileWriter
 // import java.util.Random
 
+import java.util.regex.Pattern  // 2026-05-27
 import groovy.transform.CompileStatic  // this is a real exe time booster!
                                        // It bypasses Groovy’s dynamic Meta-Object Protocol,
                                        // allowing the JVM to perform standard optimizations.
@@ -131,16 +133,22 @@ class random_bitstring_and_flexible_password_generator {
         }
 
 
-        // work with a set of chars here like in Scala:
-        Set<String> char_set = new HashSet<>()
-        if (WITH_SPECIAL_CHARS) {
-            ('!'..'~').each { char_set.add(it) }
-        } else {
-            ('a'..'z').each { char_set.add(it) }
-            ('A'..'Z').each { char_set.add(it) }
-            ('0'..'9').each { char_set.add(it) }
-        }
+        // 2026-05-27: old solution:
+        //   work with a set of chars here like in Scala:
+        //   Set<String> char_set = new HashSet<>()
+        //   if (WITH_SPECIAL_CHARS) {
+        //       ('!'..'~').each { char_set.add(it) }
+        //   } else {
+        //       ('a'..'z').each { char_set.add(it) }
+        //       ('A'..'Z').each { char_set.add(it) }
+        //       ('0'..'9').each { char_set.add(it) }
+        //   }
         // println "char_set = $char_set"  // for testing
+
+        // 2026-05-26: new solution with regular expressions ("Big AI"):
+        Pattern alnum_re = Pattern.compile('[A-Za-z0-9]')
+        Pattern print_re = Pattern.compile('[!-~]')
+        Pattern pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re
 
 
         int i = 0  // char counter for the password
@@ -159,12 +167,13 @@ class random_bitstring_and_flexible_password_generator {
             String char1 = String.valueOf((char) Integer.parseUnsignedInt(bin0_1, 2))
             // println "$char0 + $char1"  // for testing
 
-            if (char_set.contains(char0)) {
+            // 2026-05-27: new solution with regular expressions:
+            if (pattern.matcher(char0).matches()) {
                 pw_chars += char0
                 i++
             }
 
-            if (char_set.contains(char1) && i < N_CHAR) {
+            if (pattern.matcher(char1).matches() && i < N_CHAR) {
                 pw_chars += char1
                 i++
             }
