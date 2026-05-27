@@ -7,7 +7,11 @@ https://www.modular.com/mojo
 > [!WARNING]
 > Beware that Mojo is a language still under heavy development!
 
-I had a little and working Mojo program from October 2024 (which tapped into the _buffer_ package: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an updated Mojo version of March 2025!
+I had a little and working Mojo program from October 2024 (which tapped into the _buffer_ package: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an upgraded Mojo version of March 2025!
+
+2026-05-27: now with Mojo version >= 1.0.0: let's see how stable things have become...
+
+<br/>
 
 ---
 
@@ -41,6 +45,24 @@ So, this Mojo program is just using plain string concatenation, which isn't so s
 ## Installation tips
 
 Same like [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), the compiled program depends on one shared library (_libKGENCompilerRTShared_) at least, which is provided if Mojo is installed on the target machine. 
+
+<br/>
+
+#### Upgrading the Mojo version
+
+In this still very young programming language, a language upgrade may be advisable from time to time. Do this in the Pixi shell:
+
+```
+$ pixi
+$ pixi upgrade
+...
+  ~ C mojo            0.26.3.0.dev2026042305 release  ->  1.0.0b2.dev2026052706 release
+  ~ C mojo-compiler   0.26.3.0.dev2026042305 release  ->  1.0.0b2.dev2026052706 release
+  ~ C mojo-python     0.26.3.0.dev2026042305 release  ->  1.0.0b2.dev2026052706 release
+$ pixi run mojo --version
+Mojo 1.0.0b2.dev2026052706 (83444c6d)
+$
+```
 
 <br/>
 
