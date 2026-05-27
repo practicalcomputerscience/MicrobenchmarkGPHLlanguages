@@ -82,7 +82,6 @@ Odin              | 128 | compiled, young language, which is more effective in i
 Go                | 127 | compiled, mature language
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
-Haxe              | 123 | interpreted, mature language: needs some user-defined functions | 2026-05-19
 FreeBASIC         | 122 | compiled, mature language
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
@@ -91,6 +90,7 @@ PHP               | 118 | usually interpreted, very mature web programming langu
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
+Haxe              | 113 | interpreted, mature language: needs user-defined functions | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
