@@ -6,6 +6,7 @@ Also see: "The name of the file containing a Haxe class is the same as the name 
 
 
 2026-05-17/18
+2026-05-27: refactored from char_set to pattern (for regular expressions)
 
 On Ubuntu 24 LTS:
   a/ run in Haxe interpreter:              $ haxe --main RandomBitstringAndFlexiblePasswordGenerator --interp  # Class name only with initial uppercase letter
@@ -28,6 +29,7 @@ mainly transpiled from random_streams_for_perf_stats.groovy with Google AI and M
 
 import sys.io.File;
 import haxe.ds.StringMap;
+import EReg;
 
 class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start with an uppercase letter and also no snake case allowed here according to my tests!
     static public function main():Void {
@@ -91,6 +93,11 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         // make a password of N_CHAR printable chars: user input requested here
         var N_CHAR:Int = 12;
         var answer:Bool = false;
+
+        var digitRegex = ~/^\d+$/;
+        // using Haxe's native regular expression class, EReg (Google AI); 2026-05-19
+        // 2026-05-27: replace this to here
+
         while (!answer) {
             Sys.print("\nPassword of " + N_CHAR + " printable chars OK? 'y' or another integer number >= 8: ");
             var answer_str = Sys.stdin().readLine();  // answer_str is just the text, no newline (2026-05-18)
@@ -98,18 +105,13 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             if (answer_str == "y") {
                 answer = true;
             } else {
-                var digitRegex = ~/^\d+$/;  // using Haxe's native regular expression class, EReg (Google AI); 2026-05-19
-                if (digitRegex.match(answer_str)) {  
+                if (digitRegex.match(answer_str)) {
                     var parsed = Std.parseInt(answer_str);
-                    if (parsed == null) {
-                        Sys.print("enter an integer number >= 8 or 'y'\n");
-                    } else {
+                    if (parsed != null && parsed >= 8) {  // 2026-05-27: refactored to more concise logic
                         N_CHAR = parsed;
-                        if (N_CHAR < 8) {
-                            Sys.print("enter an integer number >= 8 or 'y'\n");
-                        } else {
-                            answer = true;
-                        }
+                        answer = true;
+                    } else {
+                        Sys.print("enter an integer number >= 8 or 'y'\n");
                     }
                 } else {
                     Sys.print("enter an integer number >= 8 or 'y'\n");
@@ -134,7 +136,9 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         // Sys.println('WITH_SPECIAL_CHARS = $WITH_SPECIAL_CHARS');  // for testing
 
 
-        // Using a Map for explicit Set behavior across cross-platform targets
+        // 2026-05-27: old solution:
+        /**
+        Using a Map for explicit Set behavior across cross-platform targets
         var char_set = new StringMap<Bool>();
         if (WITH_SPECIAL_CHARS) {
             // Range from '!' (33) to '~' (126)
@@ -146,11 +150,15 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             for (code in 65...91)  char_set.set(String.fromCharCode(code), true);  // A-Z
             for (code in 48...58)  char_set.set(String.fromCharCode(code), true);  // 0-9
         }
-        // Sys.println('char_set = $char_set');  // for testing
-        /**
+        Sys.println('char_set = $char_set');  // for testing
         WITH_SPECIAL_CHARS = false
         char_set = [z => true,y => true,x => true,w => true,v => true, ...]  // reverse order!
         **/
+
+        // 2026-05-27: new solution with regular expressions ("Big AI"):
+        var alnum_re = new EReg("[A-Za-z0-9]", "");
+        var print_re = new EReg("[!-~]", "");
+        var pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
 
         var i:Int = 0; // char counter for the password
@@ -166,12 +174,13 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
             var char0 = String.fromCharCode(parseUnsignedInt(bin0_0));
             var char1 = String.fromCharCode(parseUnsignedInt(bin0_1));
 
-            if (char_set.exists(char0)) {
+            // 2026-05-27: new solution with regular expressions:
+            if (pattern.match(char0)) {
                 pw_chars += char0;
                 i++;
             }
 
-            if (char_set.exists(char1) && i < N_CHAR) {
+            if (pattern.match(char1) && i < N_CHAR) {
                 pw_chars += char1;
                 i++;
             }
