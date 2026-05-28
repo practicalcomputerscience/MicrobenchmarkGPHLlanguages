@@ -15,7 +15,9 @@ I had a little and working Mojo program from October 2024 (which tapped into the
 
 ---
 
-## Error handling when writing to files
+#### Error handling when writing to files
+
+With latest version 1.0.0b2, this behavior can no longer be observed by me, or put differently: Mojo v.1.0.0 is now behaving like other programming languages. A code change here was not needed:
 
 The _write_ function of Mojo, when writing to files, works differently as far as I can tell from testing other programming languages so far:
 
@@ -28,9 +30,7 @@ The _write_ function of Mojo, when writing to files, works differently as far as
       print("could not write to file:", file_bits_x)
 ```
 
-Even when the access permissions of target file named _file_bits_x_ have been set to "Read-Only", _f.write(bits_x)_ will create a new file with this name. In other words, an exception won't be triggered by this modification.
-
-Instead, set the access permissions of the whole directory to "Access Files". Normally, they are set to "Create and Delete Files". Now, testing Mojo's error handling should work as to be expected.
+Even when the access permissions of target file named _file_bits_x_ have been set to "Read-Only", _f.write(bits_x)_ will create a new file with this name. In other words, an exception won't be triggered by this modification. Instead, set the access permissions of the whole directory to "Access Files". Normally, they are set to "Create and Delete Files". Now, testing Mojo's error handling should work as to be expected.
 
 <br/>
 
