@@ -104,7 +104,7 @@ Scala             | 101 | interpreted, mature language (together with Java ecosy
 Ruby              |  99 | interpreted, very mature language | 2026-05-26
 Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
 Nim               |  93 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-01-13 
-Mojo              |  91 | compiled, very young language | 2026-01-10
+Mojo              |  90 | compiled, very young language | 2026-05-28
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-05-26
 Python            |  87 | interpreted, very mature language | 2026-05-24
 CoffeeScript      |  81 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-05-26
