@@ -9,7 +9,7 @@ https://mojolang.org/
 
 I had a little and working Mojo program from October 2024 (which tapped into the _buffer_ package: https://docs.modular.com/mojo/stdlib/buffer/), which was no longer working with an upgraded Mojo version of March 2025!
 
-2026-05-27: now with Mojo version >= 1.0.0: let's see how stable things have become...
+2026-05-27: now refactoring for Mojo version >= 1.0.0: let's see how stable things have become...
 
 <br/>
 
