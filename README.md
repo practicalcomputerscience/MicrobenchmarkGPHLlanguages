@@ -205,9 +205,8 @@ while i < N_CHAR:
     if pattern.fullmatch(char0) is not None:
         pw_chars.append(char0)
         i += 1
-        if i == N_CHAR:
-            break
-    if pattern.fullmatch(char1) is not None:
+
+    if pattern.fullmatch(char1) is not None and i < N_CHAR:
         pw_chars.append(char1)
         i += 1
 
