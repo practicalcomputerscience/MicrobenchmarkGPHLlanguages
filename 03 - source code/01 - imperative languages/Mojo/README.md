@@ -66,4 +66,25 @@ $
 
 <br/>
 
+#### Regular expressions in Mojo
+
+As of 2026-05-28, it looks like that Mojo (still) hasn't implemented its own regular‑expression engine. So for now, only 3rd party libraries, including [Python's re library](https://docs.python.org/3/library/re.html), can be used, like for example:
+
+- [mojo‑regex](https://github.com/msaelices/mojo-regex), or
+- experimental [EmberRegex](https://github.com/bgreni/EmberRegex)
+
+However, and also after the [mojo-stringbuilder](#mojo-string-builder) experience, I've decided against using them, and still stick to this simple string based and proven solution:
+
+```
+    var char_set: String = ""
+    if WITH_SPECIAL_CHARS == True:
+        # add chars dec 33 .. dec 126:
+        for i in range(33,127):
+          char_set += chr(i)
+    else:
+        char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+```
+
+<br/>
+
 ##_end
