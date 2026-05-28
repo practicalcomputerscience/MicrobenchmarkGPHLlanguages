@@ -168,7 +168,7 @@ while i <= N_CHAR
         global i += 1
     end
 
-    is_match1 = occursin(pattern, char1)  # 2026-05-28: redundant
+    # is_match1 = occursin(pattern, char1)  # 2026-05-28: redundant
     # println("is_match1 = ", is_match1)  # for testing
     # 2026-05-28: take away the break command at prior if-then-else:
     if occursin(pattern, char1) == true && i < N_CHAR
