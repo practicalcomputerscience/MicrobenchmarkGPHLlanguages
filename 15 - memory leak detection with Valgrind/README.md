@@ -88,7 +88,7 @@ programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reacha
 --- | --- | --- | --- | ---
 Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
 C | 6,704 bytes in 105 blocks | 0 bytes in 0 blocks | no | 2026-05-28
-C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-15
+C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-05-28
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Chapel | program doesn't finish | -- | no | 2025-12-18
 COBOL | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-04-27
@@ -103,7 +103,7 @@ Go | program doesn't finish | -- | no | 2026-05-28
 Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
 Koka | program doesn't finish | -- | no | 2025-12-18
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
-Mojo | SIGILL signal raised which killed the program | -- | no | 2026-01-10
+Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting | -- | no | 2026-05-28
 Nim | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-13
 OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
