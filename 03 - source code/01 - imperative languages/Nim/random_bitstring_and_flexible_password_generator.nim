@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.nim
 
 2026-01-13
+2026-05-26: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ nim c random_bitstring_and_flexible_password_generator.nim
                         $ nim c -d:release random_bitstring_and_flexible_password_generator.nim  # for production
