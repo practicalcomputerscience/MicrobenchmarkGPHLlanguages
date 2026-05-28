@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.go
 
 2025-03-25/26/27/28/29/31, 2025-05-05/17/31, 2025-06-03/06/18, 2025-07-17; 2025-12-17
+2026-05-28: refactoring: no more break commands at pw_chars generation (like in other languages)
 
 build on Ubuntu 24 LTS: $ go build random_bitstring_and_flexible_password_generator.go
 
@@ -102,7 +103,8 @@ func main() {
   for {
     N_CHAR = 12
     N_CHAR_STR := strconv.Itoa(N_CHAR)
-    fmt.Printf("\n\nPassword of %s printable chars OK? 'y' or another integer number >= 8: ", N_CHAR_STR)
+    fmt.Printf("\nPassword of %s printable chars OK? 'y' or another integer number >= 8: ", N_CHAR_STR)
+    // 2026-05-28: have only one \n
 
     // very important: make these definitions only inside this loop, not outside to prevent a "spill-over"
     // of an answer like "10 10" with whites spaces in between:
@@ -122,13 +124,13 @@ func main() {
 
     i, err2 := strconv.Atoi(reply_)
     if err2 != nil {
-        fmt.Print("enter an integer number >= 8 or 'y'")
+        fmt.Print("enter an integer number >= 8 or 'y'\n")  // 2026-05-28: have the extra \n here
     } else {
       if i >= 8 {
         N_CHAR = i
         break
       } else {
-        fmt.Print("enter an integer number >= 8 or 'y'")
+        fmt.Print("enter an integer number >= 8 or 'y'\n")  // 2026-05-28: have the extra \n here
       }
     }
   }
@@ -168,7 +170,7 @@ func main() {
   j := 0  // counter for x
   pw_chars := ""
 
-  for {
+  for i < N_CHAR {  // 2026-05-28: take away the break command at pw_chars generation
     // convert an integer number into a string of '0' and '1' characters:
     bin0 := fmt.Sprintf("%016b", x[j])
     // bin0 could be for example ' 111001001100101'
@@ -189,17 +191,12 @@ func main() {
     if pattern.MatchString(char0b) {
       pw_chars = pw_chars + char0b
       i += 1
-      if i == N_CHAR {
-        break
-      }
     }
 
-    if pattern.MatchString(char1b) {
+    // 2026-05-28: take away the break command at prior if-then-else:
+    if pattern.MatchString(char1b) && i < N_CHAR {
       pw_chars = pw_chars + char1b
       i += 1
-      if i == N_CHAR {
-        break
-      }
     }
 
     j += 1
@@ -209,4 +206,3 @@ func main() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.go
-
