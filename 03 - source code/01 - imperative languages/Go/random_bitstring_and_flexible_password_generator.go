@@ -159,6 +159,7 @@ func main() {
 
   if WITH_SPECIAL_CHARS {
     pattern, reg_err = regexp.Compile("[[:graph:]]+")  // true case
+    // 2026-05-28: this character class doesn't include the space character!
     _ = reg_err  // get rid of the "declared and not used" error message
   } else {
     pattern, reg_err = regexp.Compile("[[:alnum:]]+")
