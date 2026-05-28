@@ -3,6 +3,8 @@ random_bitstring_and_flexible_password_generator.jl
 
 2026-01-01
 2026-05-22: replace variable name reply with "standard" name answer_str
+2026-05-28: refactored pattern (for regular expressions)
+2026-05-28: break command at first if-then-else in pw_chars loop taken away
 
 run on Ubuntu 24 LTS: $ julia ./random_bitstring_and_flexible_password_generator.jl
 
@@ -126,9 +128,16 @@ end
 
 
 if WITH_SPECIAL_CHARS == true
-    global pattern = r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+"
+    # 2026-05-28: old solution:
+    # global pattern = r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+"
+    # 2026-05-28: more elegant solution:
+    global pattern = r"[!-~]+"
 else
     global pattern = r"[A-Za-z0-9]+"
+    # 2026-05-28: similar to Java, POSIX patterns like [[:alnum:]] etc
+    #             aren't working here with doing extra stuff,
+    #             because they are Unicode based by default!!
+    # global pattern = r"[[:alnum:]]+"  # => þoNZõÑÆÅ !!
 end
 # println("pattern = ", pattern)  # for testing
 
@@ -152,19 +161,17 @@ while i <= N_CHAR
     # println("char0 = ", char0)  # for testing
     # println("char1 = ", char1)  # for testing
 
-    is_match0 = occursin(pattern, char0)
+    # is_match0 = occursin(pattern, char0)  # 2026-05-28: redundant
     # println("is_match0 = ", is_match0)  # for testing
-    if is_match0 == true
+    if occursin(pattern, char0) == true
         push!(pw_chars, char0)
         global i += 1
-        if i > N_CHAR
-            break
-        end
     end
 
-    is_match1 = occursin(pattern, char1)
+    is_match1 = occursin(pattern, char1)  # 2026-05-28: redundant
     # println("is_match1 = ", is_match1)  # for testing
-    if is_match1 == true
+    # 2026-05-28: take away the break command at prior if-then-else:
+    if occursin(pattern, char1) == true && i < N_CHAR
         push!(pw_chars, char1)
         global i += 1
     end
