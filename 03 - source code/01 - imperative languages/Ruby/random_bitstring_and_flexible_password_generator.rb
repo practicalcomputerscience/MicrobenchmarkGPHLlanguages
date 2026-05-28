@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.rb
 2026-01-18
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-26: refactored regular expressions at pattern (mixed mode with POSIX and range of characters)
+2026-05-28: break command at first if-then-else in pw_chars loop taken away
 
 run on Ubuntu 24 LTS: $ ruby ./random_bitstring_and_flexible_password_generator.rb
 
@@ -160,10 +161,10 @@ while i < N_CHAR[0]
   if char0 =~ pattern
     pw_chars << char0
     i += 1
-    break if i == N_CHAR[0]
   end
 
-  if char1 =~ pattern
+  # 2026-05-28: take away the break command at prior if-then-else:
+  if char1 =~ pattern && i < N_CHAR[0]
     pw_chars << char1
     i += 1
   end
