@@ -4,6 +4,10 @@
 # 2026-01-10: Valgrind is also raising now a SIGILL signal even with prior program modifications at var char_set
 #             => so, I will re-implement the old version, even though Valgrind will kill this program
 #
+# 2026-05-28: refactor for Mojo v.1.0.0
+# 2026-05-28: no refactoring from char_set to pattern (for regular expressions), because Mojo v.1.0.0 still doesn't support them natively
+#                                       
+#
 # build on Ubuntu 24 LTS: $ mkdir password_encryption  # this is just a project directory
 #                         $ cd password_encryption
 #                         $ pixi shell  # <<<<<<<<<<<<<<<<<<<<<<<<
@@ -17,7 +21,7 @@
 #   this is not working:  $ mojo build random_bitstring_and_flexible_password_generator.mojo -mcpu=native-avx512f
 #                      => $ mojo: error: failed to create target info: unknown target triple 'unknown-unknown-linux'
 #   this is not working:  $ .. -mcpu=native => mojo: error: failed to...
-#                         https://docs.modular.com/mojo/cli/build/
+#                         https://mojolang.org/docs/cli/build/
 #
 #
 # Valgrind, 2025-05-22 --> Illegal instruction (core dumped): how to fix??
@@ -26,18 +30,17 @@
 #
 #
 # $ mojo --version  # do this only in the Pixi shell!!
-# Mojo 0.26.1.0.dev2025121217 (3e295ef6)
+# Mojo 1.0.0b2.dev2026052706 (83444c6d)
 # $
 
 
-from random import random_ui64, seed
+from std.random import random_ui64, seed  # 2026-05-28
 # from memory.unsafe_pointer import UnsafePointer  # 2025-05-22, this doesn't make a difference
 
 
-def main():  # def for error handling below at user inputs: https://docs.modular.com/stable/mojo/manual/errors#raise-an-error
-
+def main() raises:  # 2026-05-28
     comptime END = 62501  # 62501 for exactly 1M binary digits
-    # comptime END  = 12  # for testing
+    # comptime END  = 50  # for testing
     # comptime M1   = 1_000_000
     # comptime K250 = 250_000
 
@@ -63,12 +66,14 @@ def main():  # def for error handling below at user inputs: https://docs.modular
         x.append(x_now)
 
         # bit stream:
-        var bits_x_str      = bin(x[i-1]).removeprefix('0b').rjust(width = 16, fillchar = "0")
+        var bits_x_str      = bin(x_now, prefix = "").ascii_rjust(width = 16, fillchar = "0")  # 2026-05-28
+        # print("\n", bits_x_str, sep="")  # for testing
         bits_x             += bits_x_str
 
         # byte stream for program ENT:
-        bits_x_str          = hex(x[i-1]).removeprefix('0x').rjust(width = 4, fillchar = "0")
-        bits_hex           += bits_x_str
+        var bits_hex_str    = hex(x_now, prefix = "").ascii_rjust(width = 4, fillchar = "0")  # 2026-05-28
+        # print(bits_hex_str)  # for testing
+        bits_hex           += bits_hex_str  # 2026-05-28
 
 
     # writing streams to files:
@@ -78,14 +83,13 @@ def main():  # def for error handling below at user inputs: https://docs.modular
       print("\nBit stream has been written to disk under name:", file_bits_x)
     except:
       print("could not write to file:", file_bits_x)
-
+    
     try:
       with open(file_bits_hex, "w") as f:
           f.write(bits_hex)
       print("Byte stream has been written to disk under name:", file_bits_hex)
     except:
       print("could not write to file:", file_bits_hex)
-
 
 
     # make a password of N_CHAR printable chars: user input requested here
@@ -115,7 +119,6 @@ def main():  # def for error handling below at user inputs: https://docs.modular
               answer = True
 
 
-
     var WITH_SPECIAL_CHARS: Bool = True
     answer = False
 
@@ -134,9 +137,9 @@ def main():  # def for error handling below at user inputs: https://docs.modular
     # this is the original definition of char_set, which will make Valgrind kill this program.
     # However, it's not only this definition which will make Valgrind kill this program.
     # So, any changes to make this program 'Valgrind-proof' may be futile,
-    # while trying to keep it idiomatic and still compiling it with
+    # while trying to keep it idiomatic and still compiling it with:
     # "$ mojo build random_bitstring_and_flexible_password_generator.mojo",
-    # with this fast evolving language.
+    # in this fast evolving language.
     var char_set: String = ""
     if WITH_SPECIAL_CHARS == True:
         # add chars dec 33 .. dec 126:
@@ -151,36 +154,44 @@ def main():  # def for error handling below at user inputs: https://docs.modular
     var pw_chars: String = ""
 
     while i < N_CHAR:
-      bin0 = bin(x[j]).removeprefix('0b').rjust(width = 16, fillchar = "0")
+      bin0 = bin(x[j], prefix = "").ascii_rjust(width = 16, fillchar = "0")  # 2026-05-28
       # bin(x[j]): no padding:
       #   0b1000001101100001 --> 16 bits
       #   0b11100110010011
       #   0b101110011010
-      # https://docs.modular.com/mojo/stdlib/builtin/format_int/bin
-      # https://docs.modular.com/mojo/stdlib/collections/string/string/String#removeprefix
-      # https://docs.modular.com/mojo/stdlib/collections/string/string/String/#rjust
-      # print(bin0)
+      # https://mojolang.org/docs/std/builtin/string_literal/StringLiteral/#ascii_rjust
+      # print(bin0)  # for testing
 
-      bin0_0 = "0b" + bin0[0:8]
-      bin0_1 = "0b" + bin0[8:16]
-      # print(bin0_0, bin0_1)
+      # 2026-05-28: old solution:
+      # bin0_0 = "0b" + bin0[0:8]
+      # bin0_1 = "0b" + bin0[8:16]
+      # print(bin0_0, bin0_1)  # for testing
+
+      # 2026-05-28: new solution:
+      # StringSlice
+      # https://mojolang.org/docs/std/collections/string/string_slice/StringSlice/
+      # A StringSlice is a lightweight view into string data that lets you look at part (or all)
+      # of an string without copying the data.
+      # Unlike a String, a StringSlice doesn't own the string data, but it knows where to find it and how long it is.
+      # It's designed for efficient zero-copy string operations without memory allocation,
+      # while maintaining memory safety and UTF-8 awareness.
+      bin0a = StringSlice(bin0)
+
+      bin0_0 = "0b" + bin0a[byte = 0:8]
+      bin0_1 = "0b" + bin0a[byte = 8:16]
 
       # atol (--> C/C++): Parses and returns the given string as an integer in the given base:
-      # https://docs.modular.com/mojo/stdlib/collections/string/string/atol/
       int0_0 = atol(bin0_0, 0)
       int0_1 = atol(bin0_1, 0)
 
       var char0: String = chr(int0_0)
       var char1: String = chr(int0_1)
 
-      # https://docs.modular.com/mojo/std/collections/string/string/String/
       if char_set.find(char0) != -1:
           pw_chars += char0
           i += 1
-          if i == N_CHAR:
-            break
 
-      if char_set.find(char1) != -1 :
+      if char_set.find(char1) != -1 and i < N_CHAR:  # 2026-05-28: take away the break command at prior if-then-else
           pw_chars += char1
           i += 1
 
@@ -188,7 +199,4 @@ def main():  # def for error handling below at user inputs: https://docs.modular
 
     print("\nYour password of", N_CHAR, "characters is:", pw_chars, "\n")
 
-    # x.free()
-
 # end of random_bitstring_and_flexible_password_generator.mojo
-

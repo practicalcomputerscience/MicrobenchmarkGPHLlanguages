@@ -1,6 +1,8 @@
 # random_streams_for_perf_stats.mojo
 #
 # 2025-05-31, 2025-12-13, 2025-12-18: see below
+# 2026-05-28: refactor for Mojo v.1.0.0
+#
 #
 # build on Ubuntu 24 LTS: $ mkdir password_encryption  # this is just a project directory
 #                         $ cd password_encryption  
@@ -12,14 +14,15 @@
 #
 #
 # $ mojo --version  # do this only in the Pixi shell!!
-# Mojo 0.26.1.0.dev2025121217 (3e295ef6)
+# Mojo 1.0.0b2.dev2026052706 (83444c6d)
 # $
 
 
-from random import random_ui64, seed
+from std.random import random_ui64, seed  # 2026-05-28
 
 
-def main():  # def for error handling below at user inputs: https://docs.modular.com/stable/mojo/manual/errors#raise-an-error
+def main() raises:  # 2026-05-28 
+    # def for error handling below at user inputs: https://docs.modular.com/stable/mojo/manual/errors#raise-an-error
 
     comptime END = 62501  # 62501 for exactly 1M binary digits
     # comptime END  = 12  # for testing
@@ -47,12 +50,12 @@ def main():  # def for error handling below at user inputs: https://docs.modular
         x.append(x_now)
 
         # bit stream:
-        var bits_x_str      = bin(x[i-1]).removeprefix('0b').rjust(width = 16, fillchar = "0")
+        var bits_x_str      = bin(x_now, prefix = "").ascii_rjust(width = 16, fillchar = "0")  # 2026-05-28
         bits_x             += bits_x_str
 
         # byte stream for program ENT:
-        bits_x_str          = hex(x[i-1]).removeprefix('0x').rjust(width = 4, fillchar = "0")
-        bits_hex           += bits_x_str
+        var bits_hex_str    = hex(x_now, prefix = "").ascii_rjust(width = 4, fillchar = "0")  # 2026-05-28
+        bits_hex           += bits_hex_str  # 2026-05-28
 
 
     # writing streams to files:
