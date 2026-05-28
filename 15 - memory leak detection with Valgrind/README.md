@@ -87,7 +87,7 @@ Another, maybe overlooked fact: I could repeat all test results as far as I have
 programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ? | test date
 --- | --- | --- | --- | ---
 Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
-C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2025-12-18
+C | 6,704 bytes in 105 blocks | 0 bytes in 0 blocks | no | 2026-05-28
 C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-15
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Chapel | program doesn't finish | -- | no | 2025-12-18
@@ -99,7 +99,7 @@ Dart AOT compiled | 10,156 bytes in 163 blocks | 9,868 bytes in 162 blocks | no 
 Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-01-24
 Fortran | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-01-06
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-01-10
-Go | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
+Go | program doesn't finish | -- | no | 2026-05-28
 Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
 Koka | program doesn't finish | -- | no | 2025-12-18
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
@@ -138,13 +138,11 @@ Your password of 12 characters is: }!033|JOt2T_
 $
 ```
 
-Only looking by the table above, I would implement a security related program only with these programming languages:
+Only looking by the table above, I would implement a security related program only with these programming languages (in their specified versions!):
 
-- C
 - C++
 - C3
 - COBOL (GnuCOBOL)
-- Go
 - Nim
 - Odin
 - Roc
