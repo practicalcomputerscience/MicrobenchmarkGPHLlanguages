@@ -6,6 +6,7 @@ random_bitstring_and_flexible_password_generator.py
 2026-01-03: see below
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-24: see below (only a minor change)
+2026-05-28: break command at first if-then-else in pw_chars loop taken away
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -178,9 +179,9 @@ while i < N_CHAR:
     if pattern.fullmatch(char0) is not None:
         pw_chars.append(char0)
         i += 1
-        if i == N_CHAR:
-            break
-    if pattern.fullmatch(char1) is not None:
+
+    # 2026-05-28: take away the break command at prior if-then-else:
+    if pattern.fullmatch(char1) is not None and i < N_CHAR:
         pw_chars.append(char1)
         i += 1
 
