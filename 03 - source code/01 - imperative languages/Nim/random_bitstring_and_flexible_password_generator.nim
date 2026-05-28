@@ -21,7 +21,7 @@ $
 
 # basically transpiled from random_bitstring_and_flexible_password_generator.c by Google AI,
 # only changing and adding cosmetics:
-import std/[random, strformat, strutils, ropes]
+import std/[random, strformat, strutils, ropes, re]  # 2026-05-28: re
 
 # --- Constants ---
 const
@@ -126,13 +126,23 @@ proc main(): int =
       WITH_SPECIAL_CHARS = false
       answer = true
 
-  var char_set = ""
-  if WITH_SPECIAL_CHARS:
-    for c in 33..126:
-      char_set.add(chr(c))
-  else:
-    char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-  # echo &"\nchar_set = {char_set}"  # for testing
+
+  # 2026-05-28: old solution:
+  #   var char_set = ""
+  #   if WITH_SPECIAL_CHARS:
+  #     for c in 33..126:
+  #       char_set.add(chr(c))
+  #   else:
+  #     char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  #   # echo &"\nchar_set = {char_set}"  # for testing
+
+  # 2026-05-28: new solution with regular expressions ("Big AI"):
+  # let alnum_re = re"([A-Za-z0-9])"  # works OK
+  let alnum_re = re"[[:alnum:]]"  # POSIX variant
+  #
+  let print_re = re"([!-~])"
+  # let print_re = re"[[:print:]]"  # POSIX variant: this includes the space character!
+  let pattern  = if WITH_SPECIAL_CHARS: print_re else: alnum_re
 
 
   var pw_chars = ""
@@ -162,18 +172,18 @@ proc main(): int =
     # echo &"char0b = {char0b}"  # for testing
     # echo &"char1b = {char1b}"  # for testing
 
-    # Check if char exists in set (equivalent to strchr)
-    if char_set.contains(char0b):
+    # 2026-05-28: new solution with regular expressions:
+    if match($char0b, pattern):
       pw_chars.add(char0b)
       i.inc
 
-    if char_set.contains(char1b) and i < N_CHAR:
+    if match($char1b, pattern) and i < N_CHAR:
       pw_chars.add(char1b)
       i.inc
 
     j.inc
 
-  echo &"\nYour password of {N_CHAR} characters is: {pw_chars}\n"
+  echo &"\nYour password of {N_CHAR} characters is: {pw_chars}"
 
   return mainReturnVal
 
