@@ -35,13 +35,14 @@ $
 (**********************************************************)
 (* user defined functions                                 *)
 
+(*
 (* 1:1 solution from MS Bing AI *)
 fun listToString [] = "[]"
     | listToString (x::xs) = "[" ^ elemToString x ^ restToString xs
   and restToString [] = "]"
     | restToString (x::xs) = ", " ^ elemToString x ^ restToString xs
   and elemToString x = Int.toString x (* Modify this for other types *)
-
+*)
 
 (* Function to print an array of integers *)
 (* 1:1 solution from MS Bing AI *)
@@ -168,11 +169,14 @@ fun answer_yes_or_no () =
    end)
 
 
+(*
+2026-05-29: helper for the old solution:
 fun char_range (start_char: int, end_char: int) =  (* codepoints *)
   if start_char > end_char then
     ""
   else
     Char.toString (Char.chr start_char) ^ char_range (start_char + 1, end_char);
+*)
 
 
 fun bin_string_to_integer binStr =

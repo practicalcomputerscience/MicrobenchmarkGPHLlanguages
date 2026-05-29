@@ -24,7 +24,7 @@ run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats3
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats3
 
 $ mlton
-MLton 20241230
+MLton 20241230.203305-gb15e2d2
 $
 
 *)
@@ -33,13 +33,14 @@ $
 (**********************************************************)
 (* user defined functions                                 *)
 
+(*
 (* 1:1 solution from MS Bing AI *)
 fun listToString [] = "[]"
     | listToString (x::xs) = "[" ^ elemToString x ^ restToString xs
   and restToString [] = "]"
     | restToString (x::xs) = ", " ^ elemToString x ^ restToString xs
   and elemToString x = Int.toString x (* Modify this for other types *)
-
+*)
 
 (* Function to print an array of integers *)
 (* 1:1 solution from MS Bing AI *)
