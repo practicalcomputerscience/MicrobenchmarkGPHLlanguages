@@ -2,6 +2,7 @@
 ;;
 ;; 2025-06-10/11/12/13/14/15/18/21, 2025-07-13
 ;; 2025-12-21: see below
+;; 2026-05-29: refactored from char_set to pattern (for regular expressions); shortened the pw_generator loop
 ;;
 ;; build on Ubuntu 24 LTS: $ lein new app random_bitstring_and_flexible_password_generator
 ;;                         $ cd random_bitstring_and_flexible_password_generator
@@ -13,11 +14,12 @@
 ;;
 ;;
 ;; $ lein version
-;; Leiningen 2.10.0 on Java 25.0.1 OpenJDK 64-Bit Server VM
+;; Leiningen 2.10.0 on Java 25.0.2 OpenJDK 64-Bit Server VM
 ;; $
 
 
 (ns random-bitstring-and-flexible-password-generator.core
+  (:import [java.util.regex Pattern])  ;; 2026-05-29: using regular expressions
   (:gen-class))
 
 
@@ -167,13 +169,21 @@
   (def with_special_chars (answer_yes_or_no))
   ; (println "with_special_chars =" with_special_chars)  ; for testing
 
+
+  ;; 2026-05-29: old solution:
+  ;;   (if (true? with_special_chars)
+  ;;     (def char_set (map char (range 33 127)))  ; end of range is exclusive; type of char_set = clojure.lang.LazySeq
+  ;;     (def char_set (concat (map char (range 48 58))
+  ;;                           (map char (range 65 91))
+  ;;                           (map char (range 97 123)))))  ; all alphanumerical ASCII values; type of char_set = clojure.lang.LazySeq
+  ;;   ; (println "char_set =" char_set)  ; for testing
+  ;;   ; (println "type of char_set =" (type char_set))  ; for testing
+
+  ;; 2026-05-29: new solution with regular expressions ("Duck.ai"):
   (if (true? with_special_chars)
-    (def char_set (map char (range 33 127)))  ; end of range is exclusive; type of char_set = clojure.lang.LazySeq
-    (def char_set (concat (map char (range 48 58))
-                          (map char (range 65 91))
-                          (map char (range 97 123)))))  ; all alphanumerical ASCII values; type of char_set = clojure.lang.LazySeq
-  ; (println "char_set =" char_set)  ; for testing
-  ; (println "type of char_set =" (type char_set))  ; for testing
+    (def ^Pattern pattern (Pattern/compile "[!-~]+"))
+    (def ^Pattern pattern (Pattern/compile "[A-Za-z0-9]+")))
+  ;; (println "\nselected pattern ?" pattern)  ;; for testing
 
 
 
@@ -200,18 +210,14 @@
       (def char1 (char (Integer/parseInt bin0_1 2)))
       ; (println "char0 =" char0 "-- char1 =" char1) ;  for testing
 
-      (def char0_add
-        (if (boolean (some #(= % char0) char_set))
-          char0
-          ""))
-
-      (def char1_add
-        (if (and (boolean (some #(= % char1) char_set))
-                 (< (+ 1 (count pw_chars_)) n_char))
-          char1
-          ""))
-
-      (def new_pw_chars (str (str pw_chars_ char0_add) char1_add))
+      ; 2026-05-29:
+      ;   - new solution with regular expressions
+      ;   - shorter inline solution with Duck.ai
+      (defn valid-char? [c] (boolean (.find (.matcher pattern (str c)))))
+      (def new_pw_chars
+          (str pw_chars_
+            (if (valid-char? char0) char0 "")
+            (if (and (valid-char? char1) (< (inc (count pw_chars_)) n_char)) char1 "")))
 
       (if (>= (count new_pw_chars) n_char)
         new_pw_chars
