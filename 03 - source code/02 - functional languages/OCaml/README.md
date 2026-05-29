@@ -76,7 +76,16 @@ $ dune build
 $ ./_build/default/bin/main.exe  # run program in Ubuntu 24 LTS
 ```
 
-I'm not configuring special things in the generated _dune_ and _dune-project_ configuration files.
+I'm not configuring special things in the generated _dune-project_ configuration file.
+
+2026-05-29: for the _random_bitstring_and_flexible_password_generator_ module, I modified the generated _dune_ configuration file in subdirectory _./bin_, same subdirectory for _main.ml_, to this in order to consider OCaml's [str library](https://ocaml.org/manual/5.3/libstr.html) for regular expressions and string processing:
+
+```
+(executable
+ (public_name random_bitstring_and_flexible_password_generator)
+ (name main)
+ (libraries random_bitstring_and_flexible_password_generator str))
+```
 
 <br/>
 
