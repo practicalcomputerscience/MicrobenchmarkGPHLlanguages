@@ -19,7 +19,7 @@
 
 
 (ns random-bitstring-and-flexible-password-generator.core
-  (:import [java.util.regex Pattern])  ;; 2026-05-29: using regular expressions
+  (:import [java.util.regex Pattern])  ;; 2026-05-29: using Java's java.util.regex package for regular expressions
   (:gen-class))
 
 
@@ -183,6 +183,7 @@
   (if (true? with_special_chars)
     (def ^Pattern pattern (Pattern/compile "[!-~]+"))
     (def ^Pattern pattern (Pattern/compile "[A-Za-z0-9]+")))
+    ; (def ^Pattern pattern (Pattern/compile "[[:alnum:]]+"))  ; this doesn't work here!
   ;; (println "\nselected pattern ?" pattern)  ;; for testing
 
 
