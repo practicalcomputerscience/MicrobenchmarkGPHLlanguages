@@ -17,6 +17,7 @@ https://en.wikipedia.org/wiki/Haxe
 - JDK = Java Development Kit
 - JVM = Java Virtual Machine
 - HL = HashLink, a JIT (Just-In-Time) VM: https://hashlink.haxe.org/
+- PCRE = Perl Compatible Regular Expressions: https://www.pcre.org/
 - VM = Virtual Machine
 
 ---
