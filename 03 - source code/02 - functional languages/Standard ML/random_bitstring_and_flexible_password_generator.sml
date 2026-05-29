@@ -12,7 +12,7 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 
 $ mlton
-MLton 20241230
+MLton 20241230.203305-gb15e2d2
 $
 
 *)
