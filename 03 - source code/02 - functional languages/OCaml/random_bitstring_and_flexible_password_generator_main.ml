@@ -1,6 +1,8 @@
 (*
 main.ml of random_bitstring_and_flexible_password_generator
 
+!!! new block comment rule for better counting of SLOC: put (* and *) markers only into an extra solo line !!!
+
 2025-05-24/25/26/27/31, 2025-06-22
 2025-12-21: see below
 2026-01-04: cosmetics
