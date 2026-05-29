@@ -1,15 +1,29 @@
-(* random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
+(*
+random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
+
+!!! new block comment rule for better counting of SLOC: put (* and *) markers only into an extra solo line !!!
 
 2025-07-07/08
 2025-12-21: see below
 2026-01-04: cosmetics
+2026-05-30: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
-                        $ mlton -verbose 1 random_bitstring_and_flexible_password_generator.sml
+                        $ mlton -verbose 1 ./random_bitstring_and_flexible_password_generator.mlb
+
+------
+random_bitstring_and_flexible_password_generator.mlb:
+(* import libraries *)
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb  (* for Random.rand, Random.randRange*)
+$(SML_LIB)/smlnj-lib/RegExp/regexp-lib.mlb  (* for regular expressions *)
+$(SML_LIB)/basis/basis.mlb  (* this order is important! *)
+(* program files *)
+./random_bitstring_and_flexible_password_generator.sml
+------
+
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
-
 
 $ mlton
 MLton 20241230.203305-gb15e2d2
@@ -31,6 +45,7 @@ fun listToString [] = "[]"
 
 (* Function to print an array of integers *)
 (* 1:1 solution from MS Bing AI *)
+(* THIS FUNCTION IS ONLY NEEDED FOR TESTING!
 fun printIntArray arr =
     let
         val elements = Array.foldr (fn (x, acc) => Int.toString x :: acc) [] arr
@@ -40,7 +55,7 @@ fun printIntArray arr =
     in
         print ("\n[" ^ result ^ "]\n")
     end
-
+*)
 
 fun integer_to_bin_string (n : int): string =
   let
@@ -104,8 +119,10 @@ val write_to_file = fn (filename: string, content: string, file_type: string) =>
 fun isAllDigits str =
     let
       val substring = Substring.full str
-      (* see: https://smlfamily.github.io/Basis/substring.html#SIG:SUBSTRING.foldl:VAL
-         we need a substring here first: val full : string -> substring *)
+      (*
+         see: https://smlfamily.github.io/Basis/substring.html#SIG:SUBSTRING.foldl:VAL
+         we need a substring here first: val full : string -> substring
+      *)
     in
       Substring.foldl (fn (ch, acc) => Char.isDigit ch andalso acc) true substring
     end
@@ -198,19 +215,12 @@ structure Main =
 
     (*val xx = MLton.Vector.create (END+1) (* OK *)*)
 
-
-    (* http://www.mlton.org/MLtonRandom *)
-    val seed_ = MLton.Random.seed ()  (* this is a new random number with every program start! *)
-    val seed_word = valOf seed_       (* type conversion from word option to word *)
-    (* http://www.mlton.org/DefineTypeBeforeUse *)
-
-    (*val _ = print ("seed_word = " ^ Word.toString seed_word ^ "\n")  (* for testing *)*)
-    (*  23EF4897, 3F741FB, 23D4B19D *)
-    (* this can easily overflow if not taken care of => modulus operation: *)
-    val seed_word_mod = seed_word mod (m_word_) + 0wx00000001  (* 2025-12-21 *)
-
-    val start_seed = Word.toInt seed_word_mod
-    (*val _ = print ("start_seed = " ^ Int.toString start_seed ^ "\n")  (* for testing *)*)
+    (* copied from random_streams_for_perf_stats3.sml *)
+    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
+    val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
+    val (secs, usecs) = getTime ()
+    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* rand of type Random.rand *)
+    val start_seed = Random.randRange (1, m - 1) r  (* ending point is inclusive; 2025-12-21 *)
 
 
     val _ = print ("\ngenerating a random bit stream...")
@@ -253,9 +263,11 @@ structure Main =
     val bits_hexx_el = Array.foldr (fn (x, acc) => x :: acc) [] bits_hexx
     val bits_hex = String.concat bits_hexx_el
 
-    (*val _ = printIntArray x (* for testing *)
-    val _ = print ("bits_x = "   ^ bits_x ^ "\n")           (* for testing *)
-    val _ = print ("bits_hex = " ^ bits_hex ^ "\n")         (* for testing *)*)
+    (*
+      val _ = printIntArray x (* for testing *)
+      val _ = print ("bits_x = "   ^ bits_x ^ "\n")           (* for testing *)
+      val _ = print ("bits_hex = " ^ bits_hex ^ "\n")         (* for testing *)
+    *)
 
     (* write bit stream to disk *)
     val _ = write_to_file (file_bits_x, bits_x, "bit")
@@ -272,6 +284,8 @@ structure Main =
     val with_special_chars = answer_yes_or_no ()
     (*val _ = print ("main with_special_chars = "   ^ Bool.toString with_special_chars)  (* for testing *)*)
 
+    (*
+    2026-05-29: old solution:
     val char_set =
       if with_special_chars then
         char_range (33, 126)
@@ -279,7 +293,25 @@ structure Main =
         char_range (48, 57) ^
         char_range (65, 90) ^
         char_range (97, 122)
+    *)
     (*val _ = print ("char_set = "   ^ char_set)  (* for testing *)*)
+
+    (* 2026-05-29: new solution with regular expressions; Google AI *)
+    (* Define the Regex structure: *)
+    structure Regex = RegExpFn (
+      structure P = AwkSyntax        (* P maps to the REGEXP_PARSER *)
+      structure E = BackTrackEngine  (* E maps to the REGEXP_ENGINE *)
+    )
+    (*
+       The SML of NJ Library: The AwkSyntax structure
+       https://www.smlnj.org/doc/smlnj-lib/RegExp/str-AwkSyntax.html
+       https://www.smlnj.org/doc/smlnj-lib/RegExp/regexp-lib.html
+    *)
+    val pattern =
+      if with_special_chars then
+        Regex.compileString "^[!-~]$"
+      else
+        Regex.compileString "^[A-Za-z0-9]$"
 
 
     (**********************  recursive password loop  **********************)
@@ -305,19 +337,19 @@ structure Main =
             (*val _ = print ("\nchar0a = " ^ char0a ^ " -- char1 = " ^ char1a) (* for testing *)*)
 
 
+            (* 2026-05-29: new solution with regular expressions *)
             val char0_add =
-              if String.isSubstring char0a char_set then
+              if Option.isSome (Regex.find pattern Substring.getc (Substring.full char0a)) then
                 char0a
               else
                 ""
 
             val char1_add =
-              if String.isSubstring char1a char_set andalso ((String.size pw_str)+1) < n then
+              if Option.isSome (Regex.find pattern Substring.getc (Substring.full char1a)) andalso ((String.size pw_str)+1) < n then
                 char1a
               else
                 ""
             (*val _ = print ("\nchar0_add = " ^ char0_add ^ " -- char1_add = " ^ char1_add) (* for testing *)*)
-
 
             val new_pw_str  = pw_str ^ char0_add ^ char1_add
             val new_pw_size = String.size new_pw_str
@@ -334,10 +366,8 @@ structure Main =
 
     val pw_chars = pw_generator n_char
 
-    val _ = print ("\nYour password of " ^ Int.toString n_char ^ " characters is: " ^ pw_chars)
-    val _ = print ("\n")
+    val _ = print ("\nYour password of " ^ Int.toString n_char ^ " characters is: " ^ pw_chars ^ "\n")
 
   end
 
 (* end of random_bitstring_and_flexible_password_generator.sml *)
-
