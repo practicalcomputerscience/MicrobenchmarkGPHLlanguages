@@ -3,7 +3,7 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -241,22 +241,26 @@ if ( grep(/^$language_ext$/, @lang_grp4)) {
     if ($bracket_star_detected) {
       $line_of_block_comment4 += 1;
     }
+
     # (*..*): with potentially leading and trailing white spaces and any kind of stuff in between
     if ($_ =~ /^\s*\(\*.*\*\)\s*$/ and not $bracket_star_detected) {
-        $line_cmt_ML_style += 1;
+      $line_cmt_ML_style += 1;
+      # 2026-05-29: this match is counting correctly!
     } else {
-      if ($_ =~ /^\s*\(\*/ and not $bracket_star_detected) {
+      if ($_ =~ /^\s*\(\*\s*$/ and not $bracket_star_detected) {
+        # 2026-05-29: /^\s*\(\*\s*$/ => potential solution for correct block comment counting?
+        #             => only extra marker lines to start/stop a comment block?
         $bracket_star_detected = 1;
         $star_bracket_detected = 0;
         print "  bracket_star_detected", "\n";
         $line_of_block_comment4 += 1;
       } else {
-        if ($_ =~ /\*\)\s*$/ and $bracket_star_detected) {
-          $bracket_star_detected = 0;
-          $star_bracket_detected = 1;
-          print "  star_bracket_detected", "\n";
+        if ($_ =~ /^\s*\*\)\s*$/ and $bracket_star_detected) {
+              $bracket_star_detected = 0;
+              $star_bracket_detected = 1;
+              print "  star_bracket_detected", "\n";
         } else {
-          # case: empty line or line with white spaces:
+          # case: solo empty line or solo line with white spaces:
           if ($_ =~ /^\s*$/ and not $bracket_star_detected) {
             $line_empty += 1;
           } else {
