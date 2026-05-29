@@ -22,10 +22,13 @@ $
 
 *)
 
-(* 2026-05-29: The str library: regular expressions and string processing
+(*
+2026-05-29: The str library: regular expressions and string processing
                https://ocaml.org/manual/5.3/libstr.html
-               fix the dune file! *)
-open Str  
+               fix the dune file!
+*)
+
+open Str
 
 let upper_limit  = 62501  (* 62501 for exactly 1M binary digits; a let binding is immutable in OCaml *)
 (*let upper_limit  = 20 (* for testing *)*)
@@ -89,8 +92,8 @@ let rec input_a_valid_number n_char =
                  input_a_valid_number n_char_default;)
 
 
-let answer_yes_or_no () =  (* make this a function with no argument!
-                              This is very important to not have this being being executed immediately!! *)
+let answer_yes_or_no () =
+(* make this a function with no argument! This is very important to not have this being being executed immediately!! *)
   Printf.printf "\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ";
   flush stdout;
   let answer_str = input_line stdin in
@@ -100,18 +103,22 @@ let answer_yes_or_no () =  (* make this a function with no argument!
     false
 
 
-(* 2026-05-29: for the old solution:
+(*
+2026-05-29: for the old solution:
 let char_range start_char end_char =
   let rec aux current acc =
     if current > end_char then acc
     else aux (Char.chr (Char.code current + 1)) (current :: acc) (*codepoints*)
   in
-  String.of_seq (List.to_seq (List.rev (aux start_char []))) *)
+  String.of_seq (List.to_seq (List.rev (aux start_char [])))
+*)
 
 
 let write_to_file filename content file_type =
-  (* solution based on MS Bing prompt: "OCaml Out_channel.with_open_bin try with"
-     using module Stdlib.Out_channel: https://ocaml.org/manual/5.3/api/Out_channel.html#examples *)
+  (*
+    solution based on MS Bing prompt: "OCaml Out_channel.with_open_bin try with"
+    using module Stdlib.Out_channel: https://ocaml.org/manual/5.3/api/Out_channel.html#examples
+  *)
   try
     let out_channel = open_out_bin filename in  (*open_out_bin is OK for strings in Linux*)
     try
@@ -183,7 +190,8 @@ let main () =
   (* (answer_yes_or_no ()): return type is bool now! *)
   (* Printf.printf "\nwith_special_chars = %B\n" with_special_chars;  (*for testing*)*)
 
-  (* 2026-05-29: old solution:
+  (*
+  2026-05-29: old solution:
   let char_set =
     if with_special_chars then
       char_range '!' '~'
@@ -191,17 +199,19 @@ let main () =
       char_range 'a' 'z' ^
       char_range 'A' 'Z' ^
       char_range '0' '9'
-  in *)
+  in
+  *)
   (*Printf.printf "\nchar_set = %s\n" char_set;  (*for testing*)*)
-  
+
   (* 2026-05-29: new solution with regular expressions; Duck.ai *)
   let pattern =
     if with_special_chars then
       regexp "^[!-~]$"
     else
       regexp "^[A-Za-z0-9]$"
+      (* regexp "^[[:alnum:]]$": this does not work here *)
   in
-  
+
 
   let i = ref 0 in (*referenced char counter for the password *)
   let pw_chars = ref "" in
@@ -224,7 +234,7 @@ let main () =
       let char0a = Char.chr char0 in  (*codepoint*)
       let char1a = Char.chr char1 in  (*codepoint*)
       (*Printf.printf "\nchar0a = %c -- char1a = %c" char0a char1a; (*for testing*)*)
-      
+
       (* 2026-05-29: new solution with regular expressions *)
       let valid_char c = string_match pattern (String.make 1 c) 0 in
 
