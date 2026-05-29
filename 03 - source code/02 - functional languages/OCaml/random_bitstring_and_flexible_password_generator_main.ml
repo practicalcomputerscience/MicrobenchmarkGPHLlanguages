@@ -5,6 +5,7 @@ main.ml of random_bitstring_and_flexible_password_generator
 2025-12-21: see below
 2026-01-04: cosmetics
 2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
+2026-05-29: refactored from char_set to pattern (for regular expressions); shortened the pw_generator loop
 
 build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
                         $ cd random_bitstring_and_flexible_password_generator
@@ -21,6 +22,10 @@ $
 
 *)
 
+(* 2026-05-29: The str library: regular expressions and string processing
+               https://ocaml.org/manual/5.3/libstr.html
+               fix the dune file! *)
+open Str  
 
 let upper_limit  = 62501  (* 62501 for exactly 1M binary digits; a let binding is immutable in OCaml *)
 (*let upper_limit  = 20 (* for testing *)*)
@@ -95,12 +100,13 @@ let answer_yes_or_no () =  (* make this a function with no argument!
     false
 
 
+(* 2026-05-29: for the old solution:
 let char_range start_char end_char =
   let rec aux current acc =
     if current > end_char then acc
     else aux (Char.chr (Char.code current + 1)) (current :: acc) (*codepoints*)
   in
-  String.of_seq (List.to_seq (List.rev (aux start_char [])))
+  String.of_seq (List.to_seq (List.rev (aux start_char []))) *)
 
 
 let write_to_file filename content file_type =
@@ -177,6 +183,7 @@ let main () =
   (* (answer_yes_or_no ()): return type is bool now! *)
   (* Printf.printf "\nwith_special_chars = %B\n" with_special_chars;  (*for testing*)*)
 
+  (* 2026-05-29: old solution:
   let char_set =
     if with_special_chars then
       char_range '!' '~'
@@ -184,9 +191,17 @@ let main () =
       char_range 'a' 'z' ^
       char_range 'A' 'Z' ^
       char_range '0' '9'
-  in
+  in *)
   (*Printf.printf "\nchar_set = %s\n" char_set;  (*for testing*)*)
-
+  
+  (* 2026-05-29: new solution with regular expressions; Duck.ai *)
+  let pattern =
+    if with_special_chars then
+      regexp "^[!-~]$"
+    else
+      regexp "^[A-Za-z0-9]$"
+  in
+  
 
   let i = ref 0 in (*referenced char counter for the password *)
   let pw_chars = ref "" in
@@ -209,16 +224,19 @@ let main () =
       let char0a = Char.chr char0 in  (*codepoint*)
       let char1a = Char.chr char1 in  (*codepoint*)
       (*Printf.printf "\nchar0a = %c -- char1a = %c" char0a char1a; (*for testing*)*)
+      
+      (* 2026-05-29: new solution with regular expressions *)
+      let valid_char c = string_match pattern (String.make 1 c) 0 in
 
-      if String.contains char_set char0a then (
-        i := !i + 1;
+      if valid_char char0a then (
         pw_chars := !pw_chars ^ String.make 1 char0a;
+        i := !i + 1;
         ()
       );
 
-      if String.contains char_set char1a && !i < n_char then (
-        i := !i + 1;
+      if valid_char char1a && !i < n_char then (
         pw_chars := !pw_chars ^ String.make 1 char1a;
+        i := !i + 1;
         ()
       );
 
