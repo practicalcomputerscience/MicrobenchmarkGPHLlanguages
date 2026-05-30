@@ -6,6 +6,8 @@
 
 TL;DR: get to me the [LOC ranking list](#loc-ranking-list) below!
 
+<br/>
+
 LOC is here understood as Source Lines Of Code (SLOC).
 
 Table of contents:
