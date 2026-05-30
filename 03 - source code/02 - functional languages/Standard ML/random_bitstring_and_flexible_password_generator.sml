@@ -1,7 +1,9 @@
 (*
 random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 
-!!! new block comment rule for better counting of SLOC: put (* and *) markers only into an extra solo line !!!
+!!! new block comment rules for better counting of SLOC:
+    - put markers to start and end a block comment only into extra solo lines
+    - don't put nested comments with a marker at the end of a line inside block comments !!!
 
 2025-07-07/08
 2025-12-21: see below
@@ -14,11 +16,9 @@ build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https:
 
 ------
 random_bitstring_and_flexible_password_generator.mlb:
-(* import libraries *)
-$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb  (* for Random.rand, Random.randRange*)
-$(SML_LIB)/smlnj-lib/RegExp/regexp-lib.mlb  (* for regular expressions *)
-$(SML_LIB)/basis/basis.mlb  (* this order is important! *)
-(* program files *)
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+$(SML_LIB)/smlnj-lib/RegExp/regexp-lib.mlb
+$(SML_LIB)/basis/basis.mlb
 ./random_bitstring_and_flexible_password_generator.sml
 ------
 
@@ -36,22 +36,20 @@ $
 (* user defined functions                                 *)
 
 (*
-(* 1:1 solution from MS Bing AI *)
+help function, not in use now:
 fun listToString [] = "[]"
     | listToString (x::xs) = "[" ^ elemToString x ^ restToString xs
   and restToString [] = "]"
     | restToString (x::xs) = ", " ^ elemToString x ^ restToString xs
-  and elemToString x = Int.toString x (* Modify this for other types *)
+  and elemToString x = Int.toString x
 *)
 
-(* Function to print an array of integers *)
+(* Function to print an array of integers; only needed for testing *)
 (* 1:1 solution from MS Bing AI *)
-(* THIS FUNCTION IS ONLY NEEDED FOR TESTING!
+(*
 fun printIntArray arr =
     let
         val elements = Array.foldr (fn (x, acc) => Int.toString x :: acc) [] arr
-        (* fn is an anonymous function; fn (x, acc) => Int.toString x :: acc is a lambda expression *)
-
         val result = String.concatWith ", " elements
     in
         print ("\n[" ^ result ^ "]\n")
@@ -171,7 +169,7 @@ fun answer_yes_or_no () =
 
 (*
 2026-05-29: helper for the old solution:
-fun char_range (start_char: int, end_char: int) =  (* codepoints *)
+fun char_range (start_char: int, end_char: int) =
   if start_char > end_char then
     ""
   else
@@ -243,8 +241,8 @@ structure Main =
 
             val bits_x_str   = integer_to_bin_string new_seed
             val bits_hex_str = integer_to_hex_string new_seed
-            (*val _ = print ("  bits_x_str = " ^ bits_x_str ^ "\n")      (* for testing *)
-            val _ = print ("  bits_hex_str = " ^ bits_hex_str ^ "\n")  (* for testing *)*)
+            (* val _ = print ("  bits_x_str = " ^ bits_x_str ^ "\n")      (* for testing *) *)
+            (* val _ = print ("  bits_hex_str = " ^ bits_hex_str ^ "\n")  (* for testing *) *)
 
             val _ = Array.update(bits_xx, i, bits_x_str)
             val _ = Array.update(bits_hexx, i, bits_hex_str)
@@ -268,9 +266,9 @@ structure Main =
     val bits_hex = String.concat bits_hexx_el
 
     (*
-      val _ = printIntArray x (* for testing *)
-      val _ = print ("bits_x = "   ^ bits_x ^ "\n")           (* for testing *)
-      val _ = print ("bits_hex = " ^ bits_hex ^ "\n")         (* for testing *)
+      val _ = printIntArray x
+      val _ = print ("bits_x = "   ^ bits_x ^ "\n")
+      val _ = print ("bits_hex = " ^ bits_hex ^ "\n")
     *)
 
     (* write bit stream to disk *)
