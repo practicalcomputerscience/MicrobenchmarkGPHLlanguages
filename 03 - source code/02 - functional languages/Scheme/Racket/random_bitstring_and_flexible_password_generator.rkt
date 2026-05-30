@@ -2,6 +2,8 @@
 
 2025-06-20/21/27
 2025-07-22: change from "#:exists 'replace" to "#:exists 'can-update": now exception behavior is same like with other Scheme dialects
+2026-05-22: added a comment; see below
+2026-05-30: refactored from char_set to pattern
 
 run on Ubuntu 24 LTS:   $ racket random_bitstring_and_flexible_password_generator.rkt
 
@@ -57,6 +59,7 @@ $
 
 (define (valid_pw_length? a)
   (and (number? a) (integer? a) (exact? a) (>= a 8)))
+  ; exact? returns #t for numbers created as exact integers, rationals, or exact complex numbers (2026-05-22)
 
 
 
@@ -163,6 +166,8 @@ $
   ; (printf "\nmain: with_special_chars = ~a" with_special_chars)  ; for testing
 
 
+  #|
+  2026-05-30: 2026-05-30: old solution:
   (define char_set
     (if with_special_chars
       (map (lambda (cp) (integer->char cp)) (for/list ([i (in-range 33 127)]) i))   ; end of range is exclusive
@@ -171,12 +176,18 @@ $
                                               (for/list ([i (in-range 65 91)]) i)
                                               (for/list ([i (in-range 97 123)]) i)))))  ; all alphanumerical ASCII values
   ; (printf "\nchar_set = ~a" char_set)  ; for testing
+  |#
+
+  ; 2026-05-30: new solution with regular expressions:
+  (define pattern
+  (if with_special_chars
+      (regexp "^[!-~]$")
+      (regexp "^[A-Za-z0-9]$")))  ; (regexp "^[[:alnum:]]$") doesn't behave the same here (Duck.ai)
 
 
 
   ;------------------  recursive password creation  ---------------------------
   ;
-  ; similar to the Clojure solution
   (define (pw_generator n_char)
     (let pw_loop ([j 0]  ; j: counter for x
                   [pw_chars_ ""])
@@ -193,13 +204,14 @@ $
       (define char1 (integer->char (string->number bin0_1 2)))
       ; (printf "\nchar0 = ~a -- char1 = ~a" char0 char1)  ; for testing
 
+      ; 2026-05-29: new solution with regular expressions:
       (define char0_add
-        (if (member char0 char_set)
+        (if (regexp-match? pattern (string char0))
           (string char0)
           ""))
 
       (define char1_add
-        (if (and (member char1 char_set)
+        (if (and (regexp-match? pattern (string char1))
                  (< (+ 1 (string-length pw_chars_)) n_char))
           (string char1)
           ""))
@@ -210,7 +222,6 @@ $
         new_pw_chars
         (pw_loop (+ j 1) new_pw_chars))  ; recursion
     ))
-
 
   (define pw_chars (pw_generator n_char))
 
@@ -228,4 +239,3 @@ $
 
 
 ; end of random_bitstring_and_flexible_password_generator.rkt
-
