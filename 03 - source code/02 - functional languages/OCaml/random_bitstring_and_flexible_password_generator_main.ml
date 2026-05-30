@@ -1,7 +1,9 @@
 (*
 main.ml of random_bitstring_and_flexible_password_generator
 
-!!! new block comment rule for better counting of SLOC: put (* and *) markers only into an extra solo line !!!
+!!! new block comment rules for better counting of SLOC:
+    - put markers to start and end a block comment only into extra solo lines
+    - don't put nested comments with a marker at the end of a line inside block comments !!!
 
 2025-05-24/25/26/27/31, 2025-06-22
 2025-12-21: see below
