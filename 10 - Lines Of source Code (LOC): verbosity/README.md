@@ -29,6 +29,8 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 
 <br/>
 
+#### The cloc tool
+
 After struggling with my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl), I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
 
 ```
@@ -49,6 +51,33 @@ $
 ```
 
 With Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st), in its now simplified commenting, it arrived at the same number of source lines of code than my script.
+
+However, with counting the SLOC's of Standard ML program [random_bitstring_and_flexible_password_generator.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml) I found an error with the cloc tool:
+
+```
+$ cloc random_bitstring_and_flexible_password_generator.sml
+       1 text file.
+       1 unique file.                              
+       0 files ignored.
+
+github.com/AlDanial/cloc v 1.98  T=0.00 s (266.1 files/s, 99788.4 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Standard ML                      1             72             89            214
+-------------------------------------------------------------------------------
+$
+```
+
+The actual SLOC number is 199 and not 214. My Perl script (_lines_of_source_code_count.pl_) does the counting now correctly after fixing the block comments in the source code file (and the [OCaml source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/random_bitstring_and_flexible_password_generator_main.ml)):
+
+```
+...
+!!! new block comment rules for better counting of SLOC:
+    - put markers to start and end a block comment only into extra solo lines
+    - don't put nested comments with a marker at the end of a line inside block comments !!!
+...
+```
 
 <br/>
 
