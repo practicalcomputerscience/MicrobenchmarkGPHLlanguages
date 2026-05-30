@@ -137,7 +137,7 @@ C++               | 129 | compiled, very mature language; memory-safe source cod
 Zig               | 129 | compiled, young language still going through major changes
 Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
-OCaml             | 126 | compiled, mature language | 2026-05-29
+OCaml             | 126 | compiled, mature language; needs user-defined functions | 2026-05-29
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
@@ -212,7 +212,7 @@ Lua                | 2
 Mercury            | 9
 Mojo               | 0
 Nim                | 0
-OCaml              | 5
+OCaml              | 4
 Odin               | 0
 Perl 5             | 0
 PHP                | 1 
