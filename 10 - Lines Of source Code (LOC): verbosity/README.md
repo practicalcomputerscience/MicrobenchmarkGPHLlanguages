@@ -34,7 +34,7 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 
 #### The cloc tool
 
-After my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl) miscalculated the Smalltalk program, I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
+After my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl) miscalculated the SLOC number of the Smalltalk program, I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
 
 ```
 $ sudo apt install cloc
@@ -53,7 +53,7 @@ Smalltalk                        1             43             56            122
 $ 
 ```
 
-With Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st) with its now simplified commenting, it arrived at the same number of source lines of code than my script!
+At Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st) with its now simplified commenting, cloc arrived at the same number of source lines of code as my script!
 
 However, with counting the SLOC's of Standard ML program [random_bitstring_and_flexible_password_generator.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml) I found an error of the cloc tool:
 
