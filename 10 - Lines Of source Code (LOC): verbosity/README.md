@@ -111,6 +111,8 @@ number of lines in block comment: <# ... #> = 0
 $
 ```
 
+And for [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme) the cloc tool also gets a wrong number of SLOC's (while my script works OK). There are probably more languages in my scope of implementations which are not counted correctly by cloc.
+
 <br/>
 
 ## LOC ranking list
@@ -154,7 +156,7 @@ Swift             | 114 | compiled, mature language | 2026-01-26
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
-Racket Scheme     | 110 | compiled, mature language
+Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
