@@ -68,7 +68,7 @@ $
 
 ## Garbage collection
 
-Same like [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nims-memory-management), D by default is a garbage-collected programming language.
+Same as [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nims-memory-management), D by default is a garbage-collected programming language.
 
 With the help of "Big AI", I had a short look into the possibilities for source code which is disabling the garbage collection, while retaining the _gdc_ compiler, so, writing something like this:
 
@@ -90,7 +90,7 @@ Doing such re-writing would lead to massively low-level, non-idiomatic source co
 
 ## On how to do demanding string building in D
 
-Same like with [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#on-how-to-do-demanding-string-building-in-nim), I had somehow higher expectations for the execution speed of my microbenchmark program in a D implementation.
+Same as with [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#on-how-to-do-demanding-string-building-in-nim), I had somehow higher expectations for the execution speed of my microbenchmark program in a D implementation.
 
 The first times with around 35 milliseconds that came in, already compiled with _$ gdc -O3_ for production and doing simple string concatenation, were not bad, but a bit muted compared to my expectations.
 
@@ -104,7 +104,7 @@ test # | construct | compiler switches | exe time in milliseconds | comment
 2 | _char[] bits_x; size_t pos_x; auto result_x = copy(bits_x_str, bits_x[pos_x .. $]); pos_x += 16; string bits_x_str_total = bits_x.idup;_ | _-O3_ | ~33 | using D's range copying: _std.algorithm.mutation : copy;_
 3 | _auto bits_x = appender!string(); bits_x.put(bits_x_str); string bits_x_str_total = bits_x.data;_ | _-O3_ | ~32 | using D's string builder: _std.array : appender;_
 
-Same like with Nim (and C), also with D it may be probable that replacing built-in function _format("%016b", x[i])_ with a user-defined function would lower the execution time.
+Same as with Nim (and C), also with D it may be probable that replacing built-in function _format("%016b", x[i])_ with a user-defined function would lower the execution time.
 
 Using D's string builder ("appender") tallies a slightly lower execution time than using D's range copying ("copy"): 32.8 versus 33.3 milliseconds (mean; running _$ sudo perf stat -r 20 ..._)
 
@@ -116,7 +116,7 @@ Using the appender is also a little bit less verbose than range copying, since n
 
 ## Why is D still not very popular?
 
-Same like at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question here.
+Same as at [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#why-is-nim-still-not-very-popular), one could ask the same question here.
 
 However, there's a big difference to Nim: D is a U.S. based programming language, which should have made it easier to grow its ecosystem fast, at least theoretically from my point of view.
 
