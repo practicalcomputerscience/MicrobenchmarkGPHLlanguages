@@ -4,11 +4,14 @@
 
 # Lines Of source Code (LOC): verbosity
 
+TL;DR: get to me the [LOC ranking list](#loc-ranking-list) below!
+
 LOC is here understood as Source Lines Of Code (SLOC).
 
 Table of contents:
 
 - [Idea of this page](#idea-of-this-page)
+- [The cloc tool](#the-cloc-tool)
 - [LOC ranking list](#loc-ranking-list)
 - [Number of user-defined functions](#number-of-user-defined-functions)
 - [Ranking popular programming languages by density](#ranking-popular-programming-languages-by-density)
@@ -31,7 +34,7 @@ from: [AI experiments](https://github.com/practicalcomputerscience/Microbenchmar
 
 #### The cloc tool
 
-After struggling with my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl), I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
+After my Perl script [lines_of_source_code_count.pl](./lines_of_source_code_count.pl) miscalculated the Smalltalk program, I gave the [CLOC tool](https://github.com/AlDanial/cloc) a try:
 
 ```
 $ sudo apt install cloc
@@ -50,9 +53,9 @@ Smalltalk                        1             43             56            122
 $ 
 ```
 
-With Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st), in its now simplified commenting, it arrived at the same number of source lines of code than my script.
+With Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st) with its now simplified commenting, it arrived at the same number of source lines of code than my script!
 
-However, with counting the SLOC's of Standard ML program [random_bitstring_and_flexible_password_generator.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml) I found an error with the cloc tool:
+However, with counting the SLOC's of Standard ML program [random_bitstring_and_flexible_password_generator.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml) I found an error of the cloc tool:
 
 ```
 $ cloc random_bitstring_and_flexible_password_generator.sml
@@ -77,6 +80,33 @@ The actual SLOC number is 199 and not 214. My Perl script (_lines_of_source_code
     - put markers to start and end a block comment only into extra solo lines
     - don't put nested comments with a marker at the end of a line inside block comments !!!
 ...
+```
+
+```
+$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.sml
+language = sml
+  bracket_star_detected
+  star_bracket_detected
+  ...
+  bracket_star_detected
+  star_bracket_detected
+
+total number of lines = 375
+number of lines of source code (estimated) = 199
+
+number of empty lines = 64
+number of lines with ___// = 0
+number of lines with ___# = 0
+number of lines with ___-- = 0
+number of lines with ___(*..*)___ = 31
+number of lines with ___;(;) = 0
+...
+number of lines in block comment: /* ... */ = 0
+number of lines in block comment: """ ... """ = 0
+number of lines in block comment: (* ... *) = 81
+number of lines in block comment: <# ... #> = 0
+...
+$
 ```
 
 <br/>
