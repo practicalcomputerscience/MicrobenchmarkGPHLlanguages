@@ -148,7 +148,7 @@ Go                | 121 | compiled, mature language | 2026-05-28
 PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
-Common Lisp       | 114 | compiled, very mature language
+Common Lisp       | 114 | compiled, very mature language | 2026-05-30
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
@@ -193,7 +193,7 @@ Chapel             | 1
 Clojure            | 3
 COBOL (GnuCOBOL)   | 3 (user-defined procedures)
 CoffeeScript       | 0
-Common Lisp        | 2
+Common Lisp        | 3
 Crystal            | 0
 D                  | 0
 Dart               | 0
