@@ -2,10 +2,22 @@
 
 2025-06-17/21
 2025-12-21: see below
+2026-05-30: refactored from char_set to pattern, using Portable Perl-compatible regular expressions (CL-PPCRE)
+
+first, **once** install the CL-PPCRE's for Common Lisp in your SBCL system (2026-05-30):
+  $ curl -O https://beta.quicklisp.org/quicklisp.lisp
+  $ sbcl --load quicklisp.lisp  # enter the SBCL REPL to make the next installation
+  * (quicklisp-quickstart:install)
+  * (load #p"~/quicklisp/setup.lisp")
+  T
+  * (ql:quickload "cl-ppcre")
+  ...
+  * (quit)
+  $
 
 build on Ubuntu 24 LTS:
-  $ sbcl --load random_bitstring_and_flexible_password_generator.lisp --eval "(sb-ext:save-lisp-and-die \"random_bitstring_and_flexible_password_generator\" \
-    :executable t :toplevel #'main)"
+  $ sbcl --load random_bitstring_and_flexible_password_generator.lisp \
+    --eval "(sb-ext:save-lisp-and-die \"random_bitstring_and_flexible_password_generator\" :executable t :toplevel #'main)"
   #' is for searching for a function name, rather than a value of the function
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
@@ -17,6 +29,10 @@ $
 
 |#
 
+; 2026-05-30: for using package CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp
+;             https://edicl.github.io/cl-ppcre/
+(load #p"~/quicklisp/setup.lisp")
+(ql:quickload "cl-ppcre")  ; run once in REPL or init: 2026-05-30: Duck.ai
 
 (defparameter *END* 62500)  ; 62500 for exactly 1M binary digits; defining a variable
 ; (defparameter *END* 20)  ; for testing
@@ -74,6 +90,18 @@ $
 
   (let ((answer_str (read-line *query-io*)))
        (if (string= answer_str "y") t nil)))
+
+
+; 2026-05-30: new solution with regular expressions; Duck.ai:
+(defun valid-char-p (char)
+  "Return T if CHAR matches the chosen pattern."
+  (let* ((pattern (if *with_special_chars*
+                     "^[!-~]$"
+                     ; "^[[:alnum:]]$"))  ; this POSIX character class doesn't work here, though it compiles
+                     "^[A-Za-z0-9]$"))
+                  (s (string char)))
+         (when (find-package :cl-ppcre)
+               (cl-ppcre:scan pattern s))))
 
 ;
 ;---------------------  end of user defined functions  ----------------------
@@ -165,6 +193,7 @@ $
   )
 
 
+  #| 2026-05-30: old solution:
   (if *with_special_chars*
     (setf *char_set* (mapcar #'code-char (loop for i from 33 to 126 collect i)))  ; #' = searching for function name
     (setf *char_set* (mapcar #'code-char (let ((result '()))
@@ -176,6 +205,7 @@ $
                                                   do (setf result (append result (list j))))
                                             result))))
   ; (format t "~%char_set = ~a~%" *char_set*)  ; for testing
+  |#
 
 
   ;------------------  password creation  ---------------------------
@@ -197,6 +227,7 @@ $
         (setf char1 (code-char (parse-integer bin0_1 :radix 2)))
         ; (format t "~%char0 = ~a -- char1 = ~a" char0 char1)  ; for testing
 
+        #| 2026-05-30: old solution:
         (if (member char0 *char_set*)
           (progn
             (setf pw_chars_ (concatenate 'string pw_chars_ (list char0)))
@@ -206,6 +237,18 @@ $
           (progn
             (setf pw_chars_ (concatenate 'string pw_chars_ (list char1)))
             (incf i)))
+        |#
+
+        ; 2026-05-30: new solution with regular expressions:
+        (if (valid-char-p char0)  ; valid-char-p is a new user defined function
+          (progn
+            (setf pw_chars_ (concatenate 'string pw_chars_ (list char0)))
+            (incf i)))
+
+        (if (and (valid-char-p char1) (< i *n_char*))
+          (progn
+            (setf pw_chars_ (concatenate 'string pw_chars_ (list char1)))
+            (incf i)))  ; returns NIL like the OCaml unit; no explicit value needed
 
         ; (format t "~%i = ~a" i)  ; for testing
         ; (format t "~%j = ~a" j)  ; for testing
@@ -213,14 +256,10 @@ $
         ; (format t "~%length pw_chars_ = ~a" (length pw_chars_))  ; for testing
 
         (incf j)
-
       )
       (values pw_chars_)))
 
   (format t "~%Your password of ~d characters is: ~a~%" *n_char* *pw_chars*)
-
 )
 
-
 ; end of random_bitstring_and_flexible_password_generator.lisp
-
