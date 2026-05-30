@@ -118,26 +118,26 @@ The results of this list are [script-based](./lines_of_source_code_count.pl): _$
 programming language | LOC | comments | date
 --- | --- | --- | ---
 GnuCOBOL          | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
-Inko              | 232 | compiled, very young language: lots of user-defined functions; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
+Inko              | 232 | compiled, very young language: lots of user-defined functions needed; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Ada               | 229 | compiled, very mature language: lots of declarations and type definitions; still keeping the low level character copying from little strings into the big strings for performance reasons | 2026-01-26
-Eiffel (Liberty)  | 222 | compiled, very mature language: needs some user-defined functions; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
-Standard ML (MLton) | 199 | compiled, very mature language: numerous user-defined functions | 2026-05-30
-Mercury           | 194 | compiled, mature language: lots of user-defined functions
-Roc               | 191 | compiled, very young, pure functional programming language: needs some user-defined functions
-V                 | 179 | compiled, very young programming language: needs some user-defined functions | 2026-01-24
+Eiffel (Liberty)  | 222 | compiled, very mature language: some user-defined functions needed; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
+Standard ML (MLton) | 199 | compiled, very mature language: numerous user-defined functions needed | 2026-05-30
+Mercury           | 194 | compiled, mature language: lots of user-defined functions needed
+Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed
+V                 | 179 | compiled, very young programming language: some user-defined functions needed | 2026-01-24
 Fortran (GNU)     | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
-Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions
+Gleam             | 162 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions needed
 C                 | 147 | compiled, very mature language | 2026-01-11
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
-Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions
-AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions | 2026-05-24
-SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions, even though SWI Prolog is a Prolog system with "batteries included"
+Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed
+AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
+SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included"
 Lua               | 130 | compiled, very mature language
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes
 Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
-OCaml             | 126 | compiled, mature language; needs user-defined functions | 2026-05-29
+OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 126 | compiled, mature language
 Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
@@ -149,7 +149,7 @@ PHP               | 118 | usually interpreted, very mature web programming langu
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Swift             | 114 | compiled, mature language | 2026-01-26
 Common Lisp       | 114 | compiled, very mature language
-Haxe              | 113 | interpreted, mature language: needs user-defined functions | 2026-05-27
+Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 110 | compiled, mature language
