@@ -3,7 +3,7 @@
 2025-06-20/21/27
 2025-07-22: change from "#:exists 'replace" to "#:exists 'can-update": now exception behavior is same like with other Scheme dialects
 2026-05-22: added a comment; see below
-2026-05-30: refactored from char_set to pattern
+2026-05-30: refactored from char_set to pattern (for regular expressions)
 
 run on Ubuntu 24 LTS:   $ racket random_bitstring_and_flexible_password_generator.rkt
 
