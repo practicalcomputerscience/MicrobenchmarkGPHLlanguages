@@ -458,7 +458,7 @@ But again, this is a solution with a "natural" functional approach to exception 
 
 #### What about the GraalVM? (doesn't work)
 
-> Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a Scala, Kotlin and Clojure program is a real hit:...
+> Using the GraalVM (https://www.graalvm.org/; VM = Virtual Machine) for a Scala, Kotlin, Clojure and Ballerina program is a real hit:...
 
 from: [Ahead Of Time (AOT) program compilation with the GraalVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#ahead-of-time-aot-program-compilation-with-the-graalvm)
 
