@@ -10,6 +10,8 @@ Background of the page is this big refactoring job: [2026-05-22: another round o
 
 TL;DR: get to me the [The Pattern matching list](#the-pattern-matching-list) below!
 
+<br/>
+
 See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepubs/9799919799/): basic regular expression (BRE) and extended regular expression (ERE)
 
 [Regular Expressions (Regex) Character Classes Cheat Sheet](https://www.petefreitag.com/cheatsheets/regex/character-classes/)
