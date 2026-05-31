@@ -167,7 +167,7 @@ $
 
 
   #|
-  2026-05-30: 2026-05-30: old solution:
+  2026-05-30: old solution:
   (define char_set
     (if with_special_chars
       (map (lambda (cp) (integer->char cp)) (for/list ([i (in-range 33 127)]) i))   ; end of range is exclusive
