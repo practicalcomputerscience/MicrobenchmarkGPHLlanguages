@@ -65,4 +65,49 @@ $
 
 <br/>
 
+#### Regular expressions
+
+2026-05-31: regular expressions are not supported currently in Roc natively. There has been this 3rd party [roc_regex](https://github.com/KilianVounckx/roc_regex) package.
+
+However, I can't compile it anymore due to this error in package file [Regex.roc](https://github.com/KilianVounckx/roc_regex/blob/2f58e376bcfe49b5a15c2363044d486502e564ed/package/Regex.roc#L37):
+
+```
+$ roc check random_bitstring_and_flexible_password_generator_slim2.roc
+── NOT END OF FILE in roc_regex/Regex.roc ──────────────────────────────────────
+
+I expected to reach the end of the file, but got stuck here:
+
+37│  deriveWord : Regex a, List a -> Regex a | a has Eq
+                                             ^...:~/scripts/Roc$ 
+$
+```
+
+That's the end of my efforts to also use regular expressions in Roc instead of working with (pure) user defined functions _printable_chars_ and _alphanum_chars_, which are based on using numeric codepoints:
+
+```
+printable_chars : List (U8) -> List (U8)
+printable_chars = |list_u8|
+                  List.walk(list_u8, [], |nums, nbr_u8|
+                              # https://www.ascii-code.com/ --> dec [33...126] is printable => no space char (like in Scala)
+                              if nbr_u8 >= 33 && nbr_u8 <= 126 then
+                                List.append(nums, nbr_u8)
+                              else
+                                nums
+                           )
+
+# only alphanumerical chars 0..9, A-Z, a-z = dec [48..57], [65..90], [97..122]
+alphanum_chars : List (U8) -> List (U8)  # 2026-05-31
+alphanum_chars = |list_u8|
+                  List.walk(list_u8, [], |nums, nbr_u8|
+                             if nbr_u8 >= 48 && nbr_u8 <= 57 ||
+                                nbr_u8 >= 65 && nbr_u8 <= 90 ||
+                                nbr_u8 >= 97 && nbr_u8 <= 122 then
+                                List.append(nums, nbr_u8)
+                             else
+                                nums
+                           )
+```
+
+<br/>
+
 ##_end
