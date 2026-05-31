@@ -1,6 +1,8 @@
 #| random_bitstring_and_flexible_password_generator.scm -- this is the Bigloo Scheme version
 
 2025-12-25
+2026-05-22: added a comment; see below
+2026-05-31: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_bitstring_and_flexible_password_generator.scm -o random_bitstring_and_flexible_password_generator
 
@@ -55,12 +57,14 @@ $
 
 (define (valid_pw_length? a)
   (and (number? a) (integer? a) (exact? a) (>= a 8)))
+  ; exact? returns #t for numbers created as exact integers, rationals, or exact complex numbers (2026-05-22)
 
 
 ; there variables are only defined here to keep the intended execution order of the whole program!
 (define n_char 0)
 (define with_special_chars #f)
-(define char_set "")
+; (define char_set "")  ; 2026-05-31: for the old solution with char_set
+(define pattern (pregexp "^[A-Za-z0-9]$"))
 
 
 
@@ -133,23 +137,17 @@ $
     (equal? "y" answer_str)))  ; very minimalist
 
 
-;; Generates a list of integers from low to high (inclusive)
-;; from Google AI
-(define (iota-range low high)
-  (if (> low high)
-      '()
-      (cons low (iota-range (+ low 1) high))))
-
-(define (string-from-range start-point end-point)
-  (let* ((points (iota-range start-point end-point))
-         (chars  (map integer->char points)))
-    (list->string chars)))
+; 2026-05-31: helper for the old solution with char_set:
+; (define (string-from-range start-point end-point)
+;   (let* ((points (iota-range start-point end-point))
+;          (chars  (map integer->char points)))
+;     (list->string chars)))
 
 ;
 ;---------------------  end of user defined functions  ----------------------
 
 
-(define (main xx)
+(define (main args)  ; 2026-05-31: args, not xx; see from here: https://www-sop.inria.fr/indes/fp/Bigloo/
 
   (printf "\ngenerating a random bit stream...")
 
@@ -207,7 +205,7 @@ $
   ; ---------------------------------------------------------------------------
   ; this part is very different from the Racket solution to keep the
   ; intended execution order of the whole program!
-  ; 
+  ;
   ; make a password of n_char printable chars: user input requested here and now!
   (set! n_char (input_a_valid_number n_char_default))
   ; (printf "\nmain: n_char = ~a" n_char)  ; for testing
@@ -215,6 +213,8 @@ $
   (set! with_special_chars (answer_yes_or_no))
   ; (printf "\nmain: with_special_chars = ~a" with_special_chars)  ; for testing
 
+  #|
+  2026-05-30: 2026-05-30: old solution:
   (set! char_set
     (if with_special_chars
       (string-from-range 33 126)  ; end of range is inclusive
@@ -222,6 +222,18 @@ $
                      (string-from-range 65 90)
                      (string-from-range 97 122))))
   ; (printf "\nchar_set = ~a" char_set)  ; for testing
+  |#
+
+  ; 2026-05-31: new solution with regular expressions:
+  ;             pregexp for PCRE2 (Perl Compatible Regular Expressions, version 2) are automatically available:
+  ;             https://www-sop.inria.fr/indes/fp/Bigloo/manual-chapter12.html
+  (set! pattern
+    (if with_special_chars
+      (pregexp "^[!-~]$")
+      ; (pregexp "^[[:print:]]$")  ; not useful here, because it includes the space character
+      ; (pregexp "^[A-Za-z0-9]$")
+      (pregexp "^[[:alnum:]]$")))  ; using a POSIX character class
+  ; (printf "\nmain: pattern = ~a" pattern)  ; for testing
   ; ---------------------------------------------------------------------------
 
 
@@ -248,18 +260,17 @@ $
       (define char1 (integer->char (string->number bin0_1 2)))
       ; (printf "\nchar0 = ~a -- char1 = ~a" char0 char1)  ; for testing
 
+      ; 2026-05-31: new solution with regular expressions (MS Bing AI):
       (define char0_add
-        (if (member char0 (string->list char_set))
+        (if (pregexp-match pattern (string char0))
           (string char0)
           ""))
-      ; (printf "\nchar0_add = ~a" char0_add)  ; for testing
 
       (define char1_add
-        (if (and (member char1 (string->list char_set))
+        (if (and (pregexp-match pattern (string char1))
                  (< (+ 1 (string-length pw_chars_)) n_char))
           (string char1)
           ""))
-      ; (printf "\nchar1_add = ~a" char1_add)  ; for testing
 
       (define new_pw_chars (string-append pw_chars_ char0_add char1_add))
       ; (printf "\nnew_pw_chars = ~a" new_pw_chars)  ; for testing
@@ -279,5 +290,3 @@ $
 )
 
 ; end of random_bitstring_and_flexible_password_generator.scm
-
-

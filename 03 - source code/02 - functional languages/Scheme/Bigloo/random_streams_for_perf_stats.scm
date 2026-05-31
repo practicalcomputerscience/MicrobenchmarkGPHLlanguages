@@ -2,6 +2,7 @@
 
 2025-06-29
 2025-12-21: see below
+2026-05-31: see below
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_streams_for_perf_stats.scm -o random_streams_for_perf_stats
 
@@ -110,7 +111,7 @@ $
 ;---------------------  end of user defined functions  ----------------------
 
 
-(define (main xx)
+(define (main args)  ; 2026-05-31: args, not xx
 
   (display "\ngenerating a random bit stream...")
 
