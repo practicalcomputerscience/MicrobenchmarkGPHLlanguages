@@ -1,5 +1,3 @@
-2026-01-26: Koka is indeed a functional programming language, and thus should be listed here, not under imperative languages
-
 # Koka
 
 Koka is "a strongly typed functional-style language with effect types and handlers":
