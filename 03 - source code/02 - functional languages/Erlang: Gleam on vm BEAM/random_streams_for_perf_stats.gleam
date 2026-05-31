@@ -62,7 +62,7 @@ fn write_to_file(filename: String, content: String, file_type: String) {
   case file_type {
     "bit"  -> {
       let bit_file  = content |> simplifile.write(to: filename)  // using the pipe operator: |>
-      // let assert Ok(_) is crashing the program, if not OK:+
+      // let assert Ok(_) is crashing the program, if not OK:
       //   https://github.com/gleam-lang/cookbook/blob/55ed1da52a92db758cf8bb7d7459e59fdf3a3078/universal/test/file_system/work_with_files.gleam#L24
       // echo bit_file  // for testing: good case return value: Ok(Nil)
       case bit_file {
