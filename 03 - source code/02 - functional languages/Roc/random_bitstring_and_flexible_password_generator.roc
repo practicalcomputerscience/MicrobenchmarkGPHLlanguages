@@ -222,7 +222,7 @@ nbr16_into_nbr8 = |in_16|
 printable_chars : List (U8) -> List (U8)
 printable_chars = |list_u8|
                   List.walk(list_u8, [], |nums, nbr_u8|
-                              # https://www.ascii-code.com/ --> dec [33...126] is printable => no space char (like in Scala)
+                              # https://www.ascii-code.com/ --> dec [33...126] is printable => no space char
                               if nbr_u8 >= 33 && nbr_u8 <= 126 then
                                 List.append(nums, nbr_u8)
                               else
