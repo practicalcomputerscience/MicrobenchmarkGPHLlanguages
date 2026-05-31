@@ -99,8 +99,22 @@ $ rakubrew switch moar-2026.04
 Switching to moar-2026.04
 $ raku -e 'say "Now running {$*RAKU.compiler.version}!"'
 Now running 2026.04!
+$ rakudo-m --version  # for checking the compiler for target MoarVM
+Welcome to Rakudo™ v2026.04.
+Implementing the Raku® Programming Language v6.d.
+Built on MoarVM version 2026.04.
 $
 ```
+
+<br/>
+
+## Compiling a Raku script for the Java Virtual Machine (JVM)
+
+See from [Configuring Rakudo to run on the JVM](https://github.com/rakudo/rakudo/#configuring-rakudo-to-run-on-the-jvm).
+
+I failed on two different Ubuntu 24 LTS systems to build and install Rakudo from sources.
+
+tbd
 
 <br/>
 
