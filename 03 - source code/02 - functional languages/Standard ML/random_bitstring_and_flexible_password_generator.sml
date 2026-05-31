@@ -8,7 +8,7 @@ random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 2025-07-07/08
 2025-12-21: see below
 2026-01-04: cosmetics
-2026-05-30: refactored from char_set to pattern (for regular expressions)
+2026-05-29/30: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
