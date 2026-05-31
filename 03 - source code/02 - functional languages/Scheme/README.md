@@ -2,9 +2,7 @@
 
 A home page for Scheme: https://www.scheme.org/schemers/
 
-call/cc = call-with-current-continuation:
-
-[Context switching with call/cc](https://www.boost.org/latest/libs/context/doc/html/context/cc.html): 
+**call/cc** = call-with-current-continuation: [Context switching with call/cc](https://www.boost.org/latest/libs/context/doc/html/context/cc.html): 
 > call/cc .. is a universal control operator .. that captures the current continuation as a first-class object and pass it as an argument to another continuation.
 > A continuation (abstract concept of functional programming languages) represents the state of the control flow of a program at a given point in time. Continuations can be suspended and resumed later in order to change the control flow of a program.
 
