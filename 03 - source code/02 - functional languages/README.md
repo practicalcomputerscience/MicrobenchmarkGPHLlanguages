@@ -1,3 +1,9 @@
+2026-05-31:
+
+- from my point of view, you learn more from functional programming languages for compilation, like [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) or [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme), than those for interpretation, like [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme).
+
+<br/>
+
 # Functional languages
 
 <br/>
