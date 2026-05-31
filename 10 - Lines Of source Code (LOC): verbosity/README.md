@@ -143,7 +143,6 @@ Ballerina         | 128 | interpreted, young language (together with Java ecosys
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 126 | compiled, mature language
-Bigloo Scheme     | 124 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
@@ -151,6 +150,7 @@ Chapel            | 121 | compiled, mature language
 Go                | 121 | compiled, mature language | 2026-05-28
 PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
+Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
 Common Lisp       | 114 | compiled, very mature language | 2026-05-30
 Swift             | 114 | compiled, mature language | 2026-01-26
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
@@ -228,7 +228,7 @@ Roc                | 9
 Ruby               | 1
 Rust               | 0
 Scala              | 0
-Scheme, Bigloo     | 7
+Scheme, Bigloo     | 5
 Scheme, Racket     | 5
 Smalltalk (GNU)    | 2
 Standard ML (MLton) | 7
