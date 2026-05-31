@@ -117,8 +117,6 @@ For [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGP
 
 ## LOC ranking list
 
-The results of this list are [script-based](./lines_of_source_code_count.pl): _$ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.< ... >_
-
 programming language | LOC | comments | date
 --- | --- | --- | ---
 GnuCOBOL          | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
