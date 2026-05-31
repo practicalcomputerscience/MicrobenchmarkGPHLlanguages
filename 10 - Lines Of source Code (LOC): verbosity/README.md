@@ -125,7 +125,7 @@ Ada               | 229 | compiled, very mature language: lots of declarations a
 Eiffel (Liberty)  | 222 | compiled, very mature language: some user-defined functions needed; since programs are collections of classes, this is causing some formal overhead | 2026-01-24
 Standard ML (MLton) | 199 | compiled, very mature language: numerous user-defined functions needed | 2026-05-30
 Mercury           | 194 | compiled, mature language: lots of user-defined functions needed
-Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed
+Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed | 2026-05-31
 V                 | 179 | compiled, very young programming language: some user-defined functions needed | 2026-01-24
 Fortran (GNU)     | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library
 Gleam             | 149 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions needed | 2026-05-31
