@@ -55,7 +55,7 @@ Smalltalk                        1             43             56            122
 $ 
 ```
 
-At Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st) with its now simplified commenting, cloc arrived at the same number of source lines of code as my updated script!
+At Smalltalk program [random_bitstring_and_flexible_password_generator.st](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st) with its now simplified commenting, my updated Perl script arrived at the same number of source lines of code as the cloc tool!
 
 However, with counting the SLOC's of Standard ML program [random_bitstring_and_flexible_password_generator.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml) I found an error with the cloc tool:
 
@@ -74,7 +74,7 @@ Standard ML                      1             72             89            214
 $
 ```
 
-The actual SLOC number is 199 and not 214. My Perl script (_lines_of_source_code_count.pl_) does the counting now correctly after fixing the block comments in the source code file (and in the [OCaml source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/random_bitstring_and_flexible_password_generator_main.ml)):
+The actual SLOC number is 199 and not 214. My Perl script does the counting now correctly after fixing the block comments in the source code file (and in the [OCaml source code file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/random_bitstring_and_flexible_password_generator_main.ml)):
 
 ```
 ...
