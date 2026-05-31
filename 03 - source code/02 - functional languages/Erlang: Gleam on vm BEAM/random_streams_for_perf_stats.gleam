@@ -5,11 +5,13 @@
 //
 // install this package:    $ gleam add simplifile
 //
-// build on Ubuntu 24 LTS:  $ gleam new random_streams_for_perf_stats
+// build on Ubuntu 24 LTS:  do this only once:
+//                          $ gleam new random_streams_for_perf_stats
 //                          $ cd random_streams_for_perf_stats
 //                          $ gleam test
 //
-// run on Ubuntu 24 LTS:    $ gleam run --no-print-progress
+// run on Ubuntu 24 LTS:    do this after every source code change:
+//                          $ gleam run --no-print-progress
 //                          $ time gleam run --no-print-progress --> real	0m0,234s
 //                          $ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"
 //
