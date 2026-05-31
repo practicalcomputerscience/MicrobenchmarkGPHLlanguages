@@ -1,6 +1,6 @@
 # Bigloo Scheme
 
-https://www-sop.inria.fr/indes/fp/Bigloo/
+https://www-sop.inria.fr/indes/fp/Bigloo/ (*)
 
 <br/>
 
@@ -28,11 +28,9 @@ Enter the REPL (Read-Eval-Print Loop) like this: _$ rlwrap bigloo_ and give comm
 
 Since Bigloo Scheme is (now) listed in the [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments), just because it's the fastest Scheme dialect of the tested ones (with the "speed part"), it's consequential to implement the full microbenchmark program also in [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_bitstring_and_flexible_password_generator.scm).
 
-However, Bigloo Scheme doesn't have so "big batteries" like Racket Scheme, and thus it's number of lines of source code is higher with 124 versus 110 for Racket Scheme: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list).
+However, Bigloo Scheme doesn't have so "big batteries" like Racket Scheme, and thus it's number of lines of source code is higher with 114 versus 107 for Racket Scheme: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list) (as of 2026-05-31).
 
-[Number of user-defined functions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#number-of-user-defined-functions) is also higher with 7 versus 5 for Racket Scheme.
-
-But what counts more are **substantial algorithmic differences** between Bigloo and Racket Scheme, even visible in this rather short program.
+But what counts more are **substantial algorithmic differences** between Bigloo and Racket Scheme implementations, even visible in this rather short program.
 
 In short: it's easier to program in Racket Scheme than in Bigloo Scheme from my point of view.
 
@@ -48,7 +46,7 @@ One example is **program execution order**, which can be easily maintained in (i
 
 Such a construct is not working as intended in Bigloo Scheme, where procedure _input_a_valid_number_ as a user-defined function would be executed **before** "generating a random bit stream..." is being displayed.
 
-To prevent this in Bigloo Scheme, one must first define _n_char_ and then imperatively set it like this:
+To prevent this in Bigloo Scheme, one can first define _n_char_ and then imperatively set it like this:
 
 ```
 ...
@@ -62,7 +60,7 @@ To prevent this in Bigloo Scheme, one must first define _n_char_ and then impera
 
 <br/>
 
-The definition of _char_set_ pretty well highlights, what it means to have "smaller batteries" in Bigloo Scheme:
+The old definition of _char_set_ pretty well highlights from my point of view, what it means to have "smaller batteries" in Bigloo Scheme:
 
 ```
 (define (iota-range low high)
@@ -84,7 +82,9 @@ The definition of _char_set_ pretty well highlights, what it means to have "smal
                      (string-from-range 97 122))))
 ```
 
-Here's the definition of string _char_set_ with Racket Scheme, an elegant construct, which doesn't need any user-defined functions:
+Though, this shouldn't mean that above code couldn't be shortened, for example to only one user defined helper function (I didn't test this).
+
+In comparison, here's the old definition of string _char_set_ in Racket Scheme, an elegant construct without user-defined functions:
 
 ```
   (define char_set
@@ -98,7 +98,15 @@ Here's the definition of string _char_set_ with Racket Scheme, an elegant constr
 
 <br/>
 
-So, if execution speed doesn't matter, I would generally prefer Racket Scheme over Bigloo Scheme, and the other tested dialects, that is CHICKEN, Chez and Gambit Scheme.
+### Why Bigloo Scheme over Racket Scheme?
+
+However, I think that even as a "Racket coder" it would absolutely make sense to also gain some practice in a Scheme dialect which is meant for compilation (and not interpretation for historical reasons). And in this sense, Bigloo Scheme is a very good choice from my point of view.
+
+Racket Scheme's program execution along a "natural" order of _(define ...)_ expressions could give you the false impression (as a "Racket coder") that things are easier than they actually are.
+
+Bigloo's design target is this (from (*)):
+
+> Its design is governed by one rule: enabling Scheme-based programming style where C(++) is usually required.
 
 <br/>
 
