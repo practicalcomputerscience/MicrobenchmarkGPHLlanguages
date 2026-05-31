@@ -2,6 +2,7 @@
 #
 # 2025-04-17/18/27/../30/, 2025-05-01/03/04/05/23, 2025-06-01
 # 2025-12-21: see below
+# 2026-05-31: see below (only cosmetics)
 #
 # check with: $ roc check random_bitstring_and_flexible_password_generator.roc
 # build with: $ roc build random_bitstring_and_flexible_password_generator.roc --optimize  # <<<<<<<<<<<<<<< OPTIMIZE!!
@@ -12,7 +13,7 @@
 # remark on U16: this type doesn't work here; program will crash: "Roc crashed with: Integer addition overflowed! ..."
 #
 #
-# $ roc --version
+# $ roc version
 # roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC
 # $
 #
@@ -147,7 +148,7 @@ main! = |_args|
   with_special_chars = answer_yes_or_no!({})
   # _ = Stdout.line!("Your choice is: ${with_special_chars}")
 
-  # n_char = 12  # fxied for testing
+  # n_char = 12  # fixed for testing
 
 
   # s_int_8 <-- lots of 8 bit numbers => just have a shorter length
@@ -161,7 +162,7 @@ main! = |_args|
           printable_chars(s_int_8a)  # List (U8) as return type
       else
           # get only the alphanumerical chars out of s_int_8a:
-          alphanum_printable_chars(s_int_8a)  # List (U8) as return type
+          alphanum_chars(s_int_8a)  # List (U8) as return type; 2026-05-31
 
   # shorten s_int_8b to the right length:
   s_int_8c = List.sublist(s_int_8b, {start: 0, len: Num.to_u64(n_char)})
@@ -221,7 +222,7 @@ nbr16_into_nbr8 = |in_16|
 printable_chars : List (U8) -> List (U8)
 printable_chars = |list_u8|
                   List.walk(list_u8, [], |nums, nbr_u8|
-                              # https://www.ascii-code.com/ --> dec [33...126] is printable => no space char (like in scala)
+                              # https://www.ascii-code.com/ --> dec [33...126] is printable => no space char (like in Scala)
                               if nbr_u8 >= 33 && nbr_u8 <= 126 then
                                 List.append(nums, nbr_u8)
                               else
@@ -229,16 +230,16 @@ printable_chars = |list_u8|
                            )
 
 # only alphanumerical chars 0..9, A-Z, a-z = dec [48..57], [65..90], [97..122]
-alphanum_printable_chars : List (U8) -> List (U8)
-alphanum_printable_chars = |list_u8|
-                      List.walk(list_u8, [], |nums, nbr_u8|
-                                 if nbr_u8 >= 48 && nbr_u8 <= 57 ||
-                                    nbr_u8 >= 65 && nbr_u8 <= 90 ||
-                                    nbr_u8 >= 97 && nbr_u8 <= 122 then
-                                    List.append(nums, nbr_u8)
-                                 else
-                                    nums
-                               )
+alphanum_chars : List (U8) -> List (U8)  # 2026-05-31
+alphanum_chars = |list_u8|
+                  List.walk(list_u8, [], |nums, nbr_u8|
+                             if nbr_u8 >= 48 && nbr_u8 <= 57 ||
+                                nbr_u8 >= 65 && nbr_u8 <= 90 ||
+                                nbr_u8 >= 97 && nbr_u8 <= 122 then
+                                List.append(nums, nbr_u8)
+                             else
+                                nums
+                           )
 
 
 # user defined record for state of an integer number to its string presentation
