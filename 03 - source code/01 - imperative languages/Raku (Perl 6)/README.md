@@ -161,16 +161,32 @@ t/12-rakuast/xx-fixed-in-rakuast.rakutest                     (Wstat: 0 Tests: 1
   TODO passed:   32, 106
 Files=173, Tests=2822, 27 wallclock secs ( 0.68 usr  0.19 sys + 170.06 cusr 13.97 csys = 184.90 CPU)
 Result: PASS
-$
-```
+$ sudo make install
++++ Rakudo installed successfully!
+$ ./rakudo-m ../random_bitstring_and_flexible_password_generator.raku  # make a real test!
 
-tbd
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$ 
+```
 
 ### Compiling for target JVM
 
-perl Configure.pl --gen-nqp --backends=jvm  -- or similar as a test?
+```
+$ perl Configure.pl --backends=jvm --gen-moar --relocatable
+...
+$ make -j1
+...
+$ make test
+...
 
-tbd
+```
+
+
+
+raku --target=jar --output=app.jar app.raku
+
 
 
 <br/>
