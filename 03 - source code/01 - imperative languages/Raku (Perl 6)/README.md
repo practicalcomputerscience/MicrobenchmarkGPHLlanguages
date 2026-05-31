@@ -19,9 +19,9 @@ Although Raku is (still) a very slow programming language ([Languages that were 
 
 ## Installation tips
 
-See from: https://raku.org/nav/1/install
+See from: https://rakubrew.org/ or https://raku.org/install
 
-Start installation with running:
+Start installation with running for example:
 
 ```
 $ curl https://rakubrew.org/install-on-perl.sh | sh
@@ -72,7 +72,7 @@ Available backends:
 $
 ```
 
-Then I downloaded the latest Rakudo on MoarVM version. Actually, this is the central command to install Raku in a Linux system:
+Then I downloaded the latest Rakudo on MoarVM compiler version. Actually, this is the central command to install Raku in a Linux system:
 
 ```
 $ rakubrew download
@@ -89,6 +89,16 @@ At last, I did a small test:
 ```
 $ raku -e 'say "Now running {$*RAKU.compiler.version}!"'
 Now running 2025.08!
+$
+```
+
+2026-05-31: switch to a more modern version of Rakudo for example like this: 
+
+```
+$ rakubrew switch moar-2026.04
+Switching to moar-2026.04
+$ raku -e 'say "Now running {$*RAKU.compiler.version}!"'
+Now running 2026.04!
 $
 ```
 
