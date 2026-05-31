@@ -110,11 +110,68 @@ $
 
 ## Compiling a Raku script for the Java Virtual Machine (JVM)
 
-See from [Configuring Rakudo to run on the JVM](https://github.com/rakudo/rakudo/#configuring-rakudo-to-run-on-the-jvm).
+See also from [Configuring Rakudo to run on the JVM](https://github.com/rakudo/rakudo/#configuring-rakudo-to-run-on-the-jvm), though these procedures didn't work for me!
 
-I failed on two different Ubuntu 24 LTS systems to build and install Rakudo from sources.
+tbd: _rakudo-2026.05.tar.gz_
+
+After some experimentation, I found a way how to build and install Rakudo with target JVM! (tbd: really?)
+
+I could even use a modern Java version:
+
+```
+$ java --version
+openjdk 25.0.3 2026-04-21
+OpenJDK Runtime Environment (build 25.0.3+9-2-24.04.2-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.3+9-2-24.04.2-Ubuntu, mixed mode, sharing)
+$
+```
+
+If several JDK installations are available, you can select a specific one like this:
+
+```
+$ sudo update-alternatives --config java
+...
+  0            /usr/lib/jvm/java-25-openjdk-amd64/bin/java      2511      auto mode
+...
+$ java --version
+...
+$
+```
+
+### Compiling for standard target MoarVM
+
+First, start with the easier and usual target MoarVM before trying to move to the JVM. In extracted subdirectrory _./rakudo-2026.05_ run this command:
+
+```
+$ make clean  # clean up the mess of prior attempts
+...
+$ perl Configure.pl --backends=moar --gen-moar --relocatable
+...
+$ make -j1  # this may take some time! -j1 = force single-threaded compilation to stop memory leaks
+...
+$ make test
+...
+All tests successful.
+
+Test Summary Report
+-------------------
+t/09-moar/Line_Break__LineBreak.t                             (Wstat: 0 Tests: 2 Failed: 0)
+  TODO passed:   1-2
+t/12-rakuast/xx-fixed-in-rakuast.rakutest                     (Wstat: 0 Tests: 114 Failed: 0)
+  TODO passed:   32, 106
+Files=173, Tests=2822, 27 wallclock secs ( 0.68 usr  0.19 sys + 170.06 cusr 13.97 csys = 184.90 CPU)
+Result: PASS
+$
+```
 
 tbd
+
+### Compiling for target JVM
+
+perl Configure.pl --gen-nqp --backends=jvm  -- or similar as a test?
+
+tbd
+
 
 <br/>
 
