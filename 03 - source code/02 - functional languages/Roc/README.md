@@ -53,12 +53,12 @@ s = int_generate({y : counter_start, limit : upper_limit, x : []})
 
 ## Installation tips
 
-I followed these instructions: https://www.roc-lang.org/install/linux_x86_64
+I followed these instructions: https://www.roc-lang.org/install/unix
 
 Have a short check that things are working:
 
 ```
-$ roc --version
+$ roc version
 roc nightly pre-release, built from commit d73ea109 on Tue 09 Sep 2025 09:02:08 AM UTC
 $
 ```
