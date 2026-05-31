@@ -3,14 +3,18 @@
 // 2025-10-27/28/29, 2025-12-13: edit of some comments
 // 2025-12-14: see below
 // 2026-01-26: cosmetics in first user dialog
+// 2026-05-31: refactored from char_set to pattern (for regular expressions)
 //
 // install these packages:  $ gleam add simplifile
+//                          $ gleam add gleam_regexp@1  # 2026-05-31
 //
-// build on Ubuntu 24 LTS:  $ gleam new random_bitstring_and_flexible_password_generator
+// build on Ubuntu 24 LTS:  do this only once:
+//                          $ gleam new random_bitstring_and_flexible_password_generator
 //                          $ cd random_bitstring_and_flexible_password_generator
 //                          $ gleam test
 //
-// run on Ubuntu 24 LTS:    $ gleam run --no-print-progress
+// run on Ubuntu 24 LTS:    do this after every source code change:
+//                          $ gleam run --no-print-progress
 //
 // $ gleam -V
 // gleam 1.14.0
@@ -21,6 +25,7 @@ import gleam/string
 import gleam/int  // for random, parse (string to integer)
 import gleam/list
 import gleam/result  // for unwrap
+import gleam/regexp  // 2026-05-31: see https://github.com/gleam-lang/regexp
 
 import simplifile
 // for writing to files: https://github.com/bcpeinhardt/simplifile/blob/d8e69974b2bfe9382e7c2ebeaf374950e0d4d6d0/src/simplifile.gleam
@@ -61,7 +66,7 @@ fn write_to_file(filename: String, content: String, file_type: String) {
   case file_type {
     "bit"  -> {
       let bit_file  = content |> simplifile.write(to: filename)  // using the pipe operator: |>
-      // let assert Ok(_) is crashing the program, if not OK:+
+      // let assert Ok(_) is crashing the program, if not OK:
       //   https://github.com/gleam-lang/cookbook/blob/55ed1da52a92db758cf8bb7d7459e59fdf3a3078/universal/test/file_system/work_with_files.gleam#L24
       // echo bit_file  // for testing: good case return value: Ok(Nil)
       case bit_file {
@@ -120,7 +125,7 @@ fn input_a_valid_number(n_char: Int) -> Int {
         // Ok(value) -> result.unwrap(int_of_string_opt, 0)  // https://hexdocs.pm/gleam_stdlib/gleam/result.html#unwrap
         Ok(value) -> {
           case value {
-            value if value >= 8 -> value
+            value if value >= 8 -> value  // "normally", Gleam doesn't have if expressions
             _ -> {
               io.println("enter an integer number >= 8 or 'y'\n")  // 2026-01-26
               input_a_valid_number(n_char_default)
@@ -149,9 +154,8 @@ fn answer_yes_or_no () -> Bool {
 
 
 // recursive password loop
-//   this solution is based on the MLton Standard ML solution
 //   j: counter for x
-fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String) -> String {
+fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), pattern: regexp.Regexp) -> String {  // 2026-05-31
 
   let next_elem_x = result.unwrap(list.first(x), 0)  // type of next_elem_x: Result(Int, Nil); 0 is the bad case alternative
   // echo next_elem_x  // for testing
@@ -181,8 +185,9 @@ fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String)
   // echo char0a  // for testing
   // echo char1a  // for testing
 
+  // 2026-05-31: new solution with regular expressions:
   let char0_add = {
-    case string.contains(does: char_set, contain: char0a) {
+    case regexp.check(pattern, char0a) {
       True  -> char0a
       False -> ""
     }
@@ -190,19 +195,19 @@ fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), char_set: String)
   // echo char0_add  // for testing
 
   let char1_add = {
-    case string.contains(does: char_set, contain: char1a) {
+    case regexp.check(pattern, char1a) && string.length(pw_str) < n {
+    // 2026-05-31: the second term has been forgotten in the old solution!
       True  -> char1a
       False -> ""
     }
   }
-  // echo char1_add  // for testing
+  // echo char0_add  // for testing
 
   let new_pw_str  = pw_str <> char0_add <> char1_add
-  let new_pw_size = string.length(new_pw_str)
 
-  case new_pw_size >= n {
+  case string.length(new_pw_str) >= n {
     True  -> new_pw_str
-    False -> pw_generator (j+1, new_pw_str, n, next_x, char_set)  // recursion
+    False -> pw_generator (j+1, new_pw_str, n, next_x, pattern)  // recursion
   }
 }
 
@@ -274,40 +279,47 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
   let with_special_chars = answer_yes_or_no ()
   // echo with_special_chars  // for testing
 
-  let char_set = {
-    case with_special_chars {
-      True ->  // char_range '!' '~'
-        {let int_numbers = list.range(33, 126)  // make a list of integers of Unicode codepoints
-
-         // convert integers to codepoints --> [Ok(33), Ok(34), Ok(35), Ok(36), ...]
-         let codepoints  = list.filter_map(int_numbers, fn(n) { string.utf_codepoint(n) })
-         // echo codepoints  // for testing
-         string.from_utf_codepoints(codepoints)  // convert codepoints to strings
-
-        }
-
-      False ->
-        {let int_numbers1 = list.range(48, 57)
-         let codepoints1  = list.filter_map(int_numbers1, fn(n) { string.utf_codepoint(n) })
-         // echo codepoints1  // for testing
-         let int_numbers2 = list.range(65, 90)
-         let codepoints2  = list.filter_map(int_numbers2, fn(n) { string.utf_codepoint(n) })
-
-         let int_numbers3 = list.range(97, 122)
-         let codepoints3  = list.filter_map(int_numbers3, fn(n) { string.utf_codepoint(n) })
-
-         string.from_utf_codepoints(codepoints1) <> string.from_utf_codepoints(codepoints2) <>
-         string.from_utf_codepoints(codepoints3)
-        }
-    }
-  }
+  // 2026-05-31: old solution:
+  //   let char_set = {
+  //     case with_special_chars {
+  //       True ->  // char_range '!' '~'
+  //         {let int_numbers = list.range(33, 126)  // make a list of integers of Unicode codepoints
+  //
+  //          // convert integers to codepoints --> [Ok(33), Ok(34), Ok(35), Ok(36), ...]
+  //          let codepoints  = list.filter_map(int_numbers, fn(n) { string.utf_codepoint(n) })
+  //          // echo codepoints  // for testing
+  //          string.from_utf_codepoints(codepoints)  // convert codepoints to strings
+  //
+  //         }
+  //
+  //       False ->
+  //         {let int_numbers1 = list.range(48, 57)
+  //          let codepoints1  = list.filter_map(int_numbers1, fn(n) { string.utf_codepoint(n) })
+  //          // echo codepoints1  // for testing
+  //          let int_numbers2 = list.range(65, 90)
+  //          let codepoints2  = list.filter_map(int_numbers2, fn(n) { string.utf_codepoint(n) })
+  //
+  //          let int_numbers3 = list.range(97, 122)
+  //          let codepoints3  = list.filter_map(int_numbers3, fn(n) { string.utf_codepoint(n) })
+  //
+  //          string.from_utf_codepoints(codepoints1) <> string.from_utf_codepoints(codepoints2) <>
+  //          string.from_utf_codepoints(codepoints3)
+  //         }
+  //     }
+  //   }
   // echo char_set  // for testing
 
+  // 2026-05-31: new solution with regular expressions (Google AI):
+  let assert Ok(pattern) = {
+    case with_special_chars {
+      True  -> regexp.from_string("^[!-~]$")
+      False -> regexp.from_string("^[A-Za-z0-9]$")
+    }
+  }
 
-  let pw_chars = pw_generator(0, "", n_char, x_rev, char_set)
+  let pw_chars = pw_generator(0, "", n_char, x_rev, pattern)
+
   io.println("\nYour password of " <> int.to_string(n_char) <> " characters is: " <> pw_chars)
 }
 
 // end of random_bitstring_and_flexible_password_generator.gleam
-
-
