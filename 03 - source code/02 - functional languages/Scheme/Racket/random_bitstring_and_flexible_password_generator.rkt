@@ -204,7 +204,7 @@ $
       (define char1 (integer->char (string->number bin0_1 2)))
       ; (printf "\nchar0 = ~a -- char1 = ~a" char0 char1)  ; for testing
 
-      ; 2026-05-29: new solution with regular expressions:
+      ; 2026-05-30: new solution with regular expressions:
       (define char0_add
         (if (regexp-match? pattern (string char0))
           (string char0)
