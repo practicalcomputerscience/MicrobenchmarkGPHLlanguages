@@ -6,7 +6,15 @@ https://github.com/inko-lang/inko
 
 ---
 
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [LLVM's Polly loop optimizer](#llvms-polly-loop-optimizer)
+- [Regular expressions](#regular-expressions)
+
 <br/>
+
+---
 
 ## Installation tips
 
@@ -101,6 +109,24 @@ $
 ```
 
 Voilà!
+
+<br/>
+
+#### Regular expressions
+
+At the moment, Inko doesn't support natively regular expressions. There has been package: [Inko Regex](https://github.com/dusty-phillips/inko-regex/tree/main#inko-regex), which is also listed here (as of 2026-06-06): https://inko-lang.org/packages/
+
+However, and at least with Inko version 0.20.0, I can't compile source code file [regex.inko](https://github.com/dusty-phillips/inko-regex/blob/main/src/regex.inko):
+
+```
+$ inko build regex.inko 
+regex.inko:1:18 error(invalid-syntax): expected an identifier or keyword
+$
+```
+
+Well, the _Inko Regex_ package hasn't been updated for 3 years now.
+
+So, I will leave current program [random_bitstring_and_flexible_password_generator.inko](./random_bitstring_and_flexible_password_generator.inko) as it is now, and won't refactor it for using regular expressions.
 
 <br/>
 
