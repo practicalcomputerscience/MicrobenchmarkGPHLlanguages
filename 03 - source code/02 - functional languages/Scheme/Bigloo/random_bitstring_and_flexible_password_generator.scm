@@ -214,7 +214,7 @@ $
   ; (printf "\nmain: with_special_chars = ~a" with_special_chars)  ; for testing
 
   #|
-  2026-05-30: 2026-05-30: old solution:
+  2026-05-30: old solution:
   (set! char_set
     (if with_special_chars
       (string-from-range 33 126)  ; end of range is inclusive
