@@ -23,8 +23,11 @@ $ curl https://releases.inko-lang.org/$VER.tar.gz -o $VER.tar.gz
 $ tar -C $VER -xf $VER.tar.gz
 $ cd $VER
 $ cargo build --release
+...
 $ make
+...
 $ sudo make install
+...
 $ inko --version
 inko 0.19.1
 $
@@ -58,17 +61,44 @@ error: could not find native static library `Polly`, perhaps an -L flag is missi
 $
 ```
 
-You can install the Polly library for the targeted LLVM version like this (in Ubuntu), here for LLVM version 21 or example:
+You can install the missing Polly library for the targeted LLVM version like this (in Ubuntu), here for LLVM version 21 or example:
 
 ```
-$ sudo apt install libpolly-21-dev
+$ sudo apt install libpolly-21-dev libclang-common-21-dev
 ...
-$ sudo apt install libclang-common-21-dev
-
-$ tbd
+$
 ```
 
+> [!IMPORTANT]
+> Essential before you restart the build: reset the Rust build which went wrong before!
 
+```
+$ cargo clean  # clear the cargo cache
+     Removed 723 files, 219.0MiB total
+$ cargo build --release  # restart the build
+   Compiling libc v0.2.185
+   Compiling cfg-if v1.0.4
+   Compiling find-msvc-tools v0.1.9
+...
+   Compiling ureq v3.3.0
+   Compiling inko v0.20.0 (~/scripts/Inko/0.20.0/inko)
+    Finished `release` profile [optimized] target(s) in 8.21s
+$
+```
+
+Now you should be able to restart the compilation of Inko from its source (as shown above):
+
+```
+$ make
+...
+$ sudo make install
+...
+$ inko --version
+inko 0.20.0
+$
+```
+
+Voilà!
 
 <br/>
 
