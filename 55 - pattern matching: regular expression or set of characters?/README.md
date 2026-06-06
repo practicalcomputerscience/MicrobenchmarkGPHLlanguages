@@ -100,12 +100,13 @@ AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compile
 C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX) | 2026-05-25
 C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX) | 2026-05-25
 Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | 2026-05-29
-COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-03
+COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases,  | 2026-06-03
 CoffeeScript | yes | | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | 2026-05-26
 Common Lisp | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-30
 Gleam | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-31
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | 2026-05-27
 Haxe | yes | | OK | non-POSIX patterns used for target safety: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-27
+Inko |  |  | OK | _char_set_ is a _StringBuffer_ of allowed characters, partly compiled from codepoints, partly filled from a string | 2026-06-06
 Java | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-26
 Julia | yes |  | OK | non-POSIX patterns: _r"[!-~]+"_, _r"[A-Za-z0-9]+"_ | 2026-05-28
 Kotlin | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-26
