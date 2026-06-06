@@ -18,7 +18,19 @@ Numerous programming languages are using the LLVM compiler infrastructure. Howev
 
 So, I started this dedicated page to collect some of the information about and around LLVM.
 
+---
+
+Table of contents:
+
+- [Easy installation in Ubuntu 24](#easy-installation-in-ubuntu-24)
+- [LLVM installation of a specific LLVM version in Ubuntu 24](#llvm-installation-of-a-specific-llvm-version-in-ubuntu-24)
+- [Linux installation directories](#linux-installation-directories)
+- [Switching between several LLVM installations](#switching-between-several-llvm-installations)
+- [Easy installation in Windows 11](#easy-installation-in-windows-11)
+
 <br/>
+
+---
 
 ### Easy installation in Ubuntu 24
 
@@ -32,13 +44,13 @@ $ llvm-config --version
 $ 
 ```
 
-However, see below at []
+However, this installation only installs the core LLVM framework and not the clang compiler frontend, see below at [Switching between several LLVM installations](#switching-between-several-llvm-installations).
 
 <br/>
 
 ### LLVM installation of a specific LLVM version in Ubuntu 24
 
-With the friendly help of Google AI, here I additionally install LLVM version 21 for example:
+With the help of Google AI, here I additionally installed LLVM version 21 for example:
 
 ```
 $ wget https://apt.llvm.org/llvm.sh  # download the official LLVM setup script
@@ -89,9 +101,7 @@ $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
 $
 ```
 
-However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend.
-
-This installation can be done like this (in Ubuntu 24):
+However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. This installation can be done like this (in Ubuntu 24):
 
 ```
 $ sudo apt install clang-23 llvm-23-dev
@@ -159,18 +169,6 @@ InstalledDir: C:\Program Files\LLVM\bin
 
 >
 ```
-
-<br/>
-
-tbd
-
-<br/>
-
-tbd
-
-<br/>
-
-tbd
 
 <br/>
 
