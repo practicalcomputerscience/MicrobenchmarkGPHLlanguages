@@ -86,7 +86,7 @@ $
 
 ### Switching between several LLVM installations
 
-This task takes a more effort, because we have to tell Ubuntu about the installed versions, something which creates a selectable menu:
+This task takes more effort, because we have to tell Ubuntu about the installed versions, something which creates a selectable menu:
 
 ```
 $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 14 \
@@ -101,7 +101,7 @@ $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
 $
 ```
 
-However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. This installation can be done like this (in Ubuntu 24):
+However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. That installation can be done like this (in Ubuntu 24):
 
 ```
 $ sudo apt install clang-23 llvm-23-dev
