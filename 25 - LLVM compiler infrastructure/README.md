@@ -27,7 +27,7 @@ Table of contents:
 - [Linux installation directories](#linux-installation-directories)
 - [Switching between several LLVM installations](#switching-between-several-llvm-installations)
 - [Easy installation in Windows 11](#easy-installation-in-windows-11)
-- [LLVM's Polly loop optimizer](#)
+- [LLVM's Polly loop optimizer](#llvms-polly-loop-optimizer)
 
 <br/>
 
