@@ -51,6 +51,8 @@ $
 
 <br/>
 
+### LLVM's Polly loop optimizer
+
 When running command _$ cargo build --release_, it may happen that LLVM's Polly loop optimizer is missing:
 
 ```
