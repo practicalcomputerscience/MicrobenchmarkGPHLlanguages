@@ -10,6 +10,8 @@ _clang_ = the clang compiler (in Linux and Windows), which is usually installed 
 
 https://llvm.org/
 
+https://github.com/llvm/llvm-project
+
 <br/>
 
 Numerous programming languages are using the LLVM compiler infrastructure. However, sometimes a specific version of LLVM is required.
@@ -29,6 +31,8 @@ $ llvm-config --version
 23.0.0  # as of 2026-06-06
 $ 
 ```
+
+However, see below at []
 
 <br/>
 
@@ -56,10 +60,84 @@ $ ls /usr/include/ -l
 ...
 drwxr-xr-x  3 root root   4096 Feb 17 16:15 llvm-14
 drwxr-xr-x  3 root root   4096 Feb 14 21:35 llvm-19
+drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-21
 drwxr-xr-x  3 root root   4096 Jun  6 12:02 llvm-23
 drwxr-xr-x  3 root root   4096 Feb 17 16:15 llvm-c-14
 drwxr-xr-x  3 root root   4096 Feb 14 21:35 llvm-c-19
+drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-c-21
 drwxr-xr-x  3 root root   4096 Jun  6 12:02 llvm-c-23
+...
+$
+```
+
+<br/>
+
+### Switching between several LLVM installations
+
+This task takes a more effort, because we have to tell Ubuntu about the installed versions, something which creates a selectable menu:
+
+```
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 14 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-14 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-14
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 19 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-19 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-19
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-21 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-21
+$
+```
+
+However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend.
+
+This installation can be done like this (in Ubuntu 24):
+
+```
+$ sudo apt install clang-23 llvm-23-dev
+...
+$ 
+```
+
+Check the clang compiler:
+
+```
+$ /usr/lib/llvm-23/bin/clang --version
+Ubuntu clang version 23.0.0 (++20260601024917+256d09201cf9-1~exp1~20260601024941.1659)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-23/bin
+$
+```
+
+..and register it:
+
+```
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-23 23 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-23 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-23
+update-alternatives: using /usr/bin/clang-23 to provide /usr/bin/clang (clang) in auto mode
+$
+```
+
+<br/>
+
+Hopefully, all LLVM versions are registered now successfully, and thus the LLVM configuration menu can be called:
+
+```
+$ sudo update-alternatives --config clang
+There are 4 choices for the alternative clang (providing /usr/bin/clang).
+
+  Selection    Path               Priority   Status
+------------------------------------------------------------
+* 0            /usr/bin/clang-23   23        auto mode
+  1            /usr/bin/clang-14   14        manual mode
+  2            /usr/bin/clang-19   19        manual mode
+  3            /usr/bin/clang-21   21        manual mode
+  4            /usr/bin/clang-23   23        manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 
+$
 ```
 
 <br/>
