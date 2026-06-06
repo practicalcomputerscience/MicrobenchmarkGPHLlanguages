@@ -48,4 +48,28 @@ $
 
 <br/>
 
+When running command _$ cargo build --release_, it may happen that LLVM's Polly loop optimizer is missing:
+
+```
+$ cargo build --release
+...
+error: could not find native static library `Polly`, perhaps an -L flag is missing?
+...
+$
+```
+
+You can install the Polly library for the targeted LLVM version like this (in Ubuntu), here for LLVM version 21 or example:
+
+```
+$ sudo apt install libpolly-21-dev
+...
+$ sudo apt install libclang-common-21-dev
+
+$ tbd
+```
+
+
+
+<br/>
+
 ##_end
