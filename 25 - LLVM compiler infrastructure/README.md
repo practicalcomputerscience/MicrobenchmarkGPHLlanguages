@@ -27,6 +27,7 @@ Table of contents:
 - [Linux installation directories](#linux-installation-directories)
 - [Switching between several LLVM installations](#switching-between-several-llvm-installations)
 - [Easy installation in Windows 11](#easy-installation-in-windows-11)
+- [LLVM's Polly loop optimizer](#)
 
 <br/>
 
@@ -169,6 +170,12 @@ InstalledDir: C:\Program Files\LLVM\bin
 
 >
 ```
+
+<br/>
+
+### LLVM's Polly loop optimizer
+
+Here's something about [LLVM's Polly loop optimizer](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/README.md#llvms-polly-loop-optimizer).
 
 <br/>
 
