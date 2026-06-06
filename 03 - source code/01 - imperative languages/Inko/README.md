@@ -14,6 +14,8 @@ Things got much easier with Inko version 0.19.1 compared to the version that I u
 
 I installed Inko version 0.19.1 like this, leaning to chapter _**From source**_ and starting with the latest release tarball: https://docs.inko-lang.org/manual/latest/setup/installation/ (*)
 
+Version numbers can be looked up from here (as of 2026-06-06): https://github.com/inko-lang/inko/tags
+
 ```
 $ VER='0.19.1'
 $ mkdir $VER
