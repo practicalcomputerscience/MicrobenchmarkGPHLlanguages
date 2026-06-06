@@ -86,7 +86,7 @@ $ cargo build --release  # restart the build
 $
 ```
 
-Now you should be able to restart the compilation of Inko from its source (as shown above):
+Now you should be able to restart the compilation of Inko from its sources (as shown above):
 
 ```
 $ make
