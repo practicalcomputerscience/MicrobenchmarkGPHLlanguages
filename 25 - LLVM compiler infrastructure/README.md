@@ -175,7 +175,7 @@ InstalledDir: C:\Program Files\LLVM\bin
 
 ### LLVM's Polly loop optimizer
 
-Here's something about [LLVM's Polly loop optimizer](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko/README.md#llvms-polly-loop-optimizer).
+Here's something about [LLVM's Polly loop optimizer](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Inko#llvms-polly-loop-optimizer).
 
 <br/>
 
