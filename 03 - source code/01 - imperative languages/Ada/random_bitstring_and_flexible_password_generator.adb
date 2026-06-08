@@ -1,24 +1,34 @@
 --  random_bitstring_and_flexible_password_generator.adb
 --
 --  2025-05-09/10/11/12/13/18/31
---  2025-07-13: repaired Exception Handling when writing to files => program must not stop at an exception here!
---  2025-07-16: speed improved Integer_to_bin_string => change not measurable, but leave changed code!
+--  2025-07-13: repaired Exception Handling when writing to files
+--              => program must not stop at an exception here!
+--  2025-07-16: speed improved Integer_to_bin_string
+--              => change not measurable, but leave changed code!
 --  2025-12-14: see below
 --  2026-01-25: fixing some warnings
+--  2026-06-08: refactored from char_set to pattern (for regular expressions);
+--              other small fixes to lower the number of LOC's
 --
 --
---  build on Ubuntu 24 LTS: $ alr init --bin random_bitstring_and_flexible_password_generator
---                          $ cd random_bitstring_and_flexible_password_generator
---                          $ alr build
---                          $ alr run
+--  build on Ubuntu 24 LTS: do this only once:
+--           $ alr init --bin random_bitstring_and_flexible_password_generator
 --
---  run on Ubuntu 24 LTS:   $ ./bin/random_bitstring_and_flexible_password_generator
+--           do this after every source code change:
+--           $ cd random_bitstring_and_flexible_password_generator
+--           $ alr build
+--           $ alr run
+--
+--  run on Ubuntu 24 LTS:
+--           $ ./bin/random_bitstring_and_flexible_password_generator
+--
 --
 --  changes to random_bitstring_and_flexible_password_generator_config.gpr:
---    "-O3" <-- https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
---    commented: --  "-Og" -- Optimize for debug
+--  "-O3" <-- https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
+--  commented: --  "-Og" -- Optimize for debug
 
 with Ada.Text_IO; use Ada.Text_IO;  --  with use clause
+with GNAT.Regexp; use GNAT.Regexp;
 --  => Put("5 + 9 - 3 = "); Put(5 + 9 - 3, 3); New_Line;
 --     instead of Ada.Text_IO.Put(), Ada.Integer_Text_IO.Put()
 --  with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
@@ -62,7 +72,8 @@ procedure random_bitstring_and_flexible_password_generator is
    use Seq_IO;
    F : Seq_IO.File_Type;
 
-   subtype Random_Range is Integer range 1 .. m - 1;  --  2025-12-14: don't start with 0 or m!
+   subtype Random_Range is Integer range 1 .. m - 1;
+   --  2025-12-14: don't start with 0 or m!
    --  Learning Ada - the complete contents of learn.adacore.com, 2025,
    --  23.2. Random Number Generation
    package R is new
@@ -93,13 +104,19 @@ procedure random_bitstring_and_flexible_password_generator is
    WITH_SPECIAL_CHARS : Boolean := True;
    answer_str : Unbounded_String := To_Unbounded_String ("");
 
-   package SU renames Ada.Strings.Unbounded;
+   package SU renames Ada.Strings.Unbounded;  -- SU only used in these 2 lines
    pw_chars : SU.Unbounded_String;
 
-   subtype char_upper_letter is Character range 'A' .. 'Z';
-   subtype char_lower_letter is Character range 'a' .. 'z';
-   subtype char_dec_digit is Character range '0' .. '9';
-   subtype char_printable is Character range '!' .. '~';
+   --  2026-06-08: old solution:
+   --    subtype char_upper_letter is Character range 'A' .. 'Z';
+   --    subtype char_lower_letter is Character range 'a' .. 'z';
+   --    subtype char_dec_digit is Character range '0' .. '9';
+   --    subtype char_printable is Character range '!' .. '~';
+
+   --  2026-06-08: new solution with regular expressions:
+   print_re : constant Regexp := Compile ("[!-~]", Glob => False);
+   alnum_re : constant Regexp := Compile ("[A-Za-z0-9]", Glob => False);
+   pattern : Regexp;
 
    bin0_0, bin0_1 : String (1 .. 8);
    bin0_0a, bin0_1a : String (1 .. 11);  --  2#11100000#
@@ -219,7 +236,7 @@ begin
             Write (F, bits_x (i));
          end loop;
       Close (F);
-      Put_Line ("Bit stream has been written to disk under name:  " & file_bits_x);
+      Put_Line ("Bit stream has been written to disk under name:  " & file_bits_x);  -- leave too long line
       exception
          when Seq_IO.Status_Error =>
             Put_Line ("could not write to file: " & file_bits_x);
@@ -232,7 +249,7 @@ begin
             Write (F, bits_hex (i));
          end loop;
       Close (F);
-      Put_Line ("Byte stream has been written to disk under name: " & file_bits_hex);
+      Put_Line ("Byte stream has been written to disk under name: " & file_bits_hex);  -- leave too long line
       exception
          when Seq_IO.Status_Error =>
             Put_Line ("could not write to file: " & file_bits_hex);
@@ -244,6 +261,8 @@ begin
    while not answer loop
       N_CHAR := 12;
       New_Line;
+      --  2026-06-08: a shorter version in only one line
+      --              would cause an style warning:
       Put ("Password of" & Integer'Image (N_CHAR));
       Put (" printable chars OK? 'y' or another integer number >= 8: ");
       answer_str := Get_Line;
@@ -278,8 +297,15 @@ begin
       end if;
    end loop;
 
+   --  2026-06-08: new solution with regular expressions:
+   if WITH_SPECIAL_CHARS then
+      pattern := print_re;
+   else
+      pattern := alnum_re;
+   end if;
+
    i := 1;   --  char counter for the password
-   jj := 1;  --  char counter for x:
+   jj := 1;  --  counter for x:
    --  don't take j from Integer_to_bin_string(), it's not working!?!
 
    while i <= N_CHAR loop
@@ -305,37 +331,19 @@ begin
       char1 := Character'Val (char1_nbr);
       --  Put (char0); Put (char1); New_Line;  --  for testing
 
-      if WITH_SPECIAL_CHARS then
-         if char0 in char_printable
-         then
-            pw_chars := pw_chars & char0;
-            i := i + 1;
-         end if;
+      --  2026-06-08: new solution with regular expressions
+      --  we now need also type "Standard.String" (Google AI):
+      char0a : constant String := [1 => char0];
+      char1a : constant String := [1 => char1];
 
-         if char1 in char_printable
-            and then i < N_CHAR
-         then
-            pw_chars := pw_chars & char1;
-            i := i + 1;
-         end if;
+      if Match (char0a, pattern) then
+         pw_chars := pw_chars & char0;
+         i := i + 1;
+      end if;
 
-      else
-         if char0 in char_upper_letter
-            or else char0 in char_lower_letter
-            or else char0 in char_dec_digit
-         then
-            pw_chars := pw_chars & char0;
-            i := i + 1;
-         end if;
-
-         if (char1 in char_upper_letter
-            or else char1 in char_lower_letter
-            or else char1 in char_dec_digit)
-            and then i < N_CHAR
-         then
-            pw_chars := pw_chars & char1;
-            i := i + 1;
-         end if;
+      if Match (char1a, pattern) and then i < N_CHAR then
+         pw_chars := pw_chars & char1;
+         i := i + 1;
       end if;
 
       jj := jj + 1;
