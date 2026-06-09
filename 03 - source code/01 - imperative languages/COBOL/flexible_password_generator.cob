@@ -41,7 +41,7 @@ FILE-CONTROL.
 DATA DIVISION.
 FILE SECTION.
 FD  FILE-BITS-X.
-01  BIT-RECORD        PIC X(1000000).  *> PIC X() for holding alphanumeric characters
+01  BIT-RECORD        PIC X(1000000).  *> PIC X() for holding characters
                                        *> PIC is a picture clause
 FD  FILE-BITS-HEX.
 01  HEX-RECORD        PIC X(250000).
@@ -62,7 +62,7 @@ WORKING-STORAGE SECTION.
 *> Variables
 01  WS-FS             PIC XX.  *> 00 = Success, others = Error
 
-77  I                 PIC 9(9).  *> used for more than one counting procedure
+77  I                 PIC 9(9).  *> used for more than one counting procedures
 77  X-PREV            PIC 9(9).
 77  X-CURR            PIC 9(9).
 77  TEMP-VAL          PIC 9(9).
