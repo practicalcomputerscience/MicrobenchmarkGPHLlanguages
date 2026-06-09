@@ -3,6 +3,8 @@ random_bitstring_and_flexible_password_generator.v
 
 2025-05-20/21/31; 2025-12-18: see below
 2026-01-24: renaming variable bits_x_str0a back to bits_x_str (and also at bits_hex_str)
+2026-06-10: refactored from char_set to pattern (for regular expressions)
+
 
 build on Ubuntu 24 LTS: $ v random_bitstring_and_flexible_password_generator.v
   build for production: $ v -prod random_bitstring_and_flexible_password_generator.v
@@ -10,14 +12,16 @@ build on Ubuntu 24 LTS: $ v random_bitstring_and_flexible_password_generator.v
 run on Ubuntu 24 LTS:   $ v run random_bitstring_and_flexible_password_generator.v
 or the compiled binary: $ ./random_bitstring_and_flexible_password_generator
 
+
 Old version with string concatenation: mut bits_x   := ""; bits_x += bits_x_str1 + inbuilt number to string conversion functions
     generating a random bit stream...
     Bit stream has been written to disk under name:  random_bitstring.bin
     Byte stream has been written to disk under name: random_bitstring.byte
     this took 2213ms to run
 
+
 $ v version
-V 0.4.10 ddfedc7
+V 0.5.1 ed17e5f
 $
 
 */
@@ -31,6 +35,7 @@ import rand.pcg32
 import strconv     // provides functions for converting strings to numbers and numbers to strings
                    // https://modules.vlang.io/strconv.html#format_uint
 import strings     // strings.Builder
+import regex       // 2026-06-09
 
 
 // const can only be defined at the top level (outside of functions):
@@ -85,7 +90,7 @@ fn main() {
     //
     // https://modules.vlang.io/strconv.html#format_int
     // bits_x_str0 := strconv.format_int(i64(x_now), 2)   // non padded return string: 13892 =>   11011001000100
-    // bits_x_str1 := strconv.format_str(bits_x_str0, b)  // padding to "16 bits":    13892  => 0011011001000100
+    // bits_x_str1 := strconv.format_str(bits_x_str0, b)  // padding to "16 bits":     13892 => 0011011001000100
     // mut b := strconv.BF_param{}  // https://modules.vlang.io/strconv.html#BF_param -- BF_param Struct
     // https://github.com/vlang/v/blob/b21dbbb420d25c3274b76642f407d9dd3ba56094/vlib/strconv/format.md?plain=1#L241
     // b.pad_ch = u8(`0`)  // https://modules.vlang.io/strconv.html#BF_param
@@ -156,15 +161,23 @@ fn main() {
   }
 
 
-  mut char_set := ""
-  if with_special_chars {
-    for i := 33; i < 127; i++ {
-     char_set += utf32_to_str(u32(i))
-    }
-  } else {
-    char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-  }
+  // 2026-06-10: old solution:
+  //   mut char_set := ""
+  //   if with_special_chars {
+  //     for i := 33; i < 127; i++ {
+  //      char_set += utf32_to_str(u32(i))
+  //     }
+  //   } else {
+  //     char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  //   }
   // println("char_set = ${char_set}")  // for testing
+
+  // 2026-06-10: new solution with regular expressions:
+  //   https://github.com/vlang/v/tree/master/vlib/regex
+  mut print_re := regex.regex_opt(r'^[!-~]$')       or { panic(err) }
+  mut alnum_re := regex.regex_opt(r'^[A-Za-z0-9]$') or { panic(err) }
+  // Select the pattern dynamically using an if-else expression (Google AI):
+	mut pattern  := if with_special_chars { print_re } else { alnum_re }
 
 
   mut i := 0  // char counter for the password
@@ -185,12 +198,13 @@ fn main() {
     char1b := utf32_to_str(u32(char0b))
     // print("char1a = ${char1a}  --  char1b = ${char1b}\n")  // for testing
 
-    if char_set.contains(char1a) {
+    // 2026-06-10: new solution with regular expressions:
+    if pattern.matches_string(char1a) {
       pw_chars += char1a
       i += 1
     }
 
-    if char_set.contains(char1b) && i < n_char {
+    if pattern.matches_string(char1b) && i < n_char {
       pw_chars += char1b
       i += 1
     }
@@ -198,7 +212,7 @@ fn main() {
     j += 1
   }
 
-  println("\nYour password of $n_char characters is: ${pw_chars}")
+  println("\nYour password of ${n_char} characters is: ${pw_chars}")  // 2026-06-09
 }
 
 
@@ -313,4 +327,3 @@ fn string_to_file (file_name string, str_b strings.Builder, stream string ) {
 ///////////////////////////////////////////////////////
 
 // end of random_bitstring_and_flexible_password_generator.v
-
