@@ -10,6 +10,12 @@ Swift may explain why you cannot make money with a (new) programming language ap
 
 Or put differently: why is Apple's Swift (finally) [open source](https://github.com/swiftlang), but not [SwiftUI](https://swiftpackageregistry.com/OpenSwiftUIProject/OpenSwiftUI)?
 
+<br/>
+
+NS = [NeXTSTEP](https://www.linkedin.com/posts/mansi-tanna15_swift-xcode-iosdevelopment-share-7222941614715883520-Tic7/)
+
+> The NS prefix is seen in many foundational classes from the Objective-C era, such as NSString, NSArray, and NSObject. Even though Swift introduces its own native types (like String), you'll often interact with NS-prefixed classes when bridging between Swift and Objective-C or using certain APIs.
+
 ---
 
 <br/>
