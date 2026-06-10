@@ -150,13 +150,13 @@ PHP               | 118 | usually interpreted, very mature web programming langu
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
 Common Lisp       | 114 | compiled, very mature language | 2026-05-30
-Swift             | 114 | compiled, mature language | 2026-01-26
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
+Swift             | 105 | compiled, mature language | 2026-06-10
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Julia             | 101 | just-in-time compiled, mature language | 2026-05-28
