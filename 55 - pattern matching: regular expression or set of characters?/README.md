@@ -105,6 +105,7 @@ COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in bo
 CoffeeScript | yes | | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | 2026-05-26
 Common Lisp | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-30
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-09
+Fortran (GNU) |  |  | OK | GNU Fortan has no native support of regular expressions, but the [regex_module](https://github.com/perazz/fortran-regex/tree/main#fortran-regex) could be used => _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-10
 Gleam | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-31
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | 2026-05-27
 Haxe | yes | | OK | non-POSIX patterns used for target safety: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-27
