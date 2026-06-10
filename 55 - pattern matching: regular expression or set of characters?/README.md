@@ -99,6 +99,7 @@ programming language | regular expression with variable _pattern_ used? | set/ha
 Ada | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-08
 AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | 2026-05-24
 C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX) | 2026-05-25
+C3 |  |  | OK | still no native support of regular expressions, but 3rd party [C3 Regex Library](https://github.com/cheese3660/regex.c3l#c3-regex-library) could be used for example => _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-06-10
 C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX) | 2026-05-25
 Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | 2026-05-29
 COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases ("picture clauses" for holding characters), compiled from codepoints | 2026-06-03
