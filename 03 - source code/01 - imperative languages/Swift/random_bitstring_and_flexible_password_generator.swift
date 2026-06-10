@@ -3,13 +3,15 @@ random_bitstring_and_flexible_password_generator.swift
 
 2025-05-08/09/17/31, 2025-06-01, 2025-12-13: see below
 2026-01-24: cosmetics at password user dialog and password printing
+2026-06-10: refactored from char_set to pattern (for regular expressions)
+
 
 build on Ubuntu 24 LTS: $ swift package init --name random_bitstring_and_flexible_password_generator --type executable
                         $ swift build  # Building for ***debugging***
                         $ ...
                         # https://www.swift.org/documentation/server/guides/building.html
                         $ swift build -c release  # Building for release <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                        
+
 run on Ubuntu 24 LTS:   $ ./.build/x86_64-unknown-linux-gnu/release/random_bitstring_and_flexible_password_generator
 
 
@@ -18,7 +20,7 @@ run on Ubuntu 24 LTS:   $ ./.build/x86_64-unknown-linux-gnu/release/random_bitst
     use try bits_x.write(toFile: file_bits_x, atomically: false, encoding: .utf8)
     instead of try bits_x.write(toFile: file_bits_x, atomically: true, encoding: .utf8)
   see below.
-    
+
 
 Package.swift is the manifest file for Swift. It’s where you keep metadata for your project, as well as dependencies.
 https://www.swift.org/getting-started/cli-swiftpm/
@@ -142,21 +144,28 @@ while !answer {
   }
 }
 
-var char_set = ""
-let digits          = UInt32("0") ... UInt32("9")
-let small_letters   = UInt32("a") ... UInt32("z")
-let big_letters     = UInt32("A") ... UInt32("Z")
-let printable_chars = UInt32("!") ... UInt32("~")
-// https://stackoverflow.com/questions/49808837/initialize-a-string-from-a-range-of-characters-in-swift
 
-if WITH_SPECIAL_CHARS {
-  char_set = String(String.UnicodeScalarView(printable_chars.compactMap(UnicodeScalar.init)))
-}  else {
-  char_set = String(String.UnicodeScalarView(digits.compactMap(UnicodeScalar.init)))
-           + String(String.UnicodeScalarView(small_letters.compactMap(UnicodeScalar.init)))
-           + String(String.UnicodeScalarView(big_letters.compactMap(UnicodeScalar.init)))
-}
+// 2026-06-10: old solution
+//   var char_set = ""
+//   let digits          = UInt32("0") ... UInt32("9")
+//   let small_letters   = UInt32("a") ... UInt32("z")
+//   let big_letters     = UInt32("A") ... UInt32("Z")
+//   let printable_chars = UInt32("!") ... UInt32("~")
+//   // https://stackoverflow.com/questions/49808837/initialize-a-string-from-a-range-of-characters-in-swift
+//
+//   if WITH_SPECIAL_CHARS {
+//     char_set = String(String.UnicodeScalarView(printable_chars.compactMap(UnicodeScalar.init)))
+//   }  else {
+//     char_set = String(String.UnicodeScalarView(digits.compactMap(UnicodeScalar.init)))
+//              + String(String.UnicodeScalarView(small_letters.compactMap(UnicodeScalar.init)))
+//              + String(String.UnicodeScalarView(big_letters.compactMap(UnicodeScalar.init)))
+//   }
 // print("char_set = \(char_set)")  // char_set = 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+// 2026-06-10: new solution with regular expressions:
+let print_re = /[!-~]/
+let alnum_re = /[A-Za-z0-9]/
+let pattern = if WITH_SPECIAL_CHARS { print_re } else { alnum_re }
 
 
 var i = 0  // char counter for the password
@@ -185,14 +194,15 @@ while i < N_CHAR {
   let char1 = String(Character(UnicodeScalar(UInt32(int0_1))!))
   // print("char0 = \(char0), char1 = \(char1)")  // for testing
 
-  if char_set.contains(char0) {
-      pw_chars = pw_chars + char0
-      i += 1
+  // 2026-06-10: new solution with regular expressions:
+  if char0.firstMatch(of: pattern) != nil {
+     pw_chars  = pw_chars + char0
+     i += 1
   }
 
-  if char_set.contains(char1) && i < N_CHAR {
-      pw_chars = pw_chars + char1
-      i += 1
+  if char1.firstMatch(of: pattern) != nil && i < N_CHAR {
+     pw_chars  = pw_chars + char1
+     i += 1
   }
 
   j += 1
