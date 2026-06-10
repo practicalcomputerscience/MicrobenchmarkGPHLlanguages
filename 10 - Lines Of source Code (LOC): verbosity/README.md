@@ -154,8 +154,8 @@ Haxe              | 113 | interpreted, mature language: some user-defined functi
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
 Crystal           | 111 | compiled, young language
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
-C#                | 109 | interpreted, mature language (together with .NET ecosystem)
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
+C#                | 107 | interpreted, mature language (together with .NET ecosystem) | 2026-06-10
 Swift             | 105 | compiled, mature language | 2026-06-10
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
