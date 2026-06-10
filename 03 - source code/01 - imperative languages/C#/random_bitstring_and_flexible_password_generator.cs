@@ -2,6 +2,9 @@
 random_bitstring_and_flexible_password_generator.cs
 
 2025-06-07/08; 2025-12-17: see below
+2026-06-10: renamed char_set to pattern (for regular expression patterns) to better comply with naming conventions,
+            though char_set was already used for pattern matching
+
 
 build on Ubuntu 24 LTS: $ dotnet new console -n random_bitstring_and_flexible_password_generator --use-program-main
                         $ cd ./random_bitstring_and_flexible_password_generator
@@ -137,14 +140,15 @@ class Program
       }
     }
 
-    string char_set = "";
+    string pattern = "";
     // https://learn.microsoft.com/de-de/dotnet/standard/base-types/character-classes-in-regular-expressions
     if (WITH_SPECIAL_CHARS) {
-      char_set += "[!-~]";  // @"..." = take it literally
+      pattern += "[!-~]";  // @"..." = take it literally; 2026-06-10: use name pattern, not char_set
     } else {
-      char_set += "[a-zA-Z0-9]";
+      pattern += "[a-zA-Z0-9]";
+      // pattern = "[[:alnum:]]";  // this does not work, but compiles!
     }
-    // Console.WriteLine(char_set); // for testing
+    // Console.WriteLine(pattern); // for testing
 
 
     i = 0;  // char counter for the password
@@ -167,16 +171,12 @@ class Program
       string char1b = Convert.ToString(Convert.ToChar(char0b));
       // Console.WriteLine("{0} -- {1}", char1a, char1b);  // for testing
 
-      Match match1 = Regex.Match(char1a, char_set);
-      Match match2 = Regex.Match(char1b, char_set);
-      // https://learn.microsoft.com/de-de/dotnet/api/system.text.regularexpressions.match?view=net-9.0
-
-      if (match1.Success) {
+      if (Regex.IsMatch(char1a, pattern)) {  // 2026-06-10: shorter solution
         pw_chars += char1a;
         i += 1;
       }
 
-      if (match2.Success && i < N_CHAR) {
+      if (Regex.IsMatch(char1b, pattern) && i < N_CHAR) {  // 2026-06-10: shorter solution
         pw_chars += char1b;
         i += 1;
       }
