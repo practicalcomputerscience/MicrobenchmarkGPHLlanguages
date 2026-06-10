@@ -17,7 +17,7 @@ Ballerina | Ballerina 2201.13.3 (Swan Lake Update 13), Language specification 20
 C | Homebrew clang version 22.1.5 | $ clang -v
 C++ | g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc., ... | $ g++ --version
 C# | Microsoft.AspNetCore.App 8.0.22 ... ; Microsoft.NETCore.App 8.0.22 ...; 8.0.122 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
-C3 | C3 Compiler Version: 0.7.8; ... ; Backends: LLVM; LLVM version: 19.1.7; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
+C3 | C3 Compiler Version: 0.8.0_3; ... ; Backends: LLVM; LLVM version: 22.1.5; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
 Chapel | chpl version 2.6.0; built with LLVM version 20.1.8; ... ; Copyright 2020-2025 Hewlett Packard Enterprise Development LP; Copyright 2004-2019 Cray Inc. ... | $ chpl --version
 Clojure | Leiningen 2.10.0 on Java 25.0.2 OpenJDK 64-Bit Server VM | $ lein version
 COBOL | cobc (GnuCOBOL) 3.1.2.0, Copyright (C) 2020 Free Software Foundation, Inc., ..., C version "13.2.0" | $ cobc -V 
