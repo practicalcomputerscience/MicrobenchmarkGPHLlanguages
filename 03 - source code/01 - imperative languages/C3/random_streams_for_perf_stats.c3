@@ -4,19 +4,33 @@ random_streams_for_perf_stats.c3
 2025-05-31; 2025-12-17: see below; 2026-01-09: deleted one outdated definition
 2026-01-25: fixing the error of last missing digits in bits_x and bits_hex
 2026-01-25: copying from little strings into big strings to have more abstraction here like in Fortran, C++ or Eiffel
+2026-06-10: the new C3 version, upgraded to version 0.8.0_3 in this fast evolving language, required a little refactoring, see below
+
 
 build on Ubuntu 24 LTS: $ c3c compile random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144  # for development
                         $ c3c compile -O3 random_streams_for_perf_stats.c3 -o random_streams_for_perf_stats_c3 --max-stack-object-size 262144  # for production
 
 run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats_c3 => real	0m0.015s
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_c3
-                        => 0.015396 +- 0.000116 seconds time elapsed  ( +-  0.75% ) => a little bit faster than the old, C-like solution!
+                        => 0.015969 +- 0.000117 seconds time elapsed  ( +-  0.73% ) => a little bit faster than the old, C-like solution!
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-O0  - Safe, no optimizations, emit debug info.
+-O1  - Safe, high optimization, emit debug info.
+-O2  - Unsafe, high optimization, emit debug info.
+-O3  - Unsafe, high optimization, single module, emit debug info. <<<<<<< more stable exe times and lower exe times ("wall clock")
+-O4  - Unsafe, highest optimization, relaxed maths, single module, emit debug info, no panic messages.
+-O5  - Unsafe, highest optimization, fast maths, single module, emit debug info, no panic messages, no backtrace.
+-Os  - Unsafe, high optimization, small code, single module, no debug info, no panic messages.
+-Oz  - Unsafe, high optimization, tiny code, single module, no debug info, no panic messages, no backtrace.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 $ c3c --version
-C3 Compiler Version:       0.7.8
+C3 Compiler Version:       0.8.0_3
 ...
-LLVM version:              19.1.7
+LLVM version:              22.1.5
 ...
 $
 
@@ -87,9 +101,12 @@ fn int main()
     io::printfn("could not open file for writing: %s -- %s", FILE_BITS_X, excuse1);
     main_return_val = 1;
   } else {
-    usz? f1a = io::fprintf(&f1, "%s", (String)&bits_x);
-    // https://c3-lang.org/faq/#patterns
-    // https://c3-lang.org/standard-library/#usz-fprintfoutstream-out-string-format-args
+    sz? f1a = io::fprintf(&f1, "%s", (String)&bits_x);  // 2026-06-10
+    // https://c3-lang.org/standard-library/docs.html#std::io::fprintf
+    // sz  = built-in type signed integer to represent the size of an object in memory
+    // sz? = optional type to hold either a valid value or an error/fault code 
+    //   https://c3-lang.org/language-fundamentals/basic-types-and-values/#integers
+    //   https://c3-lang.org/language-common/optionals-essential/
     if (catch excuse1a = f1a) {
       io::printfn("could not write to file: %s -- %s", FILE_BITS_X, excuse1a);
       main_return_val = 2;
@@ -105,7 +122,7 @@ fn int main()
     io::printfn("could not open file for writing: %s -- %s", FILE_BITS_HEX, excuse2);
     main_return_val = 1;
   } else {
-    usz? f2a = io::fprintf(&f2, "%s", (String)&bits_hex);
+    sz? f2a = io::fprintf(&f2, "%s", (String)&bits_hex);  // 2026-06-10
     if (catch excuse2a = f2a) {
       io::printfn("could not write to file: %s -- %s", FILE_BITS_HEX, excuse2a);
       main_return_val = 2;
@@ -119,4 +136,3 @@ fn int main()
 }
 
 // end of random_streams_for_perf_stats.c3
-

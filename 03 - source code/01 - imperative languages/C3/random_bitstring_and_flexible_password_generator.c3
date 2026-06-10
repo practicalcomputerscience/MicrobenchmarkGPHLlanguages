@@ -4,27 +4,22 @@ random_bitstring_and_flexible_password_generator.c3
 2025-05-30; 2025-12-17: see below; 2026-01-09: deleted one outdated definition
 2026-01-25: fixing the error of last missing digits in bits_x and bits_hex
 2026-01-25: copying from little strings into big strings to have more abstraction here like in Fortran, C++ or Eiffel
+2026-06-10: the new C3 version, upgraded to version 0.8.0_3 in this fast evolving language, required a little refactoring, see below
+2026-06-10: as of today, C3 doesn't provide native support of regular expressions, though some projects exist like this one for example:
+            https://github.com/cheese3660/regex.c3l, and which is written in C3.
+            NFA engine = non-deterministic finite automata engine:
+            https://blog.gistre.epita.fr/posts/alban.duval-mottet-2025-06-28-understanding-regular-expression-engines/
+
 
 build on Ubuntu 24 LTS: $ c3c compile -O3 random_bitstring_and_flexible_password_generator.c3 --max-stack-object-size 262144
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--O0  - Safe, no optimizations, emit debug info.
--O1  - Safe, high optimization, emit debug info.
--O2  - Unsafe, high optimization, emit debug info.
--O3  - Unsafe, high optimization, single module, emit debug info. <<<<<<< more stable exe times and lower exe times ("wall clock")
--O4  - Unsafe, highest optimization, relaxed maths, single module, emit debug info, no panic messages.
--O5  - Unsafe, highest optimization, fast maths, single module, emit debug info, no panic messages, no backtrace.
--Os  - Unsafe, high optimization, small code, single module, no debug info, no panic messages.
--Oz  - Unsafe, high optimization, tiny code, single module, no debug info, no panic messages, no backtrace.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-$ c3c -V
-C3 Compiler Version:       0.7.8
+$ c3c --version
+C3 Compiler Version:       0.8.0_3
 ...
-LLVM version:              19.1.7
+LLVM version:              22.1.5
 ...
 $
 
@@ -95,9 +90,12 @@ fn int main()
     io::printfn("could not open file for writing: %s -- %s", FILE_BITS_X, excuse1);
     main_return_val = 1;
   } else {
-    usz? f1a = io::fprintf(&f1, "%s", (String)&bits_x);
-    // https://c3-lang.org/faq/#patterns
-    // https://c3-lang.org/standard-library/#usz-fprintfoutstream-out-string-format-args
+    sz? f1a = io::fprintf(&f1, "%s", (String)&bits_x);  // 2026-06-10
+    // https://c3-lang.org/standard-library/docs.html#std::io::fprintf
+    // sz  = built-in type signed integer to represent the size of an object in memory
+    // sz? = optional type to hold either a valid value or an error/fault code
+    //   https://c3-lang.org/language-fundamentals/basic-types-and-values/#integers
+    //   https://c3-lang.org/language-common/optionals-essential/
     if (catch excuse1a = f1a) {
       io::printfn("could not write to file: %s -- %s", FILE_BITS_X, excuse1a);
       main_return_val = 2;
@@ -113,7 +111,7 @@ fn int main()
     io::printfn("could not open file for writing: %s -- %s", FILE_BITS_HEX, excuse2);
     main_return_val = 1;
   } else {
-    usz? f2a = io::fprintf(&f2, "%s", (String)&bits_hex);
+    sz? f2a = io::fprintf(&f2, "%s", (String)&bits_hex);  // 2026-06-10
     if (catch excuse2a = f2a) {
       io::printfn("could not write to file: %s -- %s", FILE_BITS_HEX, excuse2a);
       main_return_val = 2;
@@ -221,7 +219,7 @@ fn int main()
     char char1b = (char)char1a;
     // io::printfn("char0b = %c -- char1b = %c", char0b, char1b);  // for testing
 
-    ulong? pos1 = String.index_of_char(char_set_str, char0b);
+    sz? pos1 = String.index_of_char(char_set_str, char0b);  // 2026-06-10
     if (catch excuse11 = pos1) {
       ;
     } else {
@@ -230,7 +228,7 @@ fn int main()
     }
 
 
-    ulong? pos2 = String.index_of_char(char_set_str, char1b);
+    sz? pos2 = String.index_of_char(char_set_str, char1b);  // 2026-06-10
     if (catch excuse12 = pos2) {
       ;
     } else {
@@ -249,4 +247,3 @@ fn int main()
 }
 
 // end of random_bitstring_and_flexible_password_generator.c3
-
