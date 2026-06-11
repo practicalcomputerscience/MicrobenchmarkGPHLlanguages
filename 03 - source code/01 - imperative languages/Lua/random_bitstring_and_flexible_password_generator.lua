@@ -1,6 +1,10 @@
 --[[ random_bitstring_and_flexible_password_generator.lua
 
-2025-07-14, 2025-07-23: fixing the string matching when creating the password; 2025-12-13: see below
+2025-07-14, 2025-07-23: fixing the string matching when creating the password
+2025-12-13: see below
+2026-06-11: refactoring at the password generation loop with function string.find() instead of string.match()
+            refactoring at answer_str
+
 
 run in Ubuntu 24 LTS:  $ lua random_bitstring_and_flexible_password_generator.lua
 
@@ -40,20 +44,6 @@ local function Integer_to_bin_string(N)
     end
     bin_str = ('0'):rep(16-#bin_str)..bin_str
     return bin_str
-end
-
-
-local function safeStringToInt(str)
-  return pcall(function()
-    local num = tonumber(str)
-    if not num then
-      error("enter an integer number >= 8 or 'y'")
-    elseif num and math.floor(num) == num then
-      return num
-    else
-      error("enter an integer number >= 8 or 'y'")
-    end
-  end)
 end
 
 -- end of user defined functions
@@ -133,17 +123,15 @@ while answer == false do
   if answer_str == "y" then
     answer = true
   else
-    local success, n_char_ = safeStringToInt(answer_str)
-    if success then
-      if n_char_ < 8 then
-        print("enter an integer number >= 8 or 'y'")
-      else
-        n_char = n_char_
-        answer = true
-      end
+    -- 2026-06-11: refactored to check for strict integer numbers, and not accepting '8.0' as a valid answer for example
+    local num = tonumber(answer_str)
+
+    if math.type(num) == "integer" and num >= 8 then
+      n_char = num
+      answer = true
     else
       print("enter an integer number >= 8 or 'y'")
-   end
+    end
   end
 end
 -- print("n_char = "..n_char)  -- for testing
@@ -195,12 +183,14 @@ while i < n_char do
   char1 = string.char(tonumber(bin0_1, 2))
   -- print("  char0 = "..char0.." -- char1 = "..char1)
 
-  if string.match(char_set, "[%"..char0.."]") then  -- match also non-printable chars literally!
+  -- 2026-06-11: new solution to not use this shaky construct:
+  --             if string.match(char_set, "[%"..char0.."]") then  -- match also non-printable chars literally!
+  if string.find(char_set, char0, 1, true) then
     pw_chars = pw_chars..char0
     i = i + 1
   end
 
-  if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char then
+  if string.find(char_set, char1, 1, true) and string.len(pw_chars) < n_char then
     pw_chars = pw_chars..char1
     i = i + 1
   end
@@ -211,4 +201,3 @@ end
 print ("\nYour password of "..n_char.." characters is: "..pw_chars)
 
 -- end of random_bitstring_and_flexible_password_generator.lua
-
