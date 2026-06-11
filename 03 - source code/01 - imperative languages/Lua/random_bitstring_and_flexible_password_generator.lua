@@ -3,7 +3,7 @@
 2025-07-14, 2025-07-23: fixing the string matching when creating the password
 2025-12-13: see below
 2026-06-11: refactoring at the password generation loop with function string.find() instead of string.match()
-            refactoring at answer_str
+            refactoring at first user dialog for more stringent integer number checking
 
 
 run in Ubuntu 24 LTS:  $ lua random_bitstring_and_flexible_password_generator.lua
