@@ -8,7 +8,7 @@ See from "Lua 5.4 Reference Manual ", 2025, chapter "1 – Introduction": https:
 
 <br/>
 
-The Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
+Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
 
 ```
 ...
@@ -27,7 +27,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [LuaJIT](#luajit)
 - [Lua coding tips](#lua-coding-tips)
-- [Regular Expressions in Lua]()
+- [Regular Expressions in Lua](#regular-expressions-in-lua)
 
 <br/>
 
