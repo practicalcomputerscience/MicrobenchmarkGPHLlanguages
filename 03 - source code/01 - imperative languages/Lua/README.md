@@ -2,8 +2,6 @@
 
 https://www.lua.org/
 
-<br/>
-
 > Lua is dynamically typed, runs by interpreting bytecode with a register-based **virtual machine**, and has automatic memory management with a generational garbage collection, making it ideal for configuration, scripting, and rapid prototyping.
 
 See from "Lua 5.4 Reference Manual ", 2025, chapter "1 – Introduction": https://www.lua.org/manual/5.4/manual.html
@@ -21,6 +19,17 @@ if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char th
 ```
 
 ..though I tested it now _statistically_ extensively without any problems.
+
+---
+
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [LuaJIT](#luajit)
+- [Lua coding tips](#lua-coding-tips)
+- [Regular Expressions in Lua]()
+
+<br/>
 
 ---
 
@@ -89,6 +98,14 @@ I declared variables, functions, libraries etc. as _**local**_, that is for stac
 > To optimize memory usage, prefer local variables over global ones. Local variables are stored in the stack, which is faster and automatically cleaned up when no longer needed. This practice minimizes the need for garbage collection.
 
 from: https://dev.to/cristianalex_17/how-to-manage-memory-in-lua-in-2025-2a5b
+
+<br/>
+
+## Regular Expressions in Lua
+
+from: [20.1 – Pattern-Matching Functions](https://www.lua.org/pil/20.1.html)
+
+> Unlike several other scripting languages, Lua does not use POSIX regular expressions (regexp) for pattern matching. The main reason for this is size: A typical implementation of POSIX regexp takes more than 4,000 lines of code. This is bigger than all Lua standard libraries together. In comparison, the implementation of pattern matching in Lua has less than 500 lines. Of course, the pattern matching in Lua cannot do all that a full POSIX implementation does.
 
 <br/>
 
