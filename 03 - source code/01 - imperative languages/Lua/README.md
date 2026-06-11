@@ -6,20 +6,6 @@ https://www.lua.org/
 
 See from "Lua 5.4 Reference Manual ", 2025, chapter "1 – Introduction": https://www.lua.org/manual/5.4/manual.html
 
-<br/>
-
-Lua script [random_bitstring_and_flexible_password_generator.lua](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua/random_bitstring_and_flexible_password_generator.lua) may have a weakness at these string pattern matchings:
-
-```
-...
-if string.match(char_set, "[%"..char0.."]") then  -- match also non-printable chars literally!
-...
-if string.match(char_set, "[%"..char1.."]") and string.len(pw_chars) < n_char then
-...
-```
-
-..though I tested it now _statistically_ extensively without any problems.
-
 ---
 
 Table of contents:
@@ -106,6 +92,8 @@ from: https://dev.to/cristianalex_17/how-to-manage-memory-in-lua-in-2025-2a5b
 from: [20.1 – Pattern-Matching Functions](https://www.lua.org/pil/20.1.html)
 
 > Unlike several other scripting languages, Lua does not use POSIX regular expressions (regexp) for pattern matching. The main reason for this is size: A typical implementation of POSIX regexp takes more than 4,000 lines of code. This is bigger than all Lua standard libraries together. In comparison, the implementation of pattern matching in Lua has less than 500 lines. Of course, the pattern matching in Lua cannot do all that a full POSIX implementation does.
+
+from:  	"Programming in Lua" by Roberto Ierusalimschy, Lua.org, December 2003
 
 <br/>
 
