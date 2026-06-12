@@ -74,4 +74,15 @@ It was this comment which showed me the way to success: https://github.com/zigla
 
 <br/>
 
+#### Regular Expressions in Zig
+
+At the moment (as of 2026-06-12), Zig doesn't support regular expressions natively. Though, some 3rd party libraries have been implemented, like for example:
+
+- [zig-regex](https://github.com/zig-utils/zig-regex)
+- [zig-regex](https://github.com/tiehuis/zig-regex)
+
+Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using them.
+
+<br/>
+
 ##_end
