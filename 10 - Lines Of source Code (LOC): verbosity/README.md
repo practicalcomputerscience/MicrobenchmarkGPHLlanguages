@@ -136,13 +136,13 @@ AssemblyScript    | 140 | interpreted, young language (together with WebAssembly
 SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included"
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes
-Ballerina         | 128 | interpreted, young language (together with Java ecosystem) | 2026-05-11
 Odin              | 128 | compiled, young language, which is more effective in its efforts to modernize C than C3 in terms of verbosity
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 126 | compiled, mature language
 FreeBASIC         | 122 | compiled, mature language
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
+Ballerina         | 121 | interpreted, young language (together with Java ecosystem) | 2026-06-12
 Chapel            | 121 | compiled, mature language
 Go                | 121 | compiled, mature language | 2026-05-28
 PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
