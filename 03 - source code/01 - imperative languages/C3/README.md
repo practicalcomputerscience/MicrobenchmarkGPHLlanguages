@@ -79,4 +79,12 @@ This new solution:
 
 <br/>
 
+#### Regular Expressions in C3
+
+At the moment (as of 2026-06-10), C3 doesn't support regular expressions natively, but the 3rd party [C3 Regex Library](https://github.com/cheese3660/regex.c3l#c3-regex-library) could be used for example.
+
+Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using this library.
+
+<br/>
+
 ##_end
