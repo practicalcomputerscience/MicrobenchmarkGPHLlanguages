@@ -1,10 +1,14 @@
 // random_bitstring_and_flexible_password_generator.bal as main.bal
 //
 // 2026-05-08/11
+// 2026-06-12: refactored from char_set to pattern (for regular expressions)
 //
-// build on Ubuntu 24 LTS: $ bal new random_bitstring_and_flexible_password_generator
+// build on Ubuntu 24 LTS: do this only once:
+//                         $ bal new random_bitstring_and_flexible_password_generator
 //                         $ cd random_bitstring_and_flexible_password_generator
-//                         fix main.bal <-- random_bitstring_and_flexible_password_generator.bal
+//                         fix source code file name to: main.bal from random_bitstring_and_flexible_password_generator.bal
+//
+//                         do this after every code change:
 //                         $ bal build
 //
 // run on Ubuntu 24 LTS:   $ bal run  # shows more output
@@ -12,12 +16,14 @@
 //
 //                         or like this with right JRE version (must be 21 as of 2026-05-07) for no warnings:
 //                         $ sudo update-alternatives --config java  # switch to JRE version 21, if already installed
+//                         # check a potential Homebrew/Linuxbrew JDK version and mask it in the ~/.bashrc file!!
 //                         $ java --version  # openjdk 21.0.10 2026-01-20
 //                         $ java -jar ./target/bin/random_bitstring_and_flexible_password_generator.jar
 //
 //
+// 2026-06-12: language upgrade with: $ bal dist pull 2201.13.4
 // $ bal version
-// Ballerina 2201.13.3 (Swan Lake Update 13)
+// Ballerina 2201.13.4 (Swan Lake Update 13)
 // Language specification 2024R1
 // Update Tool 1.5.1
 // $ java --version
@@ -42,7 +48,7 @@
 
 import ballerina/io;
 import ballerina/random;
-// import ballerina/lang.'string;
+import ballerina/lang.'string;  // 2026-06-12
 
 
 public function main() returns error? {
@@ -96,7 +102,7 @@ public function main() returns error? {
         // Handle specific errors like "File not found" or "Permission denied"
         io:println("could not write to file: " + file_bits_x + " ! -- " + e.message());
     }
-    
+
     // write byte stream to disk
     do {
         check io:fileWriteString(file_bits_hex, bits_hex_str_total);
@@ -152,30 +158,42 @@ public function main() returns error? {
     // io:println("WITH_SPECIAL_CHARS = " + WITH_SPECIAL_CHARS.toString());  // for testing
 
 
+    // 2026-06-12: old solution:
     // In Ballerina, we use a map with null values to simulate a Set
-    map<()> char_set = {};
-
-    if (WITH_SPECIAL_CHARS) {
-        // Range from '!' (33) to '~' (126)
-        foreach int i in 33 ... 126 {
-            // 'check' handles the potential error
-            char_set[check string:fromCodePointInt(i)] = ();
-        }
-    } else {
-        // Lowercase a-z (97-122)
-        foreach int i in 97 ... 122 {
-            char_set[check string:fromCodePointInt(i)] = ();
-        }
-        // Uppercase A-Z (65-90)
-        foreach int i in 65 ... 90 {
-            char_set[check string:fromCodePointInt(i)] = ();
-        }
-        // Digits 0-9 (48-57)
-        foreach int i in 48 ... 57 {
-            char_set[check string:fromCodePointInt(i)] = ();
-        }
-    }
+    //   map<()> char_set = {};
+    //
+    //   if (WITH_SPECIAL_CHARS) {
+    //       // Range from '!' (33) to '~' (126)
+    //       foreach int i in 33 ... 126 {
+    //           // 'check' handles the potential error
+    //           char_set[check string:fromCodePointInt(i)] = ();
+    //       }
+    //   } else {
+    //       // Lowercase a-z (97-122)
+    //       foreach int i in 97 ... 122 {
+    //           char_set[check string:fromCodePointInt(i)] = ();
+    //       }
+    //       // Uppercase A-Z (65-90)
+    //       foreach int i in 65 ... 90 {
+    //           char_set[check string:fromCodePointInt(i)] = ();
+    //       }
+    //       // Digits 0-9 (48-57)
+    //       foreach int i in 48 ... 57 {
+    //           char_set[check string:fromCodePointInt(i)] = ();
+    //       }
+    //   }
     // io:println(string `char_set = ${char_set.keys().toString()}`);  // for testing
+
+    // 2026-06-12: new solution with regular expressions:
+    //             https://ballerina.io/learn/advanced-general-purpose-language-features/#regular-expressions
+    string:RegExp print_re = re `[!-~]+`;
+    string:RegExp alnum_re = re `[A-Za-z0-9]+`;
+    string:RegExp pattern;
+    if (WITH_SPECIAL_CHARS) {
+      pattern = print_re;
+    } else {
+      pattern = alnum_re;
+    }
 
 
     int i = 0;  // char counter for the password
@@ -196,14 +214,16 @@ public function main() returns error? {
         string char1b = check string:fromCodePointInt(char1a);
         // io:println(char0b + " + " + char1b);  // for testing
 
-        if char_set.hasKey(char0b) {
-            pw_chars += char0b;
-            i += 1;
+        // 2026-06-12: new solution with regular expressions:
+        //             https://central.ballerina.io/ballerina/lang.regexp/latest
+        if pattern.isFullMatch(char0b) {
+          pw_chars += char0b;
+          i += 1;
         }
 
-        if char_set.hasKey(char1b) && i < N_CHAR {
-            pw_chars += char1b;
-            i += 1;
+        if pattern.isFullMatch(char1b) && i < N_CHAR {
+          pw_chars += char1b;
+          i += 1;
         }
 
         j += 1;
