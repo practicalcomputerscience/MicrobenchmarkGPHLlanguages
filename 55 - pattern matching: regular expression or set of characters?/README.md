@@ -100,14 +100,14 @@ Ada | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-08
 AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | 2026-05-24
 C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX) | 2026-05-25
 C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX) | 2026-05-25
-C3 |  |  | OK | still no native support of regular expressions, but 3rd party [C3 Regex Library](https://github.com/cheese3660/regex.c3l#c3-regex-library) could be used for example => _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-06-10
+C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-06-10
 C# | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[a-zA-Z0-9]"_ as strings | 2026-06-10
 Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | 2026-05-29
 COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases ("picture clauses" for holding characters), compiled from codepoints | 2026-06-03
 CoffeeScript | yes | | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | 2026-05-26
 Common Lisp | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-30
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-09
-Fortran (GNU) |  |  | OK | GNU Fortan has no native support of regular expressions, but the [regex_module](https://github.com/perazz/fortran-regex/tree/main#fortran-regex) could be used => _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-10
+Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-10
 Gleam | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-31
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | 2026-05-27
 Haxe | yes | | OK | non-POSIX patterns used for target safety: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-27
@@ -116,7 +116,7 @@ Java | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-26
 Julia | yes |  | OK | non-POSIX patterns: _r"[!-~]+"_, _r"[A-Za-z0-9]+"_ | 2026-05-28
 Kotlin | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-26
 Mercury |  |  | OK | _CharSet_ is a string of allowed characters in both cases, compiled from codepoints; the _lex_ library needs extra installation and is not integral part of the Mercury implementation: [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/6b031c1ec68260767cff8e334f2aeadc998293ba/extras#extra-programs-in-the-mercury-implementation) | 2026-06-09
-Mojo |  |  | OK | still no native support of regular expressions => _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-05-28
+Mojo |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-05-28
 Nim | yes |  | OK | mixed patterns: _re"([!-~])"_, _re"[[:alnum:]]"_ (POSIX) | 2026-05-28
 OCaml | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-29
 Perl 5 | yes | | OK | non-POSIX patterns: _qr/[!-~]/_, _qr/[A-Za-z0-9]/_ | 2026-05-25
@@ -131,6 +131,7 @@ Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]
 Standard ML | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-30
 Swift | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | 2026-06-10
 V | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | 2026-06-10
+Zig |  |  | OK | _char_set_ is an _ArrayList_ of UTF-8 characters, partly compiled from codepoints, partly filled from a string | 2026-06-12
 
 <br/>
 
