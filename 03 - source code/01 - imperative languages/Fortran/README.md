@@ -87,6 +87,13 @@ where I think that the _-fcheck=all_ switch is specifically useful when you are 
 ```
 $ gfortran -Wall -Wextra -fcheck=all random_streams_for_perf_stats.f90 -o random_streams_for_perf_stats
 ```
+<br/>
+
+#### Regular Expressions in GNU Fortan
+
+GNU Fortan has no native support of regular expressions, but the [regex_module](https://github.com/perazz/fortran-regex/tree/main#fortran-regex) could be used for example.
+
+Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using this library.
 
 <br/>
 
