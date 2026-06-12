@@ -94,7 +94,7 @@ $
 
 ## The Pattern matching list
 
-programming language | regular expression with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments | refactoring date
+programming language | regular expressions with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments | refactoring date
 --- | --- | --- | --- | --- | ---
 Ada | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-08
 AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | 2026-05-24
