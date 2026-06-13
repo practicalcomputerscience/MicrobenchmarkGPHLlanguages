@@ -14,7 +14,7 @@ Table of contents:
 - [Installing the GDC (GCC-based D compiler)](#installing-the-gdc-gcc-based-d-compiler)
 - [Garbage collection](#garbage-collection)
 - [On how to do demanding string building in D](#on-how-to-do-demanding-string-building-in-d)
-- [Why is D still not very popular?](why-is-d-still-not-very-popular)
+- [Why is D still not very popular?](#why-is-d-still-not-very-popular)
 
 <br/>
 
