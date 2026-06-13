@@ -126,7 +126,7 @@ This becomes clearer at this code snippet from the full [microbenchmark program]
 
 Again, the Odin string builder comes into play (_char_set_sb_), which shows how important, even with little, dynamic strings, this concept is.
 
-Both concepts, runes and string builder, and which are important from my point of view, should be more documented in this language [Overview](https://odin-lang.org/docs/overview/) page in my opinion.
+Both concepts, runes and string builder, and which are important from my point of view, should be more documented in the language [Overview](https://odin-lang.org/docs/overview/) page in my opinion.
 
 <br/>
 
@@ -135,7 +135,7 @@ Both concepts, runes and string builder, and which are important from my point o
 I have been looking for examples of regular expressions:
 
 ```
-import "core:text/regex"
+import "core:text/regex"  // it should be: import r "core:text/regex"
 ```
 
 ..in the official Github repository [Odin Examples](https://github.com/odin-lang/examples#odin-examples), and also at the official [demo.odin](https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin).
@@ -144,11 +144,7 @@ I couldn't find aynthing useful.
 
 According to my observations, the shabby treatment of regular expressions is not unusual with some general purpose, high-level programming languages.
 
-tbd
-
-
-
-
+In the end, it was Google AI who bailed me out to find a working solution efficiently.
 
 <br/>
 
