@@ -120,6 +120,7 @@ Mercury |  |  | OK | _CharSet_ is a string of allowed characters in both cases, 
 Mojo |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-05-28
 Nim | yes |  | OK | mixed patterns: _re"([!-~])"_, _re"[[:alnum:]]"_ (POSIX) | 2026-05-28
 OCaml | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-29
+Odin | yes |  | OK | non-POSIX patterns: _`^[!-~]$`_, _`^[A-Za-z0-9]$`_ | 2026-06-13
 Perl 5 | yes | | OK | non-POSIX patterns: _qr/[!-~]/_, _qr/[A-Za-z0-9]/_ | 2026-05-25
 PowerShell | yes |  | OK | non-POSIX patterns: _"^[!-~]+$"_, _"^[A-Za-z0-9]+$"_ | 2026-05-26
 Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax | 2026-05-24
