@@ -2,6 +2,8 @@
 random_bitstring_and_flexible_password_generator.d
 
 2026-01-21
+2026-06-13: refactored from char_set to pattern (for regular expressions)
+
 
 build on Ubuntu 24 LTS: $ gdc random_bitstring_and_flexible_password_generator.d -o random_bitstring_and_flexible_password_generator_gdc  # for development
                         $ gdc -O3 random_bitstring_and_flexible_password_generator.d -o random_bitstring_and_flexible_password_generator_gdc  # for production
@@ -30,6 +32,7 @@ import std.array : appender;
 import std.string;
 import std.conv;
 import std.algorithm;
+import std.regex;  // 2026-06-13
 
 
 // Constants and Macros
@@ -115,12 +118,12 @@ int main() {
             try {
                 N_CHAR = to!int(answer_str);
                 if (N_CHAR < 8) {
-                    write("enter an integer number >= 8 or 'y'");
+                    write("enter an integer number >= 8 or 'y'\n");  // 2026-06-13
                 } else {
                     answer = true;
                 }
             } catch (ConvException e) {
-                write("enter an integer number >= 8 or 'y'");
+                write("enter an integer number >= 8 or 'y'\n");  // 2026-06-13
             }
         }
     }
@@ -143,15 +146,22 @@ int main() {
     // writeln("\nWITH_SPECIAL_CHARS = ",WITH_SPECIAL_CHARS);  // for testing
 
 
-    string char_set;
-    if (WITH_SPECIAL_CHARS) {
-        foreach (i; 33 .. 127) {
-            char_set ~= cast(char)i;
-        }
-    } else {
-        char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    }
+    // 2026-06-13: old solution:
+    //   string char_set;
+    //   if (WITH_SPECIAL_CHARS) {
+    //       foreach (i; 33 .. 127) {
+    //           char_set ~= cast(char)i;
+    //       }
+    //   } else {
+    //       char_set = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    //   }
     // writeln("\nchar_set = ", char_set);  // for testing
+
+
+    // 2026-06-13: new solution with regular expressions:
+    auto print_re = regex(r"[!-~]");
+    auto alnum_re = regex(r"[A-Za-z0-9]");
+    auto pattern  = WITH_SPECIAL_CHARS ? print_re : alnum_re;  // using the ternary operator (Google AI)
 
 
     string pw_chars;
@@ -182,12 +192,13 @@ int main() {
         // writeln("char0b = ", char0b);  // for testing
         // writeln("char1b = ", char1b);  // for testing
 
-        if (char_set.canFind(char0b)) {
+        // 2026-06-13: new solution with regular expressions:
+        if (matchFirst([char0b], pattern)) {
             pw_chars ~= char0b;
             i++;
         }
 
-        if (char_set.canFind(char1b) && i < N_CHAR) {
+        if (matchFirst([char1b], pattern) && i < N_CHAR) {
             pw_chars ~= char1b;
             i++;
         }
@@ -201,4 +212,3 @@ int main() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.d
-
