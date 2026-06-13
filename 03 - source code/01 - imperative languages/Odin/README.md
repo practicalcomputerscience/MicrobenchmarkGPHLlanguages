@@ -8,6 +8,7 @@ https://github.com/odin-lang/Odin
 
 Table of contents:
 
+- [Idea of Odin]()
 - [String concatenation in Odin](#string-concatenation-in-odin)
 - [Characters are Runes in Odin](#characters-are-runes-in-odin)
 - [Regular Expressions in Odin](#)
@@ -15,6 +16,16 @@ Table of contents:
 <br/>
 
 ---
+
+## Idea of Odin
+
+Odin started as a new language to overcome the deficits of C and C++:
+
+> I come from having worked on video game engines where I programmed a lot in C++ and C. While those languages are very powerful, they are also very old and have a lot of baggage. Odin strives to be a modern alternative to C. It doesn’t try to fundamentally solve any new problems. It is not a Big Agenda language, meaning that it doesn’t try to enforce a new way of programming onto you.
+
+from: [Introduction to the Odin Programming Language](https://zylinski.se/posts/introduction-to-odin/), 2024
+
+<br/>
 
 ## String concatenation in Odin
 
