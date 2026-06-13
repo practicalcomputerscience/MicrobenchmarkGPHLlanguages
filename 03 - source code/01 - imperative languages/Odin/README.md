@@ -132,7 +132,7 @@ Both concepts, runes and string builder, and which are important from my point o
 
 ### Regular Expressions in Odin
 
-I have been looking for examples of regular expressions:
+I have been looking for examples of regular expressions with this statement:
 
 ```
 import "core:text/regex"  // in the final program it's actually: import r "core:text/regex"
@@ -140,7 +140,7 @@ import "core:text/regex"  // in the final program it's actually: import r "core:
 
 ..in the official Github repository [Odin Examples](https://github.com/odin-lang/examples#odin-examples), and also at the official [demo.odin](https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin).
 
-I couldn't find aynthing useful.
+I couldn't find anything useful.
 
 According to my observations, the shabby treatment of regular expressions is not unusual with some general purpose, high-level programming languages.
 
