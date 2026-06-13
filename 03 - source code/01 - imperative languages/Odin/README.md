@@ -4,6 +4,14 @@ https://odin-lang.org/
 
 https://github.com/odin-lang/Odin
 
+---
+
+Table of contents:
+
+[String concatenation in Odin](#string-concatenation-in-odin)
+[Characters are Runes in Odin](#characters-are-runes-in-odin)
+[Regular Expressions in Odin](#)
+
 <br/>
 
 ---
@@ -83,7 +91,7 @@ This means that working with individual characters, and finally their (Unicode) 
 
 And working with runes has (still) its challenges from my point of view; though being started in [2016](https://odin-lang.org/docs/faq/#what-is-the-history-of-the-project), this language is still young.
 
-This becomes clearer at this code snippet from the full [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_bitstring_and_flexible_password_generator.odin), where the available character set, which I strive to be of the string type throughout the different languages, is being composed:
+This becomes clearer at this code snippet from the full [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_bitstring_and_flexible_password_generator.odin) in its old version, where the available character set, which I strived to be of the string type throughout the different languages, is being composed:
 
 ```
   ...
@@ -105,9 +113,31 @@ This becomes clearer at this code snippet from the full [microbenchmark program]
   ...
 ```
 
-Again, the Odin string builder comes into play (_char_set_sb_), which shows how important, even with little, dynamic strings, it is.
+Again, the Odin string builder comes into play (_char_set_sb_), which shows how important, even with little, dynamic strings, this concept is.
 
-Both (important) concepts, runes and string builder, should be more documented in this language [Overview](https://odin-lang.org/docs/overview/) page in my opinion.
+Both concepts, runes and string builder, and which are important from my point of view, should be more documented in this language [Overview](https://odin-lang.org/docs/overview/) page in my opinion.
+
+<br/>
+
+### Regular Expressions in Odin
+
+I have been looking for examples of regular expressions:
+
+```
+import "core:text/regex"
+```
+
+..in the official Github repository [Odin Examples](https://github.com/odin-lang/examples#odin-examples), and also at the official [demo.odin](https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin).
+
+I couldn't find aynthing useful.
+
+According to my observations, the shabby treatment of regular expressions is not unusual with some general purpose, high-level programming languages.
+
+tbd
+
+
+
+
 
 <br/>
 
