@@ -11,7 +11,7 @@ Table of contents:
 - [Idea of Odin]()
 - [String concatenation in Odin](#string-concatenation-in-odin)
 - [Characters are Runes in Odin](#characters-are-runes-in-odin)
-- [Regular Expressions in Odin](#)
+- [Regular Expressions in Odin](#regular-expressions-in-odin)
 
 <br/>
 
