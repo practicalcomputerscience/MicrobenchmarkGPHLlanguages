@@ -135,7 +135,7 @@ Both concepts, runes and string builder, and which are important from my point o
 I have been looking for examples of regular expressions:
 
 ```
-import "core:text/regex"  // it should be: import r "core:text/regex"
+import "core:text/regex"  // in the final program it's actually: import r "core:text/regex"
 ```
 
 ..in the official Github repository [Odin Examples](https://github.com/odin-lang/examples#odin-examples), and also at the official [demo.odin](https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin).
