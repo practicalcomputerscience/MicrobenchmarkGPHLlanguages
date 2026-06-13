@@ -8,7 +8,7 @@ In reference to page [Potential "C successors": which one to take?](https://gith
 - Eiffel
 - Mojo
 - Odin
-- Pony
+- [Pony](https://www.ponylang.io/)
 - Rust
 - Zig
 
