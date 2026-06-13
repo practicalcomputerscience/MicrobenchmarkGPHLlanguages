@@ -13,6 +13,7 @@ I had a little and working Mojo program from October 2024 (which tapped into the
 
 Table of contents:
 
+- [Idea of Mojo](#idea-of-mojo)
 - [Error handling when writing to files](#error-handling-when-writing-to-files)
 - [Mojo string builder](#mojo-string-builder)
 - [Installation tips](#installation-tips)
@@ -23,9 +24,22 @@ Table of contents:
 
 ---
 
+## Idea of Mojo
+
+Mojo originally started in 2023 to better support development efforts on their AI Engine than with traditional means:
+
+> The AI Engine’s kernel generator generates hardware-specific optimized implementations of machine learning operators. Modular engineers initially wrote this code in MLIR directly but found it to be a productivity challenge.
+> We decided things would be much more productive in a high-level language with Python-like usability and safety and predictability guarantees of systems programming languages like C and Rust. As such, Mojo was born to satisfy the needs of Modular’s internal development efforts on the AI Engine.
+
+from: [How Mojo integrates with the AI Engine](https://www.modular.com/blog/whats-the-difference-between-the-ai-engine-and-mojo), July 11, 2023
+
+MLIR = [Multi-Level Intermediate Representation Overview](https://mlir.llvm.org/)
+
+<br/>
+
 #### Error handling when writing to files
 
-With latest version 1.0.0b2, this behavior can no longer be observed by me, or put differently: Mojo v.1.0.0 is now behaving like other programming languages. A code change here was not needed:
+With version 1.0.0b2, the following behavior can no longer be observed by me, or put differently: Mojo v.1.0.0 is now behaving like other programming languages. A code change here was not needed:
 
 The _write_ function of Mojo, when writing to files, works differently as far as I can tell from testing other programming languages so far:
 
