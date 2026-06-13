@@ -98,7 +98,7 @@ programming language | regular expressions with variable _pattern_ used? | set/h
 --- | --- | --- | --- | --- | ---
 Ada | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-08
 AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | 2026-05-24
-Ballerina | yes |  | OK | non-POSIX patterns: _`[!-~]+`_, _`[A-Za-z0-9]+`_ | 2026-06-12
+Ballerina | yes |  | OK | non-POSIX patterns: `[!-~]+`, `[A-Za-z0-9]+` | 2026-06-12
 C | yes |  | OK | mixed patterns: _"^[!-~]+$"_, _"^[[:alnum:]]\\+$"_ (POSIX) | 2026-05-25
 C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX) | 2026-05-25
 C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | 2026-06-10
