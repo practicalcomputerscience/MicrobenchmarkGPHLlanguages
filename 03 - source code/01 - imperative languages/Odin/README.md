@@ -8,9 +8,9 @@ https://github.com/odin-lang/Odin
 
 Table of contents:
 
-[String concatenation in Odin](#string-concatenation-in-odin)
-[Characters are Runes in Odin](#characters-are-runes-in-odin)
-[Regular Expressions in Odin](#)
+- [String concatenation in Odin](#string-concatenation-in-odin)
+- [Characters are Runes in Odin](#characters-are-runes-in-odin)
+- [Regular Expressions in Odin](#)
 
 <br/>
 
