@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.odin
 
 2026-01-07/08
+2026-06-13: refactored from char_set to pattern (for regular expressions)
 
 build on Ubuntu 24 LTS: $ odin build random_bitstring_and_flexible_password_generator.odin -file           # for developing
                         $ odin build random_bitstring_and_flexible_password_generator.odin -file -o:speed  # for release
@@ -22,6 +23,7 @@ import "core:fmt"      // println(), eprintln(), printf()
 import "core:math/rand"
 import "core:strings"  // builder_make(), builder_destroy()
 import "core:strconv"  // parse_int()
+import r "core:text/regex"  // 2026-06-13
 
 
 main :: proc() {
@@ -152,24 +154,38 @@ main :: proc() {
   // fmt.eprintln("\nWITH_SPECIAL_CHARS =", WITH_SPECIAL_CHARS)  // for testing
 
 
+  // 2026-06-13: old solution:
   // char_set :=  [95]u8
   // => instead, also using a dynamic string builder here:
-  char_set_sb := strings.builder_make()
-  defer strings.builder_destroy(&char_set_sb)
-  if WITH_SPECIAL_CHARS {
-      for codepoint in 33..< 127 {
-          char: rune = rune(codepoint)  // first, convert a codepoint into a rune: this is the trick here!!
-          // this is not featured in the https://odin-lang.org/docs/overview page,
-          // but can be found in the GitHub repository! For example here:
-          // https://github.com/odin-lang/Odin/blob/f9d9166ff11f3b6eeedb4355dfa930d69c40be8a/core/text/scanner/scanner.odin#L296
-          s := fmt.tprintf("%r", char)  // then, convert this rune into a string
-          strings.write_string(&char_set_sb, s)  // finally, append this string to a string builder
-      }
-  } else {
-      strings.write_string(&char_set_sb, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
-  }
-  char_set := strings.to_string(char_set_sb)  // convert string builder into a string
+  //   char_set_sb := strings.builder_make()
+  //   defer strings.builder_destroy(&char_set_sb)
+  //   if WITH_SPECIAL_CHARS {
+  //       for codepoint in 33..< 127 {
+  //           char: rune = rune(codepoint)  // first, convert a codepoint into a rune: this is the trick here!!
+  //           // this is not featured in the https://odin-lang.org/docs/overview page,
+  //           // but can be found in the GitHub repository! For example here:
+  //           // https://github.com/odin-lang/Odin/blob/f9d9166ff11f3b6eeedb4355dfa930d69c40be8a/core/text/scanner/scanner.odin#L296
+  //           s := fmt.tprintf("%r", char)  // then, convert this rune into a string
+  //           strings.write_string(&char_set_sb, s)  // finally, append this string to a string builder
+  //       }
+  //   } else {
+  //       strings.write_string(&char_set_sb, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+  //   }
+  //   char_set := strings.to_string(char_set_sb)  // convert string builder into a string
   // fmt.eprintln("\nchar_set =", char_set)  // for testing
+
+  // 2026-06-13: new solution with regular expressions:
+  //             https://pkg.odin-lang.org/core/text/regex/#Regular_Expression
+  print_re := `^[!-~]$`  // Google AI
+  alnum_re := `^[A-Za-z0-9]$`
+  pattern: r.Regular_Expression
+	err: r.Error
+  if WITH_SPECIAL_CHARS {
+    pattern, err = r.create(print_re)
+  } else {
+    pattern, err = r.create(alnum_re)
+  }
+  defer r.destroy(pattern)  // Clean up the compiled model allocations
 
 
   // again, using dynamic string builder:
@@ -192,21 +208,20 @@ main :: proc() {
       // fmt.eprintln("char0a =", char0a)  // for testing
       // fmt.eprintln("char1a =", char1a)  // for testing
 
-      char0 : rune = rune(char0a)  // convert int into rune
-      char1 : rune = rune(char1a)
-      // fmt.eprintln("char0 =", char0)  // for testing
-      // fmt.eprintln("char1 =", char1)  // for testing
+      char0 := fmt.tprintf("%r", rune(char0a))  // convert int into rune first, then into a string
+      char1 := fmt.tprintf("%r", rune(char1a))
 
-      if strings.contains_rune(char_set, char0) {
-          s := fmt.tprintf("%r", char0)  // convert this rune into a string
-          strings.write_string(&pw_chars_sb, s)  // append this string to a string builder
-          i += 1
+      // 2026-06-13: new solution with regular expressions:
+      _, is_match0 := r.match(pattern, char0)
+      if is_match0 {
+        strings.write_string(&pw_chars_sb, char0)  // append this string to a string builder
+        i += 1
       }
 
-      if strings.contains_rune(char_set, char1) && i < N_CHAR {
-          s := fmt.tprintf("%r", char1)  // convert this rune into a string
-          strings.write_string(&pw_chars_sb, s)  // append this string to a string builder
-          i += 1
+      _, is_match1 := r.match(pattern, char1)
+      if is_match1 && i < N_CHAR {
+        strings.write_string(&pw_chars_sb, char1)  // append this string to a string builder
+        i += 1
       }
 
       j += 1
@@ -217,5 +232,3 @@ main :: proc() {
 }
 
 // end of random_bitstring_and_flexible_password_generator.odin
-
-
