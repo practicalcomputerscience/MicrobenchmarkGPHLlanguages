@@ -100,4 +100,6 @@ However, I decided to use the "Lightweight, robust, and efficient POSIX complian
 
 See also demo file _match.bas_ in subdirectory _./FreeBASIC-1.10.1-linux-x86_64/examples/regex/TRE_. 
 
+<br/>
+
 ##_end
