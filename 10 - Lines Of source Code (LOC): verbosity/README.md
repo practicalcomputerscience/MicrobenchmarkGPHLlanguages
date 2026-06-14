@@ -138,7 +138,7 @@ C++               | 129 | compiled, very mature language; memory-safe source cod
 Zig               | 129 | compiled, young language still going through major changes
 Odin              | 127 | compiled, young language, which is already more effective in its efforts to modernize C than C3 in terms of verbosity | 2026-06-13
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
-Rust              | 126 | compiled, mature language
+Rust              | 124 | compiled, mature language | 2026-06-14
 FreeBASIC         | 122 | compiled, mature language
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
