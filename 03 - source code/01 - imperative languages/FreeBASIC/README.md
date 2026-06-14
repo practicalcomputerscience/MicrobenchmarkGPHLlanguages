@@ -75,7 +75,7 @@ I also tapped into other implementations of BASIC, like:
 - **GNU Gambas 3**: https://gambaswiki.org/website/en/main.html#
 - **QB64** (**OuickBASIC** derivative): https://github.com/DualBrain/QB64
 
-However, after installations and a little playing I can claim: there's an almost 100% chance that these implementations cannot take even a little source code for FreeBASIC unchanged. Therefore I skipped all other BASIC dialects.
+However, after installations and a little playing I can claim: there's an almost 100% chance that these implementations cannot take even a little FreeBASIC program unchanged. Therefore I skipped all other BASIC dialects.
 
 <br/>
 
