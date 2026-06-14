@@ -1,6 +1,7 @@
 // random_bitstring_and_flexible_password_generator.rs
 //
 // 2025-05-07/08/17/19/22/31, 2025-07-19, 2025-12-13: see below
+// 2026-06-14: refactored from char_set to pattern (for regular expressions)
 //
 //
 // make on Ubuntu 24 LTS: ../Rust$ cargo new random_bitstring_and_flexible_password_generator
@@ -14,10 +15,12 @@
 // run on Ubuntu 24 LTS:  ../Rust/random_bitstring_and_flexible_password_generator$ ./target/release/random_bitstring_and_flexible_password_generator
 //
 //
-// [dependencies] --> add:
+// [dependencies] --> add in the Cargo.toml:
 //    rand = "0.9.1"
 //    rand_chacha = "0.9.0"
 //    radix_fmt = "1"
+//    string-builder = "0.2.0"
+//    regex = "1.12.4"
 //
 //
 // $ rustc -V -v
@@ -38,7 +41,7 @@ use std::io;
 use std::io::Write; // <--- bring flush() into scope
                     // https://stackoverflow.com/questions/37531903/how-do-i-print-output-without-a-trailing-newline
 use std::fs::File;
-
+use regex::Regex;  // 2026-06-14: run: $ cargo add regex
 
 fn main() {
     const END: usize = 62501;   // 62501 for exactly 1M binary digits
@@ -180,15 +183,27 @@ fn main() {
       }
     }
 
-    let mut char_set = "".to_string();      // cast from type &str to type string
-    if with_special_chars {
-      for i in 33..127 {
-        char_set.push_str(&(char::from_u32(i)).unwrap().to_string());
-      }
-    } else {
-      char_set.push_str("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-    }
+
+    // 2026-06-14: old solution:
+    //   let mut char_set = "".to_string();      // cast from type &str to type string
+    //   if with_special_chars {
+    //     for i in 33..127 {
+    //       char_set.push_str(&(char::from_u32(i)).unwrap().to_string());
+    //     }
+    //   } else {
+    //     char_set.push_str("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+    //   }
     // println!("{}",char_set);  // for testing
+
+    // 2026-06-14: new solution with regular expressions:
+    //   Duck.ai: Build the regex for allowed characters once.
+    let pattern = if with_special_chars {
+      // all printable ASCII from 33 (!) to 126 (~)
+      Regex::new(r"^[!-~]$").unwrap()
+    } else {
+      // digits + uppercase + lowercase
+      Regex::new(r"^[0-9A-Za-z]$").unwrap()
+    };
 
 
     let mut i = 0;  // char counter for the password
@@ -210,16 +225,16 @@ fn main() {
       let int0_1 = u32::from_str_radix(bin0_1, 2).unwrap();
       // println!("{}  {}", int0_0, int0_1);
 
-      let char0 = &(char::from_u32(int0_0)).unwrap().to_string();
-      let char1 = &(char::from_u32(int0_1)).unwrap().to_string();
-      // println!("{}  {}", char0, char1);
+      let char0 = char::from_u32(int0_0).unwrap().to_string();  // 2026-06-14
+      let char1 = char::from_u32(int0_1).unwrap().to_string();  // 2026-06-14
 
-      if char_set.contains(char0) {  // char_set is of type string
+      // 2026-06-10: new solution with regular expressions: Duck.ai
+      if pattern.is_match(&char0) {
         pw_chars.push_str(&char0);
         i += 1;
       }
 
-      if char_set.contains(char1) && i < n_char {
+      if pattern.is_match(&char1) && i < n_char {
         pw_chars.push_str(&char1);
         i += 1;
       }
@@ -227,7 +242,7 @@ fn main() {
       j += 1;
     }
 
-    println!("\nYour password of {n_char} characters is: {pw_chars}\n")
+    println!("\nYour password of {n_char} characters is: {pw_chars}")  // 2026-06-14
 
 }
 
