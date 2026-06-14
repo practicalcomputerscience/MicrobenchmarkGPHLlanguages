@@ -184,11 +184,14 @@ dim as zstring ptr error_
 dim as integer erroffset, ovector(OVECCOUNT-1), rc
 
 '' compile the regular expression
-re = pcre_compile(pattern,   		_ ''   the pattern
-				          0,            _ ''   default options
-				          @error_,      _ ''   for error message
-				          @erroffset,   _ ''   for error offset
-				          NULL)         _ ''   use default character tables
+re = pcre_compile(pattern, 0, @error_,  @erroffset, NULL)
+/'
+                  pattern    = the pattern
+                  0          = default options
+                  @error_    = for error message
+                  @erroffset = for error offset
+                  NULL       = use default character tables
+'/
 
 
 i = 0                 ' char counter for the password
@@ -227,7 +230,7 @@ while (i < n_char)
     i += 1
   end if
 
-	rc = pcre_exec(re, NULL, char1, len( char1 ), 0, 0, @ovector(0), OVECCOUNT )
+  rc = pcre_exec(re, NULL, char1, len( char1 ), 0, 0, @ovector(0), OVECCOUNT )
   if rc >= 0 then
     pw_chars += char1
     i += 1
