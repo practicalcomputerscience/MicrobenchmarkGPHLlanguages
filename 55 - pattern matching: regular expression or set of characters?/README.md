@@ -110,6 +110,7 @@ Common Lisp | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ |
 D | yes |  | OK | non-POSIX patterns: _r"[!-~]"_, _r"[A-Za-z0-9]"_ | 2026-06-13
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-09
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-10
+FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints (regular expressions are natively supported, but need some extra effort) | 2026-06-14
 Gleam | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-31
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | 2026-05-27
 Haxe | yes | | OK | non-POSIX patterns used for target safety: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-05-27
