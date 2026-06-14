@@ -82,7 +82,7 @@ However, after installations and a little playing I can claim: there's an almost
 
 #### Regular Expressions in FreeBASIC
 
-There are a couple of libraries for regular expressions for FreeBASIC, like for example:
+There are a couple of internal libraries for regular expressions for FreeBASIC, like for example:
 
 ```
 $ ls ./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre* -1
@@ -96,9 +96,65 @@ $ ls ./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre* -1
 $ 
 ```
 
-See also the "Lightweight, robust, and efficient POSIX compliant regexp matching library" [TRE](https://www.freebasic.net/wiki/ExtLibtre).
+See also the **external** "Lightweight, robust, and efficient POSIX compliant regexp matching library" [TRE](https://www.freebasic.net/wiki/ExtLibtre).
 
-tbd
+I successfully tested the _pcre.bi_ library, see from example source code file _pcredemo.bas_ in subdirectory _./FreeBASIC-1.10.1-linux-x86_64/examples/regex/PCRE_:
+
+```
+...
+#include once "pcre.bi"  ' 2026-06-14, see from example source code file: pcredemo.bas
+...
+
+dim as string pattern = ""
+if with_special_chars then
+    ' Matches any character within ASCII 33 to 127
+    pattern = "^[!-~]$"
+else
+    ' Matches any alphanumeric character (0-9, A-Z, a-z)
+    pattern = "^[A-Za-z0-9]$"
+end if
+
+dim OVECCOUNT as const uinteger = 30  '' should be a multiple of 3
+dim as pcre ptr re
+dim as zstring ptr error_
+dim as integer erroffset, ovector(OVECCOUNT-1), rc
+
+'' compile the regular expression
+re = pcre_compile(pattern, 0, @error_,  @erroffset, NULL)
+/'
+                  pattern    = the pattern
+                  0          = default options
+                  @error_    = for error message
+                  @erroffset = for error offset
+                  NULL       = use default character tables
+'/
+...
+
+  rc = pcre_exec(re, NULL, char0, len( char0 ), 0, 0, @ovector(0), OVECCOUNT )
+  /'                
+                 re           = the compiled pattern
+                 NULL         = no extra data - we didn't study the pattern
+                 char0        = the subject string
+                 len( char0 ) = the length of the subject
+                 0            = start at offset 0 in the subject
+                 0            = default options
+                 @ovector(0)  = output vector for substring information
+                 OVECCOUNT    = number of elements in the output vector
+  '/
+  if rc >= 0 then
+    pw_chars += char0
+    i += 1
+  end if
+...
+```
+
+As you can see, at least this solution really takes some extra effort compared to many other programming languages.
+
+Here's the full program: [random_bitstring_and_flexible_password_generator_regex.bas](./random_bitstring_and_flexible_password_generator_regex.bas)
+
+So, I decided to keep the original and slim solution based on a simple _instr(char_set, char0)_ function as my official solution.
+
+The solution with regular expressions needs 7 more lines of source code.
 
 <br/>
 
