@@ -139,7 +139,7 @@ Zig               | 129 | compiled, young language still going through major cha
 Odin              | 127 | compiled, young language, which is already more effective in its efforts to modernize C than C3 in terms of verbosity | 2026-06-13
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 124 | compiled, mature language | 2026-06-14
-FreeBASIC         | 122 | compiled, mature language
+FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Ballerina         | 121 | interpreted, young language (together with Java ecosystem) | 2026-06-12
