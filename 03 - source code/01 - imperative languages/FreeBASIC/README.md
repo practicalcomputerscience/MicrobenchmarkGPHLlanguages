@@ -10,6 +10,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Other functionalities of FreeBASIC](#other-functionalities-of-freebasic)
 - [Other BASIC dialects](other-basic-dialects)
+- [Regular Expressions in FreeBASIC](#)
 
 <br/>
 
@@ -78,5 +79,25 @@ I also tapped into other implementations of BASIC, like:
 However, after installations and a little playing I can claim: there's an almost 100% chance that these implementations cannot take even a little FreeBASIC program unchanged. Therefore I skipped all other BASIC dialects.
 
 <br/>
+
+#### Regular Expressions in FreeBASIC
+
+There are a couple of libraries for regular expressions for FreeBASIC, like for example:
+
+```
+$ ls ./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre* -1
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre16.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre2.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre2posix.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre32.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre-common.bi
+./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcreposix.bi
+$ 
+```
+
+However, I decided to use the "Lightweight, robust, and efficient POSIX compliant regexp matching library" [TRE](https://www.freebasic.net/wiki/ExtLibtre), because its capabilities just match my needs.
+
+See also demo file _match.bas_ in subdirectory _./FreeBASIC-1.10.1-linux-x86_64/examples/regex/TRE_. 
 
 ##_end
