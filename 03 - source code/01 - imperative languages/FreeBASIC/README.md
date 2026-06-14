@@ -10,7 +10,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Other functionalities of FreeBASIC](#other-functionalities-of-freebasic)
 - [Other BASIC dialects](other-basic-dialects)
-- [Regular Expressions in FreeBASIC](#)
+- [Regular Expressions in FreeBASIC](#regular-expressions-in-freebasic)
 
 <br/>
 
