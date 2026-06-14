@@ -96,9 +96,9 @@ $ ls ./FreeBASIC-1.10.1-linux-x86_64/include/freebasic/pcre* -1
 $ 
 ```
 
-However, I decided to use the "Lightweight, robust, and efficient POSIX compliant regexp matching library" [TRE](https://www.freebasic.net/wiki/ExtLibtre), because its capabilities just match my needs.
+See also the "Lightweight, robust, and efficient POSIX compliant regexp matching library" [TRE](https://www.freebasic.net/wiki/ExtLibtre).
 
-See also demo file _match.bas_ in subdirectory _./FreeBASIC-1.10.1-linux-x86_64/examples/regex/TRE_. 
+tbd
 
 <br/>
 
