@@ -143,9 +143,9 @@ FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Ballerina         | 121 | interpreted, young language (together with Java ecosystem) | 2026-06-12
-Chapel            | 121 | compiled, mature language
 Go                | 121 | compiled, mature language | 2026-05-28
 PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
+Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
 Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
