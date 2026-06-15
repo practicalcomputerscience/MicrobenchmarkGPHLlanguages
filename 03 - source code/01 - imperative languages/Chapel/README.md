@@ -36,6 +36,78 @@ $ brew install chapel
 
 ..works like a charm (in Ubuntu 24 LTS), and takes away a lot of potential hassle with LLVM and other supplementary installations.
 
+Remove it with: _$ brew uninstall chapel_
+
+Though, you may also have a look at the [Chapel Quickstart Instructions](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html).
+
+<br/>
+
+### Building Chapel from sources
+
+On 2026-06-15, I followed the [Using Chapel in its Preferred Configuration](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#using-chapel-in-its-preferred-configuration) instructions, because I was curious about this kind of installation and to see if Chapel in its latest version 2.8 can make a faster executable.
+
+First, check your [LLVM compiler infrastructure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure).
+
+From [Chapel Prerequisites](https://chapel-lang.org/docs/usingchapel/prereqs.html#chapel-prerequisites):
+
+> LLVM versions 14 through 21 are currently supported.
+
+So, I switched to LLVM version 21 and checked the clang compiler version, registered it and checked the LLVM configuration menu:
+
+```
+$ /usr/lib/llvm-21/bin/clang --version
+Ubuntu clang version 21.1.8 (++20251221032922+2078da43e25a-1~exp1~20251221153059.70)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-21/bin
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-21 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-21  # command stops here!!
+update-alternatives: using /usr/bin/clang-21 to provide /usr/bin/clang (clang) in auto mode  # this is 
+$ sudo update-alternatives --config clang
+...
+* 0            /usr/bin/clang-21   21        auto mode
+...
+$ 
+```
+
+Install the clang compiler frontend and headers if not done yet (here in Ubuntu 24):
+
+```
+$ sudo apt-get update
+...
+$ sudo apt-get install clang-21 llvm-21-dev libclang-common-21-dev libclang-21-dev libclang-cpp21-dev libclang-cpp21
+...
+$ export CHPL_LLVM=system  # tell Chapel to use this LLVM installation, that is LLVM version 21
+$ printenv CHPL_LLVM
+system
+$
+```
+
+Then continue with:
+
+```
+$ tar xzf chapel-2.8.0.tar.gz  # unpack the source release
+$ cd chapel-2.8.0
+$ source util/setchplenv.bash  # use Chapel in the preferred configuration
+Setting CHPL_HOME to /home/booser/scripts/Chapel/chapel-2.8.0
+Updating PATH to include /home/booser/scripts/Chapel/chapel-2.8.0/bin/linux64-x86_64
+                     and /home/booser/scripts/Chapel/chapel-2.8.0/util
+Updating MANPATH to include /home/booser/scripts/Chapel/chapel-2.8.0/man
+$
+$ make  # be patient here! This may take some time.
+...
+$
+```
+
+
+
+
+
+
+
+
+
 <br/>
 
 ## String building with Chapel
