@@ -126,7 +126,7 @@ $
 ```
 $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-23 23 \
 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-23 \
---slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-23
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-23  # command stops here!!
 update-alternatives: using /usr/bin/clang-23 to provide /usr/bin/clang (clang) in auto mode
 $
 ```
