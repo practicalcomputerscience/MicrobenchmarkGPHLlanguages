@@ -101,13 +101,18 @@ $ make  # be patient here! This may take some time.
 $
 ```
 
+Then do the first tests:
 
-
-
-
-
-
-
+```
+$ chpl examples/hello3-datapar.chpl  # compile a sample program
+$ ./hello3-datapar  # run the sample program
+Hello, world! (from iteration 14 of 100)
+Hello, world! (from iteration 39 of 100)
+...
+Hello, world! (from iteration 12 of 100)
+Hello, world! (from iteration 13 of 100)
+$
+```
 
 <br/>
 
