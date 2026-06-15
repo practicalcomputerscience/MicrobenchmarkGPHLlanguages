@@ -2,6 +2,8 @@
 random_bitstring_and_flexible_password_generator.chpl
 
 2025-06-05/06/18; 2025-12-17: see below
+2026-06-15: refactored from char_set to pattern (for regular expressions)
+
 
 build on Ubuntu 24 LTS: $ chpl random_bitstring_and_flexible_password_generator.chpl
         for production: $ chpl random_bitstring_and_flexible_password_generator.chpl --fast
@@ -10,19 +12,20 @@ run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 
 
 $ chpl --version
-chpl version 2.6.0
-  built with LLVM version 20.1.8
-  available LLVM targets: xcore, x86-64, x86, wasm64, wasm32, ve, systemz, spirv, spirv64, spirv32, sparcel, sparcv9, sparc, riscv64, riscv32, ppc64le, ppc64, ppc32le, ppc32, nvptx64, nvptx, msp430, mips64el, mips64, mipsel, mips, loongarch64, loongarch32, lanai, hexagon, bpfeb, bpfel, bpf, avr, thumbeb, thumb, armeb, arm, amdgcn, r600, aarch64_32, aarch64_be, aarch64, arm64_32, arm64
-Copyright 2020-2025 Hewlett Packard Enterprise Development LP
+chpl version 2.8.0
+  built with LLVM version 21.1.8
+  available LLVM targets: xtensa, m68k, xcore, x86-64, x86, wasm64, wasm32, ve, systemz, spirv, spirv64, spirv32, sparcel, sparcv9, sparc, riscv64, riscv32, ppc64le, ppc64, ppc32le, ppc32, nvptx64, nvptx, msp430, mips64el, mips64, mipsel, mips, loongarch64, loongarch32, lanai, hexagon, bpfeb, bpfel, bpf, avr, thumbeb, thumb, armeb, arm, amdgcn, r600, aarch64_32, aarch64_be, aarch64, arm64_32, arm64
+Copyright 2020-2026 Hewlett Packard Enterprise Development LP
 Copyright 2004-2019 Cray Inc.
 (See LICENSE file for more details)
-$ 
+$
 
 */
 
 
 use Random;
 use IO;    // stdin, stdout
+use Regex; // 2026-06-15
 
 
 const END: int = 62501;  // 62501 for exactly 1M binary digits
@@ -139,18 +142,25 @@ while answer != true {
   }
 }
 
-var char_set: string = "";
-if with_special_chars {
-  i = 33;
-  while i < 127 {
-    char_set += codepointToString(i:int(32));  // codepointToString(i: int(32)) : string
-    // https://chapel-lang.org/docs/language/spec/strings.html#String.codepointToString
-    i += 1;
-  }
-} else {
-  char_set += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-}
+
+// 2026-06-15: old solution
+//   var char_set: string = "";
+//   if with_special_chars {
+//     i = 33;
+//     while i < 127 {
+//       char_set += codepointToString(i:int(32));  // codepointToString(i: int(32)) : string
+//       // https://chapel-lang.org/docs/language/spec/strings.html#String.codepointToString
+//       i += 1;
+//     }
+//   } else {
+//     char_set += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+//   }
 // writeln("char_set = ", char_set);  // for testing
+
+// 2026-06-15: new solution with regular expressions:
+var print_re: string = "^[!-~]$";
+var alnum_re: string = "^[A-Za-z0-9]$";
+var pattern = new regex(if with_special_chars then print_re else alnum_re);
 
 
 i = 0;           // char counter for the password
@@ -173,12 +183,13 @@ while i < n_char {
   const char1 = codepointToString(char1a);
   // writeln("char0 = ", char0, " -- ", "char1 = ", char1);  // for testing
 
-  if char_set.find(char0) != -1 {
+  // 2026-06-15: new solution with regular expressions:
+  if pattern.search(char0).matched {
     pw_chars += char0;
     i += 1;
   }
 
-  if char_set.find(char1) != -1 && i < n_char {
+  if pattern.search(char1).matched && i < n_char {
     pw_chars += char1;
     i += 1;
   }
@@ -186,7 +197,7 @@ while i < n_char {
   j += 1;
 }
 
-writeln("\nYour password of ", n_char, " characters is: ", pw_chars, "\n");
+writeln("\nYour password of ", n_char, " characters is: ", pw_chars);  // 2026-06-15
 
 
 ///////////////////////////////////////////////
@@ -212,4 +223,3 @@ proc bin_string_to_int(str: string): int(32) {
 
 
 // end of random_bitstring_and_flexible_password_generator.chpl
-

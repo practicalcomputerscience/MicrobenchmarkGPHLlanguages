@@ -2,6 +2,7 @@
 random_streams_for_perf_stats.chpl
 
 2025-06-05/18; 2025-12-17: see below
+2026-06-15: now Chapel version 2.8 (no code change)
 
 build on Ubuntu 24 LTS: $ chpl random_streams_for_perf_stats.chpl
         for production: $ chpl random_streams_for_perf_stats.chpl --fast
@@ -20,10 +21,10 @@ MS Bing AI says on "String builder string concatenate in Chapel?":
 
 
 $ chpl --version
-chpl version 2.6.0
-  built with LLVM version 20.1.8
-  available LLVM targets: xcore, x86-64, x86, wasm64, wasm32, ve, systemz, spirv, spirv64, spirv32, sparcel, sparcv9, sparc, riscv64, riscv32, ppc64le, ppc64, ppc32le, ppc32, nvptx64, nvptx, msp430, mips64el, mips64, mipsel, mips, loongarch64, loongarch32, lanai, hexagon, bpfeb, bpfel, bpf, avr, thumbeb, thumb, armeb, arm, amdgcn, r600, aarch64_32, aarch64_be, aarch64, arm64_32, arm64
-Copyright 2020-2025 Hewlett Packard Enterprise Development LP
+chpl version 2.8.0
+  built with LLVM version 21.1.8
+  available LLVM targets: xtensa, m68k, xcore, x86-64, x86, wasm64, wasm32, ve, systemz, spirv, spirv64, spirv32, sparcel, sparcv9, sparc, riscv64, riscv32, ppc64le, ppc64, ppc32le, ppc32, nvptx64, nvptx, msp430, mips64el, mips64, mipsel, mips, loongarch64, loongarch32, lanai, hexagon, bpfeb, bpfel, bpf, avr, thumbeb, thumb, armeb, arm, amdgcn, r600, aarch64_32, aarch64_be, aarch64, arm64_32, arm64
+Copyright 2020-2026 Hewlett Packard Enterprise Development LP
 Copyright 2004-2019 Cray Inc.
 (See LICENSE file for more details)
 $ 
