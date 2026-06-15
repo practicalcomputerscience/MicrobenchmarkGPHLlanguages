@@ -105,7 +105,7 @@ $
 However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. That installation can be done like this (in Ubuntu 24):
 
 ```
-$ sudo apt install clang-23 llvm-23-dev
+$ sudo apt-get install clang-23 llvm-23-dev libclang-common-23-dev libclang-23-dev
 ...
 $ 
 ```
