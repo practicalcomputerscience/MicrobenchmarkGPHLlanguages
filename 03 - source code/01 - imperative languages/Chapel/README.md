@@ -45,7 +45,7 @@ Though, you may also have a look at the [Chapel Quickstart Instructions](https:/
 
 ### Building Chapel from sources
 
-On 2026-06-15, I followed the [Using Chapel in its Preferred Configuration](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#using-chapel-in-its-preferred-configuration) instructions, because I was curious about this kind of installation and to see if Chapel in its latest version 2.8 can make a faster executable.
+On 2026-06-15, I followed the [Using Chapel in its Preferred Configuration](https://chapel-lang.org/docs/usingchapel/QUICKSTART.html#using-chapel-in-its-preferred-configuration) instructions, because I was curious if Chapel in its latest version 2.8 and with this kind of installation can make a faster executable.
 
 First, check your [LLVM compiler infrastructure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure).
 
