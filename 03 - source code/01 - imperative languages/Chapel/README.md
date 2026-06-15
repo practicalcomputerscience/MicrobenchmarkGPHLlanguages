@@ -10,6 +10,7 @@ Table of contents:
 
 - [On parallel computing with Chapel](#on-parallel-computing-with-chapel)
 - [Installation tips](#installation-tips)
+- [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
 
 <br/>
