@@ -90,10 +90,10 @@ Then continue with:
 $ tar xzf chapel-2.8.0.tar.gz  # unpack the source release
 $ cd chapel-2.8.0
 $ source util/setchplenv.bash  # use Chapel in the preferred configuration
-Setting CHPL_HOME to /home/booser/scripts/Chapel/chapel-2.8.0
-Updating PATH to include /home/booser/scripts/Chapel/chapel-2.8.0/bin/linux64-x86_64
-                     and /home/booser/scripts/Chapel/chapel-2.8.0/util
-Updating MANPATH to include /home/booser/scripts/Chapel/chapel-2.8.0/man
+Setting CHPL_HOME to ~/scripts/Chapel/chapel-2.8.0
+Updating PATH to include ~/scripts/Chapel/chapel-2.8.0/bin/linux64-x86_64
+                     and ~/scripts/Chapel/chapel-2.8.0/util
+Updating MANPATH to include ~/scripts/Chapel/chapel-2.8.0/man
 $
 $ make  # be patient here! This may take some time.
 ...
