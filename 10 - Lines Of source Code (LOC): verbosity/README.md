@@ -144,7 +144,6 @@ Perl 5            | 122 | interpreted, very mature language: verbosity with if-t
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Ballerina         | 121 | interpreted, young language (together with Java ecosystem) | 2026-06-12
 Go                | 121 | compiled, mature language | 2026-05-28
-PHP               | 118 | usually interpreted, very mature web programming language | 2026-02-11
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
@@ -156,6 +155,7 @@ Crystal           | 107 | compiled, young language | 2026-06-16
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 C#                | 107 | interpreted, mature language (together with .NET ecosystem) | 2026-06-10
+PHP               | 107 | usually interpreted, very mature web programming language | 2026-06-16
 Swift             | 105 | compiled, mature language | 2026-06-10
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
