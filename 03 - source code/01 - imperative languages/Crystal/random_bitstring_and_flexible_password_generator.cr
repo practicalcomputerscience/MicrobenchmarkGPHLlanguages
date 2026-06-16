@@ -151,8 +151,8 @@ end
 # puts "char_set = #{char_set}"  # for testing
 
 # 2026-06-16: new solution with regular expressions (Google AI):
-print_re = /[\x21-\x7E]/  # Matches any printable ASCII character from '!' (33) to '~' (126)
-alnum_re = /[A-Za-z0-9]/  # Matches alphanumeric characters
+print_re = /[!-~]/
+alnum_re = /[A-Za-z0-9]/
 pattern  = if with_special_chars  # this cannot be a one-line!
              print_re
            else
