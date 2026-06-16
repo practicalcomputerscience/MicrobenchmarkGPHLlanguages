@@ -133,12 +133,12 @@ C                 | 147 | compiled, very mature language | 2026-01-11
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed
 AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
-SWI Prolog        | 133 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included"
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes
 Odin              | 127 | compiled, young language, which is already more effective in its efforts to modernize C than C3 in terms of verbosity | 2026-06-13
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 124 | compiled, mature language | 2026-06-14
+SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
@@ -219,7 +219,7 @@ Odin               | 0
 Perl 5             | 0
 PHP                | 1 
 Picat (former B-Prolog) | 8
-Prolog, SWI        | 11
+Prolog, SWI        | 10
 PowerShell         | 0
 Python             | 1
 Roc                | 9
