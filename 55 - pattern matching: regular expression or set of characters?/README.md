@@ -126,6 +126,7 @@ Nim | yes |  | OK | mixed patterns: _re"([!-~])"_, _re"[[:alnum:]]"_ (POSIX) | 2
 OCaml | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-29
 Odin | yes |  | OK | non-POSIX patterns: \`^[!-~]$\`, \`^[A-Za-z0-9]$\` | 2026-06-13
 Perl 5 | yes | | OK | non-POSIX patterns: _qr/[!-~]/_, _qr/[A-Za-z0-9]/_ | 2026-05-25
+Picat |  |  | OK | _CharSet_ is a string of allowed characters, compiled from codepoints in both cases | 2026-06-16
 PowerShell | yes |  | OK | non-POSIX patterns: _"^[!-~]+$"_, _"^[A-Za-z0-9]+$"_ | 2026-05-26
 Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax | 2026-05-24
 Roc |  |  | OK | working with two user defined functions, _printable_chars_ and _alphanum_chars_, to provide filtering of allowed characters | 2026-05-31
