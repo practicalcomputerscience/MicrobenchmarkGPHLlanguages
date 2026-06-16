@@ -152,7 +152,7 @@ Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
 Common Lisp       | 114 | compiled, very mature language | 2026-05-30
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 113 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-02-12
-Crystal           | 111 | compiled, young language
+Crystal           | 107 | compiled, young language | 2026-06-16
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 C#                | 107 | interpreted, mature language (together with .NET ecosystem) | 2026-06-10
