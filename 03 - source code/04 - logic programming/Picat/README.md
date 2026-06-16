@@ -21,6 +21,7 @@ Table of contents:
 - [Constraint programming module cp](#constraint-programming-module-cp)
 - [Installation tips](#installation-tips)
 - [Microbenchmark program in Picat](#microbenchmark-program-in-picat)
+- [Regular Expressions in Picat]()
 
 <br/>
 
@@ -281,6 +282,14 @@ The equivalent predicate in Picat is just _join_, and the fastest method for thi
 Another tip: as so often, using the _++_ operator for string concatenation is not the fastest method apparently. Even predicate _append(L1,L2,L3)_ is slightly faster here according to my tests.
 
 But of course, this doesn't matter with little string concatenations here and there.
+
+<br/>
+
+#### Regular Expressions in Picat
+
+In contrast to [SWI Prolog](https://www.swi-prolog.org/pldoc/doc/_SWI_/library/ext/pcre/pcre.pl), Picat doesn't have native support for regular expressions. Though, I've found 3rd party module [picat_regex](https://github.com/hakank/picat_regex).
+
+Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using this library.
 
 <br/>
 
