@@ -287,7 +287,7 @@ But of course, this doesn't matter with little string concatenations here and th
 
 #### Regular Expressions in Picat
 
-In contrast to [SWI Prolog](https://www.swi-prolog.org/pldoc/doc/_SWI_/library/ext/pcre/pcre.pl), Picat doesn't have native support for regular expressions. Though, I've found 3rd party module [picat_regex](https://github.com/hakank/picat_regex#picat_regex).
+In contrast to [SWI Prolog](https://www.swi-prolog.org/pldoc/doc/_SWI_/library/ext/pcre/pcre.pl), Picat doesn't have native support for regular expressions. Though, I've found 3rd party and "experimental" module [picat_regex](https://github.com/hakank/picat_regex#picat_regex).
 
 Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using this library.
 
