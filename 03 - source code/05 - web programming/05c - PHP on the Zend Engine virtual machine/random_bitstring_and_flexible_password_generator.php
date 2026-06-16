@@ -7,6 +7,7 @@ random_bitstring_and_flexible_password_generator.php
   changed names RandomBitstringAndFlexiblePasswordGenerator + writeToFile
   to random_bitstring_and_flexible_password_generator + write_to_file
   like in the other languages
+2026-06-16: refactored from char_set to pattern (for regular expressions)
 
 
 run on Ubuntu 24 LTS: $ php ./random_bitstring_and_flexible_password_generator.php
@@ -103,7 +104,7 @@ class random_bitstring_and_flexible_password_generator {
                 $answer = true;
             } else {
                 if (filter_var($answerStr, FILTER_VALIDATE_INT) !== false) {
-                  if ($answerStr >= 8) { 
+                  if ($answerStr >= 8) {
                       $N_CHAR = intval($answerStr);
                       $answer = true;
                   } else {
@@ -130,22 +131,31 @@ class random_bitstring_and_flexible_password_generator {
             }
         }
 
+
+        // 2026-06-16: old solution:
         // Work with a set of chars
-        $char_set = [];
+        //   $char_set = [];
+        //   if ($WITH_SPECIAL_CHARS) {
+        //       for ($i = 33; $i <= 126; $i++) { // ASCII printable characters
+        //           $char_set[] = chr($i);
+        //       }
+        //   } else {
+        //       for ($i = 97; $i <= 122; $i++) { // 'a' to 'z'
+        //           $char_set[] = chr($i);
+        //       }
+        //       for ($i = 65; $i <= 90; $i++) {  // 'A' to 'Z'
+        //           $char_set[] = chr($i);
+        //       }
+        //       for ($i = 48; $i <= 57; $i++) {  // '0' to '9'
+        //           $char_set[] = chr($i);
+        //       }
+        //   }
+
+        // 2026-06-16: new solution with regular expressions (Duck.ai):
         if ($WITH_SPECIAL_CHARS) {
-            for ($i = 33; $i <= 126; $i++) { // ASCII printable characters
-                $char_set[] = chr($i);
-            }
+            $pattern = '/^[!-~]$/';
         } else {
-            for ($i = 97; $i <= 122; $i++) { // 'a' to 'z'
-                $char_set[] = chr($i);
-            }
-            for ($i = 65; $i <= 90; $i++) {  // 'A' to 'Z'
-                $char_set[] = chr($i);
-            }
-            for ($i = 48; $i <= 57; $i++) {  // '0' to '9'
-                $char_set[] = chr($i);
-            }
+            $pattern = '/^[A-Za-z0-9]$/';
         }
 
 
@@ -162,12 +172,14 @@ class random_bitstring_and_flexible_password_generator {
             $char0 = chr(bindec($bin0_0));
             $char1 = chr(bindec($bin0_1));
 
-            if (in_array($char0, $char_set)) {
+
+            // 2026-06-16: new solution with regular expressions:
+            if (preg_match($pattern, $char0)) {
                 $pw_chars .= $char0;
                 $i++;
             }
 
-            if (in_array($char1, $char_set) && $i < $N_CHAR) {
+            if (preg_match($pattern, $char1) && $i < $N_CHAR) {
                 $pw_chars .= $char1;
                 $i++;
             }
