@@ -108,6 +108,7 @@ Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | 2026-0
 COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases ("picture clauses" for holding characters), compiled from codepoints | 2026-06-03
 CoffeeScript | yes | | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | 2026-05-26
 Common Lisp | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | 2026-05-30
+Crystal | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | 2026-06-16
 D | yes |  | OK | non-POSIX patterns: _r"[!-~]"_, _r"[A-Za-z0-9]"_ | 2026-06-13
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | 2026-06-09
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | 2026-06-10
