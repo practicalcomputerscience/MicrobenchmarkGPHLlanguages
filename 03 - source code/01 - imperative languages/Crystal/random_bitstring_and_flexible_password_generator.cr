@@ -1,11 +1,19 @@
 # random_bitstring_and_flexible_password_generator.cr
 #
 # 2025-06-01/02/06/18; 2025-12-17
+# 2026-06-16: refactored from char_set to pattern (for regular expressions)
 #
 # build on Ubuntu 24 LTS: $ crystal build random_bitstring_and_flexible_password_generator.cr --release
 #
 # run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 #                         $ valgrind ./random_bitstring_and_flexible_password_generator
+#
+#
+# $ crystal --version
+# Crystal 1.18.2 [635ca37a6] (2025-10-21)
+# LLVM: 18.1.8
+# Default target: x86_64-unknown-linux-gnu
+# $
 
 
 END   = 62501  # 62501 for exactly 1M binary digits; Int32
@@ -91,7 +99,7 @@ while !answer
       # n_char = answer_str.as(Int32)  # Error: can't cast (String | Nil) to Int32
       n_char_ = answer_str.to_s        # this line with a conversion from the union into a string is the trick here!
       if n_char_.not_nil!
-        begin 
+        begin
           n_char = n_char_.to_i
           if n_char < 8
             puts "enter an integer number >= 8 or 'y'"
@@ -101,7 +109,7 @@ while !answer
         rescue
           puts "enter an integer number >= 8 or 'y'"
         end
-      else 
+      else
         puts "enter an integer number >= 8 or 'y'"
       end
     rescue
@@ -128,18 +136,28 @@ end
 # puts "with_special_chars = #{with_special_chars}"  # for testing
 
 
-char_set_ = IO::Memory.new
-if with_special_chars
-  i = 33
-  while i < 127
-    char_set_ << i.chr  # https://stackoverflow.com/questions/46289803/how-do-you-turn-an-array-of-codepoints-int32-to-a-string
-    i += 1
-  end
-else
-  char_set_ << "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-end
-char_set = char_set_.to_s  # char_set has type IO::Memory
+# 2026-06-16: old solution:
+#   char_set_ = IO::Memory.new
+#   if with_special_chars
+#     i = 33
+#     while i < 127
+#       char_set_ << i.chr  # https://stackoverflow.com/questions/46289803/how-do-you-turn-an-array-of-codepoints-int32-to-a-string
+#       i += 1
+#     end
+#   else
+#     char_set_ << "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+#   end
+#   char_set = char_set_.to_s  # char_set has type IO::Memory
 # puts "char_set = #{char_set}"  # for testing
+
+# 2026-06-16: new solution with regular expressions (Google AI):
+print_re = /[\x21-\x7E]/  # Matches any printable ASCII character from '!' (33) to '~' (126)
+alnum_re = /[A-Za-z0-9]/  # Matches alphanumeric characters
+pattern  = if with_special_chars  # this cannot be a one-line!
+             print_re
+           else
+             alnum_re
+           end
 
 
 i = 0  # char counter for the password
@@ -150,17 +168,17 @@ while i < n_char
   bin0 = x[j].to_s(2, precision: 16)
   # puts  # for testing
   # p! bin0  # for testing
-  
+
   bin0_0 = bin0[0,8]
   bin0_1 = bin0[8,8]
   # p! bin0_0  # for testing
   # p! bin0_1  # for testing
-  
+
   int0_0 = bin0_0.to_i(2)
   int0_1 = bin0_1.to_i(2)
   # p! int0_0  # for testing
   # p! int0_1  # for testing
-  
+
   char0 = int0_0.chr
   char1 = int0_1.chr
   # p! char0  # for testing
@@ -173,21 +191,21 @@ while i < n_char
   # int0_1 # => 102
   # char0 # => 'R'
   # char1 # => 'f'
-  
-  if char_set.includes?(char0)
+
+  # 2026-06-16: new solution with regular expressions:
+  if pattern.matches?(char0.to_s)
     pw_chars << char0
     i += 1
   end
-  
-  if char_set.includes?(char1) && i < n_char
+
+  if pattern.matches?(char1.to_s) && i < n_char
     pw_chars << char1
     i += 1
   end
-  
+
   j += 1
 end
 
 puts "\nYour password of #{n_char} characters is: #{pw_chars}\n"
 
 # end of random_bitstring_and_flexible_password_generator.cr
-
