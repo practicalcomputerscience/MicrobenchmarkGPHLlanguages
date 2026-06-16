@@ -21,7 +21,7 @@ Table of contents:
 - [Constraint programming module cp](#constraint-programming-module-cp)
 - [Installation tips](#installation-tips)
 - [Microbenchmark program in Picat](#microbenchmark-program-in-picat)
-- [Regular Expressions in Picat]()
+- [Regular Expressions in Picat](#regular-expressions-in-picat)
 
 <br/>
 
