@@ -29,8 +29,12 @@ Table of contents:
 With program [random_streams_for_perf_stats.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) I compiled directly like this:
 
 ```
-$ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
+$ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
 ```
+
+Check the clang compiler versions from your installed [LLVM compiler infrastructure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure).
+
+<br/>
 
 With program [random_bitstring_and_flexible_password_generator.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_bitstring_and_flexible_password_generator.c) I used a [make file](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/makefile) for compilation:
 
@@ -42,7 +46,7 @@ $ make
 
 Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "usual" [gcc](https://gcc.gnu.org/), at least with the compiler versions I used (on 2025-12-01), built a slighlty faster executable of comparable size (with aggressive compiler switches for execution speed in both cases):
 
-- clang: 16,312 bytes produced with command: _$ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
+- clang: 16,312 bytes produced with command: _$ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
 - gcc: 17,912 bytes produced with command: _$ gcc -Wall -Ofast -faggressive-loop-optimizations random_streams_for_perf_stats.c -o random_streams_for_perf_stats_c_
 
 <br/>
