@@ -3,6 +3,8 @@ random_streams_for_perf_stats.cpp
 
 2026-01-15
 2026-05-24/24: refactored from char_set to pattern (for regular expressions)
+2026-06-17: [[:graph:]] at print_re instead of [!-~]
+
 
 build on Ubuntu 24 LTS: $ g++ -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for development
                         $ g++ -O3 -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for production
@@ -52,7 +54,8 @@ const string file_bits_x = "random_bitstring.bin";
 const string file_bits_hex = "random_bitstring.byte";
 
 // static const regex print_re("[[:print:]]");  // 2026-05-24: [[:print:]] includes the space character! (not wanted!)
-static const regex print_re(R"([!-~])");        // => correct solution
+// static const regex print_re(R"([!-~])");        // => correct solution
+static const regex print_re("[[:graph:]]");  // 2026-06-17
 static const regex alnum_re("[[:alnum:]]");
 
 
