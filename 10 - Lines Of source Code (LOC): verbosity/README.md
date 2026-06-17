@@ -157,13 +157,13 @@ Crystal           | 107 | compiled, young language | 2026-06-16
 PHP               | 107 | usually interpreted, very mature web programming language | 2026-06-16
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 Swift             | 105 | compiled, mature language | 2026-06-10
-Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Julia             | 101 | just-in-time compiled, mature language | 2026-05-28
 Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
 Ruby              |  98 | interpreted, very mature language | 2026-05-28
 Clojure           |  96 | interpreted, mature language (together with Java ecosystem) | 2026-05-29
 Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
+Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-17
 Mojo              |  90 | compiled, very young language | 2026-05-28
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-05-26
