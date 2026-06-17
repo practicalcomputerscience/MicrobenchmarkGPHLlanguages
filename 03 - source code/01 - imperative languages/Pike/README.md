@@ -4,6 +4,8 @@
 
 https://pike.lysator.liu.se/
 
+https://github.com/pikelang/Pike
+
 I saw Pike from Sweden in this benchmark: [Performance comparison of programming languages](https://github.com/trizen/language-benchmarks) from 2021.
 
 I installed and shortly tested Pike like this (in Ubuntu 24 LTS):
