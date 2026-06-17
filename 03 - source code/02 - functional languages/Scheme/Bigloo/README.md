@@ -98,11 +98,11 @@ In comparison, here's the old definition of string _char_set_ in Racket Scheme, 
 
 <br/>
 
-### Why Bigloo Scheme over Racket Scheme?
+### Why to prefer Bigloo Scheme over Racket Scheme?
 
 However, I think that even as a "Racket coder" it would absolutely make sense to also gain some practice in a Scheme dialect which is meant for compilation (and not interpretation for historical reasons). And in this sense, Bigloo Scheme is a very good choice from my point of view.
 
-Racket Scheme's program execution along a "natural" order of _(define ...)_ expressions could give you the false impression (as a "Racket coder") that things are easier than they actually are.
+Racket Scheme's program execution along a "natural" order of _(define ...)_ expressions could give you the false impression that things are easier than they actually are.
 
 Bigloo's design target is this (from (*)):
 
