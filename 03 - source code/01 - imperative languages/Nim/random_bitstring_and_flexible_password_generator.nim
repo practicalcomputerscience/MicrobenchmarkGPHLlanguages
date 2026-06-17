@@ -3,6 +3,8 @@ random_bitstring_and_flexible_password_generator.nim
 
 2026-01-13
 2026-05-26: refactored from char_set to pattern (for regular expressions)
+2026-06-17: refactored for a complete POSIX based solution with regular expressions
+
 
 build on Ubuntu 24 LTS: $ nim c random_bitstring_and_flexible_password_generator.nim
                         $ nim c -d:release random_bitstring_and_flexible_password_generator.nim  # for production
@@ -138,11 +140,11 @@ proc main(): int =
   #   # echo &"\nchar_set = {char_set}"  # for testing
 
   # 2026-05-28: new solution with regular expressions ("Big AI"):
+  # let print_re = re"([!-~])"  # works OK
+  # let print_re = re"[[:print:]]"  # POSIX variant: this includes the space character!
+  let print_re = re"[[:graph:]]"  # 2026-06-17: POSIX variant: tbd
   # let alnum_re = re"([A-Za-z0-9])"  # works OK
   let alnum_re = re"[[:alnum:]]"  # POSIX variant
-  #
-  let print_re = re"([!-~])"
-  # let print_re = re"[[:print:]]"  # POSIX variant: this includes the space character!
   let pattern  = if WITH_SPECIAL_CHARS: print_re else: alnum_re
 
 
