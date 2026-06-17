@@ -136,7 +136,7 @@ Roc |  |  | OK | working with two user defined functions, _printable_chars_ and 
 Ruby | yes |  | OK | POSIX patterns: _/\A[[:graph:]]+\z/_, _/\A[[:alnum:]]+\z/_ | yes | 2026-06-17
 Rust | yes |  | OK | non-POSIX patterns: _r"^[!-~]$"_, _r"^[A-Za-z0-9]$"_ | | 2026-06-14
 Scala | yes |  | OK | non-POSIX patterns: _"""[!-~]""".r_, _"""[A-Za-z0-9]""".r_ | | 2026-05-25
-Scheme, Bigloo | yes |  | OK | mixed patterns: _"^[!-~]$"_, _"^[[:alnum:]]$"_ (POSIX) | partly | 2026-05-31
+Scheme, Bigloo | yes |  | OK | POSIX patterns: _"^[[:graph:]]$"_, _"^[[:alnum:]]$"_ | yes | 2026-06-17
 Scheme, Racket | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
 Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_ | yes | 2026-05-24
 Standard ML | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
