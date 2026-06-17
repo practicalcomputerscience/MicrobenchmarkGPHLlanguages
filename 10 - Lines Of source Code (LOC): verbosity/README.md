@@ -150,13 +150,13 @@ Lua               | 115 | interpreted, very mature language | 2026-06-11
 Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
 Common Lisp       | 114 | compiled, very mature language | 2026-05-30
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
-Crystal           | 107 | compiled, young language | 2026-06-16
-Racket Scheme     | 107 | compiled, mature language | 2026-05-30
+TypeScript        | 109 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 C#                | 107 | interpreted, mature language (together with .NET ecosystem) | 2026-06-10
+Crystal           | 107 | compiled, young language | 2026-06-16
 PHP               | 107 | usually interpreted, very mature web programming language | 2026-06-16
+Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 Swift             | 105 | compiled, mature language | 2026-06-10
-TypeScript        | 105 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Dart              | 103 | just-in-time or ahead-of-time compiled, mature web programming language
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Julia             | 101 | just-in-time compiled, mature language | 2026-05-28
