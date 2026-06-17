@@ -7,6 +7,7 @@ random_bitstring_and_flexible_password_generator.c
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
 2026-02-01: deleted one oudated import ctype.h
 2026-05-25: refactored from char_set to pattern (for regular expressions)
+2026-06-17: refactored for a complete POSIX based solution with regular expressions
 
 
 build on Ubuntu 24 LTS: $ make  # see make file below
@@ -53,7 +54,7 @@ $
 #define file_bits_hex "random_bitstring.byte"
 
 // const char *print_re = "^[!-~]+$";
-const char *print_re = "^[[:graph:]]+$";  // 2026-06-17: test: tbd
+const char *print_re = "^[[:graph:]]+$";  // 2026-06-17: also here a POSIX based solution
 const char *alnum_re = "^[[:alnum:]]+$";  // POSIX based solution
 
 
@@ -170,10 +171,10 @@ int main()
     } else {
       N_CHAR = strtol(answer_str, &endptr, 10);
       if (*endptr != NULL) {  // 89sad is not accepted
-        printf("enter an integer number >= 8 or 'y'");
+        printf("enter an integer number 8 <= i <= 99 or 'y'");  // 2026-06-17
       } else {
-        if (N_CHAR < 8) {
-          printf("enter an integer number >= 8 or 'y'");
+        if (N_CHAR < 8 || N_CHAR > 99 ) {  // 2026-06-17
+          printf("enter an integer number 8 <= i <= 99 or 'y'");  // 2026-06-17
         } else {
           answer = 1;
         }
@@ -223,9 +224,9 @@ int main()
   regex_t *pattern = WITH_SPECIAL_CHARS ? &re_printable : &re_alphanum;
 
 
-  char pw_chars[128] = {'\0'};  // get a really empty string here!
+  char pw_chars[100] = {'\0'};  // get a really empty string here!; 2026-06-17
   // if not, this string is usually not terminated correctly
-  // 128 a fixed size at compile time, which is needed if done this static way
+  // 100 a fixed size at compile time, which is needed if done this static way
   char bin0[17];
   char bin0_0[9];
   char bin0_1[9];
