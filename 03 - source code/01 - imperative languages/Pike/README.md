@@ -8,6 +8,8 @@ https://github.com/pikelang/Pike
 
 I saw Pike from Sweden in this benchmark: [Performance comparison of programming languages](https://github.com/trizen/language-benchmarks) from 2021.
 
+Pike is a dynamic programming language like Python, Ruby, PHP, Lua, or Perl, which means that "key aspects such as type checking, method binding, and code execution are resolved at runtime rather than at compile time" (grokipedia.com).
+
 <br/>
 
 Since building Pike from latest sources (https://pike.lysator.liu.se/download/pub/pike/beta/9.0.13/) (as of 2026-06-18) failed with me,
