@@ -474,16 +474,21 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
             output: process.stdout
         });
 
+        function input_a_valid_number(s: string): number | null {
+            if (/^\d+$/.test(s)) return Number(s);
+            return null; // reject "8.0", "8.", " 8", "8e0", etc.
+        }
+
         const askPasswordLength = () => {
             rl.question(`\nPassword of ${N_CHAR} printable chars OK? 'y' or another integer number >= 8: `, (answerStr) => {
                 if (answerStr === 'y') {
                     answer = true;
                     askSpecialCharsUsage();
                 } else {
-                    const numberValue = Number(answerStr);
+                    const N_CHAR_ = input_a_valid_number(answerStr);  // 2026-06-17: the strict test
 
-                    if (Number.isInteger(numberValue) && numberValue >= 8) {
-                        N_CHAR = numberValue;
+                    if (N_CHAR_ !== null && Number(answerStr) >= 8) {
+                        N_CHAR = Number(answerStr);
                         askSpecialCharsUsage();
 
                     } else {
@@ -509,24 +514,28 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
       new Promise (resolve) ->
         rl.question q, (ans) -> resolve ans
 
+    input_a_valid_number = (s) ->
+      return Number(s) if /^\d+$/.test s
+      null
+
     while not answer
       answerStr = await ask "\nPassword of #{N_CHAR} printable chars OK? 'y' or another integer >= 8: "
 
       if answerStr is 'y'
         answer = true
       else
-        numberValue = (Number) answerStr
+        N_CHAR_ = input_a_valid_number(answerStr);  # 2026-06-17: the strict test
 
-        if Number.isInteger(numberValue) and numberValue >= 8
-          N_CHAR = numberValue
+        if N_CHAR_ != null and (Number) answerStr >= 8
+          N_CHAR = (Number) answerStr
           answer = true
         else
           console.log "enter an integer number >= 8 or 'y'"
 ```
 
-That's 19 source lines of code versus 23.
+That's xx source lines of code versus xx.
 
-CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-02-16: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
+CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-06-17: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
 <br/>
 
