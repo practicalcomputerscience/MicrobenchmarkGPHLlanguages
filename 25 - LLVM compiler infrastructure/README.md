@@ -141,7 +141,7 @@ Hopefully, all LLVM versions are registered now successfully, and thus the LLVM 
 
 ```
 $ sudo update-alternatives --config clang
-There are 4 choices for the alternative clang (providing /usr/bin/clang).
+There are 5 choices for the alternative clang (providing /usr/bin/clang).
 
   Selection    Path               Priority   Status
 ------------------------------------------------------------
