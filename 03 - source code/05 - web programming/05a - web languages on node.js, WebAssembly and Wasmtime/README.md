@@ -533,7 +533,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
           console.log "enter an integer number >= 8 or 'y'"
 ```
 
-That's xx source lines of code versus xx.
+That's 22 source lines of code versus 27.
 
 CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-06-17: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
