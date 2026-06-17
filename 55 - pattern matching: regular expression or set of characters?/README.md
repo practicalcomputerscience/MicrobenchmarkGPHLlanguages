@@ -133,7 +133,7 @@ Picat |  |  | OK | _CharSet_ is a string of allowed characters, compiled from co
 PowerShell | yes |  | OK | non-POSIX patterns: _"^[!-~]+$"_, _"^[A-Za-z0-9]+$"_ | | 2026-05-26
 Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax | | 2026-05-24
 Roc |  |  | OK | working with two user defined functions, _printable_chars_ and _alphanum_chars_, to provide filtering of allowed characters | | 2026-05-31
-Ruby | yes |  | OK | mixed patterns: _/\A[!-~]+\z/_, _/\A[[:alnum:]]+\z/_ (POSIX) | partly | 2026-05-26
+Ruby | yes |  | OK | POSIX patterns: _/\A[[:graph:]]+\z/_, _/\A[[:alnum:]]+\z/_ | yes | 2026-06-17
 Rust | yes |  | OK | non-POSIX patterns: _r"^[!-~]$"_, _r"^[A-Za-z0-9]$"_ | | 2026-06-14
 Scala | yes |  | OK | non-POSIX patterns: _"""[!-~]""".r_, _"""[A-Za-z0-9]""".r_ | | 2026-05-25
 Scheme, Bigloo | yes |  | OK | mixed patterns: _"^[!-~]$"_, _"^[[:alnum:]]$"_ (POSIX) | partly | 2026-05-31
