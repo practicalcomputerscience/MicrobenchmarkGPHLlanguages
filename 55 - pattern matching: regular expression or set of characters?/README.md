@@ -143,7 +143,11 @@ Standard ML | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ |
 Swift | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | | 2026-06-10
 TypeScript | yes |  | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | | 2026-06-17
 V | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 2026-06-10
-Zig |  |  | OK | _char_set_ is an _ArrayList_ of UTF-8 characters, partly compiled from codepoints, partly filled from a string | | 2026-06-12
+Zig |  |  | OK | _char_set_ is an _ArrayList_ of UTF-8 characters (*), partly compiled from codepoints, partly filled from a string | | 2026-06-12
+ 
+<br/>
+
+(*) [UTF-8](https://en.wikipedia.org/wiki/UTF-8) = Unicode Transformation Format – 8-bit
 
 <br/>
 
