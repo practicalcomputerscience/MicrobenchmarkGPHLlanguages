@@ -79,16 +79,23 @@ class random_bitstring_and_flexible_password_generator {
             output: process.stdout
         });
 
+        // 2026-06-17
+        function input_a_valid_number(s: string): number | null {
+            if (/^\d+$/.test(s)) return Number(s);
+            return null; // reject "8.0", "8.", " 8", "8e0", etc.
+        }
+
         const askPasswordLength = () => {
             rl.question(`\nPassword of ${N_CHAR} printable chars OK? 'y' or another integer number >= 8: `, (answerStr) => {
                 if (answerStr === 'y') {
                     answer = true;
                     askSpecialCharsUsage();
                 } else {
-                    const numberValue = Number(answerStr);
+                    const N_CHAR_ = input_a_valid_number(answerStr);  // 2026-06-17: the strict test
+                    // const numberValue = Number(answerStr);  // 2026-06-17: 8. and 8.0 are accepted as valid numbers!!
 
-                    if (Number.isInteger(numberValue) && numberValue >= 8) {
-                        N_CHAR = numberValue;
+                    if (N_CHAR_ !== null && Number(answerStr) >= 8) {
+                        N_CHAR = Number(answerStr);
                         askSpecialCharsUsage();
 
                     } else {
