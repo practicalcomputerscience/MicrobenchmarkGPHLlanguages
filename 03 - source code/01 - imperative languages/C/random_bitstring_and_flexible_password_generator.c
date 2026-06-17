@@ -8,6 +8,7 @@ random_bitstring_and_flexible_password_generator.c
 2026-02-01: deleted one oudated import ctype.h
 2026-05-25: refactored from char_set to pattern (for regular expressions)
 
+
 build on Ubuntu 24 LTS: $ make  # see make file below
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
@@ -19,14 +20,14 @@ makefile with tabs:
 all: random_bitstring_and_flexible_password_generator
 
 random_bitstring_and_flexible_password_generator: random_bitstring_and_flexible_password_generator.o
-	clang -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
+	/usr/lib/llvm-22/bin/clang -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
 
 random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexible_password_generator.c
-	clang -O3 -c random_bitstring_and_flexible_password_generator.c
+	/usr/lib/llvm-22/bin/clang -O3 -c random_bitstring_and_flexible_password_generator.c
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-$ clang -v
-Homebrew clang version 22.1.5
+$ /usr/lib/llvm-22/bin/clang -v
+Ubuntu clang version 22.1.8 (++20260613092238+e80beda6e255-1~exp1~20260613092253.78)
 ...
 $
 
@@ -51,8 +52,9 @@ $
 #define file_bits_x   "random_bitstring.bin"
 #define file_bits_hex "random_bitstring.byte"
 
-const char *print_re = "^[!-~]+$";
-const char *alnum_re = "^[[:alnum:]]\+$";  // POSIX based solution
+// const char *print_re = "^[!-~]+$";
+const char *print_re = "^[[:graph:]]+$";  // 2026-06-17: test: tbd
+const char *alnum_re = "^[[:alnum:]]+$";  // POSIX based solution
 
 
 int main()

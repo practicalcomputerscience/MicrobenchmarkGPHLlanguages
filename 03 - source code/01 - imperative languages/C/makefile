@@ -1,7 +1,7 @@
 all: random_bitstring_and_flexible_password_generator
 
 random_bitstring_and_flexible_password_generator: random_bitstring_and_flexible_password_generator.o
-	clang -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
+	/usr/lib/llvm-22/bin/clang -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.o
 
 random_bitstring_and_flexible_password_generator.o: random_bitstring_and_flexible_password_generator.c
-	clang -O3 -c random_bitstring_and_flexible_password_generator.c
+	/usr/lib/llvm-22/bin/clang -O3 -c random_bitstring_and_flexible_password_generator.c

@@ -7,13 +7,14 @@ random_streams_for_perf_stats.c
 2025-12-17: see below
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
 
-build on Ubuntu 24 LTS: $ clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
+
+build on Ubuntu 24 LTS: $ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
                         # -ffast-math is not improving exe speed here
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
 
 
-$ clang -v
-Homebrew clang version 21.1.7
+$ /usr/lib/llvm-22/bin/clang -v
+Ubuntu clang version 22.1.8 (++20260613092238+e80beda6e255-1~exp1~20260613092253.78)
 ...
 $
 
