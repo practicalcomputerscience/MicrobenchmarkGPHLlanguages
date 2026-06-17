@@ -28,7 +28,7 @@ Enter the REPL (Read-Eval-Print Loop) like this: _$ rlwrap bigloo_ and give comm
 
 Since Bigloo Scheme is (now) listed in the [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments), just because it's the fastest Scheme dialect of the tested ones (with the "speed part"), it's consequential to implement the full microbenchmark program also in [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_bitstring_and_flexible_password_generator.scm).
 
-However, Bigloo Scheme doesn't have so "big batteries" like Racket Scheme, and thus it's number of lines of source code is higher with 114 versus 107 for Racket Scheme: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list) (as of 2026-05-31).
+However, Bigloo Scheme doesn't have so "big batteries" like Racket Scheme, and thus it's number of lines of source code is higher with 114 versus 107 for Racket Scheme: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list) (as of 2026-06-17).
 
 But what counts more are **substantial algorithmic differences** between Bigloo and Racket Scheme implementations, even visible in this rather short program.
 
