@@ -3,6 +3,8 @@ random_bitstring_and_flexible_password_generator.ts
 
 2026-02-12
 2026-02-15: see below
+2026-06-17: refactored from char_set to pattern (for regular expressions)
+
 
 run on Ubuntu 24 LTS: $ node ./random_bitstring_and_flexible_password_generator.ts                 # running on node.js
                       $ deno --allow-write ./random_bitstring_and_flexible_password_generator.ts   # running on Deno web runtime
@@ -110,28 +112,43 @@ class random_bitstring_and_flexible_password_generator {
                 // just after console.log(`\nYour...`), originally placed by Duck.ai:
                 rl.close();
 
-                charSetBuilding();
+                regExpBuilding();  // 2026-06-17
             });
         };
 
 
+        // 2026-06-17: old solution:
         // Work with a set of chars
-        let char_set: Set<string> = new Set();
-        const charSetBuilding = () => {
+        //   let char_set: Set<string> = new Set();
+        //   const charSetBuilding = () => {
+        //       if (WITH_SPECIAL_CHARS) {
+        //           for (let i = 33; i <= 126; i++) {  // ASCII printable characters
+        //               char_set.add(String.fromCharCode(i));
+        //           }
+        //       } else {
+        //           for (let i = 97; i <= 122; i++) {  // 'a' to 'z'
+        //               char_set.add(String.fromCharCode(i));
+        //           }
+        //           for (let i = 65; i <= 90; i++) {   // 'A' to 'Z'
+        //               char_set.add(String.fromCharCode(i));
+        //           }
+        //           for (let i = 48; i <= 57; i++) {   // '0' to '9'
+        //               char_set.add(String.fromCharCode(i));
+        //           }
+        //       }
+        //       generatePassword();
+        //   };
+
+        // 2026-06-17: new solution with regular expressions:
+        const print_re = /^[!-~]$/;
+        const alnum_re = /^[A-Za-z0-9]$/;
+        // const alnum_re = /^[:alnum:]$/;  // this does not work!
+        let pattern: RegExp = new RegExp();
+        const regExpBuilding = () => {
             if (WITH_SPECIAL_CHARS) {
-                for (let i = 33; i <= 126; i++) {  // ASCII printable characters
-                    char_set.add(String.fromCharCode(i));
-                }
+              pattern = print_re;
             } else {
-                for (let i = 97; i <= 122; i++) {  // 'a' to 'z'
-                    char_set.add(String.fromCharCode(i));
-                }
-                for (let i = 65; i <= 90; i++) {   // 'A' to 'Z'
-                    char_set.add(String.fromCharCode(i));
-                }
-                for (let i = 48; i <= 57; i++) {   // '0' to '9'
-                    char_set.add(String.fromCharCode(i));
-                }
+              pattern = alnum_re;
             }
             generatePassword();
         };
@@ -151,12 +168,13 @@ class random_bitstring_and_flexible_password_generator {
                 let char0 = String.fromCharCode(parseInt(bin0_0, 2));
                 let char1 = String.fromCharCode(parseInt(bin0_1, 2));
 
-                if (char_set.has(char0)) {
+                // 2026-06-17: new solution with regular expressions:
+                if (pattern.test(char0)) {
                     pw_chars += char0;
                     i++;
                 }
 
-                if (char_set.has(char1) && i < N_CHAR) {
+                if (pattern.test(char1) && i < N_CHAR) {
                     pw_chars += char1;
                     i++;
                 }
