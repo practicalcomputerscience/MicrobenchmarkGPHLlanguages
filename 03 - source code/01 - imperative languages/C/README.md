@@ -46,7 +46,7 @@ $ make
 
 Compiling with [clang](https://clang.llvm.org/get_started.html) instead of the "usual" [gcc](https://gcc.gnu.org/), at least with the compiler versions I used (on 2025-12-01), built a slighlty faster executable of comparable size (with aggressive compiler switches for execution speed in both cases):
 
-- clang: 16,312 bytes produced with command: _$ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
+- clang: 16,448 bytes produced with command: _$ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang_
 - gcc: 17,912 bytes produced with command: _$ gcc -Wall -Ofast -faggressive-loop-optimizations random_streams_for_perf_stats.c -o random_streams_for_perf_stats_c_
 
 <br/>
@@ -121,10 +121,10 @@ I try to use user-defined functions only in cases where I cannot find a suitable
 
 However, what I have done now for my official C program is:
 
-- using a more modern version of the clang compiler with (normal) version 21.1.7 instead of former version 17.0.0, and
+- using a more modern version of the clang compiler with (normal) version 22.1.8 instead of former version 17.0.0, and
 - using its execution speed result as my official one for the C program: [Program execution times](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#program-execution-times)
 
-Because I also noticed that with clang version 21.1.7, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or gcc version 14.2.0). It's now about 7.8 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
+Because I also noticed that with clang version 22.1.8, I'm now able to compile a slightly faster executable than with gcc version 13.3.0 (or gcc version 14.2.0). It's now about 7.7 milliseconds versus about 8.2 milliseconds, with the usual best out of 3 runs of _$ perf stat -r 20_.
 
 <br/>
 
