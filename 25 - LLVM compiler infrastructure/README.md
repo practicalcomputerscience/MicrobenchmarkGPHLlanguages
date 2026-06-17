@@ -74,10 +74,12 @@ $ ls /usr/include/ -l
 drwxr-xr-x  3 root root   4096 Feb 17 16:15 llvm-14
 drwxr-xr-x  3 root root   4096 Feb 14 21:35 llvm-19
 drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-21
+drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-22
 drwxr-xr-x  3 root root   4096 Jun  6 12:02 llvm-23
 drwxr-xr-x  3 root root   4096 Feb 17 16:15 llvm-c-14
 drwxr-xr-x  3 root root   4096 Feb 14 21:35 llvm-c-19
 drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-c-21
+drwxr-xr-x  3 root root   4096 Jun  6 12:34 llvm-c-22
 drwxr-xr-x  3 root root   4096 Jun  6 12:02 llvm-c-23
 ...
 $
@@ -99,7 +101,9 @@ $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 19 \
 $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-21 \
 --slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-21
-$
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 22 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-22 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-22
 ```
 
 However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. That installation can be done like this (in Ubuntu 24):
