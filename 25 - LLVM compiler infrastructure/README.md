@@ -149,7 +149,8 @@ There are 4 choices for the alternative clang (providing /usr/bin/clang).
   1            /usr/bin/clang-14   14        manual mode
   2            /usr/bin/clang-19   19        manual mode
   3            /usr/bin/clang-21   21        manual mode
-  4            /usr/bin/clang-23   23        manual mode
+  4            /usr/bin/clang-22   22        manual mode
+  5            /usr/bin/clang-23   23        manual mode
 
 Press <enter> to keep the current choice[*], or type selection number: 
 $
