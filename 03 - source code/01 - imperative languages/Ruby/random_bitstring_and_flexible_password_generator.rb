@@ -5,6 +5,8 @@ random_bitstring_and_flexible_password_generator.rb
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-26: refactored regular expressions at pattern (mixed mode with POSIX and range of characters)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
+2026-06-17: refactored for a complete POSIX based solution with regular expressions
+
 
 run on Ubuntu 24 LTS: $ ruby ./random_bitstring_and_flexible_password_generator.rb
 
@@ -134,7 +136,8 @@ if WITH_SPECIAL_CHARS == true
   # Ruby Regexp literal
   # pattern = /\A[A-Za-z0-9!"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]+\z/  # old solution
   # pattern = /\A[[:print:]]+\z/  # 2026-05-26: this POSIX character class includes the unwanted space character
-  pattern = /\A[!-~]+\z/          # 2026-05-26: new solution
+  # pattern = /\A[!-~]+\z/          # 2026-05-26: new solution: works
+  pattern = /\A[[:graph:]]+\z/    # 2026-06-17: latest solution
 else
   # pattern = /\A[A-Za-z0-9]+\z/  # old solution
   pattern = /\A[[:alnum:]]+\z/    # 2026-05-26, new solution: using a POSIX character class
