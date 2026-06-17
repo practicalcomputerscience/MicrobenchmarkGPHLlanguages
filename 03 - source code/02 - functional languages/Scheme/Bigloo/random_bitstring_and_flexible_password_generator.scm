@@ -3,6 +3,8 @@
 2025-12-25
 2026-05-22: added a comment; see below
 2026-05-31: refactored from char_set to pattern (for regular expressions)
+2026-06-17: refactored for a complete POSIX based solution with regular expressions
+
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_bitstring_and_flexible_password_generator.scm -o random_bitstring_and_flexible_password_generator
 
@@ -229,8 +231,9 @@ $
   ;             https://www-sop.inria.fr/indes/fp/Bigloo/manual-chapter12.html
   (set! pattern
     (if with_special_chars
-      (pregexp "^[!-~]$")
+      ; (pregexp "^[!-~]$")  ; works
       ; (pregexp "^[[:print:]]$")  ; not useful here, because it includes the space character
+      (pregexp "^[[:graph:]]$")  ; 2026-06-17: using the right a POSIX character class
       ; (pregexp "^[A-Za-z0-9]$")
       (pregexp "^[[:alnum:]]$")))  ; using a POSIX character class
   ; (printf "\nmain: pattern = ~a" pattern)  ; for testing
