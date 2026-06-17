@@ -2,6 +2,7 @@
 random_streams_for_perf_stats.dart
 
 2026-02-08
+2026-06-17: refactored from char_set to pattern (for regular expressions)
 
 run on Ubuntu 24 LTS: $ dart run ./random_bitstring_and_flexible_password_generator.dart  # JIT compilation
 
@@ -104,24 +105,31 @@ void main(List<String> args) {
   // print("\nWITH_SPECIAL_CHARS = $WITH_SPECIAL_CHARS");  // for testing
 
 
+  // 2026-06-17: old solution:
   // Work with a set of chars
-  Set<String> char_set = {};
-  if (WITH_SPECIAL_CHARS) {
-    for (int i = 33; i <= 126; i++) { // ASCII printable characters
-      char_set.add(String.fromCharCode(i));
-    }
-  } else {
-    for (int i = 97; i <= 122; i++) { // 'a' to 'z'
-      char_set.add(String.fromCharCode(i));
-    }
-    for (int i = 65; i <= 90; i++) {  // 'A' to 'Z'
-      char_set.add(String.fromCharCode(i));
-    }
-    for (int i = 48; i <= 57; i++) {  // '0' to '9'
-      char_set.add(String.fromCharCode(i));
-    }
-  }
+  //   Set<String> char_set = {};
+  //   if (WITH_SPECIAL_CHARS) {
+  //     for (int i = 33; i <= 126; i++) { // ASCII printable characters
+  //       char_set.add(String.fromCharCode(i));
+  //     }
+  //   } else {
+  //     for (int i = 97; i <= 122; i++) { // 'a' to 'z'
+  //       char_set.add(String.fromCharCode(i));
+  //     }
+  //     for (int i = 65; i <= 90; i++) {  // 'A' to 'Z'
+  //       char_set.add(String.fromCharCode(i));
+  //     }
+  //     for (int i = 48; i <= 57; i++) {  // '0' to '9'
+  //       char_set.add(String.fromCharCode(i));
+  //     }
+  //   }
   // print("\nchar_set = $char_set");  // for testing
+  
+  // 2026-06-17: new solution with regular expressions:
+  final RegExp pattern = WITH_SPECIAL_CHARS
+    ? RegExp(r'^[!-~]$')
+    : RegExp(r'^[A-Za-z0-9]$');
+    // : RegExp(r'^[[:alnum:]]$');  // this doesn't work
 
 
   int i = 0;  // char counter for the password
@@ -136,16 +144,28 @@ void main(List<String> args) {
 
     String char0 = String.fromCharCode(int.parse(bin0_0, radix: 2));
     String char1 = String.fromCharCode(int.parse(bin0_1, radix: 2));
-
-    if (char_set.contains(char0)) {
+    
+    // 2026-06-17: new solution with regular expressions:
+    if (pattern.hasMatch(char0)) {
       pw_chars += char0;
       i++;
     }
-
-    if (char_set.contains(char1) && i < N_CHAR) {
+    
+    if (pattern.hasMatch(char1) && i < N_CHAR) {
       pw_chars += char1;
       i++;
     }
+
+
+    //  if (char_set.contains(char0)) {
+    //    pw_chars += char0;
+    //    i++;
+    //  }
+    //  
+    //  if (char_set.contains(char1) && i < N_CHAR) {
+    //    pw_chars += char1;
+    //    i++;
+    //  }
 
     j++;
   }
