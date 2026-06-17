@@ -1,8 +1,8 @@
 /* random_bitstring_and_flexible_password_generator.kk
 
 2025-06-23
+2026-06-17: refactored at function ask_password_length() to catch invalid input '8.0'
 
-test on Ubuntu 24 LTS: OK
 
 build on Ubuntu 24 LTS: $ koka -O2 -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.kk
 
@@ -111,7 +111,7 @@ fun main()  // fun: named function
 
 
   // make a password of n_char printable chars: user input requested here
-  val n_char = input_a_valid_number(n_char_default)
+  val n_char = ask_password_length(n_char_default)  // 2026-06-17
   // println("\nmain: n_char = " ++ n_char.show)  // for testing
 
   val with_special_chars = answer_yes_or_no()
@@ -231,7 +231,13 @@ fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
     buffer
 
 
-fun input_a_valid_number(n_char : int) : <console|_e> int
+// 2026-06-17: Google AI
+fun input_a_valid_number(s : string) : bool {
+  s.list.all(fn(c) { c >= '0' && c <= '9' })
+}
+
+
+fun ask_password_length(n_char : int) : <console|_e> int  // 2026-06-17
   print("\nPassword of " ++ n_char.show ++ " printable chars OK? 'y' or another integer number >= 8: ")  // not println here
   val answer_str = readline()
 
@@ -240,14 +246,14 @@ fun input_a_valid_number(n_char : int) : <console|_e> int
 
   // https://github.com/koka-lang/koka/blob/c9c313f09cc10c24386f97f3d80a22f3f132baed/lib/std/core/int.kk#L275
   else
-    val n_char_ = parse-int(answer_str).default(0)
+    val n_char_ = parse-int(answer_str).default(0)  // 2026-06-17: 8.0 is accepted as a valid integer value!
     // returned type: maybe<int>; with .default(0) illegal integer numbers will be defaulted to 0
 
-    if n_char_ < 8 then
-      println("enter an integer number >= 8 or 'y'")
-      input_a_valid_number(n_char)
-    else
+    if input_a_valid_number(answer_str) && n_char_ >= 8 then  // 2026-06-17
       n_char_
+    else
+      println("enter an integer number >= 8 or 'y'")
+      ask_password_length(n_char)
 
 
 fun answer_yes_or_no(): <console|_e> bool
@@ -352,4 +358,3 @@ fun pw_generator(n_char_ : int, x_ : list<int>, char_set_ : string)
 
 
 // end of random_bitstring_and_flexible_password_generator.kk
-
