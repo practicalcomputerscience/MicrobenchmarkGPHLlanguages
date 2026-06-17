@@ -99,7 +99,7 @@ programming language | regular expressions with variable _pattern_ used? | set/h
 Ada | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-08
 AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | | 2026-05-24
 Ballerina | yes |  | OK | non-POSIX patterns: \`[!-~]+\`, \`[A-Za-z0-9]+\` | | 2026-06-12
-C | yes |  | OK | POSIX patterns: _"^[[:graph:]]+$"_, _"^[[:alnum:]]+$"_ (POSIX) | yes | 2026-06-17
+C | yes |  | OK | POSIX patterns: _"^[[:graph:]]+$"_, _"^[[:alnum:]]+$"_ | yes | 2026-06-17
 C++ | yes |  | OK | mixed patterns: _R"([!-~])"_, _"[[:alnum:]]"_ (POSIX) | partly | 2026-05-25: tbd: [[:graph:]] like in C?
 C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | | 2026-06-10
 C# | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[a-zA-Z0-9]"_ as strings | | 2026-06-10
