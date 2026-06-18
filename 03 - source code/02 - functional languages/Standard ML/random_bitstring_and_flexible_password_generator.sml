@@ -9,7 +9,7 @@ random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 2025-12-21: see below
 2026-01-04: cosmetics
 2026-05-29/30: refactored from char_set to pattern (for regular expressions)
-2026-06-18: define print_re and alnum_re, use the ternary operator with with_special_chars to set pattern
+2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
 
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
