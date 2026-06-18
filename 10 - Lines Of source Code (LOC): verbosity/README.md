@@ -161,7 +161,7 @@ Pike              | 103 | interpreted, mature language | 2026-06-18
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
 Julia             |  99 | just-in-time compiled, mature language | 2026-06-18
-Clojure           |  96 | interpreted, mature language (together with Java ecosystem) | 2026-05-29
+Clojure           |  96 | interpreted, mature language (together with Java ecosystem) | 2026-06-18
 Ruby              |  96 | interpreted, very mature language | 2026-06-18
 Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
 Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-18
