@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.cs
 2025-06-07/08; 2025-12-17: see below
 2026-06-10: renamed char_set to pattern (for regular expression patterns) to better comply with naming conventions,
             though char_set was already used for pattern matching
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
 
 
 build on Ubuntu 24 LTS: $ dotnet new console -n random_bitstring_and_flexible_password_generator --use-program-main
@@ -140,14 +141,12 @@ class Program
       }
     }
 
-    string pattern = "";
     // https://learn.microsoft.com/de-de/dotnet/standard/base-types/character-classes-in-regular-expressions
-    if (WITH_SPECIAL_CHARS) {
-      pattern += "[!-~]";  // @"..." = take it literally; 2026-06-10: use name pattern, not char_set
-    } else {
-      pattern += "[a-zA-Z0-9]";
-      // pattern = "[[:alnum:]]";  // this does not work, but compiles!
-    }
+    // 2026-06-18
+    string print_re = "[!-~]";
+    string alnum_re = "[A-Za-z0-9]";  // "[[:alnum:]]: this does not work, but compiles!
+
+    string pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
     // Console.WriteLine(pattern); // for testing
 
 
