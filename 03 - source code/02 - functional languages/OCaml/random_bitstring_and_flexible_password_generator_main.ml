@@ -61,8 +61,7 @@ let bits_hex = Buffer.create k250
 let n_char_default = 12
 
 let print_re = regexp "^[!-~]$"        (* 2026-06-18 *)
-let alnum_re = regexp "^[A-Za-z0-9]$"  (* 2026-06-18 *)
-(* regexp "^[[:alnum:]]$": this does not work here *)
+let alnum_re = regexp "^[A-Za-z0-9]$"  (* 2026-06-18: regexp "^[[:alnum:]]$": this does not work here *)
 
 
 
