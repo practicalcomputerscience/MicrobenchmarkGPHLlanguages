@@ -5,6 +5,8 @@ random_bitstring_and_flexible_password_generator.jl
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-28: refactored pattern (for regular expressions)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
+
 
 run on Ubuntu 24 LTS: $ julia ./random_bitstring_and_flexible_password_generator.jl
 
@@ -127,18 +129,20 @@ end
 # println("WITH_SPECIAL_CHARS = ", WITH_SPECIAL_CHARS)  # for testing
 
 
-if WITH_SPECIAL_CHARS == true
-    # 2026-05-28: old solution:
-    # global pattern = r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+"
-    # 2026-05-28: more elegant solution:
-    global pattern = r"[!-~]+"
-else
-    global pattern = r"[A-Za-z0-9]+"
-    # 2026-05-28: similar to Java, POSIX patterns like [[:alnum:]] etc
-    #             aren't working here with doing extra stuff,
-    #             because they are Unicode based by default!!
-    # global pattern = r"[[:alnum:]]+"  # => þoNZõÑÆÅ !!
-end
+# 2026-05-28: old solution:
+# global pattern = r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+"
+# 2026-05-28: more elegant solution:
+# global pattern = r"[!-~]+"
+# global pattern = r"[A-Za-z0-9]+"
+# 2026-05-28: similar to Java, POSIX patterns like [[:alnum:]] etc
+#             aren't working here with doing extra stuff,
+#             because they are Unicode based by default!!
+# global pattern = r"[[:alnum:]]+"  # => þoNZõÑÆÅ !!
+#
+# 2026-06-18: now with a ternary operator:
+print_re = r"[!-~]+"
+alnum_re = r"[A-Za-z0-9]+"
+global pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re
 # println("pattern = ", pattern)  # for testing
 
 
