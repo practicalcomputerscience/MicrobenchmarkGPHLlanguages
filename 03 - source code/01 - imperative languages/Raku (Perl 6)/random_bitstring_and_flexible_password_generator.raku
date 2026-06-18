@@ -4,16 +4,18 @@
 # 2025-12-19: see below
 # 2026-01-24: fix this source code like the cleanup done at Perl 5 program on 2026-01-24
 # 2026-05-31: rename char_set_rx to pattern; this solution is already regular expression based!
-# 2026-05-31: an important fix of user dialog for N_CHAR printable chars 
+# 2026-05-31: an important fix of user dialog for N_CHAR printable chars
+# 2026-06-18: refactored to a one-line at setting $pattern
+#
 #
 # run in Ubuntu 24 LTS: $ raku random_bitstring_and_flexible_password_generator.raku
 #
 #
 # $ raku --version
-# Welcome to Rakudo™ v2025.11.
+# Welcome to Rakudo™ v2026.04.
 # Implementing the Raku® Programming Language v6.d.
-# Built on MoarVM version 2025.11.
-# $ 
+# Built on MoarVM version 2026.04.
+# $
 #
 #
 # to-do:
@@ -127,6 +129,9 @@ if $! {
 }
 
 
+# 2026-05-31: stop her for speed testing:
+# exit();
+
 
 # make a password of N_CHAR printable chars: user input requested here
 my $N_CHAR = 12;
@@ -167,12 +172,10 @@ while !$answer {
   }
 }
 
+
 my $pattern;
-if $WITH_SPECIAL_CHARS {
-  $pattern = /<[!..~]>/;
-} else {
-  $pattern = /<[0..9a..zA..Z]>/;
-}
+# 2026-06-18: have a one-liner here: 
+if $WITH_SPECIAL_CHARS { $pattern = /<[!..~]>/ } else { $pattern = /<[0..9a..zA..Z]>/ }
 
 
 my $i = 0;  # char counter for the password
