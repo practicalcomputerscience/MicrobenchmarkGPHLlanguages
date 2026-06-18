@@ -31,6 +31,8 @@ $
 Though this language, and its precursors, have been around for more than 25 years ([The history of Pike](https://pike.lysator.liu.se/about/history/)), its documentation still has gaps (as of 2026-06-18),
 for example at [Modules](https://pike.lysator.liu.se/docs/tut/modules/index.md): _... Unfortunately this tutorial file does not exist yet!_
 
+You may have a look into this very old documentation from 2001, though: https://fredrik.hubbe.net/pike/tutorial/tutorial.html
+
 <br/>
 
 ##_end
