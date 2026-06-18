@@ -137,10 +137,10 @@ C++               | 129 | compiled, very mature language; memory-safe source cod
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 Odin              | 127 | compiled, young language | 2026-06-18
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
-Rust              | 124 | compiled, mature language | 2026-06-14
 SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
+Rust              | 122 | compiled, mature language | 2026-06-18
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Go                | 121 | compiled, mature language | 2026-05-28
 Ballerina         | 116 | interpreted, young language (together with Java ecosystem) | 2026-06-18
