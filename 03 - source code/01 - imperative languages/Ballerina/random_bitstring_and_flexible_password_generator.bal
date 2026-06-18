@@ -2,6 +2,7 @@
 //
 // 2026-05-08/11
 // 2026-06-12: refactored from char_set to pattern (for regular expressions)
+// 2026-06-18: introduced ternary operator at pattern
 //
 // build on Ubuntu 24 LTS: do this only once:
 //                         $ bal new random_bitstring_and_flexible_password_generator
@@ -188,12 +189,8 @@ public function main() returns error? {
     //             https://ballerina.io/learn/advanced-general-purpose-language-features/#regular-expressions
     string:RegExp print_re = re `[!-~]+`;
     string:RegExp alnum_re = re `[A-Za-z0-9]+`;
-    string:RegExp pattern;
-    if (WITH_SPECIAL_CHARS) {
-      pattern = print_re;
-    } else {
-      pattern = alnum_re;
-    }
+    // 2026-06-18:
+    string:RegExp pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
 
     int i = 0;  // char counter for the password
