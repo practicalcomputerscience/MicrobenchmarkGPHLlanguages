@@ -3,6 +3,8 @@
 2025-06-17/21
 2025-12-21: see below
 2026-05-30: refactored from char_set to pattern, using Portable Perl-compatible regular expressions (CL-PPCRE)
+2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
+
 
 first, **once** install the CL-PPCRE's for Common Lisp in your SBCL system (2026-05-30):
   $ curl -O https://beta.quicklisp.org/quicklisp.lisp
@@ -57,6 +59,9 @@ $
 (defvar *char_set*)
 (defvar *pw_chars*)
 
+(defparameter *print_re* "^[!-~]$")        ; 2026-06-18
+(defparameter *alnum_re* "^[A-Za-z0-9]$")  ; 2026-06-18: "^[[:alnum:]]$": this POSIX character class doesn't work here, though it compiles
+
 
 
 ;----------------------  user defined functions  ----------------------------
@@ -95,10 +100,7 @@ $
 ; 2026-05-30: new solution with regular expressions; Duck.ai:
 (defun valid-char-p (char)
   "Return T if CHAR matches the chosen pattern."
-  (let* ((pattern (if *with_special_chars*
-                     "^[!-~]$"
-                     ; "^[[:alnum:]]$"))  ; this POSIX character class doesn't work here, though it compiles
-                     "^[A-Za-z0-9]$"))
+  (let* ((pattern (if *with_special_chars* *print_re* *alnum_re*))
                   (s (string char)))
          (when (find-package :cl-ppcre)
                (cl-ppcre:scan pattern s))))
