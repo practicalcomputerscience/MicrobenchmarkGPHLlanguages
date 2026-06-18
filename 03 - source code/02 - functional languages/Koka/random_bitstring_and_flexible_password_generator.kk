@@ -2,6 +2,7 @@
 
 2025-06-23
 2026-06-17: refactored at function ask_password_length() to catch invalid input '8.0'
+2026-06-18: renamed function input_a_valid_number() to is_all_digits()
 
 
 build on Ubuntu 24 LTS: $ koka -O2 -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.kk
@@ -232,7 +233,7 @@ fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
 
 
 // 2026-06-17: Google AI
-fun input_a_valid_number(s : string) : bool {
+fun is_all_digits(s : string) : bool {
   s.list.all(fn(c) { c >= '0' && c <= '9' })
 }
 
@@ -249,7 +250,7 @@ fun ask_password_length(n_char : int) : <console|_e> int  // 2026-06-17
     val n_char_ = parse-int(answer_str).default(0)  // 2026-06-17: 8.0 is accepted as a valid integer value!
     // returned type: maybe<int>; with .default(0) illegal integer numbers will be defaulted to 0
 
-    if input_a_valid_number(answer_str) && n_char_ >= 8 then  // 2026-06-17
+    if is_all_digits(answer_str) && n_char_ >= 8 then  // 2026-06-17
       n_char_
     else
       println("enter an integer number >= 8 or 'y'")
