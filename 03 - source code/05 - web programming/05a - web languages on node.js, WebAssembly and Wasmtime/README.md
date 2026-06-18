@@ -462,7 +462,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
 
 <br/>
 
-[TypeScript](./random_bitstring_and_flexible_password_generator.ts) implementation of the first question to the user (as of 2026-06-17):
+[TypeScript](./random_bitstring_and_flexible_password_generator.ts) implementation of the first question to the user (as of 2026-06-18):
 
 ```
         let N_CHAR = 12;
@@ -499,7 +499,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
         };
 ```
 
-[CoffeeScript](./random_bitstring_and_flexible_password_generator.coffee) implementation of the first question to the user  (as of 2026-06-17):
+[CoffeeScript](./random_bitstring_and_flexible_password_generator.coffee) implementation of the first question to the user  (as of 2026-06-18):
 
 ```
     N_CHAR = 12
@@ -534,7 +534,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
 
 That's 22 source lines of code versus 27.
 
-CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-06-17: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
+CoffeeScript's succinctness is even beating Python's by one source line of code as of 2026-06-18: [LOC ranking list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/10%20-%20Lines%20Of%20source%20Code%20(LOC)%3A%20verbosity#loc-ranking-list)
 
 <br/>
 
