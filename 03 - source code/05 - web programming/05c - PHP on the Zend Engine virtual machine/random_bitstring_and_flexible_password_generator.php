@@ -8,6 +8,7 @@ random_bitstring_and_flexible_password_generator.php
   to random_bitstring_and_flexible_password_generator + write_to_file
   like in the other languages
 2026-06-16: refactored from char_set to pattern (for regular expressions)
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
 
 
 run on Ubuntu 24 LTS: $ php ./random_bitstring_and_flexible_password_generator.php
@@ -151,12 +152,10 @@ class random_bitstring_and_flexible_password_generator {
         //       }
         //   }
 
-        // 2026-06-16: new solution with regular expressions (Duck.ai):
-        if ($WITH_SPECIAL_CHARS) {
-            $pattern = '/^[!-~]$/';
-        } else {
-            $pattern = '/^[A-Za-z0-9]$/';
-        }
+        // 2026-06-16/18: new solution with regular expressions (Duck.ai):
+        $print_re = '/^[!-~]$/';
+        $alnum_re = '/^[A-Za-z0-9]$/';
+        $pattern = $WITH_SPECIAL_CHARS ? $print_re : $alnum_re;
 
 
         $i = 0;  // char counter for the password
