@@ -4,7 +4,7 @@ random_bitstring_and_flexible_password_generator.cs
 2025-06-07/08; 2025-12-17: see below
 2026-06-10: renamed char_set to pattern (for regular expression patterns) to better comply with naming conventions,
             though char_set was already used for pattern matching
-2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
 
 
 build on Ubuntu 24 LTS: $ dotnet new console -n random_bitstring_and_flexible_password_generator --use-program-main
