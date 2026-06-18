@@ -221,7 +221,7 @@ Perl 5             | 0
 PHP                | 1 
 Picat (former B-Prolog) | 8
 Pike               | 1
-Prolog, SWI        | 10
+Prolog, SWI        | 11
 PowerShell         | 0
 Python             | 1
 Roc                | 9
