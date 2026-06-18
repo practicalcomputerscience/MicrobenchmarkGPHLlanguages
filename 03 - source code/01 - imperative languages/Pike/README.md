@@ -28,7 +28,7 @@ $
 
 <br/>
 
-Though this language, and its precursors, have been around for more than 25 years ([The history of Pike](https://pike.lysator.liu.se/about/history/)), its documentation still has gaps,
+Though this language, and its precursors, have been around for more than 25 years ([The history of Pike](https://pike.lysator.liu.se/about/history/)), its documentation still has gaps (as of 2026-06-18),
 for example at [Modules](https://pike.lysator.liu.se/docs/tut/modules/index.md): _... Unfortunately this tutorial file does not exist yet!_
 
 <br/>
