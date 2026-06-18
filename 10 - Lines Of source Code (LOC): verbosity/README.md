@@ -142,8 +142,8 @@ SWI Prolog        | 123 | compiled, very mature language: lots of user-defined f
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
-Ballerina         | 121 | interpreted, young language (together with Java ecosystem) | 2026-06-12
 Go                | 121 | compiled, mature language | 2026-05-28
+Ballerina         | 116 | interpreted, young language (together with Java ecosystem) | 2026-06-18
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
@@ -168,8 +168,9 @@ Dart              |  90 | just-in-time or ahead-of-time compiled, mature web pro
 Mojo              |  90 | compiled, very young language | 2026-05-28
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
 PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-05-26
-Python            |  85 | interpreted, very mature language | 2026-05-28
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
+Python            |  84 | interpreted, very mature language | 2026-06-18
+
 
 <br/>
 
