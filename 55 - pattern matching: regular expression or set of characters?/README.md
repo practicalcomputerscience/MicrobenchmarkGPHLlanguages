@@ -102,7 +102,7 @@ Ballerina | yes |  | OK | non-POSIX patterns: \`[!-~]+\`, \`[A-Za-z0-9]+\` | | 2
 C | yes |  | OK | POSIX patterns: _"^[[:graph:]]+$"_, _"^[[:alnum:]]+$"_ | yes | 2026-06-17
 C++ | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-17
 C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | | 2026-06-10
-C# | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[a-zA-Z0-9]"_ as strings | | 2026-06-10
+C# | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ as strings | | 2026-06-18
 Chapel | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-06-15
 Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | | 2026-05-29
 COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in both cases ("picture clauses" for holding characters), compiled from codepoints | | 2026-06-03
