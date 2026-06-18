@@ -473,7 +473,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
             output: process.stdout
         });
 
-        function input_a_valid_number(s: string): number | null {
+        function is_all_digits(s: string): number | null {
             if (/^\d+$/.test(s)) return Number(s);
             return null; // reject "8.0", "8.", " 8", "8e0", etc.
         }
@@ -484,7 +484,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
                     answer = true;
                     askSpecialCharsUsage();
                 } else {
-                    const N_CHAR_ = input_a_valid_number(answerStr);  // 2026-06-17: the strict test
+                    const N_CHAR_ = is_all_digits(answerStr);  // 2026-06-17: the strict test
 
                     if (N_CHAR_ !== null && Number(answerStr) >= 8) {
                         N_CHAR = Number(answerStr);
@@ -513,7 +513,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
       new Promise (resolve) ->
         rl.question q, (ans) -> resolve ans
 
-    input_a_valid_number = (s) ->
+    is_all_digits = (s) ->
       return Number(s) if /^\d+$/.test s
       null
 
@@ -523,7 +523,7 @@ Background: node.js heavily relies on asynchronous programming ([Asynchronous Pr
       if answerStr is 'y'
         answer = true
       else
-        N_CHAR_ = input_a_valid_number(answerStr);  # 2026-06-17: the strict test
+        N_CHAR_ = is_all_digits(answerStr);  # 2026-06-17: the strict test
 
         if N_CHAR_ != null and (Number) answerStr >= 8
           N_CHAR = (Number) answerStr
