@@ -4,7 +4,8 @@ random_bitstring_and_flexible_password_generator.ts
 2026-02-12
 2026-02-15: see below
 2026-06-17: refactored from char_set to pattern (for regular expressions)
-2026-06-18: renamed function input_a_valid_number() to is_all_digits()
+2026-06-18: renamed function input_a_valid_number() to is_all_digits(),
+            use the ternary operator with WITH_SPECIAL_CHARS to set pattern
 
 
 run on Ubuntu 24 LTS: $ node ./random_bitstring_and_flexible_password_generator.ts                 # running on node.js
@@ -153,11 +154,9 @@ class random_bitstring_and_flexible_password_generator {
         // const alnum_re = /^[:alnum:]$/;  // this does not work!
         let pattern: RegExp = new RegExp();
         const regExpBuilding = () => {
-            if (WITH_SPECIAL_CHARS) {
-              pattern = print_re;
-            } else {
-              pattern = alnum_re;
-            }
+            // 2026-06-18
+            pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
+
             generatePassword();
         };
 
