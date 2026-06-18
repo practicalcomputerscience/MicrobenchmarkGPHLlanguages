@@ -4,6 +4,8 @@
 // 2025-12-14: see below
 // 2026-01-26: cosmetics in first user dialog
 // 2026-05-31: refactored from char_set to pattern (for regular expressions)
+// 2026-06-18: define print_re and alnum_re
+//
 //
 // install these packages:  $ gleam add simplifile
 //                          $ gleam add gleam_regexp@1  # 2026-05-31
@@ -310,10 +312,13 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
   // echo char_set  // for testing
 
   // 2026-05-31: new solution with regular expressions (Google AI):
+  // 2026-06-18:
+  let print_re = regexp.from_string("^[!-~]$")
+  let alnum_re = regexp.from_string("^[A-Za-z0-9]$")
   let assert Ok(pattern) = {
-    case with_special_chars {
-      True  -> regexp.from_string("^[!-~]$")
-      False -> regexp.from_string("^[A-Za-z0-9]$")
+    case with_special_chars {  // 2026-06-18: don't make a one-liner here; doesn't feel very "Gleamy"
+      True  -> print_re
+      False -> alnum_re
     }
   }
 
