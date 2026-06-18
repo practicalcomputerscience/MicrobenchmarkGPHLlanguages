@@ -3,6 +3,7 @@
 # 2026-02-15/16
 # 2026-05-24: refactored from char_set to pattern (for regular expressions)
 # 2026-06-17: refactored for only entering strict integer numbers (like in TypeScript)
+# 2026-06-18: renamed function input_a_valid_number() to is_all_digits()
 #
 #
 # build on Ubuntu 24 LTS: $ npm install prompt-sync  # install, if still missing
@@ -86,7 +87,7 @@ class random_bitstring_and_flexible_password_generator
         rl.question q, (ans) -> resolve ans
 
     # 2026-06-17
-    input_a_valid_number = (s) ->
+    is_all_digits = (s) ->
       return Number(s) if /^\d+$/.test s
       null
 
@@ -96,7 +97,7 @@ class random_bitstring_and_flexible_password_generator
       if answerStr is 'y'
         answer = true
       else
-        N_CHAR_ = input_a_valid_number(answerStr);  # 2026-06-17: the strict test
+        N_CHAR_ = is_all_digits(answerStr);  # 2026-06-17: the strict test
 
         if N_CHAR_ != null and (Number) answerStr >= 8
         # 2026-06-17: Number.isInteger(numberValue): 8. and 8.0 are accepted as valid numbers!!

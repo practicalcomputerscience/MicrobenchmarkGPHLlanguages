@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.ts
 2026-02-12
 2026-02-15: see below
 2026-06-17: refactored from char_set to pattern (for regular expressions)
+2026-06-18: renamed function input_a_valid_number() to is_all_digits()
 
 
 run on Ubuntu 24 LTS: $ node ./random_bitstring_and_flexible_password_generator.ts                 # running on node.js
@@ -80,7 +81,7 @@ class random_bitstring_and_flexible_password_generator {
         });
 
         // 2026-06-17
-        function input_a_valid_number(s: string): number | null {
+        function is_all_digits(s: string): number | null {
             if (/^\d+$/.test(s)) return Number(s);
             return null; // reject "8.0", "8.", " 8", "8e0", etc.
         }
@@ -91,7 +92,7 @@ class random_bitstring_and_flexible_password_generator {
                     answer = true;
                     askSpecialCharsUsage();
                 } else {
-                    const N_CHAR_ = input_a_valid_number(answerStr);  // 2026-06-17: the strict test
+                    const N_CHAR_ = is_all_digits(answerStr);  // 2026-06-17: the strict test
                     // const numberValue = Number(answerStr);  // 2026-06-17: 8. and 8.0 are accepted as valid numbers!!
 
                     if (N_CHAR_ !== null && Number(answerStr) >= 8) {
