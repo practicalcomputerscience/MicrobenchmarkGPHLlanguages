@@ -2,6 +2,7 @@
 RandomBitstringAndFlexiblePasswordGenerator.java
 
 2026-05-18/19
+2026-05-26: refactored from char_set to pattern (for regular expressions)
 
 run on Ubuntu 24 LTS:   $ java RandomBitstringAndFlexiblePasswordGenerator.java
 
@@ -14,8 +15,8 @@ build on Ubuntu 24 LTS: $ javac RandomBitstringAndFlexiblePasswordGenerator.java
 
 $ java --version
 openjdk 25.0.2 2026-01-20
-OpenJDK Runtime Environment (build 25.0.2+10-Ubuntu-124.04)
-OpenJDK 64-Bit Server VM (build 25.0.2+10-Ubuntu-124.04, mixed mode, sharing)
+OpenJDK Runtime Environment Homebrew (build 25.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 25.0.2, mixed mode, sharing)
 $
 
 mostly transpiled from RandomBitstringAndFlexiblePasswordGenerator.hx (Haxe) with Duck.ai (using GPT-5 mini) and Google AI
@@ -30,6 +31,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;  // for new Scanner(System.class) for readLine()
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;  // 2026-05-26 20:16:03
 
 public class RandomBitstringAndFlexiblePasswordGenerator {
     public static void main() {
@@ -127,20 +129,31 @@ public class RandomBitstringAndFlexiblePasswordGenerator {
 
         // the original implementation, based on the Haxe source code
         // ("explicit Set behavior across cross-platform targets"), was not the most efficient.
-        // So, a Groovy based one with a HashSet was then finally the design input here with Google AI:
-        Set<String> char_set = new HashSet<>();
-        if (WITH_SPECIAL_CHARS) {
-            // Groovy ('!'..'~') range equivalent in Java
-            for (char chr = '!'; chr <= '~'; chr++) {
-                char_set.add(String.valueOf(chr));
-            }
-        } else {
-            // Groovy ('a'..'z'), ('A'..'Z'), ('0'..'9') ranges
-            for (char chr = 'a'; chr <= 'z'; chr++) char_set.add(String.valueOf(chr));
-            for (char chr = 'A'; chr <= 'Z'; chr++) char_set.add(String.valueOf(chr));
-            for (char chr = '0'; chr <= '9'; chr++) char_set.add(String.valueOf(chr));
-        }
-        // System.out.println("char_set = " + char_set);  // for testing
+        // So, a Groovy based one with a HashSet was then finally the design input here with Google AI
+        //
+        // 2026-05-26: old solution:
+        //   Set<String> char_set = new HashSet<>();
+        //   if (WITH_SPECIAL_CHARS) {
+        //       // Groovy ('!'..'~') range equivalent in Java
+        //       for (char chr = '!'; chr <= '~'; chr++) {
+        //           char_set.add(String.valueOf(chr));
+        //       }
+        //   } else {
+        //       // Groovy ('a'..'z'), ('A'..'Z'), ('0'..'9') ranges
+        //       for (char chr = 'a'; chr <= 'z'; chr++) char_set.add(String.valueOf(chr));
+        //       for (char chr = 'A'; chr <= 'Z'; chr++) char_set.add(String.valueOf(chr));
+        //       for (char chr = '0'; chr <= '9'; chr++) char_set.add(String.valueOf(chr));
+        //   }
+        //   System.out.println("char_set = " + char_set);  // for testing
+
+        // 2026-05-26: new solution with regular expressions ("Big AI"):
+        //   POSIX patterns like [[:alnum:]] etc are not working here,
+        //   because they are Unicode based by default!!
+        //   See Java flag UNICODE_CHARACTER_CLASS, which is usually set to true.
+        //   So, only use ranges of ASCII characters, and without the space character:
+        Pattern alnum_re = Pattern.compile("[A-Za-z0-9]");
+        Pattern print_re = Pattern.compile("[!-~]");
+        Pattern pattern  = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
 
         int i = 0;  // char counter for the password
@@ -157,12 +170,13 @@ public class RandomBitstringAndFlexiblePasswordGenerator {
             String char0 = String.valueOf((char) Integer.parseUnsignedInt(bin0_0, 2));
             String char1 = String.valueOf((char) Integer.parseUnsignedInt(bin0_1, 2));
 
-            if (char_set.contains(char0)) {
+            // 2026-05-26: new solution with regular expressions:
+            if (pattern.matcher(char0).matches()) {
                 pw_chars.append(char0);
                 i++;
             }
 
-            if (char_set.contains(char1) && i < N_CHAR) {
+            if (pattern.matcher(char1).matches() && i < N_CHAR) {
                 pw_chars.append(char1);
                 i++;
             }
