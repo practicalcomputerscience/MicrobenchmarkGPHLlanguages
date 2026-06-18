@@ -10,7 +10,7 @@ Table of contents:
 
 - [Installation tips](#installation-tips)
 - [LLVM's Polly loop optimizer](#llvms-polly-loop-optimizer)
-- [Regular expressions](#regular-expressions)
+- [Regular expressions in Inko](#regular-expressions-in-inko)
 
 <br/>
 
@@ -112,7 +112,7 @@ Voilà!
 
 <br/>
 
-#### Regular expressions
+#### Regular expressions in Inko
 
 At the moment, Inko doesn't support natively regular expressions. There has been package: [Inko Regex](https://github.com/dusty-phillips/inko-regex/tree/main#inko-regex), which is also listed here (as of 2026-06-06): https://inko-lang.org/packages/
 
