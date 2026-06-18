@@ -3,6 +3,8 @@ random_streams_for_perf_stats.dart
 
 2026-02-08
 2026-06-17: refactored from char_set to pattern (for regular expressions)
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
+
 
 run on Ubuntu 24 LTS: $ dart run ./random_bitstring_and_flexible_password_generator.dart  # JIT compilation
 
@@ -124,12 +126,12 @@ void main(List<String> args) {
   //     }
   //   }
   // print("\nchar_set = $char_set");  // for testing
-  
-  // 2026-06-17: new solution with regular expressions:
-  final RegExp pattern = WITH_SPECIAL_CHARS
-    ? RegExp(r'^[!-~]$')
-    : RegExp(r'^[A-Za-z0-9]$');
-    // : RegExp(r'^[[:alnum:]]$');  // this doesn't work
+
+  // 2026-06-17/18: new solution with regular expressions:
+  RegExp print_re = RegExp(r'^[!-~]$');
+  RegExp alnum_re = RegExp(r'^[A-Za-z0-9]$');
+  // RegExp(r'^[[:alnum:]]$');  // this doesn't work
+  final RegExp pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
 
   int i = 0;  // char counter for the password
@@ -144,13 +146,13 @@ void main(List<String> args) {
 
     String char0 = String.fromCharCode(int.parse(bin0_0, radix: 2));
     String char1 = String.fromCharCode(int.parse(bin0_1, radix: 2));
-    
+
     // 2026-06-17: new solution with regular expressions:
     if (pattern.hasMatch(char0)) {
       pw_chars += char0;
       i++;
     }
-    
+
     if (pattern.hasMatch(char1) && i < N_CHAR) {
       pw_chars += char1;
       i++;
@@ -161,7 +163,7 @@ void main(List<String> args) {
     //    pw_chars += char0;
     //    i++;
     //  }
-    //  
+    //
     //  if (char_set.contains(char1) && i < N_CHAR) {
     //    pw_chars += char1;
     //    i++;
