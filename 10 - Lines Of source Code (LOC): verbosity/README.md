@@ -228,7 +228,7 @@ Roc                | 9
 Ruby               | 1
 Rust               | 0
 Scala              | 0
-Scheme, Bigloo     | 5 tbd ???
+Scheme, Bigloo     | 5
 Scheme, Racket     | 6
 Smalltalk (GNU)    | 2
 Standard ML (MLton) | 7
