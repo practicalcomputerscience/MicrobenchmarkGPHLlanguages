@@ -7,6 +7,8 @@ random_bitstring_and_flexible_password_generator.py
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-24: see below (only a minor change)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
+
 
 check the quality of randomness at:
   https://mzsoltmolnar.github.io/random-bitstream-tester/
@@ -151,12 +153,12 @@ while answer is False:
         WITH_SPECIAL_CHARS = False
         answer = True
 
+# 2026-06-18
+# pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")  # old solution
+print_re = re.compile(r"[!-~]+")        # 2026-05-24: new range solution, a bit more elegant
+alnum_re = re.compile(r"[A-Za-z0-9]+")  # keep this solution
 
-if WITH_SPECIAL_CHARS is True:
-    # pattern = re.compile(r"[A-Za-z0-9!\"#$%&'()*+,-./:;<=>?@[\]\\^_`{|}~]+")  # old solution
-    pattern = re.compile(r"[!-~]+")  # 2026-05-24: new range solution, a bit more elegant
-else:
-    pattern = re.compile(r"[A-Za-z0-9]+")   # keep this solution
+pattern = print_re if WITH_SPECIAL_CHARS else alnum_re  # 2026-06-18: using the ternary operator
 
 
 i = 0  # char counter in password
