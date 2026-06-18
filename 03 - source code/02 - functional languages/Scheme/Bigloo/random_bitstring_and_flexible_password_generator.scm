@@ -4,6 +4,7 @@
 2026-05-22: added a comment; see below
 2026-05-31: refactored from char_set to pattern (for regular expressions)
 2026-06-17: refactored for a complete POSIX based solution with regular expressions
+2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
 
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_bitstring_and_flexible_password_generator.scm -o random_bitstring_and_flexible_password_generator
@@ -66,7 +67,12 @@ $
 (define n_char 0)
 (define with_special_chars #f)
 ; (define char_set "")  ; 2026-05-31: for the old solution with char_set
-(define pattern (pregexp "^[A-Za-z0-9]$"))
+;
+; 2026-06-18:
+(define print_re (pregexp "^[[:graph:]]$"))  ; 2026-06-17: using the right POSIX character class; pregexp "^[!-~]$" works too
+                                             ; (pregexp "^[[:print:]]$") is not useful here, because it includes the space character
+(define alnum_re (pregexp "^[[:alnum:]]$"))
+(define pattern  (pregexp "^[[:graph:]]$"))
 
 
 
@@ -229,13 +235,9 @@ $
   ; 2026-05-31: new solution with regular expressions:
   ;             pregexp for PCRE2 (Perl Compatible Regular Expressions, version 2) are automatically available:
   ;             https://www-sop.inria.fr/indes/fp/Bigloo/manual-chapter12.html
+  ; 2026-06-18:
   (set! pattern
-    (if with_special_chars
-      ; (pregexp "^[!-~]$")  ; works
-      ; (pregexp "^[[:print:]]$")  ; not useful here, because it includes the space character
-      (pregexp "^[[:graph:]]$")  ; 2026-06-17: using the right a POSIX character class
-      ; (pregexp "^[A-Za-z0-9]$")
-      (pregexp "^[[:alnum:]]$")))  ; using a POSIX character class
+    (if with_special_chars print_re alnum_re))
   ; (printf "\nmain: pattern = ~a" pattern)  ; for testing
   ; ---------------------------------------------------------------------------
 
