@@ -157,6 +157,7 @@ Crystal           | 107 | compiled, young language | 2026-06-16
 PHP               | 107 | usually interpreted, very mature web programming language | 2026-06-16
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
 Swift             | 105 | compiled, mature language | 2026-06-10
+Pike              | 103 | interpreted, mature language | 2026-06-18
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
 Julia             | 101 | just-in-time compiled, mature language | 2026-05-28
 Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
@@ -219,6 +220,7 @@ Odin               | 0
 Perl 5             | 0
 PHP                | 1 
 Picat (former B-Prolog) | 8
+Pike               | 1
 Prolog, SWI        | 10
 PowerShell         | 0
 Python             | 1
