@@ -8,7 +8,9 @@ https://github.com/crystal-lang/crystal
 
 I call Crystal "Compiled Ruby": this language can be **very fast**: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
-Key for success here is using Crystal's _**IO::Memory**_ class (https://crystal-lang.org/api/1.18.2/IO/Memory.html) for fast string building:
+Although, Crytal cannot be used as a system programming language because a standalone executable includes a **runtime** with garbage collection, that is automatic memory management, and other services.
+
+Key for success in execution speed is using Crystal's _**IO::Memory**_ class (https://crystal-lang.org/api/1.18.2/IO/Memory.html) for fast string building:
 
 ```
 ...
