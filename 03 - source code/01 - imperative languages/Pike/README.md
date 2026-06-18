@@ -1,5 +1,3 @@
-2026-02-11: work in progress: tbd
-
 # Pike 
 
 https://pike.lysator.liu.se/
