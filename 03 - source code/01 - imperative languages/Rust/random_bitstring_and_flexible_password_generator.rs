@@ -2,6 +2,7 @@
 //
 // 2025-05-07/08/17/19/22/31, 2025-07-19, 2025-12-13: see below
 // 2026-06-14: refactored from char_set to pattern (for regular expressions)
+// 2026-06-18: define print_re and alnum_re, use a one-liner with_special_chars to set pattern
 //
 //
 // make on Ubuntu 24 LTS: ../Rust$ cargo new random_bitstring_and_flexible_password_generator
@@ -197,13 +198,10 @@ fn main() {
 
     // 2026-06-14: new solution with regular expressions:
     //   Duck.ai: Build the regex for allowed characters once.
-    let pattern = if with_special_chars {
-      // all printable ASCII from 33 (!) to 126 (~)
-      Regex::new(r"^[!-~]$").unwrap()
-    } else {
-      // digits + uppercase + lowercase
-      Regex::new(r"^[0-9A-Za-z]$").unwrap()
-    };
+    // 2026-06-18:
+    let print_re = Regex::new(r"^[!-~]$").unwrap();        // all printable ASCII from 33 (!) to 126 (~)
+    let alnum_re = Regex::new(r"^[0-9A-Za-z]$").unwrap();  // digits + uppercase + lowercase
+    let pattern = if with_special_chars { print_re } else { alnum_re };
 
 
     let mut i = 0;  // char counter for the password
