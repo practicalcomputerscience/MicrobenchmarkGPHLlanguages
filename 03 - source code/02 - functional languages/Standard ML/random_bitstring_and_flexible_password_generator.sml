@@ -9,6 +9,8 @@ random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 2025-12-21: see below
 2026-01-04: cosmetics
 2026-05-29/30: refactored from char_set to pattern (for regular expressions)
+2026-06-18: define print_re and alnum_re, use the ternary operator with with_special_chars to set pattern
+
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
@@ -309,11 +311,10 @@ structure Main =
        https://www.smlnj.org/doc/smlnj-lib/RegExp/str-AwkSyntax.html
        https://www.smlnj.org/doc/smlnj-lib/RegExp/regexp-lib.html
     *)
-    val pattern =
-      if with_special_chars then
-        Regex.compileString "^[!-~]$"
-      else
-        Regex.compileString "^[A-Za-z0-9]$"
+    (* 2026-06-18 *)
+    val print_re = "^[!-~]$"
+    val alnum_re = "^[A-Za-z0-9]$"
+    val pattern = Regex.compileString (if with_special_chars then print_re else alnum_re);
 
 
     (**********************  recursive password loop  **********************)
