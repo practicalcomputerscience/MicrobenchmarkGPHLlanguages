@@ -184,10 +184,9 @@ while answer is False:
         WITH_SPECIAL_CHARS = False
         answer = True
 
-if WITH_SPECIAL_CHARS is True:
-    pattern = re.compile(r"[!-~]+")  # 2026-05-24: new range solution, a bit more elegant
-else:
-    pattern = re.compile(r"[A-Za-z0-9]+")   # keep this solution
+print_re = re.compile(r"[!-~]+")        # 2026-05-24: new range solution, a bit more elegant
+alnum_re = re.compile(r"[A-Za-z0-9]+")  # keep this solution
+pattern = print_re if WITH_SPECIAL_CHARS else alnum_re  # 2026-06-18: using the ternary operator
 
 i = 0  # char counter in password
 j = 0  # counter in x[j]
