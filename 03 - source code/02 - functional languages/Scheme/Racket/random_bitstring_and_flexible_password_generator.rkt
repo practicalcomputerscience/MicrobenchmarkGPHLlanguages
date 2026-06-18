@@ -4,6 +4,8 @@
 2025-07-22: change from "#:exists 'replace" to "#:exists 'can-update": now exception behavior is same like with other Scheme dialects
 2026-05-22: added a comment; see below
 2026-05-30: refactored from char_set to pattern (for regular expressions)
+2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
+
 
 run on Ubuntu 24 LTS:   $ racket random_bitstring_and_flexible_password_generator.rkt
 
@@ -57,14 +59,18 @@ $
 
 (set! old-seed (random 1 m))
 
-(define (valid_pw_length? a)
-  (and (number? a) (integer? a) (exact? a) (>= a 8)))
-  ; exact? returns #t for numbers created as exact integers, rationals, or exact complex numbers (2026-05-22)
+(define print_re (regexp "^[!-~]$"))        ; 2026-06-18
+(define alnum_re (regexp "^[A-Za-z0-9]$"))  ; 2026-06-18: regexp "^[[:alnum:]]$" doesn't behave the same here
 
 
 
 ;----------------------  user defined functions  ----------------------------
 ;
+(define (valid_pw_length? a)
+  (and (number? a) (integer? a) (exact? a) (>= a 8)))
+  ; exact? returns #t for numbers created as exact integers, rationals, or exact complex numbers (2026-05-22)
+
+
 (define (Integer_to_bin_string n)
   (let* ([binary-str (number->string n 2)]  ; Convert number to binary string
                                             ; let* form allows later clauses to use earlier bindings
@@ -180,9 +186,7 @@ $
 
   ; 2026-05-30: new solution with regular expressions:
   (define pattern
-  (if with_special_chars
-      (regexp "^[!-~]$")
-      (regexp "^[A-Za-z0-9]$")))  ; (regexp "^[[:alnum:]]$") doesn't behave the same here (Duck.ai)
+    (if with_special_chars print_re alnum_re))  ; 2026-06-18
 
 
 
