@@ -167,13 +167,13 @@ Groovy            |  95 | interpreted, very mature language (together with Java 
 Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-17
 Mojo              |  90 | compiled, very young language | 2026-05-28
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
-PowerShell        |  90 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-05-26
+PowerShell        |  88 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Python            |  84 | interpreted, very mature language | 2026-06-18
 
 <br/>
 
-2026-06-18: there's a new contender in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and being on a par with Python, which features one user-defined function (_binary_to_string_)
+2026-06-18: there's a contender to Python in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and being on a par with Python, which features one user-defined function (_binary_to_string_)
 
 <br/>
 
