@@ -111,7 +111,7 @@ number of lines in block comment: <# ... #> = 0
 $
 ```
 
-For [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme), the cloc tool also calculates a wrong number of SLOC's (while my script works OK), same with Eiffel (it doesn't recognize that language correctly). There are probably more languages, where cloc's counting is not correct.
+For [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme), the cloc tool also calculates a wrong number of SLOC's (while my script works OK), same with Eiffel (it doesn't recognize that language correctly). There are probably more languages where cloc's counting is not correct.
 
 <br/>
 
@@ -135,8 +135,8 @@ Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined 
 AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
+OCaml             | 128 | compiled, mature language; some user-defined functions needed | 2026-06-18
 Odin              | 127 | compiled, young language | 2026-06-18
-OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
 Perl 5            | 122 | interpreted, very mature language: verbosity with if-then-else form of error handling when writing to files | 2026-05-25
