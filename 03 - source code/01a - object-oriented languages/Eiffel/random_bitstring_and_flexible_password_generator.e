@@ -3,8 +3,12 @@ class RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR
 --
 -- 2026-01-23/24
 -- 2026-05-22: replace variable name reply with "standard" name answer_str
+-- 2026-06-18: define print_re and alnum_re, use the ternary operator with with_special_chars
+--
 --
 -- build on Ubuntu 24 LTS: $ se compile ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for development
+--                           program exe time is very long here! See compilation command below!
+--
 --                         $ se compile -boost ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for production
 --                           -boost: Enable all optimizations, but disable all run-time checks
 --
@@ -37,7 +41,7 @@ feature {} -- Initialization
             -- see from: https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/io/redirection_example.e
 
             answer, with_special_chars: BOOLEAN
-            answer_str, bin0, bin0_0, bin0_1, pw_chars: STRING
+            answer_str, bin0, bin0_0, bin0_1, pw_chars, print_re, alnum_re: STRING  -- 2026-06-18
             char0, char1: INTEGER
             char0a, char1a: CHARACTER
 
@@ -170,12 +174,11 @@ feature {} -- Initialization
             end
             -- io.put_string ("%Nwith_special_chars = " + with_special_chars.out)  -- for testing
 
-
-            if with_special_chars then
-                pattern := reg_expr_builder.convert_perl_pattern("[!-~]")
-            else
-                pattern := reg_expr_builder.convert_perl_pattern("[A-Za-z0-9]")
-            end
+            -- 2026-06-18:
+            print_re := "[!-~]"
+            alnum_re := "[A-Za-z0-9]"
+            
+            pattern := if with_special_chars then reg_expr_builder.convert_perl_pattern(print_re) else reg_expr_builder.convert_perl_pattern(alnum_re) end
             -- io.put_string ("%Npattern = " + pattern.out)  -- for testing
 
 
