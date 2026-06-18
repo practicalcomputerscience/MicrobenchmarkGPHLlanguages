@@ -26,12 +26,26 @@ COPYING and COPYRIGHT in the Pike distribution for more details.
 $
 ```
 
+However, with this installation, Pike comes without support of PCRE's (Perl-compatible regular expressions), and thus without support of POSIX character classes like for example _[[:alnum:]]_:
+
+```
+$ cat pike_pcre_test.pike
+import Regexp;
+write("%O\n", indices(Regexp));
+$ pike pike_pcre_test.pike
+({ /* 3 elements */
+    "`()",
+    "SimpleRegexp",
+    "_SimpleRegexp"
+})
+```
+
 <br/>
 
-Though this language, and its precursors, have been around for more than 25 years ([The history of Pike](https://pike.lysator.liu.se/about/history/)), its documentation still has gaps (as of 2026-06-18),
+Though this language, and its precursors, has been around for more than 25 years ([The history of Pike](https://pike.lysator.liu.se/about/history/)), its documentation still has gaps (as of 2026-06-18),
 for example at [Modules](https://pike.lysator.liu.se/docs/tut/modules/index.md): _... Unfortunately this tutorial file does not exist yet!_
 
-You may have a look into this very old documentation from 2001, though: https://fredrik.hubbe.net/pike/tutorial/tutorial.html
+Therefore, you may also have a look into this very old documentation from 2001: https://fredrik.hubbe.net/pike/tutorial/tutorial.html
 
 <br/>
 
