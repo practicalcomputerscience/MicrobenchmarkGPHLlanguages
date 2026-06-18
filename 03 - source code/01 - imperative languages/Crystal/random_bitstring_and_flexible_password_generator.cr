@@ -2,7 +2,7 @@
 #
 # 2025-06-01/02/06/18; 2025-12-17
 # 2026-06-16: refactored from char_set to pattern (for regular expressions)
-# 2026-06-18: use the ternary operator with with_special_chars
+# 2026-06-18: use the ternary operator with with_special_chars to set pattern
 #
 #
 # build on Ubuntu 24 LTS: $ crystal build random_bitstring_and_flexible_password_generator.cr --release
