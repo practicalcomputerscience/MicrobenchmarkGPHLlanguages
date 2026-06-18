@@ -159,8 +159,8 @@ C#                | 104 | interpreted, mature language (together with .NET ecosy
 Crystal           | 103 | compiled, young language | 2026-06-18
 Pike              | 103 | interpreted, mature language | 2026-06-18
 Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
-Julia             | 101 | just-in-time compiled, mature language | 2026-05-28
 Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
+Julia             |  99 | just-in-time compiled, mature language | 2026-06-18
 Ruby              |  98 | interpreted, very mature language | 2026-05-28
 Clojure           |  96 | interpreted, mature language (together with Java ecosystem) | 2026-05-29
 Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
