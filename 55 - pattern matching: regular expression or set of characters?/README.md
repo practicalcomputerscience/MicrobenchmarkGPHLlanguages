@@ -132,6 +132,7 @@ PHP | yes | | OK | non-POSIX patterns: _'/^[!-~]$/'_, _'/^[A-Za-z0-9]$/'_ | | 20
 Picat |  |  | OK | _CharSet_ is a string of allowed characters, compiled from codepoints in both cases | | 2026-06-16
 Pike | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$")_ | | 2026-06-18
 PowerShell | yes |  | OK | non-POSIX patterns: _"^[!-~]+$"_, _"^[A-Za-z0-9]+$"_ | | 2026-05-26
+Prolog, SWI | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-18
 Python | yes |  | OK | Python's built-in _re_ (Regular expression operations) module doesn't support the POSIX character class syntax | | 2026-05-24
 Roc |  |  | OK | working with two user defined functions, _printable_chars_ and _alphanum_chars_, to provide filtering of allowed characters | | 2026-05-31
 Ruby | yes |  | OK | POSIX patterns: _/\A[[:graph:]]+\z/_, _/\A[[:alnum:]]+\z/_ | yes | 2026-06-17
