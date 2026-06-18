@@ -147,11 +147,11 @@ Ballerina         | 116 | interpreted, young language (together with Java ecosys
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
-Bigloo Scheme     | 114 | compiled, mature language | 2026-05-31
+Bigloo Scheme     | 114 | compiled, mature language | 2026-06-18
 Common Lisp       | 114 | compiled, very mature language | 2026-06-18
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
-Racket Scheme     | 107 | compiled, mature language | 2026-05-30
+Racket Scheme     | 107 | compiled, mature language | 2026-06-18
 PHP               | 105 | usually interpreted, very mature web programming language | 2026-06-18
 Swift             | 105 | compiled, mature language | 2026-06-10
 TypeScript        | 105 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-18
