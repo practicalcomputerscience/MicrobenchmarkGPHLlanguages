@@ -5,7 +5,7 @@
 # 2026-01-24: fix this source code like the cleanup done at Perl 5 program on 2026-01-24
 # 2026-05-31: rename char_set_rx to pattern; this solution is already regular expression based!
 # 2026-05-31: an important fix of user dialog for N_CHAR printable chars
-# 2026-06-18: refactored to a one-line at setting $pattern
+# 2026-06-18: refactored to a one-liner at setting $pattern
 #
 #
 # run in Ubuntu 24 LTS: $ raku random_bitstring_and_flexible_password_generator.raku
