@@ -3,6 +3,8 @@
 ;; 2025-06-10/11/12/13/14/15/18/21, 2025-07-13
 ;; 2025-12-21: see below
 ;; 2026-05-29: refactored from char_set to pattern (for regular expressions); shortened the pw_generator loop
+;; 2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
+;;
 ;;
 ;; build on Ubuntu 24 LTS: $ lein new app random_bitstring_and_flexible_password_generator
 ;;                         $ cd random_bitstring_and_flexible_password_generator
@@ -180,12 +182,15 @@
   ;;   ; (println "type of char_set =" (type char_set))  ; for testing
 
   ;; 2026-05-29: new solution with regular expressions ("Duck.ai"):
-  (if (true? with_special_chars)
-    (def ^Pattern pattern (Pattern/compile "[!-~]+"))
-    (def ^Pattern pattern (Pattern/compile "[A-Za-z0-9]+")))
-    ; (def ^Pattern pattern (Pattern/compile "[[:alnum:]]+"))  ; this doesn't work here!
+  ;;             also the older solution caused two reflection warnings below when using pattern:
+  ;;             Reflection warning ... - call to method matcher can't be resolved (target class is unknown).
+  ;;             Reflection warning ... - reference to field find can't be resolved.
+  ;; 2026-06-18:
+  (def ^Pattern print_re (Pattern/compile "[!-~]+"))
+  (def ^Pattern alnum_re (Pattern/compile "[A-Za-z0-9]+"))
+  ;; (def ^Pattern pattern (Pattern/compile "[[:alnum:]]+"))  ; this doesn't work here!
+  (if (true? with_special_chars) (def pattern print_re) (def pattern alnum_re))
   ;; (println "\nselected pattern ?" pattern)  ;; for testing
-
 
 
   ;------------------  recursive password creation  ---------------------------
