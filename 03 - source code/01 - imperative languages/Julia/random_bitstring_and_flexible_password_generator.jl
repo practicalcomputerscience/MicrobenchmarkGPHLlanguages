@@ -5,7 +5,7 @@ random_bitstring_and_flexible_password_generator.jl
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-28: refactored pattern (for regular expressions)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
-2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
 
 
 run on Ubuntu 24 LTS: $ julia ./random_bitstring_and_flexible_password_generator.jl
