@@ -135,7 +135,7 @@ Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined 
 AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
-Odin              | 127 | compiled, young language, which is already more effective in its efforts to modernize C than C3 in terms of verbosity | 2026-06-13
+Odin              | 127 | compiled, young language | 2026-06-18
 OCaml             | 126 | compiled, mature language; some user-defined functions needed | 2026-05-29
 Rust              | 124 | compiled, mature language | 2026-06-14
 SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
