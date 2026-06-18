@@ -177,7 +177,7 @@ fn main() {
   mut print_re := regex.regex_opt(r'^[!-~]$')       or { panic(err) }
   mut alnum_re := regex.regex_opt(r'^[A-Za-z0-9]$') or { panic(err) }
   // Select the pattern dynamically using an if-else expression (Google AI):
-	mut pattern  := if with_special_chars { print_re } else { alnum_re }
+  mut pattern  := if with_special_chars { print_re } else { alnum_re }
 
 
   mut i := 0  // char counter for the password
