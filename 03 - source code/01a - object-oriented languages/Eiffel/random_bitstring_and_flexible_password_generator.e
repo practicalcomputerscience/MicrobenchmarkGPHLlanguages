@@ -3,7 +3,7 @@ class RANDOM_BITSTRING_AND_FLEXIBLE_PASSWORD_GENERATOR
 --
 -- 2026-01-23/24
 -- 2026-05-22: replace variable name reply with "standard" name answer_str
--- 2026-06-18: define print_re and alnum_re, use the ternary operator with with_special_chars
+-- 2026-06-18: define print_re and alnum_re, use the ternary operator with with_special_chars to set pattern
 --
 --
 -- build on Ubuntu 24 LTS: $ se compile ./random_bitstring_and_flexible_password_generator.e -o ./random_bitstring_and_flexible_password_generator  # for development
