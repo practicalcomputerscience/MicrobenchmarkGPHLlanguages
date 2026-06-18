@@ -102,7 +102,7 @@ This means that working with individual characters, and finally their (Unicode) 
 
 And working with runes has (still) its challenges from my point of view; though being started in [2016](https://odin-lang.org/docs/faq/#what-is-the-history-of-the-project), this language is still young.
 
-This becomes clearer at this code snippet from the full [microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin/random_bitstring_and_flexible_password_generator.odin) in its old version, where the available character set, which I strived to be of the string type throughout the different languages, is being composed:
+This becomes clearer at this code snippet from the full microbenchmark program in its old version, where the available character set is being composed like this:
 
 ```
   ...
