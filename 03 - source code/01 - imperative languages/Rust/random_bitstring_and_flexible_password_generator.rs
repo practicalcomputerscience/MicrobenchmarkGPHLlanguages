@@ -200,7 +200,7 @@ fn main() {
     //   Duck.ai: Build the regex for allowed characters once.
     // 2026-06-18:
     let print_re = Regex::new(r"^[!-~]$").unwrap();        // all printable ASCII from 33 (!) to 126 (~)
-    let alnum_re = Regex::new(r"^[0-9A-Za-z]$").unwrap();  // digits + uppercase + lowercase
+    let alnum_re = Regex::new(r"^[A-Za-z0-9]$").unwrap();
     let pattern = if with_special_chars { print_re } else { alnum_re };
 
 
