@@ -2,6 +2,8 @@
 #
 # 2025-06-01/02/06/18; 2025-12-17
 # 2026-06-16: refactored from char_set to pattern (for regular expressions)
+# 2026-06-18: use the ternary operator with with_special_chars
+#
 #
 # build on Ubuntu 24 LTS: $ crystal build random_bitstring_and_flexible_password_generator.cr --release
 #
@@ -153,11 +155,8 @@ end
 # 2026-06-16: new solution with regular expressions (Google AI):
 print_re = /[!-~]/
 alnum_re = /[A-Za-z0-9]/
-pattern  = if with_special_chars  # this cannot be a one-line!
-             print_re
-           else
-             alnum_re
-           end
+
+pattern = with_special_chars ? print_re : alnum_re  # 2026-06-18
 
 
 i = 0  # char counter for the password
