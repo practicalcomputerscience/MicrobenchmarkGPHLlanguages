@@ -10,6 +10,8 @@ main.ml of random_bitstring_and_flexible_password_generator
 2026-01-04: cosmetics
 2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
 2026-05-29: refactored from char_set to pattern (for regular expressions); shortened the pw_generator loop
+2026-06-18: define print_re and alnum_re
+
 
 build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
                         $ cd random_bitstring_and_flexible_password_generator
@@ -58,6 +60,14 @@ let bits_hex = Buffer.create k250
 
 let n_char_default = 12
 
+let print_re = regexp "^[!-~]$"        (* 2026-06-18 *)
+let alnum_re = regexp "^[A-Za-z0-9]$"  (* 2026-06-18 *)
+(* regexp "^[[:alnum:]]$": this does not work here *)
+
+
+
+(*************************************************************************************)
+(* user defined functions                                                            *)
 
 (* https://www.bing.com/search?pc=MOZI&form=MOZLBR&q=OCaml+integer+in+binary+string+representation *)
 (* partly some AI code with MS Bing*)
@@ -141,6 +151,9 @@ let write_to_file filename content file_type =
   | Sys_error e_msg -> Printf.printf "\ncould not write to file: %s -- %s\n" filename e_msg;
   | e               -> Printf.eprintf "\nUnexpected error: %s\n" (Printexc.to_string e);
 
+(* end of user defined functions                                                     *)
+(*************************************************************************************)
+
 
 ;;
 
@@ -208,12 +221,12 @@ let main () =
   (*Printf.printf "\nchar_set = %s\n" char_set;  (*for testing*)*)
 
   (* 2026-05-29: new solution with regular expressions; Duck.ai *)
+  (* 2026-06-18 *)
   let pattern =
     if with_special_chars then
-      regexp "^[!-~]$"
+      print_re
     else
-      regexp "^[A-Za-z0-9]$"
-      (* regexp "^[[:alnum:]]$": this does not work here *)
+      alnum_re
   in
 
 
