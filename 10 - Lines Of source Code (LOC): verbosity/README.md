@@ -152,8 +152,8 @@ Common Lisp       | 114 | compiled, very mature language | 2026-05-30
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 TypeScript        | 109 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
-PHP               | 107 | usually interpreted, very mature web programming language | 2026-06-16
 Racket Scheme     | 107 | compiled, mature language | 2026-05-30
+PHP               | 105 | usually interpreted, very mature web programming language | 2026-06-18
 Swift             | 105 | compiled, mature language | 2026-06-10
 C#                | 104 | interpreted, mature language (together with .NET ecosystem) | 2026-06-18
 Crystal           | 103 | compiled, young language | 2026-06-18
