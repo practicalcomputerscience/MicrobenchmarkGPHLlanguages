@@ -1,8 +1,42 @@
 2026-06-19: work in progress tbd
 
-- tbd: coloring map of Australia for benchmarking (the one that couldn't be done with Mercury or Oz)
-- xxx
-- xxx
+- tbd: coloring map of Australia for benchmarking (the one that couldn't be done with Mercury or Oz):
+
+```
+-- Four possible colors
+data Color = Red | Green | Blue | Yellow
+  deriving (Show, Eq)
+
+-- A free variable that can take any of the four colors
+color :: Color
+color = Red ? Green ? Blue ? Yellow
+
+-- Constraint: two regions must not have the same color
+neq :: Color -> Color -> Success
+neq x y | x /= y = success
+
+-- Solve the map coloring problem
+solve :: (Color, Color, Color, Color, Color)
+solve =
+  let a = color
+      b = color
+      c = color
+      d = color
+      e = color
+  in
+    -- adjacency constraints
+    neq a b &
+    neq a c &
+    neq b c &
+    neq b d &
+    neq c d &
+    neq c e &
+    neq d e
+    & (a, b, c, d, e)
+```
+
+
+(MS AI)
 
 <br/>
 
