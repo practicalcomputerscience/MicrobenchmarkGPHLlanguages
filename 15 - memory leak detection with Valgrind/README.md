@@ -138,22 +138,24 @@ $
 
 Only looking by the table above, I would implement a security related program only with these programming languages (in their specified versions: [Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#language-versions)):
 
-- Ada
-- C++
-- C3
-- COBOL (GnuCOBOL)
-- Roc
-- V
-- Zig
+programming language | program uses regular expressions? | comment
+--- | --- | ---
+Ada | yes | 
+C++ | yes | 
+C3 | yes | 
+COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
+Roc | no | working with two user defined functions to provide filtering of allowed characters
+V | yes | 
+Zig | no | working with _ArrayList's_ of allowed UTF-8 characters
 
 <br/>
 
-Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort for me:
+Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome:
 
 > [!NOTE]
 > _still reachable_ blocks may come exclusively from the dynamic linker or runtime used in a compiled language and not from the source code of the program itself!
 
-Like for example from the [ld.so - dynamic linker/loader](https://www.man7.org/linux/man-pages/man8/ld.so.8.html). 
+Like for example from the [ld.so - dynamic linker/loader](https://www.man7.org/linux/man-pages/man8/ld.so.8.html).
 
 <br/>
 
