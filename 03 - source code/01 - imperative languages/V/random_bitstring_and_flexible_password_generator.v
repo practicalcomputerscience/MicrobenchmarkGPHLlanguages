@@ -4,6 +4,7 @@ random_bitstring_and_flexible_password_generator.v
 2025-05-20/21/31; 2025-12-18: see below
 2026-01-24: renaming variable bits_x_str0a back to bits_x_str (and also at bits_hex_str)
 2026-06-10: refactored from char_set to pattern (for regular expressions)
+2026-06-19: refactored for memory freeing both regexpr's to get the desired "no leaks are possible" vote from valgrind
 
 
 build on Ubuntu 24 LTS: $ v random_bitstring_and_flexible_password_generator.v
@@ -177,7 +178,7 @@ fn main() {
   mut print_re := regex.regex_opt(r'^[!-~]$')       or { panic(err) }
   mut alnum_re := regex.regex_opt(r'^[A-Za-z0-9]$') or { panic(err) }
   // Select the pattern dynamically using an if-else expression (Google AI):
-  mut pattern  := if with_special_chars { print_re } else { alnum_re }
+  pattern  := if with_special_chars { &print_re } else { &alnum_re }  // 2026-06-19: no mut at pattern! use pointers: &, &
 
 
   mut i := 0  // char counter for the password
