@@ -148,7 +148,7 @@ Only looking by the table above, I would implement a security related program on
 
 <br/>
 
-Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me.
+Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me. With D for example, I've been spending some time to make it less memory leaking, but didn't succeed.
 
 <br/>
 
