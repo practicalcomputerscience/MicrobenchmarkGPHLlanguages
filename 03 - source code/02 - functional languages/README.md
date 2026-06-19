@@ -2,7 +2,7 @@
 
 From my point of view, the "easiest" languages to start with learning a little bit of functional programming are:
 
-- [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml), OCaml's "grandaddy"
+- [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml), OCaml's "granddaddy"
 - [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml)
 
 2026-05-31:
