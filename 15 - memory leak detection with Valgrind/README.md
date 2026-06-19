@@ -148,7 +148,7 @@ Only looking by the table above, I would implement a security related program on
 
 <br/>
 
-This List doesn't mean that more language versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me.
+Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me.
 
 <br/>
 
@@ -235,7 +235,7 @@ But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_,
 
 <br/>
 
-I refactored the [C](tbd) program after I also used regular expressions there in order to re-establish the former state of "all heap blocks were freed" after a program run:
+I refactored the [C](tbd) program with two _regfree()_ function calls, after I also used regular expressions, in order to re-establish the former state of "all heap blocks were freed" after a program exit:
 
 ```
   ...
