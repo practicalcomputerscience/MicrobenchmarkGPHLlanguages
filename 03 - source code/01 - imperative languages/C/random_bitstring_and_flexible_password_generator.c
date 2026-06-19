@@ -8,6 +8,7 @@ random_bitstring_and_flexible_password_generator.c
 2026-02-01: deleted one oudated import ctype.h
 2026-05-25: refactored from char_set to pattern (for regular expressions)
 2026-06-17: refactored for a complete POSIX based solution with regular expressions
+2026-06-19: refactored for memory freeing both regexpr's to get the desired "no leaks are possible" vote from valgrind
 
 
 build on Ubuntu 24 LTS: $ make  # see make file below
@@ -274,6 +275,10 @@ int main()
   }
 
   printf("\nYour password of %d characters is: %s\n", N_CHAR, pw_chars);
+  
+  // 2026-06-19:
+  regfree(&re_printable);
+  regfree(&re_alphanum);
 
   return main_return_val;
 }
