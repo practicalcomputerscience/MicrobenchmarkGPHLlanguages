@@ -37,7 +37,7 @@ from: https://go.dev/wiki/GoForCPPProgrammers
 
 .."normal" Go **with its own runtime** is not suitable for system programming like C with its total kernel/driver/bare-metal control.
 
-So, for doing **low-level system programming**, a Go program may very well tap into the C ecosystem.
+So, for doing low-level system programming, a Go program may very well tap into the C ecosystem.
 
 <br/>
 
