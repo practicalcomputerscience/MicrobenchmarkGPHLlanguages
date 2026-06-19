@@ -10,12 +10,9 @@ language | upside | downside | comment
 -- | -- | -- | --
 [C3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C3#c3) | a soft evolution of C | tiny ecosystem; some functionalities still need to be expanded | 
 [Checked C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#checked-c)| a backward‑compatible extension of C | tiny ecosystem | 
-[Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) | -- | -- | not suitable for system programming: depends on garbage collection, has a relatively large runtime, doesn't offer fine‑grained memory control
-[Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) | big ecosystem; starting in 2025, Microsoft officially supports it (**) | it's not the most elegant programming language; at least one family of functions behaves dangerously differently from all other relevent languages (*) | (*) cf. [A sobering experience: formatted I/O](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#a-sobering-experience-formatted-io), (**) [Microsoft's efforts with transpilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation)
 [Nim](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Nim#nim) | concise, "Pythonic" source code | still a small ecosystem; doesn't have an "elevator pitch selling point"; documentation of advanced concepts still needs to be improved | community broke apart, look for "nimskull"
 [Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin#odin) | focus on data‑oriented programming: "Odin is the C alternative for the Joy of Programming." | tiny ecosystem; some functionalities still need to be expanded; documentation needs to be improved | 
-[Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust#rust) | big ecosystem; has now an important reference: the Linux kernel | a demanding language, influenced by functional programming | may not be well suitable for programming of high-performance computer games, even though a couple of frameworks and engines exist: [Leaving Rust gamedev after 3 years](https://loglog.games/blog/leaving-rust-gamedev/) from 2024
-[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) | built‑in safety features | small ecosystem; basic functionalities still need to be expanded | 
+[Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust#rust) | big ecosystem; has now two important references: Linux kernel and Linux Core Utilities | a demanding language, influenced by functional programming | may not be well suitable for programming of high-performance computer games, even though a couple of frameworks and engines exist: [Leaving Rust gamedev after 3 years](https://loglog.games/blog/leaving-rust-gamedev/) from 2024
 [Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#zig) | growing ecosystem | still a fast moving target | 
 
 <br/>
@@ -30,6 +27,26 @@ to write efficient programs. ..
 
 > (Pointers and the unification of arrays and pointers) are a source of reliability and security problems in modern software. This is because pointers and array indices are not bounds checked in C and related languages such as C++. ..
 
+<br/>
+
+Even though Google's [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) claims that:
+
+> Go is a systems programming language...
+
+from: https://go.dev/wiki/GoForCPPProgrammers
+
+.."normal" Go **with its own runtime** is not suitable for system programming like C with its total kernel/driver/bare-metal control.
+
+So, for doing **low-level system programming** a Go program may very well has to tap into the C ecosystem.
+
+<br/>
+
+[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) has been primarily designed as a high-level programming language, not as a low-level system programming language. The default way to manage memory in V is to use its garbage collection. 
+
+<br/>
+
+tbd
+ 
 <br/>
 
 ##_end
