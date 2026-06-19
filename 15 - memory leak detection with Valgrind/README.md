@@ -87,7 +87,7 @@ Another, maybe overlooked fact: I could repeat all test results as far as I have
 programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ? | test date
 --- | --- | --- | --- | ---
 Ada | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
-C | 960 bytes in 4 blocks | 0 bytes in 0 blocks | no | 2026-06-19
+C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 Chapel | program doesn't finish | -- | no | 2026-06-19
@@ -112,12 +112,12 @@ Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2026-06-19
 Scheme, Bigloo | 19,806 bytes in 12 blocks | 3,422 bytes in 10 blocks | no | 2026-06-19
 Standard ML (MLton) | 80 bytes in 2 blocks | 80 bytes in 2 blocks | no | 2026-06-19
 Swift | 2,009,328 bytes in 80 blocks | 2,002,718 bytes in 67 blocks | no | 2026-06-19
-V | 4,560 bytes in 15 blocks | 0 bytes in 0 blocks | no | 2026-06-19
-Zig | 0 bytes in 0 blocks | 0 bytes in 0 blocks | yes <<<<<< | 2026-06-19
+V | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+Zig | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 
 <br/>
 
-So, my main focus was on the possibly best test outcome, that is: _ -- no leaks are possible_, like at Ada for example:
+However, my main focus when developing a program for compilation was not on the possible best outcome when testing with valgrind, that is _no leaks are possible_, like with Ada for example:
 
 ```
 $ valgrind ./bin/random_bitstring_and_flexible_password_generator
@@ -143,7 +143,12 @@ Only looking by the table above, I would implement a security related program on
 - C3
 - COBOL (GnuCOBOL)
 - Roc
+- V
 - Zig
+
+<br/>
+
+This List doesn't mean that more language versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me.
 
 <br/>
 
@@ -224,9 +229,25 @@ With the three tested Scheme dialects for compilation, I probed their "random_st
 
 ### Changing source code to get the executable through Valgrind
 
-At least in one instance, here with [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo), I modified the source code to get the executable through Valgrind without crashing it. It worked.
+At [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_bitstring_and_flexible_password_generator.mojo) for example, I modified the source code to get the executable through Valgrind without crashing it. It worked.
 
-But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_, like in other languages for a better initial random seed, and Valgrind killed the new executable. So, I re-implemented the original version of this program, knowing that it will be killed when running it with Valgrind, which is indeed the case.
+But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_, like in other languages for a better initial random seed, and Valgrind killed the new executable. So, I re-implemented the original version of this program, knowing that it will be killed when running it with Valgrind.
+
+<br/>
+
+I refactored the [C](tbd) program after I also used regular expressions there in order to re-establish the former state of "all heap blocks were freed" after a program run:
+
+```
+  ...
+  regex_t re_printable, re_alphanum;
+  regcomp(&re_printable, print_re, REG_EXTENDED);  // REG_EXTENDED is essential with "^[!-~]+$" for example
+  regcomp(&re_alphanum,  alnum_re, REG_EXTENDED);
+  regex_t *pattern = WITH_SPECIAL_CHARS ? &re_printable : &re_alphanum;
+  ...
+  regfree(&re_printable);
+  regfree(&re_alphanum);
+  ...
+```
 
 <br/>
 
