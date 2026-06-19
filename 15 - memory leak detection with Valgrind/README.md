@@ -86,27 +86,26 @@ Another, maybe overlooked fact: I could repeat all test results as far as I have
 
 programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ? | test date
 --- | --- | --- | --- | ---
-Ada | 3,592 bytes in 3 blocks | 3,592 bytes in 3 blocks | no | 2026-01-10
-C | 6,704 bytes in 105 blocks | 0 bytes in 0 blocks | no | 2026-05-28
-C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-05-28
-C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
-Chapel | program doesn't finish | -- | no | 2025-12-18
-COBOL | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-04-27
-Common Lisp | 554,806 bytes in 12 blocks | 292,358 bytes in 10 blocks | no | 2026-01-10
-Crystal | 8,192 bytes in 1 blocks | 0 bytes in 0 blocks | no | 2025-12-18
-D | 256 bytes in 4 blocks | 224 bytes in 3 blocks | no | 2026-01-21
-Dart AOT compiled | 10,156 bytes in 163 blocks | 9,868 bytes in 162 blocks | no | 2026-02-08
-Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-01-24
-Fortran | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-01-06
-FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-01-10
-Go | program doesn't finish | -- | no | 2026-05-28
-Inko | Segmentation fault (core dumped) | -- | no | 2025-12-18
-Koka | program doesn't finish | -- | no | 2025-12-18
-Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-01-10
-Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting | -- | no | 2026-05-28
-Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-05-28
-OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
-Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
+Ada | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+C | 960 bytes in 4 blocks | 0 bytes in 0 blocks | no | 2026-06-19
+C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+Chapel | program doesn't finish | -- | no | 2026-06-19
+COBOL (GNU) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+Common Lisp | 554,114 bytes in 12 blocks | 291,666 bytes in 10 blocks | no | 2026-06-19
+Crystal | program doesn't finish | -- | no | 2026-06-19
+D | 800 bytes in 5 blocks | 768 bytes in 4 blocks | no | 2026-06-19
+Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-06-19
+Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
+FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
+Go | program doesn't finish | -- | no | 2026-06-19
+Inko | Segmentation fault (core dumped) | -- | no | 2026-06-19
+Koka | program doesn't finish | -- | no | 2026-06-19
+Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-06-19
+Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting | -- | no | 2026-06-19
+Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-06-19
+OCaml | 6,855,510 bytes in 69 blocks | 3,619,558 bytes in 66 blocks | no | 2026-06-19
+Odin | 744 bytes in 24 blocks | 0 bytes in 0 blocks  | no |  2026-06-19
 Prolog, SWI | 20,613,996 bytes in 179,547 blocks | 15,963,877 bytes in 101,637 blocks | no | 2026-06-19
 Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2026-06-19
@@ -118,32 +117,31 @@ Zig | 0 bytes in 0 blocks | 0 bytes in 0 blocks | yes <<<<<< | 2026-06-19
 
 <br/>
 
-So, my main focus was on the possibly best test outcome, that is: _All heap blocks were freed -- no leaks are possible_, like at C for example:
+So, my main focus was on the possibly best test outcome, that is: _ -- no leaks are possible_, like at Ada for example:
 
 ```
-$ valgrind ./random_bitstring_and_flexible_password_generator
+$ valgrind ./bin/random_bitstring_and_flexible_password_generator
 ...
 
-Your password of 12 characters is: }!033|JOt2T_
-==23336== 
-==23336== HEAP SUMMARY:
-==23336==     in use at exit: 0 bytes in 0 blocks
-==23336==   total heap usage: 6 allocs, 6 frees, 11,184 bytes allocated
-==23336== 
-==23336== All heap blocks were freed -- no leaks are possible
-==23336== 
-==23336== Use --track-origins=yes to see where uninitialised values come from
-==23336== For lists of detected and suppressed errors, rerun with: -s
-==23336== ERROR SUMMARY: 25 errors from 3 contexts (suppressed: 0 from 0)
+Your password of 12 characters is: -N2oBNQEcrq\
+==10362== 
+==10362== HEAP SUMMARY:
+==10362==     in use at exit: 0 bytes in 0 blocks
+==10362==   total heap usage: 47 allocs, 47 frees, 166,853 bytes allocated
+==10362== 
+==10362== All heap blocks were freed -- no leaks are possible
+==10362== 
+==10362== For lists of detected and suppressed errors, rerun with: -s
+==10362== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 $
 ```
 
-Only looking by the table above, I would implement a security related program only with these programming languages (in their specified versions!):
+Only looking by the table above, I would implement a security related program only with these programming languages (in their specified versions: [Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#language-versions)):
 
+- Ada
 - C++
 - C3
 - COBOL (GnuCOBOL)
-- Odin
 - Roc
 - Zig
 
@@ -164,6 +162,8 @@ Here's the background of this phenomenon: https://www.reddit.com/r/rust/comments
 So, one may have to wait for a Valgrind fix here.
 
 It also shows that above test results and my conclusions have to be taken with a grain of salt.
+
+<br/>
 
 #### Swift
 
