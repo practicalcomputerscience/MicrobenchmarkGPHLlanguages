@@ -148,7 +148,12 @@ Only looking by the table above, I would implement a security related program on
 
 <br/>
 
-Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me. With D for example, I've been spending some time to make it less memory leaking, but didn't succeed.
+Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me. With D for example, I've been spending some time to make it less memory leaking, but I didn't succeed.
+
+> [!NOTE]
+> _still reachable_ blocks may come exclusively from the dynamic linker or runtime used in a compiled language and not from the source code of the program itself!
+
+Like for example from the [ld.so - dynamic linker/loader](https://www.man7.org/linux/man-pages/man8/ld.so.8.html). 
 
 <br/>
 
