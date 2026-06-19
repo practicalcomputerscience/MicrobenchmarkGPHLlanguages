@@ -79,6 +79,7 @@ Scheme, Racket | using Chez Scheme as its core compiler and runtime system | [1.
 Smalltalk (GNU) | Smalltalk, C and C++ | https://github.com/gnu-smalltalk/smalltalk/tree/master
 Standard ML (MLton) | C for gcc or clang | [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
 Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosted | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
+Tcl | C | "The Tcl interpreter is written in C and has been ported to almost every computer platform.": https://www.tcl-lang.org/doc/whatistcl.tml
 TypeScript | runtimes: node.js: C and C++; Deno: Rust ; Bun: Zig | Deno: https://docs.deno.com/runtime/; Bun: https://bun.com/docs/runtime
 V | C for gcc or clang or Tiny C Compiler (TCC) | [TCC](https://repo.or.cz/w/tinycc.git) and https://download.savannah.gnu.org/releases/tinycc/
 Wolfram Language | the Wolfram System is "..written in C/C++, Java, and the Wolfram Language.." | [The Software Engineering of the Wolfram System](https://reference.wolfram.com/language/tutorial/TheInternalsOfTheWolframSystem.html#28134)
