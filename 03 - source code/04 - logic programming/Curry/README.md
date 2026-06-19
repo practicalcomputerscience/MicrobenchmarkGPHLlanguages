@@ -13,6 +13,8 @@ and then found: [Curry](https://www.curry-lang.org)
 
 > Curry is a declarative multi-paradigm programming language which combines in a seamless way features from functional programming ... and logic programming ... .
 
+> Curry is called a declarative language, because computed results are independent of the time and order of evaluation, which simplifies reasoning on programs. Side effects can be modeled as “IO” operations, i.e., a declarative description of what to do. Operations are constructed by expressions only, there are no statements or instructions, and every binding to a variable is immutable.
+
 <br/>
 
 Again, we see the phenomenon of multiple implementations (with one already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
