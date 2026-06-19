@@ -10,6 +10,7 @@ In reference to page [Potential "C successors": which one to take?](https://gith
 - Odin
 - [Pony](https://www.ponylang.io/)
 - Rust
+- V
 - Zig
 
 So far, only Go and Rust have become "big" already; Mojo and Zig will probably become bigger in my opinion.
