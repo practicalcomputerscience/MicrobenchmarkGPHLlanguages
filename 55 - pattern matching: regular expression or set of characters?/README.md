@@ -154,6 +154,7 @@ Scheme, Racket | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"
 Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_ | yes | 2026-05-24
 Standard ML | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
 Swift | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | | 2026-06-10
+Tcl | yes |  | OK | non-POSIX patterns: _{([!-~])}_, _{([A-Za-z0-9])}_ | | 2026-06-19
 TypeScript | yes |  | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | | 2026-06-17
 V | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 2026-06-10
 Zig |  |  | OK | _char_set_ is an _ArrayList_ of allowed UTF-8 characters (*), partly compiled from codepoints, partly filled from a string | | 2026-06-12
