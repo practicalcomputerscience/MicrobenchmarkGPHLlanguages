@@ -107,10 +107,10 @@ Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting 
 Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-05-28
 OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
-Prolog, SWI | 20,529,534 bytes in 178,711 blocks | 19,486,208 bytes in 162,301 blocks | no | 2026-01-10
+Prolog, SWI | 20,613,996 bytes in 179,547 blocks | 15,963,877 bytes in 101,637 blocks | no | 2026-06-19
+Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2026-06-19
 Scheme, Bigloo | 19,806 bytes in 12 blocks | 3,422 bytes in 10 blocks | no | 2026-06-19
-Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
-Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2025-12-18
 Standard ML (MLton) | 80 bytes in 2 blocks | 80 bytes in 2 blocks | no | 2026-06-19
 Swift | 2,009,328 bytes in 80 blocks | 2,002,718 bytes in 67 blocks | no | 2026-06-19
 V | 4,560 bytes in 15 blocks | 0 bytes in 0 blocks | no | 2026-06-19
@@ -214,31 +214,7 @@ The **Koka** program falls into the same category, though with a different conso
 
 <br/>
 
-The **Racket Scheme** program shows another phenomemon:
-
-```
-$ valgrind ./random_bitstring_and_flexible_password_generator
-==6154== Memcheck, a memory error detector
-==6154== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==6154== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
-==6154== Command: ./random_bitstring_and_flexible_password_generator
-==6154== 
-
-generating a random bit stream...
-Bit stream has been written to disk under name:  random_bitstring.bin
-Byte stream has been written to disk under name: random_bitstring.byte
-
-Password of 12 printable chars OK? 'y' or another integer number >= 8: y
-
-Do you want me to use special characters like .;,+*... ? 'y' or 'n': y
-
-Your password of 12 characters is: Afv{EApa#?1q
-$
-```
-
-This program evades its profiling with Valgrind, at least when running it in the (simple) way as shown above.
-
-With the other tested Scheme dialects, I only implemented the "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks when exiting:
+With the three tested Scheme dialects for compilation, I probed their "random_streams_for_perf_stats" programs. All of them had _still reachable_ leaks when exiting:
 
 - Bigloo: _still reachable: 2,512 bytes in 2 blocks_
 - CHICKEN: _still reachable: 27,433,592 bytes in 5,303 blocks_
