@@ -1,7 +1,3 @@
-Background of the page was this big refactoring job: [2026-05-22: another round of refactoring](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/wiki/Further-advances#2026-05-22-another-round-of-refactoring)
-
-<br/>
-
 # Pattern matching: (POSIX compliant) regular expressions or a set or hash of characters or single character strings, respectively?
 
 TL;DR: get to me the [The Pattern matching list](#the-pattern-matching-list) below!
