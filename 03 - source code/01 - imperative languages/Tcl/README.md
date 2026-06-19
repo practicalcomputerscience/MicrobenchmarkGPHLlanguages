@@ -14,7 +14,13 @@ at the speed part of my microbenchmark program: [random_streams_for_perf_stats.t
 
 Tcl version 9 looks like a significant step in language modernization: https://www.tcl-lang.org/software/tcltk/9.0.html
 
-I think that Tcl is an interesting alternative to [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) as a scripting language. 
+<br/>
+
+I think that Tcl is an interesting alternative to [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) as a scripting language, and same like PowerShell, I think it's also an underrated language:
+
+From [Features and Benefits](https://www.tcl-lang.org/about/features.html): 
+
+> The most important reason why people use Tcl is that it gets their job done faster. In many cases you can implement applications 5-10x faster with Tcl than with other languages, especially if the application involves GUIs, string-handling, or integration.
 
 <br/>
 
