@@ -18,7 +18,7 @@ See at [POSIX compliant regular expressions](https://pubs.opengroup.org/onlinepu
 
 <br/>
 
-When using POSIX character classes:
+### POSIX character classes
 
 > [!CAUTION]
 > The danger with working with POSIX class _[[:print:]]_, that is all "printable" (ASCII) characters, lies in the fact that in one or the other language it may include the space character (decimal number 32), something which is not desired in the microbenchmark program!
@@ -33,6 +33,8 @@ static const regex print_re("[[:print:]]");
 ..variable _print_re_ also covers the space character, but not in the [GNU Smalltalk solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Smalltalk/random_bitstring_and_flexible_password_generator.st)!
 
 <br/>
+
+### Unicode characters
 
 > [!CAUTION]
 > Another potential pitfall are Unicode characters!
@@ -89,6 +91,15 @@ state of Java flag UNICODE_CHARACTER_CLASS = true
 state of Java flag UNICODE_CHARACTER_CLASS = false
 $
 ```
+
+<br/>
+
+### Regular expressions
+
+> [!CAUTION]
+> In compiled languages with manual memory management, take care of regular expression objects!
+
+If not, these objects may lead to memory leaks after program exits: [Memory leak detection with Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/15%20-%20memory%20leak%20detection%20with%20Valgrind/README.md#memory-leak-detection-with-valgrind)
 
 <br/>
 
