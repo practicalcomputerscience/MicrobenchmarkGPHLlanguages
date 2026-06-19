@@ -2,7 +2,7 @@
 
 <br/>
 
-Typically, a "C successor" (+) is capable of supporting **"system programming"**, at best being also a "portable assembly language", while still be capable of supporting "application programming":
+Typically, a "C successor" (+) is capable of supporting **"system programming"**, including **low-level system programming**, at best being also a "portable assembly language", while still be capable of supporting "application programming":
 
 <br/>
 
@@ -37,16 +37,14 @@ from: https://go.dev/wiki/GoForCPPProgrammers
 
 .."normal" Go **with its own runtime** is not suitable for system programming like C with its total kernel/driver/bare-metal control.
 
-So, for doing **low-level system programming** a Go program may very well has to tap into the C ecosystem.
+So, for doing **low-level system programming**, a Go program may very well tap into the C ecosystem.
 
 <br/>
 
-[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) has been primarily designed as a high-level programming language, not as a low-level system programming language. The default way to manage memory in V is to use its garbage collection. 
+[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) has been primarily designed as a high-level programming language, not as a low-level system programming language. The default way to manage memory in V is to use its garbage collection (which can be shut off):
 
-<br/>
+> V is very similar to Go. If you know Go, you already know ≈80% of V.
 
-tbd
- 
 <br/>
 
 ##_end
