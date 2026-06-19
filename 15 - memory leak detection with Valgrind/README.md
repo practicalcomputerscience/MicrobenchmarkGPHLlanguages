@@ -113,8 +113,8 @@ Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2025-12-18
 Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Swift | 2,001,942 bytes in 40 blocks | 2,001,814 bytes in 37 blocks | no | 2026-01-10
-V | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
-Zig | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
+V | 4,560 bytes in 15 blocks | 0 bytes in 0 blocks | no | 2026-06-19
+Zig | 0 bytes in 0 blocks | 0 bytes in 0 blocks | yes <<<<<< | 2026-06-19
 
 <br/>
 
@@ -146,7 +146,6 @@ Only looking by the table above, I would implement a security related program on
 - Odin
 - Roc
 - Standard ML (MLton)
-- V
 - Zig
 
 <br/>
