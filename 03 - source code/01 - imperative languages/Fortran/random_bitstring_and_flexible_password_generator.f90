@@ -2,6 +2,8 @@
 !
 ! 2026-01-06
 ! 2026-05-22: replace variable name reply with "standard" name answer_str
+! 2026-06-19: user enters 500 pw chars and only gets 50: fixed
+!
 !
 ! build on Ubuntu 24 LTS: $ gfortran -Wall -Wextra -fcheck=all random_bitstring_and_flexible_password_generator.f90 -o random_bitstring_and_flexible_password_generator
 ! run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
@@ -126,17 +128,21 @@ program random_bitstring_and_flexible_password_generator
           if (verify(trim(answer_str), '0123456789') == 0) then  ! solution from Google AI
               ! using trim(answer_str) is important because trailing blanks in a character variable
               ! will cause verify to return a non-zero value unless spaces are included in your set
-              read(answer_str, fmt='(I2)') N_CHAR  ! string to integer conversion
+
+              ! read(answer_str, fmt='(I2)') N_CHAR  ! string to integer conversion: this automatically cuts all input to 2 chars!!
+              ! 2026-06-19: new solution: using list-directed I/O, which handles internal strings natively:
+              read(answer_str, *) N_CHAR  ! Google AI
               ! write(*, '(A, A)') "N_CHAR =", N_CHAR  ! for testing
 
-              if (N_CHAR >= 8) then
+              if (N_CHAR >= 8 .and. N_CHAR <= 99) then
+              ! 2026-06-19: see above at: answer_str, fmt='(I2)' => this only allows 99 pw chars
                   answer = .true.
               else
                   N_CHAR = 12
-                  print "(A)", "enter an integer number >= 8 or 'y'"
+                  print "(A)", "enter an integer number 8 <= i <= 99 or 'y'"  ! 2026-06-19
               end if
           else
-              print "(A)", "enter an integer number >= 8 or 'y'"
+              print "(A)", "enter an integer number 8 <= i <= 99 or 'y'"  ! 2026-06-19
           end if
       end if
   end do
@@ -208,12 +214,12 @@ program random_bitstring_and_flexible_password_generator
         ! print *, "char0 --> true"  ! for testing
         pw_chars = pw_chars // char0
         i = i + 1
-        if (len(pw_chars) == N_CHAR) then
-            exit
-        end if
+        !  if (len(pw_chars) == N_CHAR) then  ! 2026-06-19
+        !      exit
+        !  end if
       end if
 
-      if (verify(trim(char1), CHAR_SET) == 0) then
+      if (verify(trim(char1), CHAR_SET) == 0 .and. len(pw_chars) < N_CHAR) then  ! 2026-06-19
         ! print *, "char1 --> true"  ! for testing
         pw_chars = pw_chars // char1
         i = i + 1
