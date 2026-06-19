@@ -76,9 +76,9 @@ Your password of 12 characters is: ^0JSm*SO;|RX
 $ 
 ```
 
-I ran Valgrind only on programs from compiled languages, not scripting languages like Python or Ruby for example.
+I ran Valgrind only on programs from compiled languages, not scripting languages like Python or Ruby, running on virtual machines, for example.
 
-Another, maybe overlooked fact: I could repeat all test results as far as I have done repeated tests.
+Another fact: I could repeat all test results as far as I have done repeated tests with the same source code in the same environment.
 
 <br/>
 
@@ -148,7 +148,7 @@ Only looking by the table above, I would implement a security related program on
 
 <br/>
 
-Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort by me. With D for example, I've been spending some time to make it less memory leaking, but I didn't succeed.
+Above list doesn't mean that more program versions couldn't be refactored for the desired _no leaks are possible_ outcome, but it may take too much effort for me:
 
 > [!NOTE]
 > _still reachable_ blocks may come exclusively from the dynamic linker or runtime used in a compiled language and not from the source code of the program itself!
