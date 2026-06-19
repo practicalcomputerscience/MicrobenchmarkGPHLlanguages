@@ -108,17 +108,17 @@ Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-05-28
 OCaml | 4,474,152 bytes in 93 blocks | 4,474,152 bytes in 93 blocks | no | 2026-01-10
 Odin | 0 bytes in 0 blocks | --  | yes <<<<<< |  2026-01-08
 Prolog, SWI | 20,529,534 bytes in 178,711 blocks | 19,486,208 bytes in 162,301 blocks | no | 2026-01-10
-Scheme, Racket | Valgrind is doing nothing | -- | no | 2026-01-10
+Scheme, Bigloo | 19,806 bytes in 12 blocks | 3,422 bytes in 10 blocks | no | 2026-06-19
 Roc | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
 Rust | 8,648 bytes in 2 blocks | 8,648 bytes in 2 blocks | no | 2025-12-18
-Standard ML (MLton) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-01-10
-Swift | 2,001,942 bytes in 40 blocks | 2,001,814 bytes in 37 blocks | no | 2026-01-10
+Standard ML (MLton) | 80 bytes in 2 blocks | 80 bytes in 2 blocks | no | 2026-06-19
+Swift | 2,009,328 bytes in 80 blocks | 2,002,718 bytes in 67 blocks | no | 2026-06-19
 V | 4,560 bytes in 15 blocks | 0 bytes in 0 blocks | no | 2026-06-19
 Zig | 0 bytes in 0 blocks | 0 bytes in 0 blocks | yes <<<<<< | 2026-06-19
 
 <br/>
 
-So, my main focus was on the possibly best test outcome, that is: _All heap blocks were freed -- no leaks are possible_, like with C for example:
+So, my main focus was on the possibly best test outcome, that is: _All heap blocks were freed -- no leaks are possible_, like at C for example:
 
 ```
 $ valgrind ./random_bitstring_and_flexible_password_generator
@@ -145,7 +145,6 @@ Only looking by the table above, I would implement a security related program on
 - COBOL (GnuCOBOL)
 - Odin
 - Roc
-- Standard ML (MLton)
 - Zig
 
 <br/>
