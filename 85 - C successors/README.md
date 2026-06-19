@@ -29,6 +29,8 @@ to write efficient programs. ..
 
 <br/>
 
+---
+
 Even though Google's [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) claims that:
 
 > Go is a systems programming language...
@@ -41,7 +43,7 @@ So, for doing low-level system programming, a Go program may very well tap into 
 
 <br/>
 
-[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) has been primarily designed as a high-level programming language, not as a low-level system programming language. The default way to manage memory in V is to use its garbage collection (which can be shut off):
+[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) has been primarily designed as a high-level programming language, not as a low-level system programming language. The default way to manage memory in V is to use its garbage collector (which can be shut off):
 
 > V is very similar to Go. If you know Go, you already know ≈80% of V.
 
