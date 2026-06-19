@@ -127,7 +127,7 @@ Standard ML (MLton) | 197 | compiled, very mature language: numerous user-define
 Mercury           | 194 | compiled, mature language: lots of user-defined functions needed | 2026-06-17
 Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed | 2026-05-31
 V                 | 175 | compiled, very young programming language: some user-defined functions needed | 2026-06-10
-Fortran (GNU)     | 164 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-06-17
+Fortran (GNU)     | 161 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-06-19
 Gleam             | 151 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions needed | 2026-06-18
 C                 | 147 | compiled, very mature language | 2026-01-11
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
