@@ -6,6 +6,10 @@
 
 https://www.curry-lang.org (*)
 
+Scroll Curry packages from here: https://cpm.curry-lang.org/
+
+CPM = Curry Package Manager
+
 <br/>
 
 > [!TIP]
