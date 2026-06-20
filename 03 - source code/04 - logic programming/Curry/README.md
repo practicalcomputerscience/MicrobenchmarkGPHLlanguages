@@ -246,7 +246,7 @@ MS Copilot gave me basically this answer, why library module file _SearchTree.cu
 
 <br/>
 
-Then I made a KiCS2 compliant Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+Then I made a KiCS2 Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
 
 
 tbd
