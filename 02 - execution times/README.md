@@ -15,11 +15,11 @@ Table of contents:
 
 <br/>
 
-My version of _perf-stat_ (https://linux.die.net/man/1/perf-stat) in use is:
+The used version of _perf-stat_ (https://linux.die.net/man/1/perf-stat) as of 2026-06-20 is:
 
 ```
 $ perf --version
-perf version 6.14.11
+perf version 6.17.13
 $
 ```
 
