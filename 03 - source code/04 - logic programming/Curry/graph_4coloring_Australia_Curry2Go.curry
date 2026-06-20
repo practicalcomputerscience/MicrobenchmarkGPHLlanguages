@@ -8,9 +8,9 @@ a program for the Curry2Go compiler: https://www.curry-lang.org/curry2go/
 build on Ubuntu 24 LTS: $ curry2goc graph_4coloring_Australia_Curry2Go
 run on Ubuntu 24 LTS:   $ ./graph_4coloring_Australia_Curry2Go
                         <see output below>
-                        $ time ./graph_4coloring_Australia_Curry2Go | wc -l
+                        $ ./graph_4coloring_Australia_Curry2Go | wc -l
                         576  # this number of solutions is correct
-                        => real	0m0.023s <<<<<<<<<<<<<
+                        $
 
 
 sources:
