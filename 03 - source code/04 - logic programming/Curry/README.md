@@ -47,14 +47,15 @@ https://www.curry-lang.org/pakcs/examples/
 
 https://github.com/curry-packages
 
-[Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry): American mathematician and logician (1900-1982)
+<br/>
+
+So, two programming language names have been attributed to [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry), American mathematician and logician (1900-1982).
 
 <br/>
 
 ## Idea of Curry: integrating logic and functional programming
 
-After my sobering experiences with [Mercury](tbd) and [Oz](tbd), I have been searching for another (and still maintained) language to combine the "natural fits" logic and functional programming,
-and found Curry (*):
+After my sobering experiences with [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) and [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz), I have been searching for another (and still maintained) language to combine the "natural fits" logic and functional programming, and found Curry (*):
 
 > Curry is a declarative multi-paradigm programming language which combines in a seamless way features from functional programming ... and logic programming ... .
 
@@ -70,7 +71,7 @@ After some reading, I gave **Curry2Go** a try to compile Curry source code into 
 
 ## Installation tips
 
-For the Curry2Go compiler to work the Go compiler needs to be installed and working first: https://go.dev/
+For the Curry2Go compiler to work, a Go compiler needs to be installed and working first: https://go.dev/
 
 Then, I followed the official installation instructions with: _$ curl -sSL https://www.curry-lang.org/curry2go/download.sh | sh_
 
@@ -121,6 +122,7 @@ Compile and run it like this:
 
 ```
 $ curry2goc factorial  # no file extension needed here
+...
 $ ./factorial 5
 120
 $
