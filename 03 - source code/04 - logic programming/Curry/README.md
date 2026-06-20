@@ -1,6 +1,6 @@
 2026-06-19: work in progress tbd
 
-- tbd: map coloring problem of Germany in KiCS2
+- tbd:
 - tbd: Table of contents:
 
 <br/>
@@ -246,8 +246,26 @@ MS Copilot gave me basically this answer, why library module file _SearchTree.cu
 
 <br/>
 
-Then I made a KiCS2 Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+Then I made a [KiCS2 Curry program](./graph_4coloring_Germany_KiCS2.curry) for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
 
+```
+$ time ./graph_4coloring_Germany_KiCS2
+number N of different solutions = 191808
+
+               [SH,MV,HH,HB,NI,ST,BE,BB,SN,NW,HE,TH,RP,SL,BW,BY]
+1st solution = [Red,Blue,Blue,Red,Green,Blue,Green,Red,Green,Red,Blue,Red,Green,Red,Red,Yellow]
+...
+Last solution = [Yellow,Green,Green,Yellow,Blue,Green,Blue,Yellow,Blue,Yellow,Green,Yellow,Blue,Yellow,Yellow,Red]
+
+real	0m29.179s
+...
+$ 
+```
+
+..which comes to the same 1st and last solution than the [ALS Prolog version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro).
+
+But oh Boy! With an execution time of about 29 seconds for one program run, the KiCS2 Curry program is more than 11 times slower than the slowest Prolog system in this benchmark,
+and that is ALS Prolog with about 2.63 seconds!
 
 tbd
 
