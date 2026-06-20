@@ -167,7 +167,7 @@ https://www.curry-lang.org/kics2/download.html
 
 https://github.com/curry-language/kics2
 
-I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20).
+I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) and built KiCS2 Curry like this:
 
 ```
 $ sudo apt-get install haskell-stack
@@ -182,7 +182,7 @@ $ make  # be patient here! This may take some time.
 $ 
 ```
 
-Finally, I added the given path to the KiCS2 executable, activated my _~/.bashrc_ file and checked the KiCS2 version with wrapper command _curry_:
+Finally, I added the above given path to the KiCS2 executables in my _~/.bashrc_ file, activated it and checked the KiCS2 version with wrapper command _curry_:
 
 ```
 $ curry -V
