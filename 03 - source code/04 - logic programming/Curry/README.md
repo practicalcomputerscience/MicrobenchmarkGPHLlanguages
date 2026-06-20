@@ -186,10 +186,9 @@ $
 At first, I tested to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
 
 ```
-$ curry :load graph_4coloring_Australia_Curry2Go.curry :quit  # building an executable
+$ curry :load graph_4coloring_Australia_Curry2Go.curry :save :quit  # building an executable
 ...
 Executable saved in 'graph_4coloring_Australia_Curry2Go'
-...
 $ ./graph_4coloring_Australia_Curry2Go | wc -l
 576
 $ 
