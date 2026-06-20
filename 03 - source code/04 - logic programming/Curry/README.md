@@ -27,7 +27,7 @@ Again, we see the phenomenon of multiple implementations (with one already dead)
 
 <br/>
 
-## Curry2Go: transpiling Curry source code to Go source code for a standalone, native executable for Linux
+## Curry2Go: transpiling Curry source code into Go source code for a Linux executable
 
 After some reading, I gave Curry2Go a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
 
@@ -42,13 +42,13 @@ Also these examples are only working in PAKS: https://www.curry-lang.org/pakcs/e
 
 ## Installation tips
 
-For the Curry2Go compiler to work, a Go compiler needs to be installed and working first: https://go.dev/
+For the Curry2Go compiler to work, a Go compiler needs to be installed first: https://go.dev/
 
 Then, I followed the official installation instructions with: _$ curl -sSL https://www.curry-lang.org/curry2go/download.sh | sh_
 
 ..added _export PATH="$HOME/scripts/Curry/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated that with: _$ source ~/.bashrc_
 
-The Curry2Go REPL (Read-Eval-Print Loop) can be then be started like this:
+The Curry2Go REPL (Read-Eval-Print Loop) can now be started like this:
 
 ```
 $ curry2go
