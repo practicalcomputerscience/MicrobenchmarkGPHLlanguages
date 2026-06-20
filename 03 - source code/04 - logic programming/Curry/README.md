@@ -9,6 +9,8 @@ https://www.curry-lang.org (*)
 
 https://www.curry-lang.org/curry2go/
 
+https://github.com/curry-language/curry2go
+
 <br/>
 
 So, two programming language names have been attributed to [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry), American mathematician and logician (1900-1982).
