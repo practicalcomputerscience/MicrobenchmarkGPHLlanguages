@@ -19,11 +19,13 @@ run on Ubuntu 24 LTS:   $ ./graph_4coloring_Australia_KiCS2
 source: graph_4coloring_Australia_Curry2Go.curry
 
 
-$ curry2go --version
---------------------------------------------------------------
-Curry2Go Interactive Environment (Version 1.6.0 of 2025-10-30)
---------------------------------------------------------------
+$ curry -V
+ _  _  ____  ___  ___  ___
+( )/ )(_  _)/ __)/ __)(__ \ 
+ )  (  _)(_( (__ \__ \ / _/ 
+(_)\_)(____)\___)(___/(____)
 
+Version 3.5.0-b2 of 2025-12-15 (installed at Mon Dec 15 22:46:06 CET 2025)
 $
 -}
 
