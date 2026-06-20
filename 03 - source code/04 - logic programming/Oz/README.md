@@ -54,8 +54,8 @@ Table of contents:
 - [Mozart's virtual machines](#mozarts-virtual-machines)
 - [From the GUI to the command shell (terminal)](#from-the-gui-to-the-command-shell-terminal)
 - [Map coloring of Germany - Oz versus Python](#map-coloring-of-germany---oz-versus-python)
-- [Microbenchmark program in Oz - not complete](#microbenchmark-program-in-oz---not-complete)
-- [Oz versus Python in Windows 11 - speed part](#oz-versus-python-in-windows-11---speed-part)
+- [Microbenchmark program in Oz - not complete](#microbenchmark-program-in-oz---not-completable)
+- [Oz versus Python in Windows 11 - speed part](#oz-versus-python-in-windows-11---speed-part-of-the-microbenchmark-program)
 - [The future of Oz?](#the-future-of-oz)
 
 <br/>
@@ -468,7 +468,7 @@ Here's Oz's implementation of the map coloring of Germany problem: [graph_4color
 
 Now the question is: how good is this Oz program faring against another implementation on the same Windows platform? (Intel Core i5 14600K, Windows 11 Pro 64-bit, ASUS PRIME B760-PLUS)
 
-In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially cut from over 16 seconds to 1.0 second below, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
+In order to compare, I benchmarked both Python 3 solutions, the one with [backtracking](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/MapColoring_Germany.py), which has been artificially scaled from over 16 seconds down to 1.0 second, and the one which uses the [python-constraint2 package](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany-constraint.py):
 
 ![plot](./mean_stddev_err_whiskers%20--%20Oz%20and%20Python%2C%20Germany%20map.png)
 
@@ -485,7 +485,7 @@ Some of the Mozart tools, like _> ozmake.exe --help_ for "for building Mozart-ba
 
 <br/>
 
-## Microbenchmark program in Oz - not complete
+## Microbenchmark program in Oz - not completable
 
 What I could have accomplished is the "speed part" of the Microbenchmark program in Oz: [random_streams_for_perf_stats.oz](./random_streams_for_perf_stats.oz)
 
@@ -513,9 +513,9 @@ But since Oz is no longer working in modern Linux, this is also not an option.
 
 <br/>
 
-### Oz versus Python in Windows 11 - speed part
+### Oz versus Python in Windows 11 - speed part of the microbenchmark program
 
-What I then could have done is a little benchmark for Oz versus Python in the same Windows 11 PC. Here are the statistics:
+At least I was able to benchmark the speed part of the microbenchmark program for Oz versus Python in the same Windows 11 PC. Here are the statistics:
 
 programming language | mean of 10 runs in milliseconds | standard deviation in milliseconds
 --- | --- | ---
