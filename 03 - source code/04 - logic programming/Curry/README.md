@@ -19,8 +19,8 @@ So, two programming language names have been attributed to [Haskell Curry](https
 
 Table of contents:
 
-- [Idea of Curry: integrating logic and functional programming in a purely declarative style]()
-- [Maps of Australia and Germany for KiCS2](#maps-of-australia-and-germany-for-kics2)
+- [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
+- [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
 
 <br/>
 
@@ -161,7 +161,7 @@ After these struggles I made the decision to switch to the **KiCS2** implementat
 
 <br/>
 
-## Maps of Australia and Germany for KiCS2
+## Maps of Australia and Germany for KiCS2 Curry
 
 https://www.curry-lang.org/kics2/download.html
 
