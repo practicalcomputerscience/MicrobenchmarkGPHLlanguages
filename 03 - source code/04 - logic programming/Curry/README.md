@@ -246,7 +246,7 @@ $
 
 <br/>
 
-MS Copilot gave me basically this answer, why library module file _SearchTree.curry_ (for _import Control.Search.SearchTree_) cannot be used with Curry2Go, but with KiCS2 (and PAKCS): 
+Microsoft Copilot gave me basically this answer, why library module file _SearchTree.curry_ (for _import Control.Search.SearchTree_) cannot be used with Curry2Go, but with KiCS2 (and PAKCS): 
 
 > ..module Control.Search.SearchTree cannot be used with Curry2Go, and it’s structural. someSearchTree external, emptyVS external, addVS external, failVS external, vsToList external are external primitives. They are implemented in KiCS2 (→ Haskell) and in PAKCS (→ Prolog), but not in Curry2Go. Curry2Go has no runtime support for: encapsulated search, search trees, set functions, external data types, external operations.
 
