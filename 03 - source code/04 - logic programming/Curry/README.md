@@ -107,6 +107,55 @@ Voilà!
 
 See also this related and official Curry2Go example: https://github.com/curry-language/curry2go/blob/master/examples/Fac.curry
 
+<br/>
+
+#### Map of Australia for Curry2Go
+
+I coded the problem of the Australian map for Curry2Go ([graph_4coloring_Australia.curry](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry/graph_4coloring_Australia.curry)), but that program is not working completely like in this ALS Prolog implementation:
+[graph_4coloring_Australia_ALS.pro](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry/graph_4coloring_Australia.curry)
+
+I didn't figure out how to count the total number of solutions and showing the first and last solutions like in the Prolog program:
+
+```
+$ curry2goc graph_4coloring_Australia  # compiling
+...
+$ ./graph_4coloring_Australia 
+[Red, Yellow, Red, Yellow, Blue, Yellow, Red]
+...
+[Blue, Green, Blue, Green, Yellow, Green, Blue]
+$ 
+```
+
+The challenge was always that _correct_:
+
+```
+...
+-- correct coloring where non-deterministic generators are provided
+-- 7 Australian States:
+correct NT QL NSW VIC SA WA TAS =
+  cond (diff WA  NT  &&
+        diff WA  SA  &&
+        diff NT  SA  &&
+        diff NT  QL  &&
+        diff SA  QL  &&
+        diff SA  NSW &&
+        diff SA  VIC &&
+        diff QL  NSW &&
+        diff VIC NSW &&
+        diff TAS VIC)
+       [NT, QL, NSW, VIC, SA, WA, TAS]
+...
+```
+
+..is a **non-deterministic generator**, which was causing a _panic: NondetError "Non-determinism in I/O actions occurred!"_ when trying to count the number of solutions.
+
+So, I made a Curry2Go program for the much bigger German map to just compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+
+
+
+
+
+
 tbd
 
 <br/>
