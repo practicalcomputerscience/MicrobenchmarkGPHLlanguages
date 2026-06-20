@@ -11,6 +11,8 @@ run on Ubuntu 24 LTS:   $ ./factorial 5
                         $
 
 with the help of Google AI
+and this source: https://github.com/curry-language/curry2go/blob/master/examples/Fac.curry
+
 
 $ curry2go --version
 --------------------------------------------------------------
