@@ -47,7 +47,7 @@ For the Curry2Go compiler to work, a Go compiler needs to be installed first: ht
 
 Then, I followed the official installation instructions with: _$ curl -sSL https://www.curry-lang.org/curry2go/download.sh | sh_
 
-..added _export PATH="$HOME/scripts/Curry/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated that with: _$ source ~/.bashrc_
+..added _export PATH="$HOME/scripts/Curry/Curry2Go/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated that with: _$ source ~/.bashrc_
 
 The Curry2Go REPL (Read-Eval-Print Loop) can now be started like this:
 
