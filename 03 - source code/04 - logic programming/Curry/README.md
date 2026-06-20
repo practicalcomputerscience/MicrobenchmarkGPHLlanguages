@@ -34,7 +34,7 @@ Again, we see the phenomenon of multiple implementations (with one already dead)
 After some reading, I gave Curry2Go a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
 
 > [!IMPORTANT]
-> However, making the choice for Curry2Go has a big drawback. The "usual" code examples and code snippets from the "usual" tutorials do not work here!
+> However, making the choice of Curry2Go has a big drawback. The "usual" code examples and code snippets from the "usual" tutorials do not work here!
 
 For example, this tutorial is meant for the PAKCS implementation, though the first exercise works in curry2go: https://www.curry-lang.org/docs/tutorial/html/
 
@@ -72,7 +72,7 @@ $
 
 <br/>
 
-## A first Curry2 program
+## A first Curry2Go program
 
 However, working in the REPL was not my goal, and with the help of "Big AI" I tinkered together a first, little Curry2Go program to be compiled into a standalone, native executable for Linux, here named _factorial.curry_:
 
@@ -104,6 +104,8 @@ $
 ```
 
 Voilà!
+
+See also this related and official Curry2Go example: https://github.com/curry-language/curry2go/blob/master/examples/Fac.curry
 
 tbd
 
