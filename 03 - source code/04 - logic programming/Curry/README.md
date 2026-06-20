@@ -1,5 +1,7 @@
 2026-06-19: work in progress tbd
 
+- tbd: Table of contents:
+
 <br/>
 
 # Curry
@@ -37,19 +39,19 @@ After some reading, I gave Curry2Go a try to compile Curry source code into a [G
 > [!IMPORTANT]
 > However, making the choice of Curry2Go has a big drawback. The "usual" code examples and code snippets from the "usual" tutorials do not work here!
 
-For example, this tutorial is meant for the PAKCS implementation, though the first exercise works in curry2go: https://www.curry-lang.org/docs/tutorial/html/
+For example, this tutorial is meant for the PAKCS implementation of Curry, though the first exercise works also in curry2go: https://www.curry-lang.org/docs/tutorial/html/
 
 Also these examples are only working in PAKS: https://www.curry-lang.org/pakcs/examples/
 
 #### Installation tips for Curry2Go
 
-For the Curry2Go compiler to work, a Go compiler needs to be installed first: https://go.dev/
+For the curry2go compiler to work, a Go compiler needs to be installed first: https://go.dev/
 
 Then, I followed the official installation instructions with: _$ curl -sSL https://www.curry-lang.org/curry2go/download.sh | sh_
 
-..added _export PATH="$HOME/scripts/Curry/Curry2Go/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated that with: _$ source ~/.bashrc_
+..added _export PATH="$HOME/scripts/Curry/Curry2Go/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated it with: _$ source ~/.bashrc_
 
-The Curry2Go REPL (Read-Eval-Print Loop) can now be started like this:
+The Curry2Go REPL (Read-Eval-Print Loop) can now be started like this hopefully:
 
 ```
 $ curry2go
@@ -108,7 +110,7 @@ See also this related and official Curry2Go example: https://github.com/curry-la
 
 I coded the problem of the Australian map for Curry2Go ([graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry)), but that program is not working completely like in this ALS Prolog implementation: [graph_4coloring_Australia_ALS.pro](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Australia_ALS.pro)
 
-With Curry2Go, I didn't figure out how to count the total number of solutions and showing the first and last solutions like in the Prolog program:
+With Curry2Go, I didn't figure out how to count the total number of solutions, and showing the first and last solutions like in my Prolog programs:
 
 ```
 $ curry2goc graph_4coloring_Australia  # compiling
@@ -143,9 +145,30 @@ correct NT QL NSW VIC SA WA TAS =
 
 ..is a **non-deterministic generator**, which was causing a _panic: NondetError "Non-determinism in I/O actions occurred!"_ when trying to count the number of solutions.
 
-#### Map of Germany for Curry2Go
+After these struggles I made the decision to switch to the **KiCS2** implementation of Curry, which first compiles to **Haskell** source code, because that should produce a faster executable than the Prolog based Curry implementation with: PAKCS: The Portland Aachen Kiel Curry System: https://www.curry-lang.org/pakcs/
 
-So, I made a Curry2Go program for the much bigger German map to just compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+<br/>
+
+## Map of Germany for KiCS2
+
+https://www.curry-lang.org/kics2/download.html
+
+I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20).
+
+```
+$ sudo apt-get install haskell-stack
+...
+$ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
+...
+$ cd kics2-3.5.0-x86_64-linux
+$ make  # be patient here! This may take some time.
+...
+$ 
+```
+
+So, I made a KiCS2 compliant Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+
+
 
 
 
