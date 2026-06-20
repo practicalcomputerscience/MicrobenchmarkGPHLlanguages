@@ -12,7 +12,7 @@
 ---
 --- with the help of Google AI
 ---
---- $ $ curry2go --version
+--- $ curry2go --version
 --- --------------------------------------------------------------
 --- Curry2Go Interactive Environment (Version 1.6.0 of 2025-10-30)
 --- --------------------------------------------------------------
