@@ -1,6 +1,5 @@
 2026-06-19: work in progress tbd
 
-- tbd: coloring map of Australia for benchmarking (the one that couldn't be done with Mercury or Oz):
 <br/>
 
 # Curry
