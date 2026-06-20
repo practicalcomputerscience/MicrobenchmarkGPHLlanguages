@@ -93,4 +93,4 @@ main = do
   putStrLn ("Last solution = " ++ show (head (reverse sols)))
 
 
--- end of graph_4coloring_Australia_KiCS2
+-- end of graph_4coloring_Australia_KiCS2.curry
