@@ -1,5 +1,6 @@
 2026-06-19: work in progress tbd
 
+- tbd: map coloring problem of Germany in KiCS2
 - tbd: Table of contents:
 
 <br/>
@@ -7,6 +8,9 @@
 # Curry
 
 https://www.curry-lang.org (*)
+
+> [!TIP]
+> Use the PAKCS (→ Prolog) and KiCS2 (→ Haskell) implementations of Curry, but not the limited Curry2Go (→ Go) implementation!
 
 <br/>
 
@@ -28,7 +32,7 @@ And again, same like [Mercury](https://github.com/practicalcomputerscience/Micro
 
 <br/>
 
-## Curry2Go: transpiling Curry source code into Go source code for a Linux executable
+#### Curry2Go: transpiling Curry source code into Go source code for a Linux executable
 
 https://www.curry-lang.org/curry2go/
 
@@ -149,7 +153,7 @@ After these struggles I made the decision to switch to the **KiCS2** implementat
 
 <br/>
 
-## Map of Germany for KiCS2
+## Map of Australia and Germany for KiCS2
 
 https://www.curry-lang.org/kics2/download.html
 
@@ -183,7 +187,7 @@ Version 3.5.0-b2 of 2025-12-15 (installed at Mon Dec 15 22:46:06 CET 2025)
 $
 ```
 
-At first, I tested to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
+At first, I tried to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
 
 ```
 $ curry :load graph_4coloring_Australia_Curry2Go.curry :save :quit  # building an executable
@@ -196,17 +200,51 @@ $
 
 576 solutions sounds fine!
 
-So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs:
+So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs.
 
+These are the changed lines of source code for the KiCS2 version of the program:
 
+```
+import Control.Search.SearchTree  -- getSearchTree function
+...
+-- main = correct aColor aColor aColor aColor aColor aColor aColor  -- original code: OK
+...
+solution = correct aColor aColor aColor aColor aColor aColor aColor
+
+main :: IO ()
+main = do
+  t <- getSearchTree solution
+  let sols = allValuesDFS t
+  putStrLn ("number N of different solutions = " ++ show (length sols))
+  putStrLn ("\n               [NT,QL,NSW,VIC,SA,WA,TAS]")
+  putStrLn ("1st solution = " ++ show (head sols))
+  putStrLn ("...")
+  putStrLn ("Last solution = " ++ show (head (reverse sols)))
+```
+
+Compile it and run it:
+
+```
+$ curry :load graph_4coloring_Australia_KiCS2.curry :save :quit  # building an executable
+$ ./graph_4coloring_Australia_KiCS2
+number N of different solutions = 576
+
+               [NT,QL,NSW,VIC,SA,WA,TAS]
+1st solution = [Green,Red,Green,Red,Blue,Red,Green]
+...
+Last solution = [Blue,Yellow,Blue,Yellow,Green,Yellow,Blue]
+$
+```
+
+<br/>
+
+MS Copilot gave me basically this answer, why library module file _SearchTree.curry_ (for _import Control.Search.SearchTree_) cannot be used with Curry2Go, but with KiCS2 (and PAKCS): 
+
+> ..module Control.Search.SearchTree cannot be used with Curry2Go, and it’s structural. someSearchTree external, emptyVS external, addVS external, failVS external, vsToList external are external primitives. They are implemented in KiCS2 (→ Haskell) and in PAKCS (→ Prolog), but not in Curry2Go. Curry2Go has no runtime support for: encapsulated search, search trees, set functions, external data types, external operations.
+
+<br/>
 
 Then I made a KiCS2 compliant Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
-
-
-
-
-
-
 
 
 tbd
