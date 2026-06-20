@@ -42,8 +42,14 @@ solve =
 
 # Curry
 
+https://www.curry-lang.org (*)
+
+https://www.curry-lang.org/pakcs/examples/
+
+https://github.com/curry-packages
+
 After my sobering experiences with [Mercury](tbd) and [Oz](tbd), I have been searching for another (and still maintained) language to combine the "natural fits" logic and functional programming,
-and then found: [Curry](https://www.curry-lang.org)
+and found Curry (*):
 
 > Curry is a declarative multi-paradigm programming language which combines in a seamless way features from functional programming ... and logic programming ... .
 
@@ -53,21 +59,42 @@ and then found: [Curry](https://www.curry-lang.org)
 
 Again, we see the phenomenon of multiple implementations (with one already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
 
-After some reading, I gave **Curry2Go** a try to compile Curry source code into a [Go](tbd) based executable: https://www.curry-lang.org/curry2go/
+After some reading, I gave **Curry2Go** a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
 
 <br/>
 
 ## Installation tips
 
-.bashrc etc.
+For the Curry2Go compiler the [Go](https://go.dev/) compiler needs to be installed and working first.
 
-tbd
+Then, I followed the official installation instructions with: _$ curl -sSL https://www.curry-lang.org/curry2go/download.sh | sh_
 
+..added _export PATH="$HOME/scripts/Curry/Curry2Go/bin:$PATH"_ to my _.bashrc_ file, and finally activated it with: _$ source ~/.bashrc_
+
+The Curry2Go REPL (Read-Eval-Print Loop) can be then started with:
+
+```
+$ curry2go
+Installing '~/.curry2gorc'...
+--------------------------------------------------------------
+Curry2Go Interactive Environment (Version 1.6.0 of 2025-10-30)
+--------------------------------------------------------------
+
+Type ":h" for help  (contact: info@curry-lang.org)
+Compiling Prelude...
+Prelude> :help
+Basic commands (commands can be abbreviated to a prefix if unique):
+
+<expr>             - evaluate expression <expr>
+...
+Prelude> :quit
+$
+```
 <br/>
 
 ## A first Curry program
 
-This was my first Curry program, with a little help from Google AI, named _factorial.curry_:
+However, working in the REPL was not my goal, and with the help of "Big AI" I tinkered together a first, little Curry program to be compiled into a standalone, native binary executables for Linux, here named _factorial.curry_:
 
 ```
 import System.Environment (getArgs)
