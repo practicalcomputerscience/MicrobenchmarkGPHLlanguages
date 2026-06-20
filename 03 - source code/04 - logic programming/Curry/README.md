@@ -11,6 +11,8 @@ https://www.curry-lang.org/pakcs/examples/
 
 https://github.com/curry-packages
 
+Curry: A Tutorial Introduction: https://www.curry-lang.org/docs/tutorial/html/
+
 <br/>
 
 So, two programming language names have been attributed to [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry), American mathematician and logician (1900-1982).
@@ -79,6 +81,7 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
+  -- x:_ is Head:Tail, with Tail being ignored
     (x:_) -> print (factorial (read x))
     _     -> putStrLn "Usage: program <n>"
 ```
