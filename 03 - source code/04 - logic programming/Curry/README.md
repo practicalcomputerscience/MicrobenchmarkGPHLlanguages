@@ -1,8 +1,5 @@
 2026-06-19: work in progress tbd
 
-- tbd:
-- tbd: Table of contents:
-
 <br/>
 
 # Curry
@@ -18,7 +15,16 @@ https://www.curry-lang.org (*)
 
 So, two programming language names have been attributed to [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry), American mathematician and logician (1900-1982).
 
+---
+
+Table of contents:
+
+- [Idea of Curry: integrating logic and functional programming in a purely declarative style]()
+- [Maps of Australia and Germany for KiCS2](#maps-of-australia-and-germany-for-kics2)
+
 <br/>
+
+---
 
 ## Idea of Curry: integrating logic and functional programming in a purely declarative style
 
@@ -155,7 +161,7 @@ After these struggles I made the decision to switch to the **KiCS2** implementat
 
 <br/>
 
-## Map of Australia and Germany for KiCS2
+## Maps of Australia and Germany for KiCS2
 
 https://www.curry-lang.org/kics2/download.html
 
@@ -246,7 +252,7 @@ MS Copilot gave me basically this answer, why library module file _SearchTree.cu
 
 <br/>
 
-Then I made a [KiCS2 Curry program](./graph_4coloring_Germany_KiCS2.curry) for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+Then I made a [KiCS2 Curry program](./graph_4coloring_Germany_KiCS2.curry) for the much bigger map coloring problem of Germany to compare it with my implementations in various Prolog systems in terms of execution speed:
 
 ```
 $ time ./graph_4coloring_Germany_KiCS2
@@ -265,7 +271,9 @@ $
 ..which comes to the same 1st and last solution than the [ALS Prolog version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro).
 
 But oh Boy! With an execution time of about 29 seconds for one program run, the KiCS2 Curry program is more than 11 times slower than the slowest Prolog system in this benchmark,
-and that is ALS Prolog with about 2.63 seconds!
+and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+
+
 
 tbd
 
