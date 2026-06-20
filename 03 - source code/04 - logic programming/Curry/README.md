@@ -153,6 +153,8 @@ After these struggles I made the decision to switch to the **KiCS2** implementat
 
 https://www.curry-lang.org/kics2/download.html
 
+https://github.com/curry-language/kics2
+
 I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20).
 
 ```
@@ -163,10 +165,42 @@ $ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
 $ cd kics2-3.5.0-x86_64-linux
 $ make  # be patient here! This may take some time.
 ...
+==> Successfully bootstrapped KiCS2!
+==> The executables are located in ~/scripts/Curry/KiCS2/kics2-3.5.0-x86_64-linux/bin
 $ 
 ```
 
-So, I made a KiCS2 compliant Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
+Finally, I added the given path to the KiCS2 executable, activated my _~/.bashrc_ file and checked the KiCS2 version with wrapper command _curry_:
+
+```
+$ curry -V
+ _  _  ____  ___  ___  ___
+( )/ )(_  _)/ __)/ __)(__ \ 
+ )  (  _)(_( (__ \__ \ / _/ 
+(_)\_)(____)\___)(___/(____)
+
+Version 3.5.0-b2 of 2025-12-15 (installed at Mon Dec 15 22:46:06 CET 2025)
+```
+
+At first, I tested to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
+
+```
+$ curry :load graph_4coloring_Australia_Curry2Go.curry :quit  # building an executable
+...
+Executable saved in 'graph_4coloring_Australia_Curry2Go'
+...
+$ ./graph_4coloring_Australia_Curry2Go | wc -l
+576
+$ 
+```
+
+576 solutions sounds fine!
+
+So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs:
+
+
+
+Then I made a KiCS2 compliant Curry program for the much bigger map coloring problem of Germany to compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
 
 
 
