@@ -9,6 +9,8 @@
 
 https://www.curry-lang.org (*)
 
+<br/>
+
 > [!TIP]
 > Use the PAKCS (→ Prolog) and KiCS2 (→ Haskell) implementations of Curry, but not the limited Curry2Go (→ Go) implementation!
 
@@ -202,7 +204,7 @@ $
 
 So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs.
 
-These are the changed lines of source code for the KiCS2 version of the program:
+These are the changed lines of source code for the [KiCS2 version of the program](./graph_4coloring_Australia_KiCS2.curry):
 
 ```
 import Control.Search.SearchTree  -- getSearchTree function
