@@ -7,11 +7,7 @@
 
 https://www.curry-lang.org (*)
 
-https://www.curry-lang.org/pakcs/examples/
-
-https://github.com/curry-packages
-
-Curry: A Tutorial Introduction: https://www.curry-lang.org/docs/tutorial/html/
+https://www.curry-lang.org/curry2go/
 
 <br/>
 
@@ -27,11 +23,20 @@ After my sobering experiences with [Mercury](https://github.com/practicalcompute
 
 > Curry is called a declarative language, because computed results are independent of the time and order of evaluation, which simplifies reasoning on programs. Side effects can be modeled as “IO” operations, i.e., a declarative description of what to do. Operations are constructed by expressions only, there are no statements or instructions, and every binding to a variable is immutable.
 
-<br/>
-
 Again, we see the phenomenon of multiple implementations (with one already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
 
-After some reading, I gave **Curry2Go** a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
+<br/>
+
+## Curry2Go: transpiling Curry source code to Go source code for a standalone, native executable for Linux
+
+After some reading, I gave Curry2Go a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
+
+> [!IMPORTANT]
+> However, making the choice for Curry2Go has a big drawback. The "usual" code examples and code snippets from the "usual" tutorials do not work here!
+
+For example, this tutorial is meant for the PAKCS implementation, though the first exercise works in curry2go: https://www.curry-lang.org/docs/tutorial/html/
+
+Also these examples are only working in PAKS: https://www.curry-lang.org/pakcs/examples/
 
 <br/>
 
@@ -65,9 +70,9 @@ $
 
 <br/>
 
-## A first Curry program
+## A first Curry2 program
 
-However, working in the REPL was not my goal, and with the help of "Big AI" I tinkered together a first, little Curry program to be compiled into a standalone, native binary executables for Linux, here named _factorial.curry_:
+However, working in the REPL was not my goal, and with the help of "Big AI" I tinkered together a first, little Curry2Go program to be compiled into a standalone, native executable for Linux, here named _factorial.curry_:
 
 ```
 import System.Environment (getArgs)
