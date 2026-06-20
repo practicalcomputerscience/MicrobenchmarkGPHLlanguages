@@ -180,6 +180,7 @@ $ curry -V
 (_)\_)(____)\___)(___/(____)
 
 Version 3.5.0-b2 of 2025-12-15 (installed at Mon Dec 15 22:46:06 CET 2025)
+$
 ```
 
 At first, I tested to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
