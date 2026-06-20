@@ -6,10 +6,6 @@
 
 https://www.curry-lang.org (*)
 
-https://www.curry-lang.org/curry2go/
-
-https://github.com/curry-language/curry2go
-
 <br/>
 
 So, two programming language names have been attributed to [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry), American mathematician and logician (1900-1982).
@@ -32,6 +28,10 @@ And again, same like [Mercury](https://github.com/practicalcomputerscience/Micro
 
 ## Curry2Go: transpiling Curry source code into Go source code for a Linux executable
 
+https://www.curry-lang.org/curry2go/
+
+https://github.com/curry-language/curry2go
+
 After some reading, I gave Curry2Go a try to compile Curry source code into a [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) based executable: https://www.curry-lang.org/curry2go/
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ Also these examples are only working in PAKS: https://www.curry-lang.org/pakcs/e
 
 <br/>
 
-## Installation tips
+#### Installation tips for Curry2Go
 
 For the Curry2Go compiler to work, a Go compiler needs to be installed first: https://go.dev/
 
@@ -73,7 +73,7 @@ $
 
 <br/>
 
-## A first Curry2Go program
+#### A first Curry2Go program
 
 However, working in the REPL was not my goal, and with the help of "Big AI" I tinkered together a first, little Curry2Go program to be compiled into a standalone, native executable for Linux, here named _factorial.curry_:
 
@@ -148,6 +148,10 @@ correct NT QL NSW VIC SA WA TAS =
 ```
 
 ..is a **non-deterministic generator**, which was causing a _panic: NondetError "Non-determinism in I/O actions occurred!"_ when trying to count the number of solutions.
+
+<br/>
+
+#### Map of Germany for Curry2Go
 
 So, I made a Curry2Go program for the much bigger German map to just compare it with my Prolog implementations in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram):
 
