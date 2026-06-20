@@ -17,7 +17,7 @@ So, two programming language names have been attributed to [Haskell Curry](https
 
 <br/>
 
-## Idea of Curry: integrating logic and functional programming
+## Idea of Curry: integrating logic and functional programming in a purely declarative style
 
 After my sobering experiences with [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury) and [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz), I have been searching for another (and still maintained) language to combine the "natural fits" logic and functional programming, and found Curry (*):
 
@@ -26,6 +26,8 @@ After my sobering experiences with [Mercury](https://github.com/practicalcompute
 > Curry is called a declarative language, because computed results are independent of the time and order of evaluation, which simplifies reasoning on programs. Side effects can be modeled as “IO” operations, i.e., a declarative description of what to do. Operations are constructed by expressions only, there are no statements or instructions, and every binding to a variable is immutable.
 
 Again, we see the phenomenon of multiple implementations (with one already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
+
+And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
 
 <br/>
 
@@ -111,10 +113,9 @@ See also this related and official Curry2Go example: https://github.com/curry-la
 
 #### Map of Australia for Curry2Go
 
-I coded the problem of the Australian map for Curry2Go ([graph_4coloring_Australia.curry](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry/graph_4coloring_Australia.curry)), but that program is not working completely like in this ALS Prolog implementation:
-[graph_4coloring_Australia_ALS.pro](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry/graph_4coloring_Australia.curry)
+I coded the problem of the Australian map for Curry2Go ([graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry)), but that program is not working completely like in this ALS Prolog implementation: [graph_4coloring_Australia_ALS.pro](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Australia_ALS.pro)
 
-I didn't figure out how to count the total number of solutions and showing the first and last solutions like in the Prolog program:
+With Curry2Go, I didn't figure out how to count the total number of solutions and showing the first and last solutions like in the Prolog program:
 
 ```
 $ curry2goc graph_4coloring_Australia  # compiling
