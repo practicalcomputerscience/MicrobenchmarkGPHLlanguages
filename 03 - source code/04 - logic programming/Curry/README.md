@@ -28,7 +28,7 @@ Table of contents:
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
 - [Documentation of Curry](#)
 - [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
-- [the Curry Package Manager (CPM)](#)
+- [The Curry Package Manager (CPM)](#)
 
 <br/>
 
