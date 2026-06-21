@@ -1,6 +1,7 @@
 2026-06-19: work in progress tbd
 
 - tbd: exe time of "speed part"
+- tbd: fill links in TOC
 
 <br/>
 
