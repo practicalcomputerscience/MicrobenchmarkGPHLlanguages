@@ -4,7 +4,7 @@ But when you have seen four **functional languages**, functional language #5 may
 
 <br/>
 
-### On being purely declarative
+#### On being purely declarative
 
 After implementing my microbenchmark program in Curry (tbd) (in the KiCS2 implementation), I had this question:
 
