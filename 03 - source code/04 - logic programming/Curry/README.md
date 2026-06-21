@@ -6,6 +6,8 @@
 
 https://www.curry-lang.org (*)
 
+Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf
+
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
@@ -24,8 +26,9 @@ So, two programming language names have been attributed to [Haskell Curry](https
 Table of contents:
 
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
+- [Documentation of Curry](#)
 - [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
-- [Curry Package Manager (CPM)](#)
+- [the Curry Package Manager (CPM)](#)
 
 <br/>
 
@@ -44,6 +47,29 @@ Again, we see the phenomenon of multiple implementations: PAKCS, KiCS2, Curry2Go
 And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
 
 Fun fact: both languages, Curry and Mercury, first appeared in 1995.
+
+<br/>
+
+#### Documentation of Curry
+
+At least the official documentation of Curry isn't the best from my point of view. For example, I noticed that it usually steps over explaining the ubiquitous -> and <- operators:
+
+- while _let_ is obviously for deterministic local bindings, <- seems to deal with non-determinism,
+
+..which leaves me the -> operator to look for something similar in Haskell:
+
+..where -> is for:
+
+- Function type-mapping operator (a Monad: https://www.euclideanspace.com/software/language/functional/haskell/operators/index.htm; https://fwoelffel.me/posts/monads/)
+- Lambda definition operator
+- Separator in case construction, something I also use as such in my [microbenchmark program](tbd), see at function _convertToBase_
+
+..while <- in Haskell is for
+
+- List comprehension generator
+- Single assignment operator in do-blocks, which is also used like that in Curry
+
+For Haskell, see from here: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/haskell-operatorer.pdf
 
 <br/>
 
@@ -282,7 +308,7 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 <br/>
 
-## Curry Package Manager (CPM)
+## The Curry Package Manager (CPM)
 
 For the speed part of the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows you to tap into some 160 Curry libraries from your Curry program:
 
@@ -317,6 +343,34 @@ $
 ```
 
 However, I recommend to scroll Curry packages from here: https://cpm.curry-lang.org/  (there are still other, "old school" ways to do that.)
+
+Next problem: I noticed that not all available functions are exported, here function _convertToBase_ in the printf package: https://cpm.curry-lang.org/pkgs/printf-3.0.0-src.html. This function is located in library source code file _Format.curry_. So, I just copied and adapted that function for my own program :wink:
+
+```
+convertToBase :: Int -> Int -> String
+convertToBase b n = 
+    if (n == 0) then "0"
+      else cTB "" b n
+  where
+    cTB :: String -> Int -> Int -> String
+    cTB acc base m = if (m == 0) then acc else
+      let dr = ((div m base),(mod m base))
+          d  = (fst dr)
+          r  = (snd dr)
+          st = if (r < 10) then (show r) else
+            case r of
+              10 -> "a"
+              11 -> "b"
+              12 -> "c"
+              13 -> "d"
+              14 -> "e"
+              15 -> "f"
+      in cTB (st ++ acc) b d
+```
+
+
+
+
 
 
 tbd
