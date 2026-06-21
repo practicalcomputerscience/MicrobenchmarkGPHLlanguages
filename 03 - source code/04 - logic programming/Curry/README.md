@@ -324,7 +324,7 @@ For the microbenchmark program, the CPM with command _cypm_ is being used, becau
 
 from: https://www.curry-language.org/tools/cpm/
 
-Do it like this: 
+Do it like this for example:
 
 ```
 $ cypm new random_streams_for_perf_stats  # create your project
@@ -332,7 +332,7 @@ $ cd random_streams_for_perf_stats
 $ cypm add time  # add this package
 ```
 
-You may do a very basic test on a Curry package like this, here for package random:
+You may do a very basic test on a Curry package like this, here for package time:
 
 ```
 $ cypm info time
