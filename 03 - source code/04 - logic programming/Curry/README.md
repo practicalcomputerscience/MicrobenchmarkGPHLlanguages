@@ -344,7 +344,7 @@ $
 
 However, I recommend to scroll Curry packages from here: https://cpm.curry-lang.org/  (there are still other, "old school" ways to do that.)
 
-Next problem: I noticed that not all available functions are exported, here function _convertToBase_ in the printf package: https://cpm.curry-lang.org/pkgs/printf-3.0.0-src.html. This function is located in library source code file _Format.curry_. So, I just copied and adapted that function for my own program :wink:
+Next problem: I noticed that not all available functions are exported, here function _convertToBase_ in the printf package: https://cpm.curry-lang.org/pkgs/printf-3.0.0-src.html. This function is located in library source code file _Format.curry_. So, I just copied and adapted that function for my own program: :wink:
 
 ```
 convertToBase :: Int -> Int -> String
