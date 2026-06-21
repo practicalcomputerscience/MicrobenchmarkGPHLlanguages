@@ -42,7 +42,7 @@ After my sobering experiences with [Mercury](https://github.com/practicalcompute
 
 > Curry is called a declarative language, because computed results are independent of the time and order of evaluation, which simplifies reasoning on programs. Side effects can be modeled as “IO” operations, i.e., a declarative description of what to do. Operations are constructed by expressions only, there are no statements or instructions, and every binding to a variable is immutable.
 
-Again, we see the phenomenon of multiple implementations: PAKCS, KiCS2, Curry2Go and MCC: https://www.curry-lang.org/implementations/overview/, with MCC being already dead: http://danae.uni-muenster.de/curry/
+Again, we see the phenomenon of multiple implementations: PAKCS, KiCS2, Curry2Go and MCC: https://www.curry-lang.org/implementations/overview/, with MCC being dead already: http://danae.uni-muenster.de/curry/
 
 And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
 
