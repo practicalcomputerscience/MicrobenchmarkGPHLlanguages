@@ -1,6 +1,6 @@
 2026-06-19: work in progress tbd
 
-- tbd: exe time of "speed part"
+- tbd: full microbechmark program
 - tbd: fill links in TOC
 
 <br/>
@@ -36,6 +36,7 @@ Table of contents:
 - [The Curry Package Manager (CPM)](#)
 - [On determinism in (KiCS2) Curry](#)
 - [Exception handling in KiCS2 Curry](#)
+- [Microbenchmark program in KiCS2 Curry](#)
 
 <br/>
 
@@ -462,7 +463,32 @@ In the microbechmark program it looks like this (with the help of "Big AI"):
 
 <br/>
 
-tbd: exe time of "speed part": 
+### Microbenchmark program in KiCS2 Curry
+
+Take source code file [random_streams_for_perf_stats.curry](./random_streams_for_perf_stats.curry) for the "speed part", rename it to _Main.curry_ and put it into your own project
+subdirectory _./<project name>/src/Main.curry_ after you have created that project like this for example:
+
+```
+$ cypm new random_streams_for_perf_stats  # create a new project
+$ cd random_streams_for_perf_stats
+# edit or replace default source code file Main.curry in subdirectory ./random_streams_for_perf_stats/src/Main.curry
+$ cypm curry :load Main :eval main :quit  # run the program
+...
+<see output from below>
+$ 
+```
+
+Build a Linux executable like this in the project root directory: 
+
+```
+$ cypm curry :load Main :save :quit
+$ ./Main
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  "random_bitstring.bin"
+Byte stream has been written to disk under name: "random_bitstring.byte"
+$
+```
 
 <br/>
 
