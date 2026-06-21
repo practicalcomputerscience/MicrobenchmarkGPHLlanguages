@@ -39,7 +39,7 @@ After my sobering experiences with [Mercury](https://github.com/practicalcompute
 
 > Curry is called a declarative language, because computed results are independent of the time and order of evaluation, which simplifies reasoning on programs. Side effects can be modeled as “IO” operations, i.e., a declarative description of what to do. Operations are constructed by expressions only, there are no statements or instructions, and every binding to a variable is immutable.
 
-Again, we see the phenomenon of multiple implementations (with one being already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
+Again, we see the phenomenon of multiple implementations: PAKCS, KiCS2, Curry2Go and MCC: https://www.curry-lang.org/implementations/overview/, with MCC being already dead: http://danae.uni-muenster.de/curry/
 
 And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
 
@@ -284,7 +284,7 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 ## Curry Package Manager (CPM)
 
-For the speed part of the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows to tap into some 160 Curry libraries from your Curry program:
+For the speed part of the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows you to tap into some 160 Curry libraries from your Curry program:
 
 > CPM is already part of recent distributions of the Curry systems PAKCS (Version 1.15.0 or higher), KiCS2 (Version 0.6.0 or higher), and Curry2Go.
 
@@ -293,13 +293,13 @@ from: https://www.curry-language.org/tools/cpm/
 Do it like this: 
 
 ```
-$ cypm new random_streams_for_perf_stats
+$ cypm new random_streams_for_perf_stats  # create your project
 $ cd random_streams_for_perf_stats
 $ cypm add random  # add this package
 $ cypm add printf  # add this package
 ```
 
-You may do a very basic test on a Curry package like this, here random:
+You may do a very basic test on a Curry package like this, here package random:
 
 ```
 $ cypm info random
