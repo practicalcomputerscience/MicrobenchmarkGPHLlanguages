@@ -596,6 +596,13 @@ So far, I've got these languages where I was not able to bring down the executio
 
 This 1 second limit for my "official" listing is arbitrary, like so many things with benchmarks, but on the other side: most languages have no problem with this limit.
 
+<br/>
+
+However, like life is, I made one exception and that is the [Curry (KiCS2)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry#curry) version of the microbenchmark program. Its execution time of the "speed part" of about 1.5 seconds is clearly above
+the 1 second limit, but I want to keep Curry as a "Truly Integrated Functional Logic Programming Language" in my "official" listing. There are practically no other (open source) logic programming languages, next to all the Prolog systems, you can really use for general purposes. Oz is dead, Picat another derived Prolog system which just dropped the name Prolog, and Mercury is a very special and restricted case not many people are using.
+
+<br/>
+
 ### Measuring program execution times
 
 With the first languages I put a stopwatch into the source code. But after doing so in the Mojo program, here like this:
