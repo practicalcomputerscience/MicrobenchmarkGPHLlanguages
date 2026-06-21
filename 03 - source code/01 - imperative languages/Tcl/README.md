@@ -10,7 +10,7 @@ and thus should be included in my list of tested languages.
 I also tested latest version 9.0.3 (as of 2026-06-19), along with long term version 8.6, which ships with many Linux distributions out of the box.
 
 I compiled this new version from sources (https://www.tcl-lang.org/software/tcltk/download.html) (on a different platform), only to notice that it's about 8% slower than established version 8.6
-at the speed part of my microbenchmark program: [random_streams_for_perf_stats.tcl](tbd) (still with _set_ instead of _list_ for the random integer numbers)
+at the speed part of the microbenchmark program: [random_streams_for_perf_stats.tcl](tbd) (still with _set_ instead of _list_ for the random integer numbers)
 
 Tcl version 9 looks like a significant step in language modernization: https://www.tcl-lang.org/software/tcltk/9.0.html
 
