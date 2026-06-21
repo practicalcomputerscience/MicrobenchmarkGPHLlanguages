@@ -1,5 +1,7 @@
 2026-06-19: work in progress tbd
 
+- tbd: exe time of "speed part"
+
 <br/>
 
 # Curry
@@ -8,7 +10,7 @@ https://www.curry-lang.org (*)
 
 Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf
 
-Up-to-date manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
+Up-to-date user manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
 
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
@@ -31,6 +33,8 @@ Table of contents:
 - [Documentation of Curry](#)
 - [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
 - [The Curry Package Manager (CPM)](#)
+- [On determinism in (KiCS2) Curry](#)
+- [Exception handling in KiCS2 Curry](#)
 
 <br/>
 
@@ -369,12 +373,95 @@ convertToBase b n =
       in cTB (st ++ acc) b d
 ```
 
+<br/>
 
+## On determinism in (KiCS2) Curry
 
+One of the toughest part of the microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
 
+```
+    let (x, bitsXList, bitsHexList) = masterloop end x0  -- for testing
+```
 
+This construct with the _mapM__ Monad is not working:
 
-tbd
+```
+    -- mapM_ print x
+```
+
+..because the elements of _x_ are non-deterministic!
+
+But this is working:
+
+```
+    let nums = [1..5]
+    mapM_ print nums
+```
+
+Why?
+
+> [!IMPORTANT]
+> Because list _nums_ is deterministic!
+
+<br/>
+
+After a while, I found out that the _**Control.Search.AllValues**_ package is practically essential for (KiCS2) Curry programs "for the real, non-deterministic world":
+
+```
+import Control.Search.AllValues (getAllValues, getOneValue)
+```
+
+Practically, this package is already included in KiCS2's Prelude, and thus doesn't need extra adding with the CPM.
+
+So, first I had to convert _x_ into something deterministic before printing it:
+
+```
+    deterministicList <- getAllValues x  -- for testing
+    putStrLn ("x = " ++ show deterministicList)  -- for testing
+```
+
+The same applies for printing the one, big string _bitsXStr_, concatenated of the many little random strings for debugging reasons:
+
+```
+    let bitsXStr   = concat bitsXList
+    det_bitsXStr   <- getOneValue bitsXStr
+    putStrLn ("det_bitsXStr = " ++ show det_bitsXStr)  -- for testing
+
+    {-
+    a test case:
+      x = [[18437,4462,32346,9932,7976,49391,20955,24507,46174,50380]]
+      det_bitsXStr = Just "0100100000000101000100010110111001111110010110100010011011001100000111110010100011000000111011110101000111011011010111111011101110110100010111101100010011001100"
+    -}
+```
+
+<br/>
+
+## Exception handling in KiCS2 Curry
+
+Catching an error can be looked up from the KiCS2 User Manual, here from latest version 3.4.0 of 2025-10-29 for example (though below content existed before):
+
+> A.2.1 Library Prelude
+> 
+> IO-Type and Operations
+> 
+> catch :: IO a → (IOError → IO a) → IO a
+> 
+> Catches a possible error or failure during the execution of an I/O action. _catch act errfun_ executes the I/O action _act_. If an exception or failure occurs during this I/O action, the function _errfun_ is applied to the error value.
+
+In the microbechmark program it looks like this (with the help of "Big AI"):
+
+```
+    -- write bit stream to disk:
+    case det_bitsXStr of
+      Just s  -> catch (do writeFile fileBitsX s
+                           putStrLn ("Bit stream has been written to disk under name:  " ++ show fileBitsX))
+                 (\err -> putStrLn ("could not write to file: " ++ show fileBitsX ++ " ! -- " ++ show err))
+      Nothing -> error ("could not write to file: " ++ show fileBitsX)
+```
+
+<br/>
+
+tbd: exe time of "speed part": 
 
 <br/>
 
