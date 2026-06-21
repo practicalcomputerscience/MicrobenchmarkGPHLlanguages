@@ -52,8 +52,8 @@ import Control.Search.AllValues (getAllValues, getOneValue)
 import System.CPUTime ( getCPUTime )
 import Data.Time ( CalendarTime(..), getClockTime, toUTCTime )
 
-m :: Int
-m = 65521  -- = 2^16 - 15 < two16 = 65536
+m_ :: Int   -- prevent shadowing symbol m, which is used in two user defined functions below
+m_ = 65521  -- = 2^16 - 15 < two16 = 65536
 a :: Int
 a = 17364
 c :: Int
@@ -70,7 +70,7 @@ getRandomSeed =
   getClockTime >>= \time ->
   getCPUTime >>= \msecs ->
   let (CalendarTime y mo d h m s _) = toUTCTime time
-   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` m)
+   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` m_)  -- use m_ here!
 
 
 --   this is an adapted version of the original function from
