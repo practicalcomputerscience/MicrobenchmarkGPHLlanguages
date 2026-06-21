@@ -8,6 +8,8 @@ https://www.curry-lang.org (*)
 
 Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf
 
+Up-to-date manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
+
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
