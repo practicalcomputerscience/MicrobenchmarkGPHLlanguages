@@ -310,7 +310,7 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 ## The Curry Package Manager (CPM)
 
-For the speed part of the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows you to tap into some 160 Curry libraries from your Curry program:
+For the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows you to tap into some 160 Curry libraries:
 
 > CPM is already part of recent distributions of the Curry systems PAKCS (Version 1.15.0 or higher), KiCS2 (Version 0.6.0 or higher), and Curry2Go.
 
@@ -322,10 +322,9 @@ Do it like this:
 $ cypm new random_streams_for_perf_stats  # create your project
 $ cd random_streams_for_perf_stats
 $ cypm add random  # add this package
-$ cypm add printf  # add this package
 ```
 
-You may do a very basic test on a Curry package like this, here package random:
+You may do a very basic test on a Curry package like this, here for package random:
 
 ```
 $ cypm info random
