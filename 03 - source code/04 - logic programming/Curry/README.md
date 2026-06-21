@@ -6,7 +6,7 @@
 
 https://www.curry-lang.org (*)
 
-Scroll Curry packages from here: https://cpm.curry-lang.org/
+Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
 
@@ -25,6 +25,7 @@ Table of contents:
 
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
 - [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
+- [Curry Package Manager (CPM)](#)
 
 <br/>
 
@@ -41,6 +42,8 @@ After my sobering experiences with [Mercury](https://github.com/practicalcompute
 Again, we see the phenomenon of multiple implementations (with one being already dead): PAKCS, KiCS2, Curry2Go, MCC: https://www.curry-lang.org/implementations/overview/
 
 And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
+
+Fun fact: both languages, Curry and Mercury, first appeared in 1995.
 
 <br/>
 
@@ -277,6 +280,43 @@ $
 But oh Boy! With an execution time of about 29 seconds for one program run, the KiCS2 Curry program is more than 11 times slower than the slowest Prolog system in this benchmark,
 and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
+<br/>
+
+## Curry Package Manager (CPM)
+
+For the speed part of the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows to tap into some 160 Curry libraries from your Curry program:
+
+> CPM is already part of recent distributions of the Curry systems PAKCS (Version 1.15.0 or higher), KiCS2 (Version 0.6.0 or higher), and Curry2Go.
+
+from: https://www.curry-language.org/tools/cpm/
+
+Do it like this: 
+
+```
+$ cypm new random_streams_for_perf_stats
+$ cd random_streams_for_perf_stats
+$ cypm add random  # add this package
+$ cypm add printf  # add this package
+```
+
+You may do a very basic test on a Curry package like this, here random:
+
+```
+$ cypm info random
+random-3.0.0
+------------
+Version      3.0.0
+Author       Sergio Antoy <antoy@cs.pdx.edu>
+Maintainer   Michael Hanus <mh@informatik.uni-kiel.de>
+Synopsis     Library for pseudo-random number generation
+Category     Programming Numeric
+Dependencies
+    base >= 3.0.0,  < 4.0.0
+    time >= 3.0.0,  < 4.0.0
+$
+```
+
+However, I recommend to scroll Curry packages from here: https://cpm.curry-lang.org/  (there are still other, "old school" ways to do that.)
 
 
 tbd
