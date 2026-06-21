@@ -329,23 +329,26 @@ Do it like this:
 ```
 $ cypm new random_streams_for_perf_stats  # create your project
 $ cd random_streams_for_perf_stats
-$ cypm add random  # add this package
+$ cypm add time  # add this package
 ```
 
 You may do a very basic test on a Curry package like this, here for package random:
 
 ```
-$ cypm info random
-random-3.0.0
-------------
+$ cypm info time
+time-3.0.0
+----------
 Version      3.0.0
-Author       Sergio Antoy <antoy@cs.pdx.edu>
-Maintainer   Michael Hanus <mh@informatik.uni-kiel.de>
-Synopsis     Library for pseudo-random number generation
-Category     Programming Numeric
+Author       Michael Hanus <mh@informatik.uni-kiel.de>
+Synopsis     Library for handling date and time information.
+Category     Data
 Dependencies
     base >= 3.0.0,  < 4.0.0
-    time >= 3.0.0,  < 4.0.0
+Compiler compatibility
+    pakcs >= 3.0.0,  < 4.0.0
+    kics2 >= 3.0.0,  < 4.0.0
+    curry2go >= 1.0.0
+    kmcc >= 0.1.0
 $
 ```
 
@@ -471,6 +474,7 @@ subdirectory _./<project name>/src/Main.curry_ after you have created that proje
 ```
 $ cypm new random_streams_for_perf_stats  # create a new project
 $ cd random_streams_for_perf_stats
+$ cypm add time  # add this package
 # edit or replace default source code file Main.curry in subdirectory ./random_streams_for_perf_stats/src/Main.curry
 $ cypm curry :load Main :eval main :quit  # run the program
 ...
