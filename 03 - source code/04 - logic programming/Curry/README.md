@@ -62,7 +62,7 @@ At least the official documentation of Curry isn't the best from my point of vie
 
 - Function type-mapping operator (a Monad: https://www.euclideanspace.com/software/language/functional/haskell/operators/index.htm; https://fwoelffel.me/posts/monads/)
 - Lambda definition operator
-- Separator in case construction, something I also use as such in my [microbenchmark program](tbd), see at function _convertToBase_
+- Separator in case construction, see at function _convertToBase_ below
 
 ..while <- in Haskell is for
 
