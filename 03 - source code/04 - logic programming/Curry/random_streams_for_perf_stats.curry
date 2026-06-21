@@ -9,7 +9,6 @@ build on Ubuntu 24 LTS: do this only once:
                         use the CPM (Curry Package Manager) for this project:
                         $ cypm new random_streams_for_perf_stats
                         $ cd random_streams_for_perf_stats
-                        $ cypm add random  # add this package
 
                         edit Main.curry (this file) in subdir ./random_streams_for_perf_stats/src/Main.curry
 
