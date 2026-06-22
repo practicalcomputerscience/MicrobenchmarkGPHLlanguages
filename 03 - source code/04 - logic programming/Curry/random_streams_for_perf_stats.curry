@@ -3,7 +3,7 @@ random_streams_for_perf_stats.curry is actually file ./random_streams_for_perf_s
 
 a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 
-2026-06-20/21
+2026-06-20/21/22
 
 build on Ubuntu 24 LTS: do this only once:
                         use the CPM (Curry Package Manager) for this project:
@@ -93,6 +93,7 @@ convertToBase b n =
               13 -> "d"
               14 -> "e"
               15 -> "f"
+              _  -> "x"  -- get rid of the Pattern matches are non-exhaustive warning (2026-06-22)
       in cTB (st ++ acc) b d
 
 -- New function from Google AI: takes target length, base, and number
@@ -116,7 +117,7 @@ masterloop length seed
     | length > 0 = (newSeed : restX, bitsX : restBitsX, bitsHex : restBitsHex)
     where
       -- newSeed = (17364 * seed + 0) `mod` 65521
-      newSeed = (a * seed + c) `mod` m
+      newSeed = (a * seed + c) `mod` m_  -- 2026-06-22
 
       -- bitsX = "0000000000000000"  -- just a test dummy
       bitsX   = convertToBasePad 16 2 newSeed
