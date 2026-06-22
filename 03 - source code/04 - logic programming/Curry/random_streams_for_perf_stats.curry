@@ -52,7 +52,7 @@ import Control.Search.AllValues (getAllValues, getOneValue)
 import System.CPUTime ( getCPUTime )
 import Data.Time ( CalendarTime(..), getClockTime, toUTCTime )
 
-m_ :: Int   -- prevent shadowing symbol m, which is used in two user defined functions below
+m_ :: Int   -- m_ to prevent shadowing symbol m, which is used in two user defined functions below
 m_ = 65521  -- = 2^16 - 15 < two16 = 65536
 a :: Int
 a = 17364
