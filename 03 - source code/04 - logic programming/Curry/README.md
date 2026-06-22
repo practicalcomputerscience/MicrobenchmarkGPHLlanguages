@@ -1,6 +1,5 @@
 2026-06-19: work in progress tbd
 
-- tbd: full microbechmark program
 - tbd: fill links in TOC
 
 <br/>
@@ -469,7 +468,7 @@ In the microbechmark program it looks like this (with the help of "Big AI"):
 ### Microbenchmark program in KiCS2 Curry
 
 Take source code file [random_streams_for_perf_stats.curry](./random_streams_for_perf_stats.curry) for the "speed part", rename it to _Main.curry_ and put it into your own project
-subdirectory _./<project name>/src/Main.curry_ after you have created that project like this for example:
+subdirectory _./\<project name\>/src/Main.curry_ after you have created that project like this for example:
 
 ```
 $ cypm new random_streams_for_perf_stats  # create a new project
@@ -492,6 +491,83 @@ generating a random bit stream...
 Bit stream has been written to disk under name:  "random_bitstring.bin"
 Byte stream has been written to disk under name: "random_bitstring.byte"
 $
+```
+
+<br/>
+
+## Full Microbenchmark program in KiCS2 Curry and determinism in Curry
+
+See program [random_bitstring_and_flexible_password_generator.curry](./random_bitstring_and_flexible_password_generator.curry).
+
+This [regexp](https://github.com/curry-packages/regexp/blob/master/examples/Match.curry) package was not helpful for me. So, I stayed conservative with only checking if a character is part of a string, which is composed of the allowed characters:
+
+```
+    # in main:
+    ...
+    let pattern = if with_special_chars
+                then ['!' .. '~']
+                else ['A' .. 'Z'] ++ ['a' .. 'z'] ++ ['0' .. '9']
+    ...
+    let password = pw_generator nChar det_x_inner_list pattern ""
+    ...
+
+# usage of pattern in this user defined function:
+pw_generator :: Int -> [Int] -> String -> String -> String
+pw_generator _ [] _ password = password  -- get rid of warning: Pattern matches are non-exhaustive
+pw_generator length (firstRandNbr : newRandomNbrs) charPool password =
+    ...
+      char0 = bin_string_to_integer bin0_0
+      char1 = bin_string_to_integer bin0_1
+
+      char0a = chr char0
+      char1a = chr char1
+
+      (char0_add, char0_nbr_add) = if char0a `elem` charPool
+                                    then ([char0a], 1)
+                                    else ("", 0)
+
+      (char1_add, char1_nbr_add) = if char1a `elem` charPool && (length - char0_nbr_add > 0)
+                                    then ([char1a], 1)
+                                    else ("", 0)
+    ...
+```
+
+<br/>
+
+In Curry, it's very hard to put print statements as debugging support into user defined functions, because then these functions have to care about _IO_ operations, which will complicate the type signatures of these functions, see for example at the rather simple user defined function _input_a_valid_number :: Int -> IO Int_, which anyway needs IO operations.
+
+<br/>
+
+But the biggest challenge was Curry's strict requirement for determinism!
+
+This is the reason why I cannot just pass the list of generated random integer numbers, called _x_, to user defined function _pw_generator_. The program may compile,
+but it will crash when being executed:
+
+> Main: *** FailException: IO action failed: Non-determinism in IO occured for variable ?132N Evaluation terminated with non-zero status 1
+
+First, _x_ has be to converted from something non-deterministic into something deterministic in several steps, so that a new list _det_x_inner_list_ can be passed to function _pw_generator_:
+
+```
+...
+-- for printing a non-deterministic list etc.: this important package is already included:
+import Control.Search.AllValues (getAllValues, getOneValue)
+...
+main :: IO ()
+main = do
+    ...
+    let (x, bitsXList, bitsHexList) = masterloop end x0
+
+    det_x <- getAllValues x
+    -- putStrLn ("x = " ++ show det_x)  -- for testing
+    -- x = [[18437,4462,32346,9932,7976,49391,20955,24507,46174,50380]]  -- for example
+    ...
+
+    let (det_x_inner_list : _) = det_x
+    -- putStrLn ("det_x_inner_list = " ++ show det_x_inner_list)  -- for testing
+    -- det_x_inner_list = [11234,11159,19279,13767,29580,8001,24844,952,19236,53367]  -- for example
+
+    let password = pw_generator nChar det_x_inner_list pattern ""  -- with let back in "deterministic land"!
+    ...
 ```
 
 <br/>
