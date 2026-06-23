@@ -3,7 +3,7 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -25,7 +25,7 @@ my $source_code_line_count = 0;
 my $line_empty = 0;
 my $line_cmt_fwdslash_dbl = 0;
 my $line_cmt_hash = 0;
-my $line_cmt_minus_dbl = 0;
+my $line_cmt_minus_dbl = 0;  # --
 my $line_cmt_ML_style = 0;  # (*...*)
 my $line_cmt_Lisp_style = 0;
 my $line_cmt_Basic_style = 0;
@@ -55,6 +55,8 @@ my $hash_bracket_detected = 0;               # 0 is false
 my $bracket_hash_detected = 0;               # 0 is false
 my $equal_begin_detected = 0;                # 0 is false
 my $equal_end_detected = 0;                  # 0 is false
+my $curly_minus_detected = 0;                # 0 is false
+my $minus_curly_detected = 0;                  # 0 is false
 
 
 my $language_ext = $file;
@@ -78,6 +80,7 @@ my @lang_grp11 = ("jl");
 my @lang_grp12 = ("nim");
 my @lang_grp13 = ("rb");
 my @lang_grp14 = ("st");
+my @lang_grp15 = ("curry");
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -89,6 +92,8 @@ my $line_of_block_comment9 = 0;
 my $line_of_block_comment11 = 0;
 my $line_of_block_comment12 = 0;
 my $line_of_block_comment13 = 0;
+# reserved for Smalltalk
+my $line_of_block_comment15 = 0;
 
 
 $language_ext =~ s/^\w+\.//;
@@ -674,6 +679,52 @@ if ( grep(/^$language_ext$/, @lang_grp14)) {
 }
 
 
+
+if ( grep(/^$language_ext$/, @lang_grp15)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($curly_minus_detected) {
+      $line_of_block_comment15 += 1;
+    }
+
+    # at the moment, only caring about:
+    #   beginning {-: with potentially leading white spaces and any kind of stuff beyond {-..
+    #   ending    -}: with potentially any kind of stuff before ..-} and potentially trailing white spaces
+    if ($_ =~ /^\s*\{\-/ and not $curly_minus_detected) {
+      $curly_minus_detected = 1;
+      $minus_curly_detected = 0;
+      print "  curly_minus_detected", "\n";
+      $line_of_block_comment15 += 1;
+    } else {
+      if ($_ =~ /\-\}\s*$/ and $curly_minus_detected) {
+        $curly_minus_detected = 0;
+        $minus_curly_detected = 1;
+        print "  minus_curly_detected", "\n";
+      } else {
+        # case: empty line or line with white spaces:
+        if ($_ =~ /^\s*$/ and not $curly_minus_detected) {
+          $line_empty += 1;
+        } else {
+          # case: -- with optionally leading white spaces:
+          if ($_ =~ /^\s*\-\-/ and not $curly_minus_detected) {
+            $line_cmt_minus_dbl += 1;
+          } else {
+            if (not $curly_minus_detected) {
+              $source_code_line_count += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 close( FILE );
 
 print "\ntotal number of lines = ", $line_count;
@@ -700,6 +751,7 @@ print "\nnumber of lines in block comment: --[[ ... ]] = ", $line_of_block_comme
 print "\nnumber of lines in block comment: #= ... =# = ", $line_of_block_comment11;
 print "\nnumber of lines in block comment: #[ ... ]# = ", $line_of_block_comment12;
 print "\nnumber of lines in block comment: =begin ... =end = ", $line_of_block_comment13;
+print "\nnumber of lines in block comment: {- ... -} = ", $line_of_block_comment15;
 
 print "\n";
 
