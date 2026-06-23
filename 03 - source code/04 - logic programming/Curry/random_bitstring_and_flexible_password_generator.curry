@@ -22,9 +22,6 @@ build on Ubuntu 24 LTS an executable:
 run this executable:   $ ./Main
 
 
-to-do: show password without quote chars!!!!! tbd
-
-
 $ curry -V
  _  _  ____  ___  ___  ___
 ( )/ )(_  _)/ __)/ __)(__ \
