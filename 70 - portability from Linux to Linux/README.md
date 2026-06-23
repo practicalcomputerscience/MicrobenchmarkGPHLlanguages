@@ -34,7 +34,22 @@ Zig | no | "not a dynamic executable"
 
 <br/>
 
-See for the Zig program for example:
+See for the Curry program for example:
+
+```
+$ ldd ./random_bitstring_and_flexible_password_generator 
+	linux-vdso.so.1 (0x00007ffd755e8000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007416a99ec000)
+	libtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007416a99b8000)
+	libgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x00007416a9934000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007416a9600000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007416a9ae9000)
+$
+```
+
+For the "virtual ELF dynamic shared object" (ELF = Executable and Linkable Format) _linux-vdso.so.1_ read more from here: [Standalone (or self-contained) executable (which may not be portable so easily)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
+
+Or for the Zig program for example:
 
 ```
 $ ldd random_bitstring_and_flexible_password_generator 
