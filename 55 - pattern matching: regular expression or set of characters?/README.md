@@ -112,7 +112,7 @@ COBOL (GnuCOBOL) |  |  | OK | _CHAR-SET_ is a string of allowed characters in bo
 CoffeeScript | yes | | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | | 2026-05-26
 Common Lisp | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
 Crystal | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | | 2026-06-16
-Curry |  |  | OK | _pattern_ is a string of allowed characters in both cases | | 2026-06-23
+Curry (KiCS2) |  |  | OK | _pattern_ is a string of allowed characters in both cases | | 2026-06-23
 D | yes |  | OK | non-POSIX patterns: _r"[!-~]"_, _r"[A-Za-z0-9]"_ | | 2026-06-13
 Dart | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 2026-06-17
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-09
