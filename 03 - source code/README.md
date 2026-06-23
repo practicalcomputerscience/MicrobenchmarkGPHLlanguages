@@ -6,7 +6,7 @@ But when you have seen four **functional languages**, functional language #5 may
 
 #### On being purely declarative
 
-After implementing my microbenchmark program in [Curry](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry#curry) (in the KiCS2 implementation), I had this question:
+After implementing my microbenchmark program in [Curry](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry#curry) (in the KiCS2 implementation), I had this question (originally meant for "Big AI"):
 
 > Mercury language and Curry language have a top paradigm layer of being purely declarative. Why isn't there a language following the logic paradigm and the functional paradigm without this declarative paradigm on top of it?
 
