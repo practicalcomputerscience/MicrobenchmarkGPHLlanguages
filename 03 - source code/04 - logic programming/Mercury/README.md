@@ -40,7 +40,7 @@ Beside this point, there's a big difference between Mercury and Prolog from my p
 > [!NOTE]
 > Mercury uses an expressive, statically checked type system similar to that of ML and Haskell, while key characteristics of Prolog-based systems are a dynamic type system, ...
 
-ML for [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml).
+ML is for [(Standard) Meta Language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml).
 
 Sources:
 
