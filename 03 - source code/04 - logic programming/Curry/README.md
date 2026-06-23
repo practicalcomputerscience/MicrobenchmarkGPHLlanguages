@@ -277,7 +277,7 @@ main = do
   putStrLn ("Last solution = " ++ show (head (reverse sols)))
 ```
 
-Compile it and run it:
+Compile it and run it like this:
 
 ```
 $ curry :load graph_4coloring_Australia_KiCS2.curry :save :quit  # building an executable
@@ -293,7 +293,7 @@ $
 
 <br/>
 
-Microsoft Copilot gave me basically this answer, why library module file _SearchTree.curry_ (for _import Control.Search.SearchTree_) cannot be used with Curry2Go, but with KiCS2 (and PAKCS): 
+Microsoft Copilot gave me basically this answer to my question why library module file _SearchTree.curry_ (for _import Control.Search.SearchTree_) cannot be used with Curry2Go, but with KiCS2 (and PAKCS): 
 
 > ..module Control.Search.SearchTree cannot be used with Curry2Go, and it’s structural. someSearchTree external, emptyVS external, addVS external, failVS external, vsToList external are external primitives. They are implemented in KiCS2 (→ Haskell) and in PAKCS (→ Prolog), but not in Curry2Go. Curry2Go has no runtime support for: encapsulated search, search trees, set functions, external data types, external operations.
 
@@ -381,6 +381,7 @@ convertToBase b n =
               13 -> "d"
               14 -> "e"
               15 -> "f"
+              _  -> "x"  -- get rid of the Pattern matches are non-exhaustive warning
       in cTB (st ++ acc) b d
 ```
 
@@ -388,7 +389,7 @@ convertToBase b n =
 
 ## On determinism in (KiCS2) Curry
 
-One of the toughest part of the microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
+One of the toughest part of the development of the full microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
 
 ```
     let (x, bitsXList, bitsHexList) = masterloop end x0  -- for testing
@@ -431,7 +432,7 @@ So, first I had to convert _x_ into something deterministic before printing it:
     putStrLn ("x = " ++ show deterministicList)  -- for testing
 ```
 
-The same applies for printing the one, big string _bitsXStr_, concatenated of the many little random strings for debugging reasons:
+The same applies for printing the one, big string _bitsXStr_, concatenated from the many little random strings for debugging reasons:
 
 ```
     let bitsXStr   = concat bitsXList
@@ -506,7 +507,7 @@ $
 
 See program [random_bitstring_and_flexible_password_generator.curry](./random_bitstring_and_flexible_password_generator.curry).
 
-This [regexp](https://github.com/curry-packages/regexp/blob/master/examples/Match.curry) package was not helpful for me. So, I stayed conservative with only checking if a character is part of a string, which is composed of the allowed characters:
+This [regexp](https://github.com/curry-packages/regexp/blob/master/examples/Match.curry) package was not helpful for me. So, I stayed conservative with only checking if a character is part of a string, which has been composed from the allowed characters:
 
 ```
     # in main:
@@ -541,7 +542,7 @@ pw_generator length (firstRandNbr : newRandomNbrs) charPool password =
 
 <br/>
 
-In Curry, it's very hard to put print statements as debugging support into user defined functions, because then these functions have to care about _IO_ operations, which will complicate the type signatures of these functions, see for example at the rather simple user defined function _input_a_valid_number :: Int -> IO Int_, which anyway needs IO operations.
+In Curry, it's hard to put print statements as debugging support into user defined functions, because then these functions would have to care about _IO_ operations, which will complicate the type signatures of these functions, see for example at the rather simple user defined function _input_a_valid_number :: Int -> IO Int_, which anyway needs IO operations.
 
 <br/>
 
