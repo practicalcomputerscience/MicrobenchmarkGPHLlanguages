@@ -34,6 +34,24 @@ Zig | no | "not a dynamic executable"
 
 <br/>
 
+See for the Zig program for example:
+
+```
+$ ldd random_bitstring_and_flexible_password_generator 
+	not a dynamic executable
+$ 
+```
+
+..and for the Roc program:
+
+```
+$ ldd random_bitstring_and_flexible_password_generator 
+	statically linked
+$
+``` 
+
+<br/>
+
 As of 2026-02-07, I haven't taken extra efforts to compile into statically linked executables where potentially possible. So, above table is a "default compilation" table.
 
 <br/>
