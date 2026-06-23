@@ -10,9 +10,9 @@ After implementing my microbenchmark program in Curry (tbd) (in the KiCS2 implem
 
 > Mercury language and Curry language have a top paradigm layer of being purely declarative. Why isn't there a language following the logic paradigm and the functional paradigm without this declarative paradigm on top of it?
 
-Answer from Duck.ai (on 2026-06-21):
+I found a potential answer to this question in this paper from 1997 in its introduction: [A Unified Computation Model for Functional and Logic Programming, Michael Hanus, Informatik II, RWTH Aachen](https://www.michaelhanus.de/papers/POPL97.pdf)
 
-> Languages like Mercury and Curry are designed with a pure declarative paradigm to simplify reasoning about programs and enhance optimization. Creating a language that solely follows the logic and functional paradigms without a declarative layer would complicate program analysis and reduce the benefits of abstraction and clarity that declarative programming provides.
+> Declarative programming languages support the development of reliable software by providing abstraction facilities supported by closely underlying formal calculi. This simplifies the development and use of program transformation, analysis, and verification tools.
 
 <br/>
 
