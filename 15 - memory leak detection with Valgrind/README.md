@@ -94,6 +94,7 @@ Chapel | program doesn't finish | -- | no | 2026-06-19
 COBOL (GNU) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 Common Lisp | 554,114 bytes in 12 blocks | 291,666 bytes in 10 blocks | no | 2026-06-19
 Crystal | program doesn't finish | -- | no | 2026-06-19
+Curry | 4,194,600 bytes in 12 blocks | 4,194,600 bytes in 12 blocks | no | 2026-06-23
 D | 800 bytes in 5 blocks | 768 bytes in 4 blocks | no | 2026-06-19
 Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-06-19
 Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
