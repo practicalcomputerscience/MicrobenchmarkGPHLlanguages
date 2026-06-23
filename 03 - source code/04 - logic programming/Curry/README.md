@@ -4,10 +4,6 @@ https://www.curry-lang.org (*)
 
 Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf
 
-Up-to-date user manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
-
-The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/221644642_The_Kiel_Curry_System_KiCS
-
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
@@ -27,9 +23,9 @@ Table of contents:
 
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
 - [Documentation of Curry](#documentation-of-curry)
-- [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
+- [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany)
 - [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
-- [On determinism in (KiCS2) Curry](#on-determinism-in-kics2-curry)
+- [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
 - [Exception handling in KiCS2 Curry](#exception-handling-in-kics2-curry)
 - [Microbenchmark program in KiCS2 Curry](#microbenchmark-program-in-kics2-curry)
 - [Full Microbenchmark program in KiCS2 Curry and determinism in Curry](#full-microbenchmark-program-in-kics2-curry-and-determinism-in-curry)
@@ -210,11 +206,17 @@ After these struggles I made the decision to switch to the **KiCS2** implementat
 
 <br/>
 
-## Maps of Australia and Germany for KiCS2 Curry
+## KiCS2 Curry: Maps of Australia and Germany
 
 https://www.curry-lang.org/kics2/download.html
 
 https://github.com/curry-language/kics2
+
+Up-to-date user manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
+
+The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/221644642_The_Kiel_Curry_System_KiCS
+
+<br/>
 
 I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) and built KiCS2 Curry like this:
 
@@ -389,7 +391,7 @@ convertToBase b n =
 
 <br/>
 
-## On determinism in (KiCS2) Curry
+## On determinism in KiCS2 Curry
 
 One of the toughest part of the development of the full microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
 
@@ -505,7 +507,7 @@ $
 
 <br/>
 
-## Full Microbenchmark program in KiCS2 Curry and determinism in Curry
+## Full Microbenchmark program in KiCS2 Curry and determinism
 
 See program [random_bitstring_and_flexible_password_generator.curry](./random_bitstring_and_flexible_password_generator.curry).
 
