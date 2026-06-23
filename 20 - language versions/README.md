@@ -24,6 +24,7 @@ COBOL | cobc (GnuCOBOL) 3.1.2.0, Copyright (C) 2020 Free Software Foundation, In
 CoffeeScript | v24.13.0; ... coffeescript@2.7.0 ...  | $ node -v; npm ls coffeescript -g
 Common Lisp | SBCL 2.5.11 | $ sbcl --version
 Crystal | Crystal 1.18.2 [635ca37a6] (2025-10-21); LLVM: 18.1.8; Default target: x86_64-unknown-linux-gnu | $ crystal --version
+Curry | ... Version 3.5.0-b2 of 2025-12-15 ... | $ curry -V
 D | gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gdc --version
 Dart | Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64" | $ dart --version
 Eiffel, Liberty | ...; Liberty Eiffel The GNU Eiffel Compiler, Eiffel tools and libraries; release 2022.dev (preparing Glenn Curtiss); ... | $ se compile --version
