@@ -133,6 +133,7 @@ C                 | 149 | compiled, very mature language | 2026-06-19
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
 AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
+Curry             | 132 | compiled, very mature language | 2026-06-23
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 OCaml             | 128 | compiled, mature language; some user-defined functions needed | 2026-06-18
@@ -199,6 +200,7 @@ COBOL (GnuCOBOL)   | 3 (user-defined procedures)
 CoffeeScript       | 0
 Common Lisp        | 3
 Crystal            | 0
+Curry              | 9
 D                  | 0
 Dart               | 0
 Eiffel (Liberty)   | 4
