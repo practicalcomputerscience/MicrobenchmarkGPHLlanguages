@@ -17,7 +17,7 @@ C3 | yes | yes
 Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
 Crystal | yes | yes
-Curry | yes | yes
+Curry (KiCS2) | yes | yes
 Eiffel (Liberty) | yes | yes
 Fortran | yes | yes
 Gambit Scheme (only the "speed part" tested) | yes | yes
@@ -34,7 +34,7 @@ Zig | no | "not a dynamic executable"
 
 <br/>
 
-See for the Curry program for example:
+See for the Curry (KiCS2) program for example:
 
 ```
 $ ldd ./random_bitstring_and_flexible_password_generator 
