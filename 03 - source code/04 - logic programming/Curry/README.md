@@ -6,6 +6,8 @@ Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial
 
 Up-to-date user manual from 2025 for the KiCS2 implementation of Curry: https://www.curry-lang.org/kics2/download/kics2-3.4.0-manual.pdf
 
+The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/221644642_The_Kiel_Curry_System_KiCS
+
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
