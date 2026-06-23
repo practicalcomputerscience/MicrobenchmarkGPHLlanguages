@@ -2,7 +2,7 @@
 
 From my point of view, the "easiest" languages to start with learning a little bit of functional programming are:
 
-- [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml), OCaml's "granddaddy"
+- [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml), OCaml's "granddaddy", and
 - [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml)
 
 2026-05-31:
@@ -101,7 +101,7 @@ I just remembered a reference expression somewhere in my program versions so far
 
 ## So, who is mostly using functional programming?
 
-Logically, an industry where a lot of functions can be deployed. Functions which often can stay "pure", that is without "annoying" **side effects** (https://en.wikipedia.org/wiki/Side_effect_(computer_science)), like throwing exceptions or input/output operations (I/O's). Or in other words:
+Logically, an industry where a lot of functions can be deployed. Functions, which often can stay "pure", that is without "annoying" **side effects** (https://en.wikipedia.org/wiki/Side_effect_(computer_science)), like throwing exceptions or input/output operations (I/O's). Or in other words:
 
 > [!NOTE]
 > A mathemtical function has no side effects.
