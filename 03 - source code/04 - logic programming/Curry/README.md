@@ -546,7 +546,8 @@ In Curry, it's hard to put print statements as debugging support into user defin
 
 <br/>
 
-But the biggest challenge was Curry's strict requirement for determinism!
+> [!NOTE]
+> But the biggest challenge was Curry's strict requirement for determinism!
 
 This is the reason why I cannot just pass the list of generated random integer numbers, called _x_, to user defined function _pw_generator_. The program may compile,
 but it will crash when being executed:
