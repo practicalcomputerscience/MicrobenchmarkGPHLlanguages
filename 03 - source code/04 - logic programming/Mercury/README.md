@@ -70,7 +70,7 @@ Furthermore, this "The Mercury Programming Language" [presentation](https://paul
 > 
 > Mercury has a strong, static type system similar to Haskell's.
 
-The **OCaml** reference is true in my opinion. Knowing some [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) helps with understanding and developing Mercury programs.
+The **OCaml** reference is true in my opinion, knowing some [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) helps with understanding and developing Mercury programs.
 
 Also helpful was my [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) experience, specifically with its "pure" style, since Clojure, in contrast to Ocaml, also adheres to **strictly immutable data structures**.
 
