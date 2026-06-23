@@ -1,9 +1,3 @@
-2026-06-19: work in progress tbd
-
-- tbd: fill links in TOC
-
-<br/>
-
 # Curry
 
 https://www.curry-lang.org (*)
@@ -30,12 +24,13 @@ So, two programming language names have been attributed to [Haskell Curry](https
 Table of contents:
 
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
-- [Documentation of Curry](#)
+- [Documentation of Curry](#documentation-of-curry)
 - [Maps of Australia and Germany for KiCS2 Curry](#maps-of-australia-and-germany-for-kics2-curry)
-- [The Curry Package Manager (CPM)](#)
-- [On determinism in (KiCS2) Curry](#)
-- [Exception handling in KiCS2 Curry](#)
-- [Microbenchmark program in KiCS2 Curry](#)
+- [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
+- [On determinism in (KiCS2) Curry](#on-determinism-in-kics2-curry)
+- [Exception handling in KiCS2 Curry](#exception-handling-in-kics2-curry)
+- [Microbenchmark program in KiCS2 Curry](#microbenchmark-program-in-kics2-curry)
+- [Full Microbenchmark program in KiCS2 Curry and determinism in Curry](#full-microbenchmark-program-in-kics2-curry-and-determinism-in-curry)
 
 <br/>
 
@@ -54,6 +49,18 @@ Again, we see the phenomenon of multiple implementations: PAKCS, KiCS2, Curry2Go
 And again, same like [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury#mercury), also Curry is a "purely declarative" programming language (*).
 
 Fun fact: both languages, Curry and Mercury, first appeared in 1995.
+
+<br/>
+
+Originally, that was starting in 1995, Curry was also "aiming for the stars":
+
+> ..integrated functional logic languages are currently not widely used. This is due to the fact that the operational principles are not well understood and many different evaluation strategies have been proposed which resulted in many different functional logic languages.
+>
+> To overcome this situation, we propose the functional logic language Curry which is intended to become a standard language in this area.
+> 
+> ..since functions provide for more efficient evaluation strategies and are a declarative replacement of some impure features of Prolog .., Curry can be also used as a declarative successor of Prolog.
+
+from the Abstract of paper: [Curry: A Truly Functional Logic Language](https://www.michaelhanus.de/papers/ILPS95.pdf) by Michael Hanus et al.
 
 <br/>
 
