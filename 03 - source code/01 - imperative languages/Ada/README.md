@@ -32,6 +32,13 @@ I modified the default project configuration files, both located in the _./confi
 
 See from here about these Ada compiler switches (-- is a comment in Ada; -O3 is for full optimization): https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
 
+By the way, with above change, I don't see a difference in program execution speed with building commands:
+
+```
+$ alr build
+$ alr build --release
+```
+
 Otherwise, I made and ran an Ada project like this for example:
 
 ```
