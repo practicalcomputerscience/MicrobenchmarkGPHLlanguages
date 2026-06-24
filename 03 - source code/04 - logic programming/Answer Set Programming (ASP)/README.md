@@ -4,12 +4,14 @@
 
 [Prolog](tbd) is nowadays not the only "natural" choice to solve Constraint Satisfaction Problems (CSP's).
 
-A new appraoch in Logic Programming was introduced in 1988 with "The Stable Model Semantics for Logic Programming" by Gelfond and Lifschitz: https://www.cs.utexas.edu/~vl/papers/stable.pdf
+A new approach in Logic Programming was introduced in 1988 with "The Stable Model Semantics for Logic Programming" by Gelfond and Lifschitz: https://www.cs.utexas.edu/~vl/papers/stable.pdf
 
 Since then numerous **answer set solvers** have been developed.
 
-However, these solvers cannot be used as general purpose programming languages, and thus need interfacing with the outside world.
-One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/.
+However, these solvers cannot be used for general purpose programming, they take in information which **models a problem**, and thus need interfacing with the outside world. One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/.
+
+> [!NOTE]
+> The "programming" in "Answer Set Programming" means to model a problem as a logic problem. 
 
 <br/>
 
@@ -21,7 +23,7 @@ by Eiter, Ianni, and Krennwallner from 2009, I found good arguments why using AS
 > and to properly deal with **incomplete information** (that is, the ability to properly complete missing information with default assumptions,
 > or with assumptions of falsity, or with using some notion of undefinedness).
 
-AnsProlog or A-Prolog just means: "Programming in Logic with Answer Sets", so there is no direct implementations of AnsProlog.
+AnsProlog or A-Prolog just means: "Programming in Logic with Answer Sets", so there are no direct implementations of AnsProlog.
 
 
 
