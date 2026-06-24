@@ -4,11 +4,15 @@
 
 [Prolog](tbd) is nowadays not the only "natural" choice to solve Constraint Satisfaction Problems (CSP's).
 
+<br/>
+
+## Idea of Answer Set Programming
+
 A new approach in Logic Programming was introduced in 1988 with "The Stable Model Semantics for Logic Programming" by Gelfond and Lifschitz: https://www.cs.utexas.edu/~vl/papers/stable.pdf
 
 Since then numerous **answer set solvers** have been developed.
 
-However, these solvers cannot be used for general purpose programming, they take in information which **models a problem**, and thus need interfacing with the outside world. One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/.
+However, these solvers cannot be used for general purpose programming, and thus need interfacing with the outside world. One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/
 
 > [!NOTE]
 > The "programming" in "Answer Set Programming" means to model a problem as a logic problem. 
@@ -32,7 +36,7 @@ Körner et al. have written in 2022 ([Fifty Years of Prolog and Beyond](https://
 > Answer Set Programming (ASP) is arguably one of the largest successes of logic programming. It is a logic programming paradigm that focuses on solving (hard) search problems,
 by reducing them to computing stable models. Note that ASP is not a Turing-complete programming language, but rather a language to represent aforementioned problems. It is based on the stable models semantics and uses answer set solvers to provide truth assignments as models for programs.
 
-
+<br/>
 
 
 
