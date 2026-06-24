@@ -151,7 +151,7 @@ $
 
 SPARK is a subset of the Ada language: https://www.adacore.com/languages/spark
 
-So, Ada program [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.adb) needs some changes to pass formal program verification. Google AI helped me with the necessary modifications.
+Ada program [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.adb) needs some changes to pass formal program verification. Google AI helped me with the necessary modifications.
 
 Instead of 1 source code file, there are 3 now:
 
@@ -168,11 +168,11 @@ $ cd random_streams_for_perf_stats_spark
 $ alr build
 # fix the code in files ~.adb + ~.ads, so that no errors and warnings are left
 $ alr build -- release  # try to build the executable in release mode
-$ alr run  # make a program test run
-$ alr exec gnatprove -- --mode=prove  # the is the center piece of the workflow: it's really -- --mode=prove
+$ alr run  # do a program test run
+$ alr exec gnatprove -- --mode=prove  # this is the center piece of the workflow; it's really: -- --mode=prove
 # fix potential code deficits
 $ alr build -- release  # build again
-$ alr run  # make a final test run
+$ alr run  # do a final test run
 $
 ```
 
