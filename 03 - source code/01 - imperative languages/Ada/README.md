@@ -32,13 +32,6 @@ I modified the default project configuration files, both located in the _./confi
 
 See from here about these Ada compiler switches (-- is a comment in Ada; -O3 is for full optimization): https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
 
-By the way, with above change, I don't see a difference in program execution speed with building commands:
-
-```
-$ alr build
-$ alr build --release
-```
-
 Otherwise, I made and ran an Ada project like this for example:
 
 ```
@@ -47,7 +40,7 @@ $ alr init --bin random_streams_for_perf_stats
 $ cd random_streams_for_perf_stats
 # copy source code file random_streams_for_perf_stats.adb into subdirectory ./src
 # copy configuration file random_streams_for_perf_stats_config.gpr into subdirectory ./config
-$ alr build
+$ alr build --release
 # initially, Alire will install some up-to-date toolchain now
 $ alr run
 ⓘ Building random_streams_for_perf_stats=0.1.0-dev/random_streams_for_perf_stats.gpr...
