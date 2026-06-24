@@ -2,7 +2,7 @@
 > 
 > The languages that provide this kind of an ability are usually based on the functional programming paradigm, and the procedures that can be encapsulated in them correspond to functions. The objects that are encapsulated are, therefore, of higher-order type and so also are the functions that manipulate them. For this reason, these languages are said to allow for **higher-order programming**.
 
-my emphasis; from chapter "Higher-Order Logic Programming" from the "Handbook of Logic in Artificial Intelligence and Logic Programming: Volume 5: Logic Programming", 1998: https://academic.oup.com/book/41806
+my emphasis; from chapter "Higher-Order Logic Programming" from the "Handbook of Logic in Artificial Intelligence and Logic Programming: Volume 5: Logic Programming", 1998: https://doi.org/10.1093/oso/9780198537922.001.0001
 
 <br/>
 
