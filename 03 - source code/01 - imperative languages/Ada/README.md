@@ -172,7 +172,7 @@ $ alr run  # do a program test run
 $ alr exec gnatprove -- --mode=prove  # this is the center piece of the workflow; it's really: -- --mode=prove
 # fix potential code deficits
 $ alr build -- release  # build again
-$ alr run  # do a final test run
+$ alr run  # do a final test run and run again: alr exec gnatprove -- --mode=prove
 $
 ```
 
