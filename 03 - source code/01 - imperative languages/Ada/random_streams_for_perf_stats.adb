@@ -9,7 +9,7 @@
 --
 --  build on Ubuntu 24 LTS: $ alr init --bin random_streams_for_perf_stats
 --                          $ cd random_streams_for_perf_stats
---                          $ alr build
+--                          $ alr build --release
 --                          $ alr run
 --
 --  run on Ubuntu 24 LTS:   $ time ./bin/random_streams_for_perf_stats
