@@ -16,7 +16,7 @@ Table of contents:
 - [On how to do demanding string building in Ada](#on-how-to-do-demanding-string-building-in-ada)
 - [GNAT, the GNU NYU Ada Translator](#gnat-the-gnu-nyu-ada-translator)
 - [SPARK for deductive formal program verification](#spark-for-deductive-formal-program-verification)
-- [SPARK: No Dynamic Checks or Defensive Code](#tbd)
+- [SPARK: No Dynamic Checks or Defensive Code](#spark-no-dynamic-checks-or-defensive-code)
 
 ---
 
