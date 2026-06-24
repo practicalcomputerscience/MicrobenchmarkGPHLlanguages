@@ -25,19 +25,19 @@ by Eiter, Ianni, and Krennwallner from 2009, I found good arguments why using AS
 
 AnsProlog or A-Prolog just means: "Programming in Logic with Answer Sets", so there are no direct implementations of AnsProlog.
 
+<br/>
+
+Körner et al. have written in 2022 ([Fifty Years of Prolog and Beyond](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/fifty-years-of-prolog-and-beyond/3A5329B6E3639879301A6D44346FD1DD)) that:
+
+> Answer Set Programming (ASP) is arguably one of the largest successes of logic programming. It is a logic programming paradigm that focuses on solving (hard) search problems,
+by reducing them to computing stable models. Note that ASP is not a Turing-complete programming language, but rather a language to represent aforementioned problems. It is based on the stable models semantics and uses answer set solvers to provide truth assignments as models for programs.
+
+
+
 
 
 tbd
 
-
-
-
-
-
-
-
-
-
-
+<br/>
 
 ##_end
