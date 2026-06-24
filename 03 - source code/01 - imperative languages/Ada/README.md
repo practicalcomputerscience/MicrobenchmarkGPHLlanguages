@@ -239,4 +239,8 @@ from: https://www.adacore.com/languages/spark
 
 <br/>
 
+Since SPARK has additional aspects and does not support all Ada features, it's probably best practice to start a new project in SPARK, and not Ada, if using SPARK is anyway the final goal.
+
+<br/>
+
 ##_end
