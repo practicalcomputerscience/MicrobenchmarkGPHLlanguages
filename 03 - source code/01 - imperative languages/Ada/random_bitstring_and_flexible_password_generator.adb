@@ -16,7 +16,7 @@
 --
 --           do this after every source code change:
 --           $ cd random_bitstring_and_flexible_password_generator
---           $ alr build
+--           $ alr build --release
 --           $ alr run
 --
 --  run on Ubuntu 24 LTS:
