@@ -10,6 +10,18 @@ GNAT = GNU NYU Ada Translator, an open-source Ada compiler of the [GNU Compiler 
 
 ---
 
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [On how to do demanding string building in Ada](#on-how-to-do-demanding-string-building-in-ada)
+- [GNAT, the GNU NYU Ada Translator](#gnat-the-gnu-nyu-ada-translator)
+- [SPARK for deductive formal program verification](#spark-for-deductive-formal-program-verification)
+- [SPARK: No Dynamic Checks or Defensive Code](#tbd)
+
+---
+
+<br/>
+
 ## Installation tips
 
 I started installing Ada from page https://alire.ada.dev/ with downloading the _alr-2.1.0-bin-x86_64-linux.zip_ file with button "Download Alire for Linux".
@@ -70,11 +82,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $ 
 ```
 
-..which has created an executable as seen from the project root directory like this:
-
-```
-$ ./bin/random_streams_for_perf_stats
-```
+This workflow created an executable in project subdirectory: _./bin/random_streams_for_perf_stats_
 
 <br/>
 
@@ -160,15 +168,15 @@ $ cd random_streams_for_perf_stats_spark
 $ alr build
 # fix the code in files ~.adb + ~.ads, so that no errors and warnings are left
 $ alr build -- release  # try to build the executable in release mode
-$ alr run  # make a test run
-$ alr exec gnatprove -- --mode=prove  # the is the center piece of the workflow
+$ alr run  # make a program test run
+$ alr exec gnatprove -- --mode=prove  # the is the center piece of the workflow: it's really -- --mode=prove
 # fix potential code deficits
 $ alr build -- release  # build again
 $ alr run  # make a final test run
 $
 ```
 
-Hopefully, in project subdirectory _./obj/development/gnatprove/_ a good looking report has been generated now at file [gnatprove.out](./SPARK/gnatprove.out):
+Hopefully, in project subdirectory _./obj/development/gnatprove/_ a good looking report has been generated at file [gnatprove.out](./SPARK/gnatprove.out):
 
 ```
 =========================
@@ -210,39 +218,15 @@ Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs fa
 
 (best batch out of 3 with command: _sudo perf stat -r 20 ./random_streams_for_perf_stats..._)
 
-I guess its this part in [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb) where the better execution speed is coming from:
+<br/>
 
-```
-         for K in 1 .. Str_Length_Bin loop
-            --  FIX: Inner invariant ensures K stays bounded during slicing
-            pragma Loop_Invariant (K in 1 .. Str_Length_Bin);
-            Bits_X (Byte_Nbr_Bin + K) := Bits_X_Str (K);
-         end loop;
-```
+#### SPARK: No Dynamic Checks or Defensive Code
 
-...plus the same procedure for the hexadecimal string.
+It looks like that a typical SPARK program has a good chance to run faster than its counterpart in Ada, because with a SPARK program the GNAT compiler can take away the "breaks", which are typically inserted into a compiled Ada program:
 
-I copied this idea into Ada variant [random_streams_for_perf_stats2.adb](./random_streams_for_perf_stats2.adb):
+> SPARK proves that defensive code and other run-time checks that may be inserted in the code will never fail. This allows the compiler to remove them from the compiled code, ensuring optimal efficiency while retaining guarantees of integrity.
 
-```
-      ...
-      for k in 1 .. STR_LENGTH_BIN loop
-         bits_x (byte_nbr + k) := bits_x_str (k);
-      end loop;
-      ...
-      for k in 1 .. STR_LENGTH_HEX loop
-         bits_hex (byte_nbr + k) := bits_hex_str (k);
-      end loop;
-      ...
-```
-
-..built with command _$ alr build --release_ and ran 3 batches of: _$ sudo perf stat -r 20 ./bin/random_streams_for_perf_stats2_,
-which tallied a best result of: _0.018896 +- 0.000103 seconds time elapsed  ( +-  0.54% )_
-
-This is not beating my "offical" solution [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.adb) with about 18.8 milliseconds,
-but of course needs less lines of source code with:
-
-- 119 (__random_streams_for_perf_stats2.adb) versus 133 (_random_streams_for_perf_stats.adb_)
+from: https://www.adacore.com/languages/spark
 
 <br/>
 
