@@ -10,6 +10,16 @@ Curated list of Prolog packages and resources: https://github.com/klaudiosinani/
 
 <br/>
 
+> [!CAUTION]
+> ..Prolog is not, repeat not, a full logic programming language. If you only think about the declarative meaning of a Prolog program, you are in for a very tough time.
+>
+> We have already seen a dramatic example of a mismatch between procedural and declarative meaning of a knowledge base.., and as we shall now see, it is easy to define knowledge bases with the same declarative meaning, but very different procedural meanings.
+
+from: [3.2 Clause ordering, goal ordering, and termination](https://cs.union.edu/~striegnk/learn-prolog-now/html/node29.html)
+
+
+<br/>
+
 #### The TL;DR execution speed diagram
 
 ![plot](./mean_stddev_err_whiskers%20--%20only%20Prolog%2C%20Germany%20map.png)
