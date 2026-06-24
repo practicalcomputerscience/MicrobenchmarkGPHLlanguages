@@ -9,9 +9,7 @@ A new appraoch in Logic Programming was introduced in 1988 with "The Stable Mode
 Since then numerous **answer set solvers** have been developed.
 
 However, these solvers cannot be used as general purpose programming languages, and thus need interfacing with the outside world.
-One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/:
-
-- a playground for clingo: https://potassco.org/clingo/run/
+One such combination is [clingo](https://potassco.org/clingo/) and Python: https://pypi.org/project/clingo/.
 
 <br/>
 
@@ -23,7 +21,7 @@ by Eiter, Ianni, and Krennwallner from 2009, I found good arguments why using AS
 > and to properly deal with **incomplete information** (that is, the ability to properly complete missing information with default assumptions,
 > or with assumptions of falsity, or with using some notion of undefinedness).
 
-AnsProlog or A-Prolog just means: "Programming in Logic with Answer Sets", so there is no direct implementation of AnsProlog.
+AnsProlog or A-Prolog just means: "Programming in Logic with Answer Sets", so there is no direct implementations of AnsProlog.
 
 
 
