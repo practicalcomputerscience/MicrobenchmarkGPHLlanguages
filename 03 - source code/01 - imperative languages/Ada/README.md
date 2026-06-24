@@ -98,6 +98,8 @@ The implemented [C-like solution](https://github.com/practicalcomputerscience/Mi
 
 So, I keep the original solution as implemented.
 
+See also below at [SPARK for deductive formal program verification]().
+
 <br/>
 
 #### GNAT, the GNU NYU Ada Translator
@@ -207,6 +209,40 @@ Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs fa
 - 15.5 milliseconds (SPARK) versus 18.8 milliseconds (Ada), that's about 17% faster 
 
 (best batch out of 3 with command: _sudo perf stat -r 20 ./random_streams_for_perf_stats..._)
+
+I guess its this part in [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb) where the better execution speed is coming from:
+
+```
+         for K in 1 .. Str_Length_Bin loop
+            --  FIX: Inner invariant ensures K stays bounded during slicing
+            pragma Loop_Invariant (K in 1 .. Str_Length_Bin);
+            Bits_X (Byte_Nbr_Bin + K) := Bits_X_Str (K);
+         end loop;
+```
+
+...plus the same procedure for the hexadecimal string.
+
+I copied this idea into Ada variant [random_streams_for_perf_stats2.adb](./random_streams_for_perf_stats2.adb):
+
+```
+      ...
+      for k in 1 .. STR_LENGTH_BIN loop
+         bits_x (byte_nbr + k) := bits_x_str (k);
+      end loop;
+      ...
+      for k in 1 .. STR_LENGTH_HEX loop
+         bits_hex (byte_nbr + k) := bits_hex_str (k);
+      end loop;
+      ...
+```
+
+..built with command _$ alr build --release_ and ran 3 batches of: _$ sudo perf stat -r 20 ./bin/random_streams_for_perf_stats2_,
+which tallied a best result of: _0.018896 +- 0.000103 seconds time elapsed  ( +-  0.54% )_
+
+This is not beating my "offical" solution [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.adb) with about 18.8 milliseconds,
+but of course needs less lines of source code with:
+
+- 119 (__random_streams_for_perf_stats2.adb) versus 133 (_random_streams_for_perf_stats.adb_)
 
 <br/>
 
