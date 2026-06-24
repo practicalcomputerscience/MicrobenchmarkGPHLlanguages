@@ -5,12 +5,11 @@
 # 2026-01-26: split the "master diagram" into 2 halfs for better overview
 # 2026-02-01: new diagram type for web programming languages
 # 2026-02-08: Dart execution forms
+# 2026-06-24: allow in master diagram table languages with > 1 sec exe time, but not in the master diagrams
 #
-# env: R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
+#
+# env: R version 4.5.3 (2026-03-11 ucrt) -- "Reassured Reassurer"
 #      Platform: x86_64-w64-mingw32/x64
-#
-# test:
-#
 
 
 library(tidyquant)  # loads tidyquant, tidyverse, lubridate, xts, quantmod, TTR, %>%, theme_tq()
@@ -24,9 +23,9 @@ library(dplyr)
 ##########################
 #
 # user switch:
-plot_type <-  7
+plot_type <-  0
             # 0 = Master diagram
-            # 1 = Java native languages Scala, Kotlin and Clojure and their speedup with the GraalVM
+            # 1 = Java native languages Scala, Kotlin, Clojure, Ballerina and their speedup with the GraalVM
             # 2 = Tested Scheme dialects
             # 3 = only virtual machine (VM) languages
             # 4 = Prolog systems for the map coloring problem of Germany-benchmark
@@ -63,7 +62,7 @@ date_time  <- paste(format(Sys.Date()), format(Sys.time(), "%H:%M"))
 
 if (plot_type == 0 || plot_type == 1 || plot_type == 2 || plot_type == 4) {
     sub_title0 <- paste("using Linux perf-stat with 20 individual runs of each program (on Ubuntu 24 LTS)")
-    sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with perf-stat -- plot version", date_time)    
+    sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with perf-stat -- plot version", date_time)
 } else if (plot_type == 3 || plot_type == 5) {
     sub_title0 <- paste("using Linux multitime with 20 individual runs of each program (on Ubuntu 24 LTS)")
     sub_title <- paste(sub_title0, "\nbest mean out of 3 shell command runs with multitime -- plot version", date_time)
@@ -123,15 +122,19 @@ dat1_sort
 
 # cut this tibble into 2 halfs for the otherwise too crowded master diagram:
 if (plot_type == 0) {
-  dat1_sort_len      <- nrow(dat1_sort)  # number of data rows
+  # 2026-06-24: cut off languages with > 1 sec exe time (this keeps them in the master diagram **table**!
+  dat1_sort_cut <- dat1_sort %>% filter( mean <= 1.00)
+
+  dat1_sort_len      <- nrow(dat1_sort_cut)  # number of data rows
   dat1_sort_len_half <- ceiling(dat1_sort_len / 2)
-  dat1a_sort         <- head(dat1_sort, dat1_sort_len_half)
-  dat1b_sort         <- tail(dat1_sort, dat1_sort_len_half)
+
+  dat1a_sort         <- head(dat1_sort_cut, dat1_sort_len_half)
+  dat1b_sort         <- tail(dat1_sort_cut, dat1_sort_len_half)
 }
 
 
 #----------------------------------------------------------------
-# master diagram: make and print a nice table too:
+# master diagram: make and print a nice ***table*** too:
 if (plot_type == 0) {
   dat1_nice_sort <- as_tibble(dat1_sort$language)
   dat1_nice_sort$mean <- dat1_sort$mean * 1000  # for milliseconds
