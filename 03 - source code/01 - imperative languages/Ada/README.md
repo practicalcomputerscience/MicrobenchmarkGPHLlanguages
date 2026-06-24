@@ -18,9 +18,9 @@ Table of contents:
 - [SPARK for deductive formal program verification](#spark-for-deductive-formal-program-verification)
 - [SPARK: No Dynamic Checks or Defensive Code](#spark-no-dynamic-checks-or-defensive-code)
 
----
-
 <br/>
+
+---
 
 ## Installation tips
 
