@@ -1,0 +1,41 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+-------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow        Provers   Justified   Unproved
+-------------------------------------------------------------------------------------
+Data Dependencies                 .           .              .           .          .
+Flow Dependencies                 .           .              .           .          .
+Initialization                    8           8              .           .          .
+Non-Aliasing                      .           .              .           .          .
+Run-time Checks                  30           .      30 (CVC5)           .          .
+Assertions                       10           .      10 (CVC5)           .          .
+Functional Contracts              1           .    1 (Trivial)           .          .
+LSP Verification                  .           .              .           .          .
+Termination                       4           2       2 (CVC5)           .          .
+Concurrency                       .           .              .           .          .
+-------------------------------------------------------------------------------------
+Total                            53    10 (19%)       43 (81%)           .          .
+
+
+max steps used for successful proof: 49
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 2 units
+in unit random_streams_for_perf_stats_spark, 0 subprograms and packages out of 1 analyzed
+  Random_Streams_For_Perf_Stats_Spark at random_streams_for_perf_stats_spark.adb:6 skipped; SPARK_Mode => Off
+in unit stream_generator_spark, 4 subprograms and packages out of 4 analyzed
+  Stream_Generator_Spark at stream_generator_spark.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  Stream_Generator_Spark.Generate_Data_Streams at stream_generator_spark.ads:25 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (14 checks)
+  Stream_Generator_Spark.Integer_To_Bin_String at stream_generator_spark.ads:20 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)
+  Stream_Generator_Spark.Integer_To_Hex_String at stream_generator_spark.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (22 checks)
