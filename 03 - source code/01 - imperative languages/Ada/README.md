@@ -176,7 +176,7 @@ $ alr run  # do a final test run and run again: alr exec gnatprove -- --mode=pro
 $
 ```
 
-Hopefully, in project subdirectory _./obj/development/gnatprove/_ a good looking report has been generated at file [gnatprove.out](./SPARK/gnatprove.out):
+Hopefully, in project subdirectory _./obj/release/gnatprove/_ a good looking report has been generated at file [gnatprove.out](./SPARK/gnatprove.out):
 
 ```
 =========================
@@ -212,7 +212,16 @@ No check found with max time greater than 1 second
 
 <br/>
 
-Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs faster than the original Ada executable _random_streams_for_perf_stats_:
+By the way:
+
+_$ alr build -- release_ => _./obj/release/gnatprove/gnatprove.out_
+
+_$ alr build_ => _./obj/development/gnatprove/gnatprove.out_
+
+
+<br/>
+
+Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs faster than the Ada executable _random_streams_for_perf_stats_:
 
 - 15.5 milliseconds (SPARK) versus 18.8 milliseconds (Ada), that's about 17% faster 
 
