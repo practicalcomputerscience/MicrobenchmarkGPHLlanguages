@@ -4,7 +4,7 @@
 
 [Prolog](tbd) is nowadays not the only "natural" choice to solve Constraint Satisfaction Problems (CSP's).
 
-A relatively new appraoch was introduced in 1988 with "The Stable Model Semantics for Logic Programming" by Gelfond and Lifschitz: https://www.cs.utexas.edu/~vl/papers/stable.pdf
+A new appraoch in Logic Programming was introduced in 1988 with "The Stable Model Semantics for Logic Programming" by Gelfond and Lifschitz: https://www.cs.utexas.edu/~vl/papers/stable.pdf
 
 Since then numerous **answer set solvers** have been developed.
 
