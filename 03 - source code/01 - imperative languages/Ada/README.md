@@ -32,15 +32,32 @@ I modified the default project configuration files, both located in the _./confi
 
 See from here about these Ada compiler switches (-- is a comment in Ada; -O3 is for full optimization): https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
 
+Though, I've seen that compiler switch _--release_ is anyway changing this configuration file automatically to something like this:
+
+```
+   ...
+   Ada_Compiler_Switches := Ada_Compiler_Switches &
+          (
+            "-O3" -- Optimize for performance
+           ,"-gnatn" -- Enable inlining
+           ,"-ffunction-sections" -- Separate ELF section for each function
+           ,"-fdata-sections" -- Separate ELF section for each variable
+           ,"-gnatW8" -- UTF-8 encoding for wide characters
+          );
+   ...
+```
+
+<br/>
+
 Otherwise, I made and ran an Ada project like this for example:
 
 ```
-$ alr init --bin random_streams_for_perf_stats
+$ alr init --bin random_streams_for_perf_stats  # create an Alire project
 # then, I just pressed [ENTER] numerous times to generate mostly empty data for the project description
 $ cd random_streams_for_perf_stats
 # copy source code file random_streams_for_perf_stats.adb into subdirectory ./src
 # copy configuration file random_streams_for_perf_stats_config.gpr into subdirectory ./config
-$ alr build --release
+$ alr build --release  # try to build the executable in release mode
 # initially, Alire will install some up-to-date toolchain now
 $ alr run
 ⓘ Building random_streams_for_perf_stats=0.1.0-dev/random_streams_for_perf_stats.gpr...
@@ -120,7 +137,76 @@ $
 
 <br/>
 
-## 
+## SPARK for deductive formal program verification
+
+SPARK is a subset of the Ada language: https://www.adacore.com/languages/spark
+
+So, Ada program [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.adb) needs some changes to pass formal program verification. Google AI helped me with the necessary modifications.
+
+Instead of 1 source code file, there are 3 now:
+
+- [random_streams_for_perf_stats_spark.adb](./SPARK/random_streams_for_perf_stats_spark.adb)
+- [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb)
+- [stream_generator_spark.ads](./SPARK/stream_generator_spark.ads)
+
+The principal workflow, after source code files are ready, is like this:
+
+```
+$ alr init --bin random_streams_for_perf_stats_spark  # create an Alire project
+$ cd random_streams_for_perf_stats_spark
+# copy the 3 source code files into subdirectory ./src
+$ alr build
+# fix the code in files ~.adb + ~.ads, so that no errors and warnings are left
+$ alr build -- release  # try to build the executable in release mode
+$ alr run  # make a test run
+$ alr exec gnatprove -- --mode=prove  # the is the center piece of the workflow
+# fix potential code deficits
+$ alr build -- release  # build again
+$ alr run  # make a final test run
+$
+```
+
+Hopefully, in project subdirectory _./obj/development/gnatprove/_ a good looking report has been generated now at file [gnatprove.out](./SPARK/gnatprove.out):
+
+```
+=========================
+Summary of SPARK analysis
+=========================
+
+-------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow        Provers   Justified   Unproved
+-------------------------------------------------------------------------------------
+Data Dependencies                 .           .              .           .          .
+Flow Dependencies                 .           .              .           .          .
+Initialization                    8           8              .           .          .
+Non-Aliasing                      .           .              .           .          .
+Run-time Checks                  30           .      30 (CVC5)           .          .
+Assertions                       10           .      10 (CVC5)           .          .
+Functional Contracts              1           .    1 (Trivial)           .          .
+LSP Verification                  .           .              .           .          .
+Termination                       4           2       2 (CVC5)           .          .
+Concurrency                       .           .              .           .          .
+-------------------------------------------------------------------------------------
+Total                            53    10 (19%)       43 (81%)           .          .
+
+
+max steps used for successful proof: 49
+
+============================
+Most difficult proved checks
+============================
+
+No check found with max time greater than 1 second
+...
+```
+
+<br/>
+
+Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs faster than the original Ada executable _random_streams_for_perf_stats_:
+
+- 15.5 milliseconds (SPARK) versus 18.8 milliseconds (Ada), that's about 17% faster 
+
+(best batch out of 3 with command: _sudo perf stat -r 20 ./random_streams_for_perf_stats..._)
 
 <br/>
 
