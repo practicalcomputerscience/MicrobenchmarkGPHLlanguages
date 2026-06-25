@@ -5,7 +5,6 @@ graph_4coloring_Germany_clingo2.py
 2026-06-25
 
 sources:
-  https://github.com/aluriak/clyngor -- Handy python wrapper around Potassco's Clingo ASP solver.
   Google AI
 
 
