@@ -1,16 +1,17 @@
-language;mean;std_dev
-GNU Prolog;1,597;0,0
-SWI Prolog;0,69330;0,00175
-Ciao Prolog;0,75810;0,00150
-YAP Prolog;0,93109;0,00254
-ECLiPSe;0,574;0,0
-XSB Prolog;0,612;0,0
-Trealla Prolog;2,224;0,0
-Scryer Prolog;1,538;0,0
-C++ (backtracking);0,033907;0,000422
-MiniZinc (Gecode);3,222;0,039
-ALS Prolog;2,632;0,013
-python-constraint2;0,380;0,007
-Scheme (Bigloo);0,36744;0,00247
-Picat (old B-Prolog);0,445;0,006
-Picat with cp module;0,172;0,006
+language;mean;std_dev;date
+GNU Prolog;1,597;0,0;xxxxxxxx
+SWI Prolog;0,69330;0,00175;xxxxxxxx
+Ciao Prolog;0,75810;0,00150;xxxxxxxx
+YAP Prolog;0,93109;0,00254;xxxxxxxx
+ECLiPSe;0,574;0,0;xxxxxxxx
+XSB Prolog;0,612;0,0;xxxxxxxx
+Trealla Prolog;2,224;0,0;xxxxxxxx
+Scryer Prolog;1,538;0,0;xxxxxxxx
+C++ (backtracking);0,033907;0,000422;xxxxxxxx
+MiniZinc (Gecode);3,222;0,039;xxxxxxxx
+ALS Prolog;2,632;0,013;xxxxxxxx
+python-constraint2;0,380;0,007;xxxxxxxx
+Scheme (Bigloo);0,36744;0,00247;xxxxxxxx
+Picat (old B-Prolog);0,445;0,006;xxxxxxxx
+Picat with cp module;0,172;0,006;xxxxxxxx
+Python + clingo ASP;1,183;0,008;2026-06-25
