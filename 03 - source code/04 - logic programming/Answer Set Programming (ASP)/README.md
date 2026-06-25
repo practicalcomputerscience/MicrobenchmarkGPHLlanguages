@@ -97,11 +97,58 @@ From (*):
 
 ### The clingo-Python pair for solving the map coloring problem of Australia
 
-tbd 
+As good practice, I first created a dedicated virtual environment for the clingo projects:
+
+```
+$ python3 -m venv ./clingo_ASP
+$ source ./clingo_ASP/bin/activate
+$ cd ./clingo_ASP
+$ python --version  # check version, clingo needs Python version >=3.6
+Python 3.14.5
+$ pip3 install clingo
+...
+Installing collected packages: pycparser, cffi, clingo
+Successfully installed cffi-2.0.0 clingo-5.8.0 pycparser-3.0
+$ 
+```
+
+clingo only has a relatively low-level, Python API (https://github.com/potassco/clorm), but with the help of Google AI a very good and fancy solution has been generated "out of the box":
+
+- [graph_4coloring_Australia_clingo.py](./graph_4coloring_Australia_clingo.py)
+- [graph_4coloring_Australia_clingo.lp](./graph_4coloring_Australia_clingo.lp)
+
+So, a wrapper around the clingo Python API is not needed here. Nevertheless, here's another Python wrapper to integrate clingo within a Python application: https://github.com/aluriak/clyngor
+
+```
+$ python3 ./graph_4coloring_Australia_clingo.py
+📊 Summary: Found 576 total valid colorings.
+
+🎨 --- FIRST SOLUTION ---
+  📍 Region nsw ➔ blue
+  📍 Region nt ➔ green
+  📍 Region ql ➔ red
+  📍 Region sa ➔ yellow
+  📍 Region tas ➔ blue
+  📍 Region vic ➔ red
+  📍 Region wa ➔ blue
+--------------------------
+
+🎨 --- LAST SOLUTION ---
+  📍 Region nsw ➔ yellow
+  📍 Region nt ➔ green
+  📍 Region ql ➔ blue
+  📍 Region sa ➔ red
+  📍 Region tas ➔ green
+  📍 Region vic ➔ blue
+  📍 Region wa ➔ yellow
+-------------------------
+
+$ 
+```
 
 <br/>
 
-### The clingo-Python pair for solving the map coloring problem of Germany
+### Solving the map coloring problem of Germany
 
 tbd
 
