@@ -1,10 +1,21 @@
-2026-06-24: work in progress: TBD
-
 # Answer Set Programming (ASP)
 
 [Prolog](tbd) is nowadays not the only "natural" choice to solve Constraint Satisfaction Problems (CSP's).
 
+https://en.wikipedia.org/wiki/Answer_set_programming
+
+---
+
+Table of contents:
+
+- [Idea of Answer Set Programming](#idea-of-answer-set-programming)
+- [clingo playground and ASP efficiency](#clingo-playground-and-asp-efficiency)
+- [The clingo-Python pair for solving the map coloring problem of Australia](#the-clingo-python-pair-for-solving-the-map-coloring-problem-of-australia)
+- [Solving the map coloring problem of Germany](#solving-the-map-coloring-problem-of-germany)
+
 <br/>
+
+---
 
 ## Idea of Answer Set Programming
 
@@ -218,7 +229,7 @@ sys	0m0.153s
 $
 ```
 
-This combined solution is now (as of 2026-06-25) sitting between YAP Prolog and Scryer Prolog in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+This final solution is now (as of 2026-06-25) sitting between YAP Prolog and Scryer Prolog in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/mean_stddev_err_whiskers%20--%20only%20Prolog%2C%20Germany%20map.png)
 
