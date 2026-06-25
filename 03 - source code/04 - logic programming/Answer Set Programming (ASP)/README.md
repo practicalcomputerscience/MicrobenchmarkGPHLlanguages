@@ -102,14 +102,14 @@ As good practice, I first created a dedicated virtual environment for the clingo
 ```
 $ python3 -m venv ./clingo_ASP
 $ source ./clingo_ASP/bin/activate
-$ cd ./clingo_ASP
-$ python --version  # check version, clingo needs Python version >=3.6
+(clingo_ASP)  ...$ cd ./clingo_ASP
+(clingo_ASP)  ...$ python --version  # check version, clingo needs Python version >=3.6
 Python 3.14.5
-$ pip3 install clingo
+(clingo_ASP)  ...$ pip3 install clingo
 ...
 Installing collected packages: pycparser, cffi, clingo
 Successfully installed cffi-2.0.0 clingo-5.8.0 pycparser-3.0
-$ 
+(clingo_ASP)  ...$ 
 ```
 
 clingo only has a relatively low-level, Python API (https://github.com/potassco/clorm), but with the help of Google AI a very good and fancy solution has been generated "out of the box":
@@ -117,10 +117,10 @@ clingo only has a relatively low-level, Python API (https://github.com/potassco/
 - [graph_4coloring_Australia_clingo.py](./graph_4coloring_Australia_clingo.py)
 - [graph_4coloring_Australia_clingo.lp](./graph_4coloring_Australia_clingo.lp)
 
-So, a wrapper around the clingo Python API is not needed here. Nevertheless, here's another Python wrapper to integrate clingo within a Python application: https://github.com/aluriak/clyngor
+So, a wrapper around the clingo Python API (Application Programming Interface) is not needed here:
 
 ```
-$ python3 ./graph_4coloring_Australia_clingo.py
+(clingo_ASP)  ...$ python3 ./graph_4coloring_Australia_clingo.py
 📊 Summary: Found 576 total valid colorings.
 
 🎨 --- FIRST SOLUTION ---
@@ -143,22 +143,84 @@ $ python3 ./graph_4coloring_Australia_clingo.py
   📍 Region wa ➔ yellow
 -------------------------
 
-$ 
+(clingo_ASP)  ...$
 ```
-
-<br/>
 
 ### Solving the map coloring problem of Germany
 
-However, above implementation is not very efficient for bigger problems like the map coloring problem of Germany. To obtain at least a solution with around **6 seconds** of program execution time, I turned to the clyngor wrapper:
+However, above implementation is not very efficient for bigger problems like the map coloring problem of Germany. To obtain at least a solution with around **6 seconds** of program execution time, I turned to the clyngor wrapper: https://github.com/aluriak/clyngor:
 
 - [graph_4coloring_Germany_clingo.py](./graph_4coloring_Germany_clingo.py)
 - [graph_4coloring_Germany_clingo.lp](./graph_4coloring_Germany_clingo.lp)
 
 6 seconds is far slower than any Prolog solution I tested: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
+The clingo solver itself only takes less than 0.1 seconds for the map coloring problem of Germany, which shows that by far most of the execution time is being spent on reading clingo's solutions from its Python API.
 
-tbd
+Again, Google AI found a much faster solution:
+
+- [graph_4coloring_Germany_clingo2.py](./graph_4coloring_Germany_clingo2.py)
+
+..where:
+
+- no Python Object is being built, and..
+- ..clingo is writing its solutions in plain JSON text (JavaScript Object Notation) to the Standard Output (_stdout_), which..
+- ..is immediately being read into a JSON array list by the Python script and then being evaluated:
+
+```
+(clingo_ASP)  ...$  time python3 ./graph_4coloring_Germany_clingo2.py
+📊 Summary: Found 191,808 total valid colorings.
+
+🎨 --- FIRST SOLUTION ---
+------------------------------
+  📍 Region bb ➔ blue
+  📍 Region be ➔ yellow
+  📍 Region bw ➔ green
+  📍 Region by ➔ red
+  📍 Region hb ➔ blue
+  📍 Region he ➔ blue
+  📍 Region hh ➔ green
+  📍 Region mv ➔ red
+  📍 Region ni ➔ yellow
+  📍 Region nw ➔ green
+  📍 Region rp ➔ yellow
+  📍 Region sh ➔ blue
+  📍 Region sl ➔ red
+  📍 Region sn ➔ yellow
+  📍 Region st ➔ red
+  📍 Region th ➔ green
+------------------------------
+
+🎨 --- LAST SOLUTION ---
+------------------------------
+  📍 Region bb ➔ green
+  📍 Region be ➔ blue
+  📍 Region bw ➔ green
+  📍 Region by ➔ red
+  📍 Region hb ➔ green
+  📍 Region he ➔ blue
+  📍 Region hh ➔ green
+  📍 Region mv ➔ blue
+  📍 Region ni ➔ red
+  📍 Region nw ➔ green
+  📍 Region rp ➔ red
+  📍 Region sh ➔ yellow
+  📍 Region sl ➔ green
+  📍 Region sn ➔ blue
+  📍 Region st ➔ yellow
+  📍 Region th ➔ green
+------------------------------
+
+real	0m1.225s
+user	0m1.144s
+sys	0m0.153s
+(clingo_ASP)  ...$ deactivate
+$
+```
+
+This combined solution is now (as of 2026-06-25) sitting between YAP Prolog and Scryer Prolog in terms of execution speed: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/mean_stddev_err_whiskers%20--%20only%20Prolog%2C%20Germany%20map.png)
 
 <br/>
 
