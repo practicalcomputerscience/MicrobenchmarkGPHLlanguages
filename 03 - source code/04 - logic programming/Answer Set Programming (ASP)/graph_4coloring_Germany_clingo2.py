@@ -4,8 +4,7 @@ graph_4coloring_Germany_clingo2.py
 
 2026-06-25
 
-sources:
-  Google AI
+source: Google AI
 
 
 run on Ubuntu 24 LTS: $ python3 -m venv ./clingo_ASP
