@@ -16,7 +16,7 @@ run on Ubuntu 24 LTS: $ python3 -m venv ./clingo_ASP
                       Python 3.14.5
                       $ pip3 install clingo
                       $ pip3 install clyngor
-                      $ python3 ./graph_4coloring_Germany_clingo.py => real	0m5.888s
+                      $ python3 ./graph_4coloring_Germany_clingo.py  # => real	0m5.888s
 
 """
 
