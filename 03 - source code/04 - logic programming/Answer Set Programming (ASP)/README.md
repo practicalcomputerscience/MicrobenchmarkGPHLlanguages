@@ -90,12 +90,18 @@ From (*):
 
 > [!IMPORTANT]
 > • Different problem encodings can yield different solving times
+> 
 > • Efficiency still depends on how you specify your problem
 
+<br/>
 
+### The clingo-Python pair for solving the map coloring problem of Australia
 
+tbd 
 
+<br/>
 
+### The clingo-Python pair for solving the map coloring problem of Germany
 
 tbd
 
