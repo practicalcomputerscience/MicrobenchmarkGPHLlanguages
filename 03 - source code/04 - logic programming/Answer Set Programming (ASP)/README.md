@@ -150,6 +150,14 @@ $
 
 ### Solving the map coloring problem of Germany
 
+However, above implementation is not very efficient for bigger problems like the map coloring problem of Germany. To obtain at least a solution with around **6 seconds** of program execution time, I turned to the clyngor wrapper:
+
+- [graph_4coloring_Germany_clingo.py](./graph_4coloring_Germany_clingo.py)
+- [graph_4coloring_Germany_clingo.lp](./graph_4coloring_Germany_clingo.lp)
+
+6 seconds is far slower than any Prolog solution I tested: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+
+
 tbd
 
 <br/>
