@@ -12,7 +12,7 @@ Here, surviving implementation Open Dylan is meant: https://opendylan.org (*)
 
 ## Idea of Dylan
 
-Though Dylan apparently started as a superset of [Scheme](tbd), it looks to me that it soon became another truly object-oriented language,
+Though Dylan apparently started as a superset of [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme), it looks to me that it soon became another truly object-oriented language,
 first published as a language draft for the [Apple Newton device](https://en.wikipedia.org/wiki/Apple_Newton) in 1993: [Dylan (Dynamic Language), A multi-paradigm language, Oliver Juwig, sd&m, Aachen, 12. Februar 2003](https://verify.rwth-aachen.de/fp02/Folien/Dylan.pdf)
 
 Fom (*): 
@@ -24,9 +24,7 @@ This becomes clearer in official [An Introduction to Dylan](https://opendylan.or
 > Dylan is an object-oriented dynamic language designed for efficient compilation.
 > It uses an algebraic infix syntax similar to Pascal or C, but supports an object model not unlike the Common Lisp Object System (CLOS).
 
-<br/>
-
-I generally see a certain nearness of Dylan source code also to [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#common-lisp).
+I generally see a certain nearness of Dylan source code to [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#common-lisp).
 
 <br/>
 
