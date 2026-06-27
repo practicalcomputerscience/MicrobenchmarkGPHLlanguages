@@ -1,0 +1,60 @@
+2026-06-27: work in progress: tbd
+
+<br/>
+
+# Dylan
+
+DyLan = Dynamic Language
+
+Here, surviving implementation Open Dylan is meant: https://opendylan.org (*)
+
+<br/>
+
+## Idea of Dylan
+
+Though Dylan apparently started as a superset of [Scheme](tbd), it looks to me that it soon became another truly object-oriented language,
+first published as a language draft for the [Apple Newton device](https://en.wikipedia.org/wiki/Apple_Newton) in 1993: [Dylan (Dynamic Language), A multi-paradigm language, Oliver Juwig, sd&m, Aachen, 12. Februar 2003](https://verify.rwth-aachen.de/fp02/Folien/Dylan.pdf)
+
+Fom (*): 
+
+> Dylan is an object-functional language originally created by Apple for the Newton. Dylan is a direct descendant of Scheme and CLOS (without the Lisp syntax) with a programming model designed to support efficient machine code generation, including fine-grained control over dynamic and static behaviors.
+
+This becomes clearer in official [An Introduction to Dylan](https://opendylan.org/intro-dylan/index.html#an-introduction-to-dylan), where "object-functional" morphed into "object-oriented": 
+
+> Dylan is an object-oriented dynamic language designed for efficient compilation.
+> It uses an algebraic infix syntax similar to Pascal or C, but supports an object model not unlike the Common Lisp Object System (CLOS).
+
+<br/>
+
+tbd
+
+Notice that application name _random_streams_for_perf_stats_ is not possible, thus the name _random-streams-for-perf-stats_ for the application and main executable.
+
+<br/>
+
+Porting a "simple" application from a source Linux system, where it has been built, to a target system, for testing for example,
+is possible, if these shared object files are also copied to the target system, here in the same directory as the Linux executable _random-streams-for-perf-stats_:
+
+```
+$ ls -1
+libcommon-dylan.so
+libdylan.so
+libio.so
+librandom-streams-for-perf-stats.so
+libunwind.so.1
+random-streams-for-perf-stats
+$
+```
+
+Then, set environment variable _LD_LIBRARY_PATH_ to the local directory of the Linux executable, and run it like this:
+
+```
+$ export LD_LIBRARY_PATH=.
+$ ./random-streams-for-perf-stats
+<tbd>
+$ 
+```
+
+<br/>
+
+##_end
