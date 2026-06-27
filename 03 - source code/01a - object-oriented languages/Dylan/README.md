@@ -26,9 +26,15 @@ This becomes clearer in official [An Introduction to Dylan](https://opendylan.or
 
 <br/>
 
+I generally see a certain nearness of Dylan source code also to [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#common-lisp).
+
+<br/>
+
+## Installation tips
+
 tbd
 
-### Making a simple application
+## Making a simple application
 
 tbd 
 
