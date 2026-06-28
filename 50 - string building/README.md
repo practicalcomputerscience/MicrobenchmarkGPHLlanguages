@@ -14,4 +14,8 @@ See: [In terms of execution times this is a string concatenation benchmark](http
 
 ![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/50%20-%20string%20building/Computer%20Programming%20Languages%2C%20string%20builder%205.png)
 
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/50%20-%20string%20building/Computer%20Programming%20Languages%2C%20string%20builder%206.png)
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/50%20-%20string%20building/Computer%20Programming%20Languages%2C%20string%20builder%207.png)
+
 ##_end
