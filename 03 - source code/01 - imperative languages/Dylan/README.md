@@ -10,6 +10,8 @@ DyLan = Dynamic Language
 
 Here, surviving implementation Open Dylan is meant: https://opendylan.org (*)
 
+https://github.com/dylan-lang/opendylan/
+
 Here, I use _Dylan_ synonymously for _Open Dylan_.
 
 <br/>
