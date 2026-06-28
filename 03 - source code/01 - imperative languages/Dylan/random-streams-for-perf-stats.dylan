@@ -30,12 +30,12 @@ $
 */
 
 
-define constant *END* :: integer = 62501;  // 62501 for exactly 1M binary digits; END is a module constant
+define constant *END* = 62501;  // 62501 for exactly 1M binary digits; END is a module constant
 // define constant *END* = 10;  // for testing
 
-define constant *m* :: integer = 65521;    // = 2^16 - 15
-define constant *a* :: integer = 17364;
-define constant *c* :: integer = 0;
+define constant *m* = 65521;    // = 2^16 - 15
+define constant *a* = 17364;
+define constant *c* = 0;
 
 define constant *file_bits_x*   :: <string> = "random_bitstring.bin";  // declaring a string constant
 define constant *file_bits_hex* :: <string> = "random_bitstring.byte";
