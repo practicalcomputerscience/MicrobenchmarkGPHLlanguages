@@ -18,6 +18,7 @@ Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
 Crystal | yes | yes
 Curry (KiCS2) | yes | yes
+Dylan (Open Dylan) | yes | yes
 Eiffel (Liberty) | yes | yes
 Fortran | yes | yes
 Gambit Scheme (only the "speed part" tested) | yes | yes
@@ -71,6 +72,10 @@ As of 2026-02-07, I haven't taken extra efforts to compile into statically linke
 
 <br/>
 
+See from here at [Execution speed in the land of Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#execution-speed-in-the-land-of-dylan): it looks like that a Linux executable which has lots of dependencies on shared objects ("dynamic linking") is also not the fastest program to execute.
+
+<br/>
+
 [GraalVM based](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/04%20-%20GraalVM#graal-virtual-machine-graalvm):
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command)
@@ -84,7 +89,7 @@ Scala (only the "speed part" tested) | yes | yes
 
 ## This list does not contain
 
-- program versions which are exceeding the [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow)
+- program versions which are exceeding the [1 second execution time limit](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#languages-that-were-too-slow), with the exception of Curry
 - program versions which depend on the Java Virtual Machine (JVM), like Clojure, Groovy, Kotlin, Scala, Ballerina and Java, where portability between operating systems, including Windows, is anyway strived for
 - program versions which depend on the .NET ecosystem, like [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#installation-tips), where portability between operating systems, including Windows, is anyway strived for
 - intepreted languages ("scripting languages") like Lua, Perl 5, PowerShell, Python, Ruby, Smalltalk or Tcl which usually depend on some prior language related installation
