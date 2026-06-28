@@ -25,6 +25,8 @@ run on Ubuntu 24 LTS:   $ _build/bin/random-streams-for-perf-stats  # run this c
 
 $ deft version
 v0.13.0-11-gbb20956 built on 2026-02-19T02:05:17+00:00
+$ dylan-compiler -VERSION
+Open Dylan 2026.1
 $
 
 */
