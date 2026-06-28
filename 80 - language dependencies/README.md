@@ -39,6 +39,7 @@ Crystal | bootstrapping by using an older version of the Crystal compiler; self-
 Curry (KiCS2) | partly self-hosted: the KiCS2-Curry compiler transpiles Curry source code into Haskell, which is then compiled into an executable by the Glasgow Haskell Compiler (GHC) | https://github.com/curry-language/kics2/tree/master/src/KiCS2; compilation command _$ kics2 :compile factorial.curry :q_ for example also automatically leaves a non-human readable Haskell program at hidden directory: _.curry/kics2-3.5.0/Curry_factorial.hs_
 D | LDC (LLVM-based D Compiler): D + C++ + C; DMD (Digital Mars D compiler): D + C++ + C | https://github.com/ldc-developers/ldc; https://github.com/dlang/dmd; https://github.com/D-Programming-GDC/gcc
 Dart | Dart + C++ + C, so, it's partly self-hosted | 
+Dylan (Open Dylan) | Open Dylan is mostly self-hosted, the rest implemented in C to bind the language to its runtime and garbage collector | https://github.com/dylan-lang/opendylan/tree/master
 Eiffel (Liberty) | C for gcc or g++, and also Eiffel, or cl in Windows; so it's partly self-hosted | Eiffel source code is first fully transpiled into ANSI C code, which is then compiled to executable machine code by a standard C compiler
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
