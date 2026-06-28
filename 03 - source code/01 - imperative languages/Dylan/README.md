@@ -47,7 +47,7 @@ and activated it with command: _$ source ~/.bashrc_
 
 ## Making a simple Dylan application
 
-One Dylan application is producing numerous shared object files (~.so*). All these shared object files are not very beneficial for easy porting an Dylan application from its source Linux system to another target Linux system.
+The build of a Dylan application is producing numerous shared object files (~.so*). All these shared object files are not very beneficial for easy porting a Dylan application from its source Linux system to another target Linux system.
 
 So, I followed the approach to only make one executable library by applying switch _--simple_ at the build tool command _deft_: [Hello World](https://opendylan.org/getting-started-cli/hello-world.html#hello-world), something which is anyway producing a number of _~.so*_ files, see below.
 
@@ -135,6 +135,33 @@ $
 
 <br/>
 
-##_end
-`
+## Execution speed in the land of Dylan
 
+Measuring the execution time of the executable based on source code [random-streams-for-perf-stats.dylan](./random-streams-for-perf-stats.dylan) revealed a sobering truth: 
+
+```
+$ time ./_build/bin/random-streams-for-perf-stats
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.126s
+$
+```
+
+Open Dylan is not producing very fast programs, even though I'm using Dylan's "string builder" (_let bits_x   = make(<string-stream>, direction: #"output");_) and Dylan uses "a programming model designed to support efficient machine code generation" (*).
+
+I did a couple of experiments to see if I can get a faster program, but to no avail. This is the fastest version I could get alternatively: [random-streams-for-perf-stats.dylan,speediestversion](./random-streams-for-perf-stats.dylan,speediestversion), where I do this differently compared to my Dylan idiomatic and official solution:
+
+- defined function _integer_to_bin_string_ instead of using inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
+- defined function _integer_to_hex_string_ instead of using inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_
+- defining strings _bits_x_str_ and _bits_hex_str_ outside of the "masterloop" (but still in the _main_ function)
+
+<br/>
+
+tbd
+
+<br/>
+
+##_end
