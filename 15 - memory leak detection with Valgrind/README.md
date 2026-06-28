@@ -96,6 +96,7 @@ Common Lisp | 554,114 bytes in 12 blocks | 291,666 bytes in 10 blocks | no | 202
 Crystal | program doesn't finish | -- | no | 2026-06-19
 Curry | 4,194,600 bytes in 12 blocks | 4,194,600 bytes in 12 blocks | no | 2026-06-23
 D | 800 bytes in 5 blocks | 768 bytes in 4 blocks | no | 2026-06-19
+Dylan (Open Dylan) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-28
 Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-06-19
 Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
@@ -145,6 +146,7 @@ Ada | yes |
 C++ | yes | 
 C3 | yes | 
 COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
+Dylan | yes | a Dylan application depends on numerous application specific and Dylan specific shared libraries
 Roc | no | working with two user defined functions to provide filtering of allowed characters
 V | yes | 
 Zig | no | working with _ArrayList's_ of allowed UTF-8 characters
