@@ -150,17 +150,19 @@ real	0m0.126s
 $
 ```
 
-Open Dylan is not producing very fast programs, even though I'm using Dylan's "string builder" (_let bits_x   = make(<string-stream>, direction: #"output");_) and Dylan uses "a programming model designed to support efficient machine code generation" (*).
+Open Dylan is not producing very fast programs, even though I'm using Dylan's "string builder" (_let bits_x   = make(<string-stream>, direction: #"output");_).
 
-I did a couple of experiments to see if I can get a faster program, but to no avail. This is the fastest version I could get alternatively: [random-streams-for-perf-stats.dylan,speediestversion](./random-streams-for-perf-stats.dylan,speediestversion), where I do this differently compared to my Dylan idiomatic and official solution:
+I did a couple of experiments to see if I can get a faster program, but to no avail. This is the fastest version I could get alternatively: [random-streams-for-perf-stats.dylan,speediestversion](./random-streams-for-perf-stats.dylan,speediestversion), where I do this differently compared to my idiomatic and official solution:
 
 - defined function _integer_to_bin_string_ instead of using inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
 - defined function _integer_to_hex_string_ instead of using inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_
 - defining strings _bits_x_str_ and _bits_hex_str_ outside of the "masterloop" (but still in the _main_ function)
 
-<br/>
+The speed opimized version has an execution time of in average 111 milliseconds compared to 129 milliseconds with my official solution, that's about 14% faster, and thus also not a substantial speed improvement.
 
-tbd
+My guess is that it has to do with Open Dylan's usage of the [Boehm garbage collector](https://en.wikipedia.org/wiki/Boehm_garbage_collector): [Memory usage](https://package.opendylan.org/dylan-programming-book/perform.html#memory-usage), which cannot be shut off for a test.
+
+[Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) for example is also using the "Boehm-Demers-Weiser conservative garbage collector" ([Other runtime libraries](https://crystal-lang.org/reference/1.20/man/required_libraries.html#other-runtime-libraries)), and offers lightning fast execution times without much coding effort.
 
 <br/>
 
