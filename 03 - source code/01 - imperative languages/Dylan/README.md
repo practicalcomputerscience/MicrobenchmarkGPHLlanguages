@@ -151,12 +151,12 @@ real	0m0.126s
 $
 ```
 
-Open Dylan is not producing very fast programs, even though I'm using Dylan's "string builder" (_let bits_x   = make(<string-stream>, direction: #"output");_).
+Open Dylan is not producing very fast programs, even though I'm using Dylan's "string builder": _let bits_x   = make(<string-stream>, direction: #"output");_
 
 I did a couple of experiments to see if I can get a faster program, but to no avail. This is the fastest version I could get alternatively: [random-streams-for-perf-stats.dylan,speediestversion](./random-streams-for-perf-stats.dylan,speediestversion), where I do this differently compared to my idiomatic and official solution:
 
-- defined function _integer_to_bin_string_ instead of using inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
-- defined function _integer_to_hex_string_ instead of using inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_
+- user defined function _integer_to_bin_string_ instead of using inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
+- user defined function _integer_to_hex_string_ instead of using inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_
 - defining strings _bits_x_str_ and _bits_hex_str_ outside of the "masterloop" (but still in the _main_ function)
 
 The speed opimized version has an execution time of in average 111 milliseconds compared to 129 milliseconds with my official solution, that's about 14% faster, and thus also not a substantial speed improvement.
