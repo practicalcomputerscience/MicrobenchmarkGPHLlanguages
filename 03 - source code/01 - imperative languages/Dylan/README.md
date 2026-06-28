@@ -165,7 +165,7 @@ My first guess was that it has to do with Open Dylan's usage of the [Boehm garba
 
 But [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) for example is also using the "Boehm-Demers-Weiser conservative garbage collector" ([Other runtime libraries](https://crystal-lang.org/reference/1.20/man/required_libraries.html#other-runtime-libraries)), and offers lightning fast execution times without much coding effort.
 
-However, if we compare both program's usage of shared objects, a stark contrast comes to light. Here's Dylan's output:
+However, if we compare both programs' usage of shared objects, a stark contrast comes to light. Here's Dylan's output:
 
 ```
 $ ldd _build/bin/random-streams-for-perf-stats
