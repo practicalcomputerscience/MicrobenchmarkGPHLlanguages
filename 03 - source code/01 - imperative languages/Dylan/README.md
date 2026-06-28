@@ -155,8 +155,8 @@ Open Dylan is not producing very fast programs, even though I'm using Dylan's "s
 
 I did a couple of experiments to see if I can get a faster program, but to no avail. This is the fastest version I could get alternatively: [random-streams-for-perf-stats.dylan,speediestversion](./random-streams-for-perf-stats.dylan,speediestversion), where I do this differently compared to my idiomatic and official solution:
 
-- user defined function _integer_to_bin_string_ instead of using inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
-- user defined function _integer_to_hex_string_ instead of using inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_
+- using user defined function _integer_to_bin_string_ instead of inbuilt function _integer-to-string(x[i], base: 2, size: 16)_, and inlining it in the "masterloop"
+- using user defined function _integer_to_hex_string_ instead of inbuilt function _integer-to-string(x[i], base: 16, size: 4, lowercase?: #t)_, but not inlining it!
 - defining strings _bits_x_str_ and _bits_hex_str_ outside of the "masterloop" (but still in the _main_ function)
 
 The speed opimized version has an execution time of in average 111 milliseconds compared to 129 milliseconds with my official solution, that's about 14% faster, and thus also not a substantial speed improvement.
@@ -165,7 +165,7 @@ My guess is that it has to do with Open Dylan's usage of the [Boehm garbage coll
 
 [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) for example is also using the "Boehm-Demers-Weiser conservative garbage collector" ([Other runtime libraries](https://crystal-lang.org/reference/1.20/man/required_libraries.html#other-runtime-libraries)), and offers lightning fast execution times without much coding effort.
 
-By the way: my [Common Lisp (SBCL)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp) implementation takes about 39 milliseconds in average.
+By the way: my [Common Lisp (SBCL)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp) implementation takes about 39 milliseconds in average to run.
 
 <br/>
 
