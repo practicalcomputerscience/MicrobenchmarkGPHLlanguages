@@ -27,6 +27,7 @@ Crystal | Crystal 1.18.2 [635ca37a6] (2025-10-21); LLVM: 18.1.8; Default target:
 Curry (KiCS2) | ... Version 3.5.0-b2 of 2025-12-15 ... | $ curry -V
 D | gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gdc --version
 Dart | Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "linux_x64" | $ dart --version
+Dylan | v0.13.0-11-gbb20956 built on 2026-02-19T02:05:17+00:00; Open Dylan 2026.1 | $ deft version; $ dylan-compiler -VERSION
 Eiffel, Liberty | ...; Liberty Eiffel The GNU Eiffel Compiler, Eiffel tools and libraries; release 2022.dev (preparing Glenn Curtiss); ... | $ se compile --version
 Fortran | GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gfortran --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
