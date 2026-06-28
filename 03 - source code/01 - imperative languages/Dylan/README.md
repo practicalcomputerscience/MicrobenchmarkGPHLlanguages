@@ -231,7 +231,7 @@ $ deft list
    master  0.2.1   pacman-catalog       Dylan package manager catalog -- descriptors for
                                         all known Dylan packages.
 !  1.1.0   2.0.1   strings              String manipulation functions
-   3.4.0   3.4.0   testworks            Unit testing frameworkbooser
+   3.4.0   3.4.0   testworks            Unit testing framework
 $
 ```
 
