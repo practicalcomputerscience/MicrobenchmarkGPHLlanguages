@@ -218,9 +218,9 @@ $
 
 Generally, one could say that the development of Open Dylan has stalled. See for example the [New strings Library](https://opendylan.org/proposals/dep-0004-strings-library.html#new-strings-library) with its useful functions. But these functions are not available in a modern Open Dylan installation by default.
 
-After some experimentation, I found I way how to upgrade the _strings_ library from inbuilt and default version 1.1.0 to new version 2.0.1 as shown here (as of 2026-06-28): https://github.com/dylan-lang/strings/releases/tag/v2.0.1
+After elaborate experimentation, I found a way how to upgrade the _strings_ library from inbuilt and default version 1.1.0 to new version 2.0.1 as shown here (as of 2026-06-28): https://github.com/dylan-lang/strings/releases/tag/v2.0.1
 
-My libraries after an Open Dylan installation were these:
+My library versions after an Open Dylan installation were these:
 
 ```
 $ deft list
@@ -235,7 +235,9 @@ $ deft list
 $
 ```
 
-Now, install the new library versions:
+In project configuration file _dylan-package.json_, which is located in the project root directory, change old line _"dependencies": [  ],_ to new line: _"dependencies": [ "strings@2.0.1" ],_
+
+Now, install the new strings library version:
 
 ```
 $ deft update
@@ -272,7 +274,7 @@ $ deft list
 $
 ```
 
-Now library _strings_ in its latest version 2.0.1 should be available for **all** Open Dylan projects on your Linux system.
+Now library _strings_ in its latest version 2.0.1 should be available for **all** Open Dylan projects in your Linux system.
 
 
 
