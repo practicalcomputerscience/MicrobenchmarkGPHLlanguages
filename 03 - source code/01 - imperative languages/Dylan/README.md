@@ -17,7 +17,7 @@ Here, I use _Dylan_ synonymously for _Open Dylan_.
 ## Idea of Dylan
 
 Though Dylan apparently started as a superset of [Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme#scheme), it looks to me that it soon became another multi-paradigm language,
-where I had no problems to implement a very "imperative" version of my microbenchmark program with [random-bitstring-and-flexible-password-generator.dylan](./random-bitstring-and-flexible-password-generator.dylan).
+where I had no problems to implement a "very imperative" version of my microbenchmark program with [random-bitstring-and-flexible-password-generator.dylan](./random-bitstring-and-flexible-password-generator.dylan).
 
 Dylan was first published as a language draft for the [Apple Newton device](https://en.wikipedia.org/wiki/Apple_Newton) in 1993: [Dylan (Dynamic Language), A multi-paradigm language, Oliver Juwig, sd&m, Aachen, 12. Februar 2003](https://verify.rwth-aachen.de/fp02/Folien/Dylan.pdf)
 
@@ -30,7 +30,10 @@ In official [An Introduction to Dylan](https://opendylan.org/intro-dylan/index.h
 > Dylan is an object-oriented dynamic language designed for efficient compilation.
 > It uses an algebraic infix syntax similar to Pascal or C, but supports an object model not unlike the Common Lisp Object System (CLOS).
 
-I generally see a certain nearness of Dylan code to [Common Lisp code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#common-lisp), so I guess that I could have also implemented a very functional version of [random-bitstring-and-flexible-password-generator.dylan](./random-bitstring-and-flexible-password-generator.dylan).
+<br/>
+
+I generally see a certain nearness of Dylan code to [Common Lisp code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#common-lisp), so I guess that I could have also implemented a very functional version of [random-bitstring-and-flexible-password-generator.dylan](./random-bitstring-and-flexible-password-generator.dylan). I also guess that this is not a total coincidence.
+On this [History](https://opendylan.org/history/index.html#history) page, "Lisp" is mentioned 16 times!
 
 <br/>
 
