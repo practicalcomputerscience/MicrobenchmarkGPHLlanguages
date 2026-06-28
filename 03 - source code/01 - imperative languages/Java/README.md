@@ -45,7 +45,7 @@ This "Big AI" based transpilation from one Haxe source code file into only **one
 
 language | source lines of code of full program (manually improved) | number of user defined functions in full program | program execution time of "speed part" of microbenchmark | comment
 --- | --- | --- | --- | ---
-[Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)    | 123  | 2 | 152 milliseconds with bytecode for the (modern) HashLink virtual machine | language for "cross-platform development"
+[Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe)    | 113  | 2 | 152 milliseconds with bytecode for the (modern) HashLink virtual machine | language for "cross-platform development"
 [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy)  | 95   | 0 | 341 milliseconds with an uberJAR file for the Java virtual machine | my preferred source language for transpilations
 Java    | 101  | 0 | 51 milliseconds with an uberJAR file for the Java virtual machine | development target: having only one source code file in target language Java
 
