@@ -115,6 +115,7 @@ Crystal | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | | 2026-
 Curry (KiCS2) |  |  | OK | _pattern_ is a string of allowed characters in both cases | | 2026-06-23
 D | yes |  | OK | non-POSIX patterns: _r"[!-~]"_, _r"[A-Za-z0-9]"_ | | 2026-06-13
 Dart | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 2026-06-17
+Dylan | yes |  | OK | non-POSIX patterns: _graphic?(c) & ~whitespace?(c)_, _alphanumeric?_ | | 2026-06-28
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-09
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-06-10
 FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints (regular expressions are natively supported, but need some extra effort) | | 2026-06-14
