@@ -150,6 +150,7 @@ D                 | 115 | compiled, very mature language; memory-safe source cod
 Lua               | 115 | interpreted, very mature language | 2026-06-11
 Bigloo Scheme     | 114 | compiled, mature language | 2026-06-18
 Common Lisp       | 114 | compiled, very mature language | 2026-06-18
+Dylan (Open Dylan) | 113 | compiled, very mature language | 2026-06-28
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
 Racket Scheme     | 107 | compiled, mature language | 2026-06-18
@@ -203,6 +204,7 @@ Crystal            | 0
 Curry (KiCS2)      | 9
 D                  | 0
 Dart               | 0
+Dylan (Open Dylan) | 1
 Eiffel (Liberty)   | 4
 Fortran (GNU)      | 3
 FreeBASIC          | 1
