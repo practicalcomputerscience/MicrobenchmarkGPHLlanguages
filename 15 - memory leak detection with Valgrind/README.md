@@ -146,7 +146,7 @@ Ada | yes |
 C++ | yes | 
 C3 | yes | 
 COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
-Dylan | yes | a Dylan application depends on numerous application specific and Dylan specific shared libraries
+Dylan | yes | an Open Dylan application depends on numerous application specific and Open Dylan specific shared libraries
 Roc | no | working with two user defined functions to provide filtering of allowed characters
 V | yes | 
 Zig | no | working with _ArrayList's_ of allowed UTF-8 characters
