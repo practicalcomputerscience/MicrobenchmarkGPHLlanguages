@@ -214,4 +214,77 @@ $
 
 <br/>
 
+## Current library management in Open Dylan
+
+Generally, one could say that the development of Open Dylan has stalled. See for example the [New strings Library](https://opendylan.org/proposals/dep-0004-strings-library.html#new-strings-library) with its useful functions. But these functions are not available in a modern Open Dylan installation by default.
+
+After some experimentation, I found I way how to upgrade the _strings_ library from inbuilt and default version 1.1.0 to new version 2.0.1 as shown here (as of 2026-06-28): https://github.com/dylan-lang/strings/releases/tag/v2.0.1
+
+My libraries after an Open Dylan installation were these:
+
+```
+$ deft list
+   Inst.   Latest  Name                 Description
+                                                                                        
+!  3.1.1   3.2.2   command-line-parser  Parse command line flags and subcommands
+!  1.0.0   1.1.2   json                 Convert to/from JSON format
+   master  0.2.1   pacman-catalog       Dylan package manager catalog -- descriptors for
+                                        all known Dylan packages.
+!  1.1.0   2.0.1   strings              String manipulation functions
+   3.4.0   3.4.0   testworks            Unit testing frameworkbooser
+$
+```
+
+Now, install the new library versions:
+
+```
+$ deft update
+Downloaded strings@2.0.1 to ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/_packages/strings/2.0.1/src/
+Downloaded command-line-parser@3.1.1 to ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/_packages/command-line-parser/3.1.1/src/
+Downloaded json@1.0.0 to ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/_packages/json/1.0.0/src/
+Downloaded sphinx-extensions@1.1.0 to ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/_packages/sphinx-extensions/1.1.0/src/
+Downloaded testworks@3.4.0 to ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/_packages/testworks/3.4.0/src/
+Updated 3 of 4 registry files in ~/scripts/Dylan/random-bitstring-and-flexible-password-generator/registry/.
+$
+```
+
+In the _library.dylan_ file, add _use strings;_ under both sections:
+
+- _define library random-bitstring-and-flexible-password-generator_
+- _define module random-bitstring-and-flexible-password-generator_
+
+Not very logical, but it worked for me...
+
+Build the project again and re-check library versions:
+
+```
+$ deft build --all
+...  # here should be no more warning about function decimal-digit? !!
+$ deft list
+   Inst.   Latest  Name                 Description
+                                                                                        
+!  3.1.1   3.2.2   command-line-parser  Parse command line flags and subcommands
+!  1.0.0   1.1.2   json                 Convert to/from JSON format
+   master  0.2.1   pacman-catalog       Dylan package manager catalog -- descriptors for
+                                        all known Dylan packages.
+   2.0.1   2.0.1   strings              String manipulation functions
+   3.4.0   3.4.0   testworks            Unit testing framework
+$
+```
+
+Now library _strings_ in its latest version 2.0.1 should be available for **all** Open Dylan projects on your Linux system.
+
+
+
+
+
+
+
+
+
+
+
+
+<br/>
+
 ##_end
