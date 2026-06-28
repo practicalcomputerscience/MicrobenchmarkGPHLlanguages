@@ -253,13 +253,13 @@ In the _library.dylan_ file, add _use strings;_ under both sections:
 - _define library random-bitstring-and-flexible-password-generator_
 - _define module random-bitstring-and-flexible-password-generator_
 
-Not very logical, but it worked for me...
+Not very logical, but worked for me...
 
 Build the project again and re-check library versions:
 
 ```
-$ deft build --all
-...  # here should be no more warning about function decimal-digit? !!
+$ deft build --all  #  Build all libraries in the workspace.
+...  # here should be no more warning about Reference to undefined binding {decimal-digit? in random-bitstring-and-flexible-password-generator} !!
 $ deft list
    Inst.   Latest  Name                 Description
                                                                                         
