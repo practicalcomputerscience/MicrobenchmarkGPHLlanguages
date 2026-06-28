@@ -223,9 +223,11 @@ $
 
 ## Current library management in Open Dylan
 
-Generally, one could say that the development of Open Dylan has stalled. See for example the [New strings Library](https://opendylan.org/proposals/dep-0004-strings-library.html#new-strings-library) with its useful functions. But these functions are not available in a modern Open Dylan installation by default.
+Building tool _deft_ definitely leaves much room for better support of the (automatic) configuration of an application. Still too much manual and opaque tinkering in the application's configuration files is needed to efficiently use Dylan's official and maintained libraries.
 
-After elaborate experimentation, I found a way how to upgrade the _strings_ library from inbuilt and default version 1.1.0 to new version 2.0.1 as shown here (as of 2026-06-28): https://github.com/dylan-lang/strings/releases/tag/v2.0.1
+See for example the [New strings Library](https://opendylan.org/proposals/dep-0004-strings-library.html#new-strings-library) with its useful functions. Since many years it's no longer an abstract proposal, but something which can be really used. But these functions are not available in a modern Open Dylan installation by default.
+
+After elaborate experimentation, I found a (shaky) way how to upgrade the _strings_ library from inbuilt and default version 1.1.0 to new version 2.0.1 as stored here (as of 2026-06-28): https://github.com/dylan-lang/strings/releases/tag/v2.0.1
 
 My library versions after an Open Dylan installation were these:
 
@@ -244,7 +246,7 @@ $
 
 In project configuration file [dylan-package.json](./dylan-package.json%20for%20random-bitstring-and-flexible-password-generator), which is located in the project root directory, change old line _"dependencies": [  ],_ to new line: _"dependencies": [ "strings@2.0.1" ],_
 
-Now, install the new strings library version:
+Now, try to install the new strings library version like this:
 
 ```
 $ deft update
@@ -264,7 +266,7 @@ In the [library.dylan](./library.dylan%20for%20random-bitstring-and-flexible-pas
 
 Not very logical, but worked for me...
 
-Build the project again and re-check library versions:
+Build the project again and re-check library versions again:
 
 ```
 $ deft build --all  #  Build all libraries in the workspace.
@@ -281,7 +283,7 @@ $ deft list
 $
 ```
 
-Now library _strings_ in its latest version 2.0.1 should be available for **all** Open Dylan projects in your Linux system.
+Library _strings_ in its latest version 2.0.1 should be available now for **all** Open Dylan projects in your Linux system.
 
 <br/>
 
