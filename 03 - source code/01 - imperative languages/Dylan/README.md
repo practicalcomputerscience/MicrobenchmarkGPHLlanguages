@@ -161,11 +161,54 @@ I did a couple of experiments to see if I can get a faster program, but to no av
 
 The speed opimized version has an execution time of in average 111 milliseconds compared to 129 milliseconds with my official solution, that's about 14% faster, and thus also not a substantial speed improvement.
 
-My guess is that it has to do with Open Dylan's usage of the [Boehm garbage collector](https://en.wikipedia.org/wiki/Boehm_garbage_collector): [Memory usage](https://package.opendylan.org/dylan-programming-book/perform.html#memory-usage), which cannot be shut off for a test.
+My first guess was that it has to do with Open Dylan's usage of the [Boehm garbage collector](https://en.wikipedia.org/wiki/Boehm_garbage_collector): [Memory usage](https://package.opendylan.org/dylan-programming-book/perform.html#memory-usage), which cannot be shut off for a test.
 
-[Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) for example is also using the "Boehm-Demers-Weiser conservative garbage collector" ([Other runtime libraries](https://crystal-lang.org/reference/1.20/man/required_libraries.html#other-runtime-libraries)), and offers lightning fast execution times without much coding effort.
+But [Chrystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal) for example is also using the "Boehm-Demers-Weiser conservative garbage collector" ([Other runtime libraries](https://crystal-lang.org/reference/1.20/man/required_libraries.html#other-runtime-libraries)), and offers lightning fast execution times without much coding effort.
 
-By the way: my [Common Lisp (SBCL)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp) implementation takes about 39 milliseconds in average to run.
+However, if we compare both program's usage of shared objects, a stark contrast comes to light. Here's Dylan's output:
+
+```
+$ ldd _build/bin/random-streams-for-perf-stats
+	linux-vdso.so.1 (0x00007baa117e2000)
+	librandom-streams-for-perf-stats.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/librandom-streams-for-perf-stats.so (0x00007baa117ce000)
+	libcommon-dylan.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libcommon-dylan.so (0x00007baa11756000)
+	libdylan.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libdylan.so (0x00007baa11200000)
+	libgc.so.1 => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libgc.so.1 (0x00007baa116e5000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007baa11117000)
+	libunwind.so.1 => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libunwind.so.1 (0x00007baa116bd000)
+	libio.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libio.so (0x00007baa1102b000)
+	libsystem.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libsystem.so (0x00007baa10f6d000)
+	libcollections.so => ~/scripts/Dylan/random-streams-for-perf-stats/_build/bin/../lib/libcollections.so (0x00007baa11697000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007baa10c00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007baa117e4000)
+$
+```
+
+And here's Crystal's output:
+
+```
+$ ldd ./random_streams_for_perf_stats_cr
+	linux-vdso.so.1 (0x0000764afdc3c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000764afda55000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000764afd800000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000764afdc3e000)
+$
+```
+
+I just guess that Open Dylan's heavy dependence on numerous shared objects during runtime ("dynamic linking") may explain a lot of its rather slow execution speed: [A look at dynamic linking](https://lwn.net/Articles/961117/)
+
+<br/>
+
+By the way: my [Common Lisp (SBCL)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp) implementation takes about 39 milliseconds in average to run:
+
+```
+$ ldd ./random_streams_for_perf_stats2
+	linux-vdso.so.1 (0x0000753809713000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000075380956a000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000753809200000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000753809715000)
+$ 
+```
 
 <br/>
 
