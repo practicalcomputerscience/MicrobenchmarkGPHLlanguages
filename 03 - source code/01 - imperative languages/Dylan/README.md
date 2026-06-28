@@ -1,9 +1,3 @@
-2026-06-27: work in progress: tbd
-
-tbd: toc
-
-<br/>
-
 # Dylan
 
 DyLan = Dynamic Language
@@ -14,7 +8,20 @@ https://github.com/dylan-lang/opendylan/
 
 Here, I use _Dylan_ synonymously for _Open Dylan_.
 
+---
+
+Table of contents:
+
+- [Idea of Dylan](#idea-of-dylan)
+- [Installation tips](#installation-tips)
+- [Making a simple Dylan application](#making-a-simple-dylan-application)
+- [Porting a simple Dylan application](#porting-a-simple-dylan-application)
+- [Execution speed in the land of Dylan](#execution-speed-in-the-land-of-dylan)
+- [Current library management in Open Dylan](#current-library-management-in-open-dylan)
+
 <br/>
+
+---
 
 ## Idea of Dylan
 
@@ -235,7 +242,7 @@ $ deft list
 $
 ```
 
-In project configuration file _dylan-package.json_, which is located in the project root directory, change old line _"dependencies": [  ],_ to new line: _"dependencies": [ "strings@2.0.1" ],_
+In project configuration file [dylan-package.json](./dylan-package.json%20for%20random-bitstring-and-flexible-password-generator), which is located in the project root directory, change old line _"dependencies": [  ],_ to new line: _"dependencies": [ "strings@2.0.1" ],_
 
 Now, install the new strings library version:
 
@@ -250,7 +257,7 @@ Updated 3 of 4 registry files in ~/scripts/Dylan/random-bitstring-and-flexible-p
 $
 ```
 
-In the _library.dylan_ file, add _use strings;_ under both sections:
+In the [library.dylan](./library.dylan%20for%20random-bitstring-and-flexible-password-generator) file, add _use strings;_ under both sections:
 
 - _define library random-bitstring-and-flexible-password-generator_
 - _define module random-bitstring-and-flexible-password-generator_
@@ -275,17 +282,6 @@ $
 ```
 
 Now library _strings_ in its latest version 2.0.1 should be available for **all** Open Dylan projects in your Linux system.
-
-
-
-
-
-
-
-
-
-
-
 
 <br/>
 
