@@ -39,7 +39,11 @@ So far:
 
 - [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) is the fastest [functional programming language](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#functional-languages),
 - [Perl 5](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Perl%205#perl-5) the fastest interpreted language, and
-- [C#](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%23#c) the fastest language on a virtual machine.
+- [PHP](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05c%20-%20PHP%20on%20the%20Zend%20Engine%20virtual%20machine#php) is the fastest language for a virtual machine ("Zend Engine").
+
+<br/>
+
+For the languages where source code is usually compiled to executables: I haven't actively built for static linking, which usually makes faster executables, even if there's that possibility. So, programs from most languages for compilation are dynamically linked.
 
 <br/>
 
