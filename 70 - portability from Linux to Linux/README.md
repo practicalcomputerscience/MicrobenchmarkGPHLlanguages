@@ -101,9 +101,11 @@ Scala (only the "speed part" tested) | yes | yes
 - "web programming languages" like JavaScript, TypeScript, CoffeeScript, AssemblyScript, PHP and Haxe, which usually depend on some prior language related installation when running at the "backend"
 - Julia, which in one form or another needs to bring its runtime along with the original source code or along with a precompiled program for anything more demanding than "Hello, World!"
 
+<br/>
+
 ## Other omissions from above list
 
-- [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips), which needs at least one shared library being installed
+- [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips), which needs at least one shared library being installed, and _--static_ linking doesn't work in my Linux system without substantial modifications, which I won't implement
 - [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol), here GnuCOBOL, which needs at least one shared library being installed (that is _libcob.so.4_)
 - Dart, which isn't so easily portable to another, "foreign" Linux system; see at [Standalone (or self-contained) executable (which may not be portable so easily)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
 - [Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#dylan), here Open Dylan, where a compiled application depends on numerous application specific and Open Dylan specific shared libraries: [Porting a simple Dylan application](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#porting-a-simple-dylan-application)
