@@ -153,7 +153,7 @@ Common Lisp       | 114 | compiled, very mature language | 2026-06-18
 Dylan (Open Dylan) | 113 | compiled, very mature language | 2026-06-28
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
 Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
-Racket Scheme     | 107 | compiled, mature language | 2026-06-18
+Racket Scheme     | 107 | interpreted, mature language | 2026-06-18
 PHP               | 105 | usually interpreted, very mature web programming language | 2026-06-18
 Swift             | 105 | compiled, mature language | 2026-06-10
 TypeScript        | 105 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-18
