@@ -24,7 +24,7 @@ So, I started to compile another table, where I try to list some main dependenci
 
 dependent programming language | underlying programming language or environment | comment
 --- | --- | ---
-Ada | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC see: https://ftp.gnu.org/gnu/gcc/
+Ada (GNAT) | C for GCC (GNU Compiler Collection), that is the _gcc_ compiler, or LLVM, that is the _clang_ compiler frontend usually, back end compilation families | GNAT = GNU Ada Development Environment; for GCC see: https://ftp.gnu.org/gnu/gcc/
 AssemblyScript | Binaryen, "a compiler and toolchain infrastructure library for WebAssembly, written in C++" | https://github.com/WebAssembly/binaryen
 Ballerina | current "jBallerina" is implemented in Java; "The long-term goal of the nBallerina project is to create a new compiler for the Ballerina language that is written in Ballerina and can generate native code using LLVM." | https://github.com/ballerina-platform/nballerina, https://ballerina.io/learn/ballerina-ffi/
 C / C++ | C for GCC or LLVM, with both requiring a working C++ compiler version and having numerous other dependencies | only C++ is self-hosted to some extent nowadays, not even C anymore with GCC and LLVM (**); as of January 2026, about 29% of the gcc compiler is still written in C: https://github.com/gcc-mirror/gcc
