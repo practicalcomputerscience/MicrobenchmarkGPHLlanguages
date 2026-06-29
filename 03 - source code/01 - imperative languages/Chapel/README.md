@@ -195,7 +195,7 @@ The third tactic, which I eagerly (and imperatively if possible) apply in functi
 
 ### On compiler switches, portability and linking in Chapel
 
-And yes, I compiled with switch _--fast_ on before measuring the rather slow program execution speed:
+I compiled with activated switch _--fast_ before measuring the rather slow program execution speed:
 
 ```
 $ chpl random_streams_for_perf_stats.chpl --fast
