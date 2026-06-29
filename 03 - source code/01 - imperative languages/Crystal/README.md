@@ -56,7 +56,7 @@ Sizes of executables in bytes:
 - random_streams_for_perf_stats_cr: 1155480
 - random_streams_for_perf_stats_cr_stat: 2121320
 
-Execution speed of executables with command: _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_cr..._: (at 32°C ambient temperature!)
+Execution speed of executables with command: _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_cr..._: (at 32°C ambient temperature as of 2026-06-29!)
 
 - random_streams_for_perf_stats_cr: _0.00855 +- 0.00102 seconds time elapsed  ( +- 11.96% )_
 - random_streams_for_perf_stats_cr_stat: _0.007466 +- 0.000159 seconds time elapsed  ( +-  2.13% )_, that's more than -12% 
