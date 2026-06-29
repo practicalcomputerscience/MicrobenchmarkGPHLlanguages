@@ -9,7 +9,7 @@ Here's a list of programming languages where standalone executables can be compi
 You can have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported?
--- | -- | --
+-- | -- | -- | --
 Ada (GNAT) | yes | yes
 C | yes | yes
 C++ | yes | yes
