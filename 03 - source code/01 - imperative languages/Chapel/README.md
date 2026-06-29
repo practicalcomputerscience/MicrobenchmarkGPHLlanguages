@@ -12,6 +12,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
+- [On compiler switches, portability and linking in Chapel](#tbd)
 
 <br/>
 
@@ -192,10 +193,13 @@ The third tactic, which I eagerly (and imperatively if possible) apply in functi
 
 <br/>
 
+### On compiler switches, portability and linking in Chapel
+
 And yes, I compiled with switch _--fast_ on before measuring the rather slow program execution speed:
 
 ```
-chpl random_streams_for_perf_stats.chpl --fast
+$ chpl random_streams_for_perf_stats.chpl --fast
+$
 ```
 
 This switch is essential for a faster program, at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail.
