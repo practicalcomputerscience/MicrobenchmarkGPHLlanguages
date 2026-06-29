@@ -30,7 +30,7 @@ Nim | yes | yes
 OCaml | yes | yes
 Odin | yes, but with good portability | yes
 Roc | no | "statically linked"
-Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times lower exe speed with switch _--target=x86_64-unknown-linux-musl_!
+Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times lower exe speed with switch _--target=x86_64-unknown-linux-musl_ !
 Standard ML (MLton) | yes | yes
 Swift | yes, and which usually blocks portability | yes, and always | static linking only for stdlib with switch _--static-swift-stdlib_; supports good portability | -10%
 V | yes | yes
