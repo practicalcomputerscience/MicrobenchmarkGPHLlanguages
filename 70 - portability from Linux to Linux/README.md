@@ -12,28 +12,28 @@ You can have a view on the dependencies of a Linux executable with the [ldd](htt
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
-Ada (GNAT) | yes | yes
+Ada (GNAT), but with good portability | yes | yes
 C | yes, but with good portability | yes | complicated, but possible theoretically
 C++ | yes, but with good portability | yes | complicated, but possible theoretically
-C3 | yes | yes
-Chez Scheme (only the "speed part" tested) | yes | yes
-Common Lisp (SBCL) | yes | yes
+C3 | yes, but with good portability | yes
+Chez Scheme (only the "speed part" tested) | yes tbd | yes
+Common Lisp (SBCL) | yes tbd | yes
 Crystal | yes | yes | yes; switch _--static_ | -12%
-Curry (KiCS2) | yes | yes
+Curry (KiCS2) | yes tbd | yes
 D | yes | yes | GDC: yes; LDC2: yes; using gdc switch _-static-libphobos_ to get rid off dependency on _libgphobos.so.4_ | -15% with _-static-libphobos_
-Eiffel (Liberty) | yes | yes
-Fortran | yes | yes
-Gambit Scheme (only the "speed part" tested) | yes | yes
+Eiffel (Liberty) | yes tbd | yes
+Fortran | yes tbd | yes
+Gambit Scheme (only the "speed part" tested) | yes tbd | yes
 Go | no | "not a dynamic executable"
-Inko | yes | yes
-Nim | yes | yes
-OCaml | yes | yes
+Inko | yes, but with good portability | yes
+Nim | yes, but with good portability | yes
+OCaml | yes, but with good portability | yes
 Odin | yes, but with good portability | yes
 Roc | no | "statically linked"
 Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times higher exe speed with switch _--target=x86_64-unknown-linux-musl_ !
-Standard ML (MLton) | yes | yes
+Standard ML (MLton) | yes, but with good portability | yes
 Swift | yes, and which usually blocks portability | yes, and always | static linking only for stdlib with switch _--static-swift-stdlib_; supports good portability | -10%
-V | yes | yes
+V | yes, but with good portability | yes
 Zig | no | "not a dynamic executable"
 
 <br/>
