@@ -3,17 +3,21 @@ random_bitstring_and_flexible_password_generator.d
 
 2026-01-21
 2026-06-13: refactored from char_set to pattern (for regular expressions)
+2026-06-29: switching from gdc to ldc2 compiler for a faster executable
 
 
-build on Ubuntu 24 LTS: $ gdc random_bitstring_and_flexible_password_generator.d -o random_bitstring_and_flexible_password_generator_gdc  # for development
-                        $ gdc -O3 random_bitstring_and_flexible_password_generator.d -o random_bitstring_and_flexible_password_generator_gdc  # for production
+build on Ubuntu 24 LTS: $ ldc2 ./random_bitstring_and_flexible_password_generator.d -of=random_bitstring_and_flexible_password_generator_ldc2  # for development
+                        $ ldc2 ./random_bitstring_and_flexible_password_generator.d -of=random_bitstring_and_flexible_password_generator_ldc2 --O3  # for production
 
-run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator_gdc
+run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator_ldc2
 
 
-$ gdc --version
-gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
-Copyright (C) 2023 Free Software Foundation, Inc.
+$ ldc2 --version
+LDC - the LLVM D compiler (1.36.0):
+  based on DMD v2.106.1 and LLVM 17.0.6
+  built with LDC - the LLVM D compiler (1.36.0)
+  Default target: x86_64-pc-linux-gnu
+  Host CPU: rocketlake
 ...
 $
 
