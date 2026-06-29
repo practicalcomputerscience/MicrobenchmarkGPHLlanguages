@@ -196,8 +196,6 @@ $ ldd ./random_streams_for_perf_stats_gdc_stat
 $
 ```
 
-The ldc2 compiler even offers the _--static_ switch (see also above).
-
 <br/>
 
 ## Why is D still not very popular?
