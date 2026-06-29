@@ -11,7 +11,7 @@ Table of contents:
 - [Other functionalities of FreeBASIC](#other-functionalities-of-freebasic)
 - [Other BASIC dialects](other-basic-dialects)
 - [Regular Expressions in FreeBASIC](#regular-expressions-in-freebasic)
-- [](#)
+- [Static linking in FreeBASIC](#static-linking-in-freebasic)
 
 <br/>
 
