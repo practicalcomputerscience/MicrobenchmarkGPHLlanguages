@@ -86,7 +86,7 @@ Another fact: I could repeat all test results as far as I have done repeated tes
 
 programming language | HEAP SUMMARY: in use at exit | LEAK SUMMARY: still reachable | All heap blocks were freed -- no leaks are possible ? | test date
 --- | --- | --- | --- | ---
-Ada | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
+Ada (GNAT) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
@@ -142,7 +142,7 @@ Only looking by the table above, I would implement a security related program on
 
 programming language | program uses regular expressions? | comment
 --- | --- | ---
-Ada | yes | 
+Ada (GNAT) | yes | 
 C++ | yes | 
 C3 | yes | 
 COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
