@@ -12,7 +12,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
-- [On compiler switches, portability and linking in Chapel](#tbd)
+- [On compiler switches, portability and linking in Chapel](#on-compiler-switches-portability-and-linking-in-chapel)
 
 <br/>
 
