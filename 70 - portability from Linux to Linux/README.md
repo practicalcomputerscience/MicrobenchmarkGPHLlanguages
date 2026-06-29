@@ -8,7 +8,7 @@ You can have a view on the dependencies of a Linux executable with the [ldd](htt
 
 Read this language list correctly:
 
-- all programs compiled and linked from these languages have a decent chance to run "out-of-the-box" on another, arbitrary ("basic") Linux machine, that is the target system, with maybe only some few, installations of basic components, or with the help of some static linking at the source system, sometimes as partly static linking (which is usually statically linking the language standard library):
+- all programs compiled and linked from these languages have a decent chance to run "out-of-the-box" on another, arbitrary ("basic") Linux machine, that is the target system, with maybe only some few, installations of basic components, or with the help of some static linking at the source system, sometimes as partly static linking:
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
