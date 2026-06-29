@@ -46,11 +46,11 @@ So far:
 
 ### On static linking and execution speed
 
-For the languages where source code is usually compiled to executables: I haven't actively built for **total** static linking, which usually makes faster executables, even if there's that possibility. So, programs from most languages for compilation are (fully) dynamically linked.
+For the languages where source code is usually compiled to executables: I haven't actively built for **total** static linking, which usually makes faster executables, even if there's that possibility. So, programs from most languages for compilation are fully dynamically linked by default.
 
 However, in some cases I applied partly static linking for better portability of the built executables:
 
-- D: statically linking the Phobos Runtime Library: [Static linking in D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#static-linking-in-d); still having some dynamic dependencies
+- D: statically linked the Phobos Runtime Library: [Static linking in D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#static-linking-in-d); still having some dynamic dependencies
 
 <br/>
 
