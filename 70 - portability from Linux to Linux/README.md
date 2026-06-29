@@ -8,7 +8,7 @@ Here's a list of programming languages where standalone executables can be compi
 
 You can have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
 
-programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported? | lower exe speed in average 
+programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
 Ada (GNAT) | yes | yes
 C | yes | yes
@@ -16,7 +16,7 @@ C++ | yes | yes
 C3 | yes | yes
 Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
-Crystal | yes | yes | yes; building switch _--static_ | -12%
+Crystal | yes | yes | yes; switch _--static_ | -12%
 Curry (KiCS2) | yes | yes
 Eiffel (Liberty) | yes | yes
 Fortran | yes | yes
@@ -29,6 +29,7 @@ Odin | yes | yes
 Roc | no | "statically linked"
 Rust | yes | yes
 Standard ML (MLton) | yes | yes
+Swift | yes, and which usually blocks portability | yes, and always | static linking only for stdlib with switch _--static-swift-stdlib_; supports good portability | -10%
 V | yes | yes
 Zig | no | "not a dynamic executable"
 
@@ -109,7 +110,6 @@ Scala (only the "speed part" tested) | yes | yes
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#installation-tips), which needs at least one shared library being installed
 - [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#swi-prolog), which needs at least one shared library being installed
 - [Scheme dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/README.md#size-of-executables): the Bigloo and CHICKEN executables need shared libraries being installed; the Racket executable needs Racket being installed
-- [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#installation-tips), which needs at least one shared library being installed
 - while a Clozure Common Lisp ([CCL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ccl)) executable is also portable, same like a Steel Bank Common Lisp [SBCL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#sbcl) executable, an Embeddable Common Lisp [ECL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp#ecl) executable is not, because it needs to have access to at least one shared library
 
 <br/>
