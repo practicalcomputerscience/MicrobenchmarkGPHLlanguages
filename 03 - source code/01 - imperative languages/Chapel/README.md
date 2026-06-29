@@ -200,6 +200,10 @@ chpl random_streams_for_perf_stats.chpl --fast
 
 This switch is essential for a faster program, at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail.
 
+Though, the  _--fast_ shows a profound downside: it doesn't allow for a portable and working executable on a different target system. Such an executable is crashing there: _Illegal instruction (core dumped)_
+
+Compiling, and dynamically linking, without the _--fast_ switch, like this for example: _$ chpl random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_non-fast_, allows for good portability, but built an executable, with the Chapel compiler version 2.8 built from sources (see above), with an execution time which is more than double!
+
 <br/>
 
 A statically linked binary should be possible with switch _--static_ after substantial system modifications, which I won't implement.
