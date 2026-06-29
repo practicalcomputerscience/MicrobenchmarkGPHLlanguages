@@ -11,7 +11,7 @@ This has already happened massively when I corrected a **logical error** in most
 
 programming language | versions | Bash command to retrieve versions
 --- | --- | ---
-Ada | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
+Ada (GNAT) | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
 AssemblyScript | Version 0.28.17 | $ asc --version
 Ballerina | Ballerina 2201.13.3 (Swan Lake Update 13), Language specification 2024R1, Update Tool 1.5.1; openjdk 21.0.10 2026-01-20, ... | $ bal version; java --version  # Ballerina wants JRE version 21 as of 2026-05!
 C | Homebrew clang version 22.1.5 | $ clang -v
