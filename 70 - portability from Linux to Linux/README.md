@@ -1,14 +1,12 @@
-2025-11-05: TBD: finally, re-check this portability list on a fresh Vanilla OS installation (for example), the target system, with a **very different, but "modern" Linux kernel version** than the testing system (that is _6.14.0-37-generic #37~24.04.1-Ubuntu_ as of 2026-02-07)
-
-<br/>
-
 # Portability of programs
-
-Here's a list of programming languages where standalone executables can be compiled by default that **may** run **without any extra installations** on another, arbitrary ("basic") Linux machine.
 
 You can have a view on the dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required on the target Linux system: _$ ldd \<executable file name\>_
 
+"Required" sometimes only means: nice to have that shared library available on the target Linux system, but my microbenchmark program may run correctly anyway.
+
 <br/>
+
+Read this language list correctly: all programs compiled and linked from these languages have a decent chance to run "out-of-the-box" on another, arbitrary ("basic") Linux machine, that is the target system, **without too many extra installations**:
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
@@ -98,7 +96,7 @@ Scala (only the "speed part" tested) | yes | yes
 
 <br/>
 
-## Other omissions from above list
+## Other omissions from the top list
 
 - Chapel is a difficult case: [On compiler switches, portability and linking in Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#on-compiler-switches-portability-and-linking-in-chapel)
 - [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol), here GnuCOBOL, which needs at least one language specific shared library being installed, that is _libcob.so.4_, and then some more shared libraries
