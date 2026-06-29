@@ -2,7 +2,7 @@
 #
 # 2025-06-02; 2025-12-17
 #
-# build on Ubuntu 24 LTS: $ crystal random_streams_for_perf_stats_cr.cr --release
+# build on Ubuntu 24 LTS: $ crystal build random_streams_for_perf_stats_cr.cr --release
 #
 # run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./random_streams_for_perf_stats_cr
 #
