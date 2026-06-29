@@ -44,7 +44,7 @@ You have the choice of three compilers (in Linux and architectures i386, amd64):
 
 - DMD ("Digital Mars D compiler"): Official reference compiler
 - GDC: GCC-based D compiler
-- LDC: LLVM-based D compiler
+- LDC: LLVM-based D compiler: https://github.com/ldc-developers/ldc
 
 On "Which compiler should I use?" this answer is given: "For beginners, DMD is the recommended choice, as it is the implementation closest to the D Language Specification." from: https://wiki.dlang.org/Compilers
 
@@ -64,6 +64,26 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 ...
 $
 ```
+
+On 2026-06-29, I noticed that the ldc2 compiler can build a faster executable than the gdc compiler, even without using its _--static_ switch for total static linking (which isn't working in my system without substantial modifications, which I won't implement):
+
+```
+$ sudo apt install ldc
+...
+$ ldc2 ./random_streams_for_perf_stats.d -of=random_streams_for_perf_stats_ldc2 --O3
+$ multitime -n 10 ./random_streams_for_perf_stats_ldc2
+...
+===> multitime results
+1: ./random_streams_for_perf_stats_ldc2
+            Mean        Std.Dev.    Min         Median      Max
+real        0.023       0.000       0.023       0.023       0.024       
+...
+$
+```
+
+23 milliseconds is even better than a version built with command: _$ gdc -O3 -static-libphobos random_streams_for_perf_stats.d -o random_streams_for_perf_stats_gdc_stat_, which tallies 28 milliseconds.
+
+So, from now on, I officially support the ldc2 built version of programs [random_streams_for_perf_stats.d](./random_streams_for_perf_stats.d) and [random_bitstring_and_flexible_password_generator.d](./random_bitstring_and_flexible_password_generator.d).
 
 <br/>
 
@@ -117,7 +137,7 @@ Using the appender is also a little bit less verbose than range copying, since n
 
 ### Static linking in D
 
-D's [Phobos Runtime Library](https://dlang.org/phobos/) can be linked statically like this for example: 
+When using GDC, D's [Phobos Runtime Library](https://dlang.org/phobos/) can be linked statically like this for example: 
 
 ```
 $ gdc -O3 -static-libphobos random_streams_for_perf_stats.d -o random_streams_for_perf_stats_gdc_stat
@@ -159,6 +179,8 @@ $ ldd ./random_streams_for_perf_stats_gdc_stat
 	/lib64/ld-linux-x86-64.so.2 (0x00007fd2b1831000)
 $
 ```
+
+The ldc2 compiler even offers the _--static_ switch (see also above).
 
 <br/>
 
