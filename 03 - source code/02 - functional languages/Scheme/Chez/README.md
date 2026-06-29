@@ -102,9 +102,9 @@ Notes:
 ## Making a standalone executable
 
 > [!WARNING]
-> The following procedure is not working in my standard test system, but in a freshly installed Ubuntu 24 LTS system.
+> The following procedure is not working in my standard testing system, but in a freshly installed Ubuntu 24 LTS system.
 
-In my standard Ubuntu 24 LTS system (with lots of tinkering) I get these kind of errors when running the compiled executable:
+In my standard Ubuntu 24 LTS system, with many language installations, I get this error when running the compiled executable:
 
 ```
 $ ./random_streams_for_perf_stats
