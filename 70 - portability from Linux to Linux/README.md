@@ -16,7 +16,7 @@ C++ | yes, but with good portability | yes | complicated, but possible theoretic
 C3 | yes, but with good portability | yes
 Chez Scheme (only the "speed part" tested) | yes, but with good portability when a working standalone executable can be built on the source system | yes
 Common Lisp (SBCL) | yes, but with good portability | yes
-Crystal | yes | yes | yes, with switch _--static_ | -12%
+Crystal | yes, but with good portability | yes | yes, with switch _--static_ | -12%
 Curry (KiCS2) | yes, but with good portability | yes
 D | yes | yes | GDC: yes; LDC2: yes; using gdc switch _-static-libphobos_ to get rid off dependency on _libgphobos.so.4_ | -15% with _-static-libphobos_
 Eiffel (Liberty) | yes, but with good portability | yes
