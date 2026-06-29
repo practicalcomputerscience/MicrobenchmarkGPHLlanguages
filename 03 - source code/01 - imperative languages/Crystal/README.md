@@ -28,7 +28,7 @@ bits_x   = IO::Memory.new  # https://crystal-lang.org/reference/1.16/guides/perf
 
 With rare exceptions, compiling source code makes executables (in Linux), which are dynamically linked by default, which means that these executables depend on other libraries during runtime, often in a different Linux system, often only in their right versions: [Portability of programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/70%20-%20portability%20from%20Linux%20to%20Linux#portability-of-programs)
 
-Crystal explicitly allows [Static Linking](https://crystal-lang.org/reference/1.20/guides/static_linking.html#static-linking).
+Crystal also supports [Static Linking](https://crystal-lang.org/reference/1.20/guides/static_linking.html#static-linking).
 
 First, let's check the (usual) dynamic dependencies:
 
@@ -42,7 +42,7 @@ $ ldd ./random_streams_for_perf_stats_cr
 $
 ```
 
-Now, let's build statically: 
+Now, let's build for static linking: 
 
 ```
 $ crystal build --release --static random_streams_for_perf_stats_cr.cr -o random_streams_for_perf_stats_cr_stat
@@ -62,8 +62,6 @@ Execution speed of executables with command: _$ sudo perf stat -r 20 ./random_st
 - random_streams_for_perf_stats_cr_stat: _0.007466 +- 0.000159 seconds time elapsed  ( +-  2.13% )_, that's more than -12% 
 
 These results are typical for static linking from my point of view: bigger executable sizes, but lower execution speeds and lower variance of execution speeds in average.
-
-See at Dylan about the obvious effect of numerous dynamic dependencies on execution speed: [Execution speed in the land of Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#execution-speed-in-the-land-of-dylan)
 
 <br/>
 
