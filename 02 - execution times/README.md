@@ -7,7 +7,7 @@
 Table of contents:
 
 - [Master diagram with most program environments](#master-diagram-with-most-program-environments)
-- [On static linking and execution speed](#tbd)
+- [On static linking and execution speed](#on-static-linking-and-execution-speed)
 - [Java native languages Scala, Kotlin, Clojure and Ballerina and their speedup with the GraalVM](#java-native-languages-scala-kotlin-clojure-and-ballerina-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
 - [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
