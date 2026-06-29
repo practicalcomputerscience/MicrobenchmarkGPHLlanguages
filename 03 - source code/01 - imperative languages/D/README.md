@@ -11,7 +11,7 @@ DUB, the D package registry: https://code.dlang.org/
 Table of contents:
 
 - [Idea of D](#idea-of-d)
-- [Installing the GDC (GCC-based D compiler)](#installing-the-gdc-gcc-based-d-compiler)
+- [Installing the GDC (GCC-based) and LDC (LLVM-based) compilers](#installing-the-gdc-gcc-based-d-compiler)
 - [Garbage collection](#garbage-collection)
 - [On how to do demanding string building in D](#on-how-to-do-demanding-string-building-in-d)
 - [Static linking in D](#static-linking-in-d)
@@ -38,7 +38,7 @@ However, one could argue that something similar to Java and its contenders happe
 
 <br/>
 
-## Installing the GDC (GCC-based D compiler)
+## Installing the GDC (GCC-based) and LDC (LLVM-based) compilers
 
 You have the choice of three compilers (in Linux and architectures i386, amd64):
 
