@@ -28,7 +28,7 @@ Go | no | "not a dynamic executable"
 Inko | yes | yes
 Nim | yes | yes
 OCaml | yes | yes
-Odin | yes | yes
+Odin | yes, but with good portability | yes
 Roc | no | "statically linked"
 Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times lower exe speed with switch _--target=x86_64-unknown-linux-musl_!
 Standard ML (MLton) | yes | yes
