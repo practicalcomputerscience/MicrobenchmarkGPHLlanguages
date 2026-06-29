@@ -11,7 +11,7 @@ DUB, the D package registry: https://code.dlang.org/
 Table of contents:
 
 - [Idea of D](#idea-of-d)
-- [Installing the GDC (GCC-based) and LDC (LLVM-based) compilers](#installing-the-gdc-gcc-based-d-compiler)
+- [Installing the GDC (GCC-based) and LDC (LLVM-based) compilers](#installing-the-gdc-gcc-based-and-ldc-llvm-based-compilers)
 - [Garbage collection](#garbage-collection)
 - [On how to do demanding string building in D](#on-how-to-do-demanding-string-building-in-d)
 - [Static linking in D](#static-linking-in-d)
@@ -64,6 +64,8 @@ Copyright (C) 2023 Free Software Foundation, Inc.
 ...
 $
 ```
+
+<br/>
 
 On 2026-06-29, I noticed that the ldc2 compiler can build a faster executable than the gdc compiler, even without using its _--static_ switch for total static linking (which isn't working in my system without substantial modifications, which I won't implement):
 
