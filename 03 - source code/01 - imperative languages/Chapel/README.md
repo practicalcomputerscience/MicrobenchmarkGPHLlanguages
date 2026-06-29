@@ -202,4 +202,8 @@ This switch is essential for a faster program, at least with this microbenchmark
 
 <br/>
 
+A statically linked binary should be possible with switch _--static_ after substantial system modifications, which I won't implement.
+
+<br/>
+
 ##_end
