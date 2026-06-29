@@ -24,7 +24,7 @@ D | yes | yes | GDC: yes; LDC2: yes; using gdc switch _-static-libphobos_ to get
 Eiffel (Liberty) | yes tbd | yes
 Fortran | yes tbd | yes
 FreeBASIC | yes, but with good portability when _libtinfo5_ for terminal interface functions is installed on target system | yes | yes, with switch _-static_ | no measurable execution speed difference between dynamic and static linking in my microbenchmark program
-Gambit Scheme (only the "speed part" tested) | yes tbd | yes
+Gambit Scheme (only the "speed part" tested) | yes, but with good portability | yes
 Go | no | "not a dynamic executable"
 Inko | yes, but with good portability | yes
 Nim | yes, but with good portability | yes
