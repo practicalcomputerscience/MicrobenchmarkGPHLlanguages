@@ -193,7 +193,7 @@ $ ldd _build/bin/random-streams-for-perf-stats
 $
 ```
 
-And here's Crystal's output:
+And here's Crystal's output (with "conservative" building for dynamic linking):
 
 ```
 $ ldd ./random_streams_for_perf_stats_cr
