@@ -8,7 +8,7 @@ Here's a list of programming languages where standalone executables can be compi
 
 You can have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
 
-programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command)
+programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported?
 -- | -- | --
 Ada (GNAT) | yes | yes
 C | yes | yes
@@ -16,7 +16,7 @@ C++ | yes | yes
 C3 | yes | yes
 Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
-Crystal | yes | yes
+Crystal | yes | yes | yes, with building switch _--static_
 Curry (KiCS2) | yes | yes
 Eiffel (Liberty) | yes | yes
 Fortran | yes | yes
@@ -68,6 +68,8 @@ $
 <br/>
 
 As of 2026-02-07, I haven't taken extra efforts to compile into statically linked executables where potentially possible. So, above table is a "default compilation" table.
+
+As of 2026-06-29, I noticed the static linking possibility at [Crystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#crystal).
 
 <br/>
 
