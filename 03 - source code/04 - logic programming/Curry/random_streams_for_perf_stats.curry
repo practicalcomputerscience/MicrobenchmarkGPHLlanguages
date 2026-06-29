@@ -167,14 +167,14 @@ main = do
     case det_bitsXStr of
       Just s  -> catch (do writeFile fileBitsX s
                            putStrLn ("Bit stream has been written to disk under name:  " ++ fileBitsX))  -- 2026-06-29
-                 (\err -> putStrLn ("could not write to file: " ++ show fileBitsX ++ " ! -- " ++ show err))
-      Nothing -> error ("could not write to file: " ++ show fileBitsX)
+                 (\err -> putStrLn ("could not write to file: " ++ fileBitsX ++ " ! -- " ++ show err))  -- 2026-06-29
+      Nothing -> error ("could not write to file: " ++ fileBitsX)  -- 2026-06-29
 
     -- write byte stream to disk:
     case det_bitsHexStr of
       Just s  -> catch (do writeFile fileBitsHex s
                            putStrLn ("Byte stream has been written to disk under name: " ++ fileBitsHex))  -- 2026-06-29
-                 (\err -> putStrLn ("could not write to file: " ++ show fileBitsHex ++ " ! -- " ++ show err))
-      Nothing -> error ("could not write to file: " ++ show fileBitsHex)
+                 (\err -> putStrLn ("could not write to file: " ++ fileBitsHex ++ " ! -- " ++ show err))  -- 2026-06-29
+      Nothing -> error ("could not write to file: " ++ fileBitsHex)  -- 2026-06-29
 
 -- end of random_streams_for_perf_stats.curry
