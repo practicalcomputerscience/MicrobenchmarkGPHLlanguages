@@ -6,7 +6,9 @@
 
 Here's a list of programming languages where standalone executables can be compiled by default that **may** run **without any extra installations** on another, arbitrary ("basic") Linux machine.
 
-You can have a view into the potantial dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required: _$ ldd \<executable file name\>_:
+You can have a view on the dependencies of a Linux executable with the [ldd](https://www.man7.org/linux/man-pages/man1/ldd.1.html) command to see what shared objects, that are shared libraries, including virtual ones, are required on the target Linux system: _$ ldd \<executable file name\>_
+
+<br/>
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
@@ -70,7 +72,7 @@ $
 
 As of 2026-02-07, I haven't taken extra efforts to compile to statically linked executables where potentially possible. So, above table is a "default building" table, which usually means building for dynamic linking.
 
-As of 2026-06-29, I noticed the static linking is possible at [Static linking in Crystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#static-linking-in-crystal).
+As of 2026-06-29, I noticed that complete static linking is possible at [Crystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#static-linking-in-crystal) and partly at [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#static-linking-in-swift).
 
 <br/>
 
