@@ -13,8 +13,8 @@ You can have a view on the dependencies of a Linux executable with the [ldd](htt
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
 Ada (GNAT) | yes | yes
-C | yes | yes
-C++ | yes | yes
+C | yes, but with good portability | yes | complicated, but possible theoretically
+C++ | yes, but with good portability | yes | complicated, but possible theoretically
 C3 | yes | yes
 Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
@@ -30,7 +30,7 @@ Nim | yes | yes
 OCaml | yes | yes
 Odin | yes | yes
 Roc | no | "statically linked"
-Rust | yes | yes
+Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times lower exe speed with switch _--target=x86_64-unknown-linux-musl_!
 Standard ML (MLton) | yes | yes
 Swift | yes, and which usually blocks portability | yes, and always | static linking only for stdlib with switch _--static-swift-stdlib_; supports good portability | -10%
 V | yes | yes
