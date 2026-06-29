@@ -188,7 +188,7 @@ The results of this list have been manually counted:
 
 programming language | number of user-defined functions
 --- | ---
-Ada                | 2
+Ada (GNAT)         | 2
 AssemblyScript     | 5
 Ballerina          | 2
 C                  | 0
