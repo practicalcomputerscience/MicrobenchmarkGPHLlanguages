@@ -18,11 +18,12 @@ C++ | yes, but with good portability | yes | complicated, but possible theoretic
 C3 | yes, but with good portability | yes
 Chez Scheme (only the "speed part" tested) | yes, but with good portability when a working standalone executable can be built on the source system | yes
 Common Lisp (SBCL) | yes, but with good portability | yes
-Crystal | yes | yes | yes; switch _--static_ | -12%
+Crystal | yes | yes | yes, with switch _--static_ | -12%
 Curry (KiCS2) | yes, but with good portability | yes
 D | yes | yes | GDC: yes; LDC2: yes; using gdc switch _-static-libphobos_ to get rid off dependency on _libgphobos.so.4_ | -15% with _-static-libphobos_
 Eiffel (Liberty) | yes tbd | yes
 Fortran | yes tbd | yes
+FreeBASIC | yes, but with good portability when _libtinfo5_ for terminal interface functions is installed on target system | yes | yes, with switch _-static_ | no measurable execution speed difference between dynamic and static linking in my microbenchmark program
 Gambit Scheme (only the "speed part" tested) | yes tbd | yes
 Go | no | "not a dynamic executable"
 Inko | yes, but with good portability | yes
@@ -30,7 +31,7 @@ Nim | yes, but with good portability | yes
 OCaml | yes, but with good portability | yes
 Odin | yes, but with good portability | yes
 Roc | no | "statically linked"
-Rust | yes, but with good portability | yes | yes, building with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times higher exe speed with switch _--target=x86_64-unknown-linux-musl_ !
+Rust | yes, but with good portability | yes | yes, with switch _--target=x86_64-unknown-linux-musl_ | Expect 3 to 4 times higher exe speed with switch _--target=x86_64-unknown-linux-musl_ !
 Standard ML (MLton) | yes, but with good portability | yes
 Swift | yes, and which usually blocks portability | yes, and always | static linking only for stdlib with switch _--static-swift-stdlib_; supports good portability | -10%
 V | yes, but with good portability | yes
@@ -109,7 +110,6 @@ Scala (only the "speed part" tested) | yes | yes
 - [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol), here GnuCOBOL, which needs at least one shared library being installed (that is _libcob.so.4_)
 - Dart, which isn't so easily portable to another, "foreign" Linux system; see at [Standalone (or self-contained) executable (which may not be portable so easily)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
 - [Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#dylan), here Open Dylan, where a compiled application depends on numerous application specific and Open Dylan specific shared libraries: [Porting a simple Dylan application](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#porting-a-simple-dylan-application)
-- [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs at least one shared library being installed for perfect execution (though the program probably will work)
 - [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming#mercury): shared libraries: _libmer_std.so, libmer_rt.so, libgc.so_ - and what else? - are needed on the target system. I think its easier to install Mercury on the target system to have all needed libraries available before copying them one by one from source system to target system
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#installation-tips), which needs at least one shared library being installed
 - [SWI Prolog](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#swi-prolog), which needs at least one shared library being installed
