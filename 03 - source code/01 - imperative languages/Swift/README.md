@@ -80,9 +80,8 @@ $ multitime -n 10 ./stat_linking/x86_64-unknown-linux-gnu/release/random_streams
 ===> multitime results
 1: ./stat_linking/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
             Mean        Std.Dev.    Min         Median      Max
-real        0.028       0.004       0.026       0.026       0.040       
-user        0.020       0.001       0.018       0.019       0.022       
-sys         0.002       0.001       0.000       0.002       0.003       
+real        0.028       0.004       0.026       0.026       0.040
+...
 $
 ```
 
@@ -94,9 +93,8 @@ $ multitime -n 10 ./.build/x86_64-unknown-linux-gnu/release/random_streams_for_p
 ===> multitime results
 1: ./.build/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
             Mean        Std.Dev.    Min         Median      Max
-real        0.031       0.001       0.030       0.031       0.034       
-user        0.021       0.001       0.018       0.022       0.023       
-sys         0.004       0.001       0.002       0.004       0.007       
+real        0.031       0.001       0.030       0.031       0.034
+...
 $
 ```
 
