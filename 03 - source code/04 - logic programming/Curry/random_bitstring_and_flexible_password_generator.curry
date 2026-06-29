@@ -5,6 +5,7 @@ is actually file ./random_bitstring_and_flexible_password_generator/src/Main.cur
 a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 
 2026-06-21/22
+2026-06-29: ++ show fileBitsX --> ++ fileBitsX to not show "..." around file names anymore
 
 build on Ubuntu 24 LTS: do this only once:
                         use the CPM (Curry Package Manager) for this project:

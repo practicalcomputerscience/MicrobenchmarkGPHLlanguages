@@ -4,6 +4,7 @@ random_streams_for_perf_stats.curry is actually file ./random_streams_for_perf_s
 a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 
 2026-06-20/21/22
+2026-06-29: ++ show fileBitsX --> ++ fileBitsX to not show "..." around file names anymore
 
 build on Ubuntu 24 LTS: do this only once:
                         use the CPM (Curry Package Manager) for this project:
@@ -165,14 +166,14 @@ main = do
     -- write bit stream to disk:
     case det_bitsXStr of
       Just s  -> catch (do writeFile fileBitsX s
-                           putStrLn ("Bit stream has been written to disk under name:  " ++ show fileBitsX))
+                           putStrLn ("Bit stream has been written to disk under name:  " ++ fileBitsX))  -- 2026-06-29
                  (\err -> putStrLn ("could not write to file: " ++ show fileBitsX ++ " ! -- " ++ show err))
       Nothing -> error ("could not write to file: " ++ show fileBitsX)
 
     -- write byte stream to disk:
     case det_bitsHexStr of
       Just s  -> catch (do writeFile fileBitsHex s
-                           putStrLn ("Byte stream has been written to disk under name: " ++ show fileBitsHex))
+                           putStrLn ("Byte stream has been written to disk under name: " ++ fileBitsHex))  -- 2026-06-29
                  (\err -> putStrLn ("could not write to file: " ++ show fileBitsHex ++ " ! -- " ++ show err))
       Nothing -> error ("could not write to file: " ++ show fileBitsHex)
 
