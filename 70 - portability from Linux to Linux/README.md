@@ -16,7 +16,7 @@ Ada (GNAT), but with good portability | yes | yes
 C | yes, but with good portability | yes | complicated, but possible theoretically
 C++ | yes, but with good portability | yes | complicated, but possible theoretically
 C3 | yes, but with good portability | yes
-Chez Scheme (only the "speed part" tested) | yes tbd | yes
+Chez Scheme (only the "speed part" tested) | yes, but with good portability when a working standalone executable can be built on the source system | yes
 Common Lisp (SBCL) | yes tbd | yes
 Crystal | yes | yes | yes; switch _--static_ | -12%
 Curry (KiCS2) | yes tbd | yes
