@@ -10,7 +10,7 @@ Read this language list correctly: all programs compiled and linked from these l
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command) | static linking supported when building? | lower execution speed in average
 -- | -- | -- | -- | --
-Ada (GNAT), but with good portability | yes | yes
+Ada (GNAT) | yes, but with good portability | yes
 C | yes, but with good portability | yes | complicated, but possible theoretically
 C++ | yes, but with good portability | yes | complicated, but possible theoretically
 C3 | yes, but with good portability | yes
