@@ -7,6 +7,7 @@
 Table of contents:
 
 - [Master diagram with most program environments](#master-diagram-with-most-program-environments)
+- [On static linking and execution speed](#tbd)
 - [Java native languages Scala, Kotlin, Clojure and Ballerina and their speedup with the GraalVM](#java-native-languages-scala-kotlin-clojure-and-ballerina-and-their-speedup-with-the-graalvm)
 - [Tested Scheme dialects](#tested-scheme-dialects)
 - [Programming languages for virtual machines](#programming-languages-for-virtual-machines)
@@ -43,7 +44,13 @@ So far:
 
 <br/>
 
-For the languages where source code is usually compiled to executables: I haven't actively built for static linking, which usually makes faster executables, even if there's that possibility. So, programs from most languages for compilation are dynamically linked.
+### On static linking and execution speed
+
+For the languages where source code is usually compiled to executables: I haven't actively built for **total** static linking, which usually makes faster executables, even if there's that possibility. So, programs from most languages for compilation are (fully) dynamically linked.
+
+However, in some cases I applied partly static linking for better portability of the built executables:
+
+- D: statically linking the Phobos Runtime Library: [Static linking in D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#static-linking-in-d); still having some dynamic dependencies
 
 <br/>
 
