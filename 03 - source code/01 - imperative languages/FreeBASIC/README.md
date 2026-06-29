@@ -11,6 +11,7 @@ Table of contents:
 - [Other functionalities of FreeBASIC](#other-functionalities-of-freebasic)
 - [Other BASIC dialects](other-basic-dialects)
 - [Regular Expressions in FreeBASIC](#regular-expressions-in-freebasic)
+- [](#)
 
 <br/>
 
@@ -52,7 +53,7 @@ I'm happy with the fast execution speed of this program and thus didn't start to
 
 Make sure that _**libtinfo5**_ is installed in your Linux system to make FreeBASIC working: https://askubuntu.com/questions/1531760/how-to-install-libtinfo5-on-ubuntu24-04
 
-This means that the compiled program depends on this **shared library** at least, being installed on the target machine. Install it like this for example if it's missing yet:
+This means that the dynamically linked program depends also on that **shared library**, also being installed on the target machine. Install it like this for example if it's missing yet:
 
 ```
 sudo dpkg -i ./libtinfo5_6.3-2ubuntu0.1_amd64.deb
@@ -155,6 +156,40 @@ Here's the full program: [random_bitstring_and_flexible_password_generator_regex
 So, I decided to keep the original and slim solution based on a simple _instr(char_set, char0)_ function as my official solution.
 
 The solution with regular expressions needs 7 more lines of source code.
+
+<br/>
+
+#### Static linking in FreeBASIC
+
+Static linking in FreeBASIC:
+
+```
+$ fbc -static ./random_streams_for_perf_stats.bas
+$ mv ./random_streams_for_perf_stats ./random_streams_for_perf_stats_stat
+$ ldd ./random_streams_for_perf_stats_stat
+	not a dynamic executable
+$
+```
+
+..leads to no measurable execution speed advantage over normal dynamic linking according to my measurements:
+
+```
+$ fbc ./random_streams_for_perf_stats.bas
+$ mv ./random_streams_for_perf_stats ./random_streams_for_perf_stats_dyn
+$ ldd ./random_streams_for_perf_stats_dyn
+	linux-vdso.so.1 (0x00007ba9302c4000)
+	libtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007ba930271000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ba930188000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ba92fe00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007ba9302c6000)
+$
+```
+
+At least not at the "speed part" of the microbenchmark program.
+
+FreeBASIC anyway features a relative high variance in its executions times of a program.
+
+The size of the statically linked program however is over 21 times bigger than the size of the dynamically linked program: 1,244,456 bytes versus 57,768 bytes!
 
 <br/>
 
