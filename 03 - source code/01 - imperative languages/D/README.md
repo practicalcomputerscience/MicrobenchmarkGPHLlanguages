@@ -14,6 +14,7 @@ Table of contents:
 - [Installing the GDC (GCC-based D compiler)](#installing-the-gdc-gcc-based-d-compiler)
 - [Garbage collection](#garbage-collection)
 - [On how to do demanding string building in D](#on-how-to-do-demanding-string-building-in-d)
+- [Static linking in D](#tbd)
 - [Why is D still not very popular?](#why-is-d-still-not-very-popular)
 
 <br/>
@@ -111,6 +112,53 @@ Using D's string builder ("appender") tallies a slightly lower execution time th
 Both tactics are anyway not far away from simple string concatenation with the _~=_ operator with 36.0 milliseconds (mean; running _$ sudo perf stat -r 20 ..._).
 
 Using the appender is also a little bit less verbose than range copying, since no position counter is needed. So, using the appender is my official solution here.
+
+<br/>
+
+### Static linking in D
+
+D's [Phobos Runtime Library](https://dlang.org/phobos/) can be linked statically like this for example: 
+
+```
+$ gdc -O3 -static-libphobos random_streams_for_perf_stats.d -o random_streams_for_perf_stats_gdc_stat
+```
+
+It makes a -15% faster executable:
+
+```
+$ multitime -n 10 ./random_streams_for_perf_stats_gdc_stat
+...
+===> multitime results
+1: ./random_streams_for_perf_stats_gdc_stat
+            Mean        Std.Dev.    Min         Median      Max
+real        0.028       0.000       0.028       0.028       0.029
+...
+$
+```
+
+..compared to the version with the usual dynamic linking:
+
+```
+$ multitime -n 10 ./random_streams_for_perf_stats_gdc
+...
+===> multitime results
+1: ./random_streams_for_perf_stats_gdc
+            Mean        Std.Dev.    Min         Median      Max
+real        0.033       0.001       0.032       0.033       0.034       
+...
+$
+```
+
+Though, also with a statically linked Phobos Runtime Library some dynamic dependencies remain:
+
+```
+$ ldd ./random_streams_for_perf_stats_gdc_stat
+	linux-vdso.so.1 (0x00007fd2b182f000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fd2b17e2000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd2b1000000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fd2b1831000)
+$
+```
 
 <br/>
 
