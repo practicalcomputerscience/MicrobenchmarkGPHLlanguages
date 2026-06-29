@@ -53,4 +53,53 @@ for i in 1..<END {
 
 <br/>
 
+### Static linking in Swift
+
+Static linking with bulding into another subdirectory can be done like this for example: _$ swift build -c release --build-path ./stat_linking --static-swift-stdlib_.
+
+Switch _--static-swift-stdlib_ only links the Swift Standard Library statically! So, the ldd command will still show some external dependencies:
+
+```
+$ ldd ./stat_linking/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
+	linux-vdso.so.1 (0x0000775bce2f9000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000775bcd517000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000775bcd200000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000775bce2ac000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000775bcce00000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000775bce2fb000)
+$
+```
+
+Though, their number is drastically reduced (from 20 down to 6).
+
+"Statically linking" builds a program with about -10% less execution time (at 32°C ambient temperature as of 2026-06-29!):
+
+```
+$ multitime -n 10 ./stat_linking/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
+...
+===> multitime results
+1: ./stat_linking/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
+            Mean        Std.Dev.    Min         Median      Max
+real        0.028       0.004       0.026       0.026       0.040       
+user        0.020       0.001       0.018       0.019       0.022       
+sys         0.002       0.001       0.000       0.002       0.003       
+$
+```
+
+..compared to default switch _--no-static-swift-stdlib_:
+
+```
+$ multitime -n 10 ./.build/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats 
+...
+===> multitime results
+1: ./.build/x86_64-unknown-linux-gnu/release/random_streams_for_perf_stats
+            Mean        Std.Dev.    Min         Median      Max
+real        0.031       0.001       0.030       0.031       0.034       
+user        0.021       0.001       0.018       0.022       0.023       
+sys         0.004       0.001       0.002       0.004       0.007       
+$
+```
+
+<br/>
+
 ##_end
