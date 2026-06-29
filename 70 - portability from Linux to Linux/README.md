@@ -20,6 +20,7 @@ Chez Scheme (only the "speed part" tested) | yes | yes
 Common Lisp (SBCL) | yes | yes
 Crystal | yes | yes | yes; switch _--static_ | -12%
 Curry (KiCS2) | yes | yes
+D | yes | yes | GDC: yes; LDC2: yes; using gdc switch _-static-libphobos_ to get rid off dependency on _libgphobos.so.4_ | -15% with _-static-libphobos_
 Eiffel (Liberty) | yes | yes
 Fortran | yes | yes
 Gambit Scheme (only the "speed part" tested) | yes | yes
@@ -72,7 +73,7 @@ $
 
 As of 2026-02-07, I haven't taken extra efforts to compile to statically linked executables where potentially possible. So, above table is a "default building" table, which usually means building for dynamic linking.
 
-As of 2026-06-29, I noticed that complete static linking is possible at [Crystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#static-linking-in-crystal) and partly at [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#static-linking-in-swift).
+As of 2026-06-29, I noticed that **practical** and complete static linking is possible at [Crystal](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Crystal#static-linking-in-crystal) and partly at [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#static-linking-in-swift).
 
 <br/>
 
@@ -104,7 +105,6 @@ Scala (only the "speed part" tested) | yes | yes
 
 - [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#installation-tips), which needs at least one shared library being installed
 - [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol), here GnuCOBOL, which needs at least one shared library being installed (that is _libcob.so.4_)
-- [D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d), which needs at least one shared library being installed (that is _libgphobos.so.4_)
 - Dart, which isn't so easily portable to another, "foreign" Linux system; see at [Standalone (or self-contained) executable (which may not be portable so easily)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dart#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
 - [Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#dylan), here Open Dylan, where a compiled application depends on numerous application specific and Open Dylan specific shared libraries: [Porting a simple Dylan application](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#porting-a-simple-dylan-application)
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC#installation-tips), which needs at least one shared library being installed for perfect execution (though the program probably will work)
