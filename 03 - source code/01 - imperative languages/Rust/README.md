@@ -42,6 +42,7 @@ Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
 
 real	0m0.046s
+...
 $
 ```
 
@@ -55,6 +56,7 @@ Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
 
 real	0m0.010s
+...
 $
 ```
 
