@@ -10,7 +10,7 @@ You can have a view into the potantial dependencies of a Linux executable with t
 
 programming language | dependencies on shared objects (shared libraries)? | dynamic executable? (ldd command)
 -- | -- | --
-Ada | yes | yes
+Ada (GNAT) | yes | yes
 C | yes | yes
 C++ | yes | yes
 C3 | yes | yes
