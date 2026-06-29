@@ -121,7 +121,7 @@ So, I started to experiment again to find potentially better tactics for efficie
 
 Here's a table with indicative execution times from only one run to just get an overview:
 
-test # | construct | compiler switches | exe time in milliseconds | comment
+test # | construct | gdc compiler switches | exe time in milliseconds | comment
 --- | --- | --- | --- | ---
 1 | _char[] bits_x; bits_x ~= bits_x_str;_ | _-O3_ | ~35 | simple string concatenation
 2 | _char[] bits_x; size_t pos_x; auto result_x = copy(bits_x_str, bits_x[pos_x .. $]); pos_x += 16; string bits_x_str_total = bits_x.idup;_ | _-O3_ | ~33 | using D's range copying: _std.algorithm.mutation : copy;_
