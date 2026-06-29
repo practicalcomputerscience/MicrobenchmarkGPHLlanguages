@@ -78,14 +78,28 @@ $ multitime -n 10 ./random_streams_for_perf_stats_ldc2
 ===> multitime results
 1: ./random_streams_for_perf_stats_ldc2
             Mean        Std.Dev.    Min         Median      Max
-real        0.023       0.000       0.023       0.023       0.024       
+real        0.023       0.000       0.023       0.023       0.024 
 ...
 $
 ```
 
 23 milliseconds is even better than a version built with command: _$ gdc -O3 -static-libphobos random_streams_for_perf_stats.d -o random_streams_for_perf_stats_gdc_stat_, which tallies 28 milliseconds.
 
-So, from now on, I officially support the ldc2 built version of programs [random_streams_for_perf_stats.d](./random_streams_for_perf_stats.d) and [random_bitstring_and_flexible_password_generator.d](./random_bitstring_and_flexible_password_generator.d).
+However, I will still stick to the **gdc built version** as my official version, because the ldc2 compiler makes an executable which has a portability problem on a different target system:
+
+```
+$ ldc2 ./random_streams_for_perf_stats.d -of=random_streams_for_perf_stats_ldc2 -O3  # building OK on the testing system
+$ ./random_bitstring_and_flexible_password_generator_ldc2  # executing on the different target system
+./random_bitstring_and_flexible_password_generator_ldc2: error while loading shared libraries: libphobos2-ldc-shared.so.106: cannot open shared object file: No such file or directory
+$ 
+```
+
+Using ldc2 switch _-link-defaultlib-shared=false_ is not working in my testing system, while this gdc command is working well:
+
+```
+$ gdc -O3 -static-libphobos random_streams_for_perf_stats.d -o random_streams_for_perf_stats_gdc  # building OK on the testing system
+$   # executing on the different target system
+```
 
 <br/>
 
