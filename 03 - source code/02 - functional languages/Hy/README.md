@@ -1,7 +1,3 @@
-2026-06-30: work in progress: tbd
-
-<br/>
-
 # Hy
 
 https://hylang.org/
