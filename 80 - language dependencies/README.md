@@ -47,6 +47,7 @@ Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#i
 Go | self-hosted since 2015; the Go compiler was originally written in C | [Installing Go from source](https://go.dev/doc/install/source)
 Groovy | Groovy’s main compiler, groovyc, is written in Groovy itself; the rest in Java; so, partly self-hosted | 
 Haxe | as a standard target on the "backend" nowadays, Haxe source code is compiled to bytecode for the HashLink virtual machine; this compiler has been implemented in OCaml | [Building Haxe from source](https://github.com/HaxeFoundation/haxe/blob/development/extra/BUILDING.md#building-haxe-from-source): "The Haxe compiler is written in OCaml, ..."
+Hy | Hy interpreter is implemented in Python | https://github.com/hylang/hy/tree/master/hy
 Inko | Rust for LLVM | [Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
 Java | compiler _javac_ from the OpenJDK is written in Java; Sun's HotSpot Java Virtual Machine has been originally written in C++, still the same with the OpenJDK nowadays | https://github.com/openjdk/jdk/tree/master/src/java.compiler; https://www.stroustrup.com/applications.html, https://github.com/openjdk/jdk/tree/master/src/hotspot/os/linux
 Julia | C and C++ for gcc or LLVM, plus flisp Scheme (is it this one? https://github.com/fjames86/flisp) | [Required Build Tools and External Libraries](https://github.com/JuliaLang/julia/blob/master/doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries) and [Design discussion and developer documentation](https://github.com/JuliaLang/julia/blob/master/JuliaSyntax/docs/src/design.md#design-discussion-and-developer-documentation)
@@ -67,7 +68,7 @@ Picat | C and C++ for gcc and g++, respectively | see _README_ from sources at p
 Pike | C | https://github.com/pikelang/Pike/tree/master/src
 PowerShell | C# is mainly used for the command-line interface _pwsh_ ("PowerShell Core" to run PowerShell scripts in Linux); see from here: https://openhub.net/p/powershell/analyses/latest/languages_summary | see also for example [Program.cs](https://github.com/PowerShell/PowerShell/blob/master/src/powershell/Program.cs)
 Prolog, SWI | C for gcc or clang | https://github.com/SWI-Prolog/swipl-devel
-Python | C for gcc or clang for CPython, which is the reference implementation for Python | see for example from [README.rst](https://github.com/python/cpython/blob/main/README.rst)
+Python | C for gcc or clang for CPython, which is the reference implementation of Python | see for example from [README.rst](https://github.com/python/cpython/blob/main/README.rst)
 Raku | Rakudo compiler: C for a C compiler, and a Perl 5 installation; bootstrapping also includes the help of NQP ("Not Quite Perl") files; multiplatform | [Build requirements (Installing from source)](https://github.com/rakudo/rakudo/blob/main/INSTALL.md#build-requirements-installing-from-source)
 Roc | Rust and later additionally Zig | [Building the new Roc compiler from source](https://github.com/roc-lang/roc/blob/main/BUILDING_FROM_SOURCE.md#building-the-new-roc-compiler-from-source)
 Ruby | C for gcc to implement the YARV (Yet Another Ruby VM) | [YARV: Yet Another RubyVM](http://www.atdot.net/yarv/oopsla2005eabstract-rc1.pdf) by its designer Koichi Sasada from 2005
