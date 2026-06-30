@@ -10,6 +10,8 @@ The official **Clojure Cheat Sheet**, which is practical for orientation in this
 
 An distinct feature of Clojure is that all data you create is **immutable**! So, you can only read it after creation. An idea here is to make **multi-threaded** code easier to write and maintain.
 
+You may also have a look at also Lisp-inspired language [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy), which is also dynamically typed, but created data stay mutable (except for tuples), and which is sitting on top of the Python ecosystem instead of the Java ecosystem. It's safe to assume that Hy was also inspired by Clojure. Anyhow, coding for Hy is significantly easier than coding for Clojure.
+
 ---
 
 Table of contents:
