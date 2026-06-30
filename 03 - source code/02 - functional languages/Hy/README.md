@@ -52,7 +52,7 @@ $
 
 Now back to step one with command: _$ pip3 install --user hy_
 
-If this command isn't installing the Hy interpreter in directory _$HOME/.local/bin_, then because this directory in an Ubuntu 24 system may be owned by the root user,
+If this command isn't installing the Hy interpreter in directory _$HOME/.local/bin_, then because this directory may be owned by the root user,
 something which has to be changed:
 
 ```
@@ -66,7 +66,7 @@ drwxr-xr-x 2 root   root        4096 Feb 18 01:26 uv
 $
 ```
 
-So, I changed ownership of this directory, while hoping not to break other things, like this:
+So, I changed ownership of this directory, while hoping not to break other things:
 
 ```
 $ sudo chown -R "$USER":"$USER" ~/.local/bin
@@ -85,7 +85,7 @@ Using cached funcparserlib-1.0.1-py2.py3-none-any.whl (17 kB)
 Installing collected packages: funcparserlib, hy
 Successfully installed funcparserlib-1.0.1 hy-1.3.0
 $ hy  # entering the Hy REPL as a test
-Hy 1.3.0 (Dogs Should Be Raw) using CPython(main) 3.12.3 on Linux
+Hy 1.3.0 (Dogs Should Be Raw) using CPython(main) 3.12.3 on Linux  # command hy uses Ubuntu's Python installation!
 => (quit)  # quit the Hy REPL
 $
 ```
