@@ -10,7 +10,7 @@ https://github.com/hylang/hy
 
 <br/>
 
-What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) aims to be for the Java Virtual Machine, Hy aims to be for Python.
+What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) aims to be for the Java Virtual Machine, Hy aims to be for Python. (*)
 
 <br/>
 
@@ -82,7 +82,50 @@ $
 
 <br/>
 
+### Program factorial.hy for terminal input and output
+
+Appraisal (*) makes hope that transpiling the [Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) into a Hy solution should work.
+
+But first make a little Hy program named _factorial.hy_, with some help from "Big AI", which tests input and output operations on the terminal, typical a critical thing with functional programming (side effects!):
+
+```
+(import sys)
+
+(defn factorial [n]
+  (if (= n 0)
+    1
+    (* n (factorial (- n 1)))))
+
+(while True
+  (try
+    (setv user_input (input "Enter an integer n >= 1: "))
+    (setv n (int user_input))
+
+    (if (< n 1)
+        (print "Call program with an integer number >= 1")
+        (do
+          (print (+ "factorial(" (str n) ") = " (str (factorial n))))
+          (break)))
+    (except [e Exception]
+      (print "Call program with an integer number >= 1"))))
+```
+
+Let's run _factorial.hy_:
+
+```
+$ hy factorial.hy
+Enter an integer n >= 1: 5
+factorial(5) = 120
+$ 
+```
+
+Works!
+
+<br/>
+
 tbd
+
+
 
 <br/>
 
