@@ -102,7 +102,7 @@ But first make a little Hy program named _factorial.hy_, with some help from "Bi
     (if (< n 1)
         (print "Call program with an integer number >= 1")
         (do
-          (print (+ "factorial(" (str n) ") = " (str (factorial n))))  ; CONCATENATED OUTPUT TO THE TERMINAL
+          (print "factorial(" (str n) ") = " (str (factorial n)))  ; CONCATENATED OUTPUT TO THE TERMINAL
           (break)))
     (except [e Exception]
       (print "Call program with an integer number >= 1"))))
