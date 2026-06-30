@@ -41,11 +41,11 @@ Unpacking hy (0.28.0-1) ...
 Setting up hy (0.28.0-1) ...
 update-alternatives: using /usr/bin/hy3 to provide /usr/bin/hy (hy) in auto mode
 Processing triggers for man-db (2.12.0-4build2) ...
-$ whereis hy
+$ whereis hy  # installation OK?
 hy: /usr/bin/hy /usr/share/man/man1/hy.1.gz
-$ hy
+$ hy  # just entering a little REPL test
 Hy 0.28.0 using CPython(main) 3.12.3 on Linux
-=> (quit)
+=> (quit)  # ..and exiting
 $ 
 ```
 
