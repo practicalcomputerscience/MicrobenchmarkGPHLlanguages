@@ -70,7 +70,7 @@
     (.write f bits_x))
   (print "Bit stream has been written to disk under name: " file_bits_x)
   (except [e Exception]
-    (print "could not write to file:" file_bits_x " ! -- " (str e))))
+    (print "could not write to file:" file_bits_x "! --" (str e))))
 
 
 ; write byte stream to disk:
@@ -79,6 +79,6 @@
     (.write f bits_hex))
   (print "Byte stream has been written to disk under name:" file_bits_hex)
   (except [e Exception]
-    (print "could not write to file:" file_bits_hex " ! -- " (str e))))
+    (print "could not write to file:" file_bits_hex "! --" (str e))))
 
 ; end of random_streams_for_perf_stats.hy
