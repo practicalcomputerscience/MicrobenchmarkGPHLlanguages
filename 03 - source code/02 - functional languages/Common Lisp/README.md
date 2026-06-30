@@ -11,6 +11,10 @@ https://lisp-lang.org/
 
 Overview of modern Lisp implementations: https://lisp-lang.org/wiki/article/implementations
 
+<br/>
+
+**Macros** allow the creation of syntactic extensions to the language that alter the code before its execution.
+
 ---
 
 Table of contents:
