@@ -4,7 +4,7 @@
 
 # Hy
 
-https://hylang.org/ (*)
+https://hylang.org/
 
 https://github.com/hylang/hy
 
@@ -86,7 +86,7 @@ $
 
 Appraisal (*) makes hope that transpiling the [Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) into a Hy solution should work.
 
-But first make a little Hy program named _factorial.hy_, with some help from "Big AI", which tests input and output operations on the terminal, typical a critical thing with functional programming (side effects!):
+But first make a little Hy program named _factorial.hy_, with some help from "Big AI", which tests input and output operations on the terminal, often a critical thing with functional programming:
 
 ```
 (import sys)
@@ -98,13 +98,13 @@ But first make a little Hy program named _factorial.hy_, with some help from "Bi
 
 (while True
   (try
-    (setv user_input (input "Enter an integer n >= 1: "))
-    (setv n (int user_input))
+    (setv user_input (input "Enter an integer n >= 1: "))  ; USER INPUT FROM THE TERMINAL
+    (setv n (int user_input))  ; try to turn input string into an integer number
 
     (if (< n 1)
         (print "Call program with an integer number >= 1")
         (do
-          (print (+ "factorial(" (str n) ") = " (str (factorial n))))
+          (print (+ "factorial(" (str n) ") = " (str (factorial n))))  ; CONCATENATED OUTPUT TO THE TERMINAL
           (break)))
     (except [e Exception]
       (print "Call program with an integer number >= 1"))))
@@ -118,8 +118,6 @@ Enter an integer n >= 1: 5
 factorial(5) = 120
 $ 
 ```
-
-Works!
 
 <br/>
 
