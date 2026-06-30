@@ -119,6 +119,13 @@ $
 
 <br/>
 
+### Microbenchmark program in Hy
+
+Interestingly, with about 190 milliseconds (_multitime -n 20 hy random_streams_for_perf_stats.hy_) of execution time, the Hy program runs substantially faster than its counterpart in [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) with about 420 milliseconds in an uberJAR file in the OpenJDK Runtime Environment version 25. And this while the Clojure program is using Java's _StringBuilder_ class, while Python's string builder _StringIO()_ isn't improving the Hy program's execution speed.
+
+
+
+
 tbd
 
 
