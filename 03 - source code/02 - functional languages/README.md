@@ -141,9 +141,7 @@ https://www.risk.net/risk-management/6395366/functional-programming-reaches-for-
 
 <br/>
 
-In the technical space I still have to see the industrial corner which is prominently using functional programming.
-
-You may also have a look at [Array-oriented languages](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages#array-oriented-languages).
+In the **technical space**, I see the functional [Erlang](https://www.erlang.org/) ecosystem as a good example for using functional programming outside of the financial industry.
 
 <br/>
 
