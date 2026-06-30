@@ -6,6 +6,8 @@ The Clojure project build tool: https://leiningen.org/
 
 The official **Clojure Cheat Sheet**, which is practical for orientation in this feature rich language: https://clojure.org/api/cheatsheet
 
+An distinct feature of Clojure is that all data you create is **immutable**! So, you can only read it after creation. An idea here is to make **multi-threaded** code easier to write and maintain.
+
 ---
 
 Table of contents:
