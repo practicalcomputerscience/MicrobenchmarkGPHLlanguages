@@ -35,7 +35,7 @@ Table of contents:
 - [What functional programming language introduced the idea of "immutable variables"?](#what-functional-programming-language-introduced-the-idea-of-immutable-variables)
 - [Functional languages on the Java Virtual Machine (JVM)](#functional-languages-on-the-java-virtual-machine-jvm)
 - [So, who is mostly using functional programming?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#so-who-is-mostly-using-functional-programming)
-- []()
+- [Specific hardware for functional programming](#specific-hardware-for-functional-programming)
 
 ---
 
