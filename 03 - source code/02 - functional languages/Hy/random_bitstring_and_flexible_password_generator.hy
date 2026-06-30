@@ -3,7 +3,13 @@
 ; 2026-06-30
 ;
 ;
-; run on Ubuntu 24 LTS: $ hy random_bitstring_and_flexible_password_generator.hy
+; run on Ubuntu 24 LTS, in a dedicated virtual Python environment, here named Hy:
+;                       (Hy) $ hy -m random_bitstring_and_flexible_password_generator
+;
+;
+; (Hy) $ hy --version  # in virtual Python environment named Hy
+; hy 1.3.0
+; (Hy) $
 ;
 ;
 ; mostly transpiled from core.clj (Clojure) of random_bitstring_and_flexible_password_generator with Google AI,

@@ -3,15 +3,18 @@
 ; 2026-06-30
 ;
 ;
-; run on Ubuntu 24 LTS: $ hy random_streams_for_perf_stats.hy
-;                       $ time hy random_streams_for_perf_stats.hy => real	0m0.200s
+; run on Ubuntu 24 LTS, in a dedicated virtual Python environment, here named Hy:
+;                       (Hy) $ hy -m random_streams_for_perf_stats  # no .hy!!!
+;                       (Hy) $ time hy -m random_streams_for_perf_stats => real	0m0.093s <<<<<
+;
+;
+; (Hy) $ hy --version  # in virtual Python environment named Hy
+; hy 1.3.0
+; (Hy) $
 ;
 ;
 ; mostly transpiled from core.clj (Clojure) of random_streams_for_perf_stats with Google AI,
 ; so, keeping "a touch of functional programming".
-;
-; interestingly, using Python's StringIO(), that is here in Hy: (import io) and (setv bits_x (io.StringIO)),
-; is hardly improving execution speed!
 
 
 (import random)
