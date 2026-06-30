@@ -64,7 +64,7 @@ You may also try command _$ python3.11 -m hy hello_world.hy_ to see if that work
 
 <br/>
 
-By the way: installed Python versions can be quickly looked up like this:
+By the way: installed Python versions can be quickly looked up like this usually:
 
 ```
 $ ls /usr/bin/python* -l
