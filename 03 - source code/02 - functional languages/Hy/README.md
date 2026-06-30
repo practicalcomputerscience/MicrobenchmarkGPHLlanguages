@@ -22,7 +22,7 @@ And this has to do with Ubuntu 24's nearness to its default Python 3.12 installa
 
 After elaborate experimentation, I can say:
 
-- latest Hy version 1.3.0 (as of 2026-06-30) is working fine with Python version 3.12, and also Python version 3.11 (but not Python version 3.14)
+- latest Hy version 1.3.0 (as of 2026-06-30) is working fine with Python version 3.12, and also Python version 3.11 (but not Python version 3.14 for example)
 - the easiest path to a working Hy installation in an Ubuntu Linux system is just installing it like usual, by default into directory _/usr/bin/_:
 
 ```
@@ -62,8 +62,6 @@ $ hy hello_world.hy
 Hello, world from Hy!
 $
 ```
-
-You may also try command _$ python3.11 -m hy hello_world.hy_ to see if that works too, it should!
 
 <br/>
 
