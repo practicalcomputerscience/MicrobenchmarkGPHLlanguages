@@ -103,6 +103,20 @@ Not working as advertised but working. (You may try command _$ python3.12 -m hy 
 
 <br/>
 
+By the way: installed Python versions can be quickly looked up like this:
+
+```
+$ ls /usr/bin/python* -l
+lrwxrwxrwx 1 root root      10 Nov 12  2025 /usr/bin/python3 -> python3.12
+-rwxr-xr-x 1 root root 6639992 Mar  3 10:26 /usr/bin/python3.11
+-rwxr-xr-x 1 root root 8020928 Mar 23 20:04 /usr/bin/python3.12
+lrwxrwxrwx 1 root root      34 Mar 23 20:04 /usr/bin/python3.12-config -> x86_64-linux-gnu-python3.12-config
+lrwxrwxrwx 1 root root      17 Nov 12  2025 /usr/bin/python3-config -> python3.12-config
+$ 
+```
+
+<br/>
+
 
 
 
