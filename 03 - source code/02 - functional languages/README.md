@@ -13,10 +13,10 @@ From my point of view,
 - [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml), OCaml's "granddaddy", and
 - [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/5ff2f9f39372770d5dc4de8b01e9142b0a4db8dd/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#standard-ml-sml) and Lisp-like language [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy) on top of Python's ecosystem.
 
-(b) you learn more from functional programming languages for compilation,
+(b) but you learn more from functional programming languages for compilation,
 
 - like [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) or [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme),
-- than those for interpretation, like [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme).
+- than those for interpretation, like [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme) or [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy).
 
 <br/>
 
