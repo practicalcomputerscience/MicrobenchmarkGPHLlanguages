@@ -17,9 +17,9 @@ In Ubuntu 24 LTS at least, just installing Hy like officially advised as: _$ pip
 
 And this has to do with Ubuntu 24's nearness to its default Python 3.12 installation.
 
-After elaborate experimentation, I can say this:
+After elaborate experimentation, I can say:
 
-- latest Hy version 1.3.0 is working fine with Python version 3.12, and also Python version 3.11 (but not Python version 3.14)
+- latest Hy version 1.3.0 (as of 2026-06-30) is working fine with Python version 3.12, and also Python version 3.11 (but not Python version 3.14)
 - the easiest path to a working Hy installation in an Ubuntu Linux system is just installing it like usual, by default into directory _/usr/bin/_:
 
 ```
