@@ -3,7 +3,7 @@
 
 # Hy
 
-https://hylang.org/
+https://hylang.org/ (*)
 
 https://github.com/hylang/hy
 
@@ -13,7 +13,7 @@ Hy is a Lisp dialect that's embedded in Python.
 
 ## Installation tips
 
-In Ubuntu 24 LTS at least, just installing Hy like officially advised as: _$ pip3 install --user hy_ is not working! (directly into Ubuntu's sensitive Python installation even...)
+In Ubuntu 24 LTS at least, just installing Hy like officially advised (*) as: _$ pip3 install --user hy_ is not working! (directly into Ubuntu's sensitive Python installation even...)
 
 And this has to do with Ubuntu 24's nearness to its default Python 3.12 installation.
 
