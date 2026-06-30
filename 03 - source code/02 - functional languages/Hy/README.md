@@ -7,7 +7,7 @@ https://hylang.org/ (*)
 
 https://github.com/hylang/hy
 
-Hy is a Lisp dialect that's embedded in Python.
+What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) aims to be for the Java Virtual Machine, Hy aims to be for Python.
 
 <br/>
 
