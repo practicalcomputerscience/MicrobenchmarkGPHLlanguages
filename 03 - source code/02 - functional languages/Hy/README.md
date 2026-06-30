@@ -14,6 +14,12 @@ What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlan
 
 <br/>
 
+[Why Hy?](https://hylang.org/hy/doc/v1.0.0/whyhy):
+
+> ..named after the insect order Hymenoptera, since Paul Tagliamonte was studying swarm behavior when he created the language..
+
+<br/>
+
 ## Installation tips
 
 In Ubuntu 24 LTS at least, just installing Hy like officially advised (*) as: _$ pip3 install --user hy_ is not working! (directly into Ubuntu's sensitive Python installation even...)
