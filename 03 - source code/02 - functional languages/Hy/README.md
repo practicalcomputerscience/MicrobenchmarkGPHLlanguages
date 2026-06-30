@@ -4,13 +4,15 @@ https://hylang.org/
 
 https://github.com/hylang/hy
 
+https://pypi.org/project/hy/
+
 <br/>
 
 What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) aims to be for the Java Virtual Machine, Hy aims to be for Python. (*)
 
 <br/>
 
-[Why Hy?](https://hylang.org/hy/doc/v1.0.0/whyhy):
+[Why Hy?](https://hylang.org/hy/doc/v1.0.0/whyhy)
 
 > ..named after the insect order Hymenoptera, since Paul Tagliamonte was studying swarm behavior when he created the language..
 
@@ -28,51 +30,62 @@ Table of contents:
 
 ## Installation tips
 
-In Ubuntu 24 LTS at least, just installing Hy like officially advised (*) as: _$ pip3 install --user hy_ is not working! (directly into Ubuntu's sensitive Python installation even...)
+In Ubuntu 24 LTS at least, just installing Hy like officially advised (*) as: _$ pip3 install --user hy_ is not working! ("error: externally-managed-environment")
 
-And this has to do with Ubuntu 24's nearness to its default Python 3.12 installation.
+This has to do with Ubuntu 24's nearness to its default Python 3.12 installation. In this case it's always best to create a dedicated virtual Python environment, see at [Python environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages#python-environments).
 
-After elaborate experimentation, I can say:
+(In Ubuntu 24 LTS, installing Hy system-wide with _$ sudo apt install hy_ will get you a working, but very old Hy version with 0.28.0!)
 
-- latest Hy version 1.3.0 (as of 2026-06-30) is working fine with Python version 3.12, and also Python version 3.11 (but not Python version 3.14 for example)
-- the easiest path to a working Hy installation in an Ubuntu Linux system is just installing it like usual, by default into directory _/usr/bin/_:
+So, in Ubuntu 24 LTS, do this:
 
 ```
-$ sudo apt install hy
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following NEW packages will be installed:
-  hy
-0 upgraded, 1 newly installed, 0 to remove and 7 not upgraded.
-Need to get 8,890 B of archives.
-After this operation, 33.8 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 hy all 0.28.0-1 [8,890 B]
-Fetched 8,890 B in 0s (106 kB/s)
-Selecting previously unselected package hy.
-(Reading database ... 367591 files and directories currently installed.)
-Preparing to unpack .../archives/hy_0.28.0-1_all.deb ...
-Unpacking hy (0.28.0-1) ...
-Setting up hy (0.28.0-1) ...
-update-alternatives: using /usr/bin/hy3 to provide /usr/bin/hy (hy) in auto mode
-Processing triggers for man-db (2.12.0-4build2) ...
-$ whereis hy  # installation OK?
-hy: /usr/bin/hy /usr/share/man/man1/hy.1.gz
-$ hy  # just entering a little REPL test
-Hy 0.28.0 using CPython(main) 3.12.3 on Linux
-=> (quit)  # ..and exiting
-$ 
+$ cd ./Python/_virtual_envs
+$ python3 -m venv ./Hy
+$ cd Hy
+$ source ./bin/activate
+(Hy) $ pip install hy
+Collecting hy
+  Using cached hy-1.3.0-py3-none-any.whl
+Collecting funcparserlib~=1.0 (from hy)
+  Using cached funcparserlib-1.0.1-py2.py3-none-any.whl.metadata (7.1 kB)
+Using cached funcparserlib-1.0.1-py2.py3-none-any.whl (17 kB)
+Installing collected packages: funcparserlib, hy
+Successfully installed funcparserlib-1.0.1 hy-1.3.0
+(Hy) $ hy --version
+hy 1.3.0
+(Hy) $ hy  # just entering a little REPL test
+Hy 1.3.0 (Dogs Should Be Raw) using CPython(main) 3.12.3 on Linux
+=> (quit)  # ..and quitting
+(Hy) $ python3 --version  # also check the Python version
+Python 3.12.3
+(Hy) $ deactivate  # finally, leave the virtual Python environment
+$
 ```
 
 <br/>
 
-Finally, let's make the all important "Hello, world from Hy!" source code file test:
+Let's make the all important "Hello, world from Hy!" source code file test:
 
 ```
-$ echo '(print "Hello, world from Hy!")' > hello_world.hy
-$ hy hello_world.hy
+(Hy) $ echo '(print "Hello, world from Hy!")' > hello_world.hy
+(Hy) $ hy -m hello_world  # run Hy module hello_world
 Hello, world from Hy!
-$
+(Hy) $
+```
+
+> [!IMPORTANT]
+> In Ubuntu 24 LTS at least, you must run your Hy source code file without its file extension .hy! Hy expects a module name, not a file name!
+
+(otherwise it would cause an error like this:
+```
+(Hy) $ hy hello_world.hy
+Traceback (most recent call last):
+  File "~/scripts/Python/_virtual_envs/Hy/bin/hy", line 8, in <module>
+    sys.exit(hy_main())
+             ^^^^^^^^^
+  File "<frozen runpy>", line 285, in run_path
+ValueError: too many values to unpack (expected 1)
+(Hy) $
 ```
 
 <br/>
@@ -123,19 +136,33 @@ But first make a little Hy program named _factorial.hy_, with some help from "Bi
 Let's run _factorial.hy_:
 
 ```
-$ hy factorial.hy
+(Hy) $ hy -m factorial  # again, leave .hy away!
 Enter an integer n >= 1: 5
 factorial(5) = 120
-$ 
+(Hy) $ 
 ```
 
 <br/>
 
 ### Microbenchmark program in Hy
 
-Interestingly, with about 190 milliseconds (_multitime -n 20 hy random_streams_for_perf_stats.hy_) of execution time, the Hy program runs substantially faster than its counterpart in [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) with about 420 milliseconds in an uberJAR file in the OpenJDK Runtime Environment version 25.
+With about 85 milliseconds (_(Hy) $ multitime -n 20 hy -m random_streams_for_perf_stats_) of execution time, the Hy program runs substantially faster than its counterpart in [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) with about 420 milliseconds in an uberJAR file in the OpenJDK Runtime Environment version 25, and using Java's _StringBuilder_ class.
 
-And this while the Clojure program is using Java's _StringBuilder_ class, while Python's string builder _StringIO()_ isn't really improving the Hy program's execution speed.
+And also faster than its [Python counterpart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python/random_streams_for_perf_stats.py), also in a Python 3.12.3 virtual environment, with about 139 milliseconds!
+
+Using Python's string builder _StringIO()_ in the Hy script wasn't really improving the program's execution speed.
+
+Notable: running Hy script _random_streams_for_perf_stats.hy_ for example like this: _$ /usr/bin/python3.12 -m hy -m random_streams_for_perf_stats_ yields a significantly higher execution time of about 187 milliseconds!
+
+And the reason is this: at least on my Ubuntu 24 LTS system, running _$ /usr/bin/python3.xx -m hy -m <Hy module>_ is automatically using this very old Hy version already mentioned above:
+
+```
+$ python3 -c "import hy; print(hy.__version__)"
+0.28.0
+$
+```
+
+So, use a modern Hy version in a dedicated virtual Python environment!
 
 <br/>
 
