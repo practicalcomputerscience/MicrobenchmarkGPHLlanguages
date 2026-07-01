@@ -528,7 +528,7 @@ from program [random_bitstring_and_flexible_password_generator.go](https://githu
 
 <br/>
 
-Or you could potentially see how applying a **functional programming pattern** in your favorite imperative computer programming language can even make a program faster, while you thought you already tested all possibilities for higher execution speed: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python#a-faster-python-program-with-an-idea-from-functional-programming)
+Or you could potentially see how applying a **functional programming pattern** in your favorite imperative programming language can even make a faster program, while you thought you already tested all possibilities for higher execution speed: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python#a-faster-python-program-with-an-idea-from-functional-programming)
 
 <br/>
 
