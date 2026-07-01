@@ -110,6 +110,42 @@ This alone, and no other experiments, including experimenting with _Transient Da
 
 <br/>
 
+2026-07-01: after the good success at execution speed in the [Hy implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming), I thought I try the same at the slow masterloop at Clojure, that is applying a classical functional approach with dynamically building vectors of little strings at bits_x_ and bits_hex_,
+with each of them finally being converted into one, big string: 
+
+```
+  ;----------------------  recursive master loop  -----------------------------
+  (defn masterloop [n seed]  ; the pseudo random number generator (PRNG)
+    (loop [count n
+           acc_nbr_v []  ; acc_nbr_v is a vector; vectors [] are type heterogeneous and evaluate each item in order and have indexed access
+           current-seed seed
+           ; bits_x_ (StringBuilder.)  ; using Java StringBuilder Class
+           ; bits_hex_ (StringBuilder.)
+           bits_x_ []  ; classical functional approach with dynamically building a list of strings
+           bits_hex_ []]
+
+      (def bits_x_str_ (Integer/toBinaryString ^long current-seed))  ; no padding
+      (def bits_x_str (pad16 bits_x_str_))
+
+      (def bits_hex_str (format "%04x" ^long current-seed))  ; convert to hex digits with padding => very slow, but OK
+
+      (if (zero? count)                ; Continuation-Passing Style (CPS): Accept part
+        [acc_nbr_v (str/join bits_x_) (str/join bits_hex_)]  ; CPS: Return part, here in form of a vector
+        (let [next-seed (mod (+ (* a current-seed) c) m)]  ; CPS: Continuation part to provide the next step in the computation
+          (recur (dec count) (conj acc_nbr_v next-seed) next-seed (conj bits_x_ bits_x_str) (conj bits_hex_ bits_hex_str)
+          )))
+    )
+  )
+
+  (def results (masterloop END x0))  ; generate END random numbers with seed x0
+```
+
+However, this solution is as slow as the established one which is using the Java StringBuilder Class: [random_streams_for_perf_stats_core.clj](./random_streams_for_perf_stats_core.clj):
+
+- 430 milliseconds versus 426 milliseconds (as of 2026-07-01 at 29°C ambient temperature)
+
+<br/>
+
 ## On complexity in Clojure
 
 Here I refer to the full program with this source code: ![random_bitstring_and_flexible_password_generator](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_bitstring_and_flexible_password_generator_core.clj) and specifically to this user-defined function:
