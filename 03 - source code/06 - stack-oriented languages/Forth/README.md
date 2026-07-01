@@ -8,9 +8,16 @@ here in the [Gforth](https://gforth.org/) implementation.
 
 <br/>
 
+> Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
+> and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
+
+from: "Stack Computers: the new wave", Philip Koopman, 1989: https://users.ece.cmu.edu/~koopman/stack_computers/sec1_1.html
+
+<br/>
+
 ## Installation tips
 
-After some experimentation, I noticed that I need a working Gforth implementation to build the latest version of Gforth! So, I did like this:
+After some experimentation, I noticed that I need a working Gforth implementation to build the latest version of Gforth! So, I started like this:
 
 ```
 $ sudo apt  install gforth
@@ -20,7 +27,7 @@ gforth 0.7.3
 $
 ```
 
-Do _$ make clean >/dev/null 2>&1 || true_, when you have messed up a build before.
+Do _$ make clean >/dev/null 2>&1 || true_, if you have messed up a build before.
 
 That's good enough to build latest version 0.7.9 from sources in tarball file _gforth.tar.xz_ from here: https://www.complang.tuwien.ac.at/forth/gforth/Snapshots/current/
 
@@ -49,12 +56,6 @@ Then I noticed that I had to do more installations:
 ```
 $ sudo ./install-swig.sh
 ...
-make[1]: Entering directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610/swig/CCache'
-Installing ccache-swig
-Installing /usr/local/bin/ccache-swig-forth
-/usr/bin/install -c -d /usr/local/bin
-/usr/bin/install -c -m 755 ccache-swig /usr/local/bin/`echo ccache-swig | sed 's&$&-forth&'`
-make[1]: Leaving directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610/swig/CCache'
 Installation complete
 $
 ```
@@ -68,11 +69,6 @@ $ ./configure
 *** Config summary: everything fine ***
 $ make
 ...
-make[1]: Leaving directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610/doc'
-EMACS start-gforth.el
-/bin/sh: 1: no: not found
-make[1]: Entering directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610'
-make[1]: Leaving directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610'
 *** Check successful ***
 *** no performance problems ***
     in gforth-fast
