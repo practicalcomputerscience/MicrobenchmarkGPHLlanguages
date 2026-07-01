@@ -160,6 +160,8 @@ $ python3 -c "import hy; print(hy.__version__)"  # here I am not in a virtual Py
 $
 ```
 
+This old hy program in version 0.28.0 has been originally installed as: _-rwxr-xr-x 1 root root 311 Jan  9  2024 /usr/bin/hy3_, but shouldn't be there by default in a fresh Ubuntu installation.
+
 So, use a modern Hy version in a dedicated virtual Python environment!
 
 <br/>
