@@ -23,7 +23,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Program factorial.hy for terminal input and output](#program-factorialhy-for-terminal-input-and-output)
 - [Microbenchmark program in Hy](#microbenchmark-program-in-hy)
-- [Transpiling Hy code into Python code]()
+- [Transpiling Hy code into Python code](#transpiling-hy-code-into-python-code)
 - [A faster Python program with an idea from functional programming](#a-faster-python-program-with-an-idea-from-functional-programming)
 
 <br/>
