@@ -144,7 +144,7 @@ However, this solution is as slow as the established one with using Java's _Stri
 
 - 430 milliseconds versus 426 milliseconds (as of 2026-07-01 at 29°C ambient temperature)
 
-By the way: my [Java solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java) is indeed using the _StringBuilder_ class
+By the way, my [Java solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java) is indeed using the _StringBuilder_ class.
 
 <br/>
 
