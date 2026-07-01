@@ -6,12 +6,18 @@
 
 Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
 
+This programming language **forces** you to learn something **new**.
+
 <br/>
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
 
 from: "Stack Computers: the new wave", Philip Koopman, 1989: https://users.ece.cmu.edu/~koopman/stack_computers/sec1_1.html
+
+> Forth has been in use from 1972 on..
+
+from: https://www.forth.com/starting-forth/0-starting-forth/
 
 <br/>
 
