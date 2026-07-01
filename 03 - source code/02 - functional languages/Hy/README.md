@@ -105,7 +105,7 @@ $
 
 <br/>
 
-### Program factorial.hy for terminal input and output
+## Program factorial.hy for terminal input and output
 
 Appraisal (*) makes hope that transpiling the [Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) into a Hy solution should work rather smoothly.
 
@@ -144,7 +144,7 @@ factorial(5) = 120
 
 <br/>
 
-### Microbenchmark program in Hy
+## Microbenchmark program in Hy
 
 With about 85 milliseconds (_(Hy) $ multitime -n 20 hy -m random_streams_for_perf_stats_) of execution time, the Hy program runs substantially faster than its counterpart in [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) with about 420 milliseconds in an uberJAR file in the OpenJDK Runtime Environment version 25, and using Java's _StringBuilder_ class.
 
@@ -163,6 +163,31 @@ $
 ```
 
 So, use a modern Hy version in a dedicated virtual Python environment!
+
+<br/>
+
+## tbd
+
+Hy command option _--spy_ works only on the REPL, where it transpiles Hy input into "equivalent Python code before executing each piece of Hy code": https://github.com/hylang/hy/blob/master/docs/cli.rst:
+
+```
+$ hy --spy 
+import hy
+------------------------------
+Hy 1.3.0 (Dogs Should Be Raw) using CPython(main) 3.12.3 on Linux
+=> (defn factorial [n]
+...   (if (= n 0)
+...     1
+...     (* n (factorial (- n 1)))))
+def factorial(n):
+    return 1 if n == 0 else n * factorial(n - 1)
+None
+------------------------------
+=> 
+```
+
+
+
 
 <br/>
 
