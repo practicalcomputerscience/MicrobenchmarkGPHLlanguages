@@ -3,7 +3,7 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23/28, 2026-07-01
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -56,7 +56,7 @@ my $bracket_hash_detected = 0;               # 0 is false
 my $equal_begin_detected = 0;                # 0 is false
 my $equal_end_detected = 0;                  # 0 is false
 my $curly_minus_detected = 0;                # 0 is false
-my $minus_curly_detected = 0;                  # 0 is false
+my $minus_curly_detected = 0;                # 0 is false
 
 
 my $language_ext = $file;
@@ -67,7 +67,8 @@ my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam",
 
 
 # language groups with block comments:
-my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d", "groovy", "dart", "php", "ts", "ts_wasm", "hx", "java", "pike");
+my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d",
+                 "groovy", "dart", "php", "ts", "ts_wasm", "hx", "java", "pike", "dylan");
 my @lang_grp3 = ("py");
 my @lang_grp4 = ("ml", "sml");
 my @lang_grp5 = ("ps");
@@ -81,6 +82,7 @@ my @lang_grp12 = ("nim");
 my @lang_grp13 = ("rb");
 my @lang_grp14 = ("st");
 my @lang_grp15 = ("curry");
+my @lang_grp16 = ("hy");  # similar to Python, @lang_grp3: "document strings"
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -94,13 +96,14 @@ my $line_of_block_comment12 = 0;
 my $line_of_block_comment13 = 0;
 # reserved for Smalltalk
 my $line_of_block_comment15 = 0;
+my $line_of_simple_doc_string = 0;
 
 
-$language_ext =~ s/^\w+\.//;
+$language_ext =~ s/^[\w\-]+\.//;  # 2026-06-28
 print "language = ", $language_ext, "\n";
 
 
-if ( grep(/^$language_ext$/, @lang_grp1)) {  #
+if ( grep(/^$language_ext$/, @lang_grp1)) {
   while ( <FILE> ) {
     chomp( $_ );
 
@@ -724,6 +727,33 @@ if ( grep(/^$language_ext$/, @lang_grp15)) {
 }
 
 
+if ( grep(/^$language_ext$/, @lang_grp16)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($_ =~ /^\s*\".*\"\s*$/) {
+      print "  simple_doc_string_detected", "\n";
+      $line_of_simple_doc_string += 1;
+    } else {
+      # case: empty line or line with white spaces:
+      if ($_ =~ /^\s*$/) {
+        $line_empty += 1;
+      } else {
+        # case: ; with optionally leading white spaces:
+        if ($_ =~ /^\s*;/) {
+          $line_cmt_Lisp_style += 1;
+        } else {
+          $source_code_line_count += 1;
+        }
+      }
+    }
+  }
+}
+
+
 
 close( FILE );
 
@@ -752,6 +782,8 @@ print "\nnumber of lines in block comment: #= ... =# = ", $line_of_block_comment
 print "\nnumber of lines in block comment: #[ ... ]# = ", $line_of_block_comment12;
 print "\nnumber of lines in block comment: =begin ... =end = ", $line_of_block_comment13;
 print "\nnumber of lines in block comment: {- ... -} = ", $line_of_block_comment15;
+print "\nnumber of lines in simple document string: \" ... \" = ", $line_of_simple_doc_string;
+
 
 print "\n";
 
