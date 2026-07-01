@@ -1,6 +1,9 @@
 ; random_bitstring_and_flexible_password_generator.hy
 ;
-; 2026-06-30
+; !!! new simple document string rule for better counting of SLOC:
+;     - only allow exclusive one liners like this: "..." !!!
+;
+; 2026-06-30, 2026-07-01
 ;
 ;
 ; run on Ubuntu 24 LTS, in a dedicated virtual Python environment, here named Hy:
@@ -135,7 +138,8 @@
 
 ;; --- Password Generator Logic ---
 (defn pw_generator [n_char acc_nbr_v]
-  "Generates a password using the pseudo-random seed integers computed earlier."
+  "Generates a password using the pseudo-random
+   seed integers computed earlier."
   (setv j 0)  ; char counter for the password
   (setv pw_chars_ "")
 
