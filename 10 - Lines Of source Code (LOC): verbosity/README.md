@@ -128,11 +128,11 @@ Mercury           | 194 | compiled, mature language: lots of user-defined functi
 Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed | 2026-05-31
 V                 | 175 | compiled, very young programming language: some user-defined functions needed | 2026-06-19
 Fortran (GNU)     | 161 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-06-19
-Gleam             | 151 | interpreted, very young language (together with Erlang and JavaScript ecosystem): lots of user-defined functions needed | 2026-06-18
+Gleam             | 151 | interpreted, very young language, together with Erlang and JavaScript ecosystem: lots of user-defined functions needed | 2026-06-18
 C                 | 149 | compiled, very mature language | 2026-06-19
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
-AssemblyScript    | 140 | interpreted, young language (together with WebAssembly ecosystem): lots of user-defined functions needed | 2026-05-24
+AssemblyScript    | 140 | interpreted, young language, together with WebAssembly ecosystem: lots of user-defined functions needed | 2026-05-24
 Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
@@ -144,7 +144,7 @@ Perl 5            | 122 | interpreted, very mature language: verbosity with if-t
 Rust              | 122 | compiled, mature language | 2026-06-18
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Go                | 121 | compiled, mature language | 2026-05-28
-Ballerina         | 116 | interpreted, young language (together with Java ecosystem) | 2026-06-18
+Ballerina         | 116 | interpreted, young language, together with Java ecosystem | 2026-06-18
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
@@ -152,31 +152,32 @@ Bigloo Scheme     | 114 | compiled, mature language | 2026-06-18
 Common Lisp       | 114 | compiled, very mature language | 2026-06-18
 Dylan (Open Dylan) | 113 | compiled, very mature language | 2026-06-28
 Haxe              | 113 | interpreted, mature language: some user-defined functions needed | 2026-05-27
-Kotlin            | 108 | interpreted, young language (together with Java ecosystem) | 2026-05-26
+Kotlin            | 108 | interpreted, young language, together with Java ecosystem | 2026-05-26
 Racket Scheme     | 107 | interpreted, mature language | 2026-06-18
 PHP               | 105 | usually interpreted, very mature web programming language | 2026-06-18
 Swift             | 105 | compiled, mature language | 2026-06-10
 TypeScript        | 105 | interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-18
-C#                | 104 | interpreted, mature language (together with .NET ecosystem) | 2026-06-18
+C#                | 104 | interpreted, mature language, together with .NET ecosystem | 2026-06-18
 Crystal           | 103 | compiled, young language | 2026-06-18
 Pike              | 103 | interpreted, mature language | 2026-06-18
-Java              | 101 | interpreted, very mature language (together with Java ecosystem) | 2026-05-26
-Scala             | 101 | interpreted, mature language (together with Java ecosystem) | 2026-05-25
+Java              | 101 | interpreted, very mature language, together with Java ecosystem | 2026-05-26
+Scala             | 101 | interpreted, mature language, together with Java ecosystem | 2026-05-25
 Julia             |  99 | just-in-time compiled, mature language | 2026-06-18
-Clojure           |  96 | interpreted, mature language (together with Java ecosystem) | 2026-06-18
+Clojure           |  96 | interpreted, mature language, together with Java ecosystem | 2026-06-18
 Ruby              |  96 | interpreted, very mature language | 2026-06-18
-Groovy            |  95 | interpreted, very mature language (together with Java ecosystem) | 2026-05-27
+Groovy            |  95 | interpreted, very mature language, together with Java ecosystem | 2026-05-27
 Tcl               |  95 | interpreted, very mature language | 2026-06-19
 Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-18
 Mojo              |  90 | compiled, very young language | 2026-05-28
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
-PowerShell        |  88 | interpreted, mature language (together with .NET ecosystem): profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
+PowerShell        |  88 | interpreted, mature language, together with .NET ecosystem: profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Python            |  84 | interpreted, very mature language | 2026-06-18
+Hy                |  83 | interpreted, mature language, together with Python ecosystem | 2026-07-01
 
 <br/>
 
-2026-06-18: there's a contender to Python in succinctness: [CoffeeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#coffeescript) with it's "pythonic" style of JavaScript/TypeScript, and being on a par with Python, which features one user-defined function (_binary_to_string_)
+2026-07-01: there's a new leader in succinctness: [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy), that is "a Lisp dialect that's embedded in Python"
 
 <br/>
 
@@ -212,6 +213,7 @@ Gleam              | 8
 Go                 | 0
 Groovy             | 0
 Haxe               | 2
+Hy                 | 2
 Inko               | 4
 Java               | 0
 Julia              | 0
