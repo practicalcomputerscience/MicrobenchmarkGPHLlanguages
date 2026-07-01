@@ -89,14 +89,27 @@ $
 
 Voilà! Gforth in its latest version!
 
+<br/>
+
+### Advanced exercise: factorial
+
+I highly recommend to first have a look into the official [Forth Tutorial](https://net2o.de/gforth/Tutorial.html) before doing anything more meaningful than "Hello, world!" in Forth:
+
+```
+$ gforth
+Gforth 0.7.3, Copyright (C) 1995-2008 Free Software Foundation, Inc.
+Gforth comes with ABSOLUTELY NO WARRANTY; for details type `license'
+Type `bye' to exit
+cr ." Hello, world from Gforth!" cr 
+Hello, world from Gforth!
+ ok
+bye
+$
+```
+
+Otherwise, there's a high chance that you can't really understand any "Big AI" transpiled or generated Gforth code (unless you are the coding genius of your neighborhood, of course).
+
 tbd
-
-
-
-
-
-
-
 
 
 
