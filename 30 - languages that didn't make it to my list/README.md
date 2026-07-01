@@ -4,6 +4,7 @@
 
 Table of contents:
 
+- [Forth](#forth)
 - [Hack](#hack)
 - [Oz](#oz)
 - [Pony](#pony)
@@ -17,6 +18,10 @@ Table of contents:
 - [wren](#wren)
 
 <br/>
+
+### Forth
+
+TL;DR at [From Forth to Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
 
 ### Hack
 
