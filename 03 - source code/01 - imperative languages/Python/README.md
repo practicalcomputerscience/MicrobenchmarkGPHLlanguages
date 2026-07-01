@@ -105,7 +105,7 @@ $
 
 Have a look at the Hy language, which sits on top of Python: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/edit/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy/README.md#a-faster-python-program-with-an-idea-from-functional-programming)
 
-This functional approach reduces the execution time of the "speed part" of the microbenchmark program in its Python version from 139 milliseconds to 81 milliseconds!
+The functional approach in the Hy based Python program reduces the execution time from 139 milliseconds to 81 milliseconds!
 
 Both Python programs, my own implementation and the Hy generated one, have been running with Python version 3.12.3, and measured with command: _$ multitime -n 20 python3 ./random_streams_for_perf_stats.py_
 
