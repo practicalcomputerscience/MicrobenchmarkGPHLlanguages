@@ -234,7 +234,7 @@ real	0m0.089s
 (Hy) $
 ```
 
-That's practically the same execution speed as with the Hy program!
+That's practically the same execution speed as the Hy program!
 
 A look into the [generated Python program](./random_streams_for_perf_stats_hy2py.py) shows the masterloop with the same functional approach like in the original Hy program: 
 
