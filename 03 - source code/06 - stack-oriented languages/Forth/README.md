@@ -6,7 +6,7 @@
 
 Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
 
-This programming language **forces** you to learn something **new**.
+This programming language **forces** you to learn something **new**:
 
 <br/>
 
