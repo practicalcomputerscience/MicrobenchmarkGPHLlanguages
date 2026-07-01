@@ -105,7 +105,7 @@ In Linux, but probably also increasingly in other environments like Windows too,
 3. change directory: ```(prng_test) $ cd ./prng_test```
 4. install _numpy_ package: ```(prng_test) $ pip3 install numpy```
 5. run the program: ```(prng_test) $ python3 ./random_streams_for_perf_stats.py```
-6. simple time measurement: ```(prng_test) $ time python3 ./random_streams_for_perf_stats.py```
+6. simple execution time measurement: ```(prng_test) $ time python3 ./random_streams_for_perf_stats.py```
 7. deactivate this environment after work: ```(prng_test) $ deactivate```
 8. remove or delete an enviroment if desired: ```$ rm -rf ./prng_test```
 
