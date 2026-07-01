@@ -23,6 +23,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Program factorial.hy for terminal input and output](#program-factorialhy-for-terminal-input-and-output)
 - [Microbenchmark program in Hy](#microbenchmark-program-in-hy)
+- [Transpiling Hy code into Python code]()
 - [A faster Python program with an idea from functional programming](#a-faster-python-program-with-an-idea-from-functional-programming)
 
 <br/>
@@ -167,7 +168,7 @@ So, use a modern Hy version in a dedicated virtual Python environment!
 
 <br/>
 
-## A faster Python program with an idea from functional programming
+## Transpiling Hy code into Python code
 
 Hy command option _--spy_, which works only for the REPL, transpiles Hy input into "equivalent Python code before executing each piece of Hy code": https://github.com/hylang/hy/blob/master/docs/cli.rst:
 
@@ -215,6 +216,8 @@ while True:
 ```
 
 <br/>
+
+### A faster Python program with an idea from functional programming
 
 Let's transpile the "speed part" of the Hy microbenchmark program into its Python program, and time measure that:
 
