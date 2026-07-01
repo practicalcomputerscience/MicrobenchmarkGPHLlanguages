@@ -103,7 +103,7 @@ $
 
 ## A faster Python program with an idea from functional programming
 
-Have a look at the Hy language, which sits on top of Python: [A faster Python program with an idea from functional programming](tbd)
+Have a look at the Hy language, which sits on top of Python: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/edit/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy/README.md#a-faster-python-program-with-an-idea-from-functional-programming)
 
 This functional approach reduces the execution time of the "speed part" of the microbenchmark program in its Python version from 139 milliseconds to 81 milliseconds!
 
