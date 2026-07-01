@@ -8,6 +8,7 @@ Table of contents:
 
 - [On Python environments](#on-python-environments)
 - [Version experiments and just-in-time (JIT) compilation in Python](#version-experiments-and-just-in-time-jit-compilation-in-python)
+- [A faster Python program with an idea from functional programming]()
 - [SPy: statically compilable Python](#spy-statically-compilable-python)
 
 <br/>
@@ -59,13 +60,13 @@ That's the end of my Python version 3.14.3 experiments with JIT. I'm not going t
 
 Otherwise, it looks like that heavy string concatenation still runs faster in single-threaded Python version 3.12.3 than single-threaded version 3.14.3.
 
-There are other benchmarks which show the same phenomenon (though, I don't know the exact Python 3.14 configuration here, other than older version 3.14.0 has been used): https://www.phoronix.com/review/python-314-benchmarks/3
+There are other benchmarks which show the same phenomenon (though, I don't know the exact Python 3.14 configuration there, other than older version 3.14.0 has been used): https://www.phoronix.com/review/python-314-benchmarks/3
 
 <br/>
 
 Building a JIT-capable version of Python 3.14.3 would take this:
 
-first, install LLVM version 19 if not done yet:
+- first, install LLVM version 19 if not done yet:
 
 ```
 $ sudo apt install llvm-19 llvm-19-dev clang-19
@@ -97,6 +98,22 @@ $ /usr/local/bin/python3.14 -c "import sys; print(sys._jit.is_enabled())"
 True  # JIT should be on now
 $
 ```
+
+<br/>
+
+## A faster Python program with an idea from functional programming
+
+Have a look at the Hy language, which sits on top of Python: [A faster Python program with an idea from functional programming](tbd)
+
+This functional approach reduces the execution time of the "speed part" of the microbenchmark program in its Python version from 139 milliseconds to 81 milliseconds!
+
+Both Python programs, my own implementation and the Hy generated one, have been running with Python version 3.12.3, and measured with command: _$ multitime -n 20 python3 ./random_streams_for_perf_stats.py_
+
+So, using the otherwise fabulous _**StringIO**_ module ([class io.StringIO()](https://docs.python.org/3/library/io.html#io.StringIO)) isn't always the fastest solution when building big strings in Python.
+
+Nevertheless, I keep the (idiomatic) _StringIO_ based solution as my offical Python solution.
+
+<br/>
 
 <br/>
 
