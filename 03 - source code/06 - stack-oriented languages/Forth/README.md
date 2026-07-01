@@ -21,6 +21,10 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 
 <br/>
 
+[A Glossary of Forth Primitives ](https://users.ece.cmu.edu/~koopman/stack_computers/appb.html)
+
+<br/>
+
 ## Installation tips
 
 After some experimentation, I noticed that I need a working Gforth implementation to build the latest version of Gforth! So, I started like this:
