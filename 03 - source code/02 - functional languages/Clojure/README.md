@@ -111,7 +111,7 @@ This alone, and no other experiments, including experimenting with _Transient Da
 <br/>
 
 2026-07-01: after the good success at execution speed at the [Hy implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming), I thought I try the same at the slow masterloop in the Clojure program, that is applying a classical functional approach with dynamically building vectors of little strings at bits_x_ and bits_hex_,
-with each of them finally being converted into one, big string with _(str/join bits_x_)_: 
+with each of them finally being converted into one, big string with (str/join bits_x_): 
 
 ```
   ;----------------------  recursive master loop  -----------------------------
