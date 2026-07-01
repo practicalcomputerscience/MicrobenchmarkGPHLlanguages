@@ -46,6 +46,7 @@ $
 
 Then I noticed that I had to do more installations:
 
+```
 $ sudo ./install-swig.sh
 ...
 make[1]: Entering directory '~/scripts/Forth/gforth/gforth-0.7.9_20260610/swig/CCache'
