@@ -1,14 +1,10 @@
 # Hy
 
-https://hylang.org/
+https://hylang.org/ (*)
 
 https://github.com/hylang/hy
 
 https://pypi.org/project/hy/
-
-<br/>
-
-What [Clojure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure#clojure) aims to be for the Java Virtual Machine, Hy aims to be for Python. (*)
 
 <br/>
 
@@ -109,7 +105,7 @@ $
 
 ## Program factorial.hy for terminal input and output
 
-Appraisal (*) makes hope that transpiling the [Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj) into a Hy solution should work rather smoothly.
+Transpiling the [Clojure solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj), sitting on top of the Java ecosystem, into a Hy solution, just sitting on top of the Python ecosystem, should work rather smoothly.
 
 But first make a little Hy program named _factorial.hy_, with some help from "Big AI", which tests input and output operations on the terminal, often a critical thing with functional programming:
 
