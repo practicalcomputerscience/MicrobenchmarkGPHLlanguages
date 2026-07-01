@@ -88,7 +88,7 @@ gforth 0.7.9_20260610 amd64
 $
 ```
 
-Voilà! Gforth in its latest version!
+Voilà! Gforth in its latest version! (which already looks improved at the REPL, see below, compared to version 0.7.3)
 
 <br/>
 
