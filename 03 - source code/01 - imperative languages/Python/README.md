@@ -103,11 +103,11 @@ $
 
 ## A faster Python program with an idea from functional programming
 
-Have a look at language Hy, which sits on top of the Python ecosystem: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming)
+Have a look at functional language Hy, which sits on top of the Python ecosystem: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming)
 
-The functional approach in the Hy based Python program reduces the execution time from 139 milliseconds to 81 milliseconds!
+The functional approach in the Python program, which has been machine generated from Hy source code, reduces the execution time from 139 milliseconds to 81 milliseconds!
 
-Both Python programs, my own implementation and the Hy generated one, have been running with Python version 3.12.3, and measured with command: _$ multitime -n 20 python3 ./random_streams_for_perf_stats.py_
+Both Python programs, my own, manually implemented and the Hy generated one, have been running with Python version 3.12.3, and measured with command: _$ multitime -n 20 python3 ./random_streams_for_perf_stats.py_
 
 So, using the otherwise fabulous [class io.StringIO](https://docs.python.org/3/library/io.html#io.StringIO) isn't always the fastest solution when building big strings in Python.
 
