@@ -110,8 +110,8 @@ This alone, and no other experiments, including experimenting with _Transient Da
 
 <br/>
 
-2026-07-01: after the good success at execution speed in the [Hy implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming), I thought I try the same at the slow masterloop at Clojure, that is applying a classical functional approach with dynamically building vectors of little strings at bits_x_ and bits_hex_,
-with each of them finally being converted into one, big string: 
+2026-07-01: after the good success at execution speed at the [Hy implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#a-faster-python-program-with-an-idea-from-functional-programming), I thought I try the same at the slow masterloop in the Clojure program, that is applying a classical functional approach with dynamically building vectors of little strings at bits_x_ and bits_hex_,
+with each of them finally being converted into one, big string with _(str/join bits_x_)_: 
 
 ```
   ;----------------------  recursive master loop  -----------------------------
@@ -140,9 +140,11 @@ with each of them finally being converted into one, big string:
   (def results (masterloop END x0))  ; generate END random numbers with seed x0
 ```
 
-However, this solution is as slow as the established one which is using the Java StringBuilder Class: [random_streams_for_perf_stats_core.clj](./random_streams_for_perf_stats_core.clj):
+However, this solution is as slow as the established one with using Java's _StringBuilder_ class: [random_streams_for_perf_stats_core.clj](./random_streams_for_perf_stats_core.clj):
 
 - 430 milliseconds versus 426 milliseconds (as of 2026-07-01 at 29°C ambient temperature)
+
+By the way: my [Java solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java) is indeed using the _StringBuilder_ class
 
 <br/>
 
