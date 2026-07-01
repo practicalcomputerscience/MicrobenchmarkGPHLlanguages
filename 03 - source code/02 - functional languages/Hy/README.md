@@ -1,6 +1,6 @@
 # Hy
 
-https://hylang.org/ (*)
+https://hylang.org/ (*)  -- "Hy is a Lisp dialect that's embedded in Python."
 
 https://github.com/hylang/hy
 
