@@ -23,6 +23,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Program factorial.hy for terminal input and output](#program-factorialhy-for-terminal-input-and-output)
 - [Microbenchmark program in Hy](#microbenchmark-program-in-hy)
+- [A faster Python program with an idea from functional programming]()
 
 <br/>
 
@@ -166,9 +167,9 @@ So, use a modern Hy version in a dedicated virtual Python environment!
 
 <br/>
 
-## tbd
+## A faster Python program with an idea from functional programming
 
-Hy command option _--spy_ works only on the REPL, where it transpiles Hy input into "equivalent Python code before executing each piece of Hy code": https://github.com/hylang/hy/blob/master/docs/cli.rst:
+Hy command option _--spy_, which works only for the REPL, transpiles Hy input into "equivalent Python code before executing each piece of Hy code": https://github.com/hylang/hy/blob/master/docs/cli.rst:
 
 ```
 $ hy --spy 
@@ -186,8 +187,76 @@ None
 => 
 ```
 
+Hy command hy2py transpiles a Hy modules, or a Hy source code file, into Python code:
 
+```
+$ hy2py -m factorial
+import hy
+import sys
 
+def factorial(n):
+    return 1 if n == 0 else n * factorial(n - 1)
+while True:
+    try:
+        user_input = input('Enter an integer n >= 1: ')
+        n = int(user_input)
+        if n < 1:
+            _hy_anon_1 = print('Call program with an integer number >= 1')
+        else:
+            print('factorial(', str(n), ') = ', str(factorial(n)))
+            break
+            _hy_anon_1 = None
+        _hy_anon_2 = _hy_anon_1
+    except Exception as _hy_exc_e_3:
+        _hy_anon_2 = print('Call program with an integer number >= 1')
+$
+```
+
+<br/>
+
+Let's transpile the "speed part" of the microbenchmark program in Hy into its Python program with command: _$ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats.py_, and time measure it:
+
+```
+$ time python3 random_streams_for_perf_stats.py
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.089s
+...
+$
+```
+
+That's practically the same execution speed as with the Hy program!
+
+A look into the generated Python program shows the masterloop with the same functional approach like in the Hy program: 
+
+```
+...
+def masterloop(n, seed):
+    """PRNG loop mimicking Clojure's tail-recursive loop/recur structure."""
+    acc_nbr_v = []
+    current_seed = seed
+    bits_x_list = []
+    bits_hex_list = []
+    for _ in range(n):
+        bits_x_str = '{:016b}'.format(current_seed)
+        bits_hex_str = '{:04x}'.format(current_seed)
+        next_seed = (a * current_seed + c) % m
+        acc_nbr_v.append(next_seed)
+        current_seed = next_seed
+        bits_x_list.append(bits_x_str)
+        bits_hex_list.append(bits_hex_str)
+    return [acc_nbr_v, ''.join(bits_x_list), ''.join(bits_hex_list)]
+results = masterloop(END, x0)
+x = results[0]
+bits_x = results[1]
+bits_hex = results[2]
+...
+```
+
+..a construct which is beating Python's own _StringIO_ module in terms of execution speed in this microbenchmark program by about 41%: [A faster Python program with an idea from functional programming](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Python#a-faster-python-program-with-an-idea-from-functional-programming)
 
 <br/>
 
