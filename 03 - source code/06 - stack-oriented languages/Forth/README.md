@@ -133,7 +133,7 @@ over  ok 4
 
 This was the moment I got doubts: should I continue with this programming language?
 
-Then I discovered much later stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language.
+Then I discovered much later language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language as a representative of stack-oriented languages.
 
 <br/>
 
