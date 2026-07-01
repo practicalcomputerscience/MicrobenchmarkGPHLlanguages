@@ -219,11 +219,11 @@ while True:
 
 ### A faster Python program with an idea from functional programming
 
-Let's transpile the "speed part" of the Hy microbenchmark program into its Python program, and time measure that:
+Let's transpile the "speed part" of the Hy microbenchmark program into its Python program [random_streams_for_perf_stats_hy2py.py](./random_streams_for_perf_stats_hy2py.py), and time measure that:
 
 ```
-(Hy) $ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats.py
-(Hy) $ time python3 random_streams_for_perf_stats.py
+(Hy) $ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats_hy2py.py
+(Hy) $ time python3 random_streams_for_perf_stats_hy2py.py
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -236,7 +236,7 @@ real	0m0.089s
 
 That's practically the same execution speed as with the Hy program!
 
-A look into the generated Python program shows the masterloop with the same functional approach like in the Hy program: 
+A look into the [generated Python program](./random_streams_for_perf_stats_hy2py.py) shows the masterloop with the same functional approach like in the original Hy program: 
 
 ```
 ...
