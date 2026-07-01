@@ -219,7 +219,7 @@ while True:
 
 ### A faster Python program with an idea from functional programming
 
-Let's transpile the "speed part" of the Hy microbenchmark program into its Python program [random_streams_for_perf_stats_hy2py.py](./random_streams_for_perf_stats_hy2py.py), and time measure that:
+Let's transpile the "speed part" of the Hy microbenchmark program into its Python program [random_streams_for_perf_stats_hy2py.py](./random_streams_for_perf_stats_hy2py.py), and measure its execution time:
 
 ```
 (Hy) $ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats_hy2py.py
