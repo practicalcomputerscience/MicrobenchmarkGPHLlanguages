@@ -4,7 +4,7 @@
 
 # Forth
 
-here in the [Gforth](https://gforth.org/) implementation.
+Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
 
 <br/>
 
