@@ -688,7 +688,7 @@ Here's the updated execution speeds diagram with additional results from ReScrip
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
-"Standard ML to JS / node.js" = transpiled from Standard ML to JavaScript with the [LunarML transpiler](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), where the JavaScript code is then being executed and time measured on node.js
+"Standard ML to JS / node.js" = transpiled from Standard ML to JavaScript with the [LunarML transpiler](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), where the JavaScript code is then being executed and execution time measured on node.js
 
 <br/>
 
