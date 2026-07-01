@@ -1,12 +1,6 @@
-2026-07-01: work in progress: tbd
-
-<br/>
-
 # Forth
 
 Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
-
-This programming language **forces** you to learn something **new**:
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
@@ -102,7 +96,7 @@ Voilà! Gforth in its latest version! (which already looks improved at the REPL,
 
 <br/>
 
-### tbd
+## From Forth to Factor
 
 I highly recommend to first have a look into the official [Forth Tutorial](https://net2o.de/gforth/Tutorial.html) before doing anything more meaningful than "Hello, world!" in Forth:
 
@@ -123,19 +117,24 @@ bye
 $
 ```
 
-Otherwise, there's a high chance that you don't really understand any "Big AI" transpiled or generated Gforth code (unless you are the coding genius of your neighborhood, of course).
+<br/>
 
-tbd
+However, when I continued with the Tutorial, I tumbled over word _over_ at chapter [3.6 Stack Manipulation](https://net2o.de/gforth/Stack-Manipulation-Tutorial.html#Stack-Manipulation-1):
 
+```
+.s <0>  ok
+1  ok 1
+2  ok 2
+3  ok 3
+over  ok 4
+.s <4> 1 2 3 2  ok 4
+ ok
+```
 
+This was the moment I got doubts: should I continue with this programming language?
 
+Then I discovered much later stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language.
 
-
-
-
-
-
-
-
+<br/>
 
 ##_end
