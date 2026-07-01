@@ -23,7 +23,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Program factorial.hy for terminal input and output](#program-factorialhy-for-terminal-input-and-output)
 - [Microbenchmark program in Hy](#microbenchmark-program-in-hy)
-- [A faster Python program with an idea from functional programming]()
+- [A faster Python program with an idea from functional programming](#a-faster-python-program-with-an-idea-from-functional-programming)
 
 <br/>
 
@@ -158,7 +158,7 @@ Notable: running Hy script _random_streams_for_perf_stats.hy_ for example like t
 And the reason is this: at least on my Ubuntu 24 LTS system, running _$ /usr/bin/python3.xx -m hy -m <Hy module>_ is automatically using this very old Hy version already mentioned above:
 
 ```
-$ python3 -c "import hy; print(hy.__version__)"
+$ python3 -c "import hy; print(hy.__version__)"  # here I am not in a virtual Python environment!
 0.28.0
 $
 ```
@@ -187,10 +187,12 @@ None
 => 
 ```
 
+<br/>
+
 Hy command hy2py transpiles a Hy modules, or a Hy source code file, into Python code:
 
 ```
-$ hy2py -m factorial
+(Hy) $ hy2py -m factorial
 import hy
 import sys
 
@@ -209,15 +211,16 @@ while True:
         _hy_anon_2 = _hy_anon_1
     except Exception as _hy_exc_e_3:
         _hy_anon_2 = print('Call program with an integer number >= 1')
-$
+(Hy) $
 ```
 
 <br/>
 
-Let's transpile the "speed part" of the microbenchmark program in Hy into its Python program with command: _$ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats.py_, and time measure it:
+Let's transpile the "speed part" of the Hy microbenchmark program into its Python program, and time measure that:
 
 ```
-$ time python3 random_streams_for_perf_stats.py
+(Hy) $ hy2py random_streams_for_perf_stats.hy -o random_streams_for_perf_stats.py
+(Hy) $ time python3 random_streams_for_perf_stats.py
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -225,7 +228,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 
 real	0m0.089s
 ...
-$
+(Hy) $
 ```
 
 That's practically the same execution speed as with the Hy program!
