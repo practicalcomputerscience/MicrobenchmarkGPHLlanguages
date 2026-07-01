@@ -78,7 +78,7 @@ However, I didn't notice any statistically relevant difference to not skipping i
 
 As usual, I refer to the "speed part" of the program with this source code: ![random_streams_for_perf_stats](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Clojure/random_streams_for_perf_stats_core.clj)
 
-My first program version with building a vector of integer values (with no pre-allocations of memory) and naive string concatenations on initially two empty strings was a speed desaster. This first version was about 50 times slower than my Python script or Scala program!
+My first program version with building a vector of integer values (with no pre-allocations of memory) and naive string concatenations on initially two empty strings was an execution speed desaster. This first version was about 50 times slower than my Python script or Scala program!
 
 <br/>
 
@@ -121,7 +121,7 @@ with each of them finally being converted into one, big string:
            current-seed seed
            ; bits_x_ (StringBuilder.)  ; using Java StringBuilder Class
            ; bits_hex_ (StringBuilder.)
-           bits_x_ []  ; classical functional approach with dynamically building a list of strings
+           bits_x_ []  ; classical functional approach with dynamically building a list, here a vector, of strings
            bits_hex_ []]
 
       (def bits_x_str_ (Integer/toBinaryString ^long current-seed))  ; no padding
