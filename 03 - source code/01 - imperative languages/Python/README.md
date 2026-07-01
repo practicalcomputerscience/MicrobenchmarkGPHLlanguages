@@ -109,7 +109,7 @@ The functional approach in the Hy based Python program reduces the execution tim
 
 Both Python programs, my own implementation and the Hy generated one, have been running with Python version 3.12.3, and measured with command: _$ multitime -n 20 python3 ./random_streams_for_perf_stats.py_
 
-So, using the otherwise fabulous _**StringIO**_ module ([class io.StringIO()](https://docs.python.org/3/library/io.html#io.StringIO)) isn't always the fastest solution when building big strings in Python.
+So, using the otherwise fabulous [class io.StringIO](https://docs.python.org/3/library/io.html#io.StringIO) isn't always the fastest solution when building big strings in Python.
 
 Nevertheless, I keep the (idiomatic) _StringIO_ based solution as my offical Python solution.
 
