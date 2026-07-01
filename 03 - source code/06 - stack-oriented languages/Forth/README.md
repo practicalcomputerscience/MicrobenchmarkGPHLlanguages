@@ -78,9 +78,14 @@ $ make
     in libgforth-fast
 *** no performance problems ***
     in libgforth
+$ sudo make install
+...
+============= INSTALL SUCCEEDED =============
+Bash users: type 'hash -r' to empty the cache
+$ hash -r
 $ gforth --version
 gforth 0.7.9_20260610 amd64
-$ 
+$
 ```
 
 Voilà! Gforth in its latest version!
@@ -93,17 +98,22 @@ I highly recommend to first have a look into the official [Forth Tutorial](https
 
 ```
 $ gforth
-Gforth 0.7.3, Copyright (C) 1995-2008 Free Software Foundation, Inc.
+Gforth 0.7.9_20260610
+Authors: Anton Ertl, Bernd Paysan, Jens Wilke et al., for more type `authors'
+Copyright © 2025 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
 Gforth comes with ABSOLUTELY NO WARRANTY; for details type `license'
-Type `bye' to exit
-cr ." Hello, world from Gforth!" cr 
+Type `help' for basic help
+\  ok
+\ user input starts now:  ok
+cr ." Hello, world from Gforth!" cr
 Hello, world from Gforth!
  ok
 bye
 $
 ```
 
-Otherwise, there's a high chance that you can't really understand any "Big AI" transpiled or generated Gforth code (unless you are the coding genius of your neighborhood, of course).
+Otherwise, there's a high chance that you don't really understand any "Big AI" transpiled or generated Gforth code (unless you are the coding genius of your neighborhood, of course).
 
 tbd
 
