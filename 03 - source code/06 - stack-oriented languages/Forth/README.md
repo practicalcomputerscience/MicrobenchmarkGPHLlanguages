@@ -92,7 +92,7 @@ Voilà! Gforth in its latest version! (which already looks improved at the REPL,
 
 <br/>
 
-### Advanced exercise: factorial
+### tbd
 
 I highly recommend to first have a look into the official [Forth Tutorial](https://net2o.de/gforth/Tutorial.html) before doing anything more meaningful than "Hello, world!" in Forth:
 
