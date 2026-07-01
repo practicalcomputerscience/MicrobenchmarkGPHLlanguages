@@ -8,7 +8,7 @@ Table of contents:
 
 - [On Python environments](#on-python-environments)
 - [Version experiments and just-in-time (JIT) compilation in Python](#version-experiments-and-just-in-time-jit-compilation-in-python)
-- [A faster Python program with an idea from functional programming]()
+- [A faster Python program with an idea from functional programming](#a-faster-python-program-with-an-idea-from-functional-programming)
 - [SPy: statically compilable Python](#spy-statically-compilable-python)
 
 <br/>
