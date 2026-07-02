@@ -18,6 +18,12 @@ From my point of view,
 - like [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) or [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo#bigloo-scheme),
 - than those for interpretation, like [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Racket#racket-scheme) or [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy).
 
+Lisp was probably the first functional programming languages where source code has been compiled into machine code:
+
+> The first complete Lisp compiler, written in Lisp, was implemented in 1962 by Tim Hart and Mike Levin at MIT, and could be compiled by simply having an existing LISP interpreter interpret the compiler code, producing machine code output able to be executed at a 40-fold improvement in speed over that of the interpreter.
+
+from: [Lisp (programming language)](https://en.wikipedia.org/wiki/Lisp_(programming_language))
+
 <br/>
 
 # Functional languages
