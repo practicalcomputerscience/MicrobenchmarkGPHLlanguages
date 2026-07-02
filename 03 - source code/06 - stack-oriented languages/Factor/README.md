@@ -95,6 +95,15 @@ With an execution time of about 35 seconds, this **interpreted** script is in th
 
 <br/>
 
+> [!IMPORTANT]
+> The _( n -- f(n) )_ in _: fib ( n -- f(n) ) dup 2 < [ ] [ fib-rec ] if ;_ has operational meaning! So craft these stack effects carefully or leave them away!
+
+> Stack effects are how you document the inputs from the stack and outputs to the stack for your word. You can use any identifier to name the stack elements, here we use n. Factor will perform a consistency check that the number of inputs and outputs you specify agrees with what the body does.
+
+from [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html).
+
+<br/>
+
 ### Program factorial.factor for terminal input and output
 
 Analogously to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in a niche programming language.
