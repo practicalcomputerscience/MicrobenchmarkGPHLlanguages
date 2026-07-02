@@ -123,12 +123,12 @@ But first make a little Hy program named _factorial.hy_, with some help from "Bi
     (setv n (int user_input))  ; try to turn input string into an integer number
 
     (if (< n 1)
-        (print "Call program with an integer number >= 1")
+        (print "Wrong input!\n")
         (do
           (print "factorial(" (str n) ") = " (str (factorial n)))  ; CONCATENATED OUTPUT TO THE TERMINAL
           (break)))
     (except [e Exception]
-      (print "Call program with an integer number >= 1"))))
+      (print "Wrong input!\n"))))
 ```
 
 Let's run _factorial.hy_:
