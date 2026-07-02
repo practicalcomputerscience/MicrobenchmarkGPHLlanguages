@@ -49,7 +49,7 @@ When command _$ factor_ is entered, the Factor Listener window should show up li
 
 I highly recommend to first have a look into the official [Guided tour of Factor](https://docs.factorcode.org/content/article-tour.html) before doing anything more meaningful than "Hello, world!". You may directly jump into chapter [Playing with the stack](https://docs.factorcode.org/content/article-tour-stack.html).
 
-from there:
+from [Combinators](https://docs.factorcode.org/content/article-tour-combinators.html):
 
 > [!TIP]
 > ..you should write code that does as little stack shuffling as possible.
