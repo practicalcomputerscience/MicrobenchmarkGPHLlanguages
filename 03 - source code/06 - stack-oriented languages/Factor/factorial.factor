@@ -22,7 +22,7 @@ USING: io kernel math math.parser prettyprint ranges sequences ;  ! USING: decla
 IN: factorial_with_user_input  ! defines the current vocabulary (home namespace) where all subsequent words created will live
 
 ! see https://docs.factorcode.org/content/article-tour-first-word.html
-: prod ( {x1,...,xn} -- x1*...*xn ) 1 [ * ] reduce ;  ! (..) just documents the stack effect
+: prod ( {x1,...,xn} -- x1*...*xn ) 1 [ * ] reduce ;  ! (..) documents the stack effect
 : fact ( n -- n! ) [1..b] prod ;
 
 ! mostly Google AI:
