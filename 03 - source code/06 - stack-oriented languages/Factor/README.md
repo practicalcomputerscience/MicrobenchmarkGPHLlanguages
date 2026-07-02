@@ -108,35 +108,51 @@ from [Defining our first word](https://docs.factorcode.org/content/article-tour-
 
 Analogously to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in a niche programming language.
 
-How to basically implement a factorial calculation is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html), "only" things to add are user input and terminal output:
+How to basically implement a factorial calculation is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html), "only" things to add are user input, type conversions, type checks, mastering the stack, control flow ("if-then-else") and concatenated terminal output:
 
 ```
-tbd
+USING: io kernel math math.parser prettyprint ranges sequences ;  ! USING: declares external vocabularies to borrow tools from
+
+IN: factorial_with_user_input  ! defines the current vocabulary (home namespace) where all subsequent words created will live
+
+: prod ( {x1,...,xn} -- x1*...*xn ) 1 [ * ] reduce ;  ! (..) just documents the stack effect
+: fact ( n -- n! ) [1..b] prod ;
+
+! mostly Google AI:
+: factorial_with_user_input ( -- )
+    "Enter an integer n >= 1: " write flush  ! USER INPUT FROM THE TERMINAL
+    readln [                                 ! Reads line from stdin and pushes string to stack
+        string>number                        ! Try to convert string to number
+        dup integer? [                       ! Check if integer
+            dup 1 >=                         ! Check if the integer is >= 1
+        ] [ f ] if [
+            "factorial(" write               ! If true: calculate factorial and print
+            dup number>string write
+            ") = " write
+            fact number>string print         ! Ends the line with print
+        ] [
+            drop                             ! If false: drop the invalid number/f
+            "Wrong input!\n" print
+            factorial_with_user_input       ! Loop: call itself to ask again
+        ] if
+    ] [ "No input received (EOF)." print
+        factorial_with_user_input           ! Loop: call itself if user just pressed Enter
+    ] if* ;
+
+MAIN: factorial_with_user_input ! MAIN: declares the entry point
 ```
+
+<br/>
+
+## Microbenchmark program in Factor
+
+tbd
 
 <br/>
 
 ## Making a standalone executable
 
-
-
 tbd
-
-<br/>
-
-tbd
-
-
-<br/>
-
-tbd
-
-
-<br/>
-
-tbd
-
-
 
 <br/>
 
