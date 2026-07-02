@@ -119,9 +119,9 @@ $
 
 <br/>
 
-However, when I continued with the Tutorial, I got doubts: should I really continue with this rather low-level programming language?
+However, when I continued with the Tutorial, I got doubts: should I really go on with this rather low-level programming language?
 
-Then I discovered much later stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language as a representative of stack-oriented programming.
+Then I discovered much younger stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language as a representative of stack-oriented programming.
 
 <br/>
 
