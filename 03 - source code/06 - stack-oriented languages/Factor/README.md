@@ -89,7 +89,7 @@ real	0m35.218s
 $
 ```
 
-With an execution time of about 35 seconds, this **interpreted** script is in the range of YJIT compiled Ruby: [Execution speeds table](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02a%20-%20benchmarking%20with%20inefficient%20Fibonacci%20number%20calculations#execution-speeds-table), so basically "middle-of-the-road" efficient.
+With an execution time of about 35 seconds, this **interpreted** script is in the range of YJIT compiled Ruby: [Execution speeds table](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02a%20-%20benchmarking%20with%20inefficient%20Fibonacci%20number%20calculations#execution-speeds-table).
 
 <br/>
 
