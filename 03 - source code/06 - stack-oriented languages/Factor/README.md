@@ -65,7 +65,21 @@ Most important stack shuffling functions are: _dup_, _drop_ and _swap_
 
 ### Inefficient (recursive) Fibonacci number calculation
 
-With the help of the "Guided tour of Factor", I was able to get this [Factor script](./fibonacci.factor) done to calculate the 47th Fibonacci number inefficiently:
+With the help of the "Guided tour of Factor", I was able to get this [Factor script](./fibonacci.factor):
+
+```
+USING: io kernel math prettyprint ;  ! USING: declares external vocabularies to borrow tools from
+
+IN: fibonacci  ! defines the current vocabulary (home namespace) where all subsequent words created will live
+
+DEFER: fib-rec  ! DEFER: to define two mutually recursive words:
+: fib ( n -- f(n) ) dup 2 < [ ] [ fib-rec ] if ;
+: fib-rec ( n -- f(n) ) [ 1 - fib ] [ 2 - fib ] bi + ;
+
+MAIN: [ 47 fib . ]  ! MAIN: declares the entry point
+```
+
+..done to calculate the 47th Fibonacci number inefficiently:
 
 ```
 $ time factor fibonacci.factor 
@@ -78,6 +92,17 @@ $
 With an execution time of about 35 seconds, this script is in the range of YJIT compiled Ruby: [Execution speeds table](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02a%20-%20benchmarking%20with%20inefficient%20Fibonacci%20number%20calculations#execution-speeds-table), so basically "middle-of-the-road" efficient.
 
 <br/>
+
+### Program factorial.factor for terminal input and output
+
+Similar to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in an exotic programming language.
+
+How to implement a factorial calculation in Factor is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html):
+
+```
+: prod ( {x1,...,xn} -- x1*...*xn ) 1 [ * ] reduce ;  ! (..) just documents the stack effect
+: fact ( n -- n! ) [1..b] prod ;
+```
 
 
 
