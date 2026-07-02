@@ -37,13 +37,13 @@ When command _$ factor_ is entered, the Factor Listener window should show up li
 
 ![plot](./Factor_Listener.png)
 
-..here the ubiquitous _"Hello, world!" print_ function in its .
+..here the ubiquitous _"Hello, world!" print_ function in Reverse Polish Notation (RPN).
 
 <br/>
 
 ## Tutorial
 
-I highly recommend to first have a look into the official [Guided tour of Factor](https://docs.factorcode.org/content/article-tour.html) before doing anything more meaningful than "Hello, world!" in Factor. You may directly jump into chapter [Playing with the stack](https://docs.factorcode.org/content/article-tour-stack.html).
+I highly recommend to first have a look into the official [Guided tour of Factor](https://docs.factorcode.org/content/article-tour.html) before doing anything more meaningful than "Hello, world!". You may directly jump into chapter [Playing with the stack](https://docs.factorcode.org/content/article-tour-stack.html).
 
 tbd
 
