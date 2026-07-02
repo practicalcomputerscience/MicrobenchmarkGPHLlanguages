@@ -59,13 +59,13 @@ Most important stack shuffling functions are: _dup_, _drop_ and _swap_
 > [!NOTE]
 > ..Factor words tend to be rather shallow, using one level of nesting for each higher-order function, unlike Lisps or more generally languages based on the lambda calculus, which use one level of nesting for each function..
 
-(same source)
+from same source.
 
 <br/>
 
 ### Inefficient (recursive) Fibonacci number calculation
 
-With the help of the "Guided tour of Factor", I was able to get this [Factor script](./fibonacci.factor):
+Mostly with the help of the chapter [Learning the Tools](https://docs.factorcode.org/content/article-tour-tools.html), I was able to get this complete [Factor script](./fibonacci.factor) done:
 
 ```
 USING: io kernel math prettyprint ;  ! USING: declares external vocabularies to borrow tools from
@@ -95,9 +95,9 @@ With an execution time of about 35 seconds, this script is in the range of YJIT 
 
 ### Program factorial.factor for terminal input and output
 
-Similar to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in an exotic programming language.
+Analogously to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in a niche programming language.
 
-How to implement a factorial calculation in Factor is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html):
+How to implement a factorial calculation is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html):
 
 ```
 : prod ( {x1,...,xn} -- x1*...*xn ) 1 [ * ] reduce ;  ! (..) just documents the stack effect
