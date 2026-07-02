@@ -96,11 +96,13 @@ With an execution time of about 35 seconds, this **interpreted** script is in th
 <br/>
 
 > [!IMPORTANT]
-> The _( n -- f(n) )_ in _: fib ( n -- f(n) ) dup 2 < [ ] [ fib-rec ] if ;_ has operational meaning! So craft these stack effects carefully or leave them away!
+> The _( n -- f(n) )_ in _: fib ( n -- f(n) ) dup 2 < [ ] [ fib-rec ] if ;_ has operational meaning! So craft these stack effects carefully or leave them away! (See below at _readln_).
 
 > Stack effects are how you document the inputs from the stack and outputs to the stack for your word. You can use any identifier to name the stack elements, here we use n. Factor will perform a consistency check that the number of inputs and outputs you specify agrees with what the body does.
 
 from [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html).
+
+_word_ = function in other languages.
 
 <br/>
 
