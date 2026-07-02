@@ -1,6 +1,6 @@
 2026-07-01: work in progress
 
-<br/>  
+<br/>
   
 # Factor
 
@@ -10,7 +10,9 @@ https://github.com/factor/factor/
 
 https://concatenative.org/wiki/view/Factor/Features/The%20language
 
-I picked up Factor as an alternative to [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
+<br/>
+
+I picked up more high-level Factor as an alternative to more low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
  
 <br/>
 
@@ -47,11 +49,32 @@ When command _$ factor_ is entered, the Factor Listener window should show up li
 
 I highly recommend to first have a look into the official [Guided tour of Factor](https://docs.factorcode.org/content/article-tour.html) before doing anything more meaningful than "Hello, world!". You may directly jump into chapter [Playing with the stack](https://docs.factorcode.org/content/article-tour-stack.html).
 
+from there:
+
+> [!TIP]
+> ..you should write code that does as little stack shuffling as possible.
+
+Most important stack shuffling functions are: _dup_, _drop_ and _swap_
+
+<br/>
+
 tbd
 
 <br/>
 
 tbd
+
+
+<br/>
+
+tbd
+
+
+<br/>
+
+tbd
+
+
 
 <br/>
 
