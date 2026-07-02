@@ -9,6 +9,8 @@ https://factorcode.org/
 https://github.com/factor/factor/
 
 https://concatenative.org/wiki/view/Factor/Features/The%20language
+
+I picked up Factor as an alternative to [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
  
 <br/>
 
