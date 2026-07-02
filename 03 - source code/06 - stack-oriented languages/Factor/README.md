@@ -56,7 +56,30 @@ from [Combinators](https://docs.factorcode.org/content/article-tour-combinators.
 
 Most important stack shuffling functions are: _dup_, _drop_ and _swap_
 
+> [!NOTE]
+> ..Factor words tend to be rather shallow, using one level of nesting for each higher-order function, unlike Lisps or more generally languages based on the lambda calculus, which use one level of nesting for each function..
+
+(same source)
+
 <br/>
+
+### Inefficient (recursive) Fibonacci number calculation
+
+With the help of the "Guided tour of Factor", I was able to get this [Factor script](./fibonacci.factor) done to calculate the 47th Fibonacci number inefficiently:
+
+```
+$ time factor fibonacci.factor 
+2971215073
+real	0m35.218s
+...
+$
+```
+
+With an execution time of about 35 seconds, this script is in the range of YJIT compiled Ruby: [Execution speeds table](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02a%20-%20benchmarking%20with%20inefficient%20Fibonacci%20number%20calculations#execution-speeds-table), so basically "middle-of-the-road" efficient.
+
+<br/>
+
+
 
 tbd
 
