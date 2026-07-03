@@ -15,6 +15,11 @@ https://concatenative.org/wiki/view/Factor/Features/The%20language
 I picked up more high-level Factor as an alternative to more low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
 
 This language even has Haskell-style monads implemented: [monads vocabulary](https://docs.factorcode.org/content/vocab-monads.html)
+
+<br/>
+
+> [!NOTE]
+> Getting exception handling right in this language, even though being a "high-level" stack-oriented language, may take patience! Look for examples with _recover_ in its GitHub repository!
  
 <br/>
 
