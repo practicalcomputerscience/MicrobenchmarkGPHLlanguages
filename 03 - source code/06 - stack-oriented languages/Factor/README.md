@@ -167,7 +167,25 @@ tbd Forth word solution
 
 tbd
 
+Here the case of failure when writing the first big string to file, success when writing the second:
 
+```
+$ factor random_streams_for_perf_stats.factor
+
+generating a random bit stream...
+could not write to file: random_bitstring.bin ! -- Unix system call 'open' failed:
+
+Permission denied (13)
+
+It was called with the following arguments:
+
+"~/scripts/Factor/random_bitstring.bin"
+577
+438
+
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
 
 
 
