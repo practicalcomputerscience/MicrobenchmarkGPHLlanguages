@@ -211,7 +211,7 @@ M: ftp-get handle-passive-command
     ] recover ;
 ```
 
-Word _3drop_ drops 3 items from the top of the datastack in the error path to balance the stack between success path and error path. Based on this idea, Google AI, after some iterations, then got the **Stack layout** right in helper word _write-to-file_:
+Word _3drop_ drops 3 items from the top of the datastack in the error path to balance the stack between success path and error path. Based on this idea, Google AI got the **Stack layout** right in helper word _write-to-file_ after some iterations:
 
 ```
 : write-to-file ( path string -- )
