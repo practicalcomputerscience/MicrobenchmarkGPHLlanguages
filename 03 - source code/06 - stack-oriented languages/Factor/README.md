@@ -19,7 +19,7 @@ This language even has Haskell-style monads implemented: [monads vocabulary](htt
 <br/>
 
 > [!NOTE]
-> Getting exception handling right in this language, even though being a "high-level" stack-oriented language, may take patience! Look for examples with _recover_ in its GitHub repository!
+> Getting exception handling right in this language, even though being a "high-level" stack-oriented language, may take patience! Look for examples with _recover_ in the GitHub repository!
  
 <br/>
 
