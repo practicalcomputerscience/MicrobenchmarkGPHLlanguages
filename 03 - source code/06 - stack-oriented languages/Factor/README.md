@@ -264,7 +264,7 @@ It wasn't then too difficult to get from above source code to my final solution:
     ] ;
 ```
   
-Here's the failure case when trying to write the first big string to a file, success case when writing the second big string. I just leave Factor's error messaging in its verbose form untouched:
+Here's the terminal output of a failure case when trying to write the first big string to a file, success case when writing the second big string. I just leave Factor's error messaging in its verbose form untouched. The most important thing here is anyway that in case of an exception the program doesn't terminate:
 
 ```
 $ factor random_streams_for_perf_stats.factor
