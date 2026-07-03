@@ -146,12 +146,30 @@ MAIN: factorial_with_user_input ! MAIN: declares the entry point
 
 <br/>
 
-## Microbenchmark program in Factor
+## Microbenchmark program in Factor: exception handling and balancing the stack
 
 I think that doing _very_ stack-oriented programming is _really_ hard for man and machine. And I think that my implementation of the microbenchmark program,
-with big help from Google AI in lots of iterations, just shows it:
+with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example using:
 
-- there's a lot of imperative and functional tinkering going on from my point of view with for example using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables, extra word _masterloop-rec_ next to _masterloop_:
+- the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
+- an extra word _masterloop-rec_ next to the initializing _masterloop_
+
+<br/>
+
+However, the hardest part was implementing **exception handling** when writing (a string) to a file.
+
+This is not so complicated in low-level [Forth](tbd), because "balancing the stack" ("The input quotations to 'recover' do not all leave the stack at the same height")
+between the success path, that is quotation #1, and the error path, that is quotation #2, is easier (for men and machines):
+
+```
+tbd Forth word solution
+```
+
+tbd
+
+
+
+
 
 tbd
 
