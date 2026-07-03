@@ -239,7 +239,7 @@ Word _3drop_ drops 3 items from the top of the datastack in the error path to ba
 It wasn't then too difficult to get from above source code to my final solution:
 
 ```
-:: write-to-file ( path string file_type -- )
+:: write_to_file ( path string file_type -- )
     [let
         path :> p
         string :> s
@@ -255,31 +255,25 @@ It wasn't then too difficult to get from above source code to my final solution:
             ! Stack layout here: error-obj (locals p and s are handled by let)
             "could not write to file: " write p write " ! -- " write
 
-            ! Duplicate the error object on top and print it cleanly:
-            dup error.  ! Consumes the duplicate copy
-            nl
+            ! Extract the failing system word slot (e.g., 'open')
+            dup word>> name>> "Unix system call '" write write "' failed and " write
+
+            ! Extract the message and errno slots (e.g., 'Permission denied' (13))
+            dup message>> write " (" write
+            dup errno>> number>string write ")" print
 
             drop  ! drop the error object to balance stack
         ] recover
     ] ;
 ```
   
-Here's the terminal output of a failure case when trying to write the first big string to a file, success case when writing the second big string. I just leave Factor's error messaging in its verbose form untouched. The most important thing here is anyway that in case of an exception the program doesn't terminate:
+Here's the polished terminal output of a failure case when trying to write the first big string to a file, success case when writing the second big string. The most important thing here is anyway that in case of an exception the program doesn't terminate:
 
 ```
 $ factor random_streams_for_perf_stats.factor
 
 generating a random bit stream...
-could not write to file: random_bitstring.bin ! -- Unix system call 'open' failed:
-
-Permission denied (13)
-
-It was called with the following arguments:
-
-"~/scripts/Factor/random_bitstring.bin"
-577
-438
-
+could not write to file: random_bitstring.bin ! -- Unix system call 'open' failed and Permission denied (13)
 Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
