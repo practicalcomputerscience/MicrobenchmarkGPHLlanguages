@@ -163,15 +163,87 @@ with big help from Google AI in lots of iterations, just shows it. There's a lot
 
 However, the hardest part was implementing **exception handling** when writing (a string) to a file.
 
-This is not so complicated in low-level [Forth](tbd), because "balancing the stack" ("The input quotations to 'recover' do not all leave the stack at the same height")
-between the success path, that is quotation #1, and the error path, that is quotation #2, is easier (for men and machines):
+This is not so complicated in low-level [Forth](tbd), because "balancing the stack" between the success path, that is quotation #1, and the error path, that is quotation #2, is easier (for men and machines):
 
 ```
 tbd Forth word solution
 ```
 
-tbd
+However, to implement such a solution in Factor turned out to be too tough (still) for Google AI and Microsoft Copilot. Often I ran into this error during compilation:
 
+```
+The input quotations to 'recover' do not all leave the stack at the same height
+```
+
+Only when I searched [Factor's GitHub repository](https://github.com/factor/factor) intensively for constructs with _recover_, I found the key to success at from: https://github.com/factor/factor/blob/main/basis/ftp/server/server.factor:
+
+```
+M: ftp-get handle-passive-command
+    [  ! --- success path ---
+        path>>
+        [ transfer-outgoing-file ]
+        [ binary <file-reader> swap stream-copy ] bi
+        finish-file-transfer
+    ] [  ! --- error path ---
+        3drop "File transfer failed" ftp-error
+    ] recover ;
+```
+
+Word _3drop_ drops 3 items from the top of the datastack in the error path to balance the stack between success path and error path!
+
+Based on this idea, Google AI, after some iterations, then got the **Stack layout** right and thus helper word _write-to-file_:
+
+```
+: write-to-file ( path string -- )
+    [
+        ! --- success path ---
+        swap  ! swap path string
+        utf8 <file-writer>              ! open file for writing
+        [ write ] with-output-stream    ! write the string
+        "Success: wrote to file." print
+    ]
+    [
+        ! --- error path ---
+        !  Stack layout here: string path error-obj
+        "Error: could not write to file. Reason: " write
+        ! 1. Duplicate the error object on top and print it cleanly
+        dup error.                      ! Consumes the duplicate copy
+        ! 2. Drop the remaining 3 items (string path error-obj) to clear the stack
+        3drop         
+    ] recover ;
+
+```
+
+<br/>
+
+It wasn't then too difficult from this source code to my final solution:
+
+```
+:: write-to-file ( path string file_type -- )
+    [let
+        path :> p
+        string :> s
+        file_type :> ft
+        [
+            ! --- success path ---
+            s p utf8 <file-writer>          ! open file for writing
+            [ write ] with-output-stream    ! write the string
+            ft write " stream has been written to disk under name: " write p print
+        ]
+        [
+            ! --- error path ---
+            ! Stack layout here: error-obj (locals p and s are handled by let)
+            "could not write to file: " write p write " ! -- " write
+
+            ! Duplicate the error object on top and print it cleanly:
+            dup error.  ! Consumes the duplicate copy
+            nl
+
+            drop  ! drop the error object to balance stack
+        ] recover
+    ] ;
+```
+  
 Here the case of failure when writing the first big string to file, success when writing the second:
 
 ```
@@ -191,11 +263,6 @@ It was called with the following arguments:
 Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
-
-
-
-tbd
-
 
 <br/>
 
