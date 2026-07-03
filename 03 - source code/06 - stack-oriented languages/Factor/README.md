@@ -286,8 +286,8 @@ Making a standalone executable in Factor (with default configuration) on the con
 
 ```
 $ mkdir -p ./random_streams_for_perf_stats  # -p: no error if existing, make parent directories as needed
-$ cp ./random_streams_for_perf_stats.factor ./random_streams_for_perf_stats  # this extra copy of the source code file is actually needed!
-$ factor -e='"extra" "~/scripts/Factor" add-vocab-root "random_streams_for_perf_stats" deploy'  # start the build: be patient, it will take some time!
+$ cp ./random_streams_for_perf_stats.factor ./random_streams_for_perf_stats  # this source code copy is actually needed!
+$ factor -e='"extra" "~/scripts/Factor" add-vocab-root "random_streams_for_perf_stats" deploy'  # be patient; will take some time!
 ...
 Saving final image
 
