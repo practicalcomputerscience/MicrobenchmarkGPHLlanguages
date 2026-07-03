@@ -282,7 +282,37 @@ $
 
 ## Making a standalone executable
 
-tbd
+Making a standalone executable in Factor (with default configuration) on the console takes some steps. Do it like this:
+
+```
+$ mkdir -p ./random_streams_for_perf_stats  # -p: no error if existing, make parent directories as needed
+$ cp ./random_streams_for_perf_stats.factor ./random_streams_for_perf_stats  # this extra copy of the source code file is actually needed!
+$ factor -e='"extra" "~/scripts/Factor" add-vocab-root "random_streams_for_perf_stats" deploy'  # start the build: be patient, it will take some time!
+...
+Saving final image
+
+--- Data stack:
+"extra"
+$
+```
+
+The compiled Factor image is hopefully now located here and ready for execution:
+
+```
+$ time ./factor-linux-x86-64-2026-02-11-19-38/factor/random_streams_for_perf_stats/random_streams_for_perf_stats.out
+
+generating a random bit stream...
+Bit stream has been written to disk under name: random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.065s
+...
+$
+```
+
+It runs about 60% faster than invoking the Factor interpreter directly (_$ factor \<Factor program\>_).
+
+It seems that the default configuration is already trying to generate an optimized program in terms of execution speed: https://github.com/factor/factor/blob/master/basis/tools/deploy/deploy-docs.factor
 
 <br/>
 
