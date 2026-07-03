@@ -157,7 +157,7 @@ I think that doing _very_ stack-oriented programming is _really_ hard for man an
 with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example:
 
 - heavily using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
-- an extra word _masterloop-rec_ next to the initializing _masterloop_
+- an extra word _masterloop-rec_ as the recursive part of the initializing _masterloop_
 
 <br/>
 
