@@ -154,9 +154,9 @@ MAIN: factorial_with_user_input ! MAIN: declares the entry point
 ## Microbenchmark program in Factor: exception handling and balancing the stack
 
 I think that doing _very_ stack-oriented programming is _really_ hard for man and machine. And I think that my implementation of the microbenchmark program,
-with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example using:
+with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example:
 
-- the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
+- heavily using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
 - an extra word _masterloop-rec_ next to the initializing _masterloop_
 
 <br/>
