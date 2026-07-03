@@ -153,7 +153,9 @@ MAIN: factorial_with_user_input ! MAIN: declares the entry point
 
 ## Microbenchmark program in Factor: exception handling and balancing the stack
 
-I think that doing _very_ stack-oriented programming is _really_ hard for man and machine. And I think that my implementation of the microbenchmark program,
+I think that doing _very_ stack-oriented programming is _really_ hard for man and machine.
+
+And I think that my implementation of the microbenchmark program,
 with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example:
 
 - heavily using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
@@ -163,19 +165,39 @@ with big help from Google AI in lots of iterations, just shows it. There's a lot
 
 However, the hardest part was implementing **exception handling** when writing (a string) to a file.
 
-This is not so complicated in low-level [Forth](tbd), because "balancing the stack" between the success path, that is quotation #1, and the error path, that is quotation #2, is easier (for men and machines):
+Finding a solution in low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#forth) is not so hard, because source code for "balancing the stack" between the error path and the succes path is apparently amply available on the Internet:
 
 ```
-tbd Forth word solution
+\ Helper word that performs ALL risky file actions
+: safe-file-operations ( c-addr u filename-addr filename-u -- )
+  \ 1. Try to open/create the file
+  w/o create-file throw               ( c-addr u fileid )
+  \ 2. Try to write the string data to it
+  >r                                  ( c-addr u ) ( R: fileid )
+  r@ write-file throw
+  \ 3. Try to close the file
+  r> close-file throw ;
+
+: main ( c-addr u filename-addr filename-u -- )
+  ['] safe-file-operations catch ?dup if
+    \ Error Path: Something failed inside safe-file-operations.
+    ." File Operation Failed! Reason: "
+    dup .error cr         \ Prints "Permission denied" instead of "-525"
+    drop                  \ Drops the duplicate error code copy
+    2drop 2drop           \ Clean up the initial string and filename parameters from stack
+  else
+    \ Success Path
+    ." File written successfully" cr
+  then ;
 ```
 
-However, to implement such a solution in Factor turned out to be too tough (still) for Google AI and Microsoft Copilot. Often I ran into this error during compilation:
+However, to implement such a solution in Factor turned out to be too tough (still) for Google AI and Microsoft Copilot. Often I ran into this compilation error:
 
 ```
 The input quotations to 'recover' do not all leave the stack at the same height
 ```
 
-Only when I searched [Factor's GitHub repository](https://github.com/factor/factor) intensively for constructs with _recover_, I found the key to success at from: https://github.com/factor/factor/blob/main/basis/ftp/server/server.factor:
+Only when I searched [Factor's GitHub repository](https://github.com/factor/factor) intensively for constructs with _recover_, I found the key to success at: https://github.com/factor/factor/blob/main/basis/ftp/server/server.factor:
 
 ```
 M: ftp-get handle-passive-command
@@ -189,9 +211,7 @@ M: ftp-get handle-passive-command
     ] recover ;
 ```
 
-Word _3drop_ drops 3 items from the top of the datastack in the error path to balance the stack between success path and error path!
-
-Based on this idea, Google AI, after some iterations, then got the **Stack layout** right and thus helper word _write-to-file_:
+Word _3drop_ drops 3 items from the top of the datastack in the error path to balance the stack between success path and error path. Based on this idea, Google AI, after some iterations, then got the **Stack layout** right in helper word _write-to-file_:
 
 ```
 : write-to-file ( path string -- )
@@ -216,7 +236,7 @@ Based on this idea, Google AI, after some iterations, then got the **Stack layou
 
 <br/>
 
-It wasn't then too difficult from this source code to my final solution:
+It wasn't then too difficult to get from above source code to my final solution:
 
 ```
 :: write-to-file ( path string file_type -- )
@@ -244,7 +264,7 @@ It wasn't then too difficult from this source code to my final solution:
     ] ;
 ```
   
-Here the case of failure when writing the first big string to file, success when writing the second:
+Here the case of failure when writing the first big string to file, success when writing the second. I just leave Factor's error messaging in its verbose form untouched:
 
 ```
 $ factor random_streams_for_perf_stats.factor
