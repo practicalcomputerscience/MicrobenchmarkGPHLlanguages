@@ -1,7 +1,3 @@
-2026-07-01: work in progress
-
-<br/>
-  
 # Factor
 
 https://factorcode.org/
@@ -29,6 +25,10 @@ So what happens at the LLM's when the Forth or Factor compiler emits an error me
 
 Literally, "digging deeper" into the stack with more _drop's_ and words like this, only to push their proposed solutions further away from a real solution.
  
+<br/>
+
+Otherwise, there could be more informative and non-trivial **source code examples** in the official documentation. Looking into the repository with the source code of a (demanding) programming language has its limits.
+
 <br/>
 
 ## Installation tips
@@ -324,9 +324,9 @@ It seems that the default configuration is already trying to generate an optimiz
 
 <br/>
 
-## Full microbenchmark program in Factor
+## Regular expressions in Factor
 
-While interpreting the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.factor) just works fine, the compiled version has a problem:
+While interpreting the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.factor), which uses regular expressions, just worked fine, the compiled version had a problem:
 
 ```
 $ ./factor-linux-x86-64-2026-02-11-19-38/factor/random_bitstring_and_flexible_password_generator/random_bitstring_and_flexible_password_generator.out
@@ -351,6 +351,112 @@ Basic commands:
 > q
 $
 ```
+
+This was the code for regular expressions:
+
+```
+        ...
+        with_special_chars [ [
+            "^[!-~]$"         ! true branch
+        ] [
+            "^[A-Za-z0-9]$"   ! false branch
+        ] if ] :> pattern
+        pattern call :> pattern_str  ! essential: evaluates block and pops string into 'pattern_str': Google AI
+
+        n_char x pattern_str pw_generator :> pw_chars_  ! pw_chars_ is still an array of chars
+        ...
+
+:: pw_generator ( length random_nbrs char_pool_str -- pw_array )
+    [let
+        length <vector> :> pw_accum
+        0               :> i!  ! mutable char counter for the password
+        0               :> j!  ! mutable counter for x
+        char_pool_str <regexp> :> pattern_regex  ! this takes time to evaluate!
+
+        [ i length < ] [  ! do as long as i < length
+            j random_nbrs nth 2 >base :> bin0_
+            bin0_ 16 CHAR: 0 pad-head :> bin0
+
+            bin0 8 head :> bin0_0
+            bin0 8 tail :> bin0_1
+
+            bin0_0 2 base> 1string :> char0_0
+            bin0_1 2 base> 1string :> char0_1
+
+            char0_0 pattern_regex matches? [
+                char0_0 pw_accum push
+                i 1 + i!  ! Increment your password character counter
+            ] when
+
+            char0_1 pattern_regex matches? [
+            ! If the regex matches, check if we still need more characters
+                i length < [
+                    char0_1 pw_accum push
+                    i 1 + i!  ! Increment your password character counter
+                ] when
+            ] when
+
+            j 1 + j!
+        ] while
+
+        pw_accum   >array
+    ] ;
+```
+
+<br/>
+
+Therefore, I decided to only feature a simple and robust string-based solution as my official solution:
+
+```
+        ...
+        with_special_chars [
+            33 126 [a..b] >string  ! MS Bing AI: this produces the full printable ASCII range from ! to ~
+        ] [
+            65 90 [a..b]  >string         ! uppercase A–Z
+            97 122 [a..b] >string append  ! lowercase a–z
+            48 57 [a..b]  >string append  ! digits 0–9
+        ] if :> pattern
+        ! pattern .  ! for testing
+
+        n_char x pattern pw_generator :> pw_chars_  ! pw_chars_ is still an array of chars
+        ...
+
+:: pw_generator ( length random_nbrs char_pool -- pw_array )
+    [let
+        length <vector> :> pw_accum
+        0               :> i!  ! mutable char counter for the password
+        0               :> j!  ! mutable counter for x
+
+        [ i length < ] [  ! do as long as i < length
+            j random_nbrs nth 2 >base :> bin0_
+            bin0_ 16 CHAR: 0 pad-head :> bin0
+
+            bin0 8 head :> bin0_0
+            bin0 8 tail :> bin0_1
+
+            bin0_0 2 base> 1string :> char0_0
+            bin0_1 2 base> 1string :> char0_1
+
+            char0_0 first char_pool member? [
+                char0_0 pw_accum push
+                i 1 + i!
+            ] when
+
+            char0_1 first char_pool member? [
+                i length < [
+                    char0_1 pw_accum push
+                    i 1 + i!
+                ] when
+            ] when
+
+            j 1 + j!
+        ] while
+
+        pw_accum   >array
+    ] ;
+```
+
+This Factor code can be safely compiled into a standalone executable which doesn't crash (on Factor version _Factor 0.102 x86.64 ... Feb 11 2026 ..._) according to my tests.
 
 <br/>
 
