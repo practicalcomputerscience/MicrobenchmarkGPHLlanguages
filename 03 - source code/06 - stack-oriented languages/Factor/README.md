@@ -20,6 +20,14 @@ This language even has Haskell-style monads implemented: [monads vocabulary](htt
 
 > [!NOTE]
 > Getting exception handling right in this language, even though being a "high-level" stack-oriented language, may take patience! Look for examples for _recover_ in the GitHub repository!
+
+<br/>
+
+Even in the year 2026, the stack-oriented programming paradigm is a tough one for "Big AI". Pattern matching is just not enough, but "balancing the stack" is the key to success here. And this means that you have to keep track with an evolving stack throughout the program, something "Big AI" apparently doesn't care about.
+
+So what happens at the LLM's when the Forth or Factor compiler emits an error message like this: "The input quotations to 'if*' do not all leave the stack at the same height" ?
+
+Literally, "digging deeper" into the stack with more _drop's_ and words like this, only to push their proposed solutions further away from a real solution.
  
 <br/>
 
