@@ -45,7 +45,7 @@ IN: factorial_with_user_input  ! defines the current vocabulary (home namespace)
         ] if
     ] [ "No input received (EOF)." print
         factorial_with_user_input           ! Loop: call itself if user just pressed Enter
-    ] if* ;
+    ] if* ;  ! if*: alternative conditional form that preserves the cond value if it is true.    
 
 
 MAIN: factorial_with_user_input ! MAIN: declares the entry point
