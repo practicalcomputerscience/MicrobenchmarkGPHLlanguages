@@ -25,7 +25,7 @@ So what happens at the LLM's when the Forth or Factor compiler emits an error me
 
 Literally, "digging deeper" into the stack with more _drop's_ and words like this, only to push their proposed solutions further away from a real solution.
 
-By the way: words are functions in other languages (basically).
+By the way: _words_ are functions in other languages (basically).
  
 <br/>
 
