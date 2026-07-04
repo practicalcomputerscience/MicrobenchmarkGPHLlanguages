@@ -324,4 +324,34 @@ It seems that the default configuration is already trying to generate an optimiz
 
 <br/>
 
+## Full microbenchmark program in Factor
+
+While interpreting the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.factor) just works fine, the compiled version has a problem:
+
+```
+$ ./factor-linux-x86-64-2026-02-11-19-38/factor/random_bitstring_and_flexible_password_generator/random_bitstring_and_flexible_password_generator.out
+
+generating a random bit stream...
+Bit stream has been written to disk under name: random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+Password of 12 printable chars OK? 'y' or another integer number >= 8: y
+
+Do you want me to use special characters like .;,+*... ? 'y' or 'n': n
+You have triggered a bug in Factor. Please report.
+critical_error: The die word was called by the library.: 0
+Starting low level debugger...
+Basic commands:
+  q ^D             -- quit Factor
+  c                -- continue executing Factor - NOT SAFE
+  t                -- throw exception in Factor - NOT SAFE
+  .s .r .c         -- print data, retain, call stacks
+  help             -- full help, including advanced commands
+
+> q
+$
+```
+
+<br/>
+
 ##_end
