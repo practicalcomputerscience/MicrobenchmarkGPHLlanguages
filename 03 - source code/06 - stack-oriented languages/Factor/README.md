@@ -24,10 +24,12 @@ Even in the year 2026, the stack-oriented programming paradigm is a tough one fo
 So what happens at the LLM's when the Forth or Factor compiler emits an error message like this: "The input quotations to 'if*' do not all leave the stack at the same height" ?
 
 Literally, "digging deeper" into the stack with more _drop's_ and words like this, only to push their proposed solutions further away from a real solution.
+
+By the way: words are functions in other languages (basically).
  
 <br/>
 
-Otherwise, there could be more informative and non-trivial **source code examples** in the official documentation. Looking into the repository with the source code of a (demanding) programming language has its limits.
+Otherwise, there could be more informative and non-trivial **source code examples** in the [official documentation](https://docs.factorcode.org/content/article-handbook.html). Looking into the repository with the source code of a (demanding) programming language has its limits.
 
 <br/>
 
@@ -123,7 +125,14 @@ _word_ = function in other languages.
 
 Analogously to this exercise in [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#program-factorialhy-for-terminal-input-and-output), the next step is to master input and output operations on the terminal, often a critical thing in a niche programming language.
 
-How to basically implement a factorial calculation is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html), "only" things to add are user input, type conversions, type checks, mastering the stack, control flow ("if-then-else") and concatenated terminal output:
+How to basically implement a factorial calculation is already explained in chapter [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html), "only" things to add are:
+
+- user input,
+- type conversions,
+- type checks,
+- mastering the stack,
+- control flow ("if-then-else")
+- and concatenated terminal output:
 
 ```
 USING: io kernel math math.parser prettyprint ranges sequences ;  ! USING: declares external vocabularies to borrow tools from
@@ -157,17 +166,32 @@ IN: factorial_with_user_input  ! defines the current vocabulary (home namespace)
 MAIN: factorial_with_user_input ! MAIN: declares the entry point
 ```
 
+### Control flow in Factor
+
+Specifically getting the control flow with branching ("if-then-else") right in Factor takes time and experience, because exact "balancing the stack" is needed here.
+
+I noticed that also "Big AI" often suggests using _when_ when only the success path is needed. Here's a typical example for checking two conditions with using two nested [quotations](https://docs.factorcode.org/content/article-quotations.html) ([...]):
+
+```
+            char0_1 first char_pool member? [
+                i length < [
+                    char0_1 pw_accum push
+                    i 1 + i!
+                ] when
+            ] when
+
+```
+
+Quotations are essential in Factor and are anonymous functions (values denoting a snippet of code) which can be used as values.
+
 <br/>
 
 ## Microbenchmark program in Factor: exception handling and balancing the stack
 
 I think that doing _very_ stack-oriented programming is _really_ hard for man and machine.
 
-And I think that my implementation of the microbenchmark program,
-with big help from Google AI in lots of iterations, just shows it. There's a lot of imperative and functional tinkering going on from my point of view with for example:
-
-- heavily using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables,
-- an extra word _masterloop-rec_ as the recursive part of the initializing _masterloop_
+And I think that my implementation of the microbenchmark program, with big help from Google AI in lots of iterations, just shows it.
+There's a lot of imperative (remember the _!_ in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml): _i := !i + 1;_ ?) and functional tinkering going on from my point of view with for example heavily using the _locals_ vocabulary with _::_, _let_ and _:>_ for new lexical variables.
 
 <br/>
 
@@ -352,7 +376,7 @@ Basic commands:
 $
 ```
 
-This was the code for regular expressions:
+This was the code with regular expressions:
 
 ```
         ...
@@ -415,10 +439,10 @@ Therefore, I decided to only feature a simple and robust string-based solution a
             65 90 [a..b]  >string         ! uppercase A–Z
             97 122 [a..b] >string append  ! lowercase a–z
             48 57 [a..b]  >string append  ! digits 0–9
-        ] if :> pattern
-        ! pattern .  ! for testing
+        ] if :> char_set
+        ! char_set .  ! for testing
 
-        n_char x pattern pw_generator :> pw_chars_  ! pw_chars_ is still an array of chars
+        n_char x char_set pw_generator :> pw_chars_  ! pw_chars_ is still an array of chars
         ...
 
 :: pw_generator ( length random_nbrs char_pool -- pw_array )
