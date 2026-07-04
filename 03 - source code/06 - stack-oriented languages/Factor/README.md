@@ -168,9 +168,9 @@ MAIN: factorial_with_user_input ! MAIN: declares the entry point
 
 ### Control flow in Factor
 
-Specifically getting the control flow with branching ("if-then-else") right in Factor takes time and experience, because exact "balancing the stack" is needed here.
+Specifically getting the control flow with branching ("if-then-else") right in Factor takes time and experience, because exact "balancing the stack" is needed.
 
-I noticed that also "Big AI" often suggests using _when_ when only the success path is needed. Here's a typical example for checking two conditions with using two nested [quotations](https://docs.factorcode.org/content/article-quotations.html) ([...]):
+I noticed that also "Big AI" often suggests using _when_, when only the success path is needed. Here's a typical example for checking two conditions with using two nested [quotations](https://docs.factorcode.org/content/article-quotations.html) ([...]):
 
 ```
             char0_1 first char_pool member? [
