@@ -46,7 +46,7 @@ programming language | execution format | nth Fibonacci number | one program run
 [C++](./fib_recursive_small_argument_GMP.cpp) | compiled with _g++ -O3 ... -lgmpxx -lgmp_ | 47 | 115.44 seconds | _mpz_class_ for large integers | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dart run ./fib_recursive_argument.dart_ \<n\> | 47 | 16.15 seconds | JIT compiled (default) | 2026-02-10
 [Dart](./fib_recursive_argument.dart) | _$ dartaotruntime ./fib_recursive_argument.aot_ \<n\> | 47 | 12.89 seconds | AOT compiled | 2026-02-10
-[mawk](,/fib_recursive_argument.awk) | _$ mawk -f fib_recursive_argument.awk_ \<n\> | 47 | 200 seconds | interpreter (VM) for the AWK Programming Language | 2026-02-11
+[mawk](./fib_recursive_argument.awk) | _$ mawk -f fib_recursive_argument.awk_ \<n\> | 47 | 200 seconds | interpreter (VM) for the AWK Programming Language | 2026-02-11
 [PHP](./fib_recursive_argument.php) | _$ php ./fib_recursive_argument.php_ \<n\> | 47 | 99.82 seconds | interpreted Zend VM bytecode | 2026-02-10
 [PHP](./fib_recursive_argument.php) | _$ php -d opcache.enable_cli=1 -d opcache.jit_buffer_size=100M -d opcache.jit=1255 ./fib_recursive_argument.php_ \<n\> | 47 | 27.74 seconds | JIT compiled | 2026-02-10
 [Ruby](./fib_recursive_argument.rb) | _$ ruby ./fib_recursive_argument.rb_ \<n\> | 47 | 150.44 seconds | interpreted YARV VM bytecode | 2026-02-10
