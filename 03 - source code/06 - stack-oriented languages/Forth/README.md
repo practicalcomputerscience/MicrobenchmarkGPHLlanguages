@@ -4,6 +4,8 @@ https://gforth.org/
 
 https://forth-standard.org/
 
+aus = address units
+
 Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
