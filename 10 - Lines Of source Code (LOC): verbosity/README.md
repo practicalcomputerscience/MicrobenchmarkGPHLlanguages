@@ -131,6 +131,7 @@ Fortran (GNU)     | 161 | compiled, very mature language: some user-defined func
 Gleam             | 151 | interpreted, very young language, together with Erlang and JavaScript ecosystem: lots of user-defined functions needed | 2026-06-18
 C                 | 149 | compiled, very mature language | 2026-06-19
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
+Factor            | 143 | interpreted, mature language: numerous user-defined functions needed | 2026-07-05
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
 AssemblyScript    | 140 | interpreted, young language, together with WebAssembly ecosystem: lots of user-defined functions needed | 2026-05-24
 Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
@@ -207,6 +208,7 @@ D                  | 0
 Dart               | 0
 Dylan (Open Dylan) | 1
 Eiffel (Liberty)   | 4
+Factor             | 6
 Fortran (GNU)      | 3
 FreeBASIC          | 1
 Gleam              | 8
