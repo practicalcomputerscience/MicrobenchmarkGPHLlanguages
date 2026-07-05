@@ -4,7 +4,9 @@ https://gforth.org/
 
 https://forth-standard.org/
 
-aus = address units
+aus = address units (as seen in the Gforth documentation)
+
+As of 2026-07-05: after the ["speed part" of the microbenchmark program in Factor](./random_streams_for_perf_stats.fs), should I also implement the full microbenchmark program? (tbd)
 
 <br/>
 
@@ -129,7 +131,15 @@ $
 
 However, when I continued with the Tutorial, I got doubts: should I really go on with this rather low-level programming language?
 
-Then I discovered much younger stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to only continue with that language as a representative of stack-oriented programming.
+Then I discovered much younger stack-oriented language [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor#factor), and decided to first continue with that language.
+
+However, when I finished the whole microbenchmark program in [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth/random_streams_for_perf_stats.fs), I had a second look at Gforth.
+
+At first, a complete transpilation of the ["speed part" of the microbenchmark program in Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor/random_streams_for_perf_stats.factor) with the help of "Big AI" (again) didn't work at all.
+
+Consequently and piece by piece, I developed a little Linear Congruential Generator (LCG) for only generating 10 random integer numbers in Gforth.
+
+From that skeleton of a program on and with lots of help from "Big AI", I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs significantly faster with an execution time of about 26 milliseconds versus the quite functional Factor program with about 59 milliseconds.
 
 <br/>
 
