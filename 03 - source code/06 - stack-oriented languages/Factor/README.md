@@ -25,7 +25,7 @@ So what happens at the LLM's when the Forth or Factor compiler emits an error me
 
 Literally, "digging deeper" into the stack with more _drop's_ and words like this, only to push their proposed solutions further away from a real solution.
 
-By the way: _words_ are functions in other languages (basically).
+_Words_ are programs, functions and operators in a stack-oriented programming language. Words (often) take parameters from the stack and (often) return results on the stack.
  
 <br/>
 
@@ -116,8 +116,6 @@ With an execution time of about 35 seconds, this **interpreted** script is in th
 > Stack effects are how you document the inputs from the stack and outputs to the stack for your word. You can use any identifier to name the stack elements, here we use n. Factor will perform a consistency check that the number of inputs and outputs you specify agrees with what the body does.
 
 from [Defining our first word](https://docs.factorcode.org/content/article-tour-first-word.html).
-
-_word_ = function in other languages.
 
 <br/>
 
