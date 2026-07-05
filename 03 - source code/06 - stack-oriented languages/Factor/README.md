@@ -35,8 +35,14 @@ Otherwise, there could be more informative and non-trivial **source code example
 
 Table of contents:
 
-
-
+- [Installation tips](#installation-tips)
+- [Tutorial](#tutorial)
+- [Inefficient (recursive) Fibonacci number calculation](#inefficient-recursive-fibonacci-number-calculation)
+- [Program factorial.factor for terminal input and output](#program-factorialfactor-for-terminal-input-and-output)
+- [Control flow in Factor](#control-flow-in-factor)
+- [Microbenchmark program in Factor: exception handling and balancing the stack](#microbenchmark-program-in-factor-exception-handling-and-balancing-the-stack)
+- [Making a standalone executable](#making-a-standalone-executable)
+- [Regular expressions in Factor](#regular-expressions-in-factor)
 
 <br/>
 
