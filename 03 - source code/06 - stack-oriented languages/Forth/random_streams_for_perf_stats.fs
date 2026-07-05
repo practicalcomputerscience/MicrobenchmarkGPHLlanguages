@@ -9,8 +9,7 @@
 \
 \
 \ this program was developed slowly from the ground up with a prompt for MS Bing AI:
-\ "Let's start easy. Write a simple LCG in gforth Forth, which generates 20 random integer numbers and prints them.
-\  Seed should be different with every program run."
+\ "Write a simple LCG in gforth Forth, which generates 20 random integer numbers and prints them. Seed should be different with every program run."
 
 
 62500 CONSTANT END  \ 62500 for exactly 1M binary digits
