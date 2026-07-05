@@ -98,6 +98,7 @@ Curry | 4,194,600 bytes in 12 blocks | 4,194,600 bytes in 12 blocks | no | 2026-
 D | 800 bytes in 5 blocks | 768 bytes in 4 blocks | no | 2026-06-19
 Dylan (Open Dylan) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-28
 Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-06-19
+Factor | 8,066,229 bytes in 6,204 blocks | 8,066,229 bytes in 6,204 blocks | no | 2026-07-05: only "speed part" _random_streams_for_perf_stats.out_ checked
 Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
 Go | program doesn't finish | -- | no | 2026-06-19
