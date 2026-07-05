@@ -17,14 +17,14 @@ But then I noticed this:
 - _$ time mawk -f fib_recursive_argument.awk 47_: _Time: 199s_
 - _$ time awk -f fib_recursive_argument.awk 47_: _Time: 659s_, that is 3.3 times slower
 
-However, when doing a benchmark with the "speed part" of the [microbenchmark program](./random_streams_for_perf_stats.awk), the picture flips substantially:
+However, when doing a benchmark with the ["speed part" of the microbenchmark program](./random_streams_for_perf_stats.awk), the picture flips substantially:
 
-- _$ time mawk -f random_streams_for_perf_stats.awk_ => real	0m1.244s, that is 5.7 times slower!
-- _$ time awk -f random_streams_for_perf_stats.awk_ => real	0m0.217s
+- _$ time mawk -f random_streams_for_perf_stats.awk_ => real	0m1.239s, that's 5.7 times slower!
+- _$ time awk -f random_streams_for_perf_stats.awk_ => real	0m0.216s
 
 <br/>
 
-Then I just decided to cheaply transpile also the [Tcl implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Tcl/random_bitstring_and_flexible_password_generator.tcl) of the full microbenchmark program into an Awk version.
+Then I just decided to cheaply transpile also the [Tcl implementation of the full microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Tcl/random_bitstring_and_flexible_password_generator.tcl) into an Awk version.
 
 Tcl looks like another good source language for transpilation, next to [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy). 
 
