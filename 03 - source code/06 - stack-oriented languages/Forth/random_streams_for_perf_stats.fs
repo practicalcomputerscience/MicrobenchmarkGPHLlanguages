@@ -3,6 +3,7 @@
 \ 2026-07-05
 \
 \ build on Ubuntu 24 LTS: $ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
+\                         ATTENTION: this command is not creating a standalone Linux executable, but a Gforth image file which depends on a Gforth installation!
 \
 \ run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.025s <<<<<<<<<<<<<
 \
