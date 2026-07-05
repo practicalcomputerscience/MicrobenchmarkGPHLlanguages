@@ -8,7 +8,7 @@ https://concatenative.org/wiki/view/Factor/Features/The%20language
 
 <br/>
 
-I picked up more high-level Factor as an alternative to more low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor) to implement my microbenchmark program.
+At first, I picked up more high-level Factor as an alternative to more low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor) to implement the microbenchmark program.
 
 This language even has Haskell-style monads implemented: [monads vocabulary](https://docs.factorcode.org/content/vocab-monads.html)
 
@@ -31,7 +31,16 @@ _Words_ are programs, functions and operators in a stack-oriented programming la
 
 Otherwise, there could be more informative and non-trivial **source code examples** in the [official documentation](https://docs.factorcode.org/content/article-handbook.html). Looking into the repository with the source code of a (demanding) programming language has its limits.
 
+---
+
+Table of contents:
+
+
+
+
 <br/>
+
+---
 
 ## Installation tips
 
