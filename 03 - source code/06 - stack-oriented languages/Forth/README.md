@@ -1,12 +1,12 @@
+2026-07-06: still a work in prograss: 
+
+- after the ["speed part"](./random_streams_for_perf_stats.fth) of the microbenchmark program has been implemented in ccforth, I should also implement the full microbenchmark program in ccforth. The super-swift ccforth solution is already listed in _programming_languages_exe_speeds.csv_, and thus should be my official implementation of the microbenchmark program in Forth
+
+<br/>
+
 # Forth
 
 https://forth-standard.org/
-
-<br/>
-
-As of 2026-07-06: after the ["speed part"](./random_streams_for_perf_stats.fth) of the microbenchmark program in ccforth, I should also implement the full microbenchmark program (tbd). The ccforth solution is already listed in _programming_languages_exe_speeds.csv_!
-
-<br/>
 
 System level programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands.
 
@@ -15,17 +15,24 @@ System level programming in postfix notation, also called Reverse Polish Notatio
 
 from: "Stack Computers: the new wave", Philip Koopman, 1989: https://users.ece.cmu.edu/~koopman/stack_computers/sec1_1.html
 
-<br/>
-
 > Forth has been in use from 1972 on..
 
 from: https://www.forth.com/starting-forth/0-starting-forth/
 
-<br/>
-
 [A Glossary of Forth Primitives ](https://users.ece.cmu.edu/~koopman/stack_computers/appb.html)
 
+---
+
+Table of contents:
+
+- [Installation tips for Gforth](#installation-tips-for-gforth)
+- [From Forth to Factor and back](#from-forth-to-factor-and-back)
+- [Installation tips for ccforth](#installation-tips-for-ccforth)
+- [Microbenchmark program in ccforth](#microbenchmark-program-in-ccforth)
+
 <br/>
+
+---
 
 ## Installation tips for Gforth
 
