@@ -1,18 +1,14 @@
 # Forth
 
-https://gforth.org/
-
 https://forth-standard.org/
 
-aus = address units (as seen in the Gforth documentation)
+<br/>
+
+As of 2026-07-06: after the ["speed part"](./random_streams_for_perf_stats.fth) of the microbenchmark program in ccforth, I should also implement the full microbenchmark program (tbd). The ccforth solution is already listed in _programming_languages_exe_speeds.csv_!
 
 <br/>
 
-As of 2026-07-05: after the ["speed part"](./random_streams_for_perf_stats.fs) of the microbenchmark program in Gforth, should I also implement the full microbenchmark program? (tbd). The Gforth solution is already listed in _programming_languages_exe_speeds.csv_!
-
-<br/>
-
-System level programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
+System level programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands.
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
@@ -31,7 +27,11 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 
 <br/>
 
-## Installation tips
+## Installation tips for Gforth
+
+https://gforth.org/
+
+aus = address units (as seen in the Gforth documentation)
 
 After some experimentation, I noticed that I need a working Gforth implementation to build the latest version of Gforth! So, I started like this:
 
@@ -142,6 +142,85 @@ At first, a complete transpilation of the ["speed part" of the microbenchmark pr
 Consequently and piece by piece, I developed from the ground up a little Linear Congruential Generator (LCG) for only generating 20 random integer numbers in Gforth.
 
 From that skeleton of a program on and with lots of help from "Big AI", I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs significantly faster with an execution time of about 26 milliseconds (as a Gforth image file, not standalone executable) versus the quite functional Factor program with about 59 milliseconds as a (dynamically linked) standalone executable.
+
+<br/>
+
+## Installation tips for ccforth
+
+https://github.com/ncw/ccforth (*)
+
+After I failed to make a truly standalone executable with Gforth, I have been searching for a possibility to make a standalone executable based on Forth source code, specifically with the background that Forth (originally) is a system programming language.
+
+Then I discovered ccforth, which allows to emit transpiled C source code from ccforth complient source code. That C code can then be compiled and linked into a standalone executable:
+
+> ccforth is a mostly Gforth compatible Forth 2012 compliant Forth-to-C compiler written in Go ... It interprets compile-time Forth (immediate words, meta-programming) and emits flattened C11 code that is compiled with gcc or clang to produce standalone executables.
+
+However, just compiling the original [Gforth program]() with the ccforth compiler does, of course, not work!
+
+For installation of ccforth I followed these official [Installation](https://github.com/ncw/ccforth#installation) instructions (*):
+
+```
+$ go install github.com/ncw/ccforth/cmd/ccforth@latest
+go: downloading github.com/ncw/ccforth v0.3.2
+go: downloading github.com/chzyer/readline v1.5.1
+$ 
+```
+
+Then expand your _~/.bashrc_ configuration file with line: _export PATH="$HOME/go/bin:$PATH"_, and activate it with: _$ source_. Depending on you Go installation, it could also be for example: _export PATH="$HOME/gopath/bin:$PATH"_
+
+```
+$ ccforth -version
+ccforth dev
+$
+```
+
+However, even when refactoring [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs) to be more ccforth-compliant, but still working with Gforth, the produced executable crashed_
+
+```
+$ ccforth -memsize 8000000 -c ./random_streams_for_perf_stats.fs > random_streams_for_perf_stats_ccforth.c  # ccforth needs more than default memory for transpilation!
+$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c  # also in C code, allocate more than default memory for compilation
+$ gcc random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth  # cautiously compiling without any optimizations
+$ ./random_streams_for_perf_stats_ccforth
+
+generating a random bit stream...
+Segmentation fault (core dumped)
+$
+```
+
+That was the end of this cross-compilation development road, and I again developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up:
+
+```
+$ c$ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
+$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c  # also in C code, allocate more than default memory for compilation
+$ gcc -O3 random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth  # now safely compiling with optimizations on
+time ./random_streams_for_perf_stats_ccforth
+
+generating a random bit stream...
+Bit stream has been written to disk under name: random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.005s
+...
+$ 
+```
+
+$${\color{red}5 milliseconds is sharp!}$$
+
+Above building procedure can be shortened with a [makefile](./makefile):
+
+```
+$ make
+Generating C source from random_streams_for_perf_stats.fth with MEM_SIZE=8388608  ...
+ccforth -c random_streams_for_perf_stats.fth \
+| sed 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608  /' > random_streams_for_perf_stats_ccforth.c
+Compiling random_streams_for_perf_stats_ccforth...
+gcc -O3   -o random_streams_for_perf_stats_ccforth random_streams_for_perf_stats_ccforth.c
+$ make run  # additional program execution
+...
+$
+```
+
+tbd
 
 <br/>
 
