@@ -15,7 +15,7 @@ This language even has Haskell-style monads implemented: [monads vocabulary](htt
 <br/>
 
 > [!NOTE]
-> Getting exception handling right in this language, even though being a "high-level" stack-oriented language, may take patience! Look for examples for _recover_ in the GitHub repository!
+> Getting exception handling right in Factor, even though being a "high-level" stack-oriented language, may need patience! Look for examples of _recover_ in the Factor GitHub repository!
 
 <br/>
 
