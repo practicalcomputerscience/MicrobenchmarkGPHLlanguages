@@ -155,8 +155,6 @@ Then I discovered ccforth, which allows to emit transpiled C source code from cc
 
 > ccforth is a mostly Gforth compatible Forth 2012 compliant Forth-to-C compiler written in Go ... It interprets compile-time Forth (immediate words, meta-programming) and emits flattened C11 code that is compiled with gcc or clang to produce standalone executables.
 
-However, just compiling the original [Gforth program](./random_streams_for_perf_stats.fs) with the ccforth compiler does, of course, not work!
-
 For installation of ccforth I followed these official [Installation](https://github.com/ncw/ccforth#installation) instructions (*):
 
 ```
@@ -174,10 +172,12 @@ ccforth dev
 $
 ```
 
-However, even when refactoring [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs) to be more ccforth-compliant, but still working with Gforth, the produced executable crashed:
+<br/>
+
+However, just compiling the original [Gforth program](./random_streams_for_perf_stats.fs) with the ccforth compiler does, of course, not work! Even when cautiously refactoring the Gforth-compliant source code to be more ccforth-compliant, while still working with Gforth, the ccforth-produced executable crashed:
 
 ```
-# ccforth needs more than default memory for transpilation:
+# ccforth needs more than default memory for transpilation of this program:
 $ ccforth -memsize 8000000 -c ./random_streams_for_perf_stats.fs > random_streams_for_perf_stats_ccforth.c
 # also in C code, allocate more than default memory for compilation:
 $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
@@ -190,10 +190,14 @@ Segmentation fault (core dumped)
 $
 ```
 
-That was the end of this cross-compilation development road, and I again developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up:
+<br/>
+
+## Microbenchmark program in ccforth
+
+That was the end of this cross-compilation development road, and I developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up again:
 
 ```
-$ c$ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
+$ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
 # also in C code, allocate more than default memory for compilation:
 $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
 # now safely compiling with optimizations on:
@@ -225,7 +229,22 @@ $ make run  # for building and additionally running the program
 $
 ```
 
-tbd
+<br/>
+
+The difference in size of the two "executables" is stark: 
+
+- Gforth: 8,552,994 bytes
+- ccforth: 21,048 bytes
+
+The ccforth based program has good **portability**, and thus fulfills the main development target of using the ccforth transpiler:
+
+```
+$ ldd random_streams_for_perf_stats_ccforth 
+	linux-vdso.so.1 (0x00007ffdbe7ab000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000073510ae00000)
+	/lib64/ld-linux-x86-64.so.2 (0x000073510bbd5000)
+$
+```
 
 <br/>
 
