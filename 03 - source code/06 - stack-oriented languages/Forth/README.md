@@ -10,7 +10,7 @@ TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an
 
 https://forth-standard.org/
 
-System level programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands.
+**System level programming** in postfix notation, also called Reverse Polish Notation, where operators follow their operands.
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
