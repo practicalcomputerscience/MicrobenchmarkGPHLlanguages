@@ -1,10 +1,12 @@
-2026-07-06: still a work in prograss: 
-
-- after the ["speed part"](./random_streams_for_perf_stats.fth) of the microbenchmark program has been implemented in ccforth, I should also implement the full microbenchmark program in ccforth. The super-swift ccforth solution is already listed in _programming_languages_exe_speeds.csv_, and thus should be my official implementation of the microbenchmark program in Forth
+2026-07-06: work in progress 
 
 <br/>
 
 # Forth
+
+TL;DR: only GNU's GForth is ready for full showtime as an Forth implementation for general purpose, high-level computer programming: https://gforth.org/
+
+<br/>
 
 https://forth-standard.org/
 
@@ -33,6 +35,7 @@ Table of contents:
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth](#microbenchmark-program-in-ccforth)
+- [Microbenchmark program in GForth](#tbd)
 
 <br/>
 
@@ -40,9 +43,7 @@ Table of contents:
 
 ## Installation tips for Gforth
 
-https://gforth.org/
-
-aus = address units (as seen in the Gforth documentation)
+aus = address units (as seen in the Gforth documentation: https://gforth.org/)
 
 After some experimentation, I noticed that I need a working Gforth implementation to build the latest version of Gforth! So, I started like this:
 
@@ -205,7 +206,7 @@ $
 
 ## Microbenchmark program in ccforth
 
-That was the end of this cross-compilation development road, and I developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up again:
+That was the end of cross-compiling from Gforth code to ccforth code, and thus I developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up again:
 
 ```
 $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
@@ -224,7 +225,7 @@ real	0m0.005s
 $ 
 ```
 
-5 milliseconds is sharp! :grinning:
+5 milliseconds is sharp!
 
 Above building procedure can be shortened with a [makefile](./makefile):
 
@@ -256,6 +257,61 @@ $ ldd random_streams_for_perf_stats_ccforth
 	/lib64/ld-linux-x86-64.so.2 (0x000073510bbd5000)
 $
 ```
+
+<br/>
+
+However, reading user input from the keyboard into a string on the console, and terminated with the [ENTER] key, isn't working yet in ccforth despite elaborate experimentation with "Big AI". Thus, it's the end of my experiments with ccforth.
+
+<br/>
+
+## Microbenchmark program in GForth
+
+Reading user input at the terminal is working in Gforth, as this factorial example shows with word _read-int_. Run this code like this: _$ gforth factorial.fs_
+
+```
+: factorial ( n -- n! )
+  recursive
+  dup 0= if
+    drop 1
+  else
+    dup 1- factorial *
+  then ;
+
+: read-int ( -- n ok )
+  PAD 64 ACCEPT          ( u )
+  PAD SWAP s>number?     ( d flag )
+  IF
+    drop                 ( n )
+    DPL @ -1 = IF
+      true               ( n true )
+    ELSE
+      drop false         ( false )
+    THEN
+  ELSE
+    2drop false          ( false )
+  THEN ;
+
+: main
+  begin
+    cr ." Enter an integer n >= 1: " flush
+    read-int
+    if
+      dup 1 < over 20 > or if \ Checks if n < 1 OR n > 20
+        drop cr ." Error: Please enter an integer between 1 and 20." cr
+      else
+        dup factorial
+        cr ." factorial(" swap . ." ) = " . cr
+        bye
+      then
+    else
+      cr ." Error: Please enter an integer between 1 and 20." cr
+    then
+  again ;
+
+main
+```
+
+Consequently, the full microbenchmark program has only been implemented in Gforth ([random_bitstring_and_flexible_password_generator.fs](./random_bitstring_and_flexible_password_generator.fs)), and represents my official implementation in Forth.
 
 <br/>
 
