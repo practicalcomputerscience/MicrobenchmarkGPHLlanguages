@@ -2,10 +2,10 @@
 \
 \ 2026-07-06
 \
-\ build on Ubuntu 24 LTS:  $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats.c
+\ build on Ubuntu 24 LTS:  $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
 \                          # allocate more memory, here 8MB:
-\                          $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats.c
-\                          $ gcc -O3 random_streams_for_perf_stats.c -o random_streams_for_perf_stats_ccforth
+\                          $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
+\                          $ gcc -O3 random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth
 \
 \ run on Ubuntu 24 LTS:    $ ./random_streams_for_perf_stats_ccforth
 \                          $ time ./random_streams_for_perf_stats_ccforth => real	0m0.005s
