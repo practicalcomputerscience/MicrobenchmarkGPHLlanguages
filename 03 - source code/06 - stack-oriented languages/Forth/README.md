@@ -12,7 +12,7 @@ As of 2026-07-05: after the ["speed part"](./random_streams_for_perf_stats.fs) o
 
 <br/>
 
-Programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
+System level programming in postfix notation, also called Reverse Polish Notation, where operators follow their operands, here in the [Gforth](https://gforth.org/) implementation.
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
