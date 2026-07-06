@@ -1,9 +1,9 @@
 \ random_streams_for_perf_stats.fs
 \
-\ 2026-07-05
+\ 2026-07-05/06
 \
 \ build on Ubuntu 24 LTS: $ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
-\                         ATTENTION: this command is not creating a standalone Linux executable, but a Gforth image file which depends on a Gforth installation!
+\                         ATTENTION: this is not creating a standalone Linux executable, but a Gforth image file which depends on a Gforth installation!
 \
 \ run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.025s <<<<<<<<<<<<<
 \
@@ -27,12 +27,20 @@ END STR_LENGTH_HEX * CONSTANT K250  \ total size in characters of the big bits_h
 0      CONSTANT c
 
 
+\ 2026-07-06:
+CREATE file_bits_x   25 ALLOT  \ Allocate 25 bytes for storage
+S" random_bitstring.bin"  file_bits_x   SWAP MOVE
+CREATE file_bits_hex 25 ALLOT
+S" random_bitstring.byte" file_bits_hex SWAP MOVE
+
+
 CREATE x         END CELLS ALLOT
 CREATE bits_x    END STR_LENGTH_BIN CHARS * ALLOT
 CREATE bits_hex  END STR_LENGTH_HEX CHARS * ALLOT
 
 CREATE bits_x_str_total   M1   CHARS ALLOT
 CREATE bits_hex_str_total K250 CHARS ALLOT
+
 
 
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -190,10 +198,10 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
     \ bits_hex_str_total K250 TYPE CR  \ for testing
 
     \ write bit stream to disk:
-    bits_x_str_total   M1   S" random_bitstring.bin"  S" Bit"  write_to_file
+    bits_x_str_total   M1   file_bits_x   20 S" Bit"  write_to_file  \ 2026-07-06
 
     \ write byte stream to disk:
-    bits_hex_str_total K250 S" random_bitstring.byte" S" Byte" write_to_file
+    bits_hex_str_total K250 file_bits_hex 21 S" Byte" write_to_file  \ 2026-07-06
 
     bye ;
 
