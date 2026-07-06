@@ -8,7 +8,7 @@ https://concatenative.org/wiki/view/Factor/Features/The%20language
 
 <br/>
 
-At first, I picked up more high-level Factor as an alternative to more low-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor) to implement the microbenchmark program.
+At first, I picked up more high-level Factor as an alternative to system-level [Forth](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor) to implement the microbenchmark program.
 
 This language even has Haskell-style monads implemented: [monads vocabulary](https://docs.factorcode.org/content/vocab-monads.html)
 
@@ -19,7 +19,9 @@ This language even has Haskell-style monads implemented: [monads vocabulary](htt
 
 <br/>
 
-Even in the year 2026, the stack-oriented programming paradigm is a tough one for "Big AI". Pattern matching is just not enough, but "balancing the stack" is the key to success here. And this means that you have to keep track with an evolving stack throughout the program, something "Big AI" apparently doesn't care about. This is specifically true for Factor, where not so much source code examples exist on the Internet.
+Even in the year 2026, the stack-oriented programming paradigm, be it in Forth or Factor, is a tough one for "Big AI".
+
+Pattern matching is just not enough, but "balancing the stack" is the key to success here. And this means that you have to keep track with an evolving stack throughout the program, something "Big AI" apparently doesn't care about. This is specifically true for Factor, where not so much source code examples exist on the Internet.
 
 So what happens at the LLM's when the Factor compiler emits an error message like this: "The input quotations to 'if*' do not all leave the stack at the same height" ?
 
