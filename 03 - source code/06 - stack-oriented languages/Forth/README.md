@@ -34,7 +34,7 @@ Table of contents:
 - [Installation tips for Gforth](#installation-tips-for-gforth)
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
-- [Microbenchmark program in ccforth](#microbenchmark-program-in-ccforth)
+- [Microbenchmark program in ccforth (only "speed part")](#tbd)
 - [Microbenchmark program in GForth](#tbd)
 
 <br/>
@@ -204,7 +204,7 @@ $
 
 <br/>
 
-## Microbenchmark program in ccforth
+## Microbenchmark program in ccforth (only "speed part")
 
 That was the end of cross-compiling from Gforth code to ccforth code, and thus I developed [random_streams_for_perf_stats.fth](./random_streams_for_perf_stats.fth) specifically for ccforth from the ground up again:
 
