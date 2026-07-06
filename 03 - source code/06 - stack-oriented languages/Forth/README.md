@@ -8,7 +8,7 @@ aus = address units (as seen in the Gforth documentation)
 
 <br/>
 
-As of 2026-07-05: after the ["speed part"](./random_streams_for_perf_stats.fs) of the microbenchmark program in Gforth, should I also implement the full microbenchmark program? (tbd)
+As of 2026-07-05: after the ["speed part"](./random_streams_for_perf_stats.fs) of the microbenchmark program in Gforth, should I also implement the full microbenchmark program? (tbd). The Gforth solution is already listed in _programming_languages_exe_speeds.csv_!
 
 <br/>
 
