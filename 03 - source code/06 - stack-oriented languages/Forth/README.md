@@ -4,7 +4,7 @@
 
 # Forth
 
-TL;DR: only GNU's GForth is ready for full showtime as an Forth implementation for general purpose, high-level computer programming: https://gforth.org/
+TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming, but you can't practically make a standalone executable for Linux with it.
 
 <br/>
 
@@ -34,8 +34,8 @@ Table of contents:
 - [Installation tips for Gforth](#installation-tips-for-gforth)
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
-- [Microbenchmark program in ccforth (only "speed part")](#tbd)
-- [Microbenchmark program in GForth](#tbd)
+- [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
+- [Microbenchmark program in GForth](#microbenchmark-program-in-gforth)
 
 <br/>
 
@@ -248,7 +248,7 @@ The difference in size of the two "executables" is stark:
 - Gforth: 8,552,994 bytes
 - ccforth: 21,048 bytes
 
-The ccforth based program has good **portability**, and thus fulfills the main development target of using the ccforth transpiler:
+The ccforth based program has good portability:
 
 ```
 $ ldd random_streams_for_perf_stats_ccforth 
@@ -260,7 +260,7 @@ $
 
 <br/>
 
-However, reading user input from the keyboard into a string on the console, and terminated with the [ENTER] key, isn't working yet in ccforth despite elaborate experimentation with "Big AI". Thus, it's the end of my experiments with ccforth.
+However, reading user input from the keyboard into a string on the console isn't working yet in ccforth despite elaborate experimentation with "Big AI". Thus, that's the end of my experiments with ccforth.
 
 <br/>
 
