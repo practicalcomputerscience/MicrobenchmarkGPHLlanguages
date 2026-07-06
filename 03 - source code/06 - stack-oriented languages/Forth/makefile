@@ -3,7 +3,7 @@
 # 2026-07-06, MS Bing AI
 # =========================
 FTH_SRC      := random_streams_for_perf_stats.fth
-EXE_NAME     := random_streams_for_perf_stats
+EXE_NAME     := random_streams_for_perf_stats_ccforth
 MEM_SIZE     := 8388608  # 8MB
 CC           := gcc
 CFLAGS       := -O3  # -Wall
