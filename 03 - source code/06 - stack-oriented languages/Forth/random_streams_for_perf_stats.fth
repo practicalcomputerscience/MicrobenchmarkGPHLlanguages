@@ -5,11 +5,11 @@
 \ build on Ubuntu 24 LTS:  $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats.c
 \                          # allocate more memory, here 8MB:
 \                          $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats.c
-\                          $ gcc -O3 random_streams_for_perf_stats.c -o random_streams_for_perf_stats
+\                          $ gcc -O3 random_streams_for_perf_stats.c -o random_streams_for_perf_stats_ccforth
 \
-\ run on Ubuntu 24 LTS:    $ ./random_streams_for_perf_stats
-\                          $ time ./random_streams_for_perf_stats => real	0m0.005s
-\                          $ sudo perf stat -r 20 ./random_streams_for_perf_stats
+\ run on Ubuntu 24 LTS:    $ ./random_streams_for_perf_stats_ccforth
+\                          $ time ./random_streams_for_perf_stats_ccforth => real	0m0.005s
+\                          $ sudo perf stat -r 20 ./random_streams_for_perf_stats_ccforth
 \
 \
 \ use a makefile if possible to automate above program build&run process
