@@ -8,6 +8,11 @@
 \ run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.025s <<<<<<<<<<<<<
 \
 \
+\ $ gforth --version
+\ gforth 0.7.9_20260610 amd64
+\ $ 
+\
+\
 \ this program was developed slowly from the ground up with a prompt for MS Bing AI:
 \ "Write a simple LCG in gforth Forth, which generates 20 random integer numbers and prints them. Seed should be different with every program run."
 
