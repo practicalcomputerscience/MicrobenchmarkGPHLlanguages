@@ -198,7 +198,7 @@ $ c$ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_st
 $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
 # now safely compiling with optimizations on:
 $ gcc -O3 random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth
-time ./random_streams_for_perf_stats_ccforth
+$ time ./random_streams_for_perf_stats_ccforth
 
 generating a random bit stream...
 Bit stream has been written to disk under name: random_bitstring.bin
