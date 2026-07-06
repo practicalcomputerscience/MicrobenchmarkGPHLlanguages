@@ -149,7 +149,8 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
     THROW ;                   \ If write-file failed, pass that error out
 
 : write_to_file ( c-addr u fname-addr fname-u ftype-addr ftype-u -- )
-    locals| ftype-u ftype-addr fname-u fname-addr u c-addr |
+    \ locals| ftype-u ftype-addr fname-u fname-addr u c-addr |  \ not working in ccforth
+    { c-addr u fname-addr fname-u ftype-addr ftype-u }  \ 2026-07-06
 
     \ Pass the relevant string parameters to the wrapper via CATCH
     c-addr u fname-addr fname-u [ ' (unsafe_write_to_file) ] LITERAL CATCH ( ior )
@@ -162,7 +163,7 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
         ftype-addr ftype-u TYPE
         S"  stream has been written to disk under name: " TYPE
         fname-addr fname-u TYPE CR
-    ENDIF ;
+    THEN ;  \ 2026-07-06
 
 
 \ end of user defined functions
