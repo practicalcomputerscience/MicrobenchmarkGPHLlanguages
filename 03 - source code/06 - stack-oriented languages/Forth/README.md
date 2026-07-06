@@ -108,7 +108,7 @@ Voilà! Gforth in its latest version! (which already looks improved at the REPL,
 
 <br/>
 
-## From Forth to Factor
+## From Forth to Factor and back
 
 I highly recommend to first have a look into the official [Forth Tutorial](https://net2o.de/gforth/Tutorial.html) before doing anything more meaningful than "Hello, world!" in Forth:
 
