@@ -155,7 +155,7 @@ Then I discovered ccforth, which allows to emit transpiled C source code from cc
 
 > ccforth is a mostly Gforth compatible Forth 2012 compliant Forth-to-C compiler written in Go ... It interprets compile-time Forth (immediate words, meta-programming) and emits flattened C11 code that is compiled with gcc or clang to produce standalone executables.
 
-However, just compiling the original [Gforth program]() with the ccforth compiler does, of course, not work!
+However, just compiling the original [Gforth program](./random_streams_for_perf_stats.fs) with the ccforth compiler does, of course, not work!
 
 For installation of ccforth I followed these official [Installation](https://github.com/ncw/ccforth#installation) instructions (*):
 
@@ -166,7 +166,7 @@ go: downloading github.com/chzyer/readline v1.5.1
 $ 
 ```
 
-Then expand your _~/.bashrc_ configuration file with line: _export PATH="$HOME/go/bin:$PATH"_, and activate it with: _$ source_. Depending on you Go installation, it could also be for example: _export PATH="$HOME/gopath/bin:$PATH"_
+Then expand your _~/.bashrc_ configuration file with line: _export PATH="$HOME/go/bin:$PATH"_, and activate it with: _$ source ~/.bashrc_. Depending on you Go installation, it could also be for example: _export PATH="$HOME/gopath/bin:$PATH"_
 
 ```
 $ ccforth -version
@@ -174,11 +174,13 @@ ccforth dev
 $
 ```
 
-However, even when refactoring [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs) to be more ccforth-compliant, but still working with Gforth, the produced executable crashed_
+However, even when refactoring [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs) to be more ccforth-compliant, but still working with Gforth, the produced executable crashed:
 
 ```
-$ ccforth -memsize 8000000 -c ./random_streams_for_perf_stats.fs > random_streams_for_perf_stats_ccforth.c  # ccforth needs more than default memory for transpilation!
-$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c  # also in C code, allocate more than default memory for compilation
+# ccforth needs more than default memory for transpilation:
+$ ccforth -memsize 8000000 -c ./random_streams_for_perf_stats.fs > random_streams_for_perf_stats_ccforth.c
+# also in C code, allocate more than default memory for compilation:
+$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
 $ gcc random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth  # cautiously compiling without any optimizations
 $ ./random_streams_for_perf_stats_ccforth
 
@@ -191,8 +193,10 @@ That was the end of this cross-compilation development road, and I again develop
 
 ```
 $ c$ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
-$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c  # also in C code, allocate more than default memory for compilation
-$ gcc -O3 random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth  # now safely compiling with optimizations on
+# also in C code, allocate more than default memory for compilation:
+$ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
+# now safely compiling with optimizations on:
+$ gcc -O3 random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth
 time ./random_streams_for_perf_stats_ccforth
 
 generating a random bit stream...
@@ -204,7 +208,7 @@ real	0m0.005s
 $ 
 ```
 
-$${\color{red}5 milliseconds is sharp!}$$
+5 milliseconds is sharp! :flushed:
 
 Above building procedure can be shortened with a [makefile](./makefile):
 
@@ -215,7 +219,7 @@ ccforth -c random_streams_for_perf_stats.fth \
 | sed 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608  /' > random_streams_for_perf_stats_ccforth.c
 Compiling random_streams_for_perf_stats_ccforth...
 gcc -O3   -o random_streams_for_perf_stats_ccforth random_streams_for_perf_stats_ccforth.c
-$ make run  # additional program execution
+$ make run  # for building and additionally running the program
 ...
 $
 ```
