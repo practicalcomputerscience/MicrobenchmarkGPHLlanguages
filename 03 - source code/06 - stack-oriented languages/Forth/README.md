@@ -181,7 +181,8 @@ However, even when refactoring [random_streams_for_perf_stats.fs](./random_strea
 $ ccforth -memsize 8000000 -c ./random_streams_for_perf_stats.fs > random_streams_for_perf_stats_ccforth.c
 # also in C code, allocate more than default memory for compilation:
 $ sed -i 's/^#define MEM_SIZE .*/#define MEM_SIZE 8388608/' ./random_streams_for_perf_stats_ccforth.c
-$ gcc random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth  # cautiously compiling without any optimizations
+# cautiously compiling without any optimizations:
+$ gcc random_streams_for_perf_stats_ccforth.c -o random_streams_for_perf_stats_ccforth
 $ ./random_streams_for_perf_stats_ccforth
 
 generating a random bit stream...
@@ -208,7 +209,7 @@ real	0m0.005s
 $ 
 ```
 
-5 milliseconds is sharp! :flushed:
+5 milliseconds is sharp! :grinning:
 
 Above building procedure can be shortened with a [makefile](./makefile):
 
