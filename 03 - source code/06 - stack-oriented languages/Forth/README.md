@@ -15,9 +15,13 @@ System level programming in postfix notation, also called Reverse Polish Notatio
 
 from: "Stack Computers: the new wave", Philip Koopman, 1989: https://users.ece.cmu.edu/~koopman/stack_computers/sec1_1.html
 
+<br/>
+
 > Forth has been in use from 1972 on..
 
 from: https://www.forth.com/starting-forth/0-starting-forth/
+
+<br/>
 
 [A Glossary of Forth Primitives ](https://users.ece.cmu.edu/~koopman/stack_computers/appb.html)
 
@@ -52,7 +56,7 @@ $
 
 Do _$ make clean >/dev/null 2>&1 || true_, if you have messed up a build before.
 
-That's good enough to build latest version 0.7.9 from sources in tarball file _gforth.tar.xz_ from here: https://www.complang.tuwien.ac.at/forth/gforth/Snapshots/current/
+This version is good enough to build latest version 0.7.9 from sources in tarball file _gforth.tar.xz_ from here: https://www.complang.tuwien.ac.at/forth/gforth/Snapshots/current/
 
 After unzipping that file, I followed instructions as given in _./gforth/gforth-0.7.9_20260610/INSTALL.md_:
 
@@ -66,7 +70,7 @@ The following packages have unmet dependencies:
 $ 
 ```
 
-I was still missing some packages, which I installed like this, and further ignored above warnings (for those packages in their newest form anyway):
+I was still missing some packages, which I installed like this, and further ignored above warnings ("The following packages have unmet dependencies:") for those packages installed in their newest form on my system anyway:
 
 ```
 $ sudo apt install libtool libtool-bin swig
