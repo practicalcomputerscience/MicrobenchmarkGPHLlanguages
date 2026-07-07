@@ -14,7 +14,7 @@ In the very early days there was also command _gforth-native_, which was soon gi
 
 <br/>
 
-Otherwise, Forth programming is **System level programming** in postfix notation, also called Reverse Polish Notation, where operators follow their operands.
+Otherwise, Forth programming is **System level programming** in postfix notation, also called Reverse Polish Notation, where operators follow their operands:
 
 > Stack machines offer processor complexity that is much lower than that of CISC (Complex Instruction Set Computers) machines,
 > and overall system complexity that is lower than that of either RISC (Reduced Instruction Set Computers) or CISC machines. They do this without requiring complicated compilers or cache control hardware for good performance.
@@ -38,7 +38,7 @@ Table of contents:
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
-- [Microbenchmark program in GForth](#microbenchmark-program-in-gforth)
+- [Full microbenchmark program in GForth](#full-microbenchmark-program-in-gforth)
 
 <br/>
 
@@ -313,7 +313,7 @@ However, reading user input from the keyboard into a string on the console isn't
 
 <br/>
 
-## Microbenchmark program in GForth
+## Full microbenchmark program in GForth
 
 Reading user input at the terminal is working in Gforth, as this factorial example shows with word _read-int_. Run this program like this: _$ gforth factorial.fs_
 
@@ -360,7 +360,64 @@ Reading user input at the terminal is working in Gforth, as this factorial examp
 main
 ```
 
-Consequently, the full microbenchmark program has only been implemented in Gforth ([random_bitstring_and_flexible_password_generator.fs](./random_bitstring_and_flexible_password_generator.fs)), and represents my official implementation in Forth.
+Consequently, the full microbenchmark program is only implemented in Gforth ([random_bitstring_and_flexible_password_generator.fs](./random_bitstring_and_flexible_password_generator.fs)), and represents my official implementation in Forth.
+
+<br/>
+
+However, even word _read-int_, or here in its expanded form _read_int_or_y_, needed an upgrade (from Google AI) in program _random_bitstring_and_flexible_password_generator.fs_ to make it work:
+
+```
+CREATE input-buf 64 ALLOT  \ Protects data from terminal interpreter overwrite
+\
+: read_int_or_y ( -- n ok )
+  input-buf 64 ACCEPT
+
+  \ Guard: If the user typed absolutely nothing, exit as false
+  dup 0= IF drop 0 false EXIT THEN
+
+  \ Exact string match: check if the input is strictly a single lowercase 'y'
+  input-buf over s" y" compare 0= IF
+    drop                 \ Discard the input length 'u'
+    n_char_default true  \ Push 12 and true to the stack
+    EXIT                 \ Bypass number parsing entirely
+  THEN
+
+  \ integer number conversion logic:
+  input-buf swap s>number?  ( d flag )
+  IF
+    drop
+    DPL @ -1 = IF      \ Valid single-cell integer check
+      true             ( n true )
+    ELSE
+      drop false
+    THEN
+  ELSE
+    2drop false
+  THEN ;
+```  
+
+<br/>
+
+Otherwise, the only key to success for Google AI was to introduce **meticulous, manual memory management** throughout the full microbenchmark program, something which was not needed to this extent in program [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs). I also updated that source code with the changes of already existing parts in the full program to make it also bullet-proof:
+
+```
+...
+\ Create POINTER variables to hold our dynamic heap memory addresses
+0 VALUE x
+0 VALUE bits_x
+0 VALUE bits_hex
+0 VALUE bits_x_str_total
+0 VALUE bits_hex_str_total
+
+: allocate-large-buffers ( -- )
+    END CELLS ALLOT               \ We keep 'x' in dictionary if small, or heap allocate:
+    END CELLS            ALLOCATE THROW TO x
+    END STR_LENGTH_BIN * ALLOCATE THROW TO bits_x
+    END STR_LENGTH_HEX * ALLOCATE THROW TO bits_hex
+    M1                   ALLOCATE THROW TO bits_x_str_total
+    K250                 ALLOCATE THROW TO bits_hex_str_total ;
+...
+```
 
 <br/>
 
