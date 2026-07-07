@@ -38,7 +38,7 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 Table of contents:
 
 - [Installation tips for Gforth](#installation-tips-for-gforth)
-- [GForth is also the name of its virtual machine](#)
+- [GForth is also the name of its virtual machine](#gforth-is-also-the-name-of-its-virtual-machine)
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
@@ -137,7 +137,10 @@ GForth is not only the name of an implementation of the Forth programming langua
 - _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html It looks like that command _gforthmi_ for creating a GForth image file is using it.
 
 DTC = Direct Threaded Code
+
 ITC = Indirect Threaded Code
+
+<br/>
 
 Though, the fastest way to run _random_streams_for_perf_stats.fs_, according to my experiments, is first to create a Gforth image file, which is then being executed:
 
@@ -149,8 +152,6 @@ $ time ./random_streams_for_perf_stats  # real	0m0.025s
 The other options are slower:
 
 ```
-$ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
-$ time ./random_streams_for_perf_stats  # real	0m0.025s
 $ time gforth      ./random_streams_for_perf_stats2.fs  # real	0m0.042s
 $ time gforth-fast ./random_streams_for_perf_stats2.fs  # real	0m0.030s
 $ time gforth-itc  ./random_streams_for_perf_stats2.fs  # real	0m0.051s
@@ -168,7 +169,7 @@ bye
 
 <br/>
 
-Another issue with the GForth documentation is this: how valid are academic papers written in the 90ies still for a modern version of _gforth_?
+Another issue with the GForth documentation is this: how valid are academic papers written in the 90ies still for a modern version of _gforth_? They are still listed as part of the official documentation: https://gforth.org/manual/Engine.html#Engine
 
 <br/>
 
