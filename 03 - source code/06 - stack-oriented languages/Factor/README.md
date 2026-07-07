@@ -35,6 +35,11 @@ _Words_ are programs, functions and operators in a stack-oriented programming la
  
 <br/>
 
+> [!TIP]
+> However and all in all, I still think that doing "non-low-level" programming is significantly easier in Factor than in Forth.
+
+<br/>
+
 Otherwise, there could be more informative and non-trivial **source code examples** in the [official documentation](https://docs.factorcode.org/content/article-handbook.html). Looking into the repository with the source code of a (demanding) programming language has its limits.
 
 ---
