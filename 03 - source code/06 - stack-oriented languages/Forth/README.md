@@ -1,4 +1,4 @@
-2026-07-06: work in progress 
+2026-07-06: work in progress
 
 <br/>
 
@@ -202,7 +202,7 @@ At first, a complete transpilation of the ["speed part" of the microbenchmark pr
 
 Consequently and piece by piece, I developed from the ground up a little Linear Congruential Generator (LCG) for only generating 20 random integer numbers in Gforth.
 
-From that skeleton of a program on and with lots of help from "Big AI", I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs significantly faster with an execution time of about 26 milliseconds (as a Gforth image file, not standalone executable) versus the quite functional Factor program with about 59 milliseconds as a (dynamically linked) standalone executable.
+From that skeleton of a program on and with lots of help from "Big AI", I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs faster with an execution time of about 26 milliseconds (as a Gforth image file, not standalone executable) versus the quite functional Factor program with about 59 milliseconds as a (dynamically linked) standalone executable.
 
 <br/>
 
