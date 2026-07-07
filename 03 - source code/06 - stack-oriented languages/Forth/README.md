@@ -5,6 +5,7 @@
 # Forth
 
 TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming, but you can't practically make a standalone executable for Linux with it.
+The Gforth ecosystem has also become very confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, ... In earlier days there was also command _gforth-native_.
 
 <br/>
 
