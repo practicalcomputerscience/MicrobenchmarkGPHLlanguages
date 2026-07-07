@@ -4,11 +4,13 @@
 
 # Forth
 
-TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming, but you can't practically make a standalone executable for Linux with it. It's strongly based on its own virtual machine of the same name.
+TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming.
 
-The Gforth ecosystem has also become very confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, _gforth-itc_, _gforth-ditc_, ...
+But you can't practically make a standalone executable for Linux with Gforth, because it's strongly based on its own virtual machine.
 
-In the very early days there was also command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster code for building virtual machines.
+The Gforth ecosystem has also become confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, _gforth-itc_, _gforth-ditc_, ...
+
+In the very early days there was also command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster virtual machines.
 
 <br/>
 
@@ -310,7 +312,7 @@ $
 
 <br/>
 
-However, reading user input from the keyboard into a string on the console isn't working yet in ccforth despite elaborate experimentation with "Big AI". Thus, that's the end of my experiments with ccforth.
+However, reading user input from the keyboard into a string on the console isn't working yet with ccforth despite elaborate experimentation with "Big AI". Thus, that's the end of my experiments with ccforth.
 
 <br/>
 
