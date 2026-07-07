@@ -130,7 +130,7 @@ GForth is not only the name of an implementation of the Forth programming langua
 - _gforth_ for development mode and which uses "hybrid direct/indirect threaded code": https://gforth.org/manual/Direct-or-Indirect-Threaded_003f.html (**)
 - _gforth-fast_, which is _gforth_ for production mode, and which "uses dynamic superinstructions (native code that still uses the threaded code quite a bit)" from: "Inlining in Gforth: Early Experiences" by David Gregg, Trinity College Dublin, M. Anton Ertl, TU Wien, 1998 (+)
 - _gforth-itc_, which is still available for backward compatibility, because "traditionally Forth has been implemented as indirect threaded code" (**)
-- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html It looks like that command _gforthmi_ for creating a GForth image file is using it.
+- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html: it looks like that command _gforthmi_ for creating a GForth image file is using it.
 
 DTC = Direct Threaded Code
 
