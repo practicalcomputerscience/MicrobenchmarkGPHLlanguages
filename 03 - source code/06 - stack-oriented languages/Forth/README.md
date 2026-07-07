@@ -198,11 +198,11 @@ Then I discovered much younger stack-oriented language [Factor](https://github.c
 
 However, when I finished the whole microbenchmark program in [Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth/random_streams_for_perf_stats.fs), I had a second look at Gforth.
 
-At first, a complete transpilation of the ["speed part" of the microbenchmark program in Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor/random_streams_for_perf_stats.factor) with the help of "Big AI" (again) didn't work at all. These two stack-oriented languages are just too different after all.
+At first, a complete transpilation of the ["speed part" of the microbenchmark program in Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Factor/random_streams_for_perf_stats.factor) with the help of "Big AI" (again) didn't work at all. These two stack-oriented languages are just too different.
 
-Consequently and piece by piece, I developed from the ground up a little Linear Congruential Generator (LCG) for only generating 20 random integer numbers in Gforth.
+Consequently, for a Gforth solution I developed from the ground up and with the help of "Big AI" a simple Linear Congruential Generator (LCG) that started with only generating 20 random integer numbers.
 
-From that skeleton of a program on and with lots of help from "Big AI", I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs faster with an execution time of about 26 milliseconds (as a Gforth image file, not standalone executable) versus the quite functional Factor program with about 59 milliseconds as a (dynamically linked) standalone executable.
+From that skeleton of a program on, I slowly got the final and very imperative [Forth solution](./random_streams_for_perf_stats.fs), which runs faster with an execution time of about 26 milliseconds (as a Gforth image file, not standalone executable) than the quite functional Factor program with about 59 milliseconds as a (dynamically linked) standalone executable.
 
 <br/>
 
@@ -309,13 +309,13 @@ $
 
 <br/>
 
-However, reading user input from the keyboard into a string on the console isn't working yet with ccforth despite elaborate experimentation with "Big AI". Thus, that's the end of my experiments with ccforth.
+However, reading user input from the keyboard into a string on the console isn't working yet with ccforth despite elaborate experimentation with "Big AI". Thus, that was the end of my experiments with ccforth.
 
 <br/>
 
 ## Full microbenchmark program in GForth
 
-Reading user input at the terminal is working in Gforth, as this factorial example shows with word _read-int_. Run this program like this: _$ gforth factorial.fs_
+Reading user input at the terminal is working in Gforth, as this factorial program shows at the word _read-int_. Run it like this: _$ gforth factorial.fs_
 
 ```
 : factorial ( n -- n! )
@@ -364,7 +364,7 @@ Consequently, the full microbenchmark program is only implemented in Gforth ([ra
 
 <br/>
 
-However, even word _read-int_, or here in its expanded form _read_int_or_y_, needed an upgrade (from Google AI) in program _random_bitstring_and_flexible_password_generator.fs_ to make it work:
+However, even word _read-int_, or here in its expanded form _read_int_or_y_, needed an upgrade (from Google AI) in program _random_bitstring_and_flexible_password_generator.fs_ to make it safely work:
 
 ```
 CREATE input-buf 64 ALLOT  \ Protects data from terminal interpreter overwrite
@@ -398,7 +398,7 @@ CREATE input-buf 64 ALLOT  \ Protects data from terminal interpreter overwrite
 
 <br/>
 
-Otherwise, the only key to success for Google AI was to introduce **meticulous, manual memory management** throughout the full microbenchmark program, something which was not needed to this extent in program [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs). I also updated that source code with the changes of already existing parts in the full program to make it also bullet-proof:
+Otherwise, the only key to success for Google AI was to introduce **meticulous, manual memory management** throughout the full microbenchmark program, something which was not needed to this extent in program [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs). I also updated that source code with the changes of already existing parts in the full program to make it also as bullet-proof as it gets:
 
 ```
 ...
