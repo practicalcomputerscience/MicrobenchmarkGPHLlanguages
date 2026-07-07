@@ -4,8 +4,11 @@
 
 # Forth
 
-TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming, but you can't practically make a standalone executable for Linux with it.
-The Gforth ecosystem has also become very confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, ... In earlier days there was also command _gforth-native_.
+TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming, but you can't practically make a standalone executable for Linux with it. It's strongly based on its own virtual machine of the same name.
+
+The Gforth ecosystem has also become very confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, _gforth-itc_, _gforth-ditc_, ...
+
+In the very early days there was also command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster code for building virtual machines.
 
 <br/>
 
@@ -33,6 +36,7 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 Table of contents:
 
 - [Installation tips for Gforth](#installation-tips-for-gforth)
+- [GForth is also the name of its virtual machine](#)
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
@@ -118,6 +122,51 @@ $
 ```
 
 Voilà! Gforth in its latest version! (which already looks improved at the REPL, see below, compared to version 0.7.3)
+
+<br/>
+
+## GForth is also the name of its virtual machine
+
+GForth is not only the name of an implementation of the Forth programming language, but also the name of its virtual machine, or "engine". It's available in four flavors:
+
+- _gforth_ for development mode and which uses "hybrid direct/indirect threaded code": https://gforth.org/manual/Direct-or-Indirect-Threaded_003f.html (**)
+- _gforth-fast_, which is _gforth_ for production mode, and which "uses dynamic superinstructions (native code that still uses the threaded code quite a bit)" from: "Inlining in Gforth: Early Experiences" by David Gregg, Trinity College Dublin, M. Anton Ertl, TU Wien, 1998 (+)
+- _gforth-itc_, which is still available for backward compatibility, because "traditionally Forth has been implemented as indirect threaded code" (**)
+- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html It looks like that command _gforthmi_ for creating a GForth image file is using it.
+
+DTC = Direct Threaded Code
+ITC = Indirect Threaded Code
+
+Though, the fastest way to run _random_streams_for_perf_stats.fs_, according to my experiments, is first to create a Gforth image file, which is then being executed:
+
+```
+$ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
+$ time ./random_streams_for_perf_stats  # real	0m0.025s
+```
+
+The other options are slower:
+
+```
+$ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
+$ time ./random_streams_for_perf_stats  # real	0m0.025s
+$ time gforth      ./random_streams_for_perf_stats2.fs  # real	0m0.042s
+$ time gforth-fast ./random_streams_for_perf_stats2.fs  # real	0m0.030s
+$ time gforth-itc  ./random_streams_for_perf_stats2.fs  # real	0m0.051s
+$ time gforth-ditc ./random_streams_for_perf_stats2.fs  # real	0m0.044s
+```
+
+These execution times are only indicative and can vary widely when not based on a Gforth image file.
+
+_random_streams_for_perf_stats2.fs_ just needs a different program tail with:
+
+```
+main
+bye
+```
+
+<br/>
+
+Another issue with the GForth documentation is this: how valid are academic papers written in the 90ies still for a modern version of _gforth_?
 
 <br/>
 
