@@ -1,5 +1,7 @@
 2026-07-06: work in progress
 
+- tbd: upgrade _random_streams_for_perf_stats.fs_
+
 <br/>
 
 # Forth
