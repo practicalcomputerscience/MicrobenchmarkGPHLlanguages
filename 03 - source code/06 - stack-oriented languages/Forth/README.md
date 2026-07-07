@@ -266,7 +266,7 @@ However, reading user input from the keyboard into a string on the console isn't
 
 ## Microbenchmark program in GForth
 
-Reading user input at the terminal is working in Gforth, as this factorial example shows with word _read-int_. Run this code like this: _$ gforth factorial.fs_
+Reading user input at the terminal is working in Gforth, as this factorial example shows with word _read-int_. Run this program like this: _$ gforth factorial.fs_
 
 ```
 : factorial ( n -- n! )
