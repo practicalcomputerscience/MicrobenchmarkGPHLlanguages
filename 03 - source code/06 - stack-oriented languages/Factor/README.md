@@ -12,7 +12,11 @@ At first, I picked up more high-level Factor as an alternative to system-level [
 
 This language even has Haskell-style monads implemented: [monads vocabulary](https://docs.factorcode.org/content/vocab-monads.html)
 
+And: with Factor you can make standalone executables (for Linux) with good portability.
+
 <br/>
+
+But:
 
 > [!NOTE]
 > Getting exception handling right in Factor, even though being a "high-level" stack-oriented language, may need patience! Look for examples of _recover_ in the Factor GitHub repository!
@@ -180,6 +184,8 @@ IN: factorial_with_user_input  ! defines the current vocabulary (home namespace)
 
 MAIN: factorial_with_user_input ! MAIN: declares the entry point
 ```
+
+<br/>
 
 ### Control flow in Factor
 
