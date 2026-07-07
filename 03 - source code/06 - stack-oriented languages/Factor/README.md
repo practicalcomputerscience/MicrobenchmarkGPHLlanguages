@@ -203,7 +203,7 @@ I noticed that also "Big AI" often suggests using _when_, when only the success 
 
 ```
 
-Quotations are essential in Factor and are anonymous functions (values denoting a snippet of code) which can be used as values.
+Quotations are essential in Factor and are anonymous functions, which can be used as values.
 
 <br/>
 
