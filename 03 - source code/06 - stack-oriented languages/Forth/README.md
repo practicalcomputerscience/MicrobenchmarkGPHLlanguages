@@ -128,7 +128,7 @@ GForth is not only the name of an implementation of the Forth programming langua
 - _gforth_ for development mode and which uses "hybrid direct/indirect threaded code": https://gforth.org/manual/Direct-or-Indirect-Threaded_003f.html (**)
 - _gforth-fast_, which is _gforth_ for production mode, and which "uses dynamic superinstructions (native code that still uses the threaded code quite a bit)" from: "Inlining in Gforth: Early Experiences" by David Gregg, Trinity College Dublin, M. Anton Ertl, TU Wien, 1998 (+)
 - _gforth-itc_, which is still available for backward compatibility, because "traditionally Forth has been implemented as indirect threaded code" (**)
-- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html: it looks like that command _gforthmi_ for creating a GForth image file is using it.
+- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html: it looks like that command _gforthmi_ for creating a GForth image file is using this command.
 
 DTC = Direct Threaded Code
 
@@ -307,7 +307,7 @@ $
 
 <br/>
 
-However, reading user input from the keyboard into a string on the console isn't working yet with ccforth despite elaborate experimentation with "Big AI". Thus, that was the end of my experiments with ccforth.
+However, reading user input from the keyboard into a string on the console isn't working yet with ccforth in its current version despite elaborate experimentation with "Big AI". Thus, that was the end of my experiments with ccforth.
 
 <br/>
 
@@ -325,7 +325,13 @@ Reading user input at the terminal is working in Gforth, as this factorial progr
   then ;
 
 : read-int ( -- n ok )
-  PAD 64 ACCEPT          ( u )
+  PAD 64 ACCEPT          ( u )  \ ACCEPT: Get a string of up to n1 characters from the user input device and store it at c-addr.
+                                \ n2 is the length of the received string. The user indicates the end by pressing RET.
+                                \ Gforth supports all the editing functions available on the Forth command line
+                                \ (including history and word completion)
+                                \ PAD: c-addr is the address of a transient region that can be used as temporary data storage.
+                                \      At least 84 characters of space is available.
+
   PAD SWAP s>number?     ( d flag )
   IF
     drop                 ( n )
@@ -362,7 +368,7 @@ Consequently, the full microbenchmark program is only implemented in Gforth ([ra
 
 <br/>
 
-However, even word _read-int_, or here in its expanded form _read_int_or_y_, needed an upgrade (from Google AI) in program _random_bitstring_and_flexible_password_generator.fs_ to make it safely work:
+However, even word _read-int_, or here in its expanded form _read_int_or_y_, needed an upgrade (from Google AI) in program _random_bitstring_and_flexible_password_generator.fs_ to make it work safely:
 
 ```
 CREATE input-buf 64 ALLOT  \ Protects data from terminal interpreter overwrite
@@ -396,7 +402,7 @@ CREATE input-buf 64 ALLOT  \ Protects data from terminal interpreter overwrite
 
 <br/>
 
-Otherwise, the only key to success for Google AI was to introduce **meticulous, manual memory management** throughout the full microbenchmark program, something which was not needed to this extent in program [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs). I also updated that source code with the changes of already existing parts in the full program to make it also as bullet-proof as it gets:
+Otherwise, the only key to success for Google AI was to introduce **meticulous, manual memory management** throughout the full microbenchmark program, something which was not needed to this extent in program [random_streams_for_perf_stats.fs](./random_streams_for_perf_stats.fs). I also updated that source code with Google AI's changes for the full microbenchmark program to make it also as bullet-proof as it gets:
 
 ```
 ...
