@@ -30,7 +30,7 @@ Dart | Dart SDK version: 3.10.8 (stable) (Tue Jan 27 00:02:04 2026 -0800) on "li
 Dylan | v0.13.0-11-gbb20956 built on 2026-02-19T02:05:17+00:00; Open Dylan 2026.1 | $ deft version; $ dylan-compiler -VERSION
 Eiffel, Liberty | ...; Liberty Eiffel The GNU Eiffel Compiler, Eiffel tools and libraries; release 2022.dev (preparing Glenn Curtiss); ... | $ se compile --version
 Factor | Factor 0.102 x86.64 (2301, heads/master-8e54de841b, Feb 11 2026 19:39:11); [GCC 11.4.0] | $ factor -version
-Forth (GForth) | gforth 0.7.9_20260610 amd64 | $ gforth --version
+Forth (Gforth) | gforth 0.7.9_20260610 amd64 | $ gforth --version
 Fortran | GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gfortran --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
 Gleam | gleam 1.13.0 | $ gleam -V
