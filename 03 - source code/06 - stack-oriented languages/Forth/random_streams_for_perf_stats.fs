@@ -203,6 +203,8 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
 
     \ write bit stream to disk:
     bits_x_str_total   M1   file_bits_x   20 C" Bit"  COUNT write_to_file
+    \ 2026-07-08: C" Bit"  COUNT is for using permanently
+    \             dictionary-compiled counted strings unpacked via COUNT at runtime
 
     \ write byte stream to disk:
     bits_hex_str_total K250 file_bits_hex 21 C" Byte" COUNT write_to_file
