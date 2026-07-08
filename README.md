@@ -447,6 +447,8 @@ The Crystal programming language (https://crystal-lang.org/) even features the _
 # p! bits_x  # for testing
 ```
 
+<br/>
+
 2026-07-08: a good feature of this microbenchmark program is that it creates two files with random content. Thus, it's very easy, if the program works so far, to make a first verification check.
 
 Just print the first characters of both files. With each program run there should be different patterns:
