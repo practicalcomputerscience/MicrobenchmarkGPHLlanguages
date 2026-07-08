@@ -3,7 +3,7 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23/28, 2026-07-01
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23/28, 2026-07-01/05/08
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -34,6 +34,7 @@ my $line_cmt_Fortran_style = 0;  # !
 my $line_cmt_COBOL_style = 0;    # *>
 my $line_cmt_Smalltalk_style = 0;    # "...": only these kind of comments are allowed (no block comments)
                                      # and no mixing within the same line with source code!!
+my $line_cmt_Forth_style = 0;    # \
 
 
 my $fwdslash_star_detected = 0;              # 0 is false --> use strict prevents using true or false
@@ -63,7 +64,8 @@ my $language_ext = $file;
 
 
 # language group without block comments:
-my @lang_grp1 = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob", "bal", "tcl");
+my @lang_grp1  = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob", "bal", "tcl", "factor", "fs");
+my @lang_grp16 = ("hy");  # similar to Python, @lang_grp3: "document strings"
 
 
 # language groups with block comments:
@@ -80,9 +82,8 @@ my @lang_grp10 = ("m", "P", "pi");  # single line comment: %, block comments: /*
 my @lang_grp11 = ("jl");
 my @lang_grp12 = ("nim");
 my @lang_grp13 = ("rb");
-my @lang_grp14 = ("st");
+my @lang_grp14 = ("st");  # Smalltalk
 my @lang_grp15 = ("curry");
-my @lang_grp16 = ("hy");  # similar to Python, @lang_grp3: "document strings"
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -130,7 +131,7 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
             $line_cmt_minus_dbl += 1;
           } else {
 
-            # case: ! with optionally leading white spaces: Fortran
+            # case: ! with optionally leading white spaces: Fortran, Factor
             if ($_ =~ /^\s*\!/) {
               $line_cmt_Fortran_style += 1;
             } else {
@@ -139,7 +140,13 @@ if ( grep(/^$language_ext$/, @lang_grp1)) {
               if ($_ =~ /^\s*\>\*/) {
                 $line_cmt_COBOL_style += 1;
               } else {
-                $source_code_line_count += 1;
+
+                # case: \ with optionally leading white spaces: GForth
+                if ($_ =~ /^\s*\\/) {
+                  $line_cmt_Forth_style += 1;
+                } else {
+                  $source_code_line_count += 1;
+                }
               }
             }
           }
@@ -771,6 +778,7 @@ print "\nnumber of lines with ___% = ", $line_cmt_Mercury_style;
 print "\nnumber of lines with ___! = ", $line_cmt_Fortran_style;
 print "\nnumber of lines with ___>* = ", $line_cmt_COBOL_style;
 print "\nnumber of lines with ___\" = ", $line_cmt_Smalltalk_style;
+print "\nnumber of lines with ___\\ = ", $line_cmt_Forth_style;
 print "\nnumber of lines in block comment: \/\* ... \*\/ = ", $line_of_block_comment2;
 print "\nnumber of lines in block comment: \"\"\" ... \"\"\" = ", $line_of_block_comment3;
 print "\nnumber of lines in block comment: \(\* ... \*\) = ", $line_of_block_comment4;
