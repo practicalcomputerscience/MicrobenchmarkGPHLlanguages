@@ -100,7 +100,7 @@ If not, these objects may lead to memory leaks after program exits: [Memory leak
 programming language | regular expressions with variable _pattern_ used? | set/hash of characters/single character strings with variable _char_set_ used? | space character not included = OK | comments | POSIX or "near-POSIX" character classes used? | refactoring date
 --- | --- | --- | --- | --- | --- | ---
 Ada (GNAT) | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-08
-AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints | | 2026-05-24
+AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters compiled from codepoints in both cases | | 2026-05-24
 Ballerina | yes |  | OK | non-POSIX patterns: \`[!-~]+\`, \`[A-Za-z0-9]+\` | | 2026-06-12
 C | yes |  | OK | POSIX patterns: _"^[[:graph:]]+$"_, _"^[[:alnum:]]+$"_ | yes | 2026-06-17
 C++ | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-17
@@ -118,6 +118,7 @@ Dart | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 20
 Dylan | yes |  | OK | non-POSIX patterns: _graphic?(c) & ~whitespace?(c)_, _alphanumeric?_ | | 2026-06-28
 Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-09
 Factor |  |  | OK | _char_set_ is a string of allowed characters in both cases, compiled from codepoints; regular expressions are possible but may compile to an unstable program | | 2026-07-05
+Forth (Gforth) | | | OK | xxxxxxxxxx | 2026-07-08
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-06-10
 FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints (regular expressions are natively supported, but need some extra effort) | | 2026-06-14
 Gleam | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-31
