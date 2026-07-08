@@ -159,7 +159,7 @@ _random_streams_for_perf_stats2.fs_ just needs a different program tail with:
 
 ```
 main
-bye
+bye ;
 ```
 
 <br/>
