@@ -1,6 +1,6 @@
 \ random_bitstring_and_flexible_password_generator.fs
 \
-\ 2026-07-07
+\ 2026-07-07/08
 \
 \ build on Ubuntu 24 LTS: this source code is only meant for production, not development:
 \                       $ gforthmi random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.fs
@@ -39,7 +39,7 @@ END STR_LENGTH_HEX * CONSTANT K250  \ total size in characters of bits_hex_str_t
 0 VALUE bits_hex_str_total
 
 : allocate-large-buffers ( -- )
-    END CELLS ALLOT               \ We keep 'x' in dictionary if small, or heap allocate:
+    \ END CELLS ALLOT               \ 2026-07-08: We keep 'x' in dictionary if small, or heap allocate:
     END CELLS            ALLOCATE THROW TO x
     END STR_LENGTH_BIN * ALLOCATE THROW TO bits_x
     END STR_LENGTH_HEX * ALLOCATE THROW TO bits_hex
