@@ -446,7 +446,7 @@ Otherwise, the only key to success for Google AI was to introduce **meticulous, 
 
 ### Microbenchmark program in SwiftForth (only "speed part")
 
-With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler does still exists for Forth.
+With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler still exists for Forth.
 
 I'm using a pre-compiled evaluation copy (in version _SwiftForth x64-Linux 4.1.8 05-Jul-2026_), which let's you run SwiftForth-compliant source code, but not building standalone executables.
 
@@ -456,7 +456,7 @@ Install SwiftForth from the unzipped archive file like this:
 $ sudo ./SwiftForth-linux-eval/SwiftForth/install.sh
 ```
 
-Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some glitches in _random_streams_for_perf_stats.fs_ for Gforth!):
+Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some more glitches in _random_streams_for_perf_stats.fs_ for Gforth!):
 
 ```
 $ time sf64 ./random_streams_for_perf_stats_swift.f
@@ -470,7 +470,7 @@ real	0m0.010s
 $
 ```
 
-With only 10 milliseconds of execution time, this is pretty fast if you thank that this time also probably includes time for compilation.
+With only 10 milliseconds of execution time, this is pretty fast if you thank that it probably also includes compilation time.
 
 <br/>
 
