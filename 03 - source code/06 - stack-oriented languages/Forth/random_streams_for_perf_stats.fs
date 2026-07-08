@@ -15,6 +15,7 @@
 \
 \ this program was developed slowly from the ground up with a prompt for MS Bing AI:
 \ "Write a simple LCG in gforth Forth, which generates 20 random integer numbers and prints them. Seed should be different with every program run."
+\ Later, the Google AI concepts implemented in random_bitstring_and_flexible_password_generator.fs have been also updated here.
 
 
 62500 CONSTANT END  \ 62500 for exactly 1M binary digits
