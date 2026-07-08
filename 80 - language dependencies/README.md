@@ -42,6 +42,7 @@ Dart | Dart + C++ + C, so, it's partly self-hosted |
 Dylan (Open Dylan) | Open Dylan is mostly self-hosted, the rest implemented in C to bind the language to its runtime and garbage collector | https://github.com/dylan-lang/opendylan/tree/master
 Eiffel (Liberty) | C for gcc or g++, and also Eiffel, or cl in Windows; so it's partly self-hosted | Eiffel source code is first fully transpiled into ANSI C code, which is then compiled to executable machine code by a standard C compiler
 Factor | partly self-hosted, but traces of Zig and C++ can be seen on GitHub | https://github.com/factor/factor/
+Forth (Gforth) | the virtual machine is written in GNU C, and partly the compiler to produce the bytecode; rest of compiler in Gforth | https://github.com/forthy42/gforth
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
