@@ -456,7 +456,7 @@ Install SwiftForth from the unzipped archive file like this:
 $ sudo ./SwiftForth-linux-eval/SwiftForth/install.sh
 ```
 
-Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some more glitches in _random_streams_for_perf_stats.fs_ for Gforth!):
+Now, SwiftForth's compiler _sf64_ should be now located in a path for executables, and thus should allow executing an [adapted version of the "speed part"](./random_streams_for_perf_stats_swift.f) of the microbenchmark program (which still uncovered some more glitches in _random_streams_for_perf_stats.fs_ for Gforth!):
 
 ```
 $ time sf64 ./random_streams_for_perf_stats_swift.f
