@@ -307,6 +307,24 @@ $
 
 <br/>
 
+The ccforth executable also passes the valgrind test with flying colors (well, it compiles first to C code: [Summaries table](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#summaries-table)): 
+
+```
+$ valgrind ./random_streams_for_perf_stats_ccforth
+...
+==5329== HEAP SUMMARY:
+==5329==     in use at exit: 0 bytes in 0 blocks
+==5329==   total heap usage: 5 allocs, 5 frees, 10,160 bytes allocated
+==5329== 
+==5329== All heap blocks were freed -- no leaks are possible
+==5329== 
+==5329== For lists of detected and suppressed errors, rerun with: -s
+==5329== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+$
+```
+
+<br/>
+
 However, reading user input from the keyboard into a string on the console isn't working yet with ccforth in its current version despite elaborate experimentation with "Big AI". Thus, that was the end of my experiments with ccforth.
 
 <br/>
