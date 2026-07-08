@@ -27,6 +27,10 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 
 <br/>
 
+With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler does still exists for Forth: tbd
+
+<br/>
+
 ---
 
 Table of contents:
