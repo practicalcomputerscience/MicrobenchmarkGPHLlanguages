@@ -1,20 +1,14 @@
-2026-07-06: work in progress
-
-- tbd: upgrade _random_streams_for_perf_stats.fs_
-
-<br/>
-
 # Forth
 
 TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming.
 
 Gforth mirror on GitHub: https://github.com/forthy42/gforth
 
-But you can't practically make a standalone executable for Linux with Gforth, because it's strongly based on its own virtual machine.
+But you can't make a standalone executable for Linux with Gforth, because it's (nowadays) always based on its own virtual machine.
 
 The Gforth ecosystem has also become confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, _gforth-itc_, _gforth-ditc_, ...
 
-In the very early days there was also command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster virtual machines.
+In the very early days there was still the command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster virtual machines.
 
 <br/>
 
