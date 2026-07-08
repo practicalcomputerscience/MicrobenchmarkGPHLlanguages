@@ -447,6 +447,24 @@ The Crystal programming language (https://crystal-lang.org/) even features the _
 # p! bits_x  # for testing
 ```
 
+2026-07-08: a good feature of this microbenchmark program is that it creates two files with random content. Thus, it's very easy, if the program works so far, to make a first verification check.
+
+Just print the first characters of both files. With each program run there should be different patterns:
+
+```
+$ head -c 10 random_bitstring.bin
+1011011111$ head -c 10 random_bitstring.byte
+b7c310f97c$ 
+```
+
+Or print the last characters:
+
+```
+$ tail -c 10 random_bitstring.bin
+0010101100$ tail -c 10 random_bitstring.byte
+805aedbcac$
+```
+
 <br/>
 
 ### On functional programming
