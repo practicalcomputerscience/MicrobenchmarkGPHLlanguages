@@ -68,8 +68,7 @@ VARIABLE seed
 
 \ --- next random number ---
 : next_rand ( -- u )
-    seed @ a * c + m mod dup seed !
-    ;
+    seed @ a * c + m mod dup seed ! ;
 
 
 \ --- convert u to 16-bit binary string ---
