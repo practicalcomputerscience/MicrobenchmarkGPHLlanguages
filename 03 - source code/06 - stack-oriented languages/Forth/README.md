@@ -27,10 +27,6 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 
 <br/>
 
-With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler does still exists for Forth: tbd
-
-<br/>
-
 ---
 
 Table of contents:
@@ -41,6 +37,7 @@ Table of contents:
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
 - [Full microbenchmark program in GForth](#full-microbenchmark-program-in-gforth)
+- [Microbenchmark program in SwiftForth (only "speed part")]()
 
 <br/>
 
@@ -444,6 +441,36 @@ Otherwise, the only key to success for Google AI was to introduce **meticulous, 
     K250                 ALLOCATE THROW TO bits_hex_str_total ;
 ...
 ```
+
+<br/>
+
+### Microbenchmark program in SwiftForth (only "speed part")
+
+With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler does still exists for Forth.
+
+I'm using a pre-compiled evaluation copy (in version SwiftForth x64-Linux 4.1.8 05-Jul-2026), which let's you run SwiftForth-compliant source code, but not building standalone executables.
+
+Install SwiftForth from the unzipped archive file like this:
+
+```
+$ sudo ./SwiftForth-linux-eval/SwiftForth/install.sh
+```
+
+Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some glitches in _random_streams_for_perf_stats.fs_ for GForth!):
+
+```
+$ time sf64 ./random_streams_for_perf_stats_swift.f
+
+generating a random bit stream...
+Bit stream written to disk under name: random_bitstring.bin
+Byte stream written to disk under name: random_bitstring.byte
+
+real	0m0.010s
+...
+$
+```
+
+With only 10 milliseconds of execution time, this is pretty fast if you thank that this time also probably includes time for compilation.
 
 <br/>
 
