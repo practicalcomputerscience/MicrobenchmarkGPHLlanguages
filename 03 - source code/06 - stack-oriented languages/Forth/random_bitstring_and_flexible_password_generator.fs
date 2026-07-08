@@ -101,8 +101,7 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
     dup $F and hex-digits + c@ dest 3 + c!
     dup 4 rshift $F and hex-digits + c@ dest 2 + c!
     dup 8 rshift $F and hex-digits + c@ dest 1 + c!
-    12 rshift $F and hex-digits + c@ dest c!
-    ;
+    12 rshift $F and hex-digits + c@ dest c! ;
 
 
 \ for testing:
@@ -315,9 +314,6 @@ VARIABLE pw_j
 
 
 \ other helpers in main:
-: byte_nbr_bin  ( i -- addr )  STR_LENGTH_BIN CHARS * bits_x + ;
-: byte_nbr_hex  ( i -- addr )  STR_LENGTH_HEX CHARS * bits_hex + ;
-
 : build_bits_x_str_total ( -- )
   bits_x_str_total { dst }
   END 0 DO
@@ -351,6 +347,7 @@ VARIABLE pw_j
     allocate-large-buffers
 
     init_seed
+    
     cr ." generating a random bit stream..." cr
 
     \ iterative masterloop:
@@ -358,9 +355,10 @@ VARIABLE pw_j
     END 0 DO
         next_rand dup x I CELLS + ! ( u )
 
-        dup I byte_nbr_bin integer_to_bin_string  \ this is emulating the calculation of bits_x_str
-
-        I byte_nbr_hex integer_to_hex_string      \ this is emulating the calculation of bits_hex_str
+        \ 2026-07-08: calculate precise destinations instantly without pointer shifting bugs
+        DUP bits_x   I STR_LENGTH_BIN * +   integer_to_bin_string  \ no explicit calculation of bits_x_str!
+        DUP bits_hex I STR_LENGTH_HEX * +   integer_to_hex_string  \ no explicit calculation of bits_hex_str!
+        DROP
     LOOP
 
     \ cr x print-array-int cr  \ for testing
