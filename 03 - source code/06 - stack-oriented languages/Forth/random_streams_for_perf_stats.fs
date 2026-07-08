@@ -41,7 +41,7 @@ END STR_LENGTH_HEX * CONSTANT K250  \ total size in characters of the big bits_h
 0 VALUE bits_hex_str_total
 
 : allocate-large-buffers ( -- )
-    END CELLS ALLOT               \ We keep 'x' in dictionary if small, or heap allocate:
+    \ END CELLS ALLOT               \ 2026-07-08: We keep 'x' in dictionary if small, or heap allocate:
     END CELLS            ALLOCATE THROW TO x
     END STR_LENGTH_BIN * ALLOCATE THROW TO bits_x
     END STR_LENGTH_HEX * ALLOCATE THROW TO bits_hex
