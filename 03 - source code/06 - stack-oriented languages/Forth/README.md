@@ -1,6 +1,6 @@
 # Forth
 
-TL;DR: only [GNU's GForth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming.
+TL;DR: only [GNU's Gforth](https://gforth.org/) is ready for full showtime as an open source Forth implementation for general purpose computer programming.
 
 Gforth mirror on GitHub: https://github.com/forthy42/gforth
 
@@ -32,12 +32,12 @@ from: https://www.forth.com/starting-forth/0-starting-forth/
 Table of contents:
 
 - [Installation tips for Gforth](#installation-tips-for-gforth)
-- [GForth is also the name of its virtual machine](#gforth-is-also-the-name-of-its-virtual-machine)
+- [Gforth is also the name of its virtual machine](#gforth-is-also-the-name-of-its-virtual-machine)
 - [From Forth to Factor and back](#from-forth-to-factor-and-back)
 - [Installation tips for ccforth](#installation-tips-for-ccforth)
 - [Microbenchmark program in ccforth (only "speed part")](#microbenchmark-program-in-ccforth-only-speed-part)
-- [Full microbenchmark program in GForth](#full-microbenchmark-program-in-gforth)
-- [Microbenchmark program in SwiftForth (only "speed part")]()
+- [Full microbenchmark program in Gforth](#full-microbenchmark-program-in-gforth)
+- [Microbenchmark program in SwiftForth (only "speed part")](#microbenchmark-program-in-swiftforth-only-speed-part)
 
 <br/>
 
@@ -122,14 +122,14 @@ Voilà! Gforth in its latest version! (which already looks improved at the REPL,
 
 <br/>
 
-## GForth is also the name of its virtual machine
+## Gforth is also the name of its virtual machine
 
-GForth is not only the name of an implementation of the Forth programming language, but also the name of its virtual machine, or "engine". It's available in four flavors:
+Gforth is not only the name of an implementation of the Forth programming language, but also the name of its virtual machine, or "engine". It's available in four flavors:
 
 - _gforth_ for development mode and which uses "hybrid direct/indirect threaded code": https://gforth.org/manual/Direct-or-Indirect-Threaded_003f.html (**)
 - _gforth-fast_, which is _gforth_ for production mode, and which "uses dynamic superinstructions (native code that still uses the threaded code quite a bit)" from: "Inlining in Gforth: Early Experiences" by David Gregg, Trinity College Dublin, M. Anton Ertl, TU Wien, 1998 (+)
 - _gforth-itc_, which is still available for backward compatibility, because "traditionally Forth has been implemented as indirect threaded code" (**)
-- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html: it looks like that command _gforthmi_ for creating a GForth image file is using this command.
+- _gforth-ditc_, which uses a "double indirect threaded system": https://manpages.debian.org/buster/gforth/gforth-itc.1.en.html: it looks like that command _gforthmi_ for creating a Gforth image file is using this command.
 
 DTC = Direct Threaded Code
 
@@ -164,7 +164,7 @@ bye
 
 <br/>
 
-Another issue with the GForth documentation is this: how valid are academic papers written in the 90ies still for a modern version of _gforth_? They are still listed as part of the official documentation: https://gforth.org/manual/Engine.html#Engine
+Another issue with the Gforth documentation is this: how valid are academic papers written in the 90ies still for a modern version of _gforth_? They are still listed as part of the official documentation: https://gforth.org/manual/Engine.html#Engine
 
 <br/>
 
@@ -330,7 +330,7 @@ However, reading user input from the keyboard into a string on the console isn't
 
 <br/>
 
-## Full microbenchmark program in GForth
+## Full microbenchmark program in Gforth
 
 Reading user input at the terminal is working in Gforth, as this factorial program shows at the word _read-int_. Run it like this: _$ gforth factorial.fs_
 
@@ -448,7 +448,7 @@ Otherwise, the only key to success for Google AI was to introduce **meticulous, 
 
 With [SwiftForth](https://www.forth.com/swiftforth/), at least one commercial compiler does still exists for Forth.
 
-I'm using a pre-compiled evaluation copy (in version SwiftForth x64-Linux 4.1.8 05-Jul-2026), which let's you run SwiftForth-compliant source code, but not building standalone executables.
+I'm using a pre-compiled evaluation copy (in version _SwiftForth x64-Linux 4.1.8 05-Jul-2026_), which let's you run SwiftForth-compliant source code, but not building standalone executables.
 
 Install SwiftForth from the unzipped archive file like this:
 
@@ -456,7 +456,7 @@ Install SwiftForth from the unzipped archive file like this:
 $ sudo ./SwiftForth-linux-eval/SwiftForth/install.sh
 ```
 
-Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some glitches in _random_streams_for_perf_stats.fs_ for GForth!):
+Now, SwiftForth's compiler _sf64_ should be located in a path for executables, and thus should allow executing an adapted version of the "speed part" of the microbenchmark program (which still uncovered some glitches in _random_streams_for_perf_stats.fs_ for Gforth!):
 
 ```
 $ time sf64 ./random_streams_for_perf_stats_swift.f
