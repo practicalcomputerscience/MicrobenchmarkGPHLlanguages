@@ -514,7 +514,7 @@ VARIABLE bits_hex_str
 
 <br/>
 
-_bits_x_str_ and _bits_x_str_ are also global in the [ccforth solution](tbd):
+_bits_x_str_ and _bits_x_str_ are also global in the [ccforth solution](./random_streams_for_perf_stats.fth):
 
 ```
 ...
