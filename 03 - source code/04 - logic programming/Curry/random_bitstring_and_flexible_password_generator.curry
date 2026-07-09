@@ -6,6 +6,8 @@ a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 
 2026-06-21/22
 2026-06-29: ++ show fileBitsX --> ++ fileBitsX to not show "..." around file names anymore
+2026-07-09: fixed initial random seed to [1..m_[
+
 
 build on Ubuntu 24 LTS: do this only once:
                         use the CPM (Curry Package Manager) for this project:
@@ -68,7 +70,7 @@ getRandomSeed =
   getClockTime >>= \time ->
   getCPUTime >>= \msecs ->
   let (CalendarTime y mo d h m s _) = toUTCTime time
-   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` m_)  -- use m_ here!
+   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 1) + 1)  -- use m_ here! 2026-07-09: fixed [1..m_[
 
 
 --   this is an adapted version of the original function from
