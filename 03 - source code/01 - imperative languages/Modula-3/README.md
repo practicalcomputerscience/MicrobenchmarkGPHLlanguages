@@ -57,7 +57,7 @@ $ cm3 --version
 $
 ```
 
-Super-important is this version info: _configuration: ~/cm3/bin/cm3.cfg_ (~ denotes the home directory of the user)
+Super-important is this information: _configuration: ~/cm3/bin/cm3.cfg_ (~ denotes the home directory of the user)
 
 If this file is missing, you got a problem and should start all over again!
 
