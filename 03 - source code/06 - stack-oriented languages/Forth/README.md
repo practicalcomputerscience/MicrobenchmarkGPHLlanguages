@@ -465,12 +465,14 @@ generating a random bit stream...
 Bit stream written to disk under name: random_bitstring.bin
 Byte stream written to disk under name: random_bitstring.byte
 
-real	0m0.010s
+real	0m0.016s
 ...
 $
 ```
 
-With only 10 milliseconds of execution time, this is pretty fast if you thank that it probably also includes compilation time.
+With only 16 milliseconds of execution time, this is fast if you thank that it probably also includes compilation time.
+
+However, I noticed that the introduction of local variables _bits_x_str_ and _bits_x_str_ in the _main_ word has a substantial effect on the program execution time.
 
 <br/>
 
