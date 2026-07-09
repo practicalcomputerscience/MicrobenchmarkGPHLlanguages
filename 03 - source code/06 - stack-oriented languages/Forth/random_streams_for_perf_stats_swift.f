@@ -3,10 +3,12 @@
 \ this program is only for an evaluation version of SwiftForth. So, building a standalone executable is not possible!
 \
 \ 2026-07-08
+\ 2026-07-09: introduced local variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\
 \
 \ run on Ubuntu 24 LTS: $ sf64 ./random_streams_for_perf_stats_swift.f
 \                       ...
-\                       $ time sf64 ./random_streams_for_perf_stats_swift.f => real	0m0.010s <<<<<<<<<<<<<
+\                       $ time sf64 ./random_streams_for_perf_stats_swift.f => real	0m0.016s
 \
 \
 \ $ sf64
@@ -19,6 +21,7 @@
 
 
 62500 CONSTANT END  \ 62500 for exactly 1M binary digits
+\ 10 CONSTANT END  \ for testing
 
 \ LCG parameters:
 65521  CONSTANT m  \ = 2^16 - 15
@@ -52,20 +55,12 @@ CREATE file_bits_hex 25 ALLOT
 S" random_bitstring.byte" file_bits_hex SWAP MOVE
 
 
+VARIABLE seed
+
 
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \
 \ user defined functions
-
-\ --- initialize seed from system time ---
-VARIABLE seed
-: init_seed ( -- )
-    COUNTER seed ! ;
-
-\ --- next random number ---
-: next_rand ( -- u )
-    seed @ a * c + m MOD DUP seed ! ;
-
 
 \ --- convert u to 16-bit binary string ---
 : integer_to_bin_string ( u dest-addr -- )
@@ -134,27 +129,45 @@ CREATE hex-digits CHAR 0 C, CHAR 1 C, CHAR 2 C, CHAR 3 C, CHAR 4 C, CHAR 5 C,
     dst STR_LENGTH_HEX + TO dst
   LOOP ;
 
-
 \ end of user defined functions
 \
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 : main ( -- )
+    LOCALS| bits_x_str bits_hex_str |
+
     allocate-large-buffers
 
-    init_seed
+    COUNTER seed !  \ initialize seed from system time
+    \ cr ." raw initial seed = " seed @ . cr  \ for testing
+
+    \ 2026-07-09: seed is initially too high: do this in main
+    seed @ m 2 - mod 1 + seed !  \ limit initial seeds to 1 to m - 1 (both including)
+    \ cr ." initial seed = " seed @ . cr  \ for testing
+
 
     CR ." generating a random bit stream..."
 
-    \ iterative masterloop:
+    \ iterative masterloop: this is 1:1 the Gforth solution:
     END 0 DO
-        next_rand DUP x I CELLS + !
-
-        \ Calculate precise destinations instantly without pointer shifting bugs
-        DUP bits_x   I STR_LENGTH_BIN * +   integer_to_bin_string  \ no explicit calculation of bits_x_str!
-        DUP bits_hex I STR_LENGTH_HEX * +   integer_to_hex_string  \ no explicit calculation of bits_hex_str!
-        DROP
+        seed @ a * c + m mod dup seed !  \ seed has been duplicated!
+        seed @ x I CELLS + ! ( u )  \ write seed to x
+        \ cr cr ." seed = " seed @ .  \ for testing
+        
+        \ 1. Calculate destination address and save to local variable
+        bits_x I STR_LENGTH_BIN * + to bits_x_str
+        \ 2. Pass the seed (duplicated from stack) and the address to word integer_to_bin_string
+        dup bits_x_str integer_to_bin_string
+        \ 3. Print the string for debugging using its address and length
+        \ cr bits_x_str  16 type  \ for testing
+        
+        \ 4. Handle hex string processing:
+        bits_hex I STR_LENGTH_HEX * + to bits_hex_str
+        dup bits_hex_str integer_to_hex_string
+        \ cr bits_hex_str 4 type  \ for testing
+        
+        DROP  \ Drop the remaining copy of seed
     LOOP
 
     \ cr x print-array-int cr  \ for testing
@@ -163,8 +176,8 @@ CREATE hex-digits CHAR 0 C, CHAR 1 C, CHAR 2 C, CHAR 3 C, CHAR 4 C, CHAR 5 C,
     build_bits_x_str_total
     build_bits_hex_str_total
 
-    \ bits_x_str_total   M1   TYPE CR  \ for testing
-    \ bits_hex_str_total K250 TYPE CR  \ for testing
+    \ cr cr bits_x_str_total   M1   TYPE CR  \ for testing
+    \    cr bits_hex_str_total K250 TYPE CR  \ for testing
 
     \ write bit stream to disk:
     bits_x_str_total   M1   file_bits_x   20 C" Bit"  COUNT write_to_file
