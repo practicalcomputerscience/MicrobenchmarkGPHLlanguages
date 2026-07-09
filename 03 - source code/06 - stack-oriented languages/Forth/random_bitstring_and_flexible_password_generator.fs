@@ -342,7 +342,7 @@ VARIABLE pw_j
                        \             to become more independent from the Forth implementation
                        \ utime returns two values!
     \ 2026-07-09: seed is initially too high: do this in main
-    seed @ 1 - m mod 1 + seed !
+    seed @ m 2 - mod 1 + seed !  \ limit initial seeds to 1 to m - 1 (both including)
     
     cr ." generating a random bit stream..." cr
 
@@ -364,7 +364,7 @@ VARIABLE pw_j
         dup bits_hex_str integer_to_hex_string
         \ cr bits_hex_str 4 type  \ for testing
 
-        drop \ Drop the remaining copy of seed
+        drop  \ Drop the remaining copy of seed
     LOOP
 
     \ cr x print-array-int cr  \ for testing

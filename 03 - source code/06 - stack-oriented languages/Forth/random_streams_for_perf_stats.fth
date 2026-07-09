@@ -1,6 +1,8 @@
 \ random_streams_for_perf_stats.fth
 \
 \ 2026-07-06
+\ 2026-07-09: introduced local variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\
 \
 \ build on Ubuntu 24 LTS:  $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
 \                          # allocate more memory, here 8MB:
@@ -41,24 +43,16 @@
 0 value bits_hex
 0 value bits_x_str_total
 0 value bits_hex_str_total
+0 VALUE bits_x_str
+0 VALUE bits_hex_str
+
+
+variable seed
 
 
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \
 \ user defined functions
-
-\ random generator resources:
-variable seed
-
-: srand seed ! ;  \ initialize the random seed
-
-: next_rand    ( -- n )  \ get next random number based on seed
-  seed @ a * c + m mod
-  dup seed ! ;
-
-: micros>seed  ( d -- u )
-  2DUP XOR 65535 AND ;  \ using Go's UTIME resources for a dynamic random seed
-
 
 : integer_to_bin_string ( n -- addr len )
   base @ swap 2 base !
@@ -127,7 +121,9 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
 
 : main
   \ Fetch the dynamic system time at runtime, convert it, and seed the generator
-  UTIME micros>seed srand
+  UTIME 2DUP XOR 65535 AND seed !  \ initialize the random seed
+  seed @ m 2 - mod 1 + seed !      \ limit initial seeds to 1 to m - 1 (both including)
+  \ cr ." initial seed = " seed @ . cr  \ for testing
 
   cr ." generating a random bit stream..."
 
@@ -137,10 +133,12 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
   HERE to bits_hex            END 4 * allot
   HERE to bits_x_str_total    END 16 * allot
   HERE to bits_hex_str_total  END 4 * allot
+  HERE to bits_x_str          16 allot
+  HERE to bits_hex_str         4 allot
 
 
   END 0 do
-    next_rand                  ( -- n )
+    seed @ a * c + m mod dup seed !
     \ cr cr dup .  \ for testing
 
     \ Store raw integer into x array
@@ -148,17 +146,21 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
 
     \ --- Safe Binary Generation and Storage ---
     dup integer_to_bin_string        ( -- n src_addr len )
-    \ cr 2dup type  \ for testing
+    over bits_x_str !
+    \ cr bits_x_str @ over type  \ for testing
+
     i 16 * bits_x +                  ( -- n src_addr len dest_addr )
     swap move                        ( -- n ) \ Moves 'len' bytes from src to dest safely
 
     \ --- Safe Hexadecimal Generation and Storage ---
     dup integer_to_hex_string        ( -- n src_addr len )
-    \ cr 2dup type  \ for testing
+    over bits_hex_str !
+    \ cr bits_hex_str @ over type  \ for testing
+
     i 4 * bits_hex +                 ( -- n src_addr len dest_addr )
     swap move                        ( -- n )
 
-    drop                             ( -- )
+    drop                             ( -- )  \ Drop the remaining copy of seed
   loop
 
 
@@ -169,7 +171,7 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
   loop
 
   \ cr cr bits_x_str_total   END 16 * type  \ for testing
-  \    cr bits_hex_str_total END 4 * type  \ for testing
+  \ cr cr bits_hex_str_total END 4 * type  \ for testing
 
   \ write bit stream to disk:
   bits_x_str_total   END 16 * file_bits_x   S" Bit "  write_to_file
