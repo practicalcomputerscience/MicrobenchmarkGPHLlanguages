@@ -6,6 +6,8 @@ a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 2026-06-20/21/22
 2026-06-29: ++ show fileBitsX --> ++ fileBitsX to not show "..." around file names anymore
 2026-07-09: fixed initial random seed to [1..m_[
+2026-07-09: refactored for more project compliant naming: masterloop: bitsXStr;
+            main: bitsXStrTotal, det_bitsXStrTotal (hex the same)
 
 
 build on Ubuntu 24 LTS: do this only once:
@@ -117,16 +119,16 @@ convertToBasePad targetLen base n =
 masterloop :: Int -> Int -> ([Int], [String], [String])
 masterloop 0 _ = ([], [], [])
 masterloop length seed
-    | length > 0 = (newSeed : restX, bitsX : restBitsX, bitsHex : restBitsHex)
+    | length > 0 = (newSeed : restX, bitsXStr : restBitsX, bitsHexStr : restBitsHex)
     where
       -- newSeed = (17364 * seed + 0) `mod` 65521
       newSeed = (a * seed + c) `mod` m_  -- 2026-06-22
 
-      -- bitsX = "0000000000000000"  -- just a test dummy
-      bitsX   = convertToBasePad 16 2 newSeed
+      -- bitsXStr = "0000000000000000"  -- just a test dummy
+      bitsXStr   = convertToBasePad 16 2 newSeed
 
-      -- bitsHex = "0000"  -- just a test dummy
-      bitsHex = convertToBasePad 4 16 newSeed
+      -- bitsHexStr = "0000"  -- just a test dummy
+      bitsHexStr = convertToBasePad 4 16 newSeed
 
       (restX, restBitsX, restBitsHex) = masterloop (length - 1) newSeed
 
@@ -157,23 +159,23 @@ main = do
     -- deterministicList <- getAllValues x  -- for testing
     -- putStrLn ("x = " ++ show deterministicList)  -- for testing
 
-    let bitsXStr   = concat bitsXList
-    let bitsHexStr = concat bitsHexList
-    det_bitsXStr   <- getOneValue bitsXStr
-    det_bitsHexStr <- getOneValue bitsHexStr
+    let bitsXStrTotal   = concat bitsXList
+    let bitsHexStrTotal = concat bitsHexList
+    det_bitsXStrTotal   <- getOneValue bitsXStrTotal
+    det_bitsHexStrTotal <- getOneValue bitsHexStrTotal
 
-    -- putStrLn ("det_bitsXStr = " ++ show det_bitsXStr)  -- for testing
-    -- putStrLn ("det_bitsHexStr = " ++ show det_bitsHexStr)  -- for testing
+    -- putStrLn ("det_bitsXStrTotal = " ++ show det_bitsXStrTotal)  -- for testing
+    -- putStrLn ("det_bitsHexStrTotal = " ++ show det_bitsHexStrTotal)  -- for testing
 
     -- write bit stream to disk:
-    case det_bitsXStr of
+    case det_bitsXStrTotal of
       Just s  -> catch (do writeFile fileBitsX s
                            putStrLn ("Bit stream has been written to disk under name:  " ++ fileBitsX))  -- 2026-06-29
                  (\err -> putStrLn ("could not write to file: " ++ fileBitsX ++ " ! -- " ++ show err))  -- 2026-06-29
       Nothing -> error ("could not write to file: " ++ fileBitsX)  -- 2026-06-29
 
     -- write byte stream to disk:
-    case det_bitsHexStr of
+    case det_bitsHexStrTotal of
       Just s  -> catch (do writeFile fileBitsHex s
                            putStrLn ("Byte stream has been written to disk under name: " ++ fileBitsHex))  -- 2026-06-29
                  (\err -> putStrLn ("could not write to file: " ++ fileBitsHex ++ " ! -- " ++ show err))  -- 2026-06-29
