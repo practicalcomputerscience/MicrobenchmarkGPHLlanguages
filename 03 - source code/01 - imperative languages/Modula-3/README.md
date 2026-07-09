@@ -77,7 +77,7 @@ Critical Mass Modula-3 version d5.11.9
 $
 ```
 
-Not a typo. This is actually version d5.11.9. Anyway, Critical Mass Modula-3 should be in a form to work with it.
+Not a typo. This is actually version d5.11.9. Anyway, Critical Mass Modula-3 should be now in a form to work with it.
 
 <br/>
 
