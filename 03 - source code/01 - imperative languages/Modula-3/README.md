@@ -10,83 +10,60 @@ Here in the still actively maintained **Critical Mass Modula-3** implementation:
 
 ## Installation tips
 
-After some experimentation, I can say that these instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux), only work with that older version d5.11.4.
+> [!WARNING]
+> After some experimentation, I can say that anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4. is a hot mess!
 
-Later bootstrap versions, like now _cm3-boot-AMD64_LINUX-d5.12.0.tar.xz_ (as of 2026-07-09) from here: https://github.com/modula3/cm3/releases/tag/d5.12.0, work without a Python installation script,
-but with the cmake tool.
-
-So, do it like this:
+This is what I did to get a working CM3 system:
 
 ```
 $ sudo apt-get install build-essential cmake python3  # installing prerequisites
 ...
 $ sudo apt-get install libglu1-mesa-dev xorg-dev  # prerequisites for the full system, which is being built here
 ...
-$ tar xf cm3-boot-AMD64_LINUX-d5.12.0.tar.xz  # unpack tarball file; this command creates directory ./bootstrap without any version info
+$ curl -LO https://github.com/modula3/cm3/releases/download/d5.11.4/cm3-dist-AMD64_LINUX-d5.11.4.tar.xz
+...
+$ tar xf cm3-dist-AMD64_LINUX-d5.11.4.tar.xz
+$
+```
+
+Only this tarball file has the whole infrastructure included:
+
+```
+$ ls cm3-dist-AMD64_LINUX-d5.11.4
+bootstrap        COPYRIGHT-COLUMBIA  COPYRIGHTS       examples                     m3-games    m3overrides  m3-ui           README-unicode-summary
+caltech-other    COPYRIGHT-DEC       COPYRIGHT-XEROX  getting-started-windows.txt  m3-lectern  m3-pkgtools  m3-win          scratch
+caltech-parser   COPYRIGHT-INTEL     docs             m3-comm                      m3-libs     m3-scheme    m3-www          scripts
+COPYRIGHT-BSD    COPYRIGHT-JDP       elego            m3-db                        m3-mail     m3-sys       README          tools
+COPYRIGHT-CMASS  COPYRIGHT-PURDUE    ESC              m3-demo                      m3-obliq    m3-tools     README-unicode
+$
+```
+
+Continue with:
+
+```
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=$HOME/cm3 ../bootstrap
--- The C compiler identification is GNU 13.3.0
--- The CXX compiler identification is GNU 13.3.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
--- Configuring done (0.3s)
--- Generating done (0.1s)
--- Build files have been written to: ~/scripts/Modula-3/build
-$ cmake --build .  
+$ ../cm3-dist-AMD64_LINUX-d5.11.4/scripts/concierge.py install --prefix $HOME/cm3 all
 ...  # this may take a while!
-[100%] Built target cm3
-[100%] Building CXX object mklib/CMakeFiles/mklib.dir/Main.m3.cpp.o
-[100%] Building CXX object mklib/CMakeFiles/mklib.dir/_m3main.cpp.o
-[100%] Linking CXX executable mklib
-[100%] Built target mklib
-$ cmake --install .
--- Install configuration: ""
--- Installing: ~/cm3/bin/cm3
--- Installing: ~/cm3/bin/mklib
-$ 
+$
 ```
 
 Then I expanded my _~/.bashrc_ configuration file with line: _export PATH="$HOME/cm3/bin:$PATH"_, and activated it with _$ source ~/.bashrc_ to make a version test:
 
 ```
 $ cm3 --version
-Critical Mass Modula-3 version d5.11.9
-  GitInfo: https://github.com/modula3/cm3/commit/121eb47b561061d7b6f8aa845d237d919a971ced
-           https://github.com/modula3/cm3/commits/master
-           remote: https://github.com/modula3/cm3
-           revision: 121eb47b561061d7b6f8aa845d237d919a971ced
-           branch: master
-  last updated: 2022-02-05
-  compiled: 2026-07- 9 21:25:17
-  configuration: ~/cm3/bin/cm3.cfg
-  host: AMD64_LINUX
-  target: AMD64_LINUX
+
 
 $
 ```
 
-Not a typo. This is actually version d5.11.9. Anyway, Critical Mass Modula-3 should be now in a form to work with it.
+Super-important is this version info: _configuration: ~/cm3/bin/cm3.cfg_ (~ denotes the home directory of the user)
+
+If this file is missing, you got a problem and should start all over again!
 
 <br/>
 
-
-
-
 tbd
-
-
 
 <br/>
 
