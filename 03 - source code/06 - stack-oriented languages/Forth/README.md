@@ -476,6 +476,7 @@ However, I noticed that the introduction of local variables _bits_x_str_ and _bi
 
 ```
 ...
+VARIABLE seed
 VARIABLE bits_x_str
 VARIABLE bits_hex_str
 ...
