@@ -25,7 +25,7 @@ $ sudo apt-get install libglu1-mesa-dev xorg-dev  # prerequisites for the full s
 $ tar xf cm3-boot-AMD64_LINUX-d5.12.0.tar.xz  # unpack tarball file; this command creates directory ./bootstrap without any version info
 $ mkdir build
 $ cd build
-$ cmake -DCMAKE_INSTALL_PREFIX=/home/booser/cm3 ../bootstrap
+$ cmake -DCMAKE_INSTALL_PREFIX=$HOME/cm3 ../bootstrap
 -- The C compiler identification is GNU 13.3.0
 -- The CXX compiler identification is GNU 13.3.0
 -- Detecting C compiler ABI info
@@ -70,7 +70,7 @@ Critical Mass Modula-3 version d5.11.9
            branch: master
   last updated: 2022-02-05
   compiled: 2026-07- 9 21:25:17
-  configuration: /home/booser/cm3/bin/cm3.cfg
+  configuration: ~/cm3/bin/cm3.cfg
   host: AMD64_LINUX
   target: AMD64_LINUX
 
