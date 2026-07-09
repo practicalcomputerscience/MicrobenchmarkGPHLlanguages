@@ -472,7 +472,71 @@ $
 
 With only 16 milliseconds of execution time, this is fast if you thank that it probably also includes compilation time.
 
-However, I noticed that the introduction of local variables _bits_x_str_ and _bits_x_str_ in the _main_ word has a substantial effect on the program execution time.
+However, I noticed that the introduction of local variables _bits_x_str_ and _bits_x_str_ in the _main_ word had a substantial, negative effect on the program execution time. So, I defined _bits_x_str_ and _bits_x_str_, just like _seed_, as global variables in the SwiftForth solution:
+
+```
+...
+VARIABLE bits_x_str
+VARIABLE bits_hex_str
+...
+: main ( -- )
+    END 0 DO
+        ...
+        bits_x I STR_LENGTH_BIN * + bits_x_str !
+        ...
+        bits_hex I STR_LENGTH_HEX * + bits_hex_str !
+        ...
+    LOOP
+...
+```
+
+That alone brought down execution time to around 10 milliseconds!
+
+Gforth, according to my tests, isn't so sensitive on local versus global at variables _bits_x_str_ and _bits_x_str_.
+However, statistically a positive effect of about -4% was measurable, and so I also made _bits_x_str_ and _bits_x_str_ global:
+
+```
+...
+VARIABLE bits_x_str
+VARIABLE bits_hex_str
+...
+: main ( -- )
+    ...
+    END 0 DO
+        ...
+        bits_x I STR_LENGTH_BIN * + bits_x_str !
+        ...
+        bits_hex I STR_LENGTH_HEX * + bits_hex_str !
+        ...
+    LOOP
+...
+```
+
+<br/>
+
+_bits_x_str_ and _bits_x_str_ are also global in the [ccforth solution](tbd):
+
+```
+...
+0 VALUE bits_x_str
+0 VALUE bits_hex_str
+...
+: main
+  ...
+  HERE to bits_x_str          16 allot
+  HERE to bits_hex_str         4 allot
+  ...
+  END 0 do
+    ...
+    dup integer_to_bin_string        ( -- n src_addr len )
+    over bits_x_str !
+    ...
+    dup integer_to_hex_string        ( -- n src_addr len )
+    over bits_hex_str !
+    ...
+  loop
+...
+```
 
 <br/>
 
