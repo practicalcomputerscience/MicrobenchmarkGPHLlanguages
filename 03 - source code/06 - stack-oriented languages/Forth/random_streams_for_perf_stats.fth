@@ -1,7 +1,7 @@
 \ random_streams_for_perf_stats.fth
 \
 \ 2026-07-06
-\ 2026-07-09: introduced local variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\ 2026-07-09: introduced (global) variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
 \
 \
 \ build on Ubuntu 24 LTS:  $ ccforth -c ./random_streams_for_perf_stats.fth > random_streams_for_perf_stats_ccforth.c
@@ -120,13 +120,6 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
 
 
 : main
-  \ Fetch the dynamic system time at runtime, convert it, and seed the generator
-  UTIME 2DUP XOR 65535 AND seed !  \ initialize the random seed
-  seed @ m 2 - mod 1 + seed !      \ limit initial seeds to 1 to m - 1 (both including)
-  \ cr ." initial seed = " seed @ . cr  \ for testing
-
-  cr ." generating a random bit stream..."
-
   \ Allocate memory block boundaries safely and map addresses globally (memory linear pools)
   HERE to x                   END cells allot
   HERE to bits_x              END 16 * allot
@@ -136,6 +129,12 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
   HERE to bits_x_str          16 allot
   HERE to bits_hex_str         4 allot
 
+  \ Fetch the dynamic system time at runtime, convert it, and seed the generator
+  UTIME 2DUP XOR 65535 AND seed !  \ initialize the random seed
+  seed @ m 2 - mod 1 + seed !      \ limit initial seeds to 1 to m - 1 (both including)
+  \ cr ." initial seed = " seed @ . cr  \ for testing
+
+  cr ." generating a random bit stream..."
 
   END 0 do
     seed @ a * c + m mod dup seed !

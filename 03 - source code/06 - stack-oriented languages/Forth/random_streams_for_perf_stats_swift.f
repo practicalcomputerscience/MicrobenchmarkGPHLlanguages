@@ -3,7 +3,7 @@
 \ this program is only for an evaluation version of SwiftForth. So, building a standalone executable is not possible!
 \
 \ 2026-07-08
-\ 2026-07-09: introduced local variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\ 2026-07-09: introduced (global) variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
 \
 \
 \ run on Ubuntu 24 LTS: $ sf64 ./random_streams_for_perf_stats_swift.f
@@ -56,6 +56,11 @@ S" random_bitstring.byte" file_bits_hex SWAP MOVE
 
 
 VARIABLE seed
+
+\ 2026-07-09: global variables are substantially faster than local variables in main word:
+\             mean 0.015 --> 0.010!!
+VARIABLE bits_x_str
+VARIABLE bits_hex_str
 
 
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -135,7 +140,9 @@ CREATE hex-digits CHAR 0 C, CHAR 1 C, CHAR 2 C, CHAR 3 C, CHAR 4 C, CHAR 5 C,
 
 
 : main ( -- )
-    LOCALS| bits_x_str bits_hex_str |
+    \ LOCALS| bits_x_str bits_hex_str |  \ =>
+    \             Mean        Std.Dev.    Min         Median      Max
+    \ real        0.015       0.000       0.015       0.015       0.016
 
     allocate-large-buffers
 
@@ -154,19 +161,19 @@ CREATE hex-digits CHAR 0 C, CHAR 1 C, CHAR 2 C, CHAR 3 C, CHAR 4 C, CHAR 5 C,
         seed @ a * c + m mod dup seed !  \ seed has been duplicated!
         seed @ x I CELLS + ! ( u )  \ write seed to x
         \ cr cr ." seed = " seed @ .  \ for testing
-        
+
         \ 1. Calculate destination address and save to local variable
-        bits_x I STR_LENGTH_BIN * + to bits_x_str
+        bits_x I STR_LENGTH_BIN * + bits_x_str !
         \ 2. Pass the seed (duplicated from stack) and the address to word integer_to_bin_string
-        dup bits_x_str integer_to_bin_string
+        dup bits_x_str @ integer_to_bin_string
         \ 3. Print the string for debugging using its address and length
         \ cr bits_x_str  16 type  \ for testing
-        
+
         \ 4. Handle hex string processing:
-        bits_hex I STR_LENGTH_HEX * + to bits_hex_str
-        dup bits_hex_str integer_to_hex_string
+        bits_hex I STR_LENGTH_HEX * + bits_hex_str !
+        dup bits_hex_str @ integer_to_hex_string
         \ cr bits_hex_str 4 type  \ for testing
-        
+
         DROP  \ Drop the remaining copy of seed
     LOOP
 

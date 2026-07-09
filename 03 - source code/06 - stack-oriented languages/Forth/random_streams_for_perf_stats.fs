@@ -1,13 +1,13 @@
 \ random_streams_for_perf_stats.fs
 \
 \ 2026-07-05/06/08
-\ 2026-07-09: introduced local variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\ 2026-07-09: introduced (global) variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
 \
 \
 \ build on Ubuntu 24 LTS: $ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
 \                         ATTENTION: this is not creating a standalone Linux executable, but a Gforth image file which depends on a Gforth installation!
 \
-\ run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.023s <<<<<<<<<<<<<
+\ run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.021s <<<<<<<<<<<<<
 \
 \
 \ $ gforth --version
@@ -59,6 +59,8 @@ S" random_bitstring.byte" file_bits_hex SWAP MOVE
 
 
 VARIABLE seed
+VARIABLE bits_x_str
+VARIABLE bits_hex_str
 
 
 \ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -166,7 +168,7 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
 
 : main ( -- )
     \ ALL LOCALS MUST BE DECLARED FIRST AT THE VERY TOP inside a SINGLE set of curly braces:
-    { | bits_x_str bits_hex_str }
+    \ { | bits_x_str bits_hex_str }
     \ The '|' character tells Gforth these are INTERNAL variables,
     \ preventing it from trying to pull the values off an empty data stack.
 
@@ -178,7 +180,7 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
     \ 2026-07-09: seed is initially too high: do this in main
     seed @ m 2 - mod 1 + seed !  \ limit initial seeds to 1 to m - 1 (both including)
 
-    cr ." initial seed = " seed @ . cr  \ for testing
+    \ cr ." initial seed = " seed @ . cr  \ for testing
 
     cr ." generating a random bit stream..." cr
 
@@ -188,15 +190,15 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
         seed @ x I CELLS + ! ( u )  \ write seed to x
         \ cr cr ." seed = " seed @ .  \ for testing
 
-        \ 1. Calculate destination address and save to local variable
-        bits_x I STR_LENGTH_BIN * + to bits_x_str
+        \ 1. Calculate destination address and save to global variable
+        bits_x I STR_LENGTH_BIN * + bits_x_str !
         \ 2. Pass the seed (duplicated from stack) and the address to word integer_to_bin_string
         dup bits_x_str integer_to_bin_string
         \ 3. Print the string for debugging using its address and length
         \ cr bits_x_str  16 type  \ for testing
 
         \ 4. Handle hex string processing:
-        bits_hex I STR_LENGTH_HEX * + to bits_hex_str
+        bits_hex I STR_LENGTH_HEX * + bits_hex_str !
         dup bits_hex_str integer_to_hex_string
         \ cr bits_hex_str 4 type  \ for testing
 
