@@ -52,7 +52,13 @@ Then I expanded my _~/.bashrc_ configuration file with line: _export PATH="$HOME
 
 ```
 $ cm3 --version
-
+Critical Mass Modula-3 version d5.11.4
+  GitInfo: unknown
+  last updated: 2021-10-07
+  compiled: 2026-07- 9 22:12:03
+  configuration: ~/cm3/bin/cm3.cfg
+  host: AMD64_LINUX
+  target: AMD64_LINUX
 
 $
 ```
