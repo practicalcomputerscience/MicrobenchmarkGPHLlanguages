@@ -393,7 +393,7 @@ convertToBase b n =
 
 ## On determinism in KiCS2 Curry
 
-One of the toughest part of the development of the full microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
+One of the toughest part of the development of the complete microbenchmark program for me was just to print list _x_ of the generated random integer numbers for debugging reasons:
 
 ```
     let (x, bitsXList, bitsHexList) = masterloop end x0  -- for testing
