@@ -16,6 +16,16 @@ Niklaus Wirth: Modula-2 ... An Improvement On Pascal And Modula
 
 <br/>
 
+> One of Modula-2’s most successful features is the provision for explicit interfaces between modules.
+
+from: https://www.mcours.net/cours/pdf/hasclic3/hasssclic786.pdf
+
+<br/>
+
+Explicit object-orientation was only later introduced in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
+
+<br/>
+
 ## How to write fast Modula-2 programs
 
 After implementing the "speed part" of the microbenchmark program in [Modula-3](tbd), without any user defined functions or other hacks, and with an execution time of about 78 milliseconds,
@@ -36,6 +46,14 @@ This bad picture completely flipped when I refactored the program to use a mixtu
 Then the gcc compiler could obviously apply a lot of optimizations and thus generate a very fast executable with an execution time of about only 6 milliseconds!
 
 So, I also implemented the [complete microbenchmark program](tbd) in Modula-2 to also put this language on my "official" list of programming languages: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+
+<br/>
+
+Consequently, it should not surprise that once Modula-2 was seen as a replacement language of C for system level development:
+
+> Modula-2 is quite possibly the most suitable C-replacement for system level development. In any event, Modula-2 is structurally closer to C than any other language of the Pascal family.
+
+from: https://objective.modula-2.net/faq.shtml
 
 <br/>
 
