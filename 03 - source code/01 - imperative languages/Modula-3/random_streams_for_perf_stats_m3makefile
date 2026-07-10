@@ -1,0 +1,3 @@
+import("libm3")
+implementation("Main")
+program("random_streams_for_perf_stats")
