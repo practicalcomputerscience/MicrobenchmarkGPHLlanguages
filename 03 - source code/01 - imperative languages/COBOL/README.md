@@ -101,7 +101,7 @@ Both programs, that is [random_streams_for_perf_stats.cob](./random_streams_for_
 <command-line>: note: this is the location of the previous definition
 ```
 
-The full microbenchmark program produces these additional warnings in paragraph _MAIN-LOGIC_:
+The complete microbenchmark program produces these additional warnings in paragraph _MAIN-LOGIC_:
 
 ```
 ...warning: some digits may be truncated [-Wpossible-truncate]
