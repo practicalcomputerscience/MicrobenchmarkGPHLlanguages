@@ -8,26 +8,34 @@ https://www.nongnu.org/gm2/about.html
 
 ISO Libraries: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/M2-ISO-Libraries.html
 
+ISO standard for Modula-2: https://www.iso.org/standard/18583.html
+
+Niklaus Wirth: Modula-2 ... An Improvement On Pascal And Modula
+
+
+
 <br/>
 
-## On how to write fast Modula-2 programs
+## How to write fast Modula-2 programs
 
 After implementing the "speed part" of the microbenchmark program in [Modula-3](tbd), without any user defined functions or other hacks, and with an execution time of about 78 milliseconds,
 I got curious about how former Modula-2 would compare.
 
-In short: very bad without user defined functions or with using dynamic strings for string building. At worst, the compiled program would not terminate within a reasonable amount of time;
+In short: very bad without user defined functions or with using dynamic strings for string building.
+
+At worst, the compiled program would not terminate within a reasonable amount of time;
 at least, when using the GNU gm2 compiler and ISO standard features. It looks to me that the backend of the gm2 compiler, that is the [gcc](https://gcc.gnu.org/) compiler (here in version 13.3.0),
 has then severe problems to generate efficient machine code.
 
 However, I didn't test other combinations, for example using the PIM2, PIM3, PIM4 dialects, which are also supported by the gm2 compiler. (PIM2 = "Programming in Modula-2", 2nd Edition, Springer Verlag, 1982: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html).
-I also didn't test other Modula-2 compilers, which are still around.
+I also didn't test other open source Modula-2 compilers, which may still be around (tbd).
 
 This bad picture completely flipped when I refactored the program to use a mixture of my
 [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) and
 [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) implementations.
 Then the gcc compiler could obviously apply a lot of optimizations and thus generate a very fast executable with an execution time of about only 6 milliseconds!
 
-That meant that I also implemented the [complete microbenchmark program](tbd) in Modula-2 to also put this language (version) on my "official" list of programming languages.
+So, I also implemented the [complete microbenchmark program](tbd) in Modula-2 to also put this language on my "official" list of programming languages.
 
 <br/>
 
