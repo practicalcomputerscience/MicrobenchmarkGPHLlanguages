@@ -6,7 +6,15 @@ test on linux270k: start with version d5.11.4 and only update dir _bootstrap_ wi
 
 # Modula-3
 
-Here in the still actively maintained **Critical Mass Modula-3** implementation: https://github.com/modula3/cm3
+Here in the actively maintained **Critical Mass Modula-3** implementation (**CM3**):
+
+https://github.com/modula3/cm3
+
+https://modula3.github.io/cm3/help/interfaces.html
+
+> Beginning in 1986, yet another language descendant, Modula-3, was produced by a multi-industry team outside ETH.[6] It adds support for exception handling, garbage collection, generic programming (similar to C++ templates), marking of unsafe code, multithreading, and object-oriented programming.
+
+from PDF:  https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
 
 <br/>
 
@@ -65,7 +73,18 @@ Critical Mass Modula-3 version d5.11.4
 $
 ```
 
-Super-important is this information: _configuration: ~/cm3/bin/cm3.cfg_ (~ denotes the home directory of the user)
+Super-important is this information: _configuration: ~/cm3/bin/cm3.cfg_ (~ denotes the home directory of the user):
+
+```
+$ cat ~/cm3/bin/cm3.cfg
+readonly M3_BACKEND_MODE = "C"
+if not defined("SL") SL = "/" end
+if not defined("HOST") HOST = "AMD64_LINUX" end
+if not defined("TARGET") TARGET = HOST end
+INSTALL_ROOT = (path() & SL & "..")
+include(path() & SL & "config" & SL & TARGET)
+$
+```
 
 If this file is missing, you got a problem and should start all over again!
 
@@ -80,6 +99,29 @@ I created individual projects for both programs, the "speed part" and the comple
 
 <br/>
 
+### Keeping the (Critical Mass) Modula-3 source code idiomatic
 
+The [Modula-2 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/random_streams_for_perf_stats.mod) of the "speed part" of the microbenchmark program is a very fast executable with an execution time of about only 6 milliseconds.
+
+However, I didn't refactor the [CM3 source code](tbd) the make also this implementation very speedy, even though it's a bit slow for a compiled program with about 78 milliseconds. I want to keep the Modula-3 program as idiomatic as I can possibly do. CM3 has numerous standard libraries: https://modula3.github.io/cm3/help/interfaces.html
+
+Consequently, the number of source lines of code of the Modula-3 program with tbd is much shorter than the number of source lines of code of its [Modula-2 counterpart](tbd) with tbd.
+I'm only using inbuilt functions in my CM3 implementation.
+
+<br/>
+
+
+
+
+
+br/>
+
+p.s.: Critical Mass: where did this name come from? 
+
+> ..a commercial compiler named CM3 maintained by one of the chief implementors prior at DEC SRC who was hired before DEC being sold to Compaq, an integrated development environment (IDE) named Reactor and an extensible Java virtual machine .. were offered by Critical Mass, Inc., but that company ceased active operations in 2000..
+
+from: https://en.wikipedia.org/wiki/Modula-3
+
+br/>
 
 ##_end
