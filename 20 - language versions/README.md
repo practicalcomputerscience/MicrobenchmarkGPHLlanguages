@@ -14,7 +14,7 @@ programming language | versions | Bash command to retrieve versions
 Ada (GNAT) | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
 AssemblyScript | Version 0.28.17 | $ asc --version
 Ballerina | Ballerina 2201.13.3 (Swan Lake Update 13), Language specification 2024R1, Update Tool 1.5.1; openjdk 21.0.10 2026-01-20, ... | $ bal version; java --version  # Ballerina wants JRE version 21 as of 2026-05!
-C | Homebrew clang version 22.1.5 | $ clang -v
+C | Ubuntu clang version 22.1.8 (++20260613092238+e80beda6e255-1~exp1~20260613092253.78) ... | $ /usr/lib/llvm-22/bin/clang --version
 C++ | g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc., ... | $ g++ --version
 C# | Microsoft.AspNetCore.App 8.0.22 ... ; Microsoft.NETCore.App 8.0.22 ...; 8.0.122 ... | $ dotnet --list-runtimes; $ dotnet --list-sdks
 C3 | C3 Compiler Version: 0.8.0_3; ... ; Backends: LLVM; LLVM version: 22.1.5; LLVM default target: x86_64-pc-linux-gnu | $ c3c -V
