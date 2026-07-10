@@ -11,9 +11,9 @@ Here in the still actively maintained **Critical Mass Modula-3** implementation:
 ## Installation tips
 
 > [!WARNING]
-> After some experimentation, I can say that anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4. is a hot mess!
+> After some experimentation, I can say that initially anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4 is a hot mess! (unless you are an expert of course)
 
-This is what I did to get a working CM3 system:
+So, this is what I did to get a working CM3 system:
 
 ```
 $ sudo apt-get install build-essential cmake python3  # installing prerequisites
@@ -68,6 +68,13 @@ Super-important is this information: _configuration: ~/cm3/bin/cm3.cfg_ (~ denot
 If this file is missing, you got a problem and should start all over again!
 
 <br/>
+
+I created individual projects for both programs, the "speed part" and the complete microbenchmark. So, rename the source code and make files accordingly inside their project directories (both files go into the same root project directory):
+
+- random_streams_for_perf_stats_Main.m3 --> Main.m3
+- random_streams_for_perf_stats_m3makefile --> m3makefile
+- random_bitstring_and_flexible_password_generator_Main.m3 --> Main.m3
+- random_bitstring_and_flexible_password_generator_m3makefile --> m3makefile
 
 tbd
 
