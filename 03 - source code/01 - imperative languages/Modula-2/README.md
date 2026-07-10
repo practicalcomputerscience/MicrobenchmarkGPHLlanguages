@@ -10,9 +10,9 @@ ISO Libraries: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/M2-ISO-Libraries.ht
 
 ISO standard for Modula-2: https://www.iso.org/standard/18583.html
 
+<br/>
+
 Niklaus Wirth: Modula-2 ... An Improvement On Pascal And Modula
-
-
 
 <br/>
 
