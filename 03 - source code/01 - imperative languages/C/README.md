@@ -4,6 +4,10 @@ https://www.open-std.org/jtc1/sc22/wg14/
 
 <br/>
 
+C, your "portable assembly language": PDF: https://www.cs.tufts.edu/~nr/pubs/c--gc.pdf
+
+<br/>
+
 Checked C "for making existing C code more secure":
 
 - https://www.checkedc.org/
