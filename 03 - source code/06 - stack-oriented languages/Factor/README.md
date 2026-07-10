@@ -376,7 +376,7 @@ It seems that the default configuration is already trying to generate an optimiz
 
 ## Regular expressions in Factor
 
-While interpreting the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.factor), which uses regular expressions, just worked fine, the compiled version had a problem:
+While interpreting the [complete microbenchmark program](./random_bitstring_and_flexible_password_generator.factor), which uses regular expressions, just worked fine, the compiled version had a problem:
 
 ```
 $ ./factor-linux-x86-64-2026-02-11-19-38/factor/random_bitstring_and_flexible_password_generator/random_bitstring_and_flexible_password_generator.out
