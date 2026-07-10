@@ -119,7 +119,7 @@ For [Racket Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGP
 
 programming language | LOC | comments | date
 --- | --- | --- | ---
-GnuCOBOL          | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
+COBOL (GnuCOBOL)  | 357 | compiled, very mature language: lots of definitions needed and overhead in place, though the later could be brought down with the help of a compilation switch (no warnings about lack of scope terminators _END-XXX_, which make up 81 lines; so, without out them the LOC would be just 276); lack of control characters in strings (using _DISPLAY " "_ instead of _\n_ for example, which make up another 6 lines) | 2026-03-29
 Inko              | 232 | compiled, very young language: lots of user-defined functions needed; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Eiffel (Liberty)  | 220 | compiled, very mature language: some user-defined functions needed; since programs are collections of classes, this is causing some formal overhead | 2026-06-18
 Ada (GNAT)        | 215 | compiled, very mature language: lots of declarations and type definitions; still keeping the low level character copying from little strings into the big strings for performance reasons | 2026-06-08
