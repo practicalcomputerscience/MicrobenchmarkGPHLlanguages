@@ -24,6 +24,10 @@ Modula-2+ was the bridge between Modula-2 and Modula-3, and is "Modula-2 with ex
 
 <br/>
 
+"The Modula-3 Type System", 1989 (PDF): http://lucacardelli.name/Papers/Modula3TypeSystem.A4.pdf
+
+<br/>
+
 ## Installation tips
 
 > [!WARNING]
