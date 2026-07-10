@@ -18,6 +18,10 @@ from PDF:  https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
 
 <br/>
 
+Modula-2+ was the bridge between Modula-2 and Modula-3, and is "Modula-2 with exceptions and threads": https://en.wikipedia.org/wiki/Modula-2%2B
+
+<br/>
+
 ## Installation tips
 
 > [!WARNING]
