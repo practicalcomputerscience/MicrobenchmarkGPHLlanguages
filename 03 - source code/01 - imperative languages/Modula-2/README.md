@@ -49,11 +49,11 @@ So, I also implemented the [complete microbenchmark program](tbd) in Modula-2 to
 
 <br/>
 
-Consequently, it should not surprise that once Modula-2 was seen as a replacement language of C for system level development:
+Consequently, it should not surprise that right from start Modula-2 was designed for systems programming:
 
-> Modula-2 is quite possibly the most suitable C-replacement for system level development. In any event, Modula-2 is structurally closer to C than any other language of the Pascal family.
+> Modula-2 grew out of a practical need for a general, efficiently implementable systems programming language for minicomputers.
 
-from: https://objective.modula-2.net/faq.shtml
+from PDF: [MODULA-2, Niklaus Wirth, ETH Zürich, March 1980](https://www.modula2.org/downloads/wirth-modula2/Wirth_Modula2.pdf)
 
 <br/>
 
