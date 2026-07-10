@@ -105,7 +105,7 @@ I created individual projects for both programs, the "speed part" and the comple
 
 <br/>
 
-### Keeping the (Critical Mass) Modula-3 source code idiomatic
+### On keeping the (Critical Mass) Modula-3 source code idiomatic
 
 The [Modula-2 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/random_streams_for_perf_stats.mod) of the "speed part" of the microbenchmark program is a very fast executable with an execution time of about only 6 milliseconds.
 
@@ -120,7 +120,7 @@ I'm only using inbuilt functions in my CM3 implementation.
 
 
 
-br/>
+<br/>
 
 p.s.: Critical Mass: where did this name come from? 
 
@@ -128,6 +128,6 @@ p.s.: Critical Mass: where did this name come from?
 
 from: https://en.wikipedia.org/wiki/Modula-3
 
-br/>
+<br/>
 
 ##_end
