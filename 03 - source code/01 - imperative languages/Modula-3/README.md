@@ -71,10 +71,10 @@ If this file is missing, you got a problem and should start all over again!
 
 I created individual projects for both programs, the "speed part" and the complete microbenchmark. So, rename the source code and make files accordingly inside their project directories (both files go into the same root project directory):
 
-- random_streams_for_perf_stats_Main.m3 --> Main.m3
-- random_streams_for_perf_stats_m3makefile --> m3makefile
-- random_bitstring_and_flexible_password_generator_Main.m3 --> Main.m3
-- random_bitstring_and_flexible_password_generator_m3makefile --> m3makefile
+- _random_streams_for_perf_stats_Main.m3_ --> _Main.m3_
+- _random_streams_for_perf_stats_m3makefile_ --> _m3makefile_
+- _random_bitstring_and_flexible_password_generator_Main.m3_ --> _Main.m3_
+- _random_bitstring_and_flexible_password_generator_m3makefile_ --> _m3makefile_
 
 tbd
 
