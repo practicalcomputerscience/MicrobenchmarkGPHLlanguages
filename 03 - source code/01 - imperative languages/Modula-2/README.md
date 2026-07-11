@@ -22,14 +22,31 @@ from: https://www.mcours.net/cours/pdf/hasclic3/hasssclic786.pdf
 
 <br/>
 
-Explicit object-orientation was only later introduced in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3), though the goal of standard [ISO/IEC 10514-3:1998](https://www.iso.org/standard/20793.html) "..is to provide simple extensions to allow object oriented programming facilities to be added to the Base Language..". 
+Explicit object-orientation was only later introduced in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3), though the goal of later standard [ISO/IEC 10514-3:1998](https://www.iso.org/standard/20793.html) "..is to provide simple extensions to allow object oriented programming facilities to be added to the Base Language..". 
+
+<br/>
+
+## Installation tips
+
+In Ubuntu 24 LTS, I just used normal package installation to install the GNU Modula-2 compiler:
+
+```
+$ sudo apt install gm2
+$ gm2 --version  # a simple version test
+gm2 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+$
+```
 
 <br/>
 
 ## How to write fast Modula-2 programs
 
-After implementing the "speed part" of the microbenchmark program in [Modula-3](tbd), without any user defined functions or other hacks, and with an execution time of about 78 milliseconds,
-I got curious about how former Modula-2 would compare.
+After implementing the "speed part" of the microbenchmark program in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3),
+without any user defined functions or other hacks, and with an execution time of about 78 milliseconds, I got curious about how former Modula-2 would compare.
 
 In short: very bad without user defined functions or with using dynamic strings for string building, at least when using the GNU gm2 compiler and ISO standard features.
 
@@ -45,7 +62,7 @@ This bad picture completely flipped when I refactored the program to use a mixtu
 [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) implementations.
 Then the gcc compiler could obviously apply a lot of optimizations and thus generate a very fast executable with an execution time of about only 6 milliseconds!
 
-So, I also implemented the [complete microbenchmark program](tbd) in Modula-2 to put also this language on my "official" list of programming languages: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+So, I also implemented the [complete microbenchmark program](./random_bitstring_and_flexible_password_generator.mod) in Modula-2 to put also this language on my "official" list of programming languages: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
 <br/>
 
