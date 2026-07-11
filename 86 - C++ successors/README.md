@@ -2,18 +2,26 @@
 
 In reference to page [Potential "C successors": which one to take?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/85%20-%20C%20successors#potential-c-successors-which-one-to-take), here's a rough collection of potential "C++ successors":
 
-- Carbon (see below)
-- D
-- Go
-- Eiffel
-- Mojo
-- Odin
-- [Pony](https://www.ponylang.io/)
-- Rust
-- V
-- Zig
+<br/>
 
-So far, only Go and Rust have become "big" already; Mojo and Zig will probably become bigger in my opinion.
+language | comment
+-- | --
+Carbon | see below
+[D](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/D#d) | never lifted off: one, small, single vendor ecosystem
+[Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Go#go) | 
+[Eiffel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01a%20-%20object-oriented%20languages/Eiffel#eiffel) | same like with Smalltalk: not everything is an object: [The world as processes and events](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/05%20-%20the%20world%20as%20processes%20and%20events#the-world-as-processes-and-events)
+[Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3) | Java also (almost) killed Modula-3 (along with Smalltalk): https://mcjones.org/dustydecks/archives/2025/10/25/1496/
+[Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#mojo) | 
+[Oberon-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Oberon#oberon) | in the 90ies touted as "a hi-performance alternative to C++", Oberon-2 is almost dead now, suffocated by a fragmented ecosystem. It's academic spin probably didn't help either: https://www.modulaware.com/mdltws.htm. Come on, we're not talking about [λProlog](https://www.lix.polytechnique.fr/Labo/Dale.Miller/lProlog/) here.
+[Odin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Odin#odin) | one, small, single vendor ecosystem
+[Pony](https://www.ponylang.io/) | in the year 2026, this language is still not ready for general purpose programming
+[Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust#rust) | in 2026 the picture becomes clearer from my point of view: Rust is eating much more into C's ecosystem than into C++'s
+[V](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/V#v-programming-language) | one, small, single vendor ecosystem
+[Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#zig) | 
+
+<br/>
+
+So far, only Go and Rust have become big already; Mojo and Zig will probably become bigger in my opinion.
 
 And as I mentioned [before](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/01%20-%20presentation%20slides#overview-slides),
 "C++ will be around for still many years to come...", also thanks to its ongoing evolution.
