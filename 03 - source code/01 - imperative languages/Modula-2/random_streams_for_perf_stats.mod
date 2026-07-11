@@ -5,8 +5,6 @@ This program is for GNU Modula-2 (ISO).
 
 2026-07-09/10
 
-$ sudo apt install gm2
-
 build on Ubuntu 24 LTS: $ gm2 -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for development
                         $ gm2 -O3 -Wall -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for production
                         #               -fiso to turn on ISO standard features
