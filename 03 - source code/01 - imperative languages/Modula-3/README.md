@@ -24,7 +24,7 @@ Modula-2+ was the bridge between [Modula-2](https://github.com/practicalcomputer
 
 - exception handling
 - automatic storage management (garbage collection)
-- concurrency for multiprocessors: Modula-2 only supports coroutines 
+- concurrency for multiprocessors (multithreading): Modula-2 only supports coroutines (multiple coroutines can run on a single thread)
 - type system extensions
 
 from 1986 (PDF): https://softwarepreservation.computerhistory.org/modula2+/doc/Rovner-1986.pdf
