@@ -75,19 +75,13 @@ Otherwise, what else should be the motivation to make another derivative of the 
 
 from: https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-version.html
 
-However, I think that also this language designer already fell into the same trap like Wirth himself (which he knew: https://rochus-keller.ch/?page_id=17), and that is having three names for the same language:
-
-- Oberon+
-- Oberon with extensions
-- OBX
-
-..even though there's only _one compiler_ existing: https://github.com/rochus-keller/Oberon
-
 <br/>
 
 ### Oberon-2 versus Modula-2
 
-from [Comparison of Oberon-2 with Modula-2](https://www.modulaware.com/zel/oberon/compo2m2.htm): Oberon-2 has no:
+from [Comparison of Oberon-2 with Modula-2](https://www.modulaware.com/zel/oberon/compo2m2.htm):
+
+Oberon-2 has no:
 
 - subranges, which are no longer needed for array index range declarations, because array bounds generally start at 0
 - enumerations
