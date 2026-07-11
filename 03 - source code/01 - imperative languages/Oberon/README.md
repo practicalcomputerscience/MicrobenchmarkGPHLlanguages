@@ -85,6 +85,21 @@ However, I think that also this language designer already fell into the same tra
 
 <br/>
 
+### Oberon-2 versus Modula-2
+
+from [Comparison of Oberon-2 with Modula-2](https://www.modulaware.com/zel/oberon/compo2m2.htm): Oberon-2 has no:
+
+- subranges, which are no longer needed for array index range declarations, because array bounds generally start at 0
+- enumerations
+- unsigned type (CARDINAL)
+- nested modules, which did not add any functionality
+- variant records, which are replaced by the safer concept of extensible records
+- WITH-statement of the Modula-2 language, which had many disadvantages in respect to program readability and thus severed maintainability
+- qualified import, i.e. imported identifiers must be qualified with the module name or its alias
+- separate definition- and implementation-module 
+
+<br/>
+
 tbd
 
 <br/>
