@@ -56,18 +56,18 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
 > OBC is by far the best Oberon compiler. ETHZ versions of Oberon are dead, OBC is the way to go 
 
-See at [Oxford_Oberon-2_compiler](https://spivey.oriel.ox.ac.uk/corner/Oxford_Oberon-2_compiler).
+See at [Oxford Oberon-2 compiler](https://spivey.oriel.ox.ac.uk/corner/Oxford_Oberon-2_compiler).
 
 tbd
 
 <br/>
 
 > [!WARNING]
-> The History of Oberon also shows that too much minimalism in the design of a programming language is probably (way) more detrimental to its success than overly complexity (like in C++ or Rust).
+> The History of Oberon also shows that too much minimalism in the design of a programming language is probably more detrimental to its success than overly complexity (like in C++ or Rust).
 
 Otherwise, what else should be the motivation to make another derivative of the original Oberons, here:
 
-[The Oberon+ Programming Language](https://oberon-lang.github.io/), also known as Oberon with extensions or OBX
+[The Oberon+ Programming Language](https://oberon-lang.github.io/)
 
 (bytecode for [CLI/ECMA-335](https://ecma-international.org/publications-and-standards/standards/ecma-335/) is actually bytecode for Microsofts's .NET runtime environment)
 
@@ -81,7 +81,7 @@ However, I think that also this language designer already fell into the same tra
 - Oberon with extensions
 - OBX
 
-..even though there's only _one compiler_ existing for Oberon+.
+..even though there's only _one compiler_ existing: https://github.com/rochus-keller/Oberon
 
 <br/>
 
