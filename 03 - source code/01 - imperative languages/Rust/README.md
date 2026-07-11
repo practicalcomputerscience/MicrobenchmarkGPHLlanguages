@@ -83,9 +83,11 @@ https://loglog.games/blog/leaving-rust-gamedev/
 
 <br/>
 
-tbd
+**2022: Minimalism in Programming Language Design**
 
+https://pointersgonewild.com/2022/05/23/minimalism-in-programming-language-design/
 
+> Both at the syntactic and semantic level, Rust is a very complex language. The syntax can get very verbose, and there's a lot to know, a lot of rules and unintuitive subtleties about what you can and can't do where. The learning curve is steep and the cognitive load is high.
 
 <br/>
 
