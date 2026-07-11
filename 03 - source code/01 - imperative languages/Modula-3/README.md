@@ -20,7 +20,14 @@ from PDF:  https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
 
 <br/>
 
-Modula-2+ was the bridge between Modula-2 and Modula-3, and is "Modula-2 with exceptions and threads": https://en.wikipedia.org/wiki/Modula-2%2B
+Modula-2+ was the bridge between Modula-2 and Modula-3, specifically designed for large systems, and added these new main features:
+
+- exception handling
+- automatic storage management (garbage collection)
+- concurrency for multiprocessors: Modula-2 only supports coroutines 
+- type system extensions
+
+from 1986 (PDF): https://softwarepreservation.computerhistory.org/modula2+/doc/Rovner-1986.pdf
 
 <br/>
 
