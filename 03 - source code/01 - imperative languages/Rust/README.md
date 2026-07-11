@@ -73,4 +73,20 @@ $
 
 <br/>
 
+## Criticism of Rust
+
+Rust may not be well suitable for programming of high-performance computer games, even though a couple of frameworks and engines exist:
+
+**2024: Leaving Rust gamedev after 3 years**
+
+https://loglog.games/blog/leaving-rust-gamedev/
+
+<br/>
+
+tbd
+
+
+
+<br/>
+
 ##_end
