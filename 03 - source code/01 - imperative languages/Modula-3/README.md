@@ -139,6 +139,8 @@ p.s.: Critical Mass: where did this name come from?
 
 from: https://en.wikipedia.org/wiki/Modula-3
 
+DEC SRC = Digital Equipment Corporation Systems Research Center
+
 <br/>
 
 ##_end
