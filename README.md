@@ -299,7 +299,7 @@ With these programming languages, naive string concatenation has a good chance t
 
 ### This program is not bullet proof
 
-It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/), **C** variants, **GNU Fortran** and **GNU COBOL**, where the upper limit is 99 characters. Theoretically and in the other programming languages, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
+It checks for a minimum number of 8 password characters, but usually not for an upper limit, except in its **Ada** (Ada is a language which is incentivizing to do things like this: https://alire.ada.dev/), **C** variants, **GNU COBOL**, **GNU Fortran** and **Modula-2**, where the upper limit is 99 characters. Theoretically and in the other programming languages, a user could exhaust the generated random bitstream when asking for a super-long password. I've not tested this so far. See from source code above at chapter: [User dialog](#user-dialog)
 
 The Zig program ([Zig source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_bitstring_and_flexible_password_generator.zig)) is an example of a non-bullet proof program: at both questions, the user, who is not aware of this, can only safely enter up to 99 characters as his answer (stored into an array of type u8):
 
