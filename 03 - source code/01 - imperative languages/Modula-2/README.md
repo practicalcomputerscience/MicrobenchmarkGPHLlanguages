@@ -62,7 +62,7 @@ This bad picture completely flipped when I refactored the program to use a mixtu
 [Ada](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) implementations.
 Then the gcc compiler could obviously apply a lot of optimizations and thus generate a very fast executable with an execution time of about only 6 milliseconds!
 
-So, I also implemented the [complete microbenchmark program](./random_bitstring_and_flexible_password_generator.mod) in Modula-2 to put also this language on my "official" list of programming languages: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+So, I also implemented the [complete microbenchmark program](./random_bitstring_and_flexible_password_generator.mod) in Modula-2.
 
 <br/>
 
