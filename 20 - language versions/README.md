@@ -47,6 +47,7 @@ Lua | Lua 5.4.8  Copyright (C) 1994-2025 Lua.org, PUC-Rio | $ lua -v
 LuaJIT | LuaJIT 2.1.1753364724 -- Copyright (C) 2005-2025 Mike Pall. https://luajit.org/ | $ luajit -v
 LunarML | LunarML version 0.2.1 | $ lunarml -v
 Mercury | Mercury Compiler, version rotd-2025-11-01; Copyright (C) 1993-2012 The University of Melbourne; Copyright (C) 2013-2025 The Mercury team | $ mmc --version
+Modula-2 | gm2 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, Copyright (C) 2023 Free Software Foundation, Inc., ... | $ gm2 --version
 Mojo | Mojo 1.0.0b2.dev2026052706 (83444c6d) | $ pixi run mojo --version
 Nim | Nim Compiler Version 2.2.6 [Linux: amd64]; Compiled at 2025-10-31; Copyright (c) 2006-2025 by Andreas Rumpf, ... | $ nim -v
 OCaml | 2.5.0; 3.20.2; The OCaml toplevel, version 5.4.0 | $ opam --version; $ dune --version; $ ocaml --version
