@@ -1,10 +1,6 @@
-2026-07-10: work in progress tbd
-
-<br/>
-
 # Modula-2
 
-https://www.nongnu.org/gm2/about.html
+Here using GNU Modula-2: https://www.nongnu.org/gm2/about.html
 
 ISO Libraries: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/M2-ISO-Libraries.html
 
@@ -53,7 +49,7 @@ In short: very bad without user defined functions or with using dynamic strings 
 At worst, the compiled program would not terminate within a reasonable amount of time.
 
 However, I didn't test other combinations, for example using the PIM2, PIM3, PIM4 dialects, which are also supported by the gm2 compiler. (PIM2 = "Programming in Modula-2", 2nd Edition, Springer Verlag, 1982: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html).
-I also didn't test other open source Modula-2 compilers, which may still be around (tbd).
+I also didn't test other open source Modula-2 compilers, which may still be around for Linux (I've seen some, often based on adapted, very old sources for 32-bit systems).
 
 <br/>
 
