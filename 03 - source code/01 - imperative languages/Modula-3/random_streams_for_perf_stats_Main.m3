@@ -1,7 +1,7 @@
 (*
 random_streams_for_perf_stats.m3 is Main.cm3
 
-2026-07-09
+2026-07-09/12
 
 build on Ubuntu 24 LTS: make this only once:
                         $ mkdir random_streams_for_perf_stats
@@ -57,11 +57,9 @@ VAR
   x           : ARRAY [0 .. upper_limit-1] OF INTEGER;
   rnd         : Random.T;
   
-  bits_x      : TextWr.T;
-  bits_hex    : TextWr.T;
+  bits_x, bits_hex : TextWr.T;
   
-  bits_x_str    : TEXT;
-  bits_hex_str  : TEXT;
+  bits_x_str, bits_hex_str : TEXT;
   
   outWr       : Wr.T;
 
