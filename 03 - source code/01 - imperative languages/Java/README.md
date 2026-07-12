@@ -4,7 +4,7 @@ The source code of the Java version of the microbenchmark program was mostly tra
 
 This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional AI prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger](#the-originally-extra-user-defined-function-in-haxe) than actually necessary.
 
-In **Java**, almost right from start, that piece of code looked concisely like this:
+In **Java**, almost right from start, that piece of AI generated code looked concisely like this:
 
 ```
             String answer_str = scanner.nextLine().trim();  // nextLine() allows the evaluation of the full string
@@ -53,7 +53,7 @@ Java    | 101  | 0 | 51 milliseconds with an uberJAR file for the Java virtual m
 
 #### The originally extra user defined function in Haxe
 
-This user defined function has become redundant after noticing Java's simple and elegant solution:
+This user defined function has become redundant after noticing "Big AI's" simple and elegant solution in Java:
 
 ```
     // Function to check if a value is strictly an integer (digits only)
