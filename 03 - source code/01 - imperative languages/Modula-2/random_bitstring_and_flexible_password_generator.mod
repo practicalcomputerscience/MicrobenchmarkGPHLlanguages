@@ -3,6 +3,11 @@ random_bitstring_and_flexible_password_generator.mod
 
 This program is for GNU Modula-2 (ISO).
 
+!!! new block comment rules for better counting of SLOC:
+    - put markers to start and end a block comment only into extra solo lines
+    - don't put nested comments with a marker at the end of a line inside block comments !!!
+
+
 2026-07-11/12
 
 
@@ -61,7 +66,7 @@ VAR
 
   h, i, j, byte_nbr, char0a, char1a, pos : CARDINAL;
 
-  char0b, char1b : ARRAY [0..1] OF CHAR; 
+  char0b, char1b : ARRAY [0..1] OF CHAR;
 
   bits_x_str   : ARRAY [0..15] OF CHAR;
   bits_hex_str : ARRAY [0..3] OF CHAR;
@@ -91,21 +96,21 @@ VAR
 (**********************************************************)
 (* user defined functions                                 *)
 
-(* Integer_to_bin_string + Integer_to_hex_string are transpilations
-   from Ada by Google AI *)
+(* Integer_to_bin_string + Integer_to_hex_string are transpilations *)
+(* from Ada by Google AI                                            *)
 PROCEDURE Integer_to_bin_string (n : CARDINAL; VAR binStr : ARRAY OF CHAR);
 VAR
   j : INTEGER;
   k : CARDINAL;
 BEGIN
-  (* 1. Safely initialize the unbounded array with default '0' padding
-        HIGH(binStr) returns the maximum available index of the passed array *)
+  (* 1. Safely initialize the unbounded array with default '0' padding       *)
+  (*    HIGH(binStr) returns the maximum available index of the passed array *)
   FOR j := 0 TO VAL(INTEGER, HIGH(binStr)) DO
     binStr[j] := '0';
   END;
 
-  (* 2. Set the initial index tracker.
-        In Modula-2, arrays are 0-indexed, so the 16th character is at index 15. *)
+  (* 2. Set the initial index tracker. *)
+  (*   In Modula-2, arrays are 0-indexed, so the 16th character is at index 15. *)
   j := 15;
   k := n;
 
@@ -126,14 +131,14 @@ VAR
   k         : CARDINAL;
   remainder : CARDINAL;
 BEGIN
-  (* 1. Safely initialize the unbounded array with default '0' padding
-        HIGH(binStr) returns the maximum available index of the passed array *)
+  (* 1. Safely initialize the unbounded array with default '0' padding *)
+  (*    HIGH(binStr) returns the maximum available index of the passed array *)
   FOR j := 0 TO VAL(INTEGER, HIGH(hexStr)) DO
     hexStr[j] := '0';
   END;
 
-  (* 2. Set the initial index tracker.
-        In Modula-2, 0-indexing means the 4th character is at index 3. *)
+  (* 2. Set the initial index tracker. *)
+  (*    In Modula-2, 0-indexing means the 4th character is at index 3. *)
   j := 3;
   k := n;
 
@@ -284,16 +289,16 @@ BEGIN
 
         IF  (N_CHAR < 8) OR (N_CHAR > 99) THEN
           WriteString("enter an integer number 8 <= i <= 99 or 'y'"); WriteLn;
-          (* Clear the remaining newline/buffer character to prevent looping bugs;
-             super-important! *)
+          (* Clear the remaining newline/buffer character to prevent looping bugs; *)
+          (* super-important! *)
           SkipLine;
         ELSE  (* success path *)
           answer := TRUE;
         END;
       ELSE
         WriteString("enter an integer number 8 <= i <= 99 or 'y'"); WriteLn;
-        (* Clear the remaining newline/buffer character to prevent looping bugs;
-           super-important! *)
+        (* Clear the remaining newline/buffer character to prevent looping bugs; *)
+        (* super-important! *)
         SkipLine;
       END;
     END;
@@ -341,19 +346,19 @@ BEGIN
       Extract(bin0, 8, 16, bin0_1);
       (*WriteLn; WriteString(bin0_0);*)  (* for testing *)
       (*WriteString(" -- "); WriteString(bin0_1);*)  (* for testing *)
-      
+
       char0a := Bin_string_to_int(bin0_0);
       char1a := Bin_string_to_int(bin0_1);
       (*WriteLn; WriteCard(char0a, 0);*)  (* for testing *)
       (*WriteString(" -- "); WriteCard(char1a, 0);*)  (* for testing *)
-      
-      char0b[0] := CHR(char0a); 
-      char0b[1] := 0C;      
-      char1b[0] := CHR(char1a); 
+
+      char0b[0] := CHR(char0a);
+      char0b[1] := 0C;
+      char1b[0] := CHR(char1a);
       char1b[1] := 0C;
       (*WriteLn; WriteString(char0b);*)  (* for testing *)
       (*WriteString(char1b);*)  (* for testing *)
-      
+
       FindNext(char0b, char_set, 0, char_found, pos);
       IF char_found THEN
           Append(char0b, pw_chars);
