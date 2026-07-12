@@ -399,7 +399,7 @@ There's a conversion tool called [refactor](https://github.com/yar3333/haxe-refa
 
 It's somehow interesting to see that [Source-to-source compilation](https://en.wikipedia.org/wiki/Source-to-source_compiler) with target language **Java** without creating a whole bunch of Java resources apparently has become a domain of AI coding tools in recent times.
 
-I did exactly this now with resulting Java source code file [RandomStreamsForPerfStats.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java), so that nobody can say that I didn't implement the (speed part) of the microbenchmark program in Java: 😉
+I did exactly this with resulting Java source code file [RandomStreamsForPerfStats.java](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Java/RandomStreamsForPerfStats.java), so that nobody can say that I didn't implement the (speed part) of the microbenchmark program in Java: 😉
 
 ```
 $ javac RandomStreamsForPerfStats.java
