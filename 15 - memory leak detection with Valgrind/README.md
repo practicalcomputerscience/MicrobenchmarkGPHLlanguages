@@ -105,6 +105,7 @@ Go | program doesn't finish | -- | no | 2026-06-19
 Inko | Segmentation fault (core dumped) | -- | no | 2026-06-19
 Koka | program doesn't finish | -- | no | 2026-06-19
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-06-19
+Modula-2 (GNU) | 9,389,751 bytes in 316 blocks | 9,385,287 bytes in 313 blocks | no | 2026-07-12
 Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting | -- | no | 2026-06-19
 Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-06-19
 OCaml | 6,855,510 bytes in 69 blocks | 3,619,558 bytes in 66 blocks | no | 2026-06-19
