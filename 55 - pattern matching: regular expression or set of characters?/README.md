@@ -104,7 +104,7 @@ AssemblyScript |  | yes | OK | _char_set_ is a set of allowed characters in both
 Ballerina | yes |  | OK | non-POSIX patterns: \`[!-~]+\`, \`[A-Za-z0-9]+\` | | 2026-06-12
 C | yes |  | OK | POSIX patterns: _"^[[:graph:]]+$"_, _"^[[:alnum:]]+$"_ | yes | 2026-06-17
 C++ | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-17
-C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | | 2026-06-10
+C3 |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-06-10
 C# | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ as strings | | 2026-06-18
 Chapel | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-06-15
 Clojure | yes | | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | | 2026-05-29
@@ -120,7 +120,7 @@ Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-0
 Factor |  |  | OK | _char_set_ is a string of allowed characters in both cases, compiled from codepoints; regular expressions are possible but may compile to an unstable program | | 2026-07-05
 Forth (Gforth) | | | OK | _char_set_buffer_ is a set of allowed characters in both cases, compiled from codepoints | | 2026-07-08
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-06-10
-FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints (regular expressions are natively supported, but need some extra effort) | | 2026-06-14
+FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string (regular expressions are natively supported, but need some extra effort) | | 2026-06-14
 Gleam | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-31
 Go | yes |  | OK | POSIX patterns: _"[[:graph:]]+"_, _"[[:alnum:]]+"_ | yes | 2026-06-17
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | | 2026-05-27
@@ -131,8 +131,8 @@ Java | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-05-2
 Julia | yes |  | OK | non-POSIX patterns: _r"[!-~]+"_, _r"[A-Za-z0-9]+"_ | | 2026-05-28
 Kotlin | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-05-26
 Mercury |  |  | OK | _CharSet_ is a string of allowed characters in both cases, compiled from codepoints; the _lex_ library needs extra installation and is not integral part of the Mercury implementation: [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/6b031c1ec68260767cff8e334f2aeadc998293ba/extras#extra-programs-in-the-mercury-implementation) | | 2026-06-09
-Modula-2 (GNU) |  |  | OK | _char_set_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-07-12
-Mojo |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints | | 2026-05-28
+Modula-2 (GNU) |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-07-12
+Mojo |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-05-28
 Nim | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-17
 OCaml | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-29
 Odin | yes |  | OK | non-POSIX patterns: \`^[!-~]$\`, \`^[A-Za-z0-9]$\` | | 2026-06-13
