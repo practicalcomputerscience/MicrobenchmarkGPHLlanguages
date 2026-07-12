@@ -2,7 +2,7 @@
 
 The source code of the Java version of the microbenchmark program was mostly transpiled with the help of "Big AI" from its [Haxe](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05e%20-%20Haxe#haxe) source code.
 
-This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger](#the-originally-extra-user-defined-function-in-haxe) than actually necessary.
+This was not a very efficient transpilation, although the initially resulting Java program was working fully correctly after some (minor) corrections with additional AI prompts. Partly, because initially the Haxe source code, initially transpiled from the (usual) Groovy program, wasn't the best source itself. For example, it implemented one more user defined function [isStrictPositiveInteger](#the-originally-extra-user-defined-function-in-haxe) than actually necessary.
 
 In **Java**, almost right from start, that piece of code looked concisely like this:
 
