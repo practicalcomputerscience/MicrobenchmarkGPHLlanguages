@@ -120,18 +120,15 @@ I created individual projects for both programs, the "speed part" and the comple
 
 The [Modula-2 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/random_streams_for_perf_stats.mod) of the "speed part" of the microbenchmark program is a very fast executable with an execution time of about only 6 milliseconds.
 
-However, I didn't refactor the [CM3 source code](tbd) the make also this implementation very speedy, even though it's a bit slow for a compiled program with about 78 milliseconds of program execution time. I want to keep the Modula-3 program as idiomatic as I can possibly do. CM3 has numerous standard libraries: https://modula3.github.io/cm3/help/interfaces.html
-
-Consequently, the number of source lines of code of the Modula-3 program with tbd is much shorter than the number of source lines of code of its [Modula-2 counterpart](tbd) with tbd.
+However, I didn't refactor the [CM3 source code](./random_streams_for_perf_stats_Main.m3) the make this implementation very speedy, even though it's a bit slow for a compiled program with about 78 milliseconds of program execution time. I want to keep the Modula-3 program as idiomatic as I can possibly do. CM3 has numerous standard libraries: https://modula3.github.io/cm3/help/interfaces.html.
 I'm only using inbuilt functions in my CM3 implementation.
 
-<br/>
-
-
-
-
+Consequently, the number of source lines of code of the [Modula-3 program](./random_bitstring_and_flexible_password_generator_Main.m3)
+with 117 is much lower than the number of source lines of code of its [Modula-2 counterpart](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/random_bitstring_and_flexible_password_generator.mod) with 231 (both as of 2026-07-12).
 
 <br/>
+
+---
 
 p.s.: Critical Mass: where did this name come from? 
 
