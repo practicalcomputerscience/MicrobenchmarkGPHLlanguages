@@ -74,4 +74,14 @@ from PDF: [MODULA-2, Niklaus Wirth, ETH Zürich, March 1980](https://www.modula2
 
 <br/>
 
+#### Regular Expressions in GNU Modula-2
+
+Neither the ISO/IEC 10514 standard, nor the standard library, nor the ISO features of the gm2 compiler support regular expressions, or require them.
+
+At least one third party library still exists: https://www.modula2.org/projects/RegExpr.php
+
+Similar to [Regular expressions in Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo#regular-expressions-in-mojo), also here I've decided against using this library.
+
+<br/>
+
 ##_end
