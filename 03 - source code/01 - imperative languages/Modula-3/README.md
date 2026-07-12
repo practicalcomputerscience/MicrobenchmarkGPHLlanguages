@@ -1,9 +1,3 @@
-2026-07-09: work in progress
-
-test on linux270k: start with version d5.11.4 and only update dir _bootstrap_ with d5.12.0 sources! tbd <<<<<<<<<<<<<<<<<<<<<<
-
-<br/>
-
 # Modula-3
 
 Here in the actively maintained **Critical Mass Modula-3** implementation (**CM3**):
@@ -36,8 +30,6 @@ from 1986 (PDF): https://softwarepreservation.computerhistory.org/modula2+/doc/R
 <br/>
 
 ## Installation tips
-
-### Basic installation
 
 > [!WARNING]
 > After some experimentation, I can say that initially anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4 is a hot mess! (unless you are an expert of course)
@@ -115,8 +107,6 @@ I created individual projects for both programs, the "speed part" and the comple
 - _random_streams_for_perf_stats_m3makefile_ --> _m3makefile_
 - _random_bitstring_and_flexible_password_generator_Main.m3_ --> _Main.m3_
 - _random_bitstring_and_flexible_password_generator_m3makefile_ --> _m3makefile_
-
-<br/>
 
 <br/>
 
