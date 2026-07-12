@@ -3,7 +3,7 @@ random_streams_for_perf_stats.mod
 
 This program is for GNU Modula-2 (ISO).
 
-2026-07-09/10
+2026-07-09/10/12
 
 build on Ubuntu 24 LTS: $ gm2 -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for development
                         $ gm2 -O3 -Wall -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for production
@@ -56,7 +56,7 @@ CONST
 VAR
   x : ARRAY [0..upper_limit-1] OF CARDINAL;
 
-  i, h, byte_nbr_bits_x, byte_nbr_bits_hex: CARDINAL;
+  i, h, byte_nbr: CARDINAL;  (* 2026-07-12: one variable byte_nbr is enough *)
 
   bits_x_str   : ARRAY [0..15] OF CHAR;
   bits_hex_str : ARRAY [0..3] OF CHAR;
@@ -162,16 +162,16 @@ BEGIN
 
     Integer_to_bin_string(x[i], bits_x_str);
     (* WriteLn; WriteString(bits_x_str); *)  (* for testing *)
-    byte_nbr_bits_x := (i - 1) * 16;
+    byte_nbr := (i - 1) * 16;
     FOR h := 0 TO 15 DO
-      bits_x[byte_nbr_bits_x + h] := bits_x_str[h];
+      bits_x[byte_nbr + h] := bits_x_str[h];
     END;
 
     Integer_to_hex_string(x[i], bits_hex_str);
     (* WriteLn; WriteString(bits_hex_str); *)  (* for testing *)
-    byte_nbr_bits_hex := (i - 1) * 4;
+    byte_nbr := (i - 1) * 4;
     FOR h := 0 TO 3 DO
-      bits_hex[byte_nbr_bits_hex + h] := bits_hex_str[h];
+      bits_hex[byte_nbr + h] := bits_hex_str[h];
     END;
   END;
 
