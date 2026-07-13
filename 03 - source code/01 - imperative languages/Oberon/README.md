@@ -1,5 +1,7 @@
 2026-07-10: work in progress
 
+- tbd: toc
+
 <br/>
 
 # Oberon
@@ -122,7 +124,7 @@ $
 
 ### A first OBC test: mand04.obn
 
-I took source code file _mand04.mod_ unchanged from here: https://fruttenboel.nl/obc/index.html, though changed its files extension to [mand04.obn](./mand04.obn), like all my Oberon sources to distinguish them from my [Modula-2 sources](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2), and compiled it with the Oxford Oberon-2 compiler in version 3.3.0:
+I took source code file _mand04.mod_ unchanged from here: https://fruttenboel.nl/obc/index.html, though changed its file extension to [mand04.obn](./mand04.obn), like all my Oberon sources to distinguish them from my [Modula-2 sources](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2), and compiled it with the Oxford Oberon-2 compiler in version 3.3.0:
 
 ```
 $ obc -o mand04 mand04.obn
