@@ -4,6 +4,8 @@
 
 # Oberon
 
+## Idea of Oberon
+
 > Oberon is a general-purpose programming language that evolved from Modula-2.
 
 from: The Programming Language Oberon, (Revision 1. 10. 90), N.Wirth (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf
@@ -21,7 +23,7 @@ See from here about some differences between (some) Oberon dialects: [Motivation
 <br/>
 
 To me it looks a bit that Oberon was Wirth's attempt to not miss the already rolling object-oriented programming (OOP) train,
-since [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3)
+since [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2)
 was not explicitely designed for OOP as published in 1980: [MODULA-2, Wirth, Niklaus](https://doi.org/https://doi.org/10.3929/ethz-a-000189918),
 and its fully OOP-capable successor [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3), first published in 1988, no longer under his control.
 
@@ -58,11 +60,11 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
 <br/>
 
-## Installing the Oxford Oberon-2 compiler (OBC)
+## Installing the Oxford Oberon-2 Compiler (OBC)
 
 Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
 
-But two pre-requisites made problems for a correct and complete installation, and that have been these two packages:
+But two pre-requisites made problems for a correct and complete installation, and that have been these packages:
 
 - libgtksourceview
 - libffi7
@@ -81,11 +83,13 @@ $ sudo dpkg -i libffi7_3.3-4_amd64.deb  # installing libffi7
 $
 ```
 
-Now the Linux system should be in a condition to correctly and competely install the Oxford Oberon-2 compiler like this into these usual directories:
+Now the Linux system should be in a condition to correctly and competely install the Oxford Oberon-2 compiler into these, usual directories:
 
 - _/usr/bin/obc_
 - _/usr/lib/obc_
 - _/usr/share/man/man1/obc.1.gz_
+
+..like this:
 
 ```
 $ sudo dpkg -i obc_3.3.0_amd64.deb
@@ -97,7 +101,7 @@ Processing triggers for man-db (2.12.0-4build2) ...
 $
 ```
 
-This looks good now, and I make a check (there's no version info command!):
+This looks good now, and so I make a check (there's no command for its version info!):
 
 ```
 $ obc
@@ -105,8 +109,6 @@ Usage: obc [flag ...] file ...
 
   -O0     Turn off peephole optimiser
   -O      Turn on peephole optimiser (default)
-  -b      Disable runtime checks
-  -v      Print compiling and linking commands
 ...
   *.m     Oberon source file to be compiled
           (extensions .mod, .Mod, .obn, .ob2 also allowed)
@@ -116,11 +118,26 @@ Usage: obc [flag ...] file ...
 $
 ```
 
+<br/>
+
+### A first OBC test: mand04.obn
+
+I took source code file _mand04.mod_ unchanged from here: https://fruttenboel.nl/obc/index.html, though changed its files extension to [mand04.obn](./mand04.obn), like all my Oberon sources to distinguish them from my [Modula-2 sources](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2), and compiled it with the Oxford Oberon-2 compiler in version 3.3.0:
+
+```
+$ obc -o mand04 mand04.obn
+$ ./mand04 -0.6735 -0.3625 200 300000000
+```
+
+Voilà!
+
+![plot](./mand04%20-0.6735%20-0.3625%20200%20300000000.png)
+
 tbd
 
 <br/>
 
-## Installing Oberon+
+## Oberon+
 
 > [!WARNING]
 > The History of Oberon also shows that too much minimalism in the design of a programming language is probably more detrimental to its success than overly complexity (like in C++ or Rust).
