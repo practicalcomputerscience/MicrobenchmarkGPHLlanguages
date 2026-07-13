@@ -62,7 +62,7 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
 <br/>
 
-## Installing the Oxford Oberon-2 Compiler (OBC)
+## Oxford Oberon-2 Compiler (OBC)
 
 Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
 
