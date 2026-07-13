@@ -73,7 +73,7 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
 > [!NOTE]
-> The OBC Library, see at chapter 5, is really slim. For example, in module _String_ only one operation is provided so far!
+> The OBC Library, see at chapter 5, is really slim. For example, in module _String_ only one operation has been implemented so far!
 
 Thus, and so far (as of 2026-07-13), the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
 
