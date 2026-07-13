@@ -1,10 +1,9 @@
 2026-07-10: work in progress
 
+- tbd: "speed part" in: OBNC
+- tbd: "speed part" in: Oberon+: Oberon with extensions (OBX)
+- tbd: "speed part" in: Oberon V4
 - tbd: toc
-- OBC: virtual machine, runtime:
-  - –b Disable runtime checks for null pointers, array bounds, etc., sacrificing safety for the sake of screaming speed.
-  - –j0 Produce an executable that will run using the bytecode interpreter in place of the JIT translator.
-  - 
 
 <br/>
 
@@ -73,11 +72,13 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
 > [!NOTE]
-> The OBC Library, see at chapter 5, is really slim. For example, for module _String_ only one operation is provided so far!
+> The OBC Library, see at chapter 5, is really slim. For example, in module _String_ only one operation is provided so far!
+
+Thus, and so far (as of 2026-07-13), the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
 
 <br/>
 
-The OBC usually compiles to bytecode, that is _*.k_ files, for its own virtual machine, where this bytecode is just-in-time (JIT) compiled, so like usually with Java and the Java Virtual Machine (JVM).
+The OBC usually compiles to bytecode, that is into _*.k_ files, for its own virtual machine, where it gets just-in-time (JIT) compiled, so like usually with Java and the Java Virtual Machine (JVM).
 
 In other words, OBC generated "executables" are not portable to another Linux machine without prior OBC installation.
 
@@ -122,7 +123,7 @@ Processing triggers for man-db (2.12.0-4build2) ...
 $
 ```
 
-This looks good now, and so I make a version:
+This looks good now, and so I do a version check:
 
 ```
 $ obc -v
@@ -155,8 +156,11 @@ Voilà!
 
 Oberon source code can be also compiled with activated switch _-b_ to disable runtime checks: _$ obc -b -o RandomStreamsForPerfStats_b RandomStreamsForPerfStats.obn_
 
-However, in case of the ["speed part"](./RandomStreamsForPerfStats.obn) of the microbenchmark program it doesn't make any statistical relevant difference in terms of execution speed,
+However, in case of the ["speed part"](./RandomStreamsForPerfStats.obn) of the microbenchmark program it doesn't provide for any statistical relevant difference in terms of execution speed,
 which is about 27 milliseconds.
+
+Switching off JIT compilation, and let only the interpretation run, with compilation command: _$ obc -j0 -o RandomStreamsForPerfStats_j0 RandomStreamsForPerfStats.obn_ will make 
+an "executable" which runs for about 97 milliseconds.
 
 <br/>
 
