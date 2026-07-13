@@ -211,7 +211,7 @@ Also see from here: [EDM2/Oberon-2](https://www.edm2.com/index.php/Oberon-2) (~)
 
 ### Installation tips for Oberon+
 
-I just downloaded file _http://software.rochus-keller.ch/OberonIDE_linux_x86_64.tar.gz_ from here: https://github.com/rochus-keller/Oberon/releases/tag/EH_MVP, unpacked it, expanded my _~/.bashrc_ configuration file with line: _export PATH="$HOME/scripts/Oberon/Oberon+/OberonIDE_linux_x86_64:$PATH"_, and activated it with _$ source ~/.bashrc_ to make a version and help test:
+I just downloaded file _OberonIDE_linux_x86_64.tar.gz_ from here: https://github.com/rochus-keller/Oberon/releases/tag/EH_MVP, unpacked it, expanded my _~/.bashrc_ configuration file with line: _export PATH="$HOME/scripts/Oberon/Oberon+/OberonIDE_linux_x86_64:$PATH"_, and activated it with _$ source ~/.bashrc_ to make a version and help test:
 
 ```
 $ OBXMC -h
