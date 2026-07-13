@@ -1,6 +1,10 @@
 2026-07-10: work in progress
 
 - tbd: toc
+- OBC: virtual machine, runtime:
+  - –b Disable runtime checks for null pointers, array bounds, etc., sacrificing safety for the sake of screaming speed.
+  - –j0 Produce an executable that will run using the bytecode interpreter in place of the JIT translator.
+  - 
 
 <br/>
 
@@ -71,6 +75,14 @@ User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/
 > [!NOTE]
 > The OBC Library, see at chapter 5, is really slim. For example, for module _String_ only one operation is provided so far!
 
+<br/>
+
+The OBC usually compiles to bytecode, that is _*.k_ files, for its own virtual machine, where this bytecode is just-in-time (JIT) compiled, so like usually with Java and the Java Virtual Machine (JVM).
+
+In other words, OBC generated "executables" are not portable to another Linux machine without prior OBC installation.
+
+<br/>
+
 Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
 
 But two pre-requisites made problems for a correct and complete installation, and that have been these packages:
@@ -110,20 +122,15 @@ Processing triggers for man-db (2.12.0-4build2) ...
 $
 ```
 
-This looks good now, and so I make a check (there's no command for its version info!):
+This looks good now, and so I make a version:
 
 ```
-$ obc
-Usage: obc [flag ...] file ...
-
-  -O0     Turn off peephole optimiser
-  -O      Turn on peephole optimiser (default)
-...
-  *.m     Oberon source file to be compiled
-          (extensions .mod, .Mod, .obn, .ob2 also allowed)
-  *.k     Bytecode file for linking
-  *.c     File of primitives coded in C
-  *.o     File of object code for primitives
+$ obc -v
+Oxford Oberon-2 compiler driver version 3.3.0 [build hg-64b7090cfb52]
+Oxford Oberon-2 compiler version 3.3.0 [build hg-64b7090cfb52]
+Oxford Oberon-2 linker version 3.3.0 [build hg-64b7090cfb52]
+Oxford Oberon-2 runtime system version 3.3.0 [build hg-64b7090cfb52] (JIT)
+Oxford Oberon-2 library version 3.3.0 [build hg-64b7090cfb52]
 $
 ```
 
@@ -144,9 +151,12 @@ Voilà!
 
 <br/>
 
-### Microbenchmark program for the OBC
+### OBC compiled microbenchmark program
 
-tbd
+Oberon source code can be also compiled with activated switch _-b_ to disable runtime checks: _$ obc -b -o RandomStreamsForPerfStats_b RandomStreamsForPerfStats.obn_
+
+However, in case of the ["speed part"](./RandomStreamsForPerfStats.obn) of the microbenchmark program it doesn't make any statistical relevant difference in terms of execution speed,
+which is about 27 milliseconds.
 
 <br/>
 
