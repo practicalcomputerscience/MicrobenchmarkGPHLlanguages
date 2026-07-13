@@ -22,7 +22,7 @@ See from here about some differences between (some) Oberon dialects: [Motivation
 
 To me it looks a bit that Oberon was Wirth's attempt to not miss the already rolling object-oriented programming (OOP) train,
 since [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3)
-was (still) not explicitely designed for OOP as published in 1980: [MODULA-2, Wirth, Niklaus](https://doi.org/https://doi.org/10.3929/ethz-a-000189918),
+was not explicitely designed for OOP as published in 1980: [MODULA-2, Wirth, Niklaus](https://doi.org/https://doi.org/10.3929/ethz-a-000189918),
 and its fully OOP-capable successor [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3), first published in 1988, no longer under his control.
 
 I guess that this paper from 1989 highlights his scepticism and dilemma:
@@ -50,17 +50,77 @@ from: "Programming, A Tutorial, A derivative of Programming in Modula-2 (1982)",
 
 <br/>
 
-Ironically, Modula-2 and Modula-3 are still around to some extent in 2025, under their original names, but what happened to Oberon? And in what _implementation_ (on Linux) still usable in year 2026?
+Ironically, Modula-2 and Modula-3 are still around to some extent in 2025, under their original names, but what happened to Oberon? And in what _implementation_ still usable on Linux in year 2026?
 
 This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
 > OBC is by far the best Oberon compiler. ETHZ versions of Oberon are dead, OBC is the way to go 
 
-See at [Oxford Oberon-2 compiler](https://spivey.oriel.ox.ac.uk/corner/Oxford_Oberon-2_compiler).
+<br/>
+
+## Installing the Oxford Oberon-2 compiler (OBC)
+
+Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
+
+But two pre-requisites made problems for a correct and complete installation, and that have been these two packages:
+
+- libgtksourceview
+- libffi7
+
+I fixed them like this:
+
+```
+$ sudo apt --fix-broken install
+...
+$ sudo apt install libgtksourceview-3.0-1  # this installation should work now
+...
+$ wget http://es.archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi7_3.3-4_amd64.deb  # downloading libffi7
+...
+$ sudo dpkg -i libffi7_3.3-4_amd64.deb  # installing libffi7
+...
+$
+```
+
+Now the Linux system should be in a condition to correctly and competely install the Oxford Oberon-2 compiler like this into these usual directories:
+
+- _/usr/bin/obc_
+- _/usr/lib/obc_
+- _/usr/share/man/man1/obc.1.gz_
+
+```
+$ sudo dpkg -i obc_3.3.0_amd64.deb
+(Reading database ... 393352 files and directories currently installed.)
+Preparing to unpack obc_3.3.0_amd64.deb ...
+Unpacking obc (3.3.0) over (3.3.0) ...
+Setting up obc (3.3.0) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+$
+```
+
+This looks good now, and I make a check (there's no version info command!):
+
+```
+$ obc
+Usage: obc [flag ...] file ...
+
+  -O0     Turn off peephole optimiser
+  -O      Turn on peephole optimiser (default)
+  -b      Disable runtime checks
+  -v      Print compiling and linking commands
+...
+  *.m     Oberon source file to be compiled
+          (extensions .mod, .Mod, .obn, .ob2 also allowed)
+  *.k     Bytecode file for linking
+  *.c     File of primitives coded in C
+  *.o     File of object code for primitives
+$
+```
 
 tbd
 
 <br/>
+
+## Installing Oberon+
 
 > [!WARNING]
 > The History of Oberon also shows that too much minimalism in the design of a programming language is probably more detrimental to its success than overly complexity (like in C++ or Rust).
@@ -74,6 +134,8 @@ Otherwise, what else should be the motivation to make another derivative of the 
 > From these considerations a new language emerged, which I call Oberon+ (i.e. “Oberon with extensions”, abbreviated OBX); it is based on Oberon-07, Oberon-2 and Oberon 90, with all the elements of these languages, plus the - from my point of view - most essential missing features and a lot of simplifications and increased flexibility. Oberon+ is - so to say - the Oberon I personally would have hoped for; from my point of view it represents modern simplicity in programming.
 
 from: https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-version.html
+
+tbd
 
 <br/>
 
