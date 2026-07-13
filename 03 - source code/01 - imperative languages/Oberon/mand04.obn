@@ -1,0 +1,104 @@
+(*
+mand04.obn
+
+source mand04.mod at page: https://fruttenboel.nl/obc/index.html
+
+2026-07-13
+
+build on Ubuntu 24 LTS: $ obc -o mand04 mand04.obn
+
+run on Ubuntu 24 LTS:   $ ./mand04 -0.6735 -0.3625 200 300000000  # like the given example to compare results
+
+*)
+
+MODULE mand04;
+
+IMPORT	Args, Conv, Err, XYplane;
+
+TYPE	Complex	= RECORD
+		    real, imag	: LONGREAL
+		  END;
+
+VAR	z, z0, c		: Complex;
+	startR, startI		: LONGREAL;
+	count, step, X0, Y0,
+	n, x, y			: INTEGER;
+	option			: ARRAY 20 OF CHAR;
+
+
+PROCEDURE Csq (VAR  z : Complex);
+
+VAR	res	: Complex;
+
+BEGIN
+  res.real := z.real * z.real - z.imag * z.imag;
+  res.imag := 2 * z.real * z.imag;
+  z := res
+END Csq;
+
+
+PROCEDURE Cadd (VAR z : Complex;  y : Complex);
+
+VAR	res	: Complex;
+
+BEGIN
+  res.real := y.real + z.real;
+  res.imag := y.imag + z.imag;
+  z := res
+END Cadd;
+
+
+PROCEDURE Csize (VAR z : Complex) : INTEGER;
+
+VAR	len	: INTEGER;
+
+BEGIN
+  len := ENTIER (z.real * z.real + z.imag * z.imag);
+  RETURN len
+END Csize;
+
+
+PROCEDURE Init;
+
+BEGIN
+  IF  Args.argc < 4  THEN
+    Err.String ("Mandel X0 Y0 count step");	Err.Ln;
+    startR := -0.71;
+    startI := -0.36;
+    count := 100;
+    step := 40000
+  ELSE
+    Args.GetArg (1, option);
+    startR := Conv.LongRealVal (option);
+    Args.GetArg (2, option);
+    startI := Conv.LongRealVal (option);
+    Args.GetArg (3, option);
+    count := Conv.IntVal (option);
+    Args.GetArg (4, option);
+    step := Conv.IntVal (option)
+  END;
+  z0.real := 0.0;		z0.imag := 0.0;
+  XYplane.Open
+END Init;
+
+
+BEGIN
+  Init;
+  FOR  X0 := 0 TO 639 DO
+    x := X0 - 320;
+    c.real := startR + x / step;
+    FOR  Y0 := 0  TO  479  DO
+      y := Y0 - 240;
+      c.imag := startI + y / step;
+      n := 0;
+      z := z0;
+      REPEAT
+        INC (n);
+	Csq (z);
+	Cadd (z, c)
+      UNTIL  (Csize (z) > 4) OR (n > count);
+      IF  n < count  THEN  XYplane.Dot (X0, Y0, 1)  ELSE  XYplane.Dot (X0, Y0, 0)  END
+    END
+  END;
+  REPEAT  UNTIL XYplane.Key () > ' '
+END mand04.
