@@ -68,6 +68,9 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
 User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
+> [!NOTE]
+> The OBC Library, see at chapter 5, is really slim. For example, for module _String_ only one operation is provided so far!
+
 Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
 
 But two pre-requisites made problems for a correct and complete installation, and that have been these packages:
