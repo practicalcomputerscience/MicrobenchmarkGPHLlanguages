@@ -171,6 +171,10 @@ I also shortly tested the OBNC compiler (https://miasap.se/obnc/), only to find 
 
 <br/>
 
+See also the [The Oakwood Guidelines for Oberon-2 Compiler Developers](https://www.edm2.com/index.php/The_Oakwood_Guidelines_for_Oberon-2_Compiler_Developers).
+
+<br/>
+
 #### Oberon V4
 
 Oberon V4 as last maintained at the Johannes Kepler University in Linz/Austria is a 32-bit system, which possibly can be installed from these two sources:
@@ -202,6 +206,23 @@ from: https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-versi
 Also see from here: [EDM2/Oberon-2](https://www.edm2.com/index.php/Oberon-2) (~)
 
 > Oberon-2 is an extension of Oberon developed in 1992 by Hanspeter Mössenböck that adds stronger object-orientation and brings back a couple of features from Modula-2.
+
+<br/>
+
+### Installation tips for Oberon+
+
+I just downloaded file _http://software.rochus-keller.ch/OberonIDE_linux_x86_64.tar.gz_ from here: https://github.com/rochus-keller/Oberon/releases/tag/EH_MVP, unpacked it, expanded my _~/.bashrc_ configuration file with line: _export PATH="$HOME/scripts/Oberon/Oberon+/OberonIDE_linux_x86_64:$PATH"_, and activated it with _$ source ~/.bashrc_ to make a version and help test:
+
+```
+$ OBXMC -h
+OBXMC version: 2024-03-13 author: me@rochus-keller.ch  license: GPL
+usage: OBXMC [options] files or directory
+  reads Oberon+ source or project files and compiles them to assemblies or IL assembler.
+options:
+  -h            display this information
+...
+$
+```
 
 tbd
 
