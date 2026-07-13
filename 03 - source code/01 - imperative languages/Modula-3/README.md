@@ -2,9 +2,9 @@
 
 Here in the actively maintained **Critical Mass Modula-3** implementation (**CM3**):
 
-https://github.com/modula3/cm3
+- https://github.com/modula3/cm3
 
-https://modula3.github.io/cm3/help/interfaces.html
+- https://modula3.github.io/cm3/help/interfaces.html
 
 <br/>
 
@@ -32,7 +32,7 @@ from 1986 (PDF): https://softwarepreservation.computerhistory.org/modula2+/doc/R
 ## Installation tips
 
 > [!WARNING]
-> After some experimentation, I can say that initially anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4 is a hot mess! (unless you are an expert of course)
+> After some experimentation, I can say that anything else than following these official instructions: [Getting Started: Linux](https://github.com/modula3/cm3/wiki/Getting-Started%3A-Linux) for older version d5.11.4 is a hot mess! (unless you are an expert of course)
 
 So, this is what I did to get a working CM3 system:
 
