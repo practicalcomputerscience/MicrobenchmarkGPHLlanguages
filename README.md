@@ -311,6 +311,10 @@ If he enters 100 characters or more, the program will go into exception and term
 
 <br/>
 
+With some language implementations, usually languages with only a small ecosystem, the random seed is just **not random enough** statistically. However, I kept it that way to not "artificially" increase the number of source lines of code in those implementations. However, with every program run _another_ random series will be produced (which can be easily checked to repeatedly ask for a password with the same structure).
+
+<br/>
+
 ## Motivation and orientation
 
 After improving my Python program here and there, I thought that this a good computer program for me to test new languages.
