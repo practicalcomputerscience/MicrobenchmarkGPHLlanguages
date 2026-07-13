@@ -1,8 +1,6 @@
 2026-07-10: work in progress
 
-- tbd: "speed part" in: OBNC
 - tbd: "speed part" in: Oberon+: Oberon with extensions (OBX)
-- tbd: "speed part" in: Oberon V4
 - tbd: toc
 
 <br/>
@@ -170,8 +168,14 @@ I also shortly tested the OBNC compiler (https://miasap.se/obnc/), only to find 
 
 <br/>
 
-tbd
+#### Oberon V4
 
+Oberon V4 as last maintained at the Johannes Kepler University in Linz/Austria is a 32-bit system, which possibly can be installed from these two sources:
+
+- old (from 2004): https://sourceforge.net/projects/oberon/files/Oberon%20V4%20for%20GNU_Linux/1.7.02/ (+)
+- new (from 2026): https://github.com/btreut/Oberon4Linux-Bootstrap (*): I merged these files into the root directory of unzipped file _oberon-1.7.02.tar.gz_ from (+), and have overwritten any older files
+
+Read file _Changes.md_ from (*) for a detailed installation process. However, I didn't try to install it for its very old age.
 
 <br/>
 
