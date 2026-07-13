@@ -18,10 +18,11 @@ from: The Programming Language Oberon, (Revision 1. 10. 90), N.Wirth (PDF): http
 And not only that, but Oberon is also an example of how to damage an ecosystem, together with the Modula ecosystem, by **fragmenting** it. I found these _original_ flavors of Oberon:
 
 - Oberon since 1988: https://onlinelibrary.wiley.com/doi/10.1002/spe.4380180706
-- Oberon-2, "essentially Oberon with a few extensions", since 1990 (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf
-- Active Oberon ("Do the Fish Really Need Remote Control? A Proposal for Self-Active Objects in Oberon") since 1997: https://link.springer.com/chapter/10.1007/3-540-62599-2_41
+- Oberon-2, "essentially Oberon with a few extensions", since 1990 (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf. See also at [EDM2/Oberon-2](https://www.edm2.com/index.php/Oberon-2) (~).
+- Active Oberon ("Do the Fish Really Need Remote Control? A Proposal for Self-Active Objects in Oberon") since 1997: https://link.springer.com/chapter/10.1007/3-540-62599-2_41. It had "explicit support for programming multicore processors" (~).
 - Persistent Oberon from 2000: https://link.springer.com/chapter/10.1007/978-3-540-76637-7_6
 - Oberon-07/16, also known as "Revised Oberon" since 2007 (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon07.Report.pdf
+- "Zonnon is a descendant of Active Oberon that adds safety features and a stronger object system." (~)
 
 See from here about some differences between (some) Oberon dialects: [Motivation for a new Oberon version](https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-version.html)
 
@@ -55,9 +56,11 @@ Another aim of Oberon was:
 
 from: "Programming, A Tutorial, A derivative of Programming in Modula-2 (1982)", Niklaus Wirth (rev. 5.10.2015), PDF: https://people.inf.ethz.ch/wirth/Oberon/PIO.pdf
 
+Something which was soon revised, at least to some extent; see below at [Oberon+](#tbd).
+
 <br/>
 
-Ironically, Modula-2 and Modula-3 are still around to some extent in 2025, under their original names, but what happened to Oberon? And in what _implementation_ still usable on Linux in year 2026?
+Ironically, Modula-2 and Modula-3 are still around somehow in 2025, under their original names, but what happened to Oberon? And in what _implementation_ still usable on Linux in year 2026?
 
 This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
@@ -164,7 +167,7 @@ an "executable" which runs for about 97 milliseconds.
 
 #### OBNC
 
-I also shortly tested the OBNC compiler (https://miasap.se/obnc/), only to find out that OBC's library files (copy and rename _*.m_ in local project directory to _*.mod_), as used in source code files _mand04.obn_ and _RandomStreamsForPerfStats.obn_, cannot be compiled due to many "errors" as seen by OBNC. So, I stopped further experiments with it.
+I also shortly tested the OBNC compiler (https://miasap.se/obnc/), only to find out that OBC's library files (copy and rename _*.m_ in local OBNC project directory to _*.mod_), as used in source code files _mand04.obn_ and _RandomStreamsForPerfStats.obn_, cannot be compiled due to many "errors" as seen by OBNC. So, I stopped further experiments with it.
 
 <br/>
 
@@ -184,15 +187,21 @@ Read file _Changes.md_ from (*) for a detailed installation process. However, I 
 > [!WARNING]
 > The History of Oberon also shows that too much minimalism in the design of a programming language is probably more detrimental to its success than overly complexity (like in C++ or Rust).
 
-Otherwise, what else should be the motivation to make another derivative of the original Oberons, here:
+Otherwise, what else should be the motivation to make and maintain another derivative of Oberon, here:
 
 [The Oberon+ Programming Language](https://oberon-lang.github.io/)
+
+https://github.com/rochus-keller/Oberon
 
 (bytecode for [CLI/ECMA-335](https://ecma-international.org/publications-and-standards/standards/ecma-335/) is actually bytecode for Microsofts's .NET runtime environment)
 
 > From these considerations a new language emerged, which I call Oberon+ (i.e. “Oberon with extensions”, abbreviated OBX); it is based on Oberon-07, Oberon-2 and Oberon 90, with all the elements of these languages, plus the - from my point of view - most essential missing features and a lot of simplifications and increased flexibility. Oberon+ is - so to say - the Oberon I personally would have hoped for; from my point of view it represents modern simplicity in programming.
 
 from: https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-version.html
+
+Also see from here: [EDM2/Oberon-2](https://www.edm2.com/index.php/Oberon-2) (~)
+
+> Oberon-2 is an extension of Oberon developed in 1992 by Hanspeter Mössenböck that adds stronger object-orientation and brings back a couple of features from Modula-2.
 
 tbd
 
