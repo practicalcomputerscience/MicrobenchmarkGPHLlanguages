@@ -6,6 +6,8 @@
 
 # Oberon
 
+<br/>
+
 ## Idea of Oberon
 
 > Oberon is a general-purpose programming language that evolved from Modula-2.
@@ -63,6 +65,8 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 <br/>
 
 ## Oxford Oberon-2 Compiler (OBC)
+
+User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
 Principially, I followed the instructions at [Installing OBC release 3.3](https://spivey.oriel.ox.ac.uk/corner/Installing_OBC_release_3.3) with the goal to install the pre-compiled sources in Debian package _obc_3.3.0_amd64.deb_ on my Ubuntu 24 LTS system (with 64 bits).
 
