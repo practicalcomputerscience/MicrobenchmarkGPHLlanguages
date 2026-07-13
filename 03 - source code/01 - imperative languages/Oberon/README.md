@@ -164,6 +164,17 @@ an "executable" which runs for about 97 milliseconds.
 
 <br/>
 
+#### OBNC
+
+I also shortly tested the OBNC compiler (https://miasap.se/obnc/), only to find out that OBC's library files (copy and rename _*.m_ in local project directory to _*.mod_), as used in source code files _mand04.obn_ and _RandomStreamsForPerfStats.obn_, cannot be compiled due to many "errors" as seen by OBNC. So, I stopped further experiments with it.
+
+<br/>
+
+tbd
+
+
+<br/>
+
 ## Oberon+
 
 > [!WARNING]
