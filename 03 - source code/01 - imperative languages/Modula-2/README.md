@@ -80,4 +80,10 @@ Similar to [Regular expressions in Mojo](https://github.com/practicalcomputersci
 
 <br/>
 
+#### Issues with the GNU Modula-2 GCC frontend
+
+See at: https://github.com/wgottwalt/gnu_modula2_playground/tree/main
+
+<br/>
+
 ##_end
