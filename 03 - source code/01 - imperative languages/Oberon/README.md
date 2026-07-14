@@ -24,7 +24,7 @@ And not only that, Oberon is also an example of how to damage an ecosystem by **
 - Active Oberon ("Do the Fish Really Need Remote Control? A Proposal for Self-Active Objects in Oberon") since 1997: https://link.springer.com/chapter/10.1007/3-540-62599-2_41. It had "explicit support for programming multicore processors" (~).
 - Persistent Oberon from 2000: https://link.springer.com/chapter/10.1007/978-3-540-76637-7_6
 - Oberon-07/16, also known as "Revised Oberon" since 2007 (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon07.Report.pdf
-- "Zonnon is a descendant of Active Oberon that adds safety features and a stronger object system." (~)
+- "Zonnon is a descendant of Active Oberon that adds safety features and a stronger object system." (~) https://github.com/zonnonproject/compiler/tree/master
 
 See from here about some differences between (some) Oberon dialects: [Motivation for a new Oberon version](https://oberon-lang.github.io/2021/07/15/motivation-for-a-new-oberon-version.html)
 
