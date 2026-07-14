@@ -75,9 +75,7 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
 > [!NOTE]
-> The OBC Library is really slim. For example, in module _String_ (file _Strings.m_), a procedure to compare two strings has not been implemented so far (as of July 2026)!
-
-Thus, and as of 2026-07-13, the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
+> The OBC Library is really slim. For example, in module _Strings_ (file _Strings.m_), procedure _Strings.Compare_ to compare two strings is not "foolproof" and thus needs extra care, and code as in my case!
 
 <br/>
 
