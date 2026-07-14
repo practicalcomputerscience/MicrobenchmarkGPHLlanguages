@@ -1,11 +1,13 @@
 2026-07-10: work in progress
 
-- tbd: "speed part" in: Oberon+: Oberon with extensions (OBX)
+- tbd: complete microbenchmark program in OBC
 - tbd: toc
 
 <br/>
 
 # Oberon
+
+TL;DR: For Linux the only really viable Oberon implementation in 2026 is the Oxford Oberon-2 Compiler according to my experiments: https://github.com/Spivoxity/obc-3, and even there the Oberon ecosystem is really slim, but workable. You definitely will have more fun with oldies but goldies [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
 
 <br/>
 
@@ -15,7 +17,7 @@
 
 from: The Programming Language Oberon, (Revision 1. 10. 90), N.Wirth (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf
 
-And not only that, but Oberon is also an example of how to damage an ecosystem, together with the Modula ecosystem, by **fragmenting** it. I found these _original_ flavors of Oberon:
+And not only that, Oberon is also an example of how to damage an ecosystem by **fragmenting** it. I found these _original_ flavors of Oberon:
 
 - Oberon since 1988: https://onlinelibrary.wiley.com/doi/10.1002/spe.4380180706
 - Oberon-2, "essentially Oberon with a few extensions", since 1990 (PDF): https://people.inf.ethz.ch/wirth/Oberon/Oberon.Report.pdf. See also at [EDM2/Oberon-2](https://www.edm2.com/index.php/Oberon-2) (~).
@@ -28,7 +30,7 @@ See from here about some differences between (some) Oberon dialects: [Motivation
 
 <br/>
 
-To me it looks a bit that Oberon was Wirth's attempt to not miss the already rolling object-oriented programming (OOP) train,
+To me it looks like that Oberon was Wirth's attempt to not miss the already rolling object-oriented programming (OOP) train,
 since [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2)
 was not explicitely designed for OOP as published in 1980: [MODULA-2, Wirth, Niklaus](https://doi.org/https://doi.org/10.3929/ethz-a-000189918),
 and its fully OOP-capable successor [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3), first published in 1988, no longer under his control.
@@ -60,7 +62,7 @@ Something which was soon revised, at least to some extent; see below at [Oberon+
 
 <br/>
 
-Ironically, Modula-2 and Modula-3 are still around somehow in 2025, under their original names, but what happened to Oberon? And in what _implementation_ still usable on Linux in year 2026?
+Ironically, Modula-2 and Modula-3 are still around somehow in 2025, under their original names, but what happened to Oberon? And in what _implementation_ on Linux in year 2026?
 
 This page gave me advice: https://fruttenboel.nl/obc/Main.html
 
@@ -75,11 +77,11 @@ User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/
 > [!NOTE]
 > The OBC Library, see at chapter 5, is really slim. For example, in module _String_ only one operation has been implemented so far!
 
-Thus, and so far (as of 2026-07-13), the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
+Thus, and as of 2026-07-13, the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
 
 <br/>
 
-The OBC usually compiles to bytecode, that is into _*.k_ files, for its own virtual machine, where it gets just-in-time (JIT) compiled, so like usually with Java and the Java Virtual Machine (JVM).
+The OBC usually compiles to bytecode, that is into _*.k_ files, for its own virtual machine, where it gets just-in-time (JIT) compiled, so like usually done at Java and the Java Virtual Machine (JVM).
 
 In other words, OBC generated "executables" are not portable to another Linux machine without prior OBC installation.
 
@@ -224,7 +226,44 @@ options:
 $
 ```
 
-tbd
+<br/>
+
+### No access to Linux system resources
+
+While the Oberon+ compiler OBXMC principially works (_$ OBXMC -c -obs -oak -out=. ./RandomStreamsForPerfStats.obx; gcc *.c -lm -o RandomStreamsForPerfStats_), there's the problem that this procedure:
+
+```
+PROCEDURE Getclock (): INTEGER;
+BEGIN
+	RETURN Input.Time()
+END Getclock;
+```
+
+..as seen in [Hennessy.Mod](https://github.com/rochus-keller/Oberon/blob/6a830bec7294e68cd8d737feae0982d5f9ed3d67/testcases/Hennessy.Mod#L153-L156) doesn't really work.
+The only INTEGER values it returns are 0 and 1, which isn't sufficient for a random seed for my microbenchmark program. This is a big disadvantage compared to the Oxford Oberon-2 Compiler,
+which can access system resources as seen in its source code file _Random.m_:
+
+```
+...
+--CODE--
+
+#include <time.h> 
+#ifdef HAVE_GETTIMEOFDAY
+#include <sys/time.h>
+#endif
+
+int GetSeed(void) {
+#ifdef HAVE_GETTIMEOFDAY
+     struct timeval tv;
+     gettimeofday(&tv, NULL);
+     return 13 * tv.tv_sec + tv.tv_usec;
+#else	
+     return time(NULL); 
+#endif
+}
+```
+
+That was the end of my experiments with alternatives to the Oxford Oberon-2 Compiler. Consequently, I only implemented the [complete microbenchmark program](tbd) for this compiler.
 
 <br/>
 
