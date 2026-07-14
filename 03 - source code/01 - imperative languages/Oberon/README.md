@@ -75,13 +75,13 @@ This page gave me advice: https://fruttenboel.nl/obc/Main.html
 User manual for version 3 (PDF): https://spivey.oriel.ox.ac.uk/wiki/images/c/ce/Obcman-3.1.pdf
 
 > [!NOTE]
-> The OBC Library, see at chapter 5, is really slim. For example, in module _String_ only one operation has been implemented so far!
+> The OBC Library is really slim. For example, in module _String_ (file _Strings.m_), a procedure to compare two strings has not been implemented so far (as of July 2026)!
 
 Thus, and as of 2026-07-13, the OBC implementation of the microbenchmark program is the only one where a simple string comparison is implemented in (another) user defined function (or here procedure), named _StringsEqual_!
 
 <br/>
 
-The OBC usually compiles to bytecode, that is into _*.k_ files, for its own virtual machine, where it gets just-in-time (JIT) compiled, so like usually done at Java and the Java Virtual Machine (JVM).
+The OBC usually compiles to bytecode, that is into _*.k_ files, for its own virtual machine, the [Keiko Abstract Machine](https://spivey.oriel.ox.ac.uk/corner/Design_overview_for_OBC), where it gets just-in-time (JIT) compiled, so like usually done at Java and the Java Virtual Machine (JVM).
 
 In other words, OBC generated "executables" are not portable to another Linux machine without prior OBC installation.
 
