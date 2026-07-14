@@ -65,7 +65,7 @@ Another aim of Oberon was:
 
 from: "Programming, A Tutorial, A derivative of Programming in Modula-2 (1982)", Niklaus Wirth (rev. 5.10.2015), PDF: https://people.inf.ethz.ch/wirth/Oberon/PIO.pdf
 
-Something which was soon revised, at least to some extent; see below at [Oberon+](#tbd).
+Something which was soon revised, at least to some extent; see below at [Oberon+](#oberon-1).
 
 <br/>
 
@@ -268,7 +268,7 @@ int GetSeed(void) {
 }
 ```
 
-That was the end of my experiments with alternatives to the Oxford Oberon-2 Compiler. Consequently, I only implemented the [complete microbenchmark program](tbd) for this compiler.
+That was the end of my experiments with alternatives to the Oxford Oberon-2 Compiler. Consequently, I only implemented the [complete microbenchmark program](./RandomBitstringAndFlexiblePasswordGenerator.obn) for this compiler.
 
 <br/>
 
@@ -286,10 +286,6 @@ Oberon-2 has no:
 - WITH-statement of the Modula-2 language, which had many disadvantages in respect to program readability and thus severed maintainability
 - qualified import, i.e. imported identifiers must be qualified with the module name or its alias
 - separate definition- and implementation-module 
-
-<br/>
-
-tbd
 
 <br/>
 
