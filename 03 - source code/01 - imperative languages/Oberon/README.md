@@ -1,15 +1,22 @@
-2026-07-10: work in progress
-
-- tbd: complete microbenchmark program in OBC
-- tbd: toc
-
-<br/>
-
 # Oberon
 
-TL;DR: For Linux the only really viable Oberon implementation in 2026 is the Oxford Oberon-2 Compiler according to my experiments: https://github.com/Spivoxity/obc-3, and even there the Oberon ecosystem is really slim, but workable. You definitely will have more fun with oldies but goldies [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
+TL;DR: For Linux the only really viable Oberon implementation in 2026 is the Oxford Oberon-2 Compiler according to my experiments: https://github.com/Spivoxity/obc-3
+
+And even there the Oberon ecosystem is really slim, but workable. You definitely will have more fun with [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
+
+---
+
+Table of contents:
+
+- [Idea of Oberon](#idea-of-oberon)
+- [Oxford Oberon-2 Compiler (OBC)](#oxford-oberon-2-compiler-obc)
+- [A first OBC test: mand04.obn](#a-first-obc-test-mand04obn)
+- [OBC compiled microbenchmark program](#obc-compiled-microbenchmark-program)
+- [Oberon-2 versus Modula-2](#oberon-2-versus-modula-2)
 
 <br/>
+
+---
 
 ## Idea of Oberon
 
@@ -226,7 +233,7 @@ $
 
 <br/>
 
-### No access to Linux system resources
+### Oberon+: no access to Linux system resources
 
 While the Oberon+ compiler OBXMC principially works (_$ OBXMC -c -obs -oak -out=. ./RandomStreamsForPerfStats.obx; gcc *.c -lm -o RandomStreamsForPerfStats_), there's the problem that this procedure:
 
