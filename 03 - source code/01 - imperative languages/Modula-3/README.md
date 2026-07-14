@@ -14,7 +14,7 @@ from PDF:  https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
 
 <br/>
 
-Modula-2+ was the bridge between [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and Modula-3, specifically designed for large systems, and added these new main features:
+Modula-2+ was the bridge from [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) to Modula-3, specifically designed for large systems, and added these new main features:
 
 - exception handling
 - automatic storage management (garbage collection)
