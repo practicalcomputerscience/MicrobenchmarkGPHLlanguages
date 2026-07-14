@@ -3,7 +3,7 @@ RandomStreamsForPerfStats.obn
 
 This program is for the Oxford Oberon-2 Compiler (OBC).
 
-2026-07-13
+2026-07-13/14
 
 build on Ubuntu 24 LTS: $ obc -o RandomStreamsForPerfStats RandomStreamsForPerfStats.obn
 
@@ -33,7 +33,7 @@ Mostly transpiled from random_streams_for_perf_stats.mod for Modula-2 (ISO) with
 MODULE RandomStreamsForPerfStats;
 (* Oberon-2 doesn't allow the underscore character _ in variable names or identifiers *)
 
-IMPORT Out, Files, Random;
+IMPORT Out, Files, Random, Strings; (* 2026-07-14 *)
 
 CONST
   upperLimit = 62500;  (* 62500 for exactly 1M binary digits *)
@@ -127,17 +127,17 @@ BEGIN
 END IntegerToHexString;
 
 
+(*
 PROCEDURE StringsEqual(VAR str1: ARRAY OF CHAR; str2: ARRAY OF CHAR): BOOLEAN;
 VAR i: INTEGER;
 BEGIN
   i := 0;
-  (* Loop until the end of either string or a mismatch is found *)
   WHILE (str1[i] # 0X) & (str2[i] # 0X) & (str1[i] = str2[i]) DO
     INC(i);
   END;
-  (* They are equal only if both reached the null terminator at the same index *)
   RETURN str1[i] = str2[i]
 END StringsEqual;
+*)
 
 
 PROCEDURE WriteToFile(fileName: ARRAY OF CHAR; VAR buffer: ARRAY OF CHAR; size: INTEGER; fileType : ARRAY OF CHAR);
@@ -152,7 +152,7 @@ BEGIN
       Files.WriteChar(f, buffer[idx]);
     END;
     Files.Close(f);
-    IF StringsEqual(fileType, "Bit") THEN
+    IF Strings.Compare(fileType, "Bit") = 0 THEN  (* 2026-07-14 *)
       Out.String("Bit stream has been written to disk under name:  ");
     ELSE
       Out.String("Byte stream has been written to disk under name: ");
