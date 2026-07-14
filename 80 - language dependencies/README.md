@@ -62,6 +62,7 @@ Mercury | bootstrapping with C for gcc for an initial installation; Mercury is t
 Modula-2 (GNU) | gm2 compiler is mostly self-hosted; a bootstrap compiler in C and C++ translates Modula-2 code to C++, which is then compiled to produce the Modula-2 compiler | https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
 Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | https://mlir.llvm.org/
 Nim | self-hosted since 2008: "the compiler and the standard library are implemented in Nim." | https://nim-lang.org/
+Oberon (OBC) | OCaml for the compiler to bytecode for its own virtual machine named "Keiko Abstract Machine", which, together with a runtime system, is implemented in C | https://spivey.oriel.ox.ac.uk/corner/Design_overview_for_OBC
 OCaml | bootstrapping in a staged approach, where C has been compiled to bytecode for booting; then gradually self-hosting | https://github.com/ocaml/ocaml/tree/trunk/boot
 Odin | C and mostly C++ for clang | [3.3 Others (Unix)](https://odin-lang.org/docs/install/#others-unix)
 Oz | The Mozart 2 bootstrapping process uses Scala and the simple build tool (sbt); otherwise self-hosted | [Mozart-Oz bootstrap compiler](https://github.com/mozart/mozart2/tree/master/bootcompiler#mozart-oz-bootstrap-compiler)
