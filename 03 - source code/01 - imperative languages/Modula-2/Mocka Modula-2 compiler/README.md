@@ -124,14 +124,15 @@ As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (
 
 The following instructions are more or less following chapter "Step 2: install mocka 0608m original" and beyond at page (1b).
 
-First, I logged into a Bash shell as root, that is the Linux superuser:
+First, I logged into a Bash shell as root, that is the Linux superuser. The prompt character in Xubuntu is changing to '#':
 
 ```
 $ sudo -i
 ...
-$ cp mocka.tgz /usr/local  # copy the original sources to their installation root directory
-$ tar xfz mocka.tgz  # unpack this tarball file
-$
+# cp mocka.tgz /usr/local  # copy the original sources to their installation root directory
+# cd /usr/local  # change into the installation root directory
+# tar xfz mocka.tgz  # unpack this tarball file
+#
 ```
 
 Then I expanded my _~/.bahrc_ configuration file with these two lines:
@@ -143,12 +144,16 @@ export MOCKALINK=-lX11
 
 By the way: I'm using the **nano editor** to do changes on config file _$ .bashrc_ and other files inside the virtual machine: https://www.nano-editor.org/
 
-Best is now to restart the Bash shell and re-login as a root user. Now install the Mocka compiler documentation:
+The nano editor can partly be operated with the right mouse button menu. Do a [CTRL]-[O] for writing a new output of the changed file and [CTRL]-[X] for leaving the nano editor.
+
+Best is now to restart the Bash shell and login as a root user again. Now install the Mocka compiler documentation:
 
 ```
-$ cd /usr/local/mocka/man1
-$ gzip mc.1
-$ cp mc.1.gz /usr/local/man/man1/mocka.1.gz
+# cd /usr/local/mocka/man1
+# gzip mc.1
+# mkdir -p /usr/local/man/man1  # create this directory if still missing!
+# cp mc.1.gz /usr/local/man/man1/mocka.1.gz
+#
 ```
 
 By the way: the Mocka compiler infrastructure is basically a **collection of scripts for the standard system shell**. The standard system shell in case of Ubuntu, or here Xubuntu, is usually the Bash shell by default, and can be looked up like this: 
@@ -162,14 +167,14 @@ $
 Then I built the compiler with commands:
 
 ```
-$ cd /usr/local/mocka/lib
-$ chmod 755 machen  # make this shell script executable
-$ chmod 755 makemockabin  # make this shell script executable
-$ ./machen
+# cd /usr/local/mocka/lib
+# chmod 755 machen  # make this shell script executable if needed
+# chmod 755 makemockabin  # make this shell script executable if needed
+# ./machen
 ...
-$ ./makemockabin
+# ./makemockabin
 ...
-$
+#
 ```
 
 Finally, I added these two symbolic links to compiler script _/usr/local/mocka/sys/m2_:
