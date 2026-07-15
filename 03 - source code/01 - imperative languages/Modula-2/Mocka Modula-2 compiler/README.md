@@ -4,7 +4,7 @@
 
 # Mocka Modula-2 compiler for 32-bit Linux
 
-Motivation: I wanted to compile Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka Modula-2 compiler by Jan Verhoeven
+Motivation: I wanted to compile Jan Verhoeven's Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka compiler
 on my own system, so I could make the _mand01_ executable by myself, a program which draws this nice X11 window:
 
 tbd
