@@ -279,7 +279,13 @@ $MOCKA/sys/Mc \
 
 By the way: I didn't change Mocka's default editor vi (PDF): [Vi Quick Reference](https://ex-vi.sourceforge.net/viin/quickref.pdf)
 
-Background: the Mocka compiler is also an interactive compiler with its own prompt system (which is not very comfortable). So, in any compilation case, be it a success or a failure, the vi editor with the source opens up!
+Background: the Mocka compiler is also an interactive compiler with its own prompt system (which is not very comfortable).
+In case of a **compilation error** it automatically opens the related source in the vi editor:
+
+> [!TIP]
+> Scroll down, or go down with vi means, to the first error, which is marked in the vi editor view!
+
+In case that everything is OK, the vi editor is not opened, see below for an example.
 
 So, install the _rlwrap_ utility for betting editing comfort: _$ sudo apt install rlwrap_
 
@@ -317,9 +323,17 @@ You can now exit the root shell to your normal system user with _\# exit_ and ch
 
 The following instructions are more or less following chapter "Graphic programming with Mocka" and beyond at page (2).
 
-Here's the first source file [x11.def](./x11.def) as defined by its author Jan Verhoeven.
+> [!IMPORTANT]
+> Now come the next hacks.
 
-Here's the second source file [x11.c](./x11.c) as defined by its author Jan Verhoeven, and with one addition of mine: _#include <stdlib.h>_
+This time by author Jan Verhoeven himself. Do not take the first versions of _x11.def_ and _x11.c_!!
+
+Take both files only in their refined versions at chapter "Select another font". Only these can be compiled and linked correctly:
+
+- [x11.def](./x11.def)
+- [x11.c](./x11.c) with one addition of mine: _#include <stdlib.h>_
+
+<br/>
 
 On an "empty" Linux system, the client interface to the X Window System must be installed first like this:
 
@@ -337,8 +351,6 @@ We just created two new files in directory _./m2bin_: _x11.d_ and _x11.r_, where
 
 <br/>
 
-
-
 Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at chapter "Creating the mandelbrot set" at page: https://fruttenboel.nl/mocka/mandel.html
 
 But this command isn't working:
@@ -355,31 +367,50 @@ So, we must really use the compiler interactively:
 $ mocka
 Mocka 0608m
 >> p mand01
-...  # vi editor opens
 .. Compiling Program Module mand01 I/0006 II/0006
+.. Linking mand01
 >> q
 $
 ```
 
-Or, thanks to Google AI, we can also do like this:
+Or, thanks to Google AI, we can also do it like this while staying on the console:
 
 ```
 $ echo "p mand01" | mocka
-...  # vi editor opens
 Mocka 0608m
 >> .. Compiling Program Module mand01 I/0006 II/0006
+.. Linking mand01
 >>
 $
 ```
 
-In both cases, the automatically opened vi editor can be and should be quit with command _qa!_
+All in all, these files have been created:
 
-However, the p command to finally link the compiled module didn't make it through. Only files : _mand01.r_ and _mand01.s_ have been created in directory _./m2bin_,
-but no application _./mand01_ in the project root directory!
+```
+$ ls -1 m2bin
+_M2ROOT.o
+_M2ROOT.s
+mand01  # this is a link to the ../mand01 executable
+mand01.o
+mand01.r
+mand01.s
+x11.d
+x11.o
+x11.r
+$
+```
 
-The .s file represents the architecture assembly code.
+..where the _mand01.s_ file represents the architecture assembly code and _mand01.r_ the intermediate code.
 
-tbd
+Now, let's run executable _mand01_ in the project root directory and with parameters as shown here: https://fruttenboel.nl/mocka/mandel.html
+
+```
+$ ./mand01 -0.372 -0.65 25000 70000
+```
+
+<br/>
+
+![plot](./mand01%20-0.372%20-0.65%2025000%2070000.png)
 
 <br/>
 
