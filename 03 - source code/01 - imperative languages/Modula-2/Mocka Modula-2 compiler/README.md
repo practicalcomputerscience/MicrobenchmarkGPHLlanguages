@@ -4,11 +4,13 @@ tbd: toc
 
 <br/>
 
-# Mocka Modula-2 compiler for 32-bit Linux
+# Mocka Modula-2 compiler for 32-bit Linux and X Window graphics
 
 m2 = Modula-2
 
 GMD = tbd
+
+X Window System: https://www.x.org/
 
 Mocka is correctly abbreviated MocKa (or MOCKA) and means: **MOdula-2 Compiler KArlsruhe** from the then: Institut für Programm- und Datenstrukturen
 at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's the Karlsruhe Institute of Technology, KIT).
@@ -36,9 +38,9 @@ As seen on this page: https://fruttenboel.nl/mocka/
 
 <br/>
 
-For the installations as described below, these two sources of information have been the most important ones:
+For the installation instructions described below, these two sources of information have been the most important ones to me:
 
-- (1) GMD_MocKa_Compiler: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler
+- (1) GMD_MocKa_Compiler: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler, which is based on this original source: [Setup of Mocka 0608m](https://fruttenboel.nl/mocka/setup.html) by Jan Verhoeven
 - (2) https://fruttenboel.nl/mocka/simplex11.html
 
 <br/>
@@ -64,15 +66,15 @@ After the installation of the guest OS, for convenience (shared clipboard etc), 
 
 ## Setting up the Mocka Modula-2 compiler in version 0608m
 
-I started with downloading sources in tar archive _mocka.tgz_ from here: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler/TAR_Archives
+I started with downloading sources in tar archive _mocka.tgz_ ("original Mocka") from here: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler/TAR_Archives
 
-I cannot say for what the other and bigger sources _m2.tgz_ are for. I could be that these are "non-Jan Verhoeven" sources.
+I cannot say for what the other and bigger sources _m2.tgz_ are for.
 
 I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in (1).
 
 <br/>
 
-As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (1), I used tarball file _mocka.tgz_, a file that may have been created by Jan Verhoeven. The 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
+As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (1), I used the "original" tarball file _mocka.tgz_ as originally created by Dr Maurer of the FU Berlin. The 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
 
 - the md and mi file extensions from Mocka are back to def and mod
 - all files produced by mocka are placed in a subdirectory called './m2bin'.
@@ -83,6 +85,120 @@ As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (
 - it is ready to produce GUI programs with X-windows!
 
 <br/>
+
+The following instructions are more or less of what Jan Verhoeven has been writing from chapter "Step 2: install mocka 0608m original" onwards.
+
+First, I logged into the Bash shell as root, that is the Linux superuser:
+
+```
+$ sudo -i
+...
+$ cp mocka.tgz /usr/local  # copy the original sources to their installation root directory
+$ tar xfz mocka.tgz  # unpack this tarball file
+$
+```
+
+Then I expanded my _~/.bahrc_ configuration file with these two lines:
+
+```
+export MOCKA=/usr/local/mocka
+export MOCKALINK=-lX11
+```
+
+By the way: I'm using the **nano editor** to do changes on config file _$ .bashrc_, see from here for example: https://www.nano-editor.org/
+
+Best is now to restart the Bash shell and re-login as root user. Now install the Mocka compiler documentation:
+
+```
+$ cd /usr/local/mocka/man1
+$ gzip mc.1
+$ cp mc.1.gz /usr/local/man/man1/mocka.1.gz
+```
+
+By the way: the Mocka compiler infrastructure is basically a **collection of scripts for the standard system shell**. The standard system shell in case of Ubuntu, or here Xubuntu, is usually the Bash shell by default, and can be always looked up like this: 
+
+```
+$ echo $SHELL
+/bin/bash
+$
+```
+
+Then I built the compiler with:
+
+```
+$ cd /usr/local/mocka/lib
+chmod 755 machen  # make this shell script executable
+chmod 755 makemockabin  # make this shell script executable
+./machen
+...
+./makemockabin
+...
+$
+```
+
+Finally, I added these two symbolic links to compiler script _ /usr/local/mocka/sys/m2_:
+
+```
+$ cd /usr/local/bin
+$ ln -s /usr/local/mocka/sys/m2 mocka
+$ ln -s /usr/local/mocka/sys/m2 m2
+```
+
+This is the Mocka compiler script (when using root user: prompt is # now):
+
+```
+# cat /usr/local/mocka/sys/m2
+#!/bin/sh
+#
+# Christian Maurer   v. 14. August 2006
+
+mkdir -p m2bin
+
+$MOCKA/sys/Mc \
+  -link $MOCKA/sys/link \
+  -edit $MOCKA/sys/edit \
+  -list $MOCKA/sys/list \
+  -asm  $MOCKA/sys/asm \
+  -syslib $MOCKA/lib/m2bin \
+  -index -range -S \
+  -d ./m2bin -D ./m2bin $MOCKAM2 \
+  -g -elf $*
+# 
+```
+
+By the way: I didn't change Mocka's default editor vi (PDF): [Vi Quick Reference](https://ex-vi.sourceforge.net/viin/quickref.pdf)
+
+Background: the Mocka compiler is also an interactive compiler with its own prompt system (which is not very comfortable).
+
+So, in any compilation case tbd
+
+
+Back in the Mocka working directory with source code file _mand01.mod_ from here: tbd
+
+tbd
+
+<br/>
+
+## Building pre-reqPre-requisite _ for X Setting up the Mocka Modula-2 compiler in version 0608m
+
+```
+$ sudo apt update
+$ sudo apt install libx11-dev
+...
+$
+```
+```
+$ mocka -p mand01
+Cannot find reference file for module 'mand01'
+$ 
+```
+
+
+
+
+
+
+
 
 
 
@@ -97,12 +213,7 @@ As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (
 
 ## Building the mand01 executable (in 32 bit)
 
-```
-$ sudo apt update
-$ sudo apt install libx11-dev
-...
-$
-```
+
 
 <br/>
 
