@@ -8,6 +8,8 @@ tbd: toc
 
 m2 = Modula-2
 
+GMD = tbd
+
 Mocka is correctly abbreviated MocKa (or MOCKA) and means: **MOdula-2 Compiler KArlsruhe** from the then: Institut für Programm- und Datenstrukturen
 at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's the Karlsruhe Institute of Technology, KIT).
 
@@ -56,7 +58,7 @@ I have taken one of the last 32-bit Ubuntu distributions with iso file _xubuntu-
 
 <br/>
 
-After the installation of the guest OS, for convenience (shared clipboard etc), and as a last step, I also mounted and installed the Guest Additions (GA) on the Xubuntu 18.04.5 LTS (32-bit) guest OS: [Guest Additions](https://www.virtualbox.org/manual/topics/guestadditions.html), something which I highly recommend to do.
+After the installation of the guest OS, for convenience (shared clipboard etc), and as a last step, I also mounted and installed the Guest Additions (GA) on the **Xubuntu 18.04.5 LTS (32-bit)** guest OS: [Guest Additions](https://www.virtualbox.org/manual/topics/guestadditions.html), something which I highly recommend to do.
 
 <br/>
 
@@ -64,13 +66,32 @@ After the installation of the guest OS, for convenience (shared clipboard etc), 
 
 I started with downloading sources in tar archive _mocka.tgz_ from here: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler/TAR_Archives
 
-I cannot say for what the other and bigger sources _m2.tgz_ are for.
+I cannot say for what the other and bigger sources _m2.tgz_ are for. I could be that these are "non-Jan Verhoeven" sources.
 
-I have not tested any 64-bit installation: 
+I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in (1).
 
 <br/>
 
-As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler." in (1), 
+As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (1), I used tarball file _mocka.tgz_, a file that may have been created by Jan Verhoeven. The 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
+
+- the md and mi file extensions from Mocka are back to def and mod
+- all files produced by mocka are placed in a subdirectory called './m2bin'.
+- executables are stripped by default
+- executables are stored in the base directory and are symlinks in ./m2bin
+- it has been compiled with a recent version of the libraries
+- it comes with full instructions and a set of scripts for installing
+- it is ready to produce GUI programs with X-windows!
+
+<br/>
+
+
+
+
+
+
+
+
+
 
 <br/>
 
