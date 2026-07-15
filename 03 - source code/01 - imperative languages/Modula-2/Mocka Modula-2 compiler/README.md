@@ -26,7 +26,7 @@ The two most important sources of information are these:
 <br/>
 
 By the way: Mocka is correctly abbreviated MocKa (or MOCKA) and means: **MOdula-2 Compiler KArlsruhe** from the then: Institut für Programm- und Datenstrukturen
-at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe in Germany, a structure which doesn't exist anymore (nowadays, it's the Karlsruhe Institute of Technology, KIT).
+at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's the Karlsruhe Institute of Technology, KIT).
 
 <br/>
 
