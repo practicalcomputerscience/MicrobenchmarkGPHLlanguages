@@ -333,7 +333,7 @@ $ mocka -s x11  # compile definition of module x11
 $ 
 ```
 
-We just created two new files in directory _./m2bin_: _x11.d_ and _x11.r_
+We just created two new files in directory _./m2bin_: _x11.d_ and _x11.r_, where the .r file represents intermediate code.
 
 <br/>
 
@@ -376,6 +376,8 @@ In both cases, the automatically opened vi editor can be and should be quit with
 
 However, the p command to finally link the compiled module didn't make it through. Only files : _mand01.r_ and _mand01.s_ have been created in directory _./m2bin_,
 but no application _./mand01_ in the project root directory!
+
+The .s file represents the architecture assembly code.
 
 tbd
 
