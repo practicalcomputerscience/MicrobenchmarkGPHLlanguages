@@ -28,13 +28,7 @@ tbd
 ### Motivation
 
 I wanted to compile Jan Verhoeven's Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka compiler on my own system,
-so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot diagrams in a X11 window with for example this execution command:
-
-```
-$ ./mand01 -0.372 -0.65 25000 70000
-```
-
-..as seen on this page: https://fruttenboel.nl/mocka/mandel.html
+so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot diagrams in a X11 window as seen on this page: https://fruttenboel.nl/mocka/mandel.html
 
 <br/>
 
@@ -48,11 +42,9 @@ For the installation instructions below, these two original sources by author Ja
 
 ## Installation of a 32-bit Linux as a virtual machine
 
-Since the Mocka compiler is a 32-bit program, I installed a dedicated 32-bit Linux system (4 GB memory; 4 cpu's; no UEFI; standard virtualization features on) as a guest operating system (OS) on a ("normal") 64-bit Ubuntu 24 LTS system as its host.
+Since the Mocka compiler is a 32-bit program, I installed a dedicated 32-bit Linux system (4 GB memory; 4 cpu's; **no UEFI**; standard virtualization features on) as a guest operating system (OS) on a ("normal") 64-bit Ubuntu 24 LTS system as its host.
 
 I'm using Oracle's VirtualBox for Linux (version 7.2.12 r174389) as my virtual machine hoster: https://www.virtualbox.org/wiki/Linux_Downloads
-
-<br/>
 
 I have taken one of the last 32-bit Ubuntu distributions with iso file _xubuntu-18.04.5-desktop-i386.iso_ from here:
 
@@ -61,7 +53,7 @@ I have taken one of the last 32-bit Ubuntu distributions with iso file _xubuntu-
 
 <br/>
 
-After the installation of the guest OS, for convenience (shared clipboard service etc) I additionally mounted and installed the Guest Additions (GA) in the **Xubuntu 18.04.5 LTS (32-bit)** guest OS: [Guest Additions](https://www.virtualbox.org/manual/topics/guestadditions.html), something which I highly recommend to do. Here's a rough description:
+After the installation of the guest OS, for convenience (shared clipboard service etc) I additionally mounted and installed the Guest Additions (GA) in the Xubuntu 18.04.5 LTS (32-bit) guest OS: [Guest Additions](https://www.virtualbox.org/manual/topics/guestadditions.html), something which I highly recommend to do. Here's a rough description:
 
 - on the top menu of the virtual machine, go to "Devices", then press on menu item "Insert Guest Additions CD image..."
 - at its just created desktop symbol, run at its right mouse button menu the "Mount Volume" command
@@ -94,7 +86,7 @@ Irony: you can only copy and paste such content of the virtual machine (with sim
 
 In the opened terminal shell, run this script as root user: _$ sudo ./VBoxLinuxAdditions.run_
 
-For a check, I rebooted this virtual machine with the power button behind the **very right hand side, very top menu**. This reboot should take only a small amount of time relatively, if it's a healthy system.
+For a check, I rebooted this virtual machine with the power button behind the **very right hand side, top menu**. This reboot should take only a small amount of time relatively if it's a healthy system.
 
 > [!CAUTION]
 > If possible, always shut down a virtual machine carefully. Don't shut down your host operating system while a virtual machine is still active. This may corrupt it beyond repair!
@@ -107,11 +99,11 @@ I started with downloading sources in tar archive _mocka.tgz_ ("original Mocka")
 
 I cannot say for what the other and bigger sources _m2.tgz_ are for.
 
-I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in . Also see "I will use Mocka as a compiler only on 32 bit machines." at the bottom of page (1b).
+I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in (3). Also see "I will use Mocka as a compiler only on 32 bit machines." at the bottom of page (1).
 
 <br/>
 
-As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (1), I used tarball file _mocka.tgz_ as originally created by Dr Maurer of the FU Berlin. According to source (1b) the 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
+As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (3), I used tarball file _mocka.tgz_ as originally created by Dr Maurer of the FU Berlin. According to source (1) the 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
 
 - the md and mi file extensions from Mocka are back to def and mod
 - all files produced by mocka are placed in a subdirectory called './m2bin'.
@@ -123,9 +115,9 @@ As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (
 
 <br/>
 
-The following instructions are more or less following chapter "Step 2: install mocka 0608m original" and beyond at page (1b).
+The following instructions are more or less following chapter "Step 2: install mocka 0608m original" and beyond at page (1).
 
-First, I logged into a Bash shell as root, that is the Linux superuser. The prompt character in Xubuntu is changing to '#':
+First, I logged into a Bash shell as root, that is the Linux superuser. The prompt character in Xubuntu changed to '#':
 
 ```
 $ sudo -i
@@ -136,7 +128,7 @@ $ sudo -i
 #
 ```
 
-Then I expanded my _~/.bahrc_ configuration file with these two lines:
+Then I expanded my _~/.bashrc_ configuration file with these two lines:
 
 ```
 export MOCKA=/usr/local/mocka
@@ -144,11 +136,11 @@ export MOCKALINK=-lX11
 ```
 
 > [!IMPORTANT]
-> Now comes the real hacks.
+> Now come the real hacks.
 
 This was only for the _~/.bahrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
 
-So, also add these two lines to the _/root/.bahrc_ configuration file of the root user. Best is now to restart the Bash shell and login as root again. 
+So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and login as root again. 
 
 Still, something is missing in my new Xubuntu 18.04.5 LTS (32-bit) system: a C compiler!
 
