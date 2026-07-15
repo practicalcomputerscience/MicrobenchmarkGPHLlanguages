@@ -13,7 +13,7 @@ GMD = tbd
 X Window System: https://www.x.org/
 
 Mocka is correctly abbreviated MocKa (or MOCKA) and means: **MOdula-2 Compiler KArlsruhe** from the then: Institut für Programm- und Datenstrukturen
-at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's the Karlsruhe Institute of Technology, KIT).
+at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's generally the Karlsruhe Institute of Technology, KIT).
 
 ---
 
@@ -28,7 +28,7 @@ tbd
 ### Motivation
 
 I wanted to compile Jan Verhoeven's Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka compiler on my own system,
-so I could make the _mand01_ executable by myself, a program which can make nice drawings in a X11 window with execution command:
+so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot diagrams in a X11 window with for example this execution command:
 
 ```
 $ ./mand01 -0.372 -0.65 25000 70000
@@ -38,10 +38,11 @@ $ ./mand01 -0.372 -0.65 25000 70000
 
 <br/>
 
-For the installation instructions described below, these two sources of information have been the most important ones to me:
+For the installation instructions below, these two original sources by author Jan Verhoeven and then a third one have been the most important ones to me:
 
-- (1) GMD_MocKa_Compiler: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler, based on this original source: [Setup of Mocka 0608m](https://fruttenboel.nl/mocka/setup.html) by Jan Verhoeven (1b)
-- (2) https://fruttenboel.nl/mocka/simplex11.html
+- (1) [Setup of Mocka 0608m](https://fruttenboel.nl/mocka/setup.html) 
+- (2) [Mocka: x11 Foreign module](https://fruttenboel.nl/mocka/simplex11.html)
+- (3) https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler
 
 <br/>
 
@@ -62,7 +63,7 @@ I have taken one of the last 32-bit Ubuntu distributions with iso file _xubuntu-
 
 After the installation of the guest OS, for convenience (shared clipboard service etc) I additionally mounted and installed the Guest Additions (GA) in the **Xubuntu 18.04.5 LTS (32-bit)** guest OS: [Guest Additions](https://www.virtualbox.org/manual/topics/guestadditions.html), something which I highly recommend to do. Here's a rough description:
 
-- on the top menu of the virtual machine, go to "Devices", then press on menu item "Insert Guest Additions Cd image..."
+- on the top menu of the virtual machine, go to "Devices", then press on menu item "Insert Guest Additions CD image..."
 - at its just created desktop symbol, run at its right mouse button menu the "Mount Volume" command
 - open this volume (again, a right mouse button menu item) and do "Open Terminal Here" in the opened directory, again a right mouse button menu item
 - now you can list the directory content with the _$ ls -1_ command for example:
@@ -91,7 +92,7 @@ $
 
 Irony: you can only copy and paste such content of the virtual machine (with simple means) **after** you have installed the Guest Additions :wink:
 
-Tn the opened terminal shell, run this script as root user: _$ sudo ./VBoxLinuxAdditions.run_
+In the opened terminal shell, run this script as root user: _$ sudo ./VBoxLinuxAdditions.run_
 
 For a check, I rebooted this virtual machine with the power button behind the **very right hand side, very top menu**. This reboot should take only a small amount of time relatively, if it's a healthy system.
 
@@ -106,7 +107,7 @@ I started with downloading sources in tar archive _mocka.tgz_ ("original Mocka")
 
 I cannot say for what the other and bigger sources _m2.tgz_ are for.
 
-I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in (1). Also see "I will use Mocka as a compiler only on 32 bit machines." at the bottom of page (1b).
+I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 64bit Ubuntu based Linux system.." as seen in . Also see "I will use Mocka as a compiler only on 32 bit machines." at the bottom of page (1b).
 
 <br/>
 
@@ -142,11 +143,39 @@ export MOCKA=/usr/local/mocka
 export MOCKALINK=-lX11
 ```
 
+> [!IMPORTANT]
+> Now comes the real hacks.
+
+This was only for the _~/.bahrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
+
+So, also add these two lines to the _/root/.bahrc_ configuration file of the root user. Best is now to restart the Bash shell and login as root again. 
+
+Still, something is missing in my new Xubuntu 18.04.5 LTS (32-bit) system: a C compiler!
+
+Consequently, install one (as root user):
+
+```
+# apt update
+# apt install gcc
+...
+# gcc --version
+gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+#
+```
+
+<br/>
+
 By the way: I'm using the **nano editor** to do changes on config file _$ .bashrc_ and other files inside the virtual machine: https://www.nano-editor.org/
 
-The nano editor can partly be operated with the right mouse button menu. Do a [CTRL]-[O] for writing a new output of the changed file and [CTRL]-[X] for leaving the nano editor.
+The nano editor can partly be operated with items of the right mouse button menu. Do a [CTRL]-[O] for writing a new output of the changed file and [CTRL]-[X] for leaving the nano editor.
 
-Best is now to restart the Bash shell and login as a root user again. Now install the Mocka compiler documentation:
+<br/>
+
+Now install the Mocka compiler documentation (as root user again):
 
 ```
 # cd /usr/local/mocka/man1
@@ -159,33 +188,80 @@ Best is now to restart the Bash shell and login as a root user again. Now instal
 By the way: the Mocka compiler infrastructure is basically a **collection of scripts for the standard system shell**. The standard system shell in case of Ubuntu, or here Xubuntu, is usually the Bash shell by default, and can be looked up like this: 
 
 ```
-$ echo $SHELL
+# echo $SHELL
 /bin/bash
-$
+#
 ```
 
-Then I built the compiler with commands:
+Then I built compiler resources with commands:
 
 ```
 # cd /usr/local/mocka/lib
 # chmod 755 machen  # make this shell script executable if needed
-# chmod 755 makemockabin  # make this shell script executable if needed
 # ./machen
-...
+LREAL.c:28:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_LREAL(){}
+ ^~~~~~~~~~~
+libc.c:4:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_libc(){}
+ ^~~~~~~~~~
+miscc.c:17:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_miscc(){}
+ ^~~~~~~~~~~
+Mocka 0608m
+>> .. Compiling Implementation of BasicIO I/0008 II/0008
+.. Compiling Implementation of Storage I/0005 II/0005
+.. Compiling Implementation of ByteIO I/0018 II/0018
+.. Compiling Implementation of RealConv I/0013 II/0013
+.. Compiling Implementation of TextIO I/0027 II/0027
+.. Compiling Definition of Signals
+.. Compiling Implementation of Signals I/0001 II/0001
+.. Compiling Implementation of MemPools I/0004 II/0004
+.. Compiling Implementation of Clock I/0004 II/0004
+.. Compiling Program Module tst I/0001 II/0001
+.. Linking tst
+>> 
+./machen: line 26: mockabin/tst: No such file or directory
+# chmod 755 makemockabin  # make this shell script executable if needed
 # ./makemockabin
-...
+./makemockabin: 11: ./makemockabin: m2: not found
+./makemockabin: 11: ./makemockabin: m2: not found
+./makemockabin: 11: ./makemockabin: m2: not found
+./makemockabin: 11: ./makemockabin: m2: not found
+./makemockabin: 11: ./makemockabin: m2: not found
+./makemockabin: 14: ./makemockabin: m2: not found
+LREAL.c:28:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_LREAL(){}
+ ^~~~~~~~~~~
+libc.c:4:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_libc(){}
+ ^~~~~~~~~~
+miscc.c:17:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ BEGIN_miscc(){}
+ ^~~~~~~~~~~
+./makemockabin: 22: ./makemockabin: m2: not found
+./makemockabin: 24: ./makemockabin: tst: not found
+#
+```
+
+At first, this doesn't look too good (on a brand new Linux system), but it created things like the _tst_ executable:
+
+```
+# ./tst
+Hello, world!
 #
 ```
 
 Finally, I added these two symbolic links to compiler script _/usr/local/mocka/sys/m2_:
 
 ```
-$ cd /usr/local/bin
-$ ln -s /usr/local/mocka/sys/m2 mocka
-$ ln -s /usr/local/mocka/sys/m2 m2
+# ln -s /usr/local/mocka/sys/m2 mocka
+# ln -s /usr/local/mocka/sys/m2 m2
 ```
 
-This is the Mocka compiler script (when using root user: prompt is # now):
+So, the Mocka compiler can now be called with command _mocka_ or _m2_ for **all** system users and system wide.
+
+This is the linked Mocka compiler script:
 
 ```
 # cat /usr/local/mocka/sys/m2
@@ -207,54 +283,63 @@ $MOCKA/sys/Mc \
 # 
 ```
 
+<br/>
+
 By the way: I didn't change Mocka's default editor vi (PDF): [Vi Quick Reference](https://ex-vi.sourceforge.net/viin/quickref.pdf)
 
-Background: the Mocka compiler is also an interactive compiler with its own prompt system (which is not very comfortable).
+Background: the Mocka compiler is also an interactive compiler with its own prompt system (which is not very comfortable). So, in any compilation case, be it a success or a failure, the vi editor with the source opens up!
 
-So, in any compilation case tbd
+So, install the _rlwrap_ utility for betting editing comfort: _$ sudo apt install rlwrap_
 
+Run a test like this for example:
 
-Back in the Mocka working directory with source code file _mand01.mod_ from here: tbd
+```
+$ rlwrap mocka -info
+Options in effect:  index, range, blip, elf, S, g, gc, ge, nostatic
+  Current Library       : ./m2bin
+  Secondary Libraries   :  ./m2bin /usr/local/mocka/lib/m2bin
+  List  Script          : /usr/local/mocka/sys/list
+  Edit  Script          : /usr/local/mocka/sys/edit
+  Link  Script          : /usr/local/mocka/sys/link
+  Asm   Script          : /usr/local/mocka/sys/asm
+Mocka 0608m
+>> p
+Missing parameters
+>> q
+$
+```
+
+Command _q_ leaves the compiler REPL.
+
+<br/>
+
+## Building X Window resources
+
+You can now exit the root shell to your normal system user with _# exit_ and change into the normal working directory with your Mocka resources.
+
+tbd 
+
+```
+$ sudo apt install libx11-dev
+...
+$
+```
 
 tbd
 
 <br/>
 
-## Building pre-reqPre-requisite _ for X Setting up the Mocka Modula-2 compiler in version 0608m
+## Building the mand01 executable (in 32 bit)
 
-```
-$ sudo apt update
-$ sudo apt install libx11-dev
-...
-$
-```
+Back in the Mocka working directory with source code file _mand01.mod_ from here: tbd
+
 ```
 $ mocka -p mand01
 Cannot find reference file for module 'mand01'
 $ 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br/>
-
-## Building the mand01 executable (in 32 bit)
-
-
+tbd
 
 <br/>
 
