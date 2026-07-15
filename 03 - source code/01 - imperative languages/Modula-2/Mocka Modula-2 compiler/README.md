@@ -82,7 +82,7 @@ windows11-bypass.reg
 $
 ```
 
-Irony: you can only copy and paste such content of the virtual machine (with simple means) **after** you have installed the Guest Additions :wink:
+You can only copy and paste such content of the virtual machine (with simple means) **after** you have installed the Guest Additions :wink:
 
 In the opened terminal shell, run this script as root user: _$ sudo ./VBoxLinuxAdditions.run_
 
@@ -103,7 +103,7 @@ I have not tested any 64-bit installations: "CHANGES: Adjusted to compile on a 6
 
 <br/>
 
-As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (3), I used tarball file _mocka.tgz_ as originally created by Dr Maurer of the FU Berlin. According to source (1) the 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
+As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler.") in (3), I used tarball file _mocka.tgz_ as originally created by Dr Maurer of the FU Berlin. According to source (1), the 0608m Mocka compiler has been "partly rewritten by Dr Maurer of the FU Berlin. It differs from standard Mocka as follows:"
 
 - the md and mi file extensions from Mocka are back to def and mod
 - all files produced by mocka are placed in a subdirectory called './m2bin'.
@@ -140,9 +140,9 @@ export MOCKALINK=-lX11
 
 This was only for the _~/.bahrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
 
-So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and login as root again. 
+So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and change there into root again. 
 
-Still, something is missing in my new Xubuntu 18.04.5 LTS (32-bit) system: a C compiler!
+Still, something is missing in my new 32-bit Xubuntu system: a C compiler!
 
 Consequently, install one (as root user):
 
@@ -161,7 +161,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 <br/>
 
-By the way: I'm using the **nano editor** to do changes on config file _$ .bashrc_ and other files inside the virtual machine: https://www.nano-editor.org/
+By the way: I'm using the **nano editor** to do changes of config file _$ .bashrc_ and other files inside the virtual machine: https://www.nano-editor.org/
 
 The nano editor can partly be operated with items of the right mouse button menu. Do a [CTRL]-[O] for writing a new output of the changed file and [CTRL]-[X] for leaving the nano editor.
 
@@ -295,8 +295,14 @@ Options in effect:  index, range, blip, elf, S, g, gc, ge, nostatic
   Link  Script          : /usr/local/mocka/sys/link
   Asm   Script          : /usr/local/mocka/sys/asm
 Mocka 0608m
->> p
-Missing parameters
+>> -help
+Mocka 0608m
+mc [options] module
+options: -info show options in affect and scripts
+         -options show detailed options
+         -s compile definition of module
+         -c compile implemenatation of module
+         -p link module
 >> q
 $
 ```
@@ -307,29 +313,69 @@ Command _q_ leaves the compiler REPL.
 
 ## Building X Window resources
 
-You can now exit the root shell to your normal system user with _# exit_ and change into the normal working directory with your Mocka resources.
+You can now exit the root shell to your normal system user with _\# exit_ and change into the working directory with your Mocka resources.
 
-tbd 
+The following instructions are more or less following chapter "Graphic programming with Mocka" and beyond at page (2).
+
+Here's the first source file [x11.def](./x11.def) as defined by its author Jan Verhoeven.
+
+Here's the second source file [x11.c](./x11.c) as defined by its author Jan Verhoeven, and with one addition of mine: _#include <stdlib.h>_
+
+On an "empty" Linux system, the client interface to the X Window System must be installed first like this:
 
 ```
 $ sudo apt install libx11-dev
 ...
-$
+$ gcc -lX11 -c x11.c  # compile the C module to an object file
+$ mkdir -p ./m2bin  # make this project resources directory if missing
+$ cp x11.o ./m2bin  # copy the just created object file to it
+$ mocka -s x11  # compile definition of module x11
+$ 
 ```
 
-tbd
+We just created two new files in directory _./m2bin_: _x11.d_ and _x11.r_
 
 <br/>
 
-## Building the mand01 executable (in 32 bit)
 
-Back in the Mocka working directory with source code file _mand01.mod_ from here: tbd
+
+Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at chapter "Creating the mandelbrot set" at page: https://fruttenboel.nl/mocka/mandel.html
+
+But this command isn't working:
 
 ```
 $ mocka -p mand01
 Cannot find reference file for module 'mand01'
-$ 
+$
 ```
+
+So, we must really use the compiler interactively:
+
+```
+$ mocka
+Mocka 0608m
+>> p mand01
+...  # vi editor opens
+.. Compiling Program Module mand01 I/0006 II/0006
+>> q
+$
+```
+
+Or, thanks to Google AI, we can also do like this:
+
+```
+$ echo "p mand01" | mocka
+...  # vi editor opens
+Mocka 0608m
+>> .. Compiling Program Module mand01 I/0006 II/0006
+>>
+$
+```
+
+In both cases, the automatically opened vi editor can be and should be quit with command _qa!_
+
+However, the p command to finally link the compiled module didn't make it through. Only files : _mand01.r_ and _mand01.s_ have been created in directory _./m2bin_,
+but no application _./mand01_ in the project root directory!
 
 tbd
 
