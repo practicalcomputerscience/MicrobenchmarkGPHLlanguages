@@ -36,8 +36,8 @@ As seen on this page: https://fruttenboel.nl/mocka/
 
 For the installations as described below, these two sources of information have been the most important ones:
 
-- <br/>
-- https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master
+- (1) https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master
+- (2) https://fruttenboel.nl/mocka/simplex11.html
 
 <br/>
 
