@@ -36,7 +36,7 @@ As seen on this page: https://fruttenboel.nl/mocka/
 
 For the installations as described below, these two sources of information have been the most important ones:
 
-- (1) https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master
+- (1) GMD_MocKa_Compiler: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler
 - (2) https://fruttenboel.nl/mocka/simplex11.html
 
 <br/>
@@ -60,13 +60,17 @@ After the installation of the guest OS, for convenience (shared clipboard etc), 
 
 <br/>
 
-## Setting up the Mocka Modula-2 compiler
+## Setting up the Mocka Modula-2 compiler in version 0608m
 
 I started with downloading sources in tar archive _mocka.tgz_ from here: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler/TAR_Archives
 
 I cannot say for what the other and bigger sources _m2.tgz_ are for.
 
+I have not tested any 64-bit installation: 
 
+<br/>
+
+As recommended ("PLEASE USE 0608m version of the Mocka Modula-2 Compiler." in (1), 
 
 <br/>
 
