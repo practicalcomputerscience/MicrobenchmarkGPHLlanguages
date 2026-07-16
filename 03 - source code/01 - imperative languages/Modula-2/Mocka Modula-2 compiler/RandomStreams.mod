@@ -15,11 +15,11 @@ OS: xubuntu-18.04.5-desktop-i386 as a virtual machine (Oracle VirtualBox) on a U
 build on Ubuntu 24 LTS: $ echo "p RandomStreams" | mocka
 
 run on Ubuntu 24 LTS:   $ ./RandomStreams
-                        $ time ./RandomStreams => real	0m0,026s
-			$ multitime -n 10 ./RandomStreams
-			1: ./RandomStreams
+                        $ time ./RandomStreams => real  0m0,026s
+                        $ multitime -n 10 ./RandomStreams
+                        1: ./RandomStreams
                                     Mean        Std.Dev.    Min         Median      Max
-                        real        0.025       0.001       0.021       0.025       0.026   
+                        real        0.025       0.001       0.021       0.025       0.026
 
 
 Compiler version: Mocka 0608m
@@ -52,14 +52,14 @@ VAR
   i, h, byte_nbr : CARDINAL;
 
   t, file1     : INTEGER;
-  
+
   bits_x_str   : ARRAY [0..15] OF CHAR;
   bits_hex_str : ARRAY [0..3] OF CHAR;
 
   bits_x     : ARRAY [0..M1-1] OF CHAR; (* M1-1 for no last 0C, "NULL", character *)
   bits_hex   : ARRAY [0..K250-1] OF CHAR;
-  
-  
+
+
 
 (**********************************************************)
 (* user defined functions                                 *)
@@ -147,7 +147,7 @@ BEGIN
   SysLib.time (t);
   (*InOut.WriteLn; InOut.WriteCard(t, 0);*)  (* for testing *)
   (* t is the time in seconds since the epoch, specifically January 1, 1970 *)
-  
+
   x[0] := CARDINAL(t) MOD (m - 2) + 1;
   (*InOut.WriteLn; InOut.WriteCard(x[0], 0);*)  (* for testing *)
 
@@ -157,26 +157,26 @@ BEGIN
   FOR i := 1 TO upper_limit - 1 DO
     x[i] := (a * x[i - 1] + c) MOD m;
     (*InOut.WriteLn; InOut.WriteLn; InOut.WriteCard(x[i], 0);*)  (* for testing *)
-    
+
     Integer_to_bin_string(x[i], bits_x_str);
     (*InOut.WriteLn; InOut.WriteString(bits_x_str);*)   (* for testing *)
     byte_nbr := (i - 1) * 16;
     FOR h := 0 TO 15 DO
       bits_x[byte_nbr + h] := bits_x_str[h];
     END;
-        
+
     Integer_to_hex_string(x[i], bits_hex_str);
-    (*InOut.WriteLn; InOut.WriteString(bits_hex_str);*)  (* for testing *) 
+    (*InOut.WriteLn; InOut.WriteString(bits_hex_str);*)  (* for testing *)
     byte_nbr := (i - 1) * 4;
     FOR h := 0 TO 3 DO
       bits_hex[byte_nbr + h] := bits_hex_str[h];
     END;
   END;
-  (*InOut.WriteLn;*) 
+  (*InOut.WriteLn;*)
 
   (*InOut.WriteLn; InOut.WriteLn; InOut.WriteString(bits_x);*)  (* for testing *)
   (*InOut.WriteLn; InOut.WriteLn; InOut.WriteString(bits_hex);*)  (* for testing *)
-  
+
   TextIO.OpenOutput(file1, file_bits_x);
   IF TextIO.Done() THEN
     TextIO.PutString(file1, bits_x);
@@ -196,7 +196,7 @@ BEGIN
     InOut.WriteString(file_bits_hex); InOut.WriteLn;
   ELSE
     InOut.WriteString("could not write to file: "); InOut.WriteString(file_bits_hex);
-    InOut.WriteString(" !"); InOut.WriteLn;    
+    InOut.WriteString(" !"); InOut.WriteLn;
   END;
 
 END RandomStreams.

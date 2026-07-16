@@ -15,10 +15,10 @@ build on Xubuntu 18.04.5 32-bit: $ gcc -Wall random_streams_for_perf_stats2a.c -
 
 
 run on Xubuntu 18.04.5 32-bit:   $ time ./random_streams_for_perf_stats2a
-				 $ multitime -n 10 ./random_streams_for_perf_stats2a
+         $ multitime -n 10 ./random_streams_for_perf_stats2a
                                  1: ./random_streams_for_perf_stats2a
                                              Mean        Std.Dev.    Min         Median      Max
-                                 real        0.005       0.001       0.004       0.005       0.007    
+                                 real        0.005       0.001       0.004       0.005       0.007
 
 
 $ gcc --version
@@ -108,7 +108,7 @@ int main()
     bits_x[byte_nbr+13]  = bits_x_str[13];
     bits_x[byte_nbr+14]  = bits_x_str[14];
     bits_x[byte_nbr+15]  = bits_x_str[15];
-    
+
     bits_x[byte_nbr+16]   = '\0';  // there's trash at the last char's/bytes; 2026-07-16
 
 
@@ -139,7 +139,7 @@ int main()
     printf("\nBit stream has been written to disk under name:  %s", file_bits_x);
     fclose(f1);
   }
-  
+
   // write byte stream to disk:
   FILE *f2 = fopen(file_bits_hex, "w");
   if (f2 == NULL)
