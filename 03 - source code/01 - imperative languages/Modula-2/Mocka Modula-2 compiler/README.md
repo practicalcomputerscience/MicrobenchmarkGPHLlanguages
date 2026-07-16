@@ -446,4 +446,19 @@ $ ./mand01 -0.372 -0.65 25000 70000
 
 <br/>
 
+## Microbenchmark program: speed part
+
+I got curious how fast executables the Mocka Modula-2 compiler can make, at least with my microbenchmark program: [RandomStreams.mod](./RandomStreams.mod) (this compiler has quite strict module naming rules, while identifier naming isn't so strict as originally conceived for the Modula-2 language)
+
+On the same virtual 32-bit platform, the numbers are very clear:
+
+language | compiler | mean execution time measured with _$ multitime -n 10 <executable>_
+--- | --- | ---
+Modula-2 | Mocka 0608m | 25 milliseconds
+C | gcc version 7.5.0 | 5 milliseconds
+
+In other words: 5 times slower, while on my "official" testing system the gm2 13.3.0 compiled Modula-2 executable beats its C counterpart compiled with clang 22.1.8 (and idiomatic usage of the _sprintf_ function) by about -30%: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+
+<br/>
+
 ##_end
