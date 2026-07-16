@@ -93,6 +93,11 @@ For a check, I rebooted this virtual machine with the power button at the **righ
 
 ## Setting up the Mocka Modula-2 compiler in version 0608m
 
+> [!IMPORTANT]
+> Make sure that source files haves UNIX-like line endings with only a line feed (LF) control character (and not Windows-like [CR]+[LF] endings).
+
+<br/>
+
 I started with downloading sources in tar archive _mocka.tgz_ ("original Mocka") from here: https://github.com/GunterMueller/Mocka_Modula-2_Compilers_and_Murus/tree/master/GMD_MocKa_Compiler/TAR_Archives
 
 I cannot say for what the other and bigger sources _m2.tgz_ are for.
