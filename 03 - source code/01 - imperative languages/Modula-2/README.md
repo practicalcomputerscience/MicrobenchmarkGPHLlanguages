@@ -10,7 +10,7 @@ ISO standard for Modula-2: https://www.iso.org/standard/18583.html
 
 Table of contents:
 
-- [Idea of Modula-2]()
+- [Idea of Modula-2](#idea-of-modula-2)
 - [Installation tips](#installation-tips)
 - [How to write fast Modula-2 programs](#how-to-write-fast-modula-2-programs)
 - [Issues with the GNU Modula-2 GCC frontend](#issues-with-the-gnu-modula-2-gcc-frontend)
