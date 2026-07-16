@@ -174,7 +174,24 @@ Now install the Mocka compiler documentation (as root user again):
 # gzip mc.1
 # mkdir -p /usr/local/man/man1  # create this directory if still missing!
 # cp mc.1.gz /usr/local/man/man1/mocka.1.gz
-#
+# man mc  # do a documentation check
+MC(1)                                       General Commands Manual                                       MC(1)
+
+NAME
+       mc - MOCKA, Modula-2 Compiler Karlsruhe running on Linux
+
+SYNOPSIS
+       mc [-s module | -c module | -p module]
+
+       [-d  dir] ...  [-index] [-noindex] [-range] [-norange] [-static] [-nostatic] [-elf] [-noelf] [-g] [-nog]
+       [-gc] [-nogc] [-ge] [-noge] [-S] [-noS]
+
+       [-D directory] [-link script] [-edit script] [-list script] [-asm script] [-syslib dir]
+
+DESCRIPTION
+       mc is used to compile and link programs written in Modula-2.
+...
+# 
 ```
 
 By the way: the Mocka compiler infrastructure is basically a **collection of scripts for the standard system shell**. The standard system shell in case of Ubuntu, or here Xubuntu, is usually the Bash shell by default, and can be looked up like this: 
