@@ -6,7 +6,21 @@ ISO Libraries: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/M2-ISO-Libraries.ht
 
 ISO standard for Modula-2: https://www.iso.org/standard/18583.html
 
+---
+
+Table of contents:
+
+- [Idea of Modula-2]()
+- [Installation tips](#installation-tips)
+- [How to write fast Modula-2 programs](#how-to-write-fast-modula-2-programs)
+- [Issues with the GNU Modula-2 GCC frontend](#issues-with-the-gnu-modula-2-gcc-frontend)
+- [Mocka Modula-2 compiler]()
+
 <br/>
+
+---
+
+## Idea of Modula-2
 
 Niklaus Wirth: Modula-2 ... An Improvement On Pascal And Modula
 
@@ -83,6 +97,12 @@ Similar to [Regular expressions in Mojo](https://github.com/practicalcomputersci
 #### Issues with the GNU Modula-2 GCC frontend
 
 See at: https://github.com/wgottwalt/gnu_modula2_playground/tree/main
+
+<br/>
+
+#### Mocka Modula-2 compiler
+
+I have added an extra page on my successful experiments with this historic Modula-2 compiler made in Germany, which is still usable in a 32-bit Linux system (and may work with extra expert work in a modern 64-bit Linux system): [Mocka Modula-2 compiler for 32-bit Linux and X Window graphics](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler#mocka-modula-2-compiler-for-32-bit-linux-and-x-window-graphics)
 
 <br/>
 
