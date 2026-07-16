@@ -58,12 +58,11 @@ $
 After implementing the "speed part" of the microbenchmark program in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3),
 without any user defined functions or other hacks, and with an execution time of about 78 milliseconds, I got curious about how former Modula-2 would compare.
 
-In short: very bad without user defined functions or with using dynamic strings for string building, at least when using the GNU gm2 compiler and ISO standard features.
+In short: very bad without user defined functions or with using dynamic strings for string building, at least when using the GNU gm2 compiler with a GCC 13 frontend and activated ISO standard features.
 
 At worst, the compiled program would not terminate within a reasonable amount of time.
 
-However, I didn't test other combinations, for example using the PIM2, PIM3, PIM4 dialects, which are also supported by the gm2 compiler. (PIM2 = "Programming in Modula-2", 2nd Edition, Springer Verlag, 1982: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html).
-I also didn't test other open source Modula-2 compilers, which may still be around for Linux (I've seen some, often based on adapted, very old sources for 32-bit systems).
+However, I didn't test other combinations, for example using the PIM2, PIM3, PIM4 dialects, which are also supported by the gm2 compiler. For example, PIM2 refers to: ’Programming in Modula-2’, 2nd Edition, Springer Verlag, 1982, 1983 by Niklaus Wirth: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html
 
 <br/>
 
@@ -102,9 +101,9 @@ See at: https://github.com/wgottwalt/gnu_modula2_playground/tree/main
 
 #### Mocka Modula-2 compiler
 
-I have added an extra page on my successful experiments with this historic Modula-2 compiler, which is still usable in a 32-bit Linux system (and may work with extra expert work in a modern 64-bit Linux system): [Mocka Modula-2 compiler for 32-bit Linux and X Window graphics](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler#mocka-modula-2-compiler-for-32-bit-linux-and-x-window-graphics)
+I have added an extra page on my successful experiments with the historic Mocka Modula-2 compiler, which is still usable in a 32-bit Linux system (and may work with extra expert work in a modern 64-bit Linux system): [Mocka Modula-2 compiler for 32-bit Linux and X Window graphics](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler#mocka-modula-2-compiler-for-32-bit-linux-and-x-window-graphics)
 
-Originally, this compiler was basically an implementation of the PIM3 dialect of the Modula-2 language as defined in: ’Programming in Modula-2’, 3rd Corrected Edition, Springer Verlag, 1985 (PIM3) (https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html), "with a few minor extensions" (PDF of the user manual): https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler/UserMan.pdf
+Originally, this compiler was basically an implementation of the PIM3 dialect of the Modula-2 language as defined in: ’Programming in Modula-2’, 3rd Corrected Edition, Springer Verlag, 1985 (PIM3) (https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html), "with a few minor extensions" (PDF): [GMD MODULA SYSTEM MOCKA User Manual](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler/UserMan.pdf)
 
 <br/>
 
