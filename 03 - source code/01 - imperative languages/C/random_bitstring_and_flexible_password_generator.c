@@ -9,6 +9,7 @@ random_bitstring_and_flexible_password_generator.c
 2026-05-25: refactored from char_set to pattern (for regular expressions)
 2026-06-17: refactored for a complete POSIX based solution with regular expressions
 2026-06-19: refactored for memory freeing both regexpr's to get the desired "no leaks are possible" vote from valgrind
+2026-07-16: bits_x: there's trash at the last char's/bytes when porting to other Linux + gcc versions!
 
 
 build on Ubuntu 24 LTS: $ make  # see make file below
@@ -70,7 +71,7 @@ int main()
   x[0] = rand() % (m-1) + 1;  // rand(): random number between 0 and RAND_MAX, both included; 2025-12-17
   // printf("x[0] = %d\n", x[0]);  // for testing
 
-  char bits_x[M1];
+  char bits_x[M1+1];  // 2026-07-16
   char bits_x_str[17];
   int  byte_nbr;
 
@@ -103,6 +104,8 @@ int main()
     bits_x[byte_nbr+13]  = bits_x_str[13];
     bits_x[byte_nbr+14]  = bits_x_str[14];
     bits_x[byte_nbr+15]  = bits_x_str[15];
+
+    bits_x[byte_nbr+16]   = '\0';  // there's trash at the last char's/bytes; 2026-07-16
 
 
     sprintf(bits_hex_str, "%04x", x[i]);
@@ -275,7 +278,7 @@ int main()
   }
 
   printf("\nYour password of %d characters is: %s\n", N_CHAR, pw_chars);
-  
+
   // 2026-06-19:
   regfree(&re_printable);
   regfree(&re_alphanum);
