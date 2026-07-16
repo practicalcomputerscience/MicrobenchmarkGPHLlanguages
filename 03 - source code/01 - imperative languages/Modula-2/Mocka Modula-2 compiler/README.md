@@ -23,7 +23,7 @@ Table of contents:
 
 ---
 
-### Motivation
+## Motivation
 
 I wanted to compile Jan Verhoeven's Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka compiler on my own system,
 so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot set diagrams in a X11 window as seen on this page: https://fruttenboel.nl/mocka/mandel.html
