@@ -50,6 +50,7 @@ Mercury | Mercury Compiler, version rotd-2025-11-01; Copyright (C) 1993-2012 The
 Modula-2 (GNU) | gm2 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, Copyright (C) 2023 Free Software Foundation, Inc., ... | $ gm2 --version
 Mojo | Mojo 1.0.0b2.dev2026052706 (83444c6d) | $ pixi run mojo --version
 Nim | Nim Compiler Version 2.2.6 [Linux: amd64]; Compiled at 2025-10-31; Copyright (c) 2006-2025 by Andreas Rumpf, ... | $ nim -v
+Oberon | ... Oxford Oberon-2 compiler version 3.3.0 [build hg-64b7090cfb52] ... | $ obc -v
 OCaml | 2.5.0; 3.20.2; The OCaml toplevel, version 5.4.0 | $ opam --version; $ dune --version; $ ocaml --version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
