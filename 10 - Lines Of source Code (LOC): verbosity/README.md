@@ -123,6 +123,7 @@ COBOL (GnuCOBOL)  | 357 | compiled, very mature language: lots of definitions ne
 Inko              | 232 | compiled, very young language: lots of user-defined functions needed; also a construct is used to avoid repeated, individual access to array elements _x.get(i).or_panic_ and _x.get(i - 1).or_panic_ for exe speed reasons | 2026-01-24
 Modula-2 (GNU)    | 231 | compiled, very mature language: some user-defined functions needed | 2026-07-12
 Eiffel (Liberty)  | 220 | compiled, very mature language: some user-defined functions needed; since programs are collections of classes, this is causing some formal overhead | 2026-06-18
+Oberon (OBC)      | 217 | interpreted, very mature language: some user-defined functions needed | 2026-07-16
 Ada (GNAT)        | 215 | compiled, very mature language: lots of declarations and type definitions; still keeping the low level character copying from little strings into the big strings for performance reasons | 2026-06-08
 Forth (Gforth)    | 214 | interpreted, very mature language: lots of user-defined functions needed | 2026-07-09
 Standard ML (MLton) | 197 | compiled, very mature language: numerous user-defined functions needed | 2026-06-18
@@ -228,6 +229,7 @@ Mercury            | 9
 Modula-2 (GNU)     | 4
 Mojo               | 0
 Nim                | 0
+Oberon (OBC)       | 5
 OCaml              | 4
 Odin               | 0
 Perl 5             | 0
