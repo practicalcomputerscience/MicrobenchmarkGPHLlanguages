@@ -366,7 +366,7 @@ $ mocka -s x11  # compile definition of module x11
 $ 
 ```
 
-We just created two new files in subdirectory _./m2bin_: _x11.d_ and _x11.r_, where the .r file represents intermediate code.
+We just created two new files in subdirectory _./m2bin_: _x11.d_ and _x11.r_, where the .d symbol file is used for inter module type checking and the .r reference file for linking.
 
 <br/>
 
@@ -421,7 +421,7 @@ x11.r
 $
 ```
 
-..where the _mand01.s_ file represents the architecture assembly code and _mand01.r_ the intermediate code.
+..where _mand01.s_ is the assembler file for the module and _mand01.r_ the reference file for linking.
 
 Now, let's run executable _mand01_ in the project root directory and with the first parameter set as shown here: https://fruttenboel.nl/mocka/mandel.html
 
