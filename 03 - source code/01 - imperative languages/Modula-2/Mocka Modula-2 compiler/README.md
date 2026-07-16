@@ -1,25 +1,23 @@
-2026-07-15: work in progress
-
-tbd: toc
-
-<br/>
-
 # Mocka Modula-2 compiler for 32-bit Linux and X Window graphics
 
 m2 = Modula-2
 
-GMD = tbd
+GMD = the original, German host of the development of the Mocka compiler. This organization started as the Gesellschaft für Mathematik und Datenverarbeitung mbH in 1968 ("GMD"); was renamed into GMD-Forschungszentrum Informationstechnik GmbH in 1995; and finally merged into the Fraunhofer Society in 2001
 
 X Window System: https://www.x.org/
 
 Mocka is correctly abbreviated MocKa (or MOCKA) and means: **MOdula-2 Compiler KArlsruhe** from the then: Institut für Programm- und Datenstrukturen
-at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, it's generally the Karlsruhe Institute of Technology, KIT).
+at the University of Karlsruhe, Adenauerring 20a, 76131 Karlsruhe (in Germany), a structure which doesn't exist anymore (nowadays, the related top organization is the Karlsruhe Institute of Technology, KIT).
 
 ---
 
 Table of contents:
 
-tbd
+- [Motivation](#motivation)
+- [Installation of a 32-bit Linux as a virtual machine](#installation-of-a-32-bit-linux-as-a-virtual-machine)
+- [Setting up the Mocka Modula-2 compiler in version 0608m](#setting-up-the-mocka-modula-2-compiler-in-version-0608m)
+- [Building the X Window resources](#building-the-x-window-resources)
+- [Building the Mandelbrot set application mand01.mod](#building-the-mandelbrot-set-application-mand01mod)
 
 <br/>
 
