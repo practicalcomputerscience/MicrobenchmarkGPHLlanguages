@@ -134,6 +134,7 @@ Mercury |  |  | OK | _CharSet_ is a string of allowed characters in both cases, 
 Modula-2 (GNU) |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-07-12
 Mojo |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-05-28
 Nim | yes |  | OK | POSIX patterns: _"[[:graph:]]"_, _"[[:alnum:]]"_ | yes | 2026-06-17
+Oberon (OBC) |  |  | OK | _charSet_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string; pattern matching with _Strings.Pos()_ is not foolproof! | | 2026-07-16
 OCaml | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-29
 Odin | yes |  | OK | non-POSIX patterns: \`^[!-~]$\`, \`^[A-Za-z0-9]$\` | | 2026-06-13
 Perl 5 | yes | | OK | non-POSIX patterns: _qr/[!-~]/_, _qr/[A-Za-z0-9]/_ | | 2026-05-25
