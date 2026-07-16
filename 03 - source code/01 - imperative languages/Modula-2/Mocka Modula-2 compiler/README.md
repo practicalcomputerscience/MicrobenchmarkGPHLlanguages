@@ -86,7 +86,7 @@ You can only copy and paste such content of the virtual machine (with simple mea
 
 In the opened terminal shell, run this script as root user: _$ sudo ./VBoxLinuxAdditions.run_
 
-For a check, I rebooted this virtual machine with the power button behind the **very right hand side, top menu**. This reboot should take only a small amount of time relatively if it's a healthy system.
+For a check, I rebooted this virtual machine with the power button at the **right hand side, top corner menu**:
 
 > [!CAUTION]
 > If possible, always shut down a virtual machine carefully. Don't shut down your host operating system while a virtual machine is still active. This may corrupt it beyond repair!
@@ -138,9 +138,9 @@ export MOCKALINK=-lX11
 > [!IMPORTANT]
 > Now come the real hacks.
 
-This was only for the _~/.bahrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
+This was only for the _~/.bashrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
 
-So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and login there again as the root user. 
+So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and login there again as root user. 
 
 Still, something is missing in my new 32-bit Xubuntu system: a C compiler!
 
@@ -253,7 +253,7 @@ Finally, I added these two symbolic links to compiler script _/usr/local/mocka/s
 
 So, the Mocka compiler can now be called with command _mocka_ or _m2_ for **all** system users and system wide.
 
-This is the linked Mocka compiler script:
+This is the symbol-linked Mocka script for compiling and linking:
 
 ```
 # cat /usr/local/mocka/sys/m2
@@ -321,16 +321,16 @@ Command _q_ leaves the compiler REPL.
 
 <br/>
 
-## Building X Window resources
+## Building the X Window resources
 
 The following instructions are more or less following chapter "Graphic programming with Mocka" and beyond at page (2).
 
 > [!IMPORTANT]
 > Now come the next hacks.
 
-This time by author Jan Verhoeven himself. Do not take the first versions of _x11.def_ and _x11.c_!!
+This time by author Jan Verhoeven himself. Do not take the first versions of _x11.def_ and _x11.c_ !
 
-Take both files only in their refined versions at chapter "Select another font". Only these can be compiled and linked correctly:
+Take both files only in their refined versions at chapter "Select another font". Only these can be compiled and linked correctly without any modifications:
 
 - [x11.def](./x11.def)
 - [x11.c](./x11.c) with one addition of mine: _#include <stdlib.h>_
@@ -355,7 +355,7 @@ We just created two new files in subdirectory _./m2bin_: _x11.d_ and _x11.r_, wh
 
 ## Building the Mandelbrot set application mand01.mod
 
-Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at chapter "Creating the mandelbrot set" of page: https://fruttenboel.nl/mocka/mandel.html
+Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at top chapter "Creating the mandelbrot set" of page: https://fruttenboel.nl/mocka/mandel.html
 
 But the compilation and linking command isn't working like this:
 
@@ -384,7 +384,7 @@ $ echo "p mand01" | mocka
 Mocka 0608m
 >> .. Compiling Program Module mand01 I/0006 II/0006
 .. Linking mand01
->> q
+>>
 $
 ```
 
@@ -419,7 +419,7 @@ $ ./mand01 -0.372 -0.65 25000 70000
 <br/>
 
 > [!TIP]
-> One more tip: in case of compilation or linking problems, including version problems, you may just delete the whole subdirectory _./m2bin_ and start all over. 
+> In case of compilation or linking problems, including version problems, you may just delete the whole subdirectory _./m2bin_ and start all over. 
 
 <br/>
 
