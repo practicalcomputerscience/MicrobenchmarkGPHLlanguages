@@ -14,7 +14,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [How to write fast Modula-2 programs](#how-to-write-fast-modula-2-programs)
 - [Issues with the GNU Modula-2 GCC frontend](#issues-with-the-gnu-modula-2-gcc-frontend)
-- [Mocka Modula-2 compiler]()
+- [Mocka Modula-2 compiler](#mocka-modula-2-compiler)
 
 <br/>
 
