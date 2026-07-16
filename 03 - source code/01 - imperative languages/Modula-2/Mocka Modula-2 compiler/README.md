@@ -18,6 +18,7 @@ Table of contents:
 - [Setting up the Mocka Modula-2 compiler in version 0608m](#setting-up-the-mocka-modula-2-compiler-in-version-0608m)
 - [Building the X Window resources](#building-the-x-window-resources)
 - [Building the Mandelbrot set application mand01.mod](#building-the-mandelbrot-set-application-mand01mod)
+- [Microbenchmark program: speed part](#microbenchmark-program-speed-part)
 
 <br/>
 
