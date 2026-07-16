@@ -2,7 +2,7 @@
 
 m2 = Modula-2
 
-GMD = the original, German host of the development of the Mocka compiler. This organization started as the Gesellschaft für Mathematik und Datenverarbeitung mbH in 1968 ("GMD"); was renamed into GMD-Forschungszentrum Informationstechnik GmbH in 1995; and finally merged into the Fraunhofer Society in 2001
+GMD = the original, German host of the development of the Mocka compiler. This organization started as the Gesellschaft für Mathematik und Datenverarbeitung mbH in 1968 ("GMD"); was renamed into GMD-Forschungszentrum Informationstechnik GmbH in 1995; and finally merged into the Fraunhofer Society in 2001: https://de-academic.com/dic.nsf/dewiki/488406
 
 X Window System: https://www.x.org/
 
