@@ -28,11 +28,11 @@ tbd
 ### Motivation
 
 I wanted to compile Jan Verhoeven's Modula-2 source code file [mand01.mod](https://fruttenboel.nl/mocka/data/mand01.mod) for the Mocka compiler on my own system,
-so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot diagrams in a X11 window as seen on this page: https://fruttenboel.nl/mocka/mandel.html
+so I could make the _mand01_ executable by myself, a program which can make nice Mandelbrot set diagrams in a X11 window as seen on this page: https://fruttenboel.nl/mocka/mandel.html
 
 <br/>
 
-For the installation instructions below, these two original sources by author Jan Verhoeven and then a third one have been the most important ones to me:
+My installation instructions below are based on these two original sources by author Jan Verhoeven and then a third one:
 
 - (1) [Setup of Mocka 0608m](https://fruttenboel.nl/mocka/setup.html) 
 - (2) [Mocka: x11 Foreign module](https://fruttenboel.nl/mocka/simplex11.html)
@@ -140,7 +140,7 @@ export MOCKALINK=-lX11
 
 This was only for the _~/.bahrc_ configuration file of **my (normal) user**, not the root user who is supposed to do the installation work!
 
-So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and change there into root again. 
+So, also add those two lines to the _/root/.bashrc_ configuration file of the root user. Best is now to restart the Bash shell and login there again as the root user. 
 
 Still, something is missing in my new 32-bit Xubuntu system: a C compiler!
 
@@ -283,11 +283,15 @@ Background: the Mocka compiler is also an interactive compiler with its own prom
 In case of a **compilation error** it automatically opens the related source in the vi editor:
 
 > [!TIP]
-> Scroll down, or go down with vi means, to the first error, which is marked in the vi editor view!
+> Scroll down, or go down with vi means, to the first error, which is marked in the vi editor view, and fix it!
 
 In case that everything is OK, the vi editor is not opened, see below for an example.
 
-So, install the _rlwrap_ utility for betting editing comfort: _$ sudo apt install rlwrap_
+<br/>
+
+You can now exit the root shell and return to your normal user with command _\# exit_ and change into the working directory with your Mocka resources.
+
+You may install the _rlwrap_ utility for betting editing comfort: _$ sudo apt install rlwrap_
 
 Run a test like this for example:
 
@@ -319,8 +323,6 @@ Command _q_ leaves the compiler REPL.
 
 ## Building X Window resources
 
-You can now exit the root shell to your normal system user with _\# exit_ and change into the working directory with your Mocka resources.
-
 The following instructions are more or less following chapter "Graphic programming with Mocka" and beyond at page (2).
 
 > [!IMPORTANT]
@@ -335,7 +337,7 @@ Take both files only in their refined versions at chapter "Select another font".
 
 <br/>
 
-On an "empty" Linux system, the client interface to the X Window System must be installed first like this:
+On an "empty" Linux system, the client interface to the X Window System must be installed before the real action can start with command _$ gcc -lX11 -c x11.c_:
 
 ```
 $ sudo apt install libx11-dev
@@ -347,13 +349,15 @@ $ mocka -s x11  # compile definition of module x11
 $ 
 ```
 
-We just created two new files in directory _./m2bin_: _x11.d_ and _x11.r_, where the .r file represents intermediate code.
+We just created two new files in subdirectory _./m2bin_: _x11.d_ and _x11.r_, where the .r file represents intermediate code.
 
 <br/>
 
-Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at chapter "Creating the mandelbrot set" at page: https://fruttenboel.nl/mocka/mandel.html
+## Building the Mandelbrot set application mand01.mod
 
-But this command isn't working:
+Now we should be able to compile and link the Modula-2 application source code file [mand01.mod](./mand01.mod) as shown at chapter "Creating the mandelbrot set" of page: https://fruttenboel.nl/mocka/mandel.html
+
+But the compilation and linking command isn't working like this:
 
 ```
 $ mocka -p mand01
@@ -361,7 +365,7 @@ Cannot find reference file for module 'mand01'
 $
 ```
 
-So, we must really use the compiler interactively:
+So, we use the compiler interactively:
 
 ```
 $ mocka
@@ -373,24 +377,24 @@ Mocka 0608m
 $
 ```
 
-Or, thanks to Google AI, we can also do it like this while staying on the console:
+Or, thanks to Google AI, we can also do it like this while staying on the console (if the compilation is OK):
 
 ```
 $ echo "p mand01" | mocka
 Mocka 0608m
 >> .. Compiling Program Module mand01 I/0006 II/0006
 .. Linking mand01
->>
+>> q
 $
 ```
 
-All in all, these files have been created:
+All in all, these files have been created in the project resources subdirectory:
 
 ```
 $ ls -1 m2bin
 _M2ROOT.o
 _M2ROOT.s
-mand01  # this is a link to the ../mand01 executable
+mand01  # this is a link to the just generated ../mand01 executable
 mand01.o
 mand01.r
 mand01.s
@@ -402,7 +406,7 @@ $
 
 ..where the _mand01.s_ file represents the architecture assembly code and _mand01.r_ the intermediate code.
 
-Now, let's run executable _mand01_ in the project root directory and with parameters as shown here: https://fruttenboel.nl/mocka/mandel.html
+Now, let's run executable _mand01_ in the project root directory and with the first parameter set as shown here: https://fruttenboel.nl/mocka/mandel.html
 
 ```
 $ ./mand01 -0.372 -0.65 25000 70000
@@ -411,6 +415,11 @@ $ ./mand01 -0.372 -0.65 25000 70000
 <br/>
 
 ![plot](./mand01%20-0.372%20-0.65%2025000%2070000.png)
+
+<br/>
+
+> [!TIP]
+> One more tip: in case of compilation or linking problems, including version problems, you may just delete the whole subdirectory _./m2bin_ and start all over. 
 
 <br/>
 
