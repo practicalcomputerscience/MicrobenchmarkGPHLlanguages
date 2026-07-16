@@ -101,7 +101,9 @@ See at: https://github.com/wgottwalt/gnu_modula2_playground/tree/main
 
 #### Mocka Modula-2 compiler
 
-I have added an extra page on my successful experiments with the historic Mocka Modula-2 compiler, which is still usable in a 32-bit Linux system (and may work with extra expert work in a modern 64-bit Linux system): [Mocka Modula-2 compiler for 32-bit Linux and X Window graphics](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler#mocka-modula-2-compiler-for-32-bit-linux-and-x-window-graphics)
+I have added an extra page on my successful experiments with the historic Mocka Modula-2 compiler, which is still usable in a 32-bit Linux system (and may work with extra expert work in a modern 64-bit Linux system):
+
+[Mocka Modula-2 compiler for 32-bit Linux and X Window graphics](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler#mocka-modula-2-compiler-for-32-bit-linux-and-x-window-graphics)
 
 Originally, this compiler was basically an implementation of the PIM3 dialect of the Modula-2 language as defined in: ’Programming in Modula-2’, 3rd Corrected Edition, Springer Verlag, 1985 (PIM3) (https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/What-is-GNU-Modula-2.html), "with a few minor extensions" (PDF): [GMD MODULA SYSTEM MOCKA User Manual](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2/Mocka%20Modula-2%20compiler/UserMan.pdf)
 
