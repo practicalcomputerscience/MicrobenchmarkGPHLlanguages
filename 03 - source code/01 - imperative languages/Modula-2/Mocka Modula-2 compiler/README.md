@@ -148,6 +148,9 @@ Consequently, install one (as root user):
 
 ```
 # apt update
+...
+# apt-get upgrade
+...
 # apt install gcc
 ...
 # gcc --version
