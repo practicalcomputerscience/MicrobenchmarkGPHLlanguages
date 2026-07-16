@@ -4,6 +4,8 @@ random_streams_for_perf_stats.mod
 This program is for GNU Modula-2 (ISO).
 
 2026-07-09/10/12
+2026-07-16: forward slash / is exclusively used for REAL division
+
 
 build on Ubuntu 24 LTS: $ gm2 -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for development
                         $ gm2 -O3 -Wall -fiso random_streams_for_perf_stats.mod -o random_streams_for_perf_stats  # for production
@@ -94,7 +96,7 @@ BEGIN
     IF (k MOD 2) > 0 THEN
       binStr[j] := '1';
     END;
-    k := k / 2;
+    k := k DIV 2;  (* 2026-07-16: forward slash / is exclusively used for REAL division *)
     DEC(j);
   END;
 END Integer_to_bin_string;
@@ -142,7 +144,7 @@ BEGIN
       (* Corresponds to 'when others => null' in Ada *)
     END;
 
-    k := k / 16;
+    k := k DIV 16;  (* 2026-07-16: forward slash / is exclusively used for REAL division *)
     DEC(j);
   END;
 END Integer_to_hex_string;

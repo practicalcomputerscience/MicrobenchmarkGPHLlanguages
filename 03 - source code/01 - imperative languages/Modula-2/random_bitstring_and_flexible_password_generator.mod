@@ -9,6 +9,7 @@ This program is for GNU Modula-2 (ISO).
 
 
 2026-07-11/12
+2026-07-16: forward slash / is exclusively used for REAL division
 
 
 build on Ubuntu 24 LTS: $ gm2 -fiso random_bitstring_and_flexible_password_generator.mod -o random_bitstring_and_flexible_password_generator  # for development
@@ -119,7 +120,7 @@ BEGIN
     IF (k MOD 2) > 0 THEN
       binStr[j] := '1';
     END;
-    k := k / 2;
+    k := k DIV 2;  (* 2026-07-16: forward slash / is exclusively used for REAL division *)
     DEC(j);
   END;
 END Integer_to_bin_string;
@@ -167,7 +168,7 @@ BEGIN
       (* Corresponds to 'when others => null' in Ada *)
     END;
 
-    k := k / 16;
+    k := k DIV 16;  (* 2026-07-16: forward slash / is exclusively used for REAL division *)
     DEC(j);
   END;
 END Integer_to_hex_string;
