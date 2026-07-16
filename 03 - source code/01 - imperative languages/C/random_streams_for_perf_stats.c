@@ -6,6 +6,7 @@ random_streams_for_perf_stats.c
 2025-12-01: leaving the slow sprintf() functions, but now compiling with a more modern version of the clang compiler
 2025-12-17: see below
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
+2026-07-16: bits_x: there's trash at the last char's/bytes when porting to other Linux + gcc versions!
 
 
 build on Ubuntu 24 LTS: $ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
@@ -53,7 +54,7 @@ int main()
   x[0] = rand() % (m-1) + 1;  // rand(): random number between 0 and RAND_MAX, both included; 2025-12-17
   // printf("x[0] = %d\n", x[0]);  // for testing
 
-  char bits_x[M1];
+  char bits_x[M1+1];  // 2026-07-16
   char bits_x_str[17];
   int  byte_nbr;
 
@@ -86,6 +87,8 @@ int main()
     bits_x[byte_nbr+13]  = bits_x_str[13];
     bits_x[byte_nbr+14]  = bits_x_str[14];
     bits_x[byte_nbr+15]  = bits_x_str[15];
+    
+    bits_x[byte_nbr+16]   = '\0';  // there's trash at the last char's/bytes; 2026-07-16
 
 
     sprintf(bits_hex_str, "%04x", x[i]);
