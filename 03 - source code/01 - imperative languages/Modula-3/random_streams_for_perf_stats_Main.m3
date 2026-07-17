@@ -35,7 +35,7 @@ Critical Mass Modula-3 version d5.11.4
 $
 
 
-mostly transpiled from random_streams_for_perf_stats.groovy with tbd
+mostly transpiled from random_streams_for_perf_stats.groovy with Google AI
 
 *)
 
