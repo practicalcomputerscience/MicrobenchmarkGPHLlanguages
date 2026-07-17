@@ -11,7 +11,10 @@ Free Pascal includes **Objective-Pascal** to access the Mac OS X system framewor
 Also see: [What is Free Pascal (FPC)?](https://www.freepascal.org/faq.var#WhatIsFP)
 
 Free Pascal is shipped with **a lot of documentation** inside the _doc-pdf.tar.gz_ file (with 8 PDF files)
-inside tarball file _fpc-3.2.2.x86_64-linux.tar_ (as of 2026-07-17) from here: https://www.freepascal.org/down/x86_64/linux-hungary.html
+inside tarball file _fpc-3.2.2.x86_64-linux.tar_ (as of 2026-07-17) from here: https://www.freepascal.org/down/x86_64/linux-hungary.html,
+or online from here: https://www.freepascal.org/docs.html
+
+The starting document for me was the **User’s Guide** for Free Pascal, Version 3.2.2 from May 2021 (PDF): https://downloads.freepascal.org/fpc/docs-pdf/user.pdf
 
 **Self-hosted** Free Pascal supports a lot of platforms, including for example iOS.
 
