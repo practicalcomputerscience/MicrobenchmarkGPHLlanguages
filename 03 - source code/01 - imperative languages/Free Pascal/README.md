@@ -22,7 +22,7 @@ The Free Pascal compiler is supporting these modes:
 
 compiler switch | description
 --- | ---
--Mfpc            | Free Pascal dialect (default)
+-Mfpc            | Free Pascal dialect (default): this is what I'm using in this implementation
 -Mobjfpc         | FPC mode with Object Pascal support
 -Mdelphi         | Delphi 7 compatibility mode
 -Mtp             | TP/BP 7.0 compatibility mode
@@ -94,7 +94,19 @@ $
 
 <br/>
 
+This compiler command is interesting, it shows "a list of supported FPU (Floating-Point Unit) instruction sets", which are actually SIMD (Single Instruction, Multiple Data) instruction set extensions to the x86 instruction set architecture for microprocessors from Intel and AMD: https://en.wikipedia.org/wiki/List_of_x86_SIMD_instructions
 
+```
+$ fpc -if
+SSE64
+SSE3
+SSSE3
+SSE41
+SSE42
+AVX
+AVX2
+$
+```
 
 
 
