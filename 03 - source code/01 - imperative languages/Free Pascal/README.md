@@ -6,12 +6,14 @@
 
 https://www.freepascal.org/
 
-including **Objective-Pascal** to access the Mac OS X system framework, which usually happens with Objective-C, and **Object Pascal** support.
+including **Objective-Pascal** to access the Mac OS X system framework, which usually happens with Objective-C, and **Object Pascal** and **Extended Pascal** support.
+
+Also see: [What is Free Pascal (FPC)?](https://www.freepascal.org/faq.var#WhatIsFP)
 
 Free Pascal is shipped with **a lot of documentation** inside the _doc-pdf.tar.gz_ file (with 8 PDF files)
 inside tarball file _fpc-3.2.2.x86_64-linux.tar_ (as of 2026-07-17) from here: https://www.freepascal.org/down/x86_64/linux-hungary.html
 
-Free Pascal supports a lot of platforms, including for example iOS.
+**Self-hosted** Free Pascal supports a lot of platforms, including for example iOS.
 
 The Free Pascal compiler is supporting these modes:
 
@@ -23,8 +25,13 @@ compiler switch | description
 -Mtp             | TP/BP 7.0 compatibility mode
 -Mmacpas         | Macintosh Pascal dialects compatibility mode
 -Miso            | ISO 7185 mode
--Mextendedpascal | ISO 10206 mode
+-Mextendedpascal | ISO 10206 mode: "Extended Pascal"
 -Mdelphiunicode  | Delphi 2009 and later compatibility mode
+
+<br/>
+
+BP = Borland Pascal
+TP = Turbo Pascal: https://en.wikipedia.org/wiki/Turbo_Pascal
 
 <br/>
 
