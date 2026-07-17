@@ -100,7 +100,7 @@ $
 
 <br/>
 
-This compiler command is interesting, it shows "a list of supported FPU (Floating-Point Unit) instruction sets", which are actually SIMD (Single Instruction, Multiple Data) instruction set extensions to the x86 instruction set architecture for microprocessors from Intel and AMD: https://en.wikipedia.org/wiki/List_of_x86_SIMD_instructions
+This compiler command is interesting: it shows "a list of supported FPU (Floating-Point Unit) instruction sets", which are actually SIMD (Single Instruction, Multiple Data) instruction set extensions to the x86 instruction set architecture for microprocessors from Intel and AMD: https://en.wikipedia.org/wiki/List_of_x86_SIMD_instructions
 
 ```
 $ fpc -if
