@@ -22,7 +22,7 @@ or online from here: https://www.freepascal.org/docs.html
 
 The starting document for me was the **User’s Guide** for Free Pascal, Version 3.2.2 from May 2021 (PDF): https://downloads.freepascal.org/fpc/docs-pdf/user.pdf
 
-**Self-hosted** Free Pascal supports a lot of platforms, including for example iOS.
+Self-hosted Free Pascal supports a lot of platforms, including for example iOS.
 
 The Free Pascal compiler is supporting these modes:
 
