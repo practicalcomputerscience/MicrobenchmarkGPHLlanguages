@@ -28,8 +28,8 @@ The Free Pascal compiler is supporting these modes:
 
 compiler switch | description
 --- | ---
--Mfpc            | Free Pascal dialect (default): this is what I'm using in this implementation
--Mobjfpc         | FPC mode with Object Pascal support
+-Mfpc            | Free Pascal dialect (default)
+-Mobjfpc         | **FPC mode with Object Pascal support**: this is what I'm using in this implementation to be near my (modern) [Modula-3 implementation]()
 -Mdelphi         | Delphi 7 compatibility mode
 -Mtp             | TP/BP 7.0 compatibility mode
 -Mmacpas         | Macintosh Pascal dialects compatibility mode
@@ -118,7 +118,7 @@ $
 
 <br/>
 
-fpc -O3 
+
 
 <br/>
 
