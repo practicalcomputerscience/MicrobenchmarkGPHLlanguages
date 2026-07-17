@@ -6,7 +6,7 @@
 
 https://www.freepascal.org/
 
-including **Objective-Pascal** to access the Mac OS X system framework, which usually happens with Objective-C, and **Object Pascal** and **Extended Pascal** support.
+Free Pascal includes **Objective-Pascal** to access the Mac OS X system framework, which usually happens with Objective-C, **Object Pascal** and **Extended Pascal** for example.
 
 Also see: [What is Free Pascal (FPC)?](https://www.freepascal.org/faq.var#WhatIsFP)
 
@@ -31,16 +31,17 @@ compiler switch | description
 <br/>
 
 BP = Borland Pascal
+
 TP = Turbo Pascal: https://en.wikipedia.org/wiki/Turbo_Pascal
 
 <br/>
 
 ## Installation tips
 
-I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ as my normal Linux user.
+I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ with my normal Linux user.
 It will ask the user a couple of questions for the desired configuration. I installed Free Pascal into my home directory.
 
-Then I added line _export PATH="$HOME/fpc-3.2.2/bin:$PATH"_ in my _~/.bashrc_ configuration file, which I then activated with: _$ source ~/.bashrc_
+Then I added line _export PATH="$HOME/fpc-3.2.2/bin:$PATH"_ to my _~/.bashrc_ configuration file, which I then activated with: _$ source ~/.bashrc_
 
 A first version test after installation:
 
