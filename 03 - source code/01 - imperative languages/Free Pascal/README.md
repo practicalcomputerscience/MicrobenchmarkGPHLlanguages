@@ -39,6 +39,10 @@ TP = Turbo Pascal: https://en.wikipedia.org/wiki/Turbo_Pascal
 
 <br/>
 
+Free Pascal comes with a text version of an Integrated Development Environment (IDE), a graphical versions exits with [Lazarus](https://www.lazarus-ide.org/) for example.
+
+<br/>
+
 ## Installation tips
 
 I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ with my normal Linux user.
@@ -56,8 +60,7 @@ Copyright (c) 1993-2021 by Florian Klaempfl and others
 $
 ```
 
-Free Pascal can also be installed like this in (Ubuntu) Linux: _$ sudo apt install fp-compiler-3.2.2_,
-or in its IDE (Integrated development environment) version: _$ sudo apt install fp-ide-3.2.2_
+Free Pascal can also be installed like this in (Ubuntu) Linux: _$ sudo apt install fp-compiler-3.2.2_, or in its text based IDE version: _$ sudo apt install fp-ide-3.2.2_
 
 <br/>
 
