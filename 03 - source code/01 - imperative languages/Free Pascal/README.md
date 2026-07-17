@@ -39,7 +39,7 @@ TP = Turbo Pascal: https://en.wikipedia.org/wiki/Turbo_Pascal
 
 <br/>
 
-Free Pascal comes with a text version of an Integrated Development Environment (IDE), a graphical versions exits with [Lazarus](https://www.lazarus-ide.org/) for example.
+Free Pascal comes with a text version of an Integrated Development Environment (IDE), a graphical version exits with [Lazarus](https://www.lazarus-ide.org/) for example.
 
 <br/>
 
