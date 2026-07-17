@@ -6,7 +6,13 @@
 
 https://www.freepascal.org/
 
-Free Pascal includes **Objective-Pascal** to access the Mac OS X system framework, which usually happens with Objective-C, and also **Object Pascal** and **Extended Pascal** for example.
+Free Pascal supports:
+
+- Objective-Pascal to access the Mac OS X system framework, which usually happens with Objective-C
+- Object Pascal
+- Extended Pascal
+
+..for example.
 
 Also see: [What is Free Pascal (FPC)?](https://www.freepascal.org/faq.var#WhatIsFP)
 
