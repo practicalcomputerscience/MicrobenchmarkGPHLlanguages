@@ -84,6 +84,7 @@ BEGIN
       Wr.PutText(bits_hex, bits_hex_str);
     END;
 
+    (* write bit stream to disk *)
     TRY
       outWr := FileWr.Open(file_bits_x);
       Wr.PutText(outWr, TextWr.ToText(bits_x));
@@ -94,6 +95,7 @@ BEGIN
           Wr.PutText(Stdio.stdout, "could not write to file: " & file_bits_x & " !\n");
     END;
 
+    (* write byte stream to disk *)
     TRY
       outWr := FileWr.Open(file_bits_hex);
       Wr.PutText(outWr, TextWr.ToText(bits_hex));
