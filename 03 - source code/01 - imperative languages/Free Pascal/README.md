@@ -62,6 +62,36 @@ $
 
 Free Pascal can also be installed like this in (Ubuntu) Linux: _$ sudo apt install fp-compiler-3.2.2_, or in its text based IDE version: _$ sudo apt install fp-ide-3.2.2_
 
+Following the User’s Guide, I compiled and ran a _Hello world_ program:
+
+
+```
+$ cp $HOME/fpc-3.2.2/share/doc/fpc-3.2.2/examples/text/hello.pp .
+$ cat hello.pp
+{
+    This file is part of the Free Pascal run time library.
+    Copyright (c) 1993-98 by the Free Pascal Development Team
+...
+ **********************************************************************}
+
+program hello;
+
+  begin
+     writeln('Hello world');
+  end.
+
+$ fpc hello
+Free Pascal Compiler version 3.2.2 [2021/05/16] for x86_64
+Copyright (c) 1993-2021 by Florian Klaempfl and others
+Target OS: Linux for x86-64
+Compiling hello.pp
+Linking hello
+21 lines compiled, 0.0 sec
+$ ./hello
+Hello world
+$
+```
+
 <br/>
 
 
