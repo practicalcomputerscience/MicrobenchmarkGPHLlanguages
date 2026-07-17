@@ -20,7 +20,7 @@ Free Pascal is shipped with **a lot of documentation** inside the _doc-pdf.tar.g
 inside tarball file _fpc-3.2.2.x86_64-linux.tar_ (as of 2026-07-17) from here: https://www.freepascal.org/down/x86_64/linux-hungary.html,
 or online from here: https://www.freepascal.org/docs.html
 
-The starting document for me was the **User’s Guide** for Free Pascal, Version 3.2.2 from May 2021 (PDF): https://downloads.freepascal.org/fpc/docs-pdf/user.pdf
+The starting document for me was the **User’s Guide** for Free Pascal (PDF): https://downloads.freepascal.org/fpc/docs-pdf/user.pdf
 
 Self-hosted Free Pascal supports a lot of platforms, including for example iOS.
 
@@ -29,7 +29,7 @@ The Free Pascal compiler is supporting these modes:
 compiler switch | description
 --- | ---
 -Mfpc            | Free Pascal dialect (default)
--Mobjfpc         | **FPC mode with Object Pascal support**: this is what I'm using in this implementation to be near my (modern) [Modula-3 implementation]()
+-Mobjfpc         | **FPC mode with Object Pascal support**: this is what I'm using in this implementation to be near my (modern) [Modula-3 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3)
 -Mdelphi         | Delphi 7 compatibility mode
 -Mtp             | TP/BP 7.0 compatibility mode
 -Mmacpas         | Macintosh Pascal dialects compatibility mode
