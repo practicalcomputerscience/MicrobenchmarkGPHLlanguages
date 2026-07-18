@@ -87,9 +87,8 @@ VAR
 
   char_set   : ARRAY [0..94] OF CHAR;
 
-  bin0       : ARRAY [0..15] OF CHAR;
-  bin0_0     : ARRAY [0..7] OF CHAR;
-  bin0_1     : ARRAY [0..7] OF CHAR;
+  bin0           : ARRAY [0..15] OF CHAR;
+  bin0_0, bin0_1 : ARRAY [0..7]  OF CHAR;
 
   pw_chars   : ARRAY [0..99] OF CHAR;
 
