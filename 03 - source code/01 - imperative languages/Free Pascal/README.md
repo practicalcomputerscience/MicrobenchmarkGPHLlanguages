@@ -117,8 +117,6 @@ AVX2
 $
 ```
 
-
-
 <br/>
 
 ## Extended Pascal according to ISO 10206
@@ -129,8 +127,6 @@ Many years ago there was still GNU Pascal around, which claimed to support "most
 
 However, it's nowadays a tinkering job to get it running in a modern 64-bit Linux system: https://github.com/hebisch/gpc, so, I don't do it.
 
-The only difference between my [ISO 7185](tbd) and [ISO 10206](tbd) implementations is that procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions.
-
 However, in ISO 10206 mode (Extended Pascal), Free Pascal has the required _TimeStamp_ type and _GetTimeStamp_ procedure implemented, which serves as a simple, random seed:
 
 ```
@@ -140,12 +136,66 @@ t            : TimeStamp;
   x[0] := (t.Second + t.Minute + t.Hour + t.Day + t.Month + t.Year) mod (m - 2) + 1;
 ```
 
+## Random seed with leveraging the Address Space Layout Randomization (ASLR)
+
+The [ISO 7185-compliant program version](tbd) cannot access (Linux) system resources, and thus not reading a time value.
+
+So, how to get a somehow random seed?
+
+Google AI helped me out with leveraging the Address Space Layout Randomization (ASLR), a concept also implemented many years ago in Linux: https://en.wikipedia.org/wiki/:
+
+```
+procedure ASLR_seed(var ResultSeed: integer);
+type
+  IntPtr = ^integer;
+
+  { An ISO-compliant variant record maps different types to the same RAM bytes }
+  EntropyBridge = record
+    case boolean of
+      true:  (PtrValue: IntPtr);
+      { On 64-bit systems, a pointer fits across two 32-bit integers }
+      false: (RawBytes: array[1..2] of integer);
+  end;
+var
+  Bridge: EntropyBridge;
+  Seed: integer;
+
+begin
+  { 1. Dynamically allocate a variable on the heap }
+  { ASLR will assign this variable a completely unpredictable address }
+  new(Bridge.PtrValue);
+
+  { 2. Read the address out using the overlayed integer array variant }
+  { This safely captures the random address bits without unsafe type casting }
+  Seed := Bridge.RawBytes[1] + Bridge.RawBytes[2];
+
+  { 3. Dispose of the dynamic variable safely }
+  dispose(Bridge.PtrValue);
+
+  { Enforce a clean, positive seed range }
+  if Seed < 0 then
+    ResultSeed := -Seed
+  else if Seed > 0 then
+      ResultSeed := Seed
+  else
+    ResultSeed := 31415;  { Fallback constant }
+end;
+```
+
 <br/>
 
+So, the only difference between my [ISO 7185](tbd) and [ISO 10206](tbd) implementations is that:
+
+- procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions in the ISO 10206 version, and that
+- the ISO 10206 version uses the _GetTimeStamp_ procedure for a random seed, instead of leveraging the Address Space Layout Randomization
 
 <br/>
 
+tbd
 
+<br/>
+
+tbd
 
 
 <br/>
