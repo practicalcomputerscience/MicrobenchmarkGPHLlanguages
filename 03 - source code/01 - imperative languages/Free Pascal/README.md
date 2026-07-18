@@ -33,12 +33,12 @@ The Free Pascal compiler is supporting these modes:
 compiler switch | description
 --- | ---
 -Mfpc            | Free Pascal dialect (default)
--Mobjfpc         | **FPC mode with Object Pascal support**: this is what I'm using in this implementation to be near my (modern) [Modula-3 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3)
+-Mobjfpc         | **FPC mode with Object Pascal support**: I'm using this mode in my Free Pascal implementation to be near my (modern) [Modula-3 implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3)
 -Mdelphi         | Delphi 7 compatibility mode
 -Mtp             | TP/BP 7.0 compatibility mode
 -Mmacpas         | Macintosh Pascal dialects compatibility mode
 -Miso            | ISO 7185 mode
--Mextendedpascal | ISO 10206 mode: "Extended Pascal"
+-Mextendedpascal | ISO 10206 mode for Extended Pascal: Free Pascal still doesn't fully support it
 -Mdelphiunicode  | Delphi 2009 and later compatibility mode
 
 <br/>
