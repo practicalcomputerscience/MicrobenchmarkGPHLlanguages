@@ -2,6 +2,10 @@
 
 <br/>
 
+[Professor Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/)
+
+<br/>
+
 # Free Pascal
 
 https://www.freepascal.org/
