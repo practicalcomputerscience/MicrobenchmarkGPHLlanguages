@@ -10,6 +10,7 @@ This program is for GNU Modula-2 (ISO).
 
 2026-07-11/12
 2026-07-16: forward slash / is exclusively used for REAL division
+2026-07-18: minor saving of one source line of code
 
 
 build on Ubuntu 24 LTS: $ gm2 -fiso random_bitstring_and_flexible_password_generator.mod -o random_bitstring_and_flexible_password_generator  # for development
