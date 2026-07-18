@@ -121,7 +121,15 @@ $
 
 <br/>
 
+#### Extended Pascal according to ISO 10206
 
+Free Pascal's support of Extended Pascal according to [ISO/IEC 10206:1991](https://www.iso.org/standard/18237.html) is still minimal: https://gitlab.com/freepascal.org/fpc/source/-/work_items/32549
+
+Many years ago, there was still GNU Pascal around, which claimed to support "most of ISO 10206 Extended Pascal": https://www.gnu-pascal.de/gpc/h-about.html#lang
+
+However, it's nowadays a tinkering job to get it running in a modern 64-bit Linux system: https://github.com/hebisch/gpc, so, I don't do that.
+
+The only difference between my [ISO 7185](tbd) and [ISO 10206](tbd) implementations is that procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions.
 
 <br/>
 
