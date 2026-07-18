@@ -2,6 +2,8 @@
 random_streams_for_perf_stats.m3 is Main.cm3
 
 2026-07-09/12
+2026-07-18: file_bits_x + file_bits_hex are string constants correctly
+
 
 build on Ubuntu 24 LTS: make this only once:
                         $ mkdir random_streams_for_perf_stats
@@ -46,14 +48,15 @@ IMPORT Random, Fmt, Wr, FileWr, Thread, TextWr, Stdio, OSError;
 
 CONST
   upper_limit = 62501;  (* 62501 for exactly 1M binary digits *)
+
   m           = 65521;  (* = 2^16 - 15 *)
   a           = 17364;
   c           = 0;
 
-VAR
-  file_bits_x   : TEXT := "random_bitstring.bin";
-  file_bits_hex : TEXT := "random_bitstring.byte";
-  
+  file_bits_x   = "random_bitstring.bin";
+  file_bits_hex = "random_bitstring.byte";
+
+VAR  
   x           : ARRAY [0 .. upper_limit-1] OF INTEGER;
   rnd         : Random.T;
   
@@ -83,6 +86,7 @@ BEGIN
       bits_hex_str := Fmt.Pad(Fmt.Int(x[i], 16),  4, '0', Fmt.Align.Right);
       Wr.PutText(bits_hex, bits_hex_str);
     END;
+
 
     (* write bit stream to disk *)
     TRY

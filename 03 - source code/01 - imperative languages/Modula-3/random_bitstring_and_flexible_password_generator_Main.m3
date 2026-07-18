@@ -2,6 +2,7 @@
 random_bitstring_and_flexible_password_generator.m3 is Main.cm3
 
 2026-07-12
+2026-07-18: file_bits_x + file_bits_hex are string constants correctly
 
 build on Ubuntu 24 LTS: make this only once:
                         $ mkdir random_bitstring_and_flexible_password_generator
@@ -42,8 +43,6 @@ MODULE Main;
 IMPORT Random, IO, Fmt, Wr, FileWr, Thread, TextWr;
 IMPORT Stdio, OSError, Lex, Text, Scan, FloatMode, RegEx;
 
-
-
 CONST
   upper_limit = 62501;  (* 62501 for exactly 1M binary digits *)
   (*upper_limit = 50;*)  (* for testing *)
@@ -52,10 +51,10 @@ CONST
   a           = 17364;
   c           = 0;
 
-VAR
-  file_bits_x   : TEXT := "random_bitstring.bin";
-  file_bits_hex : TEXT := "random_bitstring.byte";
+  file_bits_x   = "random_bitstring.bin";
+  file_bits_hex = "random_bitstring.byte";
 
+VAR
   x           : ARRAY [0 .. upper_limit-1] OF INTEGER;
   rnd         : Random.T;
 
