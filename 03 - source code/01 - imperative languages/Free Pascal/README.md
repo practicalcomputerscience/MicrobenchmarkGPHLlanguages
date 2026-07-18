@@ -125,11 +125,20 @@ $
 
 Free Pascal's support of Extended Pascal according to [ISO/IEC 10206:1991](https://www.iso.org/standard/18237.html) is still minimal: https://gitlab.com/freepascal.org/fpc/source/-/work_items/32549
 
-Many years ago, there was still GNU Pascal around, which claimed to support "most of ISO 10206 Extended Pascal": https://www.gnu-pascal.de/gpc/h-about.html#lang
+Many years ago there was still GNU Pascal around, which claimed to support "most of ISO 10206 Extended Pascal": https://www.gnu-pascal.de/gpc/h-about.html#lang
 
 However, it's nowadays a tinkering job to get it running in a modern 64-bit Linux system: https://github.com/hebisch/gpc, so, I don't do it.
 
 The only difference between my [ISO 7185](tbd) and [ISO 10206](tbd) implementations is that procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions.
+
+However, in ISO 10206 mode (Extended Pascal), Free Pascal has the required _TimeStamp_ type and _GetTimeStamp_ procedure implemented, which serves as a simple, random seed:
+
+```
+t            : TimeStamp;
+...
+  GetTimeStamp (t);
+  x[0] := (t.Second mod (m - 2)) + 1;
+```
 
 <br/>
 
