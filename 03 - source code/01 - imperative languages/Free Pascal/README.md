@@ -14,7 +14,6 @@ Free Pascal supports:
 
 - Objective-Pascal to access the Mac OS X system framework, which usually happens with Objective-C
 - Object Pascal
-- Extended Pascal
 
 ..for example.
 
