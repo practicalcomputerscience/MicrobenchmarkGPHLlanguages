@@ -121,7 +121,7 @@ $
 
 <br/>
 
-#### Extended Pascal according to ISO 10206
+## Extended Pascal according to ISO 10206
 
 Free Pascal's support of Extended Pascal according to [ISO/IEC 10206:1991](https://www.iso.org/standard/18237.html) is still minimal: https://gitlab.com/freepascal.org/fpc/source/-/work_items/32549
 
