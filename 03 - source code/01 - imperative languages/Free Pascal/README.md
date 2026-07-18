@@ -137,7 +137,7 @@ However, in ISO 10206 mode (Extended Pascal), Free Pascal has the required _Time
 t            : TimeStamp;
 ...
   GetTimeStamp (t);
-  x[0] := (t.Second mod (m - 2)) + 1;
+  x[0] := t.Second + 1;
 ```
 
 <br/>
