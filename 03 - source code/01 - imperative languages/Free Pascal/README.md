@@ -2,7 +2,7 @@
 
 <br/>
 
-[Professor Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/)
+[Professor Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/), the inventor of Pascal and other programming languages.
 
 <br/>
 
