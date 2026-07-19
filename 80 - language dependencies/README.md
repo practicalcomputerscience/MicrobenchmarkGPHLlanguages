@@ -60,6 +60,7 @@ LuaJIT | C for gcc or LLVM | https://github.com/LuaJIT/LuaJIT/tree/v2.1
 LunarML | Standard ML (MLton) | [Building and Installing](https://github.com/minoki/LunarML#building-and-installing)
 Mercury | bootstrapping with C for gcc for an initial installation; Mercury is then self-hosted for more advanced library grades | [Bootstrapping a Mercury environment](https://github.com/Mercury-Language/mercury/blob/master/Documentation/README.bootstrap)
 Modula-2 (GNU) | gm2 compiler is mostly self-hosted; a bootstrap compiler in C and C++ translates Modula-2 code to C++, which is then compiled to produce the Modula-2 compiler | https://www.math.utah.edu/~beebe/modula-2/app-modula-2-2025-01-13.pdf
+Modula-3 (CM3) | CM3 compiler is self-hosted; bootstrapping with C++ | https://github.com/modula3/cm3/releases
 Mojo | C++ for the MLIR (Multi-Level Intermediate Representation) compiler framework | https://mlir.llvm.org/
 Nim | self-hosted since 2008: "the compiler and the standard library are implemented in Nim." | https://nim-lang.org/
 Oberon (OBC) | OCaml for the compilation to bytecode for its own virtual machine named "Keiko Abstract Machine", which, together with a runtime system, is implemented in C | https://spivey.oriel.ox.ac.uk/corner/Design_overview_for_OBC
