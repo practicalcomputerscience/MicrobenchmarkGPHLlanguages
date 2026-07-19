@@ -98,7 +98,7 @@ Curry | 4,194,600 bytes in 12 blocks | 4,194,600 bytes in 12 blocks | no | 2026-
 D | 800 bytes in 5 blocks | 768 bytes in 4 blocks | no | 2026-06-19
 Dylan (Open Dylan) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-28
 Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks | no | 2026-06-19
-Factor | tbd | tbd | no | tbd for _random_bitstring_and_flexible_password_generator.out_
+Factor | program doesn't finish | -- | no | 2026-07-19            
 Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
 Go | program doesn't finish | -- | no | 2026-06-19
@@ -106,6 +106,7 @@ Inko | Segmentation fault (core dumped) | -- | no | 2026-06-19
 Koka | program doesn't finish | -- | no | 2026-06-19
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-06-19
 Modula-2 (GNU) | 9,389,751 bytes in 316 blocks | 9,385,287 bytes in 313 blocks | no | 2026-07-12
+Modula-3 (CM3) | Aborted (core dumped) | -- | no | 2026-07-19
 Mojo | VALGRIND INTERNAL ERROR: Valgrind received a signal 4 (SIGILL) - exiting | -- | no | 2026-06-19
 Nim | 1,491 bytes in 4 blocks | 1,491 bytes in 4 blocks | no | 2026-06-19
 OCaml | 6,855,510 bytes in 69 blocks | 3,619,558 bytes in 66 blocks | no | 2026-06-19
@@ -247,7 +248,7 @@ But then I updated the Mojo version to _Mojo 0.26.1.0.dev2025121217 (3e295ef6)_,
 
 <br/>
 
-I refactored the [C](tbd) program with two _regfree()_ function calls, after I also used regular expressions, in order to re-establish the former state of "all heap blocks were freed" after a program exit:
+I refactored the [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_bitstring_and_flexible_password_generator.c) program with two _regfree()_ function calls, after I also used regular expressions, in order to re-establish the former state of "all heap blocks were freed" after a program exit:
 
 ```
   ...
