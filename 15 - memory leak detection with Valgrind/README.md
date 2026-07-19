@@ -147,6 +147,7 @@ Only looking by the table above, I would implement a security related program on
 programming language | program uses regular expressions? | comment
 --- | --- | ---
 Ada (GNAT) | yes | 
+C | yes | 
 C++ | yes | 
 C3 | yes | 
 COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
