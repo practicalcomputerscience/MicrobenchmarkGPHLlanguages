@@ -125,7 +125,7 @@ Free Pascal's support of Extended Pascal according to [ISO/IEC 10206:1991](https
 
 Many years ago there was still GNU Pascal around, which claimed to support "most of ISO 10206 Extended Pascal": https://www.gnu-pascal.de/gpc/h-about.html#lang
 
-However, it's nowadays a tinkering job to get it running in a modern 64-bit Linux system: https://github.com/hebisch/gpc, so, I don't do it.
+However, it's nowadays a tinkering job to get GNU Pascal running in a modern 64-bit Linux system: https://github.com/hebisch/gpc, so, I don't do it.
 
 However, in ISO 10206 mode (Extended Pascal), Free Pascal has the required _TimeStamp_ type and _GetTimeStamp_ procedure implemented, which serves as a simple, random seed:
 
@@ -136,11 +136,13 @@ t            : TimeStamp;
   x[0] := (t.Second + t.Minute + t.Hour + t.Day + t.Month + t.Year) mod (m - 2) + 1;
 ```
 
+<br/>
+
 ## Random seed with leveraging the Address Space Layout Randomization (ASLR)
 
-The [ISO 7185-compliant program version](tbd) cannot access (Linux) system resources, and thus not reading a time value.
+The [ISO 7185-compliant program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not reading a time value.
 
-So, how to get a somehow random seed?
+So, how to get then a somehow random seed?
 
 Google AI helped me out with leveraging the Address Space Layout Randomization (ASLR), a concept also implemented many years ago in Linux: https://en.wikipedia.org/wiki/:
 
@@ -184,10 +186,33 @@ end;
 
 <br/>
 
-So, the only difference between my [ISO 7185](tbd) and [ISO 10206](tbd) implementations is that:
+So, the only difference between my [ISO 7185](./random_streams_for_perf_stats_iso7185.pp) and [ISO 10206](./random_streams_for_perf_stats_iso10206.pp) implementations is that:
 
 - procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions in the ISO 10206 version, and that
 - the ISO 10206 version uses the _GetTimeStamp_ procedure for a random seed, instead of leveraging the Address Space Layout Randomization
+
+<br/>
+
+## Microbenchmark program: speed part in different Free Pascal modes
+
+Free Pascal mode | compiler directives in source code | mean execution time measured with _$ multitime -n 10_ | string building | comment
+--- | --- | --- | --- | ---
+ISO 7185 "Pascal" | {$mode iso} | 16 milliseconds | C-style: writing characters of individual strings into an initially sized array of characters of the one, big string | 
+ISO 10206 "Extended Pascal" | {$mode extendedpascal} | 14 milliseconds | C-style | Free Pascal still doesn't fully support this mode
+Free Pascal (fpc) | {$mode fpc}{$H+} | 17 milliseconds | appending individual strings of type _array of char_ to the one, big string of type _String_ | this is Free Pascal's default dialect
+Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringStream_ | generally using some Delphi extensions, while retaining some Free Pascal constructs
+
+- _$H+_: _$LONGSTRINGS ON_: strings behave as AnsiString's, that is dynamically allocated with virtually unlimited size
+- _$M+_: _$TYPEINFO ON_: generate run time type information (RTTI) for classes
+
+<br/>
+
+It's a pitty that Free Pascal still isn't supporting the ISO 10206 "Extended Pascal" dialect more. Apparently, demand for it is just too low.
+I think that it could be another alternative for low-level systems programming, with the advantage of not going first through a transpilation to C code like the gm2 compiler for Modula-2 is doing it: [How to write fast Modula-2 programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#how-to-write-fast-modula-2-programs) (*)
+
+However and even though, the gm2-based Modula-2 implementation is the clear execution speed leader, ahead of the Free Pascal implementations, and then the Oberon-2 (with its own virtual machine of the Oxford Oberon-2 Compiler) and Critical Mass Modula-3 implementations; the last two not being suitable for (low-level) systems programming.
+
+It's also remarkable that the execution time of both dialects that use advanced string types, Free Pascal and Object Free Pascal, stays pretty low, a concept which just doesn't work in Modula-2 with a gcc backend in version 13.
 
 <br/>
 
