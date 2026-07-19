@@ -121,6 +121,7 @@ Factor |  |  | OK | _char_set_ is a string of allowed characters in both cases, 
 Forth (Gforth) | | | OK | _char_set_buffer_ is a set of allowed characters in both cases, compiled from codepoints | | 2026-07-08
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-06-10
 FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string (regular expressions are natively supported, but need some extra effort) | | 2026-06-14
+Free Pascal | yes |  | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | | 2026-07-19
 Gleam | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-31
 Go | yes |  | OK | POSIX patterns: _"[[:graph:]]+"_, _"[[:alnum:]]+"_ | yes | 2026-06-17
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | | 2026-05-27
