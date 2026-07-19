@@ -148,6 +148,7 @@ Perl 5            | 122 | interpreted, very mature language: verbosity with if-t
 Rust              | 122 | compiled, mature language | 2026-06-18
 Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU Smalltalk needs some user-defined functions | 2026-05-24
 Go                | 121 | compiled, mature language | 2026-05-28
+Modula-3 (CM3)    | 117 | compiled, very mature language | 2026-07-19
 Ballerina         | 116 | interpreted, young language, together with Java ecosystem | 2026-06-18
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
@@ -227,6 +228,7 @@ Kotlin             | 1
 Lua                | 1
 Mercury            | 9
 Modula-2 (GNU)     | 4
+Modula-3 (CM3)     | 0
 Mojo               | 0
 Nim                | 0
 Oberon (OBC)       | 5
