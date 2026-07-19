@@ -140,7 +140,7 @@ t            : TimeStamp;
 
 ## Random seed with leveraging the Address Space Layout Randomization (ASLR)
 
-The [ISO 7185-compliant program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not reading a time value.
+The [ISO 7185 program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not reading a time value.
 
 So, how to get then a somehow random seed?
 
@@ -186,10 +186,10 @@ end;
 
 <br/>
 
-So, the only difference between my [ISO 7185](./random_streams_for_perf_stats_iso7185.pp) and [ISO 10206](./random_streams_for_perf_stats_iso10206.pp) implementations is that:
+So, the only two differences between my [ISO 7185](./random_streams_for_perf_stats_iso7185.pp) and [ISO 10206](./random_streams_for_perf_stats_iso10206.pp) implementations are that:
 
 - procedures _Integer_to_bin_string_ and _Integer_to_hex_string_ became functions in the ISO 10206 version, and that
-- the ISO 10206 version uses the _GetTimeStamp_ procedure for a random seed, instead of leveraging the Address Space Layout Randomization
+- the ISO 10206 version uses the _GetTimeStamp_ procedure for a random seed, instead of leveraging Address Space Layout Randomization
 
 <br/>
 
