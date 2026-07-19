@@ -1,8 +1,10 @@
 2026-07-17: work in progress
 
+- tbd: toc
+
 <br/>
 
-[Professor Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/), the inventor of Pascal and other programming languages.
+Profile of [Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/), the inventor of Pascal and other programming languages.
 
 <br/>
 
@@ -210,7 +212,11 @@ Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending indi
 It's a pitty that Free Pascal still isn't supporting the ISO 10206 "Extended Pascal" dialect more. Apparently, demand for it is just too low.
 I think that it could be another alternative for low-level systems programming, with the advantage of not going first through a transpilation to C code like the gm2 compiler for Modula-2 is doing it: [How to write fast Modula-2 programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#how-to-write-fast-modula-2-programs) (*)
 
-However and even though, the gm2-based Modula-2 implementation is the clear execution speed leader, ahead of the Free Pascal implementations, and then the Oberon-2 (with its own virtual machine of the Oxford Oberon-2 Compiler) and Critical Mass Modula-3 implementations; the last two not being suitable for (low-level) systems programming.
+However and even though, the gm2-based Modula-2 implementation is the clear execution speed leader, ahead of the Free Pascal implementations, and then the Oberon-2 (with its own virtual machine of the Oxford Oberon-2 Compiler, and thus not suitable for low-level systems programming) and Critical Mass Modula-3 implementations.
+
+By the way: Critical Mass Modula-3 (CM3) is suitable for low-level systems programming: tbd
+
+
 
 It's also remarkable that the execution time of both dialects that use advanced string types, Free Pascal and Object Free Pascal, stays pretty low, a concept which just doesn't work in Modula-2 with a gcc backend in version 13.
 
