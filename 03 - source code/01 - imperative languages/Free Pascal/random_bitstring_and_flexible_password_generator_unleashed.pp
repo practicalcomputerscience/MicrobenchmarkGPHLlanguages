@@ -58,8 +58,6 @@ var
   bits_x_str, bits_hex_str, answer_str : String;
   bin0, bin0_0, bin0_1, char0b, char1b : String;
 
-  outWr         : TStringList;
-
   i, j, N_CHAR, char0a, char1a : Integer;
 
   answer             : Boolean = false;  // 2026-07-20
@@ -77,7 +75,6 @@ begin
 
   bits_x   := TStringStream.Create('');
   bits_hex := TStringStream.Create('');
-  outWr    := TStringList.Create;
 
   WriteLn(#10'generating a random bit stream...');  // #10 is the Line Feed (LF) character
 
@@ -116,7 +113,6 @@ begin
   // Free allocated memory buffers
   bits_x.Free;
   bits_hex.Free;
-  outWr.Free;
 
 
   // make a password of N_CHAR printable chars: user input requested here:

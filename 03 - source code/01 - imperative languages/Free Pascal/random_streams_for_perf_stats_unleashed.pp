@@ -63,7 +63,6 @@ var
 
   bits_x_str,  bits_hex_str : String;
 
-  outWr         : TStringList;
   i             : Integer;
 
 begin
@@ -75,7 +74,6 @@ begin
 
   bits_x   := TStringStream.Create('');
   bits_hex := TStringStream.Create('');
-  outWr    := TStringList.Create;
 
   WriteLn(#10'generating a random bit stream...');  // #10 is the Line Feed (LF) character
 
@@ -114,7 +112,6 @@ begin
   // Free allocated memory buffers
   bits_x.Free;
   bits_hex.Free;
-  outWr.Free;
 
 end.
 
