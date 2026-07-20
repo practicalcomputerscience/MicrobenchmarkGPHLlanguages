@@ -223,7 +223,7 @@ Free Pascal, Unleashed | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same li
 <br/>
 
 It's a pitty that Free Pascal still isn't supporting the ISO 10206 "Extended Pascal" dialect more. Apparently, demand for it is just too low.
-I think that it could be another alternative for low-level systems programming, with the advantage of not going first through a transpilation to C code like the gm2 compiler for Modula-2 is doing it: [How to write fast Modula-2 programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#how-to-write-fast-modula-2-programs) (*)
+I think that it could be another alternative for low-level systems programming, with the advantage of not going first through a transpilation to C code like the gm2 compiler for Modula-2 is doing it: [How to write fast Modula-2 programs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#how-to-write-fast-modula-2-programs)
 
 However and even though, the gm2-based Modula-2 implementation is the clear execution speed leader, ahead of the Free Pascal implementations, and then the Oberon-2 (with its own virtual machine of the Oxford Oberon-2 Compiler) and idiomatic, high-level Critical Mass Modula-3 implementations.
 
@@ -235,7 +235,7 @@ It's also remarkable that the execution time of both dialects that use advanced 
 
 [FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
 
-- I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: [Linux host requirements](https://github.com/fpc-unleashed/installer#linux-host-requirements) (**)
+- I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: [Linux host requirements](https://github.com/fpc-unleashed/installer#linux-host-requirements) (*)
 - I installed Free Pascal, Unleashed on a different Ubuntu 24 LTS system, because I got this error when compiling in my usual testing system with still the "normal" FPC installed: _Fatal: Can't find unit system used by Main_
 
 As recommeneded, I used the Linux installer file _installer_linux_x86_64_ from here (*), then did a _$ chmod 755 installer_linux_x86_64_, and executed it (_$ ./installer_linux_x86_64_) without the Lazarus Unleashed IDE:
