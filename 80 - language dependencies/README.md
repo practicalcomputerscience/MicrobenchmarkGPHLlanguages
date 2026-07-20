@@ -45,6 +45,7 @@ Factor | partly self-hosted, but traces of Zig and C++ can be seen on GitHub | h
 Forth (Gforth) | the virtual machine is written in GNU C, and partly the compiler to produce the bytecode; rest of compiler in Gforth | https://github.com/forthy42/gforth
 Fortran (GNU) | C for gcc | for GCC see: https://ftp.gnu.org/gnu/gcc/
 FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/software/binutils/) | https://www.freebasic.net/
+Free Pascal | self-hosted | https://www.freepascal.org/faq.html#WhatIsFP
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
 Go | self-hosted since 2015; the Go compiler was originally written in C | [Installing Go from source](https://go.dev/doc/install/source)
 Groovy | Groovy’s main compiler, groovyc, is written in Groovy itself; the rest in Java; so, partly self-hosted | 
