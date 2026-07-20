@@ -141,6 +141,7 @@ Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
 C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 OCaml             | 128 | compiled, mature language; some user-defined functions needed | 2026-06-18
+Free Pascal       | 127 | compiled, very mature language | 2026-07-20
 Odin              | 127 | compiled, young language | 2026-06-18
 SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
@@ -216,6 +217,7 @@ Factor             | 6
 Forth (Gforth)     | 14
 Fortran (GNU)      | 3
 FreeBASIC          | 1
+Free Pascal        | 0
 Gleam              | 8
 Go                 | 0
 Groovy             | 0
