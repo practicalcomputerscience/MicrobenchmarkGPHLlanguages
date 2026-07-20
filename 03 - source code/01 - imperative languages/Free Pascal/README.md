@@ -272,7 +272,7 @@ which I modified to [random_bitstring_and_flexible_password_generator_unleashed.
 
 However, and as I've noticed, not everything that goes through compilation will work, but that is also true for Free Pascal.
 
-That makes now only 119 source lines of code instead of 127 of program _random_bitstring_and_flexible_password_generator.pp_.
+That makes now only 116 source lines of code instead of 124 of program _random_bitstring_and_flexible_password_generator.pp_ (as of 2026-07-20).
 
 Free Pascal, Unleashed is still a very young fork, only publicly announced in March 2026: https://forum.lazarus.freepascal.org/index.php/topic,73678.0.html, but I already think that it can truly advance of what has been once started with Object Free Pascal.
 
@@ -282,16 +282,16 @@ Free Pascal, Unleashed is still a very young fork, only publicly announced in Ma
 
 https://github.com/graemeg/blaise
 
-I downloaded the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
+I downloaded this tarball file with the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
 
-I unpacked this tarball file and expanded my _~/.bashrc_ configuration file like this (activate it after changes with _$ source ~/.bashrc_):
+I unpacked that tarball file and expanded my _~/.bashrc_ configuration file like this (activate it after changes with _$ source ~/.bashrc_):
 
 ```
 export BLAISE_RTL_SRC="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/rtl-src"
 export PATH="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64:$PATH"
 ```
 
-Building the Blaise Pascal Compiler from sources takes some more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler: https://github.com/graemeg/pasbuild#6-requirements
+Building the Blaise Pascal Compiler from sources takes some more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler, if you don't install its the pre-compiled binary: https://github.com/graemeg/pasbuild#6-requirements. PasBuild is from the same author, Graeme Geldenhuys, as the Blaise Pascal Compiler.
 
 Building and running the _hello.pas_ example worked like this:
 
@@ -303,6 +303,15 @@ $ ./hello
 Hello from Blaise!
 $
 ```
+
+<br/>
+
+The original [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp) program for the Object Free Pascal mode needed significantly more refactoring than for the Free Pascal, Unleashed compiler.
+
+This compiler does not know the _TStringStream_ type for example, because it operates on **Automatic Reference Counting (ARC)** for all classes and natively uses UTF-8 reference-counted strings with 0-based indexing.
+
+
+Automatic Reference Counting (ARC) for all classes and natively uses UTF-8 reference-counted strings
 
 tbd
 
