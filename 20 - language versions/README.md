@@ -33,6 +33,7 @@ Factor | Factor 0.102 x86.64 (2301, heads/master-8e54de841b, Feb 11 2026 19:39:1
 Forth (Gforth) | gforth 0.7.9_20260610 amd64 | $ gforth --version
 Fortran | GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc.; ... | $ gfortran --version
 FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x86_64 (64bit); Copyright (C) 2004-2023 The FreeBASIC development team. | $ fbc --version
+Free Pascal | Free Pascal Compiler version 3.2.2 [2021/05/16] for x86_64, Copyright (c) 1993-2021 by Florian Klaempfl and others, ... | $ fpc -V
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.26.3 linux/amd64 | $ go version
 Groovy | Groovy Version: 5.0.4 JVM: 25.0.2 Vendor: Homebrew OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.2 2026-01-20... | $ groovy --version; $ gradle -v; $ java --version
