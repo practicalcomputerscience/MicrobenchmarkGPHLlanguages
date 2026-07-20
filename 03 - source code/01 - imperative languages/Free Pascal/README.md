@@ -50,7 +50,8 @@ Free Pascal comes with a text version of an Integrated Development Environment (
 
 ## Installation tips
 
-I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ with my normal Linux user.
+I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ as seen here: https://www.freepascal.org/download.html with my normal Linux user.
+
 It will ask the user a couple of questions for the desired configuration. I installed Free Pascal into my home directory.
 
 Then I added line _export PATH="$HOME/fpc-3.2.2/bin:$PATH"_ to my _~/.bashrc_ configuration file, which I then activated with: _$ source ~/.bashrc_
