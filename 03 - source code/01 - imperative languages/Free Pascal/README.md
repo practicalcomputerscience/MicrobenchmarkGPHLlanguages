@@ -273,14 +273,37 @@ However, and as I've noticed, not everything that goes through compilation will 
 
 That makes now only 119 source lines of code instead of 127 of program _random_bitstring_and_flexible_password_generator.pp_.
 
-Free Pascal, Unleashed is still a very young fork, only publicly announced in March 2026: https://forum.lazarus.freepascal.org/index.php/topic,73678.0.html, but already I think that it can really advance what has been once started with Object Free Pascal.
+Free Pascal, Unleashed is still a very young fork, only publicly announced in March 2026: https://forum.lazarus.freepascal.org/index.php/topic,73678.0.html, but I already think that it can truly advance of what has been once started with Object Free Pascal.
 
 <br/>
 
+## Blaise Pascal Compiler
 
+https://github.com/graemeg/blaise
 
+I downloaded the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
 
+I unpacked this tarball file and expanded my _~/.bashrc_ configuration file like this (activate it after changes with _$ source ~/.bashrc_):
 
+```
+export BLAISE_RTL_SRC="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/rtl-src"
+export PATH="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64:$PATH"
+```
+
+Building the Blaise Pascal Compiler from sources takes some more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler: https://github.com/graemeg/pasbuild#6-requirements
+
+Building and running the _hello.pas_ example worked like this:
+
+```
+$ sudo mkdir /rtl  # do this only once
+$ sudo chmod 777 /rtl  # do this only once
+$ blaise --source ./blaise-v0.13.0-linux-x86_64/hello.pas --output hello
+$ ./hello
+Hello from Blaise!
+$
+```
+
+tbd
 
 
 
