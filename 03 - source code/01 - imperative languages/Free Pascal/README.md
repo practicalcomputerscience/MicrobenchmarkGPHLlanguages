@@ -13,7 +13,7 @@ Table of contents:
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 - [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
-- [tbd]()
+- []()
 - 
 
 ---
@@ -132,7 +132,7 @@ $
 
 <br/>
 
-## Extended Pascal according to ISO 10206
+### Extended Pascal according to ISO 10206
 
 Free Pascal's support of Extended Pascal according to [ISO/IEC 10206:1991](https://www.iso.org/standard/18237.html) is still minimal: https://gitlab.com/freepascal.org/fpc/source/-/work_items/32549
 
@@ -151,7 +151,7 @@ t            : TimeStamp;
 
 <br/>
 
-## Random seed with leveraging the Address Space Layout Randomization (ASLR)
+### Random seed with leveraging the Address Space Layout Randomization (ASLR)
 
 The [ISO 7185 program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not reading a time value.
 
@@ -206,7 +206,7 @@ So, the only two differences between my [ISO 7185](./random_streams_for_perf_sta
 
 <br/>
 
-## Microbenchmark program: speed part in different Free Pascal modes
+### Microbenchmark program: speed part in different Free Pascal modes
 
 Free Pascal mode | compiler directives in source code | mean execution time measured with _$ multitime -n 10_ | string building | comment
 --- | --- | --- | --- | ---
@@ -226,6 +226,55 @@ I think that it could be another alternative for low-level systems programming, 
 However and even though, the gm2-based Modula-2 implementation is the clear execution speed leader, ahead of the Free Pascal implementations, and then the Oberon-2 (with its own virtual machine of the Oxford Oberon-2 Compiler) and idiomatic, high-level Critical Mass Modula-3 implementations.
 
 It's also remarkable that the execution time of both dialects that use advanced string types, Free Pascal and Object Free Pascal, stays pretty low, a concept which doesn't work in Modula-2 with a gcc backend in version 13 according to my tests.
+
+<br/>
+
+## Free Pascal, Unleashed
+
+[FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
+
+- I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: _$ https://github.com/fpc-unleashed/installer#linux-host-requirements_ (**)
+- I installed Free Pascal, Unleashed on a different Ubuntu 24 LTS system, because I got this error when compiling in my usual testing system with still the "normal" FPC installed: _Fatal: Can't find unit system used by Main_
+
+As recommeneded, I used the Linux installer file _installer_linux_x86_64_ from here (*), then did a _$ chmod 755 installer_linux_x86_64_ and executed it (_$ ./installer_linux_x86_64_) without the Lazarus Unleashed IDE:
+
+![plot](./fpc_unleashed_installer_linux_x86_64_gui_installer.png)
+
+<br/>
+
+Then, I only slightly modified the original [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp) program for the Object Free Pascal mode to [random_streams_for_perf_stats_unleashed.pp](./random_streams_for_perf_stats_unleashed.pp) for the Free Pascal, Unleashed mode:
+
+```
+program Main;
+
+{$mode unleashed}{$H+}{$M+}  // 2026-07-20
+...
+```
+
+..and compiled it like this:
+
+```
+$ fpc -Munleashed random_streams_for_perf_stats_unleashed.pp
+```
+
+<br/>
+
+Program _random_streams_for_perf_stats.pp_ is just too short to make use of Free Pascal, Unleashed's features.
+I did this with the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.pp),
+which is modified to [random_bitstring_and_flexible_password_generator_unleashed.pp](./random_bitstring_and_flexible_password_generator_unleashed.pp), like for example:
+
+- [String Interpolation](https://github.com/fpc-unleashed/freepascal#string-interpolation)
+- 
+
+
+
+
+
+
+
+
+
+
 
 <br/>
 
