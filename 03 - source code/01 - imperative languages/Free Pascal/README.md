@@ -21,6 +21,8 @@ Table of contents:
 
 https://www.freepascal.org/
 
+https://gitlab.com/freepascal.org/fpc
+
 Free Pascal supports:
 
 - Objective-Pascal to access the Mac OS X system framework, which usually happens with Objective-C
@@ -213,6 +215,7 @@ ISO 7185 "Pascal" | {$mode iso} | 16 milliseconds | C-style: writing characters 
 ISO 10206 "Extended Pascal" | {$mode extendedpascal} | 14 milliseconds | C-style | Free Pascal still doesn't fully support this mode
 Free Pascal (fpc) | {$mode fpc}{$H+} | 17 milliseconds | appending individual strings of type _array of char_ to the one, big string of type _String_ | this is Free Pascal's default dialect
 Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringStream_ | generally using some Delphi extensions, while retaining some Free Pascal constructs
+Free Pascal, Unleashed | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same like in Object Free Pascal |
 
 - _$H+_: _$LONGSTRINGS ON_: strings behave as AnsiString's, that is dynamically allocated with virtually unlimited size
 - _$M+_: _$TYPEINFO ON_: generate run time type information (RTTI) for classes
@@ -260,10 +263,27 @@ $ fpc -Munleashed random_streams_for_perf_stats_unleashed.pp
 
 Program _random_streams_for_perf_stats.pp_ is just too short to make use of Free Pascal, Unleashed's features.
 I did this with the [full microbenchmark program](./random_bitstring_and_flexible_password_generator.pp),
-which is modified to [random_bitstring_and_flexible_password_generator_unleashed.pp](./random_bitstring_and_flexible_password_generator_unleashed.pp), like for example:
+which I modified to [random_bitstring_and_flexible_password_generator_unleashed.pp](./random_bitstring_and_flexible_password_generator_unleashed.pp) with these new features:
 
+- [Multi-Variable Initialization](https://github.com/fpc-unleashed/freepascal#multi-variable-initialization)
+- [Statement Expressions, If expression](https://github.com/fpc-unleashed/freepascal#if-expression)
 - [String Interpolation](https://github.com/fpc-unleashed/freepascal#string-interpolation)
-- 
+
+However, and as I've noticed, not everything that goes through compilation will work, but that is also true for Free Pascal.
+
+That makes now only 119 source lines of code instead of 127 of program _random_bitstring_and_flexible_password_generator.pp_.
+
+Free Pascal, Unleashed is still a very young fork, only publicly announced in March 2026: https://forum.lazarus.freepascal.org/index.php/topic,73678.0.html, but already I think that it can really advance what has been once started with Object Free Pascal.
+
+<br/>
+
+
+
+
+
+
+
+
 
 
 
