@@ -8,13 +8,12 @@ Profile of [Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/) (1934-202
 
 Table of contents:
 
-- [Free Pascal](#freepascal)
+- [Free Pascal](#free-pascal-1)
 - [Installation tips](#installation-tips)
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 - [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
-- []()
-- 
+- [Free Pascal, Unleashed](#free-pascal-unleashed)
 
 ---
 
