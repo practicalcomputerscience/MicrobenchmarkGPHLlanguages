@@ -4,6 +4,8 @@ random_streams_for_perf_stats.pp
 This program is for the Free Pascal compiler in Object Free Pascal mode (objfpc).
 
 2026-07-18
+2026-07-20: restrain exception handling only when writing to files
+
 
 build on Ubuntu 24 LTS: $ fpc random_streams_for_perf_stats.pp
                           switch -O3 is not making this program faster
@@ -65,59 +67,52 @@ begin
   // Initialize random number generator seed
   Randomize;
 
-  try  // using object-oriented exception block
-    x[0] := Random(m - 1) + 1;
-    // Random(m - 1) returns a random number larger or equal to 0 and strictly less than m - 1
+  x[0] := Random(m - 1) + 1;
+  // Random(m - 1) returns a random number larger or equal to 0 and strictly less than m - 1
 
-    bits_x   := TStringStream.Create('');
-    bits_hex := TStringStream.Create('');
-    outWr    := TStringList.Create;
+  bits_x   := TStringStream.Create('');
+  bits_hex := TStringStream.Create('');
+  outWr    := TStringList.Create;
 
-    try
-      WriteLn(#10'generating a random bit stream...');  // #10 is the Line Feed (LF) character
+  WriteLn(#10'generating a random bit stream...');  // #10 is the Line Feed (LF) character
 
-      for i := 1 to upper_limit - 1 do
-      begin
-        x[i] := (a * x[i - 1] + c) mod m;
+  for i := 1 to upper_limit - 1 do
+  begin
+    x[i] := (a * x[i - 1] + c) mod m;
 
-        // Convert to binary base-2 string and pad to 16 chars with '0'
-        bits_x_str := IntToBin(x[i], 16);
-        bits_x.WriteString(bits_x_str);
+    // Convert to binary base-2 string and pad to 16 chars with '0'
+    bits_x_str := IntToBin(x[i], 16);
+    bits_x.WriteString(bits_x_str);
 
-        // Convert to hex base-16 string and pad to 4 chars with '0'
-        bits_hex_str := LowerCase(IntToHex(x[i], 4));
-        bits_hex.WriteString(bits_hex_str);
-      end;
-
-
-      // write bit stream to disk:
-      try
-        bits_x.SaveToFile(file_bits_x);  // SaveToFile() for no trailing newline or dot
-        WriteLn('Bit stream has been written to disk under name:  ', file_bits_x);
-      except
-        on E: Exception do
-          WriteLn('could not write to file: ', file_bits_x, ' ! -- ', E.Message);
-      end;
-
-      // write byte stream to disk:
-      try
-        bits_hex.SaveToFile(file_bits_hex);
-        WriteLn('Byte stream has been written to disk under name: ', file_bits_hex);
-      except
-        on E: Exception do
-          WriteLn('could not write to file: ', file_bits_hex, ' ! -- ', E.Message);
-      end;
-
-    finally
-      // Free allocated memory buffers
-      bits_x.Free;
-      bits_hex.Free;
-      outWr.Free;
-    end;
-
-  except
-    // Catch-all block mimicking Modula-3's EXCEPT ELSE END
+    // Convert to hex base-16 string and pad to 4 chars with '0'
+    bits_hex_str := LowerCase(IntToHex(x[i], 4));
+    bits_hex.WriteString(bits_hex_str);
   end;
+
+
+  // write bit stream to disk:
+  try
+    bits_x.SaveToFile(file_bits_x);  // SaveToFile() for no trailing newline or dot
+    WriteLn('Bit stream has been written to disk under name:  ', file_bits_x);
+  except
+    on E: Exception do
+      WriteLn('could not write to file: ', file_bits_x, ' ! -- ', E.Message);
+  end;
+
+  // write byte stream to disk:
+  try
+    bits_hex.SaveToFile(file_bits_hex);
+    WriteLn('Byte stream has been written to disk under name: ', file_bits_hex);
+  except
+    on E: Exception do
+      WriteLn('could not write to file: ', file_bits_hex, ' ! -- ', E.Message);
+  end;
+
+  // Free allocated memory buffers
+  bits_x.Free;
+  bits_hex.Free;
+  outWr.Free;
+
 end.
 
 (* end of random_streams_for_perf_stats.pp *)
