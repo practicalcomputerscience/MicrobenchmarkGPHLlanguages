@@ -280,7 +280,8 @@ Free Pascal, Unleashed is still a very young fork, only publicly announced in Ma
 
 ## Blaise Pascal Compiler
 
-https://github.com/graemeg/blaise
+This is another brand-new Pascal compiler: https://github.com/graemeg/blaise. However, it's ecosystem being built from the ground up is still tiny,
+so expect to implement a lot of user defined functions and procedures.
 
 I downloaded this tarball file with the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
 
@@ -291,7 +292,7 @@ export BLAISE_RTL_SRC="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux
 export PATH="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64:$PATH"
 ```
 
-Building the Blaise Pascal Compiler from sources takes some more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler, if you don't install PasBuild's pre-compiled binary: https://github.com/graemeg/pasbuild#6-requirements. PasBuild is from the same author, Graeme Geldenhuys, as the Blaise Pascal Compiler.
+Building the Blaise Pascal Compiler from sources takes more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler, if you don't install PasBuild's pre-compiled binary: https://github.com/graemeg/pasbuild#6-requirements. PasBuild is from the same author, Graeme Geldenhuys, as the Blaise Pascal Compiler.
 
 Building and running the _hello.pas_ example worked like this:
 
@@ -306,7 +307,8 @@ $
 
 <br/>
 
-The original [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp) program (for Object Free Pascal) needed **significantly more refactoring** for the Blaise Pascal Compiler than for the Free Pascal, Unleashed compiler.
+The original [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp) program (for Object Free Pascal) needed **significant amount of refactoring** to make it work
+for the Blaise Pascal Compiler. I practically re-developed it from the ground up with lots of help from Google AI.
 
 This compiler does not know the _TStringStream_ type for example, because it operates on **Automatic Reference Counting (ARC)** for all classes and natively uses UTF-8 reference-counted strings with 0-based indexing.
 
