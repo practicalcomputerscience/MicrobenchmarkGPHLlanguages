@@ -235,10 +235,11 @@ It's also remarkable that the execution time of both dialects that use advanced 
 
 [FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
 
-- I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: [Linux host requirements](https://github.com/fpc-unleashed/installer#linux-host-requirements) (*)
+- I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: [Linux host requirements](https://github.com/fpc-unleashed/installer#linux-host-requirements)
 - I installed Free Pascal, Unleashed on a different Ubuntu 24 LTS system, because I got this error when compiling in my usual testing system with still the "normal" FPC installed: _Fatal: Can't find unit system used by Main_
 
-As recommeneded, I used the Linux installer file _installer_linux_x86_64_ from here (*), then did a _$ chmod 755 installer_linux_x86_64_, and executed it (_$ ./installer_linux_x86_64_) without the Lazarus Unleashed IDE:
+As recommeneded, I used the Linux installer file _installer_linux_x86_64_ from here: https://github.com/fpc-unleashed/installer/releases/tag/v0.1.3,
+then did a _$ chmod 755 installer_linux_x86_64_, and executed it (_$ ./installer_linux_x86_64_) without the Lazarus Unleashed IDE:
 
 ![plot](./fpc_unleashed_installer_linux_x86_64_gui_installer.png)
 
