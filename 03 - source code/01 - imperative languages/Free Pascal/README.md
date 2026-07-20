@@ -1,8 +1,24 @@
+# Free Pascal
+
 Profile of [Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/) (1934-2024), the inventor of Pascal and other programming languages.
 
 <br/>
 
-# Free Pascal
+---
+
+Table of contents:
+
+- [Free Pascal](#freepascal)
+- [Installation tips](#installation-tips)
+- [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
+- [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
+- [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
+- [tbd]()
+- 
+
+---
+
+## Free Pascal
 
 https://www.freepascal.org/
 
@@ -48,7 +64,7 @@ Free Pascal comes with a text version of an Integrated Development Environment (
 
 <br/>
 
-## Installation tips
+### Installation tips
 
 I just ran the _./install.sh_ script of the (unzipped) tarball file _fpc-3.2.2.x86_64-linux.tar_ as seen here: https://www.freepascal.org/download.html with my normal Linux user.
 
