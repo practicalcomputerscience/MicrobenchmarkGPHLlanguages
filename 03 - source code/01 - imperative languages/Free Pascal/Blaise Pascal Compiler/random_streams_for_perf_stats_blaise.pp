@@ -7,16 +7,16 @@ This program is for the Blaise Pascal Compiler.
 
 
 build on Ubuntu 24 LTS: $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
-                          --linker external \
+                          --backend qbe \  # use this switch as long as it works, otherwise use: --linker external
                           --source random_streams_for_perf_stats_blaise.pp \
-                          --output random_streams_for_perf_stats_blaise
+                          --output random_streams_for_perf_stats_blaise_qbe
 
-run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats_blaise
-                        $ time ./random_streams_for_perf_stats_blaise => real	0m0.042s
-                        $ multitime -n 10 ./random_streams_for_perf_stats_blaise
-                        1: ./random_streams_for_perf_stats_blaise
+run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats_blaise_qbe
+                        $ time ./random_streams_for_perf_stats_blaise_qbe => real	0m0.028s
+                        $ multitime -n 10 ./random_streams_for_perf_stats_blaise_qbe
+                        1: ./random_streams_for_perf_stats_blaise_qbe
                                     Mean        Std.Dev.    Min         Median      Max
-                        real        0.041       0.000       0.041       0.041       0.042 
+                        real        0.028       0.000       0.028       0.028       0.028
 
 
 $ blaise
@@ -71,10 +71,7 @@ var
 
 // Bind clock_gettime directly to standard libc
 // Change 'libc' to 'c' so the external linker maps it to -lc
-function sys_clock_gettime(clock_id: Integer; tp: Pointer): Integer;
-cdecl;
-external 'c' name 'clock_gettime';
-
+function sys_clock_gettime(clock_id: Integer; tp: Pointer): Integer; cdecl; external 'c' name 'clock_gettime';
 
 function sys_open(path: PChar; flags: Integer; mode: Integer): Integer; cdecl; external 'c' name 'open';
 function sys_write(fd: Integer; buf: Pointer; count: Integer): Integer; cdecl; external 'c' name 'write';
@@ -86,7 +83,7 @@ var
   j, temp: integer;
 begin
   // Allocate exactly 16 bytes upfront in ONE step: very important for good exe speed!
-  SetLength(res, 16); 
+  SetLength(res, 16);
   temp := n;
   for j := 15 downto 0 do
   begin
@@ -105,17 +102,17 @@ var
   j, temp, rem: integer;
 begin
   // Allocate exactly 4 bytes upfront in ONE step: very important for good exe speed!
-  SetLength(res, 4); 
+  SetLength(res, 4);
   HexChars := '0123456789abcdef';
   temp := n;
   for j := 3 downto 0 do
   begin
     rem  := temp mod 16;
-    
-    // Direct character assignment: extract the raw numeric ASCII value 
+
+    // Direct character assignment: extract the raw numeric ASCII value
     // from HexChars and write it straight into res[j]. Zero heap churn!
     res[j] := HexChars[rem];
-    
+
     temp := temp div 16;
   end;
 end;
@@ -133,7 +130,7 @@ begin
 
   bits_x   := TStringBuilder.Create();
   bits_hex := TStringBuilder.Create();
-  
+
   SetLength(bits_x_str, 16);
   SetLength(bits_hex_str, 4);
 
