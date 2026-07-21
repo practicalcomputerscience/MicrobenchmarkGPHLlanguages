@@ -225,9 +225,9 @@ Free Pascal | ISO 7185 "Pascal" | {$mode iso} | 16 milliseconds | C-style: writi
 Free Pascal | ISO 10206 "Extended Pascal" | {$mode extendedpascal} | 14 milliseconds | C-style | Free Pascal still doesn't fully support this mode
 Free Pascal | Free Pascal | {$mode fpc}{$H+} | 17 milliseconds | appending individual strings of type _array of char_ to the one, big string of type _String_ | this is Free Pascal's default dialect
 Free Pascal | Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringStream_ | generally using some Delphi extensions, while retaining some Free Pascal constructs
-Free Pascal, Unleashed | based on _objfpc_ mode | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same like with Object Free Pascal |
-Blaise Pascal Compiler | direct native x86-64 code generation | -- | tbd | tbd
-Blaise Pascal Compiler | code generation via QBE compiler backend (amd64 on Linux) | -- | tbd | tbd
+Free Pascal, Unleashed | based on _objfpc_ mode                                    | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same like with Object Free Pascal |
+Blaise Pascal Compiler | direct and native x86-64 code generation                  | --                          | 42 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringBuilder_ | 
+Blaise Pascal Compiler | code generation via QBE compiler backend (amd64 on Linux) | --                          | 28 milliseconds | same like with direct compilation and building | 
 
 - _$H+_: _$LONGSTRINGS ON_: strings behave as AnsiString's, that is dynamically allocated with virtually unlimited size
 - _$M+_: _$TYPEINFO ON_: generate run time type information (RTTI) for classes
