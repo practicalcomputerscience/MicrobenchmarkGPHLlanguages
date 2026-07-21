@@ -214,15 +214,17 @@ So, the only two differences between my [ISO 7185](./random_streams_for_perf_sta
 
 <br/>
 
-### Microbenchmark program: speed part in different Free Pascal modes
+### Microbenchmark program: speed part in different Pascal dialects and compiler modes
 
-Free Pascal mode | compiler directives in source code | mean execution time measured with _$ multitime -n 10_ | string building | comment
---- | --- | --- | --- | ---
-ISO 7185 "Pascal" | {$mode iso} | 16 milliseconds | C-style: writing characters of individual strings into an initially sized array of characters of the one, big string | 
-ISO 10206 "Extended Pascal" | {$mode extendedpascal} | 14 milliseconds | C-style | Free Pascal still doesn't fully support this mode
-Free Pascal (fpc) | {$mode fpc}{$H+} | 17 milliseconds | appending individual strings of type _array of char_ to the one, big string of type _String_ | this is Free Pascal's default dialect
-Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringStream_ | generally using some Delphi extensions, while retaining some Free Pascal constructs
-Free Pascal, Unleashed | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same like in Object Free Pascal |
+Pascal compiler | compiler mode | compiler directives in source code | mean execution time measured with _$ multitime -n 10_ | string building | comment
+--- | --- | --- | --- | --- | ---
+Free Pascal | ISO 7185 "Pascal" | {$mode iso} | 16 milliseconds | C-style: writing characters of individual strings into an initially sized array of characters of the one, big string | 
+Free Pascal | ISO 10206 "Extended Pascal" | {$mode extendedpascal} | 14 milliseconds | C-style | Free Pascal still doesn't fully support this mode
+Free Pascal | Free Pascal | {$mode fpc}{$H+} | 17 milliseconds | appending individual strings of type _array of char_ to the one, big string of type _String_ | this is Free Pascal's default dialect
+Free Pascal | Object Free Pascal | {$mode objfpc}{$H+}{$M+} | 16 milliseconds | appending individual strings of type _String_ to the one, big string of type _TStringStream_ | generally using some Delphi extensions, while retaining some Free Pascal constructs
+Free Pascal, Unleashed | based on _objfpc_ mode | {$mode unleashed}{$H+}{$M+} | 14 milliseconds | same like with Object Free Pascal |
+Blaise Pascal Compiler | direct native x86-64 code generation | -- | tbd | tbd
+Blaise Pascal Compiler | code generation via QBE compiler backend (amd64 on Linux) | -- | tbd | tbd
 
 - _$H+_: _$LONGSTRINGS ON_: strings behave as AnsiString's, that is dynamically allocated with virtually unlimited size
 - _$M+_: _$TYPEINFO ON_: generate run time type information (RTTI) for classes
