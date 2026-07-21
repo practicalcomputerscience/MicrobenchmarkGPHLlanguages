@@ -104,6 +104,11 @@ $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 21 \
 $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 22 \
 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-22 \
 --slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-22
+$ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-23 23 \
+--slave /usr/bin/clang++ clang++ /usr/bin/clang++-23 \
+--slave /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-23
+update-alternatives: using /usr/bin/clang-23 to provide /usr/bin/clang (clang) in auto mode
+$
 ```
 
 However, command _sudo apt install llvm_, which installed LLVM version 23, has been installed into directory: _/usr/lib/llvm-23_, and only installed the core LLVM framework and not the clang compiler frontend. That installation can be done like this (in Ubuntu 24):
