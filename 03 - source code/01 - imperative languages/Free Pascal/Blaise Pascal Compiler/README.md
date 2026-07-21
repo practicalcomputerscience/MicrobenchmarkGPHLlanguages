@@ -13,8 +13,8 @@ ARC = Automatic Reference Counting
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- tbd
-- tbd
+- [Microbenchmark program: speed part]()
+- [Compiling for the QBE compiler backend]()
 - tbd
 
 <br/>
@@ -54,13 +54,12 @@ $
 
 ## Microbenchmark program: speed part
 
-The original [random_streams_for_perf_stats.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats.pp) program for Object Free Pascal needed **significant amount of refactoring** to make it work for the Blaise Pascal Compiler.
+The original [random_streams_for_perf_stats.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats.pp) program for Object Free Pascal needed **significant amount of refactoring** to make it work for the Blaise Pascal Compiler,
+because almost the whole established type system of Free Pascal is gone at this compiler!
 
-I practically re-developed it from the ground up with lots of help from Google AI: [random_streams_for_perf_stats_blaise.pp](./random_streams_for_perf_stats_blaise.pp)
+So, I practically re-developed the microbenchmark program(s) from the ground up with lots of help from Google AI: [random_streams_for_perf_stats_blaise.pp](./random_streams_for_perf_stats_blaise.pp)
 
-Almost the whole established type system of Free Pascal has gone!
-
-Building and running a standalone executable for Linux (still takes) some effort as these commands show:
+Building and running a standalone executable for Linux (still) takes some effort as these commands show:
 
 ```
 $ sudo mkdir /rtl  # do this only once if not done yet
@@ -69,21 +68,170 @@ $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x
 --linker external \
 --source random_streams_for_perf_stats_blaise.pp \
 --output random_streams_for_perf_stats_blaise
-$ 
+$ time ./random_streams_for_perf_stats_blaise 
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.041s
+...
+$
 ```
 
-It's essential that you check all paths in your system like this for example: _--unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src_
+It's essential to check all paths in your system like this for example: _--unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src_
 
-There may be a more elegant way already now to make a standalone executable for Linux, but that was my final workflow with lots of help from Google AI again.
+There may be a more elegant way to make a standalone executable for Linux, but that has become my final workflow with lots of help from Google AI again.
 
-tbd
+By the way: program [random_streams_for_perf_stats_blaise.pp](./random_streams_for_perf_stats_blaise.pp) makes use of the _TStringBuilder_ type for the big strings _bits_x_ and _bits_hex_,
+where the individual, little strings only have to be appended:
 
-I)
+```
+    ...
+    Integer_to_bin_string(x[i], bits_x_str);
+    bits_x.Append(bits_x_str);
+
+    Integer_to_hex_string(x[i], bits_hex_str);
+    bits_hex.Append(bits_hex_str);
+    ...
+```
+
+Changing them to the _String_ type with memory pre-allocation doesn't change the execution speed of the program in any statistically relevant way:
+
+```
+  ...
+  SetLength(bits_x, (upper_limit - 1) * 16);  // memory pre-allocation
+  SetLength(bits_hex, (upper_limit - 1) * 4);  // memory pre-allocation
+  
+  SetLength(bits_x_str, 16);  // memory pre-allocation
+  SetLength(bits_hex_str, 4);  // memory pre-allocation
+
+  WritePosBin := 0;
+  WritePosHex := 0;
+  ...
+  for i := 1 to upper_limit - 1 do
+  begin
+    x[i] := (a * x[i - 1] + c) mod m;
+
+    Integer_to_bin_string(x[i], bits_x_str);
+    for FD := 0 to 15 do
+      bits_x[WritePosBin + FD] := bits_x_str[FD];
+    WritePosBin := WritePosBin + 16;
+
+    Integer_to_hex_string(x[i], bits_hex_str);
+    for FD := 0 to 3 do
+      bits_hex[WritePosHex + FD] := bits_hex_str[FD];     
+    WritePosHex := WritePosHex + 4;
+  end;
+  ...
+```
+
+However and whenever possible, do memory pre-allocation with the inbuilt _SetLength()_ procedure at least for variables of the _String_ type when writing code for the Blaise Pascal Compiler.
+According to my experiments, it's generally beneficial for the execution speed of an executable.
+
+<br/>
+
+## Compiling for the QBE compiler backend
+
+https://c9x.me/compile/
+
+With a program execution time of around 42 milliseconds, the Blaise Pascal Compiler built executable cannot impress executables built with Object Free Pascal or Free Pascal, Unleashed: [Microbenchmark program: speed part in different Pascal dialects and compiler modes](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#microbenchmark-program-speed-part-in-different-pascal-dialects-and-compiler-modes)
+
+However, the Blaise Pascal Compiler offers a second option, and that is to compile (compliant) Pascal source code to the Intermediate Language (IL or IR for Intermediate Representation) of the QBE compiler backend:
+
+```
+$ blaise 
+...
+Flags:
+  ...
+  --emit-ir         Print QBE IR to stdout and exit
+  ...
+$
+```
+
+From [QBE Intermediate Language](https://c9x.me/compile/doc/il.html#Basic-Concepts):
+
+> The intermediate language (IL) is a higher-level language than the machine's assembly language. It smoothes most of the irregularities of the underlying hardware and allows an infinite number of temporaries to be used. This higher abstraction level lets frontend programmers focus on language design issues.
+
+Good news: so far, I haven't been forced to change my source code for the Blaise Pascal Compiler to get an executable compiled with the QBE compiler backend!
+
+First step is to change the compilation command to this:
+
+```
 $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
 --source random_streams_for_perf_stats_blaise.pp \
 --emit-ir > random_streams_for_perf_stats.qbe
-$ qbe -o random_streams_for_perf_stats.s random_streams_for_perf_stats.qbe  # from IR to assembly code
-$ cc -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o  # from assembly code to object code
+$ head random_streams_for_perf_stats.qbe
+$ head -n 5 random_streams_for_perf_stats.qbe
+# Unit: Generics.Defaults
+
+data $__cn_TObject = { w -1, w 7, w 7, b "TObject", b 0 }
+export data $typeinfo_TObject = { l 0, l 0, l $__cn_TObject + 12, l 0, l 8, l $_FieldCleanup_TObject, l $vtable_TObject, l 0, l 0 }
+data $__cn_TCustomAttribute = { w -1, w 16, w 16, b "TCustomAttribute", b 0 }
+$
+```
+
+<br/>
+
+Next step is to build, install and test the QBE compiler backend, which I did like this:
+
+```
+$ git clone git://c9x.me/qbe.git
+Cloning into 'qbe'...
+...
+Resolving deltas: 100% (4282/4282), done.
+$ cd qbe
+$ make  # compiling
+...
+$ sudo make install
+[sudo] password for ...
+mkdir -p "/usr/local/bin"
+install -m755 qbe "/usr/local/bin/qbe"
+$ cd ..  # don't forget to return into your working directory!
+$ qbe -h
+qbe [OPTIONS] {file.ssa, -}
+	-h          prints this help
+	-o file     output to file
+	-t <target> generate for a target among:
+	            amd64_sysv (default), amd64_apple, amd64_win, arm64, arm64_apple, rv64
+	-d <flags>  dump debug information
+$
+```
+
+<br/>
+
+Now we can compile the source code in the QBE IL into assembly code in your working directory:
+
+```
+$ qbe -o random_streams_for_perf_stats.s random_streams_for_perf_stats.qbe
+$ head -n 9 random_streams_for_perf_stats.s
+.data
+.balign 8
+__cn_TObject:
+	.int 4294967295
+	.int 7
+	.int 7
+	.ascii "TObject"
+	.byte 0
+/* end data */
+$
+```
+
+Now comes the crucial step: compiling the assembly code into object code with the usual GNU C compiler (here in version 14.2.0: _$ gcc --version_), or practically any other C compiler:
+
+```
+$ gcc -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o
+$
+```
+
+By the way: there's no use in trying to optimize the object code with a command like this (it will generate the same object file):
+
+```
+$ gcc -c -march=native -O3 -flto random_streams_for_perf_stats.s -o random_streams_for_perf_stats_opt.o
+$
+```
+clang -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o
+
 >>>>>>>> test: -march=native -O3 -flto <<<<<<<<<<<<<<<<<<<<<<<<<< tbd
 
 ---
