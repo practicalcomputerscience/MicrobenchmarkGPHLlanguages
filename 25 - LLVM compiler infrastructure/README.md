@@ -163,6 +163,69 @@ $
 
 <br/>
 
+### clang shadowing by Swiftly: $ which -a clang
+
+If above instructions don't work, you may check your [Swift](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Swift#swift) installation in Linux. I installed it (apparently) with Homebrew, and this caused some deep-rooted reconfiguration of my system:
+
+```
+$ clang --version
+clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 9784760565e8cae0bc0b97bad69aaf498408dc3d)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: ~/.local/share/swiftly/toolchains/6.2.3/usr/bin
+$ which -a clang
+~/.local/share/swiftly/bin/clang  # this is the old clang version 17!!
+/usr/bin/clang
+/bin/clang
+$
+```
+
+..which always kept the upper hand. Commenting this in my _~/.bashrc_ configuration file was not enough:
+
+```
+# export PATH="$PATH:~/.local/share/swiftly/bin"  # this is exposing old clang/llvm version 17.0.0!!!
+```
+
+Finally, I found the culprit here in my _~/.profile_ configuration file:
+
+```
+$ cat ~/.profile | grep swiftly
+# Added by swiftly
+. "$HOME/.local/share/swiftly/env.sh"
+$
+```
+
+So, I commented out the _$HOME/.local/share/swiftly/env.sh"_ script with the nano editor: _$ nano ~/.profile_
+
+```
+# . "$HOME/.local/share/swiftly/env.sh"
+```
+
+..and rebooted my computer!
+
+Then I checked again:
+
+```
+$ which -a clang
+/usr/bin/clang
+/bin/clang
+$ /usr/bin/clang --version
+Ubuntu clang version 23.0.0 (++20260707081847+70646dd3eda3-1~exp1~20260707082012.1709)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-23/bin
+$
+```
+
+Voilà!
+
+<br/>
+
+By the way: my _~/.profile_ script is being called from my _~/.bash_profile_ script at every shell login. It was the RVM (Ruby version manager) and then Bun,
+which started to use the _~/.bash_profile_ configuration file!
+
+<br/>
+
 ### Easy installation in Windows 11
 
 Look for latest, or suitable, _LLVM*win64.exe_ _installer_ file ("Windows x64 (64-bit)") from: https://github.com/llvm/llvm-project/releases
