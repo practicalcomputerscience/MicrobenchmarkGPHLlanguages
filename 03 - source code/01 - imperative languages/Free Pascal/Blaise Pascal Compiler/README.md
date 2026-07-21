@@ -83,7 +83,7 @@ $
 
 It's essential to check all paths in your system like this for example: _--unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src_
 
-There may be a more elegant way to make a standalone executable for Linux, but that has become my final workflow with lots of help from Google AI again.
+There may be a more elegant way to make a standalone executable for Linux, but that has become my final workflow version with lots of help from Google AI again.
 
 By the way: program [random_streams_for_perf_stats_blaise.pp](./random_streams_for_perf_stats_blaise.pp) makes use of the _TStringBuilder_ type for the big strings _bits_x_ and _bits_hex_,
 where the individual, little strings only have to be appended:
@@ -151,13 +151,13 @@ Flags:
 $
 ```
 
-From [QBE Intermediate Language](https://c9x.me/compile/doc/il.html#Basic-Concepts):
+From the [QBE Intermediate Language](https://c9x.me/compile/doc/il.html#Basic-Concepts) page:
 
 > The intermediate language (IL) is a higher-level language than the machine's assembly language. It smoothes most of the irregularities of the underlying hardware and allows an infinite number of temporaries to be used. This higher abstraction level lets frontend programmers focus on language design issues.
 
 <br/>
 
-First step now is to change the first compilation command to this (also to check if compiling to a new target still works with unmodified source code):
+First step now is to change the first compilation command to this command, also to check if compiling to a new target still works with unmodified source code:
 
 ```
 $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
@@ -225,13 +225,6 @@ $ gcc -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o
 $
 ```
 
-By the way: there's no use in trying to optimize the object code with a command like this (it will generate the same object file):
-
-```
-$ gcc -c -march=native -O3 -flto random_streams_for_perf_stats.s -o random_streams_for_perf_stats_opt.o
-$
-```
-
 I also tried the clang compiler (in Ubuntu clang version 23.0.0) to just generate an alternative object file:
 
 ```
@@ -275,7 +268,7 @@ $ ./build-rtl-objects.sh $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-lin
 $
 ```
 
-So, in directory (like in my system) _$HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects_ we should see many new object files:
+So, in directory (as in my system) _$HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects_ we should see many new object files:
 
 ```
 $ ls -1 $HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/*.o
@@ -335,6 +328,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 
 real	0m0.029s
 ...
+$
 ```
 
 29 milliseconds is about 30% less execution time than building with the Blaise Pascal Compiler directly!
@@ -360,6 +354,46 @@ $
 ```
 
 (Practically) same result.
+
+<br/>
+
+## Compiling for the QBE compiler backend automatically
+
+But wait a minute! The help page of the Blaise Pascal Compiler says this among other things:
+
+```
+$ blaise 
+...
+Flags:
+  ...
+  --backend <id>    qbe (deprecated) | native (default)
+  ...
+$
+```
+
+However, this compilation and building command still works:
+
+```
+$ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
+--backend qbe \
+--source random_streams_for_perf_stats_blaise.pp \
+--output random_streams_for_perf_stats_blaise_qbe
+$
+```
+
+..and the built executable shows the same execution speed as explicitly going through the QBE toolchain: 
+
+```
+$ time ./random_streams_for_perf_stats_blaise_qbe
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.028s
+...
+$
+```
 
 <br/>
 
