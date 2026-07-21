@@ -2,7 +2,10 @@
 
 https://nim-lang.org/
 
-The new Nimony compiler as Nim 3.0 in development: https://github.com/nim-lang/nimony
+The new Nimony compiler in development:
+
+- https://github.com/nim-lang/nimony
+- [Nim 3.0: A Deep Dive into the Next Generation of Nim](https://medium.com/@s.quddin/nim-3-0-a-deep-dive-into-the-next-generation-of-nim-6cd2c92cba5c)
 
 ---
 
