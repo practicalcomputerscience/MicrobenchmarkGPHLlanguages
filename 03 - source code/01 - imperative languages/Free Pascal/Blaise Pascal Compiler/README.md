@@ -17,7 +17,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Microbenchmark program: speed part](#microbenchmark-program-speed-part)
 - [Compiling for the QBE compiler backend](#compiling-for-the-qbe-compiler-backend)
-- tbd
+- [Full microbenchmark program](#full-microbenchmark-program)
 
 <br/>
 
