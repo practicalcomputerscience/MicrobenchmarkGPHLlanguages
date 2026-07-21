@@ -13,8 +13,8 @@ ARC = Automatic Reference Counting
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Microbenchmark program: speed part]()
-- [Compiling for the QBE compiler backend]()
+- [Microbenchmark program: speed part](#microbenchmark-program-speed-part)
+- [Compiling for the QBE compiler backend](#compiling-for-the-qbe-compiler-backend)
 - tbd
 
 <br/>
@@ -135,9 +135,9 @@ According to my experiments, it's generally beneficial for the execution speed o
 
 https://c9x.me/compile/
 
-With a program execution time of around 42 milliseconds, the Blaise Pascal Compiler built executable cannot impress executables built with Object Free Pascal or Free Pascal, Unleashed: [Microbenchmark program: speed part in different Pascal dialects and compiler modes](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#microbenchmark-program-speed-part-in-different-pascal-dialects-and-compiler-modes)
+With a program execution time of around 42 milliseconds, the Blaise Pascal Compiler built executable cannot impress executables built by Object Free Pascal or Free Pascal, Unleashed: [Microbenchmark program: speed part in different Pascal dialects and compiler modes](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#microbenchmark-program-speed-part-in-different-pascal-dialects-and-compiler-modes)
 
-However, the Blaise Pascal Compiler offers a second option, and that is to compile (compliant) Pascal source code to the Intermediate Language (IL or IR for Intermediate Representation) of the QBE compiler backend:
+However, the Blaise Pascal Compiler offers a second option, and that is to compile (compliant) Pascal source code into the Intermediate Language (IL or IR for Intermediate Representation) of the QBE compiler backend:
 
 ```
 $ blaise 
@@ -155,13 +155,12 @@ From [QBE Intermediate Language](https://c9x.me/compile/doc/il.html#Basic-Concep
 
 Good news: so far, I haven't been forced to change my source code for the Blaise Pascal Compiler to get an executable compiled with the QBE compiler backend!
 
-First step is to change the compilation command to this:
+First step is to change the first compilation command to this:
 
 ```
 $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
 --source random_streams_for_perf_stats_blaise.pp \
 --emit-ir > random_streams_for_perf_stats.qbe
-$ head random_streams_for_perf_stats.qbe
 $ head -n 5 random_streams_for_perf_stats.qbe
 # Unit: Generics.Defaults
 
@@ -230,31 +229,67 @@ By the way: there's no use in trying to optimize the object code with a command 
 $ gcc -c -march=native -O3 -flto random_streams_for_perf_stats.s -o random_streams_for_perf_stats_opt.o
 $
 ```
-clang -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o
 
->>>>>>>> test: -march=native -O3 -flto <<<<<<<<<<<<<<<<<<<<<<<<<< tbd
+I also tried the clang compiler like this to just generate an alternative object file:
 
----
-II) compile the RTL (runtime lib) to get it into a linkable state:
-blaise-0.13.0.tar.gz --> unzip:
-~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts$
-./build-rtl-objects.sh $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/blaise ./compiler/target/rtl
-./compiler/target/rtl/rtl.platform.o
-./compiler/target/rtl/runtime.atomic.o
-./compiler/target/rtl/runtime.setjmp.o
-./compiler/target/rtl/runtime.utf8.o
-./compiler/target/rtl/runtime.mem.o
-./compiler/target/rtl/runtime.str.o
-./compiler/target/rtl/runtime.set.o
-./compiler/target/rtl/runtime.arc.o
-./compiler/target/rtl/runtime.weak.o
-./compiler/target/rtl/runtime.float.o
-./compiler/target/rtl/runtime.thread.o
-./compiler/target/rtl/runtime.exc.o
-./compiler/target/rtl/runtime.errno.linux.o
-./compiler/target/rtl/rtl.platform.layout.linux.o
-./compiler/target/rtl/rtl.platform.posix.o
+```
+$ clang -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats_clang.o
 $
+```
+
+By the way: if you habe problems with the clang compiler, you may have a look at page [LLVM compiler infrastructure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/25%20-%20LLVM%20compiler%20infrastructure/README.md#llvm-compiler-infrastructure).
+
+<br/>
+
+#### Linking object files with the runtime library of the Blaise Pascal Compiler
+
+Before we can go on with application building, we have to bring the Blaise Pascal Compiler's runtime library (RTL) into a linkable state.
+
+That means that we have to first compile the sources of the RTL:
+
+- download tarball file _blaise-0.13.0.tar.gz_ at link _Source code (tar.gz)_ at the bottom of this page: https://github.com/graemeg/blaise/releases/tag/v0.13.0
+- extract it and thus create the new directory _./blaise-0.13.0_
+- change into the scripts directory: _$ cd ./blaise-0.13.0/scripts_
+
+Then I ran the RTL object building script like this with the aim to generate linkable RTL object files into the new directory _./blaise-0.13.0/rtl_objects_:
+
+```
+$ ./build-rtl-objects.sh $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/blaise ../rtl_objects
+../rtl_objects/rtl.platform.o
+../rtl_objects/runtime.atomic.o
+../rtl_objects/runtime.setjmp.o
+../rtl_objects/runtime.utf8.o
+../rtl_objects/runtime.mem.o
+../rtl_objects/runtime.str.o
+../rtl_objects/runtime.set.o
+../rtl_objects/runtime.arc.o
+../rtl_objects/runtime.weak.o
+../rtl_objects/runtime.float.o
+../rtl_objects/runtime.thread.o
+../rtl_objects/runtime.exc.o
+../rtl_objects/runtime.errno.linux.o
+../rtl_objects/rtl.platform.layout.linux.o
+../rtl_objects/rtl.platform.posix.o
+$
+```
+
+So, in directory (in my system) _$HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects_ we should see many new files:
+
+```
+$ ls -1 $HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects
+rtl.platform.build.err
+rtl.platform.layout.linux.build.err
+rtl.platform.layout.linux.o
+rtl.platform.layout.linux.o.syms
+rtl.platform.o
+rtl.platform.o.syms
+...
+$
+```
+
+
+
+
 ---
 III) Linking the app:
 $ cc -o random_streams_for_perf_stats_qbe \
