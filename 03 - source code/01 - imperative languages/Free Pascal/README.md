@@ -19,8 +19,9 @@ Table of contents:
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 - [Microbenchmark program: speed part in different Pascal dialects and compiler modes](#microbenchmark-program-speed-part-in-different-pascal-dialects-and-compiler-modes)
-- [New Pascal compilers: Free Pascal, Unleashed](#new-pascal-compilers-free-pascal-unleashed)
-- [New Pascal compilers: Blaise Pascal Compiler](#new-pascal-compilers-blaise-pascal-compiler)
+- [New Pascal compilers](#new-pascal-compilers)
+- [Free Pascal, Unleashed](#free-pascal-unleashed)
+- [Blaise Pascal Compiler](#blaise-pascal-compiler)
 
 <br/>
 
@@ -242,7 +243,22 @@ It's also remarkable that the execution time of both dialects that use advanced 
 
 <br/>
 
-## New Pascal compilers: Free Pascal, Unleashed
+## New Pascal compilers
+
+Just this year, two new Pascal compilers have been published to break away from "30 years of accumulated complexity" that comes along with the Free Pascal compiler ([The Vision](https://github.com/graemeg/blaise#-the-vision) (*)).
+
+However, while using the Free Pascal, Unleashed compiler allows a really "soft" migration of source code for the Object Free Pascal compilation mode,
+this is not the case with the Blaise Pascal Compiler according to my experience, which was a complete refactoring of a Pascal program as little as [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp).
+
+The reason for this "harsh" migration is the fact that with the Blaise Pascal Compiler a substantial overhaul of the type system and memory model has come along (*).
+
+Anyhow, my impression is that the (open source) community for the Pascal programming language is more active than for the remains of
+[Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2)
+and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
+
+<br/>
+
+### Free Pascal, Unleashed
 
 [FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
 
@@ -289,7 +305,7 @@ Free Pascal, Unleashed is still a very young fork, only publicly announced in Ma
 
 <br/>
 
-## New Pascal compilers: Blaise Pascal Compiler
+### Blaise Pascal Compiler
 
 ARC = Automatic Reference Counting
 
