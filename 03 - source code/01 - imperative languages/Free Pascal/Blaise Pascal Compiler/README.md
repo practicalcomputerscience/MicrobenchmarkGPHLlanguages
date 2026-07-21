@@ -17,6 +17,7 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Microbenchmark program: speed part](#microbenchmark-program-speed-part)
 - [Compiling for the QBE compiler backend](#compiling-for-the-qbe-compiler-backend)
+- [Compiling and building via the QBE compiler backend automatically]()
 - [Full microbenchmark program](#full-microbenchmark-program)
 
 <br/>
@@ -357,7 +358,7 @@ $
 
 <br/>
 
-## Compiling for the QBE compiler backend automatically
+## Compiling and building via the QBE compiler backend automatically
 
 But wait a minute! The help page of the Blaise Pascal Compiler says this among other things:
 
