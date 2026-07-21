@@ -53,8 +53,18 @@ $
 
 ## Microbenchmark program: speed part
 
-The original [random_streams_for_perf_stats.pp](tbd) program for Object Free Pascal needed **significant amount of refactoring** to make it work for the Blaise Pascal Compiler.
+The original [random_streams_for_perf_stats.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats.pp) program for Object Free Pascal needed **significant amount of refactoring** to make it work for the Blaise Pascal Compiler.
 I practically re-developed it from the ground up with lots of help from Google AI. Almost the whole established type system of Free Pascal is gone here!
+
+tbd
+
+<br/>
+
+## Full microbenchmark program
+
+Since I've implemented the complete microbenchmark program for the Free Pascal, Unleashed compiler ([random_bitstring_and_flexible_password_generator_unleashed.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_bitstring_and_flexible_password_generator_unleashed.pp)), I also did that for the Blaise Pascal Compiler,
+again with a significant amount of refactoring: [random_bitstring_and_flexible_password_generator_blaise.pp](./random_bitstring_and_flexible_password_generator_blaise.pp)
+
 
 tbd
 
