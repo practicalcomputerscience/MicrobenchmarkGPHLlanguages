@@ -26,6 +26,7 @@ Table of contents:
 - [LLVM installation of a specific LLVM version in Ubuntu 24](#llvm-installation-of-a-specific-llvm-version-in-ubuntu-24)
 - [Linux installation directories](#linux-installation-directories)
 - [Switching between several LLVM installations](#switching-between-several-llvm-installations)
+- [clang shadowing by Swiftly: $ which -a clang](#clang-shadowing-by-swiftly--which--a-clang)
 - [Easy installation in Windows 11](#easy-installation-in-windows-11)
 - [LLVM's Polly loop optimizer](#llvms-polly-loop-optimizer)
 
