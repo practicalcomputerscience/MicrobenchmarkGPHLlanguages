@@ -221,7 +221,7 @@ Voilà!
 
 <br/>
 
-By the way: my _~/.profile_ script is being called from my _~/.bash_profile_ script at every shell login. It was the RVM (Ruby version manager) and then Bun,
+By the way: my _~/.profile_ configuration is being called from my _~/.bash_profile_ configuration at every shell login. It was the RVM (Ruby version manager), Deno and finally Bun,
 which started to use the _~/.bash_profile_ configuration file!
 
 <br/>
