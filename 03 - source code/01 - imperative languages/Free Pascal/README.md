@@ -1,3 +1,5 @@
+2026-07-21: work in progress: tbd
+
 # Free Pascal
 
 and Free Pascal, Unleashed, and the Blaise Pascal Compiler
@@ -17,7 +19,8 @@ Table of contents:
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 - [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
-- [Free Pascal, Unleashed](#free-pascal-unleashed)
+- [New Pascal compilers: Free Pascal, Unleashed](#free-pascal-unleashed)
+- [New Pascal compilers: Blaise Pascal Compiler]()
 
 ---
 
@@ -235,7 +238,7 @@ It's also remarkable that the execution time of both dialects that use advanced 
 
 <br/>
 
-## Free Pascal, Unleashed
+## New Pascal compilers: Free Pascal, Unleashed
 
 [FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
 
@@ -282,7 +285,7 @@ Free Pascal, Unleashed is still a very young fork, only publicly announced in Ma
 
 <br/>
 
-## Blaise Pascal Compiler
+## New Pascal compilers: Blaise Pascal Compiler
 
 ARC = Automatic Reference Counting
 
