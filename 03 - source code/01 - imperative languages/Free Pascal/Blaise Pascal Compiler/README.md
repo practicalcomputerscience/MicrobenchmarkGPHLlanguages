@@ -8,7 +8,7 @@ https://github.com/graemeg/blaise
 
 ARC = Automatic Reference Counting
 
-<br/>
+---
 
 Table of contents:
 
@@ -17,8 +17,9 @@ Table of contents:
 - tbd
 - tbd
 
----
+<br/>
 
+---
 
 ## Installation tips
 
@@ -62,8 +63,7 @@ tbd
 
 ## Full microbenchmark program
 
-Since I've implemented the complete microbenchmark program for the Free Pascal, Unleashed compiler ([random_bitstring_and_flexible_password_generator_unleashed.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_bitstring_and_flexible_password_generator_unleashed.pp)), I also did that for the Blaise Pascal Compiler,
-again with a significant amount of refactoring: [random_bitstring_and_flexible_password_generator_blaise.pp](./random_bitstring_and_flexible_password_generator_blaise.pp)
+Since I've implemented the complete microbenchmark program for the Free Pascal, Unleashed compiler ([random_bitstring_and_flexible_password_generator_unleashed.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_bitstring_and_flexible_password_generator_unleashed.pp)) as a "soft" migration, I also did that for the Blaise Pascal Compiler, again as a "harsh" migration: [random_bitstring_and_flexible_password_generator_blaise.pp](./random_bitstring_and_flexible_password_generator_blaise.pp)
 
 
 tbd
