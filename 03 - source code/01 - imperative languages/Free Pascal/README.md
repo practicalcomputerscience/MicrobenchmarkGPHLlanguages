@@ -1,14 +1,14 @@
 2026-07-21: work in progress: tbd
 
+<br/>
+
 # Free Pascal
 
-and Free Pascal, Unleashed, and the Blaise Pascal Compiler
+and the Free Pascal, Unleashed and Blaise Pascal Compilers
 
 <br/>
 
 Profile of [Niklaus Wirth](http://pascal.hansotten.com/niklaus-wirth/) (1934-2024), the inventor of Pascal and other programming languages.
-
-<br/>
 
 ---
 
@@ -18,9 +18,11 @@ Table of contents:
 - [Installation tips](#installation-tips)
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
-- [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
+- [Microbenchmark program: speed part in different Pascal dialects and compiler modes](#microbenchmark-program-speed-part-in-different-pascal-dialects-and-compiler-modes)
 - [New Pascal compilers: Free Pascal, Unleashed](#new-pascal-compilers-free-pascal-unleashed)
 - [New Pascal compilers: Blaise Pascal Compiler](#new-pascal-compilers-blaise-pascal-compiler)
+
+<br/>
 
 ---
 
@@ -293,54 +295,9 @@ ARC = Automatic Reference Counting
 
 This is another brand-new Pascal compiler: https://github.com/graemeg/blaise
 
-However, its ecosystem is still being built from the ground up, so expect to implement a lot of user defined functions and procedures.
+However, its ecosystem is still being built from the ground up (as of July 2026), so expect to implement a lot of user defined functions and procedures.
 
-I downloaded this tarball file with the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
-
-I unpacked that tarball file and expanded my _~/.bashrc_ configuration file like this (activate it after changes with _$ source ~/.bashrc_):
-
-```
-export BLAISE_RTL_SRC="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/rtl-src"
-export PATH="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64:$PATH"
-```
-
-Building the Blaise Pascal Compiler from sources takes more effort, because this compiler is using [PasBuild](https://github.com/graemeg/pasbuild#pasbuild), which needs a working Free Pascal Compiler, if you don't install PasBuild's pre-compiled binary: https://github.com/graemeg/pasbuild#6-requirements (I didn't do it).
-
-PasBuild is from the same author, Graeme Geldenhuys, as the Blaise Pascal Compiler.
-
-<br/>
-
-Building and running the _hello.pas_ example worked like this:
-
-```
-$ sudo mkdir /rtl  # do this only once
-$ sudo chmod 777 /rtl  # do this only once
-$ blaise --source ./blaise-v0.13.0-linux-x86_64/hello.pas --output hello
-$ ./hello
-Hello from Blaise!
-$
-```
-
-<br/>
-
-The original [random_streams_for_perf_stats.pp](./random_streams_for_perf_stats.pp) program (for Object Free Pascal) needed **significant amount of refactoring** to make it work
-for the Blaise Pascal Compiler. I practically re-developed it from the ground up with lots of help from Google AI. Almost the whole established type system of Free Pascal is gone here!
-
-
-tbd
-
-
-
-
-
-
-
-
-
-
-
-
-
+Since this has become a longer story, I made a subpage for it: [Blaise Pascal Compiler](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/Blaise%20Pascal%20Compiler#blaise-pascal-compiler)
 
 <br/>
 
