@@ -8,7 +8,7 @@
 
 https://github.com/graemeg/blaise
 
-ARC = Automatic Reference Counting
+ARC = Automatic Reference Counting, as a memory management method to automatically manage the allocation and deallocation of objects. It tracks the number of strong references to each object and deallocates them when there are no more references, helping to prevent memory leaks: https://en.wikipedia.org/wiki/Automatic_Reference_Counting
 
 ---
 
