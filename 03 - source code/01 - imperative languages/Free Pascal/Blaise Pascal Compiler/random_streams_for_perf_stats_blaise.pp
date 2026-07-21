@@ -35,7 +35,7 @@ Loosely based on random_streams_for_perf_stats.pp for the Free Pascal compiler i
 
 program Main;
 
-uses strutils;  // declares TStringBuilder
+uses StrUtils;  // declares TStringBuilder
 
 const
   upper_limit = 62501;  // 62501 for exactly 1M binary digits
