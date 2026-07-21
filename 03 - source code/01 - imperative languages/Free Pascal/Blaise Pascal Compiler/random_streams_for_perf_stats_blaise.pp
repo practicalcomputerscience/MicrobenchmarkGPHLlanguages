@@ -10,7 +10,7 @@ build on Ubuntu 24 LTS: $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compile
                           --backend qbe \
                           --source random_streams_for_perf_stats_blaise.pp \
                           --output random_streams_for_perf_stats_blaise_qbe
-                        # use the --backend qbe as long as it works, otherwise use: --linker external
+                        # use the --backend qbe switch as long as it works, otherwise use: --linker external
 
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats_blaise_qbe
                         $ time ./random_streams_for_perf_stats_blaise_qbe => real	0m0.028s
