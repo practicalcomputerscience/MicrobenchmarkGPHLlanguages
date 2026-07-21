@@ -19,8 +19,8 @@ Table of contents:
 - [Extended Pascal according to ISO 10206](#extended-pascal-according-to-iso-10206)
 - [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 - [Microbenchmark program: speed part in different Free Pascal modes](#microbenchmark-program-speed-part-in-different-free-pascal-modes)
-- [New Pascal compilers: Free Pascal, Unleashed](#free-pascal-unleashed)
-- [New Pascal compilers: Blaise Pascal Compiler]()
+- [New Pascal compilers: Free Pascal, Unleashed](#new-pascal-compilers-free-pascal-unleashed)
+- [New Pascal compilers: Blaise Pascal Compiler](#new-pascal-compilers-blaise-pascal-compiler)
 
 ---
 
