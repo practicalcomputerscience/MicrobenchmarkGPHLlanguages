@@ -1,5 +1,7 @@
 2026-07-21: work in progress: tbd
 
+- tbd: "harsh" migration of full microbenchmark program
+
 <br/>
 
 # Blaise Pascal Compiler
@@ -153,9 +155,9 @@ From [QBE Intermediate Language](https://c9x.me/compile/doc/il.html#Basic-Concep
 
 > The intermediate language (IL) is a higher-level language than the machine's assembly language. It smoothes most of the irregularities of the underlying hardware and allows an infinite number of temporaries to be used. This higher abstraction level lets frontend programmers focus on language design issues.
 
-Good news: so far, I haven't been forced to change my source code for the Blaise Pascal Compiler to get an executable compiled with the QBE compiler backend!
+<br/>
 
-First step is to change the first compilation command to this:
+First step now is to change the first compilation command to this (also to check if compiling to a new target still works with unmodified source code):
 
 ```
 $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
@@ -199,7 +201,7 @@ $
 
 <br/>
 
-Now we can compile the source code in the QBE IL into assembly code in your working directory:
+As the second step we can hopefully now compile the source code in the QBE IL (_~.qbe_) into assembly code (_~.s_):
 
 ```
 $ qbe -o random_streams_for_perf_stats.s random_streams_for_perf_stats.qbe
@@ -216,7 +218,7 @@ __cn_TObject:
 $
 ```
 
-Now comes the crucial step: compiling the assembly code into object code with the usual GNU C compiler (here in version 14.2.0: _$ gcc --version_), or practically any other C compiler:
+Now comes the crucial step: compiling the assembly code into object code (_~.o_) with the usual GNU C compiler (here in version 14.2.0: _$ gcc --version_), or practically any other C compiler:
 
 ```
 $ gcc -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats.o
@@ -230,7 +232,7 @@ $ gcc -c -march=native -O3 -flto random_streams_for_perf_stats.s -o random_strea
 $
 ```
 
-I also tried the clang compiler like this to just generate an alternative object file:
+I also tried the clang compiler (in Ubuntu clang version 23.0.0) to just generate an alternative object file:
 
 ```
 $ clang -c random_streams_for_perf_stats.s -o random_streams_for_perf_stats_clang.o
@@ -241,17 +243,17 @@ By the way: if you habe problems with the clang compiler, you may have a look at
 
 <br/>
 
-#### Linking object files with the runtime library of the Blaise Pascal Compiler
+#### Linking the object file of the application with the runtime library of the Blaise Pascal Compiler
 
 Before we can go on with application building, we have to bring the Blaise Pascal Compiler's runtime library (RTL) into a linkable state.
 
-That means that we have to first compile the sources of the RTL:
+That means that we first have to compile the sources of the RTL:
 
 - download tarball file _blaise-0.13.0.tar.gz_ at link _Source code (tar.gz)_ at the bottom of this page: https://github.com/graemeg/blaise/releases/tag/v0.13.0
-- extract it and thus create the new directory _./blaise-0.13.0_
+- extract it and thus create new directory _./blaise-0.13.0_
 - change into the scripts directory: _$ cd ./blaise-0.13.0/scripts_
 
-Then I ran the RTL object building script like this with the aim to generate linkable RTL object files into the new directory _./blaise-0.13.0/rtl_objects_:
+Then I ran the RTL object building script like this with the aim to generate linkable RTL object files into new directory _./blaise-0.13.0/rtl_objects_:
 
 ```
 $ ./build-rtl-objects.sh $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/blaise ../rtl_objects
@@ -273,50 +275,97 @@ $ ./build-rtl-objects.sh $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-lin
 $
 ```
 
-So, in directory (in my system) _$HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects_ we should see many new files:
+So, in directory (like in my system) _$HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects_ we should see many new object files:
 
 ```
-$ ls -1 $HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects
-rtl.platform.build.err
-rtl.platform.layout.linux.build.err
-rtl.platform.layout.linux.o
-rtl.platform.layout.linux.o.syms
-rtl.platform.o
-rtl.platform.o.syms
+$ ls -1 $HOME/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/*.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.layout.linux.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.posix.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.arc.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.atomic.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.errno.linux.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.exc.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.float.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.mem.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.setjmp.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.set.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.start.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.str.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.thread.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.utf8.o
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.weak.o
+$
+```
+
+<br/>
+
+Now comes the crucial step, that is linking the app, where I took **a suitable sublist** of above object file list to build the monster command as shown below.
+I noticed that you cannot just take the complete list of generate RTL object files for convenience, because linking is not working then.
+
+Do not forget to return to your working directory first:
+
+```
+$ cd ../..  # return to working directory
+$ gcc -o random_streams_for_perf_stats_qbe \
+random_streams_for_perf_stats.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.layout.linux.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.posix.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.arc.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.atomic.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.exc.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.float.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.mem.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.setjmp.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.str.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.utf8.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/runtime.weak.o
+$
+```
+
+No linking error! So let's run the application and time measure it:
+
+```
+$ time ./random_streams_for_perf_stats_qbe
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.029s
+...
+```
+
+29 milliseconds is about 30% less execution time than building with the Blaise Pascal Compiler directly!
+
+<br/>
+
+What about the (different) application object file _random_streams_for_perf_stats_clang.o_ as generated with the clang compiler?
+
+```
+$ clang -o random_streams_for_perf_stats_qbe_clang \
+random_streams_for_perf_stats_clang.o \
+~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/rtl_objects/rtl.platform.layout.linux.o \
+...  # same list of object files as above 
+$ time ./random_streams_for_perf_stats_qbe_clang
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.028s
 ...
 $
 ```
 
-
-
-
----
-III) Linking the app:
-$ cc -o random_streams_for_perf_stats_qbe \
-  random_streams_for_perf_stats_qbe.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/rtl.platform.posix.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/rtl.platform.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/rtl.platform.layout.linux.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.atomic.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.arc.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.exc.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.mem.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.setjmp.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.str.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.float.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.utf8.o \
-  ~/scripts/Blaise_Pascal_Compiler/blaise-0.13.0/scripts/compiler/target/rtl/runtime.weak.o
-$
-$ time ./random_streams_for_perf_stats_qbe => real	0m0.029s <<<<<<
-
-
+(Practically) same result.
 
 <br/>
 
 ## Full microbenchmark program
 
 Since I've implemented the complete microbenchmark program for the Free Pascal, Unleashed compiler ([random_bitstring_and_flexible_password_generator_unleashed.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_bitstring_and_flexible_password_generator_unleashed.pp)) as a "soft" migration, I also did that for the Blaise Pascal Compiler, again as a "harsh" migration: [random_bitstring_and_flexible_password_generator_blaise.pp](./random_bitstring_and_flexible_password_generator_blaise.pp)
-
 
 tbd
 
