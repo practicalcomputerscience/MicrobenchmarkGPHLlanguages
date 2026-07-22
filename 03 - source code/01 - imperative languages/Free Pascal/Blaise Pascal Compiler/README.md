@@ -1,9 +1,3 @@
-2026-07-21: work in progress: tbd
-
-- tbd: "harsh" migration of full microbenchmark program
-
-<br/>
-
 # Blaise Pascal Compiler
 
 https://github.com/graemeg/blaise
@@ -402,7 +396,32 @@ $
 
 Since I've implemented the complete microbenchmark program for the Free Pascal, Unleashed compiler ([random_bitstring_and_flexible_password_generator_unleashed.pp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_bitstring_and_flexible_password_generator_unleashed.pp)) as a "soft" migration, I also did that for the Blaise Pascal Compiler, again as a "harsh" migration: [random_bitstring_and_flexible_password_generator_blaise.pp](./random_bitstring_and_flexible_password_generator_blaise.pp)
 
-tbd
+Regular expression at the Blaise Pascal Compiler aren't ready yet for showtime according to my experiments: https://github.com/graemeg/blaise/blob/master/stdlib/src/main/pascal/text.regex.pas
+
+So, I took the conservative, string-based way:
+
+```
+...
+uses StrUtils;
+
+  ...
+  if WITH_SPECIAL_CHARS then
+    begin
+      char_set := '';
+      for i := 33 to 126 do
+        char_set := char_set + Chr(i);
+    end
+  else
+    char_set := '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+    ...
+    if ContainsStr(char_set, char0b) then
+      begin
+        pw_chars.Append(char0b);
+        inc(i);
+      end;
+    ...
+```
 
 <br/>
 
