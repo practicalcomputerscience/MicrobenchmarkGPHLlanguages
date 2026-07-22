@@ -3,7 +3,7 @@ random_streams_for_perf_stats_blaise.pp
 
 This program is for the Blaise Pascal Compiler.
 
-2026-07-21
+2026-07-21/22
 
 
 build on Ubuntu 24 LTS: $ blaise --unit-path $HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/stdlib-src \
@@ -123,9 +123,9 @@ end;
 
 
 begin
-  // CLOCK_MONOTONIC = Fetches uptime down to nanosecond precision
+  sys_clock_gettime(0, @Ts);  // 2026-07-22
   RandSeedState := Cardinal(Ts.tv_nsec);  // Use the lower 32-bits of the nanosecond count
-
+  // WriteLn(RandSeedState);  // for testing
   x[0] := RandSeedState mod (m - 2) + 1;
   // WriteLn(x[0]);  // for testing
 
