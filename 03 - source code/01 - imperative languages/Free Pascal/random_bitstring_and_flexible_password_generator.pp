@@ -6,6 +6,7 @@ This program is for the Free Pascal compiler in Object Free Pascal mode (objfpc)
 2026-07-19
 2026-07-20: restrain exception handling only when writing to files;
             no ErrorCode (Integer) at Val('%' + bin0_0, char0a)
+2026-07-23: less code at if-then-else's
 
 
 build on Ubuntu 24 LTS: $ fpc random_bitstring_and_flexible_password_generator.pp
@@ -120,9 +121,7 @@ begin
     ReadLn(answer_str);
 
     if answer_str = 'y' then
-      begin
-        answer := true;
-      end
+        answer := true
     else
       begin
         try
@@ -146,9 +145,7 @@ begin
     ReadLn(answer_str);
 
     if answer_str = 'y' then
-      begin
-        answer := true;
-      end
+        answer := true
     else
       begin
         WITH_SPECIAL_CHARS := false;
@@ -158,13 +155,9 @@ begin
   // WriteLn('WITH_SPECIAL_CHARS = ', WITH_SPECIAL_CHARS);  // for testing
 
   if WITH_SPECIAL_CHARS then
-    begin
-      pattern := TRegExpr.Create('[!-~]');
-    end
+    pattern := TRegExpr.Create('[!-~]')
   else
-    begin
-      pattern := TRegExpr.Create('[A-Za-z0-9]');
-    end;
+    pattern := TRegExpr.Create('[A-Za-z0-9]');
 
 
   pw_chars := TStringStream.Create('');
