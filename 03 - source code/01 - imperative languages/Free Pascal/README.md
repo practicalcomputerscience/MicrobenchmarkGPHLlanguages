@@ -299,8 +299,6 @@ which I modified to [random_bitstring_and_flexible_password_generator_unleashed.
 
 However, and as I've noticed, not everything that goes through compilation will work, but that is also true for Free Pascal.
 
-That makes now only 116 source lines of code instead of 124 of program _random_bitstring_and_flexible_password_generator.pp_ (as of 2026-07-20).
-
 Free Pascal, Unleashed is still a very young fork, only publicly announced in March 2026: https://forum.lazarus.freepascal.org/index.php/topic,73678.0.html, but I already think that it can truly advance of what has been once started with Object Free Pascal.
 
 <br/>
