@@ -168,7 +168,7 @@ Crystal           | 103 | compiled, young language | 2026-06-18
 Pike              | 103 | interpreted, mature language | 2026-06-18
 Java              | 101 | interpreted, very mature language, together with Java ecosystem | 2026-05-26
 Scala             | 101 | interpreted, mature language, together with Java ecosystem | 2026-05-25
-Julia             |  99 | just-in-time compiled, mature language | 2026-06-18
+Julia             |  97 | just-in-time compiled, mature language | 2026-07-23
 Clojure           |  96 | interpreted, mature language, together with Java ecosystem | 2026-06-18
 Ruby              |  96 | interpreted, very mature language | 2026-06-18
 Groovy            |  95 | interpreted, very mature language, together with Java ecosystem | 2026-05-27
