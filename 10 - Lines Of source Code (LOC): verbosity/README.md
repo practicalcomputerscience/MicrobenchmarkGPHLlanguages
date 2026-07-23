@@ -150,7 +150,7 @@ Smalltalk (GNU)   | 122 | interpreted, very mature language, though at least GNU
 Go                | 121 | compiled, mature language | 2026-05-28
 Modula-3 (CM3)    | 117 | compiled, very mature language | 2026-07-19
 Ballerina         | 116 | interpreted, young language, together with Java ecosystem | 2026-06-18
-Free Pascal       | 116 | compiled, very mature language | 2026-07-23
+(Object) Free Pascal | 116 | compiled, very mature language | 2026-07-23
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
@@ -217,7 +217,7 @@ Factor             | 6
 Forth (Gforth)     | 14
 Fortran (GNU)      | 3
 FreeBASIC          | 1
-Free Pascal        | 0
+(Object) Free Pascal | 0
 Gleam              | 8
 Go                 | 0
 Groovy             | 0
