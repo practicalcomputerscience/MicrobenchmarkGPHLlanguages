@@ -6,6 +6,10 @@ random_bitstring_and_flexible_password_generator.ts
 2026-06-17: refactored from char_set to pattern (for regular expressions)
 2026-06-18: renamed function input_a_valid_number() to is_all_digits(),
             use the ternary operator with WITH_SPECIAL_CHARS to set pattern
+2026-07-23: renamed functions to better follow project conventions:
+              askPasswordLength    -> input_a_valid_number
+              askSpecialCharsUsage -> answer_yes_or_no
+              generatePassword     -> pw_generator
 
 
 run on Ubuntu 24 LTS: $ node ./random_bitstring_and_flexible_password_generator.ts                 # running on node.js
@@ -87,22 +91,22 @@ class random_bitstring_and_flexible_password_generator {
             return null; // reject "8.0", "8.", " 8", "8e0", etc.
         }
 
-        const askPasswordLength = () => {
+        const input_a_valid_number = () => {
             rl.question(`\nPassword of ${N_CHAR} printable chars OK? 'y' or another integer number >= 8: `, (answerStr) => {
                 if (answerStr === 'y') {
                     answer = true;
-                    askSpecialCharsUsage();
+                    answer_yes_or_no();
                 } else {
                     const N_CHAR_ = is_all_digits(answerStr);  // 2026-06-17: the strict test
                     // const numberValue = Number(answerStr);  // 2026-06-17: 8. and 8.0 are accepted as valid numbers!!
 
                     if (N_CHAR_ !== null && Number(answerStr) >= 8) {
                         N_CHAR = Number(answerStr);
-                        askSpecialCharsUsage();
+                        answer_yes_or_no();
 
                     } else {
                         console.log("enter an integer number >= 8 or 'y'");
-                        askPasswordLength();
+                        input_a_valid_number();
                     }
                 }
             });
@@ -110,7 +114,7 @@ class random_bitstring_and_flexible_password_generator {
 
 
         let WITH_SPECIAL_CHARS = false;
-        const askSpecialCharsUsage = () => {
+        const answer_yes_or_no = () => {
             rl.question("\nDo you want me to use special characters like .;,+*... ? 'y' or 'n': ", (answerStr) => {
                 if (answerStr === 'y') {
                     WITH_SPECIAL_CHARS = true;
@@ -145,7 +149,7 @@ class random_bitstring_and_flexible_password_generator {
         //               char_set.add(String.fromCharCode(i));
         //           }
         //       }
-        //       generatePassword();
+        //       pw_generator();
         //   };
 
         // 2026-06-17: new solution with regular expressions:
@@ -157,11 +161,11 @@ class random_bitstring_and_flexible_password_generator {
             // 2026-06-18
             pattern = WITH_SPECIAL_CHARS ? print_re : alnum_re;
 
-            generatePassword();
+            pw_generator();
         };
 
 
-        const generatePassword = () => {
+        const pw_generator = () => {
             let i = 0;  // char counter for the password
             let j = 0;  // counter for x
             let pw_chars = "";
@@ -192,7 +196,7 @@ class random_bitstring_and_flexible_password_generator {
             console.log(`\nYour password of ${N_CHAR} characters is: ${pw_chars}`);
         };
 
-        askPasswordLength();
+        input_a_valid_number();
     }
 }
 
