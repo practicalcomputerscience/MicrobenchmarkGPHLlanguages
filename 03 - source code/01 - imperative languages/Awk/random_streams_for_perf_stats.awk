@@ -1,14 +1,15 @@
 # random_streams_for_perf_stats.awk
 #
-# 2026-07-01
+# 2026-07-01/23
 #
 # run in Ubuntu 24 LTS: $ mawk -f random_streams_for_perf_stats.awk
+#                       $ awk -f random_streams_for_perf_stats.awk
 #
-#                       $ time mawk -f random_streams_for_perf_stats.awk => real	0m1.244s
-#                       $ time awk -f random_streams_for_perf_stats.awk  => real	0m0.217s <<<< awk is gawk on my system
+#                       $ time mawk -f random_streams_for_perf_stats.awk => real	0m1.260s
+#                       $ time awk -f random_streams_for_perf_stats.awk  => real	0m0.240s <<<< awk is gawk on my system
 #
 #
-# Duck.ai transpiled from Tcl program random_streams_for_perf_stats.tcl
+# transpiled from Tcl program random_streams_for_perf_stats.tcl with Duck.ai
 #
 #
 # $ mawk --version
@@ -21,6 +22,9 @@
 # Copyright (C) 1989, 1991-2022 Free Software Foundation.
 # ...
 # $
+#
+#
+# to-do:  x list of random integers
 
 
 BEGIN {
@@ -36,25 +40,24 @@ BEGIN {
 
     # initialize RNG and first value
     srand()
-    prev = int(rand() * (m - 1)) + 1
-    # print "prev = " prev  # for testing
+    x[0] = int(rand() * (m - 1)) + 1
+    # print "x[0] = " x[0]  # for testing
 
     bits_x = ""
     bits_hex = ""
 
     print "\ngenerating a random bit stream..."
     for (i = 1; i < upper_limit; i++) {
-        current = (a * prev + c) % m
-        prev = current
-        # print "\ncurrent = " current  # for testing
+        x[i] = (a * x[i-1] + c) % m
+        # print "\nx[i] = " x[i]  # for testing
 
         # 16-bit binary string
-        bits_x_str   = sprintf("%016d", integer_to_bin_string(current))
+        bits_x_str   = sprintf("%016d", integer_to_bin_string(x[i]))
         # print "bits_x_str = " bits_x_str  # for testing
         bits_x       = bits_x bits_x_str
 
         # 4-digit lowercase hex string
-        bits_hex_str = sprintf("%04x", current)
+        bits_hex_str = sprintf("%04x", x[i])
         # print "bits_hex_str = " bits_hex_str  # for testing
         bits_hex     = bits_hex bits_hex_str
     }
@@ -67,6 +70,9 @@ BEGIN {
         print "Byte stream has been written to disk under name: " file_bits_hex
 }
 
+
+# /////////////////////  user defined functions  ////////////////////////////
+#
 
 function integer_to_bin_string(n, s, r) {
     s = ""
@@ -100,5 +106,7 @@ function write_to_file(fname, data,    cmd, is_writable) {
     return 1
 }
 
+#
+# //////////////////  end of user defined functions  ////////////////////////
 
 # end of random_streams_for_perf_stats.awk
