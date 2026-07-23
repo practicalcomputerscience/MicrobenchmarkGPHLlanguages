@@ -174,8 +174,8 @@ Ruby              |  96 | interpreted, very mature language | 2026-06-18
 Groovy            |  95 | interpreted, very mature language, together with Java ecosystem | 2026-05-27
 Tcl               |  95 | interpreted, very mature language | 2026-06-19
 Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-18
-Mojo              |  90 | compiled, very young language | 2026-05-28
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
+Mojo              |  89 | compiled, very young language | 2026-07-23
 PowerShell        |  88 | interpreted, mature language, together with .NET ecosystem: profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Python            |  84 | interpreted, very mature language | 2026-06-18
