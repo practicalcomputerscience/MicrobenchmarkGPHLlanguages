@@ -1,7 +1,3 @@
-2026-07-01: work in progress: tbd
-
-<br/>
-
 # Awk
 
 Here in the **GNU Awk** ("gawk") implementation: https://www.gnu.org/software/gawk/manual/gawk.html
