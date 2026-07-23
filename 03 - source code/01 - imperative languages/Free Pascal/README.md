@@ -1,7 +1,3 @@
-2026-07-21: work in progress: tbd
-
-<br/>
-
 # Free Pascal
 
 and the Free Pascal, Unleashed and Blaise Pascal Compilers
@@ -263,7 +259,7 @@ and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlan
 [FPC Unleashed](https://github.com/fpc-unleashed/freepascal#fpc-unleashed) has been forked from Free Pascal and is expanding the Object Free Pascal mode (_objfpc_) mode "with powerful enhancements": [Unleashed Mode](https://github.com/fpc-unleashed/freepascal#unleashed-mode):
 
 - I didn't install the Lazarus Unleashed fork, because that installation didn't work on my usual testing system, even though I installed the pre-requisites: [Linux host requirements](https://github.com/fpc-unleashed/installer#linux-host-requirements)
-- I installed Free Pascal, Unleashed on a different Ubuntu 24 LTS system, because I got this error when compiling in my usual testing system with still the "normal" FPC installed: _Fatal: Can't find unit system used by Main_
+- I installed Free Pascal, Unleashed on a different Ubuntu 24 LTS system, because I got this error when compiling in my usual testing system with still the "normal" FPC installed: _Fatal: Can't find unit system used by Main_ See also here at: [Installation tips](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/Blaise%20Pascal%20Compiler#installation-tips) for the Blaise Pascal Compiler.
 
 As recommeneded, I used the Linux installer file _installer_linux_x86_64_ from here: https://github.com/fpc-unleashed/installer/releases/tag/v0.1.3,
 then did a _$ chmod 755 installer_linux_x86_64_, and executed it (_$ ./installer_linux_x86_64_) without the Lazarus Unleashed IDE:
