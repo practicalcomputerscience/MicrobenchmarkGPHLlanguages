@@ -4,7 +4,7 @@
 
 # Awk
 
-Awk is **GNU Awk** ("gawk") in my testing system: https://www.gnu.org/software/gawk/manual/gawk.html
+Here in the **GNU Awk** ("gawk") implementation: https://www.gnu.org/software/gawk/manual/gawk.html
 
 <br/>
 
@@ -19,8 +19,8 @@ But then I noticed this:
 
 However, when doing a benchmark with the ["speed part" of the microbenchmark program](./random_streams_for_perf_stats.awk), the picture flips substantially:
 
-- _$ time mawk -f random_streams_for_perf_stats.awk_ => real	0m1.239s, that's 5.7 times slower!
-- _$ time awk -f random_streams_for_perf_stats.awk_ => real	0m0.216s
+- _$ time mawk -f random_streams_for_perf_stats.awk_ => real	0m1.260s, that's over 5 times slower!
+- _$ time awk -f random_streams_for_perf_stats.awk_ => real	0m0.240s
 
 <br/>
 
