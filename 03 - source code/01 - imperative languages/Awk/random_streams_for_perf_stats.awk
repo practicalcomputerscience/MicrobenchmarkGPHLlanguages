@@ -6,9 +6,6 @@
 #
 #                       $ time mawk -f random_streams_for_perf_stats.awk => real	0m1.244s
 #                       $ time awk -f random_streams_for_perf_stats.awk  => real	0m0.217s <<<< awk is gawk on my system
-#                       $ multitime -n 20 awk -f random_streams_for_perf_stats.awk
-#                                   Mean        Std.Dev.    Min         Median      Max
-#                       real        0.214       0.002       0.211       0.213       0.217
 #
 #
 # Duck.ai transpiled from Tcl program random_streams_for_perf_stats.tcl
