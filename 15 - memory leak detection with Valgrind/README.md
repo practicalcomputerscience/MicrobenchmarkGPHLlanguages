@@ -101,7 +101,7 @@ Eiffel (Liberty) | 4,521,992 bytes in 294 blocks | 4,521,992 bytes in 294 blocks
 Factor | program doesn't finish | -- | no | 2026-07-19            
 Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
-Free Pascal | 0 bytes in 0 blocks | --  | yes <<<<<< | 2026-07-20
+(Object) Free Pascal | 0 bytes in 0 blocks | --  | yes <<<<<< | 2026-07-20
 Go | program doesn't finish | -- | no | 2026-06-19
 Inko | Segmentation fault (core dumped) | -- | no | 2026-06-19
 Koka | program doesn't finish | -- | no | 2026-06-19
@@ -152,7 +152,7 @@ C++ | yes |
 C3 | yes | 
 COBOL (GnuCOBOL) | no | using a string of allowed characters in both cases
 Dylan | yes | an Open Dylan application depends on numerous application specific and Open Dylan specific shared libraries
-Free Pascal | yes |
+(Object) Free Pascal | yes |
 Roc | no | working with two user defined functions to provide filtering of allowed characters
 V | yes | 
 Zig | no | working with _ArrayList's_ of allowed UTF-8 characters
