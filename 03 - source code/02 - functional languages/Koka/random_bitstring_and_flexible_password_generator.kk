@@ -3,6 +3,8 @@
 2025-06-23
 2026-06-17: refactored at function ask_password_length() to catch invalid input '8.0'
 2026-06-18: renamed function input_a_valid_number() to is_all_digits()
+2026-07-23: renamed function to better follow project conventions:
+              ask_password_length -> input_a_valid_number
 
 
 build on Ubuntu 24 LTS: $ koka -O2 -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.kk
@@ -112,7 +114,7 @@ fun main()  // fun: named function
 
 
   // make a password of n_char printable chars: user input requested here
-  val n_char = ask_password_length(n_char_default)  // 2026-06-17
+  val n_char = input_a_valid_number(n_char_default)  // 2026-06-17
   // println("\nmain: n_char = " ++ n_char.show)  // for testing
 
   val with_special_chars = answer_yes_or_no()
@@ -238,7 +240,7 @@ fun is_all_digits(s : string) : bool {
 }
 
 
-fun ask_password_length(n_char : int) : <console|_e> int  // 2026-06-17
+fun input_a_valid_number(n_char : int) : <console|_e> int  // 2026-06-17
   print("\nPassword of " ++ n_char.show ++ " printable chars OK? 'y' or another integer number >= 8: ")  // not println here
   val answer_str = readline()
 
@@ -254,7 +256,7 @@ fun ask_password_length(n_char : int) : <console|_e> int  // 2026-06-17
       n_char_
     else
       println("enter an integer number >= 8 or 'y'")
-      ask_password_length(n_char)
+      input_a_valid_number(n_char)
 
 
 fun answer_yes_or_no(): <console|_e> bool
