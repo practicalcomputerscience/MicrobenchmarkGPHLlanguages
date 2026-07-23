@@ -178,12 +178,8 @@ Nim               |  90 | compiled, young language, which is very effective in i
 Mojo              |  89 | compiled, very young language | 2026-07-23
 PowerShell        |  88 | interpreted, mature language, together with .NET ecosystem: profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
-Python            |  84 | interpreted, very mature language | 2026-06-18
 Hy                |  83 | interpreted, mature language, together with Python ecosystem | 2026-07-01
-
-<br/>
-
-2026-07-01: there's a new leader in succinctness: [Hy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Hy#hy), that is "a Lisp dialect that's embedded in Python"
+Python            |  82 | interpreted, very mature language | 2026-07-23
 
 <br/>
 
