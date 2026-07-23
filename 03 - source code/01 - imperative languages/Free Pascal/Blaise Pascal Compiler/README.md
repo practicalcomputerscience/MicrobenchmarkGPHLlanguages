@@ -20,6 +20,24 @@ Table of contents:
 
 ## Installation tips
 
+> [!IMPORTANT]
+> Simultaneous activation of Free Pascal and the Blaise Pascal Compiler is not working yet! (as of July 2026)
+
+So, mask this line in your _~/.bashrc_ configuration file with a leading _#_ character when using the Blaise Pascal Compiler:
+
+```
+export PATH="$HOME/fpc-3.2.2/bin:$PATH"
+```
+
+..and vice versa, mask these lines when using the Free Pascal compiler:
+
+```
+export BLAISE_RTL_SRC="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64/rtl-src"
+export PATH="$HOME/scripts/Blaise_Pascal_Compiler/blaise-v0.13.0-linux-x86_64:$PATH"
+```
+
+<br/>
+
 I downloaded this tarball file with the pre-compiled binary _blaise-v0.13.0-linux-x86_64.tar.gz_ from here: https://github.com/graemeg/blaise/releases/tag/v0.13.0
 
 I unpacked that tarball file and expanded my _~/.bashrc_ configuration file like this (activate it after changes with _$ source ~/.bashrc_):
