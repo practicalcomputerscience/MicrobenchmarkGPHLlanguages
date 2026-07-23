@@ -443,7 +443,7 @@ uses StrUtils;
 
 <br/>
 
-The contrast in the number of source lines of code between this implementation and the one in Object Free Pascal mode is (still) stark:
+The contrast in the number of source lines of code between this implementation and the implementation in Object Free Pascal mode is (still) stark:
 
 - it's 190 versus 116 (as of 2026-07-23)
 
