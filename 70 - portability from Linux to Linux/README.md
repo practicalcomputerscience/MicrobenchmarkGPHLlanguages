@@ -24,7 +24,7 @@ D | yes | yes | LDC2: yes; GDC: yes, with switch _-static-libphobos_ to get rid 
 Eiffel (Liberty) | yes, but with good portability | yes
 Factor | yes, but with good portability | yes
 FreeBASIC | yes, but with good portability when _libtinfo5_ for terminal interface functions is installed on target system | yes | yes, with switch _-static_ | no measurable execution speed difference between dynamic and static linking in my microbenchmark program
-Free Pascal | no | "not a dynamic executable"
+(Object) Free Pascal | no | "not a dynamic executable"
 Gambit Scheme (only the "speed part" tested) | yes, but with good portability | yes
 Go | no | "not a dynamic executable"
 Inko | yes, but with good portability | yes
