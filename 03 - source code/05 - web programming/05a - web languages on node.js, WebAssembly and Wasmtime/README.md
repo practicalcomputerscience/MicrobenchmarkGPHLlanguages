@@ -1,6 +1,6 @@
 2026-02-03: work in progress
 
-adding/to-do:
+tbd: adding/to-do:
 
 - PureScript, a **pure** functional programming language that transpiles to JavaScript: https://www.purescript.org/ --> do this only after a Haskell implementation
 - a "core web programming execution speeds diagram" with only: 
