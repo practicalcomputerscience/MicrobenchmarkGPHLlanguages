@@ -152,9 +152,9 @@ Out of the first random binary digits, this program - after some dialog with the
 ```
 import re
 ...  # see rest from above
-N_CHAR = 12  # base case
 answer = False
 while answer is False:
+    N_CHAR = 12  # base case; 2026-07-23: moved
     answer_str = input(f'\nPassword of {N_CHAR} printable chars OK? \
 "y" or another integer number >= 8: ')
     if answer_str == 'y':
@@ -165,10 +165,8 @@ while answer is False:
             if N_CHAR >= 8:
                 answer = True
             else:
-                N_CHAR = 12
                 print('enter an integer number >= 8 or "y"')
         except ValueError:
-            N_CHAR = 12
             print('enter an integer number >= 8 or "y"')
 
 def binary_to_string(bits):
@@ -217,6 +215,7 @@ print(f'\nYour password of {N_CHAR} characters is:', pw_string)  # 2026-01-03
 
 Run the complete program like this:
 ```
+$ source ./bin/activate
 (prng_test) $ python3 ./random_bitstring_and_flexible_password_generator.py
 
 generating a random bit stream...
@@ -228,7 +227,8 @@ Password of 12 printable chars OK? "y" or another integer number >= 8: y
 Do you want me to use special characters like .;,+*... ? "y" or "n": y
 
 Your password of 12 characters is: {5mkkR""dmtC
-(prng_test) $ 
+(prng_test) $ deactivate
+$
 ```
 
 <br/>
