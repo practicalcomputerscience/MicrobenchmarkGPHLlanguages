@@ -7,7 +7,8 @@ random_bitstring_and_flexible_password_generator.py
 2026-05-22: replace variable name reply with "standard" name answer_str
 2026-05-24: see below (only a minor change)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
-2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS
+2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
+2026-07-23: N_CHAR: saving two more source lines of code (redundant)
 
 
 check the quality of randomness at:
@@ -116,9 +117,9 @@ else:
 
 
 # make a password of N_CHAR printable chars:
-N_CHAR = 12  # base case
 answer = False
 while answer is False:
+    N_CHAR = 12  # base case; 2026-07-23: moved
     answer_str = input(f'\nPassword of {N_CHAR} printable chars OK? \
 "y" or another integer number >= 8: ')
     if answer_str == 'y':
@@ -129,10 +130,8 @@ while answer is False:
             if N_CHAR >= 8:
                 answer = True
             else:
-                N_CHAR = 12
                 print('enter an integer number >= 8 or "y"')
         except ValueError:
-            N_CHAR = 12
             print('enter an integer number >= 8 or "y"')
 
 
