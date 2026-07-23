@@ -6,7 +6,7 @@
 #                       $ awk -f random_bitstring_and_flexible_password_generator.awk
 #
 #
-# mostly transpiled from Tcl random_bitstring_and_flexible_password_generator.tcl with Duck.ai
+# transpiled from Tcl random_bitstring_and_flexible_password_generator.tcl with Duck.ai with heavy manual corrections
 #
 #
 # $ awk -V
