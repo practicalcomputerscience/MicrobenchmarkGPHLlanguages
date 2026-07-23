@@ -6,6 +6,7 @@ random_bitstring_and_flexible_password_generator.jl
 2026-05-28: refactored pattern (for regular expressions)
 2026-05-28: break command at first if-then-else in pw_chars loop taken away
 2026-06-18: define print_re and alnum_re, use the ternary operator with WITH_SPECIAL_CHARS to set pattern
+2026-07-23: global N_CHAR = 12: moved to save 2 more source lines of code
 
 
 run on Ubuntu 24 LTS: $ julia ./random_bitstring_and_flexible_password_generator.jl
@@ -87,9 +88,9 @@ end
 
 
 # make a password of N_CHAR printable chars:
-global N_CHAR = 12  # base case
 global answer = false
 while answer != true
+  global N_CHAR = 12  # base case; 2026-07-23: moved to here is saving two source lines of code
   print("\nPassword of ", N_CHAR, " printable chars OK? 'y' or another integer number >= 8: ")
   answer_str = readline()
   # println("answer_str =", answer_str, "--")  # for testing
@@ -102,11 +103,9 @@ while answer != true
           if N_CHAR >= 8
               global answer = true
           else
-              global N_CHAR = 12
               print("enter an integer number >= 8 or 'y'\n")
           end
       catch
-          global N_CHAR = 12
           print("enter an integer number >= 8 or 'y'\n")
       end
   end
