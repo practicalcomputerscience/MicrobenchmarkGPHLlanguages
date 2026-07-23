@@ -3,6 +3,10 @@ random_bitstring_and_flexible_password_generator.ts -- this is an AssemblyScript
 
 2026-05-02/03
 2026-05-23: replacing user defined function padLeft() with inbuilt method; other little improvements (see at "2026-05-23" below)
+2026-07-23: renamed functions to better follow project conventions:
+              saveToFile               -> writeToFile
+              isStrictlyIntegerString  -> isAllDigits
+
 
 built on Ubuntu 24 LTS: do this only once:
                         $ npm install -g npm@11.13.0          # update npm if needed
@@ -65,7 +69,7 @@ function writeHexToBuffer(val: u32, buf: Uint8Array, offset: i32): void {
 // In AssemblyScript, a try-catch construct is not currently supported for error recovery.
 // While the throw keyword exists, using it will immediately abort/terminate
 // the entire WebAssembly program rather than jumping to a catch block.
-function saveToFile(path: string, content: string): bool {
+function writeToFile(path: string, content: string): bool {
   let file: Descriptor | null = FileSystem.open(path, "w");
 
   // if (file == null) {
@@ -102,7 +106,7 @@ function readLine(): string {
 }
 
 // check if a string is strictly a positive integer number:
-function isStrictlyIntegerString(s: string): bool {
+function isAllDigits(s: string): bool {
   if (s.length == 0) return false;
   for (let i: i32 = 0; i < s.length; i++) {  // 2026-05-23
     let c = s.charCodeAt(i);
@@ -165,14 +169,14 @@ class random_bitstring_and_flexible_password_generator {
 
     // writing to files only takes about 0.1 sec!
     // write bit stream to disk:
-    if (saveToFile(file_bits_x, bits_x_str_total)) {
+    if (writeToFile(file_bits_x, bits_x_str_total)) {
       Console.log("\nBit stream has been written to disk under name:  " + file_bits_x);
     } else {
       Console.error("\ncould not write to file: " + file_bits_x);
     }
     
     // write byte stream to disk:
-    if (saveToFile(file_bits_hex, bits_hex_str_total)) {
+    if (writeToFile(file_bits_hex, bits_hex_str_total)) {
       Console.log("\nByte stream has been written to disk under name: " + file_bits_hex + "\n");
     } else {
       Console.error("\ncould not write to file: " + file_bits_hex + "\n");
@@ -191,7 +195,7 @@ class random_bitstring_and_flexible_password_generator {
       if (answerStr == "y") {
         answer = true;
       } else {
-        let integerType = isStrictlyIntegerString(answerStr);
+        let integerType = isAllDigits(answerStr);
         if (integerType) {
           let parsed = i32.parse(answerStr, 10);  // be careful with parse(): 66 ggg --> 66!!!!
           // AssemblyScript's parse returns 0 or NaN logic if it fails;

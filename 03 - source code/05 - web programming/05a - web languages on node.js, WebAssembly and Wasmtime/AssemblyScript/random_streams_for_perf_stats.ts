@@ -3,6 +3,9 @@ random_streams_for_perf_stats.ts -- this is an AssemblyScript (for WASI), not Ty
 
 2026-04-30, 2026-05-02/03
 2026-05-24: replacing user defined function padLeft() with inbuilt method which makes this program a bit slower (see at "2026-05-24" below)
+2026-07-23: renamed functions to better follow project conventions:
+              saveToFile               -> writeToFile
+
 
 built on Ubuntu 24 LTS: do this only once:
                         $ npm install -g npm@11.13.0          # update npm if needed
@@ -46,7 +49,7 @@ import { Console, FileSystem, Descriptor } from "as-wasi/assembly";
 // In AssemblyScript, a try-catch construct is not currently supported for error recovery.
 // While the throw keyword exists, using it will immediately abort/terminate
 // the entire WebAssembly program rather than jumping to a catch block.
-function saveToFile(path: string, content: string): bool {
+function writeToFile(path: string, content: string): bool {
   let file: Descriptor | null = FileSystem.open(path, "w");
 
   if (file == null) {
@@ -148,14 +151,14 @@ class random_streams_for_perf_stats {
 
     // writing to files only takes about 0.1 sec!
     // write bit stream to disk:
-    if (saveToFile(file_bits_x, bits_x_str_total)) {
+    if (writeToFile(file_bits_x, bits_x_str_total)) {
       Console.log("\nBit stream has been written to disk under name:  " + file_bits_x);
     } else {
       Console.error("\ncould not write to file: " + file_bits_x);
     }
 
     // write byte stream to disk:
-    if (saveToFile(file_bits_hex, bits_hex_str_total)) {
+    if (writeToFile(file_bits_hex, bits_hex_str_total)) {
       Console.log("\nByte stream has been written to disk under name: " + file_bits_hex + "\n");
     } else {
       Console.error("\ncould not write to file: " + file_bits_hex + "\n");
