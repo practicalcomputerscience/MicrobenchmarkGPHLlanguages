@@ -13,6 +13,7 @@ programming language | versions | Bash command to retrieve versions
 --- | --- | ---
 Ada (GNAT) | alr 2.1.0; gprbuild 25.0.1; gnat_native 15.2.1 | $ alr --version; $ alr toolchain
 AssemblyScript | Version 0.28.17 | $ asc --version
+Awk (GNU) | GNU Awk 5.2.1, API 3.2, PMA Avon 8-g1, (GNU MPFR 4.2.1, GNU MP 6.3.0); Copyright (C) 1989, 1991-2022 Free Software Foundation; ... | $ awk -V
 Ballerina | Ballerina 2201.13.3 (Swan Lake Update 13), Language specification 2024R1, Update Tool 1.5.1; openjdk 21.0.10 2026-01-20, ... | $ bal version; java --version  # Ballerina wants JRE version 21 as of 2026-05!
 C | Ubuntu clang version 22.1.8 (++20260613092238+e80beda6e255-1~exp1~20260613092253.78) ... | $ /usr/lib/llvm-22/bin/clang --version
 C++ | g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0; Copyright (C) 2023 Free Software Foundation, Inc., ... | $ g++ --version
