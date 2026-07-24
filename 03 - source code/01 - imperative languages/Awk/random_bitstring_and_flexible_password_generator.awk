@@ -9,6 +9,11 @@
 # transpiled from Tcl random_bitstring_and_flexible_password_generator.tcl with Duck.ai with heavy manual corrections
 #
 #
+# $ mawk --version
+# mawk 1.3.4 20240123
+# Copyright 2008-2023,2024, Thomas E. Dickey
+# Copyright 1991-1996,2014, Michael D. Brennan
+# ...
 # $ awk -V
 # GNU Awk 5.2.1, API 3.2, PMA Avon 8-g1, (GNU MPFR 4.2.1, GNU MP 6.3.0)
 # Copyright (C) 1989, 1991-2022 Free Software Foundation.

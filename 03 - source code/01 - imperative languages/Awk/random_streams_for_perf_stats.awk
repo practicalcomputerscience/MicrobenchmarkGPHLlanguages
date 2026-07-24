@@ -22,9 +22,6 @@
 # Copyright (C) 1989, 1991-2022 Free Software Foundation.
 # ...
 # $
-#
-#
-# to-do:  x list of random integers
 
 
 BEGIN {
