@@ -154,6 +154,7 @@ Ballerina         | 116 | interpreted, young language, together with Java ecosys
 Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
+Awk (GNU)         | 114 | interpreted, very mature language; nevertheless, some user defined functions are to be expected for general purpose programming | 2026-07-24
 Bigloo Scheme     | 114 | compiled, mature language | 2026-06-18
 Common Lisp       | 114 | compiled, very mature language | 2026-06-18
 Dylan (Open Dylan) | 113 | compiled, very mature language | 2026-06-28
@@ -193,6 +194,7 @@ programming language | number of user-defined functions
 --- | ---
 Ada (GNAT)         | 2
 AssemblyScript     | 5
+Awk (GNU)          | 3
 Ballerina          | 2
 C                  | 0
 C++                | 0
