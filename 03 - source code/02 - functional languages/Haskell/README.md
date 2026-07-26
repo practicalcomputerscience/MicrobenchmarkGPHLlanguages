@@ -97,7 +97,7 @@ One conclusion from above list is: using the
 
 from: [5.10.2. LLVM Code Generator](https://downloads.haskell.org/ghc/latest/docs/users_guide/codegens.html#llvm-code-generator-fllvm)
 
-Currently LLVM versions 13 to 20 are being supported (in GHC version 9.10.3), so, I first installed missing LLVM version 20, like shown at (*).
+Currently LLVM versions 13 to 20 are being supported (in GHC version 9.10.3), so, I first installed missing LLVM version 20 as shown at (*).
 
 <br/>
 
