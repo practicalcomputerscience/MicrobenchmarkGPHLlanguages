@@ -122,7 +122,7 @@ With around 43 milliseconds of execution time (as of 2026-07-26), the Haskell ex
 [Bigloo Scheme](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm)
 and [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Common%20Lisp/random_streams_for_perf_stats2.lisp) counterparts.
 
-Interestingly, this execution time is about the same as the Standard Ml (MLton) executable's execution time, a solution which is (also) using pre-allocated arrays, though those must be order-reversed before string concatenations (to do it correctly).
+Interestingly, this execution time is about the same as the Standard ML (MLton) executable's execution time, a solution which is (also) using pre-allocated arrays, though those must be order-reversed before string concatenations (to do it correctly).
 
 Although, the Haskell executable is beating the other pure functional implementation in [Roc](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Roc/random_streams_for_perf_stats.roc), a solution which isn't applying any "imperative tinkering" but doing functional list building.
 
