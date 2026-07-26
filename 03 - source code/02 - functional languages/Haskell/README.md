@@ -78,11 +78,11 @@ Then, I played with compiler switches. Here are the results when running time me
 
 compilation command | mean, real program execution time | comment
 --- | --- | ---
-ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel | 106 milliseconds | compilation command during program development
-ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats | 45 milliseconds | basic compilation command for an optimal executable
-ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 58 milliseconds | applying the full set of optimzation switches (Google AI)
+ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel | 106 milliseconds | my command for development
+ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats | 45 milliseconds | basic command for an optimal executable
+ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 58 milliseconds | full set of optimzation switches (Google AI)
 ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim3 | 45 millisconds | targeted testing of the LLVM backend related -fllvm switch
-ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds | -threaded alone has a slightly positive effect
+ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds | -threaded alone has a slightly positive effect; **my command for production**
 ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim2 | 43 millisconds | no improvement when adding -fllvm
 
 <br/>
@@ -96,7 +96,7 @@ One conclusion from above list is: with the "speed part" of the microbenchmark p
 
 from: [5.10.2. LLVM Code Generator](https://downloads.haskell.org/ghc/latest/docs/users_guide/codegens.html#llvm-code-generator-fllvm)
 
-However, currently only LLVM versions 13 to 15 are being supported with compiler switch _-fllvm_ (in GHC version 9.10.3), so, I first installed LLVM version 15:
+However, currently only LLVM versions 13 to 15 are being supported (in GHC version 9.10.3), so, I first installed LLVM version 15:
 
 ```
 $ sudo apt-get install clang-15 llvm-15-dev libclang-common-15-dev libclang-15-dev
@@ -110,11 +110,9 @@ $
 
 Then I added line _export PATH="$HOME/.local/bin:$PATH"_ to my _~/.bashrc_ configuration file and activated it with command _$ source ~/.bashrc_.
 
-However, (only) compiling and building with command _$ ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_llvm_ didn't render a faster executable (though, it wasn't slower either).
-
 <br/>
 
-Another conclusion from above list is that the best combination of compiler switches is obviously still human, manual testing work, also in "the age of AI coding".
+Another conclusion from above list is that finding the best combination of compiler switches is obviously still human, manual testing work, also in "the age of AI coding".
 Just activating all kind of potentially suitable compiler switches can actually make an generated executable slower as list entry #3 (for _random_streams_for_perf_stats_optim1_) shows! 
 
 <br/>
