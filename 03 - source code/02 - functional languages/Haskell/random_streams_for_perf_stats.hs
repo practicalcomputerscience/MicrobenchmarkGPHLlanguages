@@ -164,7 +164,7 @@ main = do
             BMV.write bits_x i bits_x_str
             BMV.write bits_hex i bits_hex_str
             
-            -- putStrLn ("\n" ++ show (new_seed))  -- for testing
+            -- putStrLn ("\n" ++ show new_seed)  -- for testing
             -- putStrLn bits_x_str  -- for testing
             -- putStrLn bits_hex_str  -- for testing
 
