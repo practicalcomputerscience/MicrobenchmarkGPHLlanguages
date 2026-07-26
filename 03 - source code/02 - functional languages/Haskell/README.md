@@ -16,9 +16,6 @@ this is my second implementation of the microbenchmark program in a _pure_ funct
 
 <br/>
 
-
-
-
 ## Installation tips
 
 I started with a "proper" installation via GHCup: https://www.haskell.org/ghcup/
@@ -34,122 +31,14 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ...  # press [P] to add the required PATH variable to "/home/booser/.bashrc"
 ...  # press [N] to not install a haskell-language-server (HLS)
 ...  # press [Y] to enable better integration of stack with GHCup
+...
 $ 
 ```
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br/>
 
 
 
