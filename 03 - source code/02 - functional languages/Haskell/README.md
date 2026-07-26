@@ -36,7 +36,7 @@ $
 ```
 
 Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line _[ -f "/home/booser/.ghcup/env" ] && . "/home/booser/.ghcup/env" # ghcup-env_
-from the very file end more up because some configuration only work correctly when they are located at the very end of this configuration file!
+from the very file end more up because some configurations only work correctly when they are located at the very end of this configuration file!
 
 Then I shortly checked the GHC version:
 
