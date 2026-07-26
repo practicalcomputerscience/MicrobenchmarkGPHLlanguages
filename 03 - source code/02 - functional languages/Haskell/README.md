@@ -18,7 +18,7 @@ this is my second implementation of the microbenchmark program in a _pure_ funct
 
 ## Installation tips
 
-I started with a "proper" installation via GHCup: https://www.haskell.org/ghcup/
+I started with a "proper" installation with GHCup: https://www.haskell.org/ghcup/
 
 This is very helpful with the (global) management of Haskell libraries (with the _cabal_ project builder and library manager); some of them I'm using in the microbenchmark program.
 
@@ -60,12 +60,49 @@ $ cabal install --lib random  # install the random library
 $
 ```
 
+## On how to make a faster microbenchmark program
+
+At first, I experimented with data types (with the help of Google AI again).  
+
+I came to the conclusion that using Haskell's (imperative) **mutable vectors** makes a faster executable than doing traditional, functional list building (here with prepending an item ("front-appending") and then reversing the accumulated results), not dramatically but by around 25% according to my experiments.
 
 <br/>
 
+Then, I played with compiler switches. Here are the results when running time measurement command _$ multitime -n 10 ./random_streams_for_perf_stats<...>_:
+
+compilation command | mean, real program execution time | comment
+--- | --- | ---
+ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel | 106 milliseconds | compilation command during program development
+ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats | 45 milliseconds | basic compilation command for an optimal executable
+ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 58 milliseconds | applying the full set of optimzation switches (Google AI)
+ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim3 | 45 millisconds | targeted testing of the LLVM backend related -fllvm switch
+ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds | -threaded alone has a slightly positive effect
+ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim2 | 43 millisconds | no improvement when adding -fllvm
+
+<br/>
+
+#### Using the LLVM backend
+
+One conclusion from above list: with the "speed part" of the microbenchmark program, using the
+[LLVM backend](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure) doesn't improve the execution speed already optimized with switch _-O2_:
+
+tbd (Haskell link)
+
+Another conclusion is that the best combination of compiler switches is obviously still human, manual testing work, also in "the age of AI coding".
+Just activating all kind of potentially suitable compiler switches can actually make an generated executable slower as list entry #3 (for _random_streams_for_perf_stats_optim1_) shows! 
+
+tbd: -fllvm compiler switch
 
 
+<br/>
 
+tbd: direct source code links here:
+
+With around 43 milliseconds of execution time (as of 2026-07-26), the Haskell based executable is (significantly) slower than its [OCaml](tbd), [Bigloo Scheme](tbd) and [Common Lisp](tbd) counterparts.
+
+Interestingly, its about the same as the Standard Ml (MLton) based executable's, a solution which is (also) using pre-allocated arrays, but arrays which must be order-reversed before string concatenations.
+
+Though, Haskell executable is beating the other pure functional implementation in [Roc](tbd), a solution which isn't applying any "imperative tinkering".
 
 <br/>
 
