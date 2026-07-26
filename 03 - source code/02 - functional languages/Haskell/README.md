@@ -31,7 +31,19 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ...  # press [P] to add the required PATH variable to "/home/booser/.bashrc"
 ...  # press [N] to not install a haskell-language-server (HLS)
 ...  # press [Y] to enable better integration of stack with GHCup
-...
+...  # this takes time!
+$
+```
+
+Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line _[ -f "/home/booser/.ghcup/env" ] && . "/home/booser/.ghcup/env" # ghcup-env_
+from the very file end more up because some configuration only work correctly when they are located at the very end of this configuration file!
+
+Then I shortly checked the GHC version:
+
+```
+$ source ~/.bashrc
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
 $ 
 ```
 
