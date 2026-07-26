@@ -20,6 +20,8 @@ this is my second implementation of the microbenchmark program in a _pure_ funct
 
 I started with a "proper" installation via GHCup: https://www.haskell.org/ghcup/
 
+This is very helpful with the (global) management of Haskell libraries (with the _cabal_ project builder and library manager); some of them I'm using in the microbenchmark program.
+
 At first, I installed some potentially missing pre-requisites:
 
 ```
