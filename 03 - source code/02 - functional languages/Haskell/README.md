@@ -79,7 +79,7 @@ Then, I played with compiler switches. Here are the results when running time me
 compilation command | mean, real program execution time | comment
 --- | --- | ---
 ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel | 106 milliseconds | my command for development
-ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim | 43 milliseconds | basic command for an optimal executable
+ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim | 43 milliseconds | basic command for an optimal executable: my command for production
 ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 60 milliseconds | full set of optimzation switches (Google AI)
 ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim3 | 42 millisconds | targeted testing of the LLVM backend related -fllvm switch
 ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds |
