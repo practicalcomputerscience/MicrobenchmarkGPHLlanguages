@@ -8,7 +8,7 @@
 --
 --                         do this after every source code change:
 --                         $ ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel  # for development
---                         $ ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats  # for production
+--                         $ ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats  # for production
 --
 --
 -- run on Ubuntu 24 LTS:   $ time random_streams_for_perf_stats => real	0m0.044s
