@@ -113,7 +113,7 @@ Then I added line _export PATH="$HOME/.local/bin:$PATH"_ to my _~/.bashrc_ confi
 <br/>
 
 Another conclusion from above list is that finding the best combination of compiler switches is obviously still human, manual testing work, also in "the age of AI coding".
-Just activating all kind of potentially suitable compiler switches can actually make an generated executable slower as list entry #3 (for _random_streams_for_perf_stats_optim1_) shows! 
+Just activating all kind of potentially suitable compiler switches can actually make a slower executable as list entry #3 (for _random_streams_for_perf_stats_optim1_) shows! 
 
 <br/>
 
