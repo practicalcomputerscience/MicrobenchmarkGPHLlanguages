@@ -284,7 +284,7 @@ from: [System limitations](https://github.com/practicalcomputerscience/Microbenc
 
 Another example is Standard ML, where the speed bottleneck of my initial and slow program was not my string handling: [String building with Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#string-building-with-standard-ml)
 
-Though, there are some languages from my list which provide fast [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building) capabilities with just naive string concatenation:
+Though, there are some languages from my list which provide fast [String building](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/50%20-%20string%20building#string-building) capabilities with just naive string concatenation, like for example:
 
 - [FreeBASIC](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC/random_streams_for_perf_stats.bas)
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_streams_for_perf_stats.mojo)
@@ -294,6 +294,33 @@ With these programming languages, naive string concatenation has a good chance t
 
 - [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/random_streams_for_perf_stats.chpl)
 - [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku)
+
+<br/>
+
+#### String padding
+
+Integrated string padding on the left hand side of mandatory string variables _bits_x_str_ to 16 characters of '0' and '1' and _bits_hex_str_ (or similarly named)
+to 4 characters of '0' to 'f' can also have a major effect on execution speed at some implementations.
+
+For example, in the Haskell implementation this measure alone brought down program execution speed by over 40%!
+
+So, whenever implementing user defined functions _integer_to_bin_string()_ and/or _integer_to_hex_string()_ (or similarly named), try to avoid calling another used defined function like _padLeft()_. Instead, integrate this functionality into functions _integer_to_bin_string()_ and/or _integer_to_hex_string()_ for usually better execution speed.
+
+However, my usual guideline also here was to first use (idiomatic) resources of a programming languages, and its (core) libraries, if available.
+
+Of course, there are always some "hybrid cases", where for example a language offers the conversion of an integer number into its representation as a binary string,
+but without padding on its left hand side. What to do then? Replacing the whole functionality with a user defined function, or only the padding, or using
+the potentially inbuilt function for padding? I cannot remember anymore if I have tested all combinations for best execution speed in these cases.
+
+However, when a language, and its core libraries, that are non-third party libraries, which I learnt to avoid, do not offer a (basic) function to convert
+an integer number into its representation as a binary and/or hexadecimal string, I systematically implemented user defined functions
+_integer_to_bin_string()_ and/or _integer_to_hex_string()_ as "integrated solutions".
+
+List of languages without integrated string padding at their inbuilt function(s) for integer to string conversions
+(as of July 2026 and the [language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#language-versions) I have used):
+
+- tbd
+- tbd
 
 <br/>
 
