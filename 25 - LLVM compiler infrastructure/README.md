@@ -90,7 +90,7 @@ $
 
 ### Switching between several LLVM installations
 
-This task takes more effort, because we have to tell Ubuntu about the installed versions, something which creates a selectable menu:
+This task takes more effort, because first we have to tell Ubuntu about the installed versions, something which then creates a selectable menu:
 
 ```
 $ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 14 \
