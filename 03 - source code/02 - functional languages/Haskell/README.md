@@ -79,36 +79,25 @@ Then, I played with compiler switches. Here are the results when running time me
 compilation command | mean, real program execution time | comment
 --- | --- | ---
 ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel | 106 milliseconds | my command for development
-ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats | 45 milliseconds | basic command for an optimal executable
-ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 58 milliseconds | full set of optimzation switches (Google AI)
-ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim3 | 45 millisconds | targeted testing of the LLVM backend related -fllvm switch
-ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds | -threaded alone has a slightly positive effect; **my command for production**
-ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim2 | 43 millisconds | no improvement when adding -fllvm
+ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim | 43 milliseconds | basic command for an optimal executable
+ghc -O2 -threaded -rtsopts -with-rtsopts="-N" -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim1 | 60 milliseconds | full set of optimzation switches (Google AI)
+ghc -O2 -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim3 | 42 millisconds | targeted testing of the LLVM backend related -fllvm switch
+ghc -O2 -threaded random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim4 | 43 millisconds |
+ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_optim2 | 43 millisconds |
 
 <br/>
 
 #### Using the LLVM backend
 
-One conclusion from above list is: with the "speed part" of the microbenchmark program, using the
-[LLVM backend](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure) doesn't improve the execution speed already optimized with switch _-O2_: 
+One conclusion from above list is: using the
+[LLVM backend](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure) (*) doesn't improve the execution speed of the
+"speed part" of the microbenchmark program already optimized with switch _-O2_ in any statistically significant way: 
 
 > It generally produces code with performance as good as the native code generator but for some cases can produce much faster code. This is especially true for numeric, array heavy code using packages like vector.
 
 from: [5.10.2. LLVM Code Generator](https://downloads.haskell.org/ghc/latest/docs/users_guide/codegens.html#llvm-code-generator-fllvm)
 
-However, currently only LLVM versions 13 to 15 are being supported (in GHC version 9.10.3), so, I first installed LLVM version 15:
-
-```
-$ sudo apt-get install clang-15 llvm-15-dev libclang-common-15-dev libclang-15-dev
-...
-$ mkdir -p ~/.local/bin
-$ ln -sf /usr/bin/opt-15 ~/.local/bin/opt  # make a soft like to the LLVM optimizer and analysis printer in version 15
-$ ln -sf /usr/bin/llc-15 ~/.local/bin/llc  # make a soft like to the LLVM system compiler in version 15
-$ ln -sf /usr/bin/clang-15 ~/.local/bin/clang  # make a soft like to the LLVM clang compiler in version 15
-$
-```
-
-Then I added line _export PATH="$HOME/.local/bin:$PATH"_ to my _~/.bashrc_ configuration file and activated it with command _$ source ~/.bashrc_.
+Currently LLVM versions 13 to 20 are being supported (in GHC version 9.10.3), so, I first installed missing LLVM version 20, like shown at (*).
 
 <br/>
 
