@@ -53,7 +53,8 @@ We need to install a few libraries to render the Haskell implementation close to
 
 ```
 $ cabal install --lib vector
-...   # this takes time!  And warning is shown at the end:  "The presence of such an environment file is likely to confuse or break other tools..."
+...  # this takes time! A warning is shown at the end of the installation process:
+...  # "The presence of such an environment file is likely to confuse or break other tools..."  
 $ cabal install --lib random  # install the random library
 ...
 $
