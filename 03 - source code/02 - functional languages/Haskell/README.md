@@ -47,7 +47,13 @@ The Glorious Glasgow Haskell Compilation System, version 9.10.3
 $ 
 ```
 
+We need to install the _vector_ package to make the Haskell implementation close to the other implementations:
 
+```
+$ cabal install --lib vector
+...   # this takes time!  And warning is shown at the end:  "The presence of such an environment file is likely to confuse or break other tools..."
+$ 
+```
 
 
 <br/>
