@@ -12,7 +12,7 @@
 --                         $ ghc -O2 -threaded random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator  # for production
 --
 --
--- run on Ubuntu 24 LTS:   $ random_bitstring_and_flexible_password_generator
+-- run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
 --
 --
 -- $ ghc --version
