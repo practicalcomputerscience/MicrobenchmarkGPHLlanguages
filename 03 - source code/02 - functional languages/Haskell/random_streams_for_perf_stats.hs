@@ -1,32 +1,33 @@
--- random_streams_for_perf_stats.hs
---
--- 2026-07-26
---
--- build on Ubuntu 24 LTS: do this only once:
---                         $ cabal install --lib vector  # install the vector library
---                         $ cabal install --lib random  # install the random library
---
---                         do this after every source code change:
---                         $ ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel  # for development
---                         $ ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats  # for production
---
---
--- run on Ubuntu 24 LTS:   $ time random_streams_for_perf_stats => real	0m0.044s
---
---
--- $ ghc --version
--- The Glorious Glasgow Haskell Compilation System, version 9.10.3
--- $
---
---
--- transpiled from random_streams_for_perf_stats3.sml (Standard ML for MLton) with Google AI
--- with manual corrections for structural compliance with the other implementations
--- and Google AI improvements for better execution speed.
--- Of all implementations in functional languages so far, Standard ML is the closest to Haskell according to Google AI:
---     Primary Architectural Advantages: identical type inference (Hindley-Milner, HM),
---                                       matching ADT (algebraic data types) structures, no objects
---     Primary Structural Challenge:     bridging strict vs. lazy evaluation
+{-
+random_streams_for_perf_stats.hs
 
+2026-07-26
+
+build on Ubuntu 24 LTS: do this only once:
+                        $ cabal install --lib vector  # install the vector library
+                        $ cabal install --lib random  # install the random library
+
+                        do this after every source code change:
+                        $ ghc random_streams_for_perf_stats.hs -o random_streams_for_perf_stats_devel  # for development
+                        $ ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats  # for production
+
+
+run on Ubuntu 24 LTS:   $ time random_streams_for_perf_stats => real	0m0.044s
+
+
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
+$
+
+
+transpiled from random_streams_for_perf_stats3.sml (Standard ML for MLton) with Google AI
+with manual corrections for structural compliance with the other implementations
+and Google AI improvements for better execution speed.
+Of all implementations in functional languages so far, Standard ML is the closest to Haskell according to Google AI:
+    Primary Architectural Advantages: identical type inference (Hindley-Milner, HM),
+                                      matching ADT (algebraic data types) structures, no objects
+    Primary Structural Challenge:     bridging strict vs. lazy evaluation
+-}
 
 {-# LANGUAGE ScopedTypeVariables #-}
 
@@ -163,7 +164,7 @@ main = do
             UMV.write x i new_seed  -- MV = mutable vector
             BMV.write bits_x i bits_x_str
             BMV.write bits_hex i bits_hex_str
-            
+
             -- putStrLn ("\n" ++ show new_seed)  -- for testing
             -- putStrLn bits_x_str  -- for testing
             -- putStrLn bits_hex_str  -- for testing
@@ -181,7 +182,7 @@ main = do
 
   let bits_x_str_total    = concat bits_x_list
       bits_hex_str_total  = concat bits_hex_list
-      
+
   -- putStrLn ("\n" ++ bits_x_str_total)  -- for testing
   -- putStrLn bits_hex_str_total  -- for testing
 

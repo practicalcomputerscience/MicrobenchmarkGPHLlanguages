@@ -1,33 +1,34 @@
--- random_bitstring_and_flexible_password_generator.hs
---
--- 2026-07-27
---
--- build on Ubuntu 24 LTS: do this only once:
---                         $ cabal install --lib vector      # install the vector library
---                         $ cabal install --lib random      # install the random library
---                         $ cabal install --lib regex-tdfa  # install the random library
---
---                         do this after every source code change:
---                         $ ghc random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator_devel  # for development
---                         $ ghc -O2 -threaded random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator  # for production
---
---
--- run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
---
---
--- $ ghc --version
--- The Glorious Glasgow Haskell Compilation System, version 9.10.3
--- $
---
---
--- transpiled from random_bitstring_and_flexible_password_generator.sml (Standard ML for MLton) with Google AI
--- with manual corrections for structural compliance with the other implementations
--- and Google AI improvements for better execution speed.
--- Of all implementations in functional languages so far, Standard ML is the closest to Haskell according to Google AI:
---     Primary Architectural Advantages: identical type inference (Hindley-Milner, HM),
---                                       matching ADT (algebraic data types) structures, no objects
---     Primary Structural Challenge:     bridging strict vs. lazy evaluation
+{-
+random_bitstring_and_flexible_password_generator.hs
 
+2026-07-27
+
+build on Ubuntu 24 LTS: do this only once:
+                        $ cabal install --lib vector      # install the vector library
+                        $ cabal install --lib random      # install the random library
+                        $ cabal install --lib regex-tdfa  # install the random library
+
+                        do this after every source code change:
+                        $ ghc random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator_devel  # for development
+                        $ ghc -O2 -threaded random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator  # for production
+
+
+run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
+
+
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
+$
+
+
+transpiled from random_bitstring_and_flexible_password_generator.sml (Standard ML for MLton) with Google AI
+with manual corrections for structural compliance with the other implementations
+and Google AI improvements for better execution speed.
+Of all implementations in functional languages so far, Standard ML is the closest to Haskell according to Google AI:
+    Primary Architectural Advantages: identical type inference (Hindley-Milner, HM),
+                                      matching ADT (algebraic data types) structures, no objects
+    Primary Structural Challenge:     bridging strict vs. lazy evaluation
+-}
 
 {-# LANGUAGE ScopedTypeVariables #-}
 
@@ -51,7 +52,6 @@ import qualified Data.Vector.Unboxed.Mutable as UMV
 import Data.Char (isDigit, chr)
 import Text.Read (readMaybe)
 import Text.Regex.TDFA ((=~))  -- do implicit RegEx compilation
-
 
 
 -- *********************************************************
@@ -248,7 +248,7 @@ main = do
 
   -- write bit stream to disk
   write_to_file file_bits_x bits_x_str_total "bit"
-  
+
   -- write byte stream to disk
   write_to_file file_bits_hex bits_hex_str_total "byte"
   putStr "\n"
@@ -278,16 +278,16 @@ main = do
           loop j pw_str =  -- j: counter for x_arr
             -- SML 'Array.sub (x, j)' becomes list indexing 'x_arr !! j'
             let bin0 = integer_to_bin_string (x_arr !! j)
-                
+
                 -- Slice the string (String.substring (bin0, start, length))
                 -- In Haskell, 'take' and 'drop' are used for slicing lists/strings
                 bin0_0 = take 8 bin0
                 bin0_1 = take 8 (drop 8 bin0)
-                
+
                 -- Convert pieces back to integers
                 char0  = bin_string_to_integer bin0_0
                 char1  = bin_string_to_integer bin0_1
-                
+
                 -- Convert numeric values to standalone character strings
                 char0a = [chr char0]
                 char1a = [chr char1]
