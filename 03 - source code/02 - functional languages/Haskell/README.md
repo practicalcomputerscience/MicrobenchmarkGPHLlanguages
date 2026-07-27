@@ -107,7 +107,7 @@ and [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHL
 
 Interestingly, this execution time is about the same as the [Standard ML (MLton)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) executable's execution time, a solution which is (also) using pre-allocated arrays, though those must be order-reversed before string concatenations (to do it correctly).
 
-The Haskell executable is beating the other pure functional implementation (as of 2026-07-26) in [Roc](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Roc/random_streams_for_perf_stats.roc), a solution which isn't applying any "imperative tinkering" but (pure) doing functional list building.
+The Haskell executable is beating the other pure functional implementation (as of 2026-07-26) in [Roc](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Roc/random_streams_for_perf_stats.roc), a solution which isn't applying any "imperative tinkering" but doing (pure) functional list building.
 
 <br/>
 
