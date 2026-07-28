@@ -38,6 +38,7 @@ FreeBASIC | FreeBASIC Compiler - Version 1.10.1 (2023-12-24), built for linux-x8
 Gleam | gleam 1.13.0 | $ gleam -V
 Go | go version go1.26.3 linux/amd64 | $ go version
 Groovy | Groovy Version: 5.0.4 JVM: 25.0.2 Vendor: Homebrew OS: Linux; ...Gradle 9.3.0...; openjdk 25.0.2 2026-01-20... | $ groovy --version; $ gradle -v; $ java --version
+Haskell | The Glorious Glasgow Haskell Compilation System, version 9.10.3 | $ ghc --version
 Haxe | 4.3.3; 1.15.0 | $ haxe --version; hl --version
 Hy | hy 1.3.0 | $ hy --version  # in Python 3.12.3 virtual environment
 Inko | inko 0.19.1 | $ inko --version
