@@ -103,6 +103,7 @@ Fortran (GNU) | 40 bytes in 1 blocks | 40 bytes in 1 blocks | no | 2026-06-19
 FreeBASIC | 26,542 bytes in 43 blocks | 26,542 bytes in 43 blocks | no | 2026-06-19
 (Object) Free Pascal | 0 bytes in 0 blocks | --  | yes <<<<<< | 2026-07-20
 Go | program doesn't finish | -- | no | 2026-06-19
+Haskell | 4,555,068 bytes in 12 blocks | 4,555,068 bytes in 12 blocks | no | 2026-07-29
 Inko | Segmentation fault (core dumped) | -- | no | 2026-06-19
 Koka | program doesn't finish | -- | no | 2026-06-19
 Mercury | 995 bytes in 3 blocks | 944 bytes in 2 blocks | no | 2026-06-19
