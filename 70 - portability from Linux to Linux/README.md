@@ -27,6 +27,7 @@ FreeBASIC | yes, but with good portability when _libtinfo5_ for terminal interfa
 (Object) Free Pascal | no | "not a dynamic executable"
 Gambit Scheme (only the "speed part" tested) | yes, but with good portability | yes
 Go | no | "not a dynamic executable"
+Haskell | yes, but with good portability | yes
 Inko | yes, but with good portability | yes
 Nim | yes, but with good portability | yes
 OCaml | yes, but with good portability | yes
