@@ -3,7 +3,8 @@
 # 2025-05-13/14/15/19/21/27/29, 2025-06-01/02/03/06/15/18/27,
 # 2025-07-08/12/14, 2025-10-29, 2025-11-16/21/29, 2025-12-31
 # 2026-01-03a/06/09/13/15/18/21/24, 2026-02-05/08/11/12/16
-# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23/28, 2026-07-01/05/08/12
+# 2026-03-29, 2026-05-03/11, 2026-05-17/19/21/29/30, 2026-06-11/18/19/23/28,
+# 2026-07-01/05/08/12/16/19/20/24/28
 #
 #
 # run on Ubuntu 24 LTS: $ perl lines_of_source_code_count.pl random_bitstring_and_flexible_password_generator.<...>
@@ -64,7 +65,7 @@ my $language_ext = $file;
 
 
 # language group without block comments:
-my @lang_grp1  = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob", "bal", "tcl", "factor", "fs");
+my @lang_grp1  = ("rs", "pl", "mojo", "roc", "adb", "zig", "inko", "cr", "gleam", "f90", "e", "coffee", "cob", "bal", "tcl", "factor", "fs", "awk");
 my @lang_grp16 = ("hy");  # similar to Python, @lang_grp3: "document strings"
 
 
@@ -72,7 +73,7 @@ my @lang_grp16 = ("hy");  # similar to Python, @lang_grp3: "document strings"
 my @lang_grp2 = ("go", "scala", "swift", "v", "c", "c3", "kt", "chpl", "cs", "odin", "cpp", "d",
                  "groovy", "dart", "php", "ts", "ts_wasm", "hx", "java", "pike", "dylan");
 my @lang_grp3 = ("py");
-my @lang_grp4 = ("ml", "sml", "mod", "m3");
+my @lang_grp4 = ("ml", "sml", "mod", "m3", "obn");
 my @lang_grp5 = ("ps");
 my @lang_grp6 = ("clj");
 my @lang_grp7 = ("lisp", "rkt", "scm");
@@ -83,7 +84,8 @@ my @lang_grp11 = ("jl");
 my @lang_grp12 = ("nim");
 my @lang_grp13 = ("rb");
 my @lang_grp14 = ("st");  # Smalltalk
-my @lang_grp15 = ("curry");
+my @lang_grp15 = ("curry", "hs");  # Haskell style with {-..-} group comments and -- comments
+my @lang_grp17 = ("pp");  # Free Pascal with (*..*) group comments and // Delphi style comments
 my $line_of_block_comment2 = 0;
 my $line_of_block_comment3 = 0;
 my $line_of_block_comment4 = 0;
@@ -245,7 +247,6 @@ if ( grep(/^$language_ext$/, @lang_grp3)) {
 }
 
 
-
 if ( grep(/^$language_ext$/, @lang_grp4)) {
   while ( <FILE> ) {
     chomp( $_ );
@@ -271,9 +272,9 @@ if ( grep(/^$language_ext$/, @lang_grp4)) {
         $line_of_block_comment4 += 1;
       } else {
         if ($_ =~ /^\s*\*\)\s*$/ and $bracket_star_detected) {
-              $bracket_star_detected = 0;
-              $star_bracket_detected = 1;
-              print "  star_bracket_detected", "\n";
+          $bracket_star_detected = 0;
+          $star_bracket_detected = 1;
+          print "  star_bracket_detected", "\n";
         } else {
           # case: solo empty line or solo line with white spaces:
           if ($_ =~ /^\s*$/ and not $bracket_star_detected) {
@@ -704,13 +705,14 @@ if ( grep(/^$language_ext$/, @lang_grp15)) {
     # at the moment, only caring about:
     #   beginning {-: with potentially leading white spaces and any kind of stuff beyond {-..
     #   ending    -}: with potentially any kind of stuff before ..-} and potentially trailing white spaces
-    if ($_ =~ /^\s*\{\-/ and not $curly_minus_detected) {
+    # For Haskell, {-# and #-} must be excluded! These are compiler directives (pragmas) to enable language extensions.
+    if ($_ =~ /^\s*\{\-(?!#)/ and not $curly_minus_detected) {
       $curly_minus_detected = 1;
       $minus_curly_detected = 0;
       print "  curly_minus_detected", "\n";
       $line_of_block_comment15 += 1;
     } else {
-      if ($_ =~ /\-\}\s*$/ and $curly_minus_detected) {
+      if ($_ =~ /(?!#)\-\}\s*$/ and $curly_minus_detected) {
         $curly_minus_detected = 0;
         $minus_curly_detected = 1;
         print "  minus_curly_detected", "\n";
@@ -754,6 +756,51 @@ if ( grep(/^$language_ext$/, @lang_grp16)) {
           $line_cmt_Lisp_style += 1;
         } else {
           $source_code_line_count += 1;
+        }
+      }
+    }
+  }
+}
+
+
+if ( grep(/^$language_ext$/, @lang_grp17)) {
+  while ( <FILE> ) {
+    chomp( $_ );
+
+    $line_count += 1;
+    # print $_ , "\n";  # $_ is the current line
+
+    if ($bracket_star_detected) {
+      $line_of_block_comment4 += 1;
+    }
+
+    # (*..*): with potentially leading and trailing white spaces and any kind of stuff in between
+    if ($_ =~ /^\s*\(\*.*\*\)\s*$/ and not $bracket_star_detected) {
+      $line_cmt_ML_style += 1;
+    } else {
+      if ($_ =~ /^\s*\(\*\s*$/ and not $bracket_star_detected) {
+        $bracket_star_detected = 1;
+        $star_bracket_detected = 0;
+        print "  bracket_star_detected", "\n";
+        $line_of_block_comment4 += 1;
+      } else {
+        if ($_ =~ /^\s*\*\)\s*$/ and $bracket_star_detected) {
+          $bracket_star_detected = 0;
+          $star_bracket_detected = 1;
+          print "  star_bracket_detected", "\n";
+        } else {
+          if ($_ =~ /^\s*\/\// and not $bracket_star_detected) {
+            $line_cmt_fwdslash_dbl += 1;  # Delphi stype comment for the rest of line
+          } else {
+            # case: solo empty line or solo line with white spaces:
+            if ($_ =~ /^\s*$/ and not $bracket_star_detected) {
+              $line_empty += 1;
+            } else {
+              if (not $bracket_star_detected) {
+                $source_code_line_count += 1;
+              }
+            }
+          }
         }
       }
     }
