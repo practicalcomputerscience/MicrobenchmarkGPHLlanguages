@@ -126,6 +126,7 @@ FreeBASIC |  |  | OK | _char_set_ is a string of allowed characters in both case
 Gleam | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-31
 Go | yes |  | OK | POSIX patterns: _"[[:graph:]]+"_, _"[[:alnum:]]+"_ | yes | 2026-06-17
 Groovy | yes | | OK | non-POSIX patterns: _'[!-~]'_, _'[A-Za-z0-9]'_ | | 2026-05-27
+Haskell | yes | | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-07-29
 Haxe | yes | | OK | non-POSIX patterns used for reliable processing at the target platform: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-05-27
 Hy | yes | | OK | non-POSIX patterns: _r"[!-~]+"_, _r"[A-Za-z0-9]+"_ | | 2026-07-01
 Inko |  |  | OK | _char_set_ is a _StringBuffer_ of allowed characters, partly compiled from codepoints, partly filled from a string | | 2026-06-06
