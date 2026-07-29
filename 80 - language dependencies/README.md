@@ -50,6 +50,7 @@ FreeBASIC | self-hosted with the help of the [GNU Binutils](https://www.gnu.org/
 Gleam | Rust and Erlang (BEAM) | https://gleam.run/getting-started/installing/#installing-gleam; the Erlang compiler _erlc_ is written in Erlang, a language which started "as a modified prolog": https://www.erlang.org/faq/academic.html#idp33045264
 Go | self-hosted since 2015; the Go compiler was originally written in C | [Installing Go from source](https://go.dev/doc/install/source)
 Groovy | Groovy’s main compiler, groovyc, is written in Groovy itself; the rest in Java; so, partly self-hosted | 
+Haskell | self-hosted; runtime written in C and cmm, a derivate of [C--](https://www.cs.tufts.edu/~nr/c--/) | https://gitlab.haskell.org/ghc/ghc
 Haxe | as a standard target on the "backend" nowadays, Haxe source code is compiled to bytecode for the HashLink virtual machine; this compiler has been implemented in OCaml | [Building Haxe from source](https://github.com/HaxeFoundation/haxe/blob/development/extra/BUILDING.md#building-haxe-from-source): "The Haxe compiler is written in OCaml, ..."
 Hy | Hy interpreter is implemented in Python | https://github.com/hylang/hy/tree/master/hy
 Inko | Rust for LLVM | [Installation](https://docs.inko-lang.org/manual/main/setup/installation/)
