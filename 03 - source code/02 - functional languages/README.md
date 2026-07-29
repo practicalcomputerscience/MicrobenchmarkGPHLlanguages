@@ -51,7 +51,7 @@ Table of contents:
 I came to the conclusion that there must be two major branches of Functional Programming languages. The older one, going back to **Lisp** and including **Scheme** and its related dialects. And then there must be a different one that led to languages like **OCaml** and **Haskell** for example.
 
 OCaml (since 1996) goes back to Caml (Categorical Abstract Machine Language), which has been implemented in 1984 (https://caml.inria.fr/resources/doc/faq/general.en.html), which means that Caml is about 6
-years older than Haskell, which has been first published in 1990: https://dl.acm.org/doi/10.1145/1238844.1238856
+years older than Haskell, whose first report (version 1.0) has been first published in 1990: https://dl.acm.org/doi/10.1145/1238844.1238856
 
 And Caml goes back to ML (**Meta Language**), which was developed from 1973 to 1978: https://smlfamily.github.io/history/SML-history.pdf (https://smlfamily.github.io/history/)
 
