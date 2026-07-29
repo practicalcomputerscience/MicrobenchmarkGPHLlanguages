@@ -81,6 +81,12 @@ ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_
 
 <br/>
 
+I also experimented with the _Data.ByteString_ library is seen in the [A History of Haskell: Being Lazy With Class](https://dl.acm.org/doi/10.1145/1238844.1238856) paper from 2007,
+where strings are represented "as byte vectors rather than lists of characters". But this solution cannot beat the implementation with Boxed Mutable Vectors (BMV) for the two big strings
+(and a Unboxed Mutable Vector, UMV, for the random integer numbers) in terms of execution speed (while keeping the basic algorithm of the "masterloop").
+
+<br/>
+
 #### Using the LLVM backend
 
 One conclusion from above list is: using the
