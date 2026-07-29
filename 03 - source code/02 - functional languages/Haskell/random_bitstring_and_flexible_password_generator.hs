@@ -48,7 +48,6 @@ import System.IO (hFlush, stdout)  -- 2026-07-30
 import qualified Data.Vector.Mutable as BMV         -- Boxed Mutable Vector (for Strings)
 import qualified Data.Vector.Unboxed.Mutable as UMV -- Unboxed Mutable Vector (for Integers)
 import qualified Data.Vector.Unboxed as UV
-import qualified Data.Vector.Unboxed.Mutable as UMV
 
 import Data.Char (isDigit, chr)
 import Text.Read (readMaybe)
