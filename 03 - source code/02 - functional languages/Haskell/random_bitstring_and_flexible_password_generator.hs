@@ -12,7 +12,7 @@ build on Ubuntu 24 LTS: do this only once:
 
                         do this after every source code change:
                         $ ghc random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator_devel  # for development
-                        $ ghc -O2 -threaded random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator  # for production
+                        $ ghc -O2 random_bitstring_and_flexible_password_generator.hs -o random_bitstring_and_flexible_password_generator  # for production
 
 
 run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
