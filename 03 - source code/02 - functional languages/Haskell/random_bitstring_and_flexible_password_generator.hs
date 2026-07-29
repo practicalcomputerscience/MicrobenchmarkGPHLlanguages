@@ -2,6 +2,8 @@
 random_bitstring_and_flexible_password_generator.hs
 
 2026-07-27
+2026-07-30: redundant code deleted
+
 
 build on Ubuntu 24 LTS: do this only once:
                         $ cabal install --lib vector      # install the vector library
@@ -36,8 +38,7 @@ module Main (main) where
 
 import System.Random (randomRIO)
 import Control.Exception (IOException, catch)
-import Data.Word (Word64)
-import System.IO (hPutStr, hFlush, stdout, stderr)
+import System.IO (hFlush, stdout)  -- 2026-07-30
 
 -- Requires the 'vector' package:
 --   a standard Int array is "boxed," meaning the array stores a list of memory pointers

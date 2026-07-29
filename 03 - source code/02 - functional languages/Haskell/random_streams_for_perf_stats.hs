@@ -2,6 +2,8 @@
 random_streams_for_perf_stats.hs
 
 2026-07-26
+2026-07-30: redundant code deleted
+
 
 build on Ubuntu 24 LTS: do this only once:
                         $ cabal install --lib vector  # install the vector library
@@ -12,7 +14,7 @@ build on Ubuntu 24 LTS: do this only once:
                         $ ghc -O2 random_streams_for_perf_stats.hs -o random_streams_for_perf_stats  # for production
 
 
-run on Ubuntu 24 LTS:   $ time random_streams_for_perf_stats => real	0m0.044s
+run on Ubuntu 24 LTS:   $ time ./random_streams_for_perf_stats => real	0m0.044s
 
 
 $ ghc --version
@@ -35,8 +37,6 @@ module Main (main) where
 
 import System.Random (randomRIO)
 import Control.Exception (IOException, catch)
-import Data.Word (Word64)
-import System.IO (hPutStr, hFlush, stdout, stderr)
 
 -- Requires the 'vector' package:
 --   a standard Int array is "boxed," meaning the array stores a list of memory pointers
