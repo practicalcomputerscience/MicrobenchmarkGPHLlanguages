@@ -64,7 +64,7 @@ $
 
 At first, I experimented with data types (with the help of Google AI).  
 
-I came to the conclusion that using Haskell's (imperative) **mutable vectors** makes a faster executable than doing traditional, functional list building (here with prepending an item ("front-appending") and then reversing the accumulated results), not dramatically, but by around -25% according to my experiments.
+I came to the conclusion that using Haskell's (imperative) **mutable vectors** makes a faster executable than doing traditional, functional list building (here with prepending an item ("front-appending") and then reversing the accumulated results), not dramatically, but by around -25% of program execution time according to my experiments.
 
 <br/>
 
