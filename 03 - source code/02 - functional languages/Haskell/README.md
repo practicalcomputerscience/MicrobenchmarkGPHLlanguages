@@ -131,6 +131,10 @@ However, while this solution is decreasing the number of lines of source code, i
 
 So, I decided to stick to the verbose and fast solution, as originally started in my [Ada implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/f6208c9c8de1d0d0eb74f9b7f12cf01111e3a527/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb#L105).
 
+By the way: doing the same in [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m),
+that is converting this elegant solution: _char = "0123456789abcdef" ! remainder_ into something like shown above in Haskell is not a good idea.
+It increases the execution time of the Miranda script by more than 8%!
+
 <br/>
 
 #### Using the LLVM backend
