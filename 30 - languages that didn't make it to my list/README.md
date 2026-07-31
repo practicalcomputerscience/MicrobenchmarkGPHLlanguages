@@ -13,6 +13,7 @@ Table of contents:
 - [Old computer programming languages learning new tricks](#old-computer-programming-languages-learning-new-tricks)
 - [Languages that were too slow](#languages-that-were-too-slow)
 - [Koka](#koka)
+- [Miranda](#miranda)
 - [Raku](#raku)
 - [Wolfram Language](#wolfram-language)
 - [wren](#wren)
@@ -95,6 +96,10 @@ These languages have (substantially) exceeded [The 1 second execution time limit
 ### Koka
 
 Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Koka#koka) program works correctly, and despite some experimentation with big string concatenation (2026-01-26), it's just slow with an execution time of over 3 seconds.
+
+### Miranda
+
+Although the interpreted ["speed part" of the microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m) works correctly, it's just slow with an execution time of about 2 seconds. Succeeding language [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell), which is for compilation, offers a very good alternative.
 
 ### Raku
 
