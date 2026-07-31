@@ -73,8 +73,8 @@ masterloop n seed =
 My impressions after building Miranda script _random_streams_for_perf_stats.m_ (built manually from scratch with big help from Google AI) have been these:
 
 - counterintuitively, I think it's easier in Miranda to make "dirty" (functional) code, or at least "clumsier" functional code, than in Haskell, specifically when using "Big AI" as a coding companion
-- this comment is also quite illustrative: "||Any comments welcome -- my Miranda is not as hot as it could be ..." in example script _box.m_
-- I learnt the most from functions in the example scripts (_~.m_) located in sources directory _./miranda/miralib/ex_ from tarball file _mira-2066-src.tgz_, specifically in bigger scripts like _box.m_ (there are not too many of them unfortuantely)
+- this comment is also quite illustrative: "||Any comments welcome -- my Miranda is not as hot as it could be ..." in example script _box.m_. It may be another indicator that finding the "best" or "most efficient" or fastest solution in Miranda isn't so easy
+- I learnt the most from functions in the example scripts (_~.m_) located in directory _./miranda/miralib/ex_ from tarball file _mira-2066-src.tgz_, specifically in bigger scripts like _box.m_ (there are not too many of them unfortuantely)
 
 <br/>
 
@@ -132,7 +132,7 @@ primes = sieve [ 2.. ]
          sieve (p:x) = p : sieve [n | n <- x; n mod p > 0]
 ```
 
-..just doesn't work (anymore). But this (which is also doing some cosmetics for better printing), and it's not the introduction of _main_:
+..doesn't work (anymore). But this one (which is also doing some cosmetics for better printing), and it's not the introduction of _main_:
 
 ```
 main =
@@ -153,8 +153,8 @@ $
 
 <br/>
 
-By the way: I also noticed that (specifically) the Miranda interpreter, at least in the version I have used, is very picky with indentations in the source code.
-Regularly, it was complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a suitable _where_ location:
+I also noticed that (specifically) the Miranda interpreter, at least in the version I have used, is very picky with **indentations in the source code**.
+Regularly, it has been complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a suitable _where_ location:
 
 ```
 <function name> <arguments> =
