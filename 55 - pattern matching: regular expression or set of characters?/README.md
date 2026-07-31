@@ -117,7 +117,7 @@ Curry (KiCS2) |  |  | OK | _pattern_ is a string of allowed characters in both c
 D | yes |  | OK | non-POSIX patterns: _r"[!-~]"_, _r"[A-Za-z0-9]"_ | | 2026-06-13
 Dart | yes |  | OK | non-POSIX patterns: _r'^[!-~]$'_, _r'^[A-Za-z0-9]$'_ | | 2026-06-17
 Dylan | yes |  | OK | non-POSIX patterns: _graphic?(c) & ~whitespace?(c)_, _alphanumeric?_ | | 2026-06-28
-Eiffel | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-09
+Eiffel, Liberty | yes |  | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-06-09
 Factor |  |  | OK | _char_set_ is a string of allowed characters in both cases, compiled from codepoints; regular expressions are possible but may compile to an unstable program | | 2026-07-05
 Forth (Gforth) | | | OK | _char_set_buffer_ is a set of allowed characters in both cases, compiled from codepoints | | 2026-07-08
 Fortran (GNU) |  |  | OK | _CHAR_SET_ is a string of allowed characters in both cases, compiled from codepoints | | 2026-06-10
