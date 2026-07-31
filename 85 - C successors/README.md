@@ -19,7 +19,7 @@ language | upside | downside | comment
 
 <br/>
 
-(+) why a "C successor"? Confer [Overview slides - Part 2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/01%20-%20presentation%20slides#part-2): "Its string and character model is outdated in the 21st century." -- this is only my little contribution, plus the fact that function family _(s)printf_ apparently isn't fully standardized, as my (accidental) tapping into [Checked C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#checked-c) has brought to light.
+(+) why a "C successor"? See at [Overview slides - Part 2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/01%20-%20presentation%20slides#part-2): "Its string and character model is outdated in the 21st century." -- this is only my little contribution, plus the fact that function family _(s)printf_ apparently isn't fully standardized, as my (accidental) tapping into [Checked C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#checked-c) has brought to light.
 
 This long specification paper [Extending C with bounds safety and improved type safety, Version 0.9](https://github.com/microsoft/checkedc/releases/download/CheckedC-Clang-12.0.1-rel3/checkedc-v0.9.pdf), (Draft as of September 14, 2021, Checked C Technical Report Number 1, Author: David Tarditi, Microsoft), offers good insights into the deficits of established C in a modern programming world:
 
