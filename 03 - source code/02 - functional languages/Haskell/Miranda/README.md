@@ -74,7 +74,7 @@ My impressions after building Miranda script _random_streams_for_perf_stats.m_ (
 
 - counterintuitively, I think it's easier in Miranda to make "dirty" (functional) code, or at least "clumsier" functional code, than in Haskell, specifically when using "Big AI" as a coding companion
 - this comment is also quite illustrative: "||Any comments welcome -- my Miranda is not as hot as it could be ..." in example script _box.m_
-- I learnt the most from functions in the example scripts (_~.m_) in sources directory _./miranda/miralib/ex_ from tarball file _mira-2066-src.tgz_, specifically in bigger scripts like _box.m_ (there are not too many of them unfortuantely)
+- I learnt the most from functions in the example scripts (_~.m_) located in sources directory _./miranda/miralib/ex_ from tarball file _mira-2066-src.tgz_, specifically in bigger scripts like _box.m_ (there are not too many of them unfortuantely)
 
 <br/>
 
@@ -115,7 +115,7 @@ $ mira -version
 $
 ```
 
-If the build process goes wrong (because of missing prerequisites for example), just clean up the working directory with command: _make cleanup_
+If the build process goes wrong (because of missing prerequisites for example), just clean up the working directory with command: _$ make cleanup_
 
 <br/>
 
@@ -154,7 +154,7 @@ $
 <br/>
 
 By the way: I also noticed that (specifically) the Miranda interpreter, at least in the version I have used, is very picky with indentations in the source code.
-Regularly it was complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a _where_ location:
+Regularly, it was complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a suitable _where_ location:
 
 ```
 <function name> <arguments> =
@@ -163,7 +163,7 @@ Regularly it was complaining about the positions of the (important) _where_ clau
     <pattern matching or other stuff>
 ```
 
-So also from this very original paper: [Miranda: A non-strict functional language with polymorphic types](https://www.cs.kent.ac.uk/people/staff/dat/miranda/nancypaper.pdf) (PDF) by David Turner from 1985:
+See also from this very original paper: [Miranda: A non-strict functional language with polymorphic types](https://www.cs.kent.ac.uk/people/staff/dat/miranda/nancypaper.pdf) (PDF) by David Turner from 1985:
 
 > There is a nested block structure using **where**, and indentation of inner blocks is compulsory — as in SASL the compiler uses the offside rule to determine the scopes of local definitions.
 
