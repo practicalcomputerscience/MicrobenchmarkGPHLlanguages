@@ -119,4 +119,61 @@ If the build process goes wrong (because of missing prerequisites for example), 
 
 <br/>
 
+### Evolution of Miranda
+
+Like every other (serious) general purpose, high-level programming language, also Miranda went through some evolution after its first release.
+
+For example, I noticed that this example from official paper [An Overview of Miranda](https://www.cs.kent.ac.uk/people/staff/dat/miranda/overview.pdf) (PDF)
+from late 1986 by its inventor David Turner:
+
+```
+primes = sieve [ 2.. ]
+         where
+         sieve (p:x) = p : sieve [n | n <- x; n mod p > 0]
+```
+
+..just doesn't work (anymore). But this (which is also doing some cosmetics for better printing), and it's not the introduction of _main_:
+
+```
+main =
+  show sieve [2..100]
+  ++ "\n"
+  where
+    sieve [] = []  || the empty list case is needed to avoid the program to stop on an error
+    sieve (p:x) = p : sieve [n | n <- x; n mod p ~= 0]
+```
+
+Run this script like this:
+
+```
+$ mira -exec ./primes.m
+[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+$
+```
+
+<br/>
+
+By the way: I also noticed that (specifically) the Miranda interpreter, at least in the version I have used, is very picky with indentations in the source code.
+Regularly it was complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a _where_ location:
+
+```
+<function name> <arguments> =
+  <helper function or other stuff>
+  where
+    <pattern matching or other stuff>
+```
+
+So also from this very original paper: [Miranda: A non-strict functional language with polymorphic types](https://www.cs.kent.ac.uk/people/staff/dat/miranda/nancypaper.pdf) (PDF) by David Turner from 1985:
+
+> There is a nested block structure using **where**, and indentation of inner blocks is compulsory — as in SASL the compiler uses the offside rule to determine the scopes of local definitions.
+
+<br/>
+
+tbd
+
+
+
+
+<br/>
+
 ##_end
