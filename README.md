@@ -302,7 +302,7 @@ With these programming languages, naive string concatenation has a good chance t
 Integrated string padding on the left hand side of mandatory string variables _bits_x_str_ to 16 characters of '0' and '1' and _bits_hex_str_ (or similarly named)
 to 4 characters of '0' to 'f' can also have a major effect on execution speed at some implementations.
 
-For example, in the Haskell implementation this measure alone brought down program execution speed by over 40%!
+For example, in the Haskell implementation this measure alone brought down program execution time by over 40%!
 
 So, whenever implementing user defined functions _integer_to_bin_string()_ and/or _integer_to_hex_string()_ (or similarly named), try to avoid calling another used defined function like _padLeft()_. Instead, integrate this functionality into functions _integer_to_bin_string()_ and/or _integer_to_hex_string()_ for usually better execution speed.
 
