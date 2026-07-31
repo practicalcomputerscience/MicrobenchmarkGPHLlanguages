@@ -1,11 +1,15 @@
 2026-07-31: work in progress tbd
 
+<br/>
+
 # Miranda
 
 https://www.cs.kent.ac.uk/people/staff/dat/miranda/
 
+<br/>
+
 Miranda was practically the precursor of [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell),
-which in return more or less started as an answer to the commercialization of Miranda (confer [A history of Haskell: being lazy with class](https://dl.acm.org/doi/10.1145/1238844.1238856) from 2007):
+which in return more or less started as an answer to the commercialization of Miranda (see at [A history of Haskell: being lazy with class](https://dl.acm.org/doi/10.1145/1238844.1238856) from 2007):
 
 ```
 $ mira
@@ -38,8 +42,8 @@ from: https://sota.io/blog/deploy-miranda-europe-eu-hosting
 <br/>
 
 However, Miranda programs, or better _scripts_, are strictly meant for interpretation compared to compiled Haskell programs, and thus significantly slower to run.
-The Miranda implementation of the "speed part" of the microbenchmark, script [random_streams_for_perf_stats.m](tbd),
-takes about 2000 milliseconds to run compared to about 43 milliseconds for the Haskell counterpart.
+The Miranda implementation of the "speed part" of the microbenchmark, script [random_streams_for_perf_stats.m](./random_streams_for_perf_stats.m),
+takes about 2000 milliseconds to run compared to about 43 milliseconds for the Haskell counterpart!
 
 <br/>
 
@@ -66,11 +70,11 @@ masterloop n seed =
 
 <br/>
 
-My impressions after building this Miranda script (built manually from scratch with big help from Google AI):
+My impressions after building Miranda script _random_streams_for_perf_stats.m_ (built manually from scratch with big help from Google AI) have been these:
 
 - counterintuitively, I think it's easier in Miranda to make "dirty" (functional) code, or at least "clumsier" functional code, than in Haskell, specifically when using "Big AI" as a coding companion
 - this comment is also quite illustrative: "||Any comments welcome -- my Miranda is not as hot as it could be ..." in example script _box.m_
-- I learnt the most from functions in the example scripts (_~.m_) in sources directory ./miranda/miralib/ex in tarball file _mira-2066-src.tgz_, specifically from bigger scripts like _box.m_ (there are not too many of them unfortuantely)
+- I learnt the most from functions in the example scripts (_~.m_) in sources directory _./miranda/miralib/ex_ from tarball file _mira-2066-src.tgz_, specifically in bigger scripts like _box.m_ (there are not too many of them unfortuantely)
 
 <br/>
 
@@ -93,7 +97,7 @@ CFLAGS = #-O #-DCYGWIN #-DUWIN #-DIBMRISC #-Dsparc7 #-Dsparc8
 CFLAGS = -w -fcommon #-O #-DCYGWIN #-DUWIN #-DIBMRISC #-Dsparc7 #-Dsparc8
 ```
 
-Then compile the Miranda sources with this command (with _CFLAGS="-w -fcommon"_ provided as an extra guard):
+Then compile the Miranda sources with this command (with providing compilation switches _CFLAGS="-w -fcommon"_ as an extra guard):
 
 ```
 $ make CFLAGS="-w -fcommon"
@@ -111,7 +115,7 @@ $ mira -version
 $
 ```
 
-If the build process goes wrong (because of missing prerequisites), just clean up the working directory with command: _make cleanup_
+If the build process goes wrong (because of missing prerequisites for example), just clean up the working directory with command: _make cleanup_
 
 <br/>
 
