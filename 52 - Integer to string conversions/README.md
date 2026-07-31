@@ -30,70 +30,70 @@ See for example at [String padding](https://github.com/practicalcomputerscience/
 <br/>
 
 programming language | integer to binary string | integer to hexadecimal string | comment
---- | --- | ---
-Ada (GNAT) | | 
-AssemblyScript | | 
-Awk (GNU) |  | 
-Ballerina |  | 
-C |  | 
-C++ |  | 
-C3 |  | 
-C# |  | 
-Chapel | |  
-Clojure | | 
-COBOL (GnuCOBOL) |  | 
-CoffeeScript |  | 
-Common Lisp |  | 
-Crystal |  | 
-Curry (KiCS2) |  | 
-D |  | 
-Dart |  | 
-Dylan |  | 
-Eiffel, Liberty |  | 
-Factor |  | 
-Forth (Gforth) |  | 
-Fortran (GNU) |  | 
-FreeBASIC |  | 
-(Object) Free Pascal |  | 
-Gleam |  | 
-Go |  | 
-Groovy |  | 
-Haskell |  | 
-Haxe |  | 
-Hy |  | 
-Inko |  | 
-Java |  | 
-Julia |  | 
-Kotlin |  | 
-Lua |  | 
-Mercury | |  
-Modula-2 (GNU) |  | 
-Modula-3 (CM3) |  | 
-Mojo |  | 
-Nim |  | 
-Oberon (OBC) |  | 
-OCaml |  | 
-Odin |  | 
-Perl 5 |  | 
-PHP |  | 
-Picat |  | 
-Pike |  | 
-PowerShell |  | 
-Prolog, SWI |  | 
-Python |  | 
-Roc |  | 
-Ruby |  | 
-Rust |  | 
-Scala |  | 
-Scheme, Bigloo |  | 
-Scheme, Racket |  | 
-Smalltalk (GNU) |  | 
-Standard ML (MLton) | |  
-Swift |  | 
-Tcl |  | 
-TypeScript |  | 
-V |  | 
-Zig |  | 
+--- | --- | --- | ---
+Ada (GNAT) | |  | 
+AssemblyScript | | |  
+Awk (GNU) |  |  | 
+Ballerina |  |  | 
+C |  |  | 
+C++ |  |  | 
+C3 |  |  | 
+C# |  |  | 
+Chapel | |  |  
+Clojure | |  | 
+COBOL (GnuCOBOL) |  |  | 
+CoffeeScript |  |  | 
+Common Lisp |  |  | 
+Crystal |  |  | 
+Curry (KiCS2) |  |  | 
+D |  |  | 
+Dart |  |  | 
+Dylan |  |  | 
+Eiffel, Liberty |  |  | 
+Factor |  |  | 
+Forth (Gforth) |  |  | 
+Fortran (GNU) |  |  | 
+FreeBASIC |  |  | 
+(Object) Free Pascal |  |  | 
+Gleam |  |  | 
+Go |  |  | 
+Groovy |  | |  
+Haskell |  |  | 
+Haxe |  |  | 
+Hy |  |  | 
+Inko |  |  | 
+Java |  |  | 
+Julia |  |  | 
+Kotlin |  |  | 
+Lua |  |  | 
+Mercury | |  |  
+Modula-2 (GNU)  | |  | 
+Modula-3 (CM3) |  |  | 
+Mojo |  |  | 
+Nim |  |  | 
+Oberon (OBC) |  |  | 
+OCaml |  |  | 
+Odin |  |  | 
+Perl 5 |  |  | 
+PHP |  |  | 
+Picat |  |  | 
+Pike |  |  | 
+PowerShell |  |  | 
+Prolog, SWI |  | |  
+Python |  |  | 
+Roc |  |  | 
+Ruby |  |  | 
+Rust |  |  | 
+Scala |  |  | 
+Scheme, Bigloo |  |  | 
+Scheme, Racket |  |  | 
+Smalltalk (GNU) |  |  | 
+Standard ML (MLton) | |  |  
+Swift |  |  | 
+Tcl |  |  | 
+TypeScript | |   | 
+V |  |  | 
+Zig |  |  | 
 
 <br/>
 
