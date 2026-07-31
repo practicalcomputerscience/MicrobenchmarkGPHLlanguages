@@ -82,8 +82,54 @@ ghc -O2 -threaded -fllvm random_streams_for_perf_stats.hs -o random_streams_for_
 <br/>
 
 I also experimented with the _Data.ByteString_ library is seen in the [A History of Haskell: Being Lazy With Class](https://dl.acm.org/doi/10.1145/1238844.1238856) paper from 2007,
-where strings are represented "as byte vectors rather than lists of characters". But this solution cannot beat the implementation with Boxed Mutable Vectors (BMV) for the two big strings
-(and a Unboxed Mutable Vector, UMV, for the random integer numbers) in terms of execution speed (while keeping the basic algorithm of the "masterloop").
+where strings are represented "as byte vectors rather than lists of characters". But this solution cannot beat the implementation with Boxed Mutable Vectors (BMV) for string building
+(and a Unboxed Mutable Vector, UMV, to store the generated random integer numbers) in terms of execution speed (while keeping the basic algorithm of the "masterloop").
+
+<br/>
+
+While working on a [Miranda transpilation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m), Google AI suggested to make user defined function _integer_to_hex_string_ more concise by turning this part: 
+
+```
+    toHex count k acc =
+      let !remainder = k `mod` 16
+          !nextK     = k `div` 16
+          !char      = hexChar remainder
+       in toHex (count - 1) nextK (char : acc)
+
+    hexChar :: Int -> Char
+    hexChar 0  = '0'
+    hexChar 1  = '1'
+    hexChar 2  = '2'
+    hexChar 3  = '3'
+    hexChar 4  = '4'
+    hexChar 5  = '5'
+    hexChar 6  = '6'
+    hexChar 7  = '7'
+    hexChar 8  = '8'
+    hexChar 9  = '9'
+    hexChar 10 = 'a'
+    hexChar 11 = 'b'
+    hexChar 12 = 'c'
+    hexChar 13 = 'd'
+    hexChar 14 = 'e'
+    hexChar 15 = 'f'
+    hexChar _  = '0'
+```
+
+into just this:
+
+```
+    toHex count k acc =
+      let !remainder = k `mod` 16
+          !nextK     = k `div` 16
+          -- Look up the index directly from the string using !!:
+          !char      = "0123456789abcdef" !! remainder
+       in toHex (count - 1) nextK (char : acc)
+```
+
+However, while this solution is decreasing the number of lines of source code, it is also increasing the program execution time, here by around 5%.
+
+So, I decided to stick to the verbose and fast solution, as originally started in my [Ada implementation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/f6208c9c8de1d0d0eb74f9b7f12cf01111e3a527/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb#L105).
 
 <br/>
 
