@@ -156,7 +156,7 @@ Scala | yes |  | OK | non-POSIX patterns: _"""[!-~]""".r_, _"""[A-Za-z0-9]""".r_
 Scheme, Bigloo | yes |  | OK | POSIX patterns: _"^[[:graph:]]$"_, _"^[[:alnum:]]$"_ | yes | 2026-06-17
 Scheme, Racket | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
 Smalltalk (GNU) | yes |  | OK | _pattern_ with POSIX bracket groups _[[:print:]]_ and _[[:alnum:]]_ | yes | 2026-05-24
-Standard ML | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
+Standard ML (MLton) | yes |  | OK | non-POSIX patterns: _"^[!-~]$"_, _"^[A-Za-z0-9]$"_ | | 2026-05-30
 Swift | yes |  | OK | non-POSIX patterns: _/[!-~]/_, _/[A-Za-z0-9]/_ | | 2026-06-10
 Tcl | yes |  | OK | non-POSIX patterns: _{([!-~])}_, _{([A-Za-z0-9])}_ | | 2026-06-19
 TypeScript | yes |  | OK | non-POSIX patterns: _/^[!-~]$/_, _/^[A-Za-z0-9]$/_ | | 2026-06-17
