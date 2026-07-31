@@ -20,8 +20,7 @@ In order to provide some overview of this messy situation, I created another lan
 
 <br/>
 
-By the way: a clever implementation of above functionalities can have a surprisingly high impact on the execution speed of a program implementation.
-See for example at [String padding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#string-padding):
+By the way: a clever implementation of above functionalities can have a surprisingly high impact; see for example at [String padding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#string-padding):
 
 > Integrated string padding on the left hand side of mandatory string variables bits_x_str to 16 characters of '0' and '1' and bits_hex_str (or similarly named) to 4 characters of '0' to 'f' can also have a major effect on execution speed at some implementations.
 >
