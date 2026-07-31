@@ -133,6 +133,7 @@ Inko |  |  | OK | _char_set_ is a _StringBuffer_ of allowed characters, partly c
 Java | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-05-26
 Julia | yes |  | OK | non-POSIX patterns: _r"[!-~]+"_, _r"[A-Za-z0-9]+"_ | | 2026-05-28
 Kotlin | yes | | OK | non-POSIX patterns: _"[!-~]"_, _"[A-Za-z0-9]"_ | | 2026-05-26
+Lua    |     | |    | Lua doesn't support regular expressions (and may never do it) | | 2026-07-31
 Mercury |  |  | OK | _CharSet_ is a string of allowed characters in both cases, compiled from codepoints; the _lex_ library needs extra installation and is not integral part of the Mercury implementation: [Extra programs in the Mercury implementation](https://github.com/Mercury-Language/mercury/tree/6b031c1ec68260767cff8e334f2aeadc998293ba/extras#extra-programs-in-the-mercury-implementation) | | 2026-06-09
 Modula-2 (GNU) |  |  | OK | _char_set_ is a string of allowed characters in both cases, partly compiled from codepoints, partly filled from a string | | 2026-07-12
 Modula-3 (CM3) | yes |  | OK | non-POSIX patterns: _"[!-~]+"_, _"[A-Za-z0-9]+"_ | | 2026-07-19
