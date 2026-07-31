@@ -4,21 +4,21 @@
 
 # Integer to string conversions
 
-Not all general purpose, high-level programming languages, including their officially maintained libraries, provide in-built functions to convert an unsigned 32-bit integer number into its 
+Not all general purpose, high-level programming languages, including their officially maintained libraries, provide inbuilt functions to convert an unsigned 32-bit integer number into its 
 representations as a:
 
 - binary string, including padding to 16 characters with leading "0"'s if needed, and
 - hexadecimal string, including padding to 4 characters with leading "0"'s if needed, and only using lowercase letters "a" to "f".
 
-In no corner of my microbenchmark program I employed more user defined functions than for these two functionalities (which are already multi-functionalities).
+In no corner of my microbenchmark program I employed more **user defined functions** than for these two functionalities (which are already multi-functionalities).
 
-Some languages, including young ones, provide inbuilt functions to do all jobs on a integer input number, some languages, including very old ones, don't provide any official solutions.
+Some languages, including young ones, provide inbuilt functions to do all jobs on a integer input number, some languages, including very old ones, don't provide any official solutions at all.
 
-Some languages only partly provide the required functionalities, often with missing the padding with leading zeros.
-
-<br/>
+Some languages only partly provide the required functionalities, often with lacking the padding with leading zeros.
 
 In order to provide some overview of this messy situation, I created another language list, see below.
+
+<br/>
 
 By the way: the clever implementation of above functionalities often has a surprisingly high impact on the execution speed of an implementation.
 See for example at [String padding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#string-padding):
