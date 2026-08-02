@@ -137,6 +137,8 @@ I tried these Common Lisp environments:
 
 I will shortly explain how to make standalone, executable Lisp based programs in Linux (on the Bash shell), because for historical reasons this isn't so easy as with other programming languages.
 
+<br/>
+
 ### Making standalone executables
 
 #### SBCL
@@ -179,6 +181,8 @@ $ ./<program name> # run your program
 ...
 ```
 
+<br/>
+
 ### Environment specific source code for Hello, World!
 
 Since these are three different Common Lisp environments, there are differences in the related source code -- which doesn't mean that things couldn't be done differently than shown here:
@@ -209,6 +213,8 @@ Since these are three different Common Lisp environments, there are differences 
 (main)
 (ext:quit 0)
 ```
+
+<br/>
 
 ### Microbenchmark program
 
