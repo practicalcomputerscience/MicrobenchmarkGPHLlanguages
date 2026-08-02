@@ -90,7 +90,7 @@ but nothing I can (easily) import into my own program.
 
 <br/>
 
-Missing exception handling is the reason why [Admiran](tbd) isn't included in my "official" listing of programming languages.
+Missing exception handling is the reason why [also](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list/README.md#miranda) [Admiran](tbd) isn't included in my "official" listing of programming languages.
 
 <br/>
 
