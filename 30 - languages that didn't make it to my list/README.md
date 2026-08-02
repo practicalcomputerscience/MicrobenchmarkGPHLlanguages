@@ -99,7 +99,8 @@ Although my [Koka](https://github.com/practicalcomputerscience/MicrobenchmarkGPH
 
 ### Miranda
 
-Although the interpreted ["speed part" of the microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m) works correctly, it's just slow with an execution time of about 2 seconds. Succeeding language [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell), which is for compilation, offers a very good alternative.
+Although the (interpreted) ["speed part" of the microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m) works correctly, it's just slow with an execution time of about 2 seconds. 
+Another reason is a missing possibility to have an initial random seed from _within_ the Miranda script, because it cannot tap into related resources of the underlying operating system, for example with reading the system time. Succeeding language [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell), which is for compilation, offers a very good alternative.
 
 ### Raku
 
