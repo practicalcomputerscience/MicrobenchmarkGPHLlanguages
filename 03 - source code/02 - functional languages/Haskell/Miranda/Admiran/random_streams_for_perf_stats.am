@@ -5,7 +5,7 @@
 || build on Ubuntu 24 LTS: $ amc ./random_streams_for_perf_stats.am
 ||
 || run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
-||                         $ time ./random_streams_for_perf_stats => real	0m0.175s (linux270k)
+||                         $ time ./random_streams_for_perf_stats
 ||
 || Admiran v2.6
 ||
