@@ -203,7 +203,7 @@ main =
   ...
 ```
 
-All other "officially" featured implementations of this project do this sourcing task from _within_ the called program, and if it's only with exotic means.
+All other "officially" featured implementations of this project do this sourcing task from _within_ a program, and if it's only with exotic means.
 
 <br/>
 
