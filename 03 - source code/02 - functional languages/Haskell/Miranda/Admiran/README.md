@@ -8,10 +8,10 @@ Admiran: Miran + da -> ad + miran -> Admiran
 
 Table of contents:
 
-- [Idea of Admiran]()
-- [No exception handling]()
-- [Execution speed]()
-- [Installation tips]()
+- [Idea of Admiran](#idea-of-admiran)
+- [No exception handling](#no-exception-handling)
+- [Execution speed](#execution-speed)
+- [Installation tips](#installation-tips)
 
 <br/>
 
