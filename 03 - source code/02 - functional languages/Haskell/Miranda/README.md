@@ -1,5 +1,7 @@
 2026-07-31: work in progress tbd
 
+tbd: toc
+
 <br/>
 
 # Miranda
@@ -8,8 +10,7 @@ https://www.cs.kent.ac.uk/people/staff/dat/miranda/
 
 <br/>
 
-Miranda was practically the precursor of [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell),
-which in return more or less started as an answer to the commercialization of Miranda (see at [A history of Haskell: being lazy with class](https://dl.acm.org/doi/10.1145/1238844.1238856) from 2007):
+Miranda was practically the precursor of [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell), which in return more or less started as an answer to the commercialization of Miranda (see at [A history of Haskell: being lazy with class](https://dl.acm.org/doi/10.1145/1238844.1238856) from 2007 (*)):
 
 ```
 $ mira
@@ -30,6 +31,12 @@ Miranda /q
 miranda logout
 $
 ```
+
+<br/>
+
+Miranda was the first major non-strict, that is _lazy_, purely functional language with a Hindley-Milner (HM) type system and algebraic data types (ADT's) (*).
+
+<br/>
 
 Finally in 2020, Miranda has been open sourced by its inventor [David Turner](https://en.wikipedia.org/wiki/David_Turner_(computer_scientist)):
 
@@ -132,7 +139,7 @@ primes = sieve [ 2.. ]
          sieve (p:x) = p : sieve [n | n <- x; n mod p > 0]
 ```
 
-..doesn't work (anymore). But this one (which is also doing some cosmetics for better printing), and it's not the introduction of _main_:
+..doesn't work (anymore). But this one (which has also some cosmetics implemented for better printing), and it's not the introduction of _main_:
 
 ```
 main =
@@ -154,7 +161,7 @@ $
 <br/>
 
 I also noticed that (specifically) the Miranda interpreter, at least in the version I have used, is very picky with **indentations in the source code**.
-Regularly, it has been complaining about the positions of the (important) _where_ clauses. I then accustomed myself to this pattern for a suitable _where_ location:
+Regularly, the interpreter has been complaining about the positions of the (important) _where_ clauses. I then accustomed to this pattern for a suitable _where_ location:
 
 ```
 <function name> <arguments> =
@@ -169,10 +176,34 @@ See also from this very original paper: [Miranda: A non-strict functional langua
 
 <br/>
 
-tbd
+### Miranda's deficits
 
+Since [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) offers a very good alternative, I've not implemented the complete microbenchmark program in [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#miranda).
 
+Another argument is the sourcing of a _reasonably_ random, initial seed. I haven't found any means to tap resources of the operating system, that is Linux here, for this job.
 
+So, I use the value of the Bash shell's environment variable _RANDOM_ before calling the Miranda script:
+
+```
+$ echo $RANDOM | mira -heap 10000000 -exec ./random_streams_for_perf_stats.m
+```
+
+Then in _main_ I read this value into variable _os_seed_:
+
+```
+...
+main :: [sys_message]
+main =
+  ..
+  where
+    os_seed = numval (hd (lines $-)) + 1
+    || + 1 to not have a 0 seed!
+    || $- = standard symbol for the list of characters typed at the keyboard
+    || lines breaks $- into lines, hd takes first line, numval converts it into a number
+  ...
+```
+
+All other "officially" featured implementations of this project do this sourcing task from _within_ the called program, and if it's only with exotic means.
 
 <br/>
 
