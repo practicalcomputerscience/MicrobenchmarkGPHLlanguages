@@ -65,7 +65,7 @@ possible to the access the (Linux) file system, which - unintentionally again - 
 
 ### Futhark
 
-[Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark) is "a data-parallel functional programming language", but not a general purpose one.
+[Futhark](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/03%20-%20array-oriented%20languages/Futhark#futhark) is "a data-parallel functional programming language", but not suitable for general purpose.
 
 <br/>
 
