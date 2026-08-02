@@ -299,7 +299,7 @@ With some other programming languages, naive string concatenation has a good cha
 
 #### Linux display server: use Wayland, not Xorg
 
-Here a technical, but potentially very important hint:
+Here a potentially very important hint:
 
 > [!TIP]
 > If possible, and at least on a Ubuntu system, use the (default) display server Wayland, not the very old _/usr/lib/xorg/Xorg_.
