@@ -180,9 +180,8 @@ See also from this very original paper: [Miranda: A non-strict functional langua
 
 Since [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) offers a very good alternative, I've not implemented the complete microbenchmark program in [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#miranda).
 
-Another argument for this decision is the sourcing of an initial random seed. I haven't found any means to tap resources of the operating system, that is Linux here, for this job.
-
-So, I use the value of the Bash shell's environment variable _RANDOM_ before calling the Miranda script:
+Another argument for this decision is the sourcing of an initial random seed. I haven't found any means to tap into resources of the operating system, that is Linux here, for this job.
+I use the value of the Bash shell's environment variable _RANDOM_ before calling the Miranda script:
 
 ```
 $ echo $RANDOM | mira -heap 10000000 -exec ./random_streams_for_perf_stats.m
@@ -203,7 +202,7 @@ main =
   ...
 ```
 
-All other "officially" featured implementations of this project do this sourcing task from _within_ a program, and if it's only with exotic means.
+All other "officially" listed programming languages do this (entropy) sourcing task from _within_ a program, and if it's only with exotic means.
 
 <br/>
 
