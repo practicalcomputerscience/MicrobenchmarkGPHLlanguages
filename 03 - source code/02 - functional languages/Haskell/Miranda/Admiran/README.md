@@ -1,14 +1,23 @@
-2026-08-02: work in progress: tbd
-
-<br/>
-
 # Admiran
 
 https://github.com/taolson/Admiran
 
 Admiran: Miran + da -> ad + miran -> Admiran
 
+---
+
+Table of contents:
+
+- [Idea of Admiran]()
+- [No exception handling]()
+- [Execution speed]()
+- [Installation tips]()
+
 <br/>
+
+---
+
+## Idea of Admiran
 
 Admiran for **compilation** is an "extended subset" successor of interpreted Miranda: [Miranda language features removed from Admiran](https://github.com/taolson/Admiran#miranda-language-features-removed-from-admiran)
 
@@ -82,24 +91,66 @@ write_strings_to_files (ints, strings1, strings2)
 If there's a problem when writing to a file, the program exits immediatly, but with a detailed error message:
 
 ```
-tbd
+$ ./random_streams_for_perf_stats 
+
+generating a random bit stream...
+random_bitstring.bin: Permission denied
+$
 ```
 
-So, the Admiran compiler has means of exception handling implemented, as seen in source file [exception.am](https://github.com/taolson/Admiran/blob/main/compiler/exception.am),
-but nothing I can (easily) import into my own program.
+So, the Admiran compiler has means of exception handling implemented, as it can seen in source code file [exception.am](https://github.com/taolson/Admiran/blob/main/compiler/exception.am),
+but nothing I can (easily) use in my own program.
 
 <br/>
 
-Missing exception handling is the reason why [also](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#miranda) [Admiran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#admiran) isn't included in my "official" listing of programming languages.
+Missing exception handling, as core feature in this language benchmarking, is the reason why [also](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#miranda) [Admiran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#admiran) isn't included in my "official" listing of programming languages.
+
+<br/>
+
+#### Execution speed
+
+Compiled Admiran program [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) takes about 340 milliseconds to run. This is blasting the 2 seconds of the Miranda script,
+but still far away from the 43 milliseconds of the Haskell executable.
 
 <br/>
 
 ## Installation tips
 
-It's rather easy and straightforward to compile and install Admiran from sources: tbd
+It's rather easy and straightforward to compile and install Admiran from sources. I took source from here: https://github.com/taolson/Admiran/releases/tag/v2.6,
+unpacked them.
 
-tbd
+In unpacked top-level directory _./Admiran-2.6/compiler_ edit configuration file _config.am_ like this:
 
+```
+|| admiranLibPath        = "../lib"        || set to absolute path of Admiran lib directory: comment this original line
+admiranLibPath        = "<absolute path>/Admiran-2.6/lib"  || this is the new line with the ABSOLUTE PATH to lib
+```
+
+Then do this in top-level directory _./Admiran_:
+
+```
+$ make  # this takes its time!
+...
+building amc
+generating STG code 66934 STG insns
+generating asm code
+linking with runtime
+diff compiler/amc.s compiler/amc.s.REF
+
+=== amc compiler built successfully ===
+mv compiler/amc bin/amc
+$ 
+```
+
+Finally, edit your _~/.bashrc_ file like this for example:
+
+```
+export PATH="$HOME/scripts/Miranda/Admiran/Admiran-2.6/bin:$PATH"
+```
+
+..and activate it with command: _$ source ~/.bashrc_
+
+There's no command to ask the Admiran compiler for its version.
 
 <br/>
 
