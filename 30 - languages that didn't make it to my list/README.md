@@ -22,7 +22,7 @@ Table of contents:
 
 ### Admiran
 
-[Admiran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/Admiran#admiran), a very young [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/#miranda) derivative for compilation doesn't yet support exception handling in a user program.
+[Admiran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/Admiran#admiran), a very young [Miranda](#admiran) derivative for compilation doesn't yet support exception handling in a user program.
 
 ### Hack
 
