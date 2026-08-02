@@ -313,7 +313,9 @@ $ ps  -efl | grep xorg
 The Xorg server may easily put too much load on the cpu, which can degrade the execution speed - all other things the same - of a compiled and fast executable in the sub-100 milliseconds range
 by up to 40% according to my experience!
 
-When you are running a slow script for interpretion, you may not notice this phenomenon for a while. 
+When you are running a slow script for interpretion, you may not notice this phenomenon for a while.
+
+Note: with Ubuntu 26 LTS at least, Xorg only remains available in the repositories, though it's no longer installed by default! See at: [Ubuntu 25.10 drops support for GNOME on Xorg](https://discourse.ubuntu.com/t/ubuntu-25-10-drops-support-for-gnome-on-xorg/62538) from Jun 2025.
 
 By the way: the ambient temperature for my Ubuntu desktop PC also has a slight effect on program execution speeds, but according to my sporadic experience I estimate that at less than 5% usually.
 
