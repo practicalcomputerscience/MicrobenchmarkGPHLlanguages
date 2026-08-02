@@ -290,10 +290,32 @@ Though, there are some languages from my list which provide fast [String buildin
 - [Mojo](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Mojo/random_streams_for_perf_stats.mojo)
 - [Rust](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Rust/random_streams_for_perf_stats.rs)
 
-With these programming languages, naive string concatenation has a good chance to represent the fastest from more than one alternative solutions according to my experience:
+With some other programming languages, naive string concatenation has a good chance to represent the fastest from more than one alternative solutions, like for example:
 
 - [Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/random_streams_for_perf_stats.chpl)
 - [Raku](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Raku%20(Perl%206)/random_bitstring_and_flexible_password_generator.raku)
+
+<br/>
+
+#### Linux display server: use Wayland, not Xorg
+
+Here a technical, but potentially very important hint:
+
+> [!TIP]
+> If possible, and at least on a Ubuntu system, use the (default) display server Wayland, not the very old _/usr/lib/xorg/Xorg_.
+
+Search for it on your (Linux) system, if you are not sure if Xorg is running or not:
+
+```
+$ ps  -efl | grep xorg
+```
+
+The Xorg server may easily put too much load on the cpu, which can degrade the execution speed - all other things the same - of a compiled and fast executable in the sub-100 milliseconds range
+by up to 40% according to my experience!
+
+When you are running a slow script for interpretion, you may not notice this phenomenon for a while. 
+
+By the way: the ambient temperature for my Ubuntu desktop PC also has a slight effect on program execution speeds, but according to my sporadic experience I estimate that at less than 5% usually.
 
 <br/>
 
