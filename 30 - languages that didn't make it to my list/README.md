@@ -5,7 +5,6 @@
 Table of contents:
 
 - [Admiran](#admiran)
-- [Forth](#forth)
 - [Hack](#hack)
 - [Oz](#oz)
 - [Pony](#pony)
@@ -24,10 +23,6 @@ Table of contents:
 ### Admiran
 
 [Admiran](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/Admiran#admiran), a very young [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/#miranda) derivative for compilation doesn't yet support exception handling in a user program.
-
-### Forth
-
-TL;DR at [From Forth to Factor](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/06%20-%20stack-oriented%20languages/Forth#from-forth-to-factor).
 
 ### Hack
 
