@@ -70,7 +70,7 @@ You can rather easily put much more tasks into the _main_ function of a Miranda 
 
 Also the provided [example programs](https://github.com/taolson/Admiran/tree/main/examples) show this phenomenon.
 
-In Admiran it's _even_ harder to get all types along its _function composition_ right, according to my observations.
+In Admiran it's _even_ harder to get all types along its _function composition_ right according to my observations.
 
 <br/>
 
@@ -107,19 +107,18 @@ Missing exception handling, as core feature in this language benchmarking, is th
 
 <br/>
 
-#### Execution speed
+### Execution speed
 
 Compiled Admiran program [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) takes about 340 milliseconds to run. This is blasting the 2 seconds of the Miranda script,
-but still far away from the 43 milliseconds of the Haskell executable.
+but still is far away from the 43 milliseconds of the Haskell executable.
 
 <br/>
 
 ## Installation tips
 
-It's rather easy and straightforward to compile and install Admiran from sources. I took source from here: https://github.com/taolson/Admiran/releases/tag/v2.6,
-unpacked them.
+It's rather easy and straightforward to compile and install Admiran from sources. I took sources from here: https://github.com/taolson/Admiran/releases/tag/v2.6 and unpacked them.
 
-In unpacked top-level directory _./Admiran-2.6/compiler_ edit configuration file _config.am_ like this:
+In unpacked directory _./Admiran-2.6/compiler_ edit configuration file _config.am_ like this:
 
 ```
 || admiranLibPath        = "../lib"        || set to absolute path of Admiran lib directory: comment this original line
