@@ -1,0 +1,140 @@
+|| random_streams_for_perf_stats.am
+||
+|| 2026-08-01
+||
+|| build on Ubuntu 24 LTS: $ amc ./random_streams_for_perf_stats.am
+||
+|| run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
+||                         $ time ./random_streams_for_perf_stats => real	0m0.175s (linux270k)
+||
+|| Admiran v2.6
+||
+||
+|| built manually from scratch based on Miranda script random_streams_for_perf_stats.m
+|| and the Admiran source code files ~.am as examples.
+||
+||
+|| exception handling is not implemented: a problem when writing to a file will immediately cause a program exit:
+||   $ ./random_streams_for_perf_stats
+||   
+||   generating a random bit stream...
+||   random_bitstring.bin: Permission denied
+||   $
+||
+||
+|| $ ldd ./random_streams_for_perf_stats
+|| 	       linux-vdso.so.1 (0x00007ffc59313000)
+|| 	       libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007203ee600000)
+|| 	       /lib64/ld-linux-x86-64.so.2 (0x00007203ee9d0000)
+|| $
+
+
+%import <io>        (>>=)/io_bind (>>)/io_right
+
+
+|| *********************************************************
+|| user defined functions
+
+|| get a pseudo-random seed based on the operating system time:
+random_seed = clock >>= \u ->
+              clock >>= \v ->
+              clock >>= \w ->
+              io_pure (((u + v)*w) $mod (m - 2) + 1)
+              || clock defined in ./Admiran-2.6/lib/io.am
+              || u = ~260...800
+
+
+|| this is almost a 1:1 copy from random_streams_for_perf_stats.m (for Miranda):
+integer_to_bin_string :: int -> string
+integer_to_bin_string n
+  = toBinary 16 n ""
+    where
+      || Case 1: Force stop exactly at 16 characters
+      toBinary 0 any_seed acc = acc
+
+      || Case 2: If the number is fully converted, pad left with '0'
+      toBinary count 0 acc = toBinary (count - 1) 0 ('0' : acc)
+
+      || Case 3: Calculate the bit and continue processing
+      toBinary count k acc =
+        toBinary (count - 1) nextK (bit : acc)
+        where
+          bit   = '0', if k $mod 2 == 0
+                = '1', otherwise
+          nextK = k $div 2
+
+
+|| this too:
+integer_to_hex_string :: int -> string
+integer_to_hex_string n
+  = toHex 4 n ""
+    where
+      toHex 0 any_seed acc = acc
+
+      toHex count 0 acc = toHex (count - 1) 0 ('0' : acc)
+
+      toHex count k acc =
+        toHex (count - 1) nextK (char : acc)
+        where
+          remainder  = k $mod 16
+          nextK      = k $div 16
+          char = "0123456789abcdef" ! remainder
+
+
+masterloop :: ([int], [string], [string]) -> int -> int -> ([int], [string], [string])
+masterloop (sofar1, sofar2, sofar3) 0 seed = (sofar1, sofar2, sofar3)  || case n = 0
+masterloop (sofar1, sofar2, sofar3) n seed                             || case n > 0:
+  = masterloop ((new_seed : sofar1),
+                ((integer_to_bin_string new_seed) : sofar2),
+                ((integer_to_hex_string new_seed) : sofar3)) (n - 1) new_seed
+    where
+      new_seed = (a * seed + c) $mod m
+
+
+|| Helper function to build one common string from a tuple of lists of different types:
+||   show_tuple_of_lists :: ([int], [string], [string]) -> string
+||   show_tuple_of_lists (ints, strings1, strings2)
+||     = (showlist showint ints)
+||       ++ "\n" ++ showlist showstring strings1
+||       ++ "\n" ++ showlist showstring strings2
+
+|| Helper function:
+||   show_big_strings :: ([int], [string], [string]) -> string
+||   show_big_strings (ints, strings1, strings2)
+||     = concat strings1 ++ "\n" ++ concat strings2
+
+
+|| !!exception handling is missing here!!
+write_strings_to_files :: ([int], [string], [string]) -> io ()
+write_strings_to_files (ints, strings1, strings2)
+  = writeFile file_bits_x (concat strings1) >>
+    putStrLn ("Bit stream has been written to disk under name:  " ++ file_bits_x) >>
+    writeFile file_bits_hex (concat strings2) >>
+    putStrLn ("Byte stream has been written to disk under name: " ++ file_bits_hex)
+
+
+|| end of user defined functions
+|| *********************************************************
+
+
+|| Constants
+upper_limit = 62500  || 62500 for exactly 1M binary digits
+|| upper_limit = 10  || for testing
+
+m = 65521  || = 2^16 - 15
+a = 17364
+c = 0
+
+file_bits_x   = "random_bitstring.bin"
+file_bits_hex = "random_bitstring.byte"
+
+
+main :: io ()
+main
+  = random_seed >>= \os_seed ->
+    || putStrLn ("os_seed = " ++ showint os_seed) >>  || for testing
+    putStrLn "\ngenerating a random bit stream..." >>
+    (masterloop ([], [], []) upper_limit os_seed |> write_strings_to_files)
+
+
+|| end of random_streams_for_perf_stats.am
