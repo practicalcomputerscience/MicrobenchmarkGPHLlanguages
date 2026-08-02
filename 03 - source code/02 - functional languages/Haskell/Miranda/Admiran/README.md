@@ -6,18 +6,22 @@
 
 https://github.com/taolson/Admiran
 
-Admiran -> Miran + da -> ad + miran -> Admiran
+Admiran: Miran + da -> ad + miran -> Admiran
+
+<br/>
 
 Admiran for **compilation** is an "extended subset" successor of interpreted Miranda: [Miranda language features removed from Admiran](https://github.com/taolson/Admiran#miranda-language-features-removed-from-admiran)
 
-Though not yet a full-blown implementation, Admiran is already usable for "abstract things": tbd
+<br/>
 
 Since this language is still small and young, it's practically forcing the human developer to fall back on his own capabilities without the help of "Big AI".
 
 The "speed part" of the microbenchmark program, [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) is in some parts, that is user defined functions,
 almost a 1:1 copy based on the Miranda implementation [random_streams_for_perf_stats.m](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m).
 
-However, there are some surprising and profound _structural_ differences between both programs. Only have a look at both _main_ functions (the usual entry points in Miranda programs),
+<br/>
+
+However, there are some surprising and profound _structural_ differences between both programs. Only have a look at both _main_ functions,
 independently of their sourcing of an initial random seed:
 
 Miranda:
@@ -57,14 +61,14 @@ You can rather easily put much more tasks into the _main_ function of a Miranda 
 
 Also the provided [example programs](https://github.com/taolson/Admiran/tree/main/examples) show this phenomenon.
 
-In Admiran it's _even_ harder to get all types along its _function composition_ right according to my (short) observations.
+In Admiran it's _even_ harder to get all types along its _function composition_ right, according to my observations.
 
 <br/>
 
 ## No exception handling
 
 What's also missing yet in Admiran are means of exception handling the coder can (conveniently) use in his own programs.
-Writing the (big) strings to files lacks exception handling in my Admiran program:
+Thus, writing the (big) strings to files lacks exception handling in my Admiran program:
 
 ```
 write_strings_to_files :: ([int], [string], [string]) -> io ()
@@ -81,7 +85,7 @@ If there's a problem when writing to a file, the program exits immediatly, but w
 tbd
 ```
 
-So, the Admiran compiler has means of exception handling implemented, here in source file [exception.am](https://github.com/taolson/Admiran/blob/main/compiler/exception.am),
+So, the Admiran compiler has means of exception handling implemented, as seen in source file [exception.am](https://github.com/taolson/Admiran/blob/main/compiler/exception.am),
 but nothing I can (easily) import into my own program.
 
 <br/>
