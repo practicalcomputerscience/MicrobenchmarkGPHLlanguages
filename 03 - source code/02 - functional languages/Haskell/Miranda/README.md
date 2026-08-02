@@ -54,7 +54,7 @@ takes about 2000 milliseconds to run compared to about 43 milliseconds for the H
 
 <br/>
 
-On the other side, Miranda scripts have to stay really _pure_ (until today) compared to the possibilities of "imperative tinkering" for a speedy Haskell program.
+On the other side, Miranda scripts have to stay really _pure_ compared to the possibilities of "imperative tinkering" for a speedy Haskell program.
 Thus, the Miranda script strictly adheres to (pure) functional list building at its implementation of the "masterloop":
 
 ```
@@ -180,7 +180,7 @@ See also from this very original paper: [Miranda: A non-strict functional langua
 
 Since [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) offers a very good alternative, I've not implemented the complete microbenchmark program in [Miranda](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/30%20-%20languages%20that%20didn't%20make%20it%20to%20my%20list#miranda).
 
-Another argument is the sourcing of a _reasonably_ random, initial seed. I haven't found any means to tap resources of the operating system, that is Linux here, for this job.
+Another argument for this decision is the sourcing of an initial random seed. I haven't found any means to tap resources of the operating system, that is Linux here, for this job.
 
 So, I use the value of the Bash shell's environment variable _RANDOM_ before calling the Miranda script:
 
@@ -188,7 +188,7 @@ So, I use the value of the Bash shell's environment variable _RANDOM_ before cal
 $ echo $RANDOM | mira -heap 10000000 -exec ./random_streams_for_perf_stats.m
 ```
 
-Then in _main_ I read this value into variable _os_seed_:
+Then in _main_, I read this value into variable _os_seed_:
 
 ```
 ...
