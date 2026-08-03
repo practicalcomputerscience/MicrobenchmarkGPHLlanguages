@@ -28,7 +28,7 @@ By the way: a clever implementation of above functionalities can have a surprisi
 
 <br/>
 
-programming language | integer to binary string | integer to hexadecimal string | integrated padding? | comment
+programming language | integer to binary string | integer to hexadecimal string | integrated string padding on the left? | comment
 --- | --- | --- | --- | ---
 Ada (GNAT) | |  | | 
 AssemblyScript | | ||   
