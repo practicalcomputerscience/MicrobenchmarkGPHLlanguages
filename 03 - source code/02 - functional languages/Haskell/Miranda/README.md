@@ -1,14 +1,21 @@
-2026-07-31: work in progress tbd
-
-tbd: toc
-
-<br/>
-
 # Miranda
 
 https://www.cs.kent.ac.uk/people/staff/dat/miranda/
 
+---
+
+Table of contents:
+
+- [Idea of Miranda]()
+- [Installation tips](#installation-tips)
+- [Evolution of Miranda](#evolution-of-miranda)
+- [Miranda's deficits](#mirandas-deficits)
+
 <br/>
+
+---
+
+## Idea of Miranda
 
 Miranda was practically the precursor of [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell), which in return more or less started as an answer to the commercialization of Miranda (see at [A history of Haskell: being lazy with class](https://dl.acm.org/doi/10.1145/1238844.1238856) from 2007 (*)):
 
