@@ -28,7 +28,7 @@ By the way: a clever implementation of above functionalities can have a surprisi
 
 <br/>
 
-programming language | integer to binary string | integer to hexadecimal string | integrated string padding with leading zeros | comment
+programming language | integer to binary string | integer to hexadecimal string | string padding with leading zeros | comment
 --- | --- | --- | --- | ---
 Ada (GNAT) | |  | | 
 AssemblyScript | | ||   
