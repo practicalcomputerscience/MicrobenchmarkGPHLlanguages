@@ -6,13 +6,24 @@ GHC = Glasgow Haskell Compiler: https://gitlab.haskell.org/ghc
 
 GHC User’s Guide: https://downloads.haskell.org/ghc/latest/docs/users_guide/
 
+
 <br/>
 
 After [Roc](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Roc#roc),
 this is my second implementation of the microbenchmark program in a _pure_ functional programming language:
 [Two branches of Functional Programming (FP): pure and impure](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages#two-branches-of-functional-programming-fp-pure-and-impure)
 
+---
+
+Table of contents:
+
+- [Installation tips](#installation-tips)
+- [On how to make a faster microbenchmark program](#on-how-to-make-a-faster-microbenchmark-program)
+- [Using the LLVM backend](#using-the-llvm-backend)
+
 <br/>
+
+---
 
 ## Installation tips
 
