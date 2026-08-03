@@ -6,7 +6,7 @@ https://www.cs.kent.ac.uk/people/staff/dat/miranda/
 
 Table of contents:
 
-- [Idea of Miranda]()
+- [Idea of Miranda](#idea-of-miranda)
 - [Installation tips](#installation-tips)
 - [Evolution of Miranda](#evolution-of-miranda)
 - [Miranda's deficits](#mirandas-deficits)
@@ -209,7 +209,7 @@ main =
   ...
 ```
 
-All other "officially" listed programming languages do this (entropy) sourcing task from _within_ a program, and if it's only with exotic means.
+All other "officially" listed programming languages do this (entropy) sourcing task from _within_ a program, and if it's only with exotic means like this for example: [Random seed with leveraging the Address Space Layout Randomization (ASLR)](#random-seed-with-leveraging-the-address-space-layout-randomization-aslr)
 
 <br/>
 
