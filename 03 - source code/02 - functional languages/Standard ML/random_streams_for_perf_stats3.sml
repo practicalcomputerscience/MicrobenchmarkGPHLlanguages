@@ -2,6 +2,8 @@
 
 2025-07-06/09/10
 2025-12-21: see below
+2026-08-05: renamed a couple of variables to be more compliant with other implementations
+
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
                         unzip it and put path to: ./scripts/StandardML/mlton-20241230.x86_64-linux-gnu/mlton-on-20241230-release.x86_64-linux-gnu/bin/
@@ -47,6 +49,7 @@ fun listToString [] = "[]"
 fun printIntArray arr =
     let
         val elements = Array.foldr (fn (x, acc) => Int.toString x :: acc) [] arr
+        (* string (Int.toString x) is prepended with cons operator :: to list acc, which starts empty *)
         val result = String.concatWith ", " elements
     in
         print ("\n[" ^ result ^ "]\n")
@@ -132,8 +135,8 @@ structure Main =
 
 
     val x = Array.array(END+1, 0)
-    val bits_xx = Array.array(END+1, "0000000000000000")
-    val bits_hexx = Array.array(END+1, "0000")
+    val bits_x = Array.array(END+1, "0000000000000000")
+    val bits_hex = Array.array(END+1, "0000")
 
     (*val xx = MLton.Vector.create (END+1) (* OK *)*)
 
@@ -186,8 +189,8 @@ structure Main =
             (*val _ = print ("  bits_x_str = " ^ bits_x_str ^ "\n")      (* for testing *)
             val _ = print ("  bits_hex_str = " ^ bits_hex_str ^ "\n")  (* for testing *)*)
 
-            val _ = Array.update(bits_xx, i, bits_x_str)
-            val _ = Array.update(bits_hexx, i, bits_hex_str)
+            val _ = Array.update(bits_x, i, bits_x_str)
+            val _ = Array.update(bits_hex, i, bits_hex_str)
 
           in
             if i < END then
@@ -202,20 +205,20 @@ structure Main =
     val _ = masterloop (0, start_seed)
 
 
-    val bits_xx_el = Array.foldr (fn (x, acc) => x :: acc) [] bits_xx
-    val bits_x = String.concat bits_xx_el
-    val bits_hexx_el = Array.foldr (fn (x, acc) => x :: acc) [] bits_hexx
-    val bits_hex = String.concat bits_hexx_el
+    val bits_x_rev = Array.foldr (fn (x, acc) => x :: acc) [] bits_x  (* new array with elements in reverse order *)
+    val bits_x_str_total = String.concat bits_x_rev
+    val bits_hex_rev = Array.foldr (fn (x, acc) => x :: acc) [] bits_hex  (* new array with elements in reverse order *)
+    val bits_hex_str_total = String.concat bits_hex_rev
 
     (*val _ = printIntArray x (* for testing *)
-    val _ = print ("bits_x = "   ^ bits_x ^ "\n")           (* for testing *)
-    val _ = print ("bits_hex = " ^ bits_hex ^ "\n")         (* for testing *)*)
+    val _ = print ("bits_x_str_total = "   ^ bits_x_str_total ^ "\n")           (* for testing *)
+    val _ = print ("bits_hex_str_total = " ^ bits_hex_str_total ^ "\n")         (* for testing *)*)
 
     (* write bit stream to disk *)
-    val _ = write_to_file (file_bits_x, bits_x, "bit")
+    val _ = write_to_file (file_bits_x, bits_x_str_total, "bit")
 
     (* write byte stream to disk *)
-    val _ = write_to_file (file_bits_hex, bits_hex, "byte")
+    val _ = write_to_file (file_bits_hex, bits_hex_str_total, "byte")
 
 
     val _ = print ("\n")
