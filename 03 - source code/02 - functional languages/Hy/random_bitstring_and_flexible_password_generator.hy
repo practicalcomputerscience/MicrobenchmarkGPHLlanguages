@@ -4,6 +4,7 @@
 ;     - only allow exclusive one liners like this: "..." !!!
 ;
 ; 2026-06-30, 2026-07-01
+; 2026-08-05: renamed next_seed to new_seed to be more compliant with other implementations
 ;
 ;
 ; run on Ubuntu 24 LTS, in a dedicated virtual Python environment, here named Hy:
@@ -85,11 +86,11 @@
     (setv bits_x_str   (.format "{:016b}" current_seed))
     (setv bits_hex_str (.format "{:04x}" current_seed))
 
-    (setv next_seed (% (+ (* a current_seed) c) m))
+    (setv new_seed (% (+ (* a current_seed) c) m))
 
     ; Update loop state variables (recur simulation)
-    (.append acc_nbr_v next_seed)
-    (setv current_seed next_seed)
+    (.append acc_nbr_v new_seed)
+    (setv current_seed new_seed)
 
     (.append bits_x_list bits_x_str)
     (.append bits_hex_list bits_hex_str))
