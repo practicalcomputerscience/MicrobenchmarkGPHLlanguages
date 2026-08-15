@@ -4,7 +4,7 @@
 
 # Integer to string conversions
 
-Not all general purpose, high-level programming languages, including their officially maintained libraries, provide inbuilt functions to convert an unsigned 32-bit integer number into its 
+Not all general purpose, high-level programming languages, including their officially maintained libraries, provide inbuilt functions to convert an unsigned 16-bit integer number into its 
 representations as a:
 
 - **binary string**, including padding to 16 characters with leading "0"'s if needed, and
@@ -12,7 +12,7 @@ representations as a:
 
 In no corner of my microbenchmark program I employed more **user defined functions** than for these two functionalities (which already feature multi-functionalities).
 
-Some languages, including young ones, provide inbuilt functions to do all jobs on a integer input number, some other languages, including very old ones, don't provide any official solutions at all.
+Some languages, including young ones, provide inbuilt functions to do all jobs on an integer input number, some other languages, including very old ones, don't provide any official solutions at all.
 
 Some languages only partly provide the required functionalities, often with lacking the padding with leading zeros.
 
@@ -20,7 +20,7 @@ In order to provide some overview of this messy situation, I created another lan
 
 <br/>
 
-By the way: a clever implementation of above functionalities can have a surprisingly high impact; see for example at [String padding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#string-padding):
+By the way: a clever implementation of above functionalities can have a surprisingly high impact; see at [String padding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/README.md#string-padding):
 
 > Integrated string padding on the left hand side of mandatory string variables _bits_x_str_ to 16 characters of '0' and '1' and _bits_hex_str_ (or similarly named) to 4 characters of '0' to 'f' can also have a major effect on execution speed at some implementations.
 >
@@ -30,7 +30,7 @@ By the way: a clever implementation of above functionalities can have a surprisi
 
 programming language | integer to binary string | integer to hexadecimal string | string padding with leading zeros | comment
 --- | --- | --- | --- | ---
-Ada (GNAT) | |  | | 
+Ada (GNAT) | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 
 AssemblyScript | | ||   
 Awk (GNU) |  |  | | 
 Ballerina |  |  | | 
