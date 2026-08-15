@@ -332,7 +332,7 @@ So, whenever implementing user defined functions _integer_to_bin_string()_ and/o
 
 However, my usual guideline also here was to first use (idiomatic) resources of a programming languages, and its (core) libraries, if available.
 
-Of course, there are always some "hybrid cases", where for example a language offers the conversion of an integer number into its representation as a binary string,
+Of course, there are always some "hybrid cases", when for example a language offers the conversion of an integer number into its representation as a binary string,
 but without padding on its left hand side. What to do then? Replacing the whole functionality with a user defined function, or only the padding, or using
 the potentially inbuilt function for padding? I cannot remember anymore if I have tested all combinations for best execution speed in these cases.
 
@@ -340,11 +340,7 @@ However, when a language, and its core libraries, that are non-third party libra
 an integer number into its representation as a binary and/or hexadecimal string, I systematically implemented user defined functions
 _integer_to_bin_string()_ and/or _integer_to_hex_string()_ as "integrated solutions".
 
-List of languages without integrated string padding at their inbuilt function(s) for integer to string conversions
-(as of July 2026 and the [language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#language-versions) I have used):
-
-- tbd
-- tbd
+See page [Integer to string conversions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/52%20-%20Integer%20to%20string%20conversions#integer-to-string-conversions) for more details.
 
 <br/>
 
