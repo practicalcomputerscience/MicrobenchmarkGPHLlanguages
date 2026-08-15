@@ -1,12 +1,14 @@
 # random_streams_for_perf_stats.awk
 #
 # 2026-07-01/23
+# 2026-08-15: user defined function integer_to_bin_string is already implicitly doing string padding with leading "0"'s
+# 
 #
 # run in Ubuntu 24 LTS: $ mawk -f random_streams_for_perf_stats.awk
 #                       $ awk -f random_streams_for_perf_stats.awk
 #
-#                       $ time mawk -f random_streams_for_perf_stats.awk => real	0m1.260s
-#                       $ time awk -f random_streams_for_perf_stats.awk  => real	0m0.240s <<<< awk is gawk on my system
+#                       $ time mawk -f random_streams_for_perf_stats.awk => real	0m1.255s
+#                       $ time awk -f random_streams_for_perf_stats.awk  => real	0m0.213s <<<< awk is gawk on my system
 #
 #
 # transpiled from Tcl program random_streams_for_perf_stats.tcl with Duck.ai
@@ -49,7 +51,8 @@ BEGIN {
         # print "\nx[i] = " x[i]  # for testing
 
         # 16-bit binary string
-        bits_x_str   = sprintf("%016d", integer_to_bin_string(x[i]))
+        # bits_x_str   = sprintf("%016d", integer_to_bin_string(x[i]))  # this is redundant
+        bits_x_str   = integer_to_bin_string(x[i])
         # print "bits_x_str = " bits_x_str  # for testing
         bits_x       = bits_x bits_x_str
 
@@ -72,6 +75,7 @@ BEGIN {
 #
 
 function integer_to_bin_string(n, s, r) {
+    # padding with "0"'s on the left hand side is implicitly done here: (2026-08-15)
     s = ""
     v = n
     for (r = 15; r >= 0; r--) {
