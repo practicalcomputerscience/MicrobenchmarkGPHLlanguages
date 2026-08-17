@@ -28,10 +28,10 @@ By the way: a clever implementation of above functionalities can have a surprisi
 
 <br/>
 
-programming language | integer to binary string | integer to hexadecimal string | string padding with leading zeros | comment
+programming language | integer to binary string | integer to hexa-decimal string | string padding with leading zeros | comment
 --- | --- | --- | --- | ---
 Ada (GNAT) | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 
-AssemblyScript | | ||   
+AssemblyScript | inbuilt function | inbuilt function | inbuilt function in both cases |   
 Awk (GNU) | user defined function | inbuilt function with explicit string padding | the user defined function algorithm does the string padding implicitly (faster than using extra function _sprintf("%016d", ...)_ for padding)  | 
 Ballerina |  |  | | 
 C |  |  | | 
