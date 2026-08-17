@@ -5,6 +5,7 @@
 --  2025-07-16: speed improved Integer_to_bin_string => change not measurable, but leave changed code!
 --  2025-12-14: see below
 --  2026-01-25: fixing some warnings
+--  2026-08-17: more efficient implementation of user defined functions Integer_to_bin_string and Integer_to_hex_string
 --
 --
 --  build on Ubuntu 24 LTS: $ alr init --bin random_streams_for_perf_stats
@@ -92,7 +93,8 @@ procedure random_streams_for_perf_stats is
       bin_str := "0000000000000000";
       j := STR_LENGTH_BIN;
       k := N;
-      while k > 0 and then j >= 1 loop
+      --  while k > 0 and then j >= 1 loop
+      while k > 0 loop  --  j >= 1 is anyway given with a 16 bits unsigned integer number!!
          if k mod 2 > 0 then
             bin_str (j) := '1';  --  Standard Character here, not String
          end if;
@@ -107,7 +109,9 @@ procedure random_streams_for_perf_stats is
       hex_str := "0000";
       j := STR_LENGTH_HEX;
       k := N;
-      while k > 0 and then j <= STR_LENGTH_HEX loop
+
+      --  ..and then j <= STR_LENGTH_HEX is totally redundant!
+      while k > 0 loop
          remainder := k mod 16;
          case remainder is
             --  Standard Character here, not String

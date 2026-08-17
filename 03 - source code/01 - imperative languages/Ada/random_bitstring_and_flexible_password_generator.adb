@@ -9,6 +9,7 @@
 --  2026-01-25: fixing some warnings
 --  2026-06-08: refactored from char_set to pattern (for regular expressions);
 --              other small fixes to lower the number of LOC's
+--  2026-08-17: more efficient implementation of user defined functions Integer_to_bin_string and Integer_to_hex_string
 --
 --
 --  build on Ubuntu 24 LTS: do this only once:
@@ -25,6 +26,7 @@
 --
 --  changes to random_bitstring_and_flexible_password_generator_config.gpr:
 --  "-O3" <-- https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
+--  ,"-gnatX" -- declarations mixed with statements is a GNAT-specific extension
 --  commented: --  "-Og" -- Optimize for debug
 
 with Ada.Text_IO; use Ada.Text_IO;  --  with use clause
@@ -129,7 +131,8 @@ procedure random_bitstring_and_flexible_password_generator is
       bin_str := "0000000000000000";
       j := STR_LENGTH_BIN;
       k := N;
-      while k > 0 and then j >= 1 loop
+      --  while k > 0 and then j >= 1 loop
+      while k > 0 loop  --  j >= 1 is anyway given with a 16 bits unsigned integer number!!
          if k mod 2 > 0 then
             bin_str (j) := '1';  --  Standard Character here, not String
          end if;
@@ -144,7 +147,9 @@ procedure random_bitstring_and_flexible_password_generator is
       hex_str := "0000";
       j := STR_LENGTH_HEX;
       k := N;
-      while k > 0 and then j <= STR_LENGTH_HEX loop
+      
+      --  ..and then j <= STR_LENGTH_HEX is totally redundant!
+      while k > 0 loop
          remainder := k mod 16;
          case remainder is
             --  Standard Character here, not String
