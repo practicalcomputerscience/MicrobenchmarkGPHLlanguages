@@ -33,9 +33,9 @@ programming language | integer to binary string | integer to hexa-decimal string
 Ada (GNAT) | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 
 AssemblyScript | inbuilt function | inbuilt function | inbuilt function in both cases |   
 Awk (GNU) | user defined function | inbuilt function with explicit string padding | the user defined function algorithm does the string padding implicitly (faster than using extra function _sprintf("%016d", ...)_ for padding)  | 
-Ballerina |  |  | | 
-C |  |  | | 
-C++ |  |  | | 
+Ballerina | user defined function | inbuilt function | inbuilt function in both cases | 
+C | inbuilt function | inbuilt function | inbuilt function in both cases | 
+C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C3 |  |  | | 
 C# |  |  | | 
 Chapel | |  ||   
