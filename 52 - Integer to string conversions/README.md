@@ -37,17 +37,17 @@ Ballerina | user defined function | inbuilt function | inbuilt function in both 
 C | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
-C# |  |  | | 
-Chapel | |  ||   
+C# | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Clojure | |  | | 
-COBOL (GnuCOBOL) |  |  | | 
+COBOL (GnuCOBOL) | user defined procedure | user defined procedure | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 
 CoffeeScript |  |  | | 
 Common Lisp |  |  | | 
-Crystal |  |  | | 
+Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Curry (KiCS2) |  |  | | 
-D |  |  | | 
-Dart |  |  ||  
-Dylan |  |  | | 
+D | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Dart |  |  | |  
+Dylan | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Eiffel, Liberty |  |  | | 
 Factor |  |  | | 
 Forth (Gforth) |  |  | | 
