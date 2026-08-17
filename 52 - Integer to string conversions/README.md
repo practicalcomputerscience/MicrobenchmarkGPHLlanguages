@@ -56,11 +56,11 @@ FreeBASIC | inbuilt function | inbuilt function | inbuilt function in both cases
 (Object) Free Pascal | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Gleam |  |  | | 
 Go | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Groovy |  | ||   
-Haskell |  |  ||  
-Haxe |  |  | | 
-Hy |  |  | | 
-Inko |  |  | | 
+Groovy | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Haskell |  |  | |  
+Haxe |  |  |  | 
+Hy |  |  |  | 
+Inko | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 
 Java |  |  | | 
 Julia |  |  | | 
 Kotlin |  |  | | 
