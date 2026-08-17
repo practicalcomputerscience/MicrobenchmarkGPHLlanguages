@@ -2,6 +2,8 @@
 random_streams_for_perf_stats.bas
 
 2025-07-11; 2025-12-17
+2026-08-17: bits_x_str0, bits_hex_str0 are redundant
+
 
 build on Ubuntu 24 LTS: $ fbc ./random_streams_for_perf_stats.bas
 
@@ -44,11 +46,11 @@ x(0) = int(1 + rnd * (m - 1))  ' 2025-12-17
 
 
 dim bits_x as string = ""
-dim bits_x_str0 as string
+' dim bits_x_str0 as string
 dim bits_x_str as string
 
 dim bits_hex as string = ""
-dim bits_hex_str0 as string
+' dim bits_hex_str0 as string
 dim bits_hex_str as string
 
 

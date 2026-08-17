@@ -3,6 +3,8 @@ random_bitstring_and_flexible_password_generator_regex.bas
 
 2025-07-12; 2025-12-17
 2026-06-14: refactored from char_set to pattern (for regular expressions)
+2026-08-17: bits_x_str0, bits_hex_str0 are redundant
+
 
 build on Ubuntu 24 LTS: $ fbc ./random_bitstring_and_flexible_password_generator_regex.bas
 
@@ -63,8 +65,8 @@ x(0) = int(1 + rnd * (m - 1))  ' 2025-12-17
 ' print "x(0) = " & x(0)  ' for testing
 
 
-dim bits_x as string = "",   bits_x_str0 as string,   bits_x_str as string
-dim bits_hex as string = "", bits_hex_str0 as string, bits_hex_str as string
+dim bits_x as string = "",   bits_x_str as string
+dim bits_hex as string = "", bits_hex_str as string
 
 
 print !"\r\ngenerating a random bit stream..."  ' !"\r\n for escaping
