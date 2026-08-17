@@ -102,7 +102,7 @@ This workflow created an executable in project subdirectory: _./bin/random_strea
 
 ## On how to do demanding string building in Ada
 
-The implemented [C-like solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) with copying the individual characters of _bits_x_str_ into the big, final string _bits_x_ is still a little bit faster with around 18.8 milliseconds than this solution with around 20.6 milliseconds of execution time (which would be more like the Fortran, C++ or Eiffel solutions):
+The implemented [C-like solution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb) with copying the individual characters of _bits_x_str_ into the big, final string _bits_x_ is still a little bit faster than this solution (which would be more like the Fortran, C++ or Eiffel solutions):
 
 ```
 ...
@@ -235,11 +235,7 @@ _$ alr build_ => _./obj/development/gnatprove/gnatprove.out_
 
 <br/>
 
-Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs faster than the Ada executable _random_streams_for_perf_stats_:
-
-- 15.5 milliseconds (SPARK) versus 18.8 milliseconds (Ada), that's about 17% faster 
-
-(best batch out of 3 with command: _sudo perf stat -r 20 ./random_streams_for_perf_stats..._)
+Interestingly, compiled executable _random_streams_for_perf_stats_spark_ runs a bit faster than the Ada executable _random_streams_for_perf_stats_.
 
 <br/>
 
