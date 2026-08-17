@@ -30,17 +30,17 @@ By the way: a clever implementation of above functionalities can have a surprisi
 
 programming language | integer to binary string | integer to hexa-decimal string | string padding with leading zeros | comment
 --- | --- | --- | --- | ---
-Ada (GNAT) | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
+Ada (GNAT) | **user defined function** | **user defined function** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
 AssemblyScript | inbuilt function | inbuilt function | inbuilt function in both cases |   
-Awk (GNU) | user defined function | inbuilt function with explicit string padding | the user defined function algorithm does the string padding implicitly (faster than using extra function _sprintf("%016d", ...)_ for padding)  | 2026-08-17: user defined function _integer_to_bin_string_ looks efficient
-Ballerina | user defined function | inbuilt function | inbuilt function in both cases | 2026-08-dd: tbd: user defined functions: efficiency?
+Awk (GNU) | **user defined function** | inbuilt function with explicit string padding | the user defined function algorithm does the string padding implicitly (faster than using extra function _sprintf("%016d", ...)_ for padding)  | 2026-08-17: user defined function _integer_to_bin_string_ looks efficient
+Ballerina | **user defined function** | inbuilt function | inbuilt function in both cases | 2026-08-dd: tbd: user defined functions: efficiency?
 C | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C# | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Clojure | |  | | 
-COBOL (GnuCOBOL) | user defined procedure | user defined procedure | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-dd: tbd: user defined procedures: efficiency?
+COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-dd: tbd: user defined procedures: efficiency?
 CoffeeScript |  |  | | 
 Common Lisp |  |  | | 
 Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
@@ -60,7 +60,7 @@ Groovy | inbuilt function | inbuilt function | inbuilt function in both cases |
 Haskell |  |  | |  
 Haxe |  |  |  | 
 Hy |  |  |  | 
-Inko | user defined function | user defined function | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
+Inko | **user defined function** | **user defined function** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
 Java |  |  | | 
 Julia |  |  | | 
 Kotlin |  |  | | 
