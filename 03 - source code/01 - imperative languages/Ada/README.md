@@ -42,6 +42,20 @@ I modified the default project configuration files, both located in the _./confi
 "-O3"
 ```
 
+For _random_bitstring_and_flexible_password_generator_config.gpr_ the _-gnatX_ switch is also needed:
+
+```
+   Ada_Compiler_Switches := Ada_Compiler_Switches &
+          (
+            "-O3" -- Optimize for performance
+           ,"-gnatX" -- declarations mixed with statements is a GNAT-specific extension, 2026-08-17
+           ,"-gnatn" -- Enable inlining
+           ,"-ffunction-sections" -- Separate ELF section for each function
+           ,"-fdata-sections" -- Separate ELF section for each variable
+           ,"-gnatW8" -- UTF-8 encoding for wide characters
+          );
+```
+
 See from here about these Ada compiler switches (-- is a comment in Ada; -O3 is for full optimization): https://gcc.gnu.org/onlinedocs/gnat_ugn/Optimization-Levels.html
 
 Though, I've seen that compiler switch _--release_ is anyway changing this configuration file automatically to something like this:
