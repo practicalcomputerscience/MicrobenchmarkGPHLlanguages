@@ -31,7 +31,7 @@ After a little survey beyond Microsoft's almighty **Visual Basic (.NET)** I disc
 $ fbc <my_program.bas>
 ```
 
-Into very fast executables! At least with this microbenchmark program: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
+Into fast executables! At least with this microbenchmark program: [Master diagram with most program environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments)
 
 And doing so with [simple string concatenation](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/FreeBASIC/random_streams_for_perf_stats.bas):
 
@@ -48,6 +48,8 @@ next
 ```
 
 I'm happy with the fast execution speed of this program and thus didn't start to experiment with potentially other possibilities of a big string concatenation, like not testing the ZSTRING type and thus leaving it with the STRING type.
+
+<br/>
 
 ## Installation tips
 
@@ -186,8 +188,6 @@ $
 ```
 
 At least not at the "speed part" of the microbenchmark program.
-
-FreeBASIC anyway features a relative high variance in its executions times of a program.
 
 The size of the statically linked program however is over 21 times bigger than the size of the dynamically linked program: 1,244,456 bytes versus 57,768 bytes!
 
