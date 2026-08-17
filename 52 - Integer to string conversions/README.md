@@ -36,7 +36,7 @@ Awk (GNU) | user defined function | inbuilt function with explicit string paddin
 Ballerina | user defined function | inbuilt function | inbuilt function in both cases | 
 C | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
-C3 |  |  | | 
+C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C# |  |  | | 
 Chapel | |  ||   
 Clojure | |  | | 
