@@ -51,11 +51,11 @@ Dylan | inbuilt function | inbuilt function | inbuilt function in both cases |
 Eiffel, Liberty |  |  | | 
 Factor |  |  | | 
 Forth (Gforth) |  |  | | 
-Fortran (GNU) |  |  | | 
-FreeBASIC |  |  | | 
-(Object) Free Pascal |  |  | | 
+Fortran (GNU) | inbuilt function | inbuilt function | inbuilt function in both cases | user defined function to convert the final, big hexadecimal string into lower case
+FreeBASIC | inbuilt function | inbuilt function | inbuilt function in both cases | 
+(Object) Free Pascal | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Gleam |  |  | | 
-Go |  |  | | 
+Go | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Groovy |  | ||   
 Haskell |  |  ||  
 Haxe |  |  | | 
