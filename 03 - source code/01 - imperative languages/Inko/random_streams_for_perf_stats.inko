@@ -34,6 +34,8 @@ let STR_LENGTH_HEX = 4
 # here defined at the top-level scope:
 
 fn Integer_to_bin_string (n: Int) -> String {  # N not possible here --> choose n
+  # doing here like in Ada to convert an integer number into
+  # a binary string of "0"'s and "1"'s of fixed length:
   let mut bin_str_arr = Array.filled(with: '0', times: STR_LENGTH_BIN)
   let mut bin_str_ret = StringBuffer.new
 
@@ -153,8 +155,6 @@ type async Main {  # a lightweight process
       # Stdout.new.print(x_now.into_string)  # for testing
 
       bits_x_str = Integer_to_bin_string(x_now)
-      # doing here like in Ada to convert a natural integer number into
-      # a binary string of "0"'s and "1"'s of fixed length ("16 bits"):
       # Stdout.new.print(bits_x_str)  # for testing
       bits_x.push(bits_x_str)
 
