@@ -123,7 +123,7 @@ public function main() returns error? {
 // + return - The binary string.
 function IntegerToBinString(int n) returns string {
     // redundant. If n == 0, then the Linear Congruential Generator (LCG)
-    // is anyway stopping:
+    // is anyway stopping, 2026-08-18:
     // if (n == 0) {
     //     return "0000000000000000";
     // }
