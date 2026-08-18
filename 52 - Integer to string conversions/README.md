@@ -40,7 +40,7 @@ C3 | inbuilt function | inbuilt function | inbuilt function in both cases |
 C# | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Clojure | |  | | 
-COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-dd: tbd: user defined procedures: efficiency?
+COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-18: user defined procedures look efficient
 CoffeeScript |  |  | | 
 Common Lisp |  |  | | 
 Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
