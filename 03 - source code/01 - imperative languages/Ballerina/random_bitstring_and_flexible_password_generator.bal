@@ -3,6 +3,9 @@
 // 2026-05-08/11
 // 2026-06-12: refactored from char_set to pattern (for regular expressions)
 // 2026-06-18: introduced ternary operator at pattern
+// 2026-08-18: renamed user defined function toBinaryString to IntegerToBinString to be more project compliant
+//             renamed user defined function fromBinaryString to BinStringToInteger to be more project compliant
+//
 //
 // build on Ubuntu 24 LTS: do this only once:
 //                         $ bal new random_bitstring_and_flexible_password_generator
@@ -79,7 +82,7 @@ public function main() returns error? {
         int xi = ((a * x[i - 1]) + c) % m;
         x.push(xi);
 
-        string bits_x_str = toBinaryString(xi);  // calling a user defined function
+        string bits_x_str = IntegerToBinString(xi);  // calling a user defined function
         bits_x.push(bits_x_str);
 
         string bits_hex_str = xi.toHexString().padZero(4);  // calling inbuilt functions
@@ -198,16 +201,16 @@ public function main() returns error? {
     string pw_chars = "";
 
     while (i < N_CHAR) {
-        string bin0 = toBinaryString(x[j]);
+        string bin0 = IntegerToBinString(x[j]);
         // io:println("\nbin0 = " + bin0);  // for testing
 
         string bin0_0 = bin0.substring(0, 8);
         string bin0_1 = bin0.substring(8, 16);
         // io:println(bin0_0 + " + " + bin0_1);  // for testing
 
-        int char0a = check fromBinaryString(bin0_0);
+        int char0a = check BinStringToInteger(bin0_0);
         string char0b = check string:fromCodePointInt(char0a);
-        int char1a = check fromBinaryString(bin0_1);
+        int char1a = check BinStringToInteger(bin0_1);
         string char1b = check string:fromCodePointInt(char1a);
         // io:println(char0b + " + " + char1b);  // for testing
 
@@ -237,10 +240,12 @@ public function main() returns error? {
 // Converts an integer to its binary and padded string representation.
 // + n - The integer to convert.
 // + return - The binary string.
-function toBinaryString(int n) returns string {
-    if (n == 0) {
-        return "0000000000000000";
-    }
+function IntegerToBinString(int n) returns string {
+    // redundant. If n == 0, then the Linear Congruential Generator (LCG)
+    // is anyway stopping:
+    // if (n == 0) {
+    //     return "0000000000000000";
+    // }
 
     string binary = "";
     int temp = n;
@@ -255,7 +260,7 @@ function toBinaryString(int n) returns string {
 }
 
 // from Google AI:
-function fromBinaryString(string s) returns int|error {
+function BinStringToInteger(string s) returns int|error {
     int res = 0;
     foreach var c in s {
         int bit = check int:fromString(c);

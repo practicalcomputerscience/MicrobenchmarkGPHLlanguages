@@ -1,6 +1,8 @@
 // random_streams_for_perf_stats.bal as main.bal
 //
 // 2026-05-07/09
+// 2026-08-18: renamed user defined function toBinaryString to IntegerToBinString to be more project compliant
+//
 //
 // build on Ubuntu 24 LTS: $ bal new random_streams_for_perf_stats
 //                         $ cd random_streams_for_perf_stats
@@ -50,7 +52,7 @@ import ballerina/random;
 import ballerina/lang.'string;
 
 
-public function main() returns error? {  # 2026-05-09
+public function main() returns error? {
     final int END = 62501;  // 62501 for exactly 1M binary digits
     // const values can only be located at the module level!
     // final int END = 10;  // for testing
@@ -77,7 +79,7 @@ public function main() returns error? {  # 2026-05-09
         int xi = ((a * x[i - 1]) + c) % m;
         x.push(xi);
 
-        string bits_x_str = toBinaryString(xi);  // calling a user defined function
+        string bits_x_str = IntegerToBinString(xi);  // calling a user defined function
         bits_x.push(bits_x_str);
 
         string bits_hex_str = xi.toHexString().padZero(4);  // calling inbuilt functions
@@ -119,10 +121,12 @@ public function main() returns error? {  # 2026-05-09
 // Converts an integer to its binary and padded string representation.
 // + n - The integer to convert.
 // + return - The binary string.
-function toBinaryString(int n) returns string {
-    if (n == 0) {
-        return "0000000000000000";
-    }
+function IntegerToBinString(int n) returns string {
+    // redundant. If n == 0, then the Linear Congruential Generator (LCG)
+    // is anyway stopping:
+    // if (n == 0) {
+    //     return "0000000000000000";
+    // }
 
     string binary = "";
     int temp = n;
