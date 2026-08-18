@@ -33,7 +33,7 @@ programming language | integer to binary string | integer to hexa-decimal string
 Ada (GNAT) | **user defined function** | **user defined function** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
 AssemblyScript | inbuilt function | inbuilt function | inbuilt function in both cases |   
 Awk (GNU) | **user defined function** | inbuilt function with explicit string padding | the user defined function algorithm does the string padding implicitly (faster than using extra function _sprintf("%016d", ...)_ for padding)  | 2026-08-17: user defined function _integer_to_bin_string_ looks efficient
-Ballerina | **user defined function** | inbuilt function | inbuilt function in both cases | 2026-08-dd: tbd: user defined functions: efficiency?
+Ballerina | **user defined function** | inbuilt function | inbuilt function in both cases | 2026-08-18: refactored the user defined function for better efficiency
 C | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
