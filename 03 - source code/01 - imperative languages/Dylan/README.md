@@ -264,9 +264,9 @@ In the [library.dylan](./library.dylan%20for%20random-bitstring-and-flexible-pas
 - _define library random-bitstring-and-flexible-password-generator_
 - _define module random-bitstring-and-flexible-password-generator_
 
-Not very logical, but worked for me...
+This is not a very logical implementation from my point of view, but it worked for me.
 
-Build the project again and re-check library versions again:
+Now build the project again and re-check library versions:
 
 ```
 $ deft build --all  #  Build all libraries in the workspace.
