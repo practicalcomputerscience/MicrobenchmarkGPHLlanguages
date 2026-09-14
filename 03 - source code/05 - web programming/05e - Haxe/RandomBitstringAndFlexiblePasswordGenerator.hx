@@ -7,6 +7,8 @@ Also see: "The name of the file containing a Haxe class is the same as the name 
 
 2026-05-17/18
 2026-05-27: refactored from char_set to pattern (for regular expressions)
+2026-09-14: eliminated redundant and faulty: if (n == 0) return "0";
+
 
 On Ubuntu 24 LTS:
   a/ run in Haxe interpreter:              $ haxe --main RandomBitstringAndFlexiblePasswordGenerator --interp  # Class name only with initial uppercase letter
@@ -206,7 +208,9 @@ class RandomBitstringAndFlexiblePasswordGenerator {  // Class name must start wi
         // Manual binary conversion for cross-platform support
         var s = "";
         var n = v;
-        if (n == 0) return "0";
+        // if (n == 0) return "0";
+        // 2026-09-14: redundant because n should never be 0, and
+        // it's faulty anyway to return only string "0"
         while (n > 0) {
             s = ((n % 2) == 0 ? "0" : "1") + s;
             n = Std.int(n / 2);
