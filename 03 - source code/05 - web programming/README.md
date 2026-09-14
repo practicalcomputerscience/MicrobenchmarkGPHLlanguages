@@ -26,7 +26,7 @@ Dart            | yes
 Haxe            | no
 JavaScript      | yes
 PHP             | yes
-PureScript      | not implemented yet as of 2026-05-17
+PureScript      | not implemented yet as of 2026-05-17: tbd
 ReScript        | no
 TypeScript      | yes
 
