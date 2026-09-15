@@ -39,7 +39,7 @@ C++ | inbuilt function | inbuilt function | inbuilt function in both cases |
 C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C# | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Clojure | |  | | 
+Clojure | inbuilt function | inbuilt function | **user defined function** at integer to binary string conversion; implicitly done at integer to hexa-decimal string conversion | 
 COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-18: user defined procedures look efficient
 CoffeeScript |  |  | | 
 Common Lisp |  |  | | 
@@ -84,8 +84,8 @@ Roc |  |  | |
 Ruby |  |  | | 
 Rust |  |  | | 
 Scala |  |  | | 
-Scheme, Bigloo |  |  | | 
-Scheme, Racket |  |  | | 
+Scheme, Bigloo | **user defined function** | **user defined function** | integrated in user defined function | 
+Scheme, Racket | **user defined function** | **user defined function** | integrated in user defined function | 
 Smalltalk (GNU) |  |  | | 
 Standard ML (MLton) | |  ||   
 Swift |  |  | | 
