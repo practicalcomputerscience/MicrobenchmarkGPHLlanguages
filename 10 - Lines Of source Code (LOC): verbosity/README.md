@@ -132,10 +132,10 @@ Roc               | 191 | compiled, very young, pure functional programming lang
 V                 | 175 | compiled, very young programming language: some user-defined functions needed | 2026-06-19
 Haskell           | 168 | compiled, very mature language: numerous user-defined functions needed | 2026-07-30
 Fortran (GNU)     | 161 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-06-19
-Gleam             | 151 | interpreted, very young language, together with Erlang and JavaScript ecosystem: lots of user-defined functions needed | 2026-06-18
 C                 | 150 | compiled, very mature language | 2026-07-17
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Factor            | 143 | interpreted, mature language: numerous user-defined functions needed | 2026-07-05
+Gleam             | 143 | interpreted, very young language, together with Erlang and JavaScript ecosystem: lots of user-defined functions needed | 2026-09-15
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
 AssemblyScript    | 140 | interpreted, young language, together with WebAssembly ecosystem: lots of user-defined functions needed | 2026-05-24
 Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
@@ -217,7 +217,7 @@ Forth (Gforth)     | 14
 Fortran (GNU)      | 3
 FreeBASIC          | 1
 (Object) Free Pascal | 0
-Gleam              | 8
+Gleam              | 6
 Go                 | 0
 Groovy             | 0
 Haxe               | 2
