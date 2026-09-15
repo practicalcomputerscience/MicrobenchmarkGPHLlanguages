@@ -42,11 +42,11 @@ Chapel | inbuilt function | inbuilt function | inbuilt function in both cases |
 Clojure | inbuilt function | inbuilt function | **user defined function** at integer to binary string conversion; implicitly done at integer to hexa-decimal string conversion | 
 COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-18: user defined procedures look efficient
 CoffeeScript |  |  | | 
-Common Lisp |  |  | | 
+Common Lisp | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Curry (KiCS2) |  |  | | 
 D | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Dart |  |  | |  
+Dart | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Dylan | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Eiffel, Liberty |  |  | | 
 Factor |  |  | | 
@@ -58,7 +58,7 @@ Gleam |  |  | |
 Go | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Groovy | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Haskell |  |  | |  
-Haxe |  |  |  | 
+Haxe |  **user defined function** | inbuilt function | integrated in user defined function for integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
 Hy |  |  |  | 
 Inko | **user defined function** | **user defined function** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
 Java |  |  | | 
