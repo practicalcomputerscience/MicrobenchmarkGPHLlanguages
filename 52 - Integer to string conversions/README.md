@@ -54,7 +54,7 @@ Forth (Gforth) |  |  | |
 Fortran (GNU) | inbuilt function | inbuilt function | inbuilt function in both cases | user defined function to convert the final, big hexadecimal string into lower case
 FreeBASIC | inbuilt function | inbuilt function | inbuilt function in both cases | 
 (Object) Free Pascal | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Gleam |  |  | | 
+Gleam | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Go | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Groovy | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Haskell |  |  | |  
