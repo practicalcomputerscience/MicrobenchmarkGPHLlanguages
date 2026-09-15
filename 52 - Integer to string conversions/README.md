@@ -84,8 +84,8 @@ Roc |  |  | |
 Ruby |  |  | | 
 Rust |  |  | | 
 Scala |  |  | | 
-Scheme, Bigloo | **user defined function** | **user defined function** | integrated in both user defined function | 
-Scheme, Racket | **user defined function** | **user defined function** | integrated in both user defined function | 
+Scheme, Bigloo | **user defined function** | **user defined function** | integrated in both user defined functions | 
+Scheme, Racket | **user defined function** | **user defined function** | integrated in both user defined functions | 
 Smalltalk (GNU) |  |  | | 
 Standard ML (MLton) | |  ||   
 Swift |  |  | | 
