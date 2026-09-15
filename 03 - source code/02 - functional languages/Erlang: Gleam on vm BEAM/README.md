@@ -54,7 +54,7 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 
 Above command installed Homebrew in directory: _/home/linuxbrew/.linuxbrew_
 
-Then I manually added this line to my _.bashrc_ file, because I want to keep the configuration for [SDKMAN and Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#on-sdkman-and-kotlin) at the bottom of this configuration file:
+Then I manually added this line to my _~/.bashrc_ file, because I want to keep the configuration for [SDKMAN and Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions#on-sdkman-and-kotlin) at the bottom of this configuration file:
 
 ```
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
