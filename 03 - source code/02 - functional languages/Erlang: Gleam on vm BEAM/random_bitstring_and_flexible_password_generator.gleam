@@ -5,21 +5,23 @@
 // 2026-01-26: cosmetics in first user dialog
 // 2026-05-31: refactored from char_set to pattern (for regular expressions)
 // 2026-06-18: define print_re and alnum_re
+// 2026-09-15: inline user defined functions integer_to_bin_string + integer_to_hex_string like in other implementations
 //
-//
-// install these packages:  $ gleam add simplifile
-//                          $ gleam add gleam_regexp@1  # 2026-05-31
 //
 // build on Ubuntu 24 LTS:  do this only once:
 //                          $ gleam new random_bitstring_and_flexible_password_generator
 //                          $ cd random_bitstring_and_flexible_password_generator
+//                          $ gleam add simplifile  # install this package
+//                          $ gleam add gleam_regexp@1  # install this package
 //                          $ gleam test
 //
 // run on Ubuntu 24 LTS:    do this after every source code change:
 //                          $ gleam run --no-print-progress
 //
 // $ gleam -V
-// gleam 1.14.0
+// gleam 1.18.1
+// $ erl -version
+// Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 17.0.6
 // $
 
 import gleam/io
@@ -49,20 +51,6 @@ const file_bits_hex: String = "random_bitstring.byte"
 /////////////////////////////////////////////////////////////////////////////
 //
 // user defined functions
-
-fn integer_to_bin_string(n: Int) -> String {
-  let binary_string = int.to_base2(n)
-
-  string.pad_start(binary_string, to: 16, with: "0")
-  // https://hexdocs.pm/gleam_stdlib/gleam/string.html#pad_start
-}
-
-fn integer_to_hex_string(n: Int) -> String {
-  let hex_string = int.to_base16(n)
-
-  string.pad_start(hex_string, to: 4, with: "0") |> string.lowercase  // convert also to lower case
-}
-
 
 fn write_to_file(filename: String, content: String, file_type: String) {
   case file_type {
@@ -164,7 +152,7 @@ fn pw_generator (j: Int, pw_str: String, n: Int, x: List(Int), pattern: regexp.R
   let next_x      = result.unwrap(list.rest(x),[])   // shrink the random number list by the first element
                                                      // empty list [] is the bad case alternative
 
-  let bin0 = integer_to_bin_string(next_elem_x)
+  let bin0 = string.pad_start(int.to_base2(next_elem_x), to: 16, with: "0")  // 2026-09-15
   // echo bin0  // for testing
 
   let bin0_0 = string.slice(from: bin0, at_index: 0, length: 8)  // "00111001"
@@ -219,8 +207,9 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
   // echo n  // for testing: debug print something with the echo keyword
   // echo seed  // for testing
 
-  let bits_x_str   = integer_to_bin_string(seed)
-  let bits_hex_str = integer_to_hex_string(seed)
+  let bits_x_str   = string.pad_start(int.to_base2(seed),  to: 16, with: "0")  // 2026-09-15
+  let bits_hex_str = string.pad_start(int.to_base16(seed), to:  4, with: "0") |> string.lowercase  // 2026-09-15
+
   // echo bits_x_str    // for testing
   // echo bits_hex_str  // for testing
 

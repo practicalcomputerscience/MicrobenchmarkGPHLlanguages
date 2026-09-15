@@ -2,21 +2,24 @@
 //
 // 2025-10-26/27, 2025-12-13: random integer must be returned from the masterloop function, like in the other functional language versions
 // 2025-12-14: see below
+// 2026-09-15: inline user defined functions integer_to_bin_string + integer_to_hex_string like in other implementations
 //
-// install this package:    $ gleam add simplifile
 //
 // build on Ubuntu 24 LTS:  do this only once:
 //                          $ gleam new random_streams_for_perf_stats
 //                          $ cd random_streams_for_perf_stats
+//                          $ gleam add simplifile  # install this package
 //                          $ gleam test
 //
 // run on Ubuntu 24 LTS:    do this after every source code change:
 //                          $ gleam run --no-print-progress
-//                          $ time gleam run --no-print-progress --> real	0m0,234s
-//                          $ ./exe_times_statistics_for_one_test_case_in_cwd2 "gleam run --no-print-progress"
+//                          $ time gleam run --no-print-progress --> real	0m0.420s <<<<<<<<<<<<<<<<
+//                          $ multitime -n 20 gleam run --no-print-progress
 //
 // $ gleam -V
-// gleam 1.13.0
+// gleam 1.18.1
+// $ erl -version
+// Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 17.0.6
 // $
 
 
@@ -43,20 +46,6 @@ const file_bits_hex: String = "random_bitstring.byte"
 /////////////////////////////////////////////////////////////////////////////
 //
 // user defined functions
-
-fn integer_to_bin_string(n: Int) -> String {
-  let binary_string = int.to_base2(n)
-
-  string.pad_start(binary_string, to: 16, with: "0")
-  // https://hexdocs.pm/gleam_stdlib/gleam/string.html#pad_start
-}
-
-fn integer_to_hex_string(n: Int) -> String {
-  let hex_string = int.to_base16(n)
-
-  string.pad_start(hex_string, to: 4, with: "0") |> string.lowercase  // convert also to lower case
-}
-
 
 fn write_to_file(filename: String, content: String, file_type: String) {
   case file_type {
@@ -108,8 +97,9 @@ fn masterloop(n: Int, seed: Int, x: List(Int), bits_x: List(String), bits_hex: L
   // echo n  // for testing: debug print something with the echo keyword
   // echo seed  // for testing
 
-  let bits_x_str   = integer_to_bin_string(seed)
-  let bits_hex_str = integer_to_hex_string(seed)
+  let bits_x_str   = string.pad_start(int.to_base2(seed),  to: 16, with: "0")  // 2026-09-15
+  let bits_hex_str = string.pad_start(int.to_base16(seed), to:  4, with: "0") |> string.lowercase  // 2026-09-15
+
   // echo bits_x_str    // for testing
   // echo bits_hex_str  // for testing
 
@@ -140,7 +130,7 @@ pub fn main() {  // be careful here with: "pub fn main() -> Nil {"; look at the 
 
   let start_seed = int.random(m-1) + 1
   // 2025-12-14: start from 1, not 0! And don't exceed m!
-  
+
   // m is exclusive: https://hexdocs.pm/gleam_stdlib/gleam/int.html#random
   // echo start_seed  // for testing
 
