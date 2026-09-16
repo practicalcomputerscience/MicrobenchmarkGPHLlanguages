@@ -14,8 +14,11 @@ main.ml of random_bitstring_and_flexible_password_generator
 2026-09-16: eliminated this redundancy: if n = 0 then "0000000000000000", because n should never be 0
 
 
-build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
+build on Ubuntu 24 LTS: do this only once:
+                        $ dune init proj random_bitstring_and_flexible_password_generator
                         $ cd random_bitstring_and_flexible_password_generator
+                        
+                        do this after every source code change:
                         $ dune build --display=verbose
 
 run on Ubuntu 24 LTS:   $ ./_build/default/bin/main.exe
