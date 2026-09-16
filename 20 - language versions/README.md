@@ -55,7 +55,7 @@ Modula-3 (CM3) | Critical Mass Modula-3 version d5.11.4, ..., last updated: 2021
 Mojo | Mojo 1.0.0b2.dev2026052706 (83444c6d) | $ pixi run mojo --version
 Nim | Nim Compiler Version 2.2.6 [Linux: amd64]; Compiled at 2025-10-31; Copyright (c) 2006-2025 by Andreas Rumpf, ... | $ nim -v
 Oberon (OBC) | ... Oxford Oberon-2 compiler version 3.3.0 [build hg-64b7090cfb52] ... | $ obc -v
-OCaml | 2.5.0; 3.20.2; The OCaml toplevel, version 5.4.0 | $ opam --version; $ dune --version; $ ocaml --version
+OCaml | 2.5.0; 3.23.0; The OCaml toplevel, version 5.5.0 | $ opam --version; $ dune --version; $ ocaml --version
 Odin | odin version dev-2026-01-nightly | $ odin version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
