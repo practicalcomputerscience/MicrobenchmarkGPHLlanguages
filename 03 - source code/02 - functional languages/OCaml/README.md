@@ -62,6 +62,20 @@ $
 
 <br/>
 
+On 2026-09-16, I upgraded my OCaml version for a little source code improvement like this:
+
+```
+$ opam update
+...
+$ opam install ocaml.5.5.0 --update-invariant
+...  # this takes its time
+$ ocaml --version
+The OCaml toplevel, version 5.5.0
+$
+```
+
+<br/>
+
 Rename:
 
 - _random_streams_for_perf_stats_main.ml_ into _main.ml_ located in the _./bin_ project subdirectory
