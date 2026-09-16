@@ -5,6 +5,7 @@
 2026-06-18: renamed function input_a_valid_number() to is_all_digits()
 2026-07-23: renamed function to better follow project conventions:
               ask_password_length -> input_a_valid_number
+2026-09-16: eliminated this redundancy two times: if nbr == 0 then, because nbr should never be 0
 
 
 build on Ubuntu 24 LTS: $ koka -O2 -o random_bitstring_and_flexible_password_generator random_bitstring_and_flexible_password_generator.kk
@@ -157,11 +158,12 @@ fun integer_to_bin_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
 
       buffer := buffer ++ aux_char  // string concatenation
 
-  if nbr == 0 then
-    "0000000000000000"
-  else
-    aux(nbr, 16)
-    buffer
+  // 2026-09-16: eliminate this redundancy: nbr should never be 0:
+  // if nbr == 0 then
+  //   "0000000000000000"
+  // else
+  aux(nbr, 16)
+  buffer
 
 
 fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect typing
@@ -227,11 +229,12 @@ fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
 
       buffer := buffer ++ aux_char  // string concatenation
 
-  if nbr == 0 then
-    "0000"
-  else
-    aux(nbr, 4)
-    buffer
+  // 2026-09-16: eliminate this redundancy: nbr should never be 0:
+  // if nbr == 0 then
+  //   "0000"
+  // else
+  aux(nbr, 4)
+  buffer
 
 
 // 2026-06-17: Google AI

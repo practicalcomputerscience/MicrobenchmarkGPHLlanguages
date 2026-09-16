@@ -1,13 +1,16 @@
 /* random_streams_for_perf_stats.kk
 
 2025-06-22/23
+2026-09-16: eliminated this redundancy two times: if nbr == 0 then, because nbr should never be 0
+
 
 test on Ubuntu 24 LTS: OK, but slow!
 
-build on Ubuntu 24 LTS: $ koka -O2 -o random_streams_for_perf_stats random_streams_for_perf_stats.kk
+build on Ubuntu 24 LTS: $ koka -o random_streams_for_perf_stats random_streams_for_perf_stats.kk  # for development
+                        $ koka -O3 -o random_streams_for_perf_stats random_streams_for_perf_stats.kk  # for production -- 2026-01-26
 
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
-                        $ time ./random_streams_for_perf_stats with -O2: real	0m3,221s <<<<<<<<<<<<<<<<<<<<<<<<<
+                        $ time ./random_streams_for_perf_stats --> real	0m3.214s
 
 
 Koka is an open source programming language created in 2012 by Daan Leijen
@@ -130,11 +133,12 @@ fun integer_to_bin_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
 
       buffer := buffer ++ aux_char  // string concatenation
 
-  if nbr == 0 then
-    "0000000000000000"
-  else
-    aux(nbr, 16)
-    buffer
+  // 2026-09-16: eliminate this redundancy: nbr should never be 0:
+  // if nbr == 0 then
+  //   "0000000000000000"
+  // else
+  aux(nbr, 16)
+  buffer
 
 
 fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect typing
@@ -200,11 +204,13 @@ fun integer_to_hex_string(nbr : int) : <div|_e> string  // <div|_e> for effect t
 
       buffer := buffer ++ aux_char  // string concatenation
 
-  if nbr == 0 then
-    "0000"
-  else
-    aux(nbr, 4)
-    buffer
+
+  // 2026-09-16: eliminate this redundancy: nbr should never be 0:
+  // if nbr == 0 then
+  //   "0000"
+  // else
+  aux(nbr, 4)
+  buffer
 
 //
 ////////////////////  end of user defined functions  ////////////////////////
