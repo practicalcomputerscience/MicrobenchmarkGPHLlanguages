@@ -4,19 +4,25 @@ main.ml of random_streams_for_perf_stats
 2025-05-31, 2025-06-22
 2025-12-21: see below
 2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
+2026-09-16: eliminated this redundancy: if n = 0 then "0000000000000000", because n should never be 0
 
-build on Ubuntu 24 LTS: $ dune init proj random_streams_for_perf_stats
+
+build on Ubuntu 24 LTS: do this only once:
+                        $ dune init proj random_streams_for_perf_stats
                         $ cd random_streams_for_perf_stats
+
+                        do this after every source code change:
                         $ dune build
+                        alternatively do this:
                         $ dune build --display=verbose
 
 run on Ubuntu 24 LTS:   $ sudo perf stat -r 20 ./_build/default/bin/main.exe
 
 
 $ dune --version
-3.20.2
+3.23.0
 $ ocaml --version
-The OCaml toplevel, version 5.4.0
+The OCaml toplevel, version 5.5.0
 $
 
 *)
@@ -56,11 +62,12 @@ let integer_to_bin_string n =
       Buffer.add_char buffer (if n mod 2 = 0 then '0' else '1');
     )
   in
-  if n = 0 then "0000000000000000"
-  else (
-    aux (n,j);
-    Buffer.contents buffer
-  )
+  (* 2026-09-16: eliminate this redundancy: n should never be 0: *)
+  (* if n = 0 then "0000000000000000" *)
+  (* else ( *)
+  aux (n,j);
+  Buffer.contents buffer
+  (* ) *)
 
 
 let write_to_file filename content file_type =

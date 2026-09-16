@@ -11,6 +11,7 @@ main.ml of random_bitstring_and_flexible_password_generator
 2026-02-09: introduced extra variables bits_x_str and bits_hex_str to have a more common algorithmic implementation
 2026-05-29: refactored from char_set to pattern (for regular expressions); shortened the pw_generator loop
 2026-06-18: define print_re and alnum_re
+2026-09-16: eliminated this redundancy: if n = 0 then "0000000000000000", because n should never be 0
 
 
 build on Ubuntu 24 LTS: $ dune init proj random_bitstring_and_flexible_password_generator
@@ -21,9 +22,9 @@ run on Ubuntu 24 LTS:   $ ./_build/default/bin/main.exe
 
 
 $ dune --version
-3.20.2
+3.23.0
 $ ocaml --version
-The OCaml toplevel, version 5.4.0
+The OCaml toplevel, version 5.5.0
 $
 
 *)
@@ -79,11 +80,12 @@ let integer_to_bin_string n =
       Buffer.add_char buffer (if n mod 2 = 0 then '0' else '1');
     )
   in
-  if n = 0 then "0000000000000000"
-  else (
-    aux (n,j);
-    Buffer.contents buffer
-  )
+  (* 2026-09-16: eliminate this redundancy: n should never be 0: *)
+  (* if n = 0 then "0000000000000000" *)
+  (* else ( *)
+  aux (n,j);
+  Buffer.contents buffer
+  (* ) *)
 
 
 (* see comments from the user_input_dialog working solution *)
