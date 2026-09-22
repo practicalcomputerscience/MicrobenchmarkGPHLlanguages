@@ -65,20 +65,20 @@ Java | inbuilt function | inbuilt function | inbuilt function in both cases |
 Julia | inbuilt function | inbuilt function | inbuilt function in both cases |
 Kotlin | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Lua |  **user defined function** | inbuilt function | inbuilt function in both cases | 
-Mercury |  |  |  |   
-Modula-2 (GNU)  | |  | | 
-Modula-3 (CM3) |  |  | | 
-Mojo |  |  | | 
-Nim |  |  | | 
-Oberon (OBC) |  |   |  | 
+Mercury | inbuilt function | inbuilt function | inbuilt function in both cases |
+Modula-2 (GNU) | **user defined procedure** | **user defined procedure** | integrated in both user defined procedures |
+Modula-3 (CM3) | inbuilt function | inbuilt function | inbuilt function in both cases |
+Mojo | inbuilt function | inbuilt function | inbuilt function in both cases |
+Nim | inbuilt function | inbuilt function | inbuilt function in both cases |
+Oberon (OBC) | **user defined function** | **user defined function** | implicitly done at each user defined function |
 OCaml | **user defined function** | inbuilt function | implicitly done at integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
-Odin |  |  | | 
-Perl 5 |  |  | | 
-PHP |  |  | | 
-Picat |  |  | | 
-Pike |  |  | | 
+Odin | inbuilt function | inbuilt function | inbuilt function in both cases |
+Perl 5 | inbuilt function | inbuilt function | inbuilt function in both cases |
+PHP | inbuilt function | inbuilt function | inbuilt function in both cases |
+Picat | inbuilt function | inbuilt function | **user defined function** in both cases |
+Pike | inbuilt function | inbuilt function | inbuilt function in both cases |
 PowerShell | inbuilt function | inbuilt function | inbuilt function in both cases |
-Prolog, SWI |  | | |  
+Prolog, SWI | inbuilt function | inbuilt function | inbuilt function in both cases |
 Python | inbuilt function | inbuilt function | inbuilt function in both cases |
 Roc | **user defined function** | **user defined function** | implicitly done at integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
 Ruby | inbuilt function | inbuilt function | inbuilt function in both cases |
@@ -86,9 +86,9 @@ Rust | inbuilt function | inbuilt function | inbuilt function in both cases |
 Scala | inbuilt function | inbuilt function | implicitly done with a preset result string "0000000000000000" or "0000" respectively
 Scheme, Bigloo | **user defined function** | **user defined function** | integrated in both user defined functions |
 Scheme, Racket | **user defined function** | **user defined function** | integrated in both user defined functions |
-Smalltalk (GNU) |  |  | | 
-Standard ML (MLton) | |  ||   
-Swift |  |  | | 
+Smalltalk (GNU) | **user defined function** | **user defined function** | integrated in both user defined functions |
+Standard ML (MLton) | **user defined function** | **user defined function** | integrated in both user defined functions |
+Swift | inbuilt function | inbuilt function | **user defined function** in both cases | 
 Tcl | inbuilt function | inbuilt function | inbuilt function in both cases |
 TypeScript | inbuilt function | inbuilt function | inbuilt function in both cases |
 V | **user defined function** | **user defined function** | integrated in both user defined functions |
