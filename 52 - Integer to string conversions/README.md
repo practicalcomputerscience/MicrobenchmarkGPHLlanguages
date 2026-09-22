@@ -44,7 +44,7 @@ COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | imp
 CoffeeScript | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Common Lisp | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Curry (KiCS2) | **user defined function** | the same **user defined function** | another, but same **user defined master function** in both cases | 
+Curry (KiCS2) | **user defined function** | the same **user defined function** | another, but same **user defined function** in both cases | 
 D | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Dart | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Dylan | inbuilt function | inbuilt function | inbuilt function in both cases | 
