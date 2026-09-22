@@ -65,34 +65,34 @@ Java | inbuilt function | inbuilt function | inbuilt function in both cases |
 Julia | inbuilt function | inbuilt function | inbuilt function in both cases |
 Kotlin | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Lua |  **user defined function** | inbuilt function | inbuilt function in both cases | 
-Mercury | |  ||   
+Mercury |  |  |  |   
 Modula-2 (GNU)  | |  | | 
 Modula-3 (CM3) |  |  | | 
 Mojo |  |  | | 
 Nim |  |  | | 
-Oberon (OBC) ||   |  | 
-OCaml |  |  | | 
+Oberon (OBC) |  |   |  | 
+OCaml | **user defined function** | inbuilt function | implicitly done at integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
 Odin |  |  | | 
 Perl 5 |  |  | | 
 PHP |  |  | | 
 Picat |  |  | | 
 Pike |  |  | | 
-PowerShell |  ||   | 
+PowerShell | inbuilt function | inbuilt function | inbuilt function in both cases |
 Prolog, SWI |  | | |  
-Python |  |  | | 
-Roc |  |  | | 
-Ruby |  |  | | 
-Rust |  |  | | 
-Scala |  |  | | 
-Scheme, Bigloo | **user defined function** | **user defined function** | integrated in both user defined functions | 
-Scheme, Racket | **user defined function** | **user defined function** | integrated in both user defined functions | 
+Python | inbuilt function | inbuilt function | inbuilt function in both cases |
+Roc | **user defined function** | **user defined function** | implicitly done at integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
+Ruby | inbuilt function | inbuilt function | inbuilt function in both cases |
+Rust | inbuilt function | inbuilt function | inbuilt function in both cases |
+Scala | inbuilt function | inbuilt function | implicitly done with a preset result string "0000000000000000" or "0000" respectively
+Scheme, Bigloo | **user defined function** | **user defined function** | integrated in both user defined functions |
+Scheme, Racket | **user defined function** | **user defined function** | integrated in both user defined functions |
 Smalltalk (GNU) |  |  | | 
 Standard ML (MLton) | |  ||   
 Swift |  |  | | 
-Tcl |  |  | | 
-TypeScript | ||    | 
-V |  |  | | 
-Zig |  |  | | 
+Tcl | inbuilt function | inbuilt function | inbuilt function in both cases |
+TypeScript | inbuilt function | inbuilt function | inbuilt function in both cases |
+V | **user defined function** | **user defined function** | integrated in both user defined functions |
+Zig | inbuilt function | inbuilt function | inbuilt function in both cases |
 
 <br/>
 
