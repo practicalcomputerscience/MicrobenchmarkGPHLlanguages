@@ -57,14 +57,14 @@ FreeBASIC | inbuilt function | inbuilt function | inbuilt function in both cases
 Gleam | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Go | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Groovy | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Haskell |  |  | |  
+Haskell | **user defined function** | **user defined function** | implicitly done at each user defined function | 
 Haxe |  **user defined function** | inbuilt function | integrated in user defined function for integer to binary string conversion; using inbuilt function at integer to hexa-decimal string conversion | 
-Hy |  |  |  | 
+Hy | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Inko | **user defined function** | **user defined function** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-17: refactored both user defined functions for better efficiency
-Java |  |  | | 
-Julia |  |  | | 
-Kotlin |  |  | | 
-Lua |  |  | | 
+Java | inbuilt function | inbuilt function | inbuilt function in both cases |
+Julia | inbuilt function | inbuilt function | inbuilt function in both cases |
+Kotlin | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Lua |  **user defined function** | inbuilt function | inbuilt function in both cases | 
 Mercury | |  ||   
 Modula-2 (GNU)  | |  | | 
 Modula-3 (CM3) |  |  | | 
