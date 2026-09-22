@@ -41,16 +41,16 @@ C# | inbuilt function | inbuilt function | inbuilt function in both cases |
 Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Clojure | inbuilt function | inbuilt function | extra **user defined function** at integer to binary string conversion; implicitly done at integer to hexa-decimal string conversion | 
 COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-18: user defined procedures look efficient
-CoffeeScript |  |  | | 
+CoffeeScript | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Common Lisp | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Crystal | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Curry (KiCS2) |  |  | | 
+Curry (KiCS2) | **user defined function** | the same **user defined function** | another, but same **user defined master function** in both cases | 
 D | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Dart | inbuilt function | inbuilt function | inbuilt function in both cases | 
 Dylan | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Eiffel, Liberty |  |  | | 
-Factor |  |  | | 
-Forth (Gforth) |  |  | | 
+Eiffel, Liberty | **user defined function** | **user defined function** | implicitly done at each user defined function | 
+Factor | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Forth (Gforth) | **user defined function** | **user defined function** | implicitly done at each user defined function | 
 Fortran (GNU) | inbuilt function | inbuilt function | inbuilt function in both cases | user defined function to convert the final, big hexadecimal string into lower case
 FreeBASIC | inbuilt function | inbuilt function | inbuilt function in both cases | 
 (Object) Free Pascal | inbuilt function | inbuilt function | inbuilt function in both cases | 
