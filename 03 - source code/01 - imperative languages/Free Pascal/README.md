@@ -160,7 +160,7 @@ t            : TimeStamp;
 
 ### Random seed with leveraging the Address Space Layout Randomization (ASLR)
 
-The [ISO 7185 program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not reading a time value.
+The [ISO 7185 program version](./random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not read a time value for example.
 
 So, how to get then a somehow random seed?
 
