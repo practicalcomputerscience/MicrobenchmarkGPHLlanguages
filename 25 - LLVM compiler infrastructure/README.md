@@ -1,7 +1,3 @@
-2026-06-06: work in progress
-
-<br/>
-
 # LLVM compiler infrastructure
 
 LLVM = "Low Level Virtual Machine" in its earlier days
