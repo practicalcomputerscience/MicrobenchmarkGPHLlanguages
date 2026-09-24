@@ -16,6 +16,10 @@ Anyhow, the TypeScript-Go liaison shows how important transpiling from one langu
 
 <br/>
 
+2026-07-08: [Announcing TypeScript 7.0](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/)
+
+<br/>
+
 ### August 2025: TypeScript is #1 language on GitHub
 
 2025-10-28: https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
