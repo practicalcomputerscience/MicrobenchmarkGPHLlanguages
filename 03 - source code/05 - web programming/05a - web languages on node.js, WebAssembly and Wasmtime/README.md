@@ -55,7 +55,7 @@ From that point on, it was only a small step to transpile Groovy program [random
 with the help of Duck.ai:
 
 - first, into [TypeScript](./random_streams_for_perf_stats.ts) with its **unsound** type system, and
-- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai, because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), here in version 5.9.3, tumbled over warnings (*).
+- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai, because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), here in version 5.9.3, tumbled over warnings at first (*).
 - however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair with ReScripts's **sound** type system:
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
@@ -752,6 +752,91 @@ Found 3 errors in the same file, starting at: random_streams_for_perf_stats.ts:3
 
 $
 ```
+
+The same is true when using the latest version of the now, as of July 2026, Go-based TypeScript compiler. See from here: [Announcing TypeScript 7.0](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/)
+
+```
+$ npx -v  # just an installation and version check; npx is for running a command from a local or remote npm package
+11.8.0
+$ npx tsc -v  # just an installation and version check
+Version 7.0.2
+$ npx tsc ./random_streams_for_perf_stats.ts
+random_streams_for_perf_stats.ts:30:21 - error TS2591: Cannot find name 'node:fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+
+30 import * as fs from 'node:fs';  // node:fs is for deno, but OK for node.js + bun
+                       ~~~~~~~~~
+
+random_streams_for_perf_stats.ts:67:75 - error TS18046: 'ex' is of type 'unknown'.
+
+67             console.error(`could not write to file: ${file_bits_x} ! -- ${ex.message}`);
+                                                                             ~~
+
+random_streams_for_perf_stats.ts:74:77 - error TS18046: 'ex' is of type 'unknown'.
+
+74             console.error(`could not write to file: ${file_bits_hex} ! -- ${ex.message}`);
+                                                                               ~~
+
+
+Found 3 errors in the same file, starting at: random_streams_for_perf_stats.ts:30
+
+$
+```
+
+So, I did as suggested:
+
+```
+$ npm i --save-dev @types/node
+
+up to date, audited 7 packages in 464ms
+
+found 0 vulnerabilities
+$ 
+```
+
+I also fixed my _package.json_ configuration file to this:
+
+```
+{
+  "type": "module",
+  "dependencies": {
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2"
+  }
+}
+```
+
+..and tried a transpilation again just with tsc version 5.9.3:
+
+```
+$ tsc ./random_streams_for_perf_stats.ts
+$
+```
+
+Voilà!
+
+However, the generated ~.js file needs to be interpreted as a CommonJS script:
+
+```
+$ mv random_streams_for_perf_stats.js random_streams_for_perf_stats.cjs
+$ time node ./random_streams_for_perf_stats.cjs
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.043s
+user	0m0.039s
+sys	0m0.006s
+$ 
+```
+
+So, with an execution time of about 43 milliseconds, transpiled program [random_streams_for_perf_stats.cjs](./random_streams_for_perf_stats.cjs) (with only a new and manual comment block at the top) runs about the same time as the (official) AI transpiled JavaScript program [random_streams_for_perf_stats.js](./random_streams_for_perf_stats.js).
+
+<br/>
+
+By the way: transpiling with the original command from above, that is: _$ npx tsc ./random_streams_for_perf_stats.ts_, has still generated a working _random_streams_for_perf_stats.js_ file without the need to rename it into _random_streams_for_perf_stats.cjs_!
 
 <br/>
 
