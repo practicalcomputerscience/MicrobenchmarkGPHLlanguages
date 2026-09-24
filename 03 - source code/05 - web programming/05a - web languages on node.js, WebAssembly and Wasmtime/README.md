@@ -55,7 +55,7 @@ From that point on, it was only a small step to transpile Groovy program [random
 with the help of Duck.ai:
 
 - first, into [TypeScript](./random_streams_for_perf_stats.ts) with its **unsound** type system, and
-- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai, because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), here in version 5.9.3, tumbled over warnings at first (*).
+- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai, because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), here in version 5.9.3, tumbled over warnings at first; see below at [Transpiling from TypeScript into JavaScript with TypeScript compiler tsc](#transpiling-from-typescript-into-javascript-with-typescript-compiler-tsc).
 - however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair with ReScripts's **sound** type system:
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
@@ -721,8 +721,6 @@ Here's the updated execution speeds diagram with additional results from ReScrip
 <br/>
 
 ---
-
-(*)
 
 #### Transpiling from TypeScript into JavaScript with TypeScript compiler tsc
 
