@@ -50,11 +50,11 @@ Originally, this page was only meant to show some quick implementations of the "
 
 <br/>
 
-From that point on, it was only a small step to transpile program [random_streams_for_perf_stats.groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/random_streams_for_perf_stats.groovy), which is here type annotated for speedy, static compilation,
-with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), version 5.9.3, tumbled over warnings):
+From that point on, it was only a small step to transpile Groovy program [random_streams_for_perf_stats.groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy/random_streams_for_perf_stats.groovy), which is here type annotated for speedy, static compilation,
+with the help of Duck.ai:
 
 - first, into [TypeScript](./random_streams_for_perf_stats.ts) with its **unsound** type system, and
-- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai
+- then from there into [JavaScript](./random_streams_for_perf_stats.js) with its **unsound** type system, again with Duck.ai, because the [tsc compiler](https://manpages.debian.org/testing/node-typescript/tsc.1.en.html), here in version 5.9.3, tumbled over warnings (*).
 - however, Big AI driven efforts to transpile (from Groovy) into [ReScript](./random-streams-for-perf-stats.res) have then been only a slow affair with ReScripts's **sound** type system:
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
@@ -82,9 +82,9 @@ JavaScript is a "a dynamic just-in-time compiled language": https://www.assembly
 
 <br/>
 
-The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Version 18.19.1, coming as default with Ubuntu 24 LTS for example, is too old for it.
+The TypeScript script should work out of the box for node.js version 22.21.0 or higher (_$ node -v_). Node.js version 18.19.1, coming as default with Ubuntu 24 LTS for example, is too old for it.
 
-In Linux you can upgrade the node.js version with the nvm, the **Node Version Manager**, which allows a node.js installation per Linux user, like this, see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
+In Linux you can upgrade the node.js version with the nvm command, that's the **Node Version Manager**, which allows a node.js installation per Linux user, like this and see from here: https://linux.how2shout.com/how-to-install-nvm-on-ubuntu-24-04-or-22-04-linux/:
 
 ```
 $ sudo apt install curl build-essential libssl-dev -y
@@ -112,7 +112,7 @@ To eliminate this warning, add "type": "module" to ~/scripts/TypeScript/package.
 $
 ```
 
-I did exactly this to get rid of above warning message and modified my _package.json_ configuration file in the same directory to this (after I just upgraded my TypeScript compiler version to 7.0.2
+I did exactly this to get rid off above warning message and modified my _package.json_ configuration file in the same directory to this (after I just upgraded my TypeScript version to 7.0.2
 with command _$ npm install typescript_ on 2026-09-24):
 
 ```
@@ -124,7 +124,7 @@ with command _$ npm install typescript_ on 2026-09-24):
 }
 ```
 
-Then I repeated the command:
+Then I repeated the program run:
 
 ```
 $ node ./random_streams_for_perf_stats.ts
@@ -716,6 +716,41 @@ Here's the updated execution speeds diagram with additional results from ReScrip
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20full.png)
 
 "Standard ML to JS / node.js" = transpiled from Standard ML to JavaScript with the [LunarML transpiler](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), where the JavaScript code is then being executed and execution time measured on node.js
+
+<br/>
+
+---
+
+(*)
+
+#### Transpiling from TypeScript into JavaScript with TypeScript compiler tsc
+
+Using the tsc command to compile TypeScript program [random_streams_for_perf_stats.ts](./random_streams_for_perf_stats.ts) into a JavaScript program doesn't work:
+
+```
+$ tsc -v  # just an installation and version check
+Version 5.9.3
+$ tsc ./random_streams_for_perf_stats.ts
+random_streams_for_perf_stats.ts:30:21 - error TS2307: Cannot find module 'node:fs' or its corresponding type declarations.
+
+30 import * as fs from 'node:fs';  // node:fs is for deno, but OK for node.js + bun
+                       ~~~~~~~~~
+
+random_streams_for_perf_stats.ts:55:49 - error TS2550: Property 'padStart' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2017' or later.
+
+55             const bits_x_str = x[i].toString(2).padStart(16, '0');
+                                                   ~~~~~~~~
+
+random_streams_for_perf_stats.ts:58:52 - error TS2550: Property 'padStart' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2017' or later.
+
+58             const bits_hex_str = x[i].toString(16).padStart(4, '0');
+                                                      ~~~~~~~~
+
+
+Found 3 errors in the same file, starting at: random_streams_for_perf_stats.ts:30
+
+$
+```
 
 <br/>
 
