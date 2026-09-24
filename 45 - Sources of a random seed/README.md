@@ -33,7 +33,7 @@ C# |
 Chapel | 
 Clojure | 
 COBOL (GnuCOBOL) | 
-CoffeeScript | 
+CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high, though it doesn't _provide cryptographically secure random numbers_
 Common Lisp | 
 Crystal | 
 Curry (KiCS2) | 
