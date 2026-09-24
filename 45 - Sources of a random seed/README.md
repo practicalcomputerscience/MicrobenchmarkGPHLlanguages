@@ -23,7 +23,7 @@ I was already aware of the fact that not all implementations feature a somehow d
 programming language | source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
-AssemblyScript | 
+AssemblyScript | _The Math API is very much like JavaScript's, .._: [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high, though it doesn't _provide cryptographically secure random numbers_
 Awk (GNU) | 
 Ballerina | 
 C | 
