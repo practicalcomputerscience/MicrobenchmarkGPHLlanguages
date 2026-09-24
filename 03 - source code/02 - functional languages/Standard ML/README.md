@@ -384,7 +384,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Transpiling my microbenchmark program into JavaScript also works, but only with transpiler switch _--nodejs-cps_ activated:
+Transpiling my microbenchmark program into JavaScript also works, but only with transpiler switch _--nodejs-cps_ being activated:
 
 ```
 $ lunarml compile --nodejs-cps ./random_streams_for_perf_stats3.mlb
