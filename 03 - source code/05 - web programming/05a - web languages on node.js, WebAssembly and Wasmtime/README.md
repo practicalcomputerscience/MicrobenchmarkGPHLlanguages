@@ -105,6 +105,33 @@ $ node ./random_streams_for_perf_stats.ts
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
+(node:9739) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:~/scripts/TypeScript/random_streams_for_perf_stats.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to ~/scripts/TypeScript/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+$
+```
+
+I did exactly this to get rid of above warning message and modified my _package.json_ configuration file in the same directory to this (after I just upgraded my TypeScript compiler version to 7.0.2
+with command _$ npm install typescript_ on 2026-09-24):
+
+```
+{
+  "type": "module",
+  "dependencies": {
+    "typescript": "^7.0.2"
+  }
+}
+```
+
+Then I repeated the command:
+
+```
+$ node ./random_streams_for_perf_stats.ts
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
