@@ -44,7 +44,7 @@ Table of contents:
 ## Idea of this page
 
 Originally, this page was only meant to show some quick implementations of the "speed part" of the microbenchmark program to be executed on [node.js](https://nodejs.org/en).
-"Web programming" was not even on my long list. However, this has changed for two reasons:
+"Web programming" was not even on my long list. However, this has changed then for two reasons:
 
 - the transpilation from Standard ML to JavaScript with [LunarML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml), resulting in a monster file, which contains ES (ECMAScript) modules (~.mjs): [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs), and
 - my [Groovy](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Groovy#groovy) implementation, with Groovy often being described as a "scripting language for the Java Virtual Machine", and which "can largely be viewed as a superset of Java": [Introducing Groovy](https://www.oracle.com/technical-resources/articles/java/groovy.html)
@@ -60,7 +60,7 @@ with the help of Duck.ai:
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
 
-- the same was true when trying to transpile TypeScript into JS++. I basically did this transpilation mostly manually.
+- the same was true when trying to transpile TypeScript into JS++. I did that transpilation mostly manually.
 
 <br/>
 
@@ -148,7 +148,7 @@ This leaves this question to me:
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming,%20JS+TS.png)
 
-My guess is that transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) some day, comes with an overhead, which takes more time to process - even with this little example apparently.
+My guess is that transpiling from TypeScript code into JavaScript code, even though with the transpiler being re-written in [Go](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/60%20-%20the%20future%20of%20transpiling#microsofts-efforts-with-transpilation) in 2026, comes with an overhead, which takes more time to process - even with this little example apparently.
 
 By the way: you can switch to a specific node.js version like this:
 
