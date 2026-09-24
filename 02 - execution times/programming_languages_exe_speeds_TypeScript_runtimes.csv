@@ -1,0 +1,6 @@
+language;mean;std_dev;date
+TypeScript / node.js;0,067;0,002;2026-09-24
+TypeScript / Deno run;0,045;0,001;2026-02-11
+TypeScript / Deno executable;0,043;0,001;2026-02-11
+TypeScript / Bun run;0,023;0,001;2026-02-11
+TypeScript / Bun executable;0,022;0,001;2026-02-11
