@@ -35,6 +35,7 @@ Table of contents:
 - [AssemblyScript](#assemblyscript)
 - [JS++](#js)
 - [Complete execution speeds diagram](#complete-execution-speeds-diagram)
+- [Transpiling from TypeScript into JavaScript with TypeScript compiler tsc](#transpiling-from-typescript-into-javascript-with-typescript-compiler-tsc)
 
 <br/>
 
