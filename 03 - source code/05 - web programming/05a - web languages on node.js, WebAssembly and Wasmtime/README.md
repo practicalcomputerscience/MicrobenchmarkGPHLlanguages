@@ -59,7 +59,7 @@ with the help of Duck.ai (because the [tsc compiler](https://manpages.debian.org
 
 [Everyday TypeScript: Type Soundness](https://www.executeprogram.com/courses/everyday-typescript/lessons/type-soundness)
 
-- the same was true when trying to transpile from TypeScript to JS++. I basically did this transpilation mostly manually.
+- the same was true when trying to transpile TypeScript into JS++. I basically did this transpilation mostly manually.
 
 <br/>
 
