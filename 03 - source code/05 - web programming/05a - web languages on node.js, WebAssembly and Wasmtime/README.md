@@ -805,7 +805,7 @@ I also fixed my _package.json_ configuration file to this:
 }
 ```
 
-..and tried a transpilation again just with tsc version 5.9.3:
+..and tried a transpilation again just with old tsc version 5.9.3:
 
 ```
 $ tsc ./random_streams_for_perf_stats.ts
@@ -830,11 +830,11 @@ sys	0m0.006s
 $ 
 ```
 
-So, with an execution time of about 43 milliseconds, transpiled program [random_streams_for_perf_stats.cjs](./random_streams_for_perf_stats.cjs) (with only a new and manual comment block at the top) runs about the same time as the (official) AI transpiled JavaScript program [random_streams_for_perf_stats.js](./random_streams_for_perf_stats.js).
+So, with an execution time of about 43 milliseconds, transpiled program [random_streams_for_perf_stats.cjs](./random_streams_for_perf_stats.cjs) (with only a new and manual comment block at the top) runs about the same time as the (official) AI transpiled JavaScript program [random_streams_for_perf_stats.js](./random_streams_for_perf_stats.js). I haven't used any extra _tsconfig.json_ configuration file here.
 
 <br/>
 
-By the way: transpiling with the original command from above, that is: _$ npx tsc ./random_streams_for_perf_stats.ts_, has still generated a working _random_streams_for_perf_stats.js_ file without the need to rename it into _random_streams_for_perf_stats.cjs_!
+By the way: transpiling with the original command from above, that is: _$ npx tsc ./random_streams_for_perf_stats.ts_, has still generated a working _random_streams_for_perf_stats.js_ file without the need to rename it into _random_streams_for_perf_stats.cjs_ first!
 
 <br/>
 
