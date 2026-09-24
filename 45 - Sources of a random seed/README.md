@@ -22,7 +22,7 @@ I was already aware of the fact that not all implementations feature a somehow d
 
 programming language | source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
-Ada (GNAT) | 
+Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
 AssemblyScript | 
 Awk (GNU) | 
 Ballerina | 
