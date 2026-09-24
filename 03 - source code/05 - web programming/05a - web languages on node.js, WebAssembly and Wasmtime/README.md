@@ -724,7 +724,7 @@ Here's the updated execution speeds diagram with additional results from ReScrip
 
 #### Transpiling from TypeScript into JavaScript with TypeScript compiler tsc
 
-Using the tsc command to compile TypeScript program [random_streams_for_perf_stats.ts](./random_streams_for_perf_stats.ts) into a JavaScript program doesn't work:
+Using the tsc command to compile TypeScript program [random_streams_for_perf_stats.ts](./random_streams_for_perf_stats.ts) into a JavaScript program throws some error:
 
 ```
 $ tsc -v  # just an installation and version check
@@ -751,7 +751,7 @@ Found 3 errors in the same file, starting at: random_streams_for_perf_stats.ts:3
 $
 ```
 
-The same is true when using the latest version of the now, as of July 2026, Go-based TypeScript compiler. See from here: [Announcing TypeScript 7.0](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/)
+The same is true when using the latest version of the now, as of July 2026, Go-based TypeScript compiler; see from here: [Announcing TypeScript 7.0](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/)
 
 ```
 $ npx -v  # just an installation and version check; npx is for running a command from a local or remote npm package
