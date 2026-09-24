@@ -66,7 +66,7 @@ Oberon (OBC) |
 OCaml | 
 Odin | 
 Perl 5 | 
-PHP | 
+PHP | a _global Mt19937 (“Mersenne Twister”) instance_ | high, though it doesn't provide cryptographically secure random numbers | [rand](https://www.php.net/manual/en/function.rand.php)
 Picat | 
 Pike | 
 PowerShell | 
