@@ -29,7 +29,7 @@ Before I came to a Pascal implementation, I was already aware of the fact that n
 
 Usually, I just took the oldest and simplest method.
 
-Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only implicitly making an operating system call of [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example, something which could often be done with user defined code in many programming languages, if there would be a need to do so.
+Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only implicitly making an operating system call of [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example, something which could often be done with user defined code in many programming languages. However, I don't have a need for it in this project.
 
 <br/>
 
@@ -48,7 +48,7 @@ C# |
 Chapel | 
 Clojure | 
 COBOL (GnuCOBOL) | 
-CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high | see at TypeScript below
+CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | see at TypeScript below
 Common Lisp | 
 Crystal | 
 Curry (KiCS2) | 
@@ -97,7 +97,7 @@ Smalltalk (GNU) |
 Standard ML (MLton) | 
 Swift | 
 Tcl | 
-TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | a random seed probably (still) depends on the exact JavaScript engine being used: [Math.random() is not so random: The Illusion of Randomness in JavaScript] (https://vinitshahdeo.substack.com/p/mathrandom-is-not-so-random-the-illusion), 2025; there's a chapter on alternatives: [Better Alternatives for Randomness](https://vinitshahdeo.substack.com/i/167041440/the-quantum-question-randomness-in-the-future)
+TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | a random seed probably (still) depends on the exact JavaScript engine being used: [Math.random() is not so random: The Illusion of Randomness in JavaScript](https://vinitshahdeo.substack.com/p/mathrandom-is-not-so-random-the-illusion), 2025; there's a chapter on [Better Alternatives for Randomness](https://vinitshahdeo.substack.com/i/167041440/the-quantum-question-randomness-in-the-future)
 V | 
 Zig | 
 
