@@ -3,6 +3,8 @@
 - CS = cryptographically secure
 - RNG = random number generator
 
+<br/>
+
 - very high quality = cryptographic quality
 - high quality, like current system timestamp with resolution of milliseconds or even nanoseconds
 - low quality, like current system timeststamp with resolution of 1 second
@@ -23,11 +25,11 @@ Leveraging this (sophisticated) idea unexpectedly provided a good source of rand
 Before I came to a Pascal implementation, I was already aware of the fact that not all implementations feature a somehow decent source of randomness, and thus started another language list to get me an overview.
 
 > [!NOTE]
-> The given sources of random seed only mean the sources that I've (implicitly) used, not that these are necessarily the only sources of entropy in a given language!
+> The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given language!
 
 Usually, I just took the oldest and simplest method.
 
-Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only making an operating system call to [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example.
+Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only implicitly making an operating system call of [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example, something which can be done with user defined code in many programming languages, if there would be need to do so.
 
 <br/>
 
