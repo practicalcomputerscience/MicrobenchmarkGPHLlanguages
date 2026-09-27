@@ -1,6 +1,7 @@
 2026-09-23: work in progress
 
 - CS = cryptographically secure
+- PRNG = pseudo-random number generator
 - RNG = random number generator
 
 <br/>
@@ -37,15 +38,15 @@ Nowadays, many languages, which are still actively maintained, offer cryptograph
 
 programming language | used source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
-Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
+Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | high | two manual program runs within 1 second will yield two different byte streams
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/43098d9e08cddba6b3f023a82adc58a1a3b9aa04/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
 C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second (*) | low | [Random Numbers in C: rand, srand, and Generating a Number in a Range](https://coddy.tech/docs/c/random-numbers)
-C++ | same like in C | low |
-C3 | 
-C# | 
-Chapel | 
+C++ | same like in C (*) | low |
+C3 | ? | high | two manual program runs within 1 second will yield two different byte streams
+C# | ? | high | two manual program runs within 1 second will yield two different byte streams
+Chapel | ? | high | two manual program runs within 1 second will yield two different byte streams
 Clojure | 
 COBOL (GnuCOBOL) | 
 CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | see at TypeScript below
