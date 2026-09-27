@@ -1,10 +1,9 @@
 2026-09-23: work in progress
 
 - very high quality = cryptographic quality
-- high quality
-- medium quality
-- low quality
-- bad quality, like current system time with resolution in seconds only
+- high quality, like current system timestamp with resolution of milliseconds or even nanoseconds
+- low quality, like current system timeststamp with resolution of seconds
+- bad quality, which is worse than an entropy source like the current system timeststamp with resolution of seconds
 
 <br/>
 
@@ -23,17 +22,17 @@ I was already aware of the fact that not all implementations feature a somehow d
 programming language | source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
-AssemblyScript | _The Math API is very much like JavaScript's, .._: [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high, though it doesn't _provide cryptographically secure random numbers_
-Awk (GNU) | 
-Ballerina | 
-C | 
-C++ | 
+AssemblyScript | _The Math API is very much like JavaScript's, .._: [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high(?) tbd, though it doesn't _provide cryptographically secure random numbers_
+Awk (GNU) | the _srand()_ function probably uses the system clock as a random seed | low(?) with a system clock resolution of 1(?) second | different implementations and versions of Awk and Mawk may feature implementations of _srand()_ and _rand()_
+Ballerina | probably uses resources of Java version 21 as of August 2026 | high(?)
+C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of seconds as a random seed | low | 
+C++ | the _srand(static_cast<unsigned int>(time(nullptr)))_ function uses the current timestamp with a resolution of seconds as a random seed | low | C++'s _random_ library to generate non-cryptographically secure pseudo-random numbers features a function to get a really random value as a seed for the random number engine
 C3 | 
 C# | 
 Chapel | 
 Clojure | 
 COBOL (GnuCOBOL) | 
-CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high, though it doesn't _provide cryptographically secure random numbers_
+CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high(?), though it doesn't _provide cryptographically secure random numbers_; tbd: check why this is high <==> same like with Java?
 Common Lisp | 
 Crystal | 
 Curry (KiCS2) | 
@@ -53,7 +52,7 @@ Haskell |
 Haxe | 
 Hy | 
 Inko | 
-Java | 
+Java | class _ThreadLocalRandom_ uses the current timestamp with a resolution of milliseconds and the current timestamp with a resolution of  nanoseconds, and then XOR's them to get a random seed: [ThreadLocalRandom.java](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ThreadLocalRandom.java) | high | _ThreadLocalRandom_ is not cryptographically secure; consider instead using _SecureRandom_ in security-sensitive applications: [Class ThreadLocalRandom](https://docs.oracle.com/javase/8/docs//api/java/util/concurrent/ThreadLocalRandom.html)
 Julia | 
 Kotlin | 
 Lua | 
