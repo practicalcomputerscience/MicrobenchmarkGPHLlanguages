@@ -48,7 +48,7 @@ C# |
 Chapel | 
 Clojure | 
 COBOL (GnuCOBOL) | 
-CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high(?), though it doesn't _provide cryptographically secure random numbers_; tbd: check why this is high <==> same like with Java? tbd
+CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high, though it doesn't _provide cryptographically secure random numbers_ | see at TypeScript below
 Common Lisp | 
 Crystal | 
 Curry (KiCS2) | 
@@ -97,7 +97,7 @@ Smalltalk (GNU) |
 Standard ML (MLton) | 
 Swift | 
 Tcl | 
-TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high, though it doesn't _provide cryptographically secure random numbers_
+TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high, though it doesn't _provide cryptographically secure random numbers_ | a random seed probably (still) depends on the exact JavaScript engine being used: [Math.random() is not so random: The Illusion of Randomness in JavaScript] (https://vinitshahdeo.substack.com/p/mathrandom-is-not-so-random-the-illusion), 2025; there's a chapter on alternatives: [Better Alternatives for Randomness](https://vinitshahdeo.substack.com/i/167041440/the-quantum-question-randomness-in-the-future)
 V | 
 Zig | 
 
