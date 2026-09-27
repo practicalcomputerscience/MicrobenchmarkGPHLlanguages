@@ -10,6 +10,7 @@
 
 - very high quality, like cryptographic quality
 - high quality, like current system timestamp with resolution of milliseconds or even nanoseconds
+- medium quality, like current system timestamp with resolution of hundredths of a second
 - low quality, like current system timeststamp with resolution of 1 second
 - bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second
 
@@ -48,7 +49,7 @@ C3 | ? | high | two manual program runs within 1 second will yield two different
 C# | ? | high | two manual program runs within 1 second will yield two different byte streams
 Chapel | ? | high | two manual program runs within 1 second will yield two different byte streams
 Clojure | 
-COBOL (GnuCOBOL) | 
+COBOL (GnuCOBOL) | _ACCEPT FROM TIME_ returns the current system time in format HHMMSSCC, where CC represents the hundredths of a second | medium | [Working with Dates and Time in COBOL](https://www.mainframemaster.com/tutorials/cobol/dates-time)
 CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | see at TypeScript below
 Common Lisp | 
 Crystal | 
