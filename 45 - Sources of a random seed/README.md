@@ -23,10 +23,10 @@ programming language | source of random seed | estimated quality of randomness |
 --- | --- | --- | ---
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
 AssemblyScript | _The Math API is very much like JavaScript's, .._: [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high(?) tbd, though it doesn't _provide cryptographically secure random numbers_
-Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low | different implementations and versions of Awk and Mawk may feature implementations of _srand()_ and _rand()_
+Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low(?) | different implementations and versions of Awk and Mawk may feature implementations of _srand()_ and _rand()_
 Ballerina | probably uses resources of Java version 21 as of August 2026 | high(?)
 C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second | low | 
-C++ | the _srand(static_cast<unsigned int>(time(nullptr)))_ function uses the current timestamp with a resolution of 1 second | low | C++'s _random_ library to generate non-cryptographically secure pseudo-random numbers features a function to get a really random value as a seed for the random number engine
+C++ | the _srand(static_cast<unsigned int>(time(nullptr)))_ function uses the current timestamp with a resolution of 1 second | low | C++'s _random_ library to generate non-cryptographically secure pseudo-random numbers features a function to make it possible to get a truly random value as a seed
 C3 | 
 C# | 
 Chapel | 
