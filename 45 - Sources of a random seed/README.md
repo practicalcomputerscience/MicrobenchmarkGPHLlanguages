@@ -1,5 +1,7 @@
 2026-09-23: work in progress
 
+# Sources of a random seed
+
 - CS = cryptographically secure
 - PRNG = pseudo-random number generator
 - RNG = random number generator
@@ -9,11 +11,9 @@
 - very high quality, like cryptographic quality
 - high quality, like current system timestamp with resolution of milliseconds or even nanoseconds
 - low quality, like current system timeststamp with resolution of 1 second
-- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of 1 second
+- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second
 
 <br/>
-
-# Sources of a random seed
 
 The solution in this Pascal implementation:
 
