@@ -1,9 +1,12 @@
 2026-09-23: work in progress
 
+- CS = cryptographically secure
+- RNG = random number generator
+
 - very high quality = cryptographic quality
 - high quality, like current system timestamp with resolution of milliseconds or even nanoseconds
 - low quality, like current system timeststamp with resolution of 1 second
-- bad quality, which is worse than an entropy source like the current system timeststamp with resolution of 1 second
+- bad quality, which is worse than an entropy source like the current system timestamp with resolution of 1 second
 
 <br/>
 
@@ -14,10 +17,19 @@ The solution in this Pascal implementation:
 > The [ISO 7185 program version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not read a time value for example.
 
 ..with a [Random seed with leveraging the Address Space Layout Randomization (ASLR)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#random-seed-with-leveraging-the-address-space-layout-randomization-aslr) 
-got me thinking about the general quality of a random seed in the numerous language implementation of the pseudo-random number generator in question.
+got me thinking about the general quality of a random seed in the numerous language implementations of the pseudo-random number generator in question.
 Leveraging this (sophisticated) idea unexpectedly provided a good source of randomness in a programming language which otherwise cannot access Linux system resources at all!
 
-I was already aware of the fact that not all implementations feature a somehow decent source of randomness, and thus started another language list to get me an overview:
+Before I came to a Pascal implementation, I was already aware of the fact that not all implementations feature a somehow decent source of randomness, and thus started another language list to get me an overview.
+
+> [!NOTE]
+> The given sources of random seed only mean the sources that I've (implicitly) used, not that these are necessarily the only sources of entropy in a given language!
+
+Usually, I just took the oldest and simplest method.
+
+Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only making an operating system call to [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example.
+
+<br/>
 
 programming language | source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
@@ -25,8 +37,8 @@ Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | ? |
 AssemblyScript | _The Math API is very much like JavaScript's, .._: [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | high(?) tbd, though it doesn't _provide cryptographically secure random numbers_
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low(?) | different implementations and versions of Awk and Mawk may feature implementations of _srand()_ and _rand()_
 Ballerina | probably uses resources of Java version 21 as of August 2026 | high(?)
-C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second | low | 
-C++ | the _srand(static_cast<unsigned int>(time(nullptr)))_ function uses the current timestamp with a resolution of 1 second | low | C++'s _random_ library to generate non-cryptographically secure pseudo-random numbers features a function to make it possible to get a truly random value as a seed
+C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second: [Random Numbers in C: rand, srand, and Generating a Number in a Range](https://coddy.tech/docs/c/random-numbers) | low | 
+C++ | same like in C | low |
 C3 | 
 C# | 
 Chapel | 
@@ -53,7 +65,8 @@ Haxe |
 Hy | 
 Inko | 
 Java | class _ThreadLocalRandom_ uses the current timestamp with a resolution of milliseconds and the current timestamp with a resolution of  nanoseconds, and then XOR's them to finally get a random seed: [ThreadLocalRandom.java](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ThreadLocalRandom.java) | high | _ThreadLocalRandom_ is not cryptographically secure: [Class ThreadLocalRandom](https://docs.oracle.com/javase/8/docs//api/java/util/concurrent/ThreadLocalRandom.html)
-Julia | 
+Julia | Julia's default RNG initially calls Julia function [uv_random](https://github.com/JuliaLang/julia/blob/master/base/libc.jl#L457), which in return calls function [uv_random](https://docs.libuv.org/en/stable/misc.html#c.uv_random) in C library _libuv_ for cross-platform asynchronous I/O, which in return makes
+a [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) Linux system call to _obtain a series of random bytes_ | very high | the [urandom(4)](https://linux.die.net/man/4/urandom) entropy source _gathers environmental noise from device drivers and other sources into an entropy pool_
 Kotlin | 
 Lua | 
 Mercury | 
