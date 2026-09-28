@@ -3,6 +3,7 @@
 # Sources of a random seed
 
 - CS = cryptographically secure
+- PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
 - RNG = random number generator
 
@@ -52,9 +53,9 @@ Clojure |
 COBOL (GnuCOBOL) | _ACCEPT FROM TIME_ returns the current system time in format HHMMSSCC, where CC represents the hundredths of a second | medium | [Working with Dates and Time in COBOL](https://www.mainframemaster.com/tutorials/cobol/dates-time)
 CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | see at TypeScript below
 Common Lisp | 
-Crystal | 
+Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html): https://github.com/crystal-lang/crystal/blob/master/src/crystal/system/unix/getrandom.cr | very high | Crystal implemented Melissa O'Neill's PCG Random Number Generation for C (2014): https://github.com/crystal-lang/crystal/blob/master/src/random/pcg32.cr
 Curry (KiCS2) | 
-D | 
+D | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 Dart | 
 Dylan | 
 Eiffel, Liberty | 
