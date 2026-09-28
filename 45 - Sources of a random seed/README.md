@@ -122,7 +122,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 bf16f7c597$
 ```
 
-The first 10 characters of the random byte stream are identical.
+Here, the first 10 characters of the random byte stream are identical, indicating that the quality of randomness of a seed is rather low.
 
 <br/>
 
