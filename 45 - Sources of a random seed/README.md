@@ -55,7 +55,7 @@ CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) me
 Common Lisp | 
 Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) in module [getrandom.cr](https://github.com/crystal-lang/crystal/blob/master/src/crystal/system/unix/getrandom.cr) | very high | Crystal implemented Melissa O'Neill's PCG Random Number Generation for C (2014): [pcg32.cr](https://github.com/crystal-lang/crystal/blob/master/src/random/pcg32.cr)
 Curry (KiCS2) | 
-D | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+D | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
 Dylan | 
 Eiffel, Liberty | 
