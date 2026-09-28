@@ -62,7 +62,7 @@ Eiffel, Liberty |
 Factor | 
 Forth (Gforth) | 
 Fortran (GNU) | ? | high | two manual program runs within 1 second will yield two different byte streams
-FreeBASIC | seeding is based on the return value of the [TIMER](https://www.freebasic-portal.de/befehlsreferenz/timer-295.html) function with a resolution in microseconds | high | the [RANDOMIZE instruction] (https://www.freebasic-portal.de/befehlsreferenz/randomize-539.html) is used for seeding
+FreeBASIC | seeding is based on the return value of the [TIMER](https://www.freebasic-portal.de/befehlsreferenz/timer-295.html) function with a resolution in microseconds | high | the [RANDOMIZE instruction](https://www.freebasic-portal.de/befehlsreferenz/randomize-539.html) is used for seeding
 (Object) Free Pascal |
 Gleam | 
 Go | 
