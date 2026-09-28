@@ -61,8 +61,8 @@ Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/ope
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
-Fortran (GNU) | 
-FreeBASIC | 
+Fortran (GNU) | ? | high | two manual program runs within 1 second will yield two different byte streams
+FreeBASIC | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 (Object) Free Pascal | 
 Gleam | 
 Go | 
