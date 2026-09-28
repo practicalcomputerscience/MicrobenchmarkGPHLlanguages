@@ -57,7 +57,7 @@ Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/m
 Curry (KiCS2) | 
 D | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
-Dylan | xxx | low | two manual program runs within 1 second may yield **the same byte streams**
+Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/e15b576ca0f356084bd52d94d3cadcc0402626df/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since January 1, 1970 (00:00:00 UTC), and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
