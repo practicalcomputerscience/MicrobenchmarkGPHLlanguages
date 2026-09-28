@@ -57,7 +57,7 @@ Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/m
 Curry (KiCS2) | 
 D | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
-Dylan | 
+Dylan | xxx | low | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
