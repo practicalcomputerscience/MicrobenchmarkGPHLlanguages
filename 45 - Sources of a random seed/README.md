@@ -43,7 +43,7 @@ programming language | used source of random seed | estimated quality of randomn
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | high | two manual program runs within 1 second will yield two different byte streams
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
-Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/43098d9e08cddba6b3f023a82adc58a1a3b9aa04/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
+Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
 C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second (*) | low | [Random Numbers in C: rand, srand, and Generating a Number in a Range](https://coddy.tech/docs/c/random-numbers)
 C++ | same like in C (*) | low |
 C3 | ? | high | two manual program runs within 1 second will yield two different byte streams
@@ -57,7 +57,7 @@ Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/m
 Curry (KiCS2) | 
 D | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
-Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/e15b576ca0f356084bd52d94d3cadcc0402626df/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since January 1, 1970 (00:00:00 UTC), and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
+Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since January 1, 1970 (00:00:00 UTC), and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
