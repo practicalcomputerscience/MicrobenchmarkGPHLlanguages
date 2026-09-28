@@ -62,7 +62,7 @@ Eiffel, Liberty |
 Factor | 
 Forth (Gforth) | 
 Fortran (GNU) | ? | high | two manual program runs within 1 second will yield two different byte streams
-FreeBASIC | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+FreeBASIC | 
 (Object) Free Pascal | 
 Gleam | 
 Go | 
