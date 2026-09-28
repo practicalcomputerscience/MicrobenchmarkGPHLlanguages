@@ -99,10 +99,10 @@ Scheme, Racket |
 Smalltalk (GNU) | 
 Standard ML (MLton) | 
 Swift | 
-Tcl | 
+Tcl | yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | a random seed probably (still) depends on the exact JavaScript engine being used: [Math.random() is not so random: The Illusion of Randomness in JavaScript](https://vinitshahdeo.substack.com/p/mathrandom-is-not-so-random-the-illusion), 2025; there's a chapter on [Better Alternatives for Randomness](https://vinitshahdeo.substack.com/i/167041440/the-quantum-question-randomness-in-the-future)
-V | 
-Zig | 
+V | [rand](https://modules.vlang.io/rand.html#readme_rand): _All the generators are initialized with time-based seeds._ | high | two manual program runs within 1 second will yield two different byte streams
+Zig | own implementation of a Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) with _std.posix.getrandom(std.mem.asBytes(&seed));_ | very high | 
 
 <br/>
 
