@@ -92,7 +92,7 @@ Prolog, SWI |
 Python | 
 Roc | 
 Ruby | 
-Rust | 
+Rust | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [rand::rngs::OsRng](https://docs.rust-embedded.org/cortex-m-rt/0.6.0/rand/rngs/struct.OsRng.html)
 Scala | 
 Scheme, Bigloo | 
 Scheme, Racket | 
