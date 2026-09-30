@@ -178,7 +178,7 @@ Tcl               |  95 | interpreted, very mature language | 2026-06-19
 Dart              |  90 | just-in-time or ahead-of-time compiled, mature web programming language | 2026-06-18
 Nim               |  90 | compiled, young language, which is very effective in its efforts to modernize C in terms of verbosity | 2026-05-28
 Mojo              |  89 | compiled, very young language | 2026-07-23
-PowerShell        |  88 | interpreted, mature language, together with .NET ecosystem: profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-06-18
+PowerShell        |  87 | interpreted, mature language, together with .NET ecosystem: profiting from concise (and fast) _System.Text.StringBuilder_ source code | 2026-09-30
 CoffeeScript      |  84 | compiled to JavaScript, and then interpreted, JIT (Just-In-Time) compiled, or AOT (Ahead-Of-Time) compiled, very mature language | 2026-06-17
 Hy                |  83 | interpreted, mature language, together with Python ecosystem | 2026-07-01
 Python            |  82 | interpreted, very mature language | 2026-07-23
