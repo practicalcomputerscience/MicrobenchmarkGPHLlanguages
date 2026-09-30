@@ -40,15 +40,15 @@ Nowadays, many languages, which are still actively maintained, offer cryptograph
 
 programming language | used source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
-Ada (GNAT) | package _Ada.Numerics.Discrete_Random_ | high | two manual program runs within 1 second will yield two different byte streams
+Ada (GNAT) | package _Ada.Numerics.Discrete_Random_: [Standard library: Numerics](https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_numerics.html#standard-library-numerics) | high | two manual program runs within 1 second will yield two different byte streams
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
-Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
+Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
 C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second (*) | low | [Random Numbers in C: rand, srand, and Generating a Number in a Range](https://coddy.tech/docs/c/random-numbers)
 C++ | same like in C (*) | low |
-C3 | ? | high | two manual program runs within 1 second will yield two different byte streams
-C# | ? | high | two manual program runs within 1 second will yield two different byte streams
-Chapel | ? | high | two manual program runs within 1 second will yield two different byte streams
+C3 | [random.c3](https://github.com/c3lang/c3c/blob/master/lib/std/math/random.c3): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
+C# | _Random rand = new Random();_: how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
+Chapel | ?????????????????? | high | two manual program runs within 1 second will yield two different byte streams
 Clojure | 
 COBOL (GnuCOBOL) | _ACCEPT FROM TIME_ returns the current system time in format HHMMSSCC, where CC represents the hundredths of a second | medium | [Working with Dates and Time in COBOL](https://www.mainframemaster.com/tutorials/cobol/dates-time)
 CoffeeScript | CoffeeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) | probably high (nowadays) | see at TypeScript below
@@ -61,7 +61,7 @@ Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/ope
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
-Fortran (GNU) | ? | high | two manual program runs within 1 second will yield two different byte streams
+Fortran (GNU) | _call random_number(ini_random_number)_ from [random_number](https://fortran-lang.org/learn/intrinsics/math/#random-number): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 FreeBASIC | seeding is based on the return value of the [TIMER](https://www.freebasic-portal.de/befehlsreferenz/timer-295.html) function with a resolution in microseconds | high | the [RANDOMIZE instruction](https://www.freebasic-portal.de/befehlsreferenz/randomize-539.html) is used for seeding
 (Object) Free Pascal |
 Gleam | 
@@ -87,7 +87,7 @@ Perl 5 |
 PHP | PHP's _rand()_ function uses the locally supported C function: [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php) | low
 Picat | 
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
-PowerShell | ? | probably high | [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6)
+PowerShell | _$x_old = (Get-Random -Maximum ($m - 1)) + 1_: how is this seeded? | probably high | [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6)
 Prolog, SWI | 
 Python | [class numpy.random.RandomState(seed=None)](https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState): _If seed is None, then the MT19937 BitGenerator is initialized by reading data from /dev/urandom..._ | very high | using "legacy random generation" here: [numpy.random.randint](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html); new code should use _np.random.default_rng()_ instead
 Roc | 
