@@ -87,7 +87,7 @@ Perl 5 |
 PHP | PHP's _rand()_ function uses the locally supported C function: [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php) | low
 Picat | 
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
-PowerShell | 
+PowerShell | ? | probably high | [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6)
 Prolog, SWI | 
 Python | 
 Roc | 
