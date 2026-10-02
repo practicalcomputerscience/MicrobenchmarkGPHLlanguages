@@ -63,7 +63,7 @@ Factor |
 Forth (Gforth) | 
 Fortran (GNU) | _call random_number(ini_random_number)_ from [random_number](https://fortran-lang.org/learn/intrinsics/math/#random-number): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 FreeBASIC | seeding is based on the return value of the [TIMER](https://www.freebasic-portal.de/befehlsreferenz/timer-295.html) function with a resolution in microseconds | high | the [RANDOMIZE instruction](https://www.freebasic-portal.de/befehlsreferenz/randomize-539.html) is used for seeding
-(Object) Free Pascal |
+(Object) Free Pascal | Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) at function [Fptime()](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/ossysc.inc?plain=1#L29), though this function only reads the number of seconds and **not** microseconds since the Epoch, that is 1970-01-01 00:00:00 +0000 (UTC) | low | [Procedure Randomize](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/system.pp#L462)
 Gleam | 
 Go | 
 Groovy | 
