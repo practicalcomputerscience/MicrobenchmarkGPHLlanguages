@@ -7,6 +7,8 @@
 - PRNG = pseudo-random number generator
 - RNG = random number generator
 
+In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
+
 <br/>
 
 - very high quality, like cryptographic quality
