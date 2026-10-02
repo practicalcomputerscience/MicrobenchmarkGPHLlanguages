@@ -9,6 +9,8 @@
 
 In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
 
+Epoch here is the Unix time, which is defined as the number of non-leap seconds, and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970.
+
 <br/>
 
 - very high quality, like cryptographic quality
@@ -59,13 +61,13 @@ Crystal | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/m
 Curry (KiCS2) | 
 D | Linux system call of [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
-Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since January 1, 1970 (00:00:00 UTC), and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
+Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since the Epoch, and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
 Fortran (GNU) | _call random_number(ini_random_number)_ from [random_number](https://fortran-lang.org/learn/intrinsics/math/#random-number): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 FreeBASIC | seeding is based on the return value of the [TIMER](https://www.freebasic-portal.de/befehlsreferenz/timer-295.html) function with a resolution in microseconds | high | the [RANDOMIZE instruction](https://www.freebasic-portal.de/befehlsreferenz/randomize-539.html) is used for seeding
-(Object) Free Pascal | Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) at function [Fptime()](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/ossysc.inc?plain=1#L29), though this function only reads the number of seconds and **not** microseconds since the Epoch, that is 1970-01-01 00:00:00 +0000 (UTC) | low | [Procedure Randomize](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/system.pp#L462)
+(Object) Free Pascal | Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) at function [Fptime()](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/ossysc.inc?plain=1#L29), though this function only reads the number of seconds and **not** microseconds since the Epoch | low | [Procedure Randomize](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/system.pp#L462)
 Gleam | 
 Go | 
 Groovy | 
@@ -77,7 +79,7 @@ Java | class _ThreadLocalRandom_ uses the current timestamp with a resolution of
 Julia | Julia's default RNG initially calls Julia function [uv_random](https://github.com/JuliaLang/julia/blob/master/base/libc.jl#L457), which in return calls function [uv_random](https://docs.libuv.org/en/stable/misc.html#c.uv_random) in C library _libuv_ for cross-platform asynchronous I/O, which in return makes a [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) Linux system call to _obtain a series of random bytes_ | very high | the [urandom(4)](https://linux.die.net/man/4/urandom) entropy source _gathers environmental noise from device drivers and other sources into an entropy pool_
 Kotlin | 
 Lua | the _math.randomseed(os.time())_ function most probably uses the system clock with a resolution of 1 second | low | https://www.luadocs.com/docs/functions/math/random
-Mercury | 
+Mercury | my own and direct implementation of a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which is reading the number of seconds and microseconds since the Epoch. The number of milliseconds is then calculated which serves as the seed | high | 
 Modula-2 (GNU) | 
 Modula-3 (CM3) | 
 Mojo | 
