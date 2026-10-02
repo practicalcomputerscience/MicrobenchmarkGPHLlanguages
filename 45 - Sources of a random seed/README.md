@@ -83,7 +83,7 @@ Nim |
 Oberon (OBC) | 
 OCaml | 
 Odin | 
-Perl 5 | 
+Perl 5 | the [rand()] function initially calls the [srand(https://perldoc.perl.org/5.38.2/functions/rand)](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to call [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented using [getrandom(2)]() | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/157525abaa406f6d0737a3480cc625eb33e3ff8b/util.c#L4738-L4739)
 PHP | PHP's _rand()_ function uses the locally supported C function: [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php) | low
 Picat | 
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
