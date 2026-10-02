@@ -79,7 +79,7 @@ Java | class _ThreadLocalRandom_ uses the current timestamp with a resolution of
 Julia | Julia's default RNG initially calls Julia function [uv_random](https://github.com/JuliaLang/julia/blob/master/base/libc.jl#L457), which in return calls function [uv_random](https://docs.libuv.org/en/stable/misc.html#c.uv_random) in C library _libuv_ for cross-platform asynchronous I/O, which in return makes a [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) Linux system call to _obtain a series of random bytes_ | very high | the [urandom(4)](https://linux.die.net/man/4/urandom) entropy source _gathers environmental noise from device drivers and other sources into an entropy pool_
 Kotlin | 
 Lua | the _math.randomseed(os.time())_ function most probably uses the system clock with a resolution of 1 second | low | https://www.luadocs.com/docs/functions/math/random
-Mercury | my own and direct implementation of a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which is reading the number of seconds  plus any fractional seconds in microseconds since the Epoch. The total number of milliseconds is then calculated, which serves as the seed: _Ms = (int)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));_ | high | 
+Mercury | my own and direct implementation of a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which is reading the number of seconds, plus any fractional seconds in microseconds, since the Epoch. The total number of milliseconds is then calculated, which serves as the seed: _Ms = (int)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));_ | high | 
 Modula-2 (GNU) | 
 Modula-3 (CM3) | 
 Mojo | 
