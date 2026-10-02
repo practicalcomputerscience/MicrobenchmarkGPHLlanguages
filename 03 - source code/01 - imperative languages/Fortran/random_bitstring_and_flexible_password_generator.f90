@@ -3,6 +3,7 @@
 ! 2026-01-06
 ! 2026-05-22: replace variable name reply with "standard" name answer_str
 ! 2026-06-19: user enters 500 pw chars and only gets 50: fixed
+! 2026-10-02: get rid off redundant variable X0
 !
 !
 ! build on Ubuntu 24 LTS: $ gfortran -Wall -Wextra -fcheck=all random_bitstring_and_flexible_password_generator.f90 -o random_bitstring_and_flexible_password_generator
@@ -44,7 +45,7 @@ program random_bitstring_and_flexible_password_generator
   character(len=1)  :: char0, char1
 
   real :: ini_random_number  ! https://fortran-lang.org/learn/intrinsics/math/#random-number
-  integer :: X0, i, byte_nbr, N_CHAR, j
+  integer :: i, byte_nbr, N_CHAR, j
   logical :: answer, WITH_SPECIAL_CHARS
   character(len=99) :: answer_str  ! the answer_str string can never grow beyond 99 (ASCII) characters
   character(len=:), allocatable :: CHAR_SET
@@ -63,9 +64,8 @@ program random_bitstring_and_flexible_password_generator
   call random_number(ini_random_number)
   ! returns a single pseudorandom number from the uniform distribution over the range 0 <= x < 1
 
-  X0 = int(ini_random_number * (m - 1)) + 1
-  ! print *, "X0 =", X0  ! for testing; * is for a formatting the compiler thinks is best
-  x(1) = X0
+  x(1) = int(ini_random_number * (m - 1)) + 1
+  ! print *, "x(1) =", x(1)  ! for testing; * is for a formatting the compiler thinks is best
 
 
   print "(/,A)", "generating a random bit stream..."

@@ -1,6 +1,8 @@
 ! random_streams_for_perf_stats.f90
 !
 ! 2026-01-05/06
+! 2026-10-02: get rid off redundant variable X0
+!
 !
 ! build on Ubuntu 24 LTS: $ gfortran -Wall -Wextra -fcheck=all random_streams_for_perf_stats.f90 -o random_streams_for_perf_stats
 ! run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
@@ -46,7 +48,7 @@ program random_streams_for_perf_stats
   character(len=4)  :: bits_hex_str
 
   real :: ini_random_number  ! https://fortran-lang.org/learn/intrinsics/math/#random-number
-  integer :: X0, i, byte_nbr
+  integer :: i, byte_nbr
 
   integer :: x(END)  ! Arrays in Fortran are one-based by default
 
@@ -61,9 +63,8 @@ program random_streams_for_perf_stats
   call random_number(ini_random_number)
   ! returns a single pseudorandom number from the uniform distribution over the range 0 <= x < 1
 
-  X0 = int(ini_random_number * (m - 1)) + 1
-  ! print *, "X0 =", X0  ! for testing; * is for a formatting the compiler thinks is best
-  x(1) = X0
+  x(1) = int(ini_random_number * (m - 1)) + 1
+  ! print *, "x(1) =", x(1)  ! for testing; * is for a formatting the compiler thinks is best
 
 
   print "(/,A)", "generating a random bit stream..."
