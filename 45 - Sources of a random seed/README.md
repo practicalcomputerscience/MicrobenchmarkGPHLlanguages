@@ -82,7 +82,7 @@ Lua | the _math.randomseed(os.time())_ function most probably uses the system cl
 Mercury | my own and direct implementation of a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which is reading the number of seconds, plus any fractional seconds in microseconds, since the Epoch. The total number of milliseconds is then calculated, which serves as the seed: _Ms = (int)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));_ | high | 
 Modula-2 (GNU) | 
 Modula-3 (CM3) | 
-Mojo | [seed()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/random/random.mojo#L39) initially reads the current system time in nanoseconds: _seed(perf_counter_ns())_ | high | [perf_counter_ns()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L174)
+Mojo | [seed()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/random/random.mojo#L39) initially reads the current system time in nanoseconds: _seed(perf_counter_ns())_ | high | [perf_counter_ns()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L174), [_clock_gettime()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L71)
 Nim | 
 Oberon (OBC) | 
 OCaml | 
