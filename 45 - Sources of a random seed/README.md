@@ -7,9 +7,11 @@
 - PRNG = pseudo-random number generator
 - RNG = random number generator
 
-In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
+From Wikipedia:
 
-Epoch here is the Unix time, which is defined as the number of non-leap seconds, and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970.
+> In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
+
+Epoch here is the Unix time, which is defined as the number of non-leap seconds and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970.
 
 <br/>
 
@@ -32,11 +34,11 @@ Leveraging this (sophisticated) idea unexpectedly provided a good source of rand
 Before I came to a Pascal implementation, I was already aware of the fact that not all implementations feature a somehow decent source of randomness, and thus started another language list to get me an overview.
 
 > [!NOTE]
-> The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given language!
+> The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given programming language!
 
-Usually, I just took the oldest and simplest method.
+Usually, I just took the oldest and simplest method. That's why I decided to leave the nowadays quite primitive system time based solution with a resolution of only 1 second ("low quality") in my C and C++ programs for example. So, when running the C and C++ based programs within 1 second, there's a good chance that the generated random streams are just the same!
 
-Nowadays, many languages, which are still actively maintained, offer cryptographically secure sources of entropy, and if it's only implicitly making an operating system call of [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux for example, something which could often be done with user defined code in many programming languages. However, I don't have a need for it in this project.
+Nowadays, many languages offer interfaces to cryptographically secure sources of entropy, for example with implicitly calling system function [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux, something which could often be done with a user defined function in many programming languages.
 
 <br/>
 
