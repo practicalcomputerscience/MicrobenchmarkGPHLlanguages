@@ -3,10 +3,12 @@
 # Sources of a random seed
 
 - CS = cryptographically secure
-- Epoch here is the Unix time, which is defined as the number of non-leap seconds and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
+- Epoch = Unix time, which is defined as the number of non-leap seconds and microseconds from system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
 - PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
 - RNG = random number generator
+
+<br/>
 
 From Wikipedia:
 
@@ -18,13 +20,13 @@ from [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insuffi
 
 <br/>
 
-Here is my owne and simple ranking of the quality of randomness of a seed:
+Here is my simple quality ranking of the randomness of a seed:
 
 - very high quality, like cryptographic quality
 - high quality, like current (Linux) system timestamp with resolution of milliseconds or even nanoseconds
 - medium quality, like current system timestamp with resolution of hundredths of a second
 - low quality, like current system timeststamp with resolution of 1 second
-- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second. Do I have made an implementation with no entropy source at all? (tbd)
+- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second. Have I done an implementation with no entropy source at all? (tbd)
 
 <br/>
 
