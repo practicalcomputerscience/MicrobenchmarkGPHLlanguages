@@ -4,6 +4,9 @@
 %
 % 2025-11-03/04/05/20, 2025-12-01: have small hex letters a...f
 % 2025-12-24: see below
+% 2026-06-09: FinalStr renamed to more common AnswerStr
+% 2026-10-08: better and more efficient implementation of the Linux system time based random seed
+%
 %
 % predicate =~ statement
 %
@@ -53,17 +56,39 @@
 %
 % user defined functions
 
-% this solution is completely and 1:1 based on MS Bing AI prompt:
-%   "Mercury language get system time in milliseconds"
-% Foreign import of a C function to get time in milliseconds
-:- pred get_time_ms(int::out) is det.
+% 2026-10-08
+% Foreign import of a C function to get Linux system time in seconds and
+% residual microseconds. Make a random seed with good hashing from both values:
+:- pred get_random_seed(int::out) is det.
 :- pragma foreign_proc("C",
-    get_time_ms(Ms::out),
+    get_random_seed(Seed::out),
     [will_not_call_mercury, promise_pure, thread_safe],
 "
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    Ms = (int)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));
+
+    uint64_t seconds      = (uint64_t)tv.tv_sec;
+    uint64_t microseconds = (uint64_t)tv.tv_usec;
+
+    // Seed = (uint64_t)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000LL));  // old and very weak solution
+    //
+    // 2026-10-08: implementation of the 64 bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm,
+    // as seen here: https://mojoauth.com/security-guides/fnv-1a-in-c
+    uint64_t offsetbasis64 = 14695981039346656037ULL;  // FNV offset basis in 64 bit: 0xCBF29CE484222325, which is not prime!
+    uint64_t prime64       = 1099511628211ULL;         // FNV prime in 64 bit: 0x100000001B3
+    // hash the seconds:
+    offsetbasis64 ^= seconds;  // ^ is the bitwise XOR (Exclusive OR) operation
+    offsetbasis64 *= prime64;
+    // hash the microseconds:
+    offsetbasis64 ^= microseconds;
+    offsetbasis64 *= prime64;
+
+    // make sure that we start seeding only in range [1..m-1],
+    // but you cannot use the standard C modulo operator here because it's a comment symbol in Mercury!!
+    // So, we use the div() function:
+    Seed = (int)(div(offsetbasis64, (65521ULL - 1ULL)).rem + 1ULL);  // M = 65521 = 2^16 - 15
+
+    // Seed = (int)(tv.tv_sec * 13ULL + tv.tv_usec);  // very simple hashing alternative as seen at the Oxford Oberon-2 Compiler
 ").
 
 :- pragma foreign_decl("C", "
@@ -131,12 +156,12 @@ input_a_valid_number(NChar, NewNChar, !IO) :-
 
   io.read_line_as_string(Result, !IO),
   (if Result = ok(String),
-      FinalStr = string.strip(String)
+      AnswerStr = string.strip(String)
    then
-     (if FinalStr = "y" then
+     (if AnswerStr = "y" then
          NewNChar = NChar
       else
-        (if string.to_int(FinalStr, Nbr) then
+        (if string.to_int(AnswerStr, Nbr) then
             (if Nbr < 8 then
                io.format("enter an integer number >= 8 or 'y'\n", [], !IO),
                input_a_valid_number(NChar, NewNChar, !IO)
@@ -161,10 +186,10 @@ answer_yes_or_no(Answer, !IO) :-
 
   io.read_line_as_string(Result, !IO),
   (if Result = ok(String),
-     FinalStr = string.strip(String)
+     AnswerStr = string.strip(String)
    then
-     % io.format("FinalStr = %s\n", [s(FinalStr)], !IO),  % for testing
-     (if FinalStr = "y" then
+     % io.format("AnswerStr = %s\n", [s(AnswerStr)], !IO),  % for testing
+     (if AnswerStr = "y" then
          Answer = yes
       else  % some other answer
          Answer = no
@@ -309,24 +334,19 @@ main(!IO) :-
                   % Otherwise, these names would be symbol names.
   % End = 100,  % for testing
 
-  M = 65521,  % = 2^16 - 15
+  % M = 65521,  % = 2^16 - 15, 2026-10-08: now obsolete here! Moved to get_random_seed()
 
   FileBitsX   = "random_bitstring.bin",
   FileBitsHex = "random_bitstring.byte",
 
-  get_time_ms(Ms),
-  % io.format("Current time: %d ms since epoch\n", [i(Ms)], !IO).  % for testing
-  Time0 = uint64.cast_from_int(Ms),      % type conversion into uint64
-  R0 = sfc16.seed(Time0),                % initialize a 16-bit SFC generator with a time based seed
-  get_int_random(1, M - 1, X0, R0, _),   % _: discard R::out; X0 is a dynamic random seed for the master loop; 2025-12-24
-  % pseudo-random integer that is uniformly distributed in the range Start to (Start + Range - 1), inclusive
-  % see: https://mercurylang.org/information/doc-release/mercury_library/random.html
-  % io.format("X0 = %d\n", [i(X0)], !IO),  % for testing
+  % 2026-10-08: very streamlined section now:
+  get_random_seed(Seed),
+  % io.format("Ready to use random seed, based on a FNV-1a hashed Linux system timestamp = %d\n", [i(Seed)], !IO),  % for testing
 
 
   io.write_string("\ngenerating a random bit stream...", !IO),
 
-  masterloop(End, X0, X, BitsX, BitsHex),  % 2 x input, 3 x output
+  masterloop(End, Seed, X, BitsX, BitsHex),  % 2 x input, 3 x output
 
   % Str = string(X),  % for testing
   % io.format("\nX = %s\n", [s(Str)], !IO),  % for testing
