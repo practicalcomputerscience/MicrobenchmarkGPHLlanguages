@@ -38,11 +38,11 @@ Before I came to a Pascal implementation, I was already aware of the fact that n
 > [!NOTE]
 > The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given programming language!
 
-Usually, I just took the oldest and simplest method. That's why I decided to leave the nowadays quite primitive system time based solution with a resolution of only 1 second ("low quality") in my C and C++ programs for example. So, when running the C and C++ based programs within 1 second, there's a good chance that the generated random streams are just the same!
+<br/>
 
 Nowadays, many languages offer an interface to a cryptographically secure source of entropy, for example with implicitly calling Linux system function [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html), something which could often be implemented **directly** with a user defined function in many programming languages.
 
-However, often a (Linux) system time based solution is just good enough. My Mercury implementation for example features such a solution of "high quality" in my view,
+However, often a (Linux) system time based solution is just good enough. My Mercury implementation for example features an individual "high quality" solution from my point of view,
 where everything needed is just packed into a user defined C function as part of the Mercury source code, see below.
 
 <br/>
@@ -55,7 +55,7 @@ Ada (GNAT) | package _Ada.Numerics.Discrete_Random_: [Standard library: Numerics
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
-C | a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) reads the number of seconds and the number of any residual, non-overlapping **nanoseconds** since the last system boot ("CLOCK_MONOTONIC"), which are then simply mixed as: _unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);_. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | Here, I just applied the Oxford Oberon-2 Compiler's simple mixing function, see below, to not overdo it at the seeding.
+[C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) | a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) reads the number of seconds and the number of any residual, non-overlapping **nanoseconds** since the last system boot ("CLOCK_MONOTONIC"), which are then simply mixed as: _unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);_. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | Here, I just applied the Oxford Oberon-2 Compiler's simple mixing function, see below, to not overdo it at the seeding.
 C++ | tbd | high | tbd: 2026-10-09
 C3 | [random.c3](https://github.com/c3lang/c3c/blob/master/lib/std/math/random.c3): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 C# | it looks to me that (nowadays) C# is also leveraging the Address Space Layout Randomization (ASLR), as it can be seen at instruction: _ulong* ptr = stackalloc ulong[4];_ in sources [Random.Xoshiro256StarStarImpl.cs](https://github.com/dotnet/dotnet/blob/1aed6a13a182cbe8d03d0f60f9a0817c875f0ea1/src/runtime/src/libraries/System.Private.CoreLib/src/System/Random.Xoshiro256StarStarImpl.cs#L35) | high |
