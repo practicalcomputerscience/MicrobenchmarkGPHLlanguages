@@ -3,6 +3,7 @@
 # Sources of a random seed
 
 - CS = cryptographically secure
+- Epoch here is the Unix time, which is defined as the number of non-leap seconds and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
 - PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
 - RNG = random number generator
@@ -14,8 +15,6 @@ From Wikipedia:
 > The /dev/urandom source is itself a PRNG but it is frequently reseeded from the high entropy /dev/random resource which makes it impractical for an attacker to target.
 
 from [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php).
-
-Epoch here is the Unix time, which is defined as the number of non-leap seconds and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970.
 
 <br/>
 
