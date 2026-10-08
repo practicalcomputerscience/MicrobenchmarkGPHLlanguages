@@ -117,7 +117,7 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 <br/>
 
-(*) the 1 second seeding resolution can be easily tested with two manual program runs within 1 second:
+(*) the 1 second seeding resolution can easily be tested with two manual program runs within 1 second, here in the Dylan implementation:
 
 ```
 $ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
