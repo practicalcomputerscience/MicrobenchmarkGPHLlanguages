@@ -2,7 +2,7 @@
 
 TL;DR: For Linux the only really viable Oberon implementation in 2026 is the Oxford Oberon-2 Compiler according to my experiments: https://github.com/Spivoxity/obc-3
 
-And even there the Oberon ecosystem is really slim, but workable. You definitely will have more fun with [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
+And even there the Oberon ecosystem is really slim, but workable. You definitely have more fun with [Modula-2](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-2#modula-2) and [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3#modula-3).
 
 ---
 
