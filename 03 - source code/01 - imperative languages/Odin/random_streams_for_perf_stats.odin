@@ -2,20 +2,22 @@
 random_streams_for_perf_stats.odin
 
 2026-01-07/08
+2026-10-08: correction of rand.int_max() call: https://pkg.odin-lang.org/core/math/rand/#int_max
+
 
 build on Ubuntu 24 LTS: $ odin build random_streams_for_perf_stats.odin -file           # for developing
-                        $ odin build random_streams_for_perf_stats.odin -file -o:speed  # for release
-                        $ (odin build random_streams_for_perf_stats.odin -file -o:aggressive => no better speed)
+                        ($ odin build random_streams_for_perf_stats.odin -file -o:speed  # for release)
+                        $ odin build random_streams_for_perf_stats.odin -file -o:aggressive  # for release
+                          => slightly better exe speed in Odin version dev-2026-10 than with -o:speed switch compared to dev-2026-01!!
 
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
                         $ time ./random_streams_for_perf_stats # -o:speed      => real	0m0.014s
-                        ($ time ./random_streams_for_perf_stats # -o:aggressive => real	0m0.014s)
 
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 
 
 $ odin version
-odin version dev-2026-01-nightly
+odin version dev-2026-10-nightly:84bc3fc
 $
 
 */
@@ -49,7 +51,7 @@ main :: proc() {
   x := make([]int, END)
   defer delete(x)
 
-  x[0] = int(rand.int_max(m - 1))  // range is: [1...max]
+  x[0] = rand.int_max(m - 1) + 1  // range is now: [1...max]; fixed on 2026-10-08
   // fmt.eprintln("x[0] =", x[0])  // for testing
 
   bits_x   := strings.builder_make()  // strings.builder_make(0, M1) is not faster
@@ -87,15 +89,15 @@ main :: proc() {
 
   // try to write the string to the file with error handling:
   // https://github.com/odin-lang/Odin/blob/f9d9166ff11f3b6eeedb4355dfa930d69c40be8a/core/unicode/tools/generate_entity_table.odin#L217
-  written := os.write_entire_file(file_bits_x, transmute([]byte)bits_x_str_total)
-	if written {
+  err1 := os.write_entire_file(file_bits_x, transmute([]byte)bits_x_str_total)
+	if err1 == nil {  // 2026-10-08: updated to new Odin version
 		fmt.printf("Bit stream has been written to disk under name:  %v", file_bits_x)
 	} else {
 		fmt.printf("could not write to file: %v", file_bits_x)
 	}
 
-  written = os.write_entire_file(file_bits_hex, transmute([]byte)bits_hex_str_total)
-	if written {
+  err2 := os.write_entire_file(file_bits_hex, transmute([]byte)bits_hex_str_total)
+	if err2 == nil {  // 2026-10-08: updated to new Odin version
 		fmt.printf("\nByte stream has been written to disk under name: %v", file_bits_hex)
 	} else {
 		fmt.printf("\ncould not write to file: %v", file_bits_hex)
@@ -106,4 +108,3 @@ main :: proc() {
 }
 
 // end of random_streams_for_perf_stats.odin
-
