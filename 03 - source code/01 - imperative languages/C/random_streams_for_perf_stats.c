@@ -7,24 +7,27 @@ random_streams_for_perf_stats.c
 2025-12-17: see below
 2026-01-11: deleted one outdated definition for nanosec_to_millisec
 2026-07-16: bits_x: there's trash at the last char's/bytes when porting to other Linux + gcc versions!
+2026-10-08: substantially better implementation of a Linux system time based random seed
 
 
 build on Ubuntu 24 LTS: $ /usr/lib/llvm-22/bin/clang random_streams_for_perf_stats.c -O3 -o random_streams_for_perf_stats_clang
                         # -ffast-math is not improving exe speed here
+                        $ time ./random_streams_for_perf_stats_clang
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang
 
 
 $ /usr/lib/llvm-22/bin/clang -v
-Ubuntu clang version 22.1.8 (++20260613092238+e80beda6e255-1~exp1~20260613092253.78)
+Ubuntu clang version 22.1.8 (++20260714014902+ca7933e47d3a-1~exp1~20260714135019.80)
+
 ...
 $
 
 */
 
 
-#include <time.h>    // srand(time(NULL))
+#include <time.h>    // struct timespec ts; 2026-10-08
 #include <stdio.h>   // printf()
-#include <stdlib.h>  // srand(), rand(); 2026-02-01
+// #include <stdlib.h>  // srand(), rand(); 2026-02-01; 2026-10-08: not needed anymore
 // #include <string.h>  // strncpy(); 2026-02-01: not needed here
 // #include <ctype.h>   // 2026-02-01: not needed here
 
@@ -48,10 +51,17 @@ int main()
 
   int x[END];  // set aside a space on the stack big enough for END integers
 
-  srand(time(NULL));      // Initialize RNG seed.
-  // printf("%i\n", rand()); // Make one draw.
+  // srand(time(NULL));      // Initialize RNG seed; 2026-10-08: this very common initialization since ages
+                             // with the number of seconds of the Linux system time since Epoch is not a good idea!
+                             // See from here for example: https://coddy.tech/docs/c/random-numbers
+                             // Instead, use Linux system call clock_gettime() with a resolution of nanoseconds.
+  // x[0] = rand() % (m-1) + 1;  // 2026-10-08: also retire this now redundant idea!
 
-  x[0] = rand() % (m-1) + 1;  // rand(): random number between 0 and RAND_MAX, both included; 2025-12-17
+  struct timespec ts;
+  clock_gettime(CLOCK_MONOTONIC, &ts);
+  unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);  // ^ is the bitwise XOR (Exclusive OR) operation
+  // (ts.tv_sec * 13) ^ ts.tv_nsec <-- I took this simple idea from the Oxford Oberon-2 Compiler
+  x[0] = seed % (m - 1) + 1;    // scale the seed to range [1..m-1] for a safe 16 bit integer random seed
   // printf("x[0] = %d\n", x[0]);  // for testing
 
   char bits_x[M1+1];  // 2026-07-16
@@ -87,7 +97,7 @@ int main()
     bits_x[byte_nbr+13]  = bits_x_str[13];
     bits_x[byte_nbr+14]  = bits_x_str[14];
     bits_x[byte_nbr+15]  = bits_x_str[15];
-    
+
     bits_x[byte_nbr+16]   = '\0';  // there's trash at the last char's/bytes; 2026-07-16
 
 
