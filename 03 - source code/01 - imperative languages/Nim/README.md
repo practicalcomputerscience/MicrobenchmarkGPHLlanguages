@@ -2,6 +2,8 @@
 
 https://nim-lang.org/
 
+https://github.com/nim-lang/Nim
+
 The new Nimony compiler in development:
 
 - https://github.com/nim-lang/nimony
