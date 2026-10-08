@@ -46,7 +46,7 @@ main :: proc() {
   ...
   x := make([]int, END)
   defer delete(x)
-  x[0] = int(rand.int_max(m - 1))  // range is: [1...max]
+  x[0] = rand.int_max(m - 1) + 1  // range is now: [1...max]; fixed on 2026-10-08
 
   bits_x := make([]u8, M1)  // <--- "C-style"
   defer delete(bits_x)
@@ -66,8 +66,8 @@ main :: proc() {
       ...
   }
 
-  written := os.write_entire_file(file_bits_x, bits_x)
-	if written {
+  err1 := os.write_entire_file(file_bits_x, bits_x)
+	if err1 == nil {
 		fmt.printf("Bit stream has been written to disk under name:  %v", file_bits_x)
 	}
   ...
