@@ -11,6 +11,10 @@ From Wikipedia:
 
 > In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
 
+> The /dev/urandom source is itself a PRNG but it is frequently reseeded from the high entropy /dev/random resource which makes it impractical for an attacker to target.
+
+from [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php).
+
 Epoch here is the Unix time, which is defined as the number of non-leap seconds and microseconds with system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970.
 
 <br/>
@@ -95,7 +99,7 @@ Oberon (OBC) | Oberon instruction _Random.Randomize;_ calls C function [GetSeed(
 OCaml | 
 Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/4d09219ff432b7abb28418ce5051c4088c664e42/base/runtime/os_specific_linux.odin#L30) | very high |
 Perl 5 | the [rand()](https://perldoc.perl.org/5.38.2/functions/rand) function initially calls the [srand](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to call [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/157525abaa406f6d0737a3480cc625eb33e3ff8b/util.c#L4738-L4739)
-PHP | PHP's _rand()_ function uses the locally supported C function: [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php) | low
+PHP | function [rand()](https://www.php.net/manual/en/function.rand.php): _This function uses the global Mt19937 (“Mersenne Twister”) instance as the source of randomness and thus shares its state with all other functions using the global Mt19937._ | high | two manual program runs within 1 second will yield two different byte streams
 Picat | 
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
 PowerShell | it's my wild guess that cmdlet [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6) may apply the same seeding (nowadays) as C# (as shown above) | probably high |
