@@ -52,15 +52,16 @@ int main()
   int x[END];  // set aside a space on the stack big enough for END integers
 
   // srand(time(NULL));      // Initialize RNG seed; 2026-10-08: this very common initialization since ages
-                             // with the number of seconds of the Linux system time since Epoch is not a good idea!
+                             // with only the number of seconds of the Linux system time since Epoch is not a good idea!
                              // See from here for example: https://coddy.tech/docs/c/random-numbers
                              // Instead, use Linux system call clock_gettime() with a resolution of nanoseconds.
   // x[0] = rand() % (m-1) + 1;  // 2026-10-08: also retire this now redundant idea!
 
   struct timespec ts;
-  clock_gettime(CLOCK_MONOTONIC, &ts);
+  clock_gettime(CLOCK_MONOTONIC, &ts);  // CLOCK_MONOTONIC => number of seconds since system boot
   unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);  // ^ is the bitwise XOR (Exclusive OR) operation
   // (ts.tv_sec * 13) ^ ts.tv_nsec <-- I took this simple idea from the Oxford Oberon-2 Compiler
+  // ts.tv_sec and ts.tv_nsec are not overlapping
   x[0] = seed % (m - 1) + 1;    // scale the seed to range [1..m-1] for a safe 16 bit integer random seed
   // printf("x[0] = %d\n", x[0]);  // for testing
 
