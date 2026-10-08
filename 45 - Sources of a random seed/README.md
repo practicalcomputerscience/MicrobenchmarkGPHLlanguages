@@ -15,11 +15,13 @@ Epoch here is the Unix time, which is defined as the number of non-leap seconds 
 
 <br/>
 
+Here is my owne and simple ranking of the quality of randomness of a seed:
+
 - very high quality, like cryptographic quality
 - high quality, like current (Linux) system timestamp with resolution of milliseconds or even nanoseconds
 - medium quality, like current system timestamp with resolution of hundredths of a second
 - low quality, like current system timeststamp with resolution of 1 second
-- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second
+- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of only 1 second. Do I have made an implementation with no entropy source at all? (tbd)
 
 <br/>
 
