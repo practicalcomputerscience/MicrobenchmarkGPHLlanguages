@@ -55,8 +55,8 @@ Ada (GNAT) | package _Ada.Numerics.Discrete_Random_: [Standard library: Numerics
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
-C | the _srand(time(NULL))_ function uses the current timestamp with a resolution of 1 second (*) | low | [Random Numbers in C: rand, srand, and Generating a Number in a Range](https://coddy.tech/docs/c/random-numbers)
-C++ | same as in C (*) | low |
+C | a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) reads the number of seconds plus any residual **nanoseconds** since the Epoch, which are simply mixed as: _unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);_. The result as then modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | I have just applied the Oxford Oberon-2 Compiler's simple mixing function, see below, to not overdo it at the seeding here.
+C++ | tbd | high | tbd: 2026-10-09
 C3 | [random.c3](https://github.com/c3lang/c3c/blob/master/lib/std/math/random.c3): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 C# | it looks to me that (nowadays) C# is also leveraging the Address Space Layout Randomization (ASLR), as it can be seen at instruction: _ulong* ptr = stackalloc ulong[4];_ in sources [Random.Xoshiro256StarStarImpl.cs](https://github.com/dotnet/dotnet/blob/1aed6a13a182cbe8d03d0f60f9a0817c875f0ea1/src/runtime/src/libraries/System.Private.CoreLib/src/System/Random.Xoshiro256StarStarImpl.cs#L35) | high |
 Chapel | [Random](https://chapel-lang.org/docs/modules/standard/Random.html): _When not provided explicitly, a seed value will be generated in an implementation specific manner which is designed to minimize the chance that two distinct randomStream’s will have the same seed._: how exactly is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
@@ -120,27 +120,26 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 (*) the 1 second seeding resolution can be easily tested with two manual program runs within 1 second:
 
 ```
-$ ./random_streams_for_perf_stats_clang; head -c 10 random_bitstring.byte
+$ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-bf16f7c597$ ./random_streams_for_perf_stats_clang; head -c 10 random_bitstring.byte
+995b31f810$ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-bf16f7c597$
+995b31f810$
 ```
 
 Here, the first 10 characters of the random byte stream are identical, indicating that the quality of randomness of a seed is rather low.
 
 <br/>
 
-
 ## Variant 13 of David Stafford's 64-bit mix function
 
-As seen here for example: [MixFunctions.java](https://commons.apache.org/proper/commons-rng/commons-rng-simple/jacoco/org.apache.commons.rng.simple.internal/MixFunctions.java.html):
+As seen from here for example: [MixFunctions.java](https://commons.apache.org/proper/commons-rng/commons-rng-simple/jacoco/org.apache.commons.rng.simple.internal/MixFunctions.java.html):
 
 ```
     static long stafford13(long x) {
