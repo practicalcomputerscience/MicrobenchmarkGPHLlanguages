@@ -83,7 +83,7 @@ Mercury | my own and direct implementation of a Linux system call of [gettimeofd
 Modula-2 (GNU) | 
 Modula-3 (CM3) | 
 Mojo | [seed()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/random/random.mojo#L39) initially reads the current system time in nanoseconds: _seed(perf_counter_ns())_ | high | [perf_counter_ns()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L174), [_clock_gettime()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L71)
-Nim | procedure [randomize()](https://github.com/nim-lang/Nim/blob/519ef706f77a6982ac3c57532a35aaf3b1de6c55/lib/pure/random.nim#L615) initially reads the current system time in nanoseconds | high |
+Nim | procedure [randomize()](https://github.com/nim-lang/Nim/blob/519ef706f77a6982ac3c57532a35aaf3b1de6c55/lib/pure/random.nim#L615) initially reads the current system time in nanoseconds: _randomize(now.toUnix * 1_000_000_000 + now.nanosecond)_ | high |
 Oberon (OBC) | 
 OCaml | 
 Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) Linux system call to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/4d09219ff432b7abb28418ce5051c4088c664e42/base/runtime/os_specific_linux.odin#L30) | very high |
