@@ -86,7 +86,7 @@ Mojo | [seed()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde
 Nim | 
 Oberon (OBC) | 
 OCaml | 
-Odin | 
+Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) Linux system call to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/4d09219ff432b7abb28418ce5051c4088c664e42/base/runtime/os_specific_linux.odin#L30) | high |
 Perl 5 | the [rand()](https://perldoc.perl.org/5.38.2/functions/rand) function initially calls the [srand](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to call [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/157525abaa406f6d0737a3480cc625eb33e3ff8b/util.c#L4738-L4739)
 PHP | PHP's _rand()_ function uses the locally supported C function: [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insufficient-Entropy-For-Random-Values.html#random-values-in-php) | low
 Picat | 
