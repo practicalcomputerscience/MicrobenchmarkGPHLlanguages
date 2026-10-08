@@ -184,7 +184,7 @@ int main(void) {
     random_seed_stafford13 *= 0x94d049bb133111ebULL;  // multiply with an "avalancing" constant
     random_seed_stafford13 ^= random_seed_stafford13 >> 31;
 
-    // weak hashing of the Oxford Oberon-2 Compiler: https://github.com/Spivoxity/obc-3
+    // weak hashing at the Oxford Oberon-2 Compiler: https://github.com/Spivoxity/obc-3
     //   Random.m: https://github.com/Spivoxity/obc-3/blob/1719f9fb328257b46dc7721267850bf929ebafd5/lib/Random.m#L109
     uint64_t random_seed_oxford_oberon2 = 13ULL * seconds + microseconds;
 
@@ -198,7 +198,7 @@ int main(void) {
 }
 ```
 
-Two (compiled) program runs within 1 second may look like this:
+Two (compiled) program runs within 1 second may then look like this:
 
 ```
 $ ./gettimeofday_call_SplitMix64_hashing
