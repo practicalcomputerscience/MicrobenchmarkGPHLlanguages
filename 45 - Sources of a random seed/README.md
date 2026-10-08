@@ -84,7 +84,7 @@ Modula-2 (GNU) |
 Modula-3 (CM3) | 
 Mojo | [seed()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/random/random.mojo#L39) initially reads the current system time in nanoseconds: _seed(perf_counter_ns())_ | high | [perf_counter_ns()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L174), [_clock_gettime()](https://github.com/modular/modular/blob/85356f6562ed57bab8762fde38448ba5b50b69c9/Mojo/stdlib/std/time/time.mojo#L71)
 Nim | procedure [randomize()](https://github.com/nim-lang/Nim/blob/519ef706f77a6982ac3c57532a35aaf3b1de6c55/lib/pure/random.nim#L615) initially reads the current system time in nanoseconds: _randomize(now.toUnix * 1_000_000_000 + now.nanosecond)_ | high |
-Oberon (OBC) | Oberon instruction _Random.Randomize;_ calls C function [GetSeed(void)](https://github.com/Spivoxity/obc-3/blob/1719f9fb328257b46dc7721267850bf929ebafd5/lib/Random.m#L109), which makes Linux system call _(gettimeofday(&tv, NULL))_. _GetSeed()_ finally returns this mixed value from the seconds and residual microseconds values: _return 13 * tv.tv_sec + tv.tv_usec;_ | high | Underlying idea of this operation: the microseconds value is automatically reset to 0 every time a new second ticks. However, the hashing quality of operation _13 * tv.tv_sec + tv.tv_usec_ is still weak, because the microseconds part still dominates the lower bits of the return value. See below at [Variant 13 of David Stafford's 64-bit mix function](tbd) for a modern hashing solution based on the Linux system time.
+Oberon (OBC) | Oberon instruction _Random.Randomize;_ calls C function [GetSeed(void)](https://github.com/Spivoxity/obc-3/blob/1719f9fb328257b46dc7721267850bf929ebafd5/lib/Random.m#L109), which makes Linux system call _(gettimeofday(&tv, NULL))_. _GetSeed()_ finally returns this mixed value from the seconds and residual microseconds values: _return 13 * tv.tv_sec + tv.tv_usec;_ | high | Underlying idea of this operation: the microseconds value is automatically reset to 0 every time a new second ticks. However, the hashing quality of operation _13 * tv.tv_sec + tv.tv_usec_ is still weak, because the microseconds part still dominates the lower bits of the return value. See below at [Variant 13 of David Stafford's 64-bit mix function](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/45%20-%20Sources%20of%20a%20random%20seed#variant-13-of-david-staffords-64-bit-mix-function) for a modern hashing solution based on the Linux system time.
 OCaml | 
 Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/4d09219ff432b7abb28418ce5051c4088c664e42/base/runtime/os_specific_linux.odin#L30) | very high |
 Perl 5 | the [rand()](https://perldoc.perl.org/5.38.2/functions/rand) function initially calls the [srand](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to call [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/157525abaa406f6d0737a3480cc625eb33e3ff8b/util.c#L4738-L4739)
@@ -144,7 +144,7 @@ As seen here for example: [MixFunctions.java](https://commons.apache.org/proper/
 ```
 
 Based on Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html),
-a demo program in C to effectively mix the seconds value of the Linux system time with its microseconds value may look like this (with the help of Google AI):
+a demo program in C to effectively mix the seconds value of the Linux system time with its residual microseconds value may look like this:
 
 ```
 #include <stdio.h>
@@ -167,7 +167,7 @@ int main(void) {
     uint64_t random_seed_stafford13 = (seconds << 32) | microseconds;
 
     // 2. Apply a SplitMix64/MurmurHash3 avalanching mixer
-    random_seed_stafford13 ^= random_seed_stafford13 >> 30;
+    random_seed_stafford13 ^= random_seed_stafford13 >> 30;  // ^ is the bitwise XOR (Exclusive OR) operation
     random_seed_stafford13 *= 0xbf58476d1ce4e5b9ULL;  // multiply with an "avalancing" constant
     random_seed_stafford13 ^= random_seed_stafford13 >> 27;
     random_seed_stafford13 *= 0x94d049bb133111ebULL;  // multiply with an "avalancing" constant
