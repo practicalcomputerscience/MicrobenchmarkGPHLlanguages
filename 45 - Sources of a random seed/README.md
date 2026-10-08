@@ -38,7 +38,7 @@ Before I came to a Pascal implementation, I was already aware of the fact that n
 
 Usually, I just took the oldest and simplest method. That's why I decided to leave the nowadays quite primitive system time based solution with a resolution of only 1 second ("low quality") in my C and C++ programs for example. So, when running the C and C++ based programs within 1 second, there's a good chance that the generated random streams are just the same!
 
-Nowadays, many languages offer interfaces to cryptographically secure sources of entropy, for example with implicitly calling system function [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux, something which could often be done with a user defined function in many programming languages.
+Nowadays, many languages offer interfaces to cryptographically secure sources of entropy, for example with implicitly calling system function [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html) in Linux, something which could often be implemented **directly** with a user defined function in many programming languages.
 
 <br/>
 
