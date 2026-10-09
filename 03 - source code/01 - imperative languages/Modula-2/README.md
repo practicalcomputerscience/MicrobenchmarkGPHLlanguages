@@ -58,7 +58,7 @@ $
 ## How to write fast Modula-2 programs
 
 After implementing the "speed part" of the microbenchmark program in [Modula-3](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Modula-3/random_streams_for_perf_stats_Main.m3),
-without any user defined functions or other hacks, and with an execution time of about 78 milliseconds, I got curious about how former Modula-2 would compare.
+without any user defined functions or other hacks, and with an execution time of about 78 milliseconds, I got curious about how former language Modula-2 would compare.
 
 In short: very bad without user defined functions or with using dynamic strings for string building, at least when using the GNU gm2 compiler with a GCC 13 frontend and activated ISO standard features.
 
