@@ -2,7 +2,7 @@
 
 Here using GNU Modula-2: https://www.nongnu.org/gm2/about.html
 
-Since the GNU Modula-2 compiler is a frontend to GCC, its sources can be found here for example: https://github.com/gcc-mirror/gcc/tree/master/gcc/m2
+Since the GNU Modula-2 compiler is a frontend to GCC, its sources can be found in GitHub, here for example of the runtime library: https://github.com/gcc-mirror/gcc/tree/master/libgm2
 
 ISO Libraries: https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gm2/M2-ISO-Libraries.html
 
