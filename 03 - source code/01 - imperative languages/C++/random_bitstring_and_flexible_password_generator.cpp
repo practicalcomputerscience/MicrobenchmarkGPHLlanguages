@@ -4,6 +4,7 @@ random_streams_for_perf_stats.cpp
 2026-01-15
 2026-05-24/24: refactored from char_set to pattern (for regular expressions)
 2026-06-17: [[:graph:]] at print_re instead of [!-~]
+2026-10-09: substantially better implementation of a Linux system time based random seed, same like in C solution
 
 
 build on Ubuntu 24 LTS: $ g++ -std=c++20 random_bitstring_and_flexible_password_generator.cpp -o random_bitstring_and_flexible_password_generator  # for development
@@ -64,9 +65,18 @@ int main() {
 
     vector<int> x(END);  // Use vector for dynamic sizing
 
-    srand(static_cast<unsigned int>(time(nullptr))); // https://en.cppreference.com/w/cpp/numeric/random/srand.html
+    // srand(static_cast<unsigned int>(time(nullptr))); // https://en.cppreference.com/w/cpp/numeric/random/srand.html
+    // 2026-10-09: this very common initialization since ages with only the number of seconds
+    //             of the Linux system time since Epoch is not a good idea!
+    //             Instead, use Linux system call clock_gettime() with a resolution of nanoseconds.
+    // x[0] = rand() % (m - 1) + 1;   // rand(): random number between 0 and RAND_MAX
 
-    x[0] = rand() % (m - 1) + 1;   // rand(): random number between 0 and RAND_MAX
+    timespec ts{};
+    clock_gettime(CLOCK_MONOTONIC, &ts);  // CLOCK_MONOTONIC => number of seconds since system boot
+    unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);  // ^ is the bitwise XOR (Exclusive OR) operation
+    // (ts.tv_sec * 13) ^ ts.tv_nsec <-- I took this simple idea from the Oxford Oberon-2 Compiler
+    // ts.tv_sec and ts.tv_nsec are not overlapping
+    x[0] = seed % (m - 1) + 1;    // scale the seed to range [1..m-1] for a safe 16 bit integer random seed
     // cout << x[0] << endl;  // for testing
 
     char bits_x[M1];
