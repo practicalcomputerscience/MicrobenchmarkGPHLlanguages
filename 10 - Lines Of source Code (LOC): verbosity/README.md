@@ -139,7 +139,7 @@ Gleam             | 143 | interpreted, very young language, together with Erlang
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
 AssemblyScript    | 140 | interpreted, young language, together with WebAssembly ecosystem: lots of user-defined functions needed | 2026-05-24
 Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
-C++               | 129 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-05-25
+C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-10-09
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 Odin              | 127 | compiled, young language | 2026-06-18
 OCaml             | 125 | compiled, mature language; some user-defined functions needed | 2026-09-16
