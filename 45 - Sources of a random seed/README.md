@@ -139,20 +139,24 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 A probable 1 second seeding resolution can easily be tested with two manual program runs within 1 second, here in the Dylan implementation:
 
 ```
-$ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+1791537064
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-995b31f810$ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+7eed1bd12a$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+1791537064
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-995b31f810$
+7eed1bd12a$ 
 ```
 
-Here, the first 10 characters of the random byte stream are identical, indicating that the quality of randomness of a seed is rather low.
+Here, the first 10 characters of the random byte stream are identical with _7eed1bd12a_, indicating that the quality of randomness of a seed is rather low.
+
+Command _date +%s_ shows the current Linux system time as the number of seconds since the Epoch.
 
 <br/>
 
