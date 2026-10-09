@@ -1,5 +1,7 @@
 2026-09-23: work in progress
 
+- tbd: TOC
+
 # Sources of a random seed
 
 - CS = cryptographically secure
@@ -9,6 +11,8 @@
 - RNG = random number generator
 
 <br/>
+
+###  Quality of a random seed with every program run
 
 From Wikipedia:
 
@@ -30,6 +34,8 @@ Here is my simple quality ranking of the randomness of a seed:
 
 <br/>
 
+### Motivation
+
 The solution in this Pascal implementation:
 
 > The [ISO 7185 program version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not read a time value for example.
@@ -38,7 +44,11 @@ The solution in this Pascal implementation:
 got me thinking about the general quality of a random seed in the numerous language implementations of the pseudo-random number generator in question.
 Leveraging this (sophisticated) idea unexpectedly provided a good source of randomness in a programming language which otherwise cannot access Linux system resources at all!
 
-Before I came to a Pascal implementation, I was already aware of the fact that not all program implementations feature a somehow decent source of randomness, and thus started the language list below to get me an overview.
+Before I came to a Pascal implementation, I was already aware of the fact that not all program implementations feature a somehow decent source of randomness, and thus started the [language list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/edit/main/45%20-%20Sources%20of%20a%20random%20seed/README.md#the-language-list) below to get me an overview.
+
+<br/>
+
+### Noteable things
 
 > [!NOTE]
 > The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given programming language!
@@ -54,7 +64,7 @@ With some languages, I couldn't figure out the seeding algorithm within a reason
 
 <br/>
 
-<br/>
+## The language list
 
 programming language | used source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
@@ -75,7 +85,7 @@ Crystal | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2
 Curry (KiCS2) | 
 D | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
 Dart | 
-Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since the Epoch, and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed (*) | low |
+Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since the Epoch, and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed; see below at [Test of a 1 second seeding resolution](tbd) | low |
 Eiffel, Liberty | 
 Factor | 
 Forth (Gforth) | 
@@ -124,7 +134,9 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 <br/>
 
-(*) the 1 second seeding resolution can easily be tested with two manual program runs within 1 second, here in the Dylan implementation:
+### Test of a 1 second seeding resolution
+
+A probable 1 second seeding resolution can easily be tested with two manual program runs within 1 second, here in the Dylan implementation:
 
 ```
 $ ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
