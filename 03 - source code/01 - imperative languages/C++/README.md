@@ -23,13 +23,13 @@ compiler version | compiler switches for release | mean exe time in milliseconds
 g++ 13.3.0 | -O3 -std=c++20 | 5.6 | +-1.83%
 Homebrew clang 23.1.1 | -O3 -std=c++20 -stdlib=libstdc++ | 7.1 | +-1.32%
 
-Mean exe time measured with the usual best out of 3 runs of: _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_g++_ or _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang_, respectively.
+Mean exe time measured with the usual best out of 3 runs of: _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_g++_ and _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang_, respectively.
 
 This result is the opposite of my [C exe time measurements](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs), where the clang version is just a little bit faster than the gcc version.
 
-Generally, both C++ versions are faster than both C versions, though the lead of the g++ version is astonishingly high.
+Generally, both C++ versions are faster than both C versions, though the lead of the implementation in C++ compiled with g++ is astonishingly high.
 
-My suspicion here is that with C++ the integer conversion to binary and hexadecimal strings is implemented more efficiently in C++ than in C, at least with my choices made:
+My suspicion here is that the integer conversions to binary and hexadecimal strings is implemented more efficiently in C++ than in C, at least with my choices made:
 
 language | function call
 --- | ---
