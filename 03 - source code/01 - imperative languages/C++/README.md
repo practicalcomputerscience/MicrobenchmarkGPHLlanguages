@@ -16,17 +16,16 @@ At least at the moment, including the fact that also C++ (as such) is not doing 
 
 <br/>
 
-Same like with C, I tried both compilers for compilation of the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp) of the microbenchmark program, with these results:
+Same like with C, I tried both compilers for compilation of the [speed part](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp) of the microbenchmark program, with these results as of 2026-10-09:
 
 compiler version | compiler switches for release | mean exe time in milliseconds | +/-standard deviation
 --- | --- | --- | ---
-g++ 13.3.0 | -O3 -std=c++20 | 5.9 | +-1.30%
-Homebrew clang 21.1.7 | -O3 -std=c++20 -stdlib=libstdc++ | 7.3 | +-1.10%
+g++ 13.3.0 | -O3 -std=c++20 | 5.6 | +-1.83%
+Homebrew clang 23.1.1 | -O3 -std=c++20 -stdlib=libstdc++ | 7.1 | +-1.32%
 
 Mean exe time measured with the usual best out of 3 runs of: _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_g++_ or _$ sudo perf stat -r 20 ./random_streams_for_perf_stats_clang_, respectively.
 
-This result is the opposite of my [C exe time measurements](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs),
-where the clang version is just a little bit faster than the gcc version: 7.8 milliseconds versus 8.2 milliseconds
+This result is the opposite of my [C exe time measurements](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs), where the clang version is just a little bit faster than the gcc version.
 
 Generally, both C++ versions are faster than both C versions, though the lead of the g++ version is astonishingly high.
 
