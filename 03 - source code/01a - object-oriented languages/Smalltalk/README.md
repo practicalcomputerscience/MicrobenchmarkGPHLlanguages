@@ -267,11 +267,11 @@ $
 
 About 221 milliseconds is definitely faster than the (old) GNU version with about 254 milliseconds!
 
-Be also aware that the Pharo version of the "speed part" of the microbenchmark program doesn't need any no user defined functions like the GNU version.
+Be also aware that the Pharo version of the "speed part" of the microbenchmark program doesn't need any user defined functions like the GNU version.
 
 <br/>
 
-However, transpiling the complete GNU Smalltalk program [random_bitstring_and_flexible_password_generator.st](./random_bitstring_and_flexible_password_generator.st) proved to be too much work so far.
+However, transpiling the complete GNU Smalltalk program [random_bitstring_and_flexible_password_generator.st](./random_bitstring_and_flexible_password_generator.st) into Pharo Smalltalk proved to be too much work so far.
 It's about this line of code, which is very hard to make it work on the console in Pharo (even with the help of "Big AI", and maybe practically impossible):
 
 ```
