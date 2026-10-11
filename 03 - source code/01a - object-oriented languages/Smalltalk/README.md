@@ -185,7 +185,7 @@ $
 
 ..because the "Pharo st command works with st files in chunk format. The chunk format uses ! character as delimiter.", see from here: https://github.com/pharo-project/pharo/issues/19220#issuecomment-3804245257
 
-That also means:
+Consequently:
 
 > [!IMPORTANT]
 > In Pharo, also don't place single ! characters inside the comments of a script! ('!!' is OK again)
