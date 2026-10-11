@@ -47,9 +47,9 @@ feature {} -- Initialization
 
             reg_expr_builder: REGULAR_EXPRESSION_BUILDER
             pattern: REGULAR_EXPRESSION
-            -- see from: https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/src/lib/regular_expression/regular_expression_builder.e#L7
+            -- see from: https://github.com/LibertyEiffel/Liberty/blob/master/src/lib/regular_expression/regular_expression_builder.e#L7
             --   posix_builder, perl5_builder, python_builder
-            -- https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/tutorial/regular_expression/example2.e#L18
+            -- https://github.com/LibertyEiffel/Liberty/blob/master/tutorial/regular_expression/example2.e#L18
 
         do
             upper_limit := 62501  -- 62501 for exactly 1M binary digits
