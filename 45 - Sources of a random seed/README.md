@@ -2,7 +2,7 @@
 
 - tbd: TOC
 
-- "how is this seeded?": Ada, C3, Fortran (GNU)
+- "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 # Sources of a random seed
 
@@ -72,7 +72,7 @@ programming language | used source of random seed | estimated quality of randomn
 --- | --- | --- | ---
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_: [Standard library: Numerics](https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_numerics.html#standard-library-numerics): how is this seeded? | high | two manual program runs within 1 second will yield two different byte streams
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | high | see below at TypeScript
-Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low(?) | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_
+Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_; two manual program runs within 1 second may yield the **same** byte streams with GNU Awk 5.2.1 in Ubuntu 24
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
 [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) | In my own implementation, a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) reads the number of seconds and the number of any residual, non-overlapping **nanoseconds** since the last system boot ("CLOCK_MONOTONIC"), which are then simply mixed as: _unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);_. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | I just applied the Oxford Oberon-2 Compiler's simple mixing function, see below, to not overdo it at the seeding, but to do better seeding than just doing ubiquitous function call _srand(time(NULL));_, which only has a resolution of 1 second.
 C++ | same like with C | high | same like with C
@@ -138,25 +138,48 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 ### Test of a 1 second seeding resolution
 
-A probable 1 second seeding resolution can easily be tested with two manual program runs within 1 second, here in the Dylan implementation:
+A probable 1 second seeding resolution can easily be tested with two automatic program runs within 1 second, here in the Dylan implementation:
 
 ```
-$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
-1791537064
+$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte; echo -e "\n"; date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+1791747223
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-7eed1bd12a$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
-1791537064
+f86e60a2ec
+
+1791747223
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
 Byte stream has been written to disk under name: random_bitstring.byte
-7eed1bd12a$ 
+f86e60a2ec$
 ```
 
-Here, the first 10 characters of the random byte stream are identical with _7eed1bd12a_, indicating that the quality of randomness of a seed is rather low.
+Here, the first 10 characters of the random byte stream are identical with _f86e60a2ec_, indicating that the quality of randomness of the seed is rather low.
+
+Now, we make a sleep of 1 second between program runs:
+
+```
+$ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte; echo -e "\n"; sleep 1s; date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
+1791747505
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+3ea0b56843
+
+1791747506
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+429e8da19f$
+```
+
+..only then get two different random byte streams.
+
 
 Command _date +%s_ shows the current Linux system time as the number of seconds since the Epoch.
 
