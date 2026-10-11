@@ -192,7 +192,7 @@ Consequently:
 
 <br/>
 
-A quick Pharo installation in the current working directory, so be careful, can be done like described at https://pharo.org/:
+A quick Pharo installation in the current working directory, so be careful, can be done as described at https://pharo.org/:
 
 ```
 $ wget -O- https://get.pharo.org/64 | bash
