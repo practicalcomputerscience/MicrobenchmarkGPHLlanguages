@@ -4,6 +4,8 @@ ISE (Interactive Software Engineering or Eiffel Software) EiffelStudio: https://
 
 Liberty Eiffel: https://www.liberty-eiffel.org/
 
+Auto-Sync Mirror of GNU liberty-eiffel: https://github.com/GitMirroring/liberty-eiffel
+
 [Eiffel in a Nutshell](https://archive.eiffel.com/eiffel/nutshell.html)
 
 [A comprehensive guide to Eiffel syntax](https://eiffel-guide.com/)
