@@ -124,7 +124,7 @@ Rust | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/ge
 Scala | 
 Scheme, Bigloo | 
 Scheme, Racket | 
-Smalltalk (GNU) | 
+Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are being read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/768d3ef44c2bd485ea1e595edf00824d2f6a5384/kernel/Random.st#L162) | high | 
 Standard ML (MLton) | 
 Swift | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Platform Implementation of `SystemRandomNumberGenerator`](https://developer.apple.com/documentation/swift/systemrandomnumbergenerator#Platform-Implementation-of-SystemRandomNumberGenerator)
 Tcl | _The seed of the generator is initialized from the internal clock of the machine..._ from: [rand](https://www.tcl-lang.org/man/tcl8.6/TclCmd/mathfunc.htm#M28) | high | two manual program runs within 1 second will yield two different byte streams
