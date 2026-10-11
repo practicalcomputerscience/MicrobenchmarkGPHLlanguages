@@ -26,7 +26,7 @@ from [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insuffi
 
 Here is my simple quality ranking of the randomness of a seed:
 
-- very high quality, like cryptographic quality
+- very high quality, like cryptographic quality, for example based on hardware entropy
 - high quality, like current (Linux) system timestamp with resolution of milliseconds or even nanoseconds
 - medium quality, like current system timestamp with resolution of hundredths of a second
 - low quality, like current system timeststamp with resolution of 1 second
