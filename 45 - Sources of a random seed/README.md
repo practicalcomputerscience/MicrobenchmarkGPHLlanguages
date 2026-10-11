@@ -241,27 +241,28 @@ int main(void) {
 }
 ```
 
-Two (compiled) program runs within 1 second may then look like this:
+Two automatic program runs within 1 second may then look like this:
 
 ```
-$ ./gettimeofday_call_SplitMix64_hashing
-Linux system time in seconds:      1791473786
-Linux system time in milliseconds: 1791473786018
-residual microseconds:                       18065
-64 bit random seed using David Stafford's 64-bit mix function: 6567806001172984750
-64 bit random seed using function: 13 * sec + microsec:        23289177283
-$ ./gettimeofday_call_SplitMix64_hashing
-Linux system time in seconds:      1791473786
-Linux system time in milliseconds: 1791473786344
-residual microseconds:                       344726
-64 bit random seed using David Stafford's 64-bit mix function: 11554284189388881105
-64 bit random seed using function: 13 * sec + microsec:        23289503944
+$ ./gettimeofday_call_SplitMix64_hashing; echo -e "\n"; ./gettimeofday_call_SplitMix64_hashing
+Linux system time in seconds:      1791747698
+Linux system time in milliseconds: 1791747698683
+residual microseconds:                       683522
+64 bit random seed using David Stafford's 64-bit mix function: 5620633334799208262
+64 bit random seed using function: 13 * sec + microsec:        23293403596
+64 bit random seed using the Fowler/Noll/Vo, variant 1a:       8021942652032737621
+
+
+Linux system time in seconds:      1791747698
+Linux system time in milliseconds: 1791747698684
+residual microseconds:                       684221
+64 bit random seed using David Stafford's 64-bit mix function: 14102637944186594101
+64 bit random seed using function: 13 * sec + microsec:        23293404295
+64 bit random seed using the Fowler/Noll/Vo, variant 1a:       8014502256844633784
 $ 
 ```
 
-By the way: the output formatting of this program is not perfect as it can be seen at the first residual microseconds value which should be shown as 018065, and not just 18065.
-
-However, it's obvious that David Stafford's 64-bit mix function makes a much better good job at generating a system time based random seed than just calculating 13 * sec + microsec.
+It's obvious that David Stafford's 64-bit mix function makes a much better good job at generating a system time based random seed than just calculating 13 * sec + microsec.
 
 <br/>
 
