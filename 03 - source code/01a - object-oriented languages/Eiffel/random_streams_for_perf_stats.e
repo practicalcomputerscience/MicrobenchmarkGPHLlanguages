@@ -35,7 +35,7 @@ class RANDOM_STREAMS_FOR_PERF_STATS
 -- $
 --
 -- ROPE class for efficient concatenation:
---   https://github.com/LibertyEiffel/Liberty/blob/21b081378ec12798080128e7f39878d5d2097cb7/src/lib/string/rope.e
+--   https://github.com/LibertyEiffel/Liberty/blob/master/src/lib/string/rope.e
 --   => how to use this?
 
 create {ANY}
