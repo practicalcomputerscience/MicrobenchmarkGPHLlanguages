@@ -19,7 +19,9 @@ Table of contents:
 
 ## Installation tips
 
-First, in my _~/.bashrc_ config file I masked this OpenJDK (Open **Java** Development Kit) installation for [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips), which is not usuable with Scala!!
+First, in my _~/.bashrc_ config file I masked the SDKMAN! (Software Development Kit Manager) related version of the OpenJDK (Open **Java** Development Kit), which is used for [Kotlin](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Kotlin#installation-tips), since it's not usuable with Scala, at least in my case.
+
+I also masked all Homebrew related resources, because it maintains its own JDK version!
 
 Then I installed this OpenJDK version:
 
