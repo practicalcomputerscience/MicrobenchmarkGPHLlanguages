@@ -124,7 +124,7 @@ Python | [class numpy.random.RandomState(seed=None)](https://numpy.org/doc/stabl
 Roc | 
 Ruby | probably /dev/urandom | very high | [module SecureRandom](https://docs.ruby-lang.org/en/3.2/SecureRandom.html)
 Rust | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [from_os_rng](https://docs.rs/rand/0.9.1/rand/trait.SeedableRng.html#method.from_os_rng), [getrandom: system’s random number generator](https://docs.rs/getrandom/latest/getrandom/#getrandom-systems-random-number-generator)
-Scala | 
+Scala | class [Random](https://github.com/scala/scala3/blob/main/library/src/scala/util/Random.scala#L24) is based on _java.util.Random_, see above at Groovy | high | 
 Scheme, Bigloo | 
 Scheme, Racket | 
 Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are being read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/master/kernel/Random.st#L162) | high | 
