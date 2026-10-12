@@ -11,6 +11,7 @@
 - PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
 - RNG = random number generator
+- XOR = Exclusive Or operation
 
 <br/>
 
@@ -96,7 +97,7 @@ FreeBASIC | seeding is based on the return value of the [TIMER](https://www.free
 (Object) Free Pascal | Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) at function [Fptime()](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/ossysc.inc?plain=1#L22), though this function only reads the number of seconds and **not** microseconds since the Epoch | low | [Procedure Randomize](https://gitlab.com/freepascal.org/fpc/source/-/blob/main/rtl/linux/system.pp#L469)
 Gleam | 
 Go | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html): [getrandom.go](https://cs.opensource.google/go/go/+/master:src/internal/syscall/unix/getrandom.go) | very high | the exact (default) mechanism is complex, because Go also has fallback's implemented and cares about concurrency issues etc.; [getrandom_linux.go](https://cs.opensource.google/go/go/+/master:src/internal/syscall/unix/getrandom_linux.go)
-Groovy | 
+Groovy | Groovy imports Java packages _java.util.*_ automatically, and thus package [java.util.Random](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/Random.java). This package maintains thread-safe seed [seedUniquifier](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/Random.java#L310-L330), which is XOR-updated with the value of some monotonic nanoseconds counter (_System.nanoTime()_) to provide a unique seed for each instance of the _Random_ class. | high | 
 Haskell | 
 Haxe | 
 Hy | 
