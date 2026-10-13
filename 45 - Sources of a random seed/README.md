@@ -312,7 +312,7 @@ init_params.entropy_source = DartUtils::EntropySource;
 
 in [main_impl.cc](https://github.com/dart-lang/sdk/blob/main/runtime/bin/main_impl.cc#L1495).
 
-Here, the Dart vm initially hooks into its host environment: _set_entropy_source_callback(params->entropy_source);_ in [dart.cc](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.cc#L300).
+The Dart vm initially hooks into its host environment with: _set_entropy_source_callback(params->entropy_source);_ in [dart.cc](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.cc#L300).
 
 Functions _set_entropy_source_callback()_ and _entropy_source_callback()_ are defined in [dart.h](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.h#L113-L118):
 
@@ -325,7 +325,7 @@ Functions _set_entropy_source_callback()_ and _entropy_source_callback()_ are de
   }
 ```
 
-Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0, when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21) from a Dart application which for example initializes a DRNG with instruction [Random rnd = Random();](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/4b35559ab0c4a6ce8aca51c5c37f2e986b37512c/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_streams_for_perf_stats.dart#L52):
+Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0, when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21) from a Dart application which for example initializes a DRNG with instruction: [Random rnd = Random();](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/4b35559ab0c4a6ce8aca51c5c37f2e986b37512c/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_streams_for_perf_stats.dart#L52):
 
 ```
 Dart_EntropySource callback = Dart::entropy_source_callback();
