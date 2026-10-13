@@ -6,6 +6,8 @@ https://dart.dev/tutorials/server/get-started
 
 https://github.com/dart-lang/sdk
 
+Official package repository for Dart and Flutter apps: https://pub.dev/
+
 JIT = just-in-time compiled
 
 AOT = ahead-of-time compiled
