@@ -4,9 +4,15 @@
 
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
+<br/>
+
 # Sources of a random seed
 
+Glossary:
+
+- AIS = Anwendungshinweise und Interpretationen = Notes on Application and Interpretation of the German Federal Office for Information Security (BSI): [Notes on Application and Interpretation (AIS)](https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Zertifizierung-und-Anerkennung/Zertifizierung-von-Produkten/Zertifizierung-nach-CC/Anwendungshinweise-und-Interpretationen/anwendungshinweise-und-interpretationen_node.html) (+)
 - CS = cryptographically secure
+- DRNG = deterministic random number generator
 - Epoch = Unix time, which is defined as the number of non-leap seconds and microseconds from system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
 - PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
@@ -15,9 +21,9 @@
 
 <br/>
 
-###  Quality of a random seed with every program run
+##  Quality of a random seed with every program run
 
-From Wikipedia:
+### Wikipedia
 
 > In Unix-like operating systems, [/dev/random and /dev/urandom](https://en.wikipedia.org/wiki//dev/random) are special files that provide random numbers from a cryptographically secure pseudorandom number generator (CSPRNG). The CSPRNG is seeded with entropy (a value that provides randomness) from environmental noise, collected from device drivers and other sources.
 
@@ -27,7 +33,36 @@ from [Random Values In PHP](https://phpsecurity.readthedocs.io/en/latest/Insuffi
 
 <br/>
 
-Here is my simple quality ranking of the randomness of a seed:
+### German Federal Office for Information Security (BSI)
+
+Also see PDF document [Documentation and Analysis of the Linux Random Number Generator](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/Studies/LinuxRNG/LinuxRNG_EN_V7_1.pdf), Version: 7.1 from 2026-07-01 (and potentially later) of the [BSI](https://www.bsi.bund.de/EN/Home/home_node.html).
+
+I found at least these conclusions:
+
+> The implementation of the ChaCha20 DRNG feeding /dev/random, /dev/urandom, the getrandom system call, and the in-kernel get_random_bytes API does not comply with the requirements of DRT.1. ... The non-compliance with DRT.1 rests in not meeting formal requirements. Yet, these non-compliances do not hint to cryptographic insecure behavior.
+
+> The Linux-RNG does not comply with NTG.1 as the base requirement is not met: ...  The Linux-RNG is not permanently reseeded as required by NTG.1. Also, the DRNG shall be seeded with at least 240 bits of
+entropy obtained individually from two different software-based entropy sources before the DRNG is considered fully seeded. ...
+
+- DRT.1 = Deterministic Random number generator Tree in version 1, where a tree structure is assumed like this: there's a main "parent" engine which creates the initial secret codes and passes them down to branch off into smaller "child" engines across the computer system
+- NTG.1 = Non-physical True RNGs in version 1
+
+See also these documents of the BSI:
+
+- AIS 20, Version 4 from 2025: I only found a German version at (+) above: "Functionality classes and evaluation methodology for deterministic random number generators"; older official English versions may exist
+- AIS 31, Version 4 from 2025: I only found a German version at (+) above: "Functionality Classes and Evaluation Methodology for True (Physical) Random Number Generators"; older official English versions may exist
+
+The BSI nowadays regularly evaluates Linux's entropy resource _/dev/random_ as stated here at [Random Number Generators](https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Kryptografie/Zufallszahlengenerator/zufallszahlengenerator_node.html):
+
+> For several years now, the BSI continuously examined the random number generator (RNG for short) /dev/random for each newly released version of Linux. This enables the BSI to make security statements about this RNG, but also about cryptographic systems that use this RNG to generate key material. The main aspect of the investigation is to prove that the Linux RNG is compliant with a certain functionality class.
+
+My wild guess is this: since a myriad of versions of software and hardware exist and environments are changing constantly, clear and simple statements on the quality of the randomness of computer resources are not made by this German authority officially.
+
+<br/>
+
+### Ranking by quality of the randomness of a seed
+
+Here is my own and simple ranking just for orientation:
 
 - very high quality, like cryptographic quality, for example based on hardware entropy
 - high quality, like current (Linux) system timestamp with resolution of milliseconds or even nanoseconds
@@ -43,9 +78,7 @@ The solution in this Pascal implementation:
 
 > The [ISO 7185 program version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal/random_streams_for_perf_stats_iso7185.pp) cannot access (Linux) system resources, and thus not read a time value for example.
 
-..with a [Random seed with leveraging the Address Space Layout Randomization (ASLR)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#random-seed-with-leveraging-the-address-space-layout-randomization-aslr) 
-got me thinking about the general quality of a random seed in the numerous language implementations of the pseudo-random number generator in question.
-Leveraging this (sophisticated) idea unexpectedly provided a good source of randomness in a programming language which otherwise cannot access Linux system resources at all!
+..with a [Random seed with leveraging the Address Space Layout Randomization (ASLR)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Free%20Pascal#random-seed-with-leveraging-the-address-space-layout-randomization-aslr) got me thinking about the general quality of a random seed in the numerous language implementations of the pseudo-random number generator in question. Leveraging this (sophisticated) idea unexpectedly provided a good source of randomness in a programming language which otherwise cannot access Linux system resources at all!
 
 Before I came to a Pascal implementation, I was already aware of the fact that not all program implementations feature a somehow decent source of randomness, and thus started the [language list](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/45%20-%20Sources%20of%20a%20random%20seed#the-language-list) below to get me an overview.
 
@@ -54,14 +87,14 @@ Before I came to a Pascal implementation, I was already aware of the fact that n
 ### Noteable things
 
 > [!NOTE]
-> The given sources of random seeds only mean the sources I've (implicitly) used, not that these are necessarily the only sources of entropy in a given programming language!
+> The given sources of random seeds as listed below only mean that these are the sources I've been (implicitly) using in my programs, not that these are necessarily the only sources of entropy in a given programming language!
 
 <br/>
 
 Nowadays, many languages offer an interface to a cryptographically secure source of entropy, for example with implicitly calling Linux system function [getrandom(2)](https://www.man7.org/linux/man-pages/man2/getrandom.2.html), something which could often be implemented **directly** with a user defined function in many programming languages.
 
-However, often a (Linux) system time based solution is just good enough. My Mercury implementation for example features an individual but "high quality" solution from my point of view,
-where everything needed is just packed into a user defined C function as part of the Mercury source code, see below.
+However, often a (Linux) system **time based solution** is just good enough. My Mercury implementation for example features an individual but "high quality" solution from my point of view,
+where everything needed is just packed into one user defined C function as part of the Mercury source code, see below.
 
 With some languages, I couldn't figure out the seeding algorithm within a reasonable amount of time. I just marked them with "how is this seeded?".
 
@@ -179,7 +212,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 429e8da19f$
 ```
 
-..only then get two different random byte streams.
+..only then to get two different random byte streams.
 
 
 Command _date +%s_ shows the current Linux system time as the number of seconds since the Epoch.
