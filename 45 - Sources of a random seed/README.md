@@ -14,9 +14,11 @@ Glossary:
 - CS = cryptographically secure
 - DRNG = deterministic random number generator
 - Epoch = Unix time, which is defined as the number of non-leap seconds and microseconds from system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
+- OS = operating system
 - PCG = permuted congruential generator: http://www.pcg-random.org
 - PRNG = pseudo-random number generator
 - RNG = random number generator
+- vm = virtual machine
 - XOR = Exclusive Or operation
 
 <br/>
@@ -120,7 +122,7 @@ Common Lisp |
 Crystal | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) in module [getrandom.cr](https://github.com/crystal-lang/crystal/blob/master/src/crystal/system/unix/getrandom.cr) | very high | Crystal implemented Melissa O'Neill's PCG Random Number Generation for C (2014): [pcg32.cr](https://github.com/crystal-lang/crystal/blob/master/src/random/pcg32.cr)
 Curry (KiCS2) | 
 D | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Function std.random.unpredictableSeed](https://dlang.org/library/std/random/unpredictable_seed.html)
-Dart | If possible and with a complicated chain of function calls, the runtime of Dart's virtual machine, implemented in C++, finally makes a raw system call of [__NR_getrandom_](https://github.com/dart-lang/sdk/blob/main/runtime/bin/crypto_linux.cc#L48), instead of the user-space libc wrapper function _getrandom()_. See at (**) below for more details. | (usually) very high | use [Random.secure()](https://github.com/dart-lang/sdk/blob/main/sdk/lib/math/random.dart#L43) for a cryptographically secure source of random numbers
+Dart | If possible and with a complicated chain of function calls, the runtime of Dart's vm, implemented in C++, finally makes a raw system call of [__NR_getrandom_](https://github.com/dart-lang/sdk/blob/main/runtime/bin/crypto_linux.cc#L48), instead of the user-space libc wrapper _getrandom()_. See at (**) below for more details. | (usually) very high | use [Random.secure()](https://github.com/dart-lang/sdk/blob/main/sdk/lib/math/random.dart#L43) for a cryptographically secure source of random numbers
 Dylan | Dylan function [default-random-seed()](https://github.com/dylan-lang/opendylan/blob/master/sources/common-dylan/unix-common-extensions.dylan#L40) calls POSIX C function _time()_ to get the current system timestamp, that is the count of seconds elapsed since the Epoch, and then takes the first 4 bytes and does some bitwise operations on them to generate an integer seed; see below at [Test of a 1 second seeding resolution](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/45%20-%20Sources%20of%20a%20random%20seed#test-of-a-1-second-seeding-resolution) | low |
 Eiffel, Liberty | Liberty Eiffel function [clock_based_random_seed](https://github.com/GitMirroring/liberty-eiffel/blob/master/src/lib/random/random_number_generator.e#L62) reads some _CLOCK_ value since its creation, so working like the ticks of a stopwatch, plus apparently the number of any residual, non-overlapping microseconds since the last tick of a second, and finally processes both values until a positive result has been reached | high | examples with the _CLOCK_ type: [test_sz340.e](https://github.com/GitMirroring/liberty-eiffel/blob/master/test/language/unclassified/sz/test_sz340.e), [example2.e](https://github.com/GitMirroring/liberty-eiffel/blob/master/tutorial/time/example2.e)
 Factor | 
@@ -170,7 +172,7 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 <br/>
 
-### Test of a 1 second seeding resolution
+#### Test of a 1 second seeding resolution
 
 A probable 1 second seeding resolution can easily be tested with two automatic program runs within 1 second, here in the Dylan implementation:
 
@@ -219,7 +221,7 @@ Command _date +%s_ shows the current Linux system time as the number of seconds 
 
 <br/>
 
-## Variant 13 of David Stafford's 64-bit mix function
+#### Variant 13 of David Stafford's 64-bit mix function
 
 As seen from here for example: [MixFunctions.java](https://commons.apache.org/proper/commons-rng/commons-rng-simple/jacoco/org.apache.commons.rng.simple.internal/MixFunctions.java.html):
 
@@ -300,15 +302,46 @@ It's obvious that David Stafford's 64-bit mix function makes a much better good 
 
 <br/>
 
-(**) re Dart:
+#### The random seeding mechanism of the Dart vm
 
-Function _Crypto::GetRandomBytes()_ is called here in the [dartutils.cc](https://github.com/dart-lang/sdk/blob/main/runtime/bin/dartutils.cc#L270).
+Raw system call ___NR_getrandom_ is called from function _Crypto::GetRandomBytes()_, here in the Linux OS variant: [crypto_linux.cc](https://github.com/dart-lang/sdk/blob/main/runtime/bin/crypto_linux.cc#L43), which is called by function [DartUtils::EntropySource()](https://github.com/dart-lang/sdk/blob/main/runtime/bin/dartutils.cc#L269), which is assigned to variable _entropy_source_:
 
-The variable which links everything, named _entropy_source_callback_ is defined here in [dart.cc](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.ccL76) and is set like this at [entropy_source_callback_ = entropy_source;](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.h#L114).
+```
+init_params.entropy_source = DartUtils::EntropySource;
+```
 
-If reading the source of entropy is not possible, Dart's virtual machine falls back to reading the current timestamp with a resolution of microseconds at [OS::GetCurrentTimeMicros()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L31).
+in [main_impl.cc](https://github.com/dart-lang/sdk/blob/main/runtime/bin/main_impl.cc#L1495).
 
-Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0, when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21).
+Here, the Dart vm initially hooks into its host environment: _set_entropy_source_callback(params->entropy_source);_ in [dart.cc](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.cc#L300).
+
+Functions _set_entropy_source_callback()_ and _entropy_source_callback()_ are defined in [dart.h](https://github.com/dart-lang/sdk/blob/main/runtime/vm/dart.h#L113-L118):
+
+```
+  static void set_entropy_source_callback(Dart_EntropySource entropy_source) {
+    entropy_source_callback_ = entropy_source;
+  }
+  static Dart_EntropySource entropy_source_callback() {
+    return entropy_source_callback_;
+  }
+```
+
+Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0, when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21) from a Dart application which for example initializes a DRNG with instruction [Random rnd = Random();](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/4b35559ab0c4a6ce8aca51c5c37f2e986b37512c/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_streams_for_perf_stats.dart#L52):
+
+```
+Dart_EntropySource callback = Dart::entropy_source_callback();
+```
+
+<br/>
+
+All in all, the two chains of function calls roughly look like this as I see it:
+
+**Dart vm**: _set_entropy_source_callback_ -> _entropy_source_callback_ -> _entropy_source_ -> _DartUtils::EntropySource_ -> _Crypto::GetRandomBytes()_ -> ___NR_getrandom_ (Linux raw system call)
+
+**Dart app**: _import 'dart:math'; ... Random rnd = Random();_ -> _Dart::entropy_source_callback()_ to get a raw seed -> [Initialize(seed)](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L36) to take the fourth output value of Dart's DRNG for a seed which can then be used by the user's application
+
+<br/>
+
+If reading of _Crypto::GetRandomBytes()_ fails, Dart's vm falls back to reading the current OS timestamp with a resolution of microseconds at [OS::GetCurrentTimeMicros()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L31).
 
 <br/>
 
