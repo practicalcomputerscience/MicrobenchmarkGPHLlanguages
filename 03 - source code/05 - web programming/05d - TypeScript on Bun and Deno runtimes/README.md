@@ -83,6 +83,8 @@ Update 2026-10-11: _Deno Joins Cloudflare As Deno Deploy Prepares To Close_
 
 https://bun.com/, which uses the V8 JavaScript engine, same like node.js
 
+2025-10: [Bun is joining Anthropic](https://bun.com/blog/bun-joins-anthropic)
+
 Let's do the same with Bun. Install like this: _$ curl -fsSL https://bun.sh/install | bash_, and add this to your _~/.bashrc_ configuration file (and restart the shell then):
 
 ```
