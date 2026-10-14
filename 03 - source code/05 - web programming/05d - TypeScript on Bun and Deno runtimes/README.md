@@ -6,8 +6,8 @@ I discovered these rather new node.js competitors here: [Languages](https://gith
 
 Table of contents:
 
-- [Deno](deno)
-- [Bun](bun)
+- [Deno](#deno)
+- [Bun](#bun)
 - [Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js](#microbenchmark-program-in-typescript-execution-speeds-on-bun-deno-and-nodejs)
 
 <br/>
