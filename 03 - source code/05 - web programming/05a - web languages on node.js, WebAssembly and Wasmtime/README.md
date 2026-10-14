@@ -77,7 +77,7 @@ By the way: The "V8 engine" is a stack-based virtual machine, processing bytecod
 
 #### Node.js
 
-As of October 2026, with Deno joining Cloudflare and Bun having joined Anthropic, this question for me popped up: who is backing node.js nowadays? It's (still) the [OpenJS Foundation](https://openjsf.org/).
+As of October 2026, with Deno joining Cloudflare and Bun having joined Anthropic, this question for me popped up: who is backing node.js nowadays? --> it's (still) the [OpenJS Foundation](https://openjsf.org/).
 
 <br/>
 
