@@ -1,4 +1,4 @@
-I discovered these rather new node.js competitors here: [Languages](https://github.com/bddicken/languages?tab=readme-ov-file#languages) and here: https://benjdd.com/languages2/
+I discovered these rather new node.js competitors here: [Languages](https://github.com/bddicken/languages?tab=readme-ov-file#languages), and here: https://benjdd.com/languages2/
 
 ..and just wanted to compare their execution times with of one of [TypeScript](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) on node.js: [Complete execution speeds diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#complete-execution-speeds-diagram)
 
@@ -22,7 +22,7 @@ I installed Deno with: _$ curl -fsSL https://deno.land/install.sh | sh_, and add
 
 After a Bash restart, I can run the microbenchmark program ("speed part") in its TypeScript variant like this: _$ deno run --unstable-detect-cjs --allow-write ./random_streams_for_perf_stats.ts_
 
-The script execution time is about 45 milliseconds (_$ multitime -n 20 ..._), which is faster then running it on node.js: [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
+The script's execution time is about 45 milliseconds (_$ multitime -n 20 ..._), which is faster then running it on node.js: [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 
 As advertised, I can compile this TypeScript script into a standalone executable like this:
 
@@ -70,6 +70,12 @@ $
 With around 43 milliseconds, the execution time of the standalone executable is a little bit faster compared to the _$ deno run_ command with around 45 milliseconds.
 
 It's file size is big with 92,477,439 bytes.
+
+<br/>
+
+Update 2026-10-11: _Deno Joins Cloudflare As Deno Deploy Prepares To Close_
+
+> The runtime has a longer runway, but its future is also changing. Deno promises another year of monthly releases with bug fixes and security updates. After that, its team will stop developing the runtime. It will remain open source, so other maintainers could continue the work, but that is not the same as a commitment that the current release cadence will continue indefinitely.
 
 <br/>
 
