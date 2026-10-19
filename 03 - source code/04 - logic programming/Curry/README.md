@@ -90,7 +90,7 @@ For Haskell, see from here at: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/hask
 
 ### Syntactic sugar
 
-for example, operator _>>=_ in:
+For example, operator _>>=_ in:
 
 ```
 _expr >>= \p -> do statements
