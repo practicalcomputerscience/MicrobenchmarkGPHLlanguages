@@ -368,6 +368,23 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 <br/>
 
+## KiCS2 Curry 3.5 only works with an older version of Haskell!
+
+Later, I installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version:
+
+```
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
+$
+```
+
+..but Curry in version 3.5.0-b2 did not work then anymore!
+
+After really much tinkering, I decided to delete the KiCS2 Curry installation, which **must be based on an older Haskell version**, in my usual testing system, and
+just installed it like described above at [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany) in another Ubuntu (26 LTS) system without any other Haskell installation! (Of source, any re-compiled KiCS2 Curry-program is still tested in my usual testing system!)
+
+<br/>
+
 ## The Curry Package Manager (CPM)
 
 For the microbenchmark program, the CPM with command _cypm_ is being used, because it conveniently allows you to tap into some 160 Curry libraries:
