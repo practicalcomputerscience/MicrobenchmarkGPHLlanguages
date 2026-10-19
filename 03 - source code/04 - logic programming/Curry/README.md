@@ -425,7 +425,7 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 ## KiCS2 Curry 3.5 only works with an older version of Haskell!
 
-Later, I naively installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version in my testing system:
+Later, I naively installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version in my testing system with command: _$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh_
 
 ```
 $ ghc --version
@@ -448,7 +448,9 @@ For the microbenchmark program, the CPM with command _cypm_ is being used, becau
 
 from: https://www.curry-language.org/tools/cpm/
 
-Do it like this for example:
+Install _sqlite3_ to speed up the working of the CPM: _$ sudo apt-get install sqlite3_
+
+Then do like this for example:
 
 ```
 $ cypm new random_streams_for_perf_stats  # create your project
