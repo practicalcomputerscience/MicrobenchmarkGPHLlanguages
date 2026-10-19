@@ -344,7 +344,9 @@ $
 
 Voilà!
 
-At first, I tried to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
+<br/>
+
+Then, I tried to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
 
 ```
 $ curry :load graph_4coloring_Australia_Curry2Go.curry :save :quit  # building an executable
