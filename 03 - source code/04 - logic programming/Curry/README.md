@@ -90,7 +90,13 @@ For Haskell, see from here at: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/hask
 
 ### Syntactic sugar
 
-Operator _>>=_ in _expr >>= \p -> do statements_ for example is a **monadic IO operator**. It binds the output value of expression _expr_ to a variable with name _p_, and then this value is being further mapped to the following _statements_ with the anonymous _->_ operator. See at document (**) at PDF pages 37, 38 and 64.
+for example, operator _>>=_ in:
+
+```
+_expr >>= \p -> do statements
+```
+
+..is a **monadic IO operator**. It binds the output value of expression _expr_ to a variable with name _p_, and then this value is being further mapped to the following _statements_ with the anonymous _->_ operator. See at document (**) at PDF pages 37, 38 and 64.
 
 Operator _>>=_ is another example of _syntactic sugar_ in Curry. Originally, syntax sugaring was meant to make syntax look more readable for non-experts, often by expressing things in a more concise or convenient way. After desugaring above expression, that is writing it in a more fundamental way, it looks like this (see at page 38):
 
