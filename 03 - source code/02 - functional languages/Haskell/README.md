@@ -39,14 +39,14 @@ $ sudo apt-get install build-essential curl libffi-dev libffi8 libgmp-dev libgmp
 $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ...  # press [ENTER] to continue
 ...  # press [K] to keep current config
-...  # press [P] to add the required PATH variable to "/home/booser/.bashrc"
+...  # press [P] to add the required PATH variable to "~/.bashrc"
 ...  # press [N] to not install a haskell-language-server (HLS)
 ...  # press [Y] to enable better integration of stack with GHCup
 ...  # this takes time!
 $
 ```
 
-Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line _[ -f "/home/booser/.ghcup/env" ] && . "/home/booser/.ghcup/env" # ghcup-env_
+Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line _[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env_
 from the very file end more up because some configurations only work correctly when they are located at the very end of this configuration file!
 
 Then I shortly checked the GHC version:
