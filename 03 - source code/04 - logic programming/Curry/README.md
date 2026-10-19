@@ -29,6 +29,7 @@ Table of contents:
 - [Documentation of Curry](#documentation-of-curry)
 - [Syntactic sugar](#syntactic-sugar)
 - [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany)
+- [KiCS2 Curry 3.5 only works with an older version of Haskell!](#kics2-curry-35-only-works-with-an-older-version-of-haskell)
 - [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
 - [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
 - [Exception handling in KiCS2 Curry](#exception-handling-in-kics2-curry)
@@ -378,10 +379,10 @@ The Glorious Glasgow Haskell Compilation System, version 9.10.3
 $
 ```
 
-..but Curry in version 3.5.0-b2 did not work then anymore!
+..but my KiCS2 Curry installation in version 3.5.0-b2 didn't work anymore!
 
-After really much tinkering, I decided to delete the KiCS2 Curry installation, which **must be based on an older Haskell version**, in my usual testing system, and
-just installed it like described above at [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany) in another Ubuntu (26 LTS) system without any other Haskell installation! (Of source, any re-compiled KiCS2 Curry-program is still tested in my usual testing system!)
+After much tinkering, I decided to delete this KiCS2 Curry installation, which **must be based on a much older Haskell version**, in my usual testing system, and
+just installed it like described above at [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany) in another Ubuntu (26 LTS) system without any other Haskell installation! (Of source, any re-compiled KiCS2 Curry program is still tested in my usual testing system!)
 
 <br/>
 
