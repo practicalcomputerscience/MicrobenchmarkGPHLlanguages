@@ -30,7 +30,6 @@ Table of contents:
 - [Syntactic sugar](#syntactic-sugar)
 - [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany)
 - [Correctly installing Haskell](#correctly-installing-haskell)
-- [KiCS2 Curry 3.5 only works with an older version of Haskell!](#kics2-curry-35-only-works-with-an-older-version-of-haskell)
 - [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
 - [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
 - [Exception handling in KiCS2 Curry](#exception-handling-in-kics2-curry)
@@ -283,6 +282,7 @@ $ ghcup set stack 2.15.7  # set it as the active version
 [ Info  ] stack 2.15.7 successfully set as default version
 $ ghcup install ghc 9.6.6  # now install the Haskell compiler in version 9.6.6
 ...
+[ Info  ] ghc installation successful
 $ ghcup set ghc 9.6.6  # make sure that no shadowing is indicated here!
 [ Info  ] ghc 9.6.6 successfully set as default version
 $ ghc --version
@@ -314,14 +314,15 @@ Only now I take the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.
 $ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
 ...
 $ g++ --version  # check your g++ availability! If needed, install with: $ sudo apt install g++
-g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
-Copyright (C) 2025 Free Software Foundation, Inc.
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
 ...
 $ cabal --version  # check your cabal availability! If needed, install with: $ sudo apt install cabal-install
-cabal-install version 3.12.1.0
-compiled using version 3.12.1.0 of the Cabal library 
+cabal-install version 3.16.1.0 
+compiled using version 3.16.1.0 of the Cabal library (in-tree)
 $ cd kics2-3.5.0-x86_64-linux
 $ make  # be patient here! This may take some time.
+==> Building KiCS2 compiler
 ...
 ==> Successfully bootstrapped KiCS2!
 ==> The executables are located in ~/scripts/Curry/KiCS2/kics2-3.5.0-x86_64-linux/bin
@@ -420,23 +421,6 @@ $
 
 But oh Boy! With an execution time of about 29 seconds for one program run, the KiCS2 Curry program is more than 11 times slower than the slowest Prolog system in this benchmark,
 and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
-
-<br/>
-
-## KiCS2 Curry 3.5 only works with an older version of Haskell!
-
-Later, I naively installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version in my testing system with command: _$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh_
-
-```
-$ ghc --version
-The Glorious Glasgow Haskell Compilation System, version 9.10.3
-$
-```
-
-..but then my KiCS2 Curry installation no longer worked!
-
-After much tinkering, I decided to delete my KiCS2 Curry installation, which **must be based on an older Haskell version**, in my usual testing system, and
-installed it like described above at [Correctly installing Haskell](#correctly-installing-haskell) in another Ubuntu (26 LTS) system! (Of source, any re-compiled KiCS2 Curry program is still tested in my usual testing system!)
 
 <br/>
 
