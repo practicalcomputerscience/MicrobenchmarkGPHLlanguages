@@ -120,7 +120,7 @@ These example expressions can be found in PDF document (***).
 
 <br/>
 
-Re-writing the body of user defined function [getRandomSeed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/f9a7884e0ce7185976e728b2c64df2d42b43c44f/03%20-%20source%20code/04%20-%20logic%20programming/Curry/random_streams_for_perf_stats.curry#L73) may look like this sugared one-liner, which actually works (tbd):
+Re-writing the body of user defined function [getRandomSeed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/f9a7884e0ce7185976e728b2c64df2d42b43c44f/03%20-%20source%20code/04%20-%20logic%20programming/Curry/random_streams_for_perf_stats.curry#L73) may look like this sugared one-liner, which actually works:
 
 ```
 getRandomSeed = getClockTime >>= \time -> getCPUTime >>= \msecs -> let (CalendarTime y mo d h m s _) = toUTCTime time in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 1) + 1)
