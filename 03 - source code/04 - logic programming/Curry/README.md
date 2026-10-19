@@ -260,35 +260,33 @@ Up-to-date user manual from 2025 for the KiCS2 implementation of Curry: https://
 
 The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/221644642_The_Kiel_Curry_System_KiCS
 
-<br/>
-
 ### Correctly installing Haskell
 
 > [!WARNING]
-> Do not install Haskell like stated as _$ sudo apt-get install haskell-stack_ in the official documention at: https://www.curry-lang.org/kics2/download.html
+> Do not install Haskell like stated as command _$ sudo apt-get install haskell-stack_ in the official documention at: https://www.curry-lang.org/kics2/download.html
 
-It will most probably (now) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like for example 9.6.4 or 9.6.6!
+It will most probably (now) cause a catastrophic failure because for KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the active Haskell version (without "shadowing") must somehow fit to the targeted Curry KiCS version!
 
-So, first get [GHCup](https://www.haskell.org/ghcup/install/) running:
+So, first get the [GHCup](https://www.haskell.org/ghcup/install/) installer running to install the targeted Haskell version:
 
 ```
 $ curl --version  # install curl, if not done yet, with command: $ sudo apt install curl
 ...
-$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh  # my answers at the installation dialog: G -> N -> N -> N -> A -> N -> Y
+$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh  # my answers at the GHCup installation dialog: G -> N -> N -> N -> A -> N -> Y
 ...
-$ source ~/.bashrc  # activate your updated Bash config file for line: [ -f "/home/booser/.ghcup/env" ] && . "/home/booser/.ghcup/env" # ghcup-env
+$ source ~/.bashrc  # activate your updated Bash config file for line: [ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env
 $ ghcup --version  # check availability of GHCup
 The GHCup Haskell installer, version v0.2.6.2
 $ ghcup install stack 2.15.7  # install an older, compatible version of Stack
 ...
 $ ghcup set stack 2.15.7  # set it as the active version
 [ Info  ] stack 2.15.7 successfully set as default version
-$ ghcup install ghc 9.6.6  # now install ghc version 9.6.6
+$ ghcup install ghc 9.6.6  # now install the Haskell compiler in version 9.6.6
 ...
 $ ghcup set ghc 9.6.6  # make sure that no shadowing is indicated here!
 [ Info  ] ghc 9.6.6 successfully set as default version
 $ ghc --version
-tbd
+The Glorious Glasgow Haskell Compilation System, version 9.6.6
 $
 ```
 
@@ -296,7 +294,9 @@ $
 
 I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation manually with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._
 
-You may double check that the Haskell compiler (in the right version) only came with GHCup:
+The background for this behavior seems to be the (needed) Curry Package Manager (CPM) with its command _cypm_, which is senstive to versioning.
+
+You may double check that the running Haskell compiler, in the right version, only came with the GHCup installer:
 
 ```
 $ which ghc
@@ -308,19 +308,18 @@ $
 
 <br/>
 
-Only now I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) from: https://www.curry-lang.org/kics2/download.html, and started like this:
+Only now I take the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) from: https://www.curry-lang.org/kics2/download.html, and start the Curry installation like this:
 
 ```
 $ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
 ...
 $ g++ --version  # check your g++ availability! If needed, install with: $ sudo apt install g++
+g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
 ...
 $ cabal --version  # check your cabal availability! If needed, install with: $ sudo apt install cabal-install
-cabal-install version 3.16.1.0 
-compiled using version 3.16.1.0 of the Cabal library (in-tree)
-$ cabal update
-...
-$ 
+cabal-install version 3.12.1.0
+compiled using version 3.12.1.0 of the Cabal library 
 $ cd kics2-3.5.0-x86_64-linux
 $ make  # be patient here! This may take some time.
 ...
@@ -341,6 +340,8 @@ $ curry -V
 Version 3.5.0-b2 of 2025-12-15 (installed at Mon Dec 15 22:46:06 CET 2025)
 $
 ```
+
+Voilà!
 
 At first, I tried to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
 
@@ -424,7 +425,7 @@ and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagr
 
 ## KiCS2 Curry 3.5 only works with an older version of Haskell!
 
-Later, I installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version:
+Later, I naively installed a modern [Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#haskell) version in my testing system:
 
 ```
 $ ghc --version
@@ -432,10 +433,10 @@ The Glorious Glasgow Haskell Compilation System, version 9.10.3
 $
 ```
 
-..but then my KiCS2 Curry installation in version 3.5.0-b2 didn't work anymore!
+..but then my KiCS2 Curry installation no longer worked!
 
-After much tinkering, I decided to delete this KiCS2 Curry installation, which **must be based on a much older Haskell version**, in my usual testing system, and
-just installed it like described above at [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany) in another Ubuntu (26 LTS) system without any other Haskell installation! (Of source, any re-compiled KiCS2 Curry program is still tested in my usual testing system!)
+After much tinkering, I decided to delete my KiCS2 Curry installation, which **must be based on an older Haskell version**, in my usual testing system, and
+installed it like described above at [Correctly installing Haskell](#correctly-installing-haskell) in another Ubuntu (26 LTS) system! (Of source, any re-compiled KiCS2 Curry program is still tested in my usual testing system!)
 
 <br/>
 
