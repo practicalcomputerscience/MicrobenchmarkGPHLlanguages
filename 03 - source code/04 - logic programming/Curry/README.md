@@ -317,16 +317,11 @@ $ ghcup list
 ✗  ghc   9.6.5       base-4.18.2.1                       
 ✔✔ ghc   9.6.6       base-4.18.2.1                       
 ✗  ghc   9.6.7       base-4.18.3.0                       
-✗  ghc   9.8.1       base-4.19.0.0             2023-10-09
-✗  ghc   9.8.2       base-4.19.1.0             2024-02-23
-✓  ghc   9.8.4       base-4.19.2.0             2024-11-27
-✗  ghc   9.10.1      base-4.20.0.0                       
+...
 ✗  ghc   9.10.2      base-4.20.1.0                       
 ✓  ghc   9.10.3      recommended,base-4.20.1.0           
 ✗  ghc   9.12.1      base-4.21.0.0             2024-12-15
-✗  ghc   9.12.2      base-4.21.0.0             2025-03-12
-✗  ghc   9.12.4      base-4.21.2.0             2026-03-26
-✗  ghc   9.14.1      latest,base-4.22.0.0      2025-12-18
+...
 ✔✔ ghcup 0.2.6.2     latest,recommended                  
 ✗  hls   1.1.0                                           
 ...                                                                 
