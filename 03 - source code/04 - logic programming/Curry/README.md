@@ -267,7 +267,7 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 
 It will most probably (now) cause a catastrophic failure because for KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the active Haskell version (without "shadowing") must somehow fit to the targeted Curry KiCS version!
 
-So, first get the [GHCup](https://www.haskell.org/ghcup/install/) installer running to install the targeted Haskell version:
+So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running to install the targeted Haskell version:
 
 ```
 $ curl --version  # install curl, if not done yet, with command: $ sudo apt install curl
@@ -296,7 +296,7 @@ I came to the conclusion that any other installation of Haskell (with some other
 
 The background for this behavior seems to be the (needed) Curry Package Manager (CPM) with its command _cypm_, which is senstive to versioning.
 
-You may double check that the running Haskell compiler, in the right version, only came with the GHCup installer:
+You may double check that the running Haskell compiler, in the right version, only came with the GHCup build system:
 
 ```
 $ which ghc
