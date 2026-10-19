@@ -29,6 +29,7 @@ Table of contents:
 - [Documentation of Curry](#documentation-of-curry)
 - [Syntactic sugar](#syntactic-sugar)
 - [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany)
+- [Correctly installing Haskell](#correctly-installing-haskell)
 - [KiCS2 Curry 3.5 only works with an older version of Haskell!](#kics2-curry-35-only-works-with-an-older-version-of-haskell)
 - [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
 - [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
@@ -261,7 +262,7 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 
 <br/>
 
-I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20).
+### Correctly installing Haskell
 
 > [!WARNING]
 > Do not install Haskell like stated as _$ sudo apt-get install haskell-stack_ in the official documention at: https://www.curry-lang.org/kics2/download.html
@@ -284,25 +285,32 @@ $ ghcup set stack 2.15.7  # set it as the active version
 [ Info  ] stack 2.15.7 successfully set as default version
 $ ghcup install ghc 9.6.6  # now install ghc version 9.6.6
 ...
-$ ghcup set ghc 9.6.6
+$ ghcup set ghc 9.6.6  # make sure that no shadowing is indicated here!
 [ Info  ] ghc 9.6.6 successfully set as default version
 $ ghc --version
 tbd
 $
 ```
 
-I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation.
+(say no the a HLS = Haskell Language Server; building it may take a really long while!)
 
-So, make sure that the Haskell compiler (in the right version) only came with GHCup:
+I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation manually with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._
 
-```
-
-```
-
+You may double check that the Haskell compiler (in the right version) only came with GHCup:
 
 ```
-$ sudo apt-get install haskell-stack
-...
+$ which ghc
+~/.ghcup/bin/ghc
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.6.6
+$
+```
+
+<br/>
+
+Only now I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) from: https://www.curry-lang.org/kics2/download.html, and started like this:
+
+```
 $ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
 ...
 $ g++ --version  # check your g++ availability! If needed, install with: $ sudo apt install g++
