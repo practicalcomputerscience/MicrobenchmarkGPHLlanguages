@@ -292,11 +292,52 @@ $
 
 (say no to a HLS = Haskell Language Server; building it may take a really long while!)
 
-I noticed that any other prior installation of Haskell (installed with some other package manager than GHCup for example) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at command _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._, and later re-install that Haskell installation. An isolated Haskell installation is much easier to accomplish than a Curry installation!
+I noticed that any other installation of Haskell, installed with some other package manager than GHCup for example, may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at command _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._, and later re-install that Haskell installation. An isolated Haskell installation is much easier to accomplish than a Curry installation!
 
 The background for this behavior seems to be that the (needed) Curry Package Manager (CPM), with its command _cypm_, is senstive to wrong Haskell versions.
 
-Above way to install a Haskell compiler of a specific version does not imply that it must be the exclusive Haskell installation on a Linux system. Other Haskell installations may very well coexist, but those installations must not be in the way of the Haskell version which supports a Curry installation. So, hidden directories _$HOME/.ghc_ and _$HOME/.ghcup_ should be left untouched.
+Above way to install a Haskell compiler of a specific version does not imply that it must be the exclusive Haskell installation on a Linux system. Other Haskell installations may very well coexist, but those installations must not be in the way of the Haskell version which supports the Curry installation. So, hidden directories _$HOME/.ghc_ and _$HOME/.ghcup_ should be left untouched.
+
+The following command allows you you get an overview of available and installed Haskell resources:
+
+```
+$ ghcup list
+[ Info  ] downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file ~/.ghcup/cache/ghcup-0.1.0.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+   Tool  Version     Tags                      Notes     
+✗  cabal 2.4.1.0                                         
+...
+✗  cabal 3.16.0.0                                        
+✔✔ cabal 3.16.1.0    recommended                         
+✗  cabal 3.18.1.0    latest                              
+✗  ghc   7.10.3      base-4.8.2.0                        
+...                 
+✗  ghc   9.6.5       base-4.18.2.1                       
+✔✔ ghc   9.6.6       base-4.18.2.1                       
+✗  ghc   9.6.7       base-4.18.3.0                       
+✗  ghc   9.8.1       base-4.19.0.0             2023-10-09
+✗  ghc   9.8.2       base-4.19.1.0             2024-02-23
+✓  ghc   9.8.4       base-4.19.2.0             2024-11-27
+✗  ghc   9.10.1      base-4.20.0.0                       
+✗  ghc   9.10.2      base-4.20.1.0                       
+✓  ghc   9.10.3      recommended,base-4.20.1.0           
+✗  ghc   9.12.1      base-4.21.0.0             2024-12-15
+✗  ghc   9.12.2      base-4.21.0.0             2025-03-12
+✗  ghc   9.12.4      base-4.21.2.0             2026-03-26
+✗  ghc   9.14.1      latest,base-4.22.0.0      2025-12-18
+✔✔ ghcup 0.2.6.2     latest,recommended                  
+✗  hls   1.1.0                                           
+...                                                                 
+✗  hls   2.14.0.0    latest,recommended                  
+✗  stack 2.5.1
+...                                                                                                 
+✔✔ stack 2.15.7                                          
+...
+✓  stack 3.11.1      latest,recommended   
+$
+```
 
 <br/>
 
@@ -313,7 +354,7 @@ $ cabal --version  # check your cabal availability! If needed, install it with: 
 cabal-install version 3.16.1.0 
 compiled using version 3.16.1.0 of the Cabal library (in-tree)
 $ cd kics2-3.5.0-x86_64-linux
-$ make  # be patient here! This may take some time.
+$ make  # be patient here! The compilation of KiCS2 Curry resources may really take some time!
 ==> Building KiCS2 compiler
 ...
 ==> Successfully bootstrapped KiCS2!
@@ -321,7 +362,14 @@ $ make  # be patient here! This may take some time.
 $ 
 ```
 
-Finally, I added the above given path _$HOME/scripts/Curry/KiCS2/kics2-3.5.0-x86_64-linux/bin_ to the KiCS2 executables in my _~/.bashrc_ config file, activated it and checked the KiCS2 version with wrapper command _curry_:
+Finally, I added the above given path to my _~/.bashrc_ config file, plus the path to the CPM:
+
+```
+export PATH="$HOME/scripts/Curry/KiCS/kics2-3.5.0-x86_64-linux/bin:$PATH"
+export PATH="$HOME/.cpm/bin:$PATH"
+```
+
+...activated it with command _$ source ~/.bashrc_, and checked the KiCS2 version with wrapper command _curry_:
 
 ```
 $ curry -V
