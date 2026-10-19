@@ -261,13 +261,58 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 
 <br/>
 
-I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) and built KiCS2 Curry like this:
+I took the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20).
+
+> [!WARNING]
+> Do not install Haskell like stated as _$ sudo apt-get install haskell-stack_ in the official documention at: https://www.curry-lang.org/kics2/download.html
+
+It will most probably (now) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like for example 9.6.4 or 9.6.6!
+
+So, first get [GHCup](https://www.haskell.org/ghcup/install/) running:
+
+```
+$ curl --version  # install curl, if not done yet, with command: $ sudo apt install curl
+...
+$ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh  # my answers at the installation dialog: G -> N -> N -> N -> A -> N -> Y
+...
+$ source ~/.bashrc  # activate your updated Bash config file for line: [ -f "/home/booser/.ghcup/env" ] && . "/home/booser/.ghcup/env" # ghcup-env
+$ ghcup --version  # check availability of GHCup
+The GHCup Haskell installer, version v0.2.6.2
+$ ghcup install stack 2.15.7  # install an older, compatible version of Stack
+...
+$ ghcup set stack 2.15.7  # set it as the active version
+[ Info  ] stack 2.15.7 successfully set as default version
+$ ghcup install ghc 9.6.6  # now install ghc version 9.6.6
+...
+$ ghcup set ghc 9.6.6
+[ Info  ] ghc 9.6.6 successfully set as default version
+$ ghc --version
+tbd
+$
+```
+
+I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation.
+
+So, make sure that the Haskell compiler (in the right version) only came with GHCup:
+
+```
+
+```
+
 
 ```
 $ sudo apt-get install haskell-stack
 ...
 $ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
 ...
+$ g++ --version  # check your g++ availability! If needed, install with: $ sudo apt install g++
+...
+$ cabal --version  # check your cabal availability! If needed, install with: $ sudo apt install cabal-install
+cabal-install version 3.16.1.0 
+compiled using version 3.16.1.0 of the Cabal library (in-tree)
+$ cabal update
+...
+$ 
 $ cd kics2-3.5.0-x86_64-linux
 $ make  # be patient here! This may take some time.
 ...
