@@ -264,60 +264,52 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 > [!WARNING]
 > Do not install Haskell like stated as command _$ sudo apt-get install haskell-stack_ in the official documention at: https://www.curry-lang.org/kics2/download.html
 
-It will most probably (now) cause a catastrophic failure because for KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the active Haskell version (without "shadowing") must somehow fit to the targeted Curry KiCS version!
+It will most probably (now) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the visible Haskell version, not being disturbed by "shadowing", must somehow fit to the targeted Curry KiCS version!
 
-So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running to install the targeted Haskell version:
+So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running for installing the targeted Haskell version:
 
 ```
 $ curl --version  # install curl, if not done yet, with command: $ sudo apt install curl
 ...
 $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh  # my answers at the GHCup installation dialog: G -> N -> N -> N -> A -> N -> Y
 ...
-$ source ~/.bashrc  # activate your updated Bash config file for line: [ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env
+$ source ~/.bashrc  # activate your Bash config file for added line: [ -f "~/.ghcup/env" ] && . "~/.ghcup/env"  # ghcup-env
 $ ghcup --version  # check availability of GHCup
 The GHCup Haskell installer, version v0.2.6.2
 $ ghcup install stack 2.15.7  # install an older, compatible version of Stack
 ...
 $ ghcup set stack 2.15.7  # set it as the active version
 [ Info  ] stack 2.15.7 successfully set as default version
-$ ghcup install ghc 9.6.6  # now install the Haskell compiler in version 9.6.6
+$ ghcup install ghc 9.6.6  # now install the Haskell compiler in older version 9.6.6
 ...
 [ Info  ] ghc installation successful
 $ ghcup set ghc 9.6.6  # make sure that no shadowing is indicated here!
 [ Info  ] ghc 9.6.6 successfully set as default version
-$ ghc --version
+$ ghc --version  # check for the right Glasgow Haskell Compiler version
 The Glorious Glasgow Haskell Compilation System, version 9.6.6
 $
 ```
 
 (say no to a HLS = Haskell Language Server; building it may take a really long while!)
 
-I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation manually with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._
+I noticed that any other prior installation of Haskell (installed with some other package manager than GHCup for example) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at command _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._, and later re-install that Haskell installation. An isolated Haskell installation is much easier to accomplish than a Curry installation!
 
-The background for this behavior seems to be the (needed) Curry Package Manager (CPM) with its command _cypm_, which is senstive to versioning.
+The background for this behavior seems to be that the (needed) Curry Package Manager (CPM), with its command _cypm_, is senstive to wrong Haskell versions.
 
-You may double check that the running Haskell compiler, in the right version, only came with the GHCup build system:
-
-```
-$ which ghc
-~/.ghcup/bin/ghc
-$ ghc --version
-The Glorious Glasgow Haskell Compilation System, version 9.6.6
-$
-```
+Above way to install a Haskell compiler of a specific version does not imply that it must be the exclusive Haskell installation on a Linux system. Other Haskell installations may very well coexist, but those installations must not be in the way of the Haskell version which supports a Curry installation. So, hidden directories _$HOME/.ghc_ and _$HOME/.ghcup_ should be left untouched.
 
 <br/>
 
-Only now I take the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) from: https://www.curry-lang.org/kics2/download.html, and start the Curry installation like this:
+Only now I take the latest _kics2-3.5.0-x86_64-linux.tar.gz (built on Ubuntu 24.04)_ sources (as of 2026-06-20) from: https://www.curry-lang.org/kics2/download.html, and start the installation like this:
 
 ```
-$ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz
+$ tar xvzf kics2-3.5.0-x86_64-linux.tar.gz  # unpacking
 ...
-$ g++ --version  # check your g++ availability! If needed, install with: $ sudo apt install g++
+$ g++ --version  # check your g++ availability! If needed, install it with: $ sudo apt install g++
 g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 Copyright (C) 2023 Free Software Foundation, Inc.
 ...
-$ cabal --version  # check your cabal availability! If needed, install with: $ sudo apt install cabal-install
+$ cabal --version  # check your cabal availability! If needed, install it with: $ sudo apt install cabal-install
 cabal-install version 3.16.1.0 
 compiled using version 3.16.1.0 of the Cabal library (in-tree)
 $ cd kics2-3.5.0-x86_64-linux
@@ -329,7 +321,7 @@ $ make  # be patient here! This may take some time.
 $ 
 ```
 
-Finally, I added the above given path to the KiCS2 executables in my _~/.bashrc_ file, activated it and checked the KiCS2 version with wrapper command _curry_:
+Finally, I added the above given path _$HOME/scripts/Curry/KiCS2/kics2-3.5.0-x86_64-linux/bin_ to the KiCS2 executables in my _~/.bashrc_ config file, activated it and checked the KiCS2 version with wrapper command _curry_:
 
 ```
 $ curry -V
