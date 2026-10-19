@@ -93,7 +93,7 @@ For Haskell, see from here at: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/hask
 For example, operator _>>=_ in:
 
 ```
-_expr >>= \p -> do statements
+expr >>= \p -> do statements
 ```
 
 ..is a **monadic IO operator**. It binds the output value of expression _expr_ to a variable with name _p_, and then this value is being further mapped to the following _statements_ with the anonymous _->_ operator. See at document (**) at PDF pages 37, 38 and 64.
