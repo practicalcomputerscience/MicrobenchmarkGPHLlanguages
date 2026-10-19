@@ -2,11 +2,15 @@
 
 https://www.curry-lang.org (*)
 
-Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf
+Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf (***)
+
+Curry, An Integrated Functional Logic Language, Version 0.9.0, January 13, 2016, Michael Hanus [editor] from here: https://www.curry-lang.org/docs/report/ (**)
 
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
+
+_[Curry](https://en.wikipedia.org/wiki/Curry_%28programming_language%29) is .. based on the Haskell language_, and _is nearly a superset of Haskell but does not support all language extensions of Haskell._
 
 <br/>
 
@@ -23,6 +27,7 @@ Table of contents:
 
 - [Idea of Curry: integrating logic and functional programming in a purely declarative style](#idea-of-curry-integrating-logic-and-functional-programming-in-a-purely-declarative-style)
 - [Documentation of Curry](#documentation-of-curry)
+- [Syntactic sugar](#syntactic-sugar)
 - [KiCS2 Curry: Maps of Australia and Germany](#kics2-curry-maps-of-australia-and-germany)
 - [The Curry Package Manager (CPM)](#the-curry-package-manager-cpm)
 - [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
@@ -66,22 +71,53 @@ from the Abstract of paper: [Curry: A Truly Functional Logic Language](https://w
 
 At least the official documentation of Curry isn't the best from my point of view. For example, I noticed that it usually steps over explaining the ubiquitous -> and <- operators:
 
-- while _let_ is obviously for deterministic local bindings, <- seems to deal with non-determinism,
+- while _let_ is obviously for deterministic bindings, operator _<-_ is for **non-deterministic bindings**, allowing for the assignment of values that can yield multiple results for the same input 
 
-..which leaves me the -> operator to look for something similar in Haskell:
+This leaves me the _->_ operator to look for something similar in Haskell, where it's used as a:
 
-..where -> is for:
+- function type-mapping operator (a Monad: https://www.euclideanspace.com/software/language/functional/haskell/operators/index.htm; https://fwoelffel.me/posts/monads/), or a
+- lambda definition operator (for anonymous functions), or a
+- separator in case construction, see at function _convertToBase_ below
 
-- Function type-mapping operator (a Monad: https://www.euclideanspace.com/software/language/functional/haskell/operators/index.htm; https://fwoelffel.me/posts/monads/)
-- Lambda definition operator
-- Separator in case construction, see at function _convertToBase_ below
+..while _<-_ in Haskell is for:
 
-..while <- in Haskell is for
+- list comprehension generators, which is also used like that in Curry at (_x <- [0 ..]_) for example, and
+- single assignment operators in do-blocks, which is also used like that in Curry
 
-- List comprehension generator
-- Single assignment operator in do-blocks, which is also used like that in Curry
+For Haskell, see from here at: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/haskell-operatorer.pdf
 
-For Haskell, see from here: https://www.imada.sdu.dk/u/rolf/Edu/DM22/F06/haskell-operatorer.pdf
+<br/>
+
+### Syntactic sugar
+
+Operator _>>=_ in _expr >>= \p -> do statements_ for example is a **monadic IO operator**. It binds the output value of expression _expr_ to a variable with name _p_, and then this value is being further mapped to the following _statements_ with the anonymous _->_ operator. See at document (**) at PDF pages 37, 38 and 64.
+
+Operator _>>=_ is another example of _syntactic sugar_ in Curry. Originally, syntax sugaring was meant to make syntax look more readable for non-experts, often by expressing things in a more concise or convenient way. After desugaring above expression, that is writing it in a more fundamental way, it looks like this (see at page 38):
+
+```
+do p <- expr
+    statements
+```
+
+<br/>
+
+All in all, I'm often using these operators:
+
+Curry operator | meaning | example expression
+-- | -- | --
+>>= | (non-deterministic) monadic IO related binding | _getChar >>= putChar_
+-> | anonymous mapping | _(\x -> x * x)_
+<- | non-deterministic binding | _s <- readFile input_
+
+These example expressions can be found in PDF document (***).
+
+<br/>
+
+Re-writing the body of user defined function [getRandomSeed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/f9a7884e0ce7185976e728b2c64df2d42b43c44f/03%20-%20source%20code/04%20-%20logic%20programming/Curry/random_streams_for_perf_stats.curry#L73) may look like this one-line, which actually works (tbd):
+
+```
+getRandomSeed = getClockTime >>= \time -> getCPUTime >>= \msecs -> let (CalendarTime y mo d h m s _) = toUTCTime time in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 1) + 1)
+```
 
 <br/>
 
