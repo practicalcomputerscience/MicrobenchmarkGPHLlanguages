@@ -290,7 +290,7 @@ The Glorious Glasgow Haskell Compilation System, version 9.6.6
 $
 ```
 
-(say no the a HLS = Haskell Language Server; building it may take a really long while!)
+(say no to a HLS = Haskell Language Server; building it may take a really long while!)
 
 I came to the conclusion that any other installation of Haskell (with some other package manager than GHCup) may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation manually with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._
 
