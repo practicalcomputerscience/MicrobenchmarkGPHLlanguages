@@ -19,6 +19,7 @@ this is my second implementation of the microbenchmark program in a _pure_ funct
 Table of contents:
 
 - [Installation tips](#installation-tips)
+- [Checking a Haskell package on the fly](#checking-a-haskell-package-on-the-fly)
 - [On how to make a faster microbenchmark program](#on-how-to-make-a-faster-microbenchmark-program)
 - [Using the LLVM backend](#using-the-llvm-backend)
 
@@ -47,8 +48,13 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 $
 ```
 
-Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line _[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env_
-from the very file end more up because some configurations only work correctly when they are located at the very end of this configuration file!
+Do not forget to update your _~/.bashrc_ configuration file! I moved the newly added line:
+
+```
+[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env
+```
+
+..from the very file end more up because some configurations only work correctly when they are located at the very end of this configuration file!
 
 Then I shortly checked the GHC version:
 
@@ -69,6 +75,71 @@ $ cabal install --lib random  # install the random library
 ...
 $
 ```
+
+<br/>
+
+At Curry, you may also have a look at [Correctly installing Haskell](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry#correctly-installing-haskell) to manage different Haskell compiler (GHC) versions.
+
+Switching to GHC version 9.10.3 can be done like this, if installed:
+
+```
+$ ghcup list  # first, list available and installed GHC resources
+...
+✓  ghc   9.10.3      recommended,base-4.20.1.0
+...
+$ ghcup set ghc 9.10.3
+[ Info  ] downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file ~/.ghcup/cache/ghcup-0.1.0.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+[ Info  ] ghc 9.10.3 successfully set as default version
+$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
+$
+```
+
+<br/>
+
+#### Checking a Haskell package on the fly
+
+Since I didn't use some project tool here, it's a little bit more compilcated to check the version of a used package, here _random_ for example.
+
+But it can be done with the _:show packages_ command after the _random_ package has been loaded on the fly:
+
+```
+$ cabal repl --build-depends random
+Resolving dependencies...
+Build profile: -w ghc-9.10.3 -O1
+In order, the following will be built (use -v for more details):
+ - fake-package-0 (interactive) (lib) (first run)
+Configuring library for fake-package-0...
+Warning: No exposed modules
+GHCi, version 9.10.3: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /tmp/cabal-repl.-16109/setcwd.ghci
+ghci> :show packages
+active package flags:
+  -package-id splitmix-0.1.3.2-af324892109d902f5d7d270f76edda34e5a6fdb22748cfa58fc86fd41e4771e8
+  -package-id transformers-0.6.1.1-5a1c
+  -package-id mtl-2.3.1-158c
+  -package-id pretty-1.1.3.6-b981
+  -package-id ghc-boot-th-9.10.3-889f
+  -package-id template-haskell-2.22.0.0-1c23
+  -package-id array-0.5.8.0-640b
+  -package-id deepseq-1.5.0.0-c1f4
+  -package-id bytestring-0.12.2.0-bd49
+  -package-id rts-1.0.2
+  -package-id ghc-prim-0.12.0-171e
+  -package-id ghc-bignum-1.3-70f4
+  -package-id ghc-internal-9.1003.0-7a4b
+  -package-id random-1.3.1-a6ee7d97c12a69a20c457d9a7507369f986e294a2c0cf335687ef45619def468
+  -package-id random-1.3.1-a6ee7d97c12a69a20c457d9a7507369f986e294a2c0cf335687ef45619def468
+  -package-id base-4.20.2.0-f074
+ghci> :quit
+Leaving GHCi.
+$
+```
+
+So, I'm using _random_ package in version 1.3.1, with slighlty older sources v1.3.0 available at: https://github.com/haskell/random as of 2026-10-20.
 
 <br/>
 
