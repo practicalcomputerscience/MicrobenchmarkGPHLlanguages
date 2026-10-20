@@ -264,7 +264,7 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 > [!WARNING]
 > Do not install Haskell with command _$ sudo apt-get install haskell-stack_ as given in the official documention at: https://www.curry-lang.org/kics2/download.html
 
-It will most probably (nowadays) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the visible Haskell version, not being disturbed by "shadowing", must somehow fit to the targeted Curry KiCS2 version!
+It will most probably (nowadays) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the visible Haskell version, not being disturbed by "shadowing", must somehow fit to the targeted KiCS2 Curry version!
 
 So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running for installing the targeted Haskell version:
 
