@@ -9,6 +9,8 @@ a program for the KiCS2 compiler: https://www.curry-lang.org/kics2/
 2026-07-09: fixed initial random seed to [1..m_[
 2026-07-09: refactored for more project compliant naming: masterloop: bitsXStr;
             main: bitsXStrTotal, det_bitsXStrTotal (hex the same)
+2026-10-20: replaced the adapted version of original function convertToBase from the printf package
+            into two specialized functions like in the Haskell solution => much faster program execution!
 
 
 build on Ubuntu 24 LTS: do this only once:
@@ -75,59 +77,87 @@ getRandomSeed =
    in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 1) + 1)  -- use m_ here! 2026-07-09: fixed [1..m_[
 
 
---   this is an adapted version of the original function from
---   file Format.curry from the printf package, and which is not exported!
-convertToBase :: Int -> Int -> String
-convertToBase b n =
-    if (n == 0) then "0"
-      else cTB "" b n
+-- 2026-10-20: Duck.ai transpiled these specialized and user defined functions
+-- in Haskell and of same names into KiCS2 Curry versions.
+-- So, an adapted version of original function convertToBase from
+-- file Format.curry from the printf package, and which is not exported,
+-- is not longer used!
+-- This modification brought down the execution time of the compiled program by over 40%!!
+integer_to_bin_string :: Int -> String
+integer_to_bin_string n = toBinary 16 n ""
   where
-    cTB :: String -> Int -> Int -> String
-    cTB acc base m = if (m == 0) then acc else
-      let dr = ((div m base),(mod m base))
-          d  = (fst dr)
-          r  = (snd dr)
-          st = if (r < 10) then (show r) else
-            case r of
-              10 -> "a"
-              11 -> "b"
-              12 -> "c"
-              13 -> "d"
-              14 -> "e"
-              15 -> "f"
-              _  -> "x"  -- get rid of the Pattern matches are non-exhaustive warning
-      in cTB (st ++ acc) b d
+    toBinary :: Int -> Int -> String -> String
+    toBinary count k acc
+      | count == 0 = acc
+      | k == 0     = toBinary (count - 1) 0 ('0' : acc)
+      | otherwise  =
+          let bit   = if k `mod` 2 == 0 then '0' else '1'
+              nextK = k `div` 2
+          in toBinary (count - 1) nextK (bit : acc)
 
--- New function from Google AI: takes target length, base, and number
+
+integer_to_hex_string :: Int -> String
+integer_to_hex_string n = toHex 4 n ""
+  where
+    toHex :: Int -> Int -> String -> String
+    toHex count k acc
+      | count == 0 = acc
+      | k == 0     = toHex (count - 1) 0 ('0' : acc)
+      | otherwise  =
+          let remainder = k `mod` 16
+              nextK     = k `div` 16
+          in toHex (count - 1) nextK (hexChar remainder : acc)
+
+    hexChar :: Int -> Char
+    hexChar r =
+      case r of
+        0  -> '0'
+        1  -> '1'
+        2  -> '2'
+        3  -> '3'
+        4  -> '4'
+        5  -> '5'
+        6  -> '6'
+        7  -> '7'
+        8  -> '8'
+        9  -> '9'
+        10 -> 'a'
+        11 -> 'b'
+        12 -> 'c'
+        13 -> 'd'
+        14 -> 'e'
+        15 -> 'f'
+        _  -> '0'
+
+
+-- 2026-10-20: Duck.ai
 convertToBasePad :: Int -> Int -> Int -> String
 convertToBasePad targetLen base n =
-    let baseStr = convertToBase base n
-        strLen  = length baseStr
-        padLen  = targetLen - strLen
-    -- Replicate '0' padLen times and prepend to the string
-    in if padLen > 0
-       then replicate padLen '0' ++ baseStr
-       else baseStr
+  case (targetLen, base) of
+    (16, 2)  -> integer_to_bin_string n
+    (4, 16)  -> integer_to_hex_string n
+    _        -> integer_to_hex_string n
 
 
---- The deterministic loop calculating the PRNG states and strings.
---- Curry can return tuple values directly instead of using output variables.
---- keep this a pure function to make life easier:
+-- The deterministic loop calculating the PRNG states and strings.
+-- Curry can return tuple values directly instead of using output variables.
+-- Keep this a pure function to make life easier.
+-- 2026-10-20: don't use name length, use n instead,
+-- since variable name length may shadow the inbuilt function of same name:
 masterloop :: Int -> Int -> ([Int], [String], [String])
-masterloop 0 _ = ([], [], [])  -- base case
-masterloop length seed
-    | length > 0 = (newSeed : restX, bitsXStr : restBitsX, bitsHexStr : restBitsHex)
-    where
-      -- newSeed = (17364 * seed + 0) `mod` 65521
-      newSeed = (a * seed + c) `mod` m_
+masterloop n seed
+  | n == 0    = ([], [], [])
+  | otherwise = (newSeed : restX, bitsXStr : restBitsX, bitsHexStr : restBitsHex)
+  where
+    newSeed    = (a * seed + c) `mod` m_
 
-      -- bitsXStr = "0000000000000000"  -- just a test dummy
-      bitsXStr   = convertToBasePad 16 2 newSeed
+    -- bitsXStr = "0000000000000000"  -- just a test dummy
+    bitsXStr   = convertToBasePad 16 2 newSeed
 
-      -- bitsHexStr = "0000"  -- just a test dummy
-      bitsHexStr = convertToBasePad 4 16 newSeed
+    -- bitsHexStr = "0000"  -- just a test dummy
+    bitsHexStr = convertToBasePad 4 16 newSeed
 
-      (restX, restBitsX, restBitsHex) = masterloop (length - 1) newSeed
+    (restX, restBitsX, restBitsHex) = masterloop (n - 1) newSeed
 
 
 -- Google AI from random_bitstring_and_flexible_password_generator.P for SWI Prolog
