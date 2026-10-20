@@ -141,6 +141,16 @@ $
 
 So, I'm using _random_ package in version 1.3.1, with slighlty older sources v1.3.0 available at: https://github.com/haskell/random as of 2026-10-20.
 
+This _random_ package depends on package [splitmix](https://github.com/haskellari/splitmix/tree/master):
+
+```
+$ cabal info random
+...
+    Dependencies:  ..., splitmix >=0.1 && <0.2, ...
+...
+$
+```
+
 <br/>
 
 ## On how to make a faster microbenchmark program
