@@ -2,12 +2,11 @@
 
 https://www.haskell.org/
 
+Haskell repositories: https://github.com/haskell
+
 GHC = Glasgow Haskell Compiler: https://gitlab.haskell.org/ghc
 
 GHC User’s Guide: https://downloads.haskell.org/ghc/latest/docs/users_guide/
-
-Link to binary packages and sources (_ghc-9.10.3-src.tar.xz_) of used version 9.10.3: https://www.haskell.org/ghc/download_ghc_9_10_3.html
-
 
 <br/>
 
