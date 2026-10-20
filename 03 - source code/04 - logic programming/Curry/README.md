@@ -381,6 +381,8 @@ Voilà!
 
 <br/>
 
+Now return to your Curry projects root directory: _$ cd .._
+
 Then, I tried to compile the original [graph_4coloring_Australia_Curry2Go.curry](./graph_4coloring_Australia_Curry2Go.curry) program, and executed it:
 
 ```
