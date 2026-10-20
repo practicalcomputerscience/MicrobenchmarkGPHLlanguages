@@ -479,6 +479,8 @@ $ cd random_streams_for_perf_stats
 $ cypm add time  # add this package
 ```
 
+You may need to first download the newest package index before command _$ cypm add time_ works by running command _$ cypm update_.
+
 You may do a very basic test on a Curry package like this, here for package time:
 
 ```
