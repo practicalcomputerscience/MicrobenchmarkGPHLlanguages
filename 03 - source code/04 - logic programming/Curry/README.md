@@ -2,6 +2,10 @@
 
 https://www.curry-lang.org (*)
 
+Wikipedia: _[Curry](https://en.wikipedia.org/wiki/Curry_%28programming_language%29) is .. based on the Haskell language_, and _is nearly a superset of Haskell but does not support all language extensions of Haskell._
+
+<br/>
+
 Up-to-date tutorial from 2025: https://curry-language.org/docs/tutorial/tutorial.pdf (***)
 
 Curry, An Integrated Functional Logic Language, Version 0.9.0, January 13, 2016, Michael Hanus [editor] from here: https://www.curry-lang.org/docs/report/ (**)
@@ -9,8 +13,6 @@ Curry, An Integrated Functional Logic Language, Version 0.9.0, January 13, 2016,
 Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
-
-Wikipedia: _[Curry](https://en.wikipedia.org/wiki/Curry_%28programming_language%29) is .. based on the Haskell language_, and _is nearly a superset of Haskell but does not support all language extensions of Haskell._
 
 <br/>
 
