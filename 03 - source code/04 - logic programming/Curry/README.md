@@ -360,7 +360,7 @@ $
 Finally, I added the above given path to my _~/.bashrc_ config file, plus the path to the CPM:
 
 ```
-export PATH="$HOME/scripts/Curry/KiCS/kics2-3.5.0-x86_64-linux/bin:$PATH"
+export PATH="$HOME/scripts/Curry/KiCS2/kics2-3.5.0-x86_64-linux/bin:$PATH"
 export PATH="$HOME/.cpm/bin:$PATH"
 ```
 
