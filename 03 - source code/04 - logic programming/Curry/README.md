@@ -34,7 +34,7 @@ Table of contents:
 - [On determinism in KiCS2 Curry](#on-determinism-in-kics2-curry)
 - [Exception handling in KiCS2 Curry](#exception-handling-in-kics2-curry)
 - [Microbenchmark program in KiCS2 Curry](#microbenchmark-program-in-kics2-curry)
-- [Full Microbenchmark program in KiCS2 Curry and determinism in Curry](#full-microbenchmark-program-in-kics2-curry-and-determinism)
+- [Full Microbenchmark program in KiCS2 Curry and determinism](#full-microbenchmark-program-in-kics2-curry-and-determinism)
 
 <br/>
 
