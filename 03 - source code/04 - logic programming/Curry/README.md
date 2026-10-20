@@ -266,7 +266,7 @@ The Kiel Curry System KiCS, 2007: https://www.researchgate.net/publication/22164
 
 It will most probably (nowadays) cause a catastrophic failure because KiCS version 3.5 can only work with an older Haskell version like 9.6.4 or 9.6.6 for example. In other words: the visible Haskell version, not being disturbed by "shadowing", must somehow fit to the targeted KiCS2 Curry version!
 
-So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running for installing the targeted Haskell version:
+So, first get the [GHCup](https://www.haskell.org/ghcup/install/) build system running for later installing the targeted Haskell version:
 
 ```
 $ curl --version  # install curl, if not done yet, with command: $ sudo apt install curl
@@ -504,31 +504,6 @@ $
 ```
 
 However, I recommend to scroll Curry packages from here: https://cpm.curry-lang.org/  (there are still other, "old school" ways to do that.)
-
-Next problem: I noticed that not all available functions are exported, here function _convertToBase_ in the printf package: https://cpm.curry-lang.org/pkgs/printf-3.0.0-src.html. This function is located in library source code file _Format.curry_. So, I just copied and adapted that function for my own program: :wink:
-
-```
-convertToBase :: Int -> Int -> String
-convertToBase b n = 
-    if (n == 0) then "0"
-      else cTB "" b n
-  where
-    cTB :: String -> Int -> Int -> String
-    cTB acc base m = if (m == 0) then acc else
-      let dr = ((div m base),(mod m base))
-          d  = (fst dr)
-          r  = (snd dr)
-          st = if (r < 10) then (show r) else
-            case r of
-              10 -> "a"
-              11 -> "b"
-              12 -> "c"
-              13 -> "d"
-              14 -> "e"
-              15 -> "f"
-              _  -> "x"  -- get rid of the Pattern matches are non-exhaustive warning
-      in cTB (st ++ acc) b d
-```
 
 <br/>
 
