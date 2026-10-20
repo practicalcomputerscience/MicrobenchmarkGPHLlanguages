@@ -10,7 +10,7 @@ Look at Curry packages from here: https://cpm.curry-lang.org/
 
 CPM = Curry Package Manager
 
-_[Curry](https://en.wikipedia.org/wiki/Curry_%28programming_language%29) is .. based on the Haskell language_, and _is nearly a superset of Haskell but does not support all language extensions of Haskell._
+Wikipedia: _[Curry](https://en.wikipedia.org/wiki/Curry_%28programming_language%29) is .. based on the Haskell language_, and _is nearly a superset of Haskell but does not support all language extensions of Haskell._
 
 <br/>
 
