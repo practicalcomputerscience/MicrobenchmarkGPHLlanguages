@@ -25,7 +25,7 @@ tbd: adding/to-do:
 Table of contents:
 
 - [Idea of this page](#idea-of-this-page)
-- [Node.js](node-js)
+- [Node.js](#node-js)
 - [TypeScript and JavaScript](#typescript-and-javascript)
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
