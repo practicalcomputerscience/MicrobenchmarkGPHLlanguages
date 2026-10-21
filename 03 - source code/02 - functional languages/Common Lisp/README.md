@@ -2,7 +2,7 @@
 
 https://lisp-lang.org/
 
-- **SBCL = Steel Bank Common Lisp** (https://www.sbcl.org/)
+- **SBCL = Steel Bank Common Lisp** (https://www.sbcl.org/); GitHub mirror of SBCL's official repository: https://github.com/sbcl/sbcl
 - CCL = Clozure Common Lisp (Clozure CL: https://ccl.clozure.com/)
 - ECL = Embeddable Common Lisp (https://ecl.common-lisp.dev/)
 - ABCL = Armed Bear Common Lisp (https://abcl.org/)
