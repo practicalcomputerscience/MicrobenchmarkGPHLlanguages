@@ -81,7 +81,7 @@ Update 2026-10-11: _Deno Joins Cloudflare As Deno Deploy Prepares To Close_
 
 ## Bun
 
-https://bun.com/, which uses the V8 JavaScript engine, same like node.js
+https://bun.com/ is using [Google's V8 JavaScript engine](https://v8.dev/), same like node.js
 
 2025-10: [Bun is joining Anthropic](https://bun.com/blog/bun-joins-anthropic)
 
