@@ -25,6 +25,7 @@ tbd: adding/to-do:
 Table of contents:
 
 - [Idea of this page](#idea-of-this-page)
+- [Node.js](node-js)
 - [TypeScript and JavaScript](#typescript-and-javascript)
 - [Why is the TypeScript variant slower than the equivalent JavaScript variant?](#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant)
 - [The WebAssembly (Wasm) virtual machine](#the-webassembly-wasm-virtual-machine)
@@ -75,7 +76,9 @@ By the way: The "V8 engine" is a stack-based virtual machine, processing bytecod
 
 <br/>
 
-#### Node.js
+### Node.js
+
+Sources on GitHub: https://github.com/nodejs/node
 
 As of October 2026, with Deno joining Cloudflare and Bun having joined Anthropic, this question for me popped up: who is backing node.js nowadays? --> it's (still) the [OpenJS Foundation](https://openjsf.org/).
 
