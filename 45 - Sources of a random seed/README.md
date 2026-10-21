@@ -352,7 +352,7 @@ See the bridge from JavaScript function [Math.random()](https://tc39.es/ecma262/
 
 > In V8, builtins can be seen as chunks of code that are executable by the VM at runtime.
 
-_Math.random()_ is [transitioning javascript builtin MathRandom()](https://github.com/nodejs/node/blob/main/deps/v8/src/builtins/math.tq#L554), which is written in Google's Torque programming language. There and initially, the extern macro [InitializeAndMaybeRefillMathRandom(context);](https://github.com/v8/v8/blob/main/src/builtins/math.tq#L563) is being run.
+_Math.random()_ is [transitioning javascript builtin MathRandom()](https://github.com/nodejs/node/blob/main/deps/v8/src/builtins/math.tq#L554), which is written in Google's Torque programming language (~.tq). There and initially, the extern macro [InitializeAndMaybeRefillMathRandom(context);](https://github.com/v8/v8/blob/main/src/builtins/math.tq#L563) is being run.
 
 This macro is matched to C++ function [TNode<Smi> CodeStubAssembler::InitializeAndMaybeRefillMathRandom()](https://github.com/v8/v8/blob/main/src/codegen/code-stub-assembler.cc#L21012):
 
