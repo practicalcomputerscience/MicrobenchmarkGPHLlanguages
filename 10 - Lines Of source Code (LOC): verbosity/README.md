@@ -133,12 +133,12 @@ V                 | 175 | compiled, very young programming language: some user-d
 Haskell           | 168 | compiled, very mature language: numerous user-defined functions needed | 2026-07-30
 Fortran (GNU)     | 160 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-10-02
 C                 | 152 | compiled, very mature language | 2026-10-08
+Curry (KiCS2)     | 152 | compiled, very mature language | 2026-10-21
 C3                | 144 | compiled, very young language: DStrings (dynamic strings) are (still) missing some functions that are available for Strings (fixed length) => some shuffling between DStrings and Strings | 2026-01-26
 Factor            | 143 | interpreted, mature language: numerous user-defined functions needed | 2026-07-05
 Gleam             | 143 | interpreted, very young language, together with Erlang and JavaScript ecosystem: lots of user-defined functions needed | 2026-09-15
 Picat (old B-Prolog) | 142 | interpreted, mature language: lots of user-defined functions needed | 2026-06-17
 AssemblyScript    | 140 | interpreted, young language, together with WebAssembly ecosystem: lots of user-defined functions needed | 2026-05-24
-Curry (KiCS2)     | 132 | compiled, very mature language | 2026-06-23
 C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-10-09
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 Odin              | 127 | compiled, young language | 2026-06-18
@@ -207,7 +207,7 @@ COBOL (GnuCOBOL)   | 3 (user-defined procedures)
 CoffeeScript       | 0
 Common Lisp        | 3
 Crystal            | 0
-Curry (KiCS2)      | 9
+Curry (KiCS2)      | 10
 D                  | 0
 Dart               | 0
 Dylan (Open Dylan) | 1
