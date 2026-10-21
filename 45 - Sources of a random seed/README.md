@@ -1,7 +1,7 @@
 2026-09-23: work in progress
 
+- more detailed description tbd for: "two manual program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
 - tbd: TOC
-
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
