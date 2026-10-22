@@ -168,6 +168,12 @@ So, I changed it to: _[new_seed, ..x]_
 
 ## Using Erlang from Gleam
 
+OTP, a set of Erlang libraries = Open Telecom Platform
+
+Erlang/OTP in GitHub: https://github.com/erlang/otp/tree/master
+
+<br/>
+
 With the "speed part" of the [program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam), coding in Gleam was a rather pleasant experience. But with the development of the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
 
 > [!IMPORTANT]
