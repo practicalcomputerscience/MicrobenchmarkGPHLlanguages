@@ -85,4 +85,21 @@ So, running arithmetic calculations with JIT compilation in modern PHP can have 
 
 <br/>
 
+#### Wrapping and executing a PHP script inside a node.js command
+
+Due to ciritical PHP vulnerabilities as of October 2026: https://www.php.net/archive/2026.php#2026-10-21-5
+
+I wonder if node.js can process PHP scripts. Not directly, but with some wrapping like this for example:
+
+```
+$ node -e "require('child_process').execFile('php', ['random_streams_for_perf_stats.php'], (e, o, s) => { if (e) throw e; process.stdout.write(o); process.stderr.write(s); })"
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+$
+```
+
+<br/>
+
 ##_end
