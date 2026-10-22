@@ -87,9 +87,44 @@ So, running arithmetic calculations with JIT compilation in modern PHP can have 
 
 #### Wrapping and executing a PHP script inside a node.js command
 
-Due to ciritical PHP vulnerabilities as of October 2026: https://www.php.net/archive/2026.php#2026-10-21-5
+Due to these critical PHP vulnerabilities as of October 2026:
 
-I wonder if node.js can process PHP scripts. Not directly, but with some wrapping like this for example:
+- https://www.php.net/archive/2026.php#2026-10-21-5
+- https://teramont.net/blog/php2shell-cve-2026-109618-109619-php-update (*)
+
+In Ubuntu 24 LTS, I automatically fixed these issues with first checking the current versions, and then doing normal updates and upgrades via my (default) distribution channels.
+
+But first some version checkings:
+
+```
+$ php -v
+PHP 8.3.6 (cli) (built: Oct  7 2026 18:06:38) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.6, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies
+$ dpkg-query -W 'php*' 'libapache2-mod-php*'
+...
+php8.3-cli	8.3.6-0ubuntu0.24.04.12
+php8.3-common	8.3.6-0ubuntu0.24.04.12
+...
+$ sudo apt update
+...
+$ sudo apt upgrade
+...
+$ dpkg-query -W 'php*' 'libapache2-mod-php*'  # check again
+...
+php8.3-cli	8.3.6-0ubuntu0.24.04.13  # 24.04.13 means fixed according to (*)
+php8.3-common	8.3.6-0ubuntu0.24.04.13  # 24.04.13 means fixed according to (*)
+...
+$ php -v
+PHP 8.3.6 (cli) (built: Oct 19 2026 15:16:58) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.6, Copyright (c) Zend Technologies
+    with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies
+$
+```
+
+These security issued raised the question with me, if node.js can process PHP scripts. Not directly, but with some wrapping like this for example:
 
 ```
 $ node -e "require('child_process').execFile('php', ['random_streams_for_perf_stats.php'], (e, o, s) => { if (e) throw e; process.stdout.write(o); process.stderr.write(s); })"
