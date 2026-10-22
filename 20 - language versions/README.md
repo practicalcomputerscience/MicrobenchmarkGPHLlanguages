@@ -59,7 +59,7 @@ OCaml | 2.5.0; 3.23.0; The OCaml toplevel, version 5.5.0 | $ opam --version; $ d
 Odin | odin version dev-2026-10-nightly:84bc3fc | $ odin version
 Oz | Mozart Compiler 1.4.0 (20080703) playing Oz 3 | >ozc -v  # Windows 11; misusing verbose switch
 Perl 5 | This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi | $ perl --version
-PHP | PHP 8.3.6 (cli) (built: Jan  7 2026 08:40:32) (NTS), Copyright (c) The PHP Group, Zend Engine v4.3.6, Copyright (c) Zend Technologies, with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies | $ php --version
+PHP | PHP 8.3.6 (cli) (built: Oct 19 2026 15:16:58) (NTS); Copyright (c) The PHP Group; Zend Engine v4.3.6, Copyright (c) Zend Technologies; with Zend OPcache v8.3.6, Copyright (c), by Zend Technologies | $ php --version
 Picat | Picat version 3.9 | $ picat --version
 Pike | Pike v8.0 release 1738 Copyright © 1994-2022 Linköping University ... | $ pike -v
 PowerShell | PowerShell 7.6.2 | $ pwsh -v
