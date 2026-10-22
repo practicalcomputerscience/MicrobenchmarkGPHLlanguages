@@ -168,7 +168,7 @@ So, I changed it to: _[new_seed, ..x]_
 
 ## Using Erlang from Gleam
 
-OTP, a set of Erlang libraries = Open Telecom Platform
+OTP = Open Telecom Platform, a set of Erlang libraries
 
 Erlang/OTP in GitHub: https://github.com/erlang/otp/tree/master
 
