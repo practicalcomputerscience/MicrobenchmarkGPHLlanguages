@@ -23,15 +23,14 @@ Admiran for **compilation** is an "extended subset" successor of interpreted Mir
 
 <br/>
 
-Since this language is still small and young, it's practically forcing the human developer to fall back on his own capabilities without the help of "Big AI".
+Since this language is still small and young, it's practically forcing the human developer to fall back on his own capabilities without much help of "Big AI".
 
 The "speed part" of the microbenchmark program, [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) is in some parts, that is user defined functions,
 almost a 1:1 copy based on the Miranda implementation [random_streams_for_perf_stats.m](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda/random_streams_for_perf_stats.m).
 
 <br/>
 
-However, there are some surprising and profound _structural_ differences between both programs. Only have a look at both _main_ functions,
-independently of their sourcing of an initial random seed:
+However, there are some surprising and profound _structural_ differences between both programs. Only have a look at both _main_ functions, independently of their sourcing of an initial random seed:
 
 Miranda:
 
