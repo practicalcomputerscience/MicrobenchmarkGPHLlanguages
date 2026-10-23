@@ -1,13 +1,15 @@
 || random_streams_for_perf_stats.am
 ||
 || 2026-08-01
+|| 2026-10-23: much better seeding with fractional nanoseconds, which are then hashed, from Linux system call: $ date +%N
+||
 ||
 || build on Ubuntu 24 LTS: $ amc ./random_streams_for_perf_stats.am
 ||
 || run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
-||                         $ time ./random_streams_for_perf_stats
+||                         $ time ./random_streams_for_perf_stats => real	0m0.370s
 ||
-|| Admiran v2.6
+|| Admiran v3.2
 ||
 ||
 || built manually from scratch based on Miranda script random_streams_for_perf_stats.m
@@ -16,7 +18,7 @@
 ||
 || exception handling is not implemented: a problem when writing to a file will immediately cause a program exit:
 ||   $ ./random_streams_for_perf_stats
-||   
+||
 ||   generating a random bit stream...
 ||   random_bitstring.bin: Permission denied
 ||   $
@@ -35,14 +37,14 @@
 || *********************************************************
 || user defined functions
 
-|| get a pseudo-random seed based on the current user time in microseconds:
-random_seed = clock >>= \u ->
-              clock >>= \v ->
-              clock >>= \w ->
-              io_pure (((u + v)*w) $mod (m - 2) + 1)
+|| get a pseudo-random seed based on the current user time in microseconds with the clock function:
+|| 2026-10-23: this is a very bad source of entropy and thus retired now:
+|| random_seed = clock >>= \u ->
+||               clock >>= \v ->
+||               clock >>= \w ->
+||               io_pure (((u + v)*w) $mod (m - 2) + 1)
               || clock defined in ./Admiran-2.6/lib/io.am
               || u = ~260...800
-              || io_pure refers to a monadic I/O scheme
 
 
 || this is almost a 1:1 copy from random_streams_for_perf_stats.m (for Miranda):
@@ -129,10 +131,22 @@ c = 0
 file_bits_x   = "random_bitstring.bin"
 file_bits_hex = "random_bitstring.byte"
 
+|| constants for the 32 bit FNV-1a hashing algorithm:
+|| source: https://mojoauth.com/security-guides/fnv-1a-in-c
+offsetbasis32 = 2166136261  || 32-bit 0x811C9DC5 (2166136261), which is not prime!
+|| mod32         = 4294967296  || reserve
+prime32       =   16777619  || FNV prime in 32 bit: 0x01000193
+
 
 main :: io ()
 main
-  = random_seed >>= \os_seed ->
+  = || random_seed >>= \os_seed ->  || 2026-10-23: retired low quality solution
+    || new seeding solution with a Linux system call and better hashing:
+    systemCmd "printf '%s' \"$(date +%N)\" > nano.tmp"  >>= \exit_code   ->  || no need to use exit_code!!
+    readFile "nano.tmp"                                 >>= \nano_string ->
+    io_pure (intval nano_string)                        >>= \nano_seed   ->
+    io_pure ((nano_seed .^. offsetbasis32) * prime32)   >>= \hashed_seed ->  || hashing
+    io_pure (hashed_seed $mod (m - 2) + 1)              >>= \os_seed     ->  || scaling
     || putStrLn ("os_seed = " ++ showint os_seed) >>  || for testing
     putStrLn "\ngenerating a random bit stream..." >>
     (masterloop ([], [], []) upper_limit os_seed |> write_strings_to_files)
