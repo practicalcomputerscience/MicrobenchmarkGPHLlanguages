@@ -40,8 +40,9 @@ random_seed = clock >>= \u ->
               clock >>= \v ->
               clock >>= \w ->
               io_pure (((u + v)*w) $mod (m - 2) + 1)
-              || clock defined in ./Admiran-2.6/lib/io.am
+              || clock defined in ./Admiran-2.6/lib/io.am; resolution in microseconds
               || u = ~260...800
+              || io_pure refers to a monadic I/O scheme
 
 
 || this is almost a 1:1 copy from random_streams_for_perf_stats.m (for Miranda):
