@@ -60,7 +60,11 @@ Admiran:
 ```
 main :: io ()
 main
-  = random_seed >>= \os_seed ->
+  = systemCmd "printf '%s' \"$(date +%N)\" > nano.tmp"  >>= \exit_code   ->  || no need to use exit_code!!
+    readFile "nano.tmp"                                 >>= \nano_string ->
+    io_pure (intval nano_string)                        >>= \nano_seed   ->
+    io_pure ((nano_seed .^. offsetbasis32) * prime32)   >>= \hashed_seed ->  || hashing
+    io_pure (hashed_seed $mod (m - 2) + 1)              >>= \os_seed     ->  || scaling
     || putStrLn ("os_seed = " ++ showint os_seed) >>  || for testing
     putStrLn "\ngenerating a random bit stream..." >>
     (masterloop ([], [], []) upper_limit os_seed |> write_strings_to_files)
@@ -109,7 +113,7 @@ Missing exception handling, as core feature in this language benchmarking, is th
 
 ### Execution speed
 
-Compiled Admiran program [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) takes about 340 milliseconds to run. This is blasting the 2 seconds of the Miranda script,
+Compiled Admiran program [random_streams_for_perf_stats.am](./random_streams_for_perf_stats.am) takes about 370 milliseconds to run. This is blasting the 2 seconds of the Miranda script,
 but still is far away from the 43 milliseconds of the Haskell executable.
 
 <br/>
