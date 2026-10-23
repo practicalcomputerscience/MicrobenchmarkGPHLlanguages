@@ -2,6 +2,8 @@
 
 https://www.python.org/
 
+https://github.com/python/cpython
+
 ---
 
 Table of contents:
