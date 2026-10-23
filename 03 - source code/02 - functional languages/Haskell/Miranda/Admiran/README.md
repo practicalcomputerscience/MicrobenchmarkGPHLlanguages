@@ -59,11 +59,7 @@ Admiran:
 ```
 main :: io ()
 main
-  = systemCmd "printf '%s' \"$(date +%N)\" > nano.tmp"  >>= \exit_code   ->  || no need to use exit_code!!
-    readFile "nano.tmp"                                 >>= \nano_string ->
-    io_pure (intval nano_string)                        >>= \nano_seed   ->
-    io_pure ((nano_seed .^. offsetbasis32) * prime32)   >>= \hashed_seed ->  || hashing
-    io_pure (hashed_seed $mod (m - 2) + 1)              >>= \os_seed     ->  || scaling
+  = random_seed >>= \os_seed ->
     || putStrLn ("os_seed = " ++ showint os_seed) >>  || for testing
     putStrLn "\ngenerating a random bit stream..." >>
     (masterloop ([], [], []) upper_limit os_seed |> write_strings_to_files)
