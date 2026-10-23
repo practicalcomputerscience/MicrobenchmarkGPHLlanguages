@@ -35,12 +35,12 @@
 || *********************************************************
 || user defined functions
 
-|| get a pseudo-random seed based on the operating system time:
+|| get a pseudo-random seed based on the current user time in microseconds:
 random_seed = clock >>= \u ->
               clock >>= \v ->
               clock >>= \w ->
               io_pure (((u + v)*w) $mod (m - 2) + 1)
-              || clock defined in ./Admiran-2.6/lib/io.am; this is the current user time in microseconds
+              || clock defined in ./Admiran-2.6/lib/io.am
               || u = ~260...800
               || io_pure refers to a monadic I/O scheme
 
