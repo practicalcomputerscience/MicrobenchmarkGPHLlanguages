@@ -172,6 +172,9 @@ OTP = Open Telecom Platform, a set of Erlang libraries
 
 Erlang/OTP in GitHub: https://github.com/erlang/otp/tree/master
 
+- Erlang is not a pure functional programming language because it allows for some side effects, particularly in its input/output operations; although it emphasizes the use of pure functions and immutable data (Duck.ai).
+- Erlang's type system is not sound in the formal, static type-safety sense, because it's dynamically typed and many type errors are only caught at runtime (Duck.ai).
+
 <br/>
 
 With the "speed part" of the [program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam), coding in Gleam was a rather pleasant experience. But with the development of the [full program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_bitstring_and_flexible_password_generator.gleam) things started to become complicated when [Reading user input from the keyboard into a string](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages?tab=readme-ov-file#reading-user-input-from-the-keyboard-into-a-string):
