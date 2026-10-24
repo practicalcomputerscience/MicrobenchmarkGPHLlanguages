@@ -1,8 +1,6 @@
 2026-09-23: work in progress
 
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
-- complete links of seeding in my application programs
-- tbd: TOC
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
@@ -22,7 +20,24 @@ Glossary:
 - vm = virtual machine
 - XOR = Exclusive Or operation
 
+---
+
+Table of contents:
+
+- [Quality of a random seed with every program run](#quality-of-a-random-seed-with-every-program-run)
+- [German Federal Office for Information Security (BSI)](#german-federal-office-for-information-security-bsi)
+- [Ranking by quality of the randomness of a seed](#ranking-by-quality-of-the-randomness-of-a-seed)
+- [Motivation](#motivation)
+- [Noteable things](#noteable-things)
+- [The language list](#the-language-list)
+- [Test of a 1 second seeding resolution](#test-of-a-1-second-seeding-resolution)
+- [Variant 13 of David Stafford's 64-bit mix function](#variant-13-of-david-staffords-64-bit-mix-function)
+- [The random seeding mechanism of the Dart vm](#the-random-seeding-mechanism-of-the-dart-vm)
+- [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine)
+
 <br/>
+
+---
 
 ##  Quality of a random seed with every program run
 
@@ -173,7 +188,7 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 <br/>
 
-#### Test of a 1 second seeding resolution
+### Test of a 1 second seeding resolution
 
 A probable 1 second seeding resolution can easily be tested with two automatic program runs within 1 second, here in the Dylan implementation:
 
