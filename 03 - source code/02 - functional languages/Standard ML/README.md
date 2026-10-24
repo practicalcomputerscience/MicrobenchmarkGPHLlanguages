@@ -73,7 +73,7 @@ Some years ago, MLton published this benchmark page with five Standard ML dialec
 
 <br/>
 
-I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/master/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for [example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml):
+I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/master/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function [MLton.Random.seed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml#L146) for example:
 
 ```
     ...
