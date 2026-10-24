@@ -144,7 +144,7 @@ $
 
 ## Lists
 
-So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml).
+So far, I've only found [Lists](https://tour.gleam.run/everything/#basics-lists) ("ordered collections of values", (*)) and not mutable arrays, like in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/password_encryption_main.ml) or [MLton Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml).
 
 This means that I cannot pre-allocate any memory for the three "ordered collections of values", that is _x_, _bits_x_ and _bits_hex_: [recursive master loop](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/aba4c605c0c1a089f51374d935545eb780135d61/03%20-%20source%20code/02%20-%20functional%20languages/Erlang%3A%20Gleam%20on%20vm%20BEAM/random_streams_for_perf_stats.gleam#L104)
 
