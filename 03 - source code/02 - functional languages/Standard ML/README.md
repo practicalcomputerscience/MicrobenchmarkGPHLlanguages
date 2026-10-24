@@ -109,7 +109,7 @@ I also shortly tapped into **Poly/ML** (https://polyml.org/), only to find out t
 
 I had another motivation to test Standard ML: what can I learn from it for my OCaml program?
 
-This: in my Standard ML program, right from start of development, I _val_-expressions for printing tasks, expressions where I don't expect a return value or don't care of any:
+This: in my Standard ML program, right from start of development, I used _val_-expressions for printing tasks, expressions where I don't expect a return value or don't care of any:
 
 ```
 val _ = print ("\n....")
@@ -121,7 +121,7 @@ While in my OCaml program right from start I did it like this:
 Printf.printf "\n...";
 ```
 
-Instead I should have written this OCaml expression like this:
+Instead, I should have written this OCaml expression like this:
 
 ```
 let _ = Printf.printf "\n..." in
@@ -134,8 +134,7 @@ Spraying your OCaml source code with semicolons is seen as bad style nowadays:
 
 from: https://baturin.org/docs/ocaml-faq/
 
-> But such a semicolon should **never** appear in your code. _Ullman’s book is full of unnecessary semicolons, and you must learn to ignore him._ Emulate the style in Ramsey’s
-book, which has no unnecessary semicolons. Use a semicolon only to sequence effects in imperative code.
+> But such a semicolon should **never** appear in your code. _Ullman’s book is full of unnecessary semicolons, and you must learn to ignore him._ Emulate the style in Ramsey’s book, which has no unnecessary semicolons. Use a semicolon only to sequence effects in imperative code.
 
 from: https://www.cs.tufts.edu/comp/105-2019s/readings/ml.html#definitions-ii-semicolons
 
@@ -143,7 +142,7 @@ In both languages semicolons are just **separators**; in Standard ML separators 
 
 ### Semicolon example: bad style versus good style
 
-However, my itch for the imperative coding style still shows through here and there as this [example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml#L165) of a function declaration in Standard ML shows:
+However, my itch for the imperative coding style still shows through here and there as this [example](./random_bitstring_and_flexible_password_generator.sml#L165) of a function declaration in Standard ML shows:
 
 ```
 fun answer_yes_or_no () =
@@ -175,7 +174,7 @@ fun answer_yes_or_no () =
   end
 ```
 
-So, what I still underestimated when starting with the Standard ML program was the fact that many "statements" in Standard ML and languages that followed it, including OCaml, are **expressions** and should properly be treated like that:
+So, what I still underestimated when starting with the Standard ML program was the fact that many "statements" in Standard ML and languages that followed it, including OCaml, are **expressions** and should be treated like that:
 
 > Functional programs are written by composing expressions...
 
