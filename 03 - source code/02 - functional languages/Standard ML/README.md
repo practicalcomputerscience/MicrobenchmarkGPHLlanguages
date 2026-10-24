@@ -290,7 +290,7 @@ val seed1 = (Random.randInt r)
 
 ..which apparently cannot be fixed within a MLton program.
 
-So, I went searching in the legacy Github repository of SML/NJ to see what else could be used instead. At utility _real-order-stats.sml_ I found function [Random.randRange](https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/real-order-stats.sml#L40)!
+So, I went searching in the [legacy Github repository of SML/NJ](https://github.com/smlnj/legacy/tree/main) to see what else could be used instead. At utility _real-order-stats.sml_ I found function [Random.randRange](https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/real-order-stats.sml#L40)!
 
 Actually, I only exchange the expression in question and leave the others untouched, except _val seed1 = (Random.randInt r);
 val start_seed = seed1 mod m;_, which aren't needed anymore:
@@ -525,7 +525,6 @@ $ cd ./mlton-20241230.src/mlton-20241230
 $ make CC=gcc-14 WITH_GMP_DIR=$HOME/gmp-x86_64-INSTALL all  # this is using gcc!!!
 ...
 Build of MLton succeeded.  # (hopefully!)
-...
 $
 ```
 
