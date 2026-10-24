@@ -22,7 +22,7 @@ The Glorious Glasgow Haskell Compilation System, version 9.10.3
 $
 
 
-transpiled from random_streams_for_perf_stats3.sml (Standard ML for MLton) with Google AI
+transpiled from random_streams_for_perf_stats.sml (Standard ML for MLton) with Google AI
 with manual corrections for structural compliance with the other implementations
 and Google AI improvements for better execution speed.
 Of all implementations in functional languages so far, Standard ML is the closest to Haskell according to Google AI:
