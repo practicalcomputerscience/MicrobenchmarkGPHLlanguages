@@ -236,7 +236,7 @@ Since everything works, we now put above expressions - **without the semicolons*
 ### Tapping into libraries of Standard ML of New Jersey with ML Basis
 
 Now we only have to find a way how to use a function inside a library of SML/NJ which isn't automatically available in MLton. By the way: these SML/NJ libraries are
-automatically installed, or unzipped respectively, along a MLton installation.
+automatically installed, or unzipped, along a MLton installation.
 
 MLton has a _**ML Basis**_ system which "extends Standard ML to support programming-in-the-very-large, namespace management at the module level, separate delivery of library sources, and more": http://mlton.org/MLBasis
 
