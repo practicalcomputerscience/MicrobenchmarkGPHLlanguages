@@ -156,7 +156,7 @@ structure Main =
     *)
 
     fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
-    see from: https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml *)
+    see from: https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml#L20 *)
 
     val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
     val (secs, usecs) = getTime ()
