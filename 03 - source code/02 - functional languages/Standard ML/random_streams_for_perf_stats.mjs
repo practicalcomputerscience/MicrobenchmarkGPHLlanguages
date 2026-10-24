@@ -307,24 +307,20 @@ _run(function(cont) {
  };
  Chr_tag.prototype.name = "Chr";
  const Chr = new Chr_tag();
- const Domain_tag = function() {
- };
- Domain_tag.prototype.name = "Domain";
- const Domain = new Domain_tag();
  const LESS = "LESS";
  const EQUAL = "EQUAL";
  const GREATER = "GREATER";
  const NONE = {tag: "NONE"};
- const revAppend = function(cont2, tmp6, ys) {
-  let tmp7 = tmp6, tmp8 = ys;
+ const revAppend = function(cont2, tmp4, ys) {
+  let tmp5 = tmp4, tmp6 = ys;
   tmp: for (;;) {
-   const tmp9 = tmp7, ys1 = tmp8;
-   if (tmp9 === null) {
+   const tmp7 = tmp5, ys1 = tmp6;
+   if (tmp7 === null) {
     return [false, cont2, [ys1]];
-   } else if (! (tmp9 === null)) {
-    const tmp10 = tmp9[0];
-    const tmp11 = tmp9[1];
-    [tmp7, tmp8] = [tmp11, [tmp10, ys1]];
+   } else if (! (tmp7 === null)) {
+    const tmp8 = tmp7[0];
+    const tmp9 = tmp7[1];
+    [tmp5, tmp6] = [tmp9, [tmp8, ys1]];
     continue tmp;
    } else {
     throw _Match;
@@ -337,18 +333,18 @@ _run(function(cont) {
    if (a1 === null) {
     return [false, cont3, [null]];
    } else if (! (a1 === null)) {
-    const tmp6 = a1[0];
-    const tmp7 = a1[1];
-    const cont4 = function(tmp8) {
-     const cont5 = function(tmp9) {
-      const cont6 = function(tmp10) {
-       return [false, cont3, [[tmp8, tmp10]]];
+    const tmp4 = a1[0];
+    const tmp5 = a1[1];
+    const cont4 = function(tmp6) {
+     const cont5 = function(tmp7) {
+      const cont6 = function(tmp8) {
+       return [false, cont3, [[tmp6, tmp8]]];
       };
-      return [false, tmp9, [cont6, tmp7]];
+      return [false, tmp7, [cont6, tmp5]];
      };
      return [false, map, [cont5, a]];
     };
-    return [false, a, [cont4, tmp6]];
+    return [false, a, [cont4, tmp4]];
    } else {
     throw _Match;
    }
@@ -363,9 +359,9 @@ _run(function(cont) {
     if (a >= n) {
      return [false, cont3, [null]];
     } else {
-     const cont4 = function(tmp6) {
-      const cont5 = function(tmp7) {
-       return [false, cont3, [[tmp6, tmp7]]];
+     const cont4 = function(tmp4) {
+      const cont5 = function(tmp5) {
+       return [false, cont3, [[tmp4, tmp5]]];
       };
       return [false, go, [cont5, _Int54_add(a, 1)]];
      };
@@ -379,9 +375,9 @@ _run(function(cont) {
     if (i >= n) {
      return [false, revAppend, [cont2, acc, null]];
     } else {
-     const tmp6 = _Int54_add(i, 1);
-     const cont4 = function(tmp7) {
-      return [false, cont3, [tmp6, [tmp7, acc]]];
+     const tmp4 = _Int54_add(i, 1);
+     const cont4 = function(tmp5) {
+      return [false, cont3, [tmp4, [tmp5, acc]]];
      };
      return [false, f, [cont4, i]];
     }
@@ -400,11 +396,9 @@ _run(function(cont) {
   return [false, cont2, [undefined]];
  };
  const tmp = globalThis.Number;
- const tmp1 = tmp.isNaN;
- const tmp2 = globalThis.Math.trunc;
- const tmp3 = globalThis.BigInt;
- const tmp4 = tmp3.asUintN;
- const tmp5 = globalThis.Date.now;
+ const tmp1 = globalThis.BigInt;
+ const tmp2 = tmp1.asUintN;
+ const tmp3 = globalThis.Date.now;
  const size = function(cont2, a) {
   return [false, cont2, [a.length]];
  };
@@ -426,13 +420,6 @@ _run(function(cont) {
  const length = function(cont2, a) {
   return [false, cont2, [a.length]];
  };
- const sub2 = function(cont2, arr, i) {
-  if (i < 0 || arr.length <= i) {
-   throw _Subscript;
-  } else {
-   return [false, cont2, [arr[i]]];
-  }
- };
  const update1 = function(cont2, arr, i, value) {
   if (i < 0 || arr.length <= i) {
    throw _Subscript;
@@ -448,31 +435,22 @@ _run(function(cont) {
  const fromList = function(cont2, a) {
   return [false, cont2, [_VectorOrArray_fromList(a)]];
  };
- const resultToInt = function(cont2, a) {
-  if (tmp1(a)) {
-   throw Domain;
-  } else if (a < - 2.147483648e9 || a > 2.147483647e9) {
-   throw _Overflow;
-  } else {
-   return [false, cont2, [a | 0]];
-  }
- };
  const substring = function(cont2, s, i, j) {
-  let tmp6;
+  let tmp4;
   cont: {
    if (i < 0) {
-    tmp6 = true;
+    tmp4 = true;
     break cont;
    } else if (j < 0) {
-    tmp6 = true;
+    tmp4 = true;
     break cont;
    } else {
-    const tmp7 = s.length;
-    tmp6 = tmp7 < _Int54_add(i, j);
+    const tmp5 = s.length;
+    tmp4 = tmp5 < _Int54_add(i, j);
     break cont;
    }
   }
-  if (tmp6) {
+  if (tmp4) {
    throw _Subscript;
   } else {
    return [false, cont2, [s.subarray(i, _Int54_add(i, j))]];
@@ -483,14 +461,14 @@ _run(function(cont) {
    if (a2.length >= a1 || a1 <= 0) {
     return [false, cont3, [a2]];
    } else {
-    const tmp6 = Uint8Array.of(a);
-    let tmp7 = _Int54_sub(a1, a2.length), tmp8 = _list([a2]);
+    const tmp4 = Uint8Array.of(a);
+    let tmp5 = _Int54_sub(a1, a2.length), tmp6 = _list([a2]);
     tmp: for (;;) {
-     const j = tmp7, acc = tmp8;
+     const j = tmp5, acc = tmp6;
      if (j <= 0) {
       return [false, cont3, [_String_concat(acc)]];
      } else {
-      [tmp7, tmp8] = [_Int54_sub(j, 1), [tmp6, acc]];
+      [tmp5, tmp6] = [_Int54_sub(j, 1), [tmp4, acc]];
       continue tmp;
      }
     }
@@ -504,9 +482,9 @@ _run(function(cont) {
     if (i < 0) {
      return [false, cont3, [acc]];
     } else {
-     const tmp6 = _Int54_sub(i, 1);
-     const cont5 = function(tmp7) {
-      return [false, cont4, [tmp6, tmp7]];
+     const tmp4 = _Int54_sub(i, 1);
+     const cont5 = function(tmp5) {
+      return [false, cont4, [tmp4, tmp5]];
      };
      return [false, a, [cont5, [a2[i], acc]]];
     }
@@ -514,27 +492,27 @@ _run(function(cont) {
    return [false, cont4, [_Int54_sub(a2.length, 1), a1]];
   }]];
  };
- const MonoSequence = function(cont2, fromList1, length1, maxLen, tmp6, create, tmp7, tmp8, tmp9, tmp10, fromList2, length2, maxLen1, tmp11, vector, tmp12, tmp13, tmp14) {
+ const MonoSequence = function(cont2, fromList1, length1, maxLen, tmp4, create, tmp5, tmp6, tmp7, tmp8, fromList2, length2, maxLen1, tmp9, vector, tmp10, tmp11, tmp12) {
   const tabulate1 = function(cont3, a) {
    const n = a[0];
-   const cont4 = function(tmp15) {
-    return [false, tmp12, [cont3, [n, tmp15]]];
+   const cont4 = function(tmp13) {
+    return [false, tmp10, [cont3, [n, tmp13]]];
    };
    return [false, tabulate, [cont4, n, a[1]]];
   };
-  const sub3 = function(cont3, a) {
+  const sub2 = function(cont3, a) {
    const v = a[0];
    const i = a[1];
-   const cont4 = function(tmp15) {
-    if (tmp15) {
-     return [false, tmp14, [cont3, [v, i]]];
+   const cont4 = function(tmp13) {
+    if (tmp13) {
+     return [false, tmp12, [cont3, [v, i]]];
     } else {
      throw _Subscript;
     }
    };
    if (0 <= i) {
-    const cont5 = function(tmp15) {
-     return [false, cont4, [i < tmp15]];
+    const cont5 = function(tmp13) {
+     return [false, cont4, [i < tmp13]];
     };
     return [false, length2, [cont5, v]];
    } else {
@@ -545,20 +523,20 @@ _run(function(cont) {
    const v = a[0];
    const i = a[1];
    const x = a[2];
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     const tmp17 = _Int54_add(i, 1);
-     const cont6 = function(tmp18) {
-      const cont7 = function(tmp19) {
-       return [false, tmp10, [cont3, _list([tmp15, tmp16, tmp19])]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     const tmp15 = _Int54_add(i, 1);
+     const cont6 = function(tmp16) {
+      const cont7 = function(tmp17) {
+       return [false, tmp8, [cont3, _list([tmp13, tmp14, tmp17])]];
       };
-      return [false, tmp11, [cont7, {base: v, length: _Int54_sub(_Int54_sub(tmp18, i), 1), start: tmp17}]];
+      return [false, tmp9, [cont7, {base: v, length: _Int54_sub(_Int54_sub(tmp16, i), 1), start: tmp15}]];
      };
      return [false, length2, [cont6, v]];
     };
     return [false, fromList2, [cont5, _list([x])]];
    };
-   return [false, tmp11, [cont4, {base: v, length: i, start: 0}]];
+   return [false, tmp9, [cont4, {base: v, length: i, start: 0}]];
   };
   const appi = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
@@ -568,13 +546,13 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [undefined]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
 	 return [false, cont6, [_Int54_add(a2, 1)]];
 	};
-	return [false, a, [cont8, [a2, tmp15]]];
+	return [false, a, [cont8, [a2, tmp13]]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -590,13 +568,13 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [undefined]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
 	 return [false, cont6, [_Int54_add(a2, 1)]];
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -607,14 +585,14 @@ _run(function(cont) {
   const mapi = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     const cont5 = function(n) {
-     const cont6 = function(tmp15) {
-      return [false, tmp12, [cont4, [n, tmp15]]];
+     const cont6 = function(tmp13) {
+      return [false, tmp10, [cont4, [n, tmp13]]];
      };
      return [false, tabulate, [cont6, n, function(cont7, i) {
-      const cont8 = function(tmp15) {
-       return [false, a, [cont7, [i, tmp15]]];
+      const cont8 = function(tmp13) {
+       return [false, a, [cont7, [i, tmp13]]];
       };
-      return [false, tmp14, [cont8, [a1, i]]];
+      return [false, tmp12, [cont8, [a1, i]]];
      }]];
     };
     return [false, length2, [cont5, a1]];
@@ -623,14 +601,14 @@ _run(function(cont) {
   const map1 = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     const cont5 = function(n) {
-     const cont6 = function(tmp15) {
-      return [false, tmp12, [cont4, [n, tmp15]]];
+     const cont6 = function(tmp13) {
+      return [false, tmp10, [cont4, [n, tmp13]]];
      };
      return [false, tabulate, [cont6, n, function(cont7, i) {
-      const cont8 = function(tmp15) {
-       return [false, a, [cont7, tmp15]];
+      const cont8 = function(tmp13) {
+       return [false, a, [cont7, tmp13]];
       };
-      return [false, tmp14, [cont8, [a1, i]]];
+      return [false, tmp12, [cont8, [a1, i]]];
      }]];
     };
     return [false, length2, [cont5, a1]];
@@ -645,14 +623,14 @@ _run(function(cont) {
        if (i >= n) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp15 = _Int54_add(i, 1);
-	const cont8 = function(tmp16) {
-	 const cont9 = function(tmp17) {
-	  return [false, cont7, [tmp15, tmp17]];
+	const tmp13 = _Int54_add(i, 1);
+	const cont8 = function(tmp14) {
+	 const cont9 = function(tmp15) {
+	  return [false, cont7, [tmp13, tmp15]];
 	 };
-	 return [false, a, [cont9, [i, tmp16, acc]]];
+	 return [false, a, [cont9, [i, tmp14, acc]]];
 	};
-	return [false, tmp14, [cont8, [a2, i]]];
+	return [false, tmp12, [cont8, [a2, i]]];
        }
       };
       return [false, cont7, [0, a1]];
@@ -664,23 +642,23 @@ _run(function(cont) {
   const foldri = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     return [false, cont4, [function(cont5, a2) {
-     const cont6 = function(tmp15) {
+     const cont6 = function(tmp13) {
       let cont7;
       cont7 = function(i, acc) {
        if (i < 0) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp16 = _Int54_sub(i, 1);
-	const cont8 = function(tmp17) {
-	 const cont9 = function(tmp18) {
-	  return [false, cont7, [tmp16, tmp18]];
+	const tmp14 = _Int54_sub(i, 1);
+	const cont8 = function(tmp15) {
+	 const cont9 = function(tmp16) {
+	  return [false, cont7, [tmp14, tmp16]];
 	 };
-	 return [false, a, [cont9, [i, tmp17, acc]]];
+	 return [false, a, [cont9, [i, tmp15, acc]]];
 	};
-	return [false, tmp14, [cont8, [a2, i]]];
+	return [false, tmp12, [cont8, [a2, i]]];
        }
       };
-      return [false, cont7, [_Int54_sub(tmp15, 1), a1]];
+      return [false, cont7, [_Int54_sub(tmp13, 1), a1]];
      };
      return [false, length2, [cont6, a2]];
     }]];
@@ -695,14 +673,14 @@ _run(function(cont) {
        if (i >= n) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp15 = _Int54_add(i, 1);
-	const cont8 = function(tmp16) {
-	 const cont9 = function(tmp17) {
-	  return [false, cont7, [tmp15, tmp17]];
+	const tmp13 = _Int54_add(i, 1);
+	const cont8 = function(tmp14) {
+	 const cont9 = function(tmp15) {
+	  return [false, cont7, [tmp13, tmp15]];
 	 };
-	 return [false, a, [cont9, [tmp16, acc]]];
+	 return [false, a, [cont9, [tmp14, acc]]];
 	};
-	return [false, tmp14, [cont8, [a2, i]]];
+	return [false, tmp12, [cont8, [a2, i]]];
        }
       };
       return [false, cont7, [0, a1]];
@@ -714,23 +692,23 @@ _run(function(cont) {
   const foldr1 = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     return [false, cont4, [function(cont5, a2) {
-     const cont6 = function(tmp15) {
+     const cont6 = function(tmp13) {
       let cont7;
       cont7 = function(i, acc) {
        if (i < 0) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp16 = _Int54_sub(i, 1);
-	const cont8 = function(tmp17) {
-	 const cont9 = function(tmp18) {
-	  return [false, cont7, [tmp16, tmp18]];
+	const tmp14 = _Int54_sub(i, 1);
+	const cont8 = function(tmp15) {
+	 const cont9 = function(tmp16) {
+	  return [false, cont7, [tmp14, tmp16]];
 	 };
-	 return [false, a, [cont9, [tmp17, acc]]];
+	 return [false, a, [cont9, [tmp15, acc]]];
 	};
-	return [false, tmp14, [cont8, [a2, i]]];
+	return [false, tmp12, [cont8, [a2, i]]];
        }
       };
-      return [false, cont7, [_Int54_sub(tmp15, 1), a1]];
+      return [false, cont7, [_Int54_sub(tmp13, 1), a1]];
      };
      return [false, length2, [cont6, a2]];
     }]];
@@ -745,8 +723,8 @@ _run(function(cont) {
        return [false, cont4, [NONE]];
       } else {
        const cont7 = function(x) {
-	const cont8 = function(tmp15) {
-	 if (tmp15) {
+	const cont8 = function(tmp13) {
+	 if (tmp13) {
 	  return [false, cont4, [{tag: "SOME", payload: [a2, x]}]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
@@ -754,7 +732,7 @@ _run(function(cont) {
 	};
 	return [false, a, [cont8, [a2, x]]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -771,8 +749,8 @@ _run(function(cont) {
        return [false, cont4, [NONE]];
       } else {
        const cont7 = function(x) {
-	const cont8 = function(tmp15) {
-	 if (tmp15) {
+	const cont8 = function(tmp13) {
+	 if (tmp13) {
 	  return [false, cont4, [{tag: "SOME", payload: x}]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
@@ -780,7 +758,7 @@ _run(function(cont) {
 	};
 	return [false, a, [cont8, x]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -796,17 +774,17 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [false]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
-	 if (tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
+	 if (tmp14) {
 	  return [false, cont4, [true]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 }
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -822,17 +800,17 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [true]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
-	 if (tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
+	 if (tmp14) {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 } else {
 	  return [false, cont4, [false]];
 	 }
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp14, [cont7, [a1, a2]]];
+       return [false, tmp12, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -848,28 +826,28 @@ _run(function(cont) {
      const cont6 = function(yl) {
       let cont7;
       cont7 = function(a2) {
-       const tmp15 = xl <= a2;
-       const tmp16 = yl <= a2;
-       let tmp17;
+       const tmp13 = xl <= a2;
+       const tmp14 = yl <= a2;
+       let tmp15;
        cont: {
-	tmp17 = tmp15 && tmp16;
+	tmp15 = tmp13 && tmp14;
 	break cont;
        }
-       if (tmp17) {
+       if (tmp15) {
 	return [false, cont4, [EQUAL]];
        } else {
-	let tmp18;
+	let tmp16;
 	cont: {
-	 tmp18 = tmp15 && ! tmp16;
+	 tmp16 = tmp13 && ! tmp14;
 	 break cont;
 	}
-	if (tmp18) {
+	if (tmp16) {
 	 return [false, cont4, [LESS]];
-	} else if (! tmp15 && tmp16) {
+	} else if (! tmp13 && tmp14) {
 	 return [false, cont4, [GREATER]];
-	} else if (! tmp15 && ! tmp16) {
-	 const cont8 = function(tmp19) {
-	  const cont9 = function(tmp20) {
+	} else if (! tmp13 && ! tmp14) {
+	 const cont8 = function(tmp17) {
+	  const cont9 = function(tmp18) {
 	   const cont10 = function(exp) {
 	    if (exp === "EQUAL") {
 	     return [false, cont7, [_Int54_add(a2, 1)]];
@@ -877,11 +855,11 @@ _run(function(cont) {
 	     return [false, cont4, [exp]];
 	    }
 	   };
-	   return [false, a, [cont10, [tmp19, tmp20]]];
+	   return [false, a, [cont10, [tmp17, tmp18]]];
 	  };
-	  return [false, tmp14, [cont9, [ys, a2]]];
+	  return [false, tmp12, [cont9, [ys, a2]]];
 	 };
-	 return [false, tmp14, [cont8, [xs, a2]]];
+	 return [false, tmp12, [cont8, [xs, a2]]];
 	} else {
 	 throw _Match;
 	}
@@ -895,46 +873,46 @@ _run(function(cont) {
    }]];
   };
   const toList = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     return [false, tmp16, [cont3, a]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     return [false, tmp14, [cont3, a]];
     };
-    return [false, tmp15, [cont5, null]];
+    return [false, tmp13, [cont5, null]];
    };
    return [false, foldr1, [cont4, $COLON$COLON]];
   };
   const append = function(cont3, a) {
    const v = a[0];
-   const cont4 = function(tmp15) {
-    return [false, tmp10, [cont3, _list([v, tmp15])]];
+   const cont4 = function(tmp13) {
+    return [false, tmp8, [cont3, _list([v, tmp13])]];
    };
    return [false, fromList2, [cont4, _list([a[1]])]];
   };
   const prepend = function(cont3, a) {
    const x = a[0];
    const v = a[1];
-   const cont4 = function(tmp15) {
-    return [false, tmp10, [cont3, _list([tmp15, v])]];
+   const cont4 = function(tmp13) {
+    return [false, tmp8, [cont3, _list([tmp13, v])]];
    };
    return [false, fromList2, [cont4, _list([x])]];
   };
-  const length3 = function(cont3, tmp15) {
-   return [false, cont3, [tmp15.length]];
+  const length3 = function(cont3, tmp13) {
+   return [false, cont3, [tmp13.length]];
   };
-  const sub4 = function(cont3, a) {
+  const sub3 = function(cont3, a) {
    const base2 = a[0].base;
    const start = a[0].start;
    const length5 = a[0].length;
    const i = a[1];
    if (0 <= i && i < length5) {
-    return [false, tmp14, [cont3, [base2, _Int54_add(start, i)]]];
+    return [false, tmp12, [cont3, [base2, _Int54_add(start, i)]]];
    } else {
     throw _Subscript;
    }
   };
   const full = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    return [false, cont3, [{base: a, length: tmp15, start: 0}]];
+   const cont4 = function(tmp13) {
+    return [false, cont3, [{base: a, length: tmp13, start: 0}]];
    };
    return [false, length2, [cont4, a]];
   };
@@ -954,8 +932,8 @@ _run(function(cont) {
     const v = a[0];
     const i = a[1];
     const n = a[2].payload;
-    const cont4 = function(tmp15) {
-     if (tmp15) {
+    const cont4 = function(tmp13) {
+     if (tmp13) {
       return [false, cont3, [{base: v, length: n, start: i}]];
      } else {
       throw _Subscript;
@@ -963,9 +941,9 @@ _run(function(cont) {
     };
     if (0 <= i) {
      if (0 <= n) {
-      const tmp15 = _Int54_add(i, n);
-      const cont5 = function(tmp16) {
-       return [false, cont4, [tmp15 <= tmp16]];
+      const tmp13 = _Int54_add(i, n);
+      const cont5 = function(tmp14) {
+       return [false, cont4, [tmp13 <= tmp14]];
       };
       return [false, length2, [cont5, v]];
      } else {
@@ -985,8 +963,8 @@ _run(function(cont) {
     const length5 = a[0].length;
     const i = a[1];
     if (0 <= i && i <= length5) {
-     const tmp15 = _Int54_add(start, i);
-     return [false, cont3, [{base: base2, length: _Int54_sub(length5, i), start: tmp15}]];
+     const tmp13 = _Int54_add(start, i);
+     return [false, cont3, [{base: base2, length: _Int54_sub(length5, i), start: tmp13}]];
     } else {
      throw _Subscript;
     }
@@ -1011,13 +989,13 @@ _run(function(cont) {
    return [false, cont3, [[b, start, a.length]]];
   };
   const concat1 = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     return [false, tmp10, [cont3, tmp16]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     return [false, tmp8, [cont3, tmp14]];
     };
-    return [false, tmp15, [cont5, a]];
+    return [false, tmp13, [cont5, a]];
    };
-   return [false, map, [cont4, tmp11]];
+   return [false, map, [cont4, tmp9]];
   };
   const isEmpty = function(cont3, a) {
    return [false, cont3, [a.length === 0]];
@@ -1027,11 +1005,11 @@ _run(function(cont) {
    const start = a.start;
    const length5 = a.length;
    if (length5 > 0) {
-    const cont4 = function(tmp15) {
-     const tmp16 = _Int54_add(start, 1);
-     return [false, cont3, [{tag: "SOME", payload: [tmp15, {base: base2, length: _Int54_sub(length5, 1), start: tmp16}]}]];
+    const cont4 = function(tmp13) {
+     const tmp14 = _Int54_add(start, 1);
+     return [false, cont3, [{tag: "SOME", payload: [tmp13, {base: base2, length: _Int54_sub(length5, 1), start: tmp14}]}]];
     };
-    return [false, tmp14, [cont4, [base2, start]]];
+    return [false, tmp12, [cont4, [base2, start]]];
    } else {
     return [false, cont3, [NONE]];
    }
@@ -1046,13 +1024,13 @@ _run(function(cont) {
      if (a2 >= length5) {
       return [false, cont4, [undefined]];
      } else {
-      const cont6 = function(tmp15) {
-       const cont7 = function(tmp16) {
+      const cont6 = function(tmp13) {
+       const cont7 = function(tmp14) {
 	return [false, cont5, [_Int54_add(a2, 1)]];
        };
-       return [false, a, [cont7, [a2, tmp15]]];
+       return [false, a, [cont7, [a2, tmp13]]];
       };
-      return [false, tmp14, [cont6, [base2, _Int54_add(start, a2)]]];
+      return [false, tmp12, [cont6, [base2, _Int54_add(start, a2)]]];
      }
     };
     return [false, cont5, [0]];
@@ -1062,19 +1040,19 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [undefined]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
 	return [false, cont5, [_Int54_add(a2, 1)]];
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp14, [cont6, [base2, a2]]];
+      return [false, tmp12, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -1088,16 +1066,16 @@ _run(function(cont) {
     let cont5;
     cont5 = function(i, acc) {
      if (i >= length5) {
-      return [false, tmp13, [cont4, [length5, acc]]];
+      return [false, tmp11, [cont4, [length5, acc]]];
      } else {
-      const tmp15 = _Int54_add(i, 1);
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
-	return [false, cont5, [tmp15, [tmp17, acc]]];
+      const tmp13 = _Int54_add(i, 1);
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
+	return [false, cont5, [tmp13, [tmp15, acc]]];
        };
-       return [false, a, [cont7, [i, tmp16]]];
+       return [false, a, [cont7, [i, tmp14]]];
       };
-      return [false, tmp14, [cont6, [base2, _Int54_add(start, i)]]];
+      return [false, tmp12, [cont6, [base2, _Int54_add(start, i)]]];
      }
     };
     return [false, cont5, [0, null]];
@@ -1108,20 +1086,20 @@ _run(function(cont) {
     const base2 = a1.base;
     const start = a1.start;
     const length5 = a1.length;
-    const tmp15 = _Int54_add(start, length5);
+    const tmp13 = _Int54_add(start, length5);
     let cont5;
     cont5 = function(i, acc) {
-     if (i >= tmp15) {
-      return [false, tmp13, [cont4, [length5, acc]]];
+     if (i >= tmp13) {
+      return [false, tmp11, [cont4, [length5, acc]]];
      } else {
-      const tmp16 = _Int54_add(i, 1);
-      const cont6 = function(tmp17) {
-       const cont7 = function(tmp18) {
-	return [false, cont5, [tmp16, [tmp18, acc]]];
+      const tmp14 = _Int54_add(i, 1);
+      const cont6 = function(tmp15) {
+       const cont7 = function(tmp16) {
+	return [false, cont5, [tmp14, [tmp16, acc]]];
        };
-       return [false, a, [cont7, tmp17]];
+       return [false, a, [cont7, tmp15]];
       };
-      return [false, tmp14, [cont6, [base2, i]]];
+      return [false, tmp12, [cont6, [base2, i]]];
      }
     };
     return [false, cont5, [start, null]];
@@ -1138,14 +1116,14 @@ _run(function(cont) {
       if (i >= length5) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_add(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_add(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [i, tmp16, acc]]];
+	return [false, a, [cont8, [i, tmp14, acc]]];
        };
-       return [false, tmp14, [cont7, [base2, _Int54_add(start, i)]]];
+       return [false, tmp12, [cont7, [base2, _Int54_add(start, i)]]];
       }
      };
      return [false, cont6, [0, a1]];
@@ -1162,14 +1140,14 @@ _run(function(cont) {
       if (i < 0) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_sub(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_sub(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [i, tmp16, acc]]];
+	return [false, a, [cont8, [i, tmp14, acc]]];
        };
-       return [false, tmp14, [cont7, [base2, _Int54_add(start, i)]]];
+       return [false, tmp12, [cont7, [base2, _Int54_add(start, i)]]];
       }
      };
      return [false, cont6, [_Int54_sub(a2.length, 1), a1]];
@@ -1181,20 +1159,20 @@ _run(function(cont) {
     return [false, cont4, [function(cont5, a2) {
      const base2 = a2.base;
      const start = a2.start;
-     const tmp15 = _Int54_add(start, a2.length);
+     const tmp13 = _Int54_add(start, a2.length);
      let cont6;
      cont6 = function(i, acc) {
-      if (i >= tmp15) {
+      if (i >= tmp13) {
        return [false, cont5, [acc]];
       } else {
-       const tmp16 = _Int54_add(i, 1);
-       const cont7 = function(tmp17) {
-	const cont8 = function(tmp18) {
-	 return [false, cont6, [tmp16, tmp18]];
+       const tmp14 = _Int54_add(i, 1);
+       const cont7 = function(tmp15) {
+	const cont8 = function(tmp16) {
+	 return [false, cont6, [tmp14, tmp16]];
 	};
-	return [false, a, [cont8, [tmp17, acc]]];
+	return [false, a, [cont8, [tmp15, acc]]];
        };
-       return [false, tmp14, [cont7, [base2, i]]];
+       return [false, tmp12, [cont7, [base2, i]]];
       }
      };
      return [false, cont6, [start, a1]];
@@ -1211,14 +1189,14 @@ _run(function(cont) {
       if (i < start) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_sub(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_sub(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [tmp16, acc]]];
+	return [false, a, [cont8, [tmp14, acc]]];
        };
-       return [false, tmp14, [cont7, [base2, i]]];
+       return [false, tmp12, [cont7, [base2, i]]];
       }
      };
      return [false, cont6, [_Int54_sub(_Int54_add(start, a2.length), 1), a1]];
@@ -1236,8 +1214,8 @@ _run(function(cont) {
       return [false, cont4, [NONE]];
      } else {
       const cont6 = function(x) {
-       const cont7 = function(tmp15) {
-	if (tmp15) {
+       const cont7 = function(tmp13) {
+	if (tmp13) {
 	 return [false, cont4, [{tag: "SOME", payload: [a2, x]}]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
@@ -1245,7 +1223,7 @@ _run(function(cont) {
        };
        return [false, a, [cont7, [a2, x]]];
       };
-      return [false, tmp14, [cont6, [base2, _Int54_add(start, a2)]]];
+      return [false, tmp12, [cont6, [base2, _Int54_add(start, a2)]]];
      }
     };
     return [false, cont5, [0]];
@@ -1255,15 +1233,15 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [NONE]];
      } else {
       const cont6 = function(x) {
-       const cont7 = function(tmp16) {
-	if (tmp16) {
+       const cont7 = function(tmp14) {
+	if (tmp14) {
 	 return [false, cont4, [{tag: "SOME", payload: x}]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
@@ -1271,7 +1249,7 @@ _run(function(cont) {
        };
        return [false, a, [cont7, x]];
       };
-      return [false, tmp14, [cont6, [base2, a2]]];
+      return [false, tmp12, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -1281,23 +1259,23 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [false]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
-	if (tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
+	if (tmp15) {
 	 return [false, cont4, [true]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	}
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp14, [cont6, [base2, a2]]];
+      return [false, tmp12, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -1307,23 +1285,23 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [true]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
-	if (tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
+	if (tmp15) {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	} else {
 	 return [false, cont4, [false]];
 	}
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp14, [cont6, [base2, a2]]];
+      return [false, tmp12, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -1337,32 +1315,32 @@ _run(function(cont) {
     const base$PRIME = a1[1].base;
     const start$PRIME = a1[1].start;
     const length$PRIME = a1[1].length;
-    const tmp15 = _Int54_add(start, length5);
-    const tmp16 = _Int54_add(start$PRIME, length$PRIME);
+    const tmp13 = _Int54_add(start, length5);
+    const tmp14 = _Int54_add(start$PRIME, length$PRIME);
     let cont5;
     cont5 = function(i, j) {
-     const tmp17 = tmp15 <= i;
-     const tmp18 = tmp16 <= j;
-     let tmp19;
+     const tmp15 = tmp13 <= i;
+     const tmp16 = tmp14 <= j;
+     let tmp17;
      cont: {
-      tmp19 = tmp17 && tmp18;
+      tmp17 = tmp15 && tmp16;
       break cont;
      }
-     if (tmp19) {
+     if (tmp17) {
       return [false, cont4, [EQUAL]];
      } else {
-      let tmp20;
+      let tmp18;
       cont: {
-       tmp20 = tmp17 && ! tmp18;
+       tmp18 = tmp15 && ! tmp16;
        break cont;
       }
-      if (tmp20) {
+      if (tmp18) {
        return [false, cont4, [LESS]];
-      } else if (! tmp17 && tmp18) {
+      } else if (! tmp15 && tmp16) {
        return [false, cont4, [GREATER]];
-      } else if (! tmp17 && ! tmp18) {
-       const cont6 = function(tmp21) {
-	const cont7 = function(tmp22) {
+      } else if (! tmp15 && ! tmp16) {
+       const cont6 = function(tmp19) {
+	const cont7 = function(tmp20) {
 	 const cont8 = function(exp) {
 	  if (exp === "EQUAL") {
 	   return [false, cont5, [_Int54_add(i, 1), _Int54_add(j, 1)]];
@@ -1370,11 +1348,11 @@ _run(function(cont) {
 	   return [false, cont4, [exp]];
 	  }
 	 };
-	 return [false, a, [cont8, [tmp21, tmp22]]];
+	 return [false, a, [cont8, [tmp19, tmp20]]];
 	};
-	return [false, tmp14, [cont7, [base$PRIME, j]]];
+	return [false, tmp12, [cont7, [base$PRIME, j]]];
        };
-       return [false, tmp14, [cont6, [base2, i]]];
+       return [false, tmp12, [cont6, [base2, i]]];
       } else {
        throw _Match;
       }
@@ -1389,7 +1367,7 @@ _run(function(cont) {
    if (n < 0 || maxLen < n) {
     throw _Size;
    } else {
-    return [false, tmp6, [cont3, [n, init]]];
+    return [false, tmp4, [cont3, [n, init]]];
    }
   };
   const tabulate2 = function(cont3, a) {
@@ -1398,25 +1376,25 @@ _run(function(cont) {
    if (maxLen < n) {
     throw _Size;
    } else {
-    const cont4 = function(tmp15) {
-     return [false, tmp7, [cont3, [n, tmp15]]];
+    const cont4 = function(tmp13) {
+     return [false, tmp5, [cont3, [n, tmp13]]];
     };
     return [false, tabulate, [cont4, n, f]];
    }
   };
-  const sub5 = function(cont3, a) {
+  const sub4 = function(cont3, a) {
    const a1 = a[0];
    const i = a[1];
-   const cont4 = function(tmp15) {
-    if (tmp15) {
-     return [false, tmp8, [cont3, [a1, i]]];
+   const cont4 = function(tmp13) {
+    if (tmp13) {
+     return [false, tmp6, [cont3, [a1, i]]];
     } else {
      throw _Subscript;
     }
    };
    if (0 <= i) {
-    const cont5 = function(tmp15) {
-     return [false, cont4, [i < tmp15]];
+    const cont5 = function(tmp13) {
+     return [false, cont4, [i < tmp13]];
     };
     return [false, length1, [cont5, a1]];
    } else {
@@ -1427,16 +1405,16 @@ _run(function(cont) {
    const a1 = a[0];
    const i = a[1];
    const x = a[2];
-   const cont4 = function(tmp15) {
-    if (tmp15) {
-     return [false, tmp9, [cont3, [a1, i, x]]];
+   const cont4 = function(tmp13) {
+    if (tmp13) {
+     return [false, tmp7, [cont3, [a1, i, x]]];
     } else {
      throw _Subscript;
     }
    };
    if (0 <= i) {
-    const cont5 = function(tmp15) {
-     return [false, cont4, [i < tmp15]];
+    const cont5 = function(tmp13) {
+     return [false, cont4, [i < tmp13]];
     };
     return [false, length1, [cont5, a1]];
    } else {
@@ -1448,21 +1426,21 @@ _run(function(cont) {
    const dst = a.dst;
    const di = a.di;
    const cont4 = function(srcLen) {
-    const cont5 = function(tmp15) {
-     if (tmp15) {
+    const cont5 = function(tmp13) {
+     if (tmp13) {
       let cont6;
       cont6 = function(a1) {
        if (a1 >= srcLen) {
 	return [false, cont3, [undefined]];
        } else {
-	const tmp16 = _Int54_add(di, a1);
-	const cont7 = function(tmp17) {
-	 const cont8 = function(tmp18) {
+	const tmp14 = _Int54_add(di, a1);
+	const cont7 = function(tmp15) {
+	 const cont8 = function(tmp16) {
 	  return [false, cont6, [_Int54_add(a1, 1)]];
 	 };
-	 return [false, tmp9, [cont8, [dst, tmp16, tmp17]]];
+	 return [false, tmp7, [cont8, [dst, tmp14, tmp15]]];
 	};
-	return [false, tmp8, [cont7, [src, a1]]];
+	return [false, tmp6, [cont7, [src, a1]]];
        }
       };
       return [false, cont6, [0]];
@@ -1471,9 +1449,9 @@ _run(function(cont) {
      }
     };
     if (0 <= di) {
-     const tmp15 = _Int54_add(di, srcLen);
-     const cont6 = function(tmp16) {
-      return [false, cont5, [tmp15 <= tmp16]];
+     const tmp13 = _Int54_add(di, srcLen);
+     const cont6 = function(tmp14) {
+      return [false, cont5, [tmp13 <= tmp14]];
      };
      return [false, length1, [cont6, dst]];
     } else {
@@ -1487,21 +1465,21 @@ _run(function(cont) {
    const dst = a.dst;
    const di = a.di;
    const cont4 = function(srcLen) {
-    const cont5 = function(tmp15) {
-     if (tmp15) {
+    const cont5 = function(tmp13) {
+     if (tmp13) {
       let cont6;
       cont6 = function(a1) {
        if (a1 >= srcLen) {
 	return [false, cont3, [undefined]];
        } else {
-	const tmp16 = _Int54_add(di, a1);
-	const cont7 = function(tmp17) {
-	 const cont8 = function(tmp18) {
+	const tmp14 = _Int54_add(di, a1);
+	const cont7 = function(tmp15) {
+	 const cont8 = function(tmp16) {
 	  return [false, cont6, [_Int54_add(a1, 1)]];
 	 };
-	 return [false, tmp9, [cont8, [dst, tmp16, tmp17]]];
+	 return [false, tmp7, [cont8, [dst, tmp14, tmp15]]];
 	};
-	return [false, tmp14, [cont7, [src, a1]]];
+	return [false, tmp12, [cont7, [src, a1]]];
        }
       };
       return [false, cont6, [0]];
@@ -1510,9 +1488,9 @@ _run(function(cont) {
      }
     };
     if (0 <= di) {
-     const tmp15 = _Int54_add(di, srcLen);
-     const cont6 = function(tmp16) {
-      return [false, cont5, [tmp15 <= tmp16]];
+     const tmp13 = _Int54_add(di, srcLen);
+     const cont6 = function(tmp14) {
+      return [false, cont5, [tmp13 <= tmp14]];
      };
      return [false, length1, [cont6, dst]];
     } else {
@@ -1529,13 +1507,13 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [undefined]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
 	 return [false, cont6, [_Int54_add(a2, 1)]];
 	};
-	return [false, a, [cont8, [a2, tmp15]]];
+	return [false, a, [cont8, [a2, tmp13]]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1551,13 +1529,13 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [undefined]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
 	 return [false, cont6, [_Int54_add(a2, 1)]];
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1575,14 +1553,14 @@ _run(function(cont) {
       } else {
        const cont7 = function(x) {
 	const cont8 = function(y) {
-	 const cont9 = function(tmp15) {
+	 const cont9 = function(tmp13) {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 };
-	 return [false, tmp9, [cont9, [a1, a2, y]]];
+	 return [false, tmp7, [cont9, [a1, a2, y]]];
 	};
 	return [false, a, [cont8, [a2, x]]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1600,14 +1578,14 @@ _run(function(cont) {
       } else {
        const cont7 = function(x) {
 	const cont8 = function(y) {
-	 const cont9 = function(tmp15) {
+	 const cont9 = function(tmp13) {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 };
-	 return [false, tmp9, [cont9, [a1, a2, y]]];
+	 return [false, tmp7, [cont9, [a1, a2, y]]];
 	};
 	return [false, a, [cont8, x]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1624,14 +1602,14 @@ _run(function(cont) {
        if (i >= n) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp15 = _Int54_add(i, 1);
-	const cont8 = function(tmp16) {
-	 const cont9 = function(tmp17) {
-	  return [false, cont7, [tmp15, tmp17]];
+	const tmp13 = _Int54_add(i, 1);
+	const cont8 = function(tmp14) {
+	 const cont9 = function(tmp15) {
+	  return [false, cont7, [tmp13, tmp15]];
 	 };
-	 return [false, a, [cont9, [i, tmp16, acc]]];
+	 return [false, a, [cont9, [i, tmp14, acc]]];
 	};
-	return [false, tmp8, [cont8, [a2, i]]];
+	return [false, tmp6, [cont8, [a2, i]]];
        }
       };
       return [false, cont7, [0, a1]];
@@ -1643,23 +1621,23 @@ _run(function(cont) {
   const foldri2 = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     return [false, cont4, [function(cont5, a2) {
-     const cont6 = function(tmp15) {
+     const cont6 = function(tmp13) {
       let cont7;
       cont7 = function(i, acc) {
        if (i < 0) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp16 = _Int54_sub(i, 1);
-	const cont8 = function(tmp17) {
-	 const cont9 = function(tmp18) {
-	  return [false, cont7, [tmp16, tmp18]];
+	const tmp14 = _Int54_sub(i, 1);
+	const cont8 = function(tmp15) {
+	 const cont9 = function(tmp16) {
+	  return [false, cont7, [tmp14, tmp16]];
 	 };
-	 return [false, a, [cont9, [i, tmp17, acc]]];
+	 return [false, a, [cont9, [i, tmp15, acc]]];
 	};
-	return [false, tmp8, [cont8, [a2, i]]];
+	return [false, tmp6, [cont8, [a2, i]]];
        }
       };
-      return [false, cont7, [_Int54_sub(tmp15, 1), a1]];
+      return [false, cont7, [_Int54_sub(tmp13, 1), a1]];
      };
      return [false, length1, [cont6, a2]];
     }]];
@@ -1674,14 +1652,14 @@ _run(function(cont) {
        if (i >= n) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp15 = _Int54_add(i, 1);
-	const cont8 = function(tmp16) {
-	 const cont9 = function(tmp17) {
-	  return [false, cont7, [tmp15, tmp17]];
+	const tmp13 = _Int54_add(i, 1);
+	const cont8 = function(tmp14) {
+	 const cont9 = function(tmp15) {
+	  return [false, cont7, [tmp13, tmp15]];
 	 };
-	 return [false, a, [cont9, [tmp16, acc]]];
+	 return [false, a, [cont9, [tmp14, acc]]];
 	};
-	return [false, tmp8, [cont8, [a2, i]]];
+	return [false, tmp6, [cont8, [a2, i]]];
        }
       };
       return [false, cont7, [0, a1]];
@@ -1693,23 +1671,23 @@ _run(function(cont) {
   const foldr3 = function(cont3, a) {
    return [false, cont3, [function(cont4, a1) {
     return [false, cont4, [function(cont5, a2) {
-     const cont6 = function(tmp15) {
+     const cont6 = function(tmp13) {
       let cont7;
       cont7 = function(i, acc) {
        if (i < 0) {
 	return [false, cont5, [acc]];
        } else {
-	const tmp16 = _Int54_sub(i, 1);
-	const cont8 = function(tmp17) {
-	 const cont9 = function(tmp18) {
-	  return [false, cont7, [tmp16, tmp18]];
+	const tmp14 = _Int54_sub(i, 1);
+	const cont8 = function(tmp15) {
+	 const cont9 = function(tmp16) {
+	  return [false, cont7, [tmp14, tmp16]];
 	 };
-	 return [false, a, [cont9, [tmp17, acc]]];
+	 return [false, a, [cont9, [tmp15, acc]]];
 	};
-	return [false, tmp8, [cont8, [a2, i]]];
+	return [false, tmp6, [cont8, [a2, i]]];
        }
       };
-      return [false, cont7, [_Int54_sub(tmp15, 1), a1]];
+      return [false, cont7, [_Int54_sub(tmp13, 1), a1]];
      };
      return [false, length1, [cont6, a2]];
     }]];
@@ -1724,8 +1702,8 @@ _run(function(cont) {
        return [false, cont4, [NONE]];
       } else {
        const cont7 = function(x) {
-	const cont8 = function(tmp15) {
-	 if (tmp15) {
+	const cont8 = function(tmp13) {
+	 if (tmp13) {
 	  return [false, cont4, [{tag: "SOME", payload: [a2, x]}]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
@@ -1733,7 +1711,7 @@ _run(function(cont) {
 	};
 	return [false, a, [cont8, [a2, x]]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1750,8 +1728,8 @@ _run(function(cont) {
        return [false, cont4, [NONE]];
       } else {
        const cont7 = function(x) {
-	const cont8 = function(tmp15) {
-	 if (tmp15) {
+	const cont8 = function(tmp13) {
+	 if (tmp13) {
 	  return [false, cont4, [{tag: "SOME", payload: x}]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
@@ -1759,7 +1737,7 @@ _run(function(cont) {
 	};
 	return [false, a, [cont8, x]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1775,17 +1753,17 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [false]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
-	 if (tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
+	 if (tmp14) {
 	  return [false, cont4, [true]];
 	 } else {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 }
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1801,17 +1779,17 @@ _run(function(cont) {
       if (a2 >= n) {
        return [false, cont4, [true]];
       } else {
-       const cont7 = function(tmp15) {
-	const cont8 = function(tmp16) {
-	 if (tmp16) {
+       const cont7 = function(tmp13) {
+	const cont8 = function(tmp14) {
+	 if (tmp14) {
 	  return [false, cont6, [_Int54_add(a2, 1)]];
 	 } else {
 	  return [false, cont4, [false]];
 	 }
 	};
-	return [false, a, [cont8, tmp15]];
+	return [false, a, [cont8, tmp13]];
        };
-       return [false, tmp8, [cont7, [a1, a2]]];
+       return [false, tmp6, [cont7, [a1, a2]]];
       }
      };
      return [false, cont6, [0]];
@@ -1827,28 +1805,28 @@ _run(function(cont) {
      const cont6 = function(yl) {
       let cont7;
       cont7 = function(a2) {
-       const tmp15 = xl <= a2;
-       const tmp16 = yl <= a2;
-       let tmp17;
+       const tmp13 = xl <= a2;
+       const tmp14 = yl <= a2;
+       let tmp15;
        cont: {
-	tmp17 = tmp15 && tmp16;
+	tmp15 = tmp13 && tmp14;
 	break cont;
        }
-       if (tmp17) {
+       if (tmp15) {
 	return [false, cont4, [EQUAL]];
        } else {
-	let tmp18;
+	let tmp16;
 	cont: {
-	 tmp18 = tmp15 && ! tmp16;
+	 tmp16 = tmp13 && ! tmp14;
 	 break cont;
 	}
-	if (tmp18) {
+	if (tmp16) {
 	 return [false, cont4, [LESS]];
-	} else if (! tmp15 && tmp16) {
+	} else if (! tmp13 && tmp14) {
 	 return [false, cont4, [GREATER]];
-	} else if (! tmp15 && ! tmp16) {
-	 const cont8 = function(tmp19) {
-	  const cont9 = function(tmp20) {
+	} else if (! tmp13 && ! tmp14) {
+	 const cont8 = function(tmp17) {
+	  const cont9 = function(tmp18) {
 	   const cont10 = function(exp) {
 	    if (exp === "EQUAL") {
 	     return [false, cont7, [_Int54_add(a2, 1)]];
@@ -1856,11 +1834,11 @@ _run(function(cont) {
 	     return [false, cont4, [exp]];
 	    }
 	   };
-	   return [false, a, [cont10, [tmp19, tmp20]]];
+	   return [false, a, [cont10, [tmp17, tmp18]]];
 	  };
-	  return [false, tmp8, [cont9, [ys, a2]]];
+	  return [false, tmp6, [cont9, [ys, a2]]];
 	 };
-	 return [false, tmp8, [cont8, [xs, a2]]];
+	 return [false, tmp6, [cont8, [xs, a2]]];
 	} else {
 	 throw _Match;
 	}
@@ -1874,54 +1852,54 @@ _run(function(cont) {
    }]];
   };
   const toList1 = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     return [false, tmp16, [cont3, a]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     return [false, tmp14, [cont3, a]];
     };
-    return [false, tmp15, [cont5, null]];
+    return [false, tmp13, [cont5, null]];
    };
    return [false, foldr3, [cont4, $COLON$COLON]];
   };
   const vector1 = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     return [false, tmp12, [cont3, [tmp15, tmp16]]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     return [false, tmp10, [cont3, [tmp13, tmp14]]];
     };
-    const cont6 = function(tmp16) {
-     const cont7 = function(tmp17) {
-      return [false, tmp17, [cont5, a]];
+    const cont6 = function(tmp14) {
+     const cont7 = function(tmp15) {
+      return [false, tmp15, [cont5, a]];
      };
-     return [false, tmp16, [cont7, null]];
+     return [false, tmp14, [cont7, null]];
     };
     return [false, foldr3, [cont6, $COLON$COLON]];
    };
    return [false, length1, [cont4, a]];
   };
   const fromVector = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    const cont5 = function(tmp16) {
-     return [false, tmp7, [cont3, [tmp15, tmp16]]];
+   const cont4 = function(tmp13) {
+    const cont5 = function(tmp14) {
+     return [false, tmp5, [cont3, [tmp13, tmp14]]];
     };
-    const cont6 = function(tmp16) {
-     const cont7 = function(tmp17) {
-      return [false, tmp17, [cont5, a]];
+    const cont6 = function(tmp14) {
+     const cont7 = function(tmp15) {
+      return [false, tmp15, [cont5, a]];
      };
-     return [false, tmp16, [cont7, null]];
+     return [false, tmp14, [cont7, null]];
     };
     return [false, foldr1, [cont6, $COLON$COLON]];
    };
    return [false, length2, [cont4, a]];
   };
-  const length4 = function(cont3, tmp15) {
-   return [false, cont3, [tmp15.length]];
+  const length4 = function(cont3, tmp13) {
+   return [false, cont3, [tmp13.length]];
   };
-  const sub6 = function(cont3, a) {
+  const sub5 = function(cont3, a) {
    const base2 = a[0].base;
    const start = a[0].start;
    const length5 = a[0].length;
    const i = a[1];
    if (0 <= i && i < length5) {
-    return [false, tmp8, [cont3, [base2, _Int54_add(start, i)]]];
+    return [false, tmp6, [cont3, [base2, _Int54_add(start, i)]]];
    } else {
     throw _Subscript;
    }
@@ -1933,14 +1911,14 @@ _run(function(cont) {
    const i = a[1];
    const x = a[2];
    if (0 <= i && i < length5) {
-    return [false, tmp9, [cont3, [base2, _Int54_add(start, i), x]]];
+    return [false, tmp7, [cont3, [base2, _Int54_add(start, i), x]]];
    } else {
     throw _Subscript;
    }
   };
   const full1 = function(cont3, a) {
-   const cont4 = function(tmp15) {
-    return [false, cont3, [{base: a, length: tmp15, start: 0}]];
+   const cont4 = function(tmp13) {
+    return [false, cont3, [{base: a, length: tmp13, start: 0}]];
    };
    return [false, length1, [cont4, a]];
   };
@@ -1960,8 +1938,8 @@ _run(function(cont) {
     const v = a[0];
     const i = a[1];
     const n = a[2].payload;
-    const cont4 = function(tmp15) {
-     if (tmp15) {
+    const cont4 = function(tmp13) {
+     if (tmp13) {
       return [false, cont3, [{base: v, length: n, start: i}]];
      } else {
       throw _Subscript;
@@ -1969,9 +1947,9 @@ _run(function(cont) {
     };
     if (0 <= i) {
      if (0 <= n) {
-      const tmp15 = _Int54_add(i, n);
-      const cont5 = function(tmp16) {
-       return [false, cont4, [tmp15 <= tmp16]];
+      const tmp13 = _Int54_add(i, n);
+      const cont5 = function(tmp14) {
+       return [false, cont4, [tmp13 <= tmp14]];
       };
       return [false, length1, [cont5, v]];
      } else {
@@ -1991,8 +1969,8 @@ _run(function(cont) {
     const length5 = a[0].length;
     const i = a[1];
     if (0 <= i && i <= length5) {
-     const tmp15 = _Int54_add(start, i);
-     return [false, cont3, [{base: base2, length: _Int54_sub(length5, i), start: tmp15}]];
+     const tmp13 = _Int54_add(start, i);
+     return [false, cont3, [{base: base2, length: _Int54_sub(length5, i), start: tmp13}]];
     } else {
      throw _Subscript;
     }
@@ -2022,8 +2000,8 @@ _run(function(cont) {
    const length5 = a.src.length;
    const dst = a.dst;
    const di = a.di;
-   const cont4 = function(tmp15) {
-    if (tmp15) {
+   const cont4 = function(tmp13) {
+    if (tmp13) {
      throw _Subscript;
     } else if (start >= di) {
      let cont5;
@@ -2031,14 +2009,14 @@ _run(function(cont) {
       if (a1 >= length5) {
        return [false, cont3, [undefined]];
       } else {
-       const tmp16 = _Int54_add(di, a1);
-       const cont6 = function(tmp17) {
-	const cont7 = function(tmp18) {
+       const tmp14 = _Int54_add(di, a1);
+       const cont6 = function(tmp15) {
+	const cont7 = function(tmp16) {
 	 return [false, cont5, [_Int54_add(a1, 1)]];
 	};
-	return [false, tmp9, [cont7, [dst, tmp16, tmp17]]];
+	return [false, tmp7, [cont7, [dst, tmp14, tmp15]]];
        };
-       return [false, tmp8, [cont6, [base2, _Int54_add(start, a1)]]];
+       return [false, tmp6, [cont6, [base2, _Int54_add(start, a1)]]];
       }
      };
      return [false, cont5, [0]];
@@ -2048,14 +2026,14 @@ _run(function(cont) {
       if (a1 < 0) {
        return [false, cont3, [undefined]];
       } else {
-       const tmp16 = _Int54_add(di, a1);
-       const cont6 = function(tmp17) {
-	const cont7 = function(tmp18) {
+       const tmp14 = _Int54_add(di, a1);
+       const cont6 = function(tmp15) {
+	const cont7 = function(tmp16) {
 	 return [false, cont5, [_Int54_sub(a1, 1)]];
 	};
-	return [false, tmp9, [cont7, [dst, tmp16, tmp17]]];
+	return [false, tmp7, [cont7, [dst, tmp14, tmp15]]];
        };
-       return [false, tmp8, [cont6, [base2, _Int54_add(start, a1)]]];
+       return [false, tmp6, [cont6, [base2, _Int54_add(start, a1)]]];
       }
      };
      return [false, cont5, [_Int54_sub(length5, 1)]];
@@ -2064,8 +2042,8 @@ _run(function(cont) {
    if (di < 0) {
     return [false, cont4, [true]];
    } else {
-    const cont5 = function(tmp15) {
-     return [false, cont4, [tmp15 < _Int54_add(di, length5)]];
+    const cont5 = function(tmp13) {
+     return [false, cont4, [tmp13 < _Int54_add(di, length5)]];
     };
     return [false, length1, [cont5, dst]];
    }
@@ -2079,8 +2057,8 @@ _run(function(cont) {
    if (di < 0) {
     throw _Subscript;
    } else {
-    const cont4 = function(tmp15) {
-     if (tmp15 < _Int54_add(di, length5)) {
+    const cont4 = function(tmp13) {
+     if (tmp13 < _Int54_add(di, length5)) {
       throw _Subscript;
      } else {
       let cont5;
@@ -2088,14 +2066,14 @@ _run(function(cont) {
        if (a1 >= length5) {
 	return [false, cont3, [undefined]];
        } else {
-	const tmp16 = _Int54_add(di, a1);
-	const cont6 = function(tmp17) {
-	 const cont7 = function(tmp18) {
+	const tmp14 = _Int54_add(di, a1);
+	const cont6 = function(tmp15) {
+	 const cont7 = function(tmp16) {
 	  return [false, cont5, [_Int54_add(a1, 1)]];
 	 };
-	 return [false, tmp9, [cont7, [dst, tmp16, tmp17]]];
+	 return [false, tmp7, [cont7, [dst, tmp14, tmp15]]];
 	};
-	return [false, tmp14, [cont6, [base2, _Int54_add(start, a1)]]];
+	return [false, tmp12, [cont6, [base2, _Int54_add(start, a1)]]];
        }
       };
       return [false, cont5, [0]];
@@ -2112,11 +2090,11 @@ _run(function(cont) {
    const start = a.start;
    const length5 = a.length;
    if (length5 > 0) {
-    const cont4 = function(tmp15) {
-     const tmp16 = _Int54_add(start, 1);
-     return [false, cont3, [{tag: "SOME", payload: [tmp15, {base: base2, length: _Int54_sub(length5, 1), start: tmp16}]}]];
+    const cont4 = function(tmp13) {
+     const tmp14 = _Int54_add(start, 1);
+     return [false, cont3, [{tag: "SOME", payload: [tmp13, {base: base2, length: _Int54_sub(length5, 1), start: tmp14}]}]];
     };
-    return [false, tmp8, [cont4, [base2, start]]];
+    return [false, tmp6, [cont4, [base2, start]]];
    } else {
     return [false, cont3, [NONE]];
    }
@@ -2131,13 +2109,13 @@ _run(function(cont) {
      if (a2 >= length5) {
       return [false, cont4, [undefined]];
      } else {
-      const cont6 = function(tmp15) {
-       const cont7 = function(tmp16) {
+      const cont6 = function(tmp13) {
+       const cont7 = function(tmp14) {
 	return [false, cont5, [_Int54_add(a2, 1)]];
        };
-       return [false, a, [cont7, [a2, tmp15]]];
+       return [false, a, [cont7, [a2, tmp13]]];
       };
-      return [false, tmp8, [cont6, [base2, _Int54_add(start, a2)]]];
+      return [false, tmp6, [cont6, [base2, _Int54_add(start, a2)]]];
      }
     };
     return [false, cont5, [0]];
@@ -2147,19 +2125,19 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [undefined]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
 	return [false, cont5, [_Int54_add(a2, 1)]];
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp8, [cont6, [base2, a2]]];
+      return [false, tmp6, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -2175,17 +2153,17 @@ _run(function(cont) {
      if (a2 >= length5) {
       return [false, cont4, [undefined]];
      } else {
-      const tmp15 = _Int54_add(start, a2);
+      const tmp13 = _Int54_add(start, a2);
       const cont6 = function(x) {
        const cont7 = function(y) {
-	const cont8 = function(tmp16) {
+	const cont8 = function(tmp14) {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	};
-	return [false, tmp9, [cont8, [base2, tmp15, y]]];
+	return [false, tmp7, [cont8, [base2, tmp13, y]]];
        };
        return [false, a, [cont7, [a2, x]]];
       };
-      return [false, tmp8, [cont6, [base2, tmp15]]];
+      return [false, tmp6, [cont6, [base2, tmp13]]];
      }
     };
     return [false, cont5, [0]];
@@ -2195,22 +2173,22 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [undefined]];
      } else {
       const cont6 = function(x) {
        const cont7 = function(y) {
-	const cont8 = function(tmp16) {
+	const cont8 = function(tmp14) {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	};
-	return [false, tmp9, [cont8, [base2, a2, y]]];
+	return [false, tmp7, [cont8, [base2, a2, y]]];
        };
        return [false, a, [cont7, x]];
       };
-      return [false, tmp8, [cont6, [base2, a2]]];
+      return [false, tmp6, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -2227,14 +2205,14 @@ _run(function(cont) {
       if (i >= length5) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_add(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_add(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [i, tmp16, acc]]];
+	return [false, a, [cont8, [i, tmp14, acc]]];
        };
-       return [false, tmp8, [cont7, [base2, _Int54_add(start, i)]]];
+       return [false, tmp6, [cont7, [base2, _Int54_add(start, i)]]];
       }
      };
      return [false, cont6, [0, a1]];
@@ -2251,14 +2229,14 @@ _run(function(cont) {
       if (i < 0) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_sub(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_sub(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [i, tmp16, acc]]];
+	return [false, a, [cont8, [i, tmp14, acc]]];
        };
-       return [false, tmp8, [cont7, [base2, _Int54_add(start, i)]]];
+       return [false, tmp6, [cont7, [base2, _Int54_add(start, i)]]];
       }
      };
      return [false, cont6, [_Int54_sub(a2.length, 1), a1]];
@@ -2270,20 +2248,20 @@ _run(function(cont) {
     return [false, cont4, [function(cont5, a2) {
      const base2 = a2.base;
      const start = a2.start;
-     const tmp15 = _Int54_add(start, a2.length);
+     const tmp13 = _Int54_add(start, a2.length);
      let cont6;
      cont6 = function(i, acc) {
-      if (i >= tmp15) {
+      if (i >= tmp13) {
        return [false, cont5, [acc]];
       } else {
-       const tmp16 = _Int54_add(i, 1);
-       const cont7 = function(tmp17) {
-	const cont8 = function(tmp18) {
-	 return [false, cont6, [tmp16, tmp18]];
+       const tmp14 = _Int54_add(i, 1);
+       const cont7 = function(tmp15) {
+	const cont8 = function(tmp16) {
+	 return [false, cont6, [tmp14, tmp16]];
 	};
-	return [false, a, [cont8, [tmp17, acc]]];
+	return [false, a, [cont8, [tmp15, acc]]];
        };
-       return [false, tmp8, [cont7, [base2, i]]];
+       return [false, tmp6, [cont7, [base2, i]]];
       }
      };
      return [false, cont6, [start, a1]];
@@ -2300,14 +2278,14 @@ _run(function(cont) {
       if (i < start) {
        return [false, cont5, [acc]];
       } else {
-       const tmp15 = _Int54_sub(i, 1);
-       const cont7 = function(tmp16) {
-	const cont8 = function(tmp17) {
-	 return [false, cont6, [tmp15, tmp17]];
+       const tmp13 = _Int54_sub(i, 1);
+       const cont7 = function(tmp14) {
+	const cont8 = function(tmp15) {
+	 return [false, cont6, [tmp13, tmp15]];
 	};
-	return [false, a, [cont8, [tmp16, acc]]];
+	return [false, a, [cont8, [tmp14, acc]]];
        };
-       return [false, tmp8, [cont7, [base2, i]]];
+       return [false, tmp6, [cont7, [base2, i]]];
       }
      };
      return [false, cont6, [_Int54_sub(_Int54_add(start, a2.length), 1), a1]];
@@ -2325,8 +2303,8 @@ _run(function(cont) {
       return [false, cont4, [NONE]];
      } else {
       const cont6 = function(x) {
-       const cont7 = function(tmp15) {
-	if (tmp15) {
+       const cont7 = function(tmp13) {
+	if (tmp13) {
 	 return [false, cont4, [{tag: "SOME", payload: [a2, x]}]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
@@ -2334,7 +2312,7 @@ _run(function(cont) {
        };
        return [false, a, [cont7, [a2, x]]];
       };
-      return [false, tmp8, [cont6, [base2, _Int54_add(start, a2)]]];
+      return [false, tmp6, [cont6, [base2, _Int54_add(start, a2)]]];
      }
     };
     return [false, cont5, [0]];
@@ -2344,15 +2322,15 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [NONE]];
      } else {
       const cont6 = function(x) {
-       const cont7 = function(tmp16) {
-	if (tmp16) {
+       const cont7 = function(tmp14) {
+	if (tmp14) {
 	 return [false, cont4, [{tag: "SOME", payload: x}]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
@@ -2360,7 +2338,7 @@ _run(function(cont) {
        };
        return [false, a, [cont7, x]];
       };
-      return [false, tmp8, [cont6, [base2, a2]]];
+      return [false, tmp6, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -2370,23 +2348,23 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [false]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
-	if (tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
+	if (tmp15) {
 	 return [false, cont4, [true]];
 	} else {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	}
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp8, [cont6, [base2, a2]]];
+      return [false, tmp6, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -2396,23 +2374,23 @@ _run(function(cont) {
    return [false, cont3, [function(cont4, a1) {
     const base2 = a1.base;
     const start = a1.start;
-    const tmp15 = _Int54_add(start, a1.length);
+    const tmp13 = _Int54_add(start, a1.length);
     let cont5;
     cont5 = function(a2) {
-     if (a2 >= tmp15) {
+     if (a2 >= tmp13) {
       return [false, cont4, [true]];
      } else {
-      const cont6 = function(tmp16) {
-       const cont7 = function(tmp17) {
-	if (tmp17) {
+      const cont6 = function(tmp14) {
+       const cont7 = function(tmp15) {
+	if (tmp15) {
 	 return [false, cont5, [_Int54_add(a2, 1)]];
 	} else {
 	 return [false, cont4, [false]];
 	}
        };
-       return [false, a, [cont7, tmp16]];
+       return [false, a, [cont7, tmp14]];
       };
-      return [false, tmp8, [cont6, [base2, a2]]];
+      return [false, tmp6, [cont6, [base2, a2]]];
      }
     };
     return [false, cont5, [start]];
@@ -2426,32 +2404,32 @@ _run(function(cont) {
     const base$PRIME = a1[1].base;
     const start$PRIME = a1[1].start;
     const length$PRIME = a1[1].length;
-    const tmp15 = _Int54_add(start, length5);
-    const tmp16 = _Int54_add(start$PRIME, length$PRIME);
+    const tmp13 = _Int54_add(start, length5);
+    const tmp14 = _Int54_add(start$PRIME, length$PRIME);
     let cont5;
     cont5 = function(i, j) {
-     const tmp17 = tmp15 <= i;
-     const tmp18 = tmp16 <= j;
-     let tmp19;
+     const tmp15 = tmp13 <= i;
+     const tmp16 = tmp14 <= j;
+     let tmp17;
      cont: {
-      tmp19 = tmp17 && tmp18;
+      tmp17 = tmp15 && tmp16;
       break cont;
      }
-     if (tmp19) {
+     if (tmp17) {
       return [false, cont4, [EQUAL]];
      } else {
-      let tmp20;
+      let tmp18;
       cont: {
-       tmp20 = tmp17 && ! tmp18;
+       tmp18 = tmp15 && ! tmp16;
        break cont;
       }
-      if (tmp20) {
+      if (tmp18) {
        return [false, cont4, [LESS]];
-      } else if (! tmp17 && tmp18) {
+      } else if (! tmp15 && tmp16) {
        return [false, cont4, [GREATER]];
-      } else if (! tmp17 && ! tmp18) {
-       const cont6 = function(tmp21) {
-	const cont7 = function(tmp22) {
+      } else if (! tmp15 && ! tmp16) {
+       const cont6 = function(tmp19) {
+	const cont7 = function(tmp20) {
 	 const cont8 = function(exp) {
 	  if (exp === "EQUAL") {
 	   return [false, cont5, [_Int54_add(i, 1), _Int54_add(j, 1)]];
@@ -2459,11 +2437,11 @@ _run(function(cont) {
 	   return [false, cont4, [exp]];
 	  }
 	 };
-	 return [false, a, [cont8, [tmp21, tmp22]]];
+	 return [false, a, [cont8, [tmp19, tmp20]]];
 	};
-	return [false, tmp8, [cont7, [base$PRIME, j]]];
+	return [false, tmp6, [cont7, [base$PRIME, j]]];
        };
-       return [false, tmp8, [cont6, [base2, i]]];
+       return [false, tmp6, [cont6, [base2, i]]];
       } else {
        throw _Match;
       }
@@ -2473,31 +2451,31 @@ _run(function(cont) {
    }]];
   };
   const vector2 = function(cont3, a) {
-   const tmp15 = a.length;
-   const cont4 = function(tmp16) {
-    const cont5 = function(tmp17) {
-     const cont6 = function(tmp18) {
-      return [false, tmp12, [cont3, [tmp15, tmp18]]];
+   const tmp13 = a.length;
+   const cont4 = function(tmp14) {
+    const cont5 = function(tmp15) {
+     const cont6 = function(tmp16) {
+      return [false, tmp10, [cont3, [tmp13, tmp16]]];
      };
-     return [false, tmp17, [cont6, a]];
+     return [false, tmp15, [cont6, a]];
     };
-    return [false, tmp16, [cont5, null]];
+    return [false, tmp14, [cont5, null]];
    };
    return [false, foldr4, [cont4, $COLON$COLON]];
   };
-  const UnsafeMonoVector = {sub: tmp14};
-  const UnsafeMonoArray = {create: create, sub: tmp8, update: tmp9};
-  const MonoVectorSlice = {all: all1, app: app1, appi: appi1, base: base, collate: collate1, concat: concat1, exists: exists1, find: find1, findi: findi1, foldl: foldl1, foldli: foldli1, foldr: foldr2, foldri: foldri1, full: full, getItem: getItem, isEmpty: isEmpty, length: length3, map: map2, mapi: mapi1, slice: slice, sub: sub4, subslice: subslice, vector: vector};
-  const MonoVector = {all: all, app: app, append: append, appi: appi, collate: collate, concat: tmp10, exists: exists, find: find, findi: findi, foldl: foldl, foldli: foldli, foldr: foldr1, foldri: foldri, fromList: fromList2, length: length2, map: map1, mapi: mapi, maxLen: maxLen1, prepend: prepend, sub: sub3, tabulate: tabulate1, toList: toList, update: update2};
-  const MonoArraySlice = {all: all3, app: app3, appi: appi3, base: base1, collate: collate3, copy: copy1, copyVec: copyVec1, exists: exists3, find: find3, findi: findi3, foldl: foldl3, foldli: foldli3, foldr: foldr4, foldri: foldri3, full: full1, getItem: getItem1, isEmpty: isEmpty1, length: length4, modify: modify1, modifyi: modifyi1, slice: slice1, sub: sub6, subslice: subslice1, update: update4, vector: vector2};
-  return [false, cont2, [{_MonoArray: {all: all2, app: app2, appi: appi2, array: array1, collate: collate2, copy: copy, copyVec: copyVec, exists: exists2, find: find2, findi: findi2, foldl: foldl2, foldli: foldli2, foldr: foldr3, foldri: foldri2, fromList: fromList1, fromVector: fromVector, length: length1, maxLen: maxLen, modify: modify, modifyi: modifyi, sub: sub5, tabulate: tabulate2, toList: toList1, toVector: vector1, update: update3, vector: vector1}, _MonoArraySlice: MonoArraySlice, _MonoVector: MonoVector, _MonoVectorSlice: MonoVectorSlice, _UnsafeMonoArray: UnsafeMonoArray, _UnsafeMonoVector: UnsafeMonoVector}]];
+  const UnsafeMonoVector = {sub: tmp12};
+  const UnsafeMonoArray = {create: create, sub: tmp6, update: tmp7};
+  const MonoVectorSlice = {all: all1, app: app1, appi: appi1, base: base, collate: collate1, concat: concat1, exists: exists1, find: find1, findi: findi1, foldl: foldl1, foldli: foldli1, foldr: foldr2, foldri: foldri1, full: full, getItem: getItem, isEmpty: isEmpty, length: length3, map: map2, mapi: mapi1, slice: slice, sub: sub3, subslice: subslice, vector: vector};
+  const MonoVector = {all: all, app: app, append: append, appi: appi, collate: collate, concat: tmp8, exists: exists, find: find, findi: findi, foldl: foldl, foldli: foldli, foldr: foldr1, foldri: foldri, fromList: fromList2, length: length2, map: map1, mapi: mapi, maxLen: maxLen1, prepend: prepend, sub: sub2, tabulate: tabulate1, toList: toList, update: update2};
+  const MonoArraySlice = {all: all3, app: app3, appi: appi3, base: base1, collate: collate3, copy: copy1, copyVec: copyVec1, exists: exists3, find: find3, findi: findi3, foldl: foldl3, foldli: foldli3, foldr: foldr4, foldri: foldri3, full: full1, getItem: getItem1, isEmpty: isEmpty1, length: length4, modify: modify1, modifyi: modifyi1, slice: slice1, sub: sub5, subslice: subslice1, update: update4, vector: vector2};
+  return [false, cont2, [{_MonoArray: {all: all2, app: app2, appi: appi2, array: array1, collate: collate2, copy: copy, copyVec: copyVec, exists: exists2, find: find2, findi: findi2, foldl: foldl2, foldli: foldli2, foldr: foldr3, foldri: foldri2, fromList: fromList1, fromVector: fromVector, length: length1, maxLen: maxLen, modify: modify, modifyi: modifyi, sub: sub4, tabulate: tabulate2, toList: toList1, toVector: vector1, update: update3, vector: vector1}, _MonoArraySlice: MonoArraySlice, _MonoVector: MonoVector, _MonoVectorSlice: MonoVectorSlice, _UnsafeMonoArray: UnsafeMonoArray, _UnsafeMonoVector: UnsafeMonoVector}]];
  };
  const unsafeFromListN = function(cont2, a) {
   return [false, cont2, [_String_implode(a[1])]];
  };
  const unsafeFromListRevN = function(cont2, a) {
-  const cont3 = function(tmp6) {
-   return [false, cont2, [_String_implode(tmp6)]];
+  const cont3 = function(tmp4) {
+   return [false, cont2, [_String_implode(tmp4)]];
   };
   return [false, revAppend, [cont3, a[1], null]];
  };
@@ -2511,21 +2489,21 @@ _run(function(cont) {
  };
  const cont1 = function(Base) {
   const CharVector = Base._MonoVector;
-  const tmp6 = Base._MonoVectorSlice.full;
-  const tmp7 = CharVector.appi;
+  const tmp4 = Base._MonoVectorSlice.full;
+  const tmp5 = CharVector.appi;
   const unsafeSub = function(cont3, a) {
    const v = a[0];
-   const cont4 = function(tmp8) {
-    return [false, cont3, [(tmp8 >>> 0 & 0xFF) >>> 0]];
+   const cont4 = function(tmp6) {
+    return [false, cont3, [(tmp6 >>> 0 & 0xFF) >>> 0]];
    };
    return [false, sub1, [cont4, [v, a[1]]]];
   };
   const fromList1 = function(cont3, a) {
-   const cont4 = function(tmp8) {
-    const cont5 = function(tmp9) {
-     return [false, cont3, [_String_implode(tmp9)]];
+   const cont4 = function(tmp6) {
+    const cont5 = function(tmp7) {
+     return [false, cont3, [_String_implode(tmp7)]];
     };
-    return [false, tmp8, [cont5, a]];
+    return [false, tmp6, [cont5, a]];
    };
    return [false, map, [cont4, function(cont5, a1) {
     if (a1 >= 0x80000000) {
@@ -2544,14 +2522,14 @@ _run(function(cont) {
   };
   const unsafeFromListRevN1 = function(cont3, a) {
    const xs = a[1];
-   const cont4 = function(tmp8) {
-    const cont5 = function(tmp9) {
-     const cont6 = function(tmp10) {
-      return [false, cont3, [_String_implode(tmp10)]];
+   const cont4 = function(tmp6) {
+    const cont5 = function(tmp7) {
+     const cont6 = function(tmp8) {
+      return [false, cont3, [_String_implode(tmp8)]];
      };
-     return [false, revAppend, [cont6, tmp9, null]];
+     return [false, revAppend, [cont6, tmp7, null]];
     };
-    return [false, tmp8, [cont5, xs]];
+    return [false, tmp6, [cont5, xs]];
    };
    return [false, map, [cont4, function(cont5, a1) {
     if (a1 >= 0x80000000) {
@@ -2576,12 +2554,12 @@ _run(function(cont) {
   const cont2 = function(Base1) {
    const Word8Vector = Base1._MonoVector;
    const Word8Array = Base1._MonoArray;
-   const tmp8 = Word8Vector.fromList;
-   const tmp9 = Word8Vector.tabulate;
-   const tmp10 = Word8Array.array;
-   const tmp11 = Word8Array.maxLen;
-   const tmp12 = Word8Array.sub;
-   const tmp13 = Word8Array.update;
+   const tmp6 = Word8Vector.fromList;
+   const tmp7 = Word8Vector.tabulate;
+   const tmp8 = Word8Array.array;
+   const tmp9 = Word8Array.maxLen;
+   const tmp10 = Word8Array.sub;
+   const tmp11 = Word8Array.update;
    const Io_tag = function(payload) {
     this.payload = payload;
    };
@@ -2591,12 +2569,12 @@ _run(function(cont) {
    BlockingNotSupported_tag.prototype.name = "BlockingNotSupported";
    const BlockingNotSupported = new BlockingNotSupported_tag();
    const BLOCK_BUF = "BLOCK_BUF";
-   const outputAndFlush = function(cont4, tmp19, content) {
-    if (tmp19.tag === "JS_WRITABLE") {
-     const writable = tmp19.payload.writable;
+   const outputAndFlush = function(cont4, tmp17, content) {
+    if (tmp17.tag === "JS_WRITABLE") {
+     const writable = tmp17.payload.writable;
      return [false, _withSubCont, [cont4, _topLevel, function(cont5, a) {
       writable.write(content, null, _function(function(cont6, args) {
-       const cont7 = function(tmp20) {
+       const cont7 = function(tmp18) {
 	return [false, cont6, [undefined]];
        };
        return [false, _pushPrompt, [cont7, _topLevel, function(cont8, a1) {
@@ -2607,22 +2585,22 @@ _run(function(cont) {
       }));
       return [false, cont5, [undefined]];
      }]];
-    } else if (tmp19.tag === "PRIM_WRITER") {
-     const name = tmp19.payload.writer.name;
-     const writeVec = tmp19.payload.writer.writeVec;
-     const buffer = tmp19.payload.buffer;
-     const cont5 = function(tmp20) {
-      const tmp21 = _String_concat(tmp20);
+    } else if (tmp17.tag === "PRIM_WRITER") {
+     const name = tmp17.payload.writer.name;
+     const writeVec = tmp17.payload.writer.writeVec;
+     const buffer = tmp17.payload.buffer;
+     const cont5 = function(tmp18) {
+      const tmp19 = _String_concat(tmp18);
       if (writeVec.tag === "SOME") {
        const writeVec1 = writeVec.payload;
-       const cont6 = function(tmp22) {
-	const cont7 = function(tmp23) {
+       const cont6 = function(tmp20) {
+	const cont7 = function(tmp21) {
 	 buffer[0] = null;
 	 return [false, cont4, [undefined]];
 	};
-	return [false, writeVec1, [cont7, tmp22]];
+	return [false, writeVec1, [cont7, tmp20]];
        };
-       return [false, tmp6, [cont6, tmp21]];
+       return [false, tmp4, [cont6, tmp19]];
       } else if (writeVec.tag === "NONE") {
        throw new Io_tag({cause: BlockingNotSupported, "function": Uint8Array.of(111, 117, 116, 112, 117, 116), name: name});
       } else {
@@ -2634,63 +2612,61 @@ _run(function(cont) {
      throw _Match;
     }
    };
-   const tmp14 = {tag: "JS_WRITABLE", payload: {buffer_mode: [BLOCK_BUF], name: Uint8Array.of(60, 115, 116, 100, 111, 117, 116, 62), writable: stdout}};
-   const tmp15 = tmp3(0xCBF29CE5);
-   const tmp16 = tmp4(64, tmp15 * tmp3(0xFFFFFFFF));
-   tmp4(64, tmp16 + tmp3(0x5014C00A));
-   const tmp17 = tmp3(0x100);
-   const tmp18 = tmp4(64, tmp17 * tmp3(0xFFFFFFFF));
-   tmp4(64, tmp18 + tmp3(0x2B3));
+   const tmp12 = {tag: "JS_WRITABLE", payload: {buffer_mode: [BLOCK_BUF], name: Uint8Array.of(60, 115, 116, 100, 111, 117, 116, 62), writable: stdout}};
+   const tmp13 = tmp1(0xCBF29CE5);
+   const tmp14 = tmp2(64, tmp13 * tmp1(0xFFFFFFFF));
+   tmp2(64, tmp14 + tmp1(0x5014C00A));
+   const tmp15 = tmp1(0x100);
+   const tmp16 = tmp2(64, tmp15 * tmp1(0xFFFFFFFF));
+   tmp2(64, tmp16 + tmp1(0x2B3));
    _Array_array(64, null);
    let f;
    f = function(cont4, a) {
-    const tmp19 = _exh;
+    const tmp17 = _exh;
     _exh = function(exn) {
-     _exh = tmp19;
+     _exh = tmp17;
      if (exn instanceof _Overflow_tag) {
       return [false, cont4, [a]];
      } else {
       throw exn;
      }
     };
-    const cont5 = function(tmp21) {
-     _exh = tmp19;
-     return [false, cont4, [tmp21]];
+    const cont5 = function(tmp19) {
+     _exh = tmp17;
+     return [false, cont4, [tmp19]];
     };
-    const tmp20 = _Int54_add(a, a);
-    if (tmp20 < 4294967295) {
-     return [false, f, [cont5, tmp20]];
+    const tmp18 = _Int54_add(a, a);
+    if (tmp18 < 4294967295) {
+     return [false, f, [cont5, tmp18]];
     } else {
      return [false, cont5, [a]];
     }
    };
-   const cont3 = function(tmp19) {
+   const cont3 = function(tmp17) {
     const cont4 = function(tbl) {
-     const cont5 = function(tmp20) {
-      const cont6 = function(tmp21) {
-       const cont7 = function(tmp22) {
-	const cont8 = function(tmp23) {
-	 const cont9 = function(tmp24) {
-	  const cont10 = function(tmp25) {
-	   const cont11 = function(tmp26) {
+     const cont5 = function(tmp18) {
+      const cont6 = function(tmp19) {
+       const cont7 = function(tmp20) {
+	const cont8 = function(tmp21) {
+	 const cont9 = function(tmp22) {
+	  const cont10 = function(tmp23) {
+	   const cont11 = function(tmp24) {
 	    const cont12 = function(tbl1) {
-	     const cont13 = function(tmp27) {
-	      const cont14 = function(tmp28) {
-	       const cont15 = function(tmp29) {
-		const cont16 = function(tmp30) {
-		 const cont17 = function(tmp31) {
-		  const cont18 = function(tmp34) {
+	     const cont13 = function(tmp25) {
+	      const cont14 = function(tmp26) {
+	       const cont15 = function(tmp27) {
+		const cont16 = function(tmp28) {
+		 const cont17 = function(tmp29) {
+		  const cont18 = function(tmp32) {
 		   48 >>> 0;
 		   57 >>> 0;
 		   65 >>> 0;
 		   70 >>> 0;
 		   97 >>> 0;
 		   102 >>> 0;
-		   tmp(tmp4(32, 2147483646n));
+		   tmp(tmp2(32, 2147483646n));
 		   tmp(2147483647n);
-		   const tmp35 = 1.0;
-		   const tmp36 = tmp35 / (32768 * 32768);
-		   tmp3(0x72646E64);
+		   tmp1(0x72646E64);
 		   let q;
 		   cont: {
 		    if (0xBC8F === 0x0) {
@@ -2709,217 +2685,48 @@ _run(function(cont) {
 		     break cont;
 		    }
 		   }
-		   const lcg = function(cont20, a) {
-		    let tmp37;
-		    cont: {
-		     if (q === 0x0) {
-		      throw _Div;
-		     } else {
-		      tmp37 = a % q;
-		      break cont;
-		     }
-		    }
-		    const tmp38 = Math_imul(0xBC8F, tmp37) >>> 0;
-		    let tmp39;
-		    cont: {
-		     if (q === 0x0) {
-		      throw _Div;
-		     } else {
-		      tmp39 = a / q >>> 0;
-		      break cont;
-		     }
-		    }
-		    const tmp40 = Math_imul(r, tmp39) >>> 0;
-		    if (tmp38 > tmp40) {
-		     return [false, cont20, [tmp38 - tmp40 >>> 0]];
-		    } else {
-		     return [false, cont20, [(0x7FFFFFFF - tmp40 >>> 0) + tmp38 >>> 0]];
-		    }
-		   };
-		   const rand = function(cont20, congy, shrgx) {
-		    const tmp37 = (congy >>> 0 & 0x7FFFFFFF) >>> 0;
-		    let tmp38;
-		    cont: {
-		     if (0x1 >= 0x20) {
-		      tmp38 = 0x0;
-		      break cont;
-		     } else {
-		      tmp38 = tmp37 << 0x1 >>> 0;
-		      break cont;
-		     }
-		    }
-		    const tmp39 = tmp38 + 0x1 >>> 0;
-		    let cont21;
-		    cont21 = function(tmp40, seeds, congx, shrgx1) {
-		     if (tmp40 === 0) {
-		      const tmp41 = _VectorOrArray_fromList(seeds);
-		      const tmp42 = [0];
-		      const tmp43 = [congx];
-		      return [false, cont20, [{borrow: [false], congx: tmp43, index: tmp42, vals: tmp41}]];
-		     } else {
-		      let cont22;
-		      cont22 = function(tmp41, seed, congx$PRIME, shrgx$PRIME) {
-		       if (tmp41 === 0) {
-			const tmp42 = _Int54_sub(tmp40, 1);
-			return [false, cont21, [tmp42, [seed, seeds], congx$PRIME, shrgx$PRIME]];
-		       } else {
-			const tmp42 = _Int54_sub(tmp41, 1);
-			const cont23 = function(c$PRIME) {
-			 let tmp43;
-			 cont: {
-			  if (0x12 >= 0x20) {
-			   tmp43 = 0x0;
-			   break cont;
-			  } else {
-			   tmp43 = shrgx$PRIME << 0x12 >>> 0;
-			   break cont;
-			  }
-			 }
-			 const tmp44 = (shrgx$PRIME ^ tmp43) >>> 0;
-			 let tmp45;
-			 cont: {
-			  if (0xD >= 0x20) {
-			   tmp45 = 0x0;
-			   break cont;
-			  } else {
-			   tmp45 = tmp44 >>> 0xD;
-			   break cont;
-			  }
-			 }
-			 const tmp46 = (tmp44 ^ tmp45) >>> 0;
-			 let tmp47;
-			 cont: {
-			  if (0x1 >= 0x20) {
-			   tmp47 = 0x0;
-			   break cont;
-			  } else {
-			   tmp47 = seed >>> 0x1;
-			   break cont;
-			  }
-			 }
-			 const tmp48 = (0x3FFFFFFF & tmp47) >>> 0;
-			 return [false, cont22, [tmp42, (tmp48 | (0x40000000 & (c$PRIME ^ tmp46) >>> 0) >>> 0) >>> 0, c$PRIME, tmp46]];
-			};
-			return [false, lcg, [cont23, congx$PRIME]];
-		       }
-		      };
-		      return [false, cont22, [31, 0x0, congx, shrgx1]];
-		     }
-		    };
-		    return [false, cont21, [48, null, tmp39, shrgx >>> 0]];
-		   };
-		   const randWord = function(cont20, a) {
-		    const vals = a.vals;
-		    const index = a.index;
-		    const congx = a.congx;
-		    const x = index[0];
-		    if (x === 48) {
-		     const cont21 = function(tmp37) {
-		      const cont24 = function(c) {
-		       congx[0] = c;
-		       return [false, cont20, [(tmp37 ^ c) >>> 0]];
-		      };
-		      return [false, lcg, [cont24, congx[0]]];
-		     };
-		     const vals1 = a.vals;
-		     const index1 = a.index;
-		     const borrow = a.borrow;
-		     const update2 = function(cont24, ix, iy, b) {
-		      const cont25 = function(tmp37) {
-		       const cont26 = function(tmp38) {
-			let z, b$PRIME;
-			cont: {
-			 if (! b) {
-			  const tmp39 = tmp37 - tmp38 >>> 0;
-			  [z, b$PRIME] = [tmp39, tmp38 > tmp37];
-			  break cont;
-			 } else if (b) {
-			  const tmp39 = (tmp37 - tmp38 >>> 0) - 0x1 >>> 0;
-			  [z, b$PRIME] = [tmp39, tmp38 >= tmp37];
-			  break cont;
-			 } else {
-			  throw _Match;
-			 }
-			}
-			const cont27 = function(tmp39) {
-			 return [false, cont24, [b$PRIME]];
-			};
-			return [false, update1, [cont27, vals1, iy, z]];
-		       };
-		       return [false, sub2, [cont26, vals1, iy]];
-		      };
-		      return [false, sub2, [cont25, vals1, ix]];
-		     };
-		     const cont22 = function(tmp37) {
-		      let cont24;
-		      cont24 = function(i, b) {
-		       if (i === 48) {
-			borrow[0] = b;
-			index1[0] = 1;
-			return [false, sub2, [cont21, vals1, 0]];
-		       } else {
-			const tmp38 = _Int54_add(i, 1);
-			const cont25 = function(tmp39) {
-			 return [false, cont24, [tmp38, tmp39]];
-			};
-			return [false, update2, [cont25, _Int54_sub(i, 8), i, b]];
-		       }
-		      };
-		      return [false, cont24, [8, tmp37]];
-		     };
-		     let cont23;
-		     cont23 = function(i, b) {
-		      if (i === 8) {
-		       return [false, cont22, [b]];
-		      } else {
-		       const tmp37 = _Int54_add(i, 1);
-		       const cont24 = function(tmp38) {
-			return [false, cont23, [tmp37, tmp38]];
-		       };
-		       return [false, update2, [cont24, _Int54_add(i, 40), i, b]];
-		      }
-		     };
-		     return [false, cont23, [0, borrow[0]]];
-		    } else {
-		     const cont21 = function(tmp37) {
-		      const cont22 = function(c) {
-		       congx[0] = c;
-		       const tmp38 = (tmp37 ^ c) >>> 0;
-		       index[0] = _Int54_add(x, 1);
-		       return [false, cont20, [tmp38]];
-		      };
-		      return [false, lcg, [cont22, congx[0]]];
-		     };
-		     return [false, sub2, [cont21, vals, x]];
-		    }
-		   };
-		   const cont19 = function(tmp37) {
-		    const write_to_file = function(cont21, filename, content, file_type) {
-		     const tmp44 = _exh;
+		   const cont19 = function() {
+		    const write_to_file = function(cont22, filename, content, file_type) {
+		     const tmp49 = _exh;
 		     _exh = function(exn) {
-		      _exh = tmp44;
+		      _exh = tmp49;
 		      if (exn instanceof Io_tag) {
-		       return [false, outputAndFlush, [cont21, tmp14, _String_append(Uint8Array.of(10, 99, 111, 117, 108, 100, 32, 110, 111, 116, 32, 119, 114, 105, 116, 101, 32, 116, 111, 32, 102, 105, 108, 101, 58, 32), filename)]];
+		       return [false, outputAndFlush, [cont22, tmp12, _String_append(Uint8Array.of(10, 99, 111, 117, 108, 100, 32, 110, 111, 116, 32, 119, 114, 105, 116, 101, 32, 116, 111, 32, 102, 105, 108, 101, 58, 32), filename)]];
 		      } else {
 		       throw exn;
 		      }
 		     };
-		     const cont22 = function(tmp46) {
-		      _exh = tmp44;
-		      return [false, cont21, [tmp46]];
+		     const cont23 = function(tmp51) {
+		      _exh = tmp49;
+		      return [false, cont22, [tmp51]];
 		     };
-		     const tmp45 = createWriteStream(filename);
-		     const cont23 = function(tmp46) {
-		      const cont24 = function(tmp47) {
+		     const tmp50 = createWriteStream(filename);
+		     const cont24 = function(tmp51) {
+		      const cont25 = function(tmp52) {
 		       if (_String_EQUAL(file_type, Uint8Array.of(98, 105, 116))) {
-			return [false, outputAndFlush, [cont22, tmp14, _String_append(Uint8Array.of(10, 66, 105, 116, 32, 115, 116, 114, 101, 97, 109, 32, 104, 97, 115, 32, 98, 101, 101, 110, 32, 119, 114, 105, 116, 116, 101, 110, 32, 116, 111, 32, 100, 105, 115, 107, 32, 117, 110, 100, 101, 114, 32, 110, 97, 109, 101, 58, 32, 32), filename)]];
+			return [false, outputAndFlush, [cont23, tmp12, _String_append(Uint8Array.of(10, 66, 105, 116, 32, 115, 116, 114, 101, 97, 109, 32, 104, 97, 115, 32, 98, 101, 101, 110, 32, 119, 114, 105, 116, 116, 101, 110, 32, 116, 111, 32, 100, 105, 115, 107, 32, 117, 110, 100, 101, 114, 32, 110, 97, 109, 101, 58, 32, 32), filename)]];
 		       } else {
-			return [false, outputAndFlush, [cont22, tmp14, _String_append(Uint8Array.of(10, 66, 121, 116, 101, 32, 115, 116, 114, 101, 97, 109, 32, 104, 97, 115, 32, 98, 101, 101, 110, 32, 119, 114, 105, 116, 116, 101, 110, 32, 116, 111, 32, 100, 105, 115, 107, 32, 117, 110, 100, 101, 114, 32, 110, 97, 109, 101, 58, 32), filename)]];
+			return [false, outputAndFlush, [cont23, tmp12, _String_append(Uint8Array.of(10, 66, 121, 116, 101, 32, 115, 116, 114, 101, 97, 109, 32, 104, 97, 115, 32, 98, 101, 101, 110, 32, 119, 114, 105, 116, 116, 101, 110, 32, 116, 111, 32, 100, 105, 115, 107, 32, 117, 110, 100, 101, 114, 32, 110, 97, 109, 101, 58, 32), filename)]];
 		       }
 		      };
+		      return [false, _withSubCont, [cont25, _topLevel, function(cont26, a) {
+		       tmp50.end(_function(function(cont27, args) {
+			const cont28 = function(tmp52) {
+			 return [false, cont27, [undefined]];
+			};
+			return [false, _pushPrompt, [cont28, _topLevel, function(cont29, a1) {
+			 return [false, _pushSubCont, [cont29, a, function(cont30, a2) {
+			  return [false, cont30, [undefined]];
+			 }]];
+			}]];
+		       }));
+		       return [false, cont26, [undefined]];
+		      }]];
+		     };
+		     if (! tmp50.write(content)) {
 		      return [false, _withSubCont, [cont24, _topLevel, function(cont25, a) {
-		       tmp45.end(_function(function(cont26, args) {
-			const cont27 = function(tmp47) {
+		       tmp50.once("drain", _function(function(cont26, args) {
+			const cont27 = function(tmp51) {
 			 return [false, cont26, [undefined]];
 			};
 			return [false, _pushPrompt, [cont27, _topLevel, function(cont28, a1) {
@@ -2930,327 +2737,349 @@ _run(function(cont) {
 		       }));
 		       return [false, cont25, [undefined]];
 		      }]];
-		     };
-		     if (! tmp45.write(content)) {
-		      return [false, _withSubCont, [cont23, _topLevel, function(cont24, a) {
-		       tmp45.once("drain", _function(function(cont25, args) {
-			const cont26 = function(tmp46) {
-			 return [false, cont25, [undefined]];
-			};
-			return [false, _pushPrompt, [cont26, _topLevel, function(cont27, a1) {
-			 return [false, _pushSubCont, [cont27, a, function(cont28, a2) {
-			  return [false, cont28, [undefined]];
-			 }]];
-			}]];
-		       }));
-		       return [false, cont24, [undefined]];
-		      }]];
 		     } else {
-		      return [false, cont23, [undefined]];
+		      return [false, cont24, [undefined]];
 		     }
 		    };
-		    const tmp38 = _Array_array(62500, 0);
-		    const tmp39 = _Array_array(62500, Uint8Array.of(48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48));
-		    const tmp40 = _Array_array(62500, Uint8Array.of(48, 48, 48, 48));
-		    const cont20 = function(secs, usecs) {
-		     const cont21 = function(tmp46) {
-		      let tmp47;
-		      cont: {
-		       if (- 9007199254740992n <= tmp46) {
-			if (tmp46 <= 9007199254740991n) {
-			 tmp47 = Number(tmp46);
-			 break cont;
-			} else {
-			 throw _Overflow;
-			}
-		       } else {
-			throw _Overflow;
-		       }
-		      }
-		      let tmp48;
-		      cont: {
-		       if (- 9007199254740992n <= usecs) {
-			if (usecs <= 9007199254740991n) {
-			 tmp48 = Number(usecs);
-			 break cont;
-			} else {
-			 throw _Overflow;
-			}
-		       } else {
-			throw _Overflow;
-		       }
-		      }
-		      const cont22 = function(r1) {
-		       const cont23 = function(tmp51) {
-			const cont24 = function(start_seed) {
-			 const cont25 = function(tmp52) {
-			  const cont26 = function() {
-			   const cont28 = function(tmp53) {
-			    const cont29 = function(bits_xx_el) {
-			     const tmp54 = _String_concat(bits_xx_el);
-			     const cont30 = function(tmp55) {
-			      const cont31 = function(bits_hexx_el) {
-			       const tmp56 = _String_concat(bits_hexx_el);
-			       const cont32 = function(tmp57) {
-				const cont33 = function(tmp58) {
-				 const cont34 = function(tmp59) {
-				  return [false, cont, []];
-				 };
-				 return [false, outputAndFlush, [cont34, tmp14, Uint8Array.of(10)]];
-				};
-				return [false, write_to_file, [cont33, Uint8Array.of(114, 97, 110, 100, 111, 109, 95, 98, 105, 116, 115, 116, 114, 105, 110, 103, 46, 98, 121, 116, 101), tmp56, Uint8Array.of(98, 121, 116, 101)]];
-			       };
-			       return [false, write_to_file, [cont32, Uint8Array.of(114, 97, 110, 100, 111, 109, 95, 98, 105, 116, 115, 116, 114, 105, 110, 103, 46, 98, 105, 110), tmp54, Uint8Array.of(98, 105, 116)]];
-			      };
-			      return [false, tmp55, [cont31, tmp40]];
-			     };
-			     return [false, foldr, [cont30, function(cont31, a) {
-			      return [false, cont31, [[a[0], a[1]]]];
-			     }, null]];
-			    };
-			    return [false, tmp53, [cont29, tmp39]];
-			   };
-			   return [false, foldr, [cont28, function(cont29, a) {
-			    return [false, cont29, [[a[0], a[1]]]];
-			   }, null]];
-			  };
-			  let cont27;
-			  cont27 = function(i, seed) {
-			   const tmp53 = _Int54_mod(_Int54_mul(17364, seed), 65521);
-			   const cont28 = function(tmp54) {
-			    const cont29 = function(bits_x_str) {
-			     const cont31 = function(bits_hex_str) {
-			      const cont33 = function(tmp55) {
-			       const cont34 = function(tmp56) {
-				if (i < 62499) {
-				 return [false, cont27, [_Int54_add(i, 1), tmp53]];
-				} else {
-				 return [false, cont26, []];
-				}
-			       };
-			       return [false, update1, [cont34, tmp40, i, bits_hex_str]];
-			      };
-			      return [false, update1, [cont33, tmp39, i, bits_x_str]];
-			     };
-			     let toHex;
-			     toHex = function(cont33, a) {
-			      if (a === 0) {
-			       return [false, cont33, [Uint8Array.of()]];
-			      } else {
-			       const cont34 = function(tmp55) {
-				const tmp56 = _Int54_mod(a, 16);
-				if (tmp56 === 0) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(48))]];
-				} else if (tmp56 === 1) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(49))]];
-				} else if (tmp56 === 2) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(50))]];
-				} else if (tmp56 === 3) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(51))]];
-				} else if (tmp56 === 4) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(52))]];
-				} else if (tmp56 === 5) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(53))]];
-				} else if (tmp56 === 6) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(54))]];
-				} else if (tmp56 === 7) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(55))]];
-				} else if (tmp56 === 8) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(56))]];
-				} else if (tmp56 === 9) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(57))]];
-				} else if (tmp56 === 10) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(97))]];
-				} else if (tmp56 === 11) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(98))]];
-				} else if (tmp56 === 12) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(99))]];
-				} else if (tmp56 === 13) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(100))]];
-				} else if (tmp56 === 14) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(101))]];
-				} else if (tmp56 === 15) {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of(102))]];
-				} else {
-				 return [false, cont33, [_String_append(tmp55, Uint8Array.of())]];
-				}
-			       };
-			       return [false, toHex, [cont34, 0 + Math.floor(a / 16)]];
-			      }
-			     };
-			     const cont32 = function(hexadec) {
-			      const cont33 = function(tmp55) {
-			       return [false, tmp55, [cont31, hexadec]];
-			      };
-			      return [false, padLeft, [cont33, 48, 4]];
-			     };
-			     return [false, toHex, [cont32, tmp53]];
-			    };
-			    let toBinary;
-			    toBinary = function(cont31, a) {
-			     if (a === 0) {
-			      return [false, cont31, [Uint8Array.of()]];
-			     } else {
-			      const cont32 = function(tmp55) {
-			       if (_Int54_mod(a, 2) === 0) {
-				return [false, cont31, [_String_append(tmp55, Uint8Array.of(48))]];
-			       } else {
-				return [false, cont31, [_String_append(tmp55, Uint8Array.of(49))]];
-			       }
-			      };
-			      return [false, toBinary, [cont32, 0 + Math.floor(a / 2)]];
-			     }
-			    };
-			    const cont30 = function(binary) {
-			     const cont31 = function(tmp55) {
-			      return [false, tmp55, [cont29, binary]];
-			     };
-			     return [false, padLeft, [cont31, 48, 16]];
-			    };
-			    return [false, toBinary, [cont30, tmp53]];
-			   };
-			   return [false, update1, [cont28, tmp38, i, tmp53]];
-			  };
-			  return [false, cont27, [0, start_seed]];
-			 };
-			 return [false, outputAndFlush, [cont25, tmp14, Uint8Array.of(10, 103, 101, 110, 101, 114, 97, 116, 105, 110, 103, 32, 97, 32, 114, 97, 110, 100, 111, 109, 32, 98, 105, 116, 32, 115, 116, 114, 101, 97, 109, 46, 46, 46)]];
-			};
-			return [false, tmp51, [cont24, r1]];
-		       };
-		       const tmp49 = _exh;
-		       _exh = function(exn) {
-			_exh = tmp49;
-			const tmp51 = 65521 - 1;
-			const tmp52 = tmp51 + 1.0;
-			return [false, cont23, [function(cont24, s) {
-			 const cont25 = function(tmp53) {
-			  const cont27 = function(tmp54) {
-			   return [false, resultToInt, [cont24, tmp2(1 + tmp52 * ((tmp53 + ((tmp54 & 0x3FFFFFFF) >>> 0 | 0) * tmp36) * tmp36))]];
-			  };
-			  return [false, randWord, [cont27, s]];
-			 };
-			 const cont26 = function(tmp53) {
-			  return [false, cont25, [(tmp53 & 0x3FFFFFFF) >>> 0 | 0]];
-			 };
-			 return [false, randWord, [cont26, s]];
-			}]];
-		       };
-		       let tmp50;
-		       cont: {
-			const tmp51 = tmp36 * 65521;
-			tmp50 = function(cont24, s) {
-			 const cont25 = function(tmp52) {
-			  const cont26 = function(tmp53) {
-			   return [false, cont24, [_Int54_add(1, tmp53)]];
-			  };
-			  return [false, resultToInt, [cont26, tmp2(tmp51 * ((tmp52 & 0x3FFFFFFF) >>> 0 | 0))]];
-			 };
-			 return [false, randWord, [cont25, s]];
-			};
-			break cont;
-		       }
-		       _exh = tmp49;
-		       return [false, cont23, [tmp50]];
-		      };
-		      return [false, rand, [cont22, tmp47, tmp48]];
-		     };
-		     const tmp44 = secs <= 0n && false;
-		     let tmp45;
+		    const tmp36 = tmp1(0xFFF1);
+		    const tmp37 = _Array_array(62500, 0);
+		    const tmp38 = _Array_array(62500, Uint8Array.of(48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48));
+		    const tmp39 = _Array_array(62500, Uint8Array.of(48, 48, 48, 48));
+		    const tmp40 = tmp1(0xCBF29CE5);
+		    const tmp41 = tmp2(64, tmp40 * tmp1(0xFFFFFFFF));
+		    const tmp42 = tmp2(64, tmp41 + tmp1(0x5014C00A));
+		    const tmp43 = tmp1(0x100);
+		    const tmp44 = tmp2(64, tmp43 * tmp1(0xFFFFFFFF));
+		    const tmp45 = tmp2(64, tmp44 + tmp1(0x2B3));
+		    const cont21 = function(secs, usecs) {
+		     const tmp49 = tmp2(64, (tmp42 ^ tmp2(64, secs)) * tmp45);
+		     const tmp50 = tmp2(64, (tmp49 ^ tmp2(64, usecs)) * tmp45);
+		     const tmp51 = tmp2(64, tmp36 - tmp1(0x2));
+		     let tmp52;
 		     cont: {
-		      tmp45 = tmp44 || secs >= 0n;
-		      break cont;
-		     }
-		     if (tmp45) {
-		      return [false, cont21, [secs % 9007199254740992n]];
-		     } else {
-		      const r1 = secs % 9007199254740992n;
-		      if (r1 === 0n) {
-		       return [false, cont21, [r1]];
+		      if (tmp51 === 0n) {
+		       throw _Div;
 		      } else {
-		       return [false, cont21, [9007199254740992n + r1]];
+		       tmp52 = tmp50 % tmp51;
+		       break cont;
 		      }
 		     }
+		     const tmp53 = tmp2(64, tmp52 + tmp1(0x1));
+		     let start_seed;
+		     cont: {
+		      if (- 9007199254740992n <= tmp53) {
+		       if (tmp53 <= 9007199254740991n) {
+			start_seed = Number(tmp53);
+			break cont;
+		       } else {
+			throw _Overflow;
+		       }
+		      } else {
+		       throw _Overflow;
+		      }
+		     }
+		     const cont22 = function(tmp54) {
+		      const cont23 = function() {
+		       const cont25 = function(tmp55) {
+			const cont26 = function(bits_x_rev) {
+			 const tmp56 = _String_concat(bits_x_rev);
+			 const cont27 = function(tmp57) {
+			  const cont28 = function(bits_hex_rev) {
+			   const tmp58 = _String_concat(bits_hex_rev);
+			   const cont29 = function(tmp59) {
+			    const cont30 = function(tmp60) {
+			     const cont31 = function(tmp61) {
+			      return [false, cont, []];
+			     };
+			     return [false, outputAndFlush, [cont31, tmp12, Uint8Array.of(10)]];
+			    };
+			    return [false, write_to_file, [cont30, Uint8Array.of(114, 97, 110, 100, 111, 109, 95, 98, 105, 116, 115, 116, 114, 105, 110, 103, 46, 98, 121, 116, 101), tmp58, Uint8Array.of(98, 121, 116, 101)]];
+			   };
+			   return [false, write_to_file, [cont29, Uint8Array.of(114, 97, 110, 100, 111, 109, 95, 98, 105, 116, 115, 116, 114, 105, 110, 103, 46, 98, 105, 110), tmp56, Uint8Array.of(98, 105, 116)]];
+			  };
+			  return [false, tmp57, [cont28, tmp39]];
+			 };
+			 return [false, foldr, [cont27, function(cont28, a) {
+			  return [false, cont28, [[a[0], a[1]]]];
+			 }, null]];
+			};
+			return [false, tmp55, [cont26, tmp38]];
+		       };
+		       return [false, foldr, [cont25, function(cont26, a) {
+			return [false, cont26, [[a[0], a[1]]]];
+		       }, null]];
+		      };
+		      let cont24;
+		      cont24 = function(i, seed) {
+		       const tmp55 = _Int54_mod(_Int54_mul(17364, seed), 65521);
+		       const cont25 = function(tmp56) {
+			const cont26 = function(bits_x_str) {
+			 const cont28 = function(bits_hex_str) {
+			  const cont30 = function(tmp57) {
+			   const cont31 = function(tmp58) {
+			    if (i < 62499) {
+			     return [false, cont24, [_Int54_add(i, 1), tmp55]];
+			    } else {
+			     return [false, cont23, []];
+			    }
+			   };
+			   return [false, update1, [cont31, tmp39, i, bits_hex_str]];
+			  };
+			  return [false, update1, [cont30, tmp38, i, bits_x_str]];
+			 };
+			 let toHex;
+			 toHex = function(cont30, a) {
+			  if (a === 0) {
+			   return [false, cont30, [Uint8Array.of()]];
+			  } else {
+			   const cont31 = function(tmp57) {
+			    const tmp58 = _Int54_mod(a, 16);
+			    if (tmp58 === 0) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(48))]];
+			    } else if (tmp58 === 1) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(49))]];
+			    } else if (tmp58 === 2) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(50))]];
+			    } else if (tmp58 === 3) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(51))]];
+			    } else if (tmp58 === 4) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(52))]];
+			    } else if (tmp58 === 5) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(53))]];
+			    } else if (tmp58 === 6) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(54))]];
+			    } else if (tmp58 === 7) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(55))]];
+			    } else if (tmp58 === 8) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(56))]];
+			    } else if (tmp58 === 9) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(57))]];
+			    } else if (tmp58 === 10) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(97))]];
+			    } else if (tmp58 === 11) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(98))]];
+			    } else if (tmp58 === 12) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(99))]];
+			    } else if (tmp58 === 13) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(100))]];
+			    } else if (tmp58 === 14) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(101))]];
+			    } else if (tmp58 === 15) {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of(102))]];
+			    } else {
+			     return [false, cont30, [_String_append(tmp57, Uint8Array.of())]];
+			    }
+			   };
+			   return [false, toHex, [cont31, 0 + Math.floor(a / 16)]];
+			  }
+			 };
+			 const cont29 = function(hexadec) {
+			  const cont30 = function(tmp57) {
+			   return [false, tmp57, [cont28, hexadec]];
+			  };
+			  return [false, padLeft, [cont30, 48, 4]];
+			 };
+			 return [false, toHex, [cont29, tmp55]];
+			};
+			let toBinary;
+			toBinary = function(cont28, a) {
+			 if (a === 0) {
+			  return [false, cont28, [Uint8Array.of()]];
+			 } else {
+			  const cont29 = function(tmp57) {
+			   if (_Int54_mod(a, 2) === 0) {
+			    return [false, cont28, [_String_append(tmp57, Uint8Array.of(48))]];
+			   } else {
+			    return [false, cont28, [_String_append(tmp57, Uint8Array.of(49))]];
+			   }
+			  };
+			  return [false, toBinary, [cont29, 0 + Math.floor(a / 2)]];
+			 }
+			};
+			const cont27 = function(binary) {
+			 const cont28 = function(tmp57) {
+			  return [false, tmp57, [cont26, binary]];
+			 };
+			 return [false, padLeft, [cont28, 48, 16]];
+			};
+			return [false, toBinary, [cont27, tmp55]];
+		       };
+		       return [false, update1, [cont25, tmp37, i, tmp55]];
+		      };
+		      return [false, cont24, [0, start_seed]];
+		     };
+		     return [false, outputAndFlush, [cont22, tmp12, Uint8Array.of(10, 103, 101, 110, 101, 114, 97, 116, 105, 110, 103, 32, 97, 32, 114, 97, 110, 100, 111, 109, 32, 98, 105, 116, 32, 115, 116, 114, 101, 97, 109, 46, 46, 46)]];
 		    };
-		    const tmp41 = BigInt(tmp5()) * 1000n;
-		    const tmp42 = tmp41 <= 0n && false;
-		    let tmp43;
+		    const tmp46 = BigInt(tmp3()) * 1000n;
+		    const tmp47 = tmp46 <= 0n && false;
+		    let tmp48;
 		    cont: {
-		     tmp43 = tmp42 || tmp41 >= 0n;
+		     tmp48 = tmp47 || tmp46 >= 0n;
 		     break cont;
 		    }
-		    if (tmp43) {
-		     const tmp44 = tmp41 / 1000000n;
-		     return [false, cont20, [tmp44, tmp41 % 1000000n]];
+		    if (tmp48) {
+		     const tmp49 = tmp46 / 1000000n;
+		     return [false, cont21, [tmp49, tmp46 % 1000000n]];
 		    } else {
-		     const q1 = tmp41 / 1000000n;
-		     const r1 = tmp41 % 1000000n;
+		     const q1 = tmp46 / 1000000n;
+		     const r1 = tmp46 % 1000000n;
 		     if (r1 === 0n) {
-		      return [false, cont20, [q1, r1]];
+		      return [false, cont21, [q1, r1]];
 		     } else {
-		      const tmp44 = q1 - 1n;
-		      return [false, cont20, [tmp44, 1000000n + r1]];
+		      const tmp49 = q1 - 1n;
+		      return [false, cont21, [tmp49, 1000000n + r1]];
 		     }
 		    }
 		   };
-		   return [false, rand, [cont19, 123, 73256]];
+		   const tmp33 = (123 >>> 0 & 0x7FFFFFFF) >>> 0;
+		   let tmp34;
+		   cont: {
+		    if (0x1 >= 0x20) {
+		     tmp34 = 0x0;
+		     break cont;
+		    } else {
+		     tmp34 = tmp33 << 0x1 >>> 0;
+		     break cont;
+		    }
+		   }
+		   const tmp35 = tmp34 + 0x1 >>> 0;
+		   let cont20;
+		   cont20 = function(tmp36, seeds, congx, shrgx) {
+		    if (tmp36 === 0) {
+		     return [false, cont19, []];
+		    } else {
+		     let cont21;
+		     cont21 = function(tmp37, seed, congx$PRIME, shrgx$PRIME) {
+		      if (tmp37 === 0) {
+		       const tmp38 = _Int54_sub(tmp36, 1);
+		       return [false, cont20, [tmp38, [seed, seeds], congx$PRIME, shrgx$PRIME]];
+		      } else {
+		       const tmp38 = _Int54_sub(tmp37, 1);
+		       const cont22 = function(c$PRIME) {
+			let tmp43;
+			cont: {
+			 if (0x12 >= 0x20) {
+			  tmp43 = 0x0;
+			  break cont;
+			 } else {
+			  tmp43 = shrgx$PRIME << 0x12 >>> 0;
+			  break cont;
+			 }
+			}
+			const tmp44 = (shrgx$PRIME ^ tmp43) >>> 0;
+			let tmp45;
+			cont: {
+			 if (0xD >= 0x20) {
+			  tmp45 = 0x0;
+			  break cont;
+			 } else {
+			  tmp45 = tmp44 >>> 0xD;
+			  break cont;
+			 }
+			}
+			const tmp46 = (tmp44 ^ tmp45) >>> 0;
+			let tmp47;
+			cont: {
+			 if (0x1 >= 0x20) {
+			  tmp47 = 0x0;
+			  break cont;
+			 } else {
+			  tmp47 = seed >>> 0x1;
+			  break cont;
+			 }
+			}
+			const tmp48 = (0x3FFFFFFF & tmp47) >>> 0;
+			return [false, cont21, [tmp38, (tmp48 | (0x40000000 & (c$PRIME ^ tmp46) >>> 0) >>> 0) >>> 0, c$PRIME, tmp46]];
+		       };
+		       let tmp39;
+		       cont: {
+			if (q === 0x0) {
+			 throw _Div;
+			} else {
+			 tmp39 = congx$PRIME % q;
+			 break cont;
+			}
+		       }
+		       const tmp40 = Math_imul(0xBC8F, tmp39) >>> 0;
+		       let tmp41;
+		       cont: {
+			if (q === 0x0) {
+			 throw _Div;
+			} else {
+			 tmp41 = congx$PRIME / q >>> 0;
+			 break cont;
+			}
+		       }
+		       const tmp42 = Math_imul(r, tmp41) >>> 0;
+		       if (tmp40 > tmp42) {
+			return [false, cont22, [tmp40 - tmp42 >>> 0]];
+		       } else {
+			return [false, cont22, [(0x7FFFFFFF - tmp42 >>> 0) + tmp40 >>> 0]];
+		       }
+		      }
+		     };
+		     return [false, cont21, [31, 0x0, congx, shrgx]];
+		    }
+		   };
+		   return [false, cont20, [48, null, tmp35, 73256 >>> 0]];
 		  };
-		  const tmp32 = _exh;
+		  const tmp30 = _exh;
 		  _exh = function(exn) {
-		   _exh = tmp32;
+		   _exh = tmp30;
 		   if (exn instanceof _Overflow_tag) {
 		    return [false, cont18, [undefined]];
 		   } else {
 		    throw exn;
 		   }
 		  };
-		  let tmp33;
+		  let tmp31;
 		  cont: {
-		   _Int54_mul(8, tmp11);
-		   tmp33 = undefined;
+		   _Int54_mul(8, tmp9);
+		   tmp31 = undefined;
 		   break cont;
 		  }
-		  _exh = tmp32;
-		  return [false, cont18, [tmp33]];
+		  _exh = tmp30;
+		  return [false, cont18, [tmp31]];
 		 };
-		 return [false, tmp8, [cont17, _list([0xFF, 0xFE, 0xFC, 0xF8, 0xF0, 0xE0, 0xC0, 0x80, 0x0])]];
+		 return [false, tmp6, [cont17, _list([0xFF, 0xFE, 0xFC, 0xF8, 0xF0, 0xE0, 0xC0, 0x80, 0x0])]];
 		};
-		return [false, tmp8, [cont16, _list([0x0, 0x1, 0x3, 0x7, 0xF, 0x1F, 0x3F, 0x7F, 0xFF])]];
+		return [false, tmp6, [cont16, _list([0x0, 0x1, 0x3, 0x7, 0xF, 0x1F, 0x3F, 0x7F, 0xFF])]];
 	       };
-	       return [false, tmp9, [cont15, [256, function(cont16, i) {
-		return [false, tmp12, [cont16, [tbl1, i]]];
+	       return [false, tmp7, [cont15, [256, function(cont16, i) {
+		return [false, tmp10, [cont16, [tbl1, i]]];
 	       }]]];
 	      };
-	      return [false, tmp27, [cont14, Uint8Array.of(65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47)]];
+	      return [false, tmp25, [cont14, Uint8Array.of(65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47)]];
 	     };
-	     return [false, tmp7, [cont13, function(cont14, a) {
+	     return [false, tmp5, [cont13, function(cont14, a) {
 	      const i = a[0];
 	      const c = a[1];
-	      return [false, tmp13, [cont14, [tbl1, c, (i >>> 0 & 0xFF) >>> 0]]];
+	      return [false, tmp11, [cont14, [tbl1, c, (i >>> 0 & 0xFF) >>> 0]]];
 	     }]];
 	    };
-	    return [false, tmp10, [cont12, [256, 0xFF]]];
+	    return [false, tmp8, [cont12, [256, 0xFF]]];
 	   };
-	   return [false, tmp9, [cont11, [256, function(cont12, i) {
-	    return [false, tmp12, [cont12, [tbl, i]]];
+	   return [false, tmp7, [cont11, [256, function(cont12, i) {
+	    return [false, tmp10, [cont12, [tbl, i]]];
 	   }]]];
 	  };
-	  return [false, tmp24, [cont10, Uint8Array.of(65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47)]];
+	  return [false, tmp22, [cont10, Uint8Array.of(65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47)]];
 	 };
-	 return [false, tmp7, [cont9, function(cont10, a) {
+	 return [false, tmp5, [cont9, function(cont10, a) {
 	  const i = a[0];
 	  const c = a[1];
-	  return [false, tmp13, [cont10, [tbl, c, (i >>> 0 & 0xFF) >>> 0]]];
+	  return [false, tmp11, [cont10, [tbl, c, (i >>> 0 & 0xFF) >>> 0]]];
 	 }]];
 	};
-	return [false, tmp13, [cont8, [tbl, 32, 0x41]]];
+	return [false, tmp11, [cont8, [tbl, 32, 0x41]]];
        };
-       return [false, tmp13, [cont7, [tbl, 13, 0x41]]];
+       return [false, tmp11, [cont7, [tbl, 13, 0x41]]];
       };
-      return [false, tmp13, [cont6, [tbl, 10, 0x41]]];
+      return [false, tmp11, [cont6, [tbl, 10, 0x41]]];
      };
-     return [false, tmp13, [cont5, [tbl, 9, 0x41]]];
+     return [false, tmp11, [cont5, [tbl, 9, 0x41]]];
     };
-    return [false, tmp10, [cont4, [256, 0xFF]]];
+    return [false, tmp8, [cont4, [256, 0xFF]]];
    };
    return [false, f, [cont3, 65536]];
   };

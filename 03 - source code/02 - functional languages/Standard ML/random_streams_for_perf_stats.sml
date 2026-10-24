@@ -128,7 +128,7 @@ structure Main =
     (*val END = 10  (* for testing *)*)
 
     val m = 65521  (* = 2^16 - 15 *)
-    val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
+    val m_word : Word64.word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
 
     val a = 17364
     val c = 0
@@ -177,24 +177,13 @@ structure Main =
     (* val _ = print ("\nstart_seed1 = " ^ Int.toString start_seed1)  (* for testing *) *)
     (* val start_seed2 = Int.fromLarge usecs  (* for testing *) *)
     (* val _ = print ("\nstart_seed2 = " ^ Int.toString start_seed2)  (* for testing *) *)
-
-    (* val start_seed_raw = Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64  (* for testing *) *)
-    (* val _ = print ("\nstart_seed_raw = " ^ Word64.toString start_seed_raw)  (* for testing *) *)
-
-    val start_seed_ = (Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64) mod (m_word - 2) + 1
-    (* val _ = print ("\nstart_seed_ = " ^ Word64.toString start_seed_)  (* for testing *) *)
-    val start_seed = Word64.toInt start_seed_
-    (* val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *) *)
-    (* $ ./random_streams_for_perf_stats
-
-       start_seed1 = 1792847271  # Unix Epoch time in seconds
-       start_seed2 = 896910      # fractional microseconds
-       start_seed_raw = 16A355EAA6E599D8  # 1A3B6A53E51F38E5, 1A3B6DF8F7DC0C5C, 1A3B6D40C7BA1A5F <-- 32 bit FNV-1a algo
-       start_seed_raw = D83439308EBECC4   # D83439308EBECC4,  CAE8293078268D1,  1C266E9321CB2ED5 <-- 64 bit FNV-1a algo
-       start_seed_ = 695A
-       start_seed = 26970
-       generating a random bit stream...
-    *)
+    val start_seed0 = Word64.xorb(offsetBasis64, Word64.fromLargeInt(secs)) * prime64
+    val start_seed1 = Word64.xorb(start_seed0,   Word64.fromLargeInt(usecs)) * prime64
+    (*val _ = print ("\nstart_seed1 = " ^ Word64.toString start_seed1)  (* for testing *)*)
+    val start_seed2 = Word64.mod(start_seed1, m_word - 0wx0002) + 0wx0001
+    (*val _ = print ("\nstart_seed2 = " ^ Word64.toString start_seed2)  (* for testing *)*)
+    val start_seed  = Word64.toInt start_seed2
+    (*val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *)*)
 
     (* this is systematically causing an overflow in MLton, but works fine in SML/NJ: *)
     (* val seed1 = (Random.randInt r)  (* SML/NJ: this is a new random number in a wide range with every call: int *) *)

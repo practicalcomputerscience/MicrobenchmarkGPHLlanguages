@@ -209,7 +209,7 @@ structure Main =
     (*val END = 25  (* for testing *)*)
 
     val m = 65521  (* = 2^16 - 15 *)
-    val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
+    val m_word : Word64.word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
 
     val a = 17364
     val c = 0
@@ -234,10 +234,13 @@ structure Main =
     fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
     see from: https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml#L20 *)
     val (secs, usecs) = getTime ()
-    val start_seed_ = (Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64) mod (m_word - 2) + 1
-    (* val _ = print ("\nstart_seed_ = " ^ Word64.toString start_seed_)  (* for testing *) *)
-    val start_seed = Word64.toInt start_seed_
-    (* val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *) *)
+    val start_seed0 = Word64.xorb(offsetBasis64, Word64.fromLargeInt(secs)) * prime64
+    val start_seed1 = Word64.xorb(start_seed0,   Word64.fromLargeInt(usecs)) * prime64
+    (*val _ = print ("\nstart_seed1 = " ^ Word64.toString start_seed1)  (* for testing *)*)
+    val start_seed2 = Word64.mod(start_seed1, m_word - 0wx0002) + 0wx0001
+    (*val _ = print ("\nstart_seed2 = " ^ Word64.toString start_seed2)  (* for testing *)*)
+    val start_seed  = Word64.toInt start_seed2
+    (*val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *)*)
 
 
     val _ = print ("\ngenerating a random bit stream...")
