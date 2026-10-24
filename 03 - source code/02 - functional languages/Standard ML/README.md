@@ -73,7 +73,7 @@ Some years ago, MLton published this benchmark page with five Standard ML dialec
 
 <br/>
 
-I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/master/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function [MLton.Random.seed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml#L146) for example:
+I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/master/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function [MLton.Random.seed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml#L146) for example:
 
 ```
     ...
@@ -91,7 +91,7 @@ I also tapped into **MLKit**, only to see a needed _structure_ listed in its bas
     ...
 ```
 
-Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml#L158) in milliseconds resolution as basis for a seed to get ahead with the MLKit program), there was no need to change my MLton program to make it through the MLKit compiler.
+Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml#L158) in milliseconds resolution as basis for a seed to get ahead with the MLKit program), there was no need to change my MLton program to make it through the MLKit compiler.
 
 Otherwise, both programs, one compiled with MLton and the other compiled with MLKit, show the same execution speed.
 
@@ -314,7 +314,19 @@ $
 
 <br/>
 
-Now my compiled microbenchmark program in [Standard ML](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) works fine too and also shines in another category, see below at [Transpiling from Standard ML to Lua and JavaScript with LunarML](#transpiling-from-standard-ml-to-lua-and-javascript-with-lunarml).
+However, when I tried to find out how the [seeding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/45%20-%20Sources%20of%20a%20random%20seed/README.md#sources-of-a-random-seed) of what random number generator really works in the MLton / (legacy?) SML/NJ combo,
+I skipped the obscure _val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)_ solution, and implemented my own seeding,
+also with using the ideas from [fnv-hash.sml]() as a 64-bit hashing solution of input numbers _secs_ and _usecs_:
+
+```
+    val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
+    val offsetBasis64 : Word64.word = 0wxcbf29ce484222325  (* 64-bit, which is not prime! *)
+    val prime64       : Word64.word = 0wx00000100000001B3  (* FNV prime in 64 bit *)
+    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
+    val (secs, usecs) = getTime ()
+    val start_seed_ = (Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64) mod (m_word - 2) + 1
+    val start_seed = Word64.toInt start_seed_
+```
 
 <br/>
 
@@ -367,16 +379,16 @@ Hello world!
 $
 ```
 
-Both source files ([random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml), [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb)) should now be transpiled successfully with LunarML:
+Both source files ([random_streams_for_perf_stats.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml), [random_streams_for_perf_stats.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mlb)) should now be transpiled successfully with LunarML:
 
 ```
-$ lunarml compile random_streams_for_perf_stats3.mlb
+$ lunarml compile random_streams_for_perf_stats.mlb
 ```
 
 The resulting Lua script can be run like this:
 
 ```
-$ lua ./random_streams_for_perf_stats3.lua
+$ lua ./random_streams_for_perf_stats.lua
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -387,8 +399,8 @@ $
 Transpiling my microbenchmark program into JavaScript also works, but only with transpiler switch _--nodejs-cps_ being activated:
 
 ```
-$ lunarml compile --nodejs-cps ./random_streams_for_perf_stats3.mlb
-$ node random_streams_for_perf_stats3.mjs
+$ lunarml compile --nodejs-cps ./random_streams_for_perf_stats.mlb
+$ node random_streams_for_perf_stats.mjs
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -443,7 +455,7 @@ cont: {
 $
 ```
 
-However, my microbenchmark program with 133 lines of Standard ML source code in files [random_streams_for_perf_stats3.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) and [random_streams_for_perf_stats3.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.mlb) (129 + 4) transpiled into:
+However, my microbenchmark program with 133 lines of Standard ML source code in files [random_streams_for_perf_stats.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml) and [random_streams_for_perf_stats.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mlb) (129 + 4) transpiled into:
 
 - 4627 lines of Lua source code and
 - 3264 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 280 milliseconds (2026-01-31)
@@ -472,7 +484,7 @@ See also: [The future of transpiling](https://github.com/practicalcomputerscienc
 
 ### Building MLton from sources
 
-Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
+Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
 
 However, this was a failure, and probably it will stay like that. In the end and after elaborate experimentation, file _assert.h_ was missing during compilation. Then I gave up.
 
