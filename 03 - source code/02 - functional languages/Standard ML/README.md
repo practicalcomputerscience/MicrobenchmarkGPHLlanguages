@@ -91,7 +91,7 @@ I also tapped into **MLKit**, only to see a needed _structure_ listed in its bas
     ...
 ```
 
-Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) in milliseconds as basis for a seed to get ahead with the MLKit program) there was no need to change my MLton program to make it through the MLKit compiler.
+Apart from this (I took poor man's [Time.now()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats3.sml) in milliseconds as basis for a seed to get ahead with the MLKit program), there was no need to change my MLton program to make it through the MLKit compiler.
 
 Otherwise, both programs, one compiled with MLton and the other compiled with MLKit, show the same execution speed.
 
