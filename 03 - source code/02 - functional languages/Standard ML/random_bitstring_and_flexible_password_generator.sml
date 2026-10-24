@@ -225,7 +225,7 @@ structure Main =
     fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
     val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
     val (secs, usecs) = getTime ()
-    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* rand of type Random.rand *)
+    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* r of type Random.rand *)
     val start_seed = Random.randRange (1, m - 1) r  (* ending point is inclusive; 2025-12-21 *)
 
 
