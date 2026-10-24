@@ -289,21 +289,19 @@ val seed1 = (Random.randInt r)
 
 ..which apparently cannot be fixed within a MLton program.
 
-So, I went searching in the legacy Github repository of SML/NJ to see what else could be used instead. Here: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml I found function _Random.randRange_!
+So, I went searching in the legacy Github repository of SML/NJ to see what else could be used instead. At: https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/real-order-stats.sml I found function _Random.randRange_!
 
-Actually, I only exchange the expression in question and leave the others untouched, except _val start_seed = seed1 mod m_, which isn't needed anymore:
+Actually, I only exchange the expression in question and leave the others untouched, except _val start_seed = Random.randRange (1, m - 1) r          val start_seed = seed1 mod m_, which isn't needed anymore:
 
 ```
 val m = 65521
-fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
+
+fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds) *)
 val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
 val (secs, usecs) = getTime ()
 val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)
-
-val start_seed = Random.randRange (1, m) r (* the new expression *)
-
-val _ = print("start_seed = " ^ Int.toString start_seed)
-val _ = print("\n")
+val start_seed = Random.randRange (1, m - 1) r  (* the new expression; ending point is inclusive; 2025-12-21 *)
+val _ = print ("\nstart_seed = " ^ Int.toString start_seed)
 ```
 
 ```
