@@ -259,8 +259,9 @@ It's important to also consider library _basis.mlb_ which includes all basic Sta
 Now we can build standalone executable _my_program_ like this:
 
 ```
-$ mlton ./my_program.mlb
+$ mlton -verbose 1 ./my_program.mlb
 ```
+
 ..and run it like this:
 
 ```
@@ -273,7 +274,7 @@ $
 
 ## The legacy Github repository of SML/NJ
 
-So, _my_program_ is working fine in the SML/NJ REPL, but not when being compiled with MLton!?!
+So, _my_program_ is working fine in the SML/NJ REPL, but after being compiled with MLton!?!
 
 Slowly, we could get an idea why MLton has its own implementation of seeding a random number generator with:
 
