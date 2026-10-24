@@ -319,13 +319,15 @@ I skipped the obscure _val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.
 also with using the ideas from [fnv-hash.sml](https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/fnv-hash.sml) as a 64-bit hashing solution of input numbers _secs_ and _usecs_:
 
 ```
-    val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
+    val m_word : Word64.word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word; correct typing with Word64.word is important for the LunarML compiler *)
     val offsetBasis64 : Word64.word = 0wxcbf29ce484222325  (* 64-bit, which is not prime! *)
     val prime64       : Word64.word = 0wx00000100000001B3  (* FNV prime in 64 bit *)
     fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
     val (secs, usecs) = getTime ()
-    val start_seed_ = (Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64) mod (m_word - 2) + 1
-    val start_seed = Word64.toInt start_seed_
+    val start_seed0 = Word64.xorb(offsetBasis64, Word64.fromLargeInt(secs)) * prime64
+    val start_seed1 = Word64.xorb(start_seed0,   Word64.fromLargeInt(usecs)) * prime64
+    val start_seed2 = Word64.mod(start_seed1, m_word - 0wx0002) + 0wx0001
+    val start_seed  = Word64.toInt start_seed2
 ```
 
 <br/>
