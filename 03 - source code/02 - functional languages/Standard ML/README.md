@@ -378,7 +378,7 @@ Hello world!
 $
 ```
 
-Both source files ([random_streams_for_perf_stats.sml](./random_streams_for_perf_stats.sml), [random_streams_for_perf_stats.mlb](./random_streams_for_perf_stats.mlb) should be now transpilable with LunarML:
+Both source files ([random_streams_for_perf_stats.sml](./random_streams_for_perf_stats.sml), [random_streams_for_perf_stats.mlb](./random_streams_for_perf_stats.mlb)) should be now transpilable with LunarML:
 
 ```
 $ lunarml compile random_streams_for_perf_stats.mlb
