@@ -227,7 +227,7 @@ val start_seed = seed1 mod m;
 val _ = print("start_seed = " ^ Int.toString start_seed);
 val _ = print("\n");
 ```
-By the way: _seed1_ can take really big integer numbers, positive or negative, but the modulus operator mod will not only make them much smaller (absolutely), but also only positive, which is practical.
+By the way: _seed1_ can take really big integer numbers, positive or negative, but the modulus operator _mod_ will not only make them much smaller (absolutely), but also only positive, which is practical.
 
 Since everything works, we now put above expressions - **without the semicolons** - into a source code file named _my_program.sml_.
 
