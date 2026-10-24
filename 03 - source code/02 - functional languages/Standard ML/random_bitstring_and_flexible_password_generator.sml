@@ -11,6 +11,10 @@ random_bitstring_and_flexible_password_generator.sml -- for MLton Standard ML
 2026-05-29/30: refactored from char_set to pattern (for regular expressions)
 2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
 2026-08-05: renamed a couple of variables to be more compliant with other implementations
+2026-10-24: no more RNG initialization at: val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs),
+            just using a hashed value from: val (secs, usecs) = getTime ().
+            What really happens at function call Random.rand (int1, int2) is totally obscure to me in this MLton/(legacy?)SMLNJ mix.
+            See my legacy code only at random_streams_for_perf_stats.sml.
 
 
 build on Ubuntu 24 LTS: take mlton-20241230.x86_64-linux-gnu.tar.gz from: https://github.com/ii8/mlton-builds/releases/tag/20241230
@@ -205,8 +209,7 @@ structure Main =
     (*val END = 25  (* for testing *)*)
 
     val m = 65521  (* = 2^16 - 15 *)
-    val m_word = 0wx0000fff1  (* same number as hex word *)
-    val m_word_ = m_word - 0wx00000001  (* seed adaption; 2025-12-21 *)
+    val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
 
     val a = 17364
     val c = 0
@@ -221,12 +224,20 @@ structure Main =
 
     (*val xx = MLton.Vector.create (END+1) (* OK *)*)
 
-    (* copied from random_streams_for_perf_stats3.sml *)
-    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds) *)
-    val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
+    (* 2026-10-24: copied from random_streams_for_perf_stats.sml: *)
+    (* 2026-10-24: constants for the 64 bit FNV-1a hashing algorithm: *)
+    val offsetBasis64 : Word64.word = 0wxcbf29ce484222325  (* 64-bit, which is not prime! *)
+    val prime64       : Word64.word = 0wx00000100000001B3  (* FNV prime in 64 bit *)
+    (* source: https://mojoauth.com/security-guides/fnv-1a-in-c *)
+    (* also see at: ./lib/smlnj-lib/Util/fnv-hash.sml *)
+
+    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
+    see from: https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml#L20 *)
     val (secs, usecs) = getTime ()
-    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* r of type Random.rand *)
-    val start_seed = Random.randRange (1, m - 1) r  (* ending point is inclusive; 2025-12-21 *)
+    val start_seed_ = (Word64.xorb(Word64.xorb(Word64.fromLargeInt(secs), offsetBasis64) * prime64, Word64.fromLargeInt(usecs)) * prime64) mod (m_word - 2) + 1
+    (* val _ = print ("\nstart_seed_ = " ^ Word64.toString start_seed_)  (* for testing *) *)
+    val start_seed = Word64.toInt start_seed_
+    (* val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *) *)
 
 
     val _ = print ("\ngenerating a random bit stream...")
