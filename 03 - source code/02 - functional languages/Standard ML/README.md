@@ -314,9 +314,9 @@ $
 
 <br/>
 
-However, when I tried to find out how the [seeding](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/45%20-%20Sources%20of%20a%20random%20seed/README.md#sources-of-a-random-seed) of what random number generator really works in the MLton / (legacy?) SML/NJ combo,
+However, when I tried to find out how the seeding of what random number generator really works in the MLton / (legacy?) SML/NJ combo,
 I skipped the obscure _val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)_ solution, and implemented my own seeding,
-also with using the ideas from [fnv-hash.sml]() as a 64-bit hashing solution of input numbers _secs_ and _usecs_:
+also with using the ideas from [fnv-hash.sml](https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/fnv-hash.sml) as a 64-bit hashing solution of input numbers _secs_ and _usecs_:
 
 ```
     val m_word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
