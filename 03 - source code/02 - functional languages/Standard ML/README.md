@@ -73,7 +73,7 @@ Some years ago, MLton published this benchmark page with five Standard ML dialec
 
 <br/>
 
-I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/1733d3d90fc3ebd6157e1c34bcd68de51ab0d722/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for [example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml):
+I also tapped into **MLKit**, only to see a needed _structure_ listed in its basis, for example here at [Random.sml](https://github.com/melsman/mlkit/blob/master/basis/Random.sml), which I didn't get working (I also wasn't able to build an implementation from MLKit sources). I wanted this _structure_ working to have equivalent functionality to these partly exclusive expressions in MLton, see function _MLton.Random.seed_ for [example](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_bitstring_and_flexible_password_generator.sml):
 
 ```
     ...
@@ -199,8 +199,8 @@ from: http://www.smlnj.org/doc/smlnj-lib/index.html
 
 However, not everything what is available in SML/NJ is also readily available in MLton:
 
-- for example the "utility library of the SML/NJ Library": https://github.com/smlnj/legacy/tree/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util
-- ..and thus for example also not this "interface to stateful pseudo-random number generators": https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/random-sig.sml
+- for example the "utility library of the SML/NJ Library": https://github.com/smlnj/legacy/tree/main/smlnj-lib/Util
+- ..and thus for example also not this "interface to stateful pseudo-random number generators": https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/random-sig.sml
 
 Therefore this question naturally comes up:
 
@@ -214,7 +214,7 @@ Spoiler alert: yes, we can!
 
 But first let's have a little exercise in the SML/NJ REPL with: _$ rlwrap sml_
 
-We can follow another [utility](https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/UUID/gen-uuid.sml) to see how to start a random number generator in SML/NJ and enter these expressions - each terminated with a semicolon - in the REPL:
+We can follow another [utility](https://github.com/smlnj/legacy/blob/blob/smlnj-lib/UUID/gen-uuid.sml) to see how to start a random number generator in SML/NJ and enter these expressions - each terminated with a semicolon - in the REPL:
 
 ```
 val m = 65521;
