@@ -457,7 +457,7 @@ $
 However, my microbenchmark program with 132 lines of Standard ML source code in files [random_streams_for_perf_stats.sml](./random_streams_for_perf_stats.sml) and [random_streams_for_perf_stats.mlb](./random_streams_for_perf_stats.mlb) (129 + 3) transpiled into:
 
 - 4125 lines of Lua source code and
-- 3090 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](./random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 280 milliseconds (2026-01-31)
+- 3090 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](./random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 285 milliseconds (2026-10-24)
 
 Apparently, these transpiled source code files are not meant for the human reader.
 
