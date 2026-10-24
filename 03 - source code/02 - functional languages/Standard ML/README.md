@@ -214,11 +214,11 @@ Spoiler alert: yes, we can!
 
 But first let's have a little exercise in the SML/NJ REPL with: _$ rlwrap sml_
 
-We can follow another [utility](https://github.com/smlnj/legacy/blob/blob/smlnj-lib/UUID/gen-uuid.sml) to see how to start a random number generator in SML/NJ and enter these expressions - each terminated with a semicolon - in the REPL:
+We can follow another [utility](https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml) to see how to start a random number generator in SML/NJ and enter these expressions - each terminated with a semicolon - in the REPL:
 
 ```
 val m = 65521;
-fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000);
+fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000);  (* get the current time as (seconds, useconds) *)
 val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1;
 val (secs, usecs) = getTime ();
 val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs);
