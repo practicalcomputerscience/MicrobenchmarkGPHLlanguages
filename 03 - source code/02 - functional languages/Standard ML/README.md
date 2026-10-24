@@ -47,7 +47,7 @@ Here I'm talking about Standard ML since 1997: https://smlfamily.github.io and s
 
 Spoiler alert: the chances that a (basically same) program in SML will be faster than its variant in [OCaml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml#ocaml) is slim (OCaml is full of "bells and whistles"), though you can make decently fast programs with SML too, that is programs which can compete with Common Lisp for example in terms of [execution speed](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/02%20-%20execution%20times#master-diagram-with-most-program-environments).
 
-However, MLton doesn't have a REPL, so I still have a SML/NJ installation for quick tests (of "standard" Standard ML features). Start the SML/NJ REPL in Linux with: _$ rlwrap sml_
+However, MLton doesn't have a REPL, so I still have a SML/NJ installation for quick tests (of "standard" Standard ML features, and installed with command _$ sudo apt install smlnj_ in version _v110.79 [built: Mon Apr 22 10:14:55 2024]_). Start the SML/NJ REPL in Linux with: _$ rlwrap sml_
 
 <br/>
 
