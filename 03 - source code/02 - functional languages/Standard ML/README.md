@@ -342,21 +342,20 @@ However, in a new functional programming I would always start with ("easy") _lis
 
 ## Transpiling from Standard ML to Lua and JavaScript with LunarML
 
-While having a look at [Other Standard ML dialects](#other-standard-ml-dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
+While having a look at [Other Standard ML dialects](#other-standard-ml-dialects), I noticed the actively maintained [LunarML transpiler](https://lunarml.readthedocs.io/en/latest/index.html) and gave it a try.
 
 > [!IMPORTANT]
 > Have [MLton](#mlton-installation-tips) and [Lua + LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua) and [node.js](https://nodejs.org/en/) installed before continuing!
 
-I built LunarML without problems from sources, including all its tests (which may run for a while): https://lunarml.readthedocs.io/en/latest/intro.html#installation
+I built LunarML without problems from sources, including all its tests (which may run for a while): [Installation](https://lunarml.readthedocs.io/en/latest/intro.html#installation)
 
 ```
-$ make LunarML
+$ mkdir LunarML
 $ cd LunarML
 $ wget https://github.com/minoki/LunarML/releases/download/v0.2.1/lunarml-0.2.1.tar.gz
 $ tar xzf lunarml-0.2.1.tar.gz
 $ pushd lunarml-0.2.1
 $ make
-mlyacc src/syntax.grm
 mlton -output bin/lunarml src/lunarml-main.mlb
 $ make test-lua  # these tests take a long time!!
 ...
@@ -379,7 +378,7 @@ Hello world!
 $
 ```
 
-Both source files ([random_streams_for_perf_stats.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml), [random_streams_for_perf_stats.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mlb)) should now be transpiled successfully with LunarML:
+Both source files ([random_streams_for_perf_stats.sml](./random_streams_for_perf_stats.sml), [random_streams_for_perf_stats.mlb](./random_streams_for_perf_stats.mlb)) should be now transpilable with LunarML:
 
 ```
 $ lunarml compile random_streams_for_perf_stats.mlb
