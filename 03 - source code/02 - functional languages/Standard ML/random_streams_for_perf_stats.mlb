@@ -1,0 +1,11 @@
+(* random_streams_for_perf_stats.mlb
+2026-10-24 14:00:44
+
+*)
+
+(* import libraries *)
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+$(SML_LIB)/basis/basis.mlb
+
+(* program files *)
+./random_streams_for_perf_stats.sml
