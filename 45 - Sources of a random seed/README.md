@@ -191,7 +191,7 @@ Zig | my own and direct implementation of Linux system call [getrandom(2)](https
 
 ### Test of a 1 second seeding resolution
 
-A probable 1 second seeding resolution can easily be tested with two automatic program runs within 1 second, here in the Dylan implementation:
+A probable 1 second seeding resolution can easily be tested with two automatic program runs within 1 second, here in the Dylan implementation. Command _date +%s_ shows the current Linux system time as the number of seconds since the Epoch:
 
 ```
 $ date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte; echo -e "\n"; date +%s; ./_build/bin/random-streams-for-perf-stats; head -c 10 ./random_bitstring.byte
@@ -232,9 +232,6 @@ Byte stream has been written to disk under name: random_bitstring.byte
 ```
 
 ..only then to get two different random byte streams.
-
-
-Command _date +%s_ shows the current Linux system time as the number of seconds since the Epoch.
 
 <br/>
 
