@@ -489,7 +489,10 @@ $
 
 I built the MLton compiler successfully from sources like this:
 
-It's important to know that the MLton sources need another Standard ML installation to be compiled (bootstrapping), preferably with another MLton installation. See from [MLton installation tips](#mlton-installation-tips) at the top.
+> [!IMPORTANT]
+> It's important to know that the MLton sources need another Standard ML installation to be compiled (bootstrapping), preferably with another MLton installation.
+
+See at [MLton installation tips](#mlton-installation-tips) at the top of this page.
 
 Next task is to get the right GMP installation working, here for an amd64 based Linux system ("self"), or another GMP installation which fits to the target system of MLton compiled programs.
 
