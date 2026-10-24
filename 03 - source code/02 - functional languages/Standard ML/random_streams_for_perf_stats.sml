@@ -128,7 +128,7 @@ structure Main =
     (*val END = 10  (* for testing *)*)
 
     val m = 65521  (* = 2^16 - 15 *)
-    val m_word : Word64.word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word *)
+    val m_word : Word64.word = 0wx000000000000fff1  (* 2^16 - 15 as 64 bit hex word; correct typing with Word64.word is important for the LunarML compiler *)
 
     val a = 17364
     val c = 0
