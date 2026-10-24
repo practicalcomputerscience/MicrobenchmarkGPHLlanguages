@@ -155,19 +155,19 @@ structure Main =
     val start_seed = Word.toInt seed_word_mod
     *)
 
-    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
-    (* see from: https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/UUID/gen-uuid.sml *)
+    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds)
+    see from: https://github.com/smlnj/legacy/blob/main/smlnj-lib/UUID/gen-uuid.sml *)
 
     val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
     val (secs, usecs) = getTime ()
-    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* rand of type Random.rand *)
+    val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* r of type Random.rand *)
 
     (* this is systematically causing an overflow in MLton, but works fine in SML/NJ: *)
-    (*val seed1 = (Random.randInt r)  (* SML/NJ: this is a new random number in a wide range with every call: int *)*)
+    (* val seed1 = (Random.randInt r)  (* SML/NJ: this is a new random number in a wide range with every call: int *) *)
 
     val start_seed = Random.randRange (1, m - 1) r  (* ending point is inclusive; 2025-12-21 *)
-    (* https://github.com/smlnj/legacy/blob/c1a9b36470234153a46ec3f08ae732d1522c596a/smlnj-lib/Util/real-order-stats.sml *)
-    (*val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *)*)
+    (* https://github.com/smlnj/legacy/blob/main/smlnj-lib/Util/real-order-stats.sml#L40 *)
+    (* val _ = print ("\nstart_seed = " ^ Int.toString start_seed)  (* for testing *)*)
 
 
     val _ = print ("\ngenerating a random bit stream...")
