@@ -342,7 +342,7 @@ However, in a new functional programming I would always start with ("easy") _lis
 
 ## Transpiling from Standard ML to Lua and JavaScript with LunarML
 
-While having a look at [Standard ML dialects](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML#other-standard-ml--dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
+While having a look at [Other Standard ML dialects](#other-standard-ml-dialects), I noticed the actively maintained **LunarML** transpiler: https://lunarml.readthedocs.io/en/latest/intro.html and gave it a try.
 
 > [!IMPORTANT]
 > Have [MLton](#mlton-installation-tips) and [Lua + LuaJIT](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Lua#lua) and [node.js](https://nodejs.org/en/) installed before continuing!
