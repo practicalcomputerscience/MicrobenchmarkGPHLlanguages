@@ -222,7 +222,7 @@ structure Main =
     (*val xx = MLton.Vector.create (END+1) (* OK *)*)
 
     (* copied from random_streams_for_perf_stats3.sml *)
-    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)
+    fun getTime () = IntInf.divMod (Time.toMicroseconds(Time.now()), 1000000)  (* get the current time as (seconds, useconds) *)
     val maxInt = IntInf.fromInt (valOf Int.maxInt) + 1
     val (secs, usecs) = getTime ()
     val r = Random.rand (Int.fromLarge(secs mod maxInt), Int.fromLarge usecs)  (* r of type Random.rand *)
