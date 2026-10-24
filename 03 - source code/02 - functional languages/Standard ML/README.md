@@ -454,10 +454,10 @@ cont: {
 $
 ```
 
-However, my microbenchmark program with 133 lines of Standard ML source code in files [random_streams_for_perf_stats.sml](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml) and [random_streams_for_perf_stats.mlb](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mlb) (129 + 4) transpiled into:
+However, my microbenchmark program with 132 lines of Standard ML source code in files [random_streams_for_perf_stats.sml](./random_streams_for_perf_stats.sml) and [random_streams_for_perf_stats.mlb](./random_streams_for_perf_stats.mlb) (129 + 3) transpiled into:
 
-- 4627 lines of Lua source code and
-- 3264 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 280 milliseconds (2026-01-31)
+- 4125 lines of Lua source code and
+- 3090 lines of JavaScript source code: [random_streams_for_perf_stats.mjs](./random_streams_for_perf_stats.mjs): _$ multitime -n 20 node ./random_streams_for_perf_stats.mjs_ => mean: 280 milliseconds (2026-01-31)
 
 Apparently, these transpiled source code files are not meant for the human reader.
 
@@ -483,7 +483,7 @@ See also: [The future of transpiling](https://github.com/practicalcomputerscienc
 
 ### Building MLton from sources
 
-Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
+Motivation: I revisited the implementation of the Microbenchmark program in Standard ML, because I tried to compile from [Standard ML source code](./random_streams_for_perf_stats.sml) directly into [WebAssembly](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20%22web%20languages%22%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#the-webassembly-wasm-virtual-machine) with the help of the MLton compiler, see from here: [RunningOnWASI](http://mlton.org/RunningOnWASI).
 
 However, this was a failure, and probably it will stay like that. In the end and after elaborate experimentation, file _assert.h_ was missing during compilation. Then I gave up.
 
