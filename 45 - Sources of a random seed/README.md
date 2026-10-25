@@ -178,7 +178,7 @@ Ruby | probably /dev/urandom | very high | [module SecureRandom](https://docs.ru
 Rust | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [from_os_rng](https://docs.rs/rand/0.9.1/rand/trait.SeedableRng.html#method.from_os_rng), [getrandom: system’s random number generator](https://docs.rs/getrandom/latest/getrandom/#getrandom-systems-random-number-generator)
 Scala | class [Random](https://github.com/scala/scala3/blob/main/library/src/scala/util/Random.scala#L24) is based on _java.util.Random_, see above at Groovy | high | 
 Scheme, Bigloo | 
-Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)) is mapped to Chez Scheme function [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342). tbd | tbd |
+Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)) is mapped on Chez Scheme function [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342). tbd | tbd | For more details, see below at [Racket's REPL and original source of a random see](tbd).
 Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/master/kernel/Random.st#L162) | high | 
 Standard ML ([MLton](https://github.com/MLton/mlton)) | my own and direct implementation with calling Standard ML function _Time.now()_ to read the current timestamp with a resolution of seconds and any fractional microseconds. Both values are then fed into the 64 bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed.  | high |
 Swift | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Platform Implementation of `SystemRandomNumberGenerator`](https://developer.apple.com/documentation/swift/systemrandomnumbergenerator#Platform-Implementation-of-SystemRandomNumberGenerator)
@@ -459,6 +459,67 @@ Or as Google AI has stated it on prompt "Why does a call of JavaScript function 
 > ...
 > 1. Torque / CSA acts as a high-speed velvet rope, serving random numbers instantly out of cache without breaking a sweat.
 > 2. The C++ Runtime / OS layer acts as the heavy-duty machinery that boots up quietly in the background only when that cache runs dry.
+
+<br/>
+ 
+#### Racket's REPL and original source of a random see
+
+In the Racket REPL, provide some erroneous arguments when calling the _random_ function to induce error messages and other replies:
+
+```
+$ racket
+Welcome to Racket v9.0 [cs].
+> random
+#<procedure:random>
+> (random 4294967087)
+1954668196
+> (random 4294967088)
+random: contract violation
+  expected: (or/c (integer-in 1 4294967087) pseudo-random-generator?)
+  given: 4294967088
+ [,bt for context]
+> (random)
+0.8138154631651977
+> (random 20 10)
+random: contract violation
+  expected: (>/c 20)
+  given: 10
+  argument position: 2nd
+ [,bt for context]
+> (exit)
+$
+```
+
+..and then look for (unique) parts of the REPL's replies in the [Racket's GitHub repository](https://github.com/racket/racket/tree/master).
+That's how I found _random_'s pre-processing in Racket's [pre-base.rkt](https://github.com/racket/racket/blob/master/racket/collects/racket/private/pre-base.rkt) source file.
+
+There, Racket calling _(random x y)_ is further processed, after all checks have passed successfully, as [(+ x (random d))](https://github.com/racket/racket/blob/master/racket/collects/racket/private/pre-base.rkt#L144), where _(random d)_, with d being calculated as y - x, is being mapped on Chez Scheme's [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342) function, which only takes one argument (_d_) in case _[(n) ... ]_.
+
+Racket's Chez Scheme (CS) implementation is organized in layers, with the top one being called "Rumble", and implemented in [Chez Scheme](https://github.com/racket/racket/tree/master/racket/src/cs). [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble.sls#L499) is a Racket keyword in the Rumble dictionary, which is implemented in a ~.sls file for a Scheme Library Source. Chez Scheme source file [rumble/random.ss](https://github.com/racket/racket/blob/master/racket/src/cs/rumble.sls#L951) is also mentioned in this Scheme Library Source file.
+
+Chez Scheme's _random_ function calls function [pseudo-random-generator-next!‎](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L335) in the _rumble/random.ss_ source file.
+
+> [!CAUTION]
+> Be careful with source file _rumble/random.ss_, because everything up to line #297 is only comment!
+
+
+
+The _current-pseudo-random-generator_ has once been seeded with calling [(current-milliseconds)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L94).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br/>
 
