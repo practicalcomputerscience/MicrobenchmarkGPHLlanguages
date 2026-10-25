@@ -42,7 +42,7 @@ $ raco exe random_bitstring_and_flexible_password_generator.rkt
 
 Though it's syntax and grammar would definitely make a modern Lisp-like language, it's also easy to write slow programs if you are not careful enough or just an inexperienced beginner.
 
-For example, Racket doesn't have a **string builder** or similar concept. Appending many little strings to one big string, with the usual function _string-append_ (https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-append%29%29), which is part of the _racket/base_ library, can become prohibitively slow in this programming language!
+For example, Racket doesn't have a **string builder** or similar concept. Appending many little strings to one big string, with the usual function [string-append](https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-append%29%29), which is part of the _racket/base_ library, can become prohibitively slow in this programming language!
 
 At first, I set a new "record" in slowliness with this solution, resulting at 53 seconds for one program run! After numerous experiments I found this concept to be much faster with 9.9 seconds:
 
