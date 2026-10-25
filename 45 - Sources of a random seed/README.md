@@ -491,7 +491,7 @@ random: contract violation
 $
 ```
 
-..and then look for (unique) parts of the REPL's replies in the [Racket's GitHub repository](https://github.com/racket/racket/tree/master).
+..and then look for (unique) parts of these replies in [Racket's GitHub repository](https://github.com/racket/racket/tree/master).
 That's how I found _random_'s pre-processing in Racket's [pre-base.rkt](https://github.com/racket/racket/blob/master/racket/collects/racket/private/pre-base.rkt) source file.
 
 There, Racket calling _(random x y)_ is further processed, after all checks have passed successfully, as [(+ x (random d))](https://github.com/racket/racket/blob/master/racket/collects/racket/private/pre-base.rkt#L144), where _(random d)_, with d being calculated as y - x, is being mapped on Chez Scheme's [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342) function, which only takes one argument (_d_) in case _[(n) ... ]_.
