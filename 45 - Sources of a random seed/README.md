@@ -285,8 +285,8 @@ int main(void) {
     printf("Linux system time in seconds:      %lu\n", seconds);
     printf("Linux system time in milliseconds: %lu\n", milliseconds);
     printf("residual microseconds:                       %lu\n", microseconds);
-    printf("64 bit random seed using David Stafford's 64-bit mix function: %lu\n", random_seed_stafford13);
-    printf("64 bit random seed using function: 13 * sec + microsec:        %lu\n", random_seed_oxford_oberon2);
+    printf("64-bit random seed using David Stafford's 64-bit mix function: %lu\n", random_seed_stafford13);
+    printf("64-bit random seed using function: 13 * sec + microsec:        %lu\n", random_seed_oxford_oberon2);
 
     return 0;
 }
@@ -299,17 +299,17 @@ $ ./gettimeofday_call_SplitMix64_hashing; echo -e "\n"; ./gettimeofday_call_Spli
 Linux system time in seconds:      1791747698
 Linux system time in milliseconds: 1791747698683
 residual microseconds:                       683522
-64 bit random seed using David Stafford's 64-bit mix function: 5620633334799208262
-64 bit random seed using function: 13 * sec + microsec:        23293403596
-64 bit random seed using the Fowler/Noll/Vo, variant 1a:       8021942652032737621
+64-bit random seed using David Stafford's 64-bit mix function: 5620633334799208262
+64-bit random seed using function: 13 * sec + microsec:        23293403596
+64-bit random seed using the Fowler/Noll/Vo, variant 1a:       8021942652032737621
 
 
 Linux system time in seconds:      1791747698
 Linux system time in milliseconds: 1791747698684
 residual microseconds:                       684221
-64 bit random seed using David Stafford's 64-bit mix function: 14102637944186594101
-64 bit random seed using function: 13 * sec + microsec:        23293404295
-64 bit random seed using the Fowler/Noll/Vo, variant 1a:       8014502256844633784
+64-bit random seed using David Stafford's 64-bit mix function: 14102637944186594101
+64-bit random seed using function: 13 * sec + microsec:        23293404295
+64-bit random seed using the Fowler/Noll/Vo, variant 1a:       8014502256844633784
 $ 
 ```
 
