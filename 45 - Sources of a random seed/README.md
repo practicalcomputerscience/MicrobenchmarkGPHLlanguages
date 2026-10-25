@@ -503,9 +503,15 @@ Chez Scheme's _random_ function calls function [pseudo-random-generator-next!‎
 > [!CAUTION]
 > Be careful with source file _rumble/random.ss_, because everything up to line #297 is only comment!
 
+The _current-pseudo-random-generator_ has once been made with function call [(make-pseudo-random-generator)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L307). Originally, that is with some Chez Scheme implementation, this generator was originally seeded with calling [(current-milliseconds)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L94). But no longer, since this part of the sources has been commented in the Racket Scheme implementation.
 
 
-The _current-pseudo-random-generator_ has once been seeded with calling [(current-milliseconds)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L94).
+
+
+
+
+
+
 
 
 
