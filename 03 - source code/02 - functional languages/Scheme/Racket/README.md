@@ -119,7 +119,7 @@ However, one could argue that I'm doing such a thing in my Clojure program ![Clo
 
 ## Chez Scheme (CS)
 
-Racket is a **bytecode** language, nowadays based on Chez Scheme (CS):
+Racket is interpreted as a **bytecode** language, nowadays based on Chez Scheme (CS):
 
 - [Racket Virtual Machine Implementations](https://docs.racket-lang.org/guide/performance.html#(part._virtual-machines))
 - https://blog.lambdaclass.com/rebuilding-the-racket-compiler-with-chez-scheme/
