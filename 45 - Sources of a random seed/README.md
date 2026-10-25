@@ -179,7 +179,7 @@ Ruby | probably /dev/urandom | very high | [module SecureRandom](https://docs.ru
 Rust | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [from_os_rng](https://docs.rs/rand/0.9.1/rand/trait.SeedableRng.html#method.from_os_rng), [getrandom: system’s random number generator](https://docs.rs/getrandom/latest/getrandom/#getrandom-systems-random-number-generator)
 Scala | class [Random](https://github.com/scala/scala3/blob/main/library/src/scala/util/Random.scala#L24) is based on _java.util.Random_, see above at Groovy | high | 
 Scheme, Bigloo | 
-Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)) is mapped on Chez Scheme function [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342). tbd | tbd | For more details, see below at [Racket's REPL and original source of a random see](#rackets-repl-and-original-source-of-a-random-see).
+Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)) is mapped on Chez Scheme function [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342). The current timestamp with a resolution of seconds, plus any fractional nanoseconds, since the Epoch is being read as the [original seeding](https://github.com/racket/racket/blob/master/racket/src/ChezScheme/s/5_3.ss#L3177), and processed into a 32-bit value. | high | For more details, see below at [Racket's REPL and original source of a random see](#rackets-repl-and-original-source-of-a-random-see).
 Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/master/kernel/Random.st#L162) | high | 
 Standard ML ([MLton](https://github.com/MLton/mlton)) | my own and direct implementation with calling Standard ML function _Time.now()_ to read the current timestamp with a resolution of seconds and any fractional microseconds. Both values are then fed into the 64 bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed.  | high |
 Swift | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Platform Implementation of `SystemRandomNumberGenerator`](https://developer.apple.com/documentation/swift/systemrandomnumbergenerator#Platform-Implementation-of-SystemRandomNumberGenerator)
@@ -503,30 +503,19 @@ Chez Scheme's _random_ function calls function [pseudo-random-generator-next!‎
 > [!CAUTION]
 > Be careful with source file _rumble/random.ss_, because everything up to line #297 is only comment!
 
-The _current-pseudo-random-generator_ has once been made with function call [(make-pseudo-random-generator)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L307). Originally, that is with some Chez Scheme implementation, this generator was originally seeded with calling [(current-milliseconds)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L94). But no longer, since this part of the sources has been commented in the Racket Scheme implementation.
+The _current-pseudo-random-generator_ has been created with function call [(make-pseudo-random-generator)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L307) in its new Racket Scheme implementation (at line #307).
 
+_make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources in file [5_3.ss](https://github.com/racket/racket/blob/master/racket/src/ChezScheme/s/5_3.ss#3177):
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+    (set! make-pseudo-random-generator
+          (lambda ()
+            (let ([s (create-pseudo-random-generator 0.0 0.0 0.0 0.0 0.0 0.0)]
+                  [t (current-time 'time-utc)])
+              (init! s (bitwise-and (+ (time-second t) (time-nanosecond t))
+                                    #xFFFFFFFF))
+              s)))
+```
 
 <br/>
 
