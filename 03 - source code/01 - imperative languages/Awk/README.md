@@ -72,14 +72,14 @@ function write_to_file(fname, data,    cmd, is_writable) {
 
 Nevertheless, I was positvely surprised with the speedy execution of the "speed part" of the microbenchmark program with GNU Awk of only around 240 milliseconds!
 
-However, this is not the typical case with a "scripting language". Emboldened by so much success I gave the [Z Shell (zsh)](https://zsh.sourceforge.io/) a try, here in version 5.9:
+However, this is not the typical case with a "scripting language". Emboldened by so much success, I gave the [Z Shell (zsh)](https://zsh.sourceforge.io/) a [try](./random_streams_for_perf_stats.zsh), here in version 5.9:
 
 > Zsh is a shell designed for interactive use, although it is also a powerful scripting language. Many of the useful features of bash, ksh, and tcsh were incorporated into zsh; many original features were added.
 
 But that was a dud in terms of execution speed:
 
 ```
- time zsh ./random_streams_for_perf_stats.zsh
+$ time zsh ./random_streams_for_perf_stats.zsh
 
 generating a random bit stream...
 Bit stream has been written to disk under name:  random_bitstring.bin
@@ -88,6 +88,7 @@ Byte stream has been written to disk under name: random_bitstring.byte
 real	0m32.256s
 user	0m19.222s
 sys	0m14.095s
+$
 ```
 
 At least Zsh's exception handling is much better than GNU Awk's:
