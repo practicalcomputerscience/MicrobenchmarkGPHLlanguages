@@ -505,7 +505,7 @@ Chez Scheme's _random_ function calls function [pseudo-random-generator-next!‎
 
 The _current-pseudo-random-generator_ has been created with function call [(make-pseudo-random-generator)](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L307) in its new Racket Scheme implementation (at line #307).
 
-_make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources in file [5_3.ss](https://github.com/racket/racket/blob/master/racket/src/ChezScheme/s/5_3.ss#3177):
+_make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources in file [5_3.ss](https://github.com/racket/racket/blob/master/racket/src/ChezScheme/s/5_3.ss#L3177) :
 
 ```
     (set! make-pseudo-random-generator
