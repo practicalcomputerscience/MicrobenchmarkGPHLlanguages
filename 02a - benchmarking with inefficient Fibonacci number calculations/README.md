@@ -28,12 +28,12 @@ Same like with the [map coloring problem of Germany](https://github.com/practica
 > [!CAUTION]
 > However and as so often, one has to be careful with correctly calculating Fibonacci numbers in C++ to not exceed the maximum limits of integer numbers!
 
-At first, I naively did a [GMP based implementation](./fib_recursive_small_argument_GMP.cpp), only to realize that while it correctly calculates "higher" Fibonacci numbers, it is also a super-slow solution!
+At first, I naively did a [GMP based implementation](./fib_recursive_small_argument_GMP.cpp), only to realize that, while it correctly calculates "higher" Fibonacci numbers, it is also a super-slow solution!
 (GMP = GNU Multiple Precision Arithmetic Library: https://gmplib.org/)
 
 Then I turned to the [unsigned long long integer type](./fib_recursive_small_argument.cpp), which should allow to calculate Fibonacci numbers up to argument 93 with result 12,200,160,415,121,876,738: https://zeptomath.com/calculators/fibonaccinumbers.php?number=93
 
-This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should be the highest _unsigned long long_ number in a typical C++ compilation: [C and C++ Integer Limits](https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170) (however, calculating this result recursively, even in C++, may not stop in hours!)
+This result is still under 18,446,744,073,709,551,615 = 2^64 - 1, which should be the highest _unsigned long long_ number in a typical C++ implementation: [C and C++ Integer Limits](https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170) (however, calculating this result recursively, even in C++, may not stop in hours!)
 
 <br/>
 
