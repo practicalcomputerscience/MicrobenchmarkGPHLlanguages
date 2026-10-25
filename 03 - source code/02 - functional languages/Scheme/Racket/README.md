@@ -2,6 +2,8 @@
 
 https://racket-lang.org/
 
+https://github.com/racket/racket
+
 ---
 
 Table of contents:
