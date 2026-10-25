@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- still open as of 2026-10-24: 7 languages: Bigloo Scheme, Factor, Forth (Gforth), Picat, Prolog (SWI), Roc, Racket Scheme
+- still open as of 2026-10-25: 6 languages: Bigloo Scheme, Factor, Forth (Gforth), Picat, Prolog (SWI), Roc
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
