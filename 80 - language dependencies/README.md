@@ -86,7 +86,7 @@ Scheme, Bigloo | Bigloo Scheme initially starts from a bootstrap version of it; 
 Scheme, Chez | bootstrapping with C for gcc or clang; otherwise self-hosted | [BUILDING](https://github.com/cisco/ChezScheme/blob/main/BUILDING)
 Scheme, CHICKEN | C for gcc or clang | [Installing CHICKEN](https://wiki.call-cc.org/man/5/Getting%20started#installing-chicken)
 Scheme, Gambit | C for gcc | [INSTALL](https://github.com/gambit/gambit/blob/master/INSTALL.txt)
-Scheme, Racket | using Chez Scheme as its core compiler and runtime system | [1.5 Implementations](https://docs.racket-lang.org/reference/implementations.html#(part._implementations))
+Scheme, Racket | using Chez Scheme ["CS"](https://github.com/racket/racket/tree/master/racket/src/cs#readme) as its core compiler and runtime system; C | [1.5 Implementations](https://docs.racket-lang.org/reference/)
 Smalltalk (GNU) | Smalltalk, C and C++ | https://github.com/gnu-smalltalk/smalltalk/tree/master
 Standard ML (MLton) | C for gcc or clang | [Build and Install (from source)](https://github.com/MLton/mlton#build-and-install-from-source)
 Swift | bootstrapping with C++ for LLVM and clang; otherwise self-hosted | [Swift implemented in Swift](https://github.com/swiftlang/swift/tree/main/SwiftCompilerSources#swift-implemented-in-swift); SIL = Swift Intermediate Language
