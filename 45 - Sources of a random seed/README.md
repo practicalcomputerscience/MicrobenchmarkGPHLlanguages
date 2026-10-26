@@ -129,7 +129,7 @@ AssemblyScript | using function _Math.random()_ from: _The Math API is very much
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_; two program runs within 1 second may yield the **same** byte streams with GNU Awk 5.2.1 in Ubuntu 24
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high
 [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) | In my own implementation, a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) reads the number of seconds and the number of any residual, non-overlapping **nanoseconds** since the last system boot ("CLOCK_MONOTONIC"), which are then simply mixed as: _unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);_. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | I just applied the Oxford Oberon-2 Compiler's simple mixing function, see below, to not overdo it at the seeding, but to do better seeding than just doing ubiquitous function call _srand(time(NULL));_, which only has a resolution of 1 second.
-C++ | same like with C | high | same like with C
+C++ | same as with C | high | same as with C
 C3 | [random.c3](https://github.com/c3lang/c3c/blob/master/lib/std/math/random.c3): how is this seeded? | high | two program runs within 1 second will yield two different byte streams
 C# | it looks to me that (nowadays) C# is also leveraging the Address Space Layout Randomization (ASLR), as it can be seen at instruction: _ulong* ptr = stackalloc ulong[4];_ in sources [Random.Xoshiro256StarStarImpl.cs](https://github.com/dotnet/dotnet/blob/main/src/runtime/src/libraries/System.Private.CoreLib/src/System/Random.Xoshiro256StarStarImpl.cs#L35) | high |
 Chapel | [Random](https://chapel-lang.org/docs/modules/standard/Random.html): _When not provided explicitly, a seed value will be generated in an implementation specific manner which is designed to minimize the chance that two distinct randomStream’s will have the same seed._: how exactly is this seeded? | high | two program runs within 1 second will yield two different byte streams
@@ -157,7 +157,7 @@ Hy | My implementation is using Python's [random](https://github.com/python/cpyt
 Inko | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [sys.random_bytes()](https://github.com/inko-lang/inko/blob/main/std/src/std/rand.inko#L99), [sys.getrandom()](https://github.com/inko-lang/inko/blob/main/std/src/std/sys/linux/rand.inko#L4)
 Java | When class _ThreadLocalRandom_ is being used (for a change in the Java implementation), initial seeding is managed at the [localInit()](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ThreadLocalRandom.java#L156) method. Loading that class, a [seeder](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ThreadLocalRandom.java#L383) instance is initialized by reading the current timestamp with a resolution of milliseconds and the current timestamp with a resolution of nanoseconds, which are then XORed to calculate a random raw seed: _private static final AtomicLong seeder = new AtomicLong(RandomSupport.mixMurmur64(System.currentTimeMillis()) ^ RandomSupport.mixMurmur64(System.nanoTime()));_ | high | _ThreadLocalRandom_ is not cryptographically secure, see at: [Class ThreadLocalRandom](https://docs.oracle.com/javase/8/docs//api/java/util/concurrent/ThreadLocalRandom.html); the timestamp values are first going through 64-bit mix method [mixMurmur64()](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/jdk/internal/util/random/RandomSupport.java#L793), and then also the result of the XOR operation!
 Julia | Julia's default RNG initially calls Julia function [uv_random](https://github.com/JuliaLang/julia/blob/master/base/libc.jl#L457), which in return calls function [uv_random](https://docs.libuv.org/en/stable/misc.html#c.uv_random) in C library _libuv_ for cross-platform asynchronous I/O, which in return makes a Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) to _obtain a series of random bytes_ | very high | the [urandom(4)](https://linux.die.net/man/4/urandom) entropy source _gathers environmental noise from device drivers and other sources into an entropy pool_
-Kotlin | same like Groovy and Scala, Kotlin's default random number generator is also using the _java.util.Random_ package, see at [FallbackThreadLocalRandom](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/src/kotlin/random/PlatformRandom.kt#L47) | high | [package kotlin.random](https://github.com/JetBrains/kotlin/blob/2.4.20/libraries/stdlib/src/kotlin/random/Random.kt)
+Kotlin | same as with Groovy and Scala, Kotlin's default random number generator is also using the _java.util.Random_ package, see at [FallbackThreadLocalRandom](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/src/kotlin/random/PlatformRandom.kt#L47) | high | [package kotlin.random](https://github.com/JetBrains/kotlin/blob/2.4.20/libraries/stdlib/src/kotlin/random/Random.kt)
 Lua | the _math.randomseed(os.time())_ function most probably uses the system clock with a resolution of 1 second | low | https://www.luadocs.com/docs/functions/math/random; two program runs within 1 second may yield the **same** byte streams
 [Mercury](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Mercury/random_streams_for_perf_stats.m) | my own and direct implementation of Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which reads the number of seconds plus any residual microseconds since the Epoch. Both values are then fed into the 64-bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | I have just chosen the [FNV-1a](https://mojoauth.com/security-guides/fnv-1a-in-c) hashing algorithm for its simplicity compared to the (superior) [Variant 13 of David Stafford's 64-bit mix function](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/45%20-%20Sources%20of%20a%20random%20seed#variant-13-of-david-staffords-64-bit-mix-function), which would be too much of a good thing here. But the Oxford Oberon-2 Compiler's simple mixing function would have also done the job; see below.
 Modula-2 (GNU) | GNU Modula-2's random number generation is initialized with the help of module [RandomNumber.mod](https://github.com/gcc-mirror/gcc/blob/master/gcc/m2/gm2-libs-iso/RandomNumber.mod), where procedure [RandomInit(usec) ;](https://github.com/gcc-mirror/gcc/blob/master/gcc/m2/gm2-libs-iso/RandomNumber.mod#L49) is called based on some microseconds value, I guess the residual number of microseconds which is reset with every tick of a second. Then, the common PRNG of GNU C is seeded with this value at [srand(seed)](https://github.com/gcc-mirror/gcc/blob/master/gcc/m2/gm2-libs-iso/RandomNumber.mod#L60). | high | I compile with switch _-fiso_ to turn on ISO standard features of Modula-2.
@@ -178,7 +178,7 @@ Roc |
 Ruby | probably /dev/urandom | very high | [module SecureRandom](https://docs.ruby-lang.org/en/3.2/SecureRandom.html)
 Rust | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [from_os_rng](https://docs.rs/rand/0.9.1/rand/trait.SeedableRng.html#method.from_os_rng), [getrandom: system’s random number generator](https://docs.rs/getrandom/latest/getrandom/#getrandom-systems-random-number-generator)
 Scala | class [Random](https://github.com/scala/scala3/blob/main/library/src/scala/util/Random.scala#L24) is based on _java.util.Random_, see above at Groovy | high | 
-Scheme, Bigloo | 
+Scheme, Bigloo | tbd: Linux system call of clock_gettime(3) tbd | high | Same as in my C and C++ implementations, I replaced Bigloo's calendar time based seeding, which only has a resolution of 1 second, with my own and simple seeding mechanism. See at [Bigloo Scheme's default seeding](tbd) below for more details.
 Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference/generic-numbers.html#(part._.Random_.Numbers)) is mapped on Chez Scheme function [random](https://github.com/racket/racket/blob/master/racket/src/cs/rumble/random.ss#L342). The current timestamp with a resolution of seconds, plus any fractional nanoseconds, since the Epoch is being read as the [original seeding](https://github.com/racket/racket/blob/master/racket/src/ChezScheme/s/5_3.ss#L3177), and processed into a 32-bit value. | high | For more details, see below at [Racket's REPL and original source of a random see](#rackets-repl-and-original-source-of-a-random-see).
 Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/master/kernel/Random.st#L162) | high | 
 Standard ML ([MLton](https://github.com/MLton/mlton)) | my own and direct implementation with calling Standard ML function _Time.now()_ to read the current timestamp with a resolution of seconds and any fractional microseconds. Both values are then fed into the 64-bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed.  | high |
@@ -515,6 +515,34 @@ _make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources
               (init! s (bitwise-and (+ (time-second t) (time-nanosecond t))
                                     #xFFFFFFFF))
               s)))
+```
+
+<br/>
+
+#### Bigloo Scheme's default seeding
+
+Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with C function _srand()_:
+
+```
+      /* random seed */
+      {
+	 time_t taux;
+	 struct tm *tm;
+	 time(&taux);
+	 tm = gmtime(&taux);
+	    
+	 srand((24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour);
+     ... 
+      }
+```
+
+Term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ has a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
+and only features a range of integer numbers with gaps between those two extreme values.
+
+So, same as with my C and C++ implementations, I replaced this seeding mechanism with this simple, but higher quality, solution:
+
+```
+tbd
 ```
 
 <br/>
