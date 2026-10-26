@@ -2,6 +2,8 @@
 
 https://www-sop.inria.fr/indes/fp/Bigloo/ (*)
 
+https://github.com/manuel-serrano/bigloo
+
 <br/>
 
 Bigloo Scheme compiles to very small binary executables, for example like this:
