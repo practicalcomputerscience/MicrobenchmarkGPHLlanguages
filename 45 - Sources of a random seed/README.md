@@ -539,10 +539,30 @@ Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://git
 Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
 and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
 
-Here's my replacement code:
+Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) C and C++ implementations:
 
 ```
-tbd
+(module random_streams_for_perf_stats
+   (main main)
+   (foreign (include "time.h"))
+   (extern (type timespec (struct (tv_sec::long "tv_sec")
+                                  (tv_nsec::long "tv_nsec")) "struct timespec"))
+   (extern (macro CLOCK_MONOTONIC::int "CLOCK_MONOTONIC"))
+   (extern (clock_gettime::int (int timespec*) "clock_gettime")))
+...
+(define seconds 0)
+(define nanoseconds 0)
+(let ((ts (make-timespec*)))
+      (clock_gettime CLOCK_MONOTONIC ts)
+      (let ((seconds (timespec*-tv_sec ts))
+                (nanoseconds (timespec*-tv_nsec ts)))
+             (set! old-seed (bit-xor (* 13 seconds) nanoseconds))))
+...
+(define (main args)
+...
+  (set! old-seed (+ (modulo old-seed (- m 2)) 1))  ; 2026-10-26: scale the raw seed appropriately to [1..m[
+...
+)
 ```
 
 <br/>
