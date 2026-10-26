@@ -521,7 +521,7 @@ _make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources
 
 #### Bigloo Scheme's default seeding
 
-Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with C function _srand()_:
+Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with the usual C function _srand()_:
 
 ```
       /* random seed */
@@ -539,7 +539,7 @@ Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://git
 Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
 and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
 
-Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) C and C++ implementations:
+Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c#L60) and C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp#L83) implementations:
 
 ```
 (module random_streams_for_perf_stats
