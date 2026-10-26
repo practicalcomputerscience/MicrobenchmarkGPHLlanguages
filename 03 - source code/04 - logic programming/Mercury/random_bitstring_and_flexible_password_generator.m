@@ -86,7 +86,7 @@
     // make sure that we start seeding only in range [1..m-1],
     // but you cannot use the standard C modulo operator here because it's a comment symbol in Mercury!!
     // So, we use the div() function:
-    Seed = (int)(div(offsetbasis64, (65521ULL - 1ULL)).rem + 1ULL);  // M = 65521 = 2^16 - 15
+    Seed = (int)(div(offsetbasis64, (65521ULL - 2ULL)).rem + 1ULL);  // M = 65521 = 2^16 - 15; 2026-10-26: - 2ULL
 
     // Seed = (int)(tv.tv_sec * 13ULL + tv.tv_usec);  // very simple hashing alternative as seen at the Oxford Oberon-2 Compiler
 ").
