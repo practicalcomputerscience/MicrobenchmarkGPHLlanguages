@@ -79,7 +79,7 @@ int main()
   unsigned int seed = (unsigned int)((ts.tv_sec * 13) ^ ts.tv_nsec);  // ^ is the bitwise XOR (Exclusive OR) operation
   // (ts.tv_sec * 13) ^ ts.tv_nsec <-- I took this simple idea from the Oxford Oberon-2 Compiler
   // ts.tv_sec and ts.tv_nsec are not overlapping
-  x[0] = seed % (m - 1) + 1;    // scale the seed to range [1..m-1] for a safe 16 bit integer random seed
+  x[0] = seed % (m - 2) + 1;    // scale the seed to range [1..m-1] for a safe 16 bit integer random seed; 2026-10-26: - 2
   // printf("x[0] = %d\n", x[0]);  // for testing
 
   char bits_x[M1+1];  // 2026-07-16
