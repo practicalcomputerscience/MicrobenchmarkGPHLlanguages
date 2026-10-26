@@ -551,6 +551,7 @@ Here's my [expanded and replacement code](https://github.com/practicalcomputersc
    (extern (macro CLOCK_MONOTONIC::int "CLOCK_MONOTONIC"))
    (extern (clock_gettime::int (int timespec*) "clock_gettime")))
 ...
+
 (define seconds 0)
 (define nanoseconds 0)
 (let ((ts (make-timespec*)))
@@ -559,6 +560,7 @@ Here's my [expanded and replacement code](https://github.com/practicalcomputersc
                 (nanoseconds (timespec*-tv_nsec ts)))
              (set! old-seed (bit-xor (* 13 seconds) nanoseconds))))
 ...
+
 (define (main args)
 ...
   (set! old-seed (+ (modulo old-seed (- m 2)) 1))  ; 2026-10-26: scale the raw seed appropriately to [1..m[
