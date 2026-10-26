@@ -74,7 +74,7 @@ getRandomSeed =
   getClockTime >>= \time ->
   getCPUTime >>= \msecs ->
   let (CalendarTime y mo d h m s _) = toUTCTime time
-   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 1) + 1)  -- use m_ here! 2026-07-09: fixed [1..m_[
+   in return ((y+mo+d+h+(m+1)*(s+1)*(msecs+1)) `mod` (m_ - 2) + 1)  -- use m_ here! 2026-07-09, 2026-10-26: fixed range to [1..m_[
 
 
 -- 2026-10-20: Duck.ai transpiled these specialized and user defined functions
