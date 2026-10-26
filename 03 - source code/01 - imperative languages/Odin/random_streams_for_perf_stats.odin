@@ -51,7 +51,7 @@ main :: proc() {
   x := make([]int, END)
   defer delete(x)
 
-  x[0] = rand.int_max(m - 1) + 1  // range is now: [1...max]; fixed on 2026-10-08
+  x[0] = rand.int_max(m - 1) + 1  // range is now: [1...m]; fixed on 2026-10-08, 2026-10-26
   // fmt.eprintln("x[0] =", x[0])  // for testing
 
   bits_x   := strings.builder_make()  // strings.builder_make(0, M1) is not faster
