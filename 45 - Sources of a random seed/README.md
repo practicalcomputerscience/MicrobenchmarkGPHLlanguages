@@ -536,10 +536,10 @@ Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://git
       }
 ```
 
-Term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ has a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
-and only features a range of integer numbers with gaps between those two extreme values.
+Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
+and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
 
-So, same as in my C and C++ implementations, I replaced this seeding mechanism with this simple, but higher quality, solution:
+Here's my replacement code:
 
 ```
 tbd
