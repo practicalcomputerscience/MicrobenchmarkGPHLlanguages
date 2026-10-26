@@ -36,6 +36,7 @@ Table of contents:
 - [The random seeding mechanism of the Dart vm](#the-random-seeding-mechanism-of-the-dart-vm)
 - [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine)
 - [Racket's REPL and original source of a random see](#rackets-repl-and-original-source-of-a-random-see)
+- [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
 
 <br/>
 
@@ -539,7 +540,7 @@ Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://git
 Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
 and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
 
-Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c#L60) and C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp#L83) implementations:
+Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c#L60) and [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp#L83) implementations:
 
 ```
 (module random_streams_for_perf_stats
