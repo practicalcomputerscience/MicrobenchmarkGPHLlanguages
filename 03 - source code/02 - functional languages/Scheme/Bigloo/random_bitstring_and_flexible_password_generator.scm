@@ -5,6 +5,7 @@
 2026-05-31: refactored from char_set to pattern (for regular expressions)
 2026-06-17: refactored for a complete POSIX based solution with regular expressions
 2026-06-18: define print_re and alnum_re, implement if-then-else as a one-liner with with_special_chars to set pattern
+2026-10-26: substantially better implementation of a Linux system time based random seed
 
 
 build on Ubuntu 24 LTS: $ bigloo -call/cc -O6 random_bitstring_and_flexible_password_generator.scm -o random_bitstring_and_flexible_password_generator
@@ -24,7 +25,17 @@ $
 
 
 (module random_streams_for_perf_stats
-   (main main))
+   (main main)
+
+   ; 2026-10-26: new time based solution from Google AI for the seeding of the random number generator
+   ;             trying to implement the same mechanism as implemented in the C and C++ solutions:
+   (foreign (include "time.h"))
+   (extern (type timespec (struct (tv_sec::long "tv_sec")
+                                  (tv_nsec::long "tv_nsec")) "struct timespec"))
+   ;; tell Bigloo this is a C macro constant, not a variable declaration:
+   (extern (macro CLOCK_MONOTONIC::int "CLOCK_MONOTONIC"))
+   ;; CLOCK_MONOTONIC => number of seconds since system boot
+   (extern (clock_gettime::int (int timespec*) "clock_gettime")))
 
 
 (define END 62500)  ; for production
@@ -55,8 +66,17 @@ $
 (define bits_hex-vector (vector-of-n-strings END ini-string-bits_hex))
 
 ; see from here: Bigloo, A practical Scheme compiler (4.3g), User manual for version 4.3g, December 2019
-(set! old-seed (+ (random (- m 1)) 1))  ; 0..m, with m is exclusive, 2025-12-21
-; (printf old-seed)  ; for testing
+; 2026-10-26: retired: this seed only changes with the tick of a second:
+; (set! old-seed (+ (random (- m 1)) 1))  ; 0..m, with m is exclusive, 2025-12-21
+; 2026-10-26: new time based solution from Google AI; also see new definitions at the module level above:
+(define seconds 0)
+(define nanoseconds 0)
+(let ((ts (make-timespec*)))
+      (clock_gettime CLOCK_MONOTONIC ts)
+      (let ((seconds (timespec*-tv_sec ts))
+                (nanoseconds (timespec*-tv_nsec ts)))
+             (set! old-seed (bit-xor (* 13 seconds) nanoseconds))))  ; 0..m, with m being exclusive
+; (display old-seed)  ; for testing
 
 (define (valid_pw_length? a)
   (and (number? a) (integer? a) (exact? a) (>= a 8)))
@@ -158,6 +178,11 @@ $
 (define (main args)  ; 2026-05-31: args, not xx; see from here: https://www-sop.inria.fr/indes/fp/Bigloo/
 
   (printf "\ngenerating a random bit stream...")
+
+  (set! old-seed (+ (modulo old-seed (- m 2)) 1))  ; 2026-10-26: scale the raw seed appropriately to [1..m[
+  ; (display "\nold-seed = ")  ; for testing
+  ; (display old-seed)  ; for testing
+
 
   (let masterloop ([i 0])
 
