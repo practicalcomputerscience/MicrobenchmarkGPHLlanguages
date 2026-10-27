@@ -128,7 +128,7 @@ Ada (GNAT)        | 215 | compiled, very mature language: lots of declarations a
 Forth (Gforth)    | 214 | interpreted, very mature language: lots of user-defined functions needed | 2026-07-09
 Mercury           | 208 | compiled, mature language: lots of user-defined functions needed | 2026-10-08
 Standard ML (MLton) | 200 | compiled, very mature language: numerous user-defined functions needed | 2026-10-24
-Roc               | 191 | compiled, very young, pure functional programming language: numerous user-defined functions needed | 2026-05-31
+Roc               | 190 | compiled, very young, pure functional programming language: numerous user-defined functions needed | 2026-10-28
 V                 | 175 | compiled, very young programming language: some user-defined functions needed | 2026-06-19
 Haskell           | 168 | compiled, very mature language: numerous user-defined functions needed | 2026-07-30
 Fortran (GNU)     | 160 | compiled, very mature language: some user-defined functions may be needed when not using the inofficial standard library | 2026-10-02
