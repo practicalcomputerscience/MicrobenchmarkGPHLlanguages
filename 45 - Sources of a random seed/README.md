@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- still open as of 2026-10-26: 5 languages: Factor, Forth (Gforth), Picat, Prolog (SWI)
+- still open as of 2026-10-28: 4 languages: Factor, Forth (Gforth), Picat, Prolog (SWI)
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
