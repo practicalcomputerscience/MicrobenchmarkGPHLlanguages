@@ -7,9 +7,18 @@ https://github.com/roc-lang/roc
 <br/>
 
 > [!IMPORTANT]
-> 2026-10-27: I just noticed that Roc has gone through substantial changes, that an up-to-date Roc compiler version won't compile my sources anymore.
+> 2026-10-27: I just noticed that Roc has gone through substantial changes, and that an up-to-date Roc compiler version won't compile my source code files!
 
-So, I still make tests with an old Roc version from September 2025.
+So, I still make tests with an old Roc version from September 2025, which is a delicate thing, because it depends on the availability of these online resources for example:
+
+```
+app [main!] {
+              cli: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
+              rand: "https://github.com/lukewilliamboswell/roc-random/releases/download/0.5.0/yDUoWipuyNeJ-euaij4w_ozQCWtxCsywj68H0PlJAdE.tar.br",
+            }
+```
+
+For how long will this still work?
 
 <br/>
 
