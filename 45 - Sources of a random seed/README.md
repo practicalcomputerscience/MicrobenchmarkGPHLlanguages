@@ -15,7 +15,7 @@ Glossary:
 - DRNG = deterministic random number generator
 - Epoch = Unix time, which is defined as the number of non-leap seconds and microseconds from system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which have passed since 00:00:00 UTC on Thursday, 1 January 1970
 - OS = operating system
-- PCG = permuted congruential generator: http://www.pcg-random.org
+- PCG = permuted congruential generator: http://www.pcg-random.org; https://en.wikipedia.org/wiki/Permuted_congruential_generator: "It has been shown that it is practically possible (with a large computation) to recover the seed of the pseudo-random generator given 512 consecutive output bytes."
 - PRNG = pseudo-random number generator
 - RNG = random number generator
 - vm = virtual machine
