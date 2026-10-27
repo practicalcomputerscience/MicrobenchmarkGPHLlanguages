@@ -142,6 +142,7 @@ AssemblyScript    | 140 | interpreted, young language, together with WebAssembly
 C++               | 131 | compiled, very mature language; memory-safe source code can be very well more concise and be compiled to a bit faster program than with C | 2026-10-09
 Zig               | 129 | compiled, young language still going through major changes | 2026-06-17
 Odin              | 127 | compiled, young language | 2026-06-18
+Bigloo Scheme     | 126 | compiled, mature language | 2026-10-27
 OCaml             | 125 | compiled, mature language; some user-defined functions needed | 2026-09-16
 SWI Prolog        | 123 | compiled, very mature language: lots of user-defined functions needed, even though SWI Prolog is a Prolog system with "batteries included" | 2026-06-16
 FreeBASIC         | 122 | compiled, mature language | 2026-06-14
@@ -155,7 +156,6 @@ Chapel            | 115 | compiled, mature language | 2026-06-15
 D                 | 115 | compiled, very mature language; memory-safe source code can be easily more concise than an equivalent program in C++ | 2026-01-21
 Lua               | 115 | interpreted, very mature language | 2026-06-11
 Awk (GNU)         | 114 | interpreted, very mature language; nevertheless, some user defined functions are to be expected for general purpose programming | 2026-07-24
-Bigloo Scheme     | 114 | compiled, mature language | 2026-06-18
 Common Lisp       | 114 | compiled, very mature language | 2026-06-18
 Ballerina         | 113 | interpreted, young language, together with Java ecosystem | 2026-08-18
 Dylan (Open Dylan) | 113 | compiled, very mature language | 2026-06-28
