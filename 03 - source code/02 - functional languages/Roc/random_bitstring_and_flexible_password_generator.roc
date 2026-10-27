@@ -3,6 +3,8 @@
 # 2025-04-17/18/27/../30/, 2025-05-01/03/04/05/23, 2025-06-01
 # 2025-12-21: see below
 # 2026-05-31: see below (only cosmetics)
+# 2026-10-28: much more efficient and high quality seeding of the random number generation
+#
 #
 # check with: $ roc check random_bitstring_and_flexible_password_generator.roc
 # build with: $ roc build random_bitstring_and_flexible_password_generator.roc --optimize  # <<<<<<<<<<<<<<< OPTIMIZE!!
@@ -28,7 +30,7 @@ import cli.Stdout
 import cli.Stderr
 import cli.Stdin
 import cli.Utc      # https://github.com/imclerran/roc-isodate/blob/main/examples/now.roc
-import rand.Random
+# import rand.Random  # 2026-10-28: deprecated
 import cli.File
 
 
@@ -45,16 +47,30 @@ main! = |_args|
 
 
   # make a random seed based on current time:
-  now = Utc.now!({}) |> Utc.to_millis_since_epoch
-  now2 = Num.to_frac(now) / 8.0  # https://www.roc-lang.org/builtins/Num#to_frac
-  now3 = Num.round(now2)
-
-  seed = Random.seed(now3)
+  now = Utc.now!({}) |> Utc.to_millis_since_epoch  # now is of type I128
+  # 2026-10-28: eliminating inefficient code:
+  # now2 = Num.to_frac(now) / 8.0  # https://www.roc-lang.org/builtins/Num#to_frac
+  # now3 = Num.round(now2)
+  # seed = Random.seed(now3)
   # seed = Random.seed(42)  # fixed seed for testing
-  generator = Random.bounded_u32(1, m - 1)  # range is inclusive; 2025-12-21
+  # generator = Random.bounded_u32(1, m - 1)  # range is inclusive; 2025-12-21
   # https://github.com/kili-ilo/roc-random/blob/main/examples/simple.roc
-
-  random_start = Random.step(seed, generator).value  # U32 return type
+  #
+  # random_start = Random.step(seed, generator).value  # U32 return type
+  #
+  # 2026-10-28: the new code:
+  #   the maximum value for an unsigned 32-bit integer is 4294967295,
+  #   which is much smaller than for example 1793139224521 = Utc.to_millis_since_epoch on 2026-10-27 23:28
+  #
+  #   implementation of the 64 bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm,
+  #   as seen here: https://mojoauth.com/security-guides/fnv-1a-in-c
+  offsetbasis64 = 14695981039346656037i128  # FNV offset basis in 64 bit: 0xCBF29CE484222325, which is not prime!
+  prime64       = 1099511628211i128         # FNV prime in 64 bit: 0x100000001B3
+  random_start1 = Num.bitwise_xor(now, offsetbasis64) * prime64
+  random_start2 = (random_start1 % (Num.to_i128 m - 2i128)) + 1i128  # scaling
+  random_start  = Num.to_u32 random_start2
+  # random_start_str = Num.to_str(random_start)  # for testing
+  # _ = Stdout.line!("random_start = ${random_start_str}")?  # for testing
 
 
   _ = Stdout.line!("\ngenerating a random bit stream...")
