@@ -4,6 +4,15 @@ https://www.roc-lang.org/
 
 https://github.com/roc-lang/roc
 
+<br/>
+
+> [!IMPORTANT]
+> 2026-10-27: I just noticed that Roc has gone through substantial changes, that an up-to-date Roc compiler version won't compile my sources anymore.
+
+So, I still make tests with an old Roc version from September 2025.
+
+<br/>
+
 ---
 
 Roc is a so called _pure_ functional programming language. I mean really _pure_ compared to Haskell, which allows a decent amount of "imperative tinkering": [On how to make a faster microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#on-how-to-make-a-faster-microbenchmark-program) (in Haskell)
