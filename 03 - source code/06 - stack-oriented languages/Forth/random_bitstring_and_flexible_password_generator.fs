@@ -346,7 +346,7 @@ VARIABLE pw_j
                        \ utime returns two values!
     \ 2026-07-09: seed is initially too high: do this in main
     seed @ m 1 - mod 1 + seed !  \ limit initial seeds to [1..m - 1] (both edges are inclusive!), 2026-10-28
-    
+
     cr ." generating a random bit stream..." cr
 
     \ iterative masterloop:
@@ -355,29 +355,27 @@ VARIABLE pw_j
         seed @ x I CELLS + ! ( u )  \ write seed to x
         \ cr cr ." seed = " seed @ .  \ for testing
 
-        \ 1. Calculate destination address and save to global variable
+        \ 2026-10-28: fix of broken algo (wrong introduction of explicit calculation of bits_x_str and bits_hex_str):
+        \ 1. Calculate destination address and save to local variable
         bits_x I STR_LENGTH_BIN * + bits_x_str !
         \ 2. Pass the seed (duplicated from stack) and the address to word integer_to_bin_string
-        dup bits_x_str integer_to_bin_string
-        \ 3. Print the string for debugging using its address and length
-        \ cr bits_x_str  16 type  \ for testing
+        dup bits_x_str @ integer_to_bin_string
 
-        \ 4. Handle hex string processing:
+        \ 3. Handle hex string processing:
         bits_hex I STR_LENGTH_HEX * + bits_hex_str !
-        dup bits_hex_str integer_to_hex_string
-        \ cr bits_hex_str 4 type  \ for testing
+        dup bits_hex_str @ integer_to_hex_string
 
         drop  \ Drop the remaining copy of seed
     LOOP
 
-    \ cr x print-array-int cr  \ for testing
+    \ cr cr x print-array-int cr  \ for testing
 
     \ build the final, big strings:
     build_bits_x_str_total
     build_bits_hex_str_total
 
-    \ CR CR bits_x_str_total   M1   TYPE CR  \ for testing
-    \ CR bits_hex_str_total K250 TYPE CR  \ for testing
+    \ CR bits_x_str_total   M1   TYPE CR  \ for testing
+    \ bits_hex_str_total K250 TYPE CR  \ for testing
 
     \ write bit stream to disk:
     bits_x_str_total   M1   file_bits_x   20 C" Bit"  COUNT write_to_file
