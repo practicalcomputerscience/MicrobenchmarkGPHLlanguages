@@ -2,6 +2,7 @@
 \
 \ 2026-07-05/06/08
 \ 2026-07-09: introduced (global) variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\ 2026-10-28: see below
 \
 \
 \ build on Ubuntu 24 LTS: $ gforthmi random_streams_for_perf_stats random_streams_for_perf_stats.fs
@@ -178,7 +179,7 @@ CREATE hex-digits CHAR 0 c, CHAR 1 c, CHAR 2 c, CHAR 3 c, CHAR 4 c, CHAR 5 c,
                        \             to become more independent from the Forth implementation
                        \ utime returns two values!
     \ 2026-07-09: seed is initially too high: do this in main
-    seed @ m 2 - mod 1 + seed !  \ limit initial seeds to 1 to m - 1 (both including)
+    seed @ m 1 - mod 1 + seed !  \ limit initial seeds to [1..m - 1] (both edges are inclusive!), 2026-10-28
 
     \ cr ." initial seed = " seed @ . cr  \ for testing
 

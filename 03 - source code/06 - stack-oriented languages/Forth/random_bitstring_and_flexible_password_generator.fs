@@ -2,6 +2,7 @@
 \
 \ 2026-07-07/08
 \ 2026-07-09: introduced (global) variables bits_x_str and bits_hex_str like in the other languages; some code streamlining
+\ 2026-10-28: see below
 \
 \
 \ build on Ubuntu 24 LTS: this source code is only meant for production, not development:
@@ -344,7 +345,7 @@ VARIABLE pw_j
                        \             to become more independent from the Forth implementation
                        \ utime returns two values!
     \ 2026-07-09: seed is initially too high: do this in main
-    seed @ m 2 - mod 1 + seed !  \ limit initial seeds to 1 to m - 1 (both including)
+    seed @ m 1 - mod 1 + seed !  \ limit initial seeds to [1..m - 1] (both edges are inclusive!), 2026-10-28
     
     cr ." generating a random bit stream..." cr
 
