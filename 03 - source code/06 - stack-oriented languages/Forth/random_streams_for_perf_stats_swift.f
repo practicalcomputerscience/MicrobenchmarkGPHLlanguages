@@ -166,13 +166,10 @@ CREATE hex-digits CHAR 0 C, CHAR 1 C, CHAR 2 C, CHAR 3 C, CHAR 4 C, CHAR 5 C,
         bits_x I STR_LENGTH_BIN * + bits_x_str !
         \ 2. Pass the seed (duplicated from stack) and the address to word integer_to_bin_string
         dup bits_x_str @ integer_to_bin_string
-        \ 3. Print the string for debugging using its address and length
-        \ cr bits_x_str  16 type  \ for testing
 
-        \ 4. Handle hex string processing:
+        \ 3. Handle hex string processing:
         bits_hex I STR_LENGTH_HEX * + bits_hex_str !
         dup bits_hex_str @ integer_to_hex_string
-        \ cr bits_hex_str 4 type  \ for testing
 
         DROP  \ Drop the remaining copy of seed
     LOOP
