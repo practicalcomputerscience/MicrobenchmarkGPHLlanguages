@@ -146,7 +146,6 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
     \ --- Safe Binary Generation and Storage ---
     dup integer_to_bin_string        ( -- n src_addr len )
     over bits_x_str !
-    \ cr bits_x_str @ over type  \ for testing
 
     i 16 * bits_x +                  ( -- n src_addr len dest_addr )
     swap move                        ( -- n ) \ Moves 'len' bytes from src to dest safely
@@ -154,7 +153,6 @@ create hex-digits char 0 c, char 1 c, char 2 c, char 3 c, char 4 c, char 5 c,
     \ --- Safe Hexadecimal Generation and Storage ---
     dup integer_to_hex_string        ( -- n src_addr len )
     over bits_hex_str !
-    \ cr bits_hex_str @ over type  \ for testing
 
     i 4 * bits_hex +                 ( -- n src_addr len dest_addr )
     swap move                        ( -- n )
