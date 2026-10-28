@@ -46,7 +46,7 @@ IN: random_streams_for_perf_stats
 : file_bits_x   ( -- file_bits_x )   "random_bitstring.bin" ; inline
 : file_bits_hex ( -- file_bits_hex ) "random_bitstring.byte" ; inline
 
-: seed ( -- seed ) m 1 - random 1 + ; inline
+: seed ( -- seed ) m 1 - random 1 + ; inline  ! range of random is [0..m-1[, 2026-10-28
 
 
 ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
