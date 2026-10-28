@@ -4,11 +4,13 @@ TL;DR: only [GNU's Gforth](https://gforth.org/) is ready for full showtime as an
 
 Gforth mirror on GitHub: https://github.com/forthy42/gforth
 
-But you can't make a standalone executable for Linux with Gforth, because it's nowadays always running on its own virtual machine.
+<br/>
+
+You can't make a standalone executable for Linux with Gforth, because it's nowadays always running on its own virtual machine.
 
 The Gforth ecosystem has also become confusing over the decades with numerous commands like: _gforth_, _gforthmi_, _gforth-fast_, _gforth-itc_, _gforth-ditc_, ...
 
-In the very early days there was still the command _gforth-native_, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster virtual machines.
+In its very early days there was still the _gforth-native_ command, which was soon given up (+), because it caused to much hassle to maintain it, and C compilers got better to make faster virtual machines.
 
 <br/>
 
