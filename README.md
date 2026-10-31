@@ -110,7 +110,18 @@ In Linux, but probably also increasingly in other environments like Windows too,
 7. deactivate this environment after work: ```(prng_test) $ deactivate```
 8. remove or delete an enviroment if desired: ```$ rm -rf ./prng_test```
 
-Console input and output:
+<br/>
+
+#### I'm using the Bash shell
+
+2026-10-31: I, again, came to the conclusion that working with the [Bash](https://www.gnu.org/software/bash/) shell is the most effective way to do terminal/console work, independently of what Linux distribution I'm just testing (next to my ubiquitous Ubuntu 24 LTS distribution).
+
+For example, I just changed the default [fish](https://fishshell.com/) shell to Bash (with command _> chsh -s /usr/bin/bash_) in the [CachyOS](https://cachyos.org/) distribution, which is based on Arch Linux, with the (default) [KDE Plasma desktop](https://kde.org/de/plasma-desktop/) - and things so far go just fine :relaxed:
+
+<br/>
+
+#### Console input and output:
+
 ```
 (prng_test) $ time python3 ./random_streams_for_perf_stats.py
 
