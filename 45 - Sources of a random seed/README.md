@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- still open as of 2026-10-28: 3 languages: Picat, Prolog (SWI)
+- still open as of 2026-10-28: 2 languages: Picat, Prolog (SWI)
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
@@ -35,7 +35,7 @@ Table of contents:
 - [Variant 13 of David Stafford's 64-bit mix function](#variant-13-of-david-staffords-64-bit-mix-function)
 - [The random seeding mechanism of the Dart vm](#the-random-seeding-mechanism-of-the-dart-vm)
 - [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine)
-- [Racket's REPL and original source of a random see](#rackets-repl-and-original-source-of-a-random-see)
+- [Racket's REPL and original source of a random seed](#rackets-repl-and-original-source-of-a-random-seed)
 - [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
 
 <br/>
@@ -464,7 +464,7 @@ Or as Google AI has stated it on prompt "Why does a call of JavaScript function 
 
 <br/>
  
-#### Racket's REPL and original source of a random see
+#### Racket's REPL and original source of a random seed
 
 In the Racket REPL, provide some erroneous arguments when calling the _random_ function to induce error messages and other replies:
 
