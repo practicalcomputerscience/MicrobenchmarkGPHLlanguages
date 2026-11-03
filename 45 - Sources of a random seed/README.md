@@ -2,6 +2,7 @@
 
 - still open as of 2026-10-28: 2 languages: Picat, Prolog (SWI)
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
+- tbd: Ruby "probably"
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
@@ -173,7 +174,7 @@ PHP | function [rand()](https://www.php.net/manual/en/function.rand.php): _This 
 Picat | 
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
 PowerShell | it's my wild guess that cmdlet [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6) applies the same seeding mechanism (nowadays) as C# (as shown above) | probably high |
-Prolog, SWI | 
+Prolog, SWI | initially, reading at least 16 bytes ([MIN_RAND_SEED_LEN](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4351)) from /dev/urandom, or if not working from /dev/random, with C function [seed_from_dev()](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4436) | very high | if reading from /dev/urandom or /dev/random doesn't work, the fallback strategy is to read the current system time in microseconds resolution ([stime = (double)tp.tv_sec + (double)tp.tv_usec/1000000.0;](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/os/pl-os.c#L356)); [u.t = WallTime();](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4446)
 Python | [class numpy.random.RandomState(seed=None)](https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState): _If seed is None, then the MT19937 BitGenerator is initialized by reading data from /dev/urandom..._ | very high | using "legacy random generation" here: [numpy.random.randint](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html); new code should use _np.random.default_rng()_ instead
 Roc | First reading the current system time in milliseconds since the Epoch. This value is then fed into the 64-bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed. | high | 
 Ruby | probably /dev/urandom | very high | [module SecureRandom](https://docs.ruby-lang.org/en/3.2/SecureRandom.html)
