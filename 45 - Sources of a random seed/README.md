@@ -574,7 +574,7 @@ Here's my [expanded and replacement code](https://github.com/practicalcomputersc
 
 #### The PRNG's of GNU C Library glibc
 
-You may clone and explore these sources, with a cool 21,088 files as of 2026-11-03, like this for example:
+You may clone and explore the glibc sources, with a cool 21,088 files as of 2026-11-03, like this for example:
 
 ```
 $ git clone https://sourceware.org/git/glibc.git
