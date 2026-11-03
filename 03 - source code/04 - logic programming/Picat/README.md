@@ -6,6 +6,10 @@ https://picat-lang.org/download.html
 
 https://picat-lang.org/
 
+https://github.com/picat-lang/Picat
+
+<br/>
+
 > Picat is a .. logic-based multi-paradigm programming language aimed for general-purpose applications.
 > Picat is a rule-based language, in which predicates, functions, and actors are defined with pattern-matching rules.
 
