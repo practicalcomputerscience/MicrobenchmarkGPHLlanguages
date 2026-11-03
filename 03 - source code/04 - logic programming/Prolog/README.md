@@ -122,7 +122,7 @@ Here's another note on environment variables for GNU Prolog from 2025: [The foll
 
 ## SWI Prolog
 
-I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and could run it without changes on SWI Prolog:
+I took GNU Prolog source code file named _graph_4coloring_Germany2a.pl_ and could run it without changes on [SWI Prolog](https://www.swi-prolog.org/):
 
 ```
 $ swipl graph_4coloring_Germany2a.pl
