@@ -574,14 +574,14 @@ Here's my [expanded and replacement code](https://github.com/practicalcomputersc
 
 #### The PRNG of The GNU C Library glibc
 
-Clone and explore these sources, with a cool 21,088 files as of 2026-11-03, like this for example:
+You may clone and explore these sources, with a cool 21,088 files as of 2026-11-03, like this for example:
 
 ```
 $ git clone https://sourceware.org/git/glibc.git
 $ cd glibc/stdlib
 ```
 
-_random.c_ implements the PRNG of the GNU C Library, and says among other things this: 
+_random.c_ implements the PRNG of the GNU C Library, and says this among other things:
 
 > An improved random number generation package. ... The initstate() routine is called with a seed, an array of bytes, and a count of how many bytes are being passed in; this array is then initialized to contain information for random number generation with that much state information.  Good sizes for the amount of state information are 32, 64, 128, and 256 bytes. The state can be switched by calling the setstate() function with the same array as was initialized with initstate(). By default, the package runs with 128 bytes of state information and generates far better random numbers than a linear congruential generator. If the amount of state information is less than 32 bytes, a simple linear congruential R.N.G. is used. ...
 
