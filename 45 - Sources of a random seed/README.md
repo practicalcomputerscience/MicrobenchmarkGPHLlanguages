@@ -586,7 +586,7 @@ By default, _.rand_type = TYPE_3_ is chosen in _random.c_, so, under normal circ
 
 Then calling C function _rand()_ returns an integer number between 0 and 2^31-1 inclusive, computed from that type of PRNG.
 
-In other words, from a program written in pure Picat I cannot change the type of PRNG being used. In C code (with the friendly help of Google AI), it would look like this for example to switch to _TYPE_2_ with only 64 bytes of state information instead of 128 bytes with _TYPE_3_:
+In other words, from a program written in pure Picat you cannot change the type of PRNG being used. In C code (with the friendly help of Google AI), it would look like this for example to use a _TYPE_2_ PRNG with only 64 bytes of state information instead of _TYPE_3_ with 128 bytes:
 
 ```
 #define _GNU_SOURCE  // instruct the GNU C Library to unlock non-standard features, like function initstate_r()
