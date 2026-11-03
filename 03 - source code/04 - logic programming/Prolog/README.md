@@ -33,7 +33,7 @@ Table of contents:
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
 - [YAP Prolog](#yap-prolog)
-- [Virtual machines for Prolog](#tbd)
+- [Virtual machines for Prolog](#virtual-machines-for-prolog)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [XSB Prolog](#xsb-prolog)
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
