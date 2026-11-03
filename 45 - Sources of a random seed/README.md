@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- still open as of 2026-10-28: 2 languages: Picat, Prolog (SWI)
+- still open as of 2026-11-03: 1 language: Picat
 - more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl etc.
 - tbd: Ruby "probably"
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
