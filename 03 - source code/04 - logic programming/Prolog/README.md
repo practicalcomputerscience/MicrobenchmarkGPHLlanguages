@@ -33,6 +33,7 @@ Table of contents:
 - [SWI Prolog](#swi-prolog)
 - [Ciao Prolog](#ciao-prolog)
 - [YAP Prolog](#yap-prolog)
+- [Virtual machines for Prolog](#tbd)
 - [ECLiPSe - Constraint Logic Programming System](#eclipse---constraint-logic-programming-system)
 - [XSB Prolog](#xsb-prolog)
 - [Tau Prolog - Prolog for the web](#tau-prolog---prolog-for-the-web)
@@ -310,6 +311,16 @@ from: [Chasing the Speed of SWI-Prolog: Exploring Optimizations and Hidden Perfo
 SWI's speed maybe due to its [Just-in-time clause indexing](https://www.swi-prolog.org/pldoc/man?section=jitindex):
 
 > YAP provides full JIT indexing, including indexing arguments of compound terms. YAP's indexing has been the inspiration for enhancing SWI-Prolog's indexing capabilities.
+
+<br/>
+
+#### Virtual machines for Prolog
+
+Re "Building a standalone executable is apparently not supported in YAP Prolog.": I should note that Prolog systems historically and typically run on some variation of the classical [Warren Abstract Machine (WAM)](https://en.wikipedia.org/wiki/Warren_Abstract_Machine).
+
+But SWI Prolog, for example, runs on a "simple Prolog virtual machine called ZIP": [1.5 Implementation history](https://www.swi-prolog.org/pldoc/man?section=implhistory)
+
+[Picat](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#picat-further-development-of-the-old-b-prolog), the further development of the old B-Prolog, for example, runs on a variant of the Tree-Oriented Abstract Machine (TOAM): [The Language Features and Architecture of B-Prolog](https://www.cambridge.org/core/journals/theory-and-practice-of-logic-programming/article/abs/language-features-and-architecture-of-bprolog/3A9E7104A425CBA6F3E8307528278D07) by Neng-Fa Zhou, 2011
 
 <br/>
 
