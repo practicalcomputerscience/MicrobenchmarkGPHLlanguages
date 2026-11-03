@@ -38,7 +38,7 @@ Table of contents:
 - [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine)
 - [Racket's REPL and original source of a random seed](#rackets-repl-and-original-source-of-a-random-seed)
 - [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
-- [The PRNG of The GNU C Library glibc](#the-prng-of-the-gnu-c-library-glibc)
+- [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc)
 
 <br/>
 
@@ -172,7 +172,7 @@ OCaml | [Random.self_init ()](https://github.com/practicalcomputerscience/Microb
 Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/master/base/runtime/os_specific_linux.odin#L30) | very high |
 Perl 5 | the [rand()](https://perldoc.perl.org/5.38.2/functions/rand) function initially calls the [srand](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to make a Linux system call of [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented with using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/blead/util.c#L4738-L4739)
 PHP | function [rand()](https://www.php.net/manual/en/function.rand.php): _This function uses the global Mt19937 (“Mersenne Twister”) instance as the source of randomness and thus shares its state with all other functions using the global Mt19937._ | high | two program runs within 1 second will yield two different byte streams
-Picat | calling [random2()](https://github.com/picat-lang/Picat/blob/main/lib/picat_lib_aux.pi#L66) is doing seeding with values from a program's execution environment: _random2() = Rand => statistics(runtime,[A,B]), statistics(program,[C,D]), statistics(heap,[E,F]), Rand = random(10*A+B+10*C+13*D+11*E+101*F)._, with _Rand_ being an integer value. | high | In [arith.c](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L138), predicates _random/0_ and _random/1_ are mapped to C functions _ran0_ and _ran1_, respectively. "bp" refers to B-Prolog. _ran1_ then returns C function [bp_math_random1(BPLONG op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1380), which is calling C function [srand(op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1396) as defined in _stdlib.h_, see below at [The PRNG of The GNU C Library glibc](#the-prng-of-the-gnu-c-library-glibc).
+Picat | calling [random2()](https://github.com/picat-lang/Picat/blob/main/lib/picat_lib_aux.pi#L66) is doing seeding with values from a program's execution environment: _random2() = Rand => statistics(runtime,[A,B]), statistics(program,[C,D]), statistics(heap,[E,F]), Rand = random(10*A+B+10*C+13*D+11*E+101*F)._, with _Rand_ being an integer value. | high | In [arith.c](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L138), predicates _random/0_ and _random/1_ are mapped to C functions _ran0_ and _ran1_, respectively. "bp" refers to B-Prolog. _ran1_ then returns C function [bp_math_random1(BPLONG op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1380), which is calling C function [srand(op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1396) as defined in _stdlib.h_, see below at [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc).
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
 PowerShell | it's my wild guess that cmdlet [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6) applies the same seeding mechanism (nowadays) as C# (as shown above) | probably high |
 Prolog, SWI | initially, reading at least 16 bytes ([MIN_RAND_SEED_LEN](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4351)) from /dev/urandom, or if not working from /dev/random, with C function [seed_from_dev()](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4436) | very high | if reading from /dev/urandom or /dev/random doesn't work, the fallback strategy is to read the current system time in microseconds resolution ([stime = (double)tp.tv_sec + (double)tp.tv_usec/1000000.0;](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/os/pl-os.c#L356)); [u.t = WallTime();](https://github.com/SWI-Prolog/swipl-devel/blob/master/src/pl-arith.c#L4446)
@@ -572,7 +572,7 @@ Here's my [expanded and replacement code](https://github.com/practicalcomputersc
 
 <br/>
 
-#### The PRNG of The GNU C Library glibc
+#### The PRNG's of GNU C Library glibc
 
 You may clone and explore these sources, with a cool 21,088 files as of 2026-11-03, like this for example:
 
@@ -583,9 +583,24 @@ $ cd glibc/stdlib
 
 So, in case of Picat, called C function _srand(unsigned int x)_ in _random.c_ calls function __srandom (unsigned int x) in the same file, which calls __srandom_r (unsigned int seed, struct random_data *buf) in _random_r.c_. 
 
-By default, _.rand_type = TYPE_3_ is chosen in _random.c_, so a (modern) linear-feedback shift register PRNG should be used with trinomial x^31 + x^3 + 1.
+By default, _.rand_type = TYPE_3_ is chosen in _random.c_, so, under normal circumstances, a (modern) linear-feedback shift register PRNG is used with trinomial x^31 + x^3 + 1.
 
-Then calling C function _rand()_ returns an integer number between 0 and 2^31-1 inclusive, computed from that linear-feedback shift register PRNG, as my best guess.
+Then calling C function _rand()_ returns an integer number between 0 and 2^31-1 inclusive, computed from that type of PRNG.
+
+In other words, from a program written in pure Picat I cannot change the type of PRNG being used. In C code (with the friendly help of Google AI), it would look like this for example to switch to _TYPE_2_ with only 64 bytes of state information:
+
+```
+#define _GNU_SOURCE  // instruct the GNU C Library to unlock non-standard features, like function initstate_r()
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+...
+int main(void) {
+    static char manipulated_global_table[64];
+    initstate(1, manipulated_global_table, sizeof(manipulated_global_table));
+    ...
+}
+```
 
 <br/>
 
