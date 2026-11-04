@@ -281,7 +281,7 @@ int main(void) {
     random_seed_stafford13 ^= random_seed_stafford13 >> 31;
 
     // weak hashing of the Oxford Oberon-2 Compiler: https://github.com/Spivoxity/obc-3
-    //   Random.m: https://github.com/Spivoxity/obc-3/blob/1719f9fb328257b46dc7721267850bf929ebafd5/lib/Random.m#L109
+    //   Random.m: https://github.com/Spivoxity/obc-3/blob/master/lib/Random.m#L109
     uint64_t random_seed_oxford_oberon2 = 13ULL * seconds + microseconds;
 
     // less calculation heavy FNV-1a (Fowler/Noll/Vo, variant 1a) non-cryptographic hash as seen here:
@@ -444,7 +444,7 @@ Functions _set_entropy_source_callback()_ and _entropy_source_callback()_ are de
   }
 ```
 
-Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0, when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21) from a Dart application which for example initializes a DRNG with instruction: [Random rnd = Random();](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/4b35559ab0c4a6ce8aca51c5c37f2e986b37512c/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_streams_for_perf_stats.dart#L52):
+Beware that C++ identifier [FLAG_random_seed](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L13) is set to 0 when not in debug mode, which leads to a call of function [entropy_source_callback()](https://github.com/dart-lang/sdk/blob/main/runtime/vm/random.cc#L21) from a Dart application which for example initializes a DRNG with instruction: [Random rnd = Random();](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine/random_streams_for_perf_stats.dart#L52):
 
 ```
 Dart_EntropySource callback = Dart::entropy_source_callback();
