@@ -379,6 +379,8 @@ Here's my [replacement code](https://github.com/practicalcomputerscience/Microbe
 
 #### The PRNG's of GNU C Library glibc
 
+As used by [Picat](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat/random_streams_for_perf_stats.pi#L104).
+
 You may clone and explore the glibc sources, with a cool 21,088 files as of 2026-11-03, like this for example:
 
 ```
