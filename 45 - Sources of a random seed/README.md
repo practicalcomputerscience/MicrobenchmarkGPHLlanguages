@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> Tcl, PHP, V
+- more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> PHP, V
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
@@ -185,7 +185,7 @@ Scheme, Racket | Racket function [random](https://docs.racket-lang.org/reference
 Smalltalk (GNU) | seeding at _rnd := Random new._ is done so that system time values in seconds, milliseconds and nanoseconds are read and mixed into one seed value: [setSeed](https://github.com/gnu-smalltalk/smalltalk/blob/master/kernel/Random.st#L162) | high | 
 Standard ML ([MLton](https://github.com/MLton/mlton)) | my own and direct implementation with calling Standard ML function _Time.now()_ to read the current timestamp with a resolution of seconds and any fractional microseconds. Both values are then fed into the 64-bit FNV-1a (Fowler/Noll/Vo, variant 1a) hashing algorithm. The result is finally modulo-scaled to range [1..65521-1] for a safe 16 bit integer random seed.  | high |
 Swift | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Platform Implementation of `SystemRandomNumberGenerator`](https://developer.apple.com/documentation/swift/systemrandomnumbergenerator#Platform-Implementation-of-SystemRandomNumberGenerator)
-Tcl | _The seed of the generator is initialized from the internal clock of the machine..._ from: [rand](https://www.tcl-lang.org/man/tcl8.6/TclCmd/mathfunc.htm#M28) | high | two program runs within 1 second will yield two different byte streams
+Tcl | Initial seeding happens at _tclBasic.c_ with C instruction: _iPtr->randSeed = TclpGetClicks() + PTR2UINT(Tcl_GetCurrentThread()) * 4093U;_, so the number of microseconds since the Epoch with function _TclpGetClicks()_ from _tclUnixTime.c_, plus the ID value of the currently running thread, as implemented in _tclUnixThrd.c_, multiplied with 4093. | high |
 TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://tc39.es/ecma262/#sec-math.random). In my testing environment with the V8 implementation of [node.js](https://github.com/nodejs/node/blob/main/node.cc#L1413), initially entropy source /dev/urandom of Linux is being read into a 64-bit integer value named [seed](https://github.com/nodejs/node/blob/main/deps/v8/src/base/utils/random-number-generator.cc#L70). | very high | See at [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine) below for more details.
 V | [rand](https://modules.vlang.io/rand.html#readme_rand): _All the generators are initialized with time-based seeds._ | high | two program runs within 1 second will yield two different byte streams
 Zig | my own and direct implementation of Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) with Zig instruction: _try std.posix.getrandom(std.mem.asBytes(&seed));_ | very high | 
