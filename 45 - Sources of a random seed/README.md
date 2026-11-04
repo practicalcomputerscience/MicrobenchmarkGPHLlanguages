@@ -1,6 +1,6 @@
 2026-09-23: work in progress
 
-- more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> PHP, V
+- more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> V
 - "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
@@ -170,7 +170,7 @@ Oberon (OBC) | Oberon instruction _Random.Randomize;_ calls C function [GetSeed(
 OCaml | [Random.self_init ()](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/OCaml/random_streams_for_perf_stats_main.ml#L46), via a little function chain, first tries to make a Linux system call of [getentropy](https://github.com/ocaml/ocaml/blob/trunk/runtime/sys.c#L672), which is implemented with using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high |
 Odin | function [rand.int_max()](https://pkg.odin-lang.org/core/math/rand/#int_max) indirectly makes a Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) to obtain a series of random bytes: [_rand_bytes](https://github.com/odin-lang/Odin/blob/master/base/runtime/os_specific_linux.odin#L30) | very high |
 Perl 5 | the [rand()](https://perldoc.perl.org/5.38.2/functions/rand) function initially calls the [srand](https://perldoc.perl.org/5.38.2/functions/srand) function, which first tries to make a Linux system call of [getentropy(3)](https://www.man7.org/linux/man-pages/man3/getentropy.3.html), which is implemented with using [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [U64 Perl_seed(pTHX)](https://github.com/Perl/perl5/blob/blead/util.c#L4738-L4739)
-PHP | function [rand()](https://www.php.net/manual/en/function.rand.php): _This function uses the global Mt19937 (“Mersenne Twister”) instance as the source of randomness and thus shares its state with all other functions using the global Mt19937._ | high | two program runs within 1 second will yield two different byte streams
+PHP | function [rand()](https://www.php.net/manual/en/function.rand.php) is defined in _random.c_ and _Returns a random number from Mersenne Twister_, which is initialized with C function _php_random_generate_fallback_seed_ex()_ in the same sources. It starts with C function _PHP_SHA1InitArgs()_ in _sha1.c_ with SHA1 initialization constants, to which the count of non-leap seconds and residual microseconds that elapsed since the Epoch from system function call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) are added, plus any previous seed. | high | 
 Picat | Calling function [random2()](https://github.com/picat-lang/Picat/blob/main/lib/picat_lib_aux.pi#L66) is doing seeding with values from a Picat's program's execution environment: _random2() = Rand => statistics(runtime,[A,B]), statistics(program,[C,D]), statistics(heap,[E,F]), Rand = random(10*A+B+10*C+13*D+11*E+101*F)._, with _Rand_ being an integer value. | high | In [arith.c](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L138), predicates _random/0_ and _random/1_ are mapped to C functions _ran0_ and _ran1_, respectively. "bp" refers to B-Prolog. _ran1_ then returns C function [bp_math_random1(BPLONG op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1380), which is calling C function [srand(op1)](https://github.com/picat-lang/Picat/blob/main/emu/arith.c#L1396) as defined in _stdlib.h_, see below at [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc).
 Pike | _[Class Random.System](https://pike.lysator.liu.se/generated/manual/modref/ex/predef_3A_3A/Random/System.html#System)_ "is the default implementation of the random functions. This is the Random.Interface combined with a system random source. ..on Unix systems it is /dev/urandom." | very high | 
 PowerShell | it's my wild guess that cmdlet [Get-Random](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-random?view=powershell-7.6) applies the same seeding mechanism (nowadays) as C# (as shown above) | probably high |
@@ -280,15 +280,25 @@ int main(void) {
     random_seed_stafford13 *= 0x94d049bb133111ebULL;  // multiply with an "avalancing" constant
     random_seed_stafford13 ^= random_seed_stafford13 >> 31;
 
-    // weak hashing at the Oxford Oberon-2 Compiler: https://github.com/Spivoxity/obc-3
-    //   Random.m: https://github.com/Spivoxity/obc-3/blob/master/lib/Random.m#L109
+    // weak hashing of the Oxford Oberon-2 Compiler: https://github.com/Spivoxity/obc-3
+    //   Random.m: https://github.com/Spivoxity/obc-3/blob/1719f9fb328257b46dc7721267850bf929ebafd5/lib/Random.m#L109
     uint64_t random_seed_oxford_oberon2 = 13ULL * seconds + microseconds;
+
+    // less calculation heavy FNV-1a (Fowler/Noll/Vo, variant 1a) non-cryptographic hash as seen here:
+    // FNV-1a Hash in C#: Algorithm and Implementation: https://mojoauth.com/security-guides/fnv-1a-in-c
+    uint64_t random_seed_fnv_1a = 14695981039346656037ULL;  // FNV offset basis in 64 bit: 0xCBF29CE484222325
+    uint64_t fnv_1a_prime       = 1099511628211ULL;         // FNV prime in 64 bit: 0x100000001B3
+    random_seed_fnv_1a ^= seconds;  // ^ is the bitwise XOR (Exclusive OR) operation
+    random_seed_fnv_1a *= fnv_1a_prime;
+    random_seed_fnv_1a ^= microseconds;
+    random_seed_fnv_1a *= fnv_1a_prime;
 
     printf("Linux system time in seconds:      %lu\n", seconds);
     printf("Linux system time in milliseconds: %lu\n", milliseconds);
     printf("residual microseconds:                       %lu\n", microseconds);
-    printf("64-bit random seed using David Stafford's 64-bit mix function: %lu\n", random_seed_stafford13);
-    printf("64-bit random seed using function: 13 * sec + microsec:        %lu\n", random_seed_oxford_oberon2);
+    printf("64 bit random seed using David Stafford's 64-bit mix function: %lu\n", random_seed_stafford13);
+    printf("64 bit random seed using function: 13 * sec + microsec:        %lu\n", random_seed_oxford_oberon2);
+    printf("64 bit random seed using the Fowler/Noll/Vo, variant 1a:       %lu\n", random_seed_fnv_1a);
 
     return 0;
 }
@@ -312,10 +322,10 @@ residual microseconds:                       684221
 64-bit random seed using David Stafford's 64-bit mix function: 14102637944186594101
 64-bit random seed using function: 13 * sec + microsec:        23293404295
 64-bit random seed using the Fowler/Noll/Vo, variant 1a:       8014502256844633784
-$ 
+$
 ```
 
-It's obvious that David Stafford's 64-bit mix function makes a much better good job at generating a system time based random seed than just calculating 13 * sec + microsec.
+It's obvious that David Stafford's 64-bit mix function does a much better good job at generating a system time based random seed than just calculating 13 * sec + microsec, and to some extent also the 64-bit Fowler/Noll/Vo, variant 1a hashing algorithm.
 
 <br/>
 
