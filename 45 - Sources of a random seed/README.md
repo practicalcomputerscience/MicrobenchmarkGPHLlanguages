@@ -33,11 +33,12 @@ Table of contents:
 - [The language list](#the-language-list)
 - [Test of a 1 second seeding resolution](#test-of-a-1-second-seeding-resolution)
 - [Variant 13 of David Stafford's 64-bit mix function](#variant-13-of-david-staffords-64-bit-mix-function)
+- [Details on the seeding of selected languages](#)
+- [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
+- [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc)
 - [The random seeding mechanism of the Dart vm](#the-random-seeding-mechanism-of-the-dart-vm)
 - [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine)
 - [Racket's REPL and original source of a random seed](#rackets-repl-and-original-source-of-a-random-seed)
-- [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
-- [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc)
 
 <br/>
 
@@ -319,6 +320,96 @@ It's obvious that David Stafford's 64-bit mix function makes a much better good 
 
 <br/>
 
+---
+
+# Details on the seeding of selected languages
+
+In alphabetic order of the (underlying) programming language.
+
+<br/>
+
+#### Bigloo Scheme's default seeding
+
+Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with the usual C function _srand()_:
+
+```
+      /* random seed */
+      {
+	 time_t taux;
+	 struct tm *tm;
+	 time(&taux);
+	 tm = gmtime(&taux);
+	    
+	 srand((24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour);
+     ... 
+      }
+```
+
+Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
+and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
+
+Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c#L60) and [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp#L83) implementations:
+
+```
+(module random_streams_for_perf_stats
+   (main main)
+   (foreign (include "time.h"))
+   (extern (type timespec (struct (tv_sec::long "tv_sec")
+                                  (tv_nsec::long "tv_nsec")) "struct timespec"))
+   (extern (macro CLOCK_MONOTONIC::int "CLOCK_MONOTONIC"))
+   (extern (clock_gettime::int (int timespec*) "clock_gettime")))
+...
+
+(define seconds 0)
+(define nanoseconds 0)
+(let ((ts (make-timespec*)))
+      (clock_gettime CLOCK_MONOTONIC ts)
+      (let ((seconds (timespec*-tv_sec ts))
+                (nanoseconds (timespec*-tv_nsec ts)))
+             (set! old-seed (bit-xor (* 13 seconds) nanoseconds))))
+...
+
+(define (main args)
+...
+  (set! old-seed (+ (modulo old-seed (- m 2)) 1))  ; 2026-10-26: scale the raw seed appropriately to [1..m[
+...
+)
+```
+
+<br/>
+
+#### The PRNG's of GNU C Library glibc
+
+You may clone and explore the glibc sources, with a cool 21,088 files as of 2026-11-03, like this for example:
+
+```
+$ git clone https://sourceware.org/git/glibc.git
+$ cd glibc/stdlib
+```
+
+So, in case of Picat, called C function _srand(unsigned int x)_ in _random.c_ calls function __srandom (unsigned int x) in the same file, which calls __srandom_r (unsigned int seed, struct random_data *buf) in _random_r.c_. 
+
+By default, _.rand_type = TYPE_3_ is chosen in _random.c_, so, under normal circumstances, a (modern) linear-feedback shift register PRNG is used with trinomial x^31 + x^3 + 1.
+
+Then calling C function _rand()_ returns an integer number between 0 and 2^31-1 inclusive, computed from that type of PRNG.
+
+In other words, from a program written in pure Picat you cannot change the type of PRNG being used. In C code (with the friendly help of Google AI), it would look like this for example to use a _TYPE_2_ PRNG with only 64 bytes of state information instead of _TYPE_3_ with 128 bytes:
+
+```
+#define _GNU_SOURCE  // instruct the GNU C Library to unlock non-standard features, like function initstate_r()
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+...
+int main(void) {
+    static char manipulated_global_table[64];
+    initstate(1, manipulated_global_table, sizeof(manipulated_global_table));
+    ...
+}
+```
+
+<br/>
+
 ### The random seeding mechanism of the Dart vm
 
 Raw system call ___NR_getrandom_ is called from function _Crypto::GetRandomBytes()_, here in the Linux OS variant: [crypto_linux.cc](https://github.com/dart-lang/sdk/blob/main/runtime/bin/crypto_linux.cc#L43), which is called by function [DartUtils::EntropySource()](https://github.com/dart-lang/sdk/blob/main/runtime/bin/dartutils.cc#L269), which is assigned to variable _entropy_source_:
@@ -517,88 +608,6 @@ _make-pseudo-random-generator_ can then be found in Racket's Chez Scheme sources
               (init! s (bitwise-and (+ (time-second t) (time-nanosecond t))
                                     #xFFFFFFFF))
               s)))
-```
-
-<br/>
-
-#### Bigloo Scheme's default seeding
-
-Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with the usual C function _srand()_:
-
-```
-      /* random seed */
-      {
-	 time_t taux;
-	 struct tm *tm;
-	 time(&taux);
-	 tm = gmtime(&taux);
-	    
-	 srand((24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour);
-     ... 
-      }
-```
-
-Seeding term _(24 * (60 * tm->tm_sec + tm->tm_min)) + tm->tm_hour_ takes a minimum value of 0 and a maximum value of (24 * (60 * 59 + 59)) + 23 = 86399,
-and features a contiguous range of integer numbers with no gaps and no duplicates! It changes with every tick of a second.
-
-Here's my [expanded and replacement code](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Scheme/Bigloo/random_streams_for_perf_stats.scm#L38) with the friendly help of Google AI, applying the same mechanism as in my (improved) [C](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c#L60) and [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp#L83) implementations:
-
-```
-(module random_streams_for_perf_stats
-   (main main)
-   (foreign (include "time.h"))
-   (extern (type timespec (struct (tv_sec::long "tv_sec")
-                                  (tv_nsec::long "tv_nsec")) "struct timespec"))
-   (extern (macro CLOCK_MONOTONIC::int "CLOCK_MONOTONIC"))
-   (extern (clock_gettime::int (int timespec*) "clock_gettime")))
-...
-
-(define seconds 0)
-(define nanoseconds 0)
-(let ((ts (make-timespec*)))
-      (clock_gettime CLOCK_MONOTONIC ts)
-      (let ((seconds (timespec*-tv_sec ts))
-                (nanoseconds (timespec*-tv_nsec ts)))
-             (set! old-seed (bit-xor (* 13 seconds) nanoseconds))))
-...
-
-(define (main args)
-...
-  (set! old-seed (+ (modulo old-seed (- m 2)) 1))  ; 2026-10-26: scale the raw seed appropriately to [1..m[
-...
-)
-```
-
-<br/>
-
-#### The PRNG's of GNU C Library glibc
-
-You may clone and explore the glibc sources, with a cool 21,088 files as of 2026-11-03, like this for example:
-
-```
-$ git clone https://sourceware.org/git/glibc.git
-$ cd glibc/stdlib
-```
-
-So, in case of Picat, called C function _srand(unsigned int x)_ in _random.c_ calls function __srandom (unsigned int x) in the same file, which calls __srandom_r (unsigned int seed, struct random_data *buf) in _random_r.c_. 
-
-By default, _.rand_type = TYPE_3_ is chosen in _random.c_, so, under normal circumstances, a (modern) linear-feedback shift register PRNG is used with trinomial x^31 + x^3 + 1.
-
-Then calling C function _rand()_ returns an integer number between 0 and 2^31-1 inclusive, computed from that type of PRNG.
-
-In other words, from a program written in pure Picat you cannot change the type of PRNG being used. In C code (with the friendly help of Google AI), it would look like this for example to use a _TYPE_2_ PRNG with only 64 bytes of state information instead of _TYPE_3_ with 128 bytes:
-
-```
-#define _GNU_SOURCE  // instruct the GNU C Library to unlock non-standard features, like function initstate_r()
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-...
-int main(void) {
-    static char manipulated_global_table[64];
-    initstate(1, manipulated_global_table, sizeof(manipulated_global_table));
-    ...
-}
 ```
 
 <br/>
