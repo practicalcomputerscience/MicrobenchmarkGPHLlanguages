@@ -1,7 +1,6 @@
 2026-09-23: work in progress
 
-- more detailed description tbd for: "two program runs within 1 second will yield two different byte streams" ?? --> V
-- "how is this seeded?": Ada, C3, Chapel, Fortran (GNU)
+- tbd: more detailed description for: Ada, C3, Chapel, Fortran (GNU)
 
 <br/>
 
@@ -187,7 +186,7 @@ Standard ML ([MLton](https://github.com/MLton/mlton)) | my own and direct implem
 Swift | Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) | very high | [Platform Implementation of `SystemRandomNumberGenerator`](https://developer.apple.com/documentation/swift/systemrandomnumbergenerator#Platform-Implementation-of-SystemRandomNumberGenerator)
 Tcl | Initial seeding happens at _tclBasic.c_ with C instruction: _iPtr->randSeed = TclpGetClicks() + PTR2UINT(Tcl_GetCurrentThread()) * 4093U;_, so the number of microseconds since the Epoch with function _TclpGetClicks()_ from _tclUnixTime.c_, plus the ID value of the currently running thread, as implemented in _tclUnixThrd.c_, multiplied with 4093. | high |
 TypeScript | TypeScript uses JavaScript's resources, so here it's (again) method [Math.random()](https://tc39.es/ecma262/#sec-math.random). In my testing environment with the V8 implementation of [node.js](https://github.com/nodejs/node/blob/main/node.cc#L1413), initially entropy source /dev/urandom of Linux is being read into a 64-bit integer value named [seed](https://github.com/nodejs/node/blob/main/deps/v8/src/base/utils/random-number-generator.cc#L70). | very high | See at [The random seeding mechanism of Google's V8 JavaScript engine](#the-random-seeding-mechanism-of-googles-v8-javascript-engine) below for more details.
-V | V's default PNG gets seeded with [seed_generator.time_seed_array(2)](https://github.com/vlang/v/blob/master/vlib/rand/rand.v#L37), which is calling [time.sys_mono_now()](https://github.com/vlang/v/blob/master/vlib/rand/seed/seed.v#L16), which makes a Linux system call of [clock_gettime(3)](https://www.man7.org/linux/man-pages/man3/clock_gettime.3.html) to read the number of seconds and the number of any residual nanoseconds since the last system boot at [C.clock_gettime(1, &ts)](https://github.com/vlang/v/blob/master/vlib/v/gen/x64/native_constant_test.v#L160) | high | 
+V | V's default PNG gets seeded with function call [seed_generator.time_seed_array(2)](https://github.com/vlang/v/blob/master/vlib/rand/rand.v#L37), which is calling [time.sys_mono_now()](https://github.com/vlang/v/blob/master/vlib/rand/seed/seed.v#L16), which makes a Linux system call at [C.clock_gettime(1, &ts)](https://github.com/vlang/v/blob/master/vlib/v/gen/x64/native_constant_test.v#L160) to read the number of seconds and the number of any residual nanoseconds since the last system boot. | high |
 Zig | my own and direct implementation of Linux system call [getrandom(2)](https://man7.org/linux/man-pages/man2/getrandom.2.html) with Zig instruction: _try std.posix.getrandom(std.mem.asBytes(&seed));_ | very high | 
 
 <br/>
