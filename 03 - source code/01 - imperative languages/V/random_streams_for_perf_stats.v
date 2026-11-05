@@ -3,6 +3,8 @@ random_streams_for_perf_stats.v
 
 2025-05-31; 2025-12-18: see below
 2026-01-24: renaming variable bits_x_str0a back to bits_x_str (and also at bits_hex_str)
+2026-11-05: using seed and pcg32 is redundant here
+
 
 build on Ubuntu 24 LTS: $ v -prod random_streams_for_perf_stats.v  # build for production
 
@@ -11,8 +13,8 @@ run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
 
 
 $ v version
-V 0.5.1 ed17e5f
-$ 
+V 0.5.2 946e289
+$
 
 */
 
@@ -20,16 +22,16 @@ module main
 
 import os
 import rand        // https://modules.vlang.io/rand.html
-import rand.seed
-import rand.pcg32
+// import rand.seed    // 2026-11-05, redundant here
+// import rand.pcg32   // 2026-11-05, redundant here
 import strings     // strings.Builder
 
 
 // const can only be defined at the top level (outside of functions):
-const upper_limit := 62501   // 62501 for exactly 1M binary digits; type must be int for later array use
-// const upper_limit := 50   // for testing
-const str_length_bin := 16
-const str_length_hex := 4
+const upper_limit = 62501   // 62501 for exactly 1M binary digits; type must be int for later array use; 2026-11-05: := --> =
+// const upper_limit = 50   // for testing
+const str_length_bin = 16   // 2026-11-05: := --> =
+const str_length_hex = 4    // 2026-11-05: := --> =
 
 
 fn main() {
@@ -58,9 +60,11 @@ fn main() {
   mut bits_hex := strings.new_builder(k250)
 
   // Initialise the generator struct (note the `mut`):
-  mut rng := &rand.PRNG(pcg32.PCG32RNG{})  // https://modules.vlang.io/rand.html
-  // Optionally seed the generator:
-  rng.seed(seed.time_seed_array(pcg32.seed_len))
+  // 2026-11-05, redundant here:
+  // mut rng := &rand.PRNG(pcg32.PCG32RNG{})  // https://modules.vlang.io/rand.html
+  // seed the generator (initializing it requires its usage! 2026-11-05):
+  // 2026-11-05, redundant here:
+  // rng.seed(seed.time_seed_array(pcg32.seed_len))
 
   // x[0] := ... is not working in V!
   // !!you cannot **update** an individual array element, be it a fixed size array or not!! => this smells like functional programming
