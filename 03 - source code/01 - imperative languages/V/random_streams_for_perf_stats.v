@@ -9,6 +9,11 @@ build on Ubuntu 24 LTS: $ v -prod random_streams_for_perf_stats.v  # build for p
 run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
                         $ sudo perf stat -r 20 ./random_streams_for_perf_stats
 
+
+$ v version
+V 0.5.1 ed17e5f
+$ 
+
 */
 
 module main
