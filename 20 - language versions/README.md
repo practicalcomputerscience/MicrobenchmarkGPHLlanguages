@@ -80,7 +80,7 @@ Standard ML | MLton 20241230.203305-gb15e2d2 | $ mlton
 Swift | Swift version 6.2.3 (swift-6.2.3-RELEASE); Target: x86_64-unknown-linux-gnu | $ swift --version
 Tcl | 8.6 | $ echo 'puts $tcl_version; exit 0' \| tclsh
 TypeScript | Version 5.9.3; v22.21.0; deno 2.6.9; 1.3.9 | $ tsc -v; node -v; deno -v; bun -v
-V | V 0.5.1 ed17e5f | $ v version
+V | V 0.5.2 946e289 | $ v version
 Wolfram Language | WolframScript 1.13.0 for Linux x86 (64-bit) | > wolframscript -version
 wren | wren 0.4.0 | $ wren_cli --version
 Zig | 0.15.2 | $ zig version
