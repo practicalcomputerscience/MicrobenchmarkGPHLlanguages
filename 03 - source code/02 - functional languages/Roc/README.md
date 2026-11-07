@@ -71,6 +71,21 @@ s = int_generate({y : counter_start, limit : upper_limit, x : []})
 
 <br/>
 
+2026-11: however, with its further development, I noticed that Roc also now allows (classical) imperative constructs like seen here at [Functional and imperative styles](https://www.roc-lang.org/functional#functional-and-imperative) in this imperative for-loop:
+
+```
+sum : List(I64) -> I64
+sum = |numbers| {
+    var $total = 0
+    for number in numbers {
+        $total = $total + number
+    }
+    $total
+}
+```
+
+<br/>
+
 ## Installation tips
 
 I followed these instructions: https://www.roc-lang.org/install/unix
