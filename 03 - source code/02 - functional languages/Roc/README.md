@@ -4,6 +4,8 @@ https://www.roc-lang.org/
 
 https://github.com/roc-lang/roc
 
+More on Roc's philosophy at its [FAQ's](https://www.roc-lang.org/faq).
+
 <br/>
 
 > [!IMPORTANT]
