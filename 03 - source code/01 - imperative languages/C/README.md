@@ -19,7 +19,7 @@ See also page [Potential "C successors": which one to take?](https://github.com/
 
 Table of contents:
 
-- [Program building tips](#program-building-tips)
+- [Program building tips](#application-building-tips)
 - [Checked C](#checked-c)
 - [Keeping using idiomatic constructs](#keeping-using-idiomatic-constructs)
 - [On how to do demanding string building in C](#on-how-to-do-demanding-string-building-in-c)
@@ -28,7 +28,7 @@ Table of contents:
 
 ---
 
-## Program building tips
+## Application building tips
 
 With program [random_streams_for_perf_stats.c](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C/random_streams_for_perf_stats.c) I compiled directly like this:
 
