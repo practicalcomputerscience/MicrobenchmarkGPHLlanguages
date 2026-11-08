@@ -125,7 +125,7 @@ With some languages, I couldn't figure out the seeding algorithm within a reason
 ## The language list
 
 programming language | used source of random seed | estimated quality of randomness | comment
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 Ada (GNAT) | package _Ada.Numerics.Discrete_Random_: [Standard library: Numerics](https://learn.adacore.com/courses/intro-to-ada/chapters/standard_library_numerics.html#standard-library-numerics): how is this seeded? | high | two program runs within 1 second will yield two different byte streams
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | very high | see also below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_; two program runs within 1 second may yield the **same** byte streams with GNU Awk 5.2.1 in Ubuntu 24
