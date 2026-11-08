@@ -58,7 +58,7 @@ $
 
 <br/>
 
-## Building tips
+## Application building tips
 
 I checked out potentially useful compiler switches to compile a fast executable, but in vain:
 
