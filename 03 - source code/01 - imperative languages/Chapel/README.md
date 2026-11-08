@@ -4,6 +4,8 @@ https://chapel-lang.org/
 
 https://chapel-lang.org/download/
 
+https://github.com/chapel-lang/chapel
+
 ---
 
 Table of contents:
