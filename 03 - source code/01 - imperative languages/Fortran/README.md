@@ -45,7 +45,7 @@ seen from here: https://stackoverflow.com/questions/22049963/how-to-do-block-com
 
 ## Installation tips
 
-I installed Fortan, that is installing its compiler, from Ubuntu's package manager as recommended here at: [Hello world](https://fortran-lang.org/learn/quickstart/hello_world/)
+I installed Fortan, that is installing its GNU compiler, from Ubuntu's package manager as recommended here at: [Hello world](https://fortran-lang.org/learn/quickstart/hello_world/)
 
 ```
 $ sudo apt install gfortran
