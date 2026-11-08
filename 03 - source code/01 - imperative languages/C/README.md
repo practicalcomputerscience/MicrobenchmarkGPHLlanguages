@@ -19,7 +19,7 @@ See also page [Potential "C successors": which one to take?](https://github.com/
 
 Table of contents:
 
-- [Program building tips](#application-building-tips)
+- [Application building tips](#application-building-tips)
 - [Checked C](#checked-c)
 - [Keeping using idiomatic constructs](#keeping-using-idiomatic-constructs)
 - [On how to do demanding string building in C](#on-how-to-do-demanding-string-building-in-c)
