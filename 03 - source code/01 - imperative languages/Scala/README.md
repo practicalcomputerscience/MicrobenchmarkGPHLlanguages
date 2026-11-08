@@ -11,7 +11,7 @@ Dotty, the Scala 3 compiler (_dotc_): https://github.com/scala/scala3/tree/main
 Table of contents:
 
 - [Installation tips](#installation-tips)
-- [Building tips](#building-tips)
+- [Application building tips](#application-building-tips)
 
 <br/>
 
@@ -85,7 +85,7 @@ $
 
 <br/>
 
-## Building tips
+## Application building tips
 
 I started with the sbt (simple build tool) in my Scala working directory:
 
