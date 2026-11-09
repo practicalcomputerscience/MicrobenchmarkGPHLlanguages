@@ -13,7 +13,7 @@ Mirror of sources on GitHub: https://github.com/gcc-mirror/gcc/tree/master/gcc/a
 <br/>
 
 > [!TIP]
-> I think that Ada tries to find a delicate balance between being a very precise, imperative programming language on the one hand, while still maintaining good portability from one execution platform to the next on the other hand.
+> I think that Ada succeeds in trying to find a fine balance between being a very precise, imperative programming language on the one hand, while still maintaining good portability from one execution platform to the next on the other hand.
 
 <br/>
 
