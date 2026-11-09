@@ -338,7 +338,7 @@ Application instruction [Reset (G);](https://github.com/practicalcomputerscience
 
 _Init_ has been called in the same package at procedure [Reset (Gen : Generator)](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L532), which is calling function [Random_Seed.Get_Seed](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-ransee.adb#L50), which is calling function [Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-calend.adb#L396), which is calling function [System.OS_Primitives.Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-osprim__posix.adb#L42), which is finally making a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) to return a timestamp in microseconds resolution.
 
-The _Generator_ typed is defined in specification file [a-nudira.ads](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.ads#L153).
+The _Generator_ type is (originally) defined in specification file [s-rannum.ads](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads.ads#L156).
 
 After some origin shifting (the Ada Epoch apparently starts at 2000-01-01T00:00:00Z and not at 1970-01-01T00:00:00Z like the Unix Epoch) this value represents the input value to initialize the state vector of the Mersenne Twister at procedure _Init_ in the _System.Random_Numbers_ package.
 
