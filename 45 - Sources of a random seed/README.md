@@ -1,9 +1,3 @@
-2026-09-23: work in progress
-
-- tbd: more detailed description for: Ada
-
-<br/>
-
 # Sources of a random seed
 
 Glossary:
@@ -340,17 +334,17 @@ In alphabetic order of the (underlying) programming language.
 
 #### Ada's default seeding
 
-Application instruction [Reset (G);](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb#L143), with no extra seed value being provided, initializes a [RNG](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L97) of the [Mersenne Twister MT19937](https://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/emt.html) type at procedure [Init](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L713).
+Application instruction [Reset (G);](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Ada/random_streams_for_perf_stats.adb#L143), with no extra seed value being provided, initializes a [RNG](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L97) of the [Mersenne Twister MT19937](https://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/emt.html) type with [624](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads#L141) 32-bit integers at procedure [Init](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L713).
 
-_Init_ has been called in the same package at procedure [Reset (Gen : Generator)](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L532), which is calling function [Random_Seed.Get_Seed](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-ransee.adb#L50), which is calling function [Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-calend.adb#L396), which is calling function [System.OS_Primitives.Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-osprim__posix.adb#L42), which is finally making a Linux system call of [gettimeofday](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-osprim__posix.adb#L42) to return a timestamp in microseconds resolution.
+_Init_ has been called in the same package at procedure [Reset (Gen : Generator)](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.adb#L532), which is calling function [Random_Seed.Get_Seed](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-ransee.adb#L50), which is calling function [Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-calend.adb#L396), which is calling function [System.OS_Primitives.Clock](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-osprim__posix.adb#L42), which is finally making a Linux system call of [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html) to return a timestamp in microseconds resolution.
+
+The _Generator_ typed is defined in specification file [a-nudira.ads](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.ads#L153).
 
 After some origin shifting (the Ada Epoch apparently starts at 2000-01-01T00:00:00Z and not at 1970-01-01T00:00:00Z like the Unix Epoch) this value represents the input value to initialize the state vector of the Mersenne Twister at procedure _Init_ in the _System.Random_Numbers_ package.
 
-The difficulty with finding the very original seeding value lies from my point of view in the interplay of wrapper package [Ada.Numerics.Discrete_Random](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.ads) and its underlying package [System.Random_Numbers](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads). 
+From my point of view, the difficulty with figuring out the seeding mechanism in GNAT Ada lies in the interplay of the generic wrapper package [Ada.Numerics.Discrete_Random](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.ads) and its underlying package [System.Random_Numbers](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads). Both define and implement the _Reset (Gen : Generator)_ procedure (next to their other versions of _Reset_). 
 
-tbd
-
-Re the source file naming convention, for example at source file [a-nudira.adb](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.adb), which could stand for: _Ada Numerics Discrete Random_, here with the body of the package, that is the implementation part of a package
+Re the source file naming convention, for example at sources [a-nudira.adb](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.adb): this file name could stand for _Ada Numerics Discrete Random_, here with the body of the _Ada.Numerics.Discrete_Random_ package, that is its implementation part.
 
 <br/>
 
