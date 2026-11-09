@@ -2,7 +2,7 @@
 
 https://c3-lang.org/
 
-https://play.c3-lang.org/: program [random_streams_for_perf_stats.c3](./random_streams_for_perf_stats.c3) only runs with about _const int END  = 4000;_ (instead of original limit _62501_) in this playground, where it compiles to WebAssembly (Wasm), because (local) variables must not exceed the maximum allowed stack object size of 64 Kb
+https://play.c3-lang.org/: program [random_streams_for_perf_stats.c3](./random_streams_for_perf_stats.c3) only runs with about _const int END  = 42000;_ (instead of original limit _62501_) in this playground, and only when flag _--max-stack-object-size 262144_ is set at the "Compiler Settings" field on the left hand side of the "Compile & Run" button in the upper right browser window corner, where it compiles to WebAssembly (Wasm), because (local) variables apparently go to a size limited stack
 
 https://github.com/c3lang/c3c
 
