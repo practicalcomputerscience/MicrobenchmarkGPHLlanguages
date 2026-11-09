@@ -175,7 +175,7 @@ Instead of 1 source code file, there are 3 now:
 
 - [random_streams_for_perf_stats_spark.adb](./SPARK/random_streams_for_perf_stats_spark.adb)
 - [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb)
-- [stream_generator_spark.ads](./SPARK/stream_generator_spark.ads)
+- [stream_generator_spark.ads](./SPARK/stream_generator_spark.ads): ~.ads files are specifically for SPARK
 
 The principal workflow, after source code files are ready, is like this:
 
