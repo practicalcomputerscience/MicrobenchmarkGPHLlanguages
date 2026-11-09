@@ -2,6 +2,8 @@
 
 https://c3-lang.org/
 
+https://play.c3-lang.org/
+
 https://github.com/c3lang/c3c
 
 <br/>
