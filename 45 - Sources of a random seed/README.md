@@ -348,6 +348,59 @@ Re the source file naming convention, for example at sources [a-nudira.adb](http
 
 <br/>
 
+Question: can the generic wrapper package _Ada.Numerics.Discrete_Random_ be ignored and instead package _System.Random_Numbers_ be used directly?
+
+Answer: yes, but its not recommended for good reasons.
+
+One reason, when mimicing the style of my application _random_streams_for_perf_stats.adb_, is the fact that _Default_Min_ is hardcoded to 0 in _s-rannum.ads_:
+
+```
+   generic
+      type Result_Subtype is (<>);
+      Default_Min : Result_Subtype := Result_Subtype'Val (0);
+   function Random_Discrete
+     (Gen : Generator;
+      Min : Result_Subtype := Default_Min;
+      Max : Result_Subtype := Result_Subtype'Last) return Result_Subtype;
+   --  Returns pseudo-random numbers uniformly distributed on Min .. Max
+```
+
+The GNAT compiler compiles such Ada code:
+
+```
+   subtype Target_Range is Integer range 1 .. 100;
+   function Random_Range_Fun is new System.Random_Numbers.Random_Discrete
+     (Result_Subtype => Target_Range);
+   Gen : System.Random_Numbers.Generator;
+   Result : Target_Range;
+```
+
+...but later the compiled program is indeed crashing during runtime as already warned of during compilation time:
+
+```
+...: warning: "System.Random_Numbers" is an internal GNAT unit [-gnatwi]
+...: warning: use of this unit is non-portable and version-dependent [-gnatwi]
+```
+
+Though, this modified definition works fine: _subtype Target_Range is Integer range 0 .. 100;_
+
+However, the following code is the better solution, and is still keeping a minimum value of 1:
+
+```
+   ...
+   function Random_Int is new System.Random_Numbers.Random_Discrete
+     (Result_Subtype => Integer);
+   Gen : System.Random_Numbers.Generator;
+   Result : Integer;
+begin
+   System.Random_Numbers.Reset (Gen);
+   Result := Random_Int (Gen, Min => 1, Max => 100);  -- call the user defined function from above
+   Ada.Text_IO.Put_Line ("Drawn number:" & Integer'Image (Result));
+   ...
+```
+
+<br/>
+
 #### Bigloo Scheme's default seeding
 
 Bigloo Scheme's default seeding happens in runtime sources [cmain.c](https://github.com/manuel-serrano/bigloo/blob/master/runtime/Clib/cmain.c#L215) with the usual C function _srand()_:
