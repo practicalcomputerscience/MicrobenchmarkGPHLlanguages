@@ -8,6 +8,10 @@ https://www.adaic.org/
 
 GNAT = GNU NYU Ada Translator, an open-source Ada compiler of the [GNU Compiler Collection](https://gcc.gnu.org/)
 
+Mirror of sources on GitHub: https://github.com/gcc-mirror/gcc/tree/master/gcc/ada/libgnat
+
+<br/>
+
 ---
 
 Table of contents:
