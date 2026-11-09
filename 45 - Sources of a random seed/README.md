@@ -85,7 +85,7 @@ Here is my own and simple ranking just for orientation:
 - high quality, like current (Linux) system timestamp with resolution of milliseconds or even nanoseconds
 - medium quality, like current system timestamp with resolution of hundredths of a second
 - low quality, like current system timeststamp with resolution of 1 second
-- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of 1 second. As of 2026-11-09, I have done only one (unofficial) implementation with no entropy sourcing within the program in my Miranda solution, where I provide a random seed value from the Bash shell (_echo $RANDOM_) as a [command line argument](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda#mirandas-deficits).
+- bad quality, which is worse than an entropy source like the current system timestamp with a resolution of 1 second. As of 2026-11-09, I have done only one (unofficial) implementation with no entropy sourcing within the program, and that is at the Miranda solution, where I provide a random seed value from the Bash shell (_echo $RANDOM_) as a [command line argument](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell/Miranda#mirandas-deficits).
 
 <br/>
 
