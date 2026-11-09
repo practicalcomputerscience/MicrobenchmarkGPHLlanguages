@@ -174,8 +174,8 @@ Ada program [random_streams_for_perf_stats.adb](./random_streams_for_perf_stats.
 Instead of 1 source code file, there are 3 now:
 
 - [random_streams_for_perf_stats_spark.adb](./SPARK/random_streams_for_perf_stats_spark.adb)
-- [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb)
-- [stream_generator_spark.ads](./SPARK/stream_generator_spark.ads): ~.ads files are specifically for SPARK
+- [stream_generator_spark.adb](./SPARK/stream_generator_spark.adb): ~.adb files are Ada body files, which are the implementations of the declarations done in the corresponding ~.ads files
+- [stream_generator_spark.ads](./SPARK/stream_generator_spark.ads): ~.ads files are Ada specification files to define the interfaces of a package, such as declarations, types, and function and procedure signatures
 
 The principal workflow, after source code files are ready, is like this:
 
