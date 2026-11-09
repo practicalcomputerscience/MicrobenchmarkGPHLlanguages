@@ -50,7 +50,7 @@ fn int main()
 
   int[END] x;
 
-  x[0] = rand(M-1) + 1;  // rand(): random number between 1 and M-1, both included; 2025-12-17
+  x[0] = rand(M-1) + 1;  // get a random number between 1 and M-1, both included; 2025-12-17, 2026-11-09
   // io::printfn("%d", x[0]);  // for testing: the n variants of the print functions will add a newline after printing
 
   char[M1] bits_x;
