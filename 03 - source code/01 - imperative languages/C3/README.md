@@ -2,15 +2,15 @@
 
 https://c3-lang.org/
 
-https://play.c3-lang.org/
+https://play.c3-lang.org/: program [random_streams_for_perf_stats.c3](./random_streams_for_perf_stats.c3) only runs with about _const int END  = 4000;_ (instead of original limit _62501_) in this playground, where it compiles to WebAssembly (Wasm), because (local) variables must not exceed the maximum allowed stack object size of 64 Kb
 
 https://github.com/c3lang/c3c
 
 <br/>
 
-**Will C3 finally become a viable "C for the 21st century" with it's soft migration approach from C?**
+#### Will C3 finally become a viable "C for the 21st century" with it's soft migration approach from C?
 
-C3 looks to me like "Made in Europe", which is always a risk in the programming language world.
+C3 is "Made in Europe" (for example https://www.linkedin.com/in/christofferlerno/), which is always a risk in the programming language world.
 
 C3 would fill a real need for the modernization of C from my point of view. I may start trying it when there's another need to access fast C code from a Python program for
 example.
