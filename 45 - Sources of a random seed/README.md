@@ -33,6 +33,7 @@ Table of contents:
 - [Test of a 1 second seeding resolution](#test-of-a-1-second-seeding-resolution)
 - [Variant 13 of David Stafford's 64-bit mix function](#variant-13-of-david-staffords-64-bit-mix-function)
 - [Details on the seeding of selected languages](#details-on-the-seeding-of-selected-languages)
+- [Ada's default seeding](#adas-default-seeding)
 - [Bigloo Scheme's default seeding](#bigloo-schemes-default-seeding)
 - [The PRNG's of GNU C Library glibc](#the-prngs-of-gnu-c-library-glibc)
 - [The random seeding mechanism of the Dart vm](#the-random-seeding-mechanism-of-the-dart-vm)
@@ -126,7 +127,7 @@ With some languages, I couldn't figure out the seeding algorithm within a reason
 
 programming language | used source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
-Ada (GNAT) | Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which returns the number of microseconds since the Epoch, which is then used to initially feed a (modified) MT19937 Mersenne Twister. | high | For more details, see below at [Ada](tbd).
+Ada (GNAT) | Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which returns the number of microseconds since the Epoch, which is then used to initially feed a (modified) MT19937 Mersenne Twister. | high | For more details, see below at [Ada](#adas-default-seeding).
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | very high | see also below at TypeScript
 Awk (GNU) | the _srand()_ function probably uses the system clock with a resolution of 1 second: [9.1.3 Numeric Functions](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html#Numeric-Functions-1) | low | different implementations and versions of Awk and Mawk may feature different implementations of _srand()_ and _rand()_; two program runs within 1 second may yield the **same** byte streams with GNU Awk 5.2.1 in Ubuntu 24
 Ballerina | [module-ballerina-random/ballerina/natives.bal](https://github.com/ballerina-platform/module-ballerina-random/blob/main/ballerina/natives.bal#L22) initially reads the current system time in milliseconds: _isolated decimal x0 = currentTimeInMilliSeconds();_ | high | 
