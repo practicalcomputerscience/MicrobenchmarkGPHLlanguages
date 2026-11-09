@@ -352,7 +352,7 @@ Question: can the generic wrapper package _Ada.Numerics.Discrete_Random_ be igno
 
 Answer: yes, but its not recommended for good reasons.
 
-One reason, when mimicing the style of my application _random_streams_for_perf_stats.adb_, is the fact that _Default_Min_ is hardcoded to 0 in _s-rannum.ads_:
+One reason, when mimicing the style of my application _random_streams_for_perf_stats.adb_, is the fact that _Default_Min_ is hardcoded to 0 in [s-rannum.ads](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads#L83):
 
 ```
    generic
