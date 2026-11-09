@@ -344,7 +344,7 @@ After some origin shifting (the Ada Epoch apparently starts at [2000-01-01T00:00
 
 From my point of view, the difficulty with figuring out the seeding mechanism in GNAT Ada lies in the wrapping of generic package [Ada.Numerics.Discrete_Random](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.ads) around its underlying package [System.Random_Numbers](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/s-rannum.ads). Both define and implement the _Reset (Gen : Generator)_ procedure (next to their other versions of _Reset_). 
 
-Re the source file naming convention, for example at sources [a-nudira.adb](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.adb): this file name could stand for _Ada Numerics Discrete Random_, here with the body of that package, that is its implementation part.
+Re the source file naming convention, for example at sources [a-nudira.adb](https://github.com/gcc-mirror/gcc/blob/master/gcc/ada/libgnat/a-nudira.adb): this file name could stand for _Ada Numerics Discrete Random_, here with the body of that package, that is its implementation part as seen from its file extension ~.adb.
 
 <br/>
 
