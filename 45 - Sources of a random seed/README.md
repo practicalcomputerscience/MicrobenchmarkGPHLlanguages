@@ -114,7 +114,9 @@ However, often a (Linux) system **time based solution** is just good enough. My 
 where everything needed is just packed into one user defined C function as part of the Mercury source code, see below.
 
 > [!WARNING]
-> Please be aware that the provided links into a language's source code in this page, be it into GitHub or somewhere else, are often subject to constant development at many programming languages. So, a link that worked last week may now point to another line in the remote source code, or a linked source code file may no longer even exist because the seeding mechanism or even the whole (default) random number generator has been changed.
+> Please be aware that the provided links into a language's source code in this page, be it into GitHub or somewhere else, are often subject to constant development at many programming languages!
+
+So, a link that worked last week may now point to another line in the remote source code, or a linked source code file may no longer even exist because the seeding mechanism or even the whole (default) random number generator has been changed.
 
 In other words, documenting the default seeding mechanism of the default RNG of a programming language in many cases only represents a snapshot in time.
 
