@@ -119,7 +119,7 @@ With some languages, I couldn't figure out the seeding algorithm within a reason
 
 ## The language list
 
-programming language | used source of random seed | estimated quality of randomness | comment
+programming language | source of random seed | estimated quality of randomness | comment
 --- | --- | --- | ---
 Ada (GNAT) | Linux system call [gettimeofday(2)](https://www.man7.org/linux/man-pages/man2/gettimeofday.2.html), which returns the number of microseconds since the Epoch, which is then used to initially feed a (modified) MT19937 Mersenne Twister. | high | For more details, see below at [Ada](#adas-default-seeding).
 AssemblyScript | using function _Math.random()_ from: _The Math API is very much like JavaScript's, .._ from [Math](https://www.assemblyscript.org/stdlib/math.html#math) | very high | see also below at TypeScript
