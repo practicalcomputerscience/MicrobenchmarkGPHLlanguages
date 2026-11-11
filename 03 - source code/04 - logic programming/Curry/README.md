@@ -400,7 +400,7 @@ $
 
 So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs.
 
-Here's the refined version as of November 2026: [KiCS2 version of the program](./graph_4coloring_Australia_KiCS2.curry):
+Here's the refined version as of November 2026: [KiCS2 version of the program](./graph_4coloring_Australia_KiCS2.curry)
 
 Compile it and run it like this:
 
