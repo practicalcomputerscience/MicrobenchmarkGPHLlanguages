@@ -74,9 +74,9 @@ $
 
 <br/>
 
-However, one part (at least) of this installation guide is no longer working, because just doing _$ spago bundle-app_ no longer works and the apparently new command _$ spago bundle_ also fails without any prerequisites!
+However, one part (at least) of this installation guide is no longer working, because running _$ spago bundle-app_ no longer works and the apparently new command _$ spago bundle_ also fails without any prerequisites!
 
-As PureScript claims that it "compiles to JavaScript", my goal is to transpile a PureScript script into - at best - one JavaScript script and run that on **node.js**.
+As PureScript claims that it "compiles to JavaScript", my goal is to transpile a PureScript script into, at best, one JavaScript script and run that on **node.js**.
 
 I should note that a simple spago run works out of the box (and also produces some extra output in quiet mode):
 
@@ -102,9 +102,9 @@ $ node ./index.js  # run the JavaScript script on node.js
 $ 
 ```
 
-So, when you change the PureScript source code in _./<project directory>//src/Main.purs_, just run _$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle_ again.
+So, when you change the PureScript source code in _./\<project directory\>/src/Main.purs_, just run _$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle_ again.
 
-
+<br/>
 
 
 tbd
