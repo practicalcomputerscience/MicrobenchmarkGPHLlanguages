@@ -279,11 +279,11 @@ real	0m0.120s
 $
 ```
 
-120 milliseconds is quite fast and even beating a Picat ("old B-Prolog") program which uses the [constraint programming module cp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#constraint-programming-module-cp): [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+120 milliseconds is quite fast and even beating the Picat ("old B-Prolog") program which uses the quick [constraint programming module cp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#constraint-programming-module-cp): [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
-(This Haskell program shares the same last solution with Picat's solution, but not its first solution.)
+Not to mention KiCS Curry, which needs about 25 seconds for one program run (in an already improved program version)!
 
-Not to mentions KiCS Curry, which needs about 25 seconds for one program run!
+This Haskell program shares the same last solution with the Picat solution, but not the first solution. It doesn't share the first and last solutions of the KiCS Curry implementation, though.
 
 <br/>
 
