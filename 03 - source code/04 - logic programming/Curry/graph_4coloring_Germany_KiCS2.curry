@@ -21,6 +21,9 @@ run on Ubuntu 24 LTS:   $ time ./graph_4coloring_Germany_KiCS2
                         $
 
 
+source: graph_4coloring_Australia_KiCS2.curry
+
+
 $ curry -V
  _  _  ____  ___  ___  ___
 ( )/ )(_  _)/ __)/ __)(__ \
