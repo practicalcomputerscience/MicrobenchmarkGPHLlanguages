@@ -296,7 +296,7 @@ $
 
 I noticed that any other installation of Haskell, installed with some other package manager than GHCup for example, may disturb, that is "shadowing", a GHCup-based Haskell installation. If some shadowing has already been indicated at command _$ ghcup set ghc 9.6.6_, you can easily delete the other Haskell installation with a command like: _sudo rm -f /usr/bin/haddock /usr/bin/hpc /usr/bin/hsc2hs /usr/bin/ghci ..._, and later re-install that Haskell installation. An isolated Haskell installation is much easier to accomplish than a Curry installation!
 
-The background for this behavior seems to be that the (needed) Curry Package Manager (CPM), with its command _cypm_, is senstive to wrong Haskell versions.
+The background for this behavior seems to be that the (needed) Curry Package Manager (CPM), with its command _cypm_, is sensitive to wrong Haskell versions.
 
 Above way to install a Haskell compiler of a specific version does not imply that it must be the exclusive Haskell installation on a Linux system. Other Haskell installations may very well coexist, but those installations must not be in the way of the Haskell version which supports the Curry installation. So, hidden directories _$HOME/.ghc_ and _$HOME/.ghcup_ should be left untouched.
 
