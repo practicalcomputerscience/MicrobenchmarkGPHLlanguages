@@ -615,7 +615,9 @@ Or you could potentially see how applying a **functional programming pattern** i
 
 <br/>
 
-So, it's advisable to learn a little bit of functional programming nowadays.
+So, it's advisable to learn a little bit of functional programming nowadays:
+
+![plot](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Why%20functional%20programming%20is%20different%20from%20the%20rest%2C%201%20slide.png)
 
 <br/>
 
