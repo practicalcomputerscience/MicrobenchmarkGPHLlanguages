@@ -72,6 +72,41 @@ Reading Spago workspace configuration...
 $
 ```
 
+<br/>
+
+However, one part (at least) of this installation guide is no longer working, because just doing _$ spago bundle-app_ no longer works and the apparently new command _$ spago bundle_ also fails without any prerequisites!
+
+As PureScript claims that it "compiles to JavaScript", my goal is to transpile a PureScript script into - at best - one JavaScript script and run that on **node.js**.
+
+I should note that a simple spago run works out of the box (and also produces some extra output in quiet mode):
+
+```
+$ spago run --quiet
+           Src   Lib   All
+Warnings     0     0     0
+Errors       0     0     0
+🍝
+$
+```
+
+After some research I found out that the difficulty lies in the fact that an _esbuild_ executable must be found for _$ spago bundle_ to work.
+
+This can be done at least locally for every project. I didn't try to find a more global solution:
+
+```
+$ npm install --save-dev esbuild
+$ npm approve-scripts esbuild
+$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle  # expand PATH to the esbuild executable
+$ node ./index.js  # run the JavaScript script on node.js
+🍝
+$ 
+```
+
+So, when you change the PureScript source code in _./<project directory>//src/Main.purs_, just run _$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle_ again.
+
+
+
+
 tbd
 
 
