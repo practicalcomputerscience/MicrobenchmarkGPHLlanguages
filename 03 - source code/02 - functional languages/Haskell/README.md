@@ -22,7 +22,7 @@ Table of contents:
 - [Checking a Haskell package on the fly](#checking-a-haskell-package-on-the-fly)
 - [On how to make a faster microbenchmark program](#on-how-to-make-a-faster-microbenchmark-program)
 - [Using the LLVM backend](#using-the-llvm-backend)
-- [Haskell: Map of Germany](#tbd)
+- [Haskell: Map of Germany](#haskell-map-of-germany)
 
 <br/>
 
