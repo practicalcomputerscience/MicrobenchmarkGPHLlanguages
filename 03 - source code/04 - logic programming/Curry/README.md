@@ -400,30 +400,14 @@ $
 
 So, the next step was to expand the original _graph_4coloring_Australia_Curry2Go.curry_ source code to provide more informative output on the terminal, like the Prolog programs.
 
-These are the changed lines of source code for the [KiCS2 version of the program](./graph_4coloring_Australia_KiCS2.curry):
-
-```
-import Control.Search.SearchTree  -- getSearchTree function
-...
--- main = correct aColor aColor aColor aColor aColor aColor aColor  -- original code: OK
-...
-solution = correct aColor aColor aColor aColor aColor aColor aColor
-
-main :: IO ()
-main = do
-  t <- getSearchTree solution
-  let sols = allValuesDFS t
-  putStrLn ("number N of different solutions = " ++ show (length sols))
-  putStrLn ("\n               [NT,QL,NSW,VIC,SA,WA,TAS]")
-  putStrLn ("1st solution = " ++ show (head sols))
-  putStrLn ("...")
-  putStrLn ("Last solution = " ++ show (head (reverse sols)))
-```
+Here's the refined version as of November 2026: [KiCS2 version of the program](./graph_4coloring_Australia_KiCS2.curry):
 
 Compile it and run it like this:
 
 ```
 $ curry :load graph_4coloring_Australia_KiCS2.curry :save :quit  # building an executable
+...
+Executable saved in 'graph_4coloring_Australia_KiCS2'
 $ ./graph_4coloring_Australia_KiCS2
 number N of different solutions = 576
 
@@ -453,14 +437,14 @@ number N of different solutions = 191808
 ...
 Last solution = [Yellow,Green,Green,Yellow,Blue,Green,Blue,Yellow,Blue,Yellow,Green,Yellow,Blue,Yellow,Yellow,Red]
 
-real	0m29.179s
+real	0m25.083s
 ...
 $ 
 ```
 
-..which comes to the same 1st and last solution than the [ALS Prolog version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro).
+..which comes to the same 1st and last solution as the [ALS Prolog version](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog/graph_4coloring_Germany2g_ALS.pro).
 
-But oh Boy! With an execution time of about 29 seconds for one program run, the KiCS2 Curry program is more than 11 times slower than the slowest Prolog system in this benchmark,
+But oh Boy! With an execution time of about 25 seconds for one program run, the KiCS2 Curry program is more than 9 times slower than the slowest Prolog system in this benchmark,
 and that is ALS Prolog with about 2.63 seconds: [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
 <br/>
