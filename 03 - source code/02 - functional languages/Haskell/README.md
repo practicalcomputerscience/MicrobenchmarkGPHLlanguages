@@ -22,6 +22,7 @@ Table of contents:
 - [Checking a Haskell package on the fly](#checking-a-haskell-package-on-the-fly)
 - [On how to make a faster microbenchmark program](#on-how-to-make-a-faster-microbenchmark-program)
 - [Using the LLVM backend](#using-the-llvm-backend)
+- [Haskell: Map of Germany](#tbd)
 
 <br/>
 
@@ -257,6 +258,30 @@ and [Common Lisp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHL
 Interestingly, this execution time is about the same as the [Standard ML (MLton)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Standard%20ML/random_streams_for_perf_stats.sml) executable's execution time, a solution which is (also) using pre-allocated arrays, though those must be order-reversed before string concatenations (to do it correctly).
 
 The Haskell executable is beating the other pure functional implementation for compilation (as of 2026-07-26) in [Roc](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/02%20-%20functional%20languages/Roc/random_streams_for_perf_stats.roc), a solution which isn't applying any "imperative tinkering" but doing (pure) functional list building.
+
+<br/>
+
+#### Haskell: Map of Germany
+
+To compare Haskell with Curry in its [Kiel Curry System (KiCS)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Curry#kics2-curry-maps-of-australia-and-germany) implementation, which is based on Haskell (and Curry being nearly a superset of Haskell which does't support all Haskell extensions), in terms of execution speed, I also implemented the map coloring problem of Germany in Haskell at [graph_4coloring_Germany.hs](./graph_4coloring_Germany.hs) with the friendly help of Google AI and Duck.ai:
+
+```
+$ time ./graph_4coloring_Germany
+number N of different solutions = 191808
+
+                [SH,MV,HH,HB,NI,ST,BE,BB,SN,NW,HE,TH,RP,SL,BW,BY]
+1st solution  = [Red,Green,Green,Red,Blue,Green,Green,Red,Blue,Red,Green,Red,Blue,Red,Red,Yellow]
+...
+Last solution = [Yellow,Blue,Blue,Yellow,Green,Blue,Blue,Yellow,Green,Yellow,Blue,Yellow,Green,Yellow,Yellow,Red]
+
+real	0m0.120s
+...
+$
+```
+
+120 milliseconds is quite fast and even beating a Picat ("old B-Prolog") program which uses the [constraint programming module cp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#constraint-programming-module-cp): [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
+
+Not to mentions KiCS Curry, which needs about 29 seconds for one program run!
 
 <br/>
 
