@@ -281,7 +281,9 @@ $
 
 120 milliseconds is quite fast and even beating a Picat ("old B-Prolog") program which uses the [constraint programming module cp](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Picat#constraint-programming-module-cp): [The TL;DR execution speed diagram](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Prolog#the-tldr-execution-speed-diagram)
 
-Not to mentions KiCS Curry, which needs about 29 seconds for one program run!
+(This Haskell program shares the same last solution with Picat's solution, but not its first solution.)
+
+Not to mentions KiCS Curry, which needs about 25 seconds for one program run!
 
 <br/>
 
