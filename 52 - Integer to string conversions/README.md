@@ -1,7 +1,3 @@
-2026-07-31: work in progress
-
-<br/>
-
 # Integer to string conversions
 
 Not all general purpose, high-level programming languages, including their officially maintained libraries, provide inbuilt functions to convert an unsigned 16-bit integer number into its 
