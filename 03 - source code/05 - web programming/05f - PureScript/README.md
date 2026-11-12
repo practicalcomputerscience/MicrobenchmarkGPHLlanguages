@@ -6,6 +6,8 @@
 
 https://www.purescript.org/
 
+Sources in GitHub: https://github.com/purescript/purescript
+
 > PureScript is a small, strongly, statically typed programming language with expressive types, written in and inspired by Haskell, and compiling to Javascript."
 
 ..from "the PureScript book": [PureScript By Example](https://book.purescript.org/#purescript-by-example)
