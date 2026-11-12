@@ -206,9 +206,17 @@ $
 
 This switch is essential for a faster program, at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail.
 
-Though, the  _--fast_ switch shows a profound downside: it doesn't allow for a portable and working executable on a different target system. Such an executable is crashing there: _Illegal instruction (core dumped)_, when using Chapel compiler version 2.8 built from sources (see above).
+However, the _--fast_ switch has a profound downside:
 
-Compiling, and dynamically linking, without the _--fast_ switch, like this for example: _$ chpl random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_non-fast_, allows for good portability, but built an executable, with the Chapel compiler version 2.8 built from sources (see above), with an execution time which is more than double!
+- it doesn't allow to compile a portable executable for a different target system because such an executable is **crashing** there (when using Chapel compiler version 2.8 built from sources; see above). This is also true for trying only to port this executable from an Ubuntu 24 LTS to an Ubuntu 26 LTS system for example:
+
+```
+$ ./random_streams_for_perf_stats_Chapel 
+Illegal instruction        (core dumped) ./random_streams_for_perf_stats_Chapel
+$ 
+```
+
+Compiling, and dynamically linking, without the _--fast_ switch, like this for example: _$ chpl random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_non-fast_, allows for good portability, but builds an executable, with the Chapel compiler version 2.8 built from sources (see above), where the execution time which is more than double!
 
 <br/>
 
