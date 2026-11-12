@@ -1,5 +1,7 @@
 2026-11-11: work in progress
 
+tbd: A great inspiration for the manual, that is "non-AI", development of [random_streams_for_perf_stats.purs](./random_streams_for_perf_stats.purs) was the Clojure implementation [random_streams_for_perf_stats_core.clj](tbd) for its mandatory usage of immutable data, and of course, its functional style.
+
 <br/>
 
 # PureScript
