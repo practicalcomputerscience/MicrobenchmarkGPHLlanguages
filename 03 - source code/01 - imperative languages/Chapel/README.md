@@ -225,9 +225,18 @@ On 2026-11-14 however, I also ran the compiled Chapel program on an AMD Ryzen 5 
 - gaming [Bazzite OS](https://bazzite.gg/) 44.20261012.0 (Fedora based; Linux kernel version: 7.2.9-ogc3.1.fc44.x86_64, file system type: btrfs),
 - [Ubuntu](https://ubuntu.com/) 26.04.1 LTS (Debian based; Linux kernel version: 7.0.0-42-generic, file system type: ext4),
 - [Manjaro Linux](https://manjaro.org/) 26.1.3 (Arch Linux based; Linux kernel version: 7.2.9-1-MANJARO, file system type: btrfs),
-- [Vanilla OS](https://vanillaos.org/) 3.0 (Debian based; Linux kernel version: 7.1.3+deb14-amd64, file system type: LVM2 physical volume (LV = logical volume))
+- [Vanilla OS](https://vanillaos.org/) 3.0 (Debian based; Linux kernel version: 7.1.3+deb14-amd64, file system type: btrfs)
 
 .. and, there were no problems!
+
+Get the file system type of the current working directory (.) with a command like this for example:
+
+```
+$ findmnt -T . -o SOURCE,FSTYPE,TARGET
+SOURCE    FSTYPE TARGET
+/dev/sdb2 ext4   /
+$
+```
 
 Remember, I compiled on an [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) system.
 
