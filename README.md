@@ -566,7 +566,7 @@ My testing environment is this as of 2025-12-19 + 2026-06-29:
 - Operating system (OS): Ubuntu 24 LTS or with command: _$ cat /etc/os-release_ --> _...PRETTY_NAME="Ubuntu 24.04.3 LTS" ..._; see also the output of command: _$ lsb_release -a_
 - Settings: Power: Power Mode set to "Performance"
 
-My (older) hardware from 2022 is always this:
+My hardware from 2022 is this:
 
 - CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz
 - mainboard: Gigabyte Technology, Z590 GAMING X (AMI BIOS F11d 06/29/2026)
