@@ -561,7 +561,7 @@ See at: [Old computer programming languages learning new tricks](https://github.
 
 ### On configuring building and execution environments
 
-My testing environment is this as of 2025-12-19:
+My testing environment is this as of 2025-12-19 + 2026-06-29:
 
 - Operating system (OS): Ubuntu 24 LTS or with command: _$ cat /etc/os-release_ --> _...PRETTY_NAME="Ubuntu 24.04.3 LTS" ..._; see also the output of command: _$ lsb_release -a_
 - Settings: Power: Power Mode set to "Performance"
@@ -569,9 +569,9 @@ My testing environment is this as of 2025-12-19:
 My (older) hardware from 2022 is always this:
 
 - CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz
-- mainboard: Gigabyte Technology, Z590 GAMING X
-- RAM: 32GB of DDR4-3200
-- SSD: 512GB Crucial MX500 SSD, CT500MX500SSD1Z; from 2025-12-10 on: 1TB Crucial BX500 SATA SSD, CT1000BX500SSD101, since I corrupted the Ubuntu file system during the [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz) development
+- mainboard: Gigabyte Technology, Z590 GAMING X (AMI BIOS F11d 06/29/2026)
+- RAM: 32GB of DDR4-3200 (2 x Corsair CMK32GX4M2E3200C16 DIMM's)
+- SATA SSD: 512GB Crucial MX500, CT500MX500SSD1Z; from 2025-12-10 on: 1TB Crucial BX500, CT1000BX500SSD101, since I corrupted the Ubuntu file system during the [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz) development
 
 For the language versions see here: ![Language versions](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/20%20-%20language%20versions)
 
