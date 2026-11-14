@@ -208,7 +208,7 @@ This switch is essential for a faster program, at least with this microbenchmark
 
 However, the _--fast_ switch has a profound downside:
 
-- it doesn't allow to compile a portable executable for a different target system because such an executable is probably **crashing** there (when using Chapel compiler version 2.8 built from sources; see above). This is also true for trying only to port this executable from an Ubuntu 24 LTS to an Ubuntu 26 LTS system for example:
+- it doesn't always allow to compile a portable executable for a different Linux system because it may **crash** there (when using Chapel compiler version 2.8 built from sources; see above). This may be also true for trying only to port this executable from an Ubuntu 24 LTS system to an Ubuntu 26 LTS system for example:
 
 ```
 $ ./random_streams_for_perf_stats_Chapel 
@@ -218,7 +218,16 @@ $
 
 Compiling, and dynamically linking, without the _--fast_ switch, like this for example: _$ chpl random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_non-fast_, allows for good portability, but builds an executable, with the Chapel compiler version 2.8 built from sources (see above), where the execution time which is more than double!
 
-2026-11-14, however, I also run the Chapel program on a system with the Linux gaming [Bazzite OS](https://bazzite.gg/) (in version _Linux bazzite.fritz.box 7.2.9-ogc3.1.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Oct 12 22:17:26 UTC 2026 x86_64 GNU/Linux_) and (to my surprise), there were no problems!
+<br/>
+
+On 2026-11-14 however, I also ran the compiled Chapel program on an AMD Ryzen 5 9600X (with an ASRock B850M-X WiFi R2.0, BIOS version 06/24/2026, mainboard and Kingston KF556C40-16 DDR5 16GiB 4800 MHz memory) hardware system, and booting into:
+
+- Linux gaming [Bazzite OS](https://bazzite.gg/, Fedora based) (in version _Linux bazzite.fritz.box 7.2.9-ogc3.1.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Oct 12 22:17:26 UTC 2026 x86_64 GNU/Linux_),
+- Ubuntu 26.04.1 LTS (Debian based),
+- Manjaro Linux 26.1.3 (Arch Linux based),
+- Vanilla OS 3.0 (Debian based)
+
+.. and, there were no problems!
 
 <br/>
 
