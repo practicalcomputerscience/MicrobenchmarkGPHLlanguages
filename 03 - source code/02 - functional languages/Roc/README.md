@@ -36,7 +36,7 @@ Wikipedia (https://en.wikipedia.org/wiki/Purely_functional_programming) has a sh
 
 While **Haskell** (https://www.haskell.org/) is by far the #1 **pure** functional programming language since at least year 2002 with "Haskell 98 revised", Roc as a "small" language may have the advantage to really learn _functional programming_ one baby step after the other.
 
-So, even coding a simple (recursive) loop, from scratch and without help of "Big AI", to count from 1 to 10 for example, may be the first challenge, when coding in a pure functional programming language for the first time.
+So, even coding a simple (recursive) loop, from scratch and without help of "Big AI", to count from 1 to 10 for example, may be the first challenge when trying to implement it purely functional.
 
 First I struggled heavily, but then I found a solution:
 
@@ -75,7 +75,7 @@ s = int_generate({y : counter_start, limit : upper_limit, x : []})
 
 <br/>
 
-2026-11: however, with its further development, I noticed that Roc also now allows (classical) imperative constructs like seen here at [Functional and imperative styles](https://www.roc-lang.org/functional#functional-and-imperative) in this imperative for-loop:
+2026-11: however, with its further development, I noticed that Roc also now allows imperative constructs like shown at [Functional and imperative styles](https://www.roc-lang.org/functional#functional-and-imperative) for this imperative for-loop:
 
 ```
 sum : List(I64) -> I64
