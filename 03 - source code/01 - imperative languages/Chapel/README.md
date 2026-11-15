@@ -314,7 +314,7 @@ This output show:
 
 <br/>
 
-In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_ (which also works so far on new and older Intel and AMD cpu's):
+In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_:
 
 ```
 $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f
