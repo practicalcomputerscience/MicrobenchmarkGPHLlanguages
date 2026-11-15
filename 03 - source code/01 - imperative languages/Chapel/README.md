@@ -199,7 +199,7 @@ However and to my surprise, tactic #2 did not make a faster program in Chapel, m
 
 The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest of these three solutions.
 
-Spoiler alert: see at [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel) below, why above exercises do not really move the needle in terms of execution speed.
+Spoiler alert: see at [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel) below why above exercises do not really move the needle in terms of execution speed.
 
 <br/>
 
@@ -237,7 +237,7 @@ On 2026-11-14 however, I also ran the compiled Chapel program on an AMD Ryzen 5 
 
 .. and, there were no problems!
 
-Remember, I compiled on an [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) system.
+Remember, I build executables on an [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) system.
 
 By the way: to get the file system type of the current working directory (.), you may use this command for example:
 
@@ -259,7 +259,7 @@ Latest now, a pattern should have emerged:
 
 So, here's the first question: how to check if a Linux executable is using AVX-512 instructions?
 
-Google AI was so friendly to give me these (working) answers:
+Google AI was so friendly to give me this answer:
 
 ```
 $ objdump -d -C ./random_streams_for_perf_stats | awk '/^[0-9a-f]+ <.*>:/{fn=$0} /(^|[^a-zA-Z0-9_])(zmm[0-9]+|k[0-7])([^a-zA-Z0-9_]|$)/{print fn}' | uniq
@@ -269,10 +269,13 @@ $ objdump -d -C ./random_streams_for_perf_stats | awk '/^[0-9a-f]+ <.*>:/{fn=$0}
 $
 ```
 
-Executable _random_streams_for_perf_stats_ uses AVX-512 instructions in three functions, that is in the main program logic at _chpl_gen_main_ and Chapel's internal array memory management at a
-Chapel Domain Map (DSI) runtime function responsible for resizing distributed or local arrays and a Chapel runtime helper that allocates and initializes temporary buffers when copying array slices or bulk data.
+Executable _random_streams_for_perf_stats_ uses AVX-512 instructions in three functions, that is in:
 
-The (powerful) [objdump(1)](https://www.man7.org/linux/man-pages/man1/objdump.1.html) command is for displaying information from object files.
+- the main program logic at _chpl_gen_main_, and
+- Chapel's internal array memory management at a Chapel Domain Map (DSI) runtime function responsible for resizing distributed or local arrays, and
+- a Chapel runtime helper that allocates and initializes temporary buffers when copying array slices or bulk data.
+
+The [objdump(1)](https://www.man7.org/linux/man-pages/man1/objdump.1.html) command is for displaying information from object files.
 
 <br/>
 
@@ -303,7 +306,7 @@ $ objdump -d ./random_streams_for_perf_stats  | grep -E '\bzmm[0-9]+\b|\bk[0-7]\
 $
 ```
 
-This output shows:
+This output show:
 
 - EVEX Prefix (62 ...): every instruction shown begins with the byte 0x62, which is the hardware encoding prefix exclusive to AVX-512
 - 512-bit ZMM Registers: instructions like vmovdqa64, vpbroadcastq, vpaddq, and vpternlogd are operating directly on full 512-bit %zmm registers (%zmm0 through %zmm15)
@@ -318,7 +321,7 @@ $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_
 $ 
 ```
 
-Let's run the last command on the differently compiled executable:
+Let's run the last _objdump_ command on the differently compiled executable:
 
 ```
 $ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bzmm[0-9]+\b|\bk[0-7]\b' | head -n 20
