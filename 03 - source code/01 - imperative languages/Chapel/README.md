@@ -1,5 +1,3 @@
-2026-11-15, tbd: does the compiled Chapel executable have a **hidden** AVX-515 issue at portability? See also at Zig at chapter [Installation and compilation tips and Intel Advanced Vector Extensions 512 (AVX-512)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#installation-and-compilation-tips-and-intel-advanced-vector-extensions-512-avx-512)
-
 # Chapel
 
 https://chapel-lang.org/
@@ -210,7 +208,7 @@ This switch is essential for a faster program, at least with this microbenchmark
 
 However, the _--fast_ switch has a profound downside:
 
-- it doesn't always allow to compile a portable executable for a different Linux system because it may **crash** there (when using Chapel compiler version 2.8 built from sources; see above). This may be also true for trying only to port this executable from an Ubuntu 24 LTS system to an Ubuntu 26 LTS system for example:
+- it doesn't always build a portable executable for a different Linux system because it may **crash** there:
 
 ```
 $ ./random_streams_for_perf_stats_Chapel 
@@ -231,7 +229,9 @@ On 2026-11-14 however, I also ran the compiled Chapel program on an AMD Ryzen 5 
 
 .. and, there were no problems!
 
-Get the file system type of the current working directory (.) with a command like this for example:
+Remember, I compiled on an [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) system.
+
+By the way: to get the file system type of the current working directory (.), you may use this command for example:
 
 ```
 $ findmnt -T . -o SOURCE,FSTYPE,TARGET
@@ -240,11 +240,93 @@ SOURCE    FSTYPE TARGET
 $
 ```
 
-Remember, I compiled on an [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) system.
+<br/>
+
+### tbd
+
+Latest now, a pattern should have emerged:
+
+- compiling with the _--fast_ switch may have something do with using AVX-512 instructions in the generated machine code,
+- and compiling without it produces slow code, but provides much better portability from Linux system to Linux system.
+
+So, here's the first question: how to check if a Linux executable is using AVX-512 instructions?
+
+Google AI was so friendly to give me these (working) answers:
+
+```
+$ objdump -d -C ./random_streams_for_perf_stats | awk '/^[0-9a-f]+ <.*>:/{fn=$0} /(^|[^a-zA-Z0-9_])(zmm[0-9]+|k[0-7])([^a-zA-Z0-9_]|$)/{print fn}' | uniq
+00000000000378e0 <dsiReallocate_chpl4>:
+000000000003eac0 <createCopyingBuffer_chpl>:
+000000000005b330 <chpl_gen_main>:
+$
+```
+
+Executable _random_streams_for_perf_stats_ uses AVX-512 instructions in three functions, that is in the main program logic and Chapel's internal array memory management at a
+Chapel Domain Map (DSI) runtime function responsible for resizing distributed or local arrays and a Chapel runtime helper that allocates and initializes temporary buffers when copying array slices or bulk data.
+
+The (powerful) [objdump(1)](https://www.man7.org/linux/man-pages/man1/objdump.1.html) command is for displaying information from object files.
+
+Here's another analysis:
+
+```
+$ objdump -d ./random_streams_for_perf_stats  | grep -E '\bzmm[0-9]+\b|\bk[0-7]\b' | head -n 20
+   37f91:	62 f3 fd 08 1f ca 05 	vpcmpnltq %xmm2,%xmm0,%k1
+   37fa0:	62 f1 fd 89 fb c1    	vpsubq %xmm1,%xmm0,%xmm0{%k1}{z}
+   3f02f:	62 f3 ed 48 3a c3 01 	vinserti64x4 $0x1,%ymm3,%zmm2,%zmm0
+   3f036:	62 b1 fe 48 7f 04 02 	vmovdqu64 %zmm0,(%rdx,%r8,1)
+   5bbcf:	62 f2 fd 48 7c d7    	vpbroadcastq %rdi,%zmm2
+   5bbd5:	62 f1 fd 48 6f 1d e1 	vmovdqa64 0xb17e1(%rip),%zmm3        # 10d3c0 <_IO_stdin_used+0x3c0>
+   5bbdf:	62 f1 fd 48 6f 25 17 	vmovdqa64 0xb1817(%rip),%zmm4        # 10d400 <_IO_stdin_used+0x400>
+   5bbe9:	62 f1 fd 48 6f 2d 4d 	vmovdqa64 0xb184d(%rip),%zmm5        # 10d440 <_IO_stdin_used+0x440>
+   5bbf3:	62 f1 fd 48 6f 35 83 	vmovdqa64 0xb1883(%rip),%zmm6        # 10d480 <_IO_stdin_used+0x480>
+   5bbfd:	62 f2 fd 48 59 3d a1 	vpbroadcastq 0xb14a1(%rip),%zmm7        # 10d0a8 <_IO_stdin_used+0xa8>
+   5bc11:	62 53 3d 48 25 c0 ff 	vpternlogd $0xff,%zmm8,%zmm8,%zmm8
+   5bc18:	62 72 7d 48 58 0d fa 	vpbroadcastd 0xb13fa(%rip),%zmm9        # 10d01c <_IO_stdin_used+0x1c>
+   5bc22:	62 72 fd 48 59 15 84 	vpbroadcastq 0xb1484(%rip),%zmm10        # 10d0b0 <_IO_stdin_used+0xb0>
+   5bc30:	62 f1 cd 48 d4 c6    	vpaddq %zmm6,%zmm6,%zmm0
+   5bc36:	62 f1 d5 48 d4 cd    	vpaddq %zmm5,%zmm5,%zmm1
+   5bc3c:	62 71 dd 48 d4 dc    	vpaddq %zmm4,%zmm4,%zmm11
+   5bc42:	62 71 e5 48 d4 e3    	vpaddq %zmm3,%zmm3,%zmm12
+   5bc48:	62 51 ed 48 d4 ec    	vpaddq %zmm12,%zmm2,%zmm13
+   5bc4e:	62 51 ed 48 d4 f3    	vpaddq %zmm11,%zmm2,%zmm14
+   5bc54:	62 71 ed 48 d4 f9    	vpaddq %zmm1,%zmm2,%zmm15
+$
+```
+
+This output shows:
+
+- EVEX Prefix (62 ...): every instruction shown begins with the byte 0x62, which is the hardware encoding prefix exclusive to AVX-512
+- 512-bit ZMM Registers: instructions like vmovdqa64, vpbroadcastq, vpaddq, and vpternlogd are operating directly on full 512-bit %zmm registers (%zmm0 through %zmm15)
+- AVX-512VL & Opmask Registers: the first two lines (vpcmpnltq and vpsubq) use 128-bit %xmm registers combined with an opmask register (%k1) and zero-masking ({z}). This specifically indicates the AVX-512VL (Vector Length Extensions) subset
 
 <br/>
 
-A statically linked binary should be possible with switch _--static_ after substantial system modifications, which I won't implement.
+In order to provide decent portability from one Linux system to another, Google AI suggested this compilation command (which also works so far on new and older Intel and AMD cpu's; see below):
+
+```
+$ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f  # compile with no AVX-512 support
+$ 
+```
+
+Let's run the last command on the differently compiled executable:
+
+```
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bzmm[0-9]+\b|\bk[0-7]\b' | head -n 20
+$
+```
+
+Now, no more AVX-512 instructions are in use apparently.
+
+<br/>
+
+However, another question emerges now: why is this new executable practically as fast as the old one with about 246 milliseconds of program execution time?
+
+The answer is in the _--ccflags="-march=x86-64-v3"_ compiler switch which forwards switch _-march=x86-64-v3_ to Chapel's C compiler.
+
+
+
+
+
 
 <br/>
 
