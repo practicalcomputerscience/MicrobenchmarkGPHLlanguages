@@ -1,3 +1,7 @@
+tbd: By default, Chapel implicitly uses the _-march=native_ switch (source: tbd)
+
+
+
 # Chapel
 
 https://chapel-lang.org/
@@ -15,6 +19,8 @@ Table of contents:
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
 - [On compiler switches, portability and linking in Chapel](#on-compiler-switches-portability-and-linking-in-chapel)
+- [x86-64 microarchitecture levels]()
+- [Integer to string conversions in Chapel]()
 
 <br/>
 
@@ -303,7 +309,7 @@ This output shows:
 
 <br/>
 
-In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_ (which also works so far on new and older Intel and AMD cpu's; see below at tbd):
+In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_ (which also works so far on new and older Intel and AMD cpu's):
 
 ```
 $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f
@@ -371,11 +377,11 @@ $ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bmovbe[wlq]?
 $
 ```
 
-So, AVX, AVX2, BMI1, BMI2 and MOVBE instructions are in use.
+So, AVX, AVX2, BMI1, BMI2 and MOVBE instructions are used by the differently compiled executable.
 
 <br/>
 
-Next step: let's profile the new executable:
+Next step: let's profile this new executable:
 
 ```
 $ sudo perf record -F 4000 -e cycles:u -- ./random_streams_for_perf_stats_no-avx512f \
@@ -417,6 +423,78 @@ $
 ```
 
 In other words: less than 1% of the cpu cycles are spent on the actual random number generation at _chpl_gen_main_!
+
+<br/>
+
+### Integer to string conversions in Chapel
+
+After a while, Google AI got this idea to make a (much) faster executable:
+
+> In Chapel, calling "%016bu".format(x[i]) and "%04xu".format(x[i]) 62,500 times each (125,000 calls total) does not just format a few bytes in registers—every single .format() call in Chapel spins up an internal in-memory QIO channel (_buffered_get_memory_file_lock_held), parses the format string at runtime (chpl_do_format_read), allocates a heap string via jemalloc, and copies it out.
+
+So, I implemented Google's user defined functions: 
+
+```
+...
+use CTypes;
+...
+const HEX_CHARS = "0123456789abcdef";
+
+inline proc integer_to_bin_string(val: int): string {
+  var buf: c_array(uint(8), 16);
+  for param b in 0..15 do
+    buf[b] = (48 + ((val >> (15 - b)) & 1)): uint(8);
+  return try! string.createCopyingBuffer(c_ptrTo(buf[0]), 16, 16);
+}
+
+inline proc integer_to_hex_string(val: int): string {
+  var buf: c_array(uint(8), 4);
+  for param h in 0..3 do
+    buf[h] = HEX_CHARS.byte((val >> ((3 - h) * 4)) & 0xf);
+  return try! string.createCopyingBuffer(c_ptrTo(buf[0]), 4, 4);
+}
+...
+```
+
+..and Bang! This alone made a 15 times faster executable:
+
+```
+$ time ./random_streams_for_perf_stats_user_defined_functions_no-avx512f
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.015s
+...
+$
+```
+
+..which can be further accelerated by running it with only 1 Chapel task thread:
+
+```
+$ time CHPL_RT_NUM_THREADS_PER_LOCALE=1 ./random_streams_for_perf_stats_user_defined_functions_no-avx512f
+
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+
+real	0m0.012s
+...
+$
+```
+
+<br/>
+
+Same like with C ([Keeping using idiomatic constructs](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/C#keeping-using-idiomatic-constructs)):
+
+> However, replacing the _sprintf_ function in my C program would not serve the goals of this microbenchmarking well in my opinion. I try to use idiomatic constructs as long as they make sense and thus forego savings in speed or space here and there.
+>
+> I try to use user-defined functions only in cases where I cannot find a suitable solution from more or less official libraries, or when I'm not able to tap into 3rd party libraries within a reasonable amount of time...
+
+.., also with Chapel I'm still using the official [FormattedIO](https://chapel-lang.org/docs/modules/standard/IO/FormattedIO.html#formattedio) solution from Chapel's Standard Library.
+
+Nevertheless, this case is another demonstration of how much influence inbuilt functions of a language can have on program execution speeds.
 
 <br/>
 
