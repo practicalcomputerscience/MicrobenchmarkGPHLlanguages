@@ -3,14 +3,17 @@ random_streams_for_perf_stats.chpl
 
 2025-06-05/18; 2025-12-17: see below
 2026-06-15: now Chapel version 2.8 (no code change)
+2026-11-15: different compilation command to not use AVX-512 instructions for good portability from Linux system to Linux system
+
 
 build on Ubuntu 24 LTS: $ chpl random_streams_for_perf_stats.chpl
-        for production: $ chpl random_streams_for_perf_stats.chpl --fast
+        for production: $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f  # compile with no AVX-512 support
 
-run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats
-                        $ sudo perf stat -r 20 ./random_streams_for_perf_stats
+run on Ubuntu 24 LTS:   $ ./random_streams_for_perf_stats_no-avx512f
+                        $ sudo perf stat -r 20 ./random_streams_for_perf_stats_no-avx512f
 
 
+When still compiled with AVX-512 support:
 string concatenation (bits_x += bits_x_str;):                    0,243631 +- 0,000799 seconds time elapsed  ( +-  0,33% )
 final joining of strings from array (bits_x[i-1] = bits_x_str;): 0,257985 +- 0,000505 seconds time elapsed  ( +-  0,20% )
 
