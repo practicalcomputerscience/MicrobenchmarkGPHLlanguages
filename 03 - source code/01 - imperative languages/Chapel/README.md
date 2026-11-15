@@ -261,10 +261,12 @@ $ objdump -d -C ./random_streams_for_perf_stats | awk '/^[0-9a-f]+ <.*>:/{fn=$0}
 $
 ```
 
-Executable _random_streams_for_perf_stats_ uses AVX-512 instructions in three functions, that is in the main program logic and Chapel's internal array memory management at a
+Executable _random_streams_for_perf_stats_ uses AVX-512 instructions in three functions, that is in the main program logic at _chpl_gen_main_ and Chapel's internal array memory management at a
 Chapel Domain Map (DSI) runtime function responsible for resizing distributed or local arrays and a Chapel runtime helper that allocates and initializes temporary buffers when copying array slices or bulk data.
 
 The (powerful) [objdump(1)](https://www.man7.org/linux/man-pages/man1/objdump.1.html) command is for displaying information from object files.
+
+<br/>
 
 Here's another analysis:
 
@@ -335,16 +337,86 @@ The x86-64-v3 feature level is explained in detail at: [x86-64-v3](https://x86-6
 
 However, another question emerges now: why is this new executable with about 246 milliseconds of program execution time practically as fast as the old one with AVX-512 support?
 
-It's now an obvious idea to check for AVX and the other instructions in the compiled program:
+It's now an obvious idea to check for AVX and the other x86-64-v3 instructions in the compiled program:
 
 ```
-$ 
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bymm[0-9]+\b' | head -n 4  # check for AVX instructions
+   281b3:	c5 fc 11 44 24 70    	vmovups %ymm0,0x70(%rsp)
+   298e0:	c5 fc 10 05 78 a2 13 	vmovups 0x13a278(%rip),%ymm0        # 163b60 <_str_literal_323_chpl>
+   298e8:	c5 fc 11 84 24 70 02 	vmovups %ymm0,0x270(%rsp)
+   2990d:	c5 fc 10 05 cb a0 13 	vmovups 0x13a0cb(%rip),%ymm0        # 1639e0 <_str_literal_86_chpl>
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(vp[a-z0-9]+|vperm[a-z0-9]+|vextracti128|vinserti128|vgather[a-z0-9]+)\b.*%ymm[0-9]+\b' | head -n 4  # check for AVX2 instructions
+   2bd96:	c4 e2 7d 59 c8       	vpbroadcastq %xmm0,%ymm1
+   2bde8:	c4 e2 7d 59 c0       	vpbroadcastq %xmm0,%ymm0
+   2c0d8:	c4 e2 7d 59 c8       	vpbroadcastq %xmm0,%ymm1
+   2c125:	c4 e2 7d 59 c0       	vpbroadcastq %xmm0,%ymm0
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bvf(n?madd|n?msub|maddsub|msubadd)[0-9]{3}(ps|pd|ss|sd)\b' | head -n 4  # check for FMA instructions
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(andn|bextr|blsi|blsmsk|blsr|tzcnt)[lq]?\b' | head -n 4  # check for BMI1 instructions
+   27b05:	c4 42 f8 f2 f5       	andn   %r13,%rax,%r14
+   27dc0:	c4 e2 f0 f2 f8       	andn   %rax,%rcx,%rdi
+   28163:	c4 e2 f8 f2 c6       	andn   %rsi,%rax,%rax
+   2821e:	c4 62 f0 f2 e8       	andn   %rax,%rcx,%r13
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(bzhi|mulx|pdep|pext|rorx|sarx|shlx|shrx)[lq]?\b' | head -n 4  # check for BMI2 instructions
+   2e543:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
+   2e9c9:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
+   2ebb6:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
+   3f3f0:	c4 c2 23 f7 c1       	shrx   %r11d,%r9d,%eax
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bvcvt(ph2ps|ps2ph)\b' | head -n 4  # check for F16C instructions
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\blzcnt[wlq]?\b' | head -n 4  # check for LZCNT instructions
+$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bmovbe[wlq]?\b' | head -n 4  # check for MOVBE instructions
+   51124:	48 0f 38 f1 4c 24 10 	movbe  %rcx,0x10(%rsp)
+   5175e:	48 0f 38 f1 4c 24 10 	movbe  %rcx,0x10(%rsp)
+   52ba5:	4c 0f 38 f1 64 24 08 	movbe  %r12,0x8(%rsp)
+   531a2:	4c 0f 38 f1 64 24 08 	movbe  %r12,0x8(%rsp)
+$
 ```
 
+So, AVX, AVX2, BMI1, BMI2 and MOVBE instructions are in use.
 
+<br/>
 
+Next step: let's profile the new executable:
 
+```
+$ sudo perf record -F 4000 -e cycles:u -- ./random_streams_for_perf_stats_no-avx512f \
+# sample cpu instruction pointer 4k times per sec; measure user-space cpu clock cycles specifically, excluding Linux kernel overhead
 
+generating a random bit stream...
+Bit stream has been written to disk under name:  random_bitstring.bin
+Byte stream has been written to disk under name: random_bitstring.byte
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.053 MB perf.data (1315 samples) ]
+$ sudo perf report --stdio --sort=symbol | head -n 50
+...
+# Overhead  Symbol                                   IPC   [IPC Coverage]
+# ........  .......................................  ....................
+#
+    25.79%  [.] __memset_evex_unaligned_erms         -      -            
+    22.04%  [.] qt_scheduler_get_thread              -      -            
+     4.14%  [.] ifree                                -      -            
+     3.77%  [.] chpl_je_mallocx                      -      -            
+     3.07%  [.] doClear_chpl2                        -      -            
+     2.11%  [.] writer_chpl                          -      -            
+     2.11%  [.] qbuffer_append                       -      -            
+     1.96%  [.] _buffered_get_memory_file_lock_held  -      -            
+     1.64%  [.] doClear_chpl3                        -      -            
+     1.48%  [.] chpl_do_format_read                  -      -            
+     1.47%  [.] _qio_channel_final_flush_unlocked    -      -            
+     1.40%  [.] chpl_do_format                       -      -            
+     1.40%  [.] init_chpl111                         -      -            
+     1.23%  [.] _qio_channel_init_file               -      -            
+     1.22%  [.] chpl_je_dallocx                      -      -            
+     0.99%  [.] qbuffer_iter_advance                 -      -            
+     0.97%  [.] chpl_localeID_to_locale              -      -            
+     0.91%  [.] init_chpl109                         -      -            
+     0.82%  [.] arena_run_first_best_fit             -      -            
+     0.82%  [.] chpl_gen_main                        -      -            
+     ...
+     0.41%  [.] arena_avail_insert                   -      -   
+$
+```
+
+In other words: less than 1% of the cpu cycles are spent on the actual random number generation at _chpl_gen_main_!
 
 <br/>
 
