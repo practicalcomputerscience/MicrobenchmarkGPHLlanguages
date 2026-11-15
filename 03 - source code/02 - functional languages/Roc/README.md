@@ -1,3 +1,5 @@
+tbd: install new version from late 2026 and use the new imperative constructs?
+
 # Roc
 
 https://www.roc-lang.org/
