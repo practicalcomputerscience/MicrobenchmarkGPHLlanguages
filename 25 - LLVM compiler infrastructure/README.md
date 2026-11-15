@@ -8,6 +8,8 @@ https://llvm.org/
 
 https://github.com/llvm/llvm-project
 
+https://clang.llvm.org/
+
 <br/>
 
 Numerous programming languages are using the LLVM compiler infrastructure. However, sometimes a specific version of LLVM is required.
