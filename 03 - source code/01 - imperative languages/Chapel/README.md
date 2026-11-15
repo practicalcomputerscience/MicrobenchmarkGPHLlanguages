@@ -397,7 +397,7 @@ In other words: less than 1% of the cpu cycles are spent on the actual random nu
 
 ### Integer to string conversions in Chapel
 
-After a while, Google AI got this idea to make a (much) faster executable:
+After a while, Google AI got this idea to make a faster executable:
 
 > In Chapel, calling "%016bu".format(x[i]) and "%04xu".format(x[i]) 62,500 times each (125,000 calls total) does not just format a few bytes in registers—every single .format() call in Chapel spins up an internal in-memory QIO channel (_buffered_get_memory_file_lock_held), parses the format string at runtime (chpl_do_format_read), allocates a heap string via jemalloc, and copies it out.
 
@@ -461,7 +461,7 @@ Same like with C ([Keeping using idiomatic constructs](https://github.com/practi
 >
 > I try to use user-defined functions only in cases where I cannot find a suitable solution from more or less official libraries, or when I'm not able to tap into 3rd party libraries within a reasonable amount of time...
 
-.., also with Chapel I'm still using the official [FormattedIO](https://chapel-lang.org/docs/modules/standard/IO/FormattedIO.html#formattedio) solution from Chapel's Standard Library.
+..I'm consequently sticking with the official [FormattedIO](https://chapel-lang.org/docs/modules/standard/IO/FormattedIO.html#formattedio) solution from Chapel's Standard Library.
 
 Nevertheless, this case is another demonstration of how much influence inbuilt functions of a language can have on program execution speeds.
 
