@@ -330,11 +330,13 @@ $
 
 No more AVX-512 instructions are in use apparently.
 
-The _-march=x86-64-v3_ switch makes sure that a broad base of modern microarchitectures are being used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are being used for good portability.
+<br/>
+
+The _-march=x86-64-v3_ compilation switch makes sure that a broad base of modern microarchitectures are being used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are being used for good portability.
 
 By default, Chapel implicitly uses the _-march=native_ switch (source: tbd), that's why using switch _-march=x86-64-v3_ makes sense to not only compile for the specific microarchitecture of the testing system.
 
-_--ccflags_ are to be understood as "Back-end C compiler flags", see from output of command: _$ chpl --help_
+_--ccflags_ are to be understood as "Back-end C compiler flags" as seen from output of command: _$ chpl --help_
 
 <br/>
 
@@ -346,7 +348,7 @@ The x86-64-v3 feature level is explained in detail at: [x86-64-v3](https://x86-6
 
 <br/>
 
-However, another question emerges now: why is this new executable with about 246 milliseconds of program execution time practically as fast as the old one with AVX-512 support?
+However, another question emerges now: why is this new program with an execution time of about 246 milliseconds practically as fast as the old one with AVX-512 support?
 
 It's now an obvious idea to check for AVX and the other x86-64-v3 instructions in the compiled program:
 
