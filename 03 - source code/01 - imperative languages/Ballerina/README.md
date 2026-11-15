@@ -63,7 +63,7 @@ However, the bigger idea of Ballerina is this:
 
 ## Installation and compilation tips
 
-I downloaded Debian package _ballerina-2201.13.3-swan-lake-linux-x64.deb_ from here: https://ballerina.io/downloads/ and installed it like this on my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)):
+I downloaded Debian package _ballerina-2201.13.3-swan-lake-linux-x64.deb_ from here: https://ballerina.io/downloads/ and installed it like this on my testing system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)):
 
 ```
 $ sudo dpkg -i ballerina-2201.13.3-swan-lake-linux-x64.deb
