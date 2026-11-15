@@ -34,7 +34,7 @@ C | inbuilt function | inbuilt function | inbuilt function in both cases |
 C++ | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C3 | inbuilt function | inbuilt function | inbuilt function in both cases | 
 C# | inbuilt function | inbuilt function | inbuilt function in both cases | 
-Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | 
+Chapel | inbuilt function | inbuilt function | inbuilt function in both cases | The _.format()_ function has a lot of overhead and is thus very slow only!
 Clojure | inbuilt function | inbuilt function | extra **user defined function** at integer to binary string conversion; implicitly done at integer to hexa-decimal string conversion | 
 COBOL (GnuCOBOL) | **user defined procedure** | **user defined procedure** | implicitly done with a preset result string "0000000000000000" or "0000" respectively | 2026-08-18: user defined procedures look efficient
 CoffeeScript | inbuilt function | inbuilt function | inbuilt function in both cases | 
