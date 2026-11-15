@@ -3,12 +3,13 @@ random_bitstring_and_flexible_password_generator.chpl
 
 2025-06-05/06/18; 2025-12-17: see below
 2026-06-15: refactored from char_set to pattern (for regular expressions)
+2026-11-15: different compilation command to not use AVX-512 instructions for good portability from Linux system to Linux system
 
 
 build on Ubuntu 24 LTS: $ chpl random_bitstring_and_flexible_password_generator.chpl
-        for production: $ chpl random_bitstring_and_flexible_password_generator.chpl --fast
+        for production: $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_bitstring_and_flexible_password_generator.chpl -o random_bitstring_and_flexible_password_generator_no-avx512f  # compile with no AVX-512 support
 
-run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator
+run on Ubuntu 24 LTS:   $ ./random_bitstring_and_flexible_password_generator_no-avx512f
 
 
 $ chpl --version
