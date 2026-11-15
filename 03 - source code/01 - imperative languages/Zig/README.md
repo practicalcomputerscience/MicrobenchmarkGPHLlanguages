@@ -13,7 +13,7 @@ https://codeberg.org/ziglang/zig.git
 
 <br/>
 
-## Installation and compilation tips
+## Installation and compilation tips and Intel® Advanced Vector Extensions 512 (AVX-512)
 
 I installed Zig like this: _$ brew install zig_
 
