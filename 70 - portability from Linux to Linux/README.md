@@ -16,7 +16,7 @@ Ada (GNAT) | yes, but with good portability | yes
 C | yes, but with good portability | yes | complicated, but possible theoretically
 C++ | yes, but with good portability | yes | complicated, but possible theoretically
 C3 | yes, but with good portability | yes
-Chapel | yes, but with good portability when compiled carefully; see at []() | yes | a statically linked binary should be possible with switch _--static_ after substantial system modifications (not tested)
+Chapel | yes, but with good portability when compiled carefully; see at [x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/README.md#x86-64-microarchitecture-levels) | yes | after substantial system modifications, a statically linked binary should be possible with switch _--static_ (not tested)
 Chez Scheme (only the "speed part" tested) | yes, but with good portability when a working standalone executable can be built on the source system | yes
 Common Lisp (SBCL) | yes, but with good portability | yes
 Crystal | yes, but with good portability | yes | yes, with switch _--static_ | -12%
