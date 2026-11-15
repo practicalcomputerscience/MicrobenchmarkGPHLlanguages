@@ -16,6 +16,7 @@ Ada (GNAT) | yes, but with good portability | yes
 C | yes, but with good portability | yes | complicated, but possible theoretically
 C++ | yes, but with good portability | yes | complicated, but possible theoretically
 C3 | yes, but with good portability | yes
+Chapel | yes, but with good portability when compiled carefully; see at []() | yes | a statically linked binary should be possible with switch _--static_ after substantial system modifications (not tested)
 Chez Scheme (only the "speed part" tested) | yes, but with good portability when a working standalone executable can be built on the source system | yes
 Common Lisp (SBCL) | yes, but with good portability | yes
 Crystal | yes, but with good portability | yes | yes, with switch _--static_ | -12%
@@ -102,7 +103,6 @@ Scala (only the "speed part" tested) | yes | yes
 
 ## Other omissions from the top list
 
-- Chapel is a difficult case: [On compiler switches, portability and linking in Chapel](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#on-compiler-switches-portability-and-linking-in-chapel)
 - [COBOL](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/COBOL#cobol), here GnuCOBOL, which needs at least one language specific shared library being installed, that is _libcob.so.4_, and then some more shared libraries
 - Dart, which isn't so easily portable to another, "foreign" Linux system; see at [Standalone (or self-contained) executable (which may not be portable so easily)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05b%20-%20Dart%20on%20the%20Dart%20virtual%20machine#standalone-or-self-contained-executable-which-may-not-be-portable-so-easily)
 - [Dylan](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#dylan), here Open Dylan, where a compiled application depends on numerous application specific shared libraries and Open Dylan specific shared libraries: [Porting a simple Dylan application](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Dylan#porting-a-simple-dylan-application)
