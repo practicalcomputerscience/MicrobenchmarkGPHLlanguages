@@ -19,7 +19,7 @@ I installed Zig like this: _$ brew install zig_
 
 <br/>
 
-On my target system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)), I'm compiling Zig programs like this:
+On my testing system (![On configuring building and execution environments](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments)), I'm compiling Zig programs like this:
 
 ```
 $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O ReleaseFast
@@ -27,11 +27,13 @@ $ zig build-exe random_streams_for_perf_stats.zig -mcpu=native-avx512f -O Releas
 
 ..where switch _-O ReleaseFast_ is essential to build a fast program.
 
-Notice that compiler switch _-mcpu=native-avx512f_ is activated here. Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind), and if the Zig program would have been compiled without this switch, it would crash immediately.
+Notice that compiler switch _-mcpu=native-avx512f_ is activated here. Background is this: I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind), and if the Zig program would have been compiled without this switch, it would crash immediately. Compiler switch _-mcpu=native-avx512f_ subtracts (-) the _avx512f_ feature. Because every other AVX-512 extension (avx512vl, avx512bw, avx512dq, etc.) depends on avx512f, disabling avx512f automatically disables the entire AVX-512 instruction family in LLVM (Google AI). This also allows for good portability of such a Zig executable to Linux systems with an Intel cpu without AVX-512 support.
 
-My Intel Core i7-11700K @ 3.6GHz desktop CPU still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
+The Intel Core i7-11700K @ 3.6GHz desktop cpu of my testing system still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
-To not be misunderstood: compiling without this switch, just like _$ zig build-exe random_streams_for_perf_stats.zig_, also compiles to a correctly working program, also on my system, but not for _Valgrind_.
+To not be misunderstood: compiling without this switch, just like _$ zig build-exe random_streams_for_perf_stats.zig_, also compiles to a correctly working program, also on my testing system, but not for _Valgrind_.
+
+At Chapel, I've written more background about these AVX-512 instructions: [tbd](tbd)
 
 <br/>
 
