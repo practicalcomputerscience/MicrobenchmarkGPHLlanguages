@@ -197,14 +197,14 @@ The third tactic, which I eagerly (and imperatively if possible) apply in functi
 
 ### On compiler switches, portability and linking in Chapel
 
-I compiled with activated switch _--fast_ before measuring the rather slow program execution speed:
+I compiled with the [LLVM](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/25%20-%20LLVM%20compiler%20infrastructure#llvm-compiler-infrastructure) optimization switch _--fast_ before measuring the rather slow program execution speed (as of June 2026):
 
 ```
 $ chpl random_streams_for_perf_stats.chpl --fast
 $
 ```
 
-This switch is essential for a faster program, at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail.
+This switch is essential for a faster program (see at [Optimization Options](https://chapel-lang.org/docs/technotes/llvm.html#optimization-options) for example), at least with this microbenchmark program. I also played with other compiler options, see from _$ chpl --help_, but to no avail (so far).
 
 However, the _--fast_ switch has a profound downside:
 
@@ -242,7 +242,7 @@ $
 
 <br/>
 
-### tbd
+### x86-64 microarchitecture levels
 
 Latest now, a pattern should have emerged:
 
@@ -301,10 +301,10 @@ This output shows:
 
 <br/>
 
-In order to provide decent portability from one Linux system to another, Google AI suggested this compilation command (which also works so far on new and older Intel and AMD cpu's; see below):
+In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_ (which also works so far on new and older Intel and AMD cpu's; see below at tbd):
 
 ```
-$ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f  # compile with no AVX-512 support
+$ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f
 $ 
 ```
 
@@ -315,13 +315,31 @@ $ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bzmm[0-9]+\b
 $
 ```
 
-Now, no more AVX-512 instructions are in use apparently.
+No more AVX-512 instructions are in use apparently.
+
+The _-march=x86-64-v3_ switch makes sure that a broad base of modern microarchitectures are being used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are being used for good portability.
+
+By default, Chapel implicitly uses the _-march=native_ switch (source: tbd), that's why using switch _-march=x86-64-v3_ makes sense to not only compile for the specific microarchitecture of the testing system.
+
+_--ccflags_ are to be understood as "Back-end C compiler flags", see from output of command: _$ chpl --help_
 
 <br/>
 
-However, another question emerges now: why is this new executable practically as fast as the old one with about 246 milliseconds of program execution time?
+The x86-64-v3 feature level is explained in detail at: [x86-64-v3](https://x86-64.net/v3/)
 
-The answer is in the _--ccflags="-march=x86-64-v3"_ compiler switch which forwards switch _-march=x86-64-v3_ to Chapel's C compiler.
+> Adds AVX, AVX2, FMA, BMI1, BMI2, F16C, LZCNT and MOVBE, the feature set of Intel’s Haswell (2013) and AMD’s Excavator (2015). Distributions are now moving their baseline to it.
+>
+> x86-64-v3 brings 256-bit SIMD: AVX for floating point and AVX2 for integers, fused multiply-add, and the BMI1 and BMI2 bit-manipulation instructions. It also requires the operating system to have enabled the AVX register state (OSXSAVE).
+
+<br/>
+
+However, another question emerges now: why is this new executable with about 246 milliseconds of program execution time practically as fast as the old one with AVX-512 support?
+
+It's now an obvious idea to check for AVX and the other instructions in the compiled program:
+
+```
+$ 
+```
 
 
 
