@@ -568,7 +568,7 @@ My testing environment is this as of 2025-12-19 + 2026-06-29:
 
 My hardware from 2022 is this:
 
-- CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz
+- CPU: 11th Gen Intel(R) Core(TM) i7-11700K @ 3.6GHz ("Rocket Lake-S", 14nm with Cypress Cove cores) in Stepping 1, which still has full **with AVX-512** support ([Is AVX-512 Fused Off on Alder Lake Client Products? ](https://www.intel.com/content/www/us/en/support/articles/000089918/processors.html))
 - mainboard: Gigabyte Technology, Z590 GAMING X (AMI BIOS F11d 06/29/2026)
 - RAM: 32GB of DDR4-3200 (2 x Corsair CMK32GX4M2E3200C16 DIMM's)
 - SATA SSD: 512GB Crucial MX500, CT500MX500SSD1Z; from 2025-12-10 on: 1TB Crucial BX500, CT1000BX500SSD101, since I corrupted the Ubuntu file system during the [Oz](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/04%20-%20logic%20programming/Oz#oz) development
