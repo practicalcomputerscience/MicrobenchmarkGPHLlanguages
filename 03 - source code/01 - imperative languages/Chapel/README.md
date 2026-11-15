@@ -19,8 +19,8 @@ Table of contents:
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
 - [On compiler switches, portability and linking in Chapel](#on-compiler-switches-portability-and-linking-in-chapel)
-- [x86-64 microarchitecture levels]()
-- [Integer to string conversions in Chapel]()
+- [x86-64 microarchitecture levels](#x86-64-microarchitecture-levels)
+- [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel)
 
 <br/>
 
