@@ -129,7 +129,7 @@ $
 
 Like with the other programming languages, also with Chapel this question comes up with my microbenchmark program: does it have a string builder or similar concept?
 
-Answer: no (who cares about string building in a programming language originally designed for supercomputers?)
+Answer: no
 
 And so I did what I always initially do in a case like this: I just concatenate one string after the other to finally make one big string in the [masterloop](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel/random_streams_for_perf_stats.chpl):
 
@@ -198,6 +198,8 @@ By the way: when experimenting with my Python program I came to the conclusion t
 However and to my surprise, tactic #2 did not make a faster program in Chapel, maybe the only C-like language without a string builder concept where this tactic leads to an even slower solution.
 
 The third tactic, which I eagerly (and imperatively if possible) apply in functional programming languages (and Perl 5) without a string builder concept, is to initially declare an array of strings in the right size, fill the array elements in the masterloop with the individual, small strings and finally convert this array into one big string, is also not a faster solution in Chapel, because it's the slowest of these three solutions.
+
+Spoiler alert: see at [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel) below, why above exercises do not really move the needle in terms of execution speed.
 
 <br/>
 
