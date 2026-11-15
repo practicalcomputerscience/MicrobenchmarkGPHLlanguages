@@ -463,6 +463,8 @@ Same like with C ([Keeping using idiomatic constructs](https://github.com/practi
 
 ..I'm consequently sticking with the official [FormattedIO](https://chapel-lang.org/docs/modules/standard/IO/FormattedIO.html#formattedio) solution from Chapel's Standard Library.
 
+<br/>
+
 Nevertheless, this case is another demonstration of how much influence inbuilt functions of a language can have on program execution speeds.
 
 <br/>
