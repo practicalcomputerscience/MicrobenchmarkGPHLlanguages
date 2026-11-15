@@ -350,45 +350,7 @@ The x86-64-v3 feature level is explained in detail at: [x86-64-v3](https://x86-6
 
 However, another question emerges now: why is this new program with an execution time of about 246 milliseconds practically as fast as the old one with AVX-512 support?
 
-It's now an obvious idea to check for AVX and the other x86-64-v3 instructions in the compiled program:
-
-```
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bymm[0-9]+\b' | head -n 4  # check for AVX instructions
-   281b3:	c5 fc 11 44 24 70    	vmovups %ymm0,0x70(%rsp)
-   298e0:	c5 fc 10 05 78 a2 13 	vmovups 0x13a278(%rip),%ymm0        # 163b60 <_str_literal_323_chpl>
-   298e8:	c5 fc 11 84 24 70 02 	vmovups %ymm0,0x270(%rsp)
-   2990d:	c5 fc 10 05 cb a0 13 	vmovups 0x13a0cb(%rip),%ymm0        # 1639e0 <_str_literal_86_chpl>
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(vp[a-z0-9]+|vperm[a-z0-9]+|vextracti128|vinserti128|vgather[a-z0-9]+)\b.*%ymm[0-9]+\b' | head -n 4  # check for AVX2 instructions
-   2bd96:	c4 e2 7d 59 c8       	vpbroadcastq %xmm0,%ymm1
-   2bde8:	c4 e2 7d 59 c0       	vpbroadcastq %xmm0,%ymm0
-   2c0d8:	c4 e2 7d 59 c8       	vpbroadcastq %xmm0,%ymm1
-   2c125:	c4 e2 7d 59 c0       	vpbroadcastq %xmm0,%ymm0
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bvf(n?madd|n?msub|maddsub|msubadd)[0-9]{3}(ps|pd|ss|sd)\b' | head -n 4  # check for FMA instructions
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(andn|bextr|blsi|blsmsk|blsr|tzcnt)[lq]?\b' | head -n 4  # check for BMI1 instructions
-   27b05:	c4 42 f8 f2 f5       	andn   %r13,%rax,%r14
-   27dc0:	c4 e2 f0 f2 f8       	andn   %rax,%rcx,%rdi
-   28163:	c4 e2 f8 f2 c6       	andn   %rsi,%rax,%rax
-   2821e:	c4 62 f0 f2 e8       	andn   %rax,%rcx,%r13
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\b(bzhi|mulx|pdep|pext|rorx|sarx|shlx|shrx)[lq]?\b' | head -n 4  # check for BMI2 instructions
-   2e543:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
-   2e9c9:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
-   2ebb6:	c4 e2 f0 f5 c0       	bzhi   %rcx,%rax,%rax
-   3f3f0:	c4 c2 23 f7 c1       	shrx   %r11d,%r9d,%eax
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bvcvt(ph2ps|ps2ph)\b' | head -n 4  # check for F16C instructions
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\blzcnt[wlq]?\b' | head -n 4  # check for LZCNT instructions
-$ objdump -d ./random_streams_for_perf_stats_no-avx512f | grep -E '\bmovbe[wlq]?\b' | head -n 4  # check for MOVBE instructions
-   51124:	48 0f 38 f1 4c 24 10 	movbe  %rcx,0x10(%rsp)
-   5175e:	48 0f 38 f1 4c 24 10 	movbe  %rcx,0x10(%rsp)
-   52ba5:	4c 0f 38 f1 64 24 08 	movbe  %r12,0x8(%rsp)
-   531a2:	4c 0f 38 f1 64 24 08 	movbe  %r12,0x8(%rsp)
-$
-```
-
-So, AVX, AVX2, BMI1, BMI2 and MOVBE instructions are used by the differently compiled executable.
-
-<br/>
-
-Next step: let's profile this new executable:
+To answer this question, (also) the differently compiled executable could be profiled like this for example (as suggested by Google AI):
 
 ```
 $ sudo perf record -F 4000 -e cycles:u -- ./random_streams_for_perf_stats_no-avx512f \
@@ -439,7 +401,7 @@ After a while, Google AI got this idea to make a (much) faster executable:
 
 > In Chapel, calling "%016bu".format(x[i]) and "%04xu".format(x[i]) 62,500 times each (125,000 calls total) does not just format a few bytes in registers—every single .format() call in Chapel spins up an internal in-memory QIO channel (_buffered_get_memory_file_lock_held), parses the format string at runtime (chpl_do_format_read), allocates a heap string via jemalloc, and copies it out.
 
-So, I implemented Google's user defined functions: 
+So, I implemented these two common user defined functions as suggested by Google AI: 
 
 ```
 ...
