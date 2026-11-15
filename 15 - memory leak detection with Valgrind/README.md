@@ -90,7 +90,7 @@ Ada (GNAT) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C++ | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 C3 | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
-Chapel | program doesn't finish | -- | no | 2026-06-19
+Chapel | program doesn't finish | -- | no | 2026-06-19, 2026-11-15
 COBOL (GNU) | 0 bytes in 0 blocks | -- | yes <<<<<< | 2026-06-19
 Common Lisp | 554,114 bytes in 12 blocks | 291,666 bytes in 10 blocks | no | 2026-06-19
 Crystal | program doesn't finish | -- | no | 2026-06-19
@@ -211,21 +211,27 @@ let c    = 0
 
 ### On other languages
 
-Not all executable programs are finishing and have to be manually interrupted by pressing CTRL+C keys. The **Chapel** version is one example:
+Not all executable programs are finishing and have to be manually interrupted by pressing CTRL+C keys (maybe several times). The **Chapel** version is one example (as of 2026-11-15):
 
 ```
-$ valgrind ./random_bitstring_and_flexible_password_generator
-==23385== Memcheck, a memory error detector
-==23385== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==23385== Using Valgrind-3.27.0.GIT and LibVEX; rerun with -h for copyright info
-==23385== Command: ./random_bitstring_and_flexible_password_generator
-==23385==
-==23385== Warning: client switching stacks?  SP change: 0x6d743b8 --> 0x7c00f78
-==23385==          to suppress, use: --max-stackframe=15256512 or greater
-...
-^C
-==23385==
-==23385== Process terminating with default action of signal 2 (SIGINT)
+$ valgrind ./random_streams_for_perf_stats_no-avx512f
+==8377== Memcheck, a memory error detector
+==8377== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==8377== Using Valgrind-3.27.0.GIT and LibVEX; rerun with -h for copyright info
+==8377== Command: ./random_streams_for_perf_stats_no-avx512f
+==8377== 
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+==8377== Warning: client switching stacks?  SP change: 0x6774d78 --> 0x71fffb8
+==8377==          to suppress, use: --max-stackframe=11055680 or greater
+==8377== Warning: client switching stacks?  SP change: 0x71ffee8 --> 0x6774d80
+==8377==          to suppress, use: --max-stackframe=11055464 or greater
+==8377== Warning: client switching stacks?  SP change: 0x6774d18 --> 0x71ffef0
+==8377==          to suppress, use: --max-stackframe=11055576 or greater
+==8377==          further instances of this message will not be shown.
+^C==8377== 
+==8377== Process terminating with default action of signal 2 (SIGINT)
 ...
 $
 ```
