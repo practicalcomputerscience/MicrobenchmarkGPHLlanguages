@@ -1,3 +1,5 @@
+2026-11-15, tbd: does the compiled Chapel executable have a **hidden** AVX-515 issue at portability? See also at Zig at chapter [Installation and compilation tips and Intel Advanced Vector Extensions 512 (AVX-512)](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig#installation-and-compilation-tips-and-intel-advanced-vector-extensions-512-avx-512)
+
 # Chapel
 
 https://chapel-lang.org/
