@@ -26,13 +26,13 @@ For how long will this still work?
 
 ---
 
-Roc is a so called _pure_ functional programming language. I mean really _pure_ compared to Haskell, which allows a decent amount of "imperative tinkering": [On how to make a faster microbenchmark program](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/02%20-%20functional%20languages/Haskell#on-how-to-make-a-faster-microbenchmark-program) (in Haskell)
+Roc is a so called _pure_ functional programming language.
 
 <br/>
 
 Wikipedia (https://en.wikipedia.org/wiki/Purely_functional_programming) has a short description about what "pure" means here: _...(treating) all computation as the evaluation of mathematical functions._ 
 
-While **Haskell** (https://www.haskell.org/) is by far the #1 **pure** functional programming language since at least year 2002 with "Haskell 98 revised", Roc as a "small" language may have the advantage to really learn _functional programming_ one baby step after the other. A pure functional programming language is forcing you to do so, because there are no imperative constructs like a for-loop for example!
+While **Haskell** (https://www.haskell.org/) is by far the #1 **pure** functional programming language since at least year 2002 with "Haskell 98 revised", Roc as a "small" language may have the advantage to really learn _functional programming_ one baby step after the other.
 
 So, even coding a simple (recursive) loop, from scratch and without help of "Big AI", to count from 1 to 10 for example, may be the first challenge, when coding in a pure functional programming language for the first time.
 
