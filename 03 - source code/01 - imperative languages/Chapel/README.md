@@ -328,7 +328,8 @@ No more AVX-512 instructions are in use apparently.
 
 <br/>
 
-The _-march=x86-64-v3_ compilation switch makes sure that a broad set of modern microarchitectures is used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are used for good portability.
+The _-march=x86-64-v3_ compilation switch makes sure that a broad set of modern microarchitectures is supported, while switch _-mno-avx512f_ assures that no AVX-512 instructions are used for good portability.
+However, after some playing with these two compiler switches I found out that switch _--ccflags="-march=x86-64-v3"_ alone is already sufficient to avoid AVX-512 instructions. Nevertheless, I recommend to use both to be on the very safe side.
 
 Chapel computes the "architecture type of the current machine", if the _CHPL_HOST_ARCH_ environment variable is not (actively) set, and it should yield result "x86_64" in case of my testing system:
 
