@@ -251,7 +251,7 @@ $
 Latest now, a pattern should have emerged:
 
 - compiling with the _--fast_ switch may have something do with using AVX-512 instructions in the generated machine code,
-- and compiling without it produces slow code, but provides much better portability from Linux system to Linux system.
+- and compiling without it produces a slow executable, but provides much better portability from Linux system to Linux system.
 
 So, here's the first question: how to check if a Linux executable is using AVX-512 instructions?
 
