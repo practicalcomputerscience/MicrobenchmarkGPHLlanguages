@@ -1,7 +1,3 @@
-tbd: By default, Chapel implicitly uses the _-march=native_ switch (source: tbd)
-
-
-
 # Chapel
 
 https://chapel-lang.org/
@@ -314,7 +310,7 @@ This output show:
 
 <br/>
 
-In order to provide decent portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_:
+In order to provide good portability from one Linux system to another, Google AI suggested compiling with activated switches _--ccflags="-march=x86-64-v3 -mno-avx512f"_:
 
 ```
 $ chpl --fast --ccflags="-march=x86-64-v3 -mno-avx512f" random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_no-avx512f
@@ -332,9 +328,21 @@ No more AVX-512 instructions are in use apparently.
 
 <br/>
 
-The _-march=x86-64-v3_ compilation switch makes sure that a broad base of modern microarchitectures are being used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are being used for good portability.
+The _-march=x86-64-v3_ compilation switch makes sure that a broad set of modern microarchitectures is used, while switch _-mno-avx512f_ assures that no AVX-512 instructions are used for good portability.
 
-By default, Chapel implicitly uses the _-march=native_ switch (source: tbd), that's why using switch _-march=x86-64-v3_ makes sense to not only compile for the specific microarchitecture of the testing system.
+Chapel computes the "architecture type of the current machine", if the _CHPL_HOST_ARCH_ environment variable is not (actively) set, and it should yield result "x86_64" in case of my testing system:
+
+```
+$ uname -m
+x86_64
+$ 
+```
+
+For more details, see official documentation chapters [CHPL_HOST_ARCH](https://chapel-lang.org/docs/usingchapel/chplenv.html#chpl-host-arch) and [CHPL_TARGET_ARCH](https://chapel-lang.org/docs/usingchapel/chplenv.html#chpl-target-arch).
+
+So, using switch _-march=x86-64-v3_ makes sense to not only compile for the specific microarchitecture of the testing system, that is the current machine, in order to facilitate good portability.
+
+<br/>
 
 _--ccflags_ are to be understood as "Back-end C compiler flags" as seen from output of command: _$ chpl --help_
 
