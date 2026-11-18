@@ -126,8 +126,6 @@ Another modification is to expand a project's configuration file _./package.json
 
 ..to make node.js to pars the source code file as an ES module and thus to avoid any performance overhead of testing it first as a CommonJS module.
 
-<br/>
-
 Install these packages for each project, if not done yet:
 
 ```
