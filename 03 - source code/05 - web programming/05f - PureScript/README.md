@@ -100,20 +100,42 @@ This can be done at least locally for every project. I didn't try to find a more
 ```
 $ npm install --save-dev esbuild
 $ npm approve-scripts esbuild
-$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle  # expand PATH to the esbuild executable
+$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle --platform node  # expand PATH to the esbuild executable
 $ node ./index.js  # run the JavaScript script on node.js
 🍝
 $ 
 ```
 
-So, when you change the PureScript source code in _./\<project directory\>/src/Main.purs_, just run _$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle_ again.
+So, when you change the PureScript source code in _./\<project directory\>/src/Main.purs_, just run _$ PATH="$PWD/node_modules/.bin:$PATH" spago bundle --platform node_ again.
+
+Switch _--platform node_ is needed for my programs, because their execution environment is node.js, and not a web browser for example.
+
+Another modification is to expand a project's configuration file _./package.json_ with line _"type": "module",_ like this:
+
+```
+{
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
+```
+
+..to make node.js to pars the source code file as an ES module and thus to avoid any performance overhead of testing it first as a CommonJS module.
 
 <br/>
 
+Install these packages for each project, if not done yet:
 
-tbd
-
+```
+$ spago install random lists strings exceptions node-fs
+$ spago install xxxxxxxxxxxxxx tbd
+```
 
 <br/>
+
 
 ##_end
