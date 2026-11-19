@@ -8,7 +8,7 @@ Although this project is meant only for general purpose, **high-level** programm
 
 <br/>
 
-### Best portability, and execution speed, with instructions of the x86-64-v1 feature level
+### Best portability, and good execution speed, with instructions from the x86-64-v1 feature level
 
 At first, only assembly language which supports a broad range of (modern) Intel and AMD (desktop) cpu's is to be used, which means only using instructions of the **x86-64-v1** feature level ([x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#x86-64-microarchitecture-levels) (*)) for 64-bit Linux systems.
 
@@ -68,7 +68,7 @@ Though, this (rough) range means that such an executable is not necessarily fast
 
 <br/>
 
-### Good portability also with instructions of the x86-64-v2 feature level
+### Good portability also with instructions from the x86-64-v2 feature level
 
 So, I got the idea to ask Google AI (Duck.ai wasn't very helpful here), to transpile [random_streams_for_perf_stats_x86-64-v1.asm](./random_streams_for_perf_stats_x86-64-v1.asm)
 into assembly code which may also use instructions of the x86-64-v2 feature level:
@@ -116,7 +116,7 @@ No AVX-512 instructions in sight here, which means that also executable _random_
 
 <br/>
 
-### Still good portability also with instructions of the x86-64-v3 feature level
+### Still good portability also with instructions from the x86-64-v3 feature level
 
 Next logical step now is to transpile [random_streams_for_perf_stats_x86-64-v2.asm](./random_streams_for_perf_stats_x86-64-v2.asm)
 into assembly code which may also use instructions of the x86-64-v3 feature level:
@@ -159,7 +159,7 @@ $
 
 <br/>
 
-Also Google AI's proposal to make a program with direct Linux x86-64 syscalls, that is a program with no _libc_ dependency, did not improve execution speeds further on (usual) my testing system.
+Also Google AI's proposal to make a program with direct Linux x86-64 syscalls, that is a program with no _libc_ dependency, did not improve execution speeds further on my (usual) testing system.
 
 Neither when using AVX-512 instructions.
 
@@ -175,7 +175,7 @@ x86-64-v3 | 3.0 |
 x86-64-v3 | 2.4 | like x86-64-v3, but only with direct Linux x86-64 syscalls
 avx-512 | 2.7 | 
 
-(Be aware, that compiling and linking still happened on my old [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) testing system with NASM version 2.16.01 and gcc version 14.2.0.)
+(Be aware, that compiling and linking still happened on my old [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) testing system with older NASM version 2.16.01 and older gcc version 14.2.0.)
 
 <br/>
 
