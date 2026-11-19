@@ -404,6 +404,16 @@ In other words: less than 1% of the cpu cycles are spent on the actual random nu
 
 <br/>
 
+By the way: why did Intel drop AVX-512 support from the their desktop and mobile cpu's (but not their server cpu's)?
+
+Because of Efficiency cores:
+
+> Intel said it wasn't enabled due to the inclusion of two different architectures. The E cores didn't support it, even if the P cores did.
+
+from [Intel kills Alder Lake AVX-512 support for good](https://www.pcgamer.com/intel-kills-alder-lake-avx-512-support-for-good/), Published 7 March 2022
+
+<br/>
+
 ### Integer to string conversions in Chapel
 
 After a while, Google AI got this idea to make a faster executable:
