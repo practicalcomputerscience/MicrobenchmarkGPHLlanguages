@@ -1,6 +1,6 @@
 # Assembly
 
-Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added versions in assembly language.
+Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added versions of the "speed part" of the microbenchmark program in assembly language.
 
 TL;DR: program version [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions) with Intel and AMD cpu's.
 
