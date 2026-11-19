@@ -4,7 +4,7 @@
 
 # Assembly
 
-Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added a version in assembly language.
+Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added versions in assembly language.
 
 <br/>
 
