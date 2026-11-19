@@ -4,7 +4,17 @@ Although this project is meant only for general purpose, **high-level** programm
 
 TL;DR: program version [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions) with Intel and AMD cpu's.
 
+---
+
+Table of contents:
+
+- [Best portability, and good execution speed, with instructions from the x86-64-v1 feature level](#best-portability-and-good-execution-speed-with-instructions-from-the-x86-64-v1-feature-level)
+- [Good portability also with instructions from the x86-64-v2 feature level](#good-portability-also-with-instructions-from-the-x86-64-v2-feature-level)
+- [Still good portability also with instructions from the x86-64-v3 feature level](#still-good-portability-also-with-instructions-from-the-x86-64-v3-feature-level)
+
 <br/>
+
+---
 
 ### Best portability, and good execution speed, with instructions from the x86-64-v1 feature level
 
