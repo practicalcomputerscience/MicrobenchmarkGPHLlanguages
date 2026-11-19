@@ -1,5 +1,3 @@
-See tbd below (Chapel link)
-
 # Zig
 
 https://ziglang.org/
@@ -35,7 +33,7 @@ The Intel Core i7-11700K @ 3.6GHz desktop cpu of my testing system still feature
 
 To not be misunderstood: compiling without this switch, just like _$ zig build-exe random_streams_for_perf_stats.zig_, also compiles to a correctly working program, also on my testing system, but not for _Valgrind_.
 
-At Chapel, I've written more background about these AVX-512 instructions: [tbd](tbd)
+At Chapel, I've written more background about these AVX-512 instructions: [x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#x86-64-microarchitecture-levels)
 
 <br/>
 
