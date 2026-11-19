@@ -1,10 +1,8 @@
-2026-11-19: work in progress
-
-<br/>
-
 # Assembly
 
 Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added versions in assembly language.
+
+TL;DR: program version [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions) with Intel and AMD cpu's.
 
 <br/>
 
@@ -165,11 +163,12 @@ Neither when using AVX-512 instructions.
 
 <br/>
 
-So far, Google AI made me 5 different assembly program versions. I tested all of them also on my (new) [AMD Ryzen 5 9600X testing system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#amd-ryzen-5-9600x-testing-system), and there I got these roughly estimated program execution times in average (arithmetic means):
+So far, Google AI made me 5 different assembly program versions. I tested all of them also on my (new) [AMD Ryzen 5 9600X testing system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#amd-ryzen-5-9600x-testing-system), and there I got these roughly estimated program execution times (arithmetic means):
 
 Microarchitecture feature level | approximate, average execution time [milliseconds] | comment
 --- | --- | ---
 x86-64-v1 | 2.5 | 
+x86-64-v1 | 3.0 | like x86-64-v1, but only with direct Linux x86-64 syscalls
 x86-64-v2 | 3.4 | 
 x86-64-v3 | 3.0 | 
 x86-64-v3 | 2.4 | like x86-64-v3, but only with direct Linux x86-64 syscalls
@@ -177,11 +176,11 @@ avx-512 | 2.7 |
 
 (Be aware, that compiling and linking still happened on my old [Intel Core i7-11700K](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) testing system with older NASM version 2.16.01 and older gcc version 14.2.0.)
 
+I also tested a version with direct Linux x86-64 syscalls based on the original x86-64-v1 version. But that is with an approximate, average execution time of 3.0 milliseconds statistically not a winner.
+
 <br/>
 
-
-
-tbd
+After some more testing on three different platforms (Intel Core i7-11700K, AMD Ryzen 5 9600X, Intel Alder Lake N100), I came to the conclusion that the [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) program, is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions).
 
 <br/>
 
