@@ -173,7 +173,7 @@ Neither when using AVX-512 instructions.
 
 <br/>
 
-So far, Google AI made me 5 different assembly program versions. I tested all of them also on my (new) [AMD Ryzen 5 9600X testing system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#amd-ryzen-5-9600x-testing-system), and there I got these roughly estimated program execution times (arithmetic means):
+So far, Google AI made me 5 different assembly program versions. I tested all of them also on my (new) [AMD Ryzen 5 9600X testing system](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#amd-ryzen-5-9600x-testing-system) with Ubuntu 26 LTS, and there I got these roughly estimated program execution times (arithmetic means):
 
 Microarchitecture feature level | approximate, average execution time [milliseconds] | comment
 --- | --- | ---
