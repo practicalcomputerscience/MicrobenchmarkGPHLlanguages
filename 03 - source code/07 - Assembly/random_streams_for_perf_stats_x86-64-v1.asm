@@ -47,7 +47,7 @@ extern perror
 
 %define MODULUS_m   65521  ; = 2^16 - 15
 %define MULTIPLIER_a 17364
-%define INCREMENT_C 0
+%define INCREMENT_c 0
 
 %define SEED_MOD  (MODULUS_m - 2)
 
@@ -118,7 +118,7 @@ main:
     ; x[i] = (a * x[i-1] + c) % m
     mov  eax, r12d
     imul eax, eax, MULTIPLIER_a
-    add  eax, INCREMENT_C
+    add  eax, INCREMENT_c
     xor  edx, edx
     mov  ecx, MODULUS_m
     div  ecx
