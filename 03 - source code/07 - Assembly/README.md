@@ -8,7 +8,7 @@ Although this project is meant only for general purpose, **high-level** programm
 
 <br/>
 
-### Best portability with instructions of the x86-64-v1 feature level
+### Best portability, and execution speed, with instructions of the x86-64-v1 feature level
 
 At first, only assembly language which supports a broad range of (modern) Intel and AMD (desktop) cpu's is to be used, which means only using instructions of the **x86-64-v1** feature level ([x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#x86-64-microarchitecture-levels) (*)) for 64-bit Linux systems.
 
@@ -116,7 +116,7 @@ No AVX-512 instructions in sight here, which means that also executable _random_
 
 <br/>
 
-### Good portability also with instructions of the x86-64-v3 feature level
+### Still good portability also with instructions of the x86-64-v3 feature level
 
 Next logical step now is to transpile [random_streams_for_perf_stats_x86-64-v2.asm](./random_streams_for_perf_stats_x86-64-v2.asm)
 into assembly code which may also use instructions of the x86-64-v3 feature level:
