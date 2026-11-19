@@ -159,7 +159,10 @@ $
 
 <br/>
 
-Also Google AI's proposal to make a program with direct Linux x86-64 syscalls, and which has no _libc_ dependency, did not improve execution speeds further.
+Also Google AI's proposal to make a program with direct Linux x86-64 syscalls, that is a program with no _libc_ dependency, did not improve execution speeds further on my testing system.
+
+<br/>
+
 
 tbd
 
