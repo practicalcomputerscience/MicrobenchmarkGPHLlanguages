@@ -15,7 +15,7 @@ Table of contents:
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
 - [On compiler switches, portability and linking in Chapel](#on-compiler-switches-portability-and-linking-in-chapel)
-- [AMD Ryzen 5 9600X testing system](#tbd)
+- [AMD Ryzen 5 9600X testing system](#amd-ryzen-5-9600x-testing-system)
 - [x86-64 microarchitecture levels](#x86-64-microarchitecture-levels)
 - [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel)
 
