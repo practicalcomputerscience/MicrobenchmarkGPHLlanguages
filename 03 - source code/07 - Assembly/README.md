@@ -190,7 +190,7 @@ I also tested a version with direct Linux x86-64 syscalls based on the original 
 
 <br/>
 
-After some more testing on three different platforms (Intel Core i7-11700K, AMD Ryzen 5 9600X, Intel Alder Lake N100), I came to the conclusion that the [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) program, is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions).
+After some more testing on three different platforms (Intel Core i7-11700K, AMD Ryzen 5 9600X, Intel Alder Lake N100), I came to the conclusion that the [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) program is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions).
 
 <br/>
 
