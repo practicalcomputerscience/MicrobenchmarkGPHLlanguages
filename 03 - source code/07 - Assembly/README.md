@@ -6,8 +6,7 @@
 
 Although this project is meant only for general purpose, **high-level** programming languages, for fun I just added a version in assembly language.
 
-At first, only assembly language which supports a broad range of modern Intel and AMD (desktop) cpu's, that means using only baseline x86-64 instructions, that is only
-using instructions of the **x86-64-v1** feature level ([x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#x86-64-microarchitecture-levels)) for 64-bit Linux systems.
+At first, only assembly language which supports a broad range of modern Intel and AMD (desktop) cpu's, that means only using instructions of the **x86-64-v1** feature level ([x86-64 microarchitecture levels](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/01%20-%20imperative%20languages/Chapel#x86-64-microarchitecture-levels)) for 64-bit Linux systems.
 
 As one "natural" possibility for a source language, I took the
 [C++](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/C%2B%2B/random_streams_for_perf_stats.cpp)
@@ -59,9 +58,9 @@ Byte stream has been written to disk under name: random_bitstring.byte
 $
 ```
 
-Outcomes can vary from 2.0 to 3.7 milliseconds, at least, on my testing system!
+Outcomes can vary from 2.0 to 3.7 milliseconds for one, average program run on my testing system!
 
-
+tbd: <=> Zig
 
 
 
