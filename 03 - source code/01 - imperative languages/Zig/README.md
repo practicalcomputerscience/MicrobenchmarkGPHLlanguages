@@ -31,7 +31,7 @@ Notice that compiler switch _-mcpu=native-avx512f_ is activated here. Background
 
 - I test the compiled programs with the memory tester program [Valgrind](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/15%20-%20memory%20leak%20detection%20with%20Valgrind#memory-leak-detection-with-valgrind), and if the Zig program would have been compiled without this switch, it would crash immediately.
 
-Compiler switch _-mcpu=native-avx512f_ subtracts (-) the _avx512f_ feature. Because every other AVX-512 extension (_avx512vl_, _avx512bw_, _avx512dq_, etc.) depends on _avx512f_, disabling _avx512f_ automatically disables the entire AVX-512 instruction family in LLVM (Google AI). This also allows for good portability of such a Zig executable to Linux systems with an Intel cpu without AVX-512 support.
+Compiler switch _-mcpu=native-avx512f_ subtracts (-) the _avx512f_ feature. Because every other AVX-512 extension (_avx512vl_, _avx512bw_, _avx512dq_, etc.) depends on _avx512f_, disabling _avx512f_ automatically disables the entire AVX-512 instruction family in LLVM (Google AI). This also allows good portability of such a Zig executable to Linux systems with an Intel cpu without AVX-512 support.
 
 The Intel Core i7-11700K @ 3.6GHz desktop cpu of my testing system still features these 512-bit extensions (great!) to some Single Instruction, Multiple Data (SIMD) instructions: https://en.wikipedia.org/wiki/AVX-512
 
