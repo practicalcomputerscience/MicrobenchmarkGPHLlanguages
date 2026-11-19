@@ -175,6 +175,8 @@ x86-64-v3 | 3.0 |
 x86-64-v3 | 2.4 | like x86-64-v3, but only with direct Linux x86-64 syscalls
 avx-512 | 2.7 | 
 
+(be aware, that compiling and linking still happened on my old [11th Gen Intel Core i7-11700K @ 3.6GHz ("Rocket Lake-S")](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main#on-configuring-building-and-execution-environments) testing system)
+
 <br/>
 
 
