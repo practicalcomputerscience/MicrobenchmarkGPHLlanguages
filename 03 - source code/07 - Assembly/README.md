@@ -64,7 +64,7 @@ $
 
 Outcomes can vary from 2.0 to 3.7 milliseconds for one, average program run on my testing system!
 
-Though, this (rough) range means that such an executable is not necessarily faster in average than an executable from an equivalent [Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_streams_for_perf_stats.zig) program, there with an average program execution time of 3.3 milliseconds (as of 2025-12-18; also fastest batch out of three) in the same execution environment!
+This (rough) range means that such an executable based on assembly language is not necessarily faster in average than an executable from an equivalent [Zig](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/01%20-%20imperative%20languages/Zig/random_streams_for_perf_stats.zig) program, there with an average execution time of 3.3 milliseconds (as of 2025-12-18; also fastest batch out of three) in the same execution environment!
 
 <br/>
 
