@@ -15,6 +15,7 @@ Table of contents:
 - [Building Chapel from sources](#building-chapel-from-sources)
 - [String building with Chapel](#string-building-with-chapel)
 - [On compiler switches, portability and linking in Chapel](#on-compiler-switches-portability-and-linking-in-chapel)
+- [AMD Ryzen 5 9600X testing system](#tbd)
 - [x86-64 microarchitecture levels](#x86-64-microarchitecture-levels)
 - [Integer to string conversions in Chapel](#integer-to-string-conversions-in-chapel)
 
@@ -223,6 +224,8 @@ $
 Compiling, and dynamically linking, without the _--fast_ switch, like this for example: _$ chpl random_streams_for_perf_stats.chpl -o random_streams_for_perf_stats_non-fast_, allows for good portability, but builds an executable, with the Chapel compiler version 2.8 built from sources (see above), where the execution time which is more than double!
 
 <br/>
+
+#### AMD Ryzen 5 9600X testing system
 
 On 2026-11-14 however, I also ran the compiled Chapel program on an AMD Ryzen 5 9600X (with an ASRock B850M-X WiFi R2.0, BIOS version 06/24/2026 mainboard and Kingston KF556C40-16 DDR5 16GiB 4800 MHz memory and Crucial 2,5" SATA, MX500 CT500MX500SSD1Z, 500GB or Intenso 2,5" SATA III, High, 120GB, SSD's) system, and booting into:
 
