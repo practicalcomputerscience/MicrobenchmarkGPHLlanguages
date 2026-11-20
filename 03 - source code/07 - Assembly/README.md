@@ -188,9 +188,11 @@ avx-512 | 2.7 |
 
 I also tested a version with direct Linux x86-64 syscalls based on the original x86-64-v1 version. But that is with an approximate, average execution time of 3.0 milliseconds statistically not a winner.
 
+After some more testing on three different platforms (Intel Core i7-11700K, AMD Ryzen 5 9600X, Intel Alder Lake N100), I came to the conclusion that the [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) program is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions).
+
 <br/>
 
-After some more testing on three different platforms (Intel Core i7-11700K, AMD Ryzen 5 9600X, Intel Alder Lake N100), I came to the conclusion that the [./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm](./random_streams_for_perf_stats_x86-64-v3_direct_syscalls.asm) program is probably not only the fastest variant (by a thin margin), but also a variant with good portability among "modern" 64-bit Linux systems (without any AVX-512 instructions).
+However, I won't add assembly to my "official" list of languages, and the main reason for this is the very high variance of program execution times from one _perf stat_ measurement batch to the next, even for the same executable in the same execution environment. This makes it impossible for me to get an idea of the true, average program execution times.
 
 <br/>
 
