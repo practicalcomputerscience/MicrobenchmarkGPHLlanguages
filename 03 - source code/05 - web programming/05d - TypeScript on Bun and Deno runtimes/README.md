@@ -163,7 +163,15 @@ Above results, here also combined with the result of TypeScript on node.js from 
 
 On 2026-11-20, I had a quick look into "TypeScript-to-Native Compiler" [scriptc](https://scriptc.dev/) (https://github.com/vercel-labs/scriptc).
 
-However, script [random_streams_for_perf_stats.ts](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) cannot be compiled statically to a standalone executable with this compiler, because of two issues:
+Beware that:
+
+> scriptc supports a subset of JavaScript, TypeScript, and the Node.js APIs.
+
+from [Limitations](https://scriptc.dev/docs/limitations).
+
+<br/>
+
+Out of the box, script [random_streams_for_perf_stats.ts](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) cannot be compiled and built into a standalone executable, because of two issues:
 
 - a simple type issue, where original line _console.error(`could not write to file: ${file_bits_x} ! -- ${ex.message}`);_ can be fixed into _console.error(`could not write to file: ${file_bits_x} ! -- ${(ex as Error).message}`);_ (which works on node.js, Bun and Deno),
 
@@ -175,7 +183,7 @@ However, script [random_streams_for_perf_stats.ts](https://github.com/practicalc
 
 ..with given _hint: use a supported API or rewrite this operation for native compilation_
 
-The last issue is a reason for me not to change the (working) TypeScript version of the microbenchmark program to please the _scriptc_ compiler.
+tbd: The last issue is a reason for me not to change the (working) TypeScript version of the microbenchmark program to please the _scriptc_ compiler.
 
 <br/>
 
