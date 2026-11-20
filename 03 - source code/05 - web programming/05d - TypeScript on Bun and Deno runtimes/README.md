@@ -161,7 +161,7 @@ Above results, here also combined with the result of TypeScript on node.js from 
 
 #### scriptc compiler
 
-On 2026-11-20, I had a quick look into "TypeScript-to-Native Compiler" [scriptc](https://scriptc.dev/): https://github.com/vercel-labs/scriptc
+On 2026-11-20, I had a quick look into "TypeScript-to-Native Compiler" [scriptc](https://scriptc.dev/) (https://github.com/vercel-labs/scriptc).
 
 However, script [random_streams_for_perf_stats.ts](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) cannot be compiled statically to a standalone executable with this compiler, because of two issues:
 
@@ -173,7 +173,7 @@ However, script [random_streams_for_perf_stats.ts](https://github.com/practicalc
             const bits_x_str = x[i].toString(2).padStart(16, '0');
 ```
 
-..with given: _hint: use a supported API or rewrite this operation for native compilation_
+..with given _hint: use a supported API or rewrite this operation for native compilation_
 
 The last issue is a reason for me not to change the (working) TypeScript version of the microbenchmark program to please the _scriptc_ compiler.
 
