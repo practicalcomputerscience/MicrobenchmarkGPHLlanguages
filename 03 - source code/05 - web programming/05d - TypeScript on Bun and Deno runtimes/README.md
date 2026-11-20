@@ -9,6 +9,7 @@ Table of contents:
 - [Deno](#deno)
 - [Bun](#bun)
 - [Microbenchmark program in TypeScript: execution speeds on Bun, Deno and node.js](#microbenchmark-program-in-typescript-execution-speeds-on-bun-deno-and-nodejs)
+- [scriptc compiler](#scriptc-compiler)
 
 <br/>
 
@@ -155,6 +156,26 @@ It's file size is also big with 102,377,912 bytes.
 Above results, here also combined with the result of TypeScript on node.js from [Why is the TypeScript variant slower than the equivalent JavaScript variant?](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/tree/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime#why-is-the-typescript-variant-slower-than-the-equivalent-javascript-variant):
 
 ![plot](./mean_stddev_err_whiskers%20--%20web%20programming%2C%20TypeScript.png)
+
+<br/>
+
+#### scriptc compiler
+
+On 2026-11-20, I had a quick look into "TypeScript-to-Native Compiler" [scriptc](https://scriptc.dev/): https://github.com/vercel-labs/scriptc
+
+However, script [random_streams_for_perf_stats.ts](https://github.com/practicalcomputerscience/MicrobenchmarkGPHLlanguages/blob/main/03%20-%20source%20code/05%20-%20web%20programming/05a%20-%20web%20languages%20on%20node.js%2C%20WebAssembly%20and%20Wasmtime/random_streams_for_perf_stats.ts) cannot be compiled statically to a standalone executable with this compiler, because of two issues:
+
+- a simple type issue, where original line _console.error(`could not write to file: ${file_bits_x} ! -- ${ex.message}`);_ can be fixed into _console.error(`could not write to file: ${file_bits_x} ! -- ${(ex as Error).message}`);_ (which works on node.js, Bun and Deno),
+
+- ..and a bigger issue because this line "cannot compile statically":
+
+```
+            const bits_x_str = x[i].toString(2).padStart(16, '0');
+```
+
+..with given: _hint: use a supported API or rewrite this operation for native compilation_
+
+The last issue is a reason for me not to change the (working) TypeScript version of the microbenchmark program to please the _scriptc_ compiler.
 
 <br/>
 
